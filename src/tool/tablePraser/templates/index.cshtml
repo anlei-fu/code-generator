@@ -1,0 +1,83 @@
+@model QXFC.Model.@TableNameListModel
+@{
+    ViewBag.Title = "流程控制";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<style>
+     div#showdiv {position:absolute; visibility:hidden; top:0; background-color: #99c9db;text-align: left;padding: 2px;z-index: 999}   
+</style>*@
+@se1
+@se2
+@se3
+<script type="text/javascript">
+    function MRCenterMsg() {
+        this.bind = function () {
+            $.paging.config.form = "#conditionForm";
+            $.paging.bind();
+            $("#ddlps").val($("#ps").val());
+            $("#ddlps").change(function () {
+                $("#ps").val($(this).val());
+            });
+            $(".list_submit").click(function () {
+                $.paging.submit();
+            });
+        }
+    }
+
+    $(function () {
+        var user = new MRCenterMsg();
+        user.bind();
+    });
+
+   @s1  @s2 @s3 @s4 @s5 @s6 @s7 @s8
+  
+
+</script>
+@*<div class="list_content " id ="showdiv">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        编号
+                    </th>
+                    <th>
+                        流程名称
+                    </th>
+                </tr>
+            </thead>
+            <tbody id ="BodyDetail">
+            </tbody>
+        </table>
+</div>*@
+<div class="channel_list">
+    <form method="get" id="conditionForm">
+    <div class="con_search_box clearfix">
+         @f1 @f2 @f3 @f4  @f5 @f6 @f7 @f8
+       
+    </div>
+    <input type="hidden" value="0" name="pi" id="pi" />
+    <input type="hidden" value="10" name="ps" id="ps" />
+    <input type="hidden" value="@Model.TotalCount" id="count" />
+    </form>
+    <div>
+    </div>
+    <div class="@showtable" id="divshelflist">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            @Table
+        </table>
+        <div class="list_number">
+            共 @Model.TotalCount 条记录 | 每页显示:
+            <select id="ddlps">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            条
+        </div>
+        <div id="pager" class="list_pager">
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+</div>

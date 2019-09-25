@@ -1,0 +1,6 @@
+if (file.exixt(`${OUTPUT}/${table}Handler.cs`)) {
+                file.copy(`${OUTPUT}/${table}Handler.cs`, `${basePath}/Data Layer/${mainName}.Logic/${table}Handler.cs`);
+
+                let p = file.read(`${basePath}\Logic Layer/${mainName}.Logic/${mainName}.Logic.csproj`);
+                p.replace(/COMPILE/g, `<Compile Include="DBAccess/${table}}.cs" />\r\n${COMPILE}\r\n`);
+        }

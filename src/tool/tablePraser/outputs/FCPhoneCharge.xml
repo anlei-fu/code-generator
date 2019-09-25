@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <table name="FC_PHONE_CHARGE">
+    <fields>
+      <filed pname="Id" name="ID" lable=""/>
+      <filed pname="Phone" name="PHONE" lable=""/>
+      <filed pname="Face" name="FACE" lable=""/>
+      <filed pname="Remark" name="REMARK" lable="备注"/>
+      <filed pname="CreateTime" name="CREATE_TIME" lable=""/>
+      <filed pname="Creator" name="CREATOR" lable="创建人"/>
+      <filed pname="Status" name="STATUS" lable="同process_status"/>
+      <filed pname="OrderNo" name="ORDER_NO" lable=""/>
+      <filed pname="ChargeTime" name="CHARGE_TIME" lable=""/>
+      <filed pname="ResultMsg" name="RESULT_MSG" lable=""/>
+      <filed pname="ActivateTime" name="ACTIVATE_TIME" lable="激活时间"/>
+    </fields>
+  </table>
+</config>

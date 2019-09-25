@@ -1,0 +1,6 @@
+if (file.exixt(`${OUTPUT}/${table}Service.cs`)) {
+                file.copy(`${OUTPUT}/${table}Service.cs`, `${basePath}/Service Layer/${mainName}.Srvice/${table}Service.cs`);
+
+                let p = file.read(`${basePath}\Srvice Layer/${mainName}.Srvice/${mainName}.Srvice.csproj`);
+                p.replace(/COMPILE/g, `<Compile Include="DBAccess/${table}}.cs" />\r\n${COMPILE}\r\n`);
+        }
