@@ -1,8 +1,0 @@
-/**
- *@Description
- *@Param {varchar2} v_term_prd_no
- *@Param {varchar2} v_contact_addr
- *@Param  out {varchar2} v_out_msg
- *@Author
- *@Date 1569304187951
- */
