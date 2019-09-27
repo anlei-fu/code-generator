@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-24 11:27:13
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-24 13:49:44
+ * @LastEditTime: 2019-09-26 15:00:40
  */
 var { file } = require("../libs/file");
 var { str } = require("../libs/str");
@@ -28,9 +28,12 @@ class Para {
  * @description generate function comment of a function
  * read function segment file "input.txt" and seletct first segment between "(" and ")" to extract parameter
  * then write to "output.txt"
+ * @param {String}
  */
-function generateComment() {
-        var text = file.read("input");
+function generateComment({input,output}) {
+        input=input||"input";
+        output=output||"output";
+        var text = file.read(input);
         var ls = [];
         var contents = str.select(text, "(", ")", 1);
         if (contents.length != 0) {
@@ -61,7 +64,7 @@ function generateComment() {
 
         data += suffix;
 
-        file.write("output", data);
+        file.write(output, data);
 }
 
 generateComment();

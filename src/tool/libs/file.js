@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:11:25
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-25 15:23:14
+ * @LastEditTime: 2019-09-27 11:25:04
  */
 // import
 const { requireNotNull } = require("./utils")
@@ -117,7 +117,7 @@ function exists(path) {
 /**
  * exports
  */
-exports.file = {
+exports.FILE = {
         read,
         readLines,
         write,

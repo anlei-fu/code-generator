@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-09-25 15:26:39
  */
 //imports
-var { file } = require("./../libs/file");
+var { FILE } = require("./../libs/file");
 /**
  * class of db table meta data
  */
@@ -61,7 +61,7 @@ class Table {
          * @returns {String}
          */
         generateEntity() {
-                var temp = file.read("./templates/entity.cs");
+                var temp = FILE.read("./templates/entity.cs");
                 temp = temp.replace(/@TableName/g, this.getCName());
                 var fields = "";
                 var props = "";
@@ -77,7 +77,7 @@ class Table {
          * @returns {String}
          */
         generateIHandler() {
-                return file.read("./templates/ihandler.cs")
+                return FILE.read("./templates/ihandler.cs")
                            .replace(/@TableName/g, this.getCName());
         }
         /**
@@ -85,7 +85,7 @@ class Table {
          * @returns {String}
          */
         generateHandler() {
-                return file.read("./templates/handler.cs")
+                return FILE.read("./templates/handler.cs")
                            .replace(/@TableName/g, this.getCName());
         }
         /**
@@ -93,14 +93,14 @@ class Table {
          * @returns {String}
          */
         generateService() {
-                return file.read("./templates/service.cs")
+                return FILE.read("./templates/service.cs")
                            .replace(/@TableName/g, this.getCName());
         }
         /**
          * @returns {String}
          */
         generateController() {
-                return file.read("./templates/controller.cs")
+                return FILE.read("./templates/controller.cs")
                            .replace(/@TableName/g, this.getCName());
         }
         /**
@@ -108,7 +108,7 @@ class Table {
          * @returns {String}
          */
         generateDbAcess() {
-                return file.read("./templates/access.cs")
+                return FILE.read("./templates/access.cs")
                            .replace(/@TableName/g, this.getCName());
         }
         /**
@@ -125,7 +125,7 @@ class Table {
          * @returns {String}
          */
         generateIDBAcess() {
-                return file.read("./templates/iaccess.cs")
+                return FILE.read("./templates/iaccess.cs")
                            .replace(/@TableName/g, this.getCName());
         }
         /**
@@ -133,7 +133,7 @@ class Table {
          * @returns {String}
          */
         generateItemModal() {
-                return file.read("./templates/itemModal.cs")
+                return FILE.read("./templates/itemModal.cs")
                            .replace(/@TableName/g, this.getCName());
         }
         /**
@@ -141,7 +141,7 @@ class Table {
          * @returns {String}
          */
         generateListModal() {
-                return file.read("./templates/listModal.cs")
+                return FILE.read("./templates/listModal.cs")
                            .replace(/@TableName/g, this.getCName());
         }
 
@@ -252,26 +252,26 @@ function generate(name) {
         let tab = resolve(name);
         var tabName = getCSharpName(name);
         // db config
-        file.write(`./outputs/${tabName}.xml`, tab.toXml());
+        FILE.write(`./outputs/${tabName}.xml`, tab.toXml());
         // entity 
-        file.write(`./outputs/${tabName}.cs`, tab.generateEntity());
+        FILE.write(`./outputs/${tabName}.cs`, tab.generateEntity());
         // db access
-        file.write(`./outputs/${tabName}Access.cs`, tab.generateDbAcess())
+        FILE.write(`./outputs/${tabName}Access.cs`, tab.generateDbAcess())
         // idb access
-        file.write(`./outputs/I${tabName}Access.cs`, tab.generateIDBAcess())
+        FILE.write(`./outputs/I${tabName}Access.cs`, tab.generateIDBAcess())
         // handler
-        file.write(`./outputs/${tabName}Handler.cs`, tab.generateHandler());
+        FILE.write(`./outputs/${tabName}Handler.cs`, tab.generateHandler());
         // ihandler
-        file.write(`./outputs/I${tabName}Handler.cs`, tab.generateIHandler());
+        FILE.write(`./outputs/I${tabName}Handler.cs`, tab.generateIHandler());
         // index view
-        file.write(`./outputs/${tabName}.cshtml`, tab.generateIndex());
+        FILE.write(`./outputs/${tabName}.cshtml`, tab.generateIndex());
         /**
          * Aditional customer generate
          */
         // service
-        file.write(`./outputs/${tabName}Service.cs`, tab.generateService());
+        FILE.write(`./outputs/${tabName}Service.cs`, tab.generateService());
         // controller
-        file.write(`./outputs/${tabName}Controller.cs`, tab.generateController());
+        FILE.write(`./outputs/${tabName}Controller.cs`, tab.generateController());
 
 }
 /**
@@ -283,7 +283,7 @@ function generate(name) {
  */
 function resolve(name) {
         //read all lines from file
-        var lines = file.readLines("tab.txt", "utf8", true, false);
+        var lines = FILE.readLines("tab.txt", "utf8", true, false);
         let tab = new Table(name);
         let i = -1;
         while (i + 5 < lines.length) {

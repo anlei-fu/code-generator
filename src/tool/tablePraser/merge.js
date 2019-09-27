@@ -6,7 +6,7 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-09-25 15:28:09
  */
-var { file } = require("./../libs/file")
+var {  FILE } = require("./../libs/file")
 const COMPILE = `<Compile Include="Properties/AssemblyInfo.cs" />`;
 const GLOBAL = ` <Compile Include="Global.asax.cs">`;
 const OUTPUT = "./outputs";

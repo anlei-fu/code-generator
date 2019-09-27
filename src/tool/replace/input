@@ -1,6 +1,30 @@
-if (file.exixt(`${OUTPUT}/${table}Handler.cs`)) {
-                file.copy(`${OUTPUT}/${table}Handler.cs`, `${basePath}/Data Layer/${mainName}.Logic/${table}Handler.cs`);
-
-                let p = file.read(`${basePath}\Logic Layer/${mainName}.Logic/${mainName}.Logic.csproj`);
-                p.replace(/COMPILE/g, `<Compile Include="DBAccess/${table}}.cs" />\r\n${COMPILE}\r\n`);
-        }
+<tr>
+                        记录编号
+                    </tr>
+                    <tr>
+                        订单编号
+                    </tr>
+                    <td>
+                        电话号码
+                    </td>
+                    <td>
+                        面值
+                    </td>
+                    <td>
+                        充值状态
+                    </td>
+                    <td>
+                        消息
+                    </td>
+                    <td>
+                        备注
+                    </td>
+                    <td>
+                        创建时间
+                    </td>
+                    <td>
+                       充值时间
+                    </td>
+                    <td>
+                        激活时间
+                    </td>

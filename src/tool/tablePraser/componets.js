@@ -8,7 +8,7 @@
  */
 
 var {requireNotNull} =require("./../libs/utils");
-var {file}=require("./../libs/file");
+var { FILE}=require("./../libs/file");
 const PLZSELECT="";
 const TIMERANGETITLE="";
 /**
@@ -27,7 +27,7 @@ function  select(name,id,service,value,text,def){
         requireNotNull(value),
         requireNotNull(text),
         def= def|| PLZSELECT;
-  return file.read("../componets/select.cshtml")
+  return FILE.read("../componets/select.cshtml")
              .replace(/@Name/g,name)
              .replace(/@Id/g,id)
              .replace(/@Service/g,service)
@@ -41,6 +41,6 @@ function  select(name,id,service,value,text,def){
  */
 function tiemRange(name) {
         name = name||TIMERANGETITLE;
- return file.read("../componets/timeRange.cshtml")
+ return FILE.read("../componets/timeRange.cshtml")
             .replace(/@Name/g,name)
 }

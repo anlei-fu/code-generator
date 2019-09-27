@@ -1,6 +1,30 @@
-if (file.exixt(`${OUTPUT}/${table}Service.cs`)) {
-                file.copy(`${OUTPUT}/${table}Service.cs`, `${basePath}/Service Layer/${mainName}.Srvice/${table}Service.cs`);
-
-                let p = file.read(`${basePath}\Srvice Layer/${mainName}.Srvice/${mainName}.Srvice.csproj`);
-                p.replace(/COMPILE/g, `<Compile Include="DBAccess/${table}}.cs" />\r\n${COMPILE}\r\n`);
-        }
+<th>
+                        记录编号
+                    </th>
+                    <th>
+                        订单编号
+                    </th>
+                    <th>
+                        电话号码
+                    </th>
+                    <th>
+                        面值
+                    </th>
+                    <th>
+                        充值状态
+                    </th>
+                    <th>
+                        消息
+                    </th>
+                    <th>
+                        备注
+                    </th>
+                    <th>
+                        创建时间
+                    </th>
+                    <th>
+                       充值时间
+                    </th>
+                    <th>
+                        激活时间
+                    </th>
