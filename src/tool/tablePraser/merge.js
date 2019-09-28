@@ -120,8 +120,6 @@ function merge() {
         mergeCore(`${SERVICE_NAME}.cs`, SERVICE_FOLEDER, SERVICE_PROJECT, SERVICE_INCLUDE, SERVICE_PATTER);
         // controller
         mergeCore(`${CONTROLLER_NAME}.cs`, CONTROLLER_FOLEDER, CONTROLLER_PROJECT, CONTROLLER_INCLUDE, CONTROLLER_PATTER);
-
-       
 }
 /**
  * @description merge file into solution,
@@ -139,9 +137,10 @@ function mergeCore(file, folder, project, Include, pattern) {
                 let p = file.read(project);
                 p = p.replace(pattern, `<Compile Include="${Include}/${file}" />\r\n${pattern}\r\n`);
                 file.write(p);
-                Console.log(`${OUTPUT}/${ENTITY_NAME}.cs merged!`)
+               console.log(`${OUTPUT}/${ENTITY_NAME}.cs merged!`)
         } else {
-                Console.log(`${OUTPUT}/${ENTITY_NAME}.cs miss!`);
+               console.log(`${OUTPUT}/${ENTITY_NAME}.cs miss!`);
         }
 }
+// exports
 exports.merge = merge;

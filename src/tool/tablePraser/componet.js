@@ -19,7 +19,6 @@ class ParameterManager{
 
 class Sequence {
         constructor({max,step,init}){
-             ;
              this.step=defaulValue(step,1);
              this.max=defaulValue(max,1000000);
              this.current=defaulValue(init,0);

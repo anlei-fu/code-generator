@@ -10,10 +10,9 @@ var { STR } = require("./../libs/str")
 var { FILE } = require("./../libs/file")
 /**
  * replace string many times
- * @param {Map<String,String>} map 
+ * @param {Option} map 
  * @param {String?} input  file
  * @param {String?} output  file
- * @returns {String}
  */
 function replace(map, input, output) {
         input = input || "input";
@@ -23,5 +22,5 @@ function replace(map, input, output) {
         FILE.write(output, text);
         console.log("Completed!");
 }
-
-replace({tr:"th",td:"th"});
+// do work
+replace({ tr: "th", td: "th" });

@@ -9,7 +9,7 @@
 //imports
 const { requireNotNull, defaultValue, EMPTY } = require("./utils")
 /**
- * @description Select  matched sections of input string and remove left,right pattern both
+ * @description Select  matched sections of input string and remove left,right pattern both;
  * @param {String} input 
  * @param {String} left  left pattern
  * @param {String} right  right pattern
@@ -25,12 +25,12 @@ function select(input, left, right, start, count) {
         count = defaultValue(count, -1);
         let i = 0;
         var ls = [];
+        
         while (true) {
                 i = input.indexOf(left, start);
 
-                if (i == -1) {
+                if (i == -1) 
                         break;
-                }
 
                 start = input.indexOf(right, i);
 
@@ -38,7 +38,6 @@ function select(input, left, right, start, count) {
                         break;
                 } else {
                         ls.push(input.substr(i + 1, start - i - 1));
-
                         if (count != -1 && ls.length > count)
                                 break;
                 }
@@ -59,16 +58,17 @@ function select1(input, left, right, start, count) {
         requireNotNull(input);
         requireNotNull(left);
         requireNotNull(right);
+
         start = defaultValue(start, 0);
         count = defaultValue(count, -1);
         let i = 0;
         var ls = [];
+
         while (true) {
                 i = input.indexOf(left, start);
 
-                if (i == -1) {
+                if (i == -1) 
                         break;
-                }
 
                 start = input.indexOf(right, i);
 
@@ -94,9 +94,10 @@ function select1(input, left, right, start, count) {
 function replace(input, pairs) {
         requireNotNull(input);
         pairs = defaultValue(pairs, {});
-        for (let e in pairs) {
+
+        for (let e in pairs) 
                 input = input.replace(new RegExp(e, 'g'), pairs[e]);
-        }
+
         return input;
 }
 /**
@@ -108,9 +109,9 @@ function replace(input, pairs) {
 function remove(input, array) {
         requireNotNull(input);
         array = defaultValue(array, []);
-        for (var item of array) {
+
+        for (var item of array) 
                 input = input.replace(item, EMPTY);
-        }
 
         return input;
 }
@@ -126,9 +127,10 @@ function arrayToString(array, prefix, suffix) {
         array = defaultValue(array, []);
         prefix = defaultValue(prefix, EMPTY);
         suffix = defaultValue(suffix, EMPTY);
-        for (var item of array) {
+
+        for (var item of array) 
                 result += `${prefix}${item}${suffix}`;
-        }
+
         return result;
 }
 /**
@@ -142,18 +144,22 @@ function arrayToString(array, prefix, suffix) {
 function split1(input, splitor, start, count) {
         requireNotNull(input);
         requireNotNull(splitor);
+
         start = defaultValue(start, 0);
         count = defaultValue(count, -1);
         var i = 0;
         var ls = [];
+
         while (true) {
                 i = input.indexOf(splitor, start);
+
                 if (i == -1) {
                         ls.push(start, input.length - start);
                         break;
                 } else {
                         ls.push(start, i - start + splitor.length)
                 }
+
                 start = i + splitor.length;
         }
 }
@@ -165,9 +171,10 @@ function split1(input, splitor, start, count) {
  */
 function repeat(pattern, times) {
         requireNotNull(pattern);
-        for (let i = 0; i < times; i++) {
+
+        for (let i = 0; i < times; i++) 
                 pattern += pattern;
-        }
+
         return pattern;
 }
 /**
@@ -180,7 +187,9 @@ function splitToWords(input) {
         let isSkipping = false;
         let ls = [];
         var w = EMPTY;
+        // iterate input
         for (let c of input) {
+
                 switch (c) {
                         case "\b":
                         case "\f":

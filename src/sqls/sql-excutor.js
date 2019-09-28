@@ -6,25 +6,32 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-09-27 16:09:34
  */
-var oracledb = require('oracledb')
-
-class DbVisitor {
+var oracledb = require('oracledb');
+var {parse}=require("./sql-template-parser");
+var {render}=require("./sql-template-render");
+// Oracle Accessor
+class SqlExcutor {
         constructor({ connectString, user, password }) {
                 this.config = { connectString, user, password };
         }
-        async  query(sql, params) {
+        /**
+         * 
+         * @param {String} sql 
+         * @param {Option} parameters 
+         */
+        async  query(sql, parameters) {
                 let cnn;
                 try {
                         cnn = await oracledb.getConnection(config);
-                        let results = await cnn.execute("select * from fc_phone_charge");
+                        sql=render(parse(sql),parameters);
+                        let results = await cnn.execute(sql);
 
-                        for (e of results) {
-                                console.log(e);
-                        }
                         await cnn.close();
 
+                        return results;
+
                 } catch (ex) {
-                        console.log(ex);
+                       throw `sql is :\r\n${sql}\r\nerror:\r\n${ex}`;
                 }
 
         }
@@ -36,4 +43,4 @@ class DbVisitor {
         }
 }
 
-exports=DbVisitor;
+exports=SqlExcutor;

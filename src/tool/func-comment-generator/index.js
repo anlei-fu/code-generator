@@ -9,7 +9,7 @@
 var { file } = require("../libs/file");
 var { str } = require("../libs/str");
 /**
- * @description class of parameter meta data
+ * @description Class of function parameter meta data
  */
 class Para {
         constructor(name, type, out) {
@@ -25,20 +25,20 @@ class Para {
 }
 
 /**
- * @description generate function comment of a function
- * read function segment file "input.txt" and seletct first segment between "(" and ")" to extract parameter
- * then write to "output.txt"
+ * @description Generate  comment of a function
+ * Read function section from file "input" and seletct first segment between "(" and ")" to extract parameters
+ * Then write comment result into "output"
  * @param {String}
  */
-function generateComment({input,output}) {
-        input=input||"input";
-        output=output||"output";
+function generateComment({ input, output }) {
+        input = input || "input";
+        output = output || "output";
         var text = file.read(input);
         var ls = [];
         var contents = str.select(text, "(", ")", 1);
+
         if (contents.length != 0) {
                 var params = contents[0].split(",");
-
                 for (let param of params) {
                         let words = str.splitToWords(param);
                         if (words.length == 2) {
@@ -48,6 +48,7 @@ function generateComment({input,output}) {
                         }
                 }
         }
+
         var prefix =
                 `/**
  *@Description\r\n`;
@@ -55,7 +56,6 @@ function generateComment({input,output}) {
                 ` *@Author
  *@Date ${Date.now()}
  */`;
-
         var data = prefix;
 
         for (let para of ls) {
@@ -63,8 +63,7 @@ function generateComment({input,output}) {
         }
 
         data += suffix;
-
         file.write(output, data);
 }
-
+// do generate
 generateComment();
