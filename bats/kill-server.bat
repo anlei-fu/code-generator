@@ -1,0 +1,1 @@
+taskkill /f /im %DEV_SERVER_NAME%
