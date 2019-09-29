@@ -1,365 +1,392 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
- <HEAD>
- <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
- <TITLE>Table FC_CHECK_CHARGE</TITLE>
- <META name="object" content="TABLE">
- <META name="name" content="DB210 QXFC.FC_CHECK_CHARGE">
- <META name="description" content="&#32564;&#36153;/&#32493;&#36153;&#37492;&#26435;&#25509;&#21475;">
- <META name="columns" content="ID DOWN_CHANNEL_NO DOWN_ORDER_NO IDNO BRAND_NO PHONE BIZ_TYPE CARRIER_NO STATUS RESULT SCRIPT_PATH BUS_SVC IP CREATE_TIME FINISH_TIME">
-</HEAD>
-<BODY>
-<TABLE WIDTH="100%"><TR>
-<TD><P ALIGN="LEFT"><STRONG><SMALL>QXFC@DB210</SMALL></STRONG></TD>
-<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
-</TR></TABLE>
-<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
-<P CLASS="MAIN_TITLE">Table FC_CHECK_CHARGE</P>
-&#32564;&#36153;/&#32493;&#36153;&#37492;&#26435;&#25509;&#21475;
-</TD></TR></TABLE>
-<HR>
-<A NAME="Columns"></A>
-<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
-Columns
-</TD></TR></TABLE>
-<TABLE CLASS="SIMPLE_TABLE">
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Name
-</U>
-</TD>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Type
-</U>
-</TD>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Optional
-</U>
-</TD>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Default
-</U>
-</TD>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Comments
-</U>
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-ID
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-NUMBER
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#32534;&#21495;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-DOWN_CHANNEL_NO
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#19979;&#28216;&#28192;&#36947;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-DOWN_ORDER_NO
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#19979;&#28216;&#35746;&#21333;&#21495;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-IDNO
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#36523;&#20221;&#35777;&#21495;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-BRAND_NO
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#23485;&#24102;&#24080;&#21495;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-PHONE
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#25163;&#26426;&#21495;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-BIZ_TYPE
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#31867;&#22411; 2:&#22266;&#35805;, 3:&#23485;&#24102;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-CARRIER_NO
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#36816;&#33829;&#21830;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-STATUS
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-NUMBER
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-20
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#29366;&#24577; 20:&#31561;&#24453;; 30:&#27491;&#22312;&#22788;&#29702; 90:&#22833;&#36133; 0:&#25104;&#21151;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-RESULT
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(128)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#32467;&#26524;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-SCRIPT_PATH
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#33050;&#26412;&#36335;&#24452;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-BUS_SVC
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#24635;&#32447;&#26381;&#21153;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-IP
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-VARCHAR2(32)
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-IP
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-CREATE_TIME
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-DATE
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-sysdate
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#21019;&#24314;&#26102;&#38388;
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-FINISH_TIME
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-DATE
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Y
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&nbsp;
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-&#23436;&#25104;&#26102;&#38388;
-</TD>
-</TR>
-</TABLE>
-<HR>
-<A NAME="Primary Key"></A>
-<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
-Primary Key
-</TD></TR></TABLE>
-<TABLE CLASS="SIMPLE_TABLE">
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Name
-</U>
-</TD>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Columns
-</U>
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-PK_CHECK_ID
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-ID
-</TD>
-</TR>
-</TABLE>
-<HR>
-<A NAME="Indexes"></A>
-<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
-Indexes
-</TD></TR></TABLE>
-<TABLE CLASS="SIMPLE_TABLE">
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Name
-</U>
-</TD>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Columns
-</U>
-</TD>
-<TD VALIGN="TOP" CLASS="LIST_ITEM"><U>
-Type
-</U>
-</TD>
-</TR>
-<TR>
-<TD VALIGN="TOP" CLASS="LIST_ITEM">
-PK_CHECK_ID
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-ID
-</TD>
-<TD VALIGN="TOP" CLASS="DESC_TEXT">
-Unique
-</TD>
-</TR>
-</TABLE>
-<HR>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-</BODY>
-</HTML>
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+        <link rel="stylesheet" type="text/css" href="../../plsqldoc.css">
+        <title>table fc_check_charge</title>
+        <meta name="object" content="table">
+        <meta name="name" content="db210 qxfc.fc_check_charge">
+        <meta name="description" content="&#32564;&#36153;/&#32493;&#36153;&#37492;&#26435;&#25509;&#21475;">
+        <meta name="columns"
+                content="id down_channel_no down_order_no idno brand_no phone biz_type carrier_no status result script_path bus_svc ip create_time finish_time">
+</head>
+
+<body>
+        <table width="100%">
+                <tr>
+                        <td>
+                                <p align="left"><strong><small>qxfc@db210</small></strong>
+                        </td>
+                        <td>
+                                <p align="right"><strong><small><a href="../../index.html">index</a></small></strong>
+                        </td>
+                </tr>
+        </table>
+        <table class="main_table">
+                <tr>
+                        <td class="desc_text">
+                                <p class="main_title">table fc_check_charge</p>
+                                &#32564;&#36153;/&#32493;&#36153;&#37492;&#26435;&#25509;&#21475;
+                        </td>
+                </tr>
+        </table>
+        <hr>
+        <a name="columns"></a>
+        <table class="sub_table">
+                <tr>
+                        <td class="sub_title">
+                                columns
+                        </td>
+                </tr>
+        </table>
+        <table class="simple_table">
+                <tr>
+                        <td valign="top" class="list_item"><u>
+                                        name
+                                </u>
+                        </td>
+                        <td valign="top" class="list_item"><u>
+                                        type
+                                </u>
+                        </td>
+                        <td valign="top" class="list_item"><u>
+                                        optional
+                                </u>
+                        </td>
+                        <td valign="top" class="list_item"><u>
+                                        default
+                                </u>
+                        </td>
+                        <td valign="top" class="list_item"><u>
+                                        comments
+                                </u>
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                id
+                        </td>
+                        <td valign="top" class="desc_text">
+                                number
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#32534;&#21495;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                down_channel_no
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#19979;&#28216;&#28192;&#36947;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                down_order_no
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#19979;&#28216;&#35746;&#21333;&#21495;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                idno
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#36523;&#20221;&#35777;&#21495;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                brand_no
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#23485;&#24102;&#24080;&#21495;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                phone
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#25163;&#26426;&#21495;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                biz_type
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#31867;&#22411; 2:&#22266;&#35805;, 3:&#23485;&#24102;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                carrier_no
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#36816;&#33829;&#21830;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                status
+                        </td>
+                        <td valign="top" class="desc_text">
+                                number
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                20
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#29366;&#24577; 20:&#31561;&#24453;; 30:&#27491;&#22312;&#22788;&#29702;
+                                90:&#22833;&#36133; 0:&#25104;&#21151;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                result
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(128)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#32467;&#26524;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                script_path
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#33050;&#26412;&#36335;&#24452;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                bus_svc
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#24635;&#32447;&#26381;&#21153;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                ip
+                        </td>
+                        <td valign="top" class="desc_text">
+                                varchar2(32)
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                ip
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                create_time
+                        </td>
+                        <td valign="top" class="desc_text">
+                                date
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                sysdate
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#21019;&#24314;&#26102;&#38388;
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                finish_time
+                        </td>
+                        <td valign="top" class="desc_text">
+                                date
+                        </td>
+                        <td valign="top" class="desc_text">
+                                y
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &nbsp;
+                        </td>
+                        <td valign="top" class="desc_text">
+                                &#23436;&#25104;&#26102;&#38388;
+                        </td>
+                </tr>
+        </table>
+        <hr>
+        <a name="primary key"></a>
+        <table class="sub_table">
+                <tr>
+                        <td class="sub_title">
+                                primary key
+                        </td>
+                </tr>
+        </table>
+        <table class="simple_table">
+                <tr>
+                        <td valign="top" class="list_item"><u>
+                                        name
+                                </u>
+                        </td>
+                        <td valign="top" class="list_item"><u>
+                                        columns
+                                </u>
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                pk_check_id
+                        </td>
+                        <td valign="top" class="desc_text">
+                                id
+                        </td>
+                </tr>
+        </table>
+        <hr>
+        <a name="indexes"></a>
+        <table class="sub_table">
+                <tr>
+                        <td class="sub_title">
+                                indexes
+                        </td>
+                </tr>
+        </table>
+        <table class="simple_table">
+                <tr>
+                        <td valign="top" class="list_item"><u>
+                                        name
+                                </u>
+                        </td>
+                        <td valign="top" class="list_item"><u>
+                                        columns
+                                </u>
+                        </td>
+                        <td valign="top" class="list_item"><u>
+                                        type
+                                </u>
+                        </td>
+                </tr>
+                <tr>
+                        <td valign="top" class="list_item">
+                                pk_check_id
+                        </td>
+                        <td valign="top" class="desc_text">
+                                id
+                        </td>
+                        <td valign="top" class="desc_text">
+                                unique
+                        </td>
+                </tr>
+        </table>
+        <hr>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+</body>
+
+</html>
