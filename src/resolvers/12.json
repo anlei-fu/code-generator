@@ -1,0 +1,78 @@
+initialize {
+        '0':
+         { type: 'tag',
+           name: 'title',
+           namespace: 'http://www.w3.org/1999/xhtml',
+           attribs: [Object: null prototype] {},
+           'x-attribsNamespace': [Object: null prototype] {},
+           'x-attribsPrefix': [Object: null prototype] {},
+           children: [ [Object] ],
+           parent:
+            { type: 'tag',
+              name: 'head',
+              namespace: 'http://www.w3.org/1999/xhtml',
+              attribs: [Object: null prototype] {},
+              'x-attribsNamespace': [Object: null prototype] {},
+              'x-attribsPrefix': [Object: null prototype] {},
+              children: [Array],
+              parent: [Object],
+              prev: null,
+              next: [Object] },
+           prev:
+            { type: 'text',
+              data: '\n ',
+              parent: [Object],
+              prev: [Object],
+              next: [Circular] },
+           next:
+            { type: 'text',
+              data: '\n',
+              parent: [Object],
+              prev: [Circular],
+              next: null } },
+        options:
+         { withDomLvl1: true,
+           normalizeWhitespace: false,
+           xml: false,
+           decodeEntities: true },
+        _root:
+         initialize {
+           '0':
+            { type: 'root',
+              name: 'root',
+              namespace: 'http://www.w3.org/1999/xhtml',
+              attribs: [Object: null prototype] {},
+              'x-attribsNamespace': [Object: null prototype] {},
+              'x-attribsPrefix': [Object: null prototype] {},
+              children: [Array],
+              parent: null,
+              prev: null,
+              next: null },
+           options:
+            { withDomLvl1: true,
+              normalizeWhitespace: false,
+              xml: false,
+              decodeEntities: true },
+           length: 1,
+           _root: [Circular] },
+        length: 1,
+        prevObject:
+         initialize {
+           '0':
+            { type: 'root',
+              name: 'root',
+              namespace: 'http://www.w3.org/1999/xhtml',
+              attribs: [Object: null prototype] {},
+              'x-attribsNamespace': [Object: null prototype] {},
+              'x-attribsPrefix': [Object: null prototype] {},
+              children: [Array],
+              parent: null,
+              prev: null,
+              next: null },
+           options:
+            { withDomLvl1: true,
+              normalizeWhitespace: false,
+              xml: false,
+              decodeEntities: true },
+           length: 1,
+           _root: [Circular] } }
