@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:11:25
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-27 11:25:04
+ * @LastEditTime: 2019-09-30 11:09:48
  */
 // import
 const { requireNotNull } = require("./utils")
@@ -20,7 +20,7 @@ const defaultCharset = (charset) => { encoding: charset || "utf8" };
  * @param {String?} charset 
  * @param {boolean?} trim ,If true will remove every line' blank chars at start and end;
  * @param {boolean?} ignoreEmpty, If true and line =="" will be ignored;
- * @returns {String} Lines of file
+ * @returns {[String]} Lines of file
  */
 function readLines(path, charset, trim, ignoreEmpty) {
         let lines = read(path, charset).split("\n");

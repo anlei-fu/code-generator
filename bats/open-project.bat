@@ -3,7 +3,7 @@
 echo dm or fc ?
 set /p proj=
 
-if %proj% ==dm (
+if %proj% ==fc (
 start %VS% %FC_SOLUTION%
 ) else (
 start %VS% %DM_SOLUTION%

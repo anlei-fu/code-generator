@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:28:55
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-27 17:02:35
+ * @LastEditTime: 2019-09-30 16:16:30
  */
 var { UNDEFINED, requireNotNull } = require("./../libs/utils");
 /**
@@ -23,9 +23,9 @@ class DbObject {
 /**
  * Class of sql db
  */
-class Db extends DbObject {
+exports.Db = class Db extends DbObject {
         constructor(name, description) {
-                super(name, description);hg
+                super(name, description);
                 /**
                  * @member {{Package}}
                  */
@@ -55,7 +55,7 @@ class Db extends DbObject {
 /**
  * Class of sql packege
  */
-class Package extends DbObject {
+exports.Package = class Package extends DbObject {
 
 }
 /**
@@ -81,7 +81,7 @@ class MappingColumn {
 /**
  * Class of sql table 
  */
-class Table extends DbObject {
+exports.Table = class Table extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 /**
@@ -96,7 +96,18 @@ class Table extends DbObject {
                  * @member {String} primaryKey ,identity column name
                  */
                 this.primaryKey;
+                /**
+                 * 
+                 */
                 this.joins = {};
+                /**
+                 * @member {Constraints}
+                 */
+                this.constraints = {};
+                /**
+                 * 
+                 */
+                this.indexes = {};
         }
         /**
          * Generate create table string
@@ -162,7 +173,7 @@ class Table extends DbObject {
 /**
  * Class of sql type 
  */
-class SqlType {
+exports.SqlType = class SqlType {
         /**
          * 
          * @param {String} name 
@@ -171,6 +182,14 @@ class SqlType {
         constructor(name, length) {
                 this.name = name;
                 this.length = length;
+        }
+        /**
+         * 
+         * @param {String} str 
+         * @returns {SqlType}
+         */
+        static parse(str) {
+                return new SqlType();
         }
         /**
          * to sql type string
@@ -183,7 +202,7 @@ class SqlType {
 /**
  * Class of sql column
  */
-class Column extends DbObject {
+exports.Column = class Column extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 /**
@@ -247,8 +266,9 @@ class Column extends DbObject {
         }
 
 }
-
-
+/**
+ * Class of sequence
+ */
 class Sequence extends DbObject {
         constructor(name, description) {
                 super(name, description);
@@ -257,6 +277,9 @@ class Sequence extends DbObject {
                 return `SELECT ${this.name}.nextVal from dual`;
         }
 }
+/**
+ * 
+ */
 class Parameter extends DbObject {
         constructor(name, description) {
                 super(name, description);
@@ -265,7 +288,10 @@ class Parameter extends DbObject {
                 this.defaultValue;
         }
 }
-class Procedure extends DbObject {
+/**
+ * Class of procedure
+ */
+exports.Procedure = class Procedure extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 this.parameters = parameters;
@@ -282,7 +308,7 @@ class Procedure extends DbObject {
 
         }
 }
-class Function extends Procedure {
+exports.Function = class Function extends Procedure {
         constructor(name, description) {
                 super(name, description);
                 this.parameters = parameters;
@@ -295,20 +321,55 @@ class Job {
 /**
  * Class of sql constraint
  */
-class Constraint {
-        constructor() {
-                this.name;
+exports.Constraints = class Constraint {
+        constructor(name, description) {
+                super(name, description);
+                /**
+                 * @member {String}
+                 * @member {[String]}
+                 */
                 this.type;
-                this.columns;
+                this.columns = [];
         }
 }
 /**
  * Class of sql index
  */
-class Index {
+exporrts.Index = class Index {
         constructor() {
                 this.name;
+                /**
+                 * @member {String}
+                 */
                 this.type;
-                this.columns;
+                /**
+                 * @member {[String]}
+                 */
+                this.columns = [];
+        }
+}
+
+exports.SqlValue = class SqlValue {
+        constructor() {
+                /**
+                 * @member {SqlType}
+                 */
+                this.type;
+                /**
+                 * @member {Any}
+                 */
+                this.value;
+        }
+}
+/**
+ * Class of sql constant
+ */
+class SqlConstant extends DbObject {
+        constructor(name, description) {
+                super(name, description);
+                /**
+                 * @member {SqlValue}
+                 */
+                this.value;
         }
 }

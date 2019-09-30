@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:13:28
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-25 14:44:41
+ * @LastEditTime: 2019-09-30 15:38:40
  */
 //imports
 const { requireNotNull, defaultValue, EMPTY } = require("./utils")
@@ -25,11 +25,11 @@ function select(input, left, right, start, count) {
         count = defaultValue(count, -1);
         let i = 0;
         var ls = [];
-        
+
         while (true) {
                 i = input.indexOf(left, start);
 
-                if (i == -1) 
+                if (i == -1)
                         break;
 
                 start = input.indexOf(right, i);
@@ -67,7 +67,7 @@ function select1(input, left, right, start, count) {
         while (true) {
                 i = input.indexOf(left, start);
 
-                if (i == -1) 
+                if (i == -1)
                         break;
 
                 start = input.indexOf(right, i);
@@ -95,7 +95,7 @@ function replace(input, pairs) {
         requireNotNull(input);
         pairs = defaultValue(pairs, {});
 
-        for (let e in pairs) 
+        for (let e in pairs)
                 input = input.replace(new RegExp(e, 'g'), pairs[e]);
 
         return input;
@@ -108,13 +108,47 @@ function replace(input, pairs) {
  */
 function remove(input, array) {
         requireNotNull(input);
-        array = defaultValue(array, []);
+        array = array || [];
 
-        for (var item of array) 
-                input = input.replace(item, EMPTY);
+        for (var item of array)
+                input = input.replace(new RegExp(item, 'g'), EMPTY);
 
         return input;
 }
+/**
+ * 
+ * @param {String} input 
+ * @param {String} left 
+ * @param {String} right
+ * @returns {String} 
+ */
+function removeWithMatch(input, left, right) {
+        var selects = select1(input, left, right);
+
+        selects.forEach(x => {
+                input = input.replace(new RegExp(x, "g"), EMPTY);
+        });
+
+        return input;
+}
+/**
+ * 
+ * @param {String} input 
+ * @param {Option} option
+ * @returns {String}
+ */
+function removeWithMatchMany(input, option) {
+        var selects = select1(input, left, right);
+
+        for (item in option) {
+                input = removeWithMatch(ite, option[item]);
+        }
+
+        return input;
+}
+
+
+
 /**
  * Format array to string
  * @param {Any[]} array 
@@ -128,7 +162,7 @@ function arrayToString(array, prefix, suffix) {
         prefix = defaultValue(prefix, EMPTY);
         suffix = defaultValue(suffix, EMPTY);
 
-        for (var item of array) 
+        for (var item of array)
                 result += `${prefix}${item}${suffix}`;
 
         return result;
@@ -172,7 +206,7 @@ function split1(input, splitor, start, count) {
 function repeat(pattern, times) {
         requireNotNull(pattern);
 
-        for (let i = 0; i < times; i++) 
+        for (let i = 0; i < times; i++)
                 pattern += pattern;
 
         return pattern;
@@ -219,12 +253,25 @@ function splitToWords(input) {
                 ls.push(w);
         return ls;
 }
+/**
+ * 
+ * @param {String} input 
+ */
+function upperFirstLetter(input) {
+        return `${input.substr(0, 1)}${input.substr(1, input.length - 1)}`;
+}
 
-exports.str = {
+
+exports.STR = {
         select,
         select1,
         replace,
         split1,
         arrayToString,
-        splitToWords
+        splitToWords,
+        remove,
+        upperFirstLetter,
+        repeat,
+        removeWithMatch,
+        removeWithMatchMany
 }
