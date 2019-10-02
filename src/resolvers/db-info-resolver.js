@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-30 16:04:53
+ * @LastEditTime: 2019-10-01 15:26:45
  */
 /**
  * imports  @const cheerio see https://github.com/cheeriojs/cheerio
@@ -13,11 +13,57 @@ const cheerio = require("cheerio");
 const { FILE } = require("./../libs/file");
 const { STR } = require("./../libs/str");
 const { NamingStrategy } = require("./../libs/naming-stratey")
-const { Table, Column, SqlType,Package,Constraints,Function,Procedure } = require("./db-info");
+const { Table, Column, SqlType, Package, Constraints, Function, Procedure, Db } = require("./db-info");
+/**
+ * @param {String} path ,main page path
+ * @returns {[Db]}
+ * */
+function parse(path) {
+        let $ = cheerio.load(path);
 
-function parse() {
+        let dbs = {};
+
+        //jq collection can not iterate ,jsut can do for
+        // class='main_title' db names
+        let names_els = $("td[class='main_title']");
+
+        // sibling sorted left to right in the same layer, 
+        //it has no bussiness with the position compare to current element
+        let db_els = $(names_els[0]).parent("table")
+                .siblings("table[class='sub_table']");
+
+        for (let i = 0; i < names_els.length; i++) {
+                let name = $(names_els[i]).text();
+                dbs[name] = parseDb($, db_els[i])
+        }
+}
+/**
+ * 
+ * @param {CheerioStatic} $ 
+ * @param {Any} el 
+ * @returns {Db} 
+ */
+function parseDb($, el) {
+
+        // count should be 8
+        let tbs = $(el).children("table['sub_table']");
+        let db = new Db();
+        db.packages = parsePackages($, tbs[1]);
+        db.tables = parseTables();
+        db.functions = parseFunctions();
+        db.procedures = parseProcedures();
 
 }
+/**
+ * 
+ * @param {CheerioStatic} $ 
+ * @param {*} el 
+ * @returns {{Table}}
+ */
+function parseTables($, el) {
+        parseSubItem($, el, parseTable);
+}
+
 /**
  * 
  * @param {String} html 
@@ -29,13 +75,13 @@ function parseTable(html) {
 
         let tab = new Table(name, "");
         tab.columns = parseColumns($, $(".simple_table:first"));
-        tab.constraints=parseConstraints();
+        tab.constraints = parseConstraints();
 
         return tab;
 }
 /**
  * 
- * @param {Cheerio} selector 
+ * @param {CheerioStatic} $ 
  * @param {Element} el 
  * @returns {{Column}}
  */
@@ -77,15 +123,64 @@ function parseConstraints($, ) {
 function parseParameter() {
 
 }
-function parsePackage() {
-  let pkg= new  Package();
+/**
+ * 
+ * @param {CheerioStatic} $ 
+ * @param {Element} el 
+ * @returns {[Package]}
+ */
+function parsePackages($, el) {
+        parseSubItem($, el, parsePackage);
 }
-function parseFunction() {
+/**
+ * 
+ * @param {CheerioStatic} $ 
+ * @param {Element} el 
+ * @param {Function:()=>Any} fun  ()=> any
+ */
+function parseSubItem($, el, fun) {
+        let pkgs = {};
+        let a_els = $(el).children("a");
+        for (let i = 0; i < a_els.length; i++) {
+                let name = $(a_els[i]).text();
+                tabs[name] = fun($(a_els[i]).attr("href"));
+        }
+}
+
+/**
+ * 
+ * @param {String} html 
+ * @returns {Package}
+ */
+function parsePackage(html) {
 
 }
-function parseProcedure() {
+function parseFunctions($, el) {
 
 }
+/**
+ * 
+ * @param {String} html 
+ */
+function parseFunction(html) {
+
+}
+/**
+ * 
+ * @param {CheerioStatic} $ 
+ * @param {Element} el 
+ */
+function parseProcedures($, el) {
+
+}
+/**
+ * 
+ * @param {String} html 
+ */
+function parseProcedure(html) {
+
+}
+
 function parseSqlType(str) {
         let lengths = STR.select(str, "(", ")");
         let name = STR.removeWithMatch(str, "(", ")")
@@ -101,7 +196,7 @@ function parseSqlType(str) {
  * @param {String} str 
  * @returns {String|Number|Date|boolean} ...
  */
-function parseValueFromString(sqlType,str){
+function parseValueFromString(sqlType, str) {
 
 }
 /**
