@@ -9,18 +9,23 @@
 /**
  * imports  @const cheerio see https://github.com/cheeriojs/cheerio
  */
+const { parseValue } = require("./../libs/utils");
 const cheerio = require("cheerio");
 const { FILE } = require("./../libs/file");
 const { STR } = require("./../libs/str");
-const { NamingStrategy } = require("./../libs/naming-stratey")
-const { Table, Column, SqlType, Package, Constraints, Function, Procedure, Db } = require("./db-info");
+const { NamingStrategy } = require("./../libs/naming-stratey");
+const { Table, Column, SqlType, Package, Constraints, Function, Procedure, Db, SqlConstant, SqlValue, Parameter }
+        = require("./db-info");
+
+const ROOT = "";
 /**
  * @param {String} path ,main page path
  * @returns {[Db]}
  * */
-function parse(path) {
-        let $ = cheerio.load(path);
+function parse() {
 
+        let html = FILE.read(`${ROOT}/frame_Index.html`);
+        let $ = cheerio.load(html);
         let dbs = {};
 
         //jq collection can not iterate ,jsut can do for
@@ -48,22 +53,59 @@ function parseDb($, el) {
         // count should be 8
         let tbs = $(el).children("table['sub_table']");
         let db = new Db();
-        db.packages = parsePackages($, tbs[1]);
-        db.tables = parseTables();
-        db.functions = parseFunctions();
-        db.procedures = parseProcedures();
 
+        // packages
+        db.packages = parseComponent($, tbs[1], parsePackage);
+        //tables
+        db.tables = parseComponent($, tbs[3], parseTable);
+        //functions
+        db.functions = parseComponent($, tbs[5], parseFunction);
+        //procedures
+        db.procedures = parseComponent($, tbs[7], parseProcedure);
+
+        return db;
 }
 /**
  * 
  * @param {CheerioStatic} $ 
- * @param {*} el 
- * @returns {{Table}}
+ * @param {Element} el 
+ * @param {Function:()=>Any} fun  ()=> any
  */
-function parseTables($, el) {
-        parseSubItem($, el, parseTable);
-}
+function parseComponent($, el, fun) {
+        let component = {};
+        let a_els = $(el).children("a");
 
+        for (let i = 0; i < a_els.length; i++) {
+                let name = $(a_els[i]).text();
+                let path = `${ROOT}/${$(a_els[i]).attr("href")}`;
+                component[name] = fun(FILE.read(path));
+        }
+
+        return component;
+}
+/**
+ * Value element '<pre class="decl_text">'
+ * @param {String} html 
+ * @returns {Package}
+ */
+function parsePackage(html) {
+        let pkg = {};
+        let $ = cheerio.load(html);
+        let cons_els = $("pre[class='decl_text']");
+
+        for (let i = 0; i < cons_els.length; i++) {
+                let segs = $(cons_els[i]).text()
+                        .trim()
+                3..split(" ");
+                let name = segs[0];
+                let sqlType = SqlType.parse(segs[3]);
+                let value = parseValue(segs[5]);
+                pkg[name] = new SqlConstant(name, "");
+                pkg[name].value = new SqlValue(sqlType, value);
+        }
+
+        return pkg;
+}
 /**
  * 
  * @param {String} html 
@@ -72,15 +114,17 @@ function parseTables($, el) {
 function parseTable(html) {
         var $ = cheerio.load(html);
         let name = $(".main_title").text().replace("table ", "");
-
         let tab = new Table(name, "");
+        // first
         tab.columns = parseColumns($, $(".simple_table:first"));
-        tab.constraints = parseConstraints();
-
+        // from 2ed to last -1
+        tab.constraints = parseConstraints($, $(".simple_table"));
+        // last 1
+        tab.indexes = parseIndex();
         return tab;
 }
 /**
- * 
+ * Resolve column info 
  * @param {CheerioStatic} $ 
  * @param {Element} el 
  * @returns {{Column}}
@@ -90,6 +134,7 @@ function parseColumns($, el) {
         // get column rows start with 1
         let trs = el.children("tr");
         for (let i = 1; i < trs.length; i++) {
+
                 // get all 5  cells
                 // 1 : name ,2 : type ,3 : nullable 4: defaultValue 5: comments
                 let tds = $(tr[i]).children("td");
@@ -100,7 +145,7 @@ function parseColumns($, el) {
 
                 column.type = SqlType.parse($(tds[1]).text());
                 column.nullable = $(tds[2]).text() == "Y";
-                column.defaltValue = formatToSqlString(column.type, $(tds[3]).text());
+                column.defaltValue = parseValue($(tds[3]).text());
                 //add new item
                 columns[name] = column;
         }
@@ -112,67 +157,69 @@ function parseColumns($, el) {
  * start from 1 ,because 0 is column infomation
  * @param {[Elements]} els 
  */
-function parseConstraints($, ) {
-        for (let i = 1; i < els.length; i++) {
-                let type = els[i].tr[1].td[0].innerText;
-                let name = els[i].tr[1].td[1].innerText;
-                let column = els[i].tr[1].td[2].innerText;
-        }
+function parseConstraints($, els) {
+
 
 }
-function parseParameter() {
+
+function parseIndex($, els) {
 
 }
-/**
- * 
- * @param {CheerioStatic} $ 
- * @param {Element} el 
- * @returns {[Package]}
- */
-function parsePackages($, el) {
-        parseSubItem($, el, parsePackage);
-}
-/**
- * 
- * @param {CheerioStatic} $ 
- * @param {Element} el 
- * @param {Function:()=>Any} fun  ()=> any
- */
-function parseSubItem($, el, fun) {
-        let pkgs = {};
-        let a_els = $(el).children("a");
-        for (let i = 0; i < a_els.length; i++) {
-                let name = $(a_els[i]).text();
-                tabs[name] = fun($(a_els[i]).attr("href"));
-        }
-}
 
-/**
- * 
- * @param {String} html 
- * @returns {Package}
- */
-function parsePackage(html) {
-
-}
-function parseFunctions($, el) {
-
-}
 /**
  * 
  * @param {String} html 
  */
 function parseFunction(html) {
+        let $ = cheerio.load(html);
+        let text = $("pre[class='DECL_TEXT']").text();
+        let name = STR.select1(text, "f_", "(")[0];
+        
+        let func = new Function();
+        func.name = name.substr(0, name.length - 1);
+        let paramsText = STR.select(text, "(", ")")[0];
+        func.parameters = parseParameter(paramsText);
+        let returnPos = text.indexOf("return");
+        func.returnType = text.substr(returnPos + 6, text.length - returnPos - 6)
+                .trim();
 
+        return func;
 }
-/**
- * 
- * @param {CheerioStatic} $ 
- * @param {Element} el 
- */
-function parseProcedures($, el) {
 
+function parseParameter(text) {
+        let parameters = {};
+
+        // remove comment
+        text = STR.removeWithMatch(text, "--", "\r\n");
+        let params = text.split(",");
+        params.forEach(e => {
+                let words = STR.splitToWords(e);
+                let para = new Parameter(words[0]);
+
+                // len>4 has default value and in/out
+                //len >3 has defualt value
+                // len >2 has in/out
+                // nomal name +type
+                if (words.length > 4) {
+                        para.isOut = words[1] == "out";
+                        para.type = SqlType.parse(words[2]);
+                        para.defaltValue = parseValue(words[4]);
+                } else if (words.length > 3) {
+                        para.type = SqlType.parse(words[1]);
+                        para.defaltValue = parseValue(words[3]);
+                } else if (words.length > 2) {
+                        para.isOut = words[1] == "out";
+                        para.type = SqlType.parse(words[2]);
+                } else {
+                        para.type = SqlType.parse(words[1]);
+                }
+
+                parameters[words[0]] = para;
+        });
+
+        return parameters;
 }
+
 /**
  * 
  * @param {String} html 
@@ -181,24 +228,7 @@ function parseProcedure(html) {
 
 }
 
-function parseSqlType(str) {
-        let lengths = STR.select(str, "(", ")");
-        let name = STR.removeWithMatch(str, "(", ")")
-                .trim();
-        let type = new SqlType(name);
 
-        if (lengths.length > 0)
-                type.length = Number(lengths[0]);
-}
-/**
- * Convert str to corrected type of value
- * @param {SqlType} sqlType 
- * @param {String} str 
- * @returns {String|Number|Date|boolean} ...
- */
-function parseValueFromString(sqlType, str) {
-
-}
 /**
  * Convert value to sql string
  * @param {SqlType} sqlType 

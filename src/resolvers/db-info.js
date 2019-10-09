@@ -61,7 +61,7 @@ exports.Package = class Package extends DbObject {
 /**
  * Class of join relation
  */
-class Join {
+exports.Join = class Join {
         constructor(another, condition) {
                 this.another = another;
                 this.condition = condition;
@@ -70,7 +70,7 @@ class Join {
 /**
  *  Class of mapping columns
  */
-class MappingColumn {
+exports.MappingColumn = class MappingColumn {
         constructor(table, column) {
                 this.table = table;
                 this.column = column;
@@ -269,7 +269,7 @@ exports.Column = class Column extends DbObject {
 /**
  * Class of sequence
  */
-class Sequence extends DbObject {
+exports.Sequence = class Sequence extends DbObject {
         constructor(name, description) {
                 super(name, description);
         }
@@ -280,16 +280,16 @@ class Sequence extends DbObject {
 /**
  * 
  */
-class Parameter extends DbObject {
+exports.Parameter = class Parameter extends DbObject {
         constructor(name, description) {
                 super(name, description);
-                this.direction;
-                this.type;
+                this.type="";
+                this.isOut=false;
                 this.defaultValue;
         }
 }
 /**
- * Class of procedure
+ * Class of procedurea
  */
 exports.Procedure = class Procedure extends DbObject {
         constructor(name, description) {
@@ -335,7 +335,7 @@ exports.Constraints = class Constraint {
 /**
  * Class of sql index
  */
-exporrts.Index = class Index {
+exports.Index = class Index {
         constructor() {
                 this.name;
                 /**
@@ -350,21 +350,21 @@ exporrts.Index = class Index {
 }
 
 exports.SqlValue = class SqlValue {
-        constructor() {
+        constructor(type,value) {
                 /**
                  * @member {SqlType}
                  */
-                this.type;
+                this.type=type;
                 /**
                  * @member {Any}
                  */
-                this.value;
+                this.value=value;
         }
 }
 /**
  * Class of sql constant
  */
-class SqlConstant extends DbObject {
+exports.SqlConstant=class SqlConstant extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 /**

@@ -49,6 +49,31 @@ const arrayToSet = (array) => {
 }
 /**
  * 
+ * @param {String} input 
+ */
+exports.parseValue = (input) => {
+        input = input.trim();
+
+        if ((input.startsWith("\"") && input.endsWith("\""))
+                || (input.startsWith("'") && input.endsWith("\'"))) {
+                return input.substr(1, input.length - 2);
+        } else if (input.toLowerCase() == "true") {
+                return true;
+        } else if (input.toLowerCase() == "false") {
+                return false;
+        } else {
+                try {
+                        return Number(input);
+                } catch {
+                        return input;
+                }
+        }
+
+
+}
+
+/**
+ * 
  */
 exports.requireNotNull = requireNotNull;
 exports.UNDEFINED = UNDEFINED;
