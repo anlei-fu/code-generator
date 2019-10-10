@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using Lib4Net.DB;
-using QXFC.Entity;
+using @project.name.Entity;
 
-namespace QXFC.Interfaces.DBAccess
+namespace @project.name.Interfaces.DBAccess
 {
-    public interface I@TableNameDataAccess : I@TableNameObjects<@TableName>
+    public interface I@table.nameDataAccess : I@table.nameObjects<@table.name>
     {
      
     }

@@ -12,15 +12,15 @@ var $ =cheerio.load(FILE.read("1.html"));
 
 var a =$("body").children("div")   // all div
                 .children("a");  // all a
- var text= a.text(); //last a's inner-text
+ var text= a.text(); // last a's inner-text
 
  // $("body").children("div")[1]  => element
- //$("body").children("div").get(1) =>element
+ // $("body").children("div").get(1) =>element
  // $($("body").children("div")[1]) =>jq-element-collection
  // $(element) => jq-element
- //$ can do select ,convert
+ // '$' can do select ,convert to jq-element-collection
  // $ root => html
- //$(element) => reset root to element
+ // $(element) => reset root to element
  // select ,childen,  
 console.log(text);
 console.log( a.length);

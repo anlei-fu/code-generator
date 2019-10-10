@@ -19,15 +19,15 @@ const defaultCharset = (charset) => { encoding: charset || "utf8" };
  * @param {String} path , File to read
  * @param {String?} charset 
  * @param {boolean?} trim ,If true will remove every line' blank chars at start and end;
- * @param {boolean?} ignoreEmpty, If true and line =="" will be ignored;
- * @returns {[String]} Lines of file
+ * @param {boolean?} ignoreEmpty, If true and line.trim() =="" will be ignored;
+ * @returns {[String]} 
  */
 function readLines(path, charset, trim, ignoreEmpty) {
         let lines = read(path, charset).split("\n");
         let ls = [];
         ignoreEmpty = typeof ignoreEmpty == "undefined" ? true : ignoreEmpty;
         trim = typeof trim == "undefined" ? true : trim;
-      
+
         for (let line of lines) {
                 if (trim)
                         line = line.trim();
@@ -48,9 +48,9 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @param {String?} charset ,Charset name
  * @returns {String}
  */
-function read(path, charset) {
+async function read(path, charset) {
         requireNotNull(path);
-        return fs.readFileSync(path, defaultCharset(charset)).toString();
+        return await fs.readFile(path, defaultCharset(charset)).toString();
 }
 /**
  *@description Write data into  file
@@ -61,7 +61,7 @@ function read(path, charset) {
 function write(path, data, charset) {
         requireNotNull(path);
         requireNotNull(data);
-        fs.writeFileSync(path, data, defaultCharset(charset));
+        await fs.writeFile(path, data, defaultCharset(charset));
 }
 /**
  * @descrip Append line  at the end of file,data+"\r\n";
@@ -79,10 +79,10 @@ function appendLine(path, data, charset) {
  * @param {String} data  to append
  * @param {String?} charset, Charset name 
  */
-function append(path, data, charset) {
+async function append(path, data, charset) {
         requireNotNull(path);
         requireNotNull(data);
-        fs.appendFileSync(path, data, defaultCharset(charset));
+        await fs.appendFile(path, data, defaultCharset(charset));
 }
 /**
  * @description Copy file
@@ -90,30 +90,30 @@ function append(path, data, charset) {
  * @param {String} destination 
  * @param {boolean?} rmSource ,If true , After copying complete , Remove source file
  */
-function copy(source, destination, rmSource) {
+async function copy(source, destination, rmSource) {
         requireNotNull(source);
         requireNotNull(destination);
-        fs.copyFileSync(source, destination);
+        await fs.copy(source, destination);
 
         if (rmSource)
-                fs.unlinkSync(source);
+                await fs.unlink(source);
 }
 /**
  * @description Remove file 
  * @param {String} path 
  */
-function remove(path) {
+async function remove(path) {
         if (exists(path))
-                fs.unlinkSync(path);
+                await fs.unlink(path);
 }
 /**
  * @description Check does file exists
  * @param {String} path 
  * @returns {boolean}
  */
-function exists(path) {
+async function exists(path) {
         requireNotNull(path);
-        return fs.existsSync(path);
+        return await fs.existsSync(path);
 }
 /**
  * Exports

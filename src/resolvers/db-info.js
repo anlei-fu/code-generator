@@ -8,7 +8,7 @@
  */
 var { UNDEFINED, requireNotNull } = require("./../libs/utils");
 /**
- * Sql base clasee
+ * Sql base class
  */
 class DbObject {
         constructor(name, description) {
@@ -110,7 +110,7 @@ exports.Table = class Table extends DbObject {
                 this.indexes = {};
         }
         /**
-         * Generate create table string
+         * Generate create-table string
          */
         toCreateString() {
 
@@ -122,7 +122,7 @@ exports.Table = class Table extends DbObject {
 
         }
         /**
-         * Renderinsert many string
+         * Render bulk-insert string
          */
         renderInsertMany() {
 
@@ -140,9 +140,9 @@ exports.Table = class Table extends DbObject {
 
         }
         /**
-         * Generate clear all
+         * Generate clear-all string
          */
-        renderClear() {
+        generateClear() {
 
         }
         /**
@@ -184,7 +184,7 @@ exports.SqlType = class SqlType {
                 this.length = length;
         }
         /**
-         * 
+         * @static
          * @param {String} str 
          * @returns {SqlType}
          */
@@ -192,7 +192,7 @@ exports.SqlType = class SqlType {
                 return new SqlType();
         }
         /**
-         * to sql type string
+         * to sql-type string,type|type(length)
          */
         toString() {
                 return typeof length == UNDEFINED ?
@@ -206,23 +206,28 @@ exports.Column = class Column extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 /**
-                 * @member {String} columnName, mapped column name 
+                 * @member {String} columnName, mapped column 
+                 * @required
                  */
                 this.columnName;
                 /**
-                 * @member type {SqlType}  required
+                 * @member {SqlType}  
+                 * @required
                  */
                 this.type;
                 /**
                  * @member {boolean}
+                 * @default  true
                  */
                 this.nullable = true;
                 /**
                  * @member {boolean}
+                 * @default false
                  */
                 this.autoIncrement = false;
                 /**
                  * @member {boolean}
+                 * @default false
                  */
                 this.isPk = false;
                 /**
@@ -231,15 +236,17 @@ exports.Column = class Column extends DbObject {
                  */
                 this.sequence;
                 /**
-                 * @member {string} check, check constraint
+                 * @member {String} check, check constraint
                  */
                 this.check;
                 /**
                  * @member {Any} 
+                 * @default null
                  */
                 this.defaltValue;
                 /**
                  * @member {boolean} unique ,unique constraint
+                 * @default false
                  */
                 this.unique = false;
                 /**
@@ -248,6 +255,7 @@ exports.Column = class Column extends DbObject {
                 this.chineseName;
                 /**
                  * @member {boolean} isEnum, render a select controle if true
+                 * @required
                  */
                 this.isEnum = false;
                 /**
@@ -274,7 +282,7 @@ class Sequence extends DbObject {
                 super(name, description);
         }
         nextVal() {
-                return `SELECT ${this.name}.nextVal from dual`;
+                return `SELECT ${this.name}.nextVal FROM DUAL`;
         }
 }
 /**
@@ -311,7 +319,7 @@ exports.Procedure = class Procedure extends DbObject {
 exports.Function = class Function extends Procedure {
         constructor(name, description) {
                 super(name, description);
-                this.parameters = parameters;
+                this.parameters = {};
                 this.returnType;
         }
 }
@@ -326,7 +334,6 @@ exports.Constraints = class Constraint {
                 super(name, description);
                 /**
                  * @member {String}
-                 * @member {[String]}
                  */
                 this.type;
                 this.columns = [];
@@ -335,7 +342,7 @@ exports.Constraints = class Constraint {
 /**
  * Class of sql index
  */
-exporrts.Index = class Index {
+exports.Index = class Index {
         constructor() {
                 this.name;
                 /**
@@ -353,10 +360,12 @@ exports.SqlValue = class SqlValue {
         constructor() {
                 /**
                  * @member {SqlType}
+                 * @required
                  */
                 this.type;
                 /**
                  * @member {Any}
+                 * @required
                  */
                 this.value;
         }

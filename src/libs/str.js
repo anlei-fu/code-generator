@@ -21,8 +21,8 @@ function select(input, left, right, start, count) {
         requireNotNull(input);
         requireNotNull(left);
         requireNotNull(right);
-        start = defaultValue(start, 0);
-        count = defaultValue(count, -1);
+        start = start || 0;
+        count = count || 1;
         let i = 0;
         var ls = [];
 
@@ -59,8 +59,8 @@ function select1(input, left, right, start, count) {
         requireNotNull(left);
         requireNotNull(right);
 
-        start = defaultValue(start, 0);
-        count = defaultValue(count, -1);
+        start = start || 0;
+        count = count || -1;
         let i = 0;
         var ls = [];
 
@@ -93,9 +93,9 @@ function select1(input, left, right, start, count) {
 
 function replace(input, pairs) {
         requireNotNull(input);
-        pairs = defaultValue(pairs, {});
+        pairs = pairs || {};
 
-        for (let e in pairs)
+        for (const e in pairs)
                 input = input.replace(new RegExp(e, 'g'), pairs[e]);
 
         return input;
@@ -110,7 +110,7 @@ function remove(input, array) {
         requireNotNull(input);
         array = array || [];
 
-        for (var item of array)
+        for (const item of array)
                 input = input.replace(new RegExp(item, 'g'), EMPTY);
 
         return input;
@@ -140,7 +140,7 @@ function removeWithMatch(input, left, right) {
 function removeWithMatchMany(input, option) {
         var selects = select1(input, left, right);
 
-        for (item in option) {
+        for (const item in option) {
                 input = removeWithMatch(ite, option[item]);
         }
 
@@ -158,11 +158,11 @@ function removeWithMatchMany(input, option) {
  */
 function arrayToString(array, prefix, suffix) {
         var result = EMPTY;
-        array = defaultValue(array, []);
-        prefix = defaultValue(prefix, EMPTY);
-        suffix = defaultValue(suffix, EMPTY);
+        array = array || [];
+        prefix = prefix || EMPTY;
+        suffix = suffix || EMPTY;
 
-        for (var item of array)
+        for (const item of array)
                 result += `${prefix}${item}${suffix}`;
 
         return result;
@@ -179,8 +179,8 @@ function split1(input, splitor, start, count) {
         requireNotNull(input);
         requireNotNull(splitor);
 
-        start = defaultValue(start, 0);
-        count = defaultValue(count, -1);
+        start = start || 0;
+        count = count || -1;
         var i = 0;
         var ls = [];
 
@@ -189,7 +189,7 @@ function split1(input, splitor, start, count) {
 
                 if (i == -1) {
                         ls.push(start, input.length - start);
-                        break;
+                        return ls;
                 } else {
                         ls.push(start, i - start + splitor.length)
                 }
@@ -222,7 +222,7 @@ function splitToWords(input) {
         let ls = [];
         var w = EMPTY;
         // iterate input
-        for (let c of input) {
+        for (const c of input) {
 
                 switch (c) {
                         case "\b":

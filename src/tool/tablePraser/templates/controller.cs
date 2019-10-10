@@ -7,17 +7,17 @@ using Lib4Net.Core;
 using Lib4Net.Framework.Settings;
 using Lib4Net.Comm;
 using Lib4Net.Logs;
-using QXFC.UserService;
-using QXFC.Entity;
-using QXFC.Model;
-using QXFC.Utility;
+using @project.name.UserService;
+using @project.name.Entity;
+using @project.name.Model;
+using @project.name.Utility;
 
-namespace QXFC.UserWeb.Controllers
+namespace @project.name.UserWeb.Controllers
 {
     /// <summary>
-    /// Controller：@TableName(流程控制)
+    /// Controller：@table.name(流程控制)
     /// </summary>
-    public class @TableNameController : MainBaseController
+    public class @table.nameController : MainBaseController
     {
         /// <summary>
         /// 显示列表页面数据
@@ -25,7 +25,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View(@TableNameService.Instance.Query(Request.QueryString));
+            return View(@table.nameService.Instance.Query(Request.QueryString));
         }
         /// <summary>
         /// 预览详细信息页面
@@ -34,7 +34,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Details(string id)
         {
-            return View(@TableNameService.Instance.Query(id));
+            return View(@table.nameService.Instance.Query(id));
         }
         /// <summary>
         /// 保存或修改页面
@@ -43,7 +43,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Item(string id)
         {
-            return View(@TableNameService.Instance.QueryItem(id));
+            return View(@table.nameService.Instance.QueryItem(id));
         }
         /// <summary>
         /// 克隆页面
@@ -52,7 +52,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult ItemClone(string id)
         {
-            return View(@TableNameService.Instance.QueryItem(id));
+            return View(@table.nameService.Instance.QueryItem(id));
         }
         /// <summary>
         /// 预览页面
@@ -61,101 +61,17 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult View(string id)
         {
-            return View(@TableNameService.Instance.View(id));
+            return View(@table.nameService.Instance.View(id));
         }
-        /// <summary>
-        /// 保存实体数据
-        /// </summary>
-        /// <param name="entity">实体数据</param>
-        /// <returns></returns>
-        [HttpPost]
-        public string ItemClone()
-        {
-            try
-            {
-                M@TableName entity = new M@TableName();
-                string id = Request.Form["__id"];
-                var entityModel = @TableNameService.Instance.Query(id);
-                var fid = Convert.ToInt32(id);
-            
-                entity.Status = entityModel.CurrentModel.Status;
-                entity.Remark = entityModel.CurrentModel.Remark;
-                entity.CreatedUser = LoginStatus.UserName;
-                entity.CreatedTime = DateTime.Now;
-                entity.FlowName = Request.Form["FlowName"];
-                var stepList = @TableNameStepService.Instance.GetDataListByFid(fid);
-                if (stepList.Count == 0) 
-                {
-                    return "";
-                }           
-                IResult result = @TableNameService.Instance.Save("", entity);
-                if (result.Status)
-                {
-                    foreach (var i in stepList)
-                    {
-                        var stepentity = new M@TableNameStep();                      
-                        stepentity.Action = i.Action;
-                        stepentity.Fid = entity.Fid;
-                        stepentity.Sno = i.Sno;
-                        stepentity.ScriptType = i.ScriptType;
-                        stepentity.StepName = i.StepName;
-                        stepentity.Face = i.Face;
-                        stepentity.CreatedUser = LoginStatus.UserName;
-                        stepentity.CreatedTime = DateTime.Now;
-                        IResult resultstr = @TableNameStepService.Instance.Save("", stepentity);
-                        if (!resultstr.Status)
-                        {
-                            break;
-                        }
-                    }
-                    result.SetSuccessMessage("保存成功");
-                }
-                else
-                {
-                    result.SetErrorMessage("保存失败");
-                }
-                return result.ToString();
-            }
-            catch (Exception e)
-            {
-                return new Result(false, e.Message).ToString();
-            }
-        }
-        //[HttpGet]
-        //public System.Web.Mvc.JsonResult QueryForSelect(int fid)
-        //{
-        //    JsonHelper json = new JsonHelper() { Msg = "查询成功。", Status = "y" };
-        //    var query = @TableNameStepService.Instance.GetDataListByFid(fid);
-        //    json.Data = query;
-        //    return Json(json, JsonRequestBehavior.AllowGet);
-        //}
-
-        /// <summary>
-        /// 保存实体数据
-        /// </summary>
-        /// <param name="entity">实体数据</param>
-        /// <returns></returns>
-        [HttpPost]
         public string Item()
         {
             try
             {
-                M@TableName entity = new M@TableName();
+                @table.name entity = new @table.name();
                 entity.SetData(Request.Form);
                 entity.TrimEmptyProperty();
                 string id = Request.Form["__id"];
-                entity.Status = CommFun.ToInt(Request["State"], 1);
-                if (string.IsNullOrEmpty(id))
-                {
-                    entity.CreatedUser = LoginStatus.UserName;
-                    entity.CreatedTime = DateTime.Now;
-                }
-                else
-                {
-                    entity.EditTime = DateTime.Now;
-                    entity.EditUser = LoginStatus.UserName;
-                }
-                IResult result = @TableNameService.Instance.Save(id, entity);
+@s.item.1 
                 if (result.Status)
                 {
                     result.SetSuccessMessage("保存成功");
@@ -164,6 +80,7 @@ namespace QXFC.UserWeb.Controllers
                 {
                     result.SetErrorMessage("保存失败");
                 }
+                
                 return result.ToString();
             }
             catch (Exception e)
@@ -181,7 +98,7 @@ namespace QXFC.UserWeb.Controllers
         {
             try
             {
-                IResult result = @TableNameService.Instance.Delete(id);
+                IResult result = @table.nameService.Instance.Delete(id);
                 if (result.Status)
                 {
                     result.SetSuccessMessage("删除成功");
@@ -190,6 +107,7 @@ namespace QXFC.UserWeb.Controllers
                 {
                     result.SetErrorMessage("删除失败");
                 }
+
                 return result.ToString();
             }
             catch (Exception e)
@@ -197,9 +115,7 @@ namespace QXFC.UserWeb.Controllers
                 return new Result(false, e.Message).ToString();
             }
         }
-
-
-
-
+@s.exportExcel
+@s.importExcel
     }
 }

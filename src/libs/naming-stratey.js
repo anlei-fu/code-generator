@@ -6,18 +6,15 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-09-30 14:59:20
  */
-/**
- * 
- * @param {Array} input 
- */
 const { STR } = require("./str");
 /**
  * 
  * @param {String} input 
  * @returns {String}
  */
-function toUpperCalmelCase(input) {
+function toUpperCamelCase(input) {
         let ret = "";
+
         split(input).forEach(word => {
                 if (word != "_") {
                         ret += STR.upperFirstLetter(word.toLowerCase());
@@ -33,6 +30,7 @@ function toUpperCalmelCase(input) {
  */
 function toLowerCamelCase(input) {
         let ret = "";
+
         split(input).forEach((word, i) => {
                 if (word != "_") {
                         if (i != 1) {
@@ -52,6 +50,7 @@ function toLowerCamelCase(input) {
  */
 function toHungary(input) {
         let ret = "";
+
         split(input).forEach(word => {
                 if (word != "_") {
                         ret += "_" + word.toLowerCase();
@@ -72,7 +71,7 @@ function split(input) {
         var ls = [];
         var word = "";
 
-        for (i = 0; i < input.length; i++) {
+        for (let i = 0; i < input.length; i++) {
 
                 let c = input.charAt(i);
                 if (c == "_") {
@@ -96,6 +95,6 @@ function split(input) {
 
 exports.NamingStrategy = {
         toHungary,
-         toLowerCamelCase,
-        toUpperCalmelCase
+        toLowerCamelCase,
+        toUpperCamelCase
 }

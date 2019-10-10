@@ -11,8 +11,8 @@ namespace QXFC.Entity
     ///<summary>
     ///实体：下游渠道表
     ///</summary>
-    [ODXmlConfig(EntityConfigType.Xml, "", "~/config/econfig/@TableName.xml")]
-    public class M@TableName : EntityBase
+    [ODXmlConfig(EntityConfigType.Xml, "", "~/config/econfig/@table.name.xml")]
+    public class @table.name : EntityBase
     {
       @Slot
     }

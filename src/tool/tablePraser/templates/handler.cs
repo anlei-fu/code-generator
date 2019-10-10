@@ -6,32 +6,32 @@ using System.Data;
 using Lib4Net.Comm;
 using Lib4Net.DB;
 using Lib4Net.Core;
-using QXFC.Entity;
-using QXFC.Interfaces.Logic;
-using QXFC.Interfaces.DBAccess;
-using QXFC.DataAccessFactories;
+using @project.name.Entity;
+using @project.name.Interfaces.Logic;
+using @project.name.Interfaces.DBAccess;
+using @project.name.DataAccessFactories;
 using System.Collections;
 using Lib4Net.Logs;
 
-namespace QXFC.Logic
+namespace @project.name.Logic
 {
     /// <summary>
-    /// 逻辑处理：@TableName(订单表)
+    /// 逻辑处理：@table.name(订单表)
     /// </summary>
-    public class @TableNameHandler : I@TableNameHandler
+    public class @table.nameHandler : I@table.nameHandler
     {
-        private I@TableNameDataAccess dbAccess;
+        private I@table.nameDataAccess dbAccess;
         ILogger logger = LoggerManager.Instance.GetLogger("web");
-        public @TableNameHandler()
+        public @table.nameHandler()
         {
-            dbAccess = DataAccessFactory.Instance.GetProvider<I@TableNameDataAccess>();
+            dbAccess = DataAccessFactory.Instance.GetProvider<I@table.nameDataAccess>();
         }
         /// <summary>
         /// 获取单条数据
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public @TableName GetData(string id)
+        public @table.name GetData(string id)
         {
             return dbAccess.GetData(id);
         }
@@ -52,7 +52,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>   
-        public @TableName GetSingleData(@TableName query, string orderBy = "",
+        public @table.name GetSingleData(@table.name query, string orderBy = "",
             MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
@@ -63,7 +63,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        public List<@TableName> GetDataList(string orderBy = "")
+        public List<@table.name> GetDataList(string orderBy = "")
         {
             return dbAccess.GetDataList(dbAccess.EmptyEntity, orderBy);
         }
@@ -76,7 +76,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public List<@TableName> GetDataList(@TableName query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public List<@table.name> GetDataList(@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataList(query, orderBy, mmode, cmode);
@@ -89,7 +89,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public DataSet GetDataSet(@TableName query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public DataSet GetDataSet(@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataSet(query, orderBy, mmode, cmode);
@@ -105,7 +105,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public List<@TableName> GetPagerDataList(@TableName query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public List<@table.name> GetPagerDataList(@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -123,7 +123,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public DataSet GetPagerDataSet(@TableName query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public DataSet GetPagerDataSet(@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -136,7 +136,7 @@ namespace QXFC.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(string id, @TableName vo)
+        public IResult Save(string id, @table.name vo)
         {
             bool status=false;
             IResult result = new Result(status);
@@ -156,7 +156,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(@TableName vo)
+        public IResult Save(@table.name vo)
         {
             IResult result = new Result(false);
            bool status=dbAccess.Save(vo)>0;
@@ -172,7 +172,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool CreateNew(@TableName vo)
+        public bool CreateNew(@table.name vo)
         {
             return dbAccess.CreateNew(vo);
         }
@@ -181,7 +181,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool Update(@TableName vo)
+        public bool Update(@table.name vo)
         {
             return dbAccess.Update(vo);
         }
@@ -193,7 +193,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public int GetCount(@TableName query, MatchMode mmode = MatchMode.Exact,
+        public int GetCount(@table.name query, MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetCount(query, mmode, cmode);
@@ -205,7 +205,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public object GetScalarByXmlTemplate(string xmlTemplateName, @TableName vo)
+        public object GetScalarByXmlTemplate(string xmlTemplateName, @table.name vo)
         {
             return dbAccess.GetScalarByTemplate(xmlTemplateName, vo);
         }
@@ -216,7 +216,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public List<@TableName> GetDataListByTemplate(string xmlTemplateName, @TableName vo)
+        public List<@table.name> GetDataListByTemplate(string xmlTemplateName, @table.name vo)
         {
             return dbAccess.GetDataListByTemplate(xmlTemplateName, vo);
         }
@@ -226,7 +226,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public DataSet GetDataSetByTemplate(string xmlTemplateName, @TableName vo)
+        public DataSet GetDataSetByTemplate(string xmlTemplateName, @table.name vo)
         {
             return dbAccess.GetDataSetByTemplate(xmlTemplateName, vo);
         }
@@ -235,52 +235,11 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public @TableName GetSingleDataByTemplate(string xmlTemplateName, @TableName vo)
+        public @table.name GetSingleDataByTemplate(string xmlTemplateName, @table.name vo)
         {
             return dbAccess.GetSingleDataByTemplate(xmlTemplateName, vo);
         }
-
-
-        /// <summary>
-        /// 线下退款
-        /// </summary>
-        /// <param name="dChannelNo">渠道编号</param>
-        /// <param name="dOrderNo">订单编号</param>
-        /// <param name="refundFee">退款金额</param>
-        /// <param name="refundFrom">出账账号</param>
-        /// <param name="refundTo">收款账号</param>
-        /// <param name="msg">备注</param>
-        /// <param name="operate">操作人</param>
-        /// <returns></returns>
-        public IResult RecvRefund(string dChannelNo, string dOrderNo, int? refundFee, string refundFrom, string refundTo, string remark, string operate)
-        {
-            DbParameter[] paramss = new DbParameter[] 
-            {
-                new DbParameter { Name = "v_down_channel_no", Value = dChannelNo },
-                new DbParameter { Name = "v_down_order_no", Value = dOrderNo },
-                new DbParameter { Name = "v_refund_fee", Value = refundFee },
-                new DbParameter { Name = "v_refund_from", Value = refundFrom },
-                new DbParameter { Name = "v_refund_to", Value = refundTo },
-                new DbParameter { Name = "v_remark", Value = remark },
-                new DbParameter { Name = "v_operator", Value = operate },
-                new DbParameter { Name = "v_ret_code", Direction = System.Data.ParameterDirection.Output },
-                new DbParameter { Name = "v_ret_msg", Direction = System.Data.ParameterDirection.Output }
-            };
-            var rev = dbAccess.DbProvider.ExcuteProcToArray("sp_recv_refund_offline", paramss);
-            return new Result(CommFun.ToInt(rev[0], 0).Value == 100, rev[1].ToString());
-        }
-
-        public IResult SetWuliuMode(string OrderNo,string mode)
-        {
-            DbParameter[] paramss = new DbParameter[] 
-            {
-                new DbParameter { Name = "v_order_no", Value = OrderNo },
-                new DbParameter { Name = "v_mode", Value = mode },
-                new DbParameter { Name = "v_ret_code", Direction = System.Data.ParameterDirection.Output },
-                new DbParameter { Name = "v_ret_msg", Direction = System.Data.ParameterDirection.Output }
-            };
-            var rev = dbAccess.DbProvider.ExcuteProcToArray("sp_set_wuliu_mode", paramss);
-            return new Result(CommFun.ToInt(rev[0], 0).Value == 100, rev[1].ToString());
-        }
+@s.exportExcel
+@s.importExcel
     }
 }

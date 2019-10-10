@@ -6,8 +6,8 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-09-26 15:00:40
  */
-var { file } = require("../libs/file");
-var { str } = require("../libs/str");
+var { FILE } = require("../libs/file");
+var { STR } = require("../libs/str");
 /**
  * @description Class of function parameter meta data
  */
@@ -19,8 +19,8 @@ class Para {
         }
         toString() {
                 return typeof this.out == "undefined"
-                        ? ` *@Param {${this.type}} ${this.name}\r\n`
-                        : ` *@Param  ${this.out} {${this.type}} ${this.name}\r\n`;
+                        ? ` *@param {${this.type}} ${this.name}\r\n`
+                        : ` *@param  ${this.out} {${this.type}} ${this.name}\r\n`;
         }
 }
 
@@ -33,14 +33,14 @@ class Para {
 function generateComment({ input, output }) {
         input = input || "input";
         output = output || "output";
-        var text = file.read(input);
-        var ls = [];
-        var contents = str.select(text, "(", ")", 1);
+        let text = FILE.read(input);
+        let ls = [];
+        let contents = STR.select(text, "(", ")", 1);
 
         if (contents.length != 0) {
-                var params = contents[0].split(",");
+                let params = contents[0].split(",");
                 for (let param of params) {
-                        let words = str.splitToWords(param);
+                        let words = STR.splitToWords(param);
                         if (words.length == 2) {
                                 ls.push(new Para(words[0], words[1]));
                         } else {
@@ -49,21 +49,21 @@ function generateComment({ input, output }) {
                 }
         }
 
-        var prefix =
+        let prefix =
                 `/**
  *@Description\r\n`;
         var suffix =
                 ` *@Author
  *@Date ${Date.now()}
  */`;
-        var data = prefix;
+        let data = prefix;
 
         for (let para of ls) {
                 data += para.toString();
         }
 
         data += suffix;
-        file.write(output, data);
+        FILE.write(output, data);
 }
 // do generate
 generateComment();

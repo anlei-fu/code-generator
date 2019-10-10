@@ -2,22 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using QXFC.Entity;
-namespace QXFC.Model
+using @project.name.Entity;
+namespace @project.name.Model
 {
     /// <summary>
-    /// 实体:M@TableName 的列表页面Model
+    /// 实体:M@table.name 的列表页面Model
     /// </summary>
-	public class @TableNameListModel
+	public class @table.nameListModel
     {
-       private List<M@TableName> _list=new List<M@TableName>();
+       private List<@table.name> _list=new List<@table.name>();
        private int _pageSize;
        private int _pageIndex;
        private int _totalCount;
         /// <summary>
        /// 记录列表
        /// </summary>
-       public List<M@TableName> List
+       public List<@table.name> List
        {
            get { return _list; }
            set { _list = value; }

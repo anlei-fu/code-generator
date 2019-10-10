@@ -10,31 +10,22 @@
  * Check target is defined, if target not defiend will throw an error
  * @param {Any} target 
  */
-const UNDEFINED = "undefined";
-const EMPTY = "";
+exports.UNDEFINED = "undefined";
+exports.EMPTY = "";
 /**
  * @description Check target is null or not, if null throw an argument error;
  * @param {Any} target 
  */
-const requireNotNull = target => {
+exports.requireNotNull = target => {
         if (typeof target == UNDEFINED)
                 throw " target can not be null!";
-}
-/**
- * @desciption Check target is null not, if null return default value
- * @param {Any} target 
- * @param {Any} def ,default value
- * @returns {Any}
- */
-const defaultValue = (target, def) => {
-        return typeof target == UNDEFINED ? def : target;
 }
 /**
  * @description Convert @see {Array} to @see {Set} 
  * @param {[Any]} array 
  * @returns {Set<Any>}
  */
-const arrayToSet = (array) => {
+exports.arrayToSet = (array) => {
         let s = new Set();
 
         if (typeof array == UNDEFINED)
@@ -47,11 +38,3 @@ const arrayToSet = (array) => {
 
         return s;
 }
-/**
- * 
- */
-exports.requireNotNull = requireNotNull;
-exports.UNDEFINED = UNDEFINED;
-exports.defaultValue = defaultValue;
-exports.EMPTY = EMPTY;
-exports.arrayToSet = arrayToSet;

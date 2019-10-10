@@ -4,18 +4,17 @@ using System.Text;
 using Lib4Net.Comm;
 using Lib4Net.ORM;
 using Lib4Net.DB;
-using QXFC.Interfaces.DBAccess;
-using QXFC.Entity;
+using @project.name.Interfaces.DBAccess;
+using @project.name.Entity;
 
 
 
-namespace QXFC.DBAccess
+namespace @project.name.DBAccess
 {
-
       ///<summary>
-      ///关于的数据操作对象
+      ///关于@table.chineseName的数据操作对象
       ///</summary>
-    public class @TableNameDataAccess:DataAccessObjects<@TableName>,I@TableNameDataAccess
+    public class @table.nameDataAccess:DataAccessObjects<@table.name>,I@table.nameDataAccess
     {
     
     }
