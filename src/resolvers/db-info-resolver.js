@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-01 15:26:45
+ * @LastEditTime: 2019-10-10 14:07:11
  */
 /**
  * imports  @const cheerio see https://github.com/cheeriojs/cheerio
@@ -14,33 +14,37 @@ const cheerio = require("cheerio");
 const { FILE } = require("./../libs/file");
 const { STR } = require("./../libs/str");
 const { NamingStrategy } = require("./../libs/naming-stratey");
-const { Table, Column, SqlType, Package, Constraints, Function, Procedure, Db, SqlConstant, SqlValue, Parameter }
+const { Table, Column, SqlType, Package, Constraints, Function, Procedure, Db, SqlConstant, SqlValue, Parameter, Index }
         = require("./db-info");
 
-const ROOT = "";
+const ROOT = "./../../resources/plsqldoc";
 /**
  * @param {String} path ,main page path
  * @returns {[Db]}
  * */
 function parse() {
 
-        let html = FILE.read(`${ROOT}/frame_Index.html`);
+        let html = FILE.read(`${ROOT}/frame_Index.html`
+                 );
         let $ = cheerio.load(html);
         let dbs = {};
-
         //jq collection can not iterate ,jsut can do for
         // class='main_title' db names
         let names_els = $("td[class='main_title']");
-
         // sibling sorted left to right in the same layer, 
         //it has no bussiness with the position compare to current element
-        let db_els = $(names_els[0]).parent("table")
-                .siblings("table[class='sub_table']");
+        let db_els = $("table.main_table").siblings("table.sub_table");
+        console.log(db_els.length);
+        console.log(db_els[1].attribs);
+        console.log(db_els[0]);
 
         for (let i = 0; i < names_els.length; i++) {
                 let name = $(names_els[i]).text();
                 dbs[name] = parseDb($, db_els[i])
+                dbs[name].name=name;
         }
+
+        return dbs;
 }
 /**
  * 
@@ -49,11 +53,10 @@ function parse() {
  * @returns {Db} 
  */
 function parseDb($, el) {
-
         // count should be 8
-        let tbs = $(el).children("table['sub_table']");
+        let tbs = $(el).children();
         let db = new Db();
-
+       console.log(`table length is`+tbs.length);
         // packages
         db.packages = parseComponent($, tbs[1], parsePackage);
         //tables
@@ -72,12 +75,15 @@ function parseDb($, el) {
  * @param {Function:()=>Any} fun  ()=> any
  */
 function parseComponent($, el, fun) {
+        console.log("in parse component");
         let component = {};
         let a_els = $(el).children("a");
+        console.log("a length is"+a_els.length);
 
         for (let i = 0; i < a_els.length; i++) {
                 let name = $(a_els[i]).text();
                 let path = `${ROOT}/${$(a_els[i]).attr("href")}`;
+                console.log(`path is ${path}`);
                 component[name] = fun(FILE.read(path));
         }
 
@@ -96,14 +102,13 @@ function parsePackage(html) {
         for (let i = 0; i < cons_els.length; i++) {
                 let segs = $(cons_els[i]).text()
                         .trim()
-                3..split(" ");
+                        .split(" ");
                 let name = segs[0];
                 let sqlType = SqlType.parse(segs[3]);
                 let value = parseValue(segs[5]);
                 pkg[name] = new SqlConstant(name, "");
                 pkg[name].value = new SqlValue(sqlType, value);
         }
-
         return pkg;
 }
 /**
@@ -118,9 +123,10 @@ function parseTable(html) {
         // first
         tab.columns = parseColumns($, $(".simple_table:first"));
         // from 2ed to last -1
-        tab.constraints = parseConstraints($, $(".simple_table"));
+        tab.constraints = parseConstraints($("a[name='primary key']"));
         // last 1
-        tab.indexes = parseIndex();
+        tab.indexes = parseIndex($("a[name='indexes']"));
+        
         return tab;
 }
 /**
@@ -156,25 +162,61 @@ function parseColumns($, el) {
  * @description tr[1] is the target
  * start from 1 ,because 0 is column infomation
  * @param {[Elements]} els 
+ * @returns {{Constraint}}
  */
-function parseConstraints($, els) {
+function parseConstraints($, el) {
+        if (el.length == 0)
+                return {};
 
+        let constraints = {};
+
+        let tabs = $(el[0]).next("table[class='simple_table']");
+        let cons = $(tabs[0]).children("tr");
+
+        for (i = 1; i < cons.length; i++) {
+                let cells = $(cons[i]).children("td");
+                let constraint = new Constraints();
+                constraint.name = $(cells[0]).text();
+                constraint.columns.push($(cells[1]).text());
+                constraint.type = $(cells[2]).text();
+                constraints[constraint.name] = constraint;
+        }
+
+        return constraints;
 
 }
 
 function parseIndex($, els) {
+        if (el.length == 0)
+                return {};
 
+        let indexes = {};
+
+        let tabs = $(el[0]).next("table[class='simple_table']");
+        let cons = $(tabs[0]).children("tr");
+
+        for (i = 1; i < cons.length; i++) {
+                let cells = $(cons[i]).children("td");
+                let index = new Index();
+                index.name = $(cells[0]).text();
+                index.columns.push($(cells[1]).text());
+                index.type = $(cells[2]).text();
+                indexes[index.name] = index;
+        }
+
+        return indexes;
 }
 
 /**
  * 
  * @param {String} html 
+ * @returns {Function}
  */
 function parseFunction(html) {
         let $ = cheerio.load(html);
         let text = $("pre[class='DECL_TEXT']").text();
         let name = STR.select1(text, "f_", "(")[0];
-        
+
         let func = new Function();
         func.name = name.substr(0, name.length - 1);
         let paramsText = STR.select(text, "(", ")")[0];
@@ -185,7 +227,11 @@ function parseFunction(html) {
 
         return func;
 }
-
+/**
+ * 
+ * @param {String} text 
+ * @returns {{Parameter}}
+ */
 function parseParameter(text) {
         let parameters = {};
 
@@ -223,8 +269,19 @@ function parseParameter(text) {
 /**
  * 
  * @param {String} html 
+ * @returns {Procedure}
  */
 function parseProcedure(html) {
+        let $ = cheerio.load(html);
+        let text = $("pre[class='DECL_TEXT']").text();
+        let name = STR.select1(text, "s", "(")[0];
+
+        let proc = new Procedure();
+        proc.name = name.substr(0, name.length - 1);
+        let paramsText = STR.select(text, "(", ")")[0];
+        proc.parameters = parseParameter(paramsText);
+
+        return proc;
 
 }
 
@@ -262,3 +319,8 @@ function formatString(s) {
 
         return ret;
 }
+
+
+var dbs= parse();
+
+console.log(dbs);

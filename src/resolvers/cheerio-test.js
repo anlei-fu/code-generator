@@ -4,11 +4,11 @@
  * @Author: fuanlei
  * @Date: 2019-09-30 09:46:25
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-01 14:40:34
+ * @LastEditTime: 2019-10-10 13:02:26
  */
 var cheerio=require("cheerio");
 var {FILE} =require("./../libs/file");
-var $ =cheerio.load(FILE.read("1.html"));
+var $ =cheerio.load(FILE.read("1.html"),{normalizeWhitespace:true,});
 
 // var a =$("body").children("div")   // all div
 //                 .children("a");  // all a
@@ -17,10 +17,17 @@ var $ =cheerio.load(FILE.read("1.html"));
 // text return all inner html not only self's innerText
 // parent return parent element
 // sublings direct include left and right
-var a= $("div").siblings("a");
+// children represent "get all" ,not only direct
+// html() just return children content  not include self 
+// not all element has text() method
+// first is not the first-children, just first index of result collection
+var a=$("div.123").children(".789").next();
+//console.log("root:"+$("div[class='123']").html());
+console.log(a.length);
 
  for (let i=0;i<a.length;i++) {
-         console.log($(a[i]).text());
+         console.log("tag-name:"+ a[i].tagName);
+         console.log("html:"+ $(a[i]).html());
  }
 
  var text= a.text(); //last a's inner-text
@@ -34,7 +41,8 @@ var a= $("div").siblings("a");
  //$(element) => reset root to element
  // select ,childen,  
  // sublings all not left or right
-console.log(text);
-console.log( a.length);
+ // parent just 1 element
+console.log("inner-text:"+ text);
+console.log( "length:"+a.length);
 
 

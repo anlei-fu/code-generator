@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:28:55
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-30 16:16:30
+ * @LastEditTime: 2019-10-10 09:35:33
  */
 var { UNDEFINED, requireNotNull } = require("./../libs/utils");
 /**
@@ -308,7 +308,7 @@ exports.Procedure = class Procedure extends DbObject {
 
         }
 }
-exports.Function = class Function extends Procedure {
+exports.Function = class Function extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 this.parameters = parameters;
@@ -321,7 +321,7 @@ class Job {
 /**
  * Class of sql constraint
  */
-exports.Constraints = class Constraint {
+exports.Constraints = class Constraint extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 /**
