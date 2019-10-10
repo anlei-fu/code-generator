@@ -1,9 +1,9 @@
-/* PL/SQL Developer, plsqldoc styles */
+/* pl/sql developer, plsqldoc styles */
 
-BODY
+body
 { 
-  font-family: Verdana,Arial,Helvetica,sans-serif;
-  background-color : #ECECEC;
+  font-family: verdana,arial,helvetica,sans-serif;
+  background-color : #ececec;
   font-size : 12px;
   font-weight: normal;
   font-style: normal;
@@ -11,17 +11,17 @@ BODY
   margin-top: 25px;
 }
 
-A         {color: #333300; text-decoration: underline;}
-A:active  {color: #2020C0; text-decoration: underline;}    
-A:hover   {color: #4040C0; text-decoration: underline;}
-A:visited {color: #101060; text-decoration: underline;} 
+a         {color: #333300; text-decoration: underline;}
+a:active  {color: #2020c0; text-decoration: underline;}    
+a:hover   {color: #4040c0; text-decoration: underline;}
+a:visited {color: #101060; text-decoration: underline;} 
 
 
-/* Style for Title of document (Package ...) */
+/* style for title of document (package ...) */
     
-.MAIN_TITLE
+.main_title
 {
- font-family: Verdana,Arial,Helvetica,sans-serif;
+ font-family: verdana,arial,helvetica,sans-serif;
  font-size : medium;
  color: #992266;
  font-weight: bold;
@@ -29,11 +29,11 @@ A:visited {color: #101060; text-decoration: underline;}
 }    
 
 
-/* Style for smaller Titles (Program Units, Exceptions, ...) */
+/* style for smaller titles (program units, exceptions, ...) */
 
-.SUB_TITLE
+.sub_title
 {
- font-family: Verdana,Arial,Helvetica,sans-serif;
+ font-family: verdana,arial,helvetica,sans-serif;
  font-size: medium;
  color: #992266;
  font-weight: normal;
@@ -41,11 +41,11 @@ A:visited {color: #101060; text-decoration: underline;}
 }    
 
 
-/* Type name in description */
+/* type name in description */
 
-.TYPE_TITLE
+.type_title
 {
- font-family: Verdana,Arial,Helvetica,sans-serif;
+ font-family: verdana,arial,helvetica,sans-serif;
  font-size: small;
  color: #992266;
  font-weight: bold;
@@ -53,22 +53,22 @@ A:visited {color: #101060; text-decoration: underline;}
 }    
 
 
-/* Type name in list */
+/* type name in list */
 
-.TYPE_ITEM
+.type_item
 {
- font-family: Verdana,Arial,Helvetica,sans-serif;
+ font-family: verdana,arial,helvetica,sans-serif;
  font-size: x-small;
  color: #101060;
  font-weight: bold;
  margin-bottom: 0px;
 }    
 
-/* 'See Also' list title */
+/* 'see also' list title */
 
-.LIST_TITLE
+.list_title
 { 
- font-family: Verdana,Arial,Helvetica,sans-serif;
+ font-family: verdana,arial,helvetica,sans-serif;
  font-size: small;
  color: #301080;
  font-weight: bold;
@@ -77,13 +77,13 @@ A:visited {color: #101060; text-decoration: underline;}
 }
 
 
-/* 'See Also' list item description */
-/* Specific style can be specified for the different groups like Usage, Parameter, ets */
-/* with a .LIST_ITEM_[GROUP] tag like .LIST_ITEM_USAGE                                 */                  
+/* 'see also' list item description */
+/* specific style can be specified for the different groups like usage, parameter, ets */
+/* with a .list_item_[group] tag like .list_item_usage                                 */                  
 
-.LIST_ITEM
+.list_item
 { 
- font-family: Verdana,Arial,Helvetica,sans-serif;
+ font-family: verdana,arial,helvetica,sans-serif;
  font-size: x-small;
  color: #101060;
  font-weight: bold;
@@ -91,13 +91,13 @@ A:visited {color: #101060; text-decoration: underline;}
 }
 
        	
-/* Description */
-/* Specific style can be specified for the different groups like Usage, Parameter, ets */
-/* with a .DESC_TEXT_[GROUP] tag like .DESC_TEXT_USAGE                                 */                  
+/* description */
+/* specific style can be specified for the different groups like usage, parameter, ets */
+/* with a .desc_text_[group] tag like .desc_text_usage                                 */                  
 
-.DESC_TEXT
+.desc_text
 { 
- font-family: Verdana,Arial,Helvetica,sans-serif;
+ font-family: verdana,arial,helvetica,sans-serif;
  font-size: x-small;
  color: #101060;
  font-weight: normal;
@@ -105,11 +105,11 @@ A:visited {color: #101060; text-decoration: underline;}
 }
 
 
-/* Formatted text */
+/* formatted text */
 
-.DECL_TEXT
+.decl_text
 { 
- font-family: Courier;
+ font-family: courier;
  font-size: x-small;
  color: #101080;
  font-weight: normal;
@@ -117,51 +117,51 @@ A:visited {color: #101060; text-decoration: underline;}
 }
 
 
-/* Table that holds the Title of the document */
+/* table that holds the title of the document */
 
-.MAIN_TABLE
+.main_table
 {
- font-family: Verdana,Arial,Tahoma,Helvetica,sans-serif;
+ font-family: verdana,arial,tahoma,helvetica,sans-serif;
  font-size: x-small;
  font-weight: normal;
  font-style: normal;
- background-color: #E0E0E0;
+ background-color: #e0e0e0;
  width: 100%;
 }
 
 
-/* Table that holds Program Units list */
+/* table that holds program units list */
 
-.SUB_TABLE
+.sub_table
 {
- font-family: Verdana,Arial,Tahoma,Helvetica,sans-serif;
+ font-family: verdana,arial,tahoma,helvetica,sans-serif;
  font-size: x-small;
  font-weight: normal;
  font-style: normal;
- background-color: #E8E8E8;
- VALIGN: "TOP";
+ background-color: #e8e8e8;
+ valign: "top";
  width: 100%;
 }
 
    
-/* Table that holds the See Also list */
+/* table that holds the see also list */
 
-.LIST_TABLE
+.list_table
 {
- font-family: Verdana,Arial,Tahoma,Helvetica,sans-serif;
+ font-family: verdana,arial,tahoma,helvetica,sans-serif;
  font-size: x-small;
  font-weight: normal;
  font-style: normal;
- background-color: #ECECEC;
+ background-color: #ececec;
  width: 100%;
 }
 
 
-/* Table that holds the See Also list */
+/* table that holds the see also list */
 
-.SIMPLE_TABLE
+.simple_table
 {
- font-family: Verdana,Arial,Tahoma,Helvetica,sans-serif;
+ font-family: verdana,arial,tahoma,helvetica,sans-serif;
  font-size: x-small;
  font-weight: normal;
  font-style: normal;

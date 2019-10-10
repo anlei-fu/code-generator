@@ -23,23 +23,22 @@ const ROOT = "./../../resources/plsqldoc";
  * @returns {[Db]}
  * */
 function parse() {
-
-        let html = FILE.read(`${ROOT}/frame_Index.html`
-                 );
+        let html = FILE.read(`${ROOT}/frame_Index.html`);
         let $ = cheerio.load(html);
         let dbs = {};
         //jq collection can not iterate ,jsut can do for
         // class='main_title' db names
-        let names_els = $("td[class='main_title']");
+        let names_els = $("div.main_title");
         // sibling sorted left to right in the same layer, 
         //it has no bussiness with the position compare to current element
-        let db_els = $("table.main_table").siblings("table.sub_table");
+        let db_els = $("div.main_table").next();
         console.log(db_els.length);
-        console.log(db_els[1].attribs);
-        console.log(db_els[0]);
+        console.log(names_els.length);
+       // console.log($(db_els[2]).children().length);
 
         for (let i = 0; i < names_els.length; i++) {
                 let name = $(names_els[i]).text();
+                console.log("name is:"+ name);
                 dbs[name] = parseDb($, db_els[i])
                 dbs[name].name=name;
         }
@@ -54,9 +53,10 @@ function parse() {
  */
 function parseDb($, el) {
         // count should be 8
-        let tbs = $(el).children();
+        let tbs = $(el).children("div");
         let db = new Db();
-       console.log(`table length is`+tbs.length);
+        console.log(`tas length is:`+tbs.length);
+
         // packages
         db.packages = parseComponent($, tbs[1], parsePackage);
         //tables
@@ -77,13 +77,14 @@ function parseDb($, el) {
 function parseComponent($, el, fun) {
         console.log("in parse component");
         let component = {};
-        let a_els = $(el).children("a");
+        let a_els = $(el).children("div");
         console.log("a length is"+a_els.length);
 
         for (let i = 0; i < a_els.length; i++) {
-                let name = $(a_els[i]).text();
-                let path = `${ROOT}/${$(a_els[i]).attr("href")}`;
-                console.log(`path is ${path}`);
+                let name = $(a_els[i]).children("div").children("div").text();
+               console.log(name);
+                let path = `${ROOT}/${$(a_els[i]).children("div").children("div").attr("href")}`;
+                console.log(path);
                 component[name] = fun(FILE.read(path));
         }
 
@@ -98,13 +99,15 @@ function parsePackage(html) {
         let pkg = {};
         let $ = cheerio.load(html);
         let cons_els = $("pre[class='decl_text']");
-
+      //  console.log(html);
+        console.log(cons_els.length);
         for (let i = 0; i < cons_els.length; i++) {
                 let segs = $(cons_els[i]).text()
                         .trim()
                         .split(" ");
                 let name = segs[0];
                 let sqlType = SqlType.parse(segs[3]);
+                console.log("constranit name:"+ name);
                 let value = parseValue(segs[5]);
                 pkg[name] = new SqlConstant(name, "");
                 pkg[name].value = new SqlValue(sqlType, value);

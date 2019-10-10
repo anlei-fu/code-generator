@@ -21,22 +21,22 @@ var $ =cheerio.load(FILE.read("1.html"),{normalizeWhitespace:true,});
 // html() just return children content  not include self 
 // not all element has text() method
 // first is not the first-children, just first index of result collection
-var a=$("div.123").children(".789").next();
+var a=$("div.123").children("a");
 //console.log("root:"+$("div[class='123']").html());
-console.log(a.length);
+console.log($(a).children("p").text());
 
  for (let i=0;i<a.length;i++) {
          console.log("tag-name:"+ a[i].tagName);
          console.log("html:"+ $(a[i]).html());
  }
 
-<<<<<<< HEAD
-var a =$("body").children("div")   // all div
-                .children("a");  // all a
- var text= a.text(); // last a's inner-text
-=======
+
+// var a =$("body").children("div")   // all div
+//                 .children("a");  // all a
+//  var text= a.text(); // last a's inner-text
+
  var text= a.text(); //last a's inner-text
->>>>>>> 3494fe61716d99376be2016b7c6508b15170cb8b
+
 
  // $("body").children("div")[1]  => element
  // $("body").children("div").get(1) =>element

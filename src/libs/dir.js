@@ -13,42 +13,40 @@ const fs = require("fs");
  * @param {String} path 
  * @returns {boolean}
  */
-async function exists(path) {
+ function exists(path) {
         requireNotNull(path)
 
-        return await fs.exists(path)
-                && await fs.lstat(path).isDirectory();
+        return fs.existsSync(path)
+                && fs.lstatSync(path).isDirectory();
 }
 /**
  * @description Create a new directory
  * @param {String} path 
  */
-async function create(path) {
+ function create(path) {
         requireNotNull(path);
         
-        await fs.mkdir(path);
-
-        return exports.FILE;
+        fs.mkdirSync(path);
 }
 /**
  * @description Remove a directory
  * @todo  Want to remove a folder  msut remove sub-folder first,So need a recursive processing;
  * @param {String} path 
  */
-async function remove(path) {
+ function remove(path) {
         requireNotNull(path);
 
         fs.readdirSync(path)
                 .forEach(file => {
-                        if (await fs.stat(`${path}/${file}`)
+                        if ( fs.statSync(`${path}/${file}`)
                                 .isDirectory()) {
                                 remove(`${path}/${file}`);
                         } else {
-                                await fs.unlink(`${path}/${file}`);
+                                 fs.unlinkSync(`${path}/${file}`);
                         }
                 })
 
-        await fs.rmdir(path);
+         fs.rmdirSync(path);
 
         return exports.FILE;
 }
@@ -57,12 +55,12 @@ async function remove(path) {
  * @param {String} path 
  * @returns {[String]} File names, relative path of  current folder
  */
-async function getFiles(path) {
+ function getFiles(path) {
         requireNotNull(path);
         var ls = [];
-        await fs.readdir(path)
+         fs.readdirSync(path)
                 .forEach(file => {
-                        if (! await fs.stat(`${path}/${file}`).isDirectory())
+                        if (! fs.statSync(`${path}/${file}`).isDirectory())
                                 ls.push(file);
                 })
         return ls;
@@ -72,12 +70,12 @@ async function getFiles(path) {
  * @param {String} path 
  * @returns {[String]}  Sub folder names, relative path of current folder
  */
-async function getFolders(path) {
+ function getFolders(path) {
         requireNotNull(path);
         var ls = [];
         fs.readdirSync(path)
                 .forEach(dir => {
-                        if (await fs.stat(`${path}/${dir}`).isDirectory())
+                        if ( fs.statSync(`${path}/${dir}`).isDirectory())
                                 ls.push(dir);
                 })
 

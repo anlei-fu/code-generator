@@ -48,9 +48,9 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @param {String?} charset ,Charset name
  * @returns {String}
  */
-async function read(path, charset) {
+ function read(path, charset) {
         requireNotNull(path);
-        return await fs.readFile(path, defaultCharset(charset)).toString();
+        return  fs.readFileSync(path, defaultCharset(charset)).toString();
 }
 /**
  *@description Write data into  file
@@ -58,10 +58,10 @@ async function read(path, charset) {
  * @param {String} data ,Data to write 
  * @param {String?} charset, Charset name 
  */
-function write(path, data, charset) {
+ function write(path, data, charset) {
         requireNotNull(path);
         requireNotNull(data);
-        await fs.writeFile(path, data, defaultCharset(charset));
+         fs.writeFileSync(path, data, defaultCharset(charset));
 }
 /**
  * @descrip Append line  at the end of file,data+"\r\n";
@@ -79,10 +79,10 @@ function appendLine(path, data, charset) {
  * @param {String} data  to append
  * @param {String?} charset, Charset name 
  */
-async function append(path, data, charset) {
+ function append(path, data, charset) {
         requireNotNull(path);
         requireNotNull(data);
-        await fs.appendFile(path, data, defaultCharset(charset));
+         fs.appendFileSync(path, data, defaultCharset(charset));
 }
 /**
  * @description Copy file
@@ -90,30 +90,30 @@ async function append(path, data, charset) {
  * @param {String} destination 
  * @param {boolean?} rmSource ,If true , After copying complete , Remove source file
  */
-async function copy(source, destination, rmSource) {
+function copy(source, destination, rmSource) {
         requireNotNull(source);
         requireNotNull(destination);
-        await fs.copy(source, destination);
+        fs.copySync(source, destination);
 
         if (rmSource)
-                await fs.unlink(source);
+                 fs.unlinkSync(source);
 }
 /**
  * @description Remove file 
  * @param {String} path 
  */
-async function remove(path) {
+ function remove(path) {
         if (exists(path))
-                await fs.unlink(path);
+                fs.unlinkSync(path);
 }
 /**
  * @description Check does file exists
  * @param {String} path 
  * @returns {boolean}
  */
-async function exists(path) {
+function exists(path) {
         requireNotNull(path);
-        return await fs.existsSync(path);
+        return  fs.existsSync(path);
 }
 /**
  * Exports

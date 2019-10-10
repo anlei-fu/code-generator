@@ -17,7 +17,7 @@ exports.EMPTY = "";
  * @param {Any} target 
  */
 exports.requireNotNull = target => {
-        if (typeof target == UNDEFINED)
+        if (typeof target == "undefined")
                 throw " target can not be null!";
 }
 /**
