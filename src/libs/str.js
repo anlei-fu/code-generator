@@ -123,9 +123,8 @@ function remove(input, array) {
  * @returns {String} 
  */
 function removeWithMatch(input, left, right) {
-        var selects = select1(input, left, right);
 
-        selects.forEach(x => {
+        select1(input, left, right).forEach(x => {
                 input = input.replace(new RegExp(x, "g"), EMPTY);
         });
 

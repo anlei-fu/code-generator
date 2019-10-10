@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:28:55
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-30 16:16:30
+ * @LastEditTime: 2019-10-10 09:35:33
  */
 var { UNDEFINED, requireNotNull } = require("./../libs/utils");
 /**
@@ -61,7 +61,7 @@ exports.Package = class Package extends DbObject {
 /**
  * Class of join relation
  */
-class Join {
+exports.Join = class Join {
         constructor(another, condition) {
                 this.another = another;
                 this.condition = condition;
@@ -70,7 +70,7 @@ class Join {
 /**
  *  Class of mapping columns
  */
-class MappingColumn {
+exports.MappingColumn = class MappingColumn {
         constructor(table, column) {
                 this.table = table;
                 this.column = column;
@@ -277,7 +277,7 @@ exports.Column = class Column extends DbObject {
 /**
  * Class of sequence
  */
-class Sequence extends DbObject {
+exports.Sequence = class Sequence extends DbObject {
         constructor(name, description) {
                 super(name, description);
         }
@@ -288,16 +288,16 @@ class Sequence extends DbObject {
 /**
  * 
  */
-class Parameter extends DbObject {
+exports.Parameter = class Parameter extends DbObject {
         constructor(name, description) {
                 super(name, description);
-                this.direction;
-                this.type;
+                this.type="";
+                this.isOut=false;
                 this.defaultValue;
         }
 }
 /**
- * Class of procedure
+ * Class of procedurea
  */
 exports.Procedure = class Procedure extends DbObject {
         constructor(name, description) {
@@ -316,7 +316,7 @@ exports.Procedure = class Procedure extends DbObject {
 
         }
 }
-exports.Function = class Function extends Procedure {
+exports.Function = class Function extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 this.parameters = {};
@@ -329,7 +329,7 @@ class Job {
 /**
  * Class of sql constraint
  */
-exports.Constraints = class Constraint {
+exports.Constraints = class Constraint extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 /**
@@ -357,23 +357,23 @@ exports.Index = class Index {
 }
 
 exports.SqlValue = class SqlValue {
-        constructor() {
+        constructor(type,value) {
                 /**
                  * @member {SqlType}
                  * @required
                  */
-                this.type;
+                this.type=type;
                 /**
                  * @member {Any}
                  * @required
                  */
-                this.value;
+                this.value=value;
         }
 }
 /**
  * Class of sql constant
  */
-class SqlConstant extends DbObject {
+exports.SqlConstant=class SqlConstant extends DbObject {
         constructor(name, description) {
                 super(name, description);
                 /**
