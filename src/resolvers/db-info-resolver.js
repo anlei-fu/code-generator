@@ -36,6 +36,7 @@ function parse() {
         //it has no bussiness with the position compare to current element
         let db_els = $("div.main_table").next();
 
+        console.log(db_els.length);
         for (let i = 0; i < names_els.length; i++) {
                 let name = $(names_els[i]).text();
                 dbs[name] = parseDb($, db_els[i])
@@ -97,7 +98,6 @@ function parsePackage(html) {
         let pkg = {};
         let $ = cheerio.load(html);
         let pres = $("pre.decl_text");
-        //  console.log(html);
         for (let i = 0; i < pres.length; i++) {
 
                 let text = $(pres[i]).text().trim().replace("=", "= ");
@@ -126,11 +126,9 @@ function parseTable(html) {
                 tab = new Table(NamingStrategy.toCamel(name), "");
 
         let samples = $(".simple_table");
-        console.log("begin column...");
         tab.columns = parseColumns($, samples[0]);
 
         if (samples.length > 1) {
-                console.log("begin constraints...");
                 tab.constraints = parseConstraints($, samples[1]);
                 // set column's ispk by iterate constraint
                 for (let constraint in tab.constraints) {
@@ -146,7 +144,6 @@ function parseTable(html) {
 
 
         if (samples.length > 2) {
-                console.log("begin indexes...");
                 tab.indexes = parseIndex($, samples[2]);
         }
 
@@ -283,7 +280,6 @@ function parseParameter(text) {
                         try{
                         para.type = SqlType.parse(words[1]);
                         } catch(e){
-                                console.log(text);
                                 throw e;
                         }
                 }
@@ -312,7 +308,6 @@ function parseProcedure(html) {
                 try {
                 name = text.split(" ")[1].trim();
                 }catch (e){
-                        console.log(html);
                         return {};
                 }
         } else {
@@ -370,12 +365,14 @@ function main() {
 
         DIR.create("output");
         for (let db in dbs) {
-                console.log(db);
                 DIR.create("output/" +db);
                 DIR.create("output/" + db + "/pkgs");
                 for (let pk in dbs[db].packages) {
+                        try{
                         FILE.write(`output/${db}/pkgs/${pk}.json`, 
                                    JSON.stringify(dbs[db].packages[pk],null, '\t'));
+                        } catch {
+                        }
                 }
                 DIR.create("output/" + db + "/tabs");
                 for (let tb in dbs[db].tables) {

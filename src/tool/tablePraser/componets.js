@@ -20,27 +20,49 @@ const TIMERANGETITLE="";
  * @param {String} text     text property name
  * @param {String?} def   default item
  */
-function  select(name,id,service,value,text,def){
+exports.select=(name,id,service,value,text,def)=>{
         requireNotNull(name);
         requireNotNull(id);
         requireNotNull(service),
         requireNotNull(value),
         requireNotNull(text),
         def= def|| PLZSELECT;
-  return FILE.read("../componets/select.cshtml")
+
+  let view= FILE.read("../componets/select.cshtml")
              .replace(/@Name/g,name)
              .replace(/@Id/g,id)
              .replace(/@Service/g,service)
              .replace(/@Value/g,value)
              .replace(/@Default/g,def);
 
+             return { view};
+
 }
 /**
  * 
  * @param {String?} name  title
  */
-function tiemRange(name) {
+exports.tiemRange=(name)=> {
         name = name||TIMERANGETITLE;
- return FILE.read("../componets/timeRange.cshtml")
-            .replace(/@Name/g,name)
+ let view= FILE.read("../componets/timeRange.cshtml")
+            .replace(/@Name/g,name);
+            return {view};
+}
+
+
+exports.mutipleOptions=(id,...items)=>{
+        
+}
+exports.mutipleRadios=(id,...items)=>{
+
+}
+exports.associatedSelects=()=>{
+
+}
+
+
+function renderMutipleSelect(id,...items){
+        let temp=
+``;
+
 }

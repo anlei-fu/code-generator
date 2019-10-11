@@ -5256,6 +5256,7 @@ begin
     v_out_msg := '±ä¶¯½ğ¶îÎªÁã';
     return true;
   end if;
+
   -- ¼ì²éÊÇ·ñ´æÔÚ
   select count(1)
     into l_count
@@ -5263,22 +5264,26 @@ begin
    where t.order_no = v_order_no
      and t.bind_id = v_bind_id
      and t.change_type = v_change_type;
+
   if (l_count >= 1) then
     v_out_msg := '±ä¶¯¼ÇÂ¼ÒÑ´æÔÚ';
     return false;
   end if;
+
   -- ²ÎÊı×ª»¯
   if (v_change_type = change_type.deduct) then
     l_change_money := abs(v_change_money) * -1;
   else
     l_change_money := abs(v_change_money);
   end if;
+
   -- »ñÈ¡Óà¶î
   select t.balance
     into l_balance
     from dm_up_channel t
    where t.channel_no = v_channel_no
      for update;
+
   -- Ìí¼ÓÊı¾İ
   insert into dm_up_fund_change
     (record_id,
@@ -5335,11 +5340,13 @@ create or replace function dm_system.f_delivery_succeed(v_bind_id     varchar2,
   l_term_price number;
 
 begin
+
   -- »ñÈ¡²ÎÊı
   select t.deduct_mode, t.term_no, t.pay_price
     into l_term_mode, l_term_no, l_term_price
     from dm_term_product t
    where t.product_no = v_term_prd_no;
+
   -- ¸üĞÂ°ó¶¨
   update dm_order_bind t
      set t.bind_status          = deal_status.succeed,
@@ -5347,6 +5354,7 @@ begin
          t.finish_time          = sysdate,
          t.delivery_finish_time = sysdate
    where t.bind_id = v_bind_id;
+
   -- ¸üĞÂ¶©µ¥
   update dm_order_main t
      set t.order_status  = deal_status.succeed,
@@ -5356,16 +5364,19 @@ begin
          t.error_desc    = v_order_desc, -- ÏÔÊ¾¸øÏÂÓÎµÄ½á¹ûÏûÏ¢±£³Ö²»±ä
          t.finish_time   = sysdate
    where t.order_no = v_order_no;
+
   -- ¹Ø±Õ²éÑ¯
   update dm_order_query t
      set t.status      = deal_status.noneed,
          t.finish_time = sysdate,
          t.result_msg  = '×Ô¶¯¹Ø±Õ:·¢»õ³É¹¦'
    where t.bind_id = v_bind_id;
+
   -- ´´½¨Í¨Öª
   if (not f_order_notify_add(v_order_no, notify_type.order_state, v_out_msg)) then
     return false;
   end if;
+
   -- Ôö¼Ó×Ê½ğ±ä¶¯
   if (not f_up_fund_change_add(v_up_chnnl_no,
                                v_order_no,
@@ -5377,6 +5388,7 @@ begin
                                v_out_msg)) then
     return false;
   end if;
+
   if (l_term_mode = deduct_mode.later) then
     if (not f_term_fund_change_add(l_term_no,
                                    v_order_no,
@@ -5388,8 +5400,10 @@ begin
       return false;
     end if;
   end if;
+
   v_out_msg := '²Ù×÷³É¹¦';
   return true;
+
 exception
   when others then
     v_out_msg := sqlerrm;
@@ -5414,11 +5428,13 @@ create or replace function dm_system.f_num_section_get(v_phone_no     in varchar
   
 begin
   begin
+   
     select t.carrier_no, t.province_no, t.city_no
       into v_out_carrier, v_out_province, v_out_city
       from dm_system_num_section t
      where t.section = substr(v_phone_no, 1, 7)
        and t.enable = enable_status.enabled;
+
   exception
     when others then
       v_out_msg := 'ºÅ¶Î²»Ö§³Ö»òÎ´ÆôÓÃ';
@@ -5561,18 +5577,21 @@ begin
     v_out_msg := '±ä¶¯¼ÇÂ¼ÒÑ´æÔÚ';
     return false;
   end if;
+  
   -- ²ÎÊı×ª»¯
   if (v_change_type in (change_type.income, change_type.refund)) then
     l_change_money := abs(v_change_money);
   else
     l_change_money := abs(v_change_money) * -1;
   end if;
+
   -- »ñÈ¡Óà¶î
   select t.balance
     into l_balance
     from dm_pay_account t
    where t.account_id = v_account_id
      for update nowait;
+
   -- Ìí¼ÓÊı¾İ
   insert into dm_pay_fund_change
     (record_id,
@@ -5620,11 +5639,13 @@ create or replace function dm_system.f_pay_result_failed(v_order_no varchar2,
   l_err_desc varchar2(128);
 
 begin
+
   -- »ñÈ¡²ÎÊı
   select t.order_code, t.order_desc
     into l_err_code, l_err_desc
     from dm_system_deal_code t
    where t.error_code = error_code.failed;
+  
   -- ¸üĞÂ¶©µ¥
   update dm_order_main t
      set t.pay_status    = deal_status.failed,
@@ -5635,6 +5656,7 @@ begin
          t.error_desc    = nvl(l_err_desc, t.error_desc),
          t.pay_finish_time = sysdate
    where t.order_no = v_order_no;
+
   v_out_msg := '²Ù×÷³É¹¦';
   return true;
 end;
@@ -5659,11 +5681,13 @@ create or replace function dm_system.f_pay_result_succeed(v_order_no    varchar2
   l_err_desc varchar2(128);
 
 begin
+
   -- »ñÈ¡²ÎÊı
   select t.order_code, t.order_desc
     into l_err_code, l_err_desc
     from dm_system_deal_code t
    where t.error_code = error_code.success;
+
   -- Ö§¸¶ÕËºÅ×Ê½ğ±ä¶¯
   if (not (f_pay_fund_change_add(v_term_no,
                                  v_order_no,
@@ -5677,6 +5701,7 @@ begin
     rollback;
     return false;
   end if;
+
   -- µÈ´ı°ó¶¨
   update dm_order_main t
      set t.pay_status    = deal_status.succeed,
@@ -5686,6 +5711,7 @@ begin
          t.cost_price    = v_suc_money + v_service_fee,
          t.pay_finish_time = sysdate
    where t.order_no = v_order_no;
+
   v_out_msg := '²Ù×÷³É¹¦';
   return true;
 end;
@@ -5931,6 +5957,7 @@ begin
              and t.status = enable_status.enabled
            order by t.priority desc) a
    where rownum <= 1;
+
   if (l_rule_days is not null) then
     select count(1)
       into l_count
@@ -5941,10 +5968,12 @@ begin
        and t1.create_time > sysdate - l_rule_days
        and t2.card_user_id = v_card_no
        and t1.order_status <> deal_status.failed;
+
     if (l_count > l_rule_count) then
       v_out_msg := 'Éí·İÖ¤³¬¹ıÏŞÖÆ';
       return false;
     end if;
+
   end if;
 
   v_out_msg := '²Ù×÷³É¹¦';
@@ -6027,7 +6056,9 @@ begin
         return false;
       end if;
     end if;
+
   end loop;
+
   v_out_msg := '²Ù×÷³É¹¦';
   return true;
 end;
@@ -6213,11 +6244,13 @@ begin
               from dm_order_bind t
              where t.bind_status = deal_status.waiting
                and t.close_time <= sysdate) loop
+    
     update dm_order_bind t
        set t.bind_status = deal_status.failed,
            t.result_msg  = '³¤Ê±¼äÎ´·¢»õ',
            t.finish_time = sysdate
      where t.bind_id = r.bind_id;
+
     update dm_order_main t
        set t.order_status = deal_status.failed,
            t.result_msg   = '³¤Ê±¼äÎ´·¢»õ',
@@ -6226,13 +6259,16 @@ begin
            t.finish_time  = sysdate
      where t.order_no = t.order_no
        and t.order_status = deal_status.processing;
+
     commit;
   end loop;
+
   -- ¹Ø±Õ¶©µ¥
   for r in (select t.order_no
               from dm_order_main t
              where t.order_status = deal_status.waiting
                and t.close_time <= sysdate) loop
+
     if (f_bind_faild(r.order_no, '³¤Ê±¼äÎ´°ó¶¨', l_ret_msg)) then
       commit;
     else
@@ -6269,6 +6305,8 @@ begin
     update dm_order_main t set t.manual_status = deal_status.waiting where t.order_no = r.order_no;
     commit;
   end loop;
+
+
 exception
   when others then
     rollback;
@@ -6298,12 +6336,14 @@ create or replace procedure dm_system.sp_query_create(v_bind_id  in varchar2, --
   l_service_code  varchar2(64);
 
 begin
+
   -- ¼ì²é²ÎÊı
   if (v_bind_id is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- »ñÈ¡ÉÏÓÎÇşµÀ
   begin
     select t.order_no, t.up_channel_no, t.business_type
@@ -6312,6 +6352,7 @@ begin
      where t.bind_id = v_bind_id
        and t.bind_status = deal_status.processing
        for update nowait;
+
   exception
     when others then
       rollback;
@@ -6319,28 +6360,33 @@ begin
       v_out_msg  := '¼ÇÂ¼²»´æÔÚ';
       return;
   end;
+
   -- ¼ì²éÊÇ·ñÖ§³Ö²éÑ¯
   select t.support_query, t.query_delay, t.query_max_times
     into l_support_query, l_query_delay, l_query_max
     from dm_up_channel t
    where t.channel_no = l_channel_no;
+
   if (l_support_query <> enable_status.enabled) then
     rollback;
     v_out_code := error_code.failed;
     v_out_msg  := 'ÇşµÀ²»Ö§³Ö²éÑ¯';
     return;
   end if;
+
   -- ¼ì²é²éÑ¯¼ÇÂ¼
   select count(1)
     into l_count
     from dm_order_query t
    where t.bind_id = v_bind_id;
+
   if (l_count > 0) then
     rollback;
     v_out_code := error_code.failed;
     v_out_msg  := '²éÑ¯ÒÑ´´½¨';
     return;
   end if;
+
   -- »ñÈ¡²éÑ¯ÅäÖÃ
   select t.script_id, t.service_code
     into l_script_id, l_service_code
@@ -6350,6 +6396,7 @@ begin
          t.business_type = business_type.all_type)
      and t.script_type = script_type.order_query
      and t.status = enable_status.enabled;
+
   -- ´´½¨¼ÇÂ¼
   insert into dm_order_query
     (bind_id, order_no, script_id, service_code, next_time, max_times)
@@ -6361,6 +6408,7 @@ begin
      sysdate + l_query_delay / 24 / 60 / 60,
      l_query_max);
   commit;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
 
@@ -6440,6 +6488,7 @@ begin
      where t.backup_name = v_backup_name
        and t.next_exec <= sysdate
        for update nowait;
+
   exception
     when others then
       rollback;
@@ -6447,12 +6496,14 @@ begin
       v_out_msg  := 'ºó²¹Ê±¼äÎ´µ½';
       return;
   end;
+
   if (l_status <> enable_status.enabled) then
     rollback;
     v_out_code := error_code.failed;
     v_out_msg  := 'ºó²¹Î´ÆôÓÃ';
     return;
   end if;
+
   -- ·ÖÀàÉ¨Ãèºó²¹
   if (l_backup_name = 'bind') then
     v_out_code := f_backup_bind(l_next_intvl,
@@ -6463,6 +6514,7 @@ begin
   else
     raise_application_error(-1, 'ºó²¹²»´æÔÚ:' || l_backup_name);
   end if;
+
   -- ¸üĞÂ×´Ì¬
   update dm_backup_config t
      set t.last_exec = sysdate,
@@ -6544,12 +6596,14 @@ begin
    where t.order_no = v_order_no
      and t.order_status = deal_status.waiting
      for update nowait;
+
   if (l_bind_times > 5) then
     rollback;
     v_out_code := error_code.failed;
     v_out_msg  := '°ó¶¨´ÎÊı´ïÏŞ';
     return;
   end if;
+
   -- °ó¶¨ÉÏÓÎ²úÆ·
   if (not f_bind_up_product(l_term_prd_no,
                             l_busi_type,
@@ -6569,11 +6623,13 @@ begin
     v_out_msg  := l_fn_msg;
     return;
   end if;
+
   -- »ñÈ¡²ÎÊı
   select t.pay_price
     into l_term_price
     from dm_term_product t
    where t.product_no = l_term_prd_no;
+
   if (l_need_delivery = enable_status.enabled) then
     begin
       select t.script_id, t.script_path, t.service_code
@@ -6602,6 +6658,7 @@ begin
         return;
     end;
   end if;
+
   -- ´´½¨¼ÇÂ¼
   l_bind_id := f_bind_id_create();
   insert into dm_order_bind
@@ -6648,6 +6705,7 @@ begin
      l_script_id,
      l_service_code,
      l_picture_mode);
+
   update dm_order_main t
      set t.order_status  = deal_status.processing,
          t.manual_status = case
@@ -6658,6 +6716,7 @@ begin
                            end,
          t.bind_times    = nvl(t.bind_times, 0) + 1
    where t.order_no = v_order_no;
+  
   -- ¹¹ÔìJSON
   if (l_need_delivery = enable_status.enabled) then
     l_temp     := f_json_add(l_temp, 'que_name', l_service_code);
@@ -6665,6 +6724,7 @@ begin
     l_temp     := f_json_add(l_temp, 'script_path', l_script_path);
     v_out_json := '{' || l_temp || '}';
   end if;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
@@ -6701,7 +6761,9 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+ 
   l_oper_bat_no := seq_operate_batch_no.nextval;
+ 
   -- ±£´æ²Ù×÷ÈÕÖ¾
   insert into dm_operate_log
     (record_id, user_id, batch_no, operate_log)
@@ -6710,6 +6772,7 @@ begin
      v_user_id,
      l_oper_bat_no,
      substr(v_operate_log, 1, 256));
+ 
   -- ±£´æÁ÷Ë®ºÅ
   for r in (select *
               from table(f_string_split(v_serial_nos, '|'))) loop
@@ -6719,9 +6782,12 @@ begin
     values
       (seq_operate_detail_id.nextval, l_oper_bat_no, r.column_value);
   end loop;
+
   commit;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
+
 exception
   when others then
     rollback;
@@ -6783,6 +6849,7 @@ begin
    where t.bind_id = v_bind_id
      and t.bind_status <> deal_status.succeed
      for update;
+
   -- ¼ì²éÖØÊÔ´ÎÊı
   select t.bind_times
     into l_bind_times
@@ -6792,6 +6859,7 @@ begin
     l_ret_msg := 'ÖØÊÔ´ÎÊı´ïÏŞ';
     raise RETRY_FAIL;
   end if;
+
   -- »ñÈ¡ÉÏÓÎ²ÎÊı
   begin
     select t.script_id, t.script_path
@@ -6805,10 +6873,12 @@ begin
       l_ret_msg := 'ÖØÌáÕÕÆ¬½Å±¾Î´ÅäÖÃ';
       raise RETRY_FAIL;
   end;
+
   select t.need_delivery
     into l_need_delivery
     from dm_up_product t
    where t.product_no = l_up_prd_no;
+
   -- ¸üĞÂ°ó¶¨×´Ì¬
   update dm_order_bind t
      set t.bind_status          = deal_status.waiting,
@@ -6822,6 +6892,7 @@ begin
          t.next_bind_time       = null,
          t.close_time           = sysdate + 5 / 24 / 60
    where t.bind_id = v_bind_id;
+
   -- ¸üĞÂ¶©µ¥×´Ì¬
   update dm_order_main t
      set t.order_status = deal_status.processing,
@@ -6838,9 +6909,11 @@ begin
                      to_char(l_delivery_time, 'yyyy-mm-dd hh24:mi:ss'),
                      l_ret_code,
                      l_ret_msg);
+
   if (l_ret_code <> error_code.success) then
     raise RETRY_FAIL;
   end if;
+
   -- ¹¹ÔìJSON
   if (l_need_delivery = enable_status.enabled) then
     l_temp     := f_json_add(l_temp, 'que_name', l_service_code);
@@ -6848,11 +6921,13 @@ begin
     l_temp     := f_json_add(l_temp, 'script_path', l_script_path);
     v_out_json := '{' || l_temp || '}';
   end if;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
 
 exception
+  
   when RETRY_FAIL then
     rollback;
     update dm_order_main t
@@ -6861,14 +6936,17 @@ exception
            t.result_msg   = l_ret_msg,
            t.finish_time  = sysdate
      where t.order_no = l_order_no;
+
     update dm_order_bind t
        set t.bind_status = deal_status.failed,
            t.result_msg  = 'B|' || l_ret_msg,
            t.finish_time = sysdate
      where t.bind_id = v_bind_id;
+
     v_out_code := error_code.failed;
     v_out_msg  := l_ret_msg;
     commit;
+
   when others then
     rollback;
     v_out_code := error_code.except;
@@ -6911,6 +6989,7 @@ create or replace procedure dm_system.sp_bind_retry2(v_bind_id  varchar2, -- °ó¶
   RETRY_FAIL exception;
 
 begin
+
   -- ×¼±¸²ÎÊı
   select t.order_no,
          t.up_channel_no,
@@ -6935,26 +7014,31 @@ begin
     from dm_order_bind t
    where t.bind_id = v_bind_id
      for update;
+
   if (l_bind_status <> deal_status.failed) then
     rollback;
     v_out_code := error_code.failed;
     v_out_msg  := '²»ÔÊĞíÖØÌá';
     return;
   end if;
+
   -- ¼ì²éÖØÊÔ´ÎÊı
   select t.bind_times
     into l_bind_times
     from dm_order_main t
    where t.order_no = l_order_no;
+
   if (l_bind_times >= l_bind_max) then
     l_ret_msg := 'ÖØÊÔ´ÎÊı´ïÏŞ';
     raise RETRY_FAIL;
   end if;
+  
   -- »ñÈ¡½Å±¾
   select t.script_path
     into l_script_path
     from dm_up_script t
    where t.script_id = l_script_id;
+
   -- ´´½¨°ó¶¨¼ÇÂ¼
   l_bind_id := f_bind_id_create();
   insert into dm_order_bind
@@ -6974,6 +7058,7 @@ begin
      script_id,
      service_code,
      picture_mode)
+   
     select l_bind_id,
            t.order_no,
            t.term_no,
@@ -6992,6 +7077,7 @@ begin
            l_picture_mode
       from dm_order_bind t
      where t.bind_id = v_bind_id;
+
   -- ¸üĞÂ¶©µ¥×´Ì¬
   update dm_order_main t
      set t.order_status = deal_status.processing,
@@ -7001,6 +7087,7 @@ begin
          t.finish_time  = null,
          t.bind_times   = t.bind_times + 1
    where t.order_no = l_order_no;
+
   -- ¹¹ÔìJSON
   select t.need_delivery
     into l_need_delivery
@@ -7012,6 +7099,7 @@ begin
     l_temp     := f_json_add(l_temp, 'script_path', l_script_path);
     v_out_json := '{' || l_temp || '}';
   end if;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
@@ -7025,14 +7113,17 @@ exception
            t.result_msg   = l_ret_msg,
            t.finish_time  = sysdate
      where t.order_no = l_order_no;
+
     update dm_order_bind t
        set t.bind_status = deal_status.failed,
            t.result_msg  = 'B|' || l_ret_msg,
            t.finish_time = sysdate
      where t.bind_id = v_bind_id;
+
     v_out_code := error_code.failed;
     v_out_msg  := l_ret_msg;
     commit;
+
   when others then
     rollback;
     v_out_code := error_code.except;
@@ -7069,6 +7160,7 @@ create or replace procedure dm_system.sp_card_detail_get(v_task_id   in number,
   l_script_path    varchar2(128) := '../script/temp/term_order_add.lua';
 
 begin
+
   -- É¨Ãè¼ÇÂ¼
   for r in (select t.record_id
               from tmp_term_card_detail t
@@ -7076,6 +7168,7 @@ begin
                and t.create_time < sysdate
                and t.task_id = v_task_id
                and rownum <= l_max_count) loop
+
     -- ÖØÖÃ±äÁ¿
     l_record_id      := null;
     l_task_id        := null;
@@ -7085,8 +7178,10 @@ begin
     l_card_user_id   := null;
     l_card_user_name := null;
     l_card_user_zip  := null;
-    -- ËøÊı¾İ
+    
     begin
+
+   -- ËøÊı¾İ
       select t.record_id,
              t.task_id,
              t.contact_phone,
@@ -7104,6 +7199,7 @@ begin
         from tmp_term_card_detail t
        where t.record_id = r.record_id
          for update nowait;
+
     exception
       when others then
         rollback;
@@ -7119,6 +7215,7 @@ begin
     update tmp_term_card_detail t
        set t.deal_status = deal_status.processing, t.start_time = sysdate
      where t.record_id = l_record_id;
+
     -- ×éÖ¯²ÎÊı
     l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
     l_temp      := f_json_add(l_temp, 'record_id', l_record_id);
@@ -7134,9 +7231,11 @@ begin
     l_result    := l_result || ',' || '{' || l_temp || '}';
     l_get_count := l_get_count + 1;
   end loop;
+
   if (l_get_count > 0) then
     l_result := substr(l_result, 2, length(l_result));
   end if;
+
   v_out_count := l_get_count;
   v_out_json  := '[' || l_result || ']';
   commit;
@@ -7183,6 +7282,7 @@ begin
     v_out_msg  := '´¦Àí×´Ì¬´íÎó';
     return;
   end if;
+
   -- ËøÊı¾İ
   select t.record_id, t.task_id
     into l_record_id, l_task_id
@@ -7190,23 +7290,27 @@ begin
    where t.record_id = v_record_id
      and t.deal_status = deal_status.processing
      for update;
+
   select t.task_id
     into l_task_id
     from tmp_term_card_task t
    where t.task_id = l_task_id
      and t.status = deal_status.processing
      for update;
+
   if (l_record_id is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '¼ÇÂ¼²»´æÔÚ';
     return;
   end if;
+
   -- ´¦Àí´¦Àí½á¹û
   update tmp_term_card_detail t
      set t.deal_status = v_status,
          t.deal_msg    = nvl(substr(v_result_msg, 1, 128), t.deal_msg),
          t.finish_time = sysdate
    where t.record_id = l_record_id;
+
   if (v_status = deal_status.succeed) then
     update tmp_term_card_task t
        set t.succ_rows = t.succ_rows + 1
@@ -7218,17 +7322,20 @@ begin
      where t.task_id = l_task_id
        and t.status = deal_status.processing;
   end if;
+
   -- ¸üĞÂÈÎÎñ×´Ì¬
   select t.total_rows, t.succ_rows, t.fail_rows
     into l_cnt_total, l_cnt_succ, l_cnt_fail
     from tmp_term_card_task t
    where t.task_id = l_task_id;
+
   if (l_cnt_succ + l_cnt_fail >= l_cnt_total) then
     update tmp_term_card_task t
        set t.status = deal_status.succeed, t.finish_time = sysdate
      where t.task_id = l_task_id
        and t.status = deal_status.processing;
   end if;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
@@ -7274,6 +7381,7 @@ begin
   else
     l_row_cntr := nvl(v_get_count, 1);
   end if;
+
   -- É¨Ãè¼ÇÂ¼
   for r in (select t.task_id, t.card_pic_zip
               from tmp_term_card_task t
@@ -7283,6 +7391,7 @@ begin
     -- ÖØÖÃ±äÁ¿
     l_task_id       := null;
     l_card_user_zip := null;
+  
     -- ËøÊı¾İ
     begin
       select t.term_no, t.promoter_id, t.task_id, t.card_pic_zip
@@ -7290,11 +7399,13 @@ begin
         from tmp_term_card_task t
        where t.task_id = r.task_id
          for update nowait;
+
     exception
       when others then
         rollback;
         continue;
     end;
+
     -- ¸üĞÂ×´Ì¬
     update tmp_term_card_task t
        set t.status = deal_status.processing, t.start_time = sysdate
@@ -7303,6 +7414,7 @@ begin
        set t.deal_status = deal_status.processing, t.start_time = sysdate
      where t.task_id = l_task_id
        and t.deal_status = deal_status.waiting;
+
     -- ×éÖ¯½Å±¾²ÎÊı
     l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
     l_temp      := f_json_add(l_temp, 'term_no', l_term_no);
@@ -7312,9 +7424,11 @@ begin
     l_result    := l_result || ',' || '{' || l_temp || '}';
     l_get_count := l_get_count + 1;
   end loop;
+
   if (l_get_count > 0) then
     l_result := substr(l_result, 2, length(l_result));
   end if;
+
   v_out_count := l_get_count;
   v_out_json  := '[' || l_result || ']';
   commit;
@@ -7397,6 +7511,7 @@ begin
    where t.bind_id = v_bind_id
      and t.bind_status = deal_status.waiting
      for update;
+
   select t1.need_vcode,
          t2.contact_name,
          t2.contact_addr,
@@ -7418,6 +7533,7 @@ begin
       on t1.order_no = t2.order_no
    where t1.order_no = l_order_no
      and t1.order_status = deal_status.processing;
+
   -- »ñÈ¡²ÎÊı
   select t.api_id, t.api_key
     into l_api_id, l_api_key
@@ -7428,15 +7544,18 @@ begin
     into l_script_path, l_api_url
     from dm_up_script t
    where t.script_id = l_script_id;
+
   if (l_need_vcode = enable_status.enabled) then
     select max(t.vcode) into l_vcode from dm_order_vcode t where t.order_no = l_order_no;
   end if;
+
   -- ¸üĞÂ¼ÇÂ¼
   update dm_order_bind t
      set t.bind_status         = deal_status.processing,
          t.robot_ip            = v_robot_ip,
          t.delivery_start_time = sysdate
    where t.bind_id = v_bind_id;
+
   -- ¹¹ÔìJSON
   l_temp := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp := f_json_add(l_temp, 'business_type', l_busi_type);
@@ -7447,9 +7566,11 @@ begin
   l_temp := f_json_add(l_temp, 'up_channel_no', l_up_chnnl_no);
   l_temp := f_json_add(l_temp, 'up_product_no', l_up_prd_no);
   l_temp := f_json_add(l_temp, 'up_price', l_up_price);
+
   if (l_need_vcode = enable_status.enabled) then
     l_temp := f_json_add(l_temp, 'vcode', l_vcode);
   end if;
+
   if (l_card_user_id is not null) then
     l_temp := f_json_add(l_temp, 'contact_name', l_contact_name);
     l_temp := f_json_add(l_temp, 'contact_addr', l_contact_addr);
@@ -7459,6 +7580,7 @@ begin
     l_temp := f_json_add(l_temp, 'card_pic_back', l_card_pic_back);
     l_temp := f_json_add(l_temp, 'card_pic_hand', l_card_pic_hand);
   end if;
+
   l_temp     := f_json_add(l_temp, 'api_id', l_api_id);
   l_temp     := f_json_add(l_temp, 'api_key', l_api_key);
   l_temp     := f_json_add(l_temp, 'api_url', l_api_url);
@@ -7534,12 +7656,14 @@ begin
    where t.bind_id = v_bind_id
      and t.bind_status = deal_status.processing
      for update;
+
   select t.order_no, t.pay_status, t.promote_id
     into l_order_no, l_pay_status, l_promote_id
     from dm_order_main t
    where t.order_no = l_order_no
      and t.order_status = deal_status.processing
      for update;
+
   -- »ñÈ¡´¦ÀíÂë
   select t.deal_code,
          t.delay_failed,
@@ -7553,6 +7677,7 @@ begin
          l_order_desc
     from dm_system_deal_code t
    where t.error_code = v_error_code;
+
   -- ´¦Àí½á¹û
   if (l_deal_code = deal_code.succeed) then
     if (not f_delivery_succeed(l_bind_id,
@@ -7598,6 +7723,7 @@ begin
     v_out_msg  := 'Î´Öª´íÎóÂë';
     return;
   end if;
+
   commit;
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
@@ -7645,17 +7771,20 @@ create or replace procedure dm_system.sp_manual_bind_bat(v_bind_ids   in varchar
   l_deal_count number := 0; -- ÉóºËÌõÊı¼ÆÊı
 
 begin
+
   -- ¼ì²é²ÎÊı
   if (v_bind_ids is null or v_error_code is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- »ñÈ¡´¦ÀíÂë
   select t.deal_code, t.order_code, t.order_desc
     into l_deal_code, l_order_code, l_order_desc
     from dm_system_deal_code t
    where t.error_code = v_error_code;
+
   -- ÅúÁ¿´¦Àí¶©µ¥
   for r in (select * from table(f_string_split(v_bind_ids, '|'))) loop
     -- Ëø¼ÇÂ¼
@@ -7667,6 +7796,7 @@ begin
          and t.bind_status = deal_status.processing
          and t.manual_status = deal_status.waiting
          for update nowait;
+
       select t.product_no, t.pay_status
         into l_term_prd_no, l_pay_status
         from dm_order_main t
@@ -7674,11 +7804,13 @@ begin
          and t.order_status = deal_status.processing
          and t.manual_status = deal_status.waiting
          for update nowait;
+
     exception
       when others then
         rollback;
         continue;
     end;
+    
     -- ´¦Àí½á¹û
     if (l_deal_code = deal_code.succeed) then
       -- ³É¹¦
@@ -7704,6 +7836,7 @@ begin
                                         l_order_desc),
                                     l_fn_msg);
     end if;
+
     if (not (l_fn_ret)) then
       rollback;
       sp_operate_log_add(v_operator,
@@ -7713,6 +7846,7 @@ begin
                          v_out_msg);
       continue;
     end if;
+
     -- ¸üĞÂ×´Ì¬
     update dm_order_bind t
        set t.result_msg    = nvl(substr(v_result_msg, 1, 128), t.result_msg),
@@ -7724,6 +7858,7 @@ begin
                                 t.manual_status
                              end
      where t.bind_id = l_bind_id;
+
     update dm_order_main t
        set t.manual_status = case
                                when l_deal_code in
@@ -7736,10 +7871,12 @@ begin
            t.error_code    = l_order_code,
            t.error_desc    = l_order_desc
      where t.order_no = l_order_no;
+
     -- ´¦Àí¼ÆÊı+1
     l_deal_count := l_deal_count + 1;
     commit;
   end loop;
+
   if (l_deal_count > 0) then
     -- ¼ÇÂ¼²Ù×÷ÈÕÖ¾
     sp_operate_log_add(v_operator,
@@ -7753,6 +7890,7 @@ begin
                        v_out_code,
                        v_out_msg);
   end if;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦: ¹²´¦Àí' || l_deal_count || 'Ìõ';
 exception
@@ -7788,45 +7926,53 @@ create or replace procedure dm_system.sp_order_ext_update(v_order_no        varc
   l_recharge_status number;
 
 begin
+
   -- ¼ì²é²ÎÊı
   if (v_order_no is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '¶©µ¥ºÅÎª¿Õ';
     return;
   end if;
+
   if (v_new_phone_no is null and v_activate_status is null and
      v_recharge_status is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '±Ø´«×Ö¶ÎÎª¿Õ';
     return;
   end if;
+
   if (v_activate_status not in
      (enable_status.enabled, enable_status.disabled)) then
     v_out_code := error_code.failed;
     v_out_msg  := '¼¤»î×´Ì¬´íÎó';
     return;
   end if;
+
   if (v_recharge_status not in
      (enable_status.enabled, enable_status.disabled)) then
     v_out_code := error_code.failed;
     v_out_msg  := 'Ê×³ä×´Ì¬´íÎó';
     return;
   end if;
+
   -- »ñÈ¡²ÎÊı
   select count(1)
     into l_count
     from dm_order_main_ext t
    where t.order_no = v_order_no;
+
   if (l_count <= 0) then
     v_out_code := error_code.failed;
     v_out_msg  := '¶©µ¥²»´æÔÚ';
     return;
   end if;
+
   select t.activate_status, t.recharge_status
     into l_activate_status, l_recharge_status
     from dm_order_main_ext t
    where t.order_no = v_order_no;
   -- ¸üĞÂ½á¹û
+
   update dm_order_main_ext t
      set t.new_phone_no    = nvl(substr(v_new_phone_no, 1, 16),
                                  t.new_phone_no),
@@ -7843,6 +7989,7 @@ begin
          t.express_no      = nvl(v_express_no, t.express_no),
          t.update_time     = sysdate
    where t.order_no = v_order_no;
+
   -- ´´½¨Í¨Öª
   if (l_activate_status <> enable_status.enabled and
      v_activate_status = enable_status.enabled) then
@@ -7854,6 +8001,7 @@ begin
       return;
     end if;
   end if;
+
   if (l_recharge_status <> enable_status.enabled and
      v_recharge_status = enable_status.enabled) then
     if (not f_order_notify_add(v_order_no,
@@ -7864,6 +8012,7 @@ begin
       return;
     end if;
   end if;
+
   commit;
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
@@ -7905,19 +8054,23 @@ begin
     l_order_no     := null;
     l_order_status := null;
     begin
+
       -- ¼ì²é²ÎÊı
       if (r.up_product_no is null) then
         l_deal_msg := 'ÉÏÓÎ²úÆ·±àºÅÎª¿Õ';
         raise ROW_FAILED;
       end if;
+
       if (r.order_status not in (deal_status.succeed, deal_status.failed)) then
         l_deal_msg := '¶©µ¥×´Ì¬´íÎó';
         raise ROW_FAILED;
       end if;
+
       if (r.bind_id is null and r.card_no is null and r.phone_no is null) then
         l_deal_msg := '°ó¶¨±àºÅ,Éí·İÖ¤ºÅ,ÊÖ»úºÅÈ«Îª¿Õ';
         raise ROW_FAILED;
       end if;
+
       if (r.bind_id is not null) then
         -- ÓĞ°ó¶¨±àºÅ
         select max(b.bind_id), max(b.order_no), max(m.order_status)
@@ -7949,6 +8102,7 @@ begin
           l_deal_msg := '¸ÃÉí·İÖ¤´æÔÚ¶à±Ê¶©µ¥';
           raise ROW_FAILED;
         end if;
+
         select b.bind_id, b.order_no, m.order_status
           into l_bind_id, l_order_no, l_order_status
           from dm_order_main m
@@ -8000,6 +8154,7 @@ begin
       end if;
       if (l_order_status = deal_status.processing and
          r.order_status = deal_status.failed) then
+       
         -- °ìÀíÊ§°Ü(Ê×´Î)
         sp_manual_bind_bat(l_bind_id,
                            error_code.failed,
@@ -8012,6 +8167,7 @@ begin
       if (l_ret_code <> error_code.success) then
         raise ROW_FAILED;
       end if;
+
       -- ¸üĞÂorder_ext/´´½¨Í¨Öª
       sp_order_ext_update(l_order_no,
                           r.new_phone_no,
@@ -8027,9 +8183,11 @@ begin
       if (l_ret_code <> error_code.success) then
         raise ROW_FAILED;
       end if;
+   
       update dm_order_main t
          set t.error_desc = nvl(substr(r.order_msg, 1, 128), t.error_desc)
        where t.order_no = l_order_no;
+    
       -- ¸üĞÂ¼ÇÂ¼³É¹¦
       update tmp_up_card_detail t
          set t.deal_status = deal_status.succeed,
@@ -8039,6 +8197,7 @@ begin
       commit;
     exception
       when ROW_FAILED then
+     
         -- ¸üĞÂ¼ÇÂ¼Ê§°Ü
         update tmp_up_card_detail t
            set t.deal_status = deal_status.failed,
@@ -8048,6 +8207,7 @@ begin
         commit;
       when others then
         rollback;
+     
         -- ¸üĞÂ¼ÇÂ¼Ê§°Ü
         l_deal_msg := sqlerrm;
         update tmp_up_card_detail t
@@ -8188,16 +8348,19 @@ begin
     l_temp            := null;
     -- ËøÊı¾İ
     begin
+    
       select t.record_id, t.order_no, t.script_id, t.notify_type
         into l_record_id, l_order_no, l_script_id, l_notify_type
         from dm_order_notify t
        where t.record_id = r.record_id
          for update nowait;
+
     exception
       when others then
         rollback;
         continue;
     end;
+    
     -- »ñÈ¡²ÎÊı
     select t1.phone_no,
            t1.order_status,
@@ -8225,10 +8388,12 @@ begin
       left join dm_order_main_ext t2
         on t1.order_no = t2.order_no
      where t1.order_no = l_order_no;
+
     select t.script_path, t.notify_url
       into l_script_path, l_notify_url
       from dm_term_script t
      where t.record_id = l_script_id;
+
     -- ¸üĞÂ×´Ì¬
     update dm_order_notify t
        set t.status       = deal_status.processing,
@@ -8237,6 +8402,7 @@ begin
            t.next_time    = sysdate + power(2, t.notify_times + 1) / 24 / 60, -- Í¨ÖªÊ±¼ä°´2µÄÖ¸ÊıÔö¼Ó
            t.notify_times = t.notify_times + 1
      where t.record_id = l_record_id;
+
     -- ×éÖ¯½Å±¾²ÎÊı
     l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
     l_temp      := f_json_add(l_temp, 'notify_id', l_record_id);
@@ -8256,9 +8422,11 @@ begin
     l_result    := l_result || ',' || '{' || l_temp || '}';
     l_get_count := l_get_count + 1;
   end loop;
+
   if (l_get_count > 0) then
     l_result := substr(l_result, 2, length(l_result));
   end if;
+
   v_out_count := l_get_count;
   v_out_json  := '[' || l_result || ']';
   commit;
@@ -8290,22 +8458,26 @@ create or replace procedure dm_system.sp_notify_save(v_notify_id  in varchar2, -
   l_notify_max   number;
 
 begin
+
   -- ²ÎÊı¼ì²é
   if (v_notify_id is null) then
     v_out_code := error_code.failed;
     v_out_msg  := 'Í¨Öª±àºÅÎª¿Õ';
     return;
   end if;
+
   if (v_status not in (deal_status.succeed, deal_status.failed)) then
     v_out_code := error_code.failed;
     v_out_msg  := '×´Ì¬´íÎó';
     return;
   end if;
+
   -- ¸üĞÂÏûÏ¢
   update dm_order_notify t
      set t.result_msg = nvl(substr(v_result_msg, 1, 256), t.result_msg)
    where t.record_id = v_notify_id;
   commit;
+ 
   -- Ëø¶©µ¥
   select t.record_id
     into l_record_id
@@ -8313,6 +8485,7 @@ begin
    where t.record_id = v_notify_id
      and t.status = deal_status.processing
      for update;
+
   if (v_status = deal_status.succeed) then
     -- Í¨Öª³É¹¦
     update dm_order_notify t
@@ -8334,6 +8507,7 @@ begin
        where t.record_id = l_record_id;
     end if;
   end if;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
@@ -8402,6 +8576,7 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- »ñÈ¡ºÅ¶Î
   if (not f_num_section_get(v_phone_no,
                             v_out_msg,
@@ -8411,6 +8586,7 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- ²éÑ¯²úÆ·
   begin
     select t.business_type,
@@ -8439,11 +8615,13 @@ begin
       v_out_msg  := '²úÆ·²»´æÔÚ»òÎ´ÆôÓÃ';
       return;
   end;
+
   if (l_need_vcode = enable_status.enabled) then
     v_out_code := error_code.failed;
     v_out_msg  := '²»Ö§³ÖÑéÖ¤Âë²úÆ·';
     return;
   end if;
+
   -- ¼ì²éÖÕ¶ËÍÆ¹ãÈË
   if (not f_check_term_promote(l_term_no,
                                v_promote_guid,
@@ -8454,6 +8632,7 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   /*-- 30ÌìÄÚÍ¬Ò»IPÏŞÖÆ3±Ê
   select count(1)
     into l_count
@@ -8516,11 +8695,13 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- ¹Ø±ÕÎ´°ìÀí¶©µ¥
   select t.order_code, t.order_desc
     into l_err_code, l_err_desc
     from dm_system_deal_code t
    where t.error_code = error_code.failed;
+
   update dm_order_main t
      set t.order_status = deal_status.failed,
          t.result_msg   = '¶©µ¥¹Ø±Õ(Î´Ö§¸¶)',
@@ -8531,6 +8712,7 @@ begin
          (select u.order_no
             from dm_order_main_ext u
            where u.card_user_id = v_card_user_id);
+  
   -- ±£´æ¶©µ¥
   l_order_no := f_order_no_create();
   insert into dm_order_main
@@ -8577,6 +8759,7 @@ begin
             deal_status.noneed,
             deal_status.waiting),
      v_server_ip);
+  
   -- ±£´æÀ©Õ¹ĞÅÏ¢
   if (v_card_user_name is not null or v_card_user_id is not null or
      v_contact_name is not null or v_contact_addr is not null or
@@ -8585,6 +8768,7 @@ begin
     l_contact_addr := replace(v_contact_addr, '\r', '');
     l_contact_addr := replace(l_contact_addr, '\n', '');
     l_contact_addr := replace(l_contact_addr, '\t', '');
+  
     insert into dm_order_main_ext
       (order_no,
        card_user_name,
@@ -8604,6 +8788,7 @@ begin
        trim(v_card_pic_back),
        trim(v_card_pic_hand));
   end if;
+
   -- ¹¹ÔìJSON
   l_temp     := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp     := f_json_add(l_temp, 'need_pay', l_need_pay);
@@ -8659,11 +8844,13 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- ¼ì²é¶©µ¥: ÖØÊÔÌá½»´æÈë·¢»õ¶ÓÁĞ
   if (not f_check_vcode1_order(v_order_no, v_server_ip, v_user_ip, v_out_code, v_out_msg)) then
     commit;
     return;
   end if;
+
   -- ¼ì²éÖÕ¶Ë²úÆ·
   begin
     select t.term_no,
@@ -8693,23 +8880,27 @@ begin
       v_out_msg  := '²úÆ·²»Ö§³Ö»òÎ´ÆôÓÃ';
       return;
   end;
+
   -- ¼ì²éÖÕ¶Ë
   select count(1)
     into l_count
     from dm_term_info t
    where t.term_no = l_term_no
      and t.status = enable_status.enabled;
+
   if (l_count <= 0) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÖÕ¶Ë²»Ö§³Ö»òÎ´ÆôÓÃ';
     return;
   end if;
+
   -- »ñÈ¡²ÎÊı
   select t.term_no, t.promote_id, t.promoter_id, t.label_id
     into l_term_no, l_promote_id, l_promoter_id, l_label_id
     from dm_order_vcode t
    where t.order_no = v_order_no
      and t.send_status = deal_status.succeed;
+
   -- ´´½¨¶©µ¥
   insert into dm_order_main
     (order_no,
@@ -8751,6 +8942,7 @@ begin
      enable_status.enabled,
      v_server_ip,
      v_user_ip);
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
@@ -8814,12 +9006,14 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- ¼ì²é¶©µ¥: ÖØÊÔÌá½»´æÈë·¢»õ¶ÓÁĞ
   if (not
       f_check_vcode2_order(v_order_no, v_server_ip, v_user_ip, v_out_code, v_out_msg, v_out_json)) then
     commit;
     return;
   end if;
+
   -- »ñÈ¡²ÎÊı
   select t.term_no,
          t.term_product_no,
@@ -8850,22 +9044,27 @@ begin
     from dm_order_vcode t
    where t.order_no = v_order_no
      and t.send_status = deal_status.succeed;
+
   -- ×¼±¸²ÎÊı
   select t.face_fee, t.pay_price, t.pay_price, t.cost_price, t.deduct_mode
     into l_face_fee, l_pay_price, l_term_price, l_cost_price, l_deduct_mode
     from dm_term_product t
    where t.product_no = l_term_prd_no;
+
   select t.deduct_price into l_up_prd_price from dm_up_product t where t.product_no = l_up_prd_no;
+
   select t.script_id, t.script_path, t.service_code
     into l_script_id, l_script_path, l_svc_code
     from dm_up_script t
    where t.channel_no = l_up_chnnl_no
      and t.script_type = script_type.vcode_submit;
+
   -- ¸üĞÂÑéÖ¤Âë
   update dm_order_vcode t
      set t.vcode = v_vcode, t.retry_times = t.retry_times + 1
    where t.order_no = v_order_no
      and t.send_status = deal_status.succeed;
+
   -- ´´½¨¶©µ¥
   insert into dm_order_main
     (order_no,
@@ -8907,6 +9106,7 @@ begin
      deal_status.processing,
      v_server_ip,
      enable_status.enabled);
+
   -- ´´½¨°ó¶¨
   l_bind_id := f_bind_id_create();
   insert into dm_order_bind
@@ -8945,6 +9145,7 @@ begin
      deal_status.waiting,
      deal_status.noneed,
      l_term_prd_no);
+
   /*
   -- Ìí¼ÓÖÕ¶Ë×Ê½ğ±ä¶¯
   if (l_deduct_mode = deduct_mode.early) then
@@ -9013,21 +9214,25 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- ¼ì²é¶©µ¥
   select t.bind_times
     into l_bind_times
     from dm_order_main t
    where t.order_no = v_order_no;
+
   if (l_bind_times <= 0) then
     v_out_code := error_code.failed;
     v_out_msg  := '¶©µ¥²»´æÔÚ';
     return;
   end if;
+
   if (l_bind_times >= l_bind_max) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÖØÊÔ´ÎÊı´ïÏŞ';
     return;
   end if;
+
   begin
     select t.order_no, t.product_no
       into l_order_no, l_term_prd_no
@@ -9035,6 +9240,7 @@ begin
      where t.order_no = v_order_no
        and t.order_status <> deal_status.succeed
        for update;
+
   exception
     when others then
       rollback;
@@ -9042,17 +9248,21 @@ begin
       v_out_msg  := '¶©µ¥´íÎó';
       return;
   end;
+
   -- ¼ì²é¶©µ¥À©Õ¹
   select t.need_card_pic
     into l_need_card_pic
     from dm_term_product t
    where t.product_no = l_term_prd_no;
+
   if (l_need_card_pic = enable_status.disabled) then
     rollback;
     v_out_code := error_code.failed;
     v_out_msg  := '²»Ö§³ÖÖØÌá';
     return;
+
   end if;
+ 
   -- »ñÈ¡°ó¶¨
   select picture_mode, l_bind_status
     into l_pic_mode, l_bind_status
@@ -9062,6 +9272,7 @@ begin
              and t.bind_status <> deal_status.succeed
            order by t.bind_id desc)
    where rownum <= 1;
+
   if (l_pic_mode = picture_mode.only_photo) then
     if (l_bind_status = deal_status.succeed) then
       rollback;
@@ -9077,6 +9288,7 @@ begin
       return;
     end if;
   end if;
+ 
   -- ¸üĞÂÊı¾İ
   update dm_order_main_ext t
      set t.card_pic_front = v_card_pic_front,
@@ -9084,6 +9296,7 @@ begin
          t.card_pic_hand  = v_card_pic_hand,
          t.update_time    = sysdate
    where t.order_no = l_order_no;
+ 
   update dm_order_main t
      set t.order_status   = deal_status.waiting,
          t.manual_status  = deal_status.noneed,
@@ -9098,6 +9311,7 @@ begin
          t.bind_batch_no  = null,
          t.bind_times     = t.bind_times + 1
    where t.order_no = l_order_no;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
@@ -9140,11 +9354,13 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   if (v_account_type not in (account_type.alipay, account_type.wechat)) then
     v_out_code := error_code.failed;
     v_out_msg  := 'Ö»Ö§³ÖÎ¢ĞÅÖ§¸¶±¦';
     return;
   end if;
+
   -- »ñÈ¡²ÎÊı
   begin
     select t.order_no, t.term_no, t.product_no, t.pay_price
@@ -9153,6 +9369,7 @@ begin
      where t.order_no = v_order_no
        and t.pay_status = deal_status.waiting
        for update;
+
   exception
     when others then
       rollback;
@@ -9160,10 +9377,12 @@ begin
       v_out_msg  := 'Òì³£¶©µ¥¾Ü¾ø´¦Àí';
       return;
   end;
+
   select t.product_title
     into l_product_title
     from dm_term_product t
    where t.product_no = l_product_no;
+ 
   -- »ñÈ¡ÊÕ¿îÕËºÅ
   if (not
       f_pay_account_get(l_term_no, v_account_type, v_out_msg, l_account_id)) then
@@ -9171,10 +9390,12 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- ¸üĞÂ¶©µ¥
   update dm_order_main t
      set t.account_id = l_account_id, t.pay_status = deal_status.processing
    where t.order_no = l_order_no;
+
   -- ¹¹ÔìJSON
   l_temp     := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp     := f_json_add(l_temp, 'account_id', l_account_id);
@@ -9225,6 +9446,7 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+ 
   -- ¸üĞÂÏûÏ¢
   update dm_order_main t
      set t.plat_trade_msg = nvl(substr(v_trade_msg, 1, 128),
@@ -9232,6 +9454,7 @@ begin
          t.plat_trade_no  = nvl(v_trade_no, t.plat_trade_no)
    where t.order_no = v_order_no;
   commit;
+ 
   -- »ñÈ¡²ÎÊı
   begin
     select t.term_no, t.product_no, t.account_id, t.pay_price
@@ -9247,12 +9470,14 @@ begin
       v_out_msg  := 'Òì³£¶©µ¥¾Ü¾ø´¦Àí';
       return;
   end;
+
   if (abs(l_pay_price - v_suc_money) > 0) then
     v_out_code := error_code.failed;
     v_out_msg  := '³É¹¦½ğ¶îÓëÖ§¸¶½ğ¶î²»·û';
     rollback;
     return;
   end if;
+
   -- ´¦ÀíÖ§¸¶½á¹û
   if (v_pay_status = deal_status.succeed) then
     -- Ö§¸¶³É¹¦
@@ -9312,20 +9537,24 @@ create or replace procedure dm_system.sp_query_create_tmp(v_bind_id  in varchar2
   l_service_code  varchar2(64);
 
 begin
+ 
   -- ¼ì²é²ÎÊı
   if (v_bind_id is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- »ñÈ¡ÉÏÓÎÇşµÀ
   begin
+  
     select t.order_no, t.up_channel_no, t.business_type
       into l_order_no, l_channel_no, l_busi_type
       from dm_order_bind t
      where t.bind_id = v_bind_id
        and t.bind_status = deal_status.processing
        for update nowait;
+
   exception
     when others then
       rollback;
@@ -9333,6 +9562,7 @@ begin
       v_out_msg  := '¼ÇÂ¼²»´æÔÚ';
       return;
   end;
+  
   -- !!! ºÅ¿¨²»ÄÜ´´½¨²éÑ¯
   if (l_busi_type = business_type.tel_card) then
     v_out_code := error_code.failed;
@@ -9348,6 +9578,7 @@ begin
     v_out_msg  := '²éÑ¯ÒÑ´´½¨';
     return;
   end if;
+
   -- »ñÈ¡²éÑ¯ÅäÖÃ
   select t.script_id, t.service_code
     into l_script_id, l_service_code
@@ -9409,11 +9640,13 @@ create or replace procedure dm_system.sp_query_get_bat(v_robot_ip   varchar2, --
   l_get_count number := 0;
 
 begin
+ 
   if (v_get_count > l_max_cntr) then
     l_row_cntr := l_max_cntr;
   else
     l_row_cntr := nvl(v_get_count, 1);
   end if;
+
   -- É¨Ãè¼ÇÂ¼
   for r in (select t.bind_id
               from dm_order_query t
@@ -9500,9 +9733,11 @@ begin
     l_result    := l_result || ',' || '{' || l_temp || '}';
     l_get_count := l_get_count + 1;
   end loop;
+
   if (l_get_count > 0) then
     l_result := substr(l_result, 2, length(l_result));
   end if;
+
   v_out_count := l_get_count;
   v_out_json  := '[' || l_result || ']';
   commit;
@@ -9536,6 +9771,7 @@ create or replace procedure dm_system.sp_query_save(v_bind_id    in varchar2, --
 begin
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
+  
   -- Ëø¼ÇÂ¼
   select t.script_id, t.query_times, t.max_times, t.order_no
     into l_script_id, l_query_times, l_query_max, l_order_no
@@ -9543,12 +9779,15 @@ begin
    where t.bind_id = v_bind_id
      and t.status = deal_status.processing
      for update;
+ 
   update dm_order_bind t
      set t.result_msg = nvl(substr(v_result_msg, 1, 128), t.result_msg)
    where t.bind_id = v_bind_id;
+
   update dm_order_main t
      set t.result_msg = nvl(substr(v_result_msg, 1, 128), t.result_msg)
    where t.order_no = l_order_no;
+
   -- ³É¹¦¹Ø±Õ²éÑ¯
   if (v_status = deal_status.succeed) then
     update dm_order_query t
@@ -9559,6 +9798,7 @@ begin
     commit;
     return;
   end if;
+ 
   -- Ê§°Ü³¬ÏŞ¹Ø±Õ²éÑ¯
   if (l_query_max <> 0 and l_query_times >= l_query_max) then
     update dm_order_query t
@@ -9569,6 +9809,7 @@ begin
     commit;
     return;
   end if;
+ 
   -- ¿ÉÖØÊÔ
   select t1.query_interval
     into l_query_interval
@@ -9627,11 +9868,13 @@ create or replace procedure dm_system.sp_refund_get_bat(v_robot_ip   varchar2, -
   l_get_count number default 0;
 
 begin
+ 
   if (v_get_count > l_max_cntr) then
     l_row_cntr := l_max_cntr;
   else
     l_row_cntr := v_get_count;
   end if;
+
   -- É¨Ãè¼ÇÂ¼
   for r in (select t.record_id
               from dm_order_refund t
@@ -9651,6 +9894,7 @@ begin
       l_script_path   := null;
       l_request_url   := null;
       begin
+   
         -- Ëø¼ÇÂ¼
         select t.record_id,
                t.account_id,
@@ -9668,16 +9912,19 @@ begin
          where t.record_id = r.record_id
            and t.status = deal_status.waiting
            for update nowait;
+
       exception
         when others then
           continue;
       end;
+   
       -- Ö§¸¶ÕËºÅ
       select t.account_type, t.app_id, t.merchant_id, t.refund_notify_url
         into l_account_type, l_app_id, l_merchant_id, l_notify_url
         from dm_pay_account t
        where t.account_id = l_account_id
          and t.status = enable_status.enabled;
+   
       -- ÍË¿î½Å±¾
       select t.request_url, t.script_path
         into l_request_url, l_script_path
@@ -9685,12 +9932,14 @@ begin
        where t.account_type = l_account_type
          and t.script_type = script_type.refund_apply
          and t.status = enable_status.enabled;
+ 
       -- ¸üĞÂÍË¿î¼ÇÂ¼
       update dm_order_refund t
          set t.robot_ip   = v_robot_ip,
              t.status     = deal_status.processing,
              t.start_time = sysdate
        where t.record_id = l_record_id;
+   
       -- ×éÖ¯½Å±¾²ÎÊı
       l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
       l_temp      := f_json_add(l_temp, 'record_id', l_record_id);
@@ -9751,17 +10000,20 @@ create or replace procedure dm_system.sp_refund_save(v_record_id  in varchar2, -
   l_term_price   number;
 
 begin
+
   -- ²ÎÊı¼ì²é
   if (v_record_id is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '¼ÇÂ¼±àºÅÎª¿Õ';
     return;
   end if;
+
   if (v_status not in (deal_status.succeed, deal_status.failed)) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÍË¿î×´Ì¬´íÎó';
     return;
   end if;
+
   -- ¼ÇÂ¼¼ì²é
   begin
     select t.term_no,
@@ -9786,6 +10038,7 @@ begin
       v_out_msg  := 'ÍË¿î¼ÇÂ¼²»´æÔÚ';
       return;
   end;
+
   -- ¸üĞÂÍË¿î½á¹û
   update dm_order_refund t
      set t.status         = v_status,
@@ -9793,6 +10046,7 @@ begin
          t.plat_refund_no = nvl(substr(v_refund_no, 1, 64), t.plat_refund_no),
          t.finish_time    = sysdate
    where t.record_id = v_record_id;
+  
   -- ÍË¿îÊ§°Ü·µ»Ø
   if (v_status <> deal_status.succeed) then
     commit;
@@ -9800,10 +10054,12 @@ begin
     v_out_msg  := '²Ù×÷³É¹¦';
     return;
   end if;
+
   -- ÍË¿î³É¹¦Á÷³Ì
   update dm_order_main t
      set t.refund_status = deal_status.succeed
    where t.order_no = l_order_no;
+
   if (l_account_type = account_type.alipay) then
     -- Ö§¸¶±¦²»ÍËÊÖĞø·Ñ(¿÷Ëğ)
     l_change_money := l_refund_fee;
@@ -9813,6 +10069,7 @@ begin
     l_change_money := l_refund_fee;
     l_service_fee  := 0;
   end if;
+
   -- ´´½¨×Ê½ğÕË»§ÍË¿î±ä¶¯
   if (not (f_pay_fund_change_add(l_term_no,
                                  l_order_no,
@@ -9830,6 +10087,7 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- ´´½¨ÖÕ¶ËÍË¿î±ä¶¯
   select t1.deduct_mode, t1.pay_price
     into l_term_mode, l_term_price
@@ -9837,6 +10095,7 @@ begin
    inner join dm_order_main t2
       on t1.product_no = t2.product_no
    where t2.order_no = l_order_no;
+
   if (l_term_mode = deduct_mode.early) then
     if (not f_term_fund_change_add(l_term_no,
                                    l_order_no,
@@ -9850,6 +10109,7 @@ begin
       return;
     end if;
   end if;
+
   commit;
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
@@ -9971,22 +10231,26 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- »ñÈ¡ºÅ¶Î
   if (not f_num_section_get(v_phone_no, v_out_msg, l_carrier_no, l_province_no, l_city_no)) then
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- ¼ì²éÍÆ¹ã
   select min(t.term_no)
     into l_term_no
     from dm_term_promote t
    where t.promote_guid = v_promote_guid
      and t.status = enable_status.enabled;
+
   if (l_term_no is null) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÍÆ¹ã²»´æÔÚ»òÎ´ÆôÓÃ';
     return;
   end if;
+
   -- ÏŞÖÆÆµÂÊ
   select count(1)
     into l_count
@@ -9994,22 +10258,26 @@ begin
    where t.phone_no = v_phone_no
      and t.term_no = l_term_no
      and t.create_time > sysdate - 1 / 24 / 60;
+
   if (l_count >= 1) then
     v_out_code := error_code.failed;
     v_out_msg  := '²Ù×÷Ì«¿ì£¬ÉÔºóÔÙÊÔ';
     return;
   end if;
+
   -- ÏŞÖÆIP
   select count(1)
     into l_count
     from dm_order_vcode t
    where t.user_ip = v_user_ip
      and t.create_time > sysdate - 1 / 24 / 60;
+
   if (l_count >= 5) then
     v_out_code := error_code.failed;
     v_out_msg  := 'IP³¬¹ıÏŞÖÆ£¬ÉÔºóÔÙÊÔ';
     return;
   end if;
+
   -- ¼ì²éÖÕ¶ËÍÆ¹ã
   if (not f_check_term_promote(l_term_no,
                                v_promote_guid,
@@ -10020,6 +10288,7 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- Ìí¼Ó¼ÇÂ¼
   l_order_no    := f_order_no_create();
   l_serial_no   := seq_vcode_serial_no.nextval;
@@ -10115,6 +10384,7 @@ begin
     v_out_msg  := 'ÓÃ»§IPÎª¿Õ';
     return;
   end if;
+
   -- ¼ì²é·¢ËÍ¼ÇÂ¼
   begin
     select t.order_no,
@@ -10135,26 +10405,31 @@ begin
       v_out_msg  := '·Ç·¨¶©µ¥¾Ü¾ø´¦Àí';
       return;
   end;
+
   if (v_user_ip <> l_user_ip) then
     v_out_code := error_code.failed;
     v_out_msg  := 'Ìá½»IPÒì³£';
     return;
   end if;
+
   if (l_send_times > l_send_max) then
     v_out_code := error_code.overload;
     v_out_msg  := '·¢ËÍ´ÎÊı³¬ÏŞ';
     return;
   end if;
+
   if (l_next_send_time > sysdate) then
     v_out_code := error_code.failed;
     v_out_msg  := '·¢ËÍÆµÂÊÌ«¿ì';
     return;
   end if;
+
   -- ¼ì²é¶©µ¥
   select max(t.order_status)
     into l_order_status
     from dm_order_main t
    where t.order_no = v_order_no;
+
   if (l_order_status is not null) then
     if (l_order_status = deal_status.succeed) then
       v_out_code := error_code.failed;
@@ -10167,6 +10442,7 @@ begin
       return;
     end if;
   end if;
+
   -- ÖØ¸´·¢ËÍ
   l_serial_no   := seq_vcode_serial_no.nextval;
   l_vcode       := trunc(dbms_random.value(100000, 999999));
@@ -10185,6 +10461,7 @@ begin
          t.verify_state   = deal_status.waiting
    where t.order_no = l_order_no;
   -- ¹¹ÔìJSON
+
   l_temp := f_json_add(l_temp, 'que_name', 'DM:TERM:VCODE1');
   l_temp := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp := f_json_add(l_temp, 'serial_no', l_serial_no);
@@ -10228,33 +10505,39 @@ create or replace procedure dm_system.sp_vcode1_verify(v_order_no varchar2, -- ¶
   l_count number;
 
 begin
+
   -- ¼ì²é²ÎÊı
   if (v_order_no is null or v_vcode is null or v_user_ip is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- ¼ì²é¶©µ¥
   select max(t.send_status), max(t.retry_times)
     into l_send_status, l_retry_times
     from dm_order_vcode t
    where t.order_no = v_order_no
      and t.verify_state = deal_status.waiting;
+
   if (l_send_status is null or l_retry_times is null) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÑéÖ¤ÂëÎ´·¢ËÍ';
     return;
   end if;
+
   if (l_send_status <> deal_status.succeed) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÑéÖ¤Âë·¢ËÍÊ§°Ü, ÇëÖØÊÔ';
     return;
   end if;
+
   if (l_retry_times > 3) then
     v_out_code := error_code.overload;
     v_out_msg  := 'ÖØÊÔ³¬¹ıÏŞÖÆ';
     return;
   end if;
+
   -- ¼ì²éÌá½»IP
   select count(1)
     into l_count
@@ -10266,6 +10549,7 @@ begin
     v_out_msg  := 'Ìá½»IPÒì³£';
     return;
   end if;
+
   -- ¼ì²éÑéÖ¤Âë
   select count(1)
     into l_count
@@ -10279,12 +10563,14 @@ begin
     v_out_msg  := 'ÑéÖ¤Âë´íÎó';
     return;
   end if;
+
   -- ¸üĞÂÑéÖ¤×´Ì¬
   update dm_order_vcode t
      set t.verify_state = deal_status.succeed
    where t.order_no = v_order_no
      and t.send_status = deal_status.succeed
      and t.verify_state = deal_status.waiting;
+
   v_out_code := error_code.success;
   v_out_msg  := '²Ù×÷³É¹¦';
   commit;
@@ -10347,6 +10633,7 @@ begin
     v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
     return;
   end if;
+
   -- »ñÈ¡ºÅ¶Î
   if (not f_num_section_get(v_phone_no,
                             v_out_msg,
@@ -10356,6 +10643,7 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- ¼ì²éÖÕ¶Ë²úÆ·
   begin
     select term_no, product_no, business_type, face_fee
@@ -10382,17 +10670,20 @@ begin
       v_out_msg  := '²úÆ·²»Ö§³Ö»òÎ´ÆôÓÃ';
       return;
   end;
+
   -- ¼ì²éÖÕ¶Ë
   select count(1)
     into l_count
     from dm_term_info t
    where t.term_no = l_term_no
      and t.status = enable_status.enabled;
+
   if (l_count <= 0) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÖÕ¶Ë²»Ö§³Ö»òÎ´ÆôÓÃ';
     return;
   end if;
+
   -- ¼ì²éÖÕ¶ËÍÆ¹ã
   if (not f_check_term_promote(l_term_no,
                                v_promote_guid,
@@ -10419,6 +10710,7 @@ begin
     v_out_msg  := '²»¿ÉÖØ¸´°ìÀí';
     return;
   end if;
+
   -- Ñ¡ÔñÉÏÓÎ²úÆ·
   if (not f_bind_up_product(l_term_prd_no,
                             l_busi_type,
@@ -10437,18 +10729,21 @@ begin
     v_out_code := error_code.failed;
     return;
   end if;
+
   -- ¼ì²éÊÇ·ñ·¢»õ
   if (l_need_delivery = enable_status.disabled) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÉÏÓÎ²úÆ·´íÎó';
     return;
   end if;
+
   -- »ñÈ¡½Å±¾
   select t.script_id, t.script_path, t.service_code
     into l_script_id, l_script_path, l_svc_code
     from dm_up_script t
    where t.channel_no = l_up_chnnl_no
      and t.script_type = script_type.vcode_send;
+
   -- Ìí¼Ó¼ÇÂ¼
   l_order_no := f_order_no_create();
   insert into dm_order_vcode
@@ -10523,6 +10818,7 @@ create or replace procedure dm_system.sp_vcode2_get(v_order_no varchar2, -- ¶©µ¥
   l_script_path varchar2(256);
   l_temp        varchar2(2000) := '';
 begin
+
   -- ¼ì²é¶©µ¥
   begin
     select t.up_channel_no, t.up_product_no, t.phone_no
@@ -10535,6 +10831,7 @@ begin
       v_out_msg  := '¶©µ¥²»´æÔÚ';
       return;
   end;
+
   -- »ñÈ¡ÇşµÀÅäÖÃ
   select t1.api_id, t1.api_key, t2.api_url, t2.script_path
     into l_api_id, l_api_key, l_api_url, l_script_path
@@ -10545,16 +10842,19 @@ begin
      and t1.status = enable_status.enabled
      and t2.status = enable_status.enabled
      and t2.script_type = script_type.vcode_send;
+
   select t.up_product_no
     into l_up_prd_no
     from dm_up_product t
    where t.product_no = l_up_prd_id
      and t.status = enable_status.enabled;
   -- ¸üĞÂ·¢ËÍ×´Ì¬
+
   update dm_order_vcode t
      set t.send_status = deal_status.processing
    where t.order_no = v_order_no
      and t.send_status = deal_status.waiting;
+
   -- ¹¹Ôì²ÎÊı  
   l_temp     := f_json_add(l_temp, 'up_channel_no', l_up_chnnl_no);
   l_temp     := f_json_add(l_temp, 'up_product_no', l_up_prd_no);
@@ -10602,12 +10902,14 @@ create or replace procedure dm_system.sp_vcode2_retry(v_order_no varchar2, -- ¶©
   l_temp        varchar2(256) := '';
 
 begin
+
   -- ¼ì²é²ÎÊı
   if (v_user_ip is null) then
     v_out_code := error_code.failed;
     v_out_msg  := 'ÓÃ»§IPÎª¿Õ';
     return;
   end if;
+
   -- ¼ì²é·¢ËÍ¼ÇÂ¼
   select min(t.order_no),
          min(t.next_send_time),
@@ -10616,43 +10918,51 @@ begin
     into l_order_no, l_next_send_time, l_send_times, l_script_id
     from dm_order_vcode t
    where t.order_no = v_order_no;
+
   if (l_order_no is null) then
     v_out_code := error_code.failed;
     v_out_msg  := '´íÎóµÄ¶©µ¥ºÅ';
     return;
   end if;
+
   if (l_next_send_time > sysdate) then
     v_out_code := error_code.failed;
     v_out_msg  := '·¢ËÍÆµÂÊÌ«¿ì';
     return;
   end if;
+
   if (l_send_times >= l_send_max) then
     v_out_code := error_code.overload;
     v_out_msg  := '·¢ËÍ´ÎÊı³¬ÏŞ';
     return;
   end if;
+
   -- ¼ì²é¶©µ¥
   select max(t.order_status)
     into l_order_status
     from dm_order_main t
    where t.order_no = v_order_no;
+
   if (l_order_status is not null) then
     if (l_order_status = deal_status.succeed) then
       v_out_code := error_code.failed;
       v_out_msg  := '¶©µ¥ÒÑ¾­³É¹¦';
       return;
     end if;
+
     if (l_order_status <> deal_status.failed) then
       v_out_code := error_code.repeat;
       v_out_msg  := '´æÔÚÔÚÍ¾¶©µ¥';
       return;
     end if;
   end if;
+
   -- »ñÈ¡²ÎÊı
   select t.script_path, t.service_code
     into l_script_path, l_svc_code
     from dm_up_script t
    where t.script_id = l_script_id;
+
   -- ÖØ¸´·¢ËÍ
   update dm_order_vcode t
      set t.send_status    = deal_status.waiting,
@@ -10663,6 +10973,7 @@ begin
          t.next_send_time = sysdate + 1 / 24 / 60,
          t.user_ip        = substr(v_user_ip, 1, 17)
    where t.order_no = l_order_no;
+
   -- ¹¹ÔìJSON
   l_temp     := f_json_add(l_temp, 'que_name', l_svc_code);
   l_temp     := f_json_add(l_temp, 'order_no', l_order_no);
