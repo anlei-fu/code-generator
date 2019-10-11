@@ -1,0 +1,26 @@
+{
+	"name": "",
+	"parameters": {
+		"v_batch_no": {
+			"name": "v_batch_no",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_out_code": {
+			"name": "v_out_code",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_msg": {
+			"name": "v_out_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

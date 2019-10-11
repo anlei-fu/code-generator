@@ -1,0 +1,55 @@
+{
+	"add": {
+		"name": "add",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 1
+		}
+	},
+	"reduce": {
+		"name": "reduce",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 2
+		}
+	},
+	"refund": {
+		"name": "refund",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 3
+		}
+	},
+	"reward": {
+		"name": "reward",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number"
+			},
+			"value": 4
+		}
+	},
+	"express": {
+		"name": "express",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number"
+			},
+			"value": 5
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "",
+	"parameters": {
+		"v_id": {
+			"name": "v_id",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_out_error_code": {
+			"name": "v_out_error_code",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	}
+}

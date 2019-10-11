@@ -1,0 +1,68 @@
+{
+	"range": {
+		"name": "range",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 1
+		}
+	},
+	"equal": {
+		"name": "equal",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 2
+		}
+	},
+	"unequal": {
+		"name": "unequal",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 3
+		}
+	},
+	"include": {
+		"name": "include",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 4
+		}
+	},
+	"exclude": {
+		"name": "exclude",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 5
+		}
+	},
+	"not_exceed": {
+		"name": "not_exceed",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 6
+		}
+	}
+}

@@ -1,0 +1,63 @@
+{
+	"name": "",
+	"parameters": {
+		"v_flow_id": {
+			"name": "v_flow_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_action": {
+			"name": "v_action",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_order_no": {
+			"name": "v_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_bind_id": {
+			"name": "v_bind_id",
+			"type": {
+				"name": "in"
+			},
+			"isOut": false,
+			"defaltValue": "varchar2"
+		},
+		"v_ret_msg": {
+			"name": "v_ret_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_ret_task_id": {
+			"name": "v_ret_task_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_ret_script": {
+			"name": "v_ret_script",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_ret_svc": {
+			"name": "v_ret_svc",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "boolean"
+}

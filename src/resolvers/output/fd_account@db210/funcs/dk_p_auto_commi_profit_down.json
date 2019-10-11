@@ -1,0 +1,14 @@
+{
+	"name": "",
+	"parameters": {
+		"v_collect_date": {
+			"name": "v_collect_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	},
+	"returnType": "dure dk_p_auto_commi_profit_down(v_collect_date in varchar2 default null)"
+}

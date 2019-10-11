@@ -1,0 +1,24 @@
+{
+	"auto": {
+		"name": "auto",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 0
+		}
+	},
+	"manual": {
+		"name": "manual",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 1
+		}
+	}
+}

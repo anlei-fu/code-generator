@@ -1,0 +1,120 @@
+{
+	"name": "fcWarnMsg",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "消息编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"title": {
+			"name": "title",
+			"description": "标题",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 512
+			},
+			"defaltValue": null
+		},
+		"keywords": {
+			"name": "keywords",
+			"description": "关键字",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 512
+			},
+			"defaltValue": null
+		},
+		"content": {
+			"name": "content",
+			"description": "内容",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 1000
+			},
+			"defaltValue": null
+		},
+		"warnLevel": {
+			"name": "warnLevel",
+			"description": "告警级别",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 5
+			},
+			"defaltValue": null
+		},
+		"createdTime": {
+			"name": "createdTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"isSync": {
+			"name": "isSync",
+			"description": "是否被同步:1-未同步,0-被同步",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"defaltValue": 1
+		},
+		"syncStatus": {
+			"name": "syncStatus",
+			"description": "同步状态:20:等待同步,30:同步中,0:同步完成",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 20
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {},
+	"indexes": {}
+}

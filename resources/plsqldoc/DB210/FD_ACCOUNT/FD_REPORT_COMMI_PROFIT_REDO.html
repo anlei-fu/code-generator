@@ -1,0 +1,660 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head>
+ <link rel="stylesheet" type="text/css" href="../../plsqldoc.css">
+ <title>table fd_report_commi_profit_redo</title>
+ <meta name="object" content="table">
+ <meta name="name" content="db210 fd_account.fd_report_commi_profit_redo">
+ <meta name="description" content="&#21033;&#28070;&#34920;">
+ <meta name="columns" content="record_id company_id channel_no account_id channel_type business_type bill_type total_unit total_face draw_amount real_amount commission profits service_fee refund_total_unit refund_total_face refund_draw_amount refund_real_amount refund_commission refund_profits refund_service_fee up_many_face up_many_amount snap_time add_status statistics_type channel_name account_name sync_status sync_batch channel_source_system">
+</head>
+<body>
+<div width="100%"><div>
+<div><p align="left"><strong><small>fd_account@db210</small></strong></div>
+<div><p align="right"><strong><small><div href="../../index.html">index</div></small></strong></div>
+</div></div>
+<div class="main_table"><div><div class="desc_text">
+<p class="main_title">table fd_report_commi_profit_redo</p>
+&#21033;&#28070;&#34920;
+</div></div></div>
+<hr>
+<div name="columns"></div>
+<div class="sub_table"><div><div class="sub_title">
+columns
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+type
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+optional
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+default
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+comments
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+record_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20027;&#38190;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+company_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20844;&#21496;&#32534;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+channel_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#28192;&#36947;&#32534;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+account_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#25903;&#20184;&#36134;&#25143;&#32534;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+channel_type
+</div>
+<div valign="top" class="desc_text">
+number(1)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#28192;&#36947;&#31867;&#22411;1.&#19978;&#28216;2&#65294;&#19979;&#28216;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+<div href="../dm_system/business_type.html">business_type</div>
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#19994;&#21153;&#31867;&#22411;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+bill_type
+</div>
+<div valign="top" class="desc_text">
+number(1)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+1
+</div>
+<div valign="top" class="desc_text">
+&#21033;&#28070;&#31867;&#22411;&#65292;1.&#21069;&#21521;&#65292;2&#21518;&#21521;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+total_unit
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20805;&#20540;&#35268;&#26684;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+total_face
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20805;&#20540;&#38754;&#20540;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+draw_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#25187;&#27454;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+real_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#23454;&#38469;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+commission
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20323;&#37329;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+profits
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#21033;&#28070;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+service_fee
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#23454;&#26102;&#25187;&#38500;&#20323;&#37329;(&#25163;&#32493;&#36153;)
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+refund_total_unit
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#36864;&#27454;&#35268;&#26684;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+refund_total_face
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#36864;&#27454;&#38754;&#20540;
+
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+refund_draw_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#36864;&#27454;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+refund_real_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#23454;&#38469;&#36864;&#27454;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+refund_commission
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#36864;&#22238;&#20323;&#37329;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+refund_profits
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#36864;&#22238;&#21033;&#28070;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+refund_service_fee
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#36864;&#22238;&#23454;&#26102;&#25187;&#38500;&#20323;&#37329;&#65288;&#25163;&#32493;&#36153;&#65289;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_many_face
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#22810;&#20914;&#30340;&#38754;&#20540;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_many_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#22810;&#20914;&#30340;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+snap_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#24555;&#29031;&#26102;&#38388;(&#20132;&#26131;&#25968;&#25454;&#26085;&#26399;)
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+add_status
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+1
+</div>
+<div valign="top" class="desc_text">
+&#36134;&#25143;&#21152;&#27454;&#29366;&#24577; 1.&#26410;&#24320;&#22987;&#65292;2.&#27491;&#22312;&#25187;&#27454;&#65292;0.&#25187;&#27454;&#23436;&#25104;&#65292;9.&#21152;&#27454;&#22833;&#36133;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+statistics_type
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#32479;&#35745;&#31867;&#22411;&#65292;1.&#27969;&#37327;&#25968;&#25454;&#21253;&#65292;2&#21069;&#21521;&#27969;&#37327;&#20805;&#20540;&#65292;3&#35805;&#36153;&#12289;&#22266;&#35805;&#65292;4.&#21152;&#27833;&#21345;&#20805;&#20540;&#65292;5.q&#24065;&#12289;&#28216;&#25103;&#24065;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+channel_name
+</div>
+<div valign="top" class="desc_text">
+varchar2(100)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#28192;&#36947;&#21517;&#31216;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+account_name
+</div>
+<div valign="top" class="desc_text">
+varchar2(100)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#25903;&#20184;&#36134;&#25143;&#21517;&#31216;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+sync_status
+</div>
+<div valign="top" class="desc_text">
+number(1)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+1
+</div>
+<div valign="top" class="desc_text">
+&#21516;&#27493;&#35802;&#23454;&#31995;&#32479;&#29366;&#24577;&#65292;0&#21516;&#27493;&#23436;&#25104;&#65292;1&#26410;&#36827;&#34892;&#21516;&#27493;&#65292;2&#27491;&#22312;&#21516;&#27493;&#65292;9&#21516;&#27493;&#22833;&#36133;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+sync_batch
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#25968;&#25454;&#21516;&#27493;&#25209;&#27425;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+channel_source_system
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#28192;&#36947;&#25152;&#23646;&#31995;&#32479;&#32534;&#21495;
+</div>
+</div>
+</div>
+<hr>
+<div name="primary key"></div>
+<div class="sub_table"><div><div class="sub_title">
+primary key
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+columns
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+pk_report_commi_profit_2
+</div>
+<div valign="top" class="desc_text">
+record_id
+</div>
+</div>
+</div>
+<hr>
+<div name="indexes"></div>
+<div class="sub_table"><div><div class="sub_title">
+indexes
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+columns
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+type
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+asdas_2
+</div>
+<div valign="top" class="desc_text">
+company_id,channel_no,snap_time
+</div>
+<div valign="top" class="desc_text">
+unique
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+idx_daily_channel_no_2
+</div>
+<div valign="top" class="desc_text">
+company_id,channel_no,account_id,channel_type,<div href="../dm_system/business_type.html">business_type</div>,bill_type,snap_time
+</div>
+<div valign="top" class="desc_text">
+normal
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+pk_report_commi_profit_2
+</div>
+<div valign="top" class="desc_text">
+record_id
+</div>
+<div valign="top" class="desc_text">
+unique
+</div>
+</div>
+</div>
+<hr>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

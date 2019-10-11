@@ -1,0 +1,12 @@
+{
+	"type": {
+		"name": "type",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "is"
+			},
+			"value": "cursor"
+		}
+	}
+}

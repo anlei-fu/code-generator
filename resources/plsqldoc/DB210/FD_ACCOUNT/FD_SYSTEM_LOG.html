@@ -1,0 +1,246 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head>
+ <link rel="stylesheet" type="text/css" href="../../plsqldoc.css">
+ <title>table fd_system_log</title>
+ <meta name="object" content="table">
+ <meta name="name" content="db210 fd_account.fd_system_log">
+ <meta name="description" content="&#25968;&#25454;&#24211;&#26085;&#24535;">
+ <meta name="columns" content="log_id object_name error_code error_desc manual_desc created_time trace error_level">
+</head>
+<body>
+<div width="100%"><div>
+<div><p align="left"><strong><small>fd_account@db210</small></strong></div>
+<div><p align="right"><strong><small><div href="../../index.html">index</div></small></strong></div>
+</div></div>
+<div class="main_table"><div><div class="desc_text">
+<p class="main_title">table fd_system_log</p>
+&#25968;&#25454;&#24211;&#26085;&#24535;
+</div></div></div>
+<hr>
+<div name="columns"></div>
+<div class="sub_table"><div><div class="sub_title">
+columns
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+type
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+optional
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+default
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+comments
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+log_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#26085;&#24535;&#27969;&#27700;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+object_name
+</div>
+<div valign="top" class="desc_text">
+varchar2(128)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#23545;&#35937;&#21517;&#31216;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+<div href="../dm_system/error_code.html">error_code</div>
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+200
+</div>
+<div valign="top" class="desc_text">
+&#38169;&#35823;&#30721;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+error_desc
+</div>
+<div valign="top" class="desc_text">
+varchar2(255)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#38169;&#35823;&#20449;&#24687;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+manual_desc
+</div>
+<div valign="top" class="desc_text">
+varchar2(255)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20154;&#24037;&#25551;&#36848;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+created_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+sysdate
+</div>
+<div valign="top" class="desc_text">
+&#21457;&#29983;&#26102;&#38388;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+trace
+</div>
+<div valign="top" class="desc_text">
+varchar2(512)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#24322;&#24120;&#36319;&#36394;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+error_level
+</div>
+<div valign="top" class="desc_text">
+varchar2(8)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+'error'
+</div>
+<div valign="top" class="desc_text">
+&#38169;&#35823;&#32423;&#21035;
+</div>
+</div>
+</div>
+<hr>
+<div name="primary key"></div>
+<div class="sub_table"><div><div class="sub_title">
+primary key
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+columns
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+pk_fd_system_log
+</div>
+<div valign="top" class="desc_text">
+log_id
+</div>
+</div>
+</div>
+<hr>
+<div name="indexes"></div>
+<div class="sub_table"><div><div class="sub_title">
+indexes
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+columns
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+type
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+pk_fd_system_log
+</div>
+<div valign="top" class="desc_text">
+log_id
+</div>
+<div valign="top" class="desc_text">
+unique
+</div>
+</div>
+</div>
+<hr>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

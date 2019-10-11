@@ -1,0 +1,21 @@
+{
+	"name": "",
+	"parameters": {
+		"v_string": {
+			"name": "v_string",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"p_separator": {
+			"name": "p_separator",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "('"
+		}
+	},
+	"returnType": "string_array"
+}

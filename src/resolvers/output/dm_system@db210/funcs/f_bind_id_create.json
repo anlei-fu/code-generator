@@ -1,0 +1,5 @@
+{
+	"name": "f_bind_id_create",
+	"parameters": {},
+	"returnType": "varchar2"
+}

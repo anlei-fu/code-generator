@@ -1,0 +1,35 @@
+{
+	"suc": {
+		"name": "suc",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 100
+		}
+	},
+	"manual": {
+		"name": "manual",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 999
+		}
+	},
+	"failure": {
+		"name": "failure",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 200
+		}
+	}
+}

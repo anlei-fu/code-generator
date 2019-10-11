@@ -1,0 +1,12 @@
+{
+	"function": {
+		"name": "function",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "in"
+			},
+			"value": "---上游渠道编号"
+		}
+	}
+}

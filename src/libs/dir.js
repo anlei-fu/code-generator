@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-25 11:43:26
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-27 14:35:08
+ * @LastEditTime: 2019-10-11 16:45:16
  */
 const { requireNotNull } = require("./utils")
 const fs = require("fs");
@@ -13,7 +13,7 @@ const fs = require("fs");
  * @param {String} path 
  * @returns {boolean}
  */
- function exists(path) {
+function exists(path) {
         requireNotNull(path)
 
         return fs.existsSync(path)
@@ -23,9 +23,11 @@ const fs = require("fs");
  * @description Create a new directory
  * @param {String} path 
  */
- function create(path) {
-        requireNotNull(path);
-        
+function create(path) {
+
+        if (exists(path))
+                return;
+
         fs.mkdirSync(path);
 }
 /**
@@ -33,20 +35,20 @@ const fs = require("fs");
  * @todo  Want to remove a folder  msut remove sub-folder first,So need a recursive processing;
  * @param {String} path 
  */
- function remove(path) {
+function remove(path) {
         requireNotNull(path);
 
         fs.readdirSync(path)
                 .forEach(file => {
-                        if ( fs.statSync(`${path}/${file}`)
+                        if (fs.statSync(`${path}/${file}`)
                                 .isDirectory()) {
                                 remove(`${path}/${file}`);
                         } else {
-                                 fs.unlinkSync(`${path}/${file}`);
+                                fs.unlinkSync(`${path}/${file}`);
                         }
                 })
 
-         fs.rmdirSync(path);
+        fs.rmdirSync(path);
 
         return exports.FILE;
 }
@@ -55,12 +57,12 @@ const fs = require("fs");
  * @param {String} path 
  * @returns {[String]} File names, relative path of  current folder
  */
- function getFiles(path) {
+function getFiles(path) {
         requireNotNull(path);
         var ls = [];
-         fs.readdirSync(path)
+        fs.readdirSync(path)
                 .forEach(file => {
-                        if (! fs.statSync(`${path}/${file}`).isDirectory())
+                        if (!fs.statSync(`${path}/${file}`).isDirectory())
                                 ls.push(file);
                 })
         return ls;
@@ -70,12 +72,12 @@ const fs = require("fs");
  * @param {String} path 
  * @returns {[String]}  Sub folder names, relative path of current folder
  */
- function getFolders(path) {
+function getFolders(path) {
         requireNotNull(path);
         var ls = [];
         fs.readdirSync(path)
                 .forEach(dir => {
-                        if ( fs.statSync(`${path}/${dir}`).isDirectory())
+                        if (fs.statSync(`${path}/${dir}`).isDirectory())
                                 ls.push(dir);
                 })
 

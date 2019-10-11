@@ -1,0 +1,24 @@
+{
+	"immediate": {
+		"name": "immediate",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 1
+		}
+	},
+	"active": {
+		"name": "active",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 2
+		}
+	}
+}

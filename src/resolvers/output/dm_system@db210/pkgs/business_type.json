@@ -1,0 +1,68 @@
+{
+	"all_type": {
+		"name": "all_type",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 0
+		}
+	},
+	"tel_card": {
+		"name": "tel_card",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 1
+		}
+	},
+	"mob_charge": {
+		"name": "mob_charge",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 2
+		}
+	},
+	"mob_flow": {
+		"name": "mob_flow",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 3
+		}
+	},
+	"mob_meal": {
+		"name": "mob_meal",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 4
+		}
+	},
+	"video_vip": {
+		"name": "video_vip",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 5
+		}
+	}
+}

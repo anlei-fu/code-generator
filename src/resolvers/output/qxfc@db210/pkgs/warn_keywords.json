@@ -1,0 +1,35 @@
+{
+	"recv_exception": {
+		"name": "recv_exception",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "收单异常"
+		}
+	},
+	"flow_exception": {
+		"name": "flow_exception",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "流程异常"
+		}
+	},
+	"task_exception": {
+		"name": "task_exception",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "任务异常"
+		}
+	}
+}

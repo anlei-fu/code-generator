@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:13:28
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-30 15:38:40
+ * @LastEditTime: 2019-10-11 15:38:00
  */
 //imports
 const { requireNotNull, defaultValue, EMPTY } = require("./utils")
@@ -96,7 +96,7 @@ function replace(input, pairs) {
         pairs = pairs || {};
 
         for (const e in pairs)
-                input = input.replace(new RegExp(e, 'g'), pairs[e]);
+                input = input.replace(new RegExp(makeOraginalRegexPattern(e), 'g'), pairs[e]);
 
         return input;
 }
@@ -111,7 +111,7 @@ function remove(input, array) {
         array = array || [];
 
         for (const item of array)
-                input = input.replace(new RegExp(item, 'g'), EMPTY);
+                input = input.replace(new RegExp(makeOraginalRegexPattern(item), 'g'), EMPTY);
 
         return input;
 }
@@ -125,7 +125,7 @@ function remove(input, array) {
 function removeWithMatch(input, left, right) {
 
         select1(input, left, right).forEach(x => {
-                input = input.replace(new RegExp(x, "g"), EMPTY);
+                input = input.replace(new RegExp(makeOraginalRegexPattern(x), "g"), EMPTY);
         });
 
         return input;
@@ -145,7 +145,40 @@ function removeWithMatchMany(input, option) {
 
         return input;
 }
+/**
+ * 
+ * @param {String} patter 
+ */
+function makeOraginalRegexPattern(patter) {
+        let out = "";
+       
+        for (const c of patter) {
+                switch (c) {
+                        case "*":
+                        case "$":
+                        case "^":
+                        case "|":
+                        case "(":
+                        case ")":
+                        case "{":
+                        case "}":
+                        case "[":
+                        case "]":
+                        case "\\":
+                        case "+":
+                        case "?":
+                        case ".":
+                        case "":
+                                out += "\\" + c;
+                                break;
+                        default:
+                                out += c;
+                                break;
+                }
+        }
 
+        return out;
+}
 
 
 /**
@@ -232,8 +265,7 @@ function splitToWords(input) {
                         case " ":
                                 if (!isSkipping) {
                                         if (w != EMPTY) {
-                                                let d = w;
-                                                ls.push(d);
+                                                ls.push(w);
                                                 w = EMPTY;
                                         }
                                         isSkipping = true;
@@ -250,6 +282,7 @@ function splitToWords(input) {
 
         if (w != EMPTY)
                 ls.push(w);
+
         return ls;
 }
 /**
@@ -257,7 +290,7 @@ function splitToWords(input) {
  * @param {String} input 
  */
 function upperFirstLetter(input) {
-        return `${input.substr(0, 1)}${input.substr(1, input.length - 1)}`;
+        return `${input.substr(0, 1).toUpperCase()}${input.substr(1, input.length - 1)}`;
 }
 
 

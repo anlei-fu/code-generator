@@ -1,0 +1,5 @@
+{
+	"name": "f_order_no_create",
+	"parameters": {},
+	"returnType": "varchar2"
+}

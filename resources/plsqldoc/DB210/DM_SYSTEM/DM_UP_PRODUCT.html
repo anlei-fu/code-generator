@@ -6,19 +6,19 @@
  <meta name="object" content="table">
  <meta name="name" content="db210 dm_system.dm_up_product">
  <meta name="description" content="&#19978;&#28216;&#20135;&#21697;&#34920;">
- <meta name="columns" content="product_no product_name channel_no up_product_no business_type carrier_no province_no city_no face_fee normal_price deduct_price real_price status remark create_user create_time update_user update_time need_delivery need_vcode group_no">
+ <meta name="columns" content="product_no product_name channel_no up_product_no business_type carrier_no province_no city_no face_fee normal_price deduct_price real_price need_vcode need_delivery need_card_uid group_no picture_mode status remark create_user create_time update_user update_time">
 </head>
 <body>
 <div width="100%"><div>
 <div><p align="left"><strong><small>dm_system@db210</small></strong></div>
-<div><p align="right"><strong><small><a href="../../index.html">index</a></small></strong></div>
+<div><p align="right"><strong><small><div href="../../index.html">index</div></small></strong></div>
 </div></div>
 <div class="main_table"><div><div class="desc_text">
 <p class="main_title">table dm_up_product</p>
 &#19978;&#28216;&#20135;&#21697;&#34920;
 </div></div></div>
 <hr>
-<a name="columns"></a>
+<div name="columns"></div>
 <div class="sub_table"><div><div class="sub_title">
 columns
 </div></div></div>
@@ -115,7 +115,7 @@ y
 </div>
 <div>
 <div valign="top" class="list_item">
-business_type
+<div href="business_type.html">business_type</div>
 </div>
 <div valign="top" class="desc_text">
 number
@@ -251,6 +251,91 @@ number(20,3)
 </div>
 <div>
 <div valign="top" class="list_item">
+need_vcode
+</div>
+<div valign="top" class="desc_text">
+number
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+1
+</div>
+<div valign="top" class="desc_text">
+&#38656;&#35201;&#39564;&#35777;&#30721;: 0-&#38656;&#35201; 1-&#19981;&#38656;&#35201;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+need_delivery
+</div>
+<div valign="top" class="desc_text">
+number
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#38656;&#35201;&#21457;&#36135;: 0-&#38656;&#35201; 1-&#19981;&#38656;&#35201;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+need_card_uid
+</div>
+<div valign="top" class="desc_text">
+number
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+1
+</div>
+<div valign="top" class="desc_text">
+&#38656;&#35201;&#36523;&#20221;&#35777;&#21495;: 0-&#38656;&#35201; 1-&#19981;&#38656;&#35201;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+group_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(64)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20998;&#32452;&#32534;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+picture_mode
+</div>
+<div valign="top" class="desc_text">
+number
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#36523;&#20221;&#35777;&#29031;&#27169;&#24335;: 0-&#26080;&#38656;&#29031;&#29255; 1-&#37325;&#25552;&#29031;&#29255; 2-&#37325;&#25552;&#35746;&#21333; 
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
 status
 </div>
 <div valign="top" class="desc_text">
@@ -351,60 +436,9 @@ sysdate
 &#26356;&#26032;&#26102;&#38388;
 </div>
 </div>
-<div>
-<div valign="top" class="list_item">
-need_delivery
-</div>
-<div valign="top" class="desc_text">
-number
-</div>
-<div valign="top" class="desc_text">
-&nbsp;
-</div>
-<div valign="top" class="desc_text">
-0
-</div>
-<div valign="top" class="desc_text">
-&#38656;&#35201;&#21457;&#36135;: 0-&#38656;&#35201; 1-&#19981;&#38656;&#35201;
-</div>
-</div>
-<div>
-<div valign="top" class="list_item">
-need_vcode
-</div>
-<div valign="top" class="desc_text">
-number
-</div>
-<div valign="top" class="desc_text">
-&nbsp;
-</div>
-<div valign="top" class="desc_text">
-1
-</div>
-<div valign="top" class="desc_text">
-&#38656;&#35201;&#39564;&#35777;&#30721;: 0-&#38656;&#35201; 1-&#19981;&#38656;&#35201;
-</div>
-</div>
-<div>
-<div valign="top" class="list_item">
-group_no
-</div>
-<div valign="top" class="desc_text">
-varchar2(64)
-</div>
-<div valign="top" class="desc_text">
-y
-</div>
-<div valign="top" class="desc_text">
-&nbsp;
-</div>
-<div valign="top" class="desc_text">
-&#20998;&#32452;&#32534;&#21495;
-</div>
-</div>
 </div>
 <hr>
-<a name="primary key"></a>
+<div name="primary key"></div>
 <div class="sub_table"><div><div class="sub_title">
 primary key
 </div></div></div>
@@ -429,7 +463,7 @@ product_no
 </div>
 </div>
 <hr>
-<a name="indexes"></a>
+<div name="indexes"></div>
 <div class="sub_table"><div><div class="sub_title">
 indexes
 </div></div></div>

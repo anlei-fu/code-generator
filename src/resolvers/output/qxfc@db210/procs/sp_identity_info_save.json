@@ -1,0 +1,96 @@
+{
+	"name": "",
+	"parameters": {
+		"v_task_id": {
+			"name": "v_task_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_status": {
+			"name": "v_status",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_msg": {
+			"name": "v_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_package_phone": {
+			"name": "v_package_phone",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_idno": {
+			"name": "v_idno",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_real_name": {
+			"name": "v_real_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_install_address": {
+			"name": "v_install_address",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_belong_area": {
+			"name": "v_belong_area",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_recv_province": {
+			"name": "v_recv_province",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_recv_city": {
+			"name": "v_recv_city",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_recv_address": {
+			"name": "v_recv_address",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_ret_msg": {
+			"name": "v_ret_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

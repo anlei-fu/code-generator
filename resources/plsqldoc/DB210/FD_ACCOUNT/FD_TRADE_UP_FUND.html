@@ -1,0 +1,783 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head>
+ <link rel="stylesheet" type="text/css" href="../../plsqldoc.css">
+ <title>table fd_trade_up_fund</title>
+ <meta name="object" content="table">
+ <meta name="name" content="db210 fd_account.fd_trade_up_fund">
+ <meta name="description" content="&#19978;&#28216;&#36164;&#37329;&#21464;&#21160;&#35760;&#24405;">
+ <meta name="columns" content="record_id fd_order_id trade_order_no order_source trade_delivery_no down_channel_no down_account_id down_company_id up_channel_no up_account_id up_company_id down_draw_unit down_draw_face down_draw_amount down_real_amount up_draw_unit up_draw_face up_draw_amount up_real_amount change_time change_type bill_type business_type carrier_no province_no balance profits down_commission up_commission settle_amount settle_batch_id settle_status settle_time memo order_time split_profit_status out_change_time">
+</head>
+<body>
+<div width="100%"><div>
+<div><p align="left"><strong><small>fd_account@db210</small></strong></div>
+<div><p align="right"><strong><small><div href="../../index.html">index</div></small></strong></div>
+</div></div>
+<div class="main_table"><div><div class="desc_text">
+<p class="main_title">table fd_trade_up_fund</p>
+&#19978;&#28216;&#36164;&#37329;&#21464;&#21160;&#35760;&#24405;
+</div></div></div>
+<hr>
+<div name="columns"></div>
+<div class="sub_table"><div><div class="sub_title">
+columns
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+type
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+optional
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+default
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+comments
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+record_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20027;&#38190;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+fd_order_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#35760;&#36134;&#31995;&#32479;&#35746;&#21333;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+trade_order_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+'-'
+</div>
+<div valign="top" class="desc_text">
+&#20132;&#26131;&#31995;&#32479;&#35746;&#21333;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+order_source
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#35746;&#21333;&#26469;&#28304;&#65288;&#31995;&#32479;&#32534;&#21495;&#65289;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+trade_delivery_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#20132;&#26131;&#31995;&#32479;&#21457;&#36135;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_channel_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+'-'
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#28192;&#36947;&#32534;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_account_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#36134;&#25143;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_company_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#25152;&#23646;&#20844;&#21496;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_channel_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#28192;&#36947;&#32534;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_account_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#36134;&#25143;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_company_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#25152;&#23646;&#20844;&#21496;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_draw_unit
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#20805;&#20540;&#37327;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_draw_face
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#25187;&#27454;&#38754;&#20540;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_draw_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#25187;&#27454;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_real_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#23454;&#38469;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_draw_unit
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#20805;&#20540;&#37327;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_draw_face
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#25104;&#21151;&#38754;&#20540;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_draw_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#25187;&#27454;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_real_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#23454;&#38469;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+change_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+sysdate
+</div>
+<div valign="top" class="desc_text">
+&#21464;&#21160;&#26102;&#38388;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+<div href="../dm_system/change_type.html">change_type</div>
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#21464;&#26356;&#31867;&#22411; 1:&#21152;&#27454; 2&#65306;&#20132;&#26131;&#25187;&#27454; 3&#65306;&#20132;&#26131;&#36864;&#27454;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+bill_type
+</div>
+<div valign="top" class="desc_text">
+number(1)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+1
+</div>
+<div valign="top" class="desc_text">
+&#21033;&#28070;&#31867;&#22411;:&#21069;&#21521;2-&#21518;&#21521;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+<div href="../dm_system/business_type.html">business_type</div>
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19994;&#21153;&#31867;&#22411;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+carrier_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+'-'
+</div>
+<div valign="top" class="desc_text">
+&#36816;&#33829;&#21830;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+province_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+'-'
+</div>
+<div valign="top" class="desc_text">
+&#30465;&#20221;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+balance
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#20313;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+profits
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#21033;&#28070;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+down_commission
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19979;&#28216;&#21518;&#36820;&#20323;&#37329;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+up_commission
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#19978;&#28216;&#21518;&#36820;&#20323;&#37329;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+settle_amount
+</div>
+<div valign="top" class="desc_text">
+number(20,5)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#32467;&#31639;&#37329;&#39069;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+settle_batch_id
+</div>
+<div valign="top" class="desc_text">
+number(20)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+0
+</div>
+<div valign="top" class="desc_text">
+&#32467;&#31639;&#25209;&#27425;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+settle_status
+</div>
+<div valign="top" class="desc_text">
+number(10)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+10
+</div>
+<div valign="top" class="desc_text">
+&#32467;&#31639;&#29366;&#24577;:20-&#31561;&#24453;&#32467;&#31639;,0-&#32467;&#31639;&#25104;&#21151;,10-&#26080;&#38656;&#32467;&#31639;,90-&#32467;&#31639;&#22833;&#36133;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+settle_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#32467;&#31639;&#26102;&#38388;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+memo
+</div>
+<div valign="top" class="desc_text">
+varchar2(128)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#22791;&#27880;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+order_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+sysdate
+</div>
+<div valign="top" class="desc_text">
+&#35746;&#21333;&#26085;&#26399;(&#20132;&#26131;&#31995;&#32479;&#19979;&#21333;&#26085;&#26399;)
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+split_profit_status
+</div>
+<div valign="top" class="desc_text">
+number(3)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#26159;&#21542;&#20998;&#37197;&#21033;&#28070;&#65292;0&#24050;&#20998;&#37197;,1&#27491;&#22312;&#20998;&#37197;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+out_change_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#22806;&#37096;&#31995;&#32479;&#36164;&#37329;&#21464;&#21160;&#26102;&#38388;
+</div>
+</div>
+</div>
+<hr>
+<div name="primary key"></div>
+<div class="sub_table"><div><div class="sub_title">
+primary key
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+columns
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+pk_trade_up_fund
+</div>
+<div valign="top" class="desc_text">
+record_id
+</div>
+</div>
+</div>
+<hr>
+<div name="indexes"></div>
+<div class="sub_table"><div><div class="sub_title">
+indexes
+</div></div></div>
+<div class="simple_table">
+<div>
+<div valign="top" class="list_item"><u>
+name
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+columns
+</u>
+</div>
+<div valign="top" class="list_item"><u>
+type
+</u>
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+idx_delivery_no
+</div>
+<div valign="top" class="desc_text">
+trade_delivery_no,order_source
+</div>
+<div valign="top" class="desc_text">
+normal
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+idx_fd_order_id_o
+</div>
+<div valign="top" class="desc_text">
+fd_order_id,trade_delivery_no,<div href="../dm_system/change_type.html">change_type</div>,order_source
+</div>
+<div valign="top" class="desc_text">
+normal
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+idx_trade_order_no_up_o
+</div>
+<div valign="top" class="desc_text">
+trade_order_no,order_source,<div href="../dm_system/change_type.html">change_type</div>
+</div>
+<div valign="top" class="desc_text">
+normal
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+idx_trade_order_up_time
+</div>
+<div valign="top" class="desc_text">
+change_time
+</div>
+<div valign="top" class="desc_text">
+normal
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+pk_trade_up_fund
+</div>
+<div valign="top" class="desc_text">
+record_id
+</div>
+<div valign="top" class="desc_text">
+unique
+</div>
+</div>
+</div>
+<hr>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

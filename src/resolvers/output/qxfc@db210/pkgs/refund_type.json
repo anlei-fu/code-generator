@@ -1,0 +1,23 @@
+{
+	"online": {
+		"name": "online",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 1
+		}
+	},
+	"offline": {
+		"name": "offline",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number"
+			},
+			"value": 2
+		}
+	}
+}

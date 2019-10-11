@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-30 14:13:47
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-30 14:59:20
+ * @LastEditTime: 2019-10-11 10:38:21
  */
 const { STR } = require("./str");
 /**
@@ -12,7 +12,7 @@ const { STR } = require("./str");
  * @param {String} input 
  * @returns {String}
  */
-function toUpperCamelCase(input) {
+function toPascal(input) {
         let ret = "";
 
         split(input).forEach(word => {
@@ -28,15 +28,14 @@ function toUpperCamelCase(input) {
  * @param {String} input 
  * @returns {String}
  */
-function toLowerCamelCase(input) {
+function toCamel(input) {
         let ret = "";
-
         split(input).forEach((word, i) => {
                 if (word != "_") {
-                        if (i != 1) {
+                        if (i != 0) {
                                 ret += STR.upperFirstLetter(word.toLowerCase());
                         } else {
-                                ret += word.tolowerCase();
+                                ret += word.toLowerCase();
                         }
                 }
         });
@@ -91,10 +90,15 @@ function split(input) {
                         word += c;
                 }
         }
+
+        if (word != "")
+                ls.push(word);
+
+        return ls;
 }
 
 exports.NamingStrategy = {
         toHungary,
-        toLowerCamelCase,
-        toUpperCamelCase
+         toCamel,
+        toPascal
 }

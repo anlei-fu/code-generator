@@ -1,0 +1,72 @@
+{
+	"name": "dmSystemDictionary",
+	"description": "",
+	"columns": {
+		"dicId": {
+			"name": "dicId",
+			"description": "字典编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 10
+			},
+			"defaltValue": null
+		},
+		"type": {
+			"name": "type",
+			"description": "字典类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"name": {
+			"name": "name",
+			"description": "字典名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"value": {
+			"name": "value",
+			"description": "字典值",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkSysDicId": {
+			"name": "pkSysDicId",
+			"columns": [
+				"dicId"
+			]
+		}
+	}
+}

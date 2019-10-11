@@ -1,0 +1,14 @@
+{
+	"name": "",
+	"parameters": {
+		"v_collect_date": {
+			"name": "v_collect_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	},
+	"returnType": "dure czth_p_auto_trade_get(v_collect_date in varchar2 default null)"
+}

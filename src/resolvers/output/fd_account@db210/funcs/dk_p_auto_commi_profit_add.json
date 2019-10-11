@@ -1,0 +1,14 @@
+{
+	"name": "",
+	"parameters": {
+		"v_add_date": {
+			"name": "v_add_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	},
+	"returnType": "dure dk_p_auto_commi_profit_add(v_add_date in varchar2 default null)"
+}

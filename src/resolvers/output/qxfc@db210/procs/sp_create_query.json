@@ -1,0 +1,19 @@
+{
+	"name": "",
+	"parameters": {
+		"v_task_id": {
+			"name": "v_task_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_ret_msg": {
+			"name": "v_ret_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

@@ -4,17 +4,18 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-10 14:07:11
+ * @LastEditTime: 2019-10-11 17:55:49
  */
 /**
  * imports  @const cheerio see https://github.com/cheeriojs/cheerio
  */
 const { parseValue } = require("./../libs/utils");
 const cheerio = require("cheerio");
-const { FILE } = require("./../libs/file");
+const { FILE } = require("./../libs/FILE");
+const { DIR } = require("./../libs/dir");
 const { STR } = require("./../libs/str");
 const { NamingStrategy } = require("./../libs/naming-stratey");
-const { Table, Column, SqlType, Package, Constraints, Function, Procedure, Db, SqlConstant, SqlValue, Parameter, Index }
+const { Table, Column, SqlType, Package, Constraint, Function, Procedure, Db, SqlConstant, SqlValue, Parameter, Index }
         = require("./db-info");
 
 const ROOT = "./../../resources/plsqldoc";
@@ -23,24 +24,22 @@ const ROOT = "./../../resources/plsqldoc";
  * @returns {[Db]}
  * */
 function parse() {
-        let html = FILE.read(`${ROOT}/frame_Index.html`);
-        let $ = cheerio.load(html);
-        let dbs = {};
+        let html = FILE.read(`${ROOT}/frame_Index.html`),
+                $ = cheerio.load(html),
+                dbs = {};
+
         //jq collection can not iterate ,jsut can do for
         // class='main_title' db names
         let names_els = $("div.main_title");
+
         // sibling sorted left to right in the same layer, 
         //it has no bussiness with the position compare to current element
         let db_els = $("div.main_table").next();
-        console.log(db_els.length);
-        console.log(names_els.length);
-       // console.log($(db_els[2]).children().length);
 
         for (let i = 0; i < names_els.length; i++) {
                 let name = $(names_els[i]).text();
-                console.log("name is:"+ name);
                 dbs[name] = parseDb($, db_els[i])
-                dbs[name].name=name;
+                dbs[name].name = name;
         }
 
         return dbs;
@@ -55,16 +54,14 @@ function parseDb($, el) {
         // count should be 8
         let tbs = $(el).children("div");
         let db = new Db();
-        console.log(`tas length is:`+tbs.length);
-
         // packages
         db.packages = parseComponent($, tbs[1], parsePackage);
         //tables
-        db.tables = parseComponent($, tbs[3], parseTable);
+        db.functions = parseComponent($, tbs[3], parseFunction);
         //functions
-        db.functions = parseComponent($, tbs[5], parseFunction);
+        db.procedures = parseComponent($, tbs[5], parseProcedure);
         //procedures
-        db.procedures = parseComponent($, tbs[7], parseProcedure);
+        db.tables = parseComponent($, tbs[7], parseTable);
 
         return db;
 }
@@ -74,18 +71,19 @@ function parseDb($, el) {
  * @param {Element} el 
  * @param {Function:()=>Any} fun  ()=> any
  */
-function parseComponent($, el, fun) {
-        console.log("in parse component");
+function parseComponent($, el, func) {
         let component = {};
         let a_els = $(el).children("div");
-        console.log("a length is"+a_els.length);
 
         for (let i = 0; i < a_els.length; i++) {
                 let name = $(a_els[i]).children("div").children("div").text();
-               console.log(name);
                 let path = `${ROOT}/${$(a_els[i]).children("div").children("div").attr("href")}`;
-                console.log(path);
-                component[name] = fun(FILE.read(path));
+
+                if (func == parseTable) {
+                        name = NamingStrategy.toCamel(name);
+                }
+
+                component[name] = func(FILE.read(path));
         }
 
         return component;
@@ -98,20 +96,22 @@ function parseComponent($, el, fun) {
 function parsePackage(html) {
         let pkg = {};
         let $ = cheerio.load(html);
-        let cons_els = $("pre[class='decl_text']");
-      //  console.log(html);
-        console.log(cons_els.length);
-        for (let i = 0; i < cons_els.length; i++) {
-                let segs = $(cons_els[i]).text()
-                        .trim()
-                        .split(" ");
-                let name = segs[0];
-                let sqlType = SqlType.parse(segs[3]);
-                console.log("constranit name:"+ name);
-                let value = parseValue(segs[5]);
+        let pres = $("pre.decl_text");
+        //  console.log(html);
+        for (let i = 0; i < pres.length; i++) {
+
+                let text = $(pres[i]).text().trim().replace("=", "= ");
+                text = text.substr(0, text.length - 1);
+                let segs = STR.splitToWords(text);
+
+                let name = segs[0],
+                        sqlType = SqlType.parse(segs[2]),
+                        value = parseValue(segs[4]);
+
                 pkg[name] = new SqlConstant(name, "");
                 pkg[name].value = new SqlValue(sqlType, value);
         }
+
         return pkg;
 }
 /**
@@ -120,16 +120,36 @@ function parsePackage(html) {
  * @returns {Table}
  */
 function parseTable(html) {
-        var $ = cheerio.load(html);
-        let name = $(".main_title").text().replace("table ", "");
-        let tab = new Table(name, "");
-        // first
-        tab.columns = parseColumns($, $(".simple_table:first"));
-        // from 2ed to last -1
-        tab.constraints = parseConstraints($("a[name='primary key']"));
-        // last 1
-        tab.indexes = parseIndex($("a[name='indexes']"));
-        
+
+        let $ = cheerio.load(html),
+                name = $(".main_title").text().replace("table ", ""),
+                tab = new Table(NamingStrategy.toCamel(name), "");
+
+        let samples = $(".simple_table");
+        console.log("begin column...");
+        tab.columns = parseColumns($, samples[0]);
+
+        if (samples.length > 1) {
+                console.log("begin constraints...");
+                tab.constraints = parseConstraints($, samples[1]);
+                // set column's ispk by iterate constraint
+                for (let constraint in tab.constraints) {
+                        for (let cons of tab.constraints[constraint].columns) {
+                                for (let col in tab.columns) {
+                                        if (col == cons) {
+                                                tab.columns[col].isPk = true;
+                                        }
+                                }
+                        }
+                }
+        }
+
+
+        if (samples.length > 2) {
+                console.log("begin indexes...");
+                tab.indexes = parseIndex($, samples[2]);
+        }
+
         return tab;
 }
 /**
@@ -141,20 +161,25 @@ function parseTable(html) {
 function parseColumns($, el) {
         let columns = {};
         // get column rows start with 1
-        let trs = el.children("tr");
-        for (let i = 1; i < trs.length; i++) {
+        let divs = $(el).children("div");
+        for (let i = 1; i < divs.length; i++) {
 
                 // get all 5  cells
                 // 1 : name ,2 : type ,3 : nullable 4: defaultValue 5: comments
-                let tds = $(tr[i]).children("td");
+                let sub_divs = $(divs[i]).children("div");
 
-                let name = NamingStrategy.toLowerCamelCase($(tds[0]).text());
-                let description = $(tds[4]).text();
-                let column = new Column(name, description);
+                let raw_name = $(sub_divs[0]).text().trim(),
+                        raw_type = $(sub_divs[1]).text().trim(),
+                        raw_nullable = $(sub_divs[2]).text().trim(),
+                        raw_def = $(sub_divs[3]).text().trim(),
+                        raw_desc = $(sub_divs[4]).text().trim();
 
-                column.type = SqlType.parse($(tds[1]).text());
-                column.nullable = $(tds[2]).text() == "Y";
-                column.defaltValue = parseValue($(tds[3]).text());
+                let name = NamingStrategy.toCamel(raw_name);
+
+                let column = new Column(name, raw_desc);
+                column.type = SqlType.parse(raw_type);
+                column.nullable = raw_nullable == "Y";
+                column.defaltValue = raw_def == "" ? null : parseValue(raw_def);
                 //add new item
                 columns[name] = column;
         }
@@ -168,46 +193,29 @@ function parseColumns($, el) {
  * @returns {{Constraint}}
  */
 function parseConstraints($, el) {
-        if (el.length == 0)
-                return {};
 
-        let constraints = {};
+        let constraints = {},
+                divs = $(el).children("div");
 
-        let tabs = $(el[0]).next("table[class='simple_table']");
-        let cons = $(tabs[0]).children("tr");
+        for (i = 1; i < divs.length; i++) {
 
-        for (i = 1; i < cons.length; i++) {
-                let cells = $(cons[i]).children("td");
-                let constraint = new Constraints();
-                constraint.name = $(cells[0]).text();
-                constraint.columns.push($(cells[1]).text());
-                constraint.type = $(cells[2]).text();
+                // 1 is name ,2 is column
+                let sub_divs = $(divs[i]).children("div");
+
+                let constraint = new Constraint(),
+                        raw_name = $(sub_divs[0]).text().trim(),
+                        raw_column = $(sub_divs[1]).text().trim();
+
+                constraint.name = NamingStrategy.toCamel(raw_name);
+                constraint.columns.push(NamingStrategy.toCamel(raw_column));
                 constraints[constraint.name] = constraint;
         }
 
         return constraints;
-
 }
 
 function parseIndex($, els) {
-        if (el.length == 0)
-                return {};
 
-        let indexes = {};
-
-        let tabs = $(el[0]).next("table[class='simple_table']");
-        let cons = $(tabs[0]).children("tr");
-
-        for (i = 1; i < cons.length; i++) {
-                let cells = $(cons[i]).children("td");
-                let index = new Index();
-                index.name = $(cells[0]).text();
-                index.columns.push($(cells[1]).text());
-                index.type = $(cells[2]).text();
-                indexes[index.name] = index;
-        }
-
-        return indexes;
 }
 
 /**
@@ -216,15 +224,27 @@ function parseIndex($, els) {
  * @returns {Function}
  */
 function parseFunction(html) {
-        let $ = cheerio.load(html);
-        let text = $("pre[class='DECL_TEXT']").text();
-        let name = STR.select1(text, "f_", "(")[0];
+        let $ = cheerio.load(html),
+                text = $("pre.decl_text").text();
 
-        let func = new Function();
-        func.name = name.substr(0, name.length - 1);
-        let paramsText = STR.select(text, "(", ")")[0];
-        func.parameters = parseParameter(paramsText);
-        let returnPos = text.indexOf("return");
+        text = STR.removeWithMatch(text, "--", "\n");
+        let names = STR.select1(text, " ", "("),
+                name = "";
+
+        if (names.length == 0) {
+                name = text.split(" ")[1].trim();
+        } else {
+                name = names[0].substr(0, name.length - 1)
+        }
+
+        let func = new Function(),
+                returnPos = text.indexOf("return"),
+                paramsText = STR.select(text, "(", ")")[0];
+
+        func.name = name;
+        if (typeof paramsText != "undefined")
+                func.parameters = parseParameter(paramsText);
+
         func.returnType = text.substr(returnPos + 6, text.length - returnPos - 6)
                 .trim();
 
@@ -237,13 +257,13 @@ function parseFunction(html) {
  */
 function parseParameter(text) {
         let parameters = {};
-
         // remove comment
-        text = STR.removeWithMatch(text, "--", "\r\n");
+        text = STR.removeWithMatch(text, "--", "\n");
+        text=text.replace("','","' '");
         let params = text.split(",");
         params.forEach(e => {
-                let words = STR.splitToWords(e);
-                let para = new Parameter(words[0]);
+                let words = STR.splitToWords(e),
+                        para = new Parameter(words[0]);
 
                 // len>4 has default value and in/out
                 //len >3 has defualt value
@@ -260,7 +280,12 @@ function parseParameter(text) {
                         para.isOut = words[1] == "out";
                         para.type = SqlType.parse(words[2]);
                 } else {
+                        try{
                         para.type = SqlType.parse(words[1]);
+                        } catch(e){
+                                console.log(text);
+                                throw e;
+                        }
                 }
 
                 parameters[words[0]] = para;
@@ -275,17 +300,34 @@ function parseParameter(text) {
  * @returns {Procedure}
  */
 function parseProcedure(html) {
-        let $ = cheerio.load(html);
-        let text = $("pre[class='DECL_TEXT']").text();
-        let name = STR.select1(text, "s", "(")[0];
+        let $ = cheerio.load(html),
+                text = $("pre.decl_text").text();
 
-        let proc = new Procedure();
-        proc.name = name.substr(0, name.length - 1);
-        let paramsText = STR.select(text, "(", ")")[0];
-        proc.parameters = parseParameter(paramsText);
+        text = STR.removeWithMatch(text, "--", "\n");
+
+        let names = STR.select1(text, " ", "("),
+                name = "";
+
+        if (names.length == 0) {
+                try {
+                name = text.split(" ")[1].trim();
+                }catch (e){
+                        console.log(html);
+                        return {};
+                }
+        } else {
+                name = names[0].substr(0, name.length - 1)
+        }
+
+        let proc = new Procedure(),
+                paramsText = STR.select(text, "(", ")")[0];
+
+        proc.name = name;
+
+        if (typeof paramsText != "undefined")
+                proc.parameters = parseParameter(paramsText);
 
         return proc;
-
 }
 
 
@@ -323,7 +365,37 @@ function formatString(s) {
         return ret;
 }
 
+function main() {
+        let dbs = parse();
 
-var dbs= parse();
+        DIR.create("output");
+        for (let db in dbs) {
+                console.log(db);
+                DIR.create("output/" +db);
+                DIR.create("output/" + db + "/pkgs");
+                for (let pk in dbs[db].packages) {
+                        FILE.write(`output/${db}/pkgs/${pk}.json`, 
+                                   JSON.stringify(dbs[db].packages[pk],null, '\t'));
+                }
+                DIR.create("output/" + db + "/tabs");
+                for (let tb in dbs[db].tables) {
+                        FILE.write("output/" + `${db}/tabs/${tb}.json`,
+                                  JSON.stringify(dbs[db].tables[tb],null, '\t'));
+                }
+                DIR.create("output/" + db + "/funcs");
+                for (let func in dbs[db].functions) {
+                        FILE.write("output/" + `${db}/funcs/${func}.json`, 
+                                   JSON.stringify(dbs[db].functions[func],null, '\t'));
+                }
 
-console.log(dbs);
+                DIR.create("output/" + db + "/procs");
+                for (let proc in dbs[db].procedures) {
+                        FILE.write("output/" + `${db}/procs/${proc}.json`, 
+                                   JSON.stringify(dbs[db].procedures[proc],null, '\t'));
+                }
+        }
+
+}
+
+// run
+main();

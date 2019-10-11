@@ -1,0 +1,12 @@
+{
+	"function": {
+		"name": "function",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "out"
+			},
+			"value": "v_work_day_type"
+		}
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"none": {
+		"name": "none",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number"
+			},
+			"value": 0
+		}
+	},
+	"auto": {
+		"name": "auto",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 1
+		}
+	},
+	"manual": {
+		"name": "manual",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 2
+		}
+	},
+	"proxy": {
+		"name": "proxy",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number"
+			},
+			"value": 3
+		}
+	}
+}

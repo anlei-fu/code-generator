@@ -1,0 +1,41 @@
+{
+	"name": "",
+	"parameters": {
+		"v_phone_no": {
+			"name": "v_phone_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_out_msg": {
+			"name": "v_out_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_out_carrier": {
+			"name": "v_out_carrier",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_out_province": {
+			"name": "v_out_province",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_out_city": {
+			"name": "v_out_city",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "boolean"
+}

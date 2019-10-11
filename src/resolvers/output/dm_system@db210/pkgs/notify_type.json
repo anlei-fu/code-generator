@@ -1,0 +1,13 @@
+{
+	"order_state": {
+		"name": "order_state",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 1
+		}
+	}
+}

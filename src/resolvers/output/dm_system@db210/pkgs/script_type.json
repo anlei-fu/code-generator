@@ -1,0 +1,79 @@
+{
+	"order_submit": {
+		"name": "order_submit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 1
+		}
+	},
+	"order_query": {
+		"name": "order_query",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 2
+		}
+	},
+	"balnc_query": {
+		"name": "balnc_query",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 3
+		}
+	},
+	"refund_apply": {
+		"name": "refund_apply",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 4
+		}
+	},
+	"vcode_send": {
+		"name": "vcode_send",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 5
+		}
+	},
+	"vcode_submit": {
+		"name": "vcode_submit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 6
+		}
+	},
+	"video_submit": {
+		"name": "video_submit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 7
+		}
+	}
+}

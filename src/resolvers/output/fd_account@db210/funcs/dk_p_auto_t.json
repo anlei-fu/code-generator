@@ -1,0 +1,14 @@
+{
+	"name": "",
+	"parameters": {
+		"v_up_add_amount": {
+			"name": "v_up_add_amount",
+			"type": {
+				"name": "in"
+			},
+			"isOut": false,
+			"defaltValue": "number"
+		}
+	},
+	"returnType": "dure dk_p_auto_t(v_up_add_amount in out number)"
+}

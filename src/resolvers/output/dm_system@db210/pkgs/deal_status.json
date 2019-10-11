@@ -1,0 +1,57 @@
+{
+	"succeed": {
+		"name": "succeed",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 0
+		}
+	},
+	"noneed": {
+		"name": "noneed",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 10
+		}
+	},
+	"waiting": {
+		"name": "waiting",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 20
+		}
+	},
+	"processing": {
+		"name": "processing",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 30
+		}
+	},
+	"failed": {
+		"name": "failed",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 90
+		}
+	}
+}

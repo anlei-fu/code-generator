@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-10-11 09:21:02
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-10-11 09:21:02
+ */
 const { FILE } = require("./../libs/file");
 const { DIR } = require("./../libs/dir");
 const { STR } = require("./../libs/str");
@@ -30,7 +38,10 @@ function formatCore(text) {
                 "<tr": "<div",
                 "</tr>": "</div>",
                 "<td": "<div",
-                "</td>": "</div>"
+                "</td>": "</div>",
+                "<a":"<div",
+                "</a>":"</div>"
+
         };
 
         return STR.replace(text, pairs);

@@ -1,0 +1,57 @@
+{
+	"wait_confirm": {
+		"name": "wait_confirm",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 10
+		}
+	},
+	"wait": {
+		"name": "wait",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 20
+		}
+	},
+	"process": {
+		"name": "process",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 30
+		}
+	},
+	"failure": {
+		"name": "failure",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 90
+		}
+	},
+	"success": {
+		"name": "success",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 0
+		}
+	}
+}

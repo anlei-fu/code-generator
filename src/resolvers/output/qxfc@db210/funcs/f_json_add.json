@@ -1,0 +1,27 @@
+{
+	"name": "",
+	"parameters": {
+		"i_content": {
+			"name": "i_content",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"i_key_name": {
+			"name": "i_key_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"i_value": {
+			"name": "i_value",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,5 @@
+{
+	"name": "f_promote_guid_create",
+	"parameters": {},
+	"returnType": "varchar2"
+}

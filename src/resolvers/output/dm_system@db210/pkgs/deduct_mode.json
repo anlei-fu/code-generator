@@ -1,0 +1,35 @@
+{
+	"none": {
+		"name": "none",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 0
+		}
+	},
+	"early": {
+		"name": "early",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 1
+		}
+	},
+	"later": {
+		"name": "later",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"value": 2
+		}
+	}
+}

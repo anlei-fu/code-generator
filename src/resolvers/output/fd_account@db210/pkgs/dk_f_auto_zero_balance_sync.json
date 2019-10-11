@@ -1,0 +1,12 @@
+{
+	"function": {
+		"name": "function",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "date)"
+			},
+			"value": "varchar"
+		}
+	}
+}

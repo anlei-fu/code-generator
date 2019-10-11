@@ -1,0 +1,48 @@
+{
+	"name": "",
+	"parameters": {
+		"v_term_no": {
+			"name": "v_term_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_promote_guid": {
+			"name": "v_promote_guid",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_out_msg": {
+			"name": "v_out_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_out_promote_id": {
+			"name": "v_out_promote_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_promoter_id": {
+			"name": "v_out_promoter_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_label_id": {
+			"name": "v_out_label_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "boolean"
+}

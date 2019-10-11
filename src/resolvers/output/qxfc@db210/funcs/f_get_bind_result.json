@@ -1,0 +1,43 @@
+{
+	"name": "",
+	"parameters": {
+		"v_bind_id": {
+			"name": "v_bind_id",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_code": {
+			"name": "v_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_msg": {
+			"name": "v_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_svc_bus": {
+			"name": "v_svc_bus",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": ""
+		},
+		"v_script_path": {
+			"name": "v_script_path",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": ""
+		}
+	},
+	"returnType": "varchar2"
+}

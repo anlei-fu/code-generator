@@ -1,0 +1,61 @@
+{
+	"name": "",
+	"parameters": {
+		"v_task_id": {
+			"name": "v_task_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_real_name": {
+			"name": "v_real_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_idno": {
+			"name": "v_idno",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_card_province": {
+			"name": "v_card_province",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_card_city": {
+			"name": "v_card_city",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_operator": {
+			"name": "v_operator",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_ret_code": {
+			"name": "v_ret_code",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_ret_msg": {
+			"name": "v_ret_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}
