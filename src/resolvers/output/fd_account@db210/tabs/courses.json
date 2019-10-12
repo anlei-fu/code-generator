@@ -1,0 +1,52 @@
+{
+	"name": "courses",
+	"description": "",
+	"columns": {
+		"cno": {
+			"name": "cno",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 5
+			},
+			"defaltValue": null
+		},
+		"cname": {
+			"name": "cname",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 10
+			},
+			"defaltValue": null
+		},
+		"tno": {
+			"name": "tno",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 10
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {},
+	"indexes": {}
+}

@@ -1,0 +1,35 @@
+{
+	"success": {
+		"name": "success",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "success"
+		}
+	},
+	"failure": {
+		"name": "failure",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "failure"
+		}
+	},
+	"unknown": {
+		"name": "unknown",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "unknown"
+		}
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"name": "fd_f_auto_down_up_add",
+	"parameters": {
+		"v_add_date": {
+			"name": "v_add_date",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_down_account_id": {
+			"name": "v_down_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_account_id": {
+			"name": "v_up_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

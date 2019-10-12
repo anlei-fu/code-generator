@@ -1,0 +1,98 @@
+{
+	"name": "fdBankZeroBalance",
+	"description": "",
+	"columns": {
+		"recordId": {
+			"name": "recordId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"reportTime": {
+			"name": "reportTime",
+			"description": "报表时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"createdTime": {
+			"name": "createdTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "实体卡编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"balance": {
+			"name": "balance",
+			"description": "理论余额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"queryBalance": {
+			"name": "queryBalance",
+			"description": "查询余额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBankZeroBalance": {
+			"name": "pkBankZeroBalance",
+			"columns": [
+				"recordId"
+			]
+		}
+	}
+}

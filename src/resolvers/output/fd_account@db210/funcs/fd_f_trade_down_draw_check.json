@@ -1,0 +1,20 @@
+{
+	"name": "fd_f_trade_down_draw_check",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

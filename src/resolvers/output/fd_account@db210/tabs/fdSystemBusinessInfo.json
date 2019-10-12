@@ -1,0 +1,38 @@
+{
+	"name": "fdSystemBusinessInfo",
+	"description": "",
+	"columns": {
+		"businessType": {
+			"name": "businessType",
+			"description": "业务类型编码",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"businessTypeName": {
+			"name": "businessTypeName",
+			"description": "业务类型名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {},
+	"indexes": {}
+}

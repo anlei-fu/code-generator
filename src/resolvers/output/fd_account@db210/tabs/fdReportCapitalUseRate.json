@@ -1,0 +1,266 @@
+{
+	"name": "fdReportCapitalUseRate",
+	"description": "",
+	"columns": {
+		"recordId": {
+			"name": "recordId",
+			"description": "记录编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"snapTime": {
+			"name": "snapTime",
+			"description": "记录日期",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"createTime": {
+			"name": "createTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"companyId": {
+			"name": "companyId",
+			"description": "渠道所属公司",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"channelNo": {
+			"name": "channelNo",
+			"description": "渠道编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "支付账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"channelName": {
+			"name": "channelName",
+			"description": "渠道名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"accountName": {
+			"name": "accountName",
+			"description": "账户名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"channelStatus": {
+			"name": "channelStatus",
+			"description": "渠道状态",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": null
+		},
+		"capitalClass": {
+			"name": "capitalClass",
+			"description": "渠道资金分类：1.普通话费、2.普通流量、3.特殊话费、4.特殊流量、0.其他渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": 0
+		},
+		"accountBalance": {
+			"name": "accountBalance",
+			"description": "统计时账户余额，早上8点统计",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"yesterdayDraw": {
+			"name": "yesterdayDraw",
+			"description": "昨天交易量",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"befYesterdayDraw": {
+			"name": "befYesterdayDraw",
+			"description": "前天交易量",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"threeDaysAgoDraw": {
+			"name": "threeDaysAgoDraw",
+			"description": "大前天交易量",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"averageDraw": {
+			"name": "averageDraw",
+			"description": "最近三天平均交易量",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"noDrawDays": {
+			"name": "noDrawDays",
+			"description": "累计无交易天数（余额小于1000且无交易的清零）",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"syncStatus": {
+			"name": "syncStatus",
+			"description": "同步状态，0、同步完成，1等待同步，2正在同步",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 1
+		},
+		"syncBatch": {
+			"name": "syncBatch",
+			"description": "同步批次号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkFdReportCapitalUseRate": {
+			"name": "pkFdReportCapitalUseRate",
+			"columns": [
+				"recordId"
+			]
+		}
+	}
+}

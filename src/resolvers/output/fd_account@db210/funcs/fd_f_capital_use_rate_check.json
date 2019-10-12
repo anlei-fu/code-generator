@@ -1,0 +1,13 @@
+{
+	"name": "fd_f_capital_use_rate_check",
+	"parameters": {
+		"v_record_id": {
+			"name": "v_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "number"
+}

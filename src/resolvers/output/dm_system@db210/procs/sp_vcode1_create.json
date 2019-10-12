@@ -1,0 +1,47 @@
+{
+	"name": " sp_vcode1_create",
+	"parameters": {
+		"v_phone_no": {
+			"name": "v_phone_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_promote_guid": {
+			"name": "v_promote_guid",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_user_ip": {
+			"name": "v_user_ip",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_out_code": {
+			"name": "v_out_code",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_msg": {
+			"name": "v_out_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_out_json": {
+			"name": "v_out_json",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

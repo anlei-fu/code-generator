@@ -1,0 +1,279 @@
+{
+	"name": "yxTradeExpense",
+	"description": "",
+	"columns": {
+		"recordId": {
+			"name": "recordId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"yxOrderId": {
+			"name": "yxOrderId",
+			"description": "记账系统订单号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"tradeOrderNo": {
+			"name": "tradeOrderNo",
+			"description": "交易系统订单号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "_"
+		},
+		"tradeExpenseNo": {
+			"name": "tradeExpenseNo",
+			"description": "交易系统费用编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "_"
+		},
+		"orderSource": {
+			"name": "orderSource",
+			"description": "订单来源（系统编号）",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"expenseType": {
+			"name": "expenseType",
+			"description": "费用类型1：快递费，21：销券收益",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"downChannelNo": {
+			"name": "downChannelNo",
+			"description": "下游渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "_"
+		},
+		"upChannelNo": {
+			"name": "upChannelNo",
+			"description": "上游渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"agentId": {
+			"name": "agentId",
+			"description": "代理人编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"businessType": {
+			"name": "businessType",
+			"description": "业务类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": 0
+		},
+		"changeAmount": {
+			"name": "changeAmount",
+			"description": "费用金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"balance": {
+			"name": "balance",
+			"description": "余额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"changeTime": {
+			"name": "changeTime",
+			"description": "变动时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"orderTime": {
+			"name": "orderTime",
+			"description": "交易系统订单时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"outChangeTime": {
+			"name": "outChangeTime",
+			"description": "交易系统变动时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "费用账号id",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"incomeType": {
+			"name": "incomeType",
+			"description": "收入类型：1：支出，2：收入",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": 1
+		},
+		"orderAmount": {
+			"name": "orderAmount",
+			"description": "订单金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"memo": {
+			"name": "memo",
+			"description": "备注",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 200
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkYxExpenseRecordId": {
+			"name": "pkYxExpenseRecordId",
+			"columns": [
+				"recordId"
+			]
+		}
+	}
+}

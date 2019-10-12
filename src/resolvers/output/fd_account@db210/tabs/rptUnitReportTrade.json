@@ -1,0 +1,239 @@
+{
+	"name": "rptUnitReportTrade",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"channelNo": {
+			"name": "channelNo",
+			"description": "渠道编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"channelName": {
+			"name": "channelName",
+			"description": "渠道名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 100
+			},
+			"defaltValue": null
+		},
+		"channelType": {
+			"name": "channelType",
+			"description": "渠道分类，1、上游渠道，2、下游渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": null
+		},
+		"companyId": {
+			"name": "companyId",
+			"description": "公司编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"sourceSystemId": {
+			"name": "sourceSystemId",
+			"description": "系统编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"businessType": {
+			"name": "businessType",
+			"description": "业务类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"tradeCount": {
+			"name": "tradeCount",
+			"description": "交易笔数",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"tradeDebitAmount": {
+			"name": "tradeDebitAmount",
+			"description": "交易扣款金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"tradeProfit": {
+			"name": "tradeProfit",
+			"description": "交易利润",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"rvAmount": {
+			"name": "rvAmount",
+			"description": "交易平账影响利润的金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"sysNo": {
+			"name": "sysNo",
+			"description": "系统编号，fd、直冲，dk、代扣系统",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"isHistoryData": {
+			"name": "isHistoryData",
+			"description": "是否为历史库生成的数据（用来加入唯一索引）",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 1
+		},
+		"snapTime": {
+			"name": "snapTime",
+			"description": "数据快照日期",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"syncStatus": {
+			"name": "syncStatus",
+			"description": "同步状态，0、同步完成，1等待同步，2正在同步",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 1
+		},
+		"syncBatch": {
+			"name": "syncBatch",
+			"description": "同步批次号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkUnitReportTradeId": {
+			"name": "pkUnitReportTradeId",
+			"columns": [
+				"id"
+			]
+		}
+	}
+}

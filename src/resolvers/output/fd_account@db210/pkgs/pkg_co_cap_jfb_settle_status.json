@@ -1,0 +1,24 @@
+{
+	"complete": {
+		"name": "complete",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 0
+		}
+	},
+	"wait_settle": {
+		"name": "wait_settle",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"name": " sp_card_detail_save",
+	"parameters": {
+		"v_record_id": {
+			"name": "v_record_id",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_status": {
+			"name": "v_status",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result_msg": {
+			"name": "v_result_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_out_code": {
+			"name": "v_out_code",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_msg": {
+			"name": "v_out_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

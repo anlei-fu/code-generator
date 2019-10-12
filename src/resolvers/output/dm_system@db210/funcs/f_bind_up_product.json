@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": "f_bind_up_product",
 	"parameters": {
 		"v_product_no": {
 			"name": "v_product_no",
@@ -73,6 +73,13 @@
 		},
 		"v_out_need_vcode": {
 			"name": "v_out_need_vcode",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_picture_mode": {
+			"name": "v_out_picture_mode",
 			"type": {
 				"name": "number"
 			},

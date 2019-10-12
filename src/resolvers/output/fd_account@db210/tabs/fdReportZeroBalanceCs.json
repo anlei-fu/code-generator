@@ -1,0 +1,252 @@
+{
+	"name": "fdReportZeroBalanceCs",
+	"description": "",
+	"columns": {
+		"recordId": {
+			"name": "recordId",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"recordDate": {
+			"name": "recordDate",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"createdTime": {
+			"name": "createdTime",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"accountType": {
+			"name": "accountType",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"channelNo": {
+			"name": "channelNo",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "-"
+		},
+		"balance": {
+			"name": "balance",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"accountName": {
+			"name": "accountName",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 100
+			},
+			"defaltValue": "-"
+		},
+		"channelName": {
+			"name": "channelName",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 100
+			},
+			"defaltValue": "-"
+		},
+		"queryBalance": {
+			"name": "queryBalance",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"channelStatus": {
+			"name": "channelStatus",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 0
+		},
+		"accountStatus": {
+			"name": "accountStatus",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 0
+		},
+		"companyId": {
+			"name": "companyId",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"downFirstFace": {
+			"name": "downFirstFace",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"downFirstAmount": {
+			"name": "downFirstAmount",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"syncStatus": {
+			"name": "syncStatus",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 1
+		},
+		"syncBatch": {
+			"name": "syncBatch",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkReportZeroBalance": {
+			"name": "pkReportZeroBalance",
+			"columns": [
+				"recordId"
+			]
+		}
+	}
+}

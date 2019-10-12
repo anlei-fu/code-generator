@@ -1,0 +1,127 @@
+{
+	"name": "fdTradeOrderMainDiffer",
+	"description": "",
+	"columns": {
+		"differId": {
+			"name": "differId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"recordDate": {
+			"name": "recordDate",
+			"description": "记录生成日期",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"fdOrderId": {
+			"name": "fdOrderId",
+			"description": "记账系统订单号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"channelNo": {
+			"name": "channelNo",
+			"description": "下游渠道编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "下游渠道支付账户编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"businessType": {
+			"name": "businessType",
+			"description": "业务类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"downFirstFace": {
+			"name": "downFirstFace",
+			"description": "下游与上游扣款的时间差造成的差异面值(上下游扣款有时间差异时造成，下扣、下退、上扣、上退)",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"downFirstAmount": {
+			"name": "downFirstAmount",
+			"description": "下游与上游扣款的时间差造成的差异金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkDifferId": {
+			"name": "pkDifferId",
+			"columns": [
+				"differId"
+			]
+		}
+	}
+}

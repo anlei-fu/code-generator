@@ -1,0 +1,46 @@
+{
+	"up_add": {
+		"name": "up_add",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"down_commi": {
+		"name": "down_commi",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	},
+	"pay_deposit": {
+		"name": "pay_deposit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 3
+		}
+	},
+	"pay_bond": {
+		"name": "pay_bond",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 4
+		}
+	}
+}

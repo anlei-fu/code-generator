@@ -1,0 +1,225 @@
+{
+	"name": "supTradeDownManual",
+	"description": "",
+	"columns": {
+		"recordId": {
+			"name": "recordId",
+			"description": "记录编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"downChannelNo": {
+			"name": "downChannelNo",
+			"description": "下游渠道编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"downAccountId": {
+			"name": "downAccountId",
+			"description": "下游账户编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"hasAdjust": {
+			"name": "hasAdjust",
+			"description": "是否已红冲过",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"adjustRecordId": {
+			"name": "adjustRecordId",
+			"description": "红冲的记录编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"changeType": {
+			"name": "changeType",
+			"description": "变动类型（加款、加款红冲、提款、提款红冲，余额平账、交易平账）",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"changeTime": {
+			"name": "changeTime",
+			"description": "变动时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"changeAmount": {
+			"name": "changeAmount",
+			"description": "变动金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"balance": {
+			"name": "balance",
+			"description": "账户余额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"bankCardNo": {
+			"name": "bankCardNo",
+			"description": "加款/提款对应银行账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"bankRecordId": {
+			"name": "bankRecordId",
+			"description": "加款/提款银行资金变动编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"bankServiceId": {
+			"name": "bankServiceId",
+			"description": "提款银行收取手续费编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"bankRelateId": {
+			"name": "bankRelateId",
+			"description": "可红冲记录和银行相关记录关联编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"memo": {
+			"name": "memo",
+			"description": "备注",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 256
+			},
+			"defaltValue": null
+		},
+		"createdBy": {
+			"name": "createdBy",
+			"description": "创建人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkSupTradeDownManrecordId": {
+			"name": "pkSupTradeDownManrecordId",
+			"columns": [
+				"recordId"
+			]
+		}
+	}
+}

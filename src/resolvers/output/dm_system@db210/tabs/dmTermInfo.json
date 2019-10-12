@@ -1,0 +1,180 @@
+{
+	"name": "dmTermInfo",
+	"description": "",
+	"columns": {
+		"termNo": {
+			"name": "termNo",
+			"description": "终端编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"termName": {
+			"name": "termName",
+			"description": "终端名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"balance": {
+			"name": "balance",
+			"description": "终端余额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"status": {
+			"name": "status",
+			"description": "状态: 0-启用 1-禁用",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 0
+		},
+		"entryUrl": {
+			"name": "entryUrl",
+			"description": "入口地址",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 256
+			},
+			"defaltValue": null
+		},
+		"canPromote": {
+			"name": "canPromote",
+			"description": "可否推广: 0-是 1-否",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 1
+		},
+		"remark": {
+			"name": "remark",
+			"description": "终端说明",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 1024
+			},
+			"defaltValue": null
+		},
+		"createTime": {
+			"name": "createTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"createUser": {
+			"name": "createUser",
+			"description": "创建人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"updateTime": {
+			"name": "updateTime",
+			"description": "更新时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"updateUser": {
+			"name": "updateUser",
+			"description": "更新人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"imageUrl": {
+			"name": "imageUrl",
+			"description": "推广图片",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkTermInfoId": {
+			"name": "pkTermInfoId",
+			"columns": [
+				"termNo"
+			]
+		}
+	}
+}

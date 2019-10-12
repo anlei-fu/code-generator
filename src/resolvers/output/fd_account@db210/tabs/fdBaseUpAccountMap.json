@@ -1,0 +1,72 @@
+{
+	"name": "fdBaseUpAccountMap",
+	"description": "",
+	"columns": {
+		"mapId": {
+			"name": "mapId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"channelNo": {
+			"name": "channelNo",
+			"description": "渠道编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "支付账号编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"isMainChannel": {
+			"name": "isMainChannel",
+			"description": "是否主关系",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBaseUpAccountMap": {
+			"name": "pkBaseUpAccountMap",
+			"columns": [
+				"mapId"
+			]
+		}
+	}
+}

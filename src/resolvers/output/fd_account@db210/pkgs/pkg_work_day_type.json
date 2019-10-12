@@ -1,0 +1,34 @@
+{
+	"all_days": {
+		"name": "all_days",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number"
+			},
+			"value": 0
+		}
+	},
+	"work_day": {
+		"name": "work_day",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"not_work_day": {
+		"name": "not_work_day",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	}
+}

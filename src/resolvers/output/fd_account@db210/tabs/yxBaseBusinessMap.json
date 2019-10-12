@@ -1,0 +1,86 @@
+{
+	"name": "yxBaseBusinessMap",
+	"description": "",
+	"columns": {
+		"businessMapId": {
+			"name": "businessMapId",
+			"description": "业务类型映射编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"outerBusinessType": {
+			"name": "outerBusinessType",
+			"description": "外部系统业务类型编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"localBusinessType": {
+			"name": "localBusinessType",
+			"description": "记账系统业务类型编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"industryType": {
+			"name": "industryType",
+			"description": "行业类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"outerSystemNo": {
+			"name": "outerSystemNo",
+			"description": "外部系统编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBusinessMapId": {
+			"name": "pkBusinessMapId",
+			"columns": [
+				"businessMapId"
+			]
+		}
+	}
+}

@@ -6,7 +6,7 @@
  <meta name="object" content="table">
  <meta name="name" content="db210 dm_system.dm_order_main_ext">
  <meta name="description" content="&#35746;&#21333;&#29992;&#25143;&#20449;&#24687;&#34920;">
- <meta name="columns" content="order_no card_user_name contact_addr card_user_id card_pic_front card_pic_back card_pic_hand contact_name">
+ <meta name="columns" content="order_no contact_name contact_addr card_user_id card_user_name card_pic_front card_pic_back card_pic_hand new_phone_no activate_status activate_time recharge_status recharge_time express_name express_no create_time update_time recharge_face">
 </head>
 <body>
 <div width="100%"><div>
@@ -64,19 +64,19 @@ varchar2(32)
 </div>
 <div>
 <div valign="top" class="list_item">
-card_user_name
+contact_name
 </div>
 <div valign="top" class="desc_text">
-varchar2(100)
-</div>
-<div valign="top" class="desc_text">
-&nbsp;
+varchar2(64)
 </div>
 <div valign="top" class="desc_text">
 &nbsp;
 </div>
 <div valign="top" class="desc_text">
-&#36523;&#20221;&#35777;&#22995;&#21517;
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#32852;&#31995;&#20154;&#22995;&#21517;
 </div>
 </div>
 <div>
@@ -111,6 +111,23 @@ varchar2(32)
 </div>
 <div valign="top" class="desc_text">
 &#36523;&#20221;&#35777;&#21495;&#30721;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+card_user_name
+</div>
+<div valign="top" class="desc_text">
+varchar2(100)
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#36523;&#20221;&#35777;&#22995;&#21517;
 </div>
 </div>
 <div>
@@ -166,7 +183,109 @@ y
 </div>
 <div>
 <div valign="top" class="list_item">
-contact_name
+new_phone_no
+</div>
+<div valign="top" class="desc_text">
+varchar2(32)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#26032;&#25163;&#26426;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+activate_status
+</div>
+<div valign="top" class="desc_text">
+number
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#28608;&#27963;&#29366;&#24577;: 0-&#24050;&#28608;&#27963; 1-&#24453;&#28608;&#27963;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+activate_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#28608;&#27963;&#26102;&#38388;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+recharge_status
+</div>
+<div valign="top" class="desc_text">
+number
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#39318;&#20805;&#29366;&#24577;: 0-&#24050;&#39318;&#20805; 1-&#26410;&#39318;&#20805;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+recharge_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#39318;&#20805;&#26102;&#38388;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+express_name
+</div>
+<div valign="top" class="desc_text">
+varchar2(128)
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#24555;&#36882;&#21517;&#31216;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+express_no
 </div>
 <div valign="top" class="desc_text">
 varchar2(64)
@@ -178,7 +297,58 @@ y
 &nbsp;
 </div>
 <div valign="top" class="desc_text">
-&#32852;&#31995;&#20154;&#22995;&#21517;
+&#24555;&#36882;&#21333;&#21495;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+create_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+sysdate
+</div>
+<div valign="top" class="desc_text">
+&#21019;&#24314;&#26102;&#38388;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+update_time
+</div>
+<div valign="top" class="desc_text">
+date
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#26356;&#26032;&#26102;&#38388;
+</div>
+</div>
+<div>
+<div valign="top" class="list_item">
+recharge_face
+</div>
+<div valign="top" class="desc_text">
+number
+</div>
+<div valign="top" class="desc_text">
+y
+</div>
+<div valign="top" class="desc_text">
+&nbsp;
+</div>
+<div valign="top" class="desc_text">
+&#39318;&#20805;&#38754;&#20540;
 </div>
 </div>
 </div>

@@ -1,0 +1,54 @@
+{
+	"name": " yx_p_manual_up_rv_trade",
+	"parameters": {
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_draw_amount": {
+			"name": "v_up_draw_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_real_amount": {
+			"name": "v_up_real_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_business_type": {
+			"name": "v_business_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

@@ -1,0 +1,55 @@
+{
+	"name": "fd_f_manual_down_borrow_add_ck",
+	"parameters": {
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_down_account_id": {
+			"name": "v_down_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_borrow_account_id": {
+			"name": "v_borrow_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_amount": {
+			"name": "v_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_fee": {
+			"name": "v_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_account_name": {
+			"name": "v_account_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_channel_name": {
+			"name": "v_channel_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

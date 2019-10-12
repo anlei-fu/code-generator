@@ -1,0 +1,34 @@
+{
+	"name": "fd_f_co_account_name_add",
+	"parameters": {
+		"v_account_id": {
+			"name": "v_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_account_type": {
+			"name": "v_account_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_co_account_name": {
+			"name": "v_co_account_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,41 @@
+{
+	"name": "fd_f_query_channel_balance",
+	"parameters": {
+		"v_channel_no": {
+			"name": "v_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_channel_type": {
+			"name": "v_channel_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_query_balance": {
+			"name": "v_query_balance",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_inner_balance": {
+			"name": "v_inner_balance",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_credit_money": {
+			"name": "v_credit_money",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

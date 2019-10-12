@@ -1,0 +1,85 @@
+{
+	"name": "dmProductGroup",
+	"description": "",
+	"columns": {
+		"groupNo": {
+			"name": "groupNo",
+			"description": "分组编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"groupName": {
+			"name": "groupName",
+			"description": "分组名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"remark": {
+			"name": "remark",
+			"description": "备注",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 256
+			},
+			"defaltValue": null
+		},
+		"createUser": {
+			"name": "createUser",
+			"description": "创建人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"createTime": {
+			"name": "createTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkProductGroupNo": {
+			"name": "pkProductGroupNo",
+			"columns": [
+				"groupNo"
+			]
+		}
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"service_fee": {
+		"name": "service_fee",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"down_commission": {
+		"name": "down_commission",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	},
+	"up_commission": {
+		"name": "up_commission",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 3
+		}
+	},
+	"profit_draw": {
+		"name": "profit_draw",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 4
+		}
+	},
+	"short_msg_fee": {
+		"name": "short_msg_fee",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 5
+		}
+	}
+}

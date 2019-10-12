@@ -1,0 +1,169 @@
+{
+	"name": "fdSystemWarn",
+	"description": "",
+	"columns": {
+		"warnId": {
+			"name": "warnId",
+			"description": "报警编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"uniqId": {
+			"name": "uniqId",
+			"description": "唯一标识",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"warnLevel": {
+			"name": "warnLevel",
+			"description": "等级",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"defaltValue": null
+		},
+		"warnType": {
+			"name": "warnType",
+			"description": "类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"defaltValue": null
+		},
+		"title": {
+			"name": "title",
+			"description": "标题",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"warnDate": {
+			"name": "warnDate",
+			"description": "报警时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"content": {
+			"name": "content",
+			"description": "报警内容",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 256
+			},
+			"defaltValue": null
+		},
+		"syncStatus": {
+			"name": "syncStatus",
+			"description": "同步状态 0同步完成  1未同步 2正在同步",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": 1
+		},
+		"keyWord": {
+			"name": "keyWord",
+			"description": "关键字",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"syncBatchId": {
+			"name": "syncBatchId",
+			"description": "批次号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"systemNo": {
+			"name": "systemNo",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "sa"
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBalanceWarnId": {
+			"name": "pkBalanceWarnId",
+			"columns": [
+				"warnId"
+			]
+		}
+	}
+}

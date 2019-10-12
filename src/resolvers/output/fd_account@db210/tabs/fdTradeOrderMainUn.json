@@ -1,0 +1,349 @@
+{
+	"name": "fdTradeOrderMainUn",
+	"description": "",
+	"columns": {
+		"fdOrderId": {
+			"name": "fdOrderId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"downChannelNo": {
+			"name": "downChannelNo",
+			"description": "下游渠道编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"downAccountId": {
+			"name": "downAccountId",
+			"description": "下游扣款账号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"downCompanyId": {
+			"name": "downCompanyId",
+			"description": "下游公司编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"tradeOrderNo": {
+			"name": "tradeOrderNo",
+			"description": "交易系统订单号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"extOrderNo": {
+			"name": "extOrderNo",
+			"description": "扩展订单号交易系统供",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"orderSource": {
+			"name": "orderSource",
+			"description": "订单来源（系统编号）",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"createTime": {
+			"name": "createTime",
+			"description": "订单添加时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"orderTime": {
+			"name": "orderTime",
+			"description": "订单日期(交易系统下单日期)",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"businessType": {
+			"name": "businessType",
+			"description": "业务类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"totalFace": {
+			"name": "totalFace",
+			"description": "总面值",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 18
+			},
+			"defaltValue": null
+		},
+		"downOrderAmount": {
+			"name": "downOrderAmount",
+			"description": "下游销售金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"upPhoneAmount": {
+			"name": "upPhoneAmount",
+			"description": "上游手机成本",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"upBillAmount": {
+			"name": "upBillAmount",
+			"description": "上游预存话费成本",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"downOrderRefund": {
+			"name": "downOrderRefund",
+			"description": "下游销售退款",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"upPhoneRefund": {
+			"name": "upPhoneRefund",
+			"description": "上游手机成本退款",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"upBillRefund": {
+			"name": "upBillRefund",
+			"description": "上游预存话费成本退款",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"userId": {
+			"name": "userId",
+			"description": "用户id",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "-"
+		},
+		"phoneNo": {
+			"name": "phoneNo",
+			"description": "合约机号码",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "-"
+		},
+		"userName": {
+			"name": "userName",
+			"description": "用户姓名",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "-"
+		},
+		"idCardNo": {
+			"name": "idCardNo",
+			"description": "用户身份证号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": "-"
+		},
+		"recAddress": {
+			"name": "recAddress",
+			"description": "用户收货地址",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": "-"
+		},
+		"saleUser": {
+			"name": "saleUser",
+			"description": "销售客服",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": "-"
+		},
+		"hasInvoice": {
+			"name": "hasInvoice",
+			"description": "是否开票，0.已开，1未开",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 1
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkTradeOrderMainUn": {
+			"name": "pkTradeOrderMainUn",
+			"columns": [
+				"fdOrderId"
+			]
+		}
+	}
+}

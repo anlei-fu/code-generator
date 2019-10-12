@@ -1,0 +1,35 @@
+{
+	"apply_complete": {
+		"name": "apply_complete",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 0
+		}
+	},
+	"apply_submit": {
+		"name": "apply_submit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"apply_invalid": {
+		"name": "apply_invalid",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 9
+		}
+	}
+}

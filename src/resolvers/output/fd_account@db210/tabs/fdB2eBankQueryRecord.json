@@ -1,0 +1,113 @@
+{
+	"name": "fdB2eBankQueryRecord",
+	"description": "",
+	"columns": {
+		"recordId": {
+			"name": "recordId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"bankAccountId": {
+			"name": "bankAccountId",
+			"description": "银行账户编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"cardNo": {
+			"name": "cardNo",
+			"description": "银行卡号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"bankAccName": {
+			"name": "bankAccName",
+			"description": "银行账户名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"bankType": {
+			"name": "bankType",
+			"description": "银行类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"queryBalance": {
+			"name": "queryBalance",
+			"description": "查询余额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"queryTime": {
+			"name": "queryTime",
+			"description": "查询时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkRecordId": {
+			"name": "pkRecordId",
+			"columns": [
+				"recordId"
+			]
+		}
+	}
+}

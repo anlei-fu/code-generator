@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": " sp_manual_bind_bat",
 	"parameters": {
 		"v_bind_ids": {
 			"name": "v_bind_ids",
@@ -17,6 +17,13 @@
 		},
 		"v_result_msg": {
 			"name": "v_result_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_order_msg": {
+			"name": "v_order_msg",
 			"type": {
 				"name": "varchar2"
 			},

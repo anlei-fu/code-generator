@@ -1,0 +1,40 @@
+{
+	"name": " fd_p_handle_order_face_adjust",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_order_face": {
+			"name": "v_order_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_order_unit": {
+			"name": "v_order_unit",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

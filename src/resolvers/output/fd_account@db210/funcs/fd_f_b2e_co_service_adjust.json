@@ -1,0 +1,27 @@
+{
+	"name": "fd_f_b2e_co_service_adjust",
+	"parameters": {
+		"v_recv_record_id": {
+			"name": "v_recv_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_adjust_days": {
+			"name": "v_adjust_days",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_record_id": {
+			"name": "v_service_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

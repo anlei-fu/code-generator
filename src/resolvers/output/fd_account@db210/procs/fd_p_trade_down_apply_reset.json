@@ -1,0 +1,40 @@
+{
+	"name": " fd_p_trade_down_apply_reset",
+	"parameters": {
+		"v_apply_id": {
+			"name": "v_apply_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_edit_user": {
+			"name": "v_edit_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_msg": {
+			"name": "v_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

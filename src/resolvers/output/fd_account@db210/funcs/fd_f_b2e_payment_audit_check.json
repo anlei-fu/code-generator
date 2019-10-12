@@ -1,0 +1,13 @@
+{
+	"name": "fd_f_b2e_payment_audit_check",
+	"parameters": {
+		"v_main_record_id": {
+			"name": "v_main_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

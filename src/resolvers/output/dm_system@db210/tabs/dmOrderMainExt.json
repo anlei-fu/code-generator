@@ -16,9 +16,9 @@
 			},
 			"defaltValue": null
 		},
-		"cardUserName": {
-			"name": "cardUserName",
-			"description": "身份证姓名",
+		"contactName": {
+			"name": "contactName",
+			"description": "联系人姓名",
 			"nullable": false,
 			"autoIncrement": false,
 			"isPk": false,
@@ -26,7 +26,7 @@
 			"isEnum": false,
 			"type": {
 				"name": "varchar2",
-				"length": 100
+				"length": 64
 			},
 			"defaltValue": null
 		},
@@ -55,6 +55,20 @@
 			"type": {
 				"name": "varchar2",
 				"length": 32
+			},
+			"defaltValue": null
+		},
+		"cardUserName": {
+			"name": "cardUserName",
+			"description": "身份证姓名",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 100
 			},
 			"defaltValue": null
 		},
@@ -100,9 +114,89 @@
 			},
 			"defaltValue": null
 		},
-		"contactName": {
-			"name": "contactName",
-			"description": "联系人姓名",
+		"newPhoneNo": {
+			"name": "newPhoneNo",
+			"description": "新手机号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"activateStatus": {
+			"name": "activateStatus",
+			"description": "激活状态: 0-已激活 1-待激活",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": null
+		},
+		"activateTime": {
+			"name": "activateTime",
+			"description": "激活时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"rechargeStatus": {
+			"name": "rechargeStatus",
+			"description": "首充状态: 0-已首充 1-未首充",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": null
+		},
+		"rechargeTime": {
+			"name": "rechargeTime",
+			"description": "首充时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"expressName": {
+			"name": "expressName",
+			"description": "快递名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"expressNo": {
+			"name": "expressNo",
+			"description": "快递单号",
 			"nullable": false,
 			"autoIncrement": false,
 			"isPk": false,
@@ -111,6 +205,45 @@
 			"type": {
 				"name": "varchar2",
 				"length": 64
+			},
+			"defaltValue": null
+		},
+		"createTime": {
+			"name": "createTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"updateTime": {
+			"name": "updateTime",
+			"description": "更新时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"rechargeFace": {
+			"name": "rechargeFace",
+			"description": "首充面值",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
 			},
 			"defaltValue": null
 		}

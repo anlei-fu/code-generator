@@ -1,0 +1,33 @@
+{
+	"name": " sup_p_relate_add_map",
+	"parameters": {
+		"v_sup_up_channel_no": {
+			"name": "v_sup_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_sup_down_channel_no": {
+			"name": "v_sup_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_pro_up_channel_no": {
+			"name": "v_pro_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

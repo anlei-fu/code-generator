@@ -1,0 +1,55 @@
+{
+	"name": "dk_f_sup_adjust_down_after",
+	"parameters": {
+		"v_down_report_id": {
+			"name": "v_down_report_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_record_id": {
+			"name": "v_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_fund_batch_id": {
+			"name": "v_fund_batch_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_sup_record_id": {
+			"name": "v_sup_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_jz_record_id": {
+			"name": "v_jz_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_adjust_user": {
+			"name": "v_adjust_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_adjust_memo": {
+			"name": "v_adjust_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

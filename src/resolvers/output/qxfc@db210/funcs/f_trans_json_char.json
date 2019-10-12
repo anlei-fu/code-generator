@@ -1,0 +1,13 @@
+{
+	"name": "f_trans_json_char",
+	"parameters": {
+		"sourcestr": {
+			"name": "sourcestr",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

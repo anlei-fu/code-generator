@@ -1,0 +1,13 @@
+{
+	"name": " sup_p_auto_up_zero_balance",
+	"parameters": {
+		"v_report_date": {
+			"name": "v_report_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

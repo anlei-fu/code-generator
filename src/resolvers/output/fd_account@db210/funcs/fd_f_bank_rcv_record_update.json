@@ -1,0 +1,55 @@
+{
+	"name": "fd_f_bank_rcv_record_update",
+	"parameters": {
+		"v_apply_id": {
+			"name": "v_apply_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_pay_time": {
+			"name": "v_pay_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_apply_account_no": {
+			"name": "v_apply_account_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_add_amount": {
+			"name": "v_add_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_tran_no": {
+			"name": "v_tran_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_bank_id": {
+			"name": "v_bank_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_auto_add_on_time": {
+			"name": "v_auto_add_on_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

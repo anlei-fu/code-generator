@@ -1,0 +1,20 @@
+{
+	"name": "fd_f_b2e_up_sub_count_calc",
+	"parameters": {
+		"v_max_amount": {
+			"name": "v_max_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_amount": {
+			"name": "v_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

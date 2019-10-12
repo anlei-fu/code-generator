@@ -1,0 +1,44 @@
+{
+	"name": "fdBaseBusinessLine",
+	"description": "",
+	"columns": {
+		"businessId": {
+			"name": "businessId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"businessName": {
+			"name": "businessName",
+			"description": "业务线名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBaseBusinessLine": {
+			"name": "pkBaseBusinessLine",
+			"columns": [
+				"businessId"
+			]
+		}
+	}
+}

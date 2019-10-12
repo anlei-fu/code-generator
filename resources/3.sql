@@ -9488,6 +9488,7 @@ create or replace procedure qxfc.sp_order_bind(v_order_no varchar2,
   l_task_id         number;
   l_task_msg        varchar2(32);
 begin
+
   select t.order_no,
          t.down_order_no,
          t.down_channel_no,
@@ -9938,6 +9939,7 @@ begin
      and (t.product_no = v_productNo or t.sku = v_sku_id)
      and t.status = enable_status.enabled
      and rownum = 1;
+
   if (l_product_id is null) then
     v_ret_msg := f_get_task_result(l_order_no, '103', '产品不存在或不可用');
     sp_warn_insert(warn_keywords.recv_exception,
@@ -10114,7 +10116,7 @@ prompt
 prompt Creating procedure SP_RECV_REFUND
 prompt =================================
 prompt
-create or replace procedure qxfc.sp_recv_refund(v_down_channel_no     varchar2,
+create or replace procedure qxfc.s0p_recv_refund(v_down_channel_no     varchar2,
                                            v_down_order_no       varchar2,
                                            v_refund_no           varchar2,
                                            v_pay_order_no        varchar2,
@@ -10279,11 +10281,13 @@ create or replace procedure qxfc.sp_recv_refund_offline(v_down_channel_no varcha
   l_refund_id       number;
   l_ret             boolean;
 begin
+
   select count(1)
     into l_cntr
     from fc_order_refund t
    where t.down_channel_no = v_down_channel_no
      and t.down_order_no = v_down_order_no;
+
   if (l_cntr > 0) then
     v_ret_code := error_code.failure;
     v_ret_msg  := '已退款';
@@ -10298,6 +10302,7 @@ begin
     from fc_order_main t
    where t.down_channel_no = v_down_channel_no
      and t.down_order_no = v_down_order_no;
+
   if (l_order_no is null) then
     v_ret_code := error_code.failure;
     v_ret_msg  := '订单不存在';
@@ -10316,6 +10321,7 @@ begin
    where t.order_no = l_order_no;
 
   l_refund_id := seq_fcorderrefund_auto_id.nextval;
+
   insert into fc_order_refund
     (id,
      order_no,
@@ -10362,6 +10368,7 @@ begin
                               v_refund_fee,
                               fund_change_type.refund,
                               l_order_no || '线下退款');
+
   if (not l_ret) then
     rollback;
     v_ret_code := error_code.failure;
@@ -10419,6 +10426,7 @@ create or replace procedure qxfc.sp_refund_confirm(v_refund_ids varchar2,
   l_id     number;
   l_status number;
 begin
+
   if (v_status = process_status.success) then
     l_status := refund_status.wait;
   else
@@ -10432,6 +10440,7 @@ begin
                and t.id in
                    (select * from table(f_split_str(v_refund_ids, ',')))) loop
     begin
+
       select t.id
         into l_id
         from fc_order_refund t
@@ -10487,12 +10496,14 @@ create or replace procedure qxfc.sp_scan_db(v_scan_name      varchar2, --名称,
 begin
   v_out_count := 0;
   begin
+    
     select t.scan_interval, t.once_count, t.do_interval, t.status
       into l_frequency, l_once_count, l_do_frequency, l_status
       from fc_scan_config t
      where t.scan_name = v_scan_name
        and t.next_exec_time <= sysdate
        for update nowait;
+
   exception
     when others then
       rollback;
@@ -10543,6 +10554,7 @@ begin
          t.next_exec_time = sysdate + t.scan_interval / 24 / 60 / 60,
          t.last_exec_ip   = v_robot_ip
    where t.scan_name = v_scan_name;
+
   if (v_out_error_code = error_code.suc) then
     v_out_msg := '操作成功';
   else
@@ -10584,6 +10596,7 @@ create or replace procedure qxfc.sp_task_audit_save(v_task_id  number,
   l_svc         varchar2(32);
   l_ret         boolean;
 begin
+
   select t.tid, t.order_no, t.bind_id, t.action
     into l_task_id, l_order_no, l_bind_id, l_action
     from fc_flow_task t
@@ -10971,6 +10984,7 @@ create or replace procedure qxfc.sp_write_card_get(v_task_id  varchar2, --任务编
   l_remark             varchar2(256);
   l_acct_id            number;
   l_ret                boolean;
+
 begin
   select t.order_no,
          t.bind_id,
@@ -11160,6 +11174,7 @@ create or replace procedure qxfc.sp_write_card_save(v_task_id  varchar2,
   l_cost          number;
   l_debit_mode    number;
 begin
+
   select t.tid,
          t.flow_id,
          t.action,

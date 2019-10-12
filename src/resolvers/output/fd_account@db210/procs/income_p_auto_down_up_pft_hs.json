@@ -1,0 +1,13 @@
+{
+	"name": " income_p_auto_down_up_pft_hs",
+	"parameters": {
+		"v_get_date": {
+			"name": "v_get_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

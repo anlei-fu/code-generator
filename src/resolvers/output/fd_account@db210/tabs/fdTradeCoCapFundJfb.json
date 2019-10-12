@@ -1,0 +1,99 @@
+{
+	"name": "fdTradeCoCapFundJfb",
+	"description": "",
+	"columns": {
+		"changeId": {
+			"name": "changeId",
+			"description": "变动编号，和fd_trade_co_cap_fund对应",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"tradeMonth": {
+			"name": "tradeMonth",
+			"description": "积分交易月份",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"downChannelNo": {
+			"name": "downChannelNo",
+			"description": "交易下游渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"downAccountId": {
+			"name": "downAccountId",
+			"description": "交易下游渠道账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"businessType": {
+			"name": "businessType",
+			"description": "业务类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"settleStatus": {
+			"name": "settleStatus",
+			"description": "开票结算状态 0.已结算，1等待结算，9无需结算",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkJfbId": {
+			"name": "pkJfbId",
+			"columns": [
+				"changeId"
+			]
+		}
+	}
+}

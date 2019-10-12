@@ -1,0 +1,475 @@
+{
+	"success": {
+		"name": "success",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "success"
+		}
+	},
+	"failure": {
+		"name": "failure",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "failure"
+		}
+	},
+	"not_exists": {
+		"name": "not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "not_exists"
+		}
+	},
+	"param_miss": {
+		"name": "param_miss",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "param_miss"
+		}
+	},
+	"data_miss": {
+		"name": "data_miss",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "data_miss"
+		}
+	},
+	"data_not_exists": {
+		"name": "data_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "data_not_exists"
+		}
+	},
+	"data_error": {
+		"name": "data_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "data_error"
+		}
+	},
+	"system_busy": {
+		"name": "system_busy",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "system_busy"
+		}
+	},
+	"balance_low": {
+		"name": "balance_low",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "balance_low"
+		}
+	},
+	"has_refunded": {
+		"name": "has_refunded",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "has_refunded"
+		}
+	},
+	"data_repeat": {
+		"name": "data_repeat",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "data_repeat"
+		}
+	},
+	"amount_error": {
+		"name": "amount_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "order.amount_error"
+		}
+	},
+	"param_error": {
+		"name": "param_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "param_error"
+		}
+	},
+	"account_balance_error": {
+		"name": "account_balance_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "account_balance_error"
+		}
+	},
+	"channel_error": {
+		"name": "channel_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "channel_error"
+		}
+	},
+	"has_pay": {
+		"name": "has_pay",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "has_pay"
+		}
+	},
+	"order_not_exists": {
+		"name": "order_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "order_not_exists"
+		}
+	},
+	"order_or_account_not_exists": {
+		"name": "order_or_account_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "order_or_acc_not_exists"
+		}
+	},
+	"bank_account_id_error": {
+		"name": "bank_account_id_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "bank_account_id_error"
+		}
+	},
+	"co_account_not_exists": {
+		"name": "co_account_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "co_account_not_exists"
+		}
+	},
+	"adjust_record_error": {
+		"name": "adjust_record_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "adjust_record_error"
+		}
+	},
+	"channel_or_account_error": {
+		"name": "channel_or_account_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "channel_or_acc_error"
+		}
+	},
+	"face_error": {
+		"name": "face_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "face_error"
+		}
+	},
+	"order_insert_fail": {
+		"name": "order_insert_fail",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "order_insert_fail"
+		}
+	},
+	"adjust_timeout": {
+		"name": "adjust_timeout",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "adjust_timeout"
+		}
+	},
+	"change_amount_error": {
+		"name": "change_amount_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "change_amount_error"
+		}
+	},
+	"no_need_adjust": {
+		"name": "no_need_adjust",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "no_need_adjust"
+		}
+	},
+	"debit_not_exists": {
+		"name": "debit_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "debit_not_exists"
+		}
+	},
+	"channel_match_error": {
+		"name": "channel_match_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "channel_match_error"
+		}
+	},
+	"expire_or_balance_low": {
+		"name": "expire_or_balance_low",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "expire_or_balance_low"
+		}
+	},
+	"bank_payment_type_error": {
+		"name": "bank_payment_type_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "bank_payment_type_error"
+		}
+	},
+	"data_repeat_or_error": {
+		"name": "data_repeat_or_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "data_repeat_or_error"
+		}
+	},
+	"amount_exceed_limit": {
+		"name": "amount_exceed_limit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "amount_exceed_limit"
+		}
+	},
+	"white_list_not_exists": {
+		"name": "white_list_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "white_list_not_exists"
+		}
+	},
+	"payment_record_repeat": {
+		"name": "payment_record_repeat",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "payment_record_repeat"
+		}
+	},
+	"business_type_not_exists": {
+		"name": "business_type_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "business_type_not_exists"
+		}
+	},
+	"bank_not_suport": {
+		"name": "bank_not_suport",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "bank_not_suport"
+		}
+	},
+	"order_face_too_max": {
+		"name": "order_face_too_max",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "order_face_too_max"
+		}
+	},
+	"company_error": {
+		"name": "company_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "company_error"
+		}
+	},
+	"sys_info_error": {
+		"name": "sys_info_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "sys_info_error"
+		}
+	},
+	"business_type_error": {
+		"name": "business_type_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "business_type_error"
+		}
+	},
+	"order_own_profit": {
+		"name": "order_own_profit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "order_own_profit"
+		}
+	},
+	"tran_no_repeat": {
+		"name": "tran_no_repeat",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "tran_no_repeat"
+		}
+	}
+}

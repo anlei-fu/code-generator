@@ -1,0 +1,34 @@
+{
+	"name": "sup_f_sync_channel_check",
+	"parameters": {
+		"v_company_id": {
+			"name": "v_company_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_system_id": {
+			"name": "v_system_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_statistics_type": {
+			"name": "v_statistics_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_channel_type": {
+			"name": "v_channel_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

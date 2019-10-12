@@ -1,0 +1,118 @@
+{
+	"name": "fd_f_b2e_manual_up_main_edt_ck",
+	"parameters": {
+		"v_main_record_id": {
+			"name": "v_main_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_account_id": {
+			"name": "v_up_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_card_no": {
+			"name": "v_up_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_add_type_id": {
+			"name": "v_add_type_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_add_amount": {
+			"name": "v_up_add_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_calc_range_type": {
+			"name": "v_calc_range_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_work_day_type": {
+			"name": "v_work_day_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bank_account_id": {
+			"name": "v_bank_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_bank_card_no": {
+			"name": "v_bank_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_bank_card_name": {
+			"name": "v_bank_card_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_white_list_id": {
+			"name": "v_white_list_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_bank_type": {
+			"name": "v_bank_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_add_type": {
+			"name": "v_add_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_max_amount": {
+			"name": "v_max_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_expire_time": {
+			"name": "v_expire_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,13 @@
+{
+	"name": " yx_p_auto_down_fund_daily",
+	"parameters": {
+		"v_report_date": {
+			"name": "v_report_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

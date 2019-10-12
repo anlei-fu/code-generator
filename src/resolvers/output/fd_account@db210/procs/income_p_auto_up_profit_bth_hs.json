@@ -1,0 +1,19 @@
+{
+	"name": " income_p_auto_up_profit_bth_hs",
+	"parameters": {
+		"v_start_date": {
+			"name": "v_start_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_end_date": {
+			"name": "v_end_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	}
+}

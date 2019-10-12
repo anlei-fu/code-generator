@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": "f_pay_result_succeed",
 	"parameters": {
 		"v_order_no": {
 			"name": "v_order_no",

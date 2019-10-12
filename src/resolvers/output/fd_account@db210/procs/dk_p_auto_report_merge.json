@@ -1,0 +1,13 @@
+{
+	"name": " dk_p_auto_report_merge",
+	"parameters": {
+		"v_merge_date": {
+			"name": "v_merge_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

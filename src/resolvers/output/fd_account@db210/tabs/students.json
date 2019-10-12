@@ -1,0 +1,79 @@
+{
+	"name": "students",
+	"description": "",
+	"columns": {
+		"sno": {
+			"name": "sno",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"sname": {
+			"name": "sname",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 4
+			},
+			"defaltValue": null
+		},
+		"ssex": {
+			"name": "ssex",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 2
+			},
+			"defaltValue": null
+		},
+		"sbirthday": {
+			"name": "sbirthday",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"class": {
+			"name": "class",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 5
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {},
+	"indexes": {}
+}

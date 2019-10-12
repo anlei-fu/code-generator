@@ -1,0 +1,40 @@
+{
+	"name": " zhelp_co_recv_adjust",
+	"parameters": {
+		"v_account_id_1": {
+			"name": "v_account_id_1",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_account_id_2": {
+			"name": "v_account_id_2",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_amount": {
+			"name": "v_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

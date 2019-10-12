@@ -1,0 +1,26 @@
+{
+	"name": " fd_p_write_handle_log",
+	"parameters": {
+		"v_handle_module": {
+			"name": "v_handle_module",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_handle_user": {
+			"name": "v_handle_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_handle_params": {
+			"name": "v_handle_params",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	}
+}

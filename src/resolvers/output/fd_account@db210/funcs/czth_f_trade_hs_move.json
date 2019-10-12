@@ -1,0 +1,27 @@
+{
+	"name": "czth_f_trade_hs_move",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_order_time": {
+			"name": "v_order_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

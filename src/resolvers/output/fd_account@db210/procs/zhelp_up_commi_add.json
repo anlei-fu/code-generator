@@ -1,0 +1,33 @@
+{
+	"name": " zhelp_up_commi_add",
+	"parameters": {
+		"v_channel_no": {
+			"name": "v_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_add_amount": {
+			"name": "v_add_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

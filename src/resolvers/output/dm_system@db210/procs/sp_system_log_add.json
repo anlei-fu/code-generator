@@ -1,0 +1,26 @@
+{
+	"name": " sp_system_log_add",
+	"parameters": {
+		"v_object_name": {
+			"name": "v_object_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_error_level": {
+			"name": "v_error_level",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_error_desc": {
+			"name": "v_error_desc",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	}
+}

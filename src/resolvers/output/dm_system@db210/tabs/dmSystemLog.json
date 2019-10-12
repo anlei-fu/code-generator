@@ -1,0 +1,99 @@
+{
+	"name": "dmSystemLog",
+	"description": "",
+	"columns": {
+		"logId": {
+			"name": "logId",
+			"description": "日志编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"objectName": {
+			"name": "objectName",
+			"description": "对象名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 255
+			},
+			"defaltValue": null
+		},
+		"errorLevel": {
+			"name": "errorLevel",
+			"description": "错误等级",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 10
+			},
+			"defaltValue": null
+		},
+		"errorDesc": {
+			"name": "errorDesc",
+			"description": "错误信息",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 255
+			},
+			"defaltValue": null
+		},
+		"traceInfo": {
+			"name": "traceInfo",
+			"description": "堆栈信息",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 1024
+			},
+			"defaltValue": null
+		},
+		"createTime": {
+			"name": "createTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkSysLogId": {
+			"name": "pkSysLogId",
+			"columns": [
+				"logId"
+			]
+		}
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"name": "fd_f_bank_transfer_check",
+	"parameters": {
+		"v_out_bank_account_id": {
+			"name": "v_out_bank_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_in_bank_account_id": {
+			"name": "v_in_bank_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_transfer_amount": {
+			"name": "v_transfer_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_out_service_fee": {
+			"name": "v_out_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

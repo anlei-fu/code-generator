@@ -1,0 +1,82 @@
+{
+	"name": "dmTermPayAccount",
+	"description": "",
+	"columns": {
+		"mapId": {
+			"name": "mapId",
+			"description": "关系编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": null
+		},
+		"termNo": {
+			"name": "termNo",
+			"description": "终端编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "支付账号编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": null
+		},
+		"priority": {
+			"name": "priority",
+			"description": "优先级(用于值越大优先级越大)",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 1
+		},
+		"status": {
+			"name": "status",
+			"description": "状态: 0-启用 1-禁用",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkTermAcntId": {
+			"name": "pkTermAcntId",
+			"columns": [
+				"mapId"
+			]
+		}
+	}
+}

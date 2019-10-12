@@ -1,0 +1,27 @@
+{
+	"name": "fd_f_b2e_growth_rate_calc",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_current_start_time": {
+			"name": "v_current_start_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_current_end_time": {
+			"name": "v_current_end_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "number"
+}

@@ -1,0 +1,28 @@
+{
+	"name": "yx_f_trade_down_draw_check",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_issue_type": {
+			"name": "v_issue_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	},
+	"returnType": "varchar2"
+}

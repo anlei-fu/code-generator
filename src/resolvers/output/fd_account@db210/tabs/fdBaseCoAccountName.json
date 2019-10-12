@@ -1,0 +1,133 @@
+{
+	"name": "fdBaseCoAccountName",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"accountId": {
+			"name": "accountId",
+			"description": "渠道账户编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"coAccountName": {
+			"name": "coAccountName",
+			"description": "收付款账户名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 200
+			},
+			"defaltValue": 0
+		},
+		"coAccountType": {
+			"name": "coAccountType",
+			"description": "账户类型：1：上游，2：下游,3:公司间结算账户,4:押金账户,5:手续费账户,6:佣金账户,7:sup上游,8:sp账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": 0
+		},
+		"createdUser": {
+			"name": "createdUser",
+			"description": "创建人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"createdTime": {
+			"name": "createdTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"lastEditUser": {
+			"name": "lastEditUser",
+			"description": "最后更新人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"lastEditTime": {
+			"name": "lastEditTime",
+			"description": "最后更新时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"idxCoAccountId": {
+			"name": "idxCoAccountId",
+			"columns": [
+				"accountId"
+			]
+		},
+		"pkCoId": {
+			"name": "pkCoId",
+			"columns": [
+				"id"
+			]
+		}
+	},
+	"indexes": {}
+}

@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": "f_check_term_promote",
 	"parameters": {
 		"v_term_no": {
 			"name": "v_term_no",

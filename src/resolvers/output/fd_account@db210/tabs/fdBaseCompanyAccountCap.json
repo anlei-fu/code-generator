@@ -1,0 +1,168 @@
+{
+	"name": "fdBaseCompanyAccountCap",
+	"description": "",
+	"columns": {
+		"accountId": {
+			"name": "accountId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"accountName": {
+			"name": "accountName",
+			"description": "账号名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 100
+			},
+			"defaltValue": null
+		},
+		"companyId": {
+			"name": "companyId",
+			"description": "所属公司账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"accountType": {
+			"name": "accountType",
+			"description": "账户类型:1.运营投入,2.押金账户,3.保证金账户4.预付费5.短期借贷6.个人借支7毛利账户8.转账退款账户,9.活动专用账户10.手工退款账户12.费用账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"defaltValue": null
+		},
+		"balance": {
+			"name": "balance",
+			"description": "余额(手续费为负债)",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"status": {
+			"name": "status",
+			"description": "状态",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": null
+		},
+		"createdBy": {
+			"name": "createdBy",
+			"description": "创建人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"createdTime": {
+			"name": "createdTime",
+			"description": "创建时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"lastEditUser": {
+			"name": "lastEditUser",
+			"description": "最后更新人",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"lastEditTime": {
+			"name": "lastEditTime",
+			"description": "最后更新时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"useType": {
+			"name": "useType",
+			"description": "使用类型：1.投入账户（借支、短期为减），2.运营账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"defaltValue": 1
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkAccountIdCap": {
+			"name": "pkAccountIdCap",
+			"columns": [
+				"accountId"
+			]
+		}
+	}
+}

@@ -1,0 +1,191 @@
+{
+	"name": "fdB2eUpChannelConfig",
+	"description": "",
+	"columns": {
+		"typeId": {
+			"name": "typeId",
+			"description": "规则编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"dateRangeType": {
+			"name": "dateRangeType",
+			"description": "时间范围类型0.高峰期，1正常时期",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": null
+		},
+		"upChannelNo": {
+			"name": "upChannelNo",
+			"description": "上游渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"amountCalcType": {
+			"name": "amountCalcType",
+			"description": "转账计算方法",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"calcTypeMemo": {
+			"name": "calcTypeMemo",
+			"description": "方法备注",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"warnBalance": {
+			"name": "warnBalance",
+			"description": "预警余额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"maxChannelBalance": {
+			"name": "maxChannelBalance",
+			"description": "最大渠道余额(加款后余额不能超过此余额)",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"minAddAmount": {
+			"name": "minAddAmount",
+			"description": "最小加款金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"maxDayAddAmount": {
+			"name": "maxDayAddAmount",
+			"description": "最大单日加款金额",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": null
+		},
+		"addDurationHour": {
+			"name": "addDurationHour",
+			"description": "加款金额能持续扣款的小时数",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"auditStatus": {
+			"name": "auditStatus",
+			"description": "审核状态",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"defaltValue": null
+		},
+		"channelAccountId": {
+			"name": "channelAccountId",
+			"description": "渠道账户",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkTypeId": {
+			"name": "pkTypeId",
+			"columns": [
+				"typeId"
+			]
+		},
+		"unqDateRang": {
+			"name": "unqDateRang",
+			"columns": [
+				"dateRangeType,channelAccountId"
+			]
+		}
+	},
+	"indexes": {}
+}

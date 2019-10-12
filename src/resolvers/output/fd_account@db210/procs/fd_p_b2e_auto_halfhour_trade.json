@@ -1,0 +1,13 @@
+{
+	"name": " fd_p_b2e_auto_halfhour_trade",
+	"parameters": {
+		"v_start_date": {
+			"name": "v_start_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

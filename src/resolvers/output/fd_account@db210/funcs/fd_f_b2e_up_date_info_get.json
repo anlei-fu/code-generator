@@ -1,0 +1,20 @@
+{
+	"name": "fd_f_b2e_up_date_info_get",
+	"parameters": {
+		"v_calc_range_type": {
+			"name": "v_calc_range_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_work_day_type": {
+			"name": "v_work_day_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

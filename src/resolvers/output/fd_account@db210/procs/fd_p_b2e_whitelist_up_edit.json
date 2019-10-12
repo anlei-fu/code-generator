@@ -1,0 +1,96 @@
+{
+	"name": " fd_p_b2e_whitelist_up_edit",
+	"parameters": {
+		"v_channel_no": {
+			"name": "v_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_channel_account_id": {
+			"name": "v_channel_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bank_holder_name": {
+			"name": "v_bank_holder_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_holder_card_no": {
+			"name": "v_holder_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_main_bank_code": {
+			"name": "v_main_bank_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_branch_bank_code": {
+			"name": "v_branch_bank_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_bank_type": {
+			"name": "v_bank_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_rcv_card_type": {
+			"name": "v_rcv_card_type",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_account_bank_name": {
+			"name": "v_account_bank_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_province_no": {
+			"name": "v_province_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_city_no": {
+			"name": "v_city_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

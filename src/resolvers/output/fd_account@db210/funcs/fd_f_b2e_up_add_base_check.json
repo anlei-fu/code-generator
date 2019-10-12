@@ -1,0 +1,20 @@
+{
+	"name": "fd_f_b2e_up_add_base_check",
+	"parameters": {
+		"v_account_id": {
+			"name": "v_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_max_day_add_amount": {
+			"name": "v_max_day_add_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

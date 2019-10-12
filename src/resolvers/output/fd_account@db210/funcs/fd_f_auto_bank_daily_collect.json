@@ -1,0 +1,13 @@
+{
+	"name": "fd_f_auto_bank_daily_collect",
+	"parameters": {
+		"v_collect_date": {
+			"name": "v_collect_date",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,86 @@
+{
+	"name": "fdBaseCompanyInfo",
+	"description": "",
+	"columns": {
+		"companyId": {
+			"name": "companyId",
+			"description": "公司编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"companyName": {
+			"name": "companyName",
+			"description": "公司名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"initInputAmount": {
+			"name": "initInputAmount",
+			"description": "初始投入资金",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": null
+			},
+			"defaltValue": 0
+		},
+		"sortName": {
+			"name": "sortName",
+			"description": "简称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"status": {
+			"name": "status",
+			"description": "0:有效，1无效",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBaseCompanyInfo": {
+			"name": "pkBaseCompanyInfo",
+			"columns": [
+				"companyId"
+			]
+		}
+	}
+}

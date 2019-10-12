@@ -1,0 +1,33 @@
+{
+	"name": " yx_p_manual_add_credit",
+	"parameters": {
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_credit_amount": {
+			"name": "v_credit_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

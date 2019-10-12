@@ -1,0 +1,41 @@
+{
+	"name": "fd_f_b2e_up_add_status_edit",
+	"parameters": {
+		"v_main_record_id": {
+			"name": "v_main_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_add_amount": {
+			"name": "v_add_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_add_service_fee": {
+			"name": "v_add_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

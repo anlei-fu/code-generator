@@ -1,0 +1,58 @@
+{
+	"name": "fdBaseSourceSystem",
+	"description": "",
+	"columns": {
+		"sourceSystemId": {
+			"name": "sourceSystemId",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"sourceSystemName": {
+			"name": "sourceSystemName",
+			"description": "系统名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"text": {
+			"name": "text",
+			"description": "显示名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBaseSourceSystem": {
+			"name": "pkBaseSourceSystem",
+			"columns": [
+				"sourceSystemId"
+			]
+		}
+	}
+}

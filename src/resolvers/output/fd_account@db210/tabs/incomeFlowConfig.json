@@ -1,0 +1,100 @@
+{
+	"name": "incomeFlowConfig",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "配置编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"flowName": {
+			"name": "flowName",
+			"description": "流程名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"flowMq": {
+			"name": "flowMq",
+			"description": "流程mq",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"flowSort": {
+			"name": "flowSort",
+			"description": "流程排序",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"status": {
+			"name": "status",
+			"description": "状态，0启用，1禁用",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"flowParams": {
+			"name": "flowParams",
+			"description": "流程固定参数，a=1,b=2",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 256
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkIncomeFlowConfigid": {
+			"name": "pkIncomeFlowConfigid",
+			"columns": [
+				"id"
+			]
+		}
+	}
+}

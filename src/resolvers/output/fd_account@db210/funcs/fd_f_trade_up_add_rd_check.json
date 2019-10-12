@@ -1,0 +1,13 @@
+{
+	"name": "fd_f_trade_up_add_rd_check",
+	"parameters": {
+		"v_record_no": {
+			"name": "v_record_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

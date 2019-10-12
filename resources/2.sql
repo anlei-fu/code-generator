@@ -6604,7 +6604,7 @@ begin
     return;
   end if;
 
-  -- 绑定上游产品
+  -- 绑定上游产品 get up-product parameters
   if (not f_bind_up_product(l_term_prd_no,
                             l_busi_type,
                             l_face_fee,
@@ -6632,8 +6632,9 @@ begin
 
   if (l_need_delivery = enable_status.enabled) then
     begin
+    
       select t.script_id, t.script_path, t.service_code
-        into l_script_id, l_script_path, l_service_code
+        into l_script_id, `h, l_service_code
         from dm_up_script t
        where t.channel_no = l_up_chnnl_no
          and t.status = enable_status.enabled
@@ -6650,6 +6651,7 @@ begin
                    script_type.order_submit -- 普通订单
                 end
              end;
+
     exception
       when others then
         rollback;
@@ -6659,7 +6661,7 @@ begin
     end;
   end if;
 
-  -- 创建记录
+  -- 创建记录 create bind record
   l_bind_id := f_bind_id_create();
   insert into dm_order_bind
     (bind_id,
@@ -6706,6 +6708,7 @@ begin
      l_service_code,
      l_picture_mode);
 
+  -- change main order status
   update dm_order_main t
      set t.order_status  = deal_status.processing,
          t.manual_status = case

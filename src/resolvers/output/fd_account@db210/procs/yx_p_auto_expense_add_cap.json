@@ -1,0 +1,13 @@
+{
+	"name": " yx_p_auto_expense_add_cap",
+	"parameters": {
+		"v_add_date": {
+			"name": "v_add_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

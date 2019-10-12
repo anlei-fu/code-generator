@@ -1,0 +1,125 @@
+{
+	"name": "fd_f_b2e_up_add_record_create",
+	"parameters": {
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_account_id": {
+			"name": "v_up_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bank_add_type_id": {
+			"name": "v_bank_add_type_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bank_account_id": {
+			"name": "v_bank_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_pay_card_no": {
+			"name": "v_pay_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_pay_card_name": {
+			"name": "v_pay_card_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_white_list_id": {
+			"name": "v_white_list_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_card_no": {
+			"name": "v_up_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_add_amount": {
+			"name": "v_up_add_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_sub_count": {
+			"name": "v_sub_count",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_sub_max_amount": {
+			"name": "v_sub_max_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_fee": {
+			"name": "v_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_last_sub_amount": {
+			"name": "v_last_sub_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_last_sub_fee": {
+			"name": "v_last_sub_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_create_type": {
+			"name": "v_create_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_expire_time": {
+			"name": "v_expire_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_add_memo": {
+			"name": "v_add_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

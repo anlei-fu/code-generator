@@ -1,0 +1,20 @@
+{
+	"name": "fd_f_trade_operat_money_check",
+	"parameters": {
+		"v_amount": {
+			"name": "v_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_fee": {
+			"name": "v_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

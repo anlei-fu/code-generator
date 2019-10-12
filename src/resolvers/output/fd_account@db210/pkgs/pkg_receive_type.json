@@ -1,0 +1,57 @@
+{
+	"down_add": {
+		"name": "down_add",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"up_commi": {
+		"name": "up_commi",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	},
+	"recv_deposit": {
+		"name": "recv_deposit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 3
+		}
+	},
+	"recv_bond": {
+		"name": "recv_bond",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 4
+		}
+	},
+	"service_fee": {
+		"name": "service_fee",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 5
+		}
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"name": " fd_p_bank_service_fee_add",
+	"parameters": {
+		"v_bank_account_id": {
+			"name": "v_bank_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_amount": {
+			"name": "v_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_hander_user": {
+			"name": "v_hander_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_remark_name": {
+			"name": "v_remark_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

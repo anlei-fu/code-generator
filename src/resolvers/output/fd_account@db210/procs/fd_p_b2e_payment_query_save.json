@@ -1,0 +1,40 @@
+{
+	"name": " fd_p_b2e_payment_query_save",
+	"parameters": {
+		"v_sub_record_id": {
+			"name": "v_sub_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_error_code": {
+			"name": "v_error_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_query_error_msg": {
+			"name": "v_query_error_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_manual_msg": {
+			"name": "v_manual_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": " fd_p_write_log",
+	"parameters": {
+		"p_obj_name": {
+			"name": "p_obj_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"p_sql_err": {
+			"name": "p_sql_err",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"p_err_lev": {
+			"name": "p_err_lev",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "error"
+		}
+	}
+}

@@ -1,0 +1,113 @@
+{
+	"name": "fdB2eBankReceiveAccount",
+	"description": "",
+	"columns": {
+		"accountId": {
+			"name": "accountId",
+			"description": "银行账户编号[fd_bank_account_info.account_id]",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"cardNo": {
+			"name": "cardNo",
+			"description": "银行卡号[来源:fd_bank_account_info]",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"cardName": {
+			"name": "cardName",
+			"description": "账户名称[来源:fd_bank_account_info]",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"queryIntervalTime": {
+			"name": "queryIntervalTime",
+			"description": "查询间隔时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": 0
+		},
+		"useType": {
+			"name": "useType",
+			"description": "用途，下游收款 等",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": 1
+		},
+		"status": {
+			"name": "status",
+			"description": "账户状态",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 0
+		},
+		"lastQueryTime": {
+			"name": "lastQueryTime",
+			"description": "最后查询成功时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkFdB2eBankSubAccount": {
+			"name": "pkFdB2eBankSubAccount",
+			"columns": [
+				"accountId"
+			]
+		}
+	}
+}

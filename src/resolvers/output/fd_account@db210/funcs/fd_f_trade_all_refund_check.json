@@ -1,0 +1,41 @@
+{
+	"name": "fd_f_trade_all_refund_check",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_down_refund_amount": {
+			"name": "v_down_refund_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_refund_amount": {
+			"name": "v_up_refund_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bill_refund_amount": {
+			"name": "v_bill_refund_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

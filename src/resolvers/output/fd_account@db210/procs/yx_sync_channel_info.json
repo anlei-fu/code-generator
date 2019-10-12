@@ -1,0 +1,75 @@
+{
+	"name": " yx_sync_channel_info",
+	"parameters": {
+		"v_channel_no": {
+			"name": "v_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_channel_name": {
+			"name": "v_channel_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_channel_type": {
+			"name": "v_channel_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_company_id": {
+			"name": "v_company_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_status": {
+			"name": "v_status",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_system_no": {
+			"name": "v_system_no",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_warn_balance": {
+			"name": "v_warn_balance",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_commi_balance": {
+			"name": "v_commi_balance",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_channel_class": {
+			"name": "v_channel_class",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_out_status": {
+			"name": "v_out_status",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	}
+}

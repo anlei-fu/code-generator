@@ -1,0 +1,120 @@
+{
+	"name": "tblProcLog",
+	"description": "",
+	"columns": {
+		"procName": {
+			"name": "procName",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"logTime": {
+			"name": "logTime",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"startTime": {
+			"name": "startTime",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		},
+		"status": {
+			"name": "status",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 2
+			},
+			"defaltValue": null
+		},
+		"userMark": {
+			"name": "userMark",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 200
+			},
+			"defaltValue": null
+		},
+		"errCode": {
+			"name": "errCode",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 10
+			},
+			"defaltValue": null
+		},
+		"errDesc": {
+			"name": "errDesc",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 200
+			},
+			"defaltValue": null
+		},
+		"errTrace": {
+			"name": "errTrace",
+			"description": "",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 200
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {},
+	"indexes": {}
+}

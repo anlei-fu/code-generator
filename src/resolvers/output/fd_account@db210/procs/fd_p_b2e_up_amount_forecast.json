@@ -1,0 +1,26 @@
+{
+	"name": " fd_p_b2e_up_amount_forecast",
+	"parameters": {
+		"v_start_time": {
+			"name": "v_start_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_duration_hour": {
+			"name": "v_duration_hour",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

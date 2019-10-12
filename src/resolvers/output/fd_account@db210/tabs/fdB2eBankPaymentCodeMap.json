@@ -1,0 +1,86 @@
+{
+	"name": "fdB2eBankPaymentCodeMap",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"bankPaymentType": {
+			"name": "bankPaymentType",
+			"description": "银行支付方式",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"codeType": {
+			"name": "codeType",
+			"description": "编码类型1.付款类，2付款结果查询",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"code": {
+			"name": "code",
+			"description": "银行接口编码",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"remark": {
+			"name": "remark",
+			"description": "备注说明",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkPaymentCodeMapId": {
+			"name": "pkPaymentCodeMapId",
+			"columns": [
+				"id"
+			]
+		}
+	}
+}

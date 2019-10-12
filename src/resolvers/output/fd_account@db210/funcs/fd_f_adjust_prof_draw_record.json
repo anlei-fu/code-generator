@@ -1,0 +1,27 @@
+{
+	"name": "fd_f_adjust_prof_draw_record",
+	"parameters": {
+		"v_draw_record_id": {
+			"name": "v_draw_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_adjust_user": {
+			"name": "v_adjust_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,57 @@
+{
+	"success": {
+		"name": "success",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "success"
+		}
+	},
+	"failure": {
+		"name": "failure",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "failure"
+		}
+	},
+	"no_group_agent": {
+		"name": "no_group_agent",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "no_group_agent"
+		}
+	},
+	"group_count_error": {
+		"name": "group_count_error",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "group_count_error"
+		}
+	},
+	"debit_not_exists": {
+		"name": "debit_not_exists",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"value": "debit_not_exists"
+		}
+	}
+}

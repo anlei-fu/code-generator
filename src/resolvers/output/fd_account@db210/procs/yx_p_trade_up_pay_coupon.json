@@ -1,0 +1,250 @@
+{
+	"name": " yx_p_trade_up_pay_coupon",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_trade_delivery_no": {
+			"name": "v_trade_delivery_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_ext_order_no": {
+			"name": "v_ext_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_agent_id": {
+			"name": "v_agent_id",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_recharge_account_no": {
+			"name": "v_recharge_account_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_business_type": {
+			"name": "v_business_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_carrier_no": {
+			"name": "v_carrier_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_province_no": {
+			"name": "v_province_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_city_no": {
+			"name": "v_city_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_down_order_unit": {
+			"name": "v_down_order_unit",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_order_face": {
+			"name": "v_down_order_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_draw_unit": {
+			"name": "v_down_draw_unit",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_draw_face": {
+			"name": "v_down_draw_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_draw_amount": {
+			"name": "v_down_draw_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_real_amount": {
+			"name": "v_down_real_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_income_amount": {
+			"name": "v_down_income_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_draw_unit": {
+			"name": "v_up_draw_unit",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_draw_face": {
+			"name": "v_up_draw_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_draw_amount": {
+			"name": "v_up_draw_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_real_amount": {
+			"name": "v_up_real_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_success_face": {
+			"name": "v_success_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_order_time": {
+			"name": "v_order_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_handling_fee": {
+			"name": "v_handling_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_agency_fee": {
+			"name": "v_agency_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_fee": {
+			"name": "v_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_expense_fee": {
+			"name": "v_expense_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_expense_type": {
+			"name": "v_expense_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_coupon_amount": {
+			"name": "v_coupon_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_issue_type": {
+			"name": "v_issue_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_out_change_time": {
+			"name": "v_out_change_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

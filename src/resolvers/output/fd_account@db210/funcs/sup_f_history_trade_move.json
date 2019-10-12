@@ -1,0 +1,27 @@
+{
+	"name": "sup_f_history_trade_move",
+	"parameters": {
+		"v_system_id": {
+			"name": "v_system_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_order_time": {
+			"name": "v_order_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,46 @@
+{
+	"ok": {
+		"name": "ok",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 0
+		}
+	},
+	"notdeal": {
+		"name": "notdeal",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"dealing": {
+		"name": "dealing",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	},
+	"failure": {
+		"name": "failure",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 9
+		}
+	}
+}

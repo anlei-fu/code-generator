@@ -1,0 +1,33 @@
+{
+	"name": " fd_p_sync_outsys_profit",
+	"parameters": {
+		"v_system_name": {
+			"name": "v_system_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_profit_date": {
+			"name": "v_profit_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_profit": {
+			"name": "v_profit",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

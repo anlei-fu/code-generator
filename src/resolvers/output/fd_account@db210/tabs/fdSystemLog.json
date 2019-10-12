@@ -1,0 +1,127 @@
+{
+	"name": "fdSystemLog",
+	"description": "",
+	"columns": {
+		"logId": {
+			"name": "logId",
+			"description": "日志流水号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"objectName": {
+			"name": "objectName",
+			"description": "对象名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"errorCode": {
+			"name": "errorCode",
+			"description": "错误码",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": 200
+		},
+		"errorDesc": {
+			"name": "errorDesc",
+			"description": "错误信息",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 255
+			},
+			"defaltValue": null
+		},
+		"manualDesc": {
+			"name": "manualDesc",
+			"description": "人工描述",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 255
+			},
+			"defaltValue": null
+		},
+		"createdTime": {
+			"name": "createdTime",
+			"description": "发生时间",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": "sysdate"
+		},
+		"trace": {
+			"name": "trace",
+			"description": "异常跟踪",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 512
+			},
+			"defaltValue": null
+		},
+		"errorLevel": {
+			"name": "errorLevel",
+			"description": "错误级别",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 8
+			},
+			"defaltValue": "error"
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkFdSystemLog": {
+			"name": "pkFdSystemLog",
+			"columns": [
+				"logId"
+			]
+		}
+	}
+}

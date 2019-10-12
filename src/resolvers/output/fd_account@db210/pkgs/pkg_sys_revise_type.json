@@ -1,0 +1,35 @@
+{
+	"balance": {
+		"name": "balance",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"debit": {
+		"name": "debit",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	},
+	"refund": {
+		"name": "refund",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 3
+		}
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"name": "incomeDownUpConfig",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"upChannelNo": {
+			"name": "upChannelNo",
+			"description": "上游渠道编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkIncomeDownUpConfigid": {
+			"name": "pkIncomeDownUpConfigid",
+			"columns": [
+				"id"
+			]
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "dk_f_auto_commi_profit_sync",
+	"parameters": {
+		"v_merge_date": {
+			"name": "v_merge_date",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "dk_f_system_id_get",
+	"parameters": {
+		"v_source_name": {
+			"name": "v_source_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_source_id": {
+			"name": "v_source_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

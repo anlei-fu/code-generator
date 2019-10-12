@@ -1,0 +1,33 @@
+{
+	"name": " fd_p_manual_down_fee_add",
+	"parameters": {
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_fee_month": {
+			"name": "v_fee_month",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_service_fee": {
+			"name": "v_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

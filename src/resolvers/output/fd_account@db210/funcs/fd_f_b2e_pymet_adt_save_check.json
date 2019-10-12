@@ -1,0 +1,27 @@
+{
+	"name": "fd_f_b2e_pymet_adt_save_check",
+	"parameters": {
+		"v_sub_record_id": {
+			"name": "v_sub_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bank_id": {
+			"name": "v_bank_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_main_record_id": {
+			"name": "v_main_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

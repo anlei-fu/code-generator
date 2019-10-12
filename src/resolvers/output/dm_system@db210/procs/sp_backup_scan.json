@@ -1,0 +1,47 @@
+{
+	"name": " sp_backup_scan",
+	"parameters": {
+		"v_backup_name": {
+			"name": "v_backup_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_robot_ip": {
+			"name": "v_robot_ip",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_out_code": {
+			"name": "v_out_code",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_msg": {
+			"name": "v_out_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_out_count": {
+			"name": "v_out_count",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_batch_no": {
+			"name": "v_out_batch_no",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	}
+}

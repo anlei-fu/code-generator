@@ -1,0 +1,128 @@
+{
+	"name": "fdSystemCantonInfo",
+	"description": "",
+	"columns": {
+		"cantonCode": {
+			"name": "cantonCode",
+			"description": "区域编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"chineseName": {
+			"name": "chineseName",
+			"description": "中文名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"spell": {
+			"name": "spell",
+			"description": "英文或全拼",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"grade": {
+			"name": "grade",
+			"description": "行政级别",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": null
+		},
+		"parent": {
+			"name": "parent",
+			"description": "父级",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"simpleSpell": {
+			"name": "simpleSpell",
+			"description": "简拼",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 8
+			},
+			"defaltValue": null
+		},
+		"areaCode": {
+			"name": "areaCode",
+			"description": "区号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 8
+			},
+			"defaltValue": null
+		},
+		"standardCode": {
+			"name": "standardCode",
+			"description": "标准行政编码",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 6
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkFdSystemCantonInfo": {
+			"name": "pkFdSystemCantonInfo",
+			"columns": [
+				"cantonCode"
+			]
+		}
+	}
+}

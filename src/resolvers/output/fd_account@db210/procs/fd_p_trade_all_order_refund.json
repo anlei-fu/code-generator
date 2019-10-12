@@ -1,0 +1,117 @@
+{
+	"name": " fd_p_trade_all_order_refund",
+	"parameters": {
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_bill_channel_no": {
+			"name": "v_up_bill_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_business_type": {
+			"name": "v_business_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_trade_refund_no": {
+			"name": "v_trade_refund_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_refund_face": {
+			"name": "v_refund_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_refund_amount": {
+			"name": "v_down_refund_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_refund_amount": {
+			"name": "v_up_refund_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bill_refund_amount": {
+			"name": "v_bill_refund_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_commision": {
+			"name": "v_down_commision",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_commision": {
+			"name": "v_up_commision",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bill_up_commision": {
+			"name": "v_bill_up_commision",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_refund": {
+			"name": "v_service_refund",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

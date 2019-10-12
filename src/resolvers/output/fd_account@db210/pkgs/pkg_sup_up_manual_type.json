@@ -1,0 +1,101 @@
+{
+	"add_amount": {
+		"name": "add_amount",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 11
+		}
+	},
+	"red_add": {
+		"name": "red_add",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 12
+		}
+	},
+	"pick_amount": {
+		"name": "pick_amount",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 13
+		}
+	},
+	"red_pick": {
+		"name": "red_pick",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 14
+		}
+	},
+	"physical_storage": {
+		"name": "physical_storage",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 21
+		}
+	},
+	"electronic_storage": {
+		"name": "electronic_storage",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 22
+		}
+	},
+	"physical_2_electronic": {
+		"name": "physical_2_electronic",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 23
+		}
+	},
+	"trade_revise": {
+		"name": "trade_revise",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 60
+		}
+	},
+	"balance_revise": {
+		"name": "balance_revise",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 61
+		}
+	}
+}

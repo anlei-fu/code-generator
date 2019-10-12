@@ -1,0 +1,33 @@
+{
+	"name": " zhelp_bond_pay",
+	"parameters": {
+		"v_account_id": {
+			"name": "v_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_amount": {
+			"name": "v_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"name": " income_p_down_channel_grouping",
+	"parameters": {
+		"v_down_group_id": {
+			"name": "v_down_group_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_group_name": {
+			"name": "v_down_group_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_down_channel_name": {
+			"name": "v_down_channel_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

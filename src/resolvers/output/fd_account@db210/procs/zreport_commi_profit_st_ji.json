@@ -1,0 +1,13 @@
+{
+	"name": " zreport_commi_profit_st_ji",
+	"parameters": {
+		"v_collect_date": {
+			"name": "v_collect_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

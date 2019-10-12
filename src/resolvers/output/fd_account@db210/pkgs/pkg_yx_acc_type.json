@@ -1,0 +1,79 @@
+{
+	"up_channel": {
+		"name": "up_channel",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"down_channel": {
+		"name": "down_channel",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	},
+	"bank_acc": {
+		"name": "bank_acc",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 3
+		}
+	},
+	"service_fee_acc": {
+		"name": "service_fee_acc",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 4
+		}
+	},
+	"agent_acc": {
+		"name": "agent_acc",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 5
+		}
+	},
+	"send_cost": {
+		"name": "send_cost",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 6
+		}
+	},
+	"send_revenue": {
+		"name": "send_revenue",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 7
+		}
+	}
+}

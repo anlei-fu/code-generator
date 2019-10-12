@@ -1,0 +1,216 @@
+{
+	"name": "fd_f_b2e_details_create",
+	"parameters": {
+		"v_main_record_id": {
+			"name": "v_main_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bank_payment_type": {
+			"name": "v_bank_payment_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_sub_amount": {
+			"name": "v_sub_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_fee": {
+			"name": "v_service_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_expire_time": {
+			"name": "v_expire_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_up_add_mq": {
+			"name": "v_up_add_mq",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_merchant_no": {
+			"name": "v_merchant_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_user_no": {
+			"name": "v_user_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_user_password": {
+			"name": "v_user_password",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_token_key": {
+			"name": "v_token_key",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_language": {
+			"name": "v_language",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_currency_code": {
+			"name": "v_currency_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_app_id": {
+			"name": "v_app_id",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_app_ver": {
+			"name": "v_app_ver",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_receive_card_no": {
+			"name": "v_up_receive_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_receive_card_name": {
+			"name": "v_up_receive_card_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_receive_bank_code": {
+			"name": "v_up_receive_bank_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_receive_open_bank": {
+			"name": "v_up_receive_open_bank",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_receive_card_type": {
+			"name": "v_up_receive_card_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_receive_area_code": {
+			"name": "v_up_receive_area_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_receive_province": {
+			"name": "v_up_receive_province",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_receive_city": {
+			"name": "v_up_receive_city",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_payment_bank_id": {
+			"name": "v_payment_bank_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_payment_bank_card_no": {
+			"name": "v_payment_bank_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_payment_bank_card_name": {
+			"name": "v_payment_bank_card_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_is_same_area": {
+			"name": "v_is_same_area",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_is_same_bank": {
+			"name": "v_is_same_bank",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_payment_code": {
+			"name": "v_payment_code",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_add_memo": {
+			"name": "v_add_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

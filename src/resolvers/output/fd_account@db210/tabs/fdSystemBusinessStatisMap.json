@@ -1,0 +1,58 @@
+{
+	"name": "fdSystemBusinessStatisMap",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "主键",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"localBusinessType": {
+			"name": "localBusinessType",
+			"description": "记账系统业务类型编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"statisticsType": {
+			"name": "statisticsType",
+			"description": "财务渠道分类",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkBusStatisMapId": {
+			"name": "pkBusStatisMapId",
+			"columns": [
+				"id"
+			]
+		}
+	}
+}

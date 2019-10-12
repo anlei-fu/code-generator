@@ -1,0 +1,82 @@
+{
+	"name": " sup_p_sync_channel_info",
+	"parameters": {
+		"v_channel_no": {
+			"name": "v_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_channel_name": {
+			"name": "v_channel_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_company_id": {
+			"name": "v_company_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_system_id": {
+			"name": "v_system_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_statistics_type": {
+			"name": "v_statistics_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_channel_type": {
+			"name": "v_channel_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_status": {
+			"name": "v_status",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_operate_user": {
+			"name": "v_operate_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_operate_time": {
+			"name": "v_operate_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_msg": {
+			"name": "v_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

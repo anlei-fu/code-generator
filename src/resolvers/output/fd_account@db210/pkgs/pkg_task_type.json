@@ -1,0 +1,46 @@
+{
+	"receivequery": {
+		"name": "receivequery",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 1
+		}
+	},
+	"payment": {
+		"name": "payment",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 2
+		}
+	},
+	"paymentquery": {
+		"name": "paymentquery",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 3
+		}
+	},
+	"bankbalancequery": {
+		"name": "bankbalancequery",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"value": 4
+		}
+	}
+}

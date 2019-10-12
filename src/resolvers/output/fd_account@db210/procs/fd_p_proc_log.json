@@ -1,0 +1,33 @@
+{
+	"name": " fd_p_proc_log",
+	"parameters": {
+		"p_proc_name": {
+			"name": "p_proc_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"p_start_time": {
+			"name": "p_start_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"p_status": {
+			"name": "p_status",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"p_user_mark": {
+			"name": "p_user_mark",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	}
+}

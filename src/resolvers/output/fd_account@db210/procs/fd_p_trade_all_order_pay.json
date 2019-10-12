@@ -1,0 +1,166 @@
+{
+	"name": " fd_p_trade_all_order_pay",
+	"parameters": {
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_up_bill_channel_no": {
+			"name": "v_up_bill_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_business_type": {
+			"name": "v_business_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_total_face": {
+			"name": "v_total_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_order_amount": {
+			"name": "v_order_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_amount": {
+			"name": "v_up_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bill_up_amount": {
+			"name": "v_bill_up_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_commision": {
+			"name": "v_down_commision",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_commision": {
+			"name": "v_up_commision",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bill_up_commision": {
+			"name": "v_bill_up_commision",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_service_pay": {
+			"name": "v_service_pay",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_order_time": {
+			"name": "v_order_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_user_id": {
+			"name": "v_user_id",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_phone_no": {
+			"name": "v_phone_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_user_name": {
+			"name": "v_user_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_id_card_no": {
+			"name": "v_id_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_rec_address": {
+			"name": "v_rec_address",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_sale_user": {
+			"name": "v_sale_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_has_invoice": {
+			"name": "v_has_invoice",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

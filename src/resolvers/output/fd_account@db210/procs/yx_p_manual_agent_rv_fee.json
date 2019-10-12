@@ -1,0 +1,47 @@
+{
+	"name": " yx_p_manual_agent_rv_fee",
+	"parameters": {
+		"v_agent_id": {
+			"name": "v_agent_id",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_agent_fee": {
+			"name": "v_agent_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_business_type": {
+			"name": "v_business_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

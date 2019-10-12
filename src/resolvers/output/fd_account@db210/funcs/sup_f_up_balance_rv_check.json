@@ -1,0 +1,62 @@
+{
+	"name": "sup_f_up_balance_rv_check",
+	"parameters": {
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_rv_type": {
+			"name": "v_rv_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_rv_count": {
+			"name": "v_rv_count",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_rv_face": {
+			"name": "v_rv_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_rv_amount": {
+			"name": "v_rv_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_account_id": {
+			"name": "v_up_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_up_company_id": {
+			"name": "v_up_company_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_system_id": {
+			"name": "v_system_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

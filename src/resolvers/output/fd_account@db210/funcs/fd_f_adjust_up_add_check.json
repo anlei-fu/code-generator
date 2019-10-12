@@ -1,0 +1,20 @@
+{
+	"name": "fd_f_adjust_up_add_check",
+	"parameters": {
+		"v_record_id": {
+			"name": "v_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_adjust_days": {
+			"name": "v_adjust_days",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

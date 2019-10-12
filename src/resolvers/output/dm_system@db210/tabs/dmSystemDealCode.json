@@ -1,0 +1,167 @@
+{
+	"name": "dmSystemDealCode",
+	"description": "",
+	"columns": {
+		"errorCode": {
+			"name": "errorCode",
+			"description": "错误码",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": null
+		},
+		"dealCode": {
+			"name": "dealCode",
+			"description": "处理码: 0-处理成功 1-处理失败 9-未知",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"defaltValue": null
+		},
+		"allowRebind": {
+			"name": "allowRebind",
+			"description": "允许再次绑定: 0-允许 1-不允许",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 1
+		},
+		"allowRetry": {
+			"name": "allowRetry",
+			"description": "订单失败重试: 0-允许 1-不允许",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 1
+		},
+		"toManual": {
+			"name": "toManual",
+			"description": "进入人工审核: 0-是 1-否",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 1
+		},
+		"delayFailed": {
+			"name": "delayFailed",
+			"description": "是否延迟失败: 0-是 1-否",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 1
+		},
+		"delayMinute": {
+			"name": "delayMinute",
+			"description": "延迟失败分钟",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": null
+		},
+		"orderCode": {
+			"name": "orderCode",
+			"description": "订单错误码",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 10
+			},
+			"defaltValue": null
+		},
+		"orderDesc": {
+			"name": "orderDesc",
+			"description": "订单错误消息",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 128
+			},
+			"defaltValue": null
+		},
+		"errorMsg": {
+			"name": "errorMsg",
+			"description": "错误消息",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 64
+			},
+			"defaltValue": null
+		},
+		"status": {
+			"name": "status",
+			"description": "状态",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkSysDealCodeId": {
+			"name": "pkSysDealCodeId",
+			"columns": [
+				"errorCode"
+			]
+		}
+	}
+}

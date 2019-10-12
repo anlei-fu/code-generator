@@ -207,6 +207,19 @@
 			},
 			"defaltValue": 1
 		},
+		"pictureMode": {
+			"name": "pictureMode",
+			"description": "身份证照模式: 0-无需照片 1-重提照片 2-重提订单",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number"
+			},
+			"defaltValue": 0
+		},
 		"groupNo": {
 			"name": "groupNo",
 			"description": "分组编号",
@@ -220,19 +233,6 @@
 				"length": 64
 			},
 			"defaltValue": null
-		},
-		"pictureMode": {
-			"name": "pictureMode",
-			"description": "身份证照模式: 0-无需照片 1-重提照片 2-重提订单",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"type": {
-				"name": "number"
-			},
-			"defaltValue": 0
 		},
 		"status": {
 			"name": "status",

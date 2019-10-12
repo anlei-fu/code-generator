@@ -1,0 +1,40 @@
+{
+	"name": " fd_p_adjust_up_manual_draw",
+	"parameters": {
+		"v_record_id": {
+			"name": "v_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_adjust_days": {
+			"name": "v_adjust_days",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

@@ -75,5 +75,16 @@
 			},
 			"value": 7
 		}
+	},
+	"picture_retry": {
+		"name": "picture_retry",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 8
+		}
 	}
 }

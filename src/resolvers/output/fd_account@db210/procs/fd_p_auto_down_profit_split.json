@@ -1,0 +1,21 @@
+{
+	"name": " fd_p_auto_down_profit_split",
+	"parameters": {
+		"v_start_time": {
+			"name": "v_start_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		},
+		"v_end_time": {
+			"name": "v_end_time",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

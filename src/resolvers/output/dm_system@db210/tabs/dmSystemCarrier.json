@@ -1,0 +1,58 @@
+{
+	"name": "dmSystemCarrier",
+	"description": "",
+	"columns": {
+		"carrierNo": {
+			"name": "carrierNo",
+			"description": "运营商编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 10
+			},
+			"defaltValue": null
+		},
+		"carrierName": {
+			"name": "carrierName",
+			"description": "运营商名称",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"enable": {
+			"name": "enable",
+			"description": "状态: 0-启用 1-禁用",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 1
+			},
+			"defaltValue": 0
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkSysCarrierId": {
+			"name": "pkSysCarrierId",
+			"columns": [
+				"carrierNo"
+			]
+		}
+	}
+}

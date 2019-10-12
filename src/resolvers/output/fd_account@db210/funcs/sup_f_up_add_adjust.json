@@ -1,0 +1,34 @@
+{
+	"name": "sup_f_up_add_adjust",
+	"parameters": {
+		"v_add_record_id": {
+			"name": "v_add_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_bank_relate_id": {
+			"name": "v_bank_relate_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_created_by": {
+			"name": "v_created_by",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

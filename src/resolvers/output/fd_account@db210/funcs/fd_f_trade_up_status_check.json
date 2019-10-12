@@ -1,0 +1,13 @@
+{
+	"name": "fd_f_trade_up_status_check",
+	"parameters": {
+		"v_up_channel_no": {
+			"name": "v_up_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

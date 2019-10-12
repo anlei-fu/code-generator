@@ -1,0 +1,76 @@
+{
+	"name": "sup_f_up_draw_bank_plus",
+	"parameters": {
+		"v_bank_account_id": {
+			"name": "v_bank_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_draw_amount": {
+			"name": "v_draw_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_channel_name": {
+			"name": "v_channel_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_account_name": {
+			"name": "v_account_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_create_user": {
+			"name": "v_create_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_remark_name": {
+			"name": "v_remark_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_bank_card_no": {
+			"name": "v_bank_card_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		},
+		"v_bank_relate_id": {
+			"name": "v_bank_relate_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_bank_fund_id": {
+			"name": "v_bank_fund_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "varchar2"
+}

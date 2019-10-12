@@ -1,0 +1,27 @@
+{
+	"name": "fd_f_auto_channel_draw_get",
+	"parameters": {
+		"v_snap_time": {
+			"name": "v_snap_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_account_id": {
+			"name": "v_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_company_id": {
+			"name": "v_company_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "number"
+}

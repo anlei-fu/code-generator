@@ -1,0 +1,99 @@
+{
+	"name": "yx_f_trade_down_fee_refund",
+	"parameters": {
+		"v_order_source": {
+			"name": "v_order_source",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_channel_no": {
+			"name": "v_down_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_trade_order_no": {
+			"name": "v_trade_order_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_trade_refund_no": {
+			"name": "v_trade_refund_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_refund_unit": {
+			"name": "v_refund_unit",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_refund_face": {
+			"name": "v_refund_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_refund_amount": {
+			"name": "v_refund_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_order_date": {
+			"name": "v_order_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_handling_fee": {
+			"name": "v_handling_fee",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_refund_income": {
+			"name": "v_refund_income",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_coupon_amount": {
+			"name": "v_coupon_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		},
+		"v_issue_type": {
+			"name": "v_issue_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	},
+	"returnType": "varchar2"
+}

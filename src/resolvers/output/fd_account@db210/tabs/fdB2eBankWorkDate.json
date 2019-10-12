@@ -1,0 +1,57 @@
+{
+	"name": "fdB2eBankWorkDate",
+	"description": "",
+	"columns": {
+		"configId": {
+			"name": "configId",
+			"description": "配置编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"workDayType": {
+			"name": "workDayType",
+			"description": "时间类型",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 3
+			},
+			"defaltValue": null
+		},
+		"configDate": {
+			"name": "configDate",
+			"description": "配置日期",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "date"
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkFdB2eBankWorkDateCo": {
+			"name": "pkFdB2eBankWorkDateCo",
+			"columns": [
+				"configId"
+			]
+		}
+	}
+}

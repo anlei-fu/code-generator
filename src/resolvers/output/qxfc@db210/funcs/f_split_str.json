@@ -1,0 +1,21 @@
+{
+	"name": "f_split_str",
+	"parameters": {
+		"p_str": {
+			"name": "p_str",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"p_delimiter": {
+			"name": "p_delimiter",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "('"
+		}
+	},
+	"returnType": "split_type"
+}

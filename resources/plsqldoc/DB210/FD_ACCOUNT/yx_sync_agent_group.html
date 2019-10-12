@@ -1,0 +1,43 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head>
+ <link rel="stylesheet" type="text/css" href="../../plsqldoc.css">
+ <title>procedure yx_sync_agent_group</title>
+ <meta name="object" content="procedure">
+ <meta name="name" content="db210 fd_account.yx_sync_agent_group">
+ <meta name="description" content="&#20195;&#29702;&#20154;&#32534;&#21495;&#65288;&#20132;&#26131;&#31995;&#32479;&#65289;">
+</head>
+<body>
+<div width="100%"><div>
+<div><p align="left"><strong><small>fd_account@db210</small></strong></div>
+<div><p align="right"><strong><small><div href="../../index.html">index</div></small></strong></div>
+</div></div>
+<div class="main_table"><div><div class="desc_text">
+<p class="main_title">procedure yx_sync_agent_group</p>
+<pre class="decl_text">
+procedure yx_sync_agent_group(v_agent_id       in varchar2, --&#20195;&#29702;&#20154;&#32534;&#21495;&#65288;&#20132;&#26131;&#31995;&#32479;&#65289;
+                              v_agent_name     in varchar2, --&#20195;&#29702;&#20154;&#21517;&#31216;
+                              v_agent_type     in number, --&#20195;&#29702;&#20154;&#31867;&#22411;&#65306;0-&#20195;&#29702;&#20154;&#65292;1-&#20195;&#29702;&#20225;&#19994;
+                              v_group_agent    in number, --0:&#32452;&#21512;&#20195;&#29702;&#20154;&#65292;1&#65306;&#38750;&#32452;&#21512;&#20195;&#29702;&#20154;
+                              v_group_count    in number, --&#32452;&#21512;&#25968;&#37327;
+                              v_certificate_no in varchar2, --&#36523;&#20221;&#35777;/&#32435;&#31246;&#35782;&#21035;&#21495;
+                              v_mobile         in varchar2, --&#25163;&#26426;&#21495;&#30721;
+                              v_province_no    in varchar2, --&#30465;&#20221;
+                              v_company_nature in number, --&#20844;&#21496;&#24615;&#36136;1:&#26377;&#38480;&#36131;&#20219;&#20844;&#21496;,2:&#32929;&#20221;&#26377;&#38480;&#20844;&#21496;,3:&#20010;&#20307;&#21830;&#25143;,4:&#21512;&#20249;&#20225;&#19994;&#65292;&#20195;&#29702;&#20154;&#26102;&#20256;0
+                              v_taxpayer_size  in number, --&#32435;&#31246;&#20154;&#35268;&#27169;1:&#19968;&#33324;&#32435;&#31246;&#20154;,2&#23567;&#35268;&#27169;&#32435;&#31246;&#20154;&#65292;&#20195;&#29702;&#20154;&#26102;&#20256;0
+                              v_status         in number, --&#29366;&#24577;
+                              v_channel_no     in varchar2, --&#19979;&#28216;&#28192;&#36947;&#32534;&#21495;
+                              v_out_status     out number, --&#29366;&#24577;: 100-&#25104;&#21151; 200-&#22833;&#36133;
+                              v_out_id         out number --&#35760;&#36134;&#31995;&#32479;&#20195;&#29702;&#20154;id
+                              )
+
+</pre><br>
+&#20195;&#29702;&#20154;&#32534;&#21495;&#65288;&#20132;&#26131;&#31995;&#32479;&#65289;<br>
+
+<br>
+</div></div></div>
+<hr>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

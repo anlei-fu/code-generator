@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": " acct_sync_get",
 	"parameters": {
 		"v_robot_ip": {
 			"name": "v_robot_ip",

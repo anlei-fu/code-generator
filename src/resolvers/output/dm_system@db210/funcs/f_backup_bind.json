@@ -1,0 +1,41 @@
+{
+	"name": "f_backup_bind",
+	"parameters": {
+		"v_next_interval": {
+			"name": "v_next_interval",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_scan_max": {
+			"name": "v_scan_max",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_out_count": {
+			"name": "v_out_count",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_batch_no": {
+			"name": "v_out_batch_no",
+			"type": {
+				"name": "number"
+			},
+			"isOut": true
+		},
+		"v_out_msg": {
+			"name": "v_out_msg",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	},
+	"returnType": "number"
+}

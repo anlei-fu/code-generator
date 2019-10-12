@@ -1,0 +1,83 @@
+{
+	"name": "yx_f_trade_fund_differ_add",
+	"parameters": {
+		"v_yx_order_id": {
+			"name": "v_yx_order_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_trade_type": {
+			"name": "v_trade_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_channel_no": {
+			"name": "v_channel_no",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_account_id": {
+			"name": "v_account_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_business_type": {
+			"name": "v_business_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_order_face": {
+			"name": "v_order_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_order_amount": {
+			"name": "v_order_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_face": {
+			"name": "v_down_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_down_amount": {
+			"name": "v_down_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_income_amount": {
+			"name": "v_income_amount",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_up_face": {
+			"name": "v_up_face",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

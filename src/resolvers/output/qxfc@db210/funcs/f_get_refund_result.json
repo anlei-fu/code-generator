@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": "f_get_refund_result",
 	"parameters": {
 		"v_refund_id": {
 			"name": "v_refund_id",

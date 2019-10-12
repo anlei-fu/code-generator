@@ -1,0 +1,34 @@
+{
+	"name": "f_warn_insert",
+	"parameters": {
+		"v_title": {
+			"name": "v_title",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_content": {
+			"name": "v_content",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_key_words": {
+			"name": "v_key_words",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_level": {
+			"name": "v_level",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "boolean"
+}

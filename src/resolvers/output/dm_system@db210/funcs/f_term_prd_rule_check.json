@@ -1,13 +1,6 @@
 {
-	"name": "",
+	"name": "f_term_prd_rule_check",
 	"parameters": {
-		"v_order_no": {
-			"name": "v_order_no",
-			"type": {
-				"name": "varchar2"
-			},
-			"isOut": false
-		},
 		"v_term_no": {
 			"name": "v_term_no",
 			"type": {
@@ -22,15 +15,29 @@
 			},
 			"isOut": false
 		},
-		"v_phone_no": {
-			"name": "v_phone_no",
+		"v_user_card_no": {
+			"name": "v_user_card_no",
 			"type": {
 				"name": "varchar2"
 			},
 			"isOut": false
 		},
-		"v_user_ip": {
-			"name": "v_user_ip",
+		"v_contact_phone": {
+			"name": "v_contact_phone",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_contact_addr": {
+			"name": "v_contact_addr",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_ip_addr": {
+			"name": "v_ip_addr",
 			"type": {
 				"name": "varchar2"
 			},

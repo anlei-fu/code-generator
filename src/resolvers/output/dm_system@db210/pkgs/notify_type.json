@@ -1,4 +1,15 @@
 {
+	"all_type": {
+		"name": "all_type",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 0
+		}
+	},
 	"order_state": {
 		"name": "order_state",
 		"description": "",
@@ -8,6 +19,28 @@
 				"length": 2
 			},
 			"value": 1
+		}
+	},
+	"activate_state": {
+		"name": "activate_state",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 2
+		}
+	},
+	"recharge_state": {
+		"name": "recharge_state",
+		"description": "",
+		"value": {
+			"type": {
+				"name": "number",
+				"length": 2
+			},
+			"value": 3
 		}
 	}
 }

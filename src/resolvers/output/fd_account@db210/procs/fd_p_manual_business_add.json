@@ -1,0 +1,40 @@
+{
+	"name": " fd_p_manual_business_add",
+	"parameters": {
+		"v_source_system_id": {
+			"name": "v_source_system_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_outer_business_type": {
+			"name": "v_outer_business_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_outer_business_name": {
+			"name": "v_outer_business_name",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_statistics_type": {
+			"name": "v_statistics_type",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

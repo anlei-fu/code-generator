@@ -1,0 +1,805 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head>
+ <link rel="stylesheet" type="text/css" href="../../plsqldoc.css">
+ <title>package pkg_error_code</title>
+ <meta name="object" content="package">
+ <meta name="name" content="db210 fd_account.pkg_error_code">
+ <meta name="description" content="">
+</head>
+<body>
+<div width="100%"><div>
+<div><p align="left"><strong><small>fd_account@db210</small></strong></div>
+<div><p align="right"><strong><small><div href="../../index.html">index</div></small></strong></div>
+</div></div>
+<div class="main_table"><div><div class="desc_text">
+<p class="main_title">package pkg_error_code</p>
+
+<br>
+</div></div></div>
+<hr>
+<div name="constants"></div>
+<div class="sub_table"><div><div class="sub_title">
+constants
+</div></div></div>
+<div class="sub_table">
+<div><div valign="top" class="type_item">
+<div href="#success">success</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+&#38169;&#35823;&#30721;
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#failure">failure</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#not_exists">not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#param_miss">param_miss</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#data_miss">data_miss</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#data_not_exists">data_not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#data_error">data_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#system_busy">system_busy</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#balance_low">balance_low</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#has_refunded">has_refunded</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#data_repeat">data_repeat</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#amount_error">amount_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#param_error">param_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#account_balance_error">account_balance_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#channel_error">channel_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#has_pay">has_pay</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#order_not_exists">order_not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#order_or_account_not_exists">order_or_account_not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#bank_account_id_error">bank_account_id_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#co_account_not_exists">co_account_not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#adjust_record_error">adjust_record_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#channel_or_account_error">channel_or_account_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#face_error">face_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#order_insert_fail">order_insert_fail</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#adjust_timeout">adjust_timeout</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#change_amount_error">change_amount_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#no_need_adjust">no_need_adjust</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#debit_not_exists">debit_not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#channel_match_error">channel_match_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#expire_or_balance_low">expire_or_balance_low</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#bank_payment_type_error">bank_payment_type_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#data_repeat_or_error">data_repeat_or_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#amount_exceed_limit">amount_exceed_limit</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#white_list_not_exists">white_list_not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#payment_record_repeat">payment_record_repeat</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#business_type_not_exists">business_type_not_exists</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#bank_not_suport">bank_not_suport</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#order_face_too_max">order_face_too_max</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#company_error">company_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#sys_info_error">sys_info_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#business_type_error">business_type_error</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#order_own_profit">order_own_profit</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+<div><div valign="top" class="type_item">
+<div href="#tran_no_repeat">tran_no_repeat</div>&nbsp;&nbsp;
+</div><div class="desc_text" width=95%>
+
+</div></div>
+</div>
+<br>
+<hr>
+<div name="success"></div>
+<p class="type_title">
+success
+</p>
+<pre class="decl_text">
+success                     constant varchar2(32) := 'success';
+</pre>
+<p class="desc_text">
+&#38169;&#35823;&#30721;<br>
+
+<br>
+</p>
+<hr>
+<div name="failure"></div>
+<p class="type_title">
+failure
+</p>
+<pre class="decl_text">
+failure                     constant varchar2(32) := 'failure';
+</pre>
+<p class="desc_text">
+--- &#31995;&#32479;&#24537;&#31245;&#21518;&#20877;&#35797;<br>
+
+<br>
+</p>
+<hr>
+<div name="not_exists"></div>
+<p class="type_title">
+not_exists
+</p>
+<pre class="decl_text">
+not_exists                  constant varchar2(32) := 'not_exists';
+</pre>
+<p class="desc_text">
+--- &#25968;&#25454;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="param_miss"></div>
+<p class="type_title">
+param_miss
+</p>
+<pre class="decl_text">
+param_miss                  constant varchar2(32) := 'param_miss';
+</pre>
+<p class="desc_text">
+--- &#32570;&#23569;&#24517;&#39035;&#30340;&#21442;&#25968;<br>
+
+<br>
+</p>
+<hr>
+<div name="data_miss"></div>
+<p class="type_title">
+data_miss
+</p>
+<pre class="decl_text">
+data_miss                   constant varchar2(32) := 'data_miss';
+</pre>
+<p class="desc_text">
+--- &#25968;&#25454;&#19981;&#23384;&#22312;&#25110;&#24050;&#34987;&#21024;&#38500;<br>
+
+<br>
+</p>
+<hr>
+<div name="data_not_exists"></div>
+<p class="type_title">
+data_not_exists
+</p>
+<pre class="decl_text">
+data_not_exists             constant varchar2(32) := 'data_not_exists';
+</pre>
+<p class="desc_text">
+--- &#25968;&#25454;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="data_error"></div>
+<p class="type_title">
+data_error
+</p>
+<pre class="decl_text">
+data_error                  constant varchar2(32) := 'data_error';
+</pre>
+<p class="desc_text">
+---&#25968;&#25454;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="system_busy"></div>
+<p class="type_title">
+system_busy
+</p>
+<pre class="decl_text">
+system_busy                 constant varchar2(32) := 'system_busy';
+</pre>
+<p class="desc_text">
+--- &#31995;&#32479;&#24537;&#31245;&#21518;&#20877;&#35797;<br>
+
+<br>
+</p>
+<hr>
+<div name="balance_low"></div>
+<p class="type_title">
+balance_low
+</p>
+<pre class="decl_text">
+balance_low                 constant varchar2(32) := 'balance_low';
+</pre>
+<p class="desc_text">
+--- &#36134;&#25143;&#20313;&#39069;&#19981;&#36275;<br>
+
+<br>
+</p>
+<hr>
+<div name="has_refunded"></div>
+<p class="type_title">
+has_refunded
+</p>
+<pre class="decl_text">
+has_refunded                constant varchar2(32) := 'has_refunded';
+</pre>
+<p class="desc_text">
+--- &#36864;&#36807;&#27454;&#20102;<br>
+
+<br>
+</p>
+<hr>
+<div name="data_repeat"></div>
+<p class="type_title">
+data_repeat
+</p>
+<pre class="decl_text">
+data_repeat                 constant varchar2(32) := 'data_repeat';
+</pre>
+<p class="desc_text">
+--- &#25968;&#25454;&#24050;&#23384;&#22312;,&#35831;&#21247;&#37325;&#22797;&#25552;&#20132;<br>
+
+<br>
+</p>
+<hr>
+<div name="amount_error"></div>
+<p class="type_title">
+amount_error
+</p>
+<pre class="decl_text">
+amount_error                constant varchar2(32) := 'order.amount_error';
+</pre>
+<p class="desc_text">
+--- &#35746;&#21333;&#37329;&#39069;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="param_error"></div>
+<p class="type_title">
+param_error
+</p>
+<pre class="decl_text">
+param_error                 constant varchar2(32) := 'param_error';
+</pre>
+<p class="desc_text">
+--- &#21442;&#25968;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="account_balance_error"></div>
+<p class="type_title">
+account_balance_error
+</p>
+<pre class="decl_text">
+account_balance_error       constant varchar2(32) := 'account_balance_error';
+</pre>
+<p class="desc_text">
+---&#36134;&#25143;&#38169;&#35823;&#25110;&#20313;&#39069;&#19981;&#36275;<br>
+
+<br>
+</p>
+<hr>
+<div name="channel_error"></div>
+<p class="type_title">
+channel_error
+</p>
+<pre class="decl_text">
+channel_error               constant varchar2(32) := 'channel_error';
+</pre>
+<p class="desc_text">
+---&#28192;&#36947;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="has_pay"></div>
+<p class="type_title">
+has_pay
+</p>
+<pre class="decl_text">
+has_pay                     constant varchar2(32) := 'has_pay';
+</pre>
+<p class="desc_text">
+--- &#24050;&#25903;&#20184;<br>
+
+<br>
+</p>
+<hr>
+<div name="order_not_exists"></div>
+<p class="type_title">
+order_not_exists
+</p>
+<pre class="decl_text">
+order_not_exists            constant varchar2(32) := 'order_not_exists';
+</pre>
+<p class="desc_text">
+---&#35746;&#21333;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="order_or_account_not_exists"></div>
+<p class="type_title">
+order_or_account_not_exists
+</p>
+<pre class="decl_text">
+order_or_account_not_exists constant varchar2(32) := 'order_or_acc_not_exists';
+</pre>
+<p class="desc_text">
+---&#35746;&#21333;&#25110;&#36134;&#25143;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="bank_account_id_error"></div>
+<p class="type_title">
+bank_account_id_error
+</p>
+<pre class="decl_text">
+bank_account_id_error       constant varchar2(32) := 'bank_account_id_error';
+</pre>
+<p class="desc_text">
+---&#38134;&#34892;&#36134;&#25143;&#32534;&#21495;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="co_account_not_exists"></div>
+<p class="type_title">
+co_account_not_exists
+</p>
+<pre class="decl_text">
+co_account_not_exists       constant varchar2(32) := 'co_account_not_exists';
+</pre>
+<p class="desc_text">
+---&#20844;&#21496;&#29420;&#31435;&#36134;&#25143;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="adjust_record_error"></div>
+<p class="type_title">
+adjust_record_error
+</p>
+<pre class="decl_text">
+adjust_record_error         constant varchar2(32) := 'adjust_record_error';
+</pre>
+<p class="desc_text">
+---&#32418;&#20914;&#35760;&#24405;&#19981;&#27491;&#30830;<br>
+
+<br>
+</p>
+<hr>
+<div name="channel_or_account_error"></div>
+<p class="type_title">
+channel_or_account_error
+</p>
+<pre class="decl_text">
+channel_or_account_error    constant varchar2(32) := 'channel_or_acc_error';
+</pre>
+<p class="desc_text">
+---&#28192;&#36947;&#25110;&#36134;&#25143;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="face_error"></div>
+<p class="type_title">
+face_error
+</p>
+<pre class="decl_text">
+face_error                  constant varchar2(32) := 'face_error';
+</pre>
+<p class="desc_text">
+---&#38754;&#20540;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="order_insert_fail"></div>
+<p class="type_title">
+order_insert_fail
+</p>
+<pre class="decl_text">
+order_insert_fail           constant varchar2(32) := 'order_insert_fail';
+</pre>
+<p class="desc_text">
+---&#35746;&#21333;&#25554;&#20837;&#22833;&#36133;<br>
+
+<br>
+</p>
+<hr>
+<div name="adjust_timeout"></div>
+<p class="type_title">
+adjust_timeout
+</p>
+<pre class="decl_text">
+adjust_timeout              constant varchar2(32) := 'adjust_timeout';
+</pre>
+<p class="desc_text">
+---&#32418;&#20914;&#26102;&#38388;&#36807;&#26399;<br>
+
+<br>
+</p>
+<hr>
+<div name="change_amount_error"></div>
+<p class="type_title">
+change_amount_error
+</p>
+<pre class="decl_text">
+change_amount_error         constant varchar2(32) := 'change_amount_error';
+</pre>
+<p class="desc_text">
+---&#21464;&#21160;&#37329;&#39069;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="no_need_adjust"></div>
+<p class="type_title">
+no_need_adjust
+</p>
+<pre class="decl_text">
+no_need_adjust              constant varchar2(32) := 'no_need_adjust';
+</pre>
+<p class="desc_text">
+---&#26080;&#38656;&#35843;&#25972;<br>
+
+<br>
+</p>
+<hr>
+<div name="debit_not_exists"></div>
+<p class="type_title">
+debit_not_exists
+</p>
+<pre class="decl_text">
+debit_not_exists            constant varchar2(32) := 'debit_not_exists';
+</pre>
+<p class="desc_text">
+---&#25187;&#27454;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="channel_match_error"></div>
+<p class="type_title">
+channel_match_error
+</p>
+<pre class="decl_text">
+channel_match_error         constant varchar2(32) := 'channel_match_error';
+</pre>
+<p class="desc_text">
+---&#28192;&#36947;&#21305;&#37197;&#38169;&#20301;<br>
+
+<br>
+</p>
+<hr>
+<div name="expire_or_balance_low"></div>
+<p class="type_title">
+expire_or_balance_low
+</p>
+<pre class="decl_text">
+expire_or_balance_low       constant varchar2(32) := 'expire_or_balance_low';
+</pre>
+<p class="desc_text">
+---&#36807;&#26399;&#25110;&#36134;&#25143;&#20313;&#39069;&#19981;&#36275;<br>
+
+<br>
+</p>
+<hr>
+<div name="bank_payment_type_error"></div>
+<p class="type_title">
+bank_payment_type_error
+</p>
+<pre class="decl_text">
+bank_payment_type_error     constant varchar2(32) := 'bank_payment_type_error';
+</pre>
+<p class="desc_text">
+---&#38134;&#34892;&#25903;&#20184;&#26041;&#24335;&#19981;&#21487;&#29992;<br>
+
+<br>
+</p>
+<hr>
+<div name="data_repeat_or_error"></div>
+<p class="type_title">
+data_repeat_or_error
+</p>
+<pre class="decl_text">
+data_repeat_or_error        constant varchar2(32) := 'data_repeat_or_error';
+</pre>
+<p class="desc_text">
+--- &#25968;&#25454;&#24050;&#23384;&#22312;&#25110;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="amount_exceed_limit"></div>
+<p class="type_title">
+amount_exceed_limit
+</p>
+<pre class="decl_text">
+amount_exceed_limit         constant varchar2(32) := 'amount_exceed_limit';
+</pre>
+<p class="desc_text">
+--- &#37329;&#39069;&#36229;&#36807;&#38480;&#21046;<br>
+
+<br>
+</p>
+<hr>
+<div name="white_list_not_exists"></div>
+<p class="type_title">
+white_list_not_exists
+</p>
+<pre class="decl_text">
+white_list_not_exists       constant varchar2(32) := 'white_list_not_exists';
+</pre>
+<p class="desc_text">
+--- &#30333;&#21517;&#21333;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="payment_record_repeat"></div>
+<p class="type_title">
+payment_record_repeat
+</p>
+<pre class="decl_text">
+payment_record_repeat       constant varchar2(32) := 'payment_record_repeat';
+</pre>
+<p class="desc_text">
+--- &#25903;&#20184;&#35760;&#24405;&#37325;&#22797;<br>
+
+<br>
+</p>
+<hr>
+<div name="business_type_not_exists"></div>
+<p class="type_title">
+business_type_not_exists
+</p>
+<pre class="decl_text">
+business_type_not_exists    constant varchar2(32) := 'business_type_not_exists';
+</pre>
+<p class="desc_text">
+--- &#38169;&#35823;&#30721;&#19981;&#23384;&#22312;<br>
+
+<br>
+</p>
+<hr>
+<div name="bank_not_suport"></div>
+<p class="type_title">
+bank_not_suport
+</p>
+<pre class="decl_text">
+bank_not_suport             constant varchar2(32) := 'bank_not_suport';
+</pre>
+<p class="desc_text">
+--- &#38134;&#34892;&#19981;&#25903;&#25345;<br>
+
+<br>
+</p>
+<hr>
+<div name="order_face_too_max"></div>
+<p class="type_title">
+order_face_too_max
+</p>
+<pre class="decl_text">
+order_face_too_max          constant varchar2(32) := 'order_face_too_max';
+</pre>
+<p class="desc_text">
+--- &#35746;&#21333;&#38754;&#20540;&#36807;&#22823;<br>
+
+<br>
+</p>
+<hr>
+<div name="company_error"></div>
+<p class="type_title">
+company_error
+</p>
+<pre class="decl_text">
+company_error               constant varchar2(32) := 'company_error';
+</pre>
+<p class="desc_text">
+--- &#20844;&#21496;&#20449;&#24687;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="sys_info_error"></div>
+<p class="type_title">
+sys_info_error
+</p>
+<pre class="decl_text">
+sys_info_error              constant varchar2(32) := 'sys_info_error';
+</pre>
+<p class="desc_text">
+--- &#31995;&#32479;&#20449;&#24687;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="business_type_error"></div>
+<p class="type_title">
+business_type_error
+</p>
+<pre class="decl_text">
+business_type_error         constant varchar2(32) := 'business_type_error';
+</pre>
+<p class="desc_text">
+--- &#19994;&#21153;&#31867;&#22411;&#38169;&#35823;<br>
+
+<br>
+</p>
+<hr>
+<div name="order_own_profit"></div>
+<p class="type_title">
+order_own_profit
+</p>
+<pre class="decl_text">
+order_own_profit            constant varchar2(32) := 'order_own_profit';
+</pre>
+<p class="desc_text">
+---&#35746;&#21333;&#21253;&#21547;&#21033;&#28070;<br>
+
+<br>
+</p>
+<hr>
+<div name="tran_no_repeat"></div>
+<p class="type_title">
+tran_no_repeat
+</p>
+<pre class="decl_text">
+tran_no_repeat            constant varchar2(32) := 'tran_no_repeat';
+</pre>
+<p class="desc_text">
+---&#27969;&#27700;&#21495;&#37325;&#22797;<br>
+
+<br>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

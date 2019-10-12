@@ -1,0 +1,72 @@
+{
+	"name": "supBaseRelateAddMap",
+	"description": "",
+	"columns": {
+		"mapId": {
+			"name": "mapId",
+			"description": "关联编号",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": true,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"defaltValue": null
+		},
+		"supUpChannelNo": {
+			"name": "supUpChannelNo",
+			"description": "sup上游渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"supDownChannelNo": {
+			"name": "supDownChannelNo",
+			"description": "sup下游渠道",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		},
+		"proUpChannelNo": {
+			"name": "proUpChannelNo",
+			"description": "生产系统上游渠道（需为千行）",
+			"nullable": false,
+			"autoIncrement": false,
+			"isPk": false,
+			"unique": false,
+			"isEnum": false,
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"defaltValue": null
+		}
+	},
+	"isInfamationTable": false,
+	"joins": {},
+	"constraints": {
+		"pkSupBaseRelateAddMmapId": {
+			"name": "pkSupBaseRelateAddMmapId",
+			"columns": [
+				"mapId"
+			]
+		}
+	}
+}

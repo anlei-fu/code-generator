@@ -1,0 +1,20 @@
+{
+	"name": "dk_f_channel_settle_add",
+	"parameters": {
+		"v_change_start_time": {
+			"name": "v_change_start_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		},
+		"v_change_end_time": {
+			"name": "v_change_end_time",
+			"type": {
+				"name": "date"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "dk_f_adjust_settle_report",
+	"parameters": {
+		"v_settle_report_id": {
+			"name": "v_settle_report_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_fund_batch_id": {
+			"name": "v_fund_batch_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

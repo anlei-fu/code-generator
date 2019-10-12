@@ -1,0 +1,27 @@
+{
+	"name": "fd_f_b2e_co_service_complete",
+	"parameters": {
+		"v_recv_record_id": {
+			"name": "v_recv_record_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_hander_user": {
+			"name": "v_hander_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

@@ -1,0 +1,33 @@
+{
+	"name": " fd_p_cap_jfb_settle",
+	"parameters": {
+		"v_co_cap_fund_id": {
+			"name": "v_co_cap_fund_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_settle_user": {
+			"name": "v_settle_user",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_memo": {
+			"name": "v_memo",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_result": {
+			"name": "v_result",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": true
+		}
+	}
+}

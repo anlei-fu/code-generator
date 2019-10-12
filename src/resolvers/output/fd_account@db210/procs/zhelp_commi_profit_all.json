@@ -1,0 +1,19 @@
+{
+	"name": " zhelp_commi_profit_all",
+	"parameters": {
+		"v_start_date": {
+			"name": "v_start_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		},
+		"v_end_date": {
+			"name": "v_end_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false
+		}
+	}
+}

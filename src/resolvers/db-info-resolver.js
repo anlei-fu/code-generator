@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-11 17:55:49
+ * @LastEditTime: 2019-10-12 14:28:50
  */
 /**
  * imports  @const cheerio see https://github.com/cheeriojs/cheerio
@@ -77,7 +77,7 @@ function parseComponent($, el, func) {
         let a_els = $(el).children("div");
 
         for (let i = 0; i < a_els.length; i++) {
-                let name = $(a_els[i]).children("div").children("div").text();
+                let name = $(a_els[i]).children("div").children("div").text().trim();
                 let path = `${ROOT}/${$(a_els[i]).children("div").children("div").attr("href")}`;
 
                 if (func == parseTable) {
@@ -100,13 +100,14 @@ function parsePackage(html) {
         let pres = $("pre.decl_text");
         for (let i = 0; i < pres.length; i++) {
 
-                let text = $(pres[i]).text().trim().replace("=", "= ");
+                let text = $(pres[i]).text().trim().replace(":=", " = ");
                 text = text.substr(0, text.length - 1);
                 let segs = STR.splitToWords(text);
 
                 let name = segs[0],
                         sqlType = SqlType.parse(segs[2]),
                         value = parseValue(segs[4]);
+
 
                 pkg[name] = new SqlConstant(name, "");
                 pkg[name].value = new SqlValue(sqlType, value);
@@ -231,14 +232,14 @@ function parseFunction(html) {
         if (names.length == 0) {
                 name = text.split(" ")[1].trim();
         } else {
-                name = names[0].substr(0, name.length - 1)
+                name = names[0];
+                name = name.substr(0, name.length - 1).trim();
         }
 
-        let func = new Function(),
+        let func = new Function(name),
                 returnPos = text.indexOf("return"),
                 paramsText = STR.select(text, "(", ")")[0];
 
-        func.name = name;
         if (typeof paramsText != "undefined")
                 func.parameters = parseParameter(paramsText);
 
@@ -256,7 +257,7 @@ function parseParameter(text) {
         let parameters = {};
         // remove comment
         text = STR.removeWithMatch(text, "--", "\n");
-        text=text.replace("','","' '");
+        text = text.replace("','", "' '");
         let params = text.split(",");
         params.forEach(e => {
                 let words = STR.splitToWords(e),
@@ -277,9 +278,9 @@ function parseParameter(text) {
                         para.isOut = words[1] == "out";
                         para.type = SqlType.parse(words[2]);
                 } else {
-                        try{
-                        para.type = SqlType.parse(words[1]);
-                        } catch(e){
+                        try {
+                                para.type = SqlType.parse(words[1]);
+                        } catch (e) {
                                 throw e;
                         }
                 }
@@ -306,12 +307,13 @@ function parseProcedure(html) {
 
         if (names.length == 0) {
                 try {
-                name = text.split(" ")[1].trim();
-                }catch (e){
+                        name = text.split(" ")[1].trim();
+                } catch (e) {
                         return {};
                 }
         } else {
-                name = names[0].substr(0, name.length - 1)
+                name = names[0];
+                name=name.substr(0, name.length - 1)
         }
 
         let proc = new Procedure(),
@@ -365,30 +367,30 @@ function main() {
 
         DIR.create("output");
         for (let db in dbs) {
-                DIR.create("output/" +db);
+                DIR.create("output/" + db);
                 DIR.create("output/" + db + "/pkgs");
                 for (let pk in dbs[db].packages) {
-                        try{
-                        FILE.write(`output/${db}/pkgs/${pk}.json`, 
-                                   JSON.stringify(dbs[db].packages[pk],null, '\t'));
+                        try {
+                                FILE.write(`output/${db}/pkgs/${pk}.json`,
+                                        JSON.stringify(dbs[db].packages[pk], null, '\t'));
                         } catch {
                         }
                 }
                 DIR.create("output/" + db + "/tabs");
                 for (let tb in dbs[db].tables) {
                         FILE.write("output/" + `${db}/tabs/${tb}.json`,
-                                  JSON.stringify(dbs[db].tables[tb],null, '\t'));
+                                JSON.stringify(dbs[db].tables[tb], null, '\t'));
                 }
                 DIR.create("output/" + db + "/funcs");
                 for (let func in dbs[db].functions) {
-                        FILE.write("output/" + `${db}/funcs/${func}.json`, 
-                                   JSON.stringify(dbs[db].functions[func],null, '\t'));
+                        FILE.write("output/" + `${db}/funcs/${func}.json`,
+                                JSON.stringify(dbs[db].functions[func], null, '\t'));
                 }
 
                 DIR.create("output/" + db + "/procs");
                 for (let proc in dbs[db].procedures) {
-                        FILE.write("output/" + `${db}/procs/${proc}.json`, 
-                                   JSON.stringify(dbs[db].procedures[proc],null, '\t'));
+                        FILE.write("output/" + `${db}/procs/${proc}.json`,
+                                JSON.stringify(dbs[db].procedures[proc], null, '\t'));
                 }
         }
 

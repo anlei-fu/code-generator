@@ -1,0 +1,13 @@
+{
+	"name": " rpt_p_auto_unit_up_trade_hs",
+	"parameters": {
+		"v_collect_date": {
+			"name": "v_collect_date",
+			"type": {
+				"name": "varchar2"
+			},
+			"isOut": false,
+			"defaltValue": "null"
+		}
+	}
+}

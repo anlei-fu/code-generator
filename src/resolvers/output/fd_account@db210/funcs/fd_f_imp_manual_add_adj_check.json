@@ -1,0 +1,20 @@
+{
+	"name": "fd_f_imp_manual_add_adj_check",
+	"parameters": {
+		"v_change_id": {
+			"name": "v_change_id",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		},
+		"v_adjust_days": {
+			"name": "v_adjust_days",
+			"type": {
+				"name": "number"
+			},
+			"isOut": false
+		}
+	},
+	"returnType": "varchar2"
+}

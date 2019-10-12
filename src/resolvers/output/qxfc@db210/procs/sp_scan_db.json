@@ -1,5 +1,5 @@
 {
-	"name": "",
+	"name": " sp_scan_db",
 	"parameters": {
 		"v_scan_name": {
 			"name": "v_scan_name",
