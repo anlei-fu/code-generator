@@ -10,6 +10,8 @@
 			"isPk": true,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
@@ -24,6 +26,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
@@ -38,6 +42,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
@@ -54,5 +60,8 @@
 				"id"
 			]
 		}
-	}
+	},
+	"oneToMany": [],
+	"manyToOne": [],
+	"oneToOne": []
 }

@@ -1,5 +1,5 @@
 prompt PL/SQL Developer Export User Objects for user DM_SYSTEM@DB210
-prompt Created by Administrator on 2019Äê10ÔÂ11ÈÕ
+prompt Created by Administrator on 2019å¹´10æœˆ11æ—¥
 set define off
 spool 2.log
 
@@ -32,27 +32,27 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_BACKUP_CONFIG
-  is 'ºó²¹ÅäÖÃ±í';
+  is 'åè¡¥é…ç½®è¡¨';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.backup_name
-  is 'ºó²¹Ãû³Æ';
+  is 'åè¡¥åç§°';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.backup_title
-  is 'ºó²¹±êÌâ';
+  is 'åè¡¥æ ‡é¢˜';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.scan_max
-  is 'É¨Ãè×î´ó±ÊÊı';
+  is 'æ‰«ææœ€å¤§ç¬”æ•°';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.scan_interval
-  is 'É¨Ãè¼ä¸ô(Ãë)';
+  is 'æ‰«æé—´éš”(ç§’)';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.next_interval
-  is 'ÏÂ´Î¼ä¸ô(Ãë)';
+  is 'ä¸‹æ¬¡é—´éš”(ç§’)';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.last_exec
-  is '×î½üÖ´ĞĞÊ±¼ä';
+  is 'æœ€è¿‘æ‰§è¡Œæ—¶é—´';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.next_exec
-  is 'ÏÂ´ÎÖ´ĞĞÊ±¼ä';
+  is 'ä¸‹æ¬¡æ‰§è¡Œæ—¶é—´';
 comment on column DM_SYSTEM.DM_BACKUP_CONFIG.robot_ip
-  is '»úÆ÷ÈËIP';
+  is 'æœºå™¨äººIP';
 alter table DM_SYSTEM.DM_BACKUP_CONFIG
   add constraint PK_BACKUP_CONFIG_ID primary key (RECORD_ID)
   using index 
@@ -91,15 +91,15 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_OPERATE_DETAIL
-  is 'ÈÕÖ¾ÏêÇé±í';
+  is 'æ—¥å¿—è¯¦æƒ…è¡¨';
 comment on column DM_SYSTEM.DM_OPERATE_DETAIL.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_OPERATE_DETAIL.batch_no
-  is '²Ù×÷Åú´Î';
+  is 'æ“ä½œæ‰¹æ¬¡';
 comment on column DM_SYSTEM.DM_OPERATE_DETAIL.serial_no
-  is 'ÏµÍ³Á÷Ë®ºÅ(order_no/bind_id/product_id/record_id)';
+  is 'ç³»ç»Ÿæµæ°´å·(order_no/bind_id/product_id/record_id)';
 comment on column DM_SYSTEM.DM_OPERATE_DETAIL.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 create index DM_SYSTEM.IDX_OPER_DETAIL_BATCH_NO on DM_SYSTEM.DM_OPERATE_DETAIL (BATCH_NO)
   tablespace USERS
   pctfree 10
@@ -163,17 +163,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_OPERATE_LOG
-  is '²Ù×÷ÈÕÖ¾±í';
+  is 'æ“ä½œæ—¥å¿—è¡¨';
 comment on column DM_SYSTEM.DM_OPERATE_LOG.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_OPERATE_LOG.user_id
-  is 'ÓÃ»§±àºÅ';
+  is 'ç”¨æˆ·ç¼–å·';
 comment on column DM_SYSTEM.DM_OPERATE_LOG.batch_no
-  is '²Ù×÷Åú´Î';
+  is 'æ“ä½œæ‰¹æ¬¡';
 comment on column DM_SYSTEM.DM_OPERATE_LOG.operate_log
-  is '²Ù×÷ÈÕÖ¾';
+  is 'æ“ä½œæ—¥å¿—';
 comment on column DM_SYSTEM.DM_OPERATE_LOG.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 create index DM_SYSTEM.IDX_OPER_LOG_BATCH_NO on DM_SYSTEM.DM_OPERATE_LOG (BATCH_NO)
   tablespace USERS
   pctfree 10
@@ -261,65 +261,65 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_BIND
-  is '¶©µ¥°ó¶¨±í';
+  is 'è®¢å•ç»‘å®šè¡¨';
 comment on column DM_SYSTEM.DM_ORDER_BIND.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.order_no
-  is '¶©µ¥±àºÅ';
+  is 'è®¢å•ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.term_product_no
-  is 'ÖÕ¶Ë²úÆ·±àºÅ';
+  is 'ç»ˆç«¯äº§å“ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.term_price
-  is 'ÖÕ¶Ë¼Û¸ñ';
+  is 'ç»ˆç«¯ä»·æ ¼';
 comment on column DM_SYSTEM.DM_ORDER_BIND.phone_no
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.business_type
-  is 'ÒµÎñÀàĞÍ';
+  is 'ä¸šåŠ¡ç±»å‹';
 comment on column DM_SYSTEM.DM_ORDER_BIND.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column DM_SYSTEM.DM_ORDER_BIND.province_no
-  is 'Ê¡·İ±àÂë';
+  is 'çœä»½ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_BIND.city_no
-  is 'µØÊĞ±àÂë';
+  is 'åœ°å¸‚ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_BIND.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.up_product_no
-  is 'ÉÏÓÎ²úÆ·±àºÅ';
+  is 'ä¸Šæ¸¸äº§å“ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.up_price
-  is 'ÉÏÓÎ¼Û¸ñ';
+  is 'ä¸Šæ¸¸ä»·æ ¼';
 comment on column DM_SYSTEM.DM_ORDER_BIND.bind_status
-  is '°ó¶¨×´Ì¬: 0-³É¹¦ 20-µÈ´ı´¦Àí 30-ÕıÔÚ°ó¶¨ 90-°ó¶¨Ê§°Ü';
+  is 'ç»‘å®šçŠ¶æ€: 0-æˆåŠŸ 20-ç­‰å¾…å¤„ç† 30-æ­£åœ¨ç»‘å®š 90-ç»‘å®šå¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_BIND.manual_status
-  is 'ÈË¹¤×´Ì¬: 0-³É¹¦ 10-ÎŞĞè´¦Àí 20-µÈ´ı´¦Àí 90-Ê§°Ü';
+  is 'äººå·¥çŠ¶æ€: 0-æˆåŠŸ 10-æ— éœ€å¤„ç† 20-ç­‰å¾…å¤„ç† 90-å¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_BIND.script_id
-  is '·¢»õ½Å±¾ID';
+  is 'å‘è´§è„šæœ¬ID';
 comment on column DM_SYSTEM.DM_ORDER_BIND.service_code
-  is '·şÎñ±àÂë(¶ÓÁĞÃû/»úÆ÷ÈËCODE)';
+  is 'æœåŠ¡ç¼–ç (é˜Ÿåˆ—å/æœºå™¨äººCODE)';
 comment on column DM_SYSTEM.DM_ORDER_BIND.delivery_start_time
-  is '·¢»õ¿ªÊ¼Ê±¼ä';
+  is 'å‘è´§å¼€å§‹æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND.delivery_finish_time
-  is '·¢»õ½áÊøÊ±¼ä';
+  is 'å‘è´§ç»“æŸæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND.robot_ip
-  is '·¢»õIP';
+  is 'å‘è´§IP';
 comment on column DM_SYSTEM.DM_ORDER_BIND.result_msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_ORDER_BIND.up_order_no
-  is 'ÉÏÓÎ¶©µ¥ºÅ';
+  is 'ä¸Šæ¸¸è®¢å•å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND.allow_bind
-  is 'ÔÊĞí°ó¶¨: 0-ÔÊĞí 1-²»ÔÊĞí';
+  is 'å…è®¸ç»‘å®š: 0-å…è®¸ 1-ä¸å…è®¸';
 comment on column DM_SYSTEM.DM_ORDER_BIND.next_bind_time
-  is 'ÏÂ´Î°ó¶¨Ê±¼ä';
+  is 'ä¸‹æ¬¡ç»‘å®šæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND.batch_no
-  is 'ºó²¹Åú´Î';
+  is 'åè¡¥æ‰¹æ¬¡';
 comment on column DM_SYSTEM.DM_ORDER_BIND.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND.finish_time
-  is '½áÊøÊ±¼ä';
+  is 'ç»“æŸæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND.close_time
-  is '×Ô¶¯¹Ø±ÕÊ±¼ä';
+  is 'è‡ªåŠ¨å…³é—­æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND.picture_mode
-  is 'ÕÕÆ¬Ìá½»Ä£Ê½: 0-ÎŞĞèÕÕÆ¬ 1-ÖØĞÂÌá½»ÕÕÆ¬ 2-ÖØĞÂÌá½»¶©µ¥ ';
+  is 'ç…§ç‰‡æäº¤æ¨¡å¼: 0-æ— éœ€ç…§ç‰‡ 1-é‡æ–°æäº¤ç…§ç‰‡ 2-é‡æ–°æäº¤è®¢å• ';
 create index DM_SYSTEM.IDX_ORDER_BIND_ORDER_NO on DM_SYSTEM.DM_ORDER_BIND (ORDER_NO)
   tablespace USERS
   pctfree 10
@@ -399,25 +399,25 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_BIND_EXT
-  is '°ó¶¨À©Õ¹±í';
+  is 'ç»‘å®šæ‰©å±•è¡¨';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.phone_no2
-  is 'ĞÂÊÖ»úºÅ';
+  is 'æ–°æ‰‹æœºå·';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.activate_status
-  is '¼¤»î×´Ì¬: 0-ÒÑ¼¤»î 1-´ı¼¤»î';
+  is 'æ¿€æ´»çŠ¶æ€: 0-å·²æ¿€æ´» 1-å¾…æ¿€æ´»';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.activate_time
-  is '¼¤»îÊ±¼ä';
+  is 'æ¿€æ´»æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.recharge_status
-  is 'Ê×³ä×´Ì¬: 0-ÒÑÊ×³ä 1-Î´Ê×³ä';
+  is 'é¦–å……çŠ¶æ€: 0-å·²é¦–å…… 1-æœªé¦–å……';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.recharge_time
-  is 'Ê×³äÊ±¼ä';
+  is 'é¦–å……æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.express_name
-  is '¿ìµİÃû³Æ';
+  is 'å¿«é€’åç§°';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.express_no
-  is '¿ìµİµ¥ºÅ';
+  is 'å¿«é€’å•å·';
 comment on column DM_SYSTEM.DM_ORDER_BIND_EXT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 alter table DM_SYSTEM.DM_ORDER_BIND_EXT
   add constraint PK_BIND_EXT_BIND_ID primary key (BIND_ID)
   using index 
@@ -488,79 +488,79 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_MAIN
-  is '¶©µ¥Ö÷±í';
+  is 'è®¢å•ä¸»è¡¨';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.product_no
-  is '²úÆ·±àºÅ';
+  is 'äº§å“ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.business_type
-  is 'ÒµÎñÀàĞÍ: 1-µç»°ºÅ¿¨ 2-ÊÖ»ú»°·Ñ 3-ÊÖ»úÁ÷Á¿ 4-ÊÖ»úÌ×²Í';
+  is 'ä¸šåŠ¡ç±»å‹: 1-ç”µè¯å·å¡ 2-æ‰‹æœºè¯è´¹ 3-æ‰‹æœºæµé‡ 4-æ‰‹æœºå¥—é¤';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.phone_no
-  is '°ìÀíÕËºÅ';
+  is 'åŠç†è´¦å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.carrier_no
-  is 'ÔËÓªÉÌ±àÂë';
+  is 'è¿è¥å•†ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.province_no
-  is 'Ê¡·İ±àÂë';
+  is 'çœä»½ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.city_no
-  is 'µØÊĞ±àÂë';
+  is 'åœ°å¸‚ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.user_ip
-  is 'ÓÃ»§IP';
+  is 'ç”¨æˆ·IP';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.promote_id
-  is 'ÍÆ¹ã±àºÅ';
+  is 'æ¨å¹¿ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.account_id
-  is 'ÊÕ¿îÕËºÅID';
+  is 'æ”¶æ¬¾è´¦å·ID';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.need_vcode
-  is 'ĞèÒªÑéÖ¤Âë: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦éªŒè¯ç : 0-éœ€è¦ 1-ä¸éœ€è¦';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.order_face
-  is '¶©µ¥ÃæÖµ';
+  is 'è®¢å•é¢å€¼';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.pay_price
-  is 'Ö§¸¶¼Û¸ñ';
+  is 'æ”¯ä»˜ä»·æ ¼';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.cost_price
-  is '³É±¾¼Û¸ñ';
+  is 'æˆæœ¬ä»·æ ¼';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.service_fee
-  is 'ÊÖĞø·Ñ';
+  is 'æ‰‹ç»­è´¹';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.succ_money
-  is '³É¹¦½ğ¶î';
+  is 'æˆåŠŸé‡‘é¢';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.pay_status
-  is 'Ö§¸¶×´Ì¬: 0-³É¹¦ 10-ÎŞĞè´¦Àí 20-µÈ´ıÖ§¸¶ 30-Ö§¸¶ÖĞ 90-Ê§°Ü';
+  is 'æ”¯ä»˜çŠ¶æ€: 0-æˆåŠŸ 10-æ— éœ€å¤„ç† 20-ç­‰å¾…æ”¯ä»˜ 30-æ”¯ä»˜ä¸­ 90-å¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.order_status
-  is '¶©µ¥×´Ì¬: 0-³É¹¦ 10-ÎŞĞè´¦Àí 20-µÈ´ı´¦Àí 30-´¦ÀíÖĞ 90-Ê§°Ü';
+  is 'è®¢å•çŠ¶æ€: 0-æˆåŠŸ 10-æ— éœ€å¤„ç† 20-ç­‰å¾…å¤„ç† 30-å¤„ç†ä¸­ 90-å¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.refund_status
-  is 'ÍË¿î×´Ì¬: 0-³É¹¦ 10-ÎŞĞè´¦Àí 20-µÈ´ıÍË¿î 30-ÍË¿îÖĞ 90-Ê§°Ü';
+  is 'é€€æ¬¾çŠ¶æ€: 0-æˆåŠŸ 10-æ— éœ€å¤„ç† 20-ç­‰å¾…é€€æ¬¾ 30-é€€æ¬¾ä¸­ 90-å¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.manual_status
-  is 'ÈË¹¤×´Ì¬: 0-³É¹¦ 10-ÎŞĞè´¦Àí 20-µÈ´ıÉóºË 90-ÉóºË³É¹¦';
+  is 'äººå·¥çŠ¶æ€: 0-æˆåŠŸ 10-æ— éœ€å¤„ç† 20-ç­‰å¾…å®¡æ ¸ 90-å®¡æ ¸æˆåŠŸ';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.pay_finish_time
-  is 'Ö§¸¶Íê³ÉÊ±¼ä';
+  is 'æ”¯ä»˜å®Œæˆæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.plat_trade_no
-  is 'Ö§¸¶Æ½Ì¨Á÷Ë®ºÅ';
+  is 'æ”¯ä»˜å¹³å°æµæ°´å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.plat_trade_msg
-  is 'Æ½Ì¨Ö§¸¶ÏûÏ¢';
+  is 'å¹³å°æ”¯ä»˜æ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.result_msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.error_code
-  is 'ÖÕ¶Ë´íÎóÂë';
+  is 'ç»ˆç«¯é”™è¯¯ç ';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.error_desc
-  is 'ÖÕ¶Ë´íÎóÃèÊö';
+  is 'ç»ˆç«¯é”™è¯¯æè¿°';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.server_ip
-  is 'ÊÕµ¥·şÎñÆ÷IP';
+  is 'æ”¶å•æœåŠ¡å™¨IP';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.close_time
-  is '×Ô¶¯¹Ø±ÕÊ±¼ä';
+  is 'è‡ªåŠ¨å…³é—­æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.promoter_id
-  is 'ÍÆ¹ãÈË±àºÅ';
+  is 'æ¨å¹¿äººç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.label_id
-  is 'ÍÆ¹ãÈË±êÇ©±àºÅ';
+  is 'æ¨å¹¿äººæ ‡ç­¾ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.bind_next_time
-  is 'ÏÂ´Î°ó¶¨Ê±¼ä';
+  is 'ä¸‹æ¬¡ç»‘å®šæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.bind_times
-  is '°ó¶¨´ÎÊı';
+  is 'ç»‘å®šæ¬¡æ•°';
 comment on column DM_SYSTEM.DM_ORDER_MAIN.bind_batch_no
-  is '°ó¶¨Åú´ÎºÅ';
+  is 'ç»‘å®šæ‰¹æ¬¡å·';
 create index DM_SYSTEM.IDX_BIND_BATCH_NO on DM_SYSTEM.DM_ORDER_MAIN (BIND_BATCH_NO)
   tablespace USERS
   pctfree 10
@@ -673,43 +673,43 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_MAIN_EXT
-  is '¶©µ¥ÓÃ»§ĞÅÏ¢±í';
+  is 'è®¢å•ç”¨æˆ·ä¿¡æ¯è¡¨';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.contact_name
-  is 'ÁªÏµÈËĞÕÃû';
+  is 'è”ç³»äººå§“å';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.contact_addr
-  is 'ÁªÏµÈËµØÖ·';
+  is 'è”ç³»äººåœ°å€';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.card_user_id
-  is 'Éí·İÖ¤ºÅÂë';
+  is 'èº«ä»½è¯å·ç ';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.card_user_name
-  is 'Éí·İÖ¤ĞÕÃû';
+  is 'èº«ä»½è¯å§“å';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.card_pic_front
-  is 'Éí·İÖ¤ÕÕµØÖ·(ÕıÃæ)';
+  is 'èº«ä»½è¯ç…§åœ°å€(æ­£é¢)';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.card_pic_back
-  is 'Éí·İÖ¤ÕÕµØÖ·(·´Ãæ)';
+  is 'èº«ä»½è¯ç…§åœ°å€(åé¢)';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.card_pic_hand
-  is 'Éí·İÖ¤ÕÕµØÖ·(ÊÖ³Ö)';
+  is 'èº«ä»½è¯ç…§åœ°å€(æ‰‹æŒ)';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.new_phone_no
-  is 'ĞÂÊÖ»úºÅ';
+  is 'æ–°æ‰‹æœºå·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.activate_status
-  is '¼¤»î×´Ì¬: 0-ÒÑ¼¤»î 1-´ı¼¤»î';
+  is 'æ¿€æ´»çŠ¶æ€: 0-å·²æ¿€æ´» 1-å¾…æ¿€æ´»';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.activate_time
-  is '¼¤»îÊ±¼ä';
+  is 'æ¿€æ´»æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.recharge_status
-  is 'Ê×³ä×´Ì¬: 0-ÒÑÊ×³ä 1-Î´Ê×³ä';
+  is 'é¦–å……çŠ¶æ€: 0-å·²é¦–å…… 1-æœªé¦–å……';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.recharge_time
-  is 'Ê×³äÊ±¼ä';
+  is 'é¦–å……æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.express_name
-  is '¿ìµİÃû³Æ';
+  is 'å¿«é€’åç§°';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.express_no
-  is '¿ìµİµ¥ºÅ';
+  is 'å¿«é€’å•å·';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_MAIN_EXT.recharge_face
-  is 'Ê×³äÃæÖµ';
+  is 'é¦–å……é¢å€¼';
 create index DM_SYSTEM.IDX_USER_ID_NO on DM_SYSTEM.DM_ORDER_MAIN_EXT (CARD_USER_ID)
   tablespace USERS
   pctfree 10
@@ -771,37 +771,37 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_NOTIFY
-  is '¶©µ¥Í¨Öª';
+  is 'è®¢å•é€šçŸ¥';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.record_id
-  is 'Í¨Öª±àºÅ';
+  is 'é€šçŸ¥ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.promote_id
-  is 'ÍÆ¹ã±àºÅ';
+  is 'æ¨å¹¿ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.order_no
-  is '¶©µ¥±àºÅ';
+  is 'è®¢å•ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.notify_type
-  is 'Í¨ÖªÀàĞÍ';
+  is 'é€šçŸ¥ç±»å‹';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.notify_times
-  is 'Í¨Öª´ÎÊı';
+  is 'é€šçŸ¥æ¬¡æ•°';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.notify_max_times
-  is 'Í¨Öª×î´ó´ÎÊı';
+  is 'é€šçŸ¥æœ€å¤§æ¬¡æ•°';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.status
-  is 'Í¨Öª×´Ì¬: 0-³É¹¦ 20-µÈ´ı´¦Àí 30-´¦ÀíÖĞ 90-´¦ÀíÊ§°Ü';
+  is 'é€šçŸ¥çŠ¶æ€: 0-æˆåŠŸ 20-ç­‰å¾…å¤„ç† 30-å¤„ç†ä¸­ 90-å¤„ç†å¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.script_id
-  is '½Å±¾±àºÅ';
+  is 'è„šæœ¬ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.service_code
-  is '·şÎñ±àÂë';
+  is 'æœåŠ¡ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.robot_ip
-  is '»úÆ÷ÈËIP';
+  is 'æœºå™¨äººIP';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.result_msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.last_time
-  is 'ÉÏ´ÎÍ¨ÖªÊ±¼ä';
+  is 'ä¸Šæ¬¡é€šçŸ¥æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.next_time
-  is 'ÏÂ´ÎÍ¨ÖªÊ±¼ä';
+  is 'ä¸‹æ¬¡é€šçŸ¥æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_NOTIFY.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 create index DM_SYSTEM.IDX_TERM_NOTIFY_NEXT_TIME on DM_SYSTEM.DM_ORDER_NOTIFY (NEXT_TIME)
   tablespace USERS
   pctfree 10
@@ -899,33 +899,33 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_QUERY
-  is '¶©µ¥²éÑ¯±í';
+  is 'è®¢å•æŸ¥è¯¢è¡¨';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.order_no
-  is '¶©µ¥±àºÅ';
+  is 'è®¢å•ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.status
-  is '²éÑ¯×´Ì¬: 0-³É¹¦ 10-ÎŞĞè´¦Àí 20-µÈ´ı²éÑ¯ 30-ÕıÔÚ²éÑ¯ 90-²éÑ¯Ê§°Ü';
+  is 'æŸ¥è¯¢çŠ¶æ€: 0-æˆåŠŸ 10-æ— éœ€å¤„ç† 20-ç­‰å¾…æŸ¥è¯¢ 30-æ­£åœ¨æŸ¥è¯¢ 90-æŸ¥è¯¢å¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.script_id
-  is '½Å±¾ID';
+  is 'è„šæœ¬ID';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.service_code
-  is '·şÎñ±àÂë(¶ÓÁĞÃû/»úÆ÷ÈËCODE)';
+  is 'æœåŠ¡ç¼–ç (é˜Ÿåˆ—å/æœºå™¨äººCODE)';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.robot_ip
-  is '²éÑ¯»úÆ÷IP';
+  is 'æŸ¥è¯¢æœºå™¨IP';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.result_msg
-  is '½á¹ûÏûÏ¢(×î½üÒ»´Î)';
+  is 'ç»“æœæ¶ˆæ¯(æœ€è¿‘ä¸€æ¬¡)';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.query_times
-  is '²éÑ¯´ÎÊı';
+  is 'æŸ¥è¯¢æ¬¡æ•°';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.batch_no
-  is 'ºó²¹Åú´Î';
+  is 'åè¡¥æ‰¹æ¬¡';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.next_time
-  is 'ÏÂ´Î²éÑ¯Ê±¼ä';
+  is 'ä¸‹æ¬¡æŸ¥è¯¢æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_QUERY.max_times
-  is '²éÑ¯×î´ó´ÎÊı: 0-²»ÏŞ´ÎÊı';
+  is 'æŸ¥è¯¢æœ€å¤§æ¬¡æ•°: 0-ä¸é™æ¬¡æ•°';
 create index DM_SYSTEM.IDX_ORDER_BIND_QUERY_STATUS on DM_SYSTEM.DM_ORDER_QUERY (STATUS)
   tablespace USERS
   pctfree 10
@@ -989,41 +989,41 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_REFUND
-  is '¶©µ¥ÍË¿î¼ÇÂ¼';
+  is 'è®¢å•é€€æ¬¾è®°å½•';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.account_id
-  is 'ÕËºÅ±àºÅ';
+  is 'è´¦å·ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.account_type
-  is 'ÕË»§ÀàĞÍ: 1-Ö§¸¶±¦ 2-Î¢ĞÅ';
+  is 'è´¦æˆ·ç±»å‹: 1-æ”¯ä»˜å® 2-å¾®ä¿¡';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.refund_fee
-  is 'ÍË¿î½ğ¶î';
+  is 'é€€æ¬¾é‡‘é¢';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.refund_reason
-  is 'ÍË¿îÔ­Òò';
+  is 'é€€æ¬¾åŸå› ';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.service_fee
-  is 'ÊÖĞø·Ñ';
+  is 'æ‰‹ç»­è´¹';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.plat_trade_no
-  is 'Ö§¸¶Æ½Ì¨½»Ò×±àºÅ';
+  is 'æ”¯ä»˜å¹³å°äº¤æ˜“ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.plat_refund_no
-  is 'Ö§¸¶Æ½Ì¨ÍË¿î±àºÅ';
+  is 'æ”¯ä»˜å¹³å°é€€æ¬¾ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.status
-  is 'ÍË¿î×´Ì¬: 0-³É¹¦ 20-µÈ´ı 30-´¦ÀíÖĞ 90-Ê§°Ü';
+  is 'é€€æ¬¾çŠ¶æ€: 0-æˆåŠŸ 20-ç­‰å¾… 30-å¤„ç†ä¸­ 90-å¤±è´¥';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.service_code
-  is '·şÎñ±àÂë(»úÆ÷ÈË±àÂë)';
+  is 'æœåŠ¡ç¼–ç (æœºå™¨äººç¼–ç )';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.robot_ip
-  is '»úÆ÷ÈËIP';
+  is 'æœºå™¨äººIP';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.result_msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_REFUND.start_time
-  is '¿ªÊ¼Ê±¼ä';
+  is 'å¼€å§‹æ—¶é—´';
 create index DM_SYSTEM.IDX_REFUND_RECORD_ACNT_ID on DM_SYSTEM.DM_ORDER_REFUND (ACCOUNT_ID)
   tablespace USERS
   pctfree 10
@@ -1122,59 +1122,59 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_ORDER_VCODE
-  is '¶©µ¥ÑéÖ¤Âë±í';
+  is 'è®¢å•éªŒè¯ç è¡¨';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.term_product_no
-  is 'ÖÕ¶Ë²úÆ·±àÂë';
+  is 'ç»ˆç«¯äº§å“ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.up_product_no
-  is 'ÉÏÓÎ²úÆ·±àºÅ';
+  is 'ä¸Šæ¸¸äº§å“ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.phone_no
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.business_type
-  is 'ÒµÎñÀàĞÍ';
+  is 'ä¸šåŠ¡ç±»å‹';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.carrier_no
-  is 'ÔËÓªÉÌ±àÂë';
+  is 'è¿è¥å•†ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.province_no
-  is 'Ê¡·İ±àÂë';
+  is 'çœä»½ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.city_no
-  is 'µØÊĞ±àÂë';
+  is 'åœ°å¸‚ç¼–ç ';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.promote_id
-  is 'ÍÆ¹ã±àºÅ';
+  is 'æ¨å¹¿ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.script_id
-  is '½Å±¾±àºÅ';
+  is 'è„šæœ¬ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.send_times
-  is '·¢ËÍ´ÎÊı';
+  is 'å‘é€æ¬¡æ•°';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.send_status
-  is '¶ÌĞÅ×´Ì¬: 0-·¢ËÍ³É¹¦ 20-µÈ´ı·¢ËÍ 30-·¢ËÍÖĞ 90-·¢ËÍÊ§°Ü  99-·¢ËÍÎ´Öª';
+  is 'çŸ­ä¿¡çŠ¶æ€: 0-å‘é€æˆåŠŸ 20-ç­‰å¾…å‘é€ 30-å‘é€ä¸­ 90-å‘é€å¤±è´¥  99-å‘é€æœªçŸ¥';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.retry_times
-  is 'ÖØÊÔ´ÎÊı';
+  is 'é‡è¯•æ¬¡æ•°';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.next_send_time
-  is 'ÏÂ´Î·¢ËÍÊ±¼ä';
+  is 'ä¸‹æ¬¡å‘é€æ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.result_msg
-  is '·¢ËÍ½á¹ûÏûÏ¢';
+  is 'å‘é€ç»“æœæ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.user_ip
-  is 'ÓÃ»§IP';
+  is 'ç”¨æˆ·IP';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.vcode
-  is 'ÓÃ»§ÑéÖ¤Âë';
+  is 'ç”¨æˆ·éªŒè¯ç ';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.promoter_id
-  is 'ÍÆ¹ãÈË±àºÅ';
+  is 'æ¨å¹¿äººç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.label_id
-  is 'ÍÆ¹ãÈË±êÇ©±àºÅ';
+  is 'æ¨å¹¿äººæ ‡ç­¾ç¼–å·';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.template_id
-  is '¶ÌĞÅÄ£°åID(Ôİ´æ¶ÌĞÅÄÚÈİ)';
+  is 'çŸ­ä¿¡æ¨¡æ¿ID(æš‚å­˜çŸ­ä¿¡å†…å®¹)';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.verify_state
-  is 'ÑéÖ¤×´Ì¬: 0-ÑéÖ¤Í¨¹ı 20-µÈ´ıÑéÖ¤  90-ÑéÖ¤Î´Í¨¹ı';
+  is 'éªŒè¯çŠ¶æ€: 0-éªŒè¯é€šè¿‡ 20-ç­‰å¾…éªŒè¯  90-éªŒè¯æœªé€šè¿‡';
 comment on column DM_SYSTEM.DM_ORDER_VCODE.serial_no
-  is '·¢ËÍÁ÷Ë®ºÅ';
+  is 'å‘é€æµæ°´å·';
 create index DM_SYSTEM.IDX_ORDER_VCODE_SEND_STATUS on DM_SYSTEM.DM_ORDER_VCODE (SEND_STATUS)
   tablespace USERS
   pctfree 10
@@ -1243,51 +1243,51 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_PAY_ACCOUNT
-  is 'Æ½Ì¨Ö§¸¶ÕËºÅ';
+  is 'å¹³å°æ”¯ä»˜è´¦å·';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.account_id
-  is 'Ö§¸¶ÕËºÅ±àºÅ';
+  is 'æ”¯ä»˜è´¦å·ç¼–å·';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.account_type
-  is 'ÕËºÅÀàĞÍ: 1-Ö§¸¶±¦ 2-Î¢ĞÅ';
+  is 'è´¦å·ç±»å‹: 1-æ”¯ä»˜å® 2-å¾®ä¿¡';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.app_id
-  is '¿ª·ÅÆ½Ì¨AppId';
+  is 'å¼€æ”¾å¹³å°AppId';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.app_secret
-  is '¿ª·ÅÆ½Ì¨AppSecret';
+  is 'å¼€æ”¾å¹³å°AppSecret';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.merchant_id
-  is 'ÉÌ»§±àºÅ';
+  is 'å•†æˆ·ç¼–å·';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.sign_key
-  is 'Ç©ÃûKEY';
+  is 'ç­¾åKEY';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.cert_path
-  is 'Ö¤ÊéÂ·¾¶';
+  is 'è¯ä¹¦è·¯å¾„';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.cert_pwd
-  is 'Ö¤ÊéÃÜÂë';
+  is 'è¯ä¹¦å¯†ç ';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.public_key
-  is '¼ÓÃÜ¹«Ô¿';
+  is 'åŠ å¯†å…¬é’¥';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.private_key
-  is '½âÃÜ/ÑéÇ©Ë½Ô¿';
+  is 'è§£å¯†/éªŒç­¾ç§é’¥';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.balance
-  is 'ÕË»§Óà¶î';
+  is 'è´¦æˆ·ä½™é¢';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.auth_redirect_url
-  is 'APIÊÚÈ¨Ìø×ªµØÖ·';
+  is 'APIæˆæƒè·³è½¬åœ°å€';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.pay_redirect_url
-  is 'Ö§¸¶ÍêÌø×ªµØÖ·';
+  is 'æ”¯ä»˜å®Œè·³è½¬åœ°å€';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.pay_notify_url
-  is 'Ö§¸¶½á¹û»Øµ÷µØÖ·';
+  is 'æ”¯ä»˜ç»“æœå›è°ƒåœ°å€';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.refund_notify_url
-  is 'ÍË¿î»Øµ÷µØÖ·';
+  is 'é€€æ¬¾å›è°ƒåœ°å€';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT.account_name
-  is 'ÕËºÅÃû³Æ';
+  is 'è´¦å·åç§°';
 create index DM_SYSTEM.IDX_PAY_ACNT_STATUS on DM_SYSTEM.DM_PAY_ACCOUNT (STATUS)
   tablespace USERS
   pctfree 10
@@ -1354,19 +1354,19 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_PAY_ACCOUNT_RATE
-  is 'Ö§¸¶Æ½Ì¨ÊÖĞø·ÑÂÊ';
+  is 'æ”¯ä»˜å¹³å°æ‰‹ç»­è´¹ç‡';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT_RATE.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT_RATE.account_type
-  is 'ÕËºÅÀàĞÍ: 1-Ö§¸¶±¦ 2-Î¢ĞÅ 3-¾©¶«';
+  is 'è´¦å·ç±»å‹: 1-æ”¯ä»˜å® 2-å¾®ä¿¡ 3-äº¬ä¸œ';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT_RATE.pay_type
-  is 'Ö§¸¶ÀàĞÍ: *-ËùÓĞ';
+  is 'æ”¯ä»˜ç±»å‹: *-æ‰€æœ‰';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT_RATE.service_rate
-  is 'ÊÖĞø·ÑÂÊ';
+  is 'æ‰‹ç»­è´¹ç‡';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT_RATE.pay_name
-  is 'Ö§¸¶Ãû³Æ';
+  is 'æ”¯ä»˜åç§°';
 comment on column DM_SYSTEM.DM_PAY_ACCOUNT_RATE.refund_service
-  is 'ÍËÊÖĞø·Ñ: 0-ÍË 1-²»ÍË';
+  is 'é€€æ‰‹ç»­è´¹: 0-é€€ 1-ä¸é€€';
 alter table DM_SYSTEM.DM_PAY_ACCOUNT_RATE
   add constraint PK_PAY_ACNT_RATE_ID primary key (RECORD_ID)
   using index 
@@ -1406,31 +1406,31 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_PAY_FUND_CHANGE
-  is 'ÊÕ¿îÕËºÅ×Ê½ğ±ä¶¯';
+  is 'æ”¶æ¬¾è´¦å·èµ„é‡‘å˜åŠ¨';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.account_id
-  is 'ÕË»§±àºÅ';
+  is 'è´¦æˆ·ç¼–å·';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.change_type
-  is '±ä¶¯ÀàĞÍ: 1-ÊÕ¿î 2-¿Û¿î 3-ÍË¿î 4-ÌáÏÖ';
+  is 'å˜åŠ¨ç±»å‹: 1-æ”¶æ¬¾ 2-æ‰£æ¬¾ 3-é€€æ¬¾ 4-æç°';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.change_money
-  is '±ä¶¯½ğ¶î';
+  is 'å˜åŠ¨é‡‘é¢';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.before_balance
-  is '±ä¶¯Ç°Óà¶î';
+  is 'å˜åŠ¨å‰ä½™é¢';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.after_balance
-  is '±ä¶¯ºóÓà¶î';
+  is 'å˜åŠ¨åä½™é¢';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.service_fee
-  is 'ÊÖĞø·Ñ(¿÷Ëğ)';
+  is 'æ‰‹ç»­è´¹(äºæŸ)';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.change_time
-  is '±ä¶¯Ê±¼ä';
+  is 'å˜åŠ¨æ—¶é—´';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.operator
-  is '²Ù×÷ÈË';
+  is 'æ“ä½œäºº';
 comment on column DM_SYSTEM.DM_PAY_FUND_CHANGE.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 create index DM_SYSTEM.IDX_PAY_FUND_ACCOUNT_ID on DM_SYSTEM.DM_PAY_FUND_CHANGE (ACCOUNT_ID)
   tablespace USERS
   pctfree 10
@@ -1515,31 +1515,31 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_PAY_SCRIPT
-  is 'Ö§¸¶ÕËºÅ½Å±¾';
+  is 'æ”¯ä»˜è´¦å·è„šæœ¬';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.account_type
-  is 'ÕËºÅÀàĞÍ: 1-Ö§¸¶±¦ 2-Î¢ĞÅ';
+  is 'è´¦å·ç±»å‹: 1-æ”¯ä»˜å® 2-å¾®ä¿¡';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.script_type
-  is '½Å±¾ÀàĞÍ: 1-¶©µ¥Ìá½» 2-¶©µ¥²éÑ¯ 3-Óà¶î²éÑ¯ 4-ÍË¿îÉêÇë 5-ÑéÖ¤Âë·¢ËÍ 6-ÑéÖ¤ÂëÌá½»';
+  is 'è„šæœ¬ç±»å‹: 1-è®¢å•æäº¤ 2-è®¢å•æŸ¥è¯¢ 3-ä½™é¢æŸ¥è¯¢ 4-é€€æ¬¾ç”³è¯· 5-éªŒè¯ç å‘é€ 6-éªŒè¯ç æäº¤';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.request_url
-  is 'ÇëÇóµØÖ·';
+  is 'è¯·æ±‚åœ°å€';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.service_code
-  is '·şÎñ±àÂë(»úÆ÷ÈËcode)';
+  is 'æœåŠ¡ç¼–ç (æœºå™¨äººcode)';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_PAY_SCRIPT.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 alter table DM_SYSTEM.DM_PAY_SCRIPT
   add constraint PK_PAYMENT_SCRIPT_ID primary key (RECORD_ID)
   using index 
@@ -1593,17 +1593,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_PRODUCT_GROUP
-  is '²úÆ··Ö×é±í';
+  is 'äº§å“åˆ†ç»„è¡¨';
 comment on column DM_SYSTEM.DM_PRODUCT_GROUP.group_no
-  is '·Ö×é±àºÅ';
+  is 'åˆ†ç»„ç¼–å·';
 comment on column DM_SYSTEM.DM_PRODUCT_GROUP.group_name
-  is '·Ö×éÃû³Æ';
+  is 'åˆ†ç»„åç§°';
 comment on column DM_SYSTEM.DM_PRODUCT_GROUP.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_PRODUCT_GROUP.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_PRODUCT_GROUP.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 alter table DM_SYSTEM.DM_PRODUCT_GROUP
   add constraint PK_PRODUCT_GROUP_NO primary key (GROUP_NO)
   using index 
@@ -1658,47 +1658,47 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_PROMOTER_INFO
-  is 'ÍÆ¹ãÈËĞÅÏ¢';
+  is 'æ¨å¹¿äººä¿¡æ¯';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.promoter_id
-  is 'ÍÆ¹ãÈË±àºÅ';
+  is 'æ¨å¹¿äººç¼–å·';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.user_name
-  is 'ÓÃ»§ĞÕÃû';
+  is 'ç”¨æˆ·å§“å';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.login_uid
-  is 'µÇÂ¼ÕËºÅ';
+  is 'ç™»å½•è´¦å·';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.login_pwd
-  is 'µÇÂ¼ÃÜÂë';
+  is 'ç™»å½•å¯†ç ';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.phone_no
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.wechat
-  is 'Î¢ĞÅºÅ';
+  is 'å¾®ä¿¡å·';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.email
-  is 'ÓÊ¼şµØÖ·';
+  is 'é‚®ä»¶åœ°å€';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.settle_account
-  is '½áËãÕËºÅ';
+  is 'ç»“ç®—è´¦å·';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.account_name
-  is 'ÕËºÅÃû³Æ';
+  is 'è´¦å·åç§°';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.account_type
-  is 'ÕËºÅÀàĞÍ: 1-Ö§¸¶±¦ 2-Î¢ĞÅ 3-¾©¶« 4-ÒøĞĞ¿¨';
+  is 'è´¦å·ç±»å‹: 1-æ”¯ä»˜å® 2-å¾®ä¿¡ 3-äº¬ä¸œ 4-é“¶è¡Œå¡';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.account_desc
-  is 'ÕËºÅËµÃ÷';
+  is 'è´¦å·è¯´æ˜';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.company_name
-  is '¹«Ë¾Ãû³Æ';
+  is 'å…¬å¸åç§°';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.company_addr
-  is '¹«Ë¾µØÖ·';
+  is 'å…¬å¸åœ°å€';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.license_pic
-  is 'ÓªÒµÖ´ÕÕ';
+  is 'è¥ä¸šæ‰§ç…§';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_PROMOTER_INFO.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 create unique index DM_SYSTEM.UK_LOGIN_UID on DM_SYSTEM.DM_PROMOTER_INFO (LOGIN_UID)
   tablespace USERS
   pctfree 10
@@ -1752,21 +1752,21 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_PROMOTER_LABEL
-  is 'ÍÆ¹ãÈË±êÇ©(ÇşµÀ)';
+  is 'æ¨å¹¿äººæ ‡ç­¾(æ¸ é“)';
 comment on column DM_SYSTEM.DM_PROMOTER_LABEL.label_id
-  is '±êÇ©±àºÅ';
+  is 'æ ‡ç­¾ç¼–å·';
 comment on column DM_SYSTEM.DM_PROMOTER_LABEL.promoter_id
-  is 'ÍÆ¹ãÈË±àºÅ';
+  is 'æ¨å¹¿äººç¼–å·';
 comment on column DM_SYSTEM.DM_PROMOTER_LABEL.label_name
-  is '±êÇ©Ãû³Æ';
+  is 'æ ‡ç­¾åç§°';
 comment on column DM_SYSTEM.DM_PROMOTER_LABEL.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_PROMOTER_LABEL.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_PROMOTER_LABEL.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column DM_SYSTEM.DM_PROMOTER_LABEL.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 alter table DM_SYSTEM.DM_PROMOTER_LABEL
   add constraint PK_PROMOTER_LABEL_ID primary key (LABEL_ID)
   using index 
@@ -1804,13 +1804,13 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_SYSTEM_CARRIER
-  is 'ÏµÍ³ÔËÓªÉÌ±àºÅ±í';
+  is 'ç³»ç»Ÿè¿è¥å•†ç¼–å·è¡¨';
 comment on column DM_SYSTEM.DM_SYSTEM_CARRIER.carrier_no
-  is 'ÔËÓªÉÌ±àºÅ';
+  is 'è¿è¥å•†ç¼–å·';
 comment on column DM_SYSTEM.DM_SYSTEM_CARRIER.carrier_name
-  is 'ÔËÓªÉÌÃû³Æ';
+  is 'è¿è¥å•†åç§°';
 comment on column DM_SYSTEM.DM_SYSTEM_CARRIER.enable
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 alter table DM_SYSTEM.DM_SYSTEM_CARRIER
   add constraint PK_SYS_CARRIER_ID primary key (CARRIER_NO)
   using index 
@@ -1850,17 +1850,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_SYSTEM_CITY
-  is 'µØÊĞ±í';
+  is 'åœ°å¸‚è¡¨';
 comment on column DM_SYSTEM.DM_SYSTEM_CITY.city_no
-  is '³ÇÊĞ±àÂë';
+  is 'åŸå¸‚ç¼–ç ';
 comment on column DM_SYSTEM.DM_SYSTEM_CITY.city_name
-  is '³ÇÊĞÃû³Æ';
+  is 'åŸå¸‚åç§°';
 comment on column DM_SYSTEM.DM_SYSTEM_CITY.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column DM_SYSTEM.DM_SYSTEM_CITY.province_no
-  is 'Ê¡·İ±àÂë';
+  is 'çœä»½ç¼–ç ';
 comment on column DM_SYSTEM.DM_SYSTEM_CITY.code
-  is '±àºÅ';
+  is 'ç¼–å·';
 
 prompt
 prompt Creating table DM_SYSTEM_DEAL_CODE
@@ -1892,29 +1892,29 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_SYSTEM_DEAL_CODE
-  is 'ÏµÍ³´íÎó´¦ÀíÂë';
+  is 'ç³»ç»Ÿé”™è¯¯å¤„ç†ç ';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.error_code
-  is '´íÎóÂë';
+  is 'é”™è¯¯ç ';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.deal_code
-  is '´¦ÀíÂë: 0-´¦Àí³É¹¦ 1-´¦ÀíÊ§°Ü 9-Î´Öª';
+  is 'å¤„ç†ç : 0-å¤„ç†æˆåŠŸ 1-å¤„ç†å¤±è´¥ 9-æœªçŸ¥';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.allow_rebind
-  is 'ÔÊĞíÔÙ´Î°ó¶¨: 0-ÔÊĞí 1-²»ÔÊĞí';
+  is 'å…è®¸å†æ¬¡ç»‘å®š: 0-å…è®¸ 1-ä¸å…è®¸';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.allow_retry
-  is '¶©µ¥Ê§°ÜÖØÊÔ: 0-ÔÊĞí 1-²»ÔÊĞí';
+  is 'è®¢å•å¤±è´¥é‡è¯•: 0-å…è®¸ 1-ä¸å…è®¸';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.to_manual
-  is '½øÈëÈË¹¤ÉóºË: 0-ÊÇ 1-·ñ';
+  is 'è¿›å…¥äººå·¥å®¡æ ¸: 0-æ˜¯ 1-å¦';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.delay_failed
-  is 'ÊÇ·ñÑÓ³ÙÊ§°Ü: 0-ÊÇ 1-·ñ';
+  is 'æ˜¯å¦å»¶è¿Ÿå¤±è´¥: 0-æ˜¯ 1-å¦';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.delay_minute
-  is 'ÑÓ³ÙÊ§°Ü·ÖÖÓ';
+  is 'å»¶è¿Ÿå¤±è´¥åˆ†é’Ÿ';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.order_code
-  is '¶©µ¥´íÎóÂë';
+  is 'è®¢å•é”™è¯¯ç ';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.order_desc
-  is '¶©µ¥´íÎóÏûÏ¢';
+  is 'è®¢å•é”™è¯¯æ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.error_msg
-  is '´íÎóÏûÏ¢';
+  is 'é”™è¯¯æ¶ˆæ¯';
 comment on column DM_SYSTEM.DM_SYSTEM_DEAL_CODE.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 alter table DM_SYSTEM.DM_SYSTEM_DEAL_CODE
   add constraint PK_SYS_DEAL_CODE_ID primary key (ERROR_CODE)
   using index 
@@ -1953,15 +1953,15 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_SYSTEM_DICTIONARY
-  is 'ÏµÍ³×ÖµäÅäÖÃ±í';
+  is 'ç³»ç»Ÿå­—å…¸é…ç½®è¡¨';
 comment on column DM_SYSTEM.DM_SYSTEM_DICTIONARY.dic_id
-  is '×Öµä±àºÅ';
+  is 'å­—å…¸ç¼–å·';
 comment on column DM_SYSTEM.DM_SYSTEM_DICTIONARY.type
-  is '×ÖµäÀàĞÍ';
+  is 'å­—å…¸ç±»å‹';
 comment on column DM_SYSTEM.DM_SYSTEM_DICTIONARY.name
-  is '×ÖµäÃû³Æ';
+  is 'å­—å…¸åç§°';
 comment on column DM_SYSTEM.DM_SYSTEM_DICTIONARY.value
-  is '×ÖµäÖµ';
+  is 'å­—å…¸å€¼';
 alter table DM_SYSTEM.DM_SYSTEM_DICTIONARY
   add constraint PK_SYS_DIC_ID primary key (DIC_ID)
   using index 
@@ -2002,19 +2002,19 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_SYSTEM_LOG
-  is 'ÏµÍ³ÈÕÖ¾';
+  is 'ç³»ç»Ÿæ—¥å¿—';
 comment on column DM_SYSTEM.DM_SYSTEM_LOG.log_id
-  is 'ÈÕÖ¾±àºÅ';
+  is 'æ—¥å¿—ç¼–å·';
 comment on column DM_SYSTEM.DM_SYSTEM_LOG.object_name
-  is '¶ÔÏóÃû³Æ';
+  is 'å¯¹è±¡åç§°';
 comment on column DM_SYSTEM.DM_SYSTEM_LOG.error_level
-  is '´íÎóµÈ¼¶';
+  is 'é”™è¯¯ç­‰çº§';
 comment on column DM_SYSTEM.DM_SYSTEM_LOG.error_desc
-  is '´íÎóĞÅÏ¢';
+  is 'é”™è¯¯ä¿¡æ¯';
 comment on column DM_SYSTEM.DM_SYSTEM_LOG.trace_info
-  is '¶ÑÕ»ĞÅÏ¢';
+  is 'å †æ ˆä¿¡æ¯';
 comment on column DM_SYSTEM.DM_SYSTEM_LOG.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 alter table DM_SYSTEM.DM_SYSTEM_LOG
   add constraint PK_SYS_LOG_ID primary key (LOG_ID)
   using index 
@@ -2054,17 +2054,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_SYSTEM_NUM_SECTION
-  is 'ÏµÍ³ºÅ¶Î±í';
+  is 'ç³»ç»Ÿå·æ®µè¡¨';
 comment on column DM_SYSTEM.DM_SYSTEM_NUM_SECTION.section
-  is 'ºÅ¶Î';
+  is 'å·æ®µ';
 comment on column DM_SYSTEM.DM_SYSTEM_NUM_SECTION.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column DM_SYSTEM.DM_SYSTEM_NUM_SECTION.province_no
-  is 'Ê¡·İ';
+  is 'çœä»½';
 comment on column DM_SYSTEM.DM_SYSTEM_NUM_SECTION.city_no
-  is '³ÇÊĞ';
+  is 'åŸå¸‚';
 comment on column DM_SYSTEM.DM_SYSTEM_NUM_SECTION.enable
-  is 'ÆôÓÃ×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'å¯ç”¨çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 alter table DM_SYSTEM.DM_SYSTEM_NUM_SECTION
   add constraint PK_SECTION_ID primary key (SECTION)
   using index 
@@ -2103,15 +2103,15 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_SYSTEM_PROVINCE
-  is 'ÏµÍ³Ê¡·İ±àºÅ±í';
+  is 'ç³»ç»Ÿçœä»½ç¼–å·è¡¨';
 comment on column DM_SYSTEM.DM_SYSTEM_PROVINCE.province_no
-  is 'Ê¡·İ±àºÅ';
+  is 'çœä»½ç¼–å·';
 comment on column DM_SYSTEM.DM_SYSTEM_PROVINCE.province_name
-  is 'Ê¡·İÃû³Æ';
+  is 'çœä»½åç§°';
 comment on column DM_SYSTEM.DM_SYSTEM_PROVINCE.enable
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_SYSTEM_PROVINCE.sort_id
-  is 'ÅÅĞò±àºÅ';
+  is 'æ’åºç¼–å·';
 alter table DM_SYSTEM.DM_SYSTEM_PROVINCE
   add constraint PK_SYS_PROVC_ID primary key (PROVINCE_NO)
   using index 
@@ -2159,33 +2159,33 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_ASSIGN_UP
-  is 'ÖÕ¶ËÖ¸¶¨ÉÏÓÎ';
+  is 'ç»ˆç«¯æŒ‡å®šä¸Šæ¸¸';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.term_group_no
-  is 'ÖÕ¶Ë·Ö×é±àºÅ';
+  is 'ç»ˆç«¯åˆ†ç»„ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.up_group_no
-  is 'ÉÏÓÎ·Ö×é±àºÅ';
+  is 'ä¸Šæ¸¸åˆ†ç»„ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.division_mode
-  is '·ÖÁ÷Ä£Ê½: 1-°´ÓÅÏÈ¼¶ 2-°´·ÖÁ÷±È';
+  is 'åˆ†æµæ¨¡å¼: 1-æŒ‰ä¼˜å…ˆçº§ 2-æŒ‰åˆ†æµæ¯”';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.division_value
-  is '·ÖÁ÷Öµ(division_mode=1Ê±ÖµÔ½´óÓÅÏÈ¼¶Ô½¸ß)';
+  is 'åˆ†æµå€¼(division_mode=1æ—¶å€¼è¶Šå¤§ä¼˜å…ˆçº§è¶Šé«˜)';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_TERM_ASSIGN_UP.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 create index DM_SYSTEM.IDX_TERM_GROUP_NO on DM_SYSTEM.DM_TERM_ASSIGN_UP (TERM_NO, TERM_GROUP_NO)
   tablespace USERS
   pctfree 10
@@ -2266,27 +2266,27 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_FUND_CHANGE
-  is 'ÖÕ¶Ë×Ê½ğ±ä¶¯';
+  is 'ç»ˆç«¯èµ„é‡‘å˜åŠ¨';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.change_type
-  is '±ä¶¯ÀàĞÍ: 1-ÊÕ¿î 2-¿Û¿î 3-ÍË¿î';
+  is 'å˜åŠ¨ç±»å‹: 1-æ”¶æ¬¾ 2-æ‰£æ¬¾ 3-é€€æ¬¾';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.change_money
-  is '±ä¶¯½ğ¶î';
+  is 'å˜åŠ¨é‡‘é¢';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.before_balance
-  is '±ä¶¯Ç°Óà¶î';
+  is 'å˜åŠ¨å‰ä½™é¢';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.after_balance
-  is '±ä¶¯ºóÓà¶î';
+  is 'å˜åŠ¨åä½™é¢';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.change_time
-  is '±ä¶¯Ê±¼ä';
+  is 'å˜åŠ¨æ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.operator
-  is '²Ù×÷ÈË';
+  is 'æ“ä½œäºº';
 comment on column DM_SYSTEM.DM_TERM_FUND_CHANGE.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 create index DM_SYSTEM.IDX_TERM_FND_CHNG_ORDER_NO on DM_SYSTEM.DM_TERM_FUND_CHANGE (ORDER_NO)
   tablespace USERS
   pctfree 10
@@ -2357,31 +2357,31 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_INFO
-  is 'ÖÕ¶ËĞÅÏ¢±í';
+  is 'ç»ˆç«¯ä¿¡æ¯è¡¨';
 comment on column DM_SYSTEM.DM_TERM_INFO.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_INFO.term_name
-  is 'ÖÕ¶ËÃû³Æ';
+  is 'ç»ˆç«¯åç§°';
 comment on column DM_SYSTEM.DM_TERM_INFO.balance
-  is 'ÖÕ¶ËÓà¶î';
+  is 'ç»ˆç«¯ä½™é¢';
 comment on column DM_SYSTEM.DM_TERM_INFO.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_TERM_INFO.entry_url
-  is 'Èë¿ÚµØÖ·';
+  is 'å…¥å£åœ°å€';
 comment on column DM_SYSTEM.DM_TERM_INFO.can_promote
-  is '¿É·ñÍÆ¹ã: 0-ÊÇ 1-·ñ';
+  is 'å¯å¦æ¨å¹¿: 0-æ˜¯ 1-å¦';
 comment on column DM_SYSTEM.DM_TERM_INFO.remark
-  is 'ÖÕ¶ËËµÃ÷';
+  is 'ç»ˆç«¯è¯´æ˜';
 comment on column DM_SYSTEM.DM_TERM_INFO.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_INFO.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_TERM_INFO.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_INFO.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_TERM_INFO.image_url
-  is 'ÍÆ¹ãÍ¼Æ¬';
+  is 'æ¨å¹¿å›¾ç‰‡';
 alter table DM_SYSTEM.DM_TERM_INFO
   add constraint PK_TERM_INFO_ID primary key (TERM_NO)
   using index 
@@ -2421,17 +2421,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_PAY_ACCOUNT
-  is 'ÖÕ¶ËÖ§¸¶ÕËºÅ¹ØÏµ±í';
+  is 'ç»ˆç«¯æ”¯ä»˜è´¦å·å…³ç³»è¡¨';
 comment on column DM_SYSTEM.DM_TERM_PAY_ACCOUNT.map_id
-  is '¹ØÏµ±àºÅ';
+  is 'å…³ç³»ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PAY_ACCOUNT.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PAY_ACCOUNT.account_id
-  is 'Ö§¸¶ÕËºÅ±àºÅ';
+  is 'æ”¯ä»˜è´¦å·ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PAY_ACCOUNT.priority
-  is 'ÓÅÏÈ¼¶(ÓÃÓÚÖµÔ½´óÓÅÏÈ¼¶Ô½´ó)';
+  is 'ä¼˜å…ˆçº§(ç”¨äºå€¼è¶Šå¤§ä¼˜å…ˆçº§è¶Šå¤§)';
 comment on column DM_SYSTEM.DM_TERM_PAY_ACCOUNT.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 alter table DM_SYSTEM.DM_TERM_PAY_ACCOUNT
   add constraint PK_TERM_ACNT_ID primary key (MAP_ID)
   using index 
@@ -2496,67 +2496,67 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_PRODUCT
-  is 'ÖÕ¶Ë²úÆ·±í';
+  is 'ç»ˆç«¯äº§å“è¡¨';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.product_no
-  is 'ÖÕ¶Ë²úÆ·±àÂë';
+  is 'ç»ˆç«¯äº§å“ç¼–ç ';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.product_name
-  is '²úÆ·Ãû³Æ(ÔËÓªÊ¹ÓÃ)';
+  is 'äº§å“åç§°(è¿è¥ä½¿ç”¨)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.product_title
-  is '²úÆ·±êÌâ(¿ÉHTML)';
+  is 'äº§å“æ ‡é¢˜(å¯HTML)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.product_summary
-  is '²úÆ·¼òÒªËµÃ÷(¿ÉHTML)';
+  is 'äº§å“ç®€è¦è¯´æ˜(å¯HTML)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.product_detail
-  is '²úÆ·ÏêÏ¸ËµÃ÷(¿ÉHTML)';
+  is 'äº§å“è¯¦ç»†è¯´æ˜(å¯HTML)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.product_tip
-  is '²úÆ·ÌáÊ¾(ÎÂÜ°ÌáÊ¾)';
+  is 'äº§å“æç¤º(æ¸©é¦¨æç¤º)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.product_type
-  is 'ÒµÎñ·ÖÀà: 1-»°·Ñ 2-Á÷Á¿(Ç°¶ËÏÔÊ¾ÓÃ,Çø·ÖTab)';
+  is 'ä¸šåŠ¡åˆ†ç±»: 1-è¯è´¹ 2-æµé‡(å‰ç«¯æ˜¾ç¤ºç”¨,åŒºåˆ†Tab)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.business_type
-  is 'ÒµÎñÀàĞÍ';
+  is 'ä¸šåŠ¡ç±»å‹';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.province_no
-  is 'Ê¡·İ: QG-È«¹ú';
+  is 'çœä»½: QG-å…¨å›½';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.city_no
-  is '³ÇÊĞ: *-È«Ê¡';
+  is 'åŸå¸‚: *-å…¨çœ';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.face_fee
-  is 'ÃæÖµ';
+  is 'é¢å€¼';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.normal_price
-  is '±ê×¼¼Û¸ñ';
+  is 'æ ‡å‡†ä»·æ ¼';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.pay_price
-  is 'Ö§¸¶¼Û¸ñ';
+  is 'æ”¯ä»˜ä»·æ ¼';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.cost_price
-  is '³É±¾¼Û¸ñ';
+  is 'æˆæœ¬ä»·æ ¼';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.deduct_mode
-  is '¿Û·ÑÄ£Ê½: 0-²»¿Û·Ñ 1-ÏÈ¿Û·Ñ 2-ºó¿Û·Ñ';
+  is 'æ‰£è´¹æ¨¡å¼: 0-ä¸æ‰£è´¹ 1-å…ˆæ‰£è´¹ 2-åæ‰£è´¹';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.need_vcode
-  is '·¢ËÍÑéÖ¤Âë: 1-²»ĞèÒª 2-Æ½Ì¨·¢ËÍ 3-ÉÏÓÎ·¢ËÍ';
+  is 'å‘é€éªŒè¯ç : 1-ä¸éœ€è¦ 2-å¹³å°å‘é€ 3-ä¸Šæ¸¸å‘é€';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.need_pay
-  is 'ĞèÒªÖ§¸¶: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦æ”¯ä»˜: 0-éœ€è¦ 1-ä¸éœ€è¦';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.need_card_uid
-  is 'ĞèÒªÉí·İÖ¤ºÅ: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦èº«ä»½è¯å·: 0-éœ€è¦ 1-ä¸éœ€è¦';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.need_card_pic
-  is 'ĞèÒªÉí·İÖ¤ÕÕ: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦èº«ä»½è¯ç…§: 0-éœ€è¦ 1-ä¸éœ€è¦';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.group_no
-  is '·Ö×é±àºÅ';
+  is 'åˆ†ç»„ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.priority
-  is 'È¨ÖØ: 0-²»ÏÔÊ¾(Ç°¶ËÏÔÊ¾ÓÃ, ÖµÔ½´ó,ÓÅÏÈ¼¶Ô½¸ß,ÏÔÊ¾Ô½¿¿Ç°)';
+  is 'æƒé‡: 0-ä¸æ˜¾ç¤º(å‰ç«¯æ˜¾ç¤ºç”¨, å€¼è¶Šå¤§,ä¼˜å…ˆçº§è¶Šé«˜,æ˜¾ç¤ºè¶Šé å‰)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.sort_num
-  is 'ÅÅĞò±àºÅ';
+  is 'æ’åºç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 create index DM_SYSTEM.IDX_TERM_PRD_STATUS on DM_SYSTEM.DM_TERM_PRODUCT (STATUS)
   tablespace USERS
   pctfree 10
@@ -2628,33 +2628,33 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_PRODUCT_RULE
-  is 'ÖÕ¶Ë²úÆ·¹æÔò±í';
+  is 'ç»ˆç«¯äº§å“è§„åˆ™è¡¨';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.product_no
-  is '²úÆ·±àºÅ';
+  is 'äº§å“ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.rule_type
-  is '¹æÔòÀàĞÍ: 1-IP 2-ÊÖ»úºÅ 3-ÄêÁä 4-Éí·İÖ¤ 5-µØÖ·';
+  is 'è§„åˆ™ç±»å‹: 1-IP 2-æ‰‹æœºå· 3-å¹´é¾„ 4-èº«ä»½è¯ 5-åœ°å€';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.rule_condition
-  is '¹æÔòÌõ¼ş: 1-·¶Î§ 2-µÈÓÚ 3-²»µÈÓÚ 4-°üº¬ 5-²»°üº¬ 6-²»³¬¹ı(Ê±¼ä¶ÎÄÚ)';
+  is 'è§„åˆ™æ¡ä»¶: 1-èŒƒå›´ 2-ç­‰äº 3-ä¸ç­‰äº 4-åŒ…å« 5-ä¸åŒ…å« 6-ä¸è¶…è¿‡(æ—¶é—´æ®µå†…)';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.rule_value_a
-  is '¹æÔòÈ¡ÖµA';
+  is 'è§„åˆ™å–å€¼A';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.rule_value_b
-  is '¹æÔòÈ¡ÖµB';
+  is 'è§„åˆ™å–å€¼B';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.priority
-  is 'ÓÅÏÈ¼¶';
+  is 'ä¼˜å…ˆçº§';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_TERM_PRODUCT_RULE.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 create index DM_SYSTEM.UK_TERM_PRODCT_RULE_STATUS on DM_SYSTEM.DM_TERM_PRODUCT_RULE (STATUS)
   tablespace USERS
   pctfree 10
@@ -2714,33 +2714,33 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_PROMOTE
-  is 'ÖÕ¶ËÍÆ¹ã±í';
+  is 'ç»ˆç«¯æ¨å¹¿è¡¨';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.promote_id
-  is 'ÍÆ¹ã±àºÅ';
+  is 'æ¨å¹¿ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.promoter_id
-  is 'ÍÆ¹ãÈË±àºÅ';
+  is 'æ¨å¹¿äººç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.label_id
-  is 'ÍÆ¹ãÈË±êÇ©±àºÅ';
+  is 'æ¨å¹¿äººæ ‡ç­¾ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.promote_guid
-  is 'ÍÆ¹ã±àÂë';
+  is 'æ¨å¹¿ç¼–ç ';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.promote_url
-  is 'ÍÆ¹ãµØÖ·';
+  is 'æ¨å¹¿åœ°å€';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_PROMOTE.need_notify
-  is 'ĞèÒªÍ¨Öª: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦é€šçŸ¥: 0-éœ€è¦ 1-ä¸éœ€è¦';
 create unique index DM_SYSTEM.UK_TERM_PROMOTE_LABEL on DM_SYSTEM.DM_TERM_PROMOTE (TERM_NO, PROMOTER_ID, LABEL_ID)
   tablespace USERS
   pctfree 10
@@ -2802,37 +2802,37 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_TERM_SCRIPT
-  is 'ÖÕ¶Ë½Å±¾(Í¨Öª)';
+  is 'ç»ˆç«¯è„šæœ¬(é€šçŸ¥)';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.promoter_id
-  is 'ÍÆ¹ãÈË±àºÅ';
+  is 'æ¨å¹¿äººç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.promote_id
-  is 'ÍÆ¹ã±àºÅ';
+  is 'æ¨å¹¿ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.business_type
-  is 'ÒµÎñÀàĞÍ: 0-ËùÓĞ';
+  is 'ä¸šåŠ¡ç±»å‹: 0-æ‰€æœ‰';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.notify_type
-  is 'Í¨ÖªÀàĞÍ: 1-¶©µ¥×´Ì¬';
+  is 'é€šçŸ¥ç±»å‹: 1-è®¢å•çŠ¶æ€';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.notify_url
-  is 'Í¨ÖªµØÖ·';
+  is 'é€šçŸ¥åœ°å€';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.notify_max_times
-  is 'Í¨Öª×î´ó´ÎÊı';
+  is 'é€šçŸ¥æœ€å¤§æ¬¡æ•°';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.service_code
-  is '·şÎñ±àÂë';
+  is 'æœåŠ¡ç¼–ç ';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_TERM_SCRIPT.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 create index DM_SYSTEM.UK_TEM_SCRIPT on DM_SYSTEM.DM_TERM_SCRIPT (PROMOTE_ID, BUSINESS_TYPE, NOTIFY_TYPE)
   tablespace USERS
   pctfree 10
@@ -2881,25 +2881,25 @@ tablespace USERS
   initrans 1
   maxtrans 255;
 comment on table DM_SYSTEM.DM_TERM_WHITE_LIST
-  is 'ÖÕ¶ËIP°×Ãûµ¥';
+  is 'ç»ˆç«¯IPç™½åå•';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.tem_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.white_type
-  is '°×Ãûµ¥ÀàĞÍ: 1-IP°×Ãûµ¥ 2-ºÅÂë°×Ãûµ¥';
+  is 'ç™½åå•ç±»å‹: 1-IPç™½åå• 2-å·ç ç™½åå•';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.white_value
-  is '°×Ãûµ¥Öµ';
+  is 'ç™½åå•å€¼';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column DM_SYSTEM.DM_TERM_WHITE_LIST.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 create unique index DM_SYSTEM.UK_TERM_NO_IP_WHITE_LIST on DM_SYSTEM.DM_TERM_WHITE_LIST (TEM_NO, WHITE_VALUE)
   tablespace USERS
   pctfree 10
@@ -2952,47 +2952,47 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_UP_CHANNEL
-  is 'ÉÏÓÎÇşµÀ±í';
+  is 'ä¸Šæ¸¸æ¸ é“è¡¨';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.channel_name
-  is 'ÇşµÀÃû³Æ';
+  is 'æ¸ é“åç§°';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.api_id
-  is '½Ó¿ÚID';
+  is 'æ¥å£ID';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.api_key
-  is '½Ó¿Úkey';
+  is 'æ¥å£key';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.notify_url
-  is '»Øµ÷µØÖ·';
+  is 'å›è°ƒåœ°å€';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.login_id
-  is 'µÇÂ¼id';
+  is 'ç™»å½•id';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.login_pwd
-  is 'µÇÂ¼ÃÜÂë';
+  is 'ç™»å½•å¯†ç ';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.balance
-  is 'Óà¶î';
+  is 'ä½™é¢';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.support_query
-  is 'ÊÇ·ñÖ§³Ö²éÑ¯';
+  is 'æ˜¯å¦æ”¯æŒæŸ¥è¯¢';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.query_delay
-  is 'Ê×´Î²éÑ¯ÑÓ³Ù(Ãë)';
+  is 'é¦–æ¬¡æŸ¥è¯¢å»¶è¿Ÿ(ç§’)';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.query_interval
-  is '²éÑ¯Ê±¼ä¼ä¸ô(Ãë)';
+  is 'æŸ¥è¯¢æ—¶é—´é—´éš”(ç§’)';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.sync_status
-  is 'Í¬²½¼ÇÕË×´Ì¬';
+  is 'åŒæ­¥è®°è´¦çŠ¶æ€';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.principal
-  is '¸ºÔğÈË';
+  is 'è´Ÿè´£äºº';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.remark
-  is 'ÇşµÀ±¸×¢';
+  is 'æ¸ é“å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column DM_SYSTEM.DM_UP_CHANNEL.query_max_times
-  is '²éÑ¯×î´ó´ÎÊı: 0-²»ÏŞ´ÎÊı';
+  is 'æŸ¥è¯¢æœ€å¤§æ¬¡æ•°: 0-ä¸é™æ¬¡æ•°';
 create index DM_SYSTEM.IDX_UP_CHNNL_SYNC_STATUS on DM_SYSTEM.DM_UP_CHANNEL (SYNC_STATUS)
   tablespace USERS
   pctfree 10
@@ -3053,35 +3053,35 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_UP_ERROR_MAP
-  is 'ÉÏÓÎ´íÎóÂëÓ³Éä±í';
+  is 'ä¸Šæ¸¸é”™è¯¯ç æ˜ å°„è¡¨';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.msg_type
-  is 'ÏûÏ¢ÀàĞÍ: 1-·¢»õ 2-²éÑ¯ 3-»Øµ÷';
+  is 'æ¶ˆæ¯ç±»å‹: 1-å‘è´§ 2-æŸ¥è¯¢ 3-å›è°ƒ';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.condition_1
-  is 'Ìõ¼ş1';
+  is 'æ¡ä»¶1';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.condition_2
-  is 'Ìõ¼ş2';
+  is 'æ¡ä»¶2';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.condition_3
-  is 'Ìõ¼ş3';
+  is 'æ¡ä»¶3';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.condition_4
-  is 'Ìõ¼ş4';
+  is 'æ¡ä»¶4';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.condition_5
-  is 'Ìõ¼ş5';
+  is 'æ¡ä»¶5';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.error_code
-  is '´íÎó´¦ÀíÂë';
+  is 'é”™è¯¯å¤„ç†ç ';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ 2-ÈË¹¤ÔİÍ£ 3-ÏµÍ³ÔİÍ£';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨ 2-äººå·¥æš‚åœ 3-ç³»ç»Ÿæš‚åœ';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_UP_ERROR_MAP.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 create index DM_SYSTEM.IDX_CHANNEL_TYPE_STATUS on DM_SYSTEM.DM_UP_ERROR_MAP (CHANNEL_NO, MSG_TYPE, STATUS)
   tablespace USERS
   pctfree 10
@@ -3139,29 +3139,29 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_UP_FUND_CHANGE
-  is 'ÉÏÓÎ×Ê½ğ±ä¶¯';
+  is 'ä¸Šæ¸¸èµ„é‡‘å˜åŠ¨';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.change_type
-  is '±ä¶¯ÀàĞÍ: 1-ÊÕ¿î 2-¿Û¿î 3-ÍË¿î';
+  is 'å˜åŠ¨ç±»å‹: 1-æ”¶æ¬¾ 2-æ‰£æ¬¾ 3-é€€æ¬¾';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.change_money
-  is '±ä¶¯½ğ¶î';
+  is 'å˜åŠ¨é‡‘é¢';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.before_balance
-  is '±ä¶¯Ç°Óà¶î';
+  is 'å˜åŠ¨å‰ä½™é¢';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.after_balance
-  is '±ä¶¯ºóÓà¶î';
+  is 'å˜åŠ¨åä½™é¢';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.change_time
-  is '±ä¶¯Ê±¼ä';
+  is 'å˜åŠ¨æ—¶é—´';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.operator
-  is '²Ù×÷ÈË';
+  is 'æ“ä½œäºº';
 comment on column DM_SYSTEM.DM_UP_FUND_CHANGE.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 create index DM_SYSTEM.IDX_UP_FUND_CHNG_CHNG_TYPE on DM_SYSTEM.DM_UP_FUND_CHANGE (CHANGE_TYPE)
   tablespace USERS
   pctfree 10
@@ -3243,53 +3243,53 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_UP_PRODUCT
-  is 'ÉÏÓÎ²úÆ·±í';
+  is 'ä¸Šæ¸¸äº§å“è¡¨';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.product_no
-  is '²úÆ·±àºÅ';
+  is 'äº§å“ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.product_name
-  is '²úÆ·Ãû³Æ';
+  is 'äº§å“åç§°';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.up_product_no
-  is 'ÉÏÓÎ²úÆ·±àÂë';
+  is 'ä¸Šæ¸¸äº§å“ç¼–ç ';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.business_type
-  is 'ÒµÎñÀàĞÍ ';
+  is 'ä¸šåŠ¡ç±»å‹ ';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.province_no
-  is 'Ê¡·İ: QG-È«¹ú';
+  is 'çœä»½: QG-å…¨å›½';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.city_no
-  is '³ÇÊĞ: *-È«Ê¡';
+  is 'åŸå¸‚: *-å…¨çœ';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.face_fee
-  is 'ÃæÖµ';
+  is 'é¢å€¼';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.normal_price
-  is '±ê×¼¼Û¸ñ';
+  is 'æ ‡å‡†ä»·æ ¼';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.deduct_price
-  is '¿Û¿î¼Û¸ñ';
+  is 'æ‰£æ¬¾ä»·æ ¼';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.real_price
-  is 'Êµ¼Ê¼Û¸ñ';
+  is 'å®é™…ä»·æ ¼';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.need_vcode
-  is 'ĞèÒªÑéÖ¤Âë: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦éªŒè¯ç : 0-éœ€è¦ 1-ä¸éœ€è¦';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.need_delivery
-  is 'ĞèÒª·¢»õ: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦å‘è´§: 0-éœ€è¦ 1-ä¸éœ€è¦';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.need_card_uid
-  is 'ĞèÒªÉí·İÖ¤ºÅ: 0-ĞèÒª 1-²»ĞèÒª';
+  is 'éœ€è¦èº«ä»½è¯å·: 0-éœ€è¦ 1-ä¸éœ€è¦';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.picture_mode
-  is 'Éí·İÖ¤ÕÕÄ£Ê½: 0-ÎŞĞèÕÕÆ¬ 1-ÖØÌáÕÕÆ¬ 2-ÖØÌá¶©µ¥ ';
+  is 'èº«ä»½è¯ç…§æ¨¡å¼: 0-æ— éœ€ç…§ç‰‡ 1-é‡æç…§ç‰‡ 2-é‡æè®¢å• ';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.group_no
-  is '·Ö×é±àºÅ';
+  is 'åˆ†ç»„ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_UP_PRODUCT.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 alter table DM_SYSTEM.DM_UP_PRODUCT
   add constraint PK_UP_PRODUCT_ID primary key (PRODUCT_NO)
   using index 
@@ -3337,33 +3337,33 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.DM_UP_SCRIPT
-  is 'ÉÏÓÎ½Å±¾ÅäÖÃ±í';
+  is 'ä¸Šæ¸¸è„šæœ¬é…ç½®è¡¨';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.script_id
-  is '½Å±¾±àºÅ';
+  is 'è„šæœ¬ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.business_type
-  is 'ÒµÎñÀàĞÍ:  0-ËùÓĞ';
+  is 'ä¸šåŠ¡ç±»å‹:  0-æ‰€æœ‰';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.carrier_no
-  is 'ÔËÓªÉÌ: *-ËùÓĞ';
+  is 'è¿è¥å•†: *-æ‰€æœ‰';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.script_type
-  is '½Å±¾ÀàĞÍ: 1-¶©µ¥Ìá½» 2-¶©µ¥²éÑ¯ 3-Óà¶î²éÑ¯ 4-ÍË¿îÉêÇë 5-ÑéÖ¤Âë·¢ËÍ 6-ÑéÖ¤ÂëÌá½»';
+  is 'è„šæœ¬ç±»å‹: 1-è®¢å•æäº¤ 2-è®¢å•æŸ¥è¯¢ 3-ä½™é¢æŸ¥è¯¢ 4-é€€æ¬¾ç”³è¯· 5-éªŒè¯ç å‘é€ 6-éªŒè¯ç æäº¤';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.service_code
-  is '·şÎñ±àÂë(¶ÓÁĞÃû/»úÆ÷ÈËCODE)';
+  is 'æœåŠ¡ç¼–ç (é˜Ÿåˆ—å/æœºå™¨äººCODE)';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.api_url
-  is '½Ó¿ÚµØÖ·';
+  is 'æ¥å£åœ°å€';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.status
-  is '×´Ì¬: 0-ÆôÓÃ 1-½ûÓÃ';
+  is 'çŠ¶æ€: 0-å¯ç”¨ 1-ç¦ç”¨';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.update_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column DM_SYSTEM.DM_UP_SCRIPT.update_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 alter table DM_SYSTEM.DM_UP_SCRIPT
   add constraint PK_UP_SCRIPT_ID primary key (SCRIPT_ID)
   using index 
@@ -3413,37 +3413,37 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.TMP_TERM_CARD_DETAIL
-  is 'ÖÕ¶ËºÅ¿¨Ã÷Ï¸±í(ÉÌ»§µ¼Èë)';
+  is 'ç»ˆç«¯å·å¡æ˜ç»†è¡¨(å•†æˆ·å¯¼å…¥)';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.record_id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.task_id
-  is 'ÈÎÎñ±àºÅ';
+  is 'ä»»åŠ¡ç¼–å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.contact_phone
-  is 'ÁªÏµµç»°';
+  is 'è”ç³»ç”µè¯';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.contact_name
-  is 'ÁªÏµÈË';
+  is 'è”ç³»äºº';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.contact_addr
-  is 'ÁªÏµµØÖ·';
+  is 'è”ç³»åœ°å€';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.card_user_id
-  is '°ìÀíÈËÉí·İÖ¤ºÅ';
+  is 'åŠç†äººèº«ä»½è¯å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.card_user_name
-  is '°ìÀíÈËĞÕÃû';
+  is 'åŠç†äººå§“å';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.card_pic_front
-  is '°ìÀíÈËÉí·İÖ¤ÕÕ(ÕıÃæ)';
+  is 'åŠç†äººèº«ä»½è¯ç…§(æ­£é¢)';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.card_pic_back
-  is '°ìÀíÈËÉí·İÖ¤ÕÕ(·´Ãæ)';
+  is 'åŠç†äººèº«ä»½è¯ç…§(åé¢)';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.card_pic_hand
-  is '°ìÀíÈËÉí·İÖ¤ÕÕ(ÊÖ³Ö)';
+  is 'åŠç†äººèº«ä»½è¯ç…§(æ‰‹æŒ)';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.deal_status
-  is '´¦Àí×´Ì¬: 0-³É¹¦ 20-µÈ´ı´¦Àí 30-´¦ÀíÖĞ 90-´¦ÀíÊ§°Ü';
+  is 'å¤„ç†çŠ¶æ€: 0-æˆåŠŸ 20-ç­‰å¾…å¤„ç† 30-å¤„ç†ä¸­ 90-å¤„ç†å¤±è´¥';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.deal_msg
-  is '´¦Àí½á¹ûÏûÏ¢';
+  is 'å¤„ç†ç»“æœæ¶ˆæ¯';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.start_time
-  is '¿ªÊ¼Ê±¼ä';
+  is 'å¼€å§‹æ—¶é—´';
 comment on column DM_SYSTEM.TMP_TERM_CARD_DETAIL.finish_time
-  is '½áÊøÊ±¼ä';
+  is 'ç»“æŸæ—¶é—´';
 create index DM_SYSTEM.UK_TERM_CARD_DEAL_STATUS on DM_SYSTEM.TMP_TERM_CARD_DETAIL (DEAL_STATUS)
   tablespace USERS
   pctfree 10
@@ -3516,35 +3516,35 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.TMP_TERM_CARD_TASK
-  is 'ÖÕ¶ËºÅ¿¨ÈÎÎñ±í(ÉÌ»§µ¼Èë)';
+  is 'ç»ˆç«¯å·å¡ä»»åŠ¡è¡¨(å•†æˆ·å¯¼å…¥)';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.task_id
-  is 'ÈÎÎñ±àºÅ';
+  is 'ä»»åŠ¡ç¼–å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.term_no
-  is 'ÖÕ¶Ë±àºÅ';
+  is 'ç»ˆç«¯ç¼–å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.product_no
-  is 'ÖÕ¶Ë²úÆ·±àºÅ';
+  is 'ç»ˆç«¯äº§å“ç¼–å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.promoter_id
-  is 'ÍÆ¹ãÈË±àºÅ';
+  is 'æ¨å¹¿äººç¼–å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.promote_id
-  is 'ÍÆ¹ã±àºÅ';
+  is 'æ¨å¹¿ç¼–å·';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.card_pic_zip
-  is 'Éí·İÖ¤ÕÕÆ¬Ñ¹Ëõ°ü';
+  is 'èº«ä»½è¯ç…§ç‰‡å‹ç¼©åŒ…';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.status
-  is '´¦Àí×´Ì¬: 0-³É¹¦ 20-µÈ´ı´¦Àí 30-´¦ÀíÖĞ 90-´¦ÀíÊ§°Ü';
+  is 'å¤„ç†çŠ¶æ€: 0-æˆåŠŸ 20-ç­‰å¾…å¤„ç† 30-å¤„ç†ä¸­ 90-å¤„ç†å¤±è´¥';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.total_rows
-  is '×ÜÌõÊı';
+  is 'æ€»æ¡æ•°';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.succ_rows
-  is '³É¹¦ÌõÊı';
+  is 'æˆåŠŸæ¡æ•°';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.fail_rows
-  is 'Ê§°ÜÌõÊı';
+  is 'å¤±è´¥æ¡æ•°';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.start_time
-  is 'ÈÎÎñ¿ªÊ¼Ê±¼ä';
+  is 'ä»»åŠ¡å¼€å§‹æ—¶é—´';
 comment on column DM_SYSTEM.TMP_TERM_CARD_TASK.finish_time
-  is 'ÈÎÎñ½áÊøÊ±¼ä';
+  is 'ä»»åŠ¡ç»“æŸæ—¶é—´';
 create index DM_SYSTEM.UK_TERM_CARD_TASK_STATUS on DM_SYSTEM.TMP_TERM_CARD_TASK (STATUS)
   tablespace USERS
   pctfree 10
@@ -3613,51 +3613,51 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table DM_SYSTEM.TMP_UP_CARD_DETAIL
-  is 'ÉÏÓÎºÅ¿¨Ã÷Ï¸±í(ºóÌ¨ÈË¹¤ÉóºËµ¼Èë[Ô­TMP_ORDER_IMPORT±í])';
+  is 'ä¸Šæ¸¸å·å¡æ˜ç»†è¡¨(åå°äººå·¥å®¡æ ¸å¯¼å…¥[åŸTMP_ORDER_IMPORTè¡¨])';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.up_product_no
-  is 'ÉÏÓÎ²úÆ·±àºÅ';
+  is 'ä¸Šæ¸¸äº§å“ç¼–å·';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.phone_no
-  is 'ÁªÏµ·½Ê½';
+  is 'è”ç³»æ–¹å¼';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.card_no
-  is 'Éí·İÖ¤ºÅ';
+  is 'èº«ä»½è¯å·';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.user_name
-  is '°ìÀíÈË';
+  is 'åŠç†äºº';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.new_phone_no
-  is 'ĞÂÊÖ»úºÅ';
+  is 'æ–°æ‰‹æœºå·';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.order_status
-  is '¶©µ¥×´Ì¬: 0-³É¹¦ 90-Ê§°Ü';
+  is 'è®¢å•çŠ¶æ€: 0-æˆåŠŸ 90-å¤±è´¥';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.order_msg
-  is '¶©µ¥ÏûÏ¢';
+  is 'è®¢å•æ¶ˆæ¯';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.activate_status
-  is '¼¤»î×´Ì¬: 0-ÒÑ¼¤»î 1-´ı¼¤»î';
+  is 'æ¿€æ´»çŠ¶æ€: 0-å·²æ¿€æ´» 1-å¾…æ¿€æ´»';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.activate_time
-  is '¼¤»îÊ±¼ä(¸ñÊ½: yyyy-mm-dd hh24:mi:ss)';
+  is 'æ¿€æ´»æ—¶é—´(æ ¼å¼: yyyy-mm-dd hh24:mi:ss)';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.recharge_status
-  is 'Ê×³ä×´Ì¬: 0-ÒÑÊ×³ä 1-Î´Ê×³ä';
+  is 'é¦–å……çŠ¶æ€: 0-å·²é¦–å…… 1-æœªé¦–å……';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.recharge_time
-  is 'Ê×³äÊ±¼ä(¸ñÊ½: yyyy-mm-dd hh24:mi:ss)';
+  is 'é¦–å……æ—¶é—´(æ ¼å¼: yyyy-mm-dd hh24:mi:ss)';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.express_name
-  is '¿ìµİÃû³Æ';
+  is 'å¿«é€’åç§°';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.express_no
-  is '¿ìµİµ¥ºÅ';
+  is 'å¿«é€’å•å·';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.deal_status
-  is '´¦Àí×´Ì¬: 0-´¦Àí³É¹¦ 20-µÈ´ı´¦Àí 90-´¦ÀíÊ§°Ü';
+  is 'å¤„ç†çŠ¶æ€: 0-å¤„ç†æˆåŠŸ 20-ç­‰å¾…å¤„ç† 90-å¤„ç†å¤±è´¥';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.deal_msg
-  is '´¦Àí½á¹û';
+  is 'å¤„ç†ç»“æœ';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.batch_no
-  is '²Ù×÷Åú´Î';
+  is 'æ“ä½œæ‰¹æ¬¡';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.create_user
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 comment on column DM_SYSTEM.TMP_UP_CARD_DETAIL.recharge_face
-  is 'Ê×³äÃæÖµ';
+  is 'é¦–å……é¢å€¼';
 create index DM_SYSTEM.IDX_ORDER_IMPORT_STATUS on DM_SYSTEM.TMP_UP_CARD_DETAIL (DEAL_STATUS)
   tablespace USERS
   pctfree 10
@@ -4110,11 +4110,11 @@ prompt =============================
 prompt
 create or replace package dm_system.account_type is
   ------------------------------------------
-  -- ÕËºÅÀàĞÍ
+  -- è´¦å·ç±»å‹
   ------------------------------------------
-  alipay constant number(2) := 1; -- Ö§¸¶±¦
-  wechat constant number(2) := 2; -- Î¢ĞÅ
-  jd     constant number(2) := 3; -- ¾©¶«
+  alipay constant number(2) := 1; -- æ”¯ä»˜å®
+  wechat constant number(2) := 2; -- å¾®ä¿¡
+  jd     constant number(2) := 3; -- äº¬ä¸œ
 
 end;
 /
@@ -4125,14 +4125,14 @@ prompt ==============================
 prompt
 create or replace package dm_system.business_type is
   ------------------------------------------
-  -- ÒµÎñÀàĞÍ
+  -- ä¸šåŠ¡ç±»å‹
   ------------------------------------------
-  all_type   constant number(2) := 0; -- ËùÓĞÒµÎñÀàĞÍ
-  tel_card   constant number(2) := 1; -- µç»°ºÅ¿¨
-  mob_charge constant number(2) := 2; -- ÊÖ»ú»°·Ñ
-  mob_flow   constant number(2) := 3; -- ÊÖ»úÁ÷Á¿
-  mob_meal   constant number(2) := 4; -- ÊÖ»úÌ×²Í
-  video_vip   constant number(2) := 5; -- ÊÓÆµ»áÔ±
+  all_type   constant number(2) := 0; -- æ‰€æœ‰ä¸šåŠ¡ç±»å‹
+  tel_card   constant number(2) := 1; -- ç”µè¯å·å¡
+  mob_charge constant number(2) := 2; -- æ‰‹æœºè¯è´¹
+  mob_flow   constant number(2) := 3; -- æ‰‹æœºæµé‡
+  mob_meal   constant number(2) := 4; -- æ‰‹æœºå¥—é¤
+  video_vip   constant number(2) := 5; -- è§†é¢‘ä¼šå‘˜
 
 end;
 /
@@ -4143,12 +4143,12 @@ prompt ============================
 prompt
 create or replace package dm_system.change_type is
   ------------------------------------------
-  -- ×Ê½ğ±ä¶¯ÀàĞÍ
+  -- èµ„é‡‘å˜åŠ¨ç±»å‹
   ------------------------------------------
-  income   constant number(1) := 1; -- ÊÕ¿î
-  deduct   constant number(1) := 2; -- ¿Û¿î
-  refund   constant number(1) := 3; -- ÍË¿î
-  withdraw constant number(1) := 4; -- ÌáÏÖ
+  income   constant number(1) := 1; -- æ”¶æ¬¾
+  deduct   constant number(1) := 2; -- æ‰£æ¬¾
+  refund   constant number(1) := 3; -- é€€æ¬¾
+  withdraw constant number(1) := 4; -- æç°
 end;
 /
 
@@ -4158,11 +4158,11 @@ prompt ==========================
 prompt
 create or replace package dm_system.deal_code is
   ----------------------------------------------------
-  -- ´¦ÀíÂë
+  -- å¤„ç†ç 
   ----------------------------------------------------
-  succeed constant number(1) := 0; -- ³É¹¦
-  failed  constant number(1) := 1; -- Ê§°Ü  
-  unknown constant number(1) := 9; -- Î´Öª
+  succeed constant number(1) := 0; -- æˆåŠŸ
+  failed  constant number(1) := 1; -- å¤±è´¥  
+  unknown constant number(1) := 9; -- æœªçŸ¥
 
 end;
 /
@@ -4173,13 +4173,13 @@ prompt ============================
 prompt
 create or replace package dm_system.deal_status is
   ----------------------------------------------------
-  -- ´¦Àí×´Ì¬
+  -- å¤„ç†çŠ¶æ€
   ----------------------------------------------------
-  succeed    constant number(2) := 0; -- ´¦Àí³É¹¦
-  noneed     constant number(2) := 10; -- ÎŞĞè´¦Àí
-  waiting    constant number(2) := 20; -- µÈ´ı´¦Àí
-  processing constant number(2) := 30; -- ÕıÔÚ´¦Àí
-  failed     constant number(2) := 90; -- ´¦ÀíÊ§°Ü
+  succeed    constant number(2) := 0; -- å¤„ç†æˆåŠŸ
+  noneed     constant number(2) := 10; -- æ— éœ€å¤„ç†
+  waiting    constant number(2) := 20; -- ç­‰å¾…å¤„ç†
+  processing constant number(2) := 30; -- æ­£åœ¨å¤„ç†
+  failed     constant number(2) := 90; -- å¤„ç†å¤±è´¥
 end;
 /
 
@@ -4189,11 +4189,11 @@ prompt ============================
 prompt
 create or replace package dm_system.deduct_mode is
   ------------------------------------------
-  -- ¿Û·ÑÄ£Ê½
+  -- æ‰£è´¹æ¨¡å¼
   ------------------------------------------
-  none  constant number(1) := 0; -- ²»¿Û·Ñ
-  early constant number(1) := 1; -- ÏÈ¿Û·Ñ
-  later constant number(1) := 2; -- ºó¿Û·Ñ
+  none  constant number(1) := 0; -- ä¸æ‰£è´¹
+  early constant number(1) := 1; -- å…ˆæ‰£è´¹
+  later constant number(1) := 2; -- åæ‰£è´¹
 
 end;
 /
@@ -4204,10 +4204,10 @@ prompt ==============================
 prompt
 create or replace package dm_system.division_mode is
   ------------------------------------------
-  -- ·ÖÁ÷Ä£Ê½
+  -- åˆ†æµæ¨¡å¼
   ------------------------------------------
-  priority constant number(2) := 1; -- ÓÅÏÈ¼¶
-  percent  constant number(2) := 2; -- °Ù·Ö±È
+  priority constant number(2) := 1; -- ä¼˜å…ˆçº§
+  percent  constant number(2) := 2; -- ç™¾åˆ†æ¯”
 
 end;
 /
@@ -4218,10 +4218,10 @@ prompt ==============================
 prompt
 create or replace package dm_system.enable_status is
   ------------------------------------------
-  -- ÆôÓÃ×´Ì¬
+  -- å¯ç”¨çŠ¶æ€
   ------------------------------------------
-  enabled  constant number(1) := 0; -- ÆôÓÃ
-  disabled constant number(1) := 1; -- ½ûÓÃ
+  enabled  constant number(1) := 0; -- å¯ç”¨
+  disabled constant number(1) := 1; -- ç¦ç”¨
 end;
 /
 
@@ -4231,15 +4231,15 @@ prompt ===========================
 prompt
 create or replace package dm_system.error_code is
   ----------------------------------------------------
-  -- Êı¾İ¿â´íÎóÂë
+  -- æ•°æ®åº“é”™è¯¯ç 
   ----------------------------------------------------
 
-  success  constant number(3) := 100; -- ³É¹¦
-  failed   constant number(3) := 200; -- Ê§°Ü  
-  except   constant number(3) := 999; -- Òì³£
-  done     constant number(3) := 201; -- ÒÑ¾­°ìÀí
-  repeat   constant number(3) := 202; -- ÖØ¸´
-  overload constant number(3) := 203; -- ´ÎÊı´ïÏŞ
+  success  constant number(3) := 100; -- æˆåŠŸ
+  failed   constant number(3) := 200; -- å¤±è´¥  
+  except   constant number(3) := 999; -- å¼‚å¸¸
+  done     constant number(3) := 201; -- å·²ç»åŠç†
+  repeat   constant number(3) := 202; -- é‡å¤
+  overload constant number(3) := 203; -- æ¬¡æ•°è¾¾é™
   
 end;
 /
@@ -4250,12 +4250,12 @@ prompt ============================
 prompt
 create or replace package dm_system.notify_type is
   ------------------------------------------
-  -- Í¨ÖªÀàĞÍ
+  -- é€šçŸ¥ç±»å‹
   ------------------------------------------
-  all_type       constant number(2) := 0; -- ËùÓĞ
-  order_state    constant number(2) := 1; -- ¶©µ¥×´Ì¬
-  activate_state constant number(2) := 2; -- ¼¤»î×´Ì¬
-  recharge_state constant number(2) := 3; -- Ê×³ä×´Ì¬
+  all_type       constant number(2) := 0; -- æ‰€æœ‰
+  order_state    constant number(2) := 1; -- è®¢å•çŠ¶æ€
+  activate_state constant number(2) := 2; -- æ¿€æ´»çŠ¶æ€
+  recharge_state constant number(2) := 3; -- é¦–å……çŠ¶æ€
 
 end;
 /
@@ -4266,11 +4266,11 @@ prompt =============================
 prompt
 create or replace package dm_system.picture_mode is
   ------------------------------------------
-  -- ÉÏÓÎÕÕÆ¬Ä£Ê½
+  -- ä¸Šæ¸¸ç…§ç‰‡æ¨¡å¼
   ------------------------------------------
-  no_need     constant number(1) := 0; -- ÎŞĞèÕÕÆ¬
-  only_photo  constant number(1) := 1; -- ÉÏÓÎÖØÌáÕÕÆ¬
-  retry_order constant number(1) := 2; -- ÉÏÓÎÖØÌá¶©µ¥
+  no_need     constant number(1) := 0; -- æ— éœ€ç…§ç‰‡
+  only_photo  constant number(1) := 1; -- ä¸Šæ¸¸é‡æç…§ç‰‡
+  retry_order constant number(1) := 2; -- ä¸Šæ¸¸é‡æè®¢å•
 end;
 /
 
@@ -4289,14 +4289,14 @@ prompt =========================
 prompt
 create or replace package dm_system.rule_cnd is
   ------------------------------------------
-  -- ¹æÔòÌõ¼ş
+  -- è§„åˆ™æ¡ä»¶
   ------------------------------------------
-  range      constant number(2) := 1; -- ·¶Î§
-  equal      constant number(2) := 2; -- µÈÓÚ
-  unequal    constant number(2) := 3; -- ²»µÈÓÚ
-  include    constant number(2) := 4; -- °üº¬
-  exclude    constant number(2) := 5; -- ²»°üº¬
-  not_exceed constant number(2) := 6; -- ²»³¬¹ı
+  range      constant number(2) := 1; -- èŒƒå›´
+  equal      constant number(2) := 2; -- ç­‰äº
+  unequal    constant number(2) := 3; -- ä¸ç­‰äº
+  include    constant number(2) := 4; -- åŒ…å«
+  exclude    constant number(2) := 5; -- ä¸åŒ…å«
+  not_exceed constant number(2) := 6; -- ä¸è¶…è¿‡
   
 end;
 /
@@ -4307,13 +4307,13 @@ prompt ==========================
 prompt
 create or replace package dm_system.rule_type is
   ------------------------------------------
-  -- ¹æÔòÀàĞÍ
+  -- è§„åˆ™ç±»å‹
   ------------------------------------------
-  ip_addr       constant number(2) := 1; -- IPµØÖ·
-  phone_no      constant number(2) := 2; -- ÊÖ»úºÅ
-  card_user_age constant number(2) := 3; -- ÄêÁä
-  card_user_id  constant number(2) := 4; -- Éí·İÖ¤ºÅ
-  contact_addr  constant number(2) := 5; -- ÁªÏµµØÖ·
+  ip_addr       constant number(2) := 1; -- IPåœ°å€
+  phone_no      constant number(2) := 2; -- æ‰‹æœºå·
+  card_user_age constant number(2) := 3; -- å¹´é¾„
+  card_user_id  constant number(2) := 4; -- èº«ä»½è¯å·
+  contact_addr  constant number(2) := 5; -- è”ç³»åœ°å€
 
 end;
 /
@@ -4324,16 +4324,16 @@ prompt ============================
 prompt
 create or replace package dm_system.script_type is
   ------------------------------------------
-  -- ½Å±¾ÀàĞÍ
+  -- è„šæœ¬ç±»å‹
   ------------------------------------------  
-  order_submit  constant number(2) := 1; -- ¶©µ¥Ìá½»
-  order_query   constant number(2) := 2; -- ¶©µ¥²éÑ¯
-  balnc_query   constant number(2) := 3; -- Óà¶î²éÑ¯
-  refund_apply  constant number(2) := 4; -- ÍË¿îÉêÇë
-  vcode_send    constant number(2) := 5; -- ÑéÖ¤Âë·¢ËÍ
-  vcode_submit  constant number(2) := 6; -- ÑéÖ¤ÂëÌá½»
-  video_submit  constant number(2) := 7; -- ÊÓÆµ»áÔ±Ìá½»
-  picture_retry constant number(2) := 8; -- ÖØÌáÉí·İÖ¤
+  order_submit  constant number(2) := 1; -- è®¢å•æäº¤
+  order_query   constant number(2) := 2; -- è®¢å•æŸ¥è¯¢
+  balnc_query   constant number(2) := 3; -- ä½™é¢æŸ¥è¯¢
+  refund_apply  constant number(2) := 4; -- é€€æ¬¾ç”³è¯·
+  vcode_send    constant number(2) := 5; -- éªŒè¯ç å‘é€
+  vcode_submit  constant number(2) := 6; -- éªŒè¯ç æäº¤
+  video_submit  constant number(2) := 7; -- è§†é¢‘ä¼šå‘˜æäº¤
+  picture_retry constant number(2) := 8; -- é‡æèº«ä»½è¯
 
 end;
 /
@@ -4344,10 +4344,10 @@ prompt ===========================
 prompt
 create or replace package dm_system.white_type is
   ------------------------------------------
-  -- °×Ãûµ¥ÀàĞÍ
+  -- ç™½åå•ç±»å‹
   ------------------------------------------
-  ip_addr  constant number(1) := 1; -- IPµØÖ·
-  phone_no constant number(1) := 2; -- ÊÖ»úºÅ
+  ip_addr  constant number(1) := 1; -- IPåœ°å€
+  phone_no constant number(1) := 2; -- æ‰‹æœºå·
 
 end;
 /
@@ -4370,15 +4370,15 @@ create or replace function dm_system.f_backup_bind(v_next_interval number,
                                          v_out_msg       out varchar2)
   return number is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ºó²¹°ó¶¨
-  -- ´´½¨: zhusm 2019-09-29
+  -- åŠŸèƒ½: åè¡¥ç»‘å®š
+  -- åˆ›å»º: zhusm 2019-09-29
   -----------------------------------------------------------------------
   l_order_no  varchar2(32);
   l_batch_cnt number := 0;
 
 begin
 
-  -- É¨ÃèÊı¾İ
+  -- æ‰«ææ•°æ®
   for r in (select t.order_no
               from dm_order_main t
              where t.order_status = deal_status.waiting
@@ -4389,7 +4389,7 @@ begin
     if (v_out_batch_no is null) then
       v_out_batch_no := seq_backup_batch_no.nextval;
     end if;
-    -- ËøÊı¾İ
+    -- é”æ•°æ®
     begin
       select t.order_no
         into l_order_no
@@ -4402,7 +4402,7 @@ begin
         rollback;
         continue;
     end;
-    -- ¸üĞÂ¶©µ¥
+    -- æ›´æ–°è®¢å•
     update dm_order_main t
        set t.bind_next_time = sysdate + v_next_interval / 24 / 60 / 60,
            t.bind_batch_no  = v_out_batch_no
@@ -4410,11 +4410,11 @@ begin
     l_batch_cnt := l_batch_cnt + 1;
   end loop;
   if (l_batch_cnt > 0) then
-    v_out_msg   := '²Ù×÷³É¹¦';
+    v_out_msg   := 'æ“ä½œæˆåŠŸ';
     v_out_count := l_batch_cnt;
     return error_code.success;
   else
-    v_out_msg := 'ÎŞºó²¹°ó¶¨Êı¾İ';
+    v_out_msg := 'æ— åè¡¥ç»‘å®šæ•°æ®';
     return error_code.failed;
   end if;
 end;
@@ -4424,13 +4424,13 @@ prompt
 prompt Creating function F_ORDER_REFUND_ADD
 prompt ====================================
 prompt
-create or replace function dm_system.f_order_refund_add(v_order_no      varchar2, -- ¶©µ¥ºÅ
-                                              v_refund_reason varchar2, -- ÍË¿îÔ­Òò
+create or replace function dm_system.f_order_refund_add(v_order_no      varchar2, -- è®¢å•å·
+                                              v_refund_reason varchar2, -- é€€æ¬¾åŸå› 
                                               v_out_msg       out varchar2)
   return boolean is
   -------------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨¶©µ¥ÍË¿î¼ÇÂ¼
-  -- ´´½¨: zhusm 2019-05-16
+  -- åŠŸèƒ½: åˆ›å»ºè®¢å•é€€æ¬¾è®°å½•
+  -- åˆ›å»º: zhusm 2019-05-16
   -------------------------------------------------------------------------
   l_count         number;
   l_account_id    number;
@@ -4444,16 +4444,16 @@ create or replace function dm_system.f_order_refund_add(v_order_no      varchar2
 
 begin
 
-  -- ¼ì²éÊÇ·ñ´æÔÚ
+  -- æ£€æŸ¥æ˜¯å¦å­˜åœ¨
   select count(1)
     into l_count
     from dm_order_refund t
    where t.order_no = v_order_no;
   if (l_count > 0) then
-    v_out_msg := 'ÍË¿î¼ÇÂ¼ÒÑ´æÔÚ';
+    v_out_msg := 'é€€æ¬¾è®°å½•å·²å­˜åœ¨';
     return false;
   end if;
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.term_no,
          t.pay_status,
          t.pay_price,
@@ -4478,7 +4478,7 @@ begin
     from dm_pay_script t
    where t.account_type = l_account_type
      and t.script_type = script_type.refund_apply;
-  -- ²åÈë¼ÇÂ¼
+  -- æ’å…¥è®°å½•
   insert into dm_order_refund
     (record_id,
      account_id,
@@ -4512,13 +4512,13 @@ prompt
 prompt Creating function F_BIND_FAILD
 prompt ==============================
 prompt
-create or replace function dm_system.f_bind_faild(v_order_no   in varchar2, -- ¼ÇÂ¼±àºÅ
-                                        v_result_msg in varchar2, -- ½á¹ûÏûÏ¢
-                                        v_out_msg    out varchar2) -- ½á¹ûÏûÏ¢
+create or replace function dm_system.f_bind_faild(v_order_no   in varchar2, -- è®°å½•ç¼–å·
+                                        v_result_msg in varchar2, -- ç»“æœæ¶ˆæ¯
+                                        v_out_msg    out varchar2) -- ç»“æœæ¶ˆæ¯
  return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: °ó¶¨Ê§°Ü
-  -- ´´½¨ÈË: zhusm 2019-08-23
+  -- åŠŸèƒ½: ç»‘å®šå¤±è´¥
+  -- åˆ›å»ºäºº: zhusm 2019-08-23
   -----------------------------------------------------------------------
   l_order_no   varchar2(32);
   l_pay_status number;
@@ -4526,19 +4526,19 @@ create or replace function dm_system.f_bind_faild(v_order_no   in varchar2, -- ¼
   l_err_desc   varchar2(64);
 
 begin
-  -- Ëø¶©µ¥
+  -- é”è®¢å•
   select t.order_no, t.pay_status
     into l_order_no, l_pay_status
     from dm_order_main t
    where t.order_no = v_order_no
      and t.order_status = deal_status.waiting
      for update;
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.order_code, t.order_desc
     into l_err_code, l_err_desc
     from dm_system_deal_code t
    where t.error_code = error_code.failed;
-  -- ¸üĞÂ×´Ì¬
+  -- æ›´æ–°çŠ¶æ€
   update dm_order_main t
      set t.order_status = deal_status.failed,
          t.result_msg   = v_result_msg,
@@ -4546,9 +4546,9 @@ begin
          t.error_desc   = l_err_desc,
          t.finish_time  = sysdate
    where t.order_no = l_order_no;
-  -- ´´½¨ÍË¿î
+  -- åˆ›å»ºé€€æ¬¾
   if (l_pay_status = deal_status.succeed) then
-    return f_order_refund_add(l_order_no, 'ÒµÎñ°ìÀíÊ§°Ü[001]', v_out_msg);
+    return f_order_refund_add(l_order_no, 'ä¸šåŠ¡åŠç†å¤±è´¥[001]', v_out_msg);
   end if;
   return true;
 
@@ -4564,8 +4564,8 @@ prompt ==================================
 prompt
 create or replace function dm_system.f_bind_id_create return varchar2 is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ¹¹Ôìbind_id
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: æ„é€ bind_id
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
 begin
   return to_char(sysdate, 'yymmddhh24miss') || seq_order_bind_id.nextval;
@@ -4576,29 +4576,29 @@ prompt
 prompt Creating function F_BIND_UP_PRODUCT
 prompt ===================================
 prompt
-create or replace function dm_system.f_bind_up_product(v_product_no        varchar2, -- ÖÕ¶Ë²úÆ·±àÂë
-                                             v_busi_type         number, -- ÒµÎñÀàĞÍ
-                                             v_face_fee          number, -- ÃæÖµ
-                                             v_carrier_no        varchar2, -- ÔËÓªÉÌ
-                                             v_province_no       varchar2, -- Ê¡·İ±àÂë
-                                             v_city_no           varchar2, -- µØÊĞ±àÂë
-                                             v_out_chnnl_no      out varchar2, -- ÉÏÓÎÇşµÀ±àºÅ
-                                             v_out_prd_no        out varchar2, -- ÉÏÓÎ²úÆ·±àºÅ
-                                             v_out_prd_price     out number, -- ÉÏÓÎ²úÆ·¼Û¸ñ
-                                             v_out_need_delivery out number, -- ÊÇ·ñĞèÒª·¢»õ
-                                             v_out_need_vcode    out number, -- ÊÇ·ñĞèÒªÑéÖ¤Âë
-                                             v_out_picture_mode  out number, -- ÕÕÆ¬Ìá½»Ä£Ê½
+create or replace function dm_system.f_bind_up_product(v_product_no        varchar2, -- ç»ˆç«¯äº§å“ç¼–ç 
+                                             v_busi_type         number, -- ä¸šåŠ¡ç±»å‹
+                                             v_face_fee          number, -- é¢å€¼
+                                             v_carrier_no        varchar2, -- è¿è¥å•†
+                                             v_province_no       varchar2, -- çœä»½ç¼–ç 
+                                             v_city_no           varchar2, -- åœ°å¸‚ç¼–ç 
+                                             v_out_chnnl_no      out varchar2, -- ä¸Šæ¸¸æ¸ é“ç¼–å·
+                                             v_out_prd_no        out varchar2, -- ä¸Šæ¸¸äº§å“ç¼–å·
+                                             v_out_prd_price     out number, -- ä¸Šæ¸¸äº§å“ä»·æ ¼
+                                             v_out_need_delivery out number, -- æ˜¯å¦éœ€è¦å‘è´§
+                                             v_out_need_vcode    out number, -- æ˜¯å¦éœ€è¦éªŒè¯ç 
+                                             v_out_picture_mode  out number, -- ç…§ç‰‡æäº¤æ¨¡å¼
                                              v_out_msg           out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: °ó¶¨ÉÏÓÎ²úÆ·
-  -- ´´½¨: zhusm 2019-05-25
-  -- ĞŞ¸Ä: zhusm 2019-10-20 Ôö¼ÓºÅ¿¨²»ÑéÖ¤ÔËÓªÉÌ/Ê¡·İ/µØÊĞÂß¼­
+  -- åŠŸèƒ½: ç»‘å®šä¸Šæ¸¸äº§å“
+  -- åˆ›å»º: zhusm 2019-05-25
+  -- ä¿®æ”¹: zhusm 2019-10-20 å¢åŠ å·å¡ä¸éªŒè¯è¿è¥å•†/çœä»½/åœ°å¸‚é€»è¾‘
   -----------------------------------------------------------------------
 begin
-  -- Ñ¡ÔñÉÏÓÎ²úÆ·(ÔİÖ»Ö§³ÖÓÅÏÈ¼¶)
+  -- é€‰æ‹©ä¸Šæ¸¸äº§å“(æš‚åªæ”¯æŒä¼˜å…ˆçº§)
   if (v_busi_type = business_type.tel_card) then
-    -- ºÅ¿¨²»ÑéÖ¤ÔËÓªÉÌ/Ê¡·İ/µØÊĞ
+    -- å·å¡ä¸éªŒè¯è¿è¥å•†/çœä»½/åœ°å¸‚
     for r in (select t1.channel_no,
                      t1.product_no,
                      t1.real_price,
@@ -4664,10 +4664,10 @@ begin
     end loop;
   end if;
   if (v_out_chnnl_no is null) then
-    v_out_msg := 'ÏÂÓÎÖ¸¶¨ÅäÖÃ´íÎó';
+    v_out_msg := 'ä¸‹æ¸¸æŒ‡å®šé…ç½®é”™è¯¯';
     return false;
   else
-    v_out_msg := '²Ù×÷³É¹¦';
+    v_out_msg := 'æ“ä½œæˆåŠŸ';
     return true;
   end if;
 end;
@@ -4680,15 +4680,15 @@ prompt
 create or replace function dm_system.f_char_replace(sourcestr in varchar2)
   return varchar2 is
   /*
-     ¹¦ÄÜ£ºÌæ»»ÌØÊâ×Ö·û
-     ·µ»ØÖµ£º·µ»ØÌæ»»ºóµÄ×Ö·û´®
-     ×÷Õß£º¼ÍÒã
+     åŠŸèƒ½ï¼šæ›¿æ¢ç‰¹æ®Šå­—ç¬¦
+     è¿”å›å€¼ï¼šè¿”å›æ›¿æ¢åçš„å­—ç¬¦ä¸²
+     ä½œè€…ï¼šçºªæ¯…
   */
   l_tmp_str varchar2(4000);
 begin
   l_tmp_str := sourcestr;
   l_tmp_str := replace(l_tmp_str, '"', '\"');
-  l_tmp_str := translate(l_tmp_str, chr(13) || chr(10), ','); --Ìæ»»»»ĞĞ·ûºÅ
+  l_tmp_str := translate(l_tmp_str, chr(13) || chr(10), ','); --æ›¿æ¢æ¢è¡Œç¬¦å·
   return l_tmp_str;
 end;
 /
@@ -4697,17 +4697,17 @@ prompt
 prompt Creating function F_CHECK_TERM_PROMOTE
 prompt ======================================
 prompt
-create or replace function dm_system.f_check_term_promote(v_term_no         in varchar2, -- ÖÕ¶Ë±àºÅ
-                                                v_promote_guid    in varchar2, -- ÍÆ¹ãGUID                                                   
-                                                v_out_msg         out varchar2, -- ½á¹ûÏûÏ¢    
-                                                v_out_promote_id  out number, -- ÍÆ¹ã±àºÅ                                            
-                                                v_out_promoter_id out number, -- ÍÆ¹ãÈË±àºÅ                                               
-                                                v_out_label_id    out number) -- ÓÃ»§±êÇ©±àºÅ
+create or replace function dm_system.f_check_term_promote(v_term_no         in varchar2, -- ç»ˆç«¯ç¼–å·
+                                                v_promote_guid    in varchar2, -- æ¨å¹¿GUID                                                   
+                                                v_out_msg         out varchar2, -- ç»“æœæ¶ˆæ¯    
+                                                v_out_promote_id  out number, -- æ¨å¹¿ç¼–å·                                            
+                                                v_out_promoter_id out number, -- æ¨å¹¿äººç¼–å·                                               
+                                                v_out_label_id    out number) -- ç”¨æˆ·æ ‡ç­¾ç¼–å·
  return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ¼ì²éÖÕ¶ËÍÆ¹ã
-  -- ´´½¨ÈË: zhusm 2019-06-03
-  -- ĞŞ¸ÄÈË: zhusm 2019-09-03[Ôö¼ÓÍÆ¹ãURLÅĞ¶Ï]
+  -- åŠŸèƒ½: æ£€æŸ¥ç»ˆç«¯æ¨å¹¿           (term-info) =>promote-info
+  -- åˆ›å»ºäºº: zhusm 2019-06-03
+  -- ä¿®æ”¹äºº: zhusm 2019-09-03[å¢åŠ æ¨å¹¿URLåˆ¤æ–­]
   -----------------------------------------------------------------------
   l_entry_url   varchar2(256);
   l_promote_id  number;
@@ -4718,17 +4718,17 @@ create or replace function dm_system.f_check_term_promote(v_term_no         in v
 
 begin
 
-  -- ¼ì²éÖÕ¶Ë
+  -- æ£€æŸ¥ç»ˆç«¯
   select max(t.entry_url)
     into l_entry_url
     from dm_term_info t
    where t.term_no = v_term_no
      and t.status = enable_status.enabled;
   if (l_entry_url is null) then
-    v_out_msg := 'ÖÕ¶ËÎ´ÅäÖÃ»òÎ´ÆôÓÃ';
+    v_out_msg := 'ç»ˆç«¯æœªé…ç½®æˆ–æœªå¯ç”¨';
     return false;
   end if;
-  -- ¼ì²éÍÆ¹ã±àºÅ
+  -- æ£€æŸ¥æ¨å¹¿ç¼–å·
   select max(t.promote_id), max(t.promoter_id), max(t.label_id), max(t.promote_url)
     into l_promote_id, l_promoter_id, l_label_id, l_promote_url
     from dm_term_promote t
@@ -4736,25 +4736,25 @@ begin
      and t.promote_guid = v_promote_guid
      and t.status = enable_status.enabled;
   if (l_promote_id is null) then
-    v_out_msg := 'ÍÆ¹ãÈËÎ´ÅäÖÃ»òÎ´ÆôÓÃ';
+    v_out_msg := 'æ¨å¹¿äººæœªé…ç½®æˆ–æœªå¯ç”¨';
     return false;
   end if;
-  -- ¼ì²éÖÕ¶ËÍÆ¹ãÈË
+  -- æ£€æŸ¥ç»ˆç«¯æ¨å¹¿äºº
   select count(1)
     into l_count
     from dm_promoter_info t
    where t.promoter_id = l_promoter_id
      and t.status = enable_status.enabled;
   if (l_count <= 0) then
-    v_out_msg := 'ÖÕ¶ËÍÆ¹ãÈËÎ´ÅäÖÃ»òÎ´ÆôÓÃ';
+    v_out_msg := 'ç»ˆç«¯æ¨å¹¿äººæœªé…ç½®æˆ–æœªå¯ç”¨';
     return false;
   end if;
-  -- ¼ì²éÍÆ¹ãµØÖ·
+  -- æ£€æŸ¥æ¨å¹¿åœ°å€
   if (lower(l_promote_url) <> lower(l_entry_url) || lower(v_promote_guid)) then
-    v_out_msg := 'ÍÆ¹ãµØÖ··Ç·¨';
+    v_out_msg := 'æ¨å¹¿åœ°å€éæ³•';
     return false;
   end if;
-  v_out_msg         := '²Ù×÷³É¹¦';
+  v_out_msg         := 'æ“ä½œæˆåŠŸ';
   v_out_promote_id  := l_promote_id;
   v_out_promoter_id := l_promoter_id;
   v_out_label_id    := l_label_id;
@@ -4766,15 +4766,15 @@ prompt
 prompt Creating function F_CHECK_VCODE1_ORDER
 prompt ======================================
 prompt
-create or replace function dm_system.f_check_vcode1_order(v_order_no  varchar2, -- ¶©µ¥ºÅ
-                                                v_server_ip varchar2, -- ·şÎñ¶ËIP
-                                                v_user_ip   varchar2, -- ¿Í»§¶ËIP
-                                                v_out_code  out varchar2, -- ´íÎóÂë
-                                                v_out_msg   out varchar2) -- ´íÎóÏûÏ¢
+create or replace function dm_system.f_check_vcode1_order(v_order_no  varchar2, -- è®¢å•å·
+                                                v_server_ip varchar2, -- æœåŠ¡ç«¯IP
+                                                v_user_ip   varchar2, -- å®¢æˆ·ç«¯IP
+                                                v_out_code  out varchar2, -- é”™è¯¯ç 
+                                                v_out_msg   out varchar2) -- é”™è¯¯æ¶ˆæ¯
  return boolean is
   -------------------------------------------------------------------------
-  -- ¼ì²éÑéÖ¤Âë¶©µ¥
-  -- ´´½¨ÈË: zhusm 2019-05-24
+  -- æ£€æŸ¥éªŒè¯ç è®¢å•      (order-number,server-ip,user-ip)=>vcode status
+  -- åˆ›å»ºäºº: zhusm 2019-05-24
   -------------------------------------------------------------------------
   l_order_no     varchar2(64);
   l_send_status  number;
@@ -4786,7 +4786,7 @@ create or replace function dm_system.f_check_vcode1_order(v_order_no  varchar2, 
 
 begin
 
-  -- ¼ì²éÇ°ÖÃÌõ¼ş
+  -- æ£€æŸ¥å‰ç½®æ¡ä»¶
   begin
     select t.order_no, t.send_status, t.verify_state, t.retry_times, t.user_ip, t.create_time
       into l_order_no, l_send_status, l_verify_state, l_retry_times, l_user_ip, l_create_time
@@ -4795,56 +4795,56 @@ begin
   exception
     when others then
       v_out_code := error_code.failed;
-      v_out_msg  := 'ÑéÖ¤ÂëÎ´·¢ËÍ';
+      v_out_msg  := 'éªŒè¯ç æœªå‘é€';
       return false;
   end;
   if (l_user_ip <> v_user_ip) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'Òì³£IP¾Ü¾øÌá½»';
+    v_out_msg  := 'å¼‚å¸¸IPæ‹’ç»æäº¤';
     return false;
   end if;
   if (l_send_status <> deal_status.succeed) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÑéÖ¤Âë·¢ËÍÊ§°Ü';
+    v_out_msg  := 'éªŒè¯ç å‘é€å¤±è´¥';
     return false;
   end if;
   if (sysdate > l_create_time + 5 / 24 / 60) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÑéÖ¤ÂëÒÑÊ§Ğ§';
+    v_out_msg  := 'éªŒè¯ç å·²å¤±æ•ˆ';
     return false;
   end if;
   if (l_verify_state <> deal_status.succeed) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÑéÖ¤Âë²»ÕıÈ·';
+    v_out_msg  := 'éªŒè¯ç ä¸æ­£ç¡®';
     return false;
   end if;
 
   if (l_retry_times >= 3) then
     v_out_code := error_code.overload;
-    v_out_msg  := 'ÖØÊÔ³¬ÏŞ';
+    v_out_msg  := 'é‡è¯•è¶…é™';
     return false;
   end if;
-  -- ¼ì²é¶©µ¥
+  -- æ£€æŸ¥è®¢å•
   select max(t.order_status)
     into l_order_status
     from dm_order_main t
    where t.order_no = l_order_no;
   if (l_order_status is null) then
     v_out_code := error_code.success;
-    v_out_msg  := '¶©µ¥ÎŞ¼ÇÂ¼';
+    v_out_msg  := 'è®¢å•æ— è®°å½•';
     return true;
   end if;
   if (l_order_status = deal_status.succeed) then
     v_out_code := error_code.done;
-    v_out_msg  := 'ÒÑ¾­°ìÀí';
+    v_out_msg  := 'å·²ç»åŠç†';
     return false;
   end if;
   if (l_order_status <> deal_status.failed) then
     v_out_code := error_code.repeat;
-    v_out_msg  := '´æÔÚÔÚÍ¾¶©µ¥';
+    v_out_msg  := 'å­˜åœ¨åœ¨é€”è®¢å•';
     return false;
   end if;
-  -- Ê§°Ü¶©µ¥(ÖØÊÔ)
+  -- å¤±è´¥è®¢å•(é‡è¯•)
   update dm_order_main t
      set t.order_status = deal_status.processing,
          t.error_code   = null,
@@ -4853,11 +4853,11 @@ begin
          t.server_ip    = v_server_ip
    where t.order_no = l_order_no
      and t.order_status = deal_status.failed;
-  -- ¸üĞÂÖØÊÔ´ÎÊı
+  -- æ›´æ–°é‡è¯•æ¬¡æ•°
   update dm_order_vcode t set t.retry_times = t.retry_times + 1 where t.order_no = l_order_no;
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   return false;
 end;
 /
@@ -4870,9 +4870,9 @@ create or replace function dm_system.f_json_add(v_data  varchar2,
                                       v_name  varchar2,
                                       v_value varchar2) return varchar2 is
   --=====================================
-  --Ö÷Òª¹¦ÄÜ:Ìí¼ÓjsonµÄitem
-  --´´½¨ÈË:À¼³¤ÓÂ
-  --´´½¨Ê±¼ä:2018-08-23
+  --ä¸»è¦åŠŸèƒ½:æ·»åŠ jsonçš„item
+  --åˆ›å»ºäºº:å…°é•¿å‹‡
+  --åˆ›å»ºæ—¶é—´:2018-08-23
   --=====================================
 begin
   if (v_data is null) then
@@ -4892,11 +4892,11 @@ create or replace function dm_system.f_check_vcode2_order(v_order_no  varchar2,
                                                 v_user_ip   varchar2,
                                                 v_out_code  out varchar2,
                                                 v_out_msg   out varchar2,
-                                                v_out_json  out varchar2) -- ·¢»õ¶ÓÁĞÖµ:{"que_name":"","bind_id":"","script_path":""}
+                                                v_out_json  out varchar2) -- å‘è´§é˜Ÿåˆ—å€¼:{"que_name":"","bind_id":"","script_path":""}
  return boolean is
   -------------------------------------------------------------------------
-  -- ¼ì²éÑéÖ¤Âë¶©µ¥
-  -- ´´½¨ÈË: zhusm 2019-05-24
+  -- æ£€æŸ¥éªŒè¯ç è®¢å•
+  -- åˆ›å»ºäºº: zhusm 2019-05-24
   -------------------------------------------------------------------------
   l_send_status  number;
   l_retry_times  number;
@@ -4910,7 +4910,7 @@ create or replace function dm_system.f_check_vcode2_order(v_order_no  varchar2,
   l_temp varchar2(256) := '';
 
 begin
-  -- ²éÑ¯ÑéÖ¤Âë
+  -- æŸ¥è¯¢éªŒè¯ç 
   begin
     select t.term_no, t.term_product_no, t.send_status, t.retry_times
       into l_term_no, l_term_prd_no, l_send_status, l_retry_times
@@ -4919,48 +4919,49 @@ begin
   exception
     when others then
       v_out_code := error_code.failed;
-      v_out_msg  := 'ÑéÖ¤ÂëÎ´·¢ËÍ';
+      v_out_msg  := 'éªŒè¯ç æœªå‘é€';
       return false;
   end;
   if (l_send_status <> deal_status.succeed) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÑéÖ¤Âë·¢ËÍÊ§°Ü';
+    v_out_msg  := 'éªŒè¯ç å‘é€å¤±è´¥';
     return false;
   end if;
-  -- ²éÑ¯¶©µ¥
+  -- æŸ¥è¯¢è®¢å•
   begin
     select t.order_status into l_order_status from dm_order_main t where t.order_no = v_order_no;
   exception
     when others then
       v_out_code := error_code.success;
-      v_out_msg  := '¶©µ¥ÎŞ¼ÇÂ¼';
+      v_out_msg  := 'è®¢å•æ— è®°å½•';
       return true;
   end;
-  -- ÒÑ°ìÀí³É¹¦
+  -- å·²åŠç†æˆåŠŸ
   if (l_order_status = deal_status.succeed) then
     v_out_code := error_code.done;
-    v_out_msg  := 'ÒÑ¾­°ìÀí';
+    v_out_msg  := 'å·²ç»åŠç†';
     return false;
   end if;
-  -- ÖØÊÔ³¬ÏŞ
+  -- é‡è¯•è¶…é™
   if (l_retry_times >= 3) then
     v_out_code := error_code.overload;
-    v_out_msg  := 'ÖØÊÔ³¬ÏŞ';
+    v_out_msg  := 'é‡è¯•è¶…é™';
     return false;
   end if;
-  -- ·ÇÊ§°Ü×´Ì¬
+  -- éå¤±è´¥çŠ¶æ€
   if (l_order_status <> deal_status.failed) then
     v_out_code := error_code.repeat;
-    v_out_msg  := '´æÔÚÔÚÍ¾¶©µ¥';
+    v_out_msg  := 'å­˜åœ¨åœ¨é€”è®¢å•';
     return false;
   end if;
-  -- Ê§°Ü¶©µ¥(ÖØÊÔ)
+  -- å¤±è´¥è®¢å•(é‡è¯•)
   select t1.bind_id, t2.script_path, t2.service_code
     into l_bind_id, l_script_path, l_svc_code
     from dm_order_bind t1
    inner join dm_up_script t2
       on t1.script_id = t2.script_id
    where t1.order_no = v_order_no;
+   
   update dm_order_main t
      set t.order_status = deal_status.processing,
          t.error_code   = null,
@@ -4976,14 +4977,14 @@ begin
          t.next_bind_time = sysdate
    where t.bind_id = l_bind_id
      and t.bind_status = deal_status.failed;
-  -- ¸üĞÂÖØÊÔ´ÎÊı
+  -- æ›´æ–°é‡è¯•æ¬¡æ•°
   update dm_order_vcode t set t.retry_times = t.retry_times + 1 where t.order_no = v_order_no;
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   l_temp     := f_json_add(l_temp, 'que_name', l_svc_code);
   l_temp     := f_json_add(l_temp, 'bind_id', l_bind_id);
   l_temp     := f_json_add(l_temp, 'script_path', l_script_path);
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   return false;
 end;
@@ -4993,13 +4994,13 @@ prompt
 prompt Creating function F_ORDER_NOTIFY_ADD
 prompt ====================================
 prompt
-create or replace function dm_system.f_order_notify_add(v_order_no    varchar2, -- ¶©µ¥ºÅ
-                                              v_notify_type number, -- Í¨ÖªÀàĞÍ
+create or replace function dm_system.f_order_notify_add(v_order_no    varchar2, -- è®¢å•å·
+                                              v_notify_type number, -- é€šçŸ¥ç±»å‹
                                               v_out_msg     out varchar2)
   return boolean is
   -------------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨¶©µ¥Í¨Öª¼ÇÂ¼
-  -- ´´½¨: zhusm 2019-09-11
+  -- åŠŸèƒ½: åˆ›å»ºè®¢å•é€šçŸ¥è®°å½•
+  -- åˆ›å»º: zhusm 2019-09-11
   -------------------------------------------------------------------------
   l_promote_id  number;
   l_busi_type   number;
@@ -5009,21 +5010,21 @@ create or replace function dm_system.f_order_notify_add(v_order_no    varchar2, 
   l_max_times   number;
 
 begin
-  -- »ñÈ¡¶©µ¥²ÎÊı
+  -- è·å–è®¢å•å‚æ•°
   select t.promote_id, t.business_type
     into l_promote_id, l_busi_type
     from dm_order_main t
    where t.order_no = v_order_no;
-  -- ¼ì²éÊÇ·ñĞèÒªÍ¨Öª
+  -- æ£€æŸ¥æ˜¯å¦éœ€è¦é€šçŸ¥
   select t.need_notify
     into l_need_notify
     from dm_term_promote t
    where t.promote_id = l_promote_id;
   if (l_need_notify = enable_status.disabled) then
-    v_out_msg := 'ÎŞĞèÍ¨Öª';
+    v_out_msg := 'æ— éœ€é€šçŸ¥';
     return true;
   end if;
-  -- »ñÈ¡½Å±¾²ÎÊı
+  -- è·å–è„šæœ¬å‚æ•°
   begin
     select a.record_id, a.service_code, a.notify_max_times
       into l_script_id, l_svc_code, l_max_times
@@ -5037,10 +5038,10 @@ begin
      where rownum <= 1;
   exception
     when others then
-      v_out_msg := 'Í¨Öª½Å±¾Î´ÅäÖÃ';
+      v_out_msg := 'é€šçŸ¥è„šæœ¬æœªé…ç½®';
       return true;
   end;
-  -- Ìí¼Ó¼ÇÂ¼
+  -- æ·»åŠ è®°å½•
   insert into dm_order_notify
     (record_id,
      promote_id,
@@ -5057,7 +5058,7 @@ begin
      l_max_times,
      l_script_id,
      l_svc_code);
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 
 exception
@@ -5081,24 +5082,24 @@ create or replace function dm_system.f_delivery_failed(v_bind_id     varchar2,
                                              v_out_msg     out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ·¢»õÊ§°Ü
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: å‘è´§å¤±è´¥
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_term_mode number;
 begin
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.deduct_mode
     into l_term_mode
     from dm_term_product t
    where t.product_no = v_term_prd_no;
-  -- ¸üĞÂ°ó¶¨
+  -- æ›´æ–°ç»‘å®š
   update dm_order_bind t
      set t.bind_status          = deal_status.failed,
          t.manual_status        = deal_status.noneed,
          t.finish_time          = sysdate,
          t.delivery_finish_time = sysdate
    where t.bind_id = v_bind_id;
-  -- ¸üĞÂ¶©µ¥
+  -- æ›´æ–°è®¢å•
   update dm_order_main t
      set t.order_status  = deal_status.failed,
          t.manual_status = deal_status.noneed,
@@ -5107,21 +5108,21 @@ begin
          t.error_desc    = v_order_desc,
          t.finish_time   = sysdate
    where t.order_no = v_order_no;
-  -- ¹Ø±Õ²éÑ¯
+  -- å…³é—­æŸ¥è¯¢
   update dm_order_query t
      set t.status      = deal_status.noneed,
          t.finish_time = sysdate,
-         t.result_msg  = '×Ô¶¯¹Ø±Õ:·¢»õÊ§°Ü'
+         t.result_msg  = 'è‡ªåŠ¨å…³é—­:å‘è´§å¤±è´¥'
    where t.bind_id = v_bind_id;
-  -- ´´½¨Í¨Öª
+  -- åˆ›å»ºé€šçŸ¥
   if (not f_order_notify_add(v_order_no, notify_type.order_state, v_out_msg)) then
     return false;
   end if;
-  -- ´´½¨ÍË¿î
+  -- åˆ›å»ºé€€æ¬¾
   if (v_pay_status = deal_status.succeed) then
-    return f_order_refund_add(v_order_no, 'ÒµÎñ°ìÀíÊ§°Ü[002]', v_out_msg);
+    return f_order_refund_add(v_order_no, 'ä¸šåŠ¡åŠç†å¤±è´¥[002]', v_out_msg);
   end if;
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 exception
   when others then
@@ -5134,61 +5135,61 @@ prompt
 prompt Creating function F_TERM_FUND_CHANGE_ADD
 prompt ========================================
 prompt
-create or replace function dm_system.f_term_fund_change_add(v_term_no      varchar2, -- ÖÕ¶Ë±àºÅ
-                                                  v_order_no     varchar2, -- ¶©µ¥ºÅ
-                                                  v_change_type  number, -- ±ä¶¯ÀàĞÍ: 1-ÊÕ¿î 2-ÍË¿î
-                                                  v_change_money number, -- ±ä¶¯½ğ¶î
-                                                  v_operator     varchar2, -- ²Ù×÷ÈË
-                                                  v_remark       varchar2, -- ±¸×¢
+create or replace function dm_system.f_term_fund_change_add(v_term_no      varchar2, -- ç»ˆç«¯ç¼–å·
+                                                  v_order_no     varchar2, -- è®¢å•å·
+                                                  v_change_type  number, -- å˜åŠ¨ç±»å‹: 1-æ”¶æ¬¾ 2-é€€æ¬¾
+                                                  v_change_money number, -- å˜åŠ¨é‡‘é¢
+                                                  v_operator     varchar2, -- æ“ä½œäºº
+                                                  v_remark       varchar2, -- å¤‡æ³¨
                                                   v_out_msg      out varchar2)
   return boolean is
   -------------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨ÖÕ¶Ë×Ê½ğ±ä¶¯
-  -- ´´½¨: zhusm 2019-05-27
+  -- åŠŸèƒ½: åˆ›å»ºç»ˆç«¯èµ„é‡‘å˜åŠ¨
+  -- åˆ›å»º: zhusm 2019-05-27
   -------------------------------------------------------------------------
   l_count        number;
   l_change_money number;
   l_balance      number;
 
 begin
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_term_no is null or v_order_no is null or v_change_money is null or
      v_operator is null or v_remark is null) then
-    v_out_msg := '²ÎÊı²»ÄÜÎª¿Õ';
+    v_out_msg := 'å‚æ•°ä¸èƒ½ä¸ºç©º';
     return false;
   end if;
   if (v_change_type not in
      (change_type.income, change_type.deduct, change_type.refund)) then
-    v_out_msg := '±ä¶¯ÀàĞÍ²»Ö§³Ö';
+    v_out_msg := 'å˜åŠ¨ç±»å‹ä¸æ”¯æŒ';
     return false;
   end if;
   if (v_change_money = 0) then
-    v_out_msg := '±ä¶¯½ğ¶îÎªÁã';
+    v_out_msg := 'å˜åŠ¨é‡‘é¢ä¸ºé›¶';
     return true;
   end if;
-  -- ¼ì²éÊÇ·ñ´æÔÚ
+  -- æ£€æŸ¥æ˜¯å¦å­˜åœ¨
   select count(1)
     into l_count
     from dm_term_fund_change t
    where t.order_no = v_order_no
      and t.change_type = v_change_type;
   if (l_count >= 1) then
-    v_out_msg := '±ä¶¯¼ÇÂ¼ÒÑ´æÔÚ';
+    v_out_msg := 'å˜åŠ¨è®°å½•å·²å­˜åœ¨';
     return false;
   end if;
-  -- ²ÎÊı×ª»¯
+  -- å‚æ•°è½¬åŒ–
   if (v_change_type = change_type.deduct) then
     l_change_money := abs(v_change_money) * -1;
   else
     l_change_money := abs(v_change_money);
   end if;
-  -- »ñÈ¡Óà¶î
+  -- è·å–ä½™é¢
   select t.balance
     into l_balance
     from dm_term_info t
    where t.term_no = v_term_no
      for update;
-  -- Ìí¼ÓÊı¾İ
+  -- æ·»åŠ æ•°æ®
   insert into dm_term_fund_change
     (record_id,
      term_no,
@@ -5214,7 +5215,7 @@ begin
   update dm_term_info t
      set t.balance = t.balance + l_change_money
    where t.term_no = v_term_no;
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5223,41 +5224,41 @@ prompt
 prompt Creating function F_UP_FUND_CHANGE_ADD
 prompt ======================================
 prompt
-create or replace function dm_system.f_up_fund_change_add(v_channel_no   varchar2, -- ÇşµÀ±àºÅ
-                                                v_order_no     varchar2, -- ¶©µ¥ºÅ
-                                                v_bind_id      number, -- °ó¶¨±àºÅ
-                                                v_change_type  number, -- ±ä¶¯ÀàĞÍ: 1-ÊÕ¿î 2-ÍË¿î
-                                                v_change_money number, -- ±ä¶¯½ğ¶î
-                                                v_operator     varchar2, -- ²Ù×÷ÈË
-                                                v_remark       varchar2, -- ±¸×¢
+create or replace function dm_system.f_up_fund_change_add(v_channel_no   varchar2, -- æ¸ é“ç¼–å·
+                                                v_order_no     varchar2, -- è®¢å•å·
+                                                v_bind_id      number, -- ç»‘å®šç¼–å·
+                                                v_change_type  number, -- å˜åŠ¨ç±»å‹: 1-æ”¶æ¬¾ 2-é€€æ¬¾
+                                                v_change_money number, -- å˜åŠ¨é‡‘é¢
+                                                v_operator     varchar2, -- æ“ä½œäºº
+                                                v_remark       varchar2, -- å¤‡æ³¨
                                                 v_out_msg      out varchar2)
   return boolean is
   -------------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨ÉÏÓÎ×Ê½ğ±ä¶¯
-  -- ´´½¨: zhusm 2019-05-27
+  -- åŠŸèƒ½: åˆ›å»ºä¸Šæ¸¸èµ„é‡‘å˜åŠ¨
+  -- åˆ›å»º: zhusm 2019-05-27
   -------------------------------------------------------------------------
   l_count        number;
   l_change_money number;
   l_balance      number;
 
 begin
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_channel_no is null or v_order_no is null or v_bind_id is null or
      v_change_money is null or v_operator is null or v_remark is null) then
-    v_out_msg := '²ÎÊı²»ÄÜÎª¿Õ';
+    v_out_msg := 'å‚æ•°ä¸èƒ½ä¸ºç©º';
     return false;
   end if;
   if (v_change_type not in
      (change_type.income, change_type.deduct, change_type.refund)) then
-    v_out_msg := '±ä¶¯ÀàĞÍ²»Ö§³Ö';
+    v_out_msg := 'å˜åŠ¨ç±»å‹ä¸æ”¯æŒ';
     return false;
   end if;
   if (v_change_money = 0) then
-    v_out_msg := '±ä¶¯½ğ¶îÎªÁã';
+    v_out_msg := 'å˜åŠ¨é‡‘é¢ä¸ºé›¶';
     return true;
   end if;
 
-  -- ¼ì²éÊÇ·ñ´æÔÚ
+  -- æ£€æŸ¥æ˜¯å¦å­˜åœ¨
   select count(1)
     into l_count
     from dm_up_fund_change t
@@ -5266,25 +5267,25 @@ begin
      and t.change_type = v_change_type;
 
   if (l_count >= 1) then
-    v_out_msg := '±ä¶¯¼ÇÂ¼ÒÑ´æÔÚ';
+    v_out_msg := 'å˜åŠ¨è®°å½•å·²å­˜åœ¨';
     return false;
   end if;
 
-  -- ²ÎÊı×ª»¯
+  -- å‚æ•°è½¬åŒ–
   if (v_change_type = change_type.deduct) then
     l_change_money := abs(v_change_money) * -1;
   else
     l_change_money := abs(v_change_money);
   end if;
 
-  -- »ñÈ¡Óà¶î
+  -- è·å–ä½™é¢
   select t.balance
     into l_balance
     from dm_up_channel t
    where t.channel_no = v_channel_no
      for update;
 
-  -- Ìí¼ÓÊı¾İ
+  -- æ·»åŠ æ•°æ®
   insert into dm_up_fund_change
     (record_id,
      bind_id,
@@ -5312,7 +5313,7 @@ begin
   update dm_up_channel t
      set t.balance = t.balance + l_change_money
    where t.channel_no = v_channel_no;
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5332,8 +5333,8 @@ create or replace function dm_system.f_delivery_succeed(v_bind_id     varchar2,
                                               v_out_msg     out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ·¢»õ³É¹¦
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: å‘è´§æˆåŠŸ
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_term_mode  number;
   l_term_no    varchar2(32);
@@ -5341,13 +5342,13 @@ create or replace function dm_system.f_delivery_succeed(v_bind_id     varchar2,
 
 begin
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.deduct_mode, t.term_no, t.pay_price
     into l_term_mode, l_term_no, l_term_price
     from dm_term_product t
    where t.product_no = v_term_prd_no;
 
-  -- ¸üĞÂ°ó¶¨
+  -- æ›´æ–°ç»‘å®š
   update dm_order_bind t
      set t.bind_status          = deal_status.succeed,
          t.manual_status        = deal_status.noneed,
@@ -5355,36 +5356,36 @@ begin
          t.delivery_finish_time = sysdate
    where t.bind_id = v_bind_id;
 
-  -- ¸üĞÂ¶©µ¥
+  -- æ›´æ–°è®¢å•
   update dm_order_main t
      set t.order_status  = deal_status.succeed,
          t.manual_status = deal_status.noneed,
          t.result_msg    = nvl(substr(v_result_msg, 1, 128), t.result_msg),
          t.error_code    = v_order_code,
-         t.error_desc    = v_order_desc, -- ÏÔÊ¾¸øÏÂÓÎµÄ½á¹ûÏûÏ¢±£³Ö²»±ä
+         t.error_desc    = v_order_desc, -- æ˜¾ç¤ºç»™ä¸‹æ¸¸çš„ç»“æœæ¶ˆæ¯ä¿æŒä¸å˜
          t.finish_time   = sysdate
    where t.order_no = v_order_no;
 
-  -- ¹Ø±Õ²éÑ¯
+  -- å…³é—­æŸ¥è¯¢
   update dm_order_query t
      set t.status      = deal_status.noneed,
          t.finish_time = sysdate,
-         t.result_msg  = '×Ô¶¯¹Ø±Õ:·¢»õ³É¹¦'
+         t.result_msg  = 'è‡ªåŠ¨å…³é—­:å‘è´§æˆåŠŸ'
    where t.bind_id = v_bind_id;
 
-  -- ´´½¨Í¨Öª
+  -- åˆ›å»ºé€šçŸ¥
   if (not f_order_notify_add(v_order_no, notify_type.order_state, v_out_msg)) then
     return false;
   end if;
 
-  -- Ôö¼Ó×Ê½ğ±ä¶¯
+  -- å¢åŠ èµ„é‡‘å˜åŠ¨
   if (not f_up_fund_change_add(v_up_chnnl_no,
                                v_order_no,
                                v_bind_id,
                                change_type.deduct,
                                v_up_price,
                                '_system',
-                               '°ìÀí³É¹¦¿Û¿î',
+                               'åŠç†æˆåŠŸæ‰£æ¬¾',
                                v_out_msg)) then
     return false;
   end if;
@@ -5395,13 +5396,13 @@ begin
                                    change_type.deduct,
                                    l_term_price,
                                    '_system',
-                                   '°ìÀí³É¹¦¿Û¿î[ºó¿Û¿î]',
+                                   'åŠç†æˆåŠŸæ‰£æ¬¾[åæ‰£æ¬¾]',
                                    v_out_msg)) then
       return false;
     end if;
   end if;
 
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 
 exception
@@ -5422,8 +5423,8 @@ create or replace function dm_system.f_num_section_get(v_phone_no     in varchar
                                              v_out_city     out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡ÊÖ»úºÅºÅ¶Î
-  -- ´´½¨ÈË: zhusm 2019-05-30
+  -- åŠŸèƒ½: è·å–æ‰‹æœºå·å·æ®µ
+  -- åˆ›å»ºäºº: zhusm 2019-05-30
   -----------------------------------------------------------------------
   
 begin
@@ -5437,10 +5438,10 @@ begin
 
   exception
     when others then
-      v_out_msg := 'ºÅ¶Î²»Ö§³Ö»òÎ´ÆôÓÃ';
+      v_out_msg := 'å·æ®µä¸æ”¯æŒæˆ–æœªå¯ç”¨';
       return false;
   end;
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5451,8 +5452,8 @@ prompt ===================================
 prompt
 create or replace function dm_system.f_order_no_create return varchar2 is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨¶©µ¥ºÅ
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: åˆ›å»ºè®¢å•å·
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
 begin
   return 'D' || to_char(sysdate, 'yymmddhh24miss') || seq_order_main_id.nextval;
@@ -5463,20 +5464,20 @@ prompt
 prompt Creating function F_PAY_ACCOUNT_GET
 prompt ===================================
 prompt
-create or replace function dm_system.f_pay_account_get(v_term_no        in varchar2, -- ÖÕ¶Ë±àºÅ
-                                             v_account_type   in number, -- Ö§¸¶ÀàĞÍ: 1-Ö§¸¶±¦ 2-Î¢ĞÅ
-                                             v_out_msg        out varchar2, -- ½á¹ûÏûÏ¢
-                                             v_out_account_id out number) -- Ö§¸¶ÕËºÅ±àºÅ
+create or replace function dm_system.f_pay_account_get(v_term_no        in varchar2, -- ç»ˆç«¯ç¼–å·
+                                             v_account_type   in number, -- æ”¯ä»˜ç±»å‹: 1-æ”¯ä»˜å® 2-å¾®ä¿¡
+                                             v_out_msg        out varchar2, -- ç»“æœæ¶ˆæ¯
+                                             v_out_account_id out number) -- æ”¯ä»˜è´¦å·ç¼–å·
  return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡ÊÕ¿îÕËºÅ(Ñ¡ÔñÓÅÏÈ¼¶×î¸ßµÄÒ»¸ö)
-  -- ´´½¨ÈË: zhusm 2019-06-02
+  -- åŠŸèƒ½: è·å–æ”¶æ¬¾è´¦å·(é€‰æ‹©ä¼˜å…ˆçº§æœ€é«˜çš„ä¸€ä¸ª)
+  -- åˆ›å»ºäºº: zhusm 2019-06-02
   -----------------------------------------------------------------------
 
 begin
   begin
     /*
-      -- ·½·¨1
+      -- æ–¹æ³•1
       select a.account_id
         into v_out_account_id
         from dm_pay_account a
@@ -5500,7 +5501,7 @@ begin
          and c.term_no = v_term_no
          and c.status = enable_status.enabled;
     */
-    -- ·½·¨2
+    -- æ–¹æ³•2
     select t.account_id
       into v_out_account_id
       from (select row_number() over(partition by a.account_type order by b.priority desc) row_num,
@@ -5516,11 +5517,11 @@ begin
                and b.status = enable_status.enabled
                and c.status = enable_status.enabled) t
      where t.row_num <= 1;
-    v_out_msg := '²Ù×÷³É¹¦';
+    v_out_msg := 'æ“ä½œæˆåŠŸ';
     return true;
   exception
     when others then
-      v_out_msg := 'ÖÕ¶ËÕËºÅ²»´æÔÚ»òÎ´ÆôÓÃ';
+      v_out_msg := 'ç»ˆç«¯è´¦å·ä¸å­˜åœ¨æˆ–æœªå¯ç”¨';
       return false;
   end;
 end;
@@ -5530,69 +5531,69 @@ prompt
 prompt Creating function F_PAY_FUND_CHANGE_ADD
 prompt =======================================
 prompt
-create or replace function dm_system.f_pay_fund_change_add(v_term_no      varchar2, -- ÖÕ¶Ë±àºÅ
-                                                 v_order_no     varchar2, -- ¶©µ¥ºÅ
-                                                 v_account_id   number, -- ÕËºÅ±àºÅ
-                                                 v_change_type  number, -- ±ä¶¯ÀàĞÍ: 1-ÊÕ¿î 2-ÍË¿î 3-ÌáÏÖ
-                                                 v_change_money number, -- ±ä¶¯½ğ¶î
-                                                 v_service_fee  number, -- ÊÖĞø·Ñ
-                                                 v_operator     varchar2, -- ²Ù×÷ÈË
-                                                 v_remark       varchar2, -- ±¸×¢
+create or replace function dm_system.f_pay_fund_change_add(v_term_no      varchar2, -- ç»ˆç«¯ç¼–å·
+                                                 v_order_no     varchar2, -- è®¢å•å·
+                                                 v_account_id   number, -- è´¦å·ç¼–å·
+                                                 v_change_type  number, -- å˜åŠ¨ç±»å‹: 1-æ”¶æ¬¾ 2-é€€æ¬¾ 3-æç°
+                                                 v_change_money number, -- å˜åŠ¨é‡‘é¢
+                                                 v_service_fee  number, -- æ‰‹ç»­è´¹
+                                                 v_operator     varchar2, -- æ“ä½œäºº
+                                                 v_remark       varchar2, -- å¤‡æ³¨
                                                  v_out_msg      out varchar2)
   return boolean is
   -------------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨Ö§¸¶ÕËºÅ×Ê½ğ±ä¶¯¼ÇÂ¼
-  -- ´´½¨: zhusm 2019-05-16
+  -- åŠŸèƒ½: åˆ›å»ºæ”¯ä»˜è´¦å·èµ„é‡‘å˜åŠ¨è®°å½•
+  -- åˆ›å»º: zhusm 2019-05-16
   -------------------------------------------------------------------------
   l_count        number;
   l_change_money number;
   l_balance      number;
 
 begin
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_term_no is null or v_order_no is null or v_account_id is null or
      v_change_money is null or v_service_fee is null or v_operator is null or
      v_remark is null) then
-    v_out_msg := '²ÎÊı²»ÄÜÎª¿Õ';
+    v_out_msg := 'å‚æ•°ä¸èƒ½ä¸ºç©º';
     return false;
   end if;
   if (v_change_type not in (change_type.income,
                             change_type.deduct,
                             change_type.refund,
                             change_type.withdraw)) then
-    v_out_msg := '±ä¶¯ÀàĞÍ²»Ö§³Ö';
+    v_out_msg := 'å˜åŠ¨ç±»å‹ä¸æ”¯æŒ';
     return false;
   end if;  
   if (v_change_money = 0) then
-    v_out_msg := '±ä¶¯½ğ¶îÎªÁã';
+    v_out_msg := 'å˜åŠ¨é‡‘é¢ä¸ºé›¶';
     return true;
   end if;  
-  -- ¼ì²éÊÇ·ñ´æÔÚ
+  -- æ£€æŸ¥æ˜¯å¦å­˜åœ¨
   select count(1)
     into l_count
     from dm_pay_fund_change t
    where t.order_no = v_order_no
      and t.change_type = v_change_type;
   if (l_count >= 1) then
-    v_out_msg := '±ä¶¯¼ÇÂ¼ÒÑ´æÔÚ';
+    v_out_msg := 'å˜åŠ¨è®°å½•å·²å­˜åœ¨';
     return false;
   end if;
   
-  -- ²ÎÊı×ª»¯
+  -- å‚æ•°è½¬åŒ–
   if (v_change_type in (change_type.income, change_type.refund)) then
     l_change_money := abs(v_change_money);
   else
     l_change_money := abs(v_change_money) * -1;
   end if;
 
-  -- »ñÈ¡Óà¶î
+  -- è·å–ä½™é¢
   select t.balance
     into l_balance
     from dm_pay_account t
    where t.account_id = v_account_id
      for update nowait;
 
-  -- Ìí¼ÓÊı¾İ
+  -- æ·»åŠ æ•°æ®
   insert into dm_pay_fund_change
     (record_id,
      term_no,
@@ -5619,7 +5620,7 @@ begin
      sysdate,
      v_operator,
      v_remark);
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5632,21 +5633,21 @@ create or replace function dm_system.f_pay_result_failed(v_order_no varchar2,
                                                v_out_msg  out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ö§¸¶Ê§°Ü
-  -- ´´½¨ÈË: zhusm 2019-05-30
+  -- åŠŸèƒ½: æ”¯ä»˜å¤±è´¥
+  -- åˆ›å»ºäºº: zhusm 2019-05-30
   -----------------------------------------------------------------------
   l_err_code number;
   l_err_desc varchar2(128);
 
 begin
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.order_code, t.order_desc
     into l_err_code, l_err_desc
     from dm_system_deal_code t
    where t.error_code = error_code.failed;
   
-  -- ¸üĞÂ¶©µ¥
+  -- æ›´æ–°è®¢å•
   update dm_order_main t
      set t.pay_status    = deal_status.failed,
          t.order_status  = deal_status.failed,
@@ -5657,7 +5658,7 @@ begin
          t.pay_finish_time = sysdate
    where t.order_no = v_order_no;
 
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5666,29 +5667,29 @@ prompt
 prompt Creating function F_PAY_RESULT_SUCCEED
 prompt ======================================
 prompt
-create or replace function dm_system.f_pay_result_succeed(v_order_no    varchar2, -- ¶©µ¥ºÅ
-                                                v_term_no     varchar2, -- ÖÕ¶Ë±àºÅ                                   
-                                                v_account_id  number, -- ÊÕ¿îÕËºÅ±àºÅ
-                                                v_suc_money   number, -- ³É¹¦½ğ¶î
-                                                v_service_fee number, -- ÊÖĞø·Ñ
+create or replace function dm_system.f_pay_result_succeed(v_order_no    varchar2, -- è®¢å•å·
+                                                v_term_no     varchar2, -- ç»ˆç«¯ç¼–å·                                   
+                                                v_account_id  number, -- æ”¶æ¬¾è´¦å·ç¼–å·
+                                                v_suc_money   number, -- æˆåŠŸé‡‘é¢
+                                                v_service_fee number, -- æ‰‹ç»­è´¹
                                                 v_out_msg     out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ö§¸¶³É¹¦
-  -- ´´½¨ÈË: zhusm 2019-05-31
+  -- åŠŸèƒ½: æ”¯ä»˜æˆåŠŸ
+  -- åˆ›å»ºäºº: zhusm 2019-05-31
   -----------------------------------------------------------------------
   l_err_code number;
   l_err_desc varchar2(128);
 
 begin
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.order_code, t.order_desc
     into l_err_code, l_err_desc
     from dm_system_deal_code t
    where t.error_code = error_code.success;
 
-  -- Ö§¸¶ÕËºÅ×Ê½ğ±ä¶¯
+  -- æ”¯ä»˜è´¦å·èµ„é‡‘å˜åŠ¨
   if (not (f_pay_fund_change_add(v_term_no,
                                  v_order_no,
                                  v_account_id,
@@ -5696,13 +5697,13 @@ begin
                                  v_suc_money,
                                  v_service_fee,
                                  '_system',
-                                 '¸¶¿î³É¹¦',
+                                 'ä»˜æ¬¾æˆåŠŸ',
                                  v_out_msg))) then
     rollback;
     return false;
   end if;
 
-  -- µÈ´ı°ó¶¨
+  -- ç­‰å¾…ç»‘å®š
   update dm_order_main t
      set t.pay_status    = deal_status.succeed,
          t.order_status  = deal_status.waiting,
@@ -5712,7 +5713,7 @@ begin
          t.pay_finish_time = sysdate
    where t.order_no = v_order_no;
 
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5733,8 +5734,8 @@ prompt =======================================
 prompt
 create or replace function dm_system.f_promote_guid_create return varchar2 is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Éú³ÉÍÆ¹ãGUID
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: ç”Ÿæˆæ¨å¹¿GUID
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
 begin
   return SYS_GUID();
@@ -5746,7 +5747,7 @@ prompt Creating function F_STRING_SPLIT
 prompt ================================
 prompt
 create or replace function dm_system.f_string_split(v_string    in varchar2,
-                                          p_separator in varchar2 default (',')) -- ·Ö¸ô·û£¬Ä¬ÈÏ¶ººÅ
+                                          p_separator in varchar2 default (',')) -- åˆ†éš”ç¬¦ï¼Œé»˜è®¤é€—å·
  return string_array is
   j         number := 0;
   i         number := 1;
@@ -5784,8 +5785,8 @@ prompt ==================================
 prompt
 create or replace function dm_system.f_term_no_create return varchar2 is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨ÖÕ¶Ë±àºÅ
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: åˆ›å»ºç»ˆç«¯ç¼–å·
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
 begin
   return 'TM' || seq_term_info_id.nextval;
@@ -5798,8 +5799,8 @@ prompt ======================================
 prompt
 create or replace function dm_system.f_term_prd_no_create return varchar2 is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨²úÆ·±àºÅ
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: åˆ›å»ºäº§å“ç¼–å·
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
 begin
   return 'TP' || seq_term_product_no.nextval;
@@ -5815,8 +5816,8 @@ create or replace function dm_system.f_term_rule_check_addr(v_term_prd_no  varch
                                                   v_out_msg      out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ğ£ÑéÁªÏµµØÖ·¹æÔò
-  -- ´´½¨ÈË: zhusm 2019-09-20
+  -- åŠŸèƒ½: æ ¡éªŒè”ç³»åœ°å€è§„åˆ™
+  -- åˆ›å»ºäºº: zhusm 2019-09-20
   -----------------------------------------------------------------------
   l_cnt_total number;
   l_cnt_exist number;
@@ -5831,7 +5832,7 @@ begin
              group by t.rule_condition
              order by t.rule_condition desc) loop
     if (r.rule_condition = rule_cnd.include) then
-      -- °üº¬µØÖ·(°×Ãûµ¥µØÖ·)
+      -- åŒ…å«åœ°å€(ç™½åå•åœ°å€)
       for m in (select t.rule_value_a
                   from dm_term_product_rule t
                  where t.product_no = v_term_prd_no
@@ -5848,13 +5849,13 @@ begin
         end loop;
         if ((l_cnt_total > 0 and l_cnt_exist > 0) and
            l_cnt_total = l_cnt_exist) then
-          v_out_msg := '²Ù×÷³É¹¦';
+          v_out_msg := 'æ“ä½œæˆåŠŸ';
           return true;
         end if;
       end loop;
       l_passed := false;
     elsif (r.rule_condition = rule_cnd.exclude) then
-      -- ²»°üº¬µØÖ·(ºÚÃûµ¥µØÖ·)
+      -- ä¸åŒ…å«åœ°å€(é»‘åå•åœ°å€)
       for m in (select t.rule_value_a
                   from dm_term_product_rule t
                  where t.product_no = v_term_prd_no
@@ -5871,22 +5872,22 @@ begin
         end loop;
         if ((l_cnt_total > 0 and l_cnt_exist > 0) and
            l_cnt_total = l_cnt_exist) then
-          v_out_msg := 'µØÖ·±»ÅÅ³ı';
+          v_out_msg := 'åœ°å€è¢«æ’é™¤';
           return false;
         end if;
       end loop;
       l_passed := true;
     else
-      -- ÆäËû¹æÔòÌõ¼ş²»´¦Àí
-      v_out_msg := '²Ù×÷³É¹¦';
+      -- å…¶ä»–è§„åˆ™æ¡ä»¶ä¸å¤„ç†
+      v_out_msg := 'æ“ä½œæˆåŠŸ';
       return true;
     end if;
   end loop;
   if (l_passed) then
-    v_out_msg := '²Ù×÷³É¹¦';
+    v_out_msg := 'æ“ä½œæˆåŠŸ';
     return true;
   else
-    v_out_msg := 'µØÖ·²»ÔÚ·¶Î§ÄÚ';
+    v_out_msg := 'åœ°å€ä¸åœ¨èŒƒå›´å†…';
     return false;
   end if;
 end;
@@ -5900,8 +5901,8 @@ create or replace function dm_system.f_term_rule_check_age(v_term_prd_no varchar
                                                  v_user_age    varchar2,
                                                  v_out_msg     out varchar2) return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ğ£ÑéÄêÁä¹æÔò
-  -- ´´½¨ÈË: zhusm 2019-09-20
+  -- åŠŸèƒ½: æ ¡éªŒå¹´é¾„è§„åˆ™
+  -- åˆ›å»ºäºº: zhusm 2019-09-20
   -----------------------------------------------------------------------
   l_min_age number;
   l_max_age number;
@@ -5920,11 +5921,11 @@ begin
    where rownum <= 1;
   if (l_min_age is not null) then
     if (not (v_user_age >= l_min_age and v_user_age <= l_max_age)) then
-      v_out_msg := 'ÄêÁä³¬¹ıÏŞÖÆ';
+      v_out_msg := 'å¹´é¾„è¶…è¿‡é™åˆ¶';
       return false;
     end if;
   end if;
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5937,16 +5938,16 @@ create or replace function dm_system.f_term_rule_check_card(v_term_prd_no varcha
                                                   v_card_no     varchar2,
                                                   v_out_msg     out varchar2) return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ğ£ÑéÉí·İÖ¤¹æÔò
-  -- ´´½¨ÈË: zhusm 2019-09-20
+  -- åŠŸèƒ½: æ ¡éªŒèº«ä»½è¯è§„åˆ™
+  -- åˆ›å»ºäºº: zhusm 2019-09-20
   -----------------------------------------------------------------------
-  l_rule_days  number; -- ¹æÔòÌìÊı
-  l_rule_count number; -- ¹æÔò±ÊÊı
+  l_rule_days  number; -- è§„åˆ™å¤©æ•°
+  l_rule_count number; -- è§„åˆ™ç¬”æ•°
   l_count      number;
 
 begin
 
-  -- »ñÈ¡¹æÔò
+  -- è·å–è§„åˆ™
   select max(rule_value_a), max(rule_value_b)
     into l_rule_days, l_rule_count
     from (select t.rule_value_a, t.rule_value_b
@@ -5970,13 +5971,13 @@ begin
        and t1.order_status <> deal_status.failed;
 
     if (l_count > l_rule_count) then
-      v_out_msg := 'Éí·İÖ¤³¬¹ıÏŞÖÆ';
+      v_out_msg := 'èº«ä»½è¯è¶…è¿‡é™åˆ¶';
       return false;
     end if;
 
   end if;
 
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -5990,8 +5991,8 @@ create or replace function dm_system.f_term_rule_check_ip(v_term_prd_no varchar2
                                                 v_out_msg     out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ğ£ÑéIP¹æÔò
-  -- ´´½¨ÈË: zhusm 2019-09-20
+  -- åŠŸèƒ½: æ ¡éªŒIPè§„åˆ™
+  -- åˆ›å»ºäºº: zhusm 2019-09-20
   -----------------------------------------------------------------------
   l_count        number;
   l_rule_value_a varchar2(128);
@@ -6007,7 +6008,7 @@ begin
              group by t.rule_condition
              order by t.rule_condition desc) loop
     if (r.rule_condition = rule_cnd.unequal) then
-      -- ºÚÃûµ¥IP
+      -- é»‘åå•IP
       select count(1)
         into l_count
         from dm_term_product_rule t
@@ -6017,11 +6018,11 @@ begin
          and t.rule_value_a = v_ip_addr
          and t.status = enable_status.enabled;
       if (l_count > 0) then
-        v_out_msg := 'ºÚÃûµ¥IP';
+        v_out_msg := 'é»‘åå•IP';
         return false;
       end if;
     elsif (r.rule_condition = rule_cnd.equal) then
-      -- °×Ãûµ¥IP
+      -- ç™½åå•IP
       select count(1)
         into l_count
         from dm_term_product_rule t
@@ -6031,11 +6032,11 @@ begin
          and t.rule_value_a = v_ip_addr
          and t.status = enable_status.enabled;
       if (l_count <= 0) then
-        v_out_msg := '·Ç°×Ãûµ¥IP';
+        v_out_msg := 'éç™½åå•IP';
         return false;
       end if;
     elsif (r.rule_condition = rule_cnd.not_exceed) then
-      -- ¶à³¤Ê±¼ä²»³¬¹ı¶àÉÙ±Ê
+      -- å¤šé•¿æ—¶é—´ä¸è¶…è¿‡å¤šå°‘ç¬”
       select rule_value_a, rule_value_b
         into l_rule_value_a, l_rule_value_b
         from (select t.rule_value_a, t.rule_value_b
@@ -6052,14 +6053,14 @@ begin
        where t.user_ip = v_ip_addr
          and t.create_time >= sysdate - l_rule_value_a;
       if (l_count > l_rule_value_b) then
-        v_out_msg := 'IP³¬¹ı¹æÔòÏŞÖÆ';
+        v_out_msg := 'IPè¶…è¿‡è§„åˆ™é™åˆ¶';
         return false;
       end if;
     end if;
 
   end loop;
 
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -6072,8 +6073,8 @@ create or replace function dm_system.f_term_rule_check_phone(v_term_prd_no varch
                                                    v_phone_no    varchar2,
                                                    v_out_msg     out varchar2) return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ğ£ÑéÊÖ»úºÅ¹æÔò
-  -- ´´½¨ÈË: zhusm 2019-09-20
+  -- åŠŸèƒ½: æ ¡éªŒæ‰‹æœºå·è§„åˆ™
+  -- åˆ›å»ºäºº: zhusm 2019-09-20
   -----------------------------------------------------------------------
   l_count number;
 
@@ -6086,7 +6087,7 @@ begin
                and t.status = enable_status.enabled
              group by t.rule_condition) loop
     if (r.rule_condition = rule_cnd.unequal) then
-      -- ºÚÃûµ¥ÊÖ»úºÅ
+      -- é»‘åå•æ‰‹æœºå·
       select count(1)
         into l_count
         from dm_term_product_rule t
@@ -6096,13 +6097,13 @@ begin
          and t.rule_value_a = v_phone_no
          and t.status = enable_status.enabled;
       if (l_count > 0) then
-        v_out_msg := 'ºÚÃûµ¥ºÅÂë';
+        v_out_msg := 'é»‘åå•å·ç ';
         return false;
       end if;
     end if;
   end loop;
 
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 end;
 /
@@ -6111,23 +6112,23 @@ prompt
 prompt Creating function F_TERM_PRD_RULE_CHECK
 prompt =======================================
 prompt
-create or replace function dm_system.f_term_prd_rule_check(v_term_no       varchar2, -- ÖÕ¶Ë±àºÅ
-                                                 v_term_prd_no   varchar2, -- ÖÕ¶Ë²úÆ·±àºÅ
-                                                 v_user_card_no  varchar2, -- Éí·İÖ¤ºÅ
-                                                 v_contact_phone varchar2, -- ÁªÏµµç»°
-                                                 v_contact_addr  varchar2, -- ÁªÏµµØÖ·
-                                                 v_ip_addr       varchar2, -- ÓÃ»§IP
+create or replace function dm_system.f_term_prd_rule_check(v_term_no       varchar2, -- ç»ˆç«¯ç¼–å·
+                                                 v_term_prd_no   varchar2, -- ç»ˆç«¯äº§å“ç¼–å·
+                                                 v_user_card_no  varchar2, -- èº«ä»½è¯å·
+                                                 v_contact_phone varchar2, -- è”ç³»ç”µè¯
+                                                 v_contact_addr  varchar2, -- è”ç³»åœ°å€
+                                                 v_ip_addr       varchar2, -- ç”¨æˆ·IP
                                                  v_out_msg       out varchar2)
   return boolean is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ÖÕ¶Ë²úÆ·¹æÔòĞ£Ñé
-  -- ´´½¨ÈË: zhusm 2019-09-19
+  -- åŠŸèƒ½: ç»ˆç«¯äº§å“è§„åˆ™æ ¡éªŒ
+  -- åˆ›å»ºäºº: zhusm 2019-09-19
   -----------------------------------------------------------------------
   l_user_age number;
 
 begin
 
-  -- ¼ì²é¹æÔò
+  -- æ£€æŸ¥è§„åˆ™
   for m in (select t.rule_type
               from dm_term_product_rule t
              where t.term_no = v_term_no
@@ -6135,18 +6136,18 @@ begin
                and t.status = enable_status.enabled
              group by t.rule_type) loop
     if (m.rule_type = rule_type.ip_addr) then
-      -- IPµØÖ·¹æÔò(ºÚÃûµ¥)
+      -- IPåœ°å€è§„åˆ™(é»‘åå•)
       if (not f_term_rule_check_ip(v_term_prd_no, v_ip_addr, v_out_msg)) then
         return false;
       end if;
     elsif (m.rule_type = rule_type.phone_no) then
-      -- ÊÖ»úºÅÂë¹æÔò(ºÚÃûµ¥)
+      -- æ‰‹æœºå·ç è§„åˆ™(é»‘åå•)
       if (not
           f_term_rule_check_phone(v_term_prd_no, v_contact_phone, v_out_msg)) then
         return false;
       end if;
     elsif (m.rule_type = rule_type.card_user_age) then
-      -- ÓÃ»§ÄêÁä¹æÔò
+      -- ç”¨æˆ·å¹´é¾„è§„åˆ™
       l_user_age := floor(months_between(sysdate,
                                          to_date(substr(v_user_card_no, 7, 8),
                                                  'yyyymmdd')) / 12);
@@ -6154,26 +6155,26 @@ begin
         return false;
       end if;
     elsif (m.rule_type = rule_type.card_user_id) then
-      -- ÓÃ»§Éí·İÖ¤¹æÔò
+      -- ç”¨æˆ·èº«ä»½è¯è§„åˆ™
       if (not
           f_term_rule_check_card(v_term_prd_no, v_user_card_no, v_out_msg)) then
         return false;
       end if;
     elsif (m.rule_type = rule_type.contact_addr) then
-      -- ÓÃ»§µØÖ·¹æÔò
+      -- ç”¨æˆ·åœ°å€è§„åˆ™
       if (not
           f_term_rule_check_addr(v_term_prd_no, v_contact_addr, v_out_msg)) then
         return false;
       end if;
     end if;
   end loop;
-  v_out_msg := '²Ù×÷³É¹¦';
+  v_out_msg := 'æ“ä½œæˆåŠŸ';
   return true;
 
 exception
   when others then
     rollback;
-    v_out_msg := '¹ı³ÌÒì³£:' || sqlerrm;
+    v_out_msg := 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm;
     return true;
 end;
 /
@@ -6184,8 +6185,8 @@ prompt ======================================
 prompt
 create or replace function dm_system.f_up_chnnl_no_create return varchar2 is
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: °ó¶¨ÉÏÓÎÇşµÀ±àºÅ
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: ç»‘å®šä¸Šæ¸¸æ¸ é“ç¼–å·
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
 begin
   return 'UC' || seq_up_channel_id.nextval;
@@ -6209,7 +6210,7 @@ prompt
 create or replace procedure dm_system.sp_system_log_add(v_object_name in varchar2,
                                               v_error_level in number,
                                               v_error_desc  in varchar2) as
-  pragma autonomous_transaction; --×ÔÖÎÊÂÎñ
+  pragma autonomous_transaction; --è‡ªæ²»äº‹åŠ¡
 begin
   insert into dm_system_log
     (log_id, object_name, error_level, error_desc, trace_info, create_time)
@@ -6233,13 +6234,13 @@ prompt =====================================
 prompt
 create or replace procedure dm_system.auto_scan_to_close as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: É¨Ãè²¢¹Ø±Õ°ó¶¨/¶©µ¥
-  -- ´´½¨ÈË: zhusm 2019-08-08
+  -- åŠŸèƒ½: æ‰«æå¹¶å…³é—­ç»‘å®š/è®¢å•
+  -- åˆ›å»ºäºº: zhusm 2019-08-08
   -----------------------------------------------------------------------
   l_ret_msg varchar2(128);
 
 begin
-  -- ¹Ø±Õ°ó¶¨
+  -- å…³é—­ç»‘å®š
   for r in (select t.bind_id, t.order_no
               from dm_order_bind t
              where t.bind_status = deal_status.waiting
@@ -6247,15 +6248,15 @@ begin
     
     update dm_order_bind t
        set t.bind_status = deal_status.failed,
-           t.result_msg  = '³¤Ê±¼äÎ´·¢»õ',
+           t.result_msg  = 'é•¿æ—¶é—´æœªå‘è´§',
            t.finish_time = sysdate
      where t.bind_id = r.bind_id;
 
     update dm_order_main t
        set t.order_status = deal_status.failed,
-           t.result_msg   = '³¤Ê±¼äÎ´·¢»õ',
+           t.result_msg   = 'é•¿æ—¶é—´æœªå‘è´§',
            t.error_code   = error_code.failed,
-           t.error_desc   = '°ìÀíÊ§°Ü',
+           t.error_desc   = 'åŠç†å¤±è´¥',
            t.finish_time  = sysdate
      where t.order_no = t.order_no
        and t.order_status = deal_status.processing;
@@ -6263,13 +6264,13 @@ begin
     commit;
   end loop;
 
-  -- ¹Ø±Õ¶©µ¥
+  -- å…³é—­è®¢å•
   for r in (select t.order_no
               from dm_order_main t
              where t.order_status = deal_status.waiting
                and t.close_time <= sysdate) loop
 
-    if (f_bind_faild(r.order_no, '³¤Ê±¼äÎ´°ó¶¨', l_ret_msg)) then
+    if (f_bind_faild(r.order_no, 'é•¿æ—¶é—´æœªç»‘å®š', l_ret_msg)) then
       commit;
     else
       rollback;
@@ -6278,7 +6279,7 @@ begin
 exception
   when others then
     rollback;
-    sp_system_log_add('auto_scan_to_close', 1, '¹ı³ÌÒì³£: ' || sqlerrm);
+    sp_system_log_add('auto_scan_to_close', 1, 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm);
 end;
 /
 
@@ -6288,19 +6289,19 @@ prompt ======================================
 prompt
 create or replace procedure dm_system.auto_scan_to_manual as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: É¨Ãè°ó¶¨½øÈëÈË¹¤ÉóºË
-  -- ´´½¨ÈË: zhusm 2019-08-08
+  -- åŠŸèƒ½: æ‰«æç»‘å®šè¿›å…¥äººå·¥å®¡æ ¸
+  -- åˆ›å»ºäºº: zhusm 2019-08-08
   -----------------------------------------------------------------------
   l_minute number := 5;
 
 begin
-  -- »ñÈ¡´¦ÀíÖĞ¼ÇÂ¼(Ôİ¶¨15·ÖÖÓÎŞ½á¹û¼ÇÂ¼)
+  -- è·å–å¤„ç†ä¸­è®°å½•(æš‚å®š15åˆ†é’Ÿæ— ç»“æœè®°å½•)
   for r in (select t.bind_id, t.order_no
               from dm_order_bind t
              where t.bind_status = deal_status.processing
                and t.manual_status = deal_status.noneed
                and t.create_time < sysdate - l_minute / 24 / 60) loop
-    -- ¸ü¸Ä×´Ì¬
+    -- æ›´æ”¹çŠ¶æ€
     update dm_order_bind t set t.manual_status = deal_status.waiting where t.bind_id = r.bind_id;
     update dm_order_main t set t.manual_status = deal_status.waiting where t.order_no = r.order_no;
     commit;
@@ -6310,7 +6311,7 @@ begin
 exception
   when others then
     rollback;
-    sp_system_log_add('auto_scan_to_manual', 1, '¹ı³ÌÒì³£: ' || sqlerrm);
+    sp_system_log_add('auto_scan_to_manual', 1, 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm);
 end;
 /
 
@@ -6318,12 +6319,12 @@ prompt
 prompt Creating procedure SP_QUERY_CREATE
 prompt ==================================
 prompt
-create or replace procedure dm_system.sp_query_create(v_bind_id  in varchar2, -- ¶©µ¥ºÅ
+create or replace procedure dm_system.sp_query_create(v_bind_id  in varchar2, -- è®¢å•å·
                                             v_out_code out number,
                                             v_out_msg  out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨²éÑ¯
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: åˆ›å»ºæŸ¥è¯¢
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_order_no      varchar2(32);
   l_channel_no    varchar2(32);
@@ -6337,14 +6338,14 @@ create or replace procedure dm_system.sp_query_create(v_bind_id  in varchar2, --
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_bind_id is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- »ñÈ¡ÉÏÓÎÇşµÀ
+  -- è·å–ä¸Šæ¸¸æ¸ é“
   begin
     select t.order_no, t.up_channel_no, t.business_type
       into l_order_no, l_channel_no, l_busi_type
@@ -6357,11 +6358,11 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := '¼ÇÂ¼²»´æÔÚ';
+      v_out_msg  := 'è®°å½•ä¸å­˜åœ¨';
       return;
   end;
 
-  -- ¼ì²éÊÇ·ñÖ§³Ö²éÑ¯
+  -- æ£€æŸ¥æ˜¯å¦æ”¯æŒæŸ¥è¯¢
   select t.support_query, t.query_delay, t.query_max_times
     into l_support_query, l_query_delay, l_query_max
     from dm_up_channel t
@@ -6370,11 +6371,11 @@ begin
   if (l_support_query <> enable_status.enabled) then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÇşµÀ²»Ö§³Ö²éÑ¯';
+    v_out_msg  := 'æ¸ é“ä¸æ”¯æŒæŸ¥è¯¢';
     return;
   end if;
 
-  -- ¼ì²é²éÑ¯¼ÇÂ¼
+  -- æ£€æŸ¥æŸ¥è¯¢è®°å½•
   select count(1)
     into l_count
     from dm_order_query t
@@ -6383,11 +6384,11 @@ begin
   if (l_count > 0) then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := '²éÑ¯ÒÑ´´½¨';
+    v_out_msg  := 'æŸ¥è¯¢å·²åˆ›å»º';
     return;
   end if;
 
-  -- »ñÈ¡²éÑ¯ÅäÖÃ
+  -- è·å–æŸ¥è¯¢é…ç½®
   select t.script_id, t.service_code
     into l_script_id, l_service_code
     from dm_up_script t
@@ -6397,7 +6398,7 @@ begin
      and t.script_type = script_type.order_query
      and t.status = enable_status.enabled;
 
-  -- ´´½¨¼ÇÂ¼
+  -- åˆ›å»ºè®°å½•
   insert into dm_order_query
     (bind_id, order_no, script_id, service_code, next_time, max_times)
   values
@@ -6410,7 +6411,7 @@ begin
   commit;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 
 exception
   when others then
@@ -6458,8 +6459,8 @@ create or replace procedure dm_system.sp_backup_scan(v_backup_name  in varchar2,
                                            v_out_count    out number,
                                            v_out_batch_no out number) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ºó²¹É¨Ãè
-  -- ´´½¨: zhusm 2019/9/29 11:05:17
+  -- åŠŸèƒ½: åè¡¥æ‰«æ
+  -- åˆ›å»º: zhusm 2019/9/29 11:05:17
   -----------------------------------------------------------------------
   l_record_id   number;
   l_backup_name varchar2(64);
@@ -6470,7 +6471,7 @@ create or replace procedure dm_system.sp_backup_scan(v_backup_name  in varchar2,
 
 begin
 
-  -- »ñÈ¡ÅäÖÃ
+  -- è·å–é…ç½®
   begin
     select t.record_id,
            lower(t.backup_name),
@@ -6493,18 +6494,18 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := 'ºó²¹Ê±¼äÎ´µ½';
+      v_out_msg  := 'åè¡¥æ—¶é—´æœªåˆ°';
       return;
   end;
 
   if (l_status <> enable_status.enabled) then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := 'ºó²¹Î´ÆôÓÃ';
+    v_out_msg  := 'åè¡¥æœªå¯ç”¨';
     return;
   end if;
 
-  -- ·ÖÀàÉ¨Ãèºó²¹
+  -- åˆ†ç±»æ‰«æåè¡¥
   if (l_backup_name = 'bind') then
     v_out_code := f_backup_bind(l_next_intvl,
                                 l_scan_max,
@@ -6512,10 +6513,10 @@ begin
                                 v_out_batch_no,
                                 v_out_msg);
   else
-    raise_application_error(-1, 'ºó²¹²»´æÔÚ:' || l_backup_name);
+    raise_application_error(-1, 'åè¡¥ä¸å­˜åœ¨:' || l_backup_name);
   end if;
 
-  -- ¸üĞÂ×´Ì¬
+  -- æ›´æ–°çŠ¶æ€
   update dm_backup_config t
      set t.last_exec = sysdate,
          t.next_exec = sysdate + t.scan_interval / 24 / 60 / 60,
@@ -6527,7 +6528,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£:' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm;
     sp_system_log_add('sp_backup_scan', 1, v_out_msg);
 end;
 /
@@ -6536,14 +6537,14 @@ prompt
 prompt Creating procedure SP_BIND_CREATE
 prompt =================================
 prompt
-create or replace procedure dm_system.sp_bind_create(v_order_no in varchar2, -- ¶©µ¥ºÅ
+create or replace procedure dm_system.sp_bind_create(v_order_no in varchar2, -- è®¢å•å·
                                            v_out_code out number,
                                            v_out_msg  out varchar2,
-                                           v_out_json out varchar2) -- ·¢»õ¶ÓÁĞ²ÎÊı: {"que_name":"","bind_id":"","script_path":""}
+                                           v_out_json out varchar2) -- å‘è´§é˜Ÿåˆ—å‚æ•°: {"que_name":"","bind_id":"","script_path":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: °ó¶¨ÉÏÓÎÇşµÀ(´´½¨°ó¶¨¼ÇÂ¼)
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: ç»‘å®šä¸Šæ¸¸æ¸ é“(åˆ›å»ºç»‘å®šè®°å½•)
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_term_no     varchar2(32);
   l_term_prd_no varchar2(32);
@@ -6573,7 +6574,7 @@ create or replace procedure dm_system.sp_bind_create(v_order_no in varchar2, -- 
 
 begin
 
-  -- Ëø¶©µ¥
+  -- é”è®¢å•
   select t.term_no,
          t.product_no,
          t.phone_no,
@@ -6600,11 +6601,11 @@ begin
   if (l_bind_times > 5) then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := '°ó¶¨´ÎÊı´ïÏŞ';
+    v_out_msg  := 'ç»‘å®šæ¬¡æ•°è¾¾é™';
     return;
   end if;
 
-  -- °ó¶¨ÉÏÓÎ²úÆ· get up-product parameters
+  -- ç»‘å®šä¸Šæ¸¸äº§å“ get up-product parameters
   if (not f_bind_up_product(l_term_prd_no,
                             l_busi_type,
                             l_face_fee,
@@ -6624,7 +6625,7 @@ begin
     return;
   end if;
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.pay_price
     into l_term_price
     from dm_term_product t
@@ -6642,13 +6643,13 @@ begin
              t.business_type = business_type.all_type)
          and t.script_type = case
                when l_need_vcode = enable_status.enabled then
-                script_type.vcode_submit -- ÑéÖ¤Âë¶©µ¥
+                script_type.vcode_submit -- éªŒè¯ç è®¢å•
                else
                 case
                   when l_busi_type = business_type.video_vip then
-                   script_type.video_submit -- ÊÓÆµ»áÔ±
+                   script_type.video_submit -- è§†é¢‘ä¼šå‘˜
                   else
-                   script_type.order_submit -- ÆÕÍ¨¶©µ¥
+                   script_type.order_submit -- æ™®é€šè®¢å•
                 end
              end;
 
@@ -6656,12 +6657,12 @@ begin
       when others then
         rollback;
         v_out_code := error_code.failed;
-        v_out_msg  := 'ÉÏÓÎ½Å±¾Î´ÅäÖÃ';
+        v_out_msg  := 'ä¸Šæ¸¸è„šæœ¬æœªé…ç½®';
         return;
     end;
   end if;
 
-  -- ´´½¨¼ÇÂ¼ create bind record
+  -- åˆ›å»ºè®°å½• create bind record
   l_bind_id := f_bind_id_create();
   insert into dm_order_bind
     (bind_id,
@@ -6720,7 +6721,7 @@ begin
          t.bind_times    = nvl(t.bind_times, 0) + 1
    where t.order_no = v_order_no;
   
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   if (l_need_delivery = enable_status.enabled) then
     l_temp     := f_json_add(l_temp, 'que_name', l_service_code);
     l_temp     := f_json_add(l_temp, 'bind_id', l_bind_id);
@@ -6729,14 +6730,14 @@ begin
   end if;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_bind_create', 1, v_out_msg);
 end;
 /
@@ -6745,29 +6746,29 @@ prompt
 prompt Creating procedure SP_OPERATE_LOG_ADD
 prompt =====================================
 prompt
-create or replace procedure dm_system.sp_operate_log_add(v_user_id     in varchar2, -- ÓÃ»§±àºÅ
-                                               v_serial_nos  in varchar2, -- Á÷Ë®ºÅ»òÖ÷¼üID(|·Ö¸î), ¿ÉÒÔÊÇorder_no/bind_id/product_id/record_id)
-                                               v_operate_log in varchar2, -- ²Ù×÷ÈÕÖ¾
+create or replace procedure dm_system.sp_operate_log_add(v_user_id     in varchar2, -- ç”¨æˆ·ç¼–å·
+                                               v_serial_nos  in varchar2, -- æµæ°´å·æˆ–ä¸»é”®ID(|åˆ†å‰²), å¯ä»¥æ˜¯order_no/bind_id/product_id/record_id)
+                                               v_operate_log in varchar2, -- æ“ä½œæ—¥å¿—
                                                v_out_code    out number,
                                                v_out_msg     out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ìí¼Ó²Ù×÷ÈÕÖ¾
-  -- ´´½¨ÈË: ldp 2019-05-15
+  -- åŠŸèƒ½: æ·»åŠ æ“ä½œæ—¥å¿—
+  -- åˆ›å»ºäºº: ldp 2019-05-15
   -----------------------------------------------------------------------
-  l_oper_bat_no number; -- ²Ù×÷Åú´Î
+  l_oper_bat_no number; -- æ“ä½œæ‰¹æ¬¡
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_user_id is null or v_serial_nos is null or v_operate_log is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
  
   l_oper_bat_no := seq_operate_batch_no.nextval;
  
-  -- ±£´æ²Ù×÷ÈÕÖ¾
+  -- ä¿å­˜æ“ä½œæ—¥å¿—
   insert into dm_operate_log
     (record_id, user_id, batch_no, operate_log)
   values
@@ -6776,7 +6777,7 @@ begin
      l_oper_bat_no,
      substr(v_operate_log, 1, 256));
  
-  -- ±£´æÁ÷Ë®ºÅ
+  -- ä¿å­˜æµæ°´å·
   for r in (select *
               from table(f_string_split(v_serial_nos, '|'))) loop
   
@@ -6789,7 +6790,7 @@ begin
   commit;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 
 exception
   when others then
@@ -6804,14 +6805,14 @@ prompt
 prompt Creating procedure SP_BIND_RETRY1
 prompt =================================
 prompt
-create or replace procedure dm_system.sp_bind_retry1(v_bind_id  varchar2, -- °ó¶¨±àºÅ
+create or replace procedure dm_system.sp_bind_retry1(v_bind_id  varchar2, -- ç»‘å®šç¼–å·
                                            v_out_code out number,
                                            v_out_msg  out varchar2,
-                                           v_out_json out varchar2) -- ·µ»ØJSON: {"order_no":"","need_pay":""}
+                                           v_out_json out varchar2) -- è¿”å›JSON: {"order_no":"","need_pay":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: °ó¶¨ÖØÊÔ(ÖØĞÂÌá½»ÕÕÆ¬)
-  -- ´´½¨: zhusm 2019-10-01
+  -- åŠŸèƒ½: ç»‘å®šé‡è¯•(é‡æ–°æäº¤ç…§ç‰‡)
+  -- åˆ›å»º: zhusm 2019-10-01
   -----------------------------------------------------------------------
   l_order_no      varchar2(64);
   l_up_chnnl_no   varchar2(32);
@@ -6833,7 +6834,7 @@ create or replace procedure dm_system.sp_bind_retry1(v_bind_id  varchar2, -- °ó¶
   l_temp varchar2(2000) := '';
 
 begin
-  -- ×¼±¸²ÎÊı
+  -- å‡†å¤‡å‚æ•°
   select t.order_no,
          t.up_channel_no,
          t.up_product_no,
@@ -6853,17 +6854,17 @@ begin
      and t.bind_status <> deal_status.succeed
      for update;
 
-  -- ¼ì²éÖØÊÔ´ÎÊı
+  -- æ£€æŸ¥é‡è¯•æ¬¡æ•°
   select t.bind_times
     into l_bind_times
     from dm_order_main t
    where t.order_no = l_order_no;
   if (l_bind_times >= l_bind_max) then
-    l_ret_msg := 'ÖØÊÔ´ÎÊı´ïÏŞ';
+    l_ret_msg := 'é‡è¯•æ¬¡æ•°è¾¾é™';
     raise RETRY_FAIL;
   end if;
 
-  -- »ñÈ¡ÉÏÓÎ²ÎÊı
+  -- è·å–ä¸Šæ¸¸å‚æ•°
   begin
     select t.script_id, t.script_path
       into l_script_id, l_script_path
@@ -6873,7 +6874,7 @@ begin
        and t.status = enable_status.enabled;
   exception
     when others then
-      l_ret_msg := 'ÖØÌáÕÕÆ¬½Å±¾Î´ÅäÖÃ';
+      l_ret_msg := 'é‡æç…§ç‰‡è„šæœ¬æœªé…ç½®';
       raise RETRY_FAIL;
   end;
 
@@ -6882,7 +6883,7 @@ begin
     from dm_up_product t
    where t.product_no = l_up_prd_no;
 
-  -- ¸üĞÂ°ó¶¨×´Ì¬
+  -- æ›´æ–°ç»‘å®šçŠ¶æ€
   update dm_order_bind t
      set t.bind_status          = deal_status.waiting,
          t.manual_status        = deal_status.noneed,
@@ -6896,18 +6897,18 @@ begin
          t.close_time           = sysdate + 5 / 24 / 60
    where t.bind_id = v_bind_id;
 
-  -- ¸üĞÂ¶©µ¥×´Ì¬
+  -- æ›´æ–°è®¢å•çŠ¶æ€
   update dm_order_main t
      set t.order_status = deal_status.processing,
          t.result_msg   = null,
          t.error_code   = null,
-         t.error_desc   = '°ìÀíÖĞ',
+         t.error_desc   = 'åŠç†ä¸­',
          t.finish_time  = null,
          t.bind_times   = t.bind_times + 1
    where t.order_no = l_order_no;
   sp_operate_log_add('__system',
                      v_bind_id,
-                     'ÖØĞÂ·¢»õ: robot_ip=' || l_robot_ip || ',result_msg=' ||
+                     'é‡æ–°å‘è´§: robot_ip=' || l_robot_ip || ',result_msg=' ||
                      l_result_msg || ',delivery_time=' ||
                      to_char(l_delivery_time, 'yyyy-mm-dd hh24:mi:ss'),
                      l_ret_code,
@@ -6917,7 +6918,7 @@ begin
     raise RETRY_FAIL;
   end if;
 
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   if (l_need_delivery = enable_status.enabled) then
     l_temp     := f_json_add(l_temp, 'que_name', l_service_code);
     l_temp     := f_json_add(l_temp, 'bind_id', v_bind_id);
@@ -6926,7 +6927,7 @@ begin
   end if;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
@@ -6953,7 +6954,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£:' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm;
 end;
 /
 
@@ -6961,14 +6962,14 @@ prompt
 prompt Creating procedure SP_BIND_RETRY2
 prompt =================================
 prompt
-create or replace procedure dm_system.sp_bind_retry2(v_bind_id  varchar2, -- °ó¶¨±àºÅ
+create or replace procedure dm_system.sp_bind_retry2(v_bind_id  varchar2, -- ç»‘å®šç¼–å·
                                            v_out_code out number,
                                            v_out_msg  out varchar2,
-                                           v_out_json out varchar2) -- ·µ»ØJSON: {"order_no":"","need_pay":""}
+                                           v_out_json out varchar2) -- è¿”å›JSON: {"order_no":"","need_pay":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: °ó¶¨ÖØÊÔ(ÖØĞÂÌá½»¶©µ¥)
-  -- ´´½¨: zhusm 2019-10-01
+  -- åŠŸèƒ½: ç»‘å®šé‡è¯•(é‡æ–°æäº¤è®¢å•)
+  -- åˆ›å»º: zhusm 2019-10-01
   -----------------------------------------------------------------------
   l_order_no      varchar2(64);
   l_up_chnnl_no   varchar2(32);
@@ -6993,7 +6994,7 @@ create or replace procedure dm_system.sp_bind_retry2(v_bind_id  varchar2, -- °ó¶
 
 begin
 
-  -- ×¼±¸²ÎÊı
+  -- å‡†å¤‡å‚æ•°
   select t.order_no,
          t.up_channel_no,
          t.up_product_no,
@@ -7021,28 +7022,28 @@ begin
   if (l_bind_status <> deal_status.failed) then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := '²»ÔÊĞíÖØÌá';
+    v_out_msg  := 'ä¸å…è®¸é‡æ';
     return;
   end if;
 
-  -- ¼ì²éÖØÊÔ´ÎÊı
+  -- æ£€æŸ¥é‡è¯•æ¬¡æ•°
   select t.bind_times
     into l_bind_times
     from dm_order_main t
    where t.order_no = l_order_no;
 
   if (l_bind_times >= l_bind_max) then
-    l_ret_msg := 'ÖØÊÔ´ÎÊı´ïÏŞ';
+    l_ret_msg := 'é‡è¯•æ¬¡æ•°è¾¾é™';
     raise RETRY_FAIL;
   end if;
   
-  -- »ñÈ¡½Å±¾
+  -- è·å–è„šæœ¬
   select t.script_path
     into l_script_path
     from dm_up_script t
    where t.script_id = l_script_id;
 
-  -- ´´½¨°ó¶¨¼ÇÂ¼
+  -- åˆ›å»ºç»‘å®šè®°å½•
   l_bind_id := f_bind_id_create();
   insert into dm_order_bind
     (bind_id,
@@ -7081,17 +7082,17 @@ begin
       from dm_order_bind t
      where t.bind_id = v_bind_id;
 
-  -- ¸üĞÂ¶©µ¥×´Ì¬
+  -- æ›´æ–°è®¢å•çŠ¶æ€
   update dm_order_main t
      set t.order_status = deal_status.processing,
          t.result_msg   = null,
          t.error_code   = null,
-         t.error_desc   = '°ìÀíÖĞ',
+         t.error_desc   = 'åŠç†ä¸­',
          t.finish_time  = null,
          t.bind_times   = t.bind_times + 1
    where t.order_no = l_order_no;
 
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   select t.need_delivery
     into l_need_delivery
     from dm_up_product t
@@ -7104,7 +7105,7 @@ begin
   end if;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
@@ -7130,7 +7131,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£:' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm;
 end;
 /
 
@@ -7139,11 +7140,11 @@ prompt Creating procedure SP_CARD_DETAIL_GET
 prompt =====================================
 prompt
 create or replace procedure dm_system.sp_card_detail_get(v_task_id   in number,
-                                               v_out_count out number, -- Êä³öÌõÊı
+                                               v_out_count out number, -- è¾“å‡ºæ¡æ•°
                                                v_out_json  out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡ÖÕ¶ËºÅ¿¨ÈÎÎñÃ÷Ï¸²ÎÊı(»úÆ÷ÈË²ÎÊı)
-  -- ´´½¨: zhusm 2019-09-25
+  -- åŠŸèƒ½: è·å–ç»ˆç«¯å·å¡ä»»åŠ¡æ˜ç»†å‚æ•°(æœºå™¨äººå‚æ•°)
+  -- åˆ›å»º: zhusm 2019-09-25
   -----------------------------------------------------------------------
   l_temp           varchar2(512) := '';
   l_result         varchar2(4000) := '';
@@ -7164,7 +7165,7 @@ create or replace procedure dm_system.sp_card_detail_get(v_task_id   in number,
 
 begin
 
-  -- É¨Ãè¼ÇÂ¼
+  -- æ‰«æè®°å½•
   for r in (select t.record_id
               from tmp_term_card_detail t
              where t.deal_status = deal_status.waiting
@@ -7172,7 +7173,7 @@ begin
                and t.task_id = v_task_id
                and rownum <= l_max_count) loop
 
-    -- ÖØÖÃ±äÁ¿
+    -- é‡ç½®å˜é‡
     l_record_id      := null;
     l_task_id        := null;
     l_contact_phone  := null;
@@ -7184,7 +7185,7 @@ begin
     
     begin
 
-   -- ËøÊı¾İ
+   -- é”æ•°æ®
       select t.record_id,
              t.task_id,
              t.contact_phone,
@@ -7214,12 +7215,12 @@ begin
       from tmp_term_card_task t
      where t.task_id = v_task_id;
   
-    -- ¸üĞÂ×´Ì¬
+    -- æ›´æ–°çŠ¶æ€
     update tmp_term_card_detail t
        set t.deal_status = deal_status.processing, t.start_time = sysdate
      where t.record_id = l_record_id;
 
-    -- ×éÖ¯²ÎÊı
+    -- ç»„ç»‡å‚æ•°
     l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
     l_temp      := f_json_add(l_temp, 'record_id', l_record_id);
     l_temp      := f_json_add(l_temp, 'task_id', l_task_id);
@@ -7256,14 +7257,14 @@ prompt
 prompt Creating procedure SP_CARD_DETAIL_SAVE
 prompt ======================================
 prompt
-create or replace procedure dm_system.sp_card_detail_save(v_record_id  varchar2, -- ¼ÇÂ¼±àºÅ
-                                                v_status     varchar2, -- ´¦Àí×´Ì¬: 0-³É¹¦ 90-Ê§°Ü
-                                                v_result_msg varchar2, -- ½á¹ûÏûÏ¢
+create or replace procedure dm_system.sp_card_detail_save(v_record_id  varchar2, -- è®°å½•ç¼–å·
+                                                v_status     varchar2, -- å¤„ç†çŠ¶æ€: 0-æˆåŠŸ 90-å¤±è´¥
+                                                v_result_msg varchar2, -- ç»“æœæ¶ˆæ¯
                                                 v_out_code   out number,
                                                 v_out_msg    out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ±£´æÖÕ¶ËºÅ¿¨ÈÎÎñÃ÷Ï¸
-  -- ´´½¨: zhusm 2019-09-24
+  -- åŠŸèƒ½: ä¿å­˜ç»ˆç«¯å·å¡ä»»åŠ¡æ˜ç»†
+  -- åˆ›å»º: zhusm 2019-09-24
   -----------------------------------------------------------------------
   l_record_id number;
   l_task_id   number;
@@ -7274,19 +7275,19 @@ create or replace procedure dm_system.sp_card_detail_save(v_record_id  varchar2,
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_record_id is null or v_status is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
   if (v_status not in (deal_status.succeed, deal_status.failed)) then
     v_out_code := error_code.failed;
-    v_out_msg  := '´¦Àí×´Ì¬´íÎó';
+    v_out_msg  := 'å¤„ç†çŠ¶æ€é”™è¯¯';
     return;
   end if;
 
-  -- ËøÊı¾İ
+  -- é”æ•°æ®
   select t.record_id, t.task_id
     into l_record_id, l_task_id
     from tmp_term_card_detail t
@@ -7303,11 +7304,11 @@ begin
 
   if (l_record_id is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '¼ÇÂ¼²»´æÔÚ';
+    v_out_msg  := 'è®°å½•ä¸å­˜åœ¨';
     return;
   end if;
 
-  -- ´¦Àí´¦Àí½á¹û
+  -- å¤„ç†å¤„ç†ç»“æœ
   update tmp_term_card_detail t
      set t.deal_status = v_status,
          t.deal_msg    = nvl(substr(v_result_msg, 1, 128), t.deal_msg),
@@ -7326,7 +7327,7 @@ begin
        and t.status = deal_status.processing;
   end if;
 
-  -- ¸üĞÂÈÎÎñ×´Ì¬
+  -- æ›´æ–°ä»»åŠ¡çŠ¶æ€
   select t.total_rows, t.succ_rows, t.fail_rows
     into l_cnt_total, l_cnt_succ, l_cnt_fail
     from tmp_term_card_task t
@@ -7340,14 +7341,14 @@ begin
   end if;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£:' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm;
     sp_system_log_add('sp_card_detail_save', 1, v_out_msg);
 end;
 /
@@ -7356,14 +7357,14 @@ prompt
 prompt Creating procedure SP_CARD_TASK_GET_BAT
 prompt =======================================
 prompt
-create or replace procedure dm_system.sp_card_task_get_bat(v_robot_ip   varchar2, -- »úÆ÷ÈËIP
-                                                 v_robot_code varchar2, -- »úÆ÷ÈË±àÂë
-                                                 v_get_count  number, -- »ñÈ¡ÊıÁ¿
-                                                 v_out_count  out number, -- Êä³öÌõÊı
+create or replace procedure dm_system.sp_card_task_get_bat(v_robot_ip   varchar2, -- æœºå™¨äººIP
+                                                 v_robot_code varchar2, -- æœºå™¨äººç¼–ç 
+                                                 v_get_count  number, -- è·å–æ•°é‡
+                                                 v_out_count  out number, -- è¾“å‡ºæ¡æ•°
                                                  v_out_json   out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡ÖÕ¶ËºÅ¿¨ÈÎÎñ²ÎÊı(»úÆ÷ÈË²ÎÊı)
-  -- ´´½¨: zhusm 2019-09-24
+  -- åŠŸèƒ½: è·å–ç»ˆç«¯å·å¡ä»»åŠ¡å‚æ•°(æœºå™¨äººå‚æ•°)
+  -- åˆ›å»º: zhusm 2019-09-24
   -----------------------------------------------------------------------
   l_max_cntr  number := 10;
   l_row_cntr  number;
@@ -7385,17 +7386,17 @@ begin
     l_row_cntr := nvl(v_get_count, 1);
   end if;
 
-  -- É¨Ãè¼ÇÂ¼
+  -- æ‰«æè®°å½•
   for r in (select t.task_id, t.card_pic_zip
               from tmp_term_card_task t
              where t.status = deal_status.waiting
                and t.create_time < sysdate
                and rownum <= l_row_cntr) loop
-    -- ÖØÖÃ±äÁ¿
+    -- é‡ç½®å˜é‡
     l_task_id       := null;
     l_card_user_zip := null;
   
-    -- ËøÊı¾İ
+    -- é”æ•°æ®
     begin
       select t.term_no, t.promoter_id, t.task_id, t.card_pic_zip
         into l_term_no, l_promoter_id, l_task_id, l_card_user_zip
@@ -7409,7 +7410,7 @@ begin
         continue;
     end;
 
-    -- ¸üĞÂ×´Ì¬
+    -- æ›´æ–°çŠ¶æ€
     update tmp_term_card_task t
        set t.status = deal_status.processing, t.start_time = sysdate
      where t.task_id = l_task_id;
@@ -7418,7 +7419,7 @@ begin
      where t.task_id = l_task_id
        and t.deal_status = deal_status.waiting;
 
-    -- ×éÖ¯½Å±¾²ÎÊı
+    -- ç»„ç»‡è„šæœ¬å‚æ•°
     l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
     l_temp      := f_json_add(l_temp, 'term_no', l_term_no);
     l_temp      := f_json_add(l_temp, 'promoter_id', l_promoter_id);
@@ -7449,15 +7450,15 @@ prompt
 prompt Creating procedure SP_DELIVERY_GET
 prompt ==================================
 prompt
-create or replace procedure dm_system.sp_delivery_get(v_bind_id  in varchar2, -- ¶©µ¥ºÅ
-                                            v_robot_ip in varchar2, -- »úÆ÷ÈËIP
+create or replace procedure dm_system.sp_delivery_get(v_bind_id  in varchar2, -- è®¢å•å·
+                                            v_robot_ip in varchar2, -- æœºå™¨äººIP
                                             v_out_code out number,
                                             v_out_msg  out varchar2,
-                                            v_out_json out varchar2) -- »úÆ÷ÈË²ÎÊı(JSON)
+                                            v_out_json out varchar2) -- æœºå™¨äººå‚æ•°(JSON)
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡·¢»õ²ÎÊı
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: è·å–å‘è´§å‚æ•°
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_order_no       varchar2(64);
   l_busi_type      number;
@@ -7489,7 +7490,7 @@ create or replace procedure dm_system.sp_delivery_get(v_bind_id  in varchar2, --
 
 begin
 
-  -- Ëø¼ÇÂ¼
+  -- é”è®°å½•
   select t.order_no,
          t.business_type,
          t.phone_no,
@@ -7537,7 +7538,7 @@ begin
    where t1.order_no = l_order_no
      and t1.order_status = deal_status.processing;
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.api_id, t.api_key
     into l_api_id, l_api_key
     from dm_up_channel t
@@ -7552,14 +7553,14 @@ begin
     select max(t.vcode) into l_vcode from dm_order_vcode t where t.order_no = l_order_no;
   end if;
 
-  -- ¸üĞÂ¼ÇÂ¼
+  -- æ›´æ–°è®°å½•
   update dm_order_bind t
      set t.bind_status         = deal_status.processing,
          t.robot_ip            = v_robot_ip,
          t.delivery_start_time = sysdate
    where t.bind_id = v_bind_id;
 
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   l_temp := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp := f_json_add(l_temp, 'business_type', l_busi_type);
   l_temp := f_json_add(l_temp, 'phone_no', l_phone_no);
@@ -7590,7 +7591,7 @@ begin
   v_out_json := '{' || l_temp || '}';
   commit;
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 
 exception
   when others then
@@ -7605,17 +7606,17 @@ prompt
 prompt Creating procedure SP_DELIVERY_SAVE
 prompt ===================================
 prompt
-create or replace procedure dm_system.sp_delivery_save(v_bind_id     in varchar2, -- ¶©µ¥ºÅ
-                                             v_error_code  in number, -- ´íÎóÂë: 100-³É¹¦ 200-Ê§°Ü 600-¶©µ¥²»´æÔÚ ...
-                                             v_result_msg  in varchar2, -- ½á¹ûÏûÏ¢
-                                             v_up_order_no in varchar2, -- ÉÏÓÎ¶©µ¥ºÅ
+create or replace procedure dm_system.sp_delivery_save(v_bind_id     in varchar2, -- è®¢å•å·
+                                             v_error_code  in number, -- é”™è¯¯ç : 100-æˆåŠŸ 200-å¤±è´¥ 600-è®¢å•ä¸å­˜åœ¨ ...
+                                             v_result_msg  in varchar2, -- ç»“æœæ¶ˆæ¯
+                                             v_up_order_no in varchar2, -- ä¸Šæ¸¸è®¢å•å·
                                              v_out_code    out number,
                                              v_out_msg     out varchar2,
-                                             v_out_json    out varchar2) -- Ô¤Áô×Ö¶Î
+                                             v_out_json    out varchar2) -- é¢„ç•™å­—æ®µ
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ±£´æ·¢»õ½á¹û
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: ä¿å­˜å‘è´§ç»“æœ
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_bind_id      varchar2(32);
   l_order_no     varchar2(32);
@@ -7634,13 +7635,13 @@ create or replace procedure dm_system.sp_delivery_save(v_bind_id     in varchar2
 
 begin
 
-  -- ¸üĞÂÏûÏ¢
+  -- æ›´æ–°æ¶ˆæ¯
   update dm_order_bind t
      set t.up_order_no = nvl(v_up_order_no, t.up_order_no),
          t.result_msg  = nvl(substr(v_result_msg, 1, 128), t.result_msg)
    where t.bind_id = v_bind_id;
   commit;
-  -- Ëø¼ÇÂ¼
+  -- é”è®°å½•
   select t.bind_id,
          t.order_no,
          t.up_channel_no,
@@ -7667,7 +7668,7 @@ begin
      and t.order_status = deal_status.processing
      for update;
 
-  -- »ñÈ¡´¦ÀíÂë
+  -- è·å–å¤„ç†ç 
   select t.deal_code,
          t.delay_failed,
          t.delay_minute,
@@ -7681,7 +7682,7 @@ begin
     from dm_system_deal_code t
    where t.error_code = v_error_code;
 
-  -- ´¦Àí½á¹û
+  -- å¤„ç†ç»“æœ
   if (l_deal_code = deal_code.succeed) then
     if (not f_delivery_succeed(l_bind_id,
                                l_order_no,
@@ -7697,16 +7698,16 @@ begin
       return;
     end if;
   elsif (l_deal_code = deal_code.failed) then
-    -- ÑÓ³ÙÊ§°Ü
+    -- å»¶è¿Ÿå¤±è´¥
     if (l_delay_failed = enable_status.enabled) then
       update dm_order_main t
          set t.close_time = sysdate + l_delay_min / 24 / 60
        where t.order_no = l_order_no;
       v_out_code := error_code.failed;
-      v_out_msg  := 'ÑÓ³ÙÊ§°Ü';
+      v_out_msg  := 'å»¶è¿Ÿå¤±è´¥';
       return;
     end if;
-    -- ·¢»õÊ§°Ü
+    -- å‘è´§å¤±è´¥
     if (not f_delivery_failed(l_bind_id,
                               l_order_no,
                               l_term_prd_no,
@@ -7720,16 +7721,16 @@ begin
       return;
     end if;
   else
-    -- ·¢»õÎ´Öª
+    -- å‘è´§æœªçŸ¥
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := 'Î´Öª´íÎóÂë';
+    v_out_msg  := 'æœªçŸ¥é”™è¯¯ç ';
     return;
   end if;
 
   commit;
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '';
 
 exception
@@ -7745,18 +7746,18 @@ prompt
 prompt Creating procedure SP_MANUAL_BIND_BAT
 prompt =====================================
 prompt
-create or replace procedure dm_system.sp_manual_bind_bat(v_bind_ids   in varchar2, -- °ó¶¨±àºÅ(|·Ö¸î)
-                                               v_error_code in number, -- ´íÎóÂë: 100-³É¹¦ 200-Ê§°Ü ...
-                                               v_result_msg in varchar2, -- ½á¹ûÏûÏ¢
-                                               v_order_msg  in varchar2, -- ¶©µ¥ÏûÏ¢(ÏÔÊ¾ÉÌ»§)
-                                               v_operator   in varchar2, -- ²Ù×÷ÈË
+create or replace procedure dm_system.sp_manual_bind_bat(v_bind_ids   in varchar2, -- ç»‘å®šç¼–å·(|åˆ†å‰²)
+                                               v_error_code in number, -- é”™è¯¯ç : 100-æˆåŠŸ 200-å¤±è´¥ ...
+                                               v_result_msg in varchar2, -- ç»“æœæ¶ˆæ¯
+                                               v_order_msg  in varchar2, -- è®¢å•æ¶ˆæ¯(æ˜¾ç¤ºå•†æˆ·)
+                                               v_operator   in varchar2, -- æ“ä½œäºº
                                                v_out_code   out number,
                                                v_out_msg    out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ÅúÁ¿ÈË¹¤ÉóºË¶©µ¥(×Ô¶¯·¢»õ¶©µ¥)
-  -- ´´½¨: zhusm 2019-05-25
-  -- ĞŞ¸Ä: zhusm 2019-09-10[Ôö¼ÓÉóºË¼¼Êõ½â¾ö²úÉú¶àÌõ²Ù×÷ÈÕÖ¾ÎÊÌâ]
-  -- ĞŞ¸Ä: zhusm 2019-10-11[Ôö¼Ó¶©µ¥ÏûÏ¢Èë²Î(¿É¿Õ)]
+  -- åŠŸèƒ½: æ‰¹é‡äººå·¥å®¡æ ¸è®¢å•(è‡ªåŠ¨å‘è´§è®¢å•)
+  -- åˆ›å»º: zhusm 2019-05-25
+  -- ä¿®æ”¹: zhusm 2019-09-10[å¢åŠ å®¡æ ¸æŠ€æœ¯è§£å†³äº§ç”Ÿå¤šæ¡æ“ä½œæ—¥å¿—é—®é¢˜]
+  -- ä¿®æ”¹: zhusm 2019-10-11[å¢åŠ è®¢å•æ¶ˆæ¯å…¥å‚(å¯ç©º)]
   -----------------------------------------------------------------------
   l_deal_code   number;
   l_order_code  number;
@@ -7771,26 +7772,26 @@ create or replace procedure dm_system.sp_manual_bind_bat(v_bind_ids   in varchar
   l_fn_ret      boolean := false;
   l_fn_msg      varchar2(128);
 
-  l_deal_count number := 0; -- ÉóºËÌõÊı¼ÆÊı
+  l_deal_count number := 0; -- å®¡æ ¸æ¡æ•°è®¡æ•°
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_bind_ids is null or v_error_code is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- »ñÈ¡´¦ÀíÂë
+  -- è·å–å¤„ç†ç 
   select t.deal_code, t.order_code, t.order_desc
     into l_deal_code, l_order_code, l_order_desc
     from dm_system_deal_code t
    where t.error_code = v_error_code;
 
-  -- ÅúÁ¿´¦Àí¶©µ¥
+  -- æ‰¹é‡å¤„ç†è®¢å•
   for r in (select * from table(f_string_split(v_bind_ids, '|'))) loop
-    -- Ëø¼ÇÂ¼
+    -- é”è®°å½•
     begin
       select t.bind_id, t.order_no, t.up_channel_no, t.up_price, t.term_no
         into l_bind_id, l_order_no, l_up_chnnl_no, l_up_price, l_term_no
@@ -7814,9 +7815,9 @@ begin
         continue;
     end;
     
-    -- ´¦Àí½á¹û
+    -- å¤„ç†ç»“æœ
     if (l_deal_code = deal_code.succeed) then
-      -- ³É¹¦
+      -- æˆåŠŸ
       l_fn_ret := f_delivery_succeed(l_bind_id,
                                      l_order_no,
                                      l_up_chnnl_no,
@@ -7828,7 +7829,7 @@ begin
                                          l_order_desc),
                                      l_fn_msg);
     elsif (l_deal_code = deal_code.failed) then
-      -- Ê§°Ü
+      -- å¤±è´¥
       l_fn_ret := f_delivery_failed(l_bind_id,
                                     l_order_no,
                                     l_term_prd_no,
@@ -7844,13 +7845,13 @@ begin
       rollback;
       sp_operate_log_add(v_operator,
                          l_bind_id,
-                         'ÈË¹¤ÉóºË[°ó¶¨]Ê§°Ü: ' || l_fn_msg,
+                         'äººå·¥å®¡æ ¸[ç»‘å®š]å¤±è´¥: ' || l_fn_msg,
                          v_out_code,
                          v_out_msg);
       continue;
     end if;
 
-    -- ¸üĞÂ×´Ì¬
+    -- æ›´æ–°çŠ¶æ€
     update dm_order_bind t
        set t.result_msg    = nvl(substr(v_result_msg, 1, 128), t.result_msg),
            t.manual_status = case
@@ -7875,27 +7876,27 @@ begin
            t.error_desc    = l_order_desc
      where t.order_no = l_order_no;
 
-    -- ´¦Àí¼ÆÊı+1
+    -- å¤„ç†è®¡æ•°+1
     l_deal_count := l_deal_count + 1;
     commit;
   end loop;
 
   if (l_deal_count > 0) then
-    -- ¼ÇÂ¼²Ù×÷ÈÕÖ¾
+    -- è®°å½•æ“ä½œæ—¥å¿—
     sp_operate_log_add(v_operator,
                        v_bind_ids,
-                       'ÈË¹¤' || case
+                       'äººå·¥' || case
                          when l_deal_count > 1 then
-                          'ÅúÁ¿'
+                          'æ‰¹é‡'
                          else
                           ''
-                       end || 'ÉóºË[°ó¶¨], ±¸×¢: ' || nvl(v_result_msg, 'ÎŞ'),
+                       end || 'å®¡æ ¸[ç»‘å®š], å¤‡æ³¨: ' || nvl(v_result_msg, 'æ— '),
                        v_out_code,
                        v_out_msg);
   end if;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦: ¹²´¦Àí' || l_deal_count || 'Ìõ';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ: å…±å¤„ç†' || l_deal_count || 'æ¡';
 exception
   when others then
     rollback;
@@ -7909,20 +7910,20 @@ prompt
 prompt Creating procedure SP_ORDER_EXT_UPDATE
 prompt ======================================
 prompt
-create or replace procedure dm_system.sp_order_ext_update(v_order_no        varchar2, -- ¶©µ¥ºÅ
-                                                v_new_phone_no    varchar2, -- ĞÂÊÖ»úºÅ
-                                                v_activate_status number, -- ¼¤»î×´Ì¬: 0-ÒÑ¼¤»î 1-Î´¼¤»î
-                                                v_activate_time   varchar2, -- ¼¤»îÊ±¼ä
-                                                v_recharge_status number, -- Ê×³ä×´Ì¬: 0-ÒÑÊ×³ä 1-Î´Ê×³ä
-                                                v_recharge_time   varchar2, -- Ê×³äÊ±¼ä
-                                                v_recharge_face   number, -- Ê×³äÃæÖµ
-                                                v_express_name    varchar2, -- ¿ìµİÃû³Æ
-                                                v_express_no      varchar2, -- ¿ìµİµ¥ºÅ
+create or replace procedure dm_system.sp_order_ext_update(v_order_no        varchar2, -- è®¢å•å·
+                                                v_new_phone_no    varchar2, -- æ–°æ‰‹æœºå·
+                                                v_activate_status number, -- æ¿€æ´»çŠ¶æ€: 0-å·²æ¿€æ´» 1-æœªæ¿€æ´»
+                                                v_activate_time   varchar2, -- æ¿€æ´»æ—¶é—´
+                                                v_recharge_status number, -- é¦–å……çŠ¶æ€: 0-å·²é¦–å…… 1-æœªé¦–å……
+                                                v_recharge_time   varchar2, -- é¦–å……æ—¶é—´
+                                                v_recharge_face   number, -- é¦–å……é¢å€¼
+                                                v_express_name    varchar2, -- å¿«é€’åç§°
+                                                v_express_no      varchar2, -- å¿«é€’å•å·
                                                 v_out_code        out number,
                                                 v_out_msg         out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ¸üĞÂ¶©µ¥À©Õ¹ĞÅÏ¢
-  -- ´´½¨: zhusm 2019-09-26
+  -- åŠŸèƒ½: æ›´æ–°è®¢å•æ‰©å±•ä¿¡æ¯
+  -- åˆ›å»º: zhusm 2019-09-26
   -----------------------------------------------------------------------
   l_count           number;
   l_activate_status number;
@@ -7930,35 +7931,35 @@ create or replace procedure dm_system.sp_order_ext_update(v_order_no        varc
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_order_no is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '¶©µ¥ºÅÎª¿Õ';
+    v_out_msg  := 'è®¢å•å·ä¸ºç©º';
     return;
   end if;
 
   if (v_new_phone_no is null and v_activate_status is null and
      v_recharge_status is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«×Ö¶ÎÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å­—æ®µä¸ºç©º';
     return;
   end if;
 
   if (v_activate_status not in
      (enable_status.enabled, enable_status.disabled)) then
     v_out_code := error_code.failed;
-    v_out_msg  := '¼¤»î×´Ì¬´íÎó';
+    v_out_msg  := 'æ¿€æ´»çŠ¶æ€é”™è¯¯';
     return;
   end if;
 
   if (v_recharge_status not in
      (enable_status.enabled, enable_status.disabled)) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'Ê×³ä×´Ì¬´íÎó';
+    v_out_msg  := 'é¦–å……çŠ¶æ€é”™è¯¯';
     return;
   end if;
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select count(1)
     into l_count
     from dm_order_main_ext t
@@ -7966,7 +7967,7 @@ begin
 
   if (l_count <= 0) then
     v_out_code := error_code.failed;
-    v_out_msg  := '¶©µ¥²»´æÔÚ';
+    v_out_msg  := 'è®¢å•ä¸å­˜åœ¨';
     return;
   end if;
 
@@ -7974,7 +7975,7 @@ begin
     into l_activate_status, l_recharge_status
     from dm_order_main_ext t
    where t.order_no = v_order_no;
-  -- ¸üĞÂ½á¹û
+  -- æ›´æ–°ç»“æœ
 
   update dm_order_main_ext t
      set t.new_phone_no    = nvl(substr(v_new_phone_no, 1, 16),
@@ -7993,7 +7994,7 @@ begin
          t.update_time     = sysdate
    where t.order_no = v_order_no;
 
-  -- ´´½¨Í¨Öª
+  -- åˆ›å»ºé€šçŸ¥
   if (l_activate_status <> enable_status.enabled and
      v_activate_status = enable_status.enabled) then
     if (not f_order_notify_add(v_order_no,
@@ -8018,13 +8019,13 @@ begin
 
   commit;
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 
 exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£:' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm;
 end;
 /
 
@@ -8032,10 +8033,10 @@ prompt
 prompt Creating procedure SP_MANUAL_TASK
 prompt =================================
 prompt
-create or replace procedure dm_system.sp_manual_task(v_batch_no number) -- Åú´ÎºÅ
+create or replace procedure dm_system.sp_manual_task(v_batch_no number) -- æ‰¹æ¬¡å·
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ÅúÁ¿ÈË¹¤ÉóºË
+  -- åŠŸèƒ½: æ‰¹é‡äººå·¥å®¡æ ¸
   -----------------------------------------------------------------------
   l_bind_id      varchar2(32);
   l_order_no     varchar2(32);
@@ -8047,35 +8048,35 @@ create or replace procedure dm_system.sp_manual_task(v_batch_no number) -- Åú´Îº
   ROW_FAILED exception;
 
 begin
-  -- ±éÀúÊı¾İ
+  -- éå†æ•°æ®
   for r in (select t.*
               from tmp_up_card_detail t
              where t.batch_no = v_batch_no
                and t.deal_status = deal_status.waiting) loop
-    -- ÖØÖÃ±äÁ¿
+    -- é‡ç½®å˜é‡
     l_bind_id      := null;
     l_order_no     := null;
     l_order_status := null;
     begin
 
-      -- ¼ì²é²ÎÊı
+      -- æ£€æŸ¥å‚æ•°
       if (r.up_product_no is null) then
-        l_deal_msg := 'ÉÏÓÎ²úÆ·±àºÅÎª¿Õ';
+        l_deal_msg := 'ä¸Šæ¸¸äº§å“ç¼–å·ä¸ºç©º';
         raise ROW_FAILED;
       end if;
 
       if (r.order_status not in (deal_status.succeed, deal_status.failed)) then
-        l_deal_msg := '¶©µ¥×´Ì¬´íÎó';
+        l_deal_msg := 'è®¢å•çŠ¶æ€é”™è¯¯';
         raise ROW_FAILED;
       end if;
 
       if (r.bind_id is null and r.card_no is null and r.phone_no is null) then
-        l_deal_msg := '°ó¶¨±àºÅ,Éí·İÖ¤ºÅ,ÊÖ»úºÅÈ«Îª¿Õ';
+        l_deal_msg := 'ç»‘å®šç¼–å·,èº«ä»½è¯å·,æ‰‹æœºå·å…¨ä¸ºç©º';
         raise ROW_FAILED;
       end if;
 
       if (r.bind_id is not null) then
-        -- ÓĞ°ó¶¨±àºÅ
+        -- æœ‰ç»‘å®šç¼–å·
         select max(b.bind_id), max(b.order_no), max(m.order_status)
           into l_bind_id, l_order_no, l_order_status
           from dm_order_bind b
@@ -8085,11 +8086,11 @@ begin
            and b.bind_status in
                (deal_status.processing, deal_status.succeed);
         if (l_order_status is null) then
-          l_deal_msg := '°ó¶¨¼ÇÂ¼²»´æÔÚ';
+          l_deal_msg := 'ç»‘å®šè®°å½•ä¸å­˜åœ¨';
           raise ROW_FAILED;
         end if;
       elsif (r.card_no is not null) then
-        -- ÓĞÉí·İÖ¤ºÅ
+        -- æœ‰èº«ä»½è¯å·
         select count(1)
           into l_count
           from dm_order_main m
@@ -8102,7 +8103,7 @@ begin
            and b.bind_status in
                (deal_status.processing, deal_status.succeed);
         if (l_count > 1) then
-          l_deal_msg := '¸ÃÉí·İÖ¤´æÔÚ¶à±Ê¶©µ¥';
+          l_deal_msg := 'è¯¥èº«ä»½è¯å­˜åœ¨å¤šç¬”è®¢å•';
           raise ROW_FAILED;
         end if;
 
@@ -8119,7 +8120,7 @@ begin
                (deal_status.processing, deal_status.succeed)
            for update;
       elsif (r.phone_no is not null) then
-        -- ÓĞÁªÏµÈËÊÖ»úºÅ
+        -- æœ‰è”ç³»äººæ‰‹æœºå·
         select count(1)
           into l_count
           from dm_order_main m
@@ -8130,7 +8131,7 @@ begin
            and b.bind_status in
                (deal_status.processing, deal_status.succeed);
         if (l_count > 1) then
-          l_deal_msg := '¸ÃÊÖ»úºÅ´æÔÚ¶à±Ê¶©µ¥';
+          l_deal_msg := 'è¯¥æ‰‹æœºå·å­˜åœ¨å¤šç¬”è®¢å•';
           raise ROW_FAILED;
         end if;
         select b.bind_id, b.order_no, m.order_status
@@ -8146,7 +8147,7 @@ begin
       end if;
       if (l_order_status = deal_status.processing and
          r.order_status = deal_status.succeed) then
-        -- °ìÀí³É¹¦(Ê×´Î)
+        -- åŠç†æˆåŠŸ(é¦–æ¬¡)
         sp_manual_bind_bat(l_bind_id,
                            error_code.success,
                            r.order_msg,
@@ -8158,7 +8159,7 @@ begin
       if (l_order_status = deal_status.processing and
          r.order_status = deal_status.failed) then
        
-        -- °ìÀíÊ§°Ü(Ê×´Î)
+        -- åŠç†å¤±è´¥(é¦–æ¬¡)
         sp_manual_bind_bat(l_bind_id,
                            error_code.failed,
                            r.order_msg,
@@ -8171,7 +8172,7 @@ begin
         raise ROW_FAILED;
       end if;
 
-      -- ¸üĞÂorder_ext/´´½¨Í¨Öª
+      -- æ›´æ–°order_ext/åˆ›å»ºé€šçŸ¥
       sp_order_ext_update(l_order_no,
                           r.new_phone_no,
                           r.activate_status,
@@ -8191,31 +8192,31 @@ begin
          set t.error_desc = nvl(substr(r.order_msg, 1, 128), t.error_desc)
        where t.order_no = l_order_no;
     
-      -- ¸üĞÂ¼ÇÂ¼³É¹¦
+      -- æ›´æ–°è®°å½•æˆåŠŸ
       update tmp_up_card_detail t
          set t.deal_status = deal_status.succeed,
-             t.deal_msg    = '´¦Àí³É¹¦',
+             t.deal_msg    = 'å¤„ç†æˆåŠŸ',
              t.finish_time = sysdate
        where t.record_id = r.record_id;
       commit;
     exception
       when ROW_FAILED then
      
-        -- ¸üĞÂ¼ÇÂ¼Ê§°Ü
+        -- æ›´æ–°è®°å½•å¤±è´¥
         update tmp_up_card_detail t
            set t.deal_status = deal_status.failed,
-               t.deal_msg    = substr('´¦ÀíÊ§°Ü:' || l_deal_msg, 1, 256),
+               t.deal_msg    = substr('å¤„ç†å¤±è´¥:' || l_deal_msg, 1, 256),
                t.finish_time = sysdate
          where t.record_id = r.record_id;
         commit;
       when others then
         rollback;
      
-        -- ¸üĞÂ¼ÇÂ¼Ê§°Ü
+        -- æ›´æ–°è®°å½•å¤±è´¥
         l_deal_msg := sqlerrm;
         update tmp_up_card_detail t
            set t.deal_status = deal_status.failed,
-               t.deal_msg    = substr('´¦ÀíÒì³£:' || l_deal_msg, 1, 256),
+               t.deal_msg    = substr('å¤„ç†å¼‚å¸¸:' || l_deal_msg, 1, 256),
                t.finish_time = sysdate
          where t.record_id = r.record_id;
         commit;
@@ -8224,7 +8225,7 @@ begin
 exception
   when others then
     rollback;
-    sp_system_log_add('sp_manual_task', 1, '¹ı³ÌÒì³£:' || sqlerrm);
+    sp_system_log_add('sp_manual_task', 1, 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm);
 end;
 /
 
@@ -8232,12 +8233,12 @@ prompt
 prompt Creating procedure SP_MANUAL_TASK_RUN
 prompt =====================================
 prompt
-create or replace procedure dm_system.sp_manual_task_run(v_batch_no number, -- Åú´ÎºÅ
-                                               v_out_code out number, -- ´íÎóÂë
-                                               v_out_msg  out varchar2) -- ´íÎóÏûÏ¢
+create or replace procedure dm_system.sp_manual_task_run(v_batch_no number, -- æ‰¹æ¬¡å·
+                                               v_out_code out number, -- é”™è¯¯ç 
+                                               v_out_msg  out varchar2) -- é”™è¯¯æ¶ˆæ¯
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ö´ĞĞÈË¹¤ÉóºËÈÎÎñ
+  -- åŠŸèƒ½: æ‰§è¡Œäººå·¥å®¡æ ¸ä»»åŠ¡
   -----------------------------------------------------------------------
   l_job_name varchar2(128) := 'IMPORT_UP_CARD_DETAIL';
 
@@ -8252,26 +8253,26 @@ begin
                                 enabled             => false,
                                 start_date          => sysdate,
                                 auto_drop           => false,
-                                comments            => 'ÈË¹¤µ¼ÈëÉÏÓÎºÅ¿¨´¦Àí');
+                                comments            => 'äººå·¥å¯¼å…¥ä¸Šæ¸¸å·å¡å¤„ç†');
     end;
     -- select t.* from user_scheduler_jobs t where t.job_name = 'IMPORT_UP_CARD_DETAIL';
   */
 
-  -- ÉèÖÃ´æ´¢¹ı³Ì²ÎÊı
+  -- è®¾ç½®å­˜å‚¨è¿‡ç¨‹å‚æ•°
   dbms_scheduler.set_job_argument_value(job_name          => l_job_name,
                                         argument_position => 1,
                                         argument_value    => v_batch_no);
 
-  -- Æô¶¯job
+  -- å¯åŠ¨job
   dbms_scheduler.enable(l_job_name);
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 
 exception
   when others then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := '¹ı³ÌÒì³£:' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸:' || sqlerrm;
 end;
 /
 
@@ -8279,14 +8280,14 @@ prompt
 prompt Creating procedure SP_NOTIFY_GET_BAT
 prompt ====================================
 prompt
-create or replace procedure dm_system.sp_notify_get_bat(v_robot_ip   varchar2, -- »úÆ÷ÈËIP
-                                              v_robot_code varchar2, -- »úÆ÷ÈË±àÂë
-                                              v_get_count  number, -- »ñÈ¡ÊıÁ¿
-                                              v_out_count  out number, -- Êä³öÌõÊı
+create or replace procedure dm_system.sp_notify_get_bat(v_robot_ip   varchar2, -- æœºå™¨äººIP
+                                              v_robot_code varchar2, -- æœºå™¨äººç¼–ç 
+                                              v_get_count  number, -- è·å–æ•°é‡
+                                              v_out_count  out number, -- è¾“å‡ºæ¡æ•°
                                               v_out_json   out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡Í¨Öª²ÎÊı(»úÆ÷ÈË²ÎÊı)
-  -- ´´½¨ÈË: zhusm 2019-09-11
+  -- åŠŸèƒ½: è·å–é€šçŸ¥å‚æ•°(æœºå™¨äººå‚æ•°)
+  -- åˆ›å»ºäºº: zhusm 2019-09-11
   -----------------------------------------------------------------------
   l_max_cntr number := 10;
   l_row_cntr number;
@@ -8322,7 +8323,7 @@ begin
   else
     l_row_cntr := nvl(v_get_count, 1);
   end if;
-  -- É¨Ãè¼ÇÂ¼
+  -- æ‰«æè®°å½•
   for r in (select t.record_id
               from dm_order_notify t
              where t.status = deal_status.waiting
@@ -8330,7 +8331,7 @@ begin
                and t.notify_times < t.notify_max_times
                and t.next_time < sysdate
                and rownum <= l_row_cntr) loop
-    -- ÖØÖÃ±äÁ¿
+    -- é‡ç½®å˜é‡
     l_record_id       := null;
     l_order_no        := null;
     l_script_id       := null;
@@ -8349,7 +8350,7 @@ begin
     l_notify_url      := null;
     l_script_path     := null;
     l_temp            := null;
-    -- ËøÊı¾İ
+    -- é”æ•°æ®
     begin
     
       select t.record_id, t.order_no, t.script_id, t.notify_type
@@ -8364,7 +8365,7 @@ begin
         continue;
     end;
     
-    -- »ñÈ¡²ÎÊı
+    -- è·å–å‚æ•°
     select t1.phone_no,
            t1.order_status,
            t1.error_desc,
@@ -8397,16 +8398,16 @@ begin
       from dm_term_script t
      where t.record_id = l_script_id;
 
-    -- ¸üĞÂ×´Ì¬
+    -- æ›´æ–°çŠ¶æ€
     update dm_order_notify t
        set t.status       = deal_status.processing,
            t.robot_ip     = v_robot_ip,
            t.last_time    = t.next_time,
-           t.next_time    = sysdate + power(2, t.notify_times + 1) / 24 / 60, -- Í¨ÖªÊ±¼ä°´2µÄÖ¸ÊıÔö¼Ó
+           t.next_time    = sysdate + power(2, t.notify_times + 1) / 24 / 60, -- é€šçŸ¥æ—¶é—´æŒ‰2çš„æŒ‡æ•°å¢åŠ 
            t.notify_times = t.notify_times + 1
      where t.record_id = l_record_id;
 
-    -- ×éÖ¯½Å±¾²ÎÊı
+    -- ç»„ç»‡è„šæœ¬å‚æ•°
     l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
     l_temp      := f_json_add(l_temp, 'notify_id', l_record_id);
     l_temp      := f_json_add(l_temp, 'order_no', l_order_no);
@@ -8447,14 +8448,14 @@ prompt
 prompt Creating procedure SP_NOTIFY_SAVE
 prompt =================================
 prompt
-create or replace procedure dm_system.sp_notify_save(v_notify_id  in varchar2, -- Í¨Öª±àºÅ
-                                           v_status     in number, -- ×´Ì¬: 0-³É¹¦ 90-Ê§°Ü
-                                           v_result_msg in varchar2, -- ½á¹ûÏûÏ¢
+create or replace procedure dm_system.sp_notify_save(v_notify_id  in varchar2, -- é€šçŸ¥ç¼–å·
+                                           v_status     in number, -- çŠ¶æ€: 0-æˆåŠŸ 90-å¤±è´¥
+                                           v_result_msg in varchar2, -- ç»“æœæ¶ˆæ¯
                                            v_out_code   out number,
                                            v_out_msg    out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ±£´æ²éÑ¯
-  -- ´´½¨ÈË: zhusm 2019-10-11
+  -- åŠŸèƒ½: ä¿å­˜æŸ¥è¯¢
+  -- åˆ›å»ºäºº: zhusm 2019-10-11
   -----------------------------------------------------------------------
   l_record_id    number;
   l_notify_times number;
@@ -8462,26 +8463,26 @@ create or replace procedure dm_system.sp_notify_save(v_notify_id  in varchar2, -
 
 begin
 
-  -- ²ÎÊı¼ì²é
+  -- å‚æ•°æ£€æŸ¥
   if (v_notify_id is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'Í¨Öª±àºÅÎª¿Õ';
+    v_out_msg  := 'é€šçŸ¥ç¼–å·ä¸ºç©º';
     return;
   end if;
 
   if (v_status not in (deal_status.succeed, deal_status.failed)) then
     v_out_code := error_code.failed;
-    v_out_msg  := '×´Ì¬´íÎó';
+    v_out_msg  := 'çŠ¶æ€é”™è¯¯';
     return;
   end if;
 
-  -- ¸üĞÂÏûÏ¢
+  -- æ›´æ–°æ¶ˆæ¯
   update dm_order_notify t
      set t.result_msg = nvl(substr(v_result_msg, 1, 256), t.result_msg)
    where t.record_id = v_notify_id;
   commit;
  
-  -- Ëø¶©µ¥
+  -- é”è®¢å•
   select t.record_id
     into l_record_id
     from dm_order_notify t
@@ -8490,12 +8491,12 @@ begin
      for update;
 
   if (v_status = deal_status.succeed) then
-    -- Í¨Öª³É¹¦
+    -- é€šçŸ¥æˆåŠŸ
     update dm_order_notify t
        set t.status = deal_status.succeed, t.finish_time = sysdate
      where t.record_id = l_record_id;
   else
-    -- Í¨ÖªÊ§°Ü
+    -- é€šçŸ¥å¤±è´¥
     select t.notify_times, t.notify_max_times
       into l_notify_times, l_notify_max
       from dm_order_notify t
@@ -8512,7 +8513,7 @@ begin
   end if;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
@@ -8528,25 +8529,25 @@ prompt
 prompt Creating procedure SP_ORDER_ADD
 prompt ===============================
 prompt
-create or replace procedure dm_system.sp_order_add(v_product_no     varchar2, -- ²úÆ·±àºÅ
-                                         v_promote_guid   varchar2, -- ÍÆ¹ãGUID
-                                         v_phone_no       varchar2, -- ÁªÏµÈËÊÖ»úºÅ
-                                         v_contact_name   varchar2, -- ÁªÏµÈËÃû³Æ
-                                         v_contact_addr   varchar2, -- ÁªÏµÈËµØÖ·
-                                         v_card_user_name varchar2, -- °ìÀíÈËÉí·İÖ¤ĞÕÃû
-                                         v_card_user_id   varchar2, -- °ìÀíÈËÉí·İÖ¤ºÅÂë
-                                         v_card_pic_front varchar2, -- °ìÀíÈËÉí·İÖ¤ÕÕ(ÕıÃæ)
-                                         v_card_pic_back  varchar2, -- °ìÀíÈËÉí·İÖ¤ÕÕ(·´Ãæ)
-                                         v_card_pic_hand  varchar2, -- °ìÀíÈËÉí·İÖ¤ÕÕ(ÊÖ³Ö)
-                                         v_user_ip        varchar2, -- ÓÃ»§IP
-                                         v_server_ip      varchar2, -- ÊÕµ¥·şÎñÆ÷IP
+create or replace procedure dm_system.sp_order_add(v_product_no     varchar2, -- äº§å“ç¼–å·
+                                         v_promote_guid   varchar2, -- æ¨å¹¿GUID
+                                         v_phone_no       varchar2, -- è”ç³»äººæ‰‹æœºå·
+                                         v_contact_name   varchar2, -- è”ç³»äººåç§°
+                                         v_contact_addr   varchar2, -- è”ç³»äººåœ°å€
+                                         v_card_user_name varchar2, -- åŠç†äººèº«ä»½è¯å§“å
+                                         v_card_user_id   varchar2, -- åŠç†äººèº«ä»½è¯å·ç 
+                                         v_card_pic_front varchar2, -- åŠç†äººèº«ä»½è¯ç…§(æ­£é¢)
+                                         v_card_pic_back  varchar2, -- åŠç†äººèº«ä»½è¯ç…§(åé¢)
+                                         v_card_pic_hand  varchar2, -- åŠç†äººèº«ä»½è¯ç…§(æ‰‹æŒ)
+                                         v_user_ip        varchar2, -- ç”¨æˆ·IP
+                                         v_server_ip      varchar2, -- æ”¶å•æœåŠ¡å™¨IP
                                          v_out_code       out number,
                                          v_out_msg        out varchar2,
-                                         v_out_json       out varchar2) -- ·µ»ØJSON: {"order_no":"","need_pay":""}
+                                         v_out_json       out varchar2) -- è¿”å›JSON: {"order_no":"","need_pay":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨¶©µ¥
-  -- ´´½¨ÈË: zhusm 2019-07-31
+  -- åŠŸèƒ½: åˆ›å»ºè®¢å•
+  -- åˆ›å»ºäºº: zhusm 2019-07-31
   -----------------------------------------------------------------------
   -- l_count       number;
   l_err_code    number;
@@ -8571,16 +8572,16 @@ create or replace procedure dm_system.sp_order_add(v_product_no     varchar2, --
   l_temp         varchar2(2000) := '';
 
 begin
-  -- ²ÎÊı¼ì²é
+  -- å‚æ•°æ£€æŸ¥
   if (v_product_no is null or v_promote_guid is null or v_phone_no is null or
      v_card_user_name is null or v_contact_addr is null or
      v_card_user_id is null or v_user_ip is null or v_server_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- »ñÈ¡ºÅ¶Î
+  -- è·å–å·æ®µ
   if (not f_num_section_get(v_phone_no,
                             v_out_msg,
                             l_carrier_no,
@@ -8590,7 +8591,7 @@ begin
     return;
   end if;
 
-  -- ²éÑ¯²úÆ·
+  -- æŸ¥è¯¢äº§å“
   begin
     select t.business_type,
            t.term_no,
@@ -8615,17 +8616,17 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := '²úÆ·²»´æÔÚ»òÎ´ÆôÓÃ';
+      v_out_msg  := 'äº§å“ä¸å­˜åœ¨æˆ–æœªå¯ç”¨';
       return;
   end;
 
   if (l_need_vcode = enable_status.enabled) then
     v_out_code := error_code.failed;
-    v_out_msg  := '²»Ö§³ÖÑéÖ¤Âë²úÆ·';
+    v_out_msg  := 'ä¸æ”¯æŒéªŒè¯ç äº§å“';
     return;
   end if;
 
-  -- ¼ì²éÖÕ¶ËÍÆ¹ãÈË
+  -- æ£€æŸ¥ç»ˆç«¯æ¨å¹¿äºº
   if (not f_check_term_promote(l_term_no,
                                v_promote_guid,
                                v_out_msg,
@@ -8636,7 +8637,7 @@ begin
     return;
   end if;
 
-  /*-- 30ÌìÄÚÍ¬Ò»IPÏŞÖÆ3±Ê
+  /*-- 30å¤©å†…åŒä¸€IPé™åˆ¶3ç¬”
   select count(1)
     into l_count
     from dm_term_white_list t
@@ -8662,11 +8663,11 @@ begin
            end);
     if (l_count >= 3) then
       v_out_code := error_code.failed;
-      v_out_msg  := '³¬¹ıIPÏŞÖÆ';
+      v_out_msg  := 'è¶…è¿‡IPé™åˆ¶';
       return;
     end if;
   end if;
-  -- 30ÌìÄÚÍ¬Ò»Éí·İÖ¤ÏŞÖÆ1±Ê(Ö§¸¶³É¹¦µ«ÒÑÍË¿î»¹ÄÜ°ìÀí)
+  -- 30å¤©å†…åŒä¸€èº«ä»½è¯é™åˆ¶1ç¬”(æ”¯ä»˜æˆåŠŸä½†å·²é€€æ¬¾è¿˜èƒ½åŠç†)
   select count(1)
     into l_count
     from dm_order_main m
@@ -8684,10 +8685,10 @@ begin
          end);
   if (l_count >= 1) then
     v_out_code := error_code.failed;
-    v_out_msg  := '³¬¹ıÕÅÊıÏŞÖÆ';
+    v_out_msg  := 'è¶…è¿‡å¼ æ•°é™åˆ¶';
     return;
   end if;*/
-  -- Ğ£ÑéÖÕ¶Ë²úÆ·¹æÔò
+  -- æ ¡éªŒç»ˆç«¯äº§å“è§„åˆ™
   if (not f_term_prd_rule_check(l_term_no,
                                 v_product_no,
                                 v_card_user_id,
@@ -8699,7 +8700,7 @@ begin
     return;
   end if;
 
-  -- ¹Ø±ÕÎ´°ìÀí¶©µ¥
+  -- å…³é—­æœªåŠç†è®¢å•
   select t.order_code, t.order_desc
     into l_err_code, l_err_desc
     from dm_system_deal_code t
@@ -8707,7 +8708,7 @@ begin
 
   update dm_order_main t
      set t.order_status = deal_status.failed,
-         t.result_msg   = '¶©µ¥¹Ø±Õ(Î´Ö§¸¶)',
+         t.result_msg   = 'è®¢å•å…³é—­(æœªæ”¯ä»˜)',
          t.error_code   = l_err_code,
          t.error_desc   = l_err_desc
    where t.pay_status = deal_status.waiting
@@ -8716,7 +8717,7 @@ begin
             from dm_order_main_ext u
            where u.card_user_id = v_card_user_id);
   
-  -- ±£´æ¶©µ¥
+  -- ä¿å­˜è®¢å•
   l_order_no := f_order_no_create();
   insert into dm_order_main
     (order_no,
@@ -8763,7 +8764,7 @@ begin
             deal_status.waiting),
      v_server_ip);
   
-  -- ±£´æÀ©Õ¹ĞÅÏ¢
+  -- ä¿å­˜æ‰©å±•ä¿¡æ¯
   if (v_card_user_name is not null or v_card_user_id is not null or
      v_contact_name is not null or v_contact_addr is not null or
      v_card_pic_front is null or v_card_pic_back is not null or
@@ -8792,11 +8793,11 @@ begin
        trim(v_card_pic_hand));
   end if;
 
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   l_temp     := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp     := f_json_add(l_temp, 'need_pay', l_need_pay);
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   commit;
 
@@ -8804,7 +8805,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_order_add', 1, v_out_msg);
 end;
 /
@@ -8813,16 +8814,16 @@ prompt
 prompt Creating procedure SP_ORDER_ADD_VCODE1
 prompt ======================================
 prompt
-create or replace procedure dm_system.sp_order_add_vcode1(v_order_no   varchar2, -- ¶©µ¥ºÅ
-                                                v_product_no varchar2, -- ²úÆ·±àºÅ
-                                                v_account_no varchar2, -- °ìÀíÕËºÅ
-                                                v_server_ip  varchar2, -- ÊÕµ¥½Ó¿ÚIP
-                                                v_user_ip    varchar2, -- ÓÃ»§IP
+create or replace procedure dm_system.sp_order_add_vcode1(v_order_no   varchar2, -- è®¢å•å·
+                                                v_product_no varchar2, -- äº§å“ç¼–å·
+                                                v_account_no varchar2, -- åŠç†è´¦å·
+                                                v_server_ip  varchar2, -- æ”¶å•æ¥å£IP
+                                                v_user_ip    varchar2, -- ç”¨æˆ·IP
                                                 v_out_code   out number,
                                                 v_out_msg    out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨´øÓĞÑéÖ¤Âë(Æ½Ì¨·¢ËÍ)¶©µ¥
-  -- ´´½¨ÈË: zhusm 2019-08-26
+  -- åŠŸèƒ½: åˆ›å»ºå¸¦æœ‰éªŒè¯ç (å¹³å°å‘é€)è®¢å•
+  -- åˆ›å»ºäºº: zhusm 2019-08-26
   -----------------------------------------------------------------------
   l_term_no     varchar2(32);
   l_term_prd_no varchar2(32);
@@ -8840,21 +8841,21 @@ create or replace procedure dm_system.sp_order_add_vcode1(v_order_no   varchar2,
 
 begin
 
-  -- ²ÎÊı¼ì²é
+  -- å‚æ•°æ£€æŸ¥
   if (v_order_no is null or v_product_no is null or v_account_no is null or v_server_ip is null or
      v_user_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- ¼ì²é¶©µ¥: ÖØÊÔÌá½»´æÈë·¢»õ¶ÓÁĞ
+  -- æ£€æŸ¥è®¢å•: é‡è¯•æäº¤å­˜å…¥å‘è´§é˜Ÿåˆ—
   if (not f_check_vcode1_order(v_order_no, v_server_ip, v_user_ip, v_out_code, v_out_msg)) then
     commit;
     return;
   end if;
 
-  -- ¼ì²éÖÕ¶Ë²úÆ·
+  -- æ£€æŸ¥ç»ˆç«¯äº§å“
   begin
     select t.term_no,
            t.product_no,
@@ -8880,11 +8881,11 @@ begin
   exception
     when others then
       v_out_code := error_code.failed;
-      v_out_msg  := '²úÆ·²»Ö§³Ö»òÎ´ÆôÓÃ';
+      v_out_msg  := 'äº§å“ä¸æ”¯æŒæˆ–æœªå¯ç”¨';
       return;
   end;
 
-  -- ¼ì²éÖÕ¶Ë
+  -- æ£€æŸ¥ç»ˆç«¯
   select count(1)
     into l_count
     from dm_term_info t
@@ -8893,18 +8894,18 @@ begin
 
   if (l_count <= 0) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÖÕ¶Ë²»Ö§³Ö»òÎ´ÆôÓÃ';
+    v_out_msg  := 'ç»ˆç«¯ä¸æ”¯æŒæˆ–æœªå¯ç”¨';
     return;
   end if;
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.term_no, t.promote_id, t.promoter_id, t.label_id
     into l_term_no, l_promote_id, l_promoter_id, l_label_id
     from dm_order_vcode t
    where t.order_no = v_order_no
      and t.send_status = deal_status.succeed;
 
-  -- ´´½¨¶©µ¥
+  -- åˆ›å»ºè®¢å•
   insert into dm_order_main
     (order_no,
      term_no,
@@ -8947,14 +8948,14 @@ begin
      v_user_ip);
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_order_add_vcode1', 1, v_out_msg);
 end;
 /
@@ -8963,17 +8964,17 @@ prompt
 prompt Creating procedure SP_ORDER_ADD_VCODE2
 prompt ======================================
 prompt
-create or replace procedure dm_system.sp_order_add_vcode2(v_order_no  varchar2, -- ¶©µ¥ºÅ
-                                                v_vcode     varchar2, -- ÑéÖ¤Âë
-                                                v_server_ip varchar2, -- ÊÕµ¥½Ó¿ÚIP
-                                                v_user_ip   varchar2, -- ÓÃ»§IP
+create or replace procedure dm_system.sp_order_add_vcode2(v_order_no  varchar2, -- è®¢å•å·
+                                                v_vcode     varchar2, -- éªŒè¯ç 
+                                                v_server_ip varchar2, -- æ”¶å•æ¥å£IP
+                                                v_user_ip   varchar2, -- ç”¨æˆ·IP
                                                 v_out_code  out number,
                                                 v_out_msg   out varchar2,
-                                                v_out_json  out varchar2) -- JSON²ÎÊı: {"que_name":"","bind_id":"","script_path":""}
+                                                v_out_json  out varchar2) -- JSONå‚æ•°: {"que_name":"","bind_id":"","script_path":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨´øÓĞÑéÖ¤Âë(ÉÏÓÎ·¢ÑéÖ¤Âë)¶©µ¥
-  -- ´´½¨ÈË: zhusm 2019-05-24
+  -- åŠŸèƒ½: åˆ›å»ºå¸¦æœ‰éªŒè¯ç (ä¸Šæ¸¸å‘éªŒè¯ç )è®¢å•
+  -- åˆ›å»ºäºº: zhusm 2019-05-24
   -----------------------------------------------------------------------
   l_term_no      varchar2(32);
   l_term_prd_no  varchar2(32);
@@ -9003,21 +9004,21 @@ create or replace procedure dm_system.sp_order_add_vcode2(v_order_no  varchar2, 
 
 begin
 
-  -- ²ÎÊı¼ì²é
+  -- å‚æ•°æ£€æŸ¥
   if (v_order_no is null or v_vcode is null or v_server_ip is null or v_user_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- ¼ì²é¶©µ¥: ÖØÊÔÌá½»´æÈë·¢»õ¶ÓÁĞ
+  -- æ£€æŸ¥è®¢å•: é‡è¯•æäº¤å­˜å…¥å‘è´§é˜Ÿåˆ—
   if (not
       f_check_vcode2_order(v_order_no, v_server_ip, v_user_ip, v_out_code, v_out_msg, v_out_json)) then
     commit;
     return;
   end if;
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.term_no,
          t.term_product_no,
          t.up_channel_no,
@@ -9048,7 +9049,7 @@ begin
    where t.order_no = v_order_no
      and t.send_status = deal_status.succeed;
 
-  -- ×¼±¸²ÎÊı
+  -- å‡†å¤‡å‚æ•°
   select t.face_fee, t.pay_price, t.pay_price, t.cost_price, t.deduct_mode
     into l_face_fee, l_pay_price, l_term_price, l_cost_price, l_deduct_mode
     from dm_term_product t
@@ -9062,13 +9063,13 @@ begin
    where t.channel_no = l_up_chnnl_no
      and t.script_type = script_type.vcode_submit;
 
-  -- ¸üĞÂÑéÖ¤Âë
+  -- æ›´æ–°éªŒè¯ç 
   update dm_order_vcode t
      set t.vcode = v_vcode, t.retry_times = t.retry_times + 1
    where t.order_no = v_order_no
      and t.send_status = deal_status.succeed;
 
-  -- ´´½¨¶©µ¥
+  -- åˆ›å»ºè®¢å•
   insert into dm_order_main
     (order_no,
      term_no,
@@ -9110,7 +9111,7 @@ begin
      v_server_ip,
      enable_status.enabled);
 
-  -- ´´½¨°ó¶¨
+  -- åˆ›å»ºç»‘å®š
   l_bind_id := f_bind_id_create();
   insert into dm_order_bind
     (bind_id,
@@ -9150,14 +9151,14 @@ begin
      l_term_prd_no);
 
   /*
-  -- Ìí¼ÓÖÕ¶Ë×Ê½ğ±ä¶¯
+  -- æ·»åŠ ç»ˆç«¯èµ„é‡‘å˜åŠ¨
   if (l_deduct_mode = deduct_mode.early) then
     if (not f_term_fund_change_add(l_term_no,
                                    v_order_no,
                                    change_type.deduct,
                                    l_cost_price,
                                    '_system',
-                                   '³õÊ¼¿Û¿î',
+                                   'åˆå§‹æ‰£æ¬¾',
                                    v_out_msg)) then
       rollback;
       v_out_code := error_code.failed;
@@ -9165,12 +9166,12 @@ begin
     end if;
   end if;
   */
-  -- ¹¹ÔìJSONÊı¾İ
+  -- æ„é€ JSONæ•°æ®
   l_temp     := f_json_add(l_temp, 'que_name', l_svc_code);
   l_temp     := f_json_add(l_temp, 'bind_id', l_bind_id);
   l_temp     := f_json_add(l_temp, 'script_path', l_script_path);
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   commit;
 
@@ -9178,7 +9179,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_order_add_vcode2', 1, v_out_msg);
 end;
 /
@@ -9187,17 +9188,17 @@ prompt
 prompt Creating procedure SP_ORDER_PIC_UPDATE
 prompt ======================================
 prompt
-create or replace procedure dm_system.sp_order_pic_update(v_order_no       varchar2, -- ¶©µ¥ºÅ
-                                                v_card_pic_front varchar2, -- °ìÀíÈËÉí·İÖ¤ÕÕ(ÕıÃæ)
-                                                v_card_pic_back  varchar2, -- °ìÀíÈËÉí·İÖ¤ÕÕ(·´Ãæ)
-                                                v_card_pic_hand  varchar2, -- °ìÀíÈËÉí·İÖ¤ÕÕ(ÊÖ³Ö)
-                                                v_user_ip        varchar2, -- ÓÃ»§IP
-                                                v_server_ip      varchar2, -- ÊÕµ¥·şÎñÆ÷IP
+create or replace procedure dm_system.sp_order_pic_update(v_order_no       varchar2, -- è®¢å•å·
+                                                v_card_pic_front varchar2, -- åŠç†äººèº«ä»½è¯ç…§(æ­£é¢)
+                                                v_card_pic_back  varchar2, -- åŠç†äººèº«ä»½è¯ç…§(åé¢)
+                                                v_card_pic_hand  varchar2, -- åŠç†äººèº«ä»½è¯ç…§(æ‰‹æŒ)
+                                                v_user_ip        varchar2, -- ç”¨æˆ·IP
+                                                v_server_ip      varchar2, -- æ”¶å•æœåŠ¡å™¨IP
                                                 v_out_code       out number,
                                                 v_out_msg        out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ¸üĞÂÉí·İÖ¤ÕÕÆ¬
-  -- ´´½¨ÈË: zhusm 2019-09-29 14:18:20
+  -- åŠŸèƒ½: æ›´æ–°èº«ä»½è¯ç…§ç‰‡
+  -- åˆ›å»ºäºº: zhusm 2019-09-29 14:18:20
   -----------------------------------------------------------------------
   l_bind_times    number;
   l_bind_max      number := 5;
@@ -9210,15 +9211,15 @@ create or replace procedure dm_system.sp_order_pic_update(v_order_no       varch
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_order_no is null or v_card_pic_front is null or
      v_card_pic_back is null or v_card_pic_hand is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- ¼ì²é¶©µ¥
+  -- æ£€æŸ¥è®¢å•
   select t.bind_times
     into l_bind_times
     from dm_order_main t
@@ -9226,13 +9227,13 @@ begin
 
   if (l_bind_times <= 0) then
     v_out_code := error_code.failed;
-    v_out_msg  := '¶©µ¥²»´æÔÚ';
+    v_out_msg  := 'è®¢å•ä¸å­˜åœ¨';
     return;
   end if;
 
   if (l_bind_times >= l_bind_max) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÖØÊÔ´ÎÊı´ïÏŞ';
+    v_out_msg  := 'é‡è¯•æ¬¡æ•°è¾¾é™';
     return;
   end if;
 
@@ -9248,11 +9249,11 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := '¶©µ¥´íÎó';
+      v_out_msg  := 'è®¢å•é”™è¯¯';
       return;
   end;
 
-  -- ¼ì²é¶©µ¥À©Õ¹
+  -- æ£€æŸ¥è®¢å•æ‰©å±•
   select t.need_card_pic
     into l_need_card_pic
     from dm_term_product t
@@ -9261,12 +9262,12 @@ begin
   if (l_need_card_pic = enable_status.disabled) then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := '²»Ö§³ÖÖØÌá';
+    v_out_msg  := 'ä¸æ”¯æŒé‡æ';
     return;
 
   end if;
  
-  -- »ñÈ¡°ó¶¨
+  -- è·å–ç»‘å®š
   select picture_mode, l_bind_status
     into l_pic_mode, l_bind_status
     from (select t.bind_id, t.bind_status, t.picture_mode
@@ -9280,19 +9281,19 @@ begin
     if (l_bind_status = deal_status.succeed) then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := '¶©µ¥ÒÑ³É¹¦';
+      v_out_msg  := 'è®¢å•å·²æˆåŠŸ';
       return;
     end if;
   else
     if (l_bind_status <> deal_status.failed) then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := '½öÊ§°Ü¿ÉÖØÌá';
+      v_out_msg  := 'ä»…å¤±è´¥å¯é‡æ';
       return;
     end if;
   end if;
  
-  -- ¸üĞÂÊı¾İ
+  -- æ›´æ–°æ•°æ®
   update dm_order_main_ext t
      set t.card_pic_front = v_card_pic_front,
          t.card_pic_back  = v_card_pic_back,
@@ -9316,14 +9317,14 @@ begin
    where t.order_no = l_order_no;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_order_pic_update', 1, v_out_msg);
 end;
 /
@@ -9338,8 +9339,8 @@ create or replace procedure dm_system.sp_pay_info_get(v_order_no     varchar2,
                                             v_out_msg      out varchar2,
                                             v_out_json     out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡Ö§¸¶ĞÅÏ¢
-  -- ´´½¨ÈË: zhusm 2019-07-31
+  -- åŠŸèƒ½: è·å–æ”¯ä»˜ä¿¡æ¯
+  -- åˆ›å»ºäºº: zhusm 2019-07-31
   -----------------------------------------------------------------------
   l_order_no      varchar2(64);
   l_term_no       varchar2(32);
@@ -9351,20 +9352,20 @@ create or replace procedure dm_system.sp_pay_info_get(v_order_no     varchar2,
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_order_no is null or v_account_type is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
   if (v_account_type not in (account_type.alipay, account_type.wechat)) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'Ö»Ö§³ÖÎ¢ĞÅÖ§¸¶±¦';
+    v_out_msg  := 'åªæ”¯æŒå¾®ä¿¡æ”¯ä»˜å®';
     return;
   end if;
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   begin
     select t.order_no, t.term_no, t.product_no, t.pay_price
       into l_order_no, l_term_no, l_product_no, l_pay_price
@@ -9377,7 +9378,7 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := 'Òì³£¶©µ¥¾Ü¾ø´¦Àí';
+      v_out_msg  := 'å¼‚å¸¸è®¢å•æ‹’ç»å¤„ç†';
       return;
   end;
 
@@ -9386,7 +9387,7 @@ begin
     from dm_term_product t
    where t.product_no = l_product_no;
  
-  -- »ñÈ¡ÊÕ¿îÕËºÅ
+  -- è·å–æ”¶æ¬¾è´¦å·
   if (not
       f_pay_account_get(l_term_no, v_account_type, v_out_msg, l_account_id)) then
     rollback;
@@ -9394,18 +9395,18 @@ begin
     return;
   end if;
 
-  -- ¸üĞÂ¶©µ¥
+  -- æ›´æ–°è®¢å•
   update dm_order_main t
      set t.account_id = l_account_id, t.pay_status = deal_status.processing
    where t.order_no = l_order_no;
 
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   l_temp     := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp     := f_json_add(l_temp, 'account_id', l_account_id);
   l_temp     := f_json_add(l_temp, 'pay_price', l_pay_price);
   l_temp     := f_json_add(l_temp, 'product_title', l_product_title);
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   commit;
 
@@ -9413,7 +9414,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_pay_info_get', 1, v_out_msg);
 end;
 /
@@ -9422,18 +9423,18 @@ prompt
 prompt Creating procedure SP_PAY_RESULT_SAVE
 prompt =====================================
 prompt
-create or replace procedure dm_system.sp_pay_result_save(v_order_no    in varchar2, -- ¶©µ¥ºÅ
-                                               v_pay_status  in varchar2, --Ö§¸¶×´Ì¬ 0-³É¹¦ 90-Ê§°Ü
-                                               v_suc_money   in number, -- ³É¹¦½ğ¶î
-                                               v_service_fee in number, -- ÊÖĞø·Ñ
-                                               v_trade_msg   in varchar2, -- Ö§¸¶½á¹ûÏûÏ¢
-                                               v_trade_no    in varchar2, -- Ö§¸¶Æ½Ì¨Á÷Ë®
+create or replace procedure dm_system.sp_pay_result_save(v_order_no    in varchar2, -- è®¢å•å·
+                                               v_pay_status  in varchar2, --æ”¯ä»˜çŠ¶æ€ 0-æˆåŠŸ 90-å¤±è´¥
+                                               v_suc_money   in number, -- æˆåŠŸé‡‘é¢
+                                               v_service_fee in number, -- æ‰‹ç»­è´¹
+                                               v_trade_msg   in varchar2, -- æ”¯ä»˜ç»“æœæ¶ˆæ¯
+                                               v_trade_no    in varchar2, -- æ”¯ä»˜å¹³å°æµæ°´
                                                v_out_code    out number,
                                                v_out_msg     out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ±£´æÖ§¸¶½á¹û
-  -- ´´½¨ÈË: ldp 2019-05-15
-  -- ĞŞ¸ÄÈË: zhusm 2019-08-01
+  -- åŠŸèƒ½: ä¿å­˜æ”¯ä»˜ç»“æœ
+  -- åˆ›å»ºäºº: ldp 2019-05-15
+  -- ä¿®æ”¹äºº: zhusm 2019-08-01
   -----------------------------------------------------------------------
   l_term_no     varchar2(64);
   l_term_prd_no varchar2(32);
@@ -9443,14 +9444,14 @@ create or replace procedure dm_system.sp_pay_result_save(v_order_no    in varcha
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_order_no is null or v_pay_status is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
  
-  -- ¸üĞÂÏûÏ¢
+  -- æ›´æ–°æ¶ˆæ¯
   update dm_order_main t
      set t.plat_trade_msg = nvl(substr(v_trade_msg, 1, 128),
                                 t.plat_trade_msg),
@@ -9458,7 +9459,7 @@ begin
    where t.order_no = v_order_no;
   commit;
  
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   begin
     select t.term_no, t.product_no, t.account_id, t.pay_price
       into l_term_no, l_term_prd_no, l_account_id, l_pay_price
@@ -9470,20 +9471,20 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := 'Òì³£¶©µ¥¾Ü¾ø´¦Àí';
+      v_out_msg  := 'å¼‚å¸¸è®¢å•æ‹’ç»å¤„ç†';
       return;
   end;
 
   if (abs(l_pay_price - v_suc_money) > 0) then
     v_out_code := error_code.failed;
-    v_out_msg  := '³É¹¦½ğ¶îÓëÖ§¸¶½ğ¶î²»·û';
+    v_out_msg  := 'æˆåŠŸé‡‘é¢ä¸æ”¯ä»˜é‡‘é¢ä¸ç¬¦';
     rollback;
     return;
   end if;
 
-  -- ´¦ÀíÖ§¸¶½á¹û
+  -- å¤„ç†æ”¯ä»˜ç»“æœ
   if (v_pay_status = deal_status.succeed) then
-    -- Ö§¸¶³É¹¦
+    -- æ”¯ä»˜æˆåŠŸ
     if (not f_pay_result_succeed(v_order_no,
                                  l_term_no,
                                  l_account_id,
@@ -9495,27 +9496,27 @@ begin
       return;
     end if;
   elsif (v_pay_status = deal_status.failed) then
-    -- Ö§¸¶Ê§°Ü
+    -- æ”¯ä»˜å¤±è´¥
     if (not f_pay_result_failed(v_order_no, v_out_msg)) then
       rollback;
       v_out_code := error_code.failed;
       return;
     end if;
   else
-    -- Ö§¸¶Î´Öª
+    -- æ”¯ä»˜æœªçŸ¥
     v_out_code := error_code.failed;
-    v_out_msg  := 'Ö§¸¶×´Ì¬´íÎó';
+    v_out_msg  := 'æ”¯ä»˜çŠ¶æ€é”™è¯¯';
     return;
   end if;
   commit;
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 
 exception
   when others then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_pay_result_save', 1, v_out_msg);
 end;
 /
@@ -9524,12 +9525,12 @@ prompt
 prompt Creating procedure SP_QUERY_CREATE_TMP
 prompt ======================================
 prompt
-create or replace procedure dm_system.sp_query_create_tmp(v_bind_id  in varchar2, -- ¶©µ¥ºÅ
+create or replace procedure dm_system.sp_query_create_tmp(v_bind_id  in varchar2, -- è®¢å•å·
                                                 v_out_code out number,
                                                 v_out_msg  out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ´´½¨²éÑ¯
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: åˆ›å»ºæŸ¥è¯¢
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_order_no      varchar2(32);
   l_channel_no    varchar2(32);
@@ -9541,14 +9542,14 @@ create or replace procedure dm_system.sp_query_create_tmp(v_bind_id  in varchar2
 
 begin
  
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_bind_id is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- »ñÈ¡ÉÏÓÎÇşµÀ
+  -- è·å–ä¸Šæ¸¸æ¸ é“
   begin
   
     select t.order_no, t.up_channel_no, t.business_type
@@ -9562,27 +9563,27 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := '¼ÇÂ¼²»´æÔÚ';
+      v_out_msg  := 'è®°å½•ä¸å­˜åœ¨';
       return;
   end;
   
-  -- !!! ºÅ¿¨²»ÄÜ´´½¨²éÑ¯
+  -- !!! å·å¡ä¸èƒ½åˆ›å»ºæŸ¥è¯¢
   if (l_busi_type = business_type.tel_card) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ºÅ¿¨²»ÄÜ´´½¨²éÑ¯';
+    v_out_msg  := 'å·å¡ä¸èƒ½åˆ›å»ºæŸ¥è¯¢';
     return;
   end if;
 
-  -- ¼ì²é²éÑ¯¼ÇÂ¼
+  -- æ£€æŸ¥æŸ¥è¯¢è®°å½•
   select count(1) into l_count from dm_order_query t where t.bind_id = v_bind_id;
   if (l_count > 0) then
     rollback;
     v_out_code := error_code.failed;
-    v_out_msg  := '²éÑ¯ÒÑ´´½¨';
+    v_out_msg  := 'æŸ¥è¯¢å·²åˆ›å»º';
     return;
   end if;
 
-  -- »ñÈ¡²éÑ¯ÅäÖÃ
+  -- è·å–æŸ¥è¯¢é…ç½®
   select t.script_id, t.service_code
     into l_script_id, l_service_code
     from dm_up_script t
@@ -9590,14 +9591,14 @@ begin
      and (t.business_type = l_busi_type or t.business_type = business_type.all_type)
      and t.script_type = script_type.order_query
      and t.status = enable_status.enabled;
-  -- ´´½¨¼ÇÂ¼
+  -- åˆ›å»ºè®°å½•
   insert into dm_order_query
     (bind_id, order_no, script_id, service_code, next_time)
   values
     (v_bind_id, l_order_no, l_script_id, l_service_code, sysdate + l_query_delay / 24 / 60 / 60);
   commit;
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 
 exception
   when others then
@@ -9612,14 +9613,14 @@ prompt
 prompt Creating procedure SP_QUERY_GET_BAT
 prompt ===================================
 prompt
-create or replace procedure dm_system.sp_query_get_bat(v_robot_ip   varchar2, -- »úÆ÷ÈËIP
-                                             v_robot_code varchar2, -- »úÆ÷ÈË±àÂë
-                                             v_get_count  number, -- »ñÈ¡ÊıÁ¿
-                                             v_out_count  out number, -- Êä³öÌõÊı
+create or replace procedure dm_system.sp_query_get_bat(v_robot_ip   varchar2, -- æœºå™¨äººIP
+                                             v_robot_code varchar2, -- æœºå™¨äººç¼–ç 
+                                             v_get_count  number, -- è·å–æ•°é‡
+                                             v_out_count  out number, -- è¾“å‡ºæ¡æ•°
                                              v_out_json   out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡²éÑ¯²ÎÊı(»úÆ÷ÈË²ÎÊı)
-  -- ´´½¨ÈË: zhusm 2019-05-25
+  -- åŠŸèƒ½: è·å–æŸ¥è¯¢å‚æ•°(æœºå™¨äººå‚æ•°)
+  -- åˆ›å»ºäºº: zhusm 2019-05-25
   -----------------------------------------------------------------------
   l_max_cntr number := 10;
   l_row_cntr number;
@@ -9650,14 +9651,14 @@ begin
     l_row_cntr := nvl(v_get_count, 1);
   end if;
 
-  -- É¨Ãè¼ÇÂ¼
+  -- æ‰«æè®°å½•
   for r in (select t.bind_id
               from dm_order_query t
              where t.status = deal_status.waiting
                and t.service_code = v_robot_code
                and t.next_time < sysdate
                and rownum <= l_row_cntr) loop
-    -- ÖØÖÃ±äÁ¿
+    -- é‡ç½®å˜é‡
     l_bind_id     := null;
     l_order_no    := null;
     l_script_id   := null;
@@ -9668,7 +9669,7 @@ begin
     l_api_url     := null;
     l_script_path := null;
     l_temp        := null;
-    -- ËøÊı¾İ
+    -- é”æ•°æ®
     begin
       select t.bind_id, t.order_no, t.script_id, t.create_time
         into l_bind_id, l_order_no, l_script_id, l_bind_time
@@ -9680,7 +9681,7 @@ begin
         rollback;
         continue;
     end;
-    -- »ñÈ¡²ÎÊı
+    -- è·å–å‚æ•°
     begin
       select t.up_order_no, t.up_channel_no, t.up_product_no
         into l_up_order_no, l_up_chnnl_no, l_up_prd_no
@@ -9702,7 +9703,7 @@ begin
         on t1.channel_no = t2.channel_no
      where t1.script_id = l_script_id;
     /*
-    -- !! ÁÙÊ±Ê¹ÓÃ----begin
+    -- !! ä¸´æ—¶ä½¿ç”¨----begin
     select t.api_id, t.api_key, nvl(t.query_interval, 300)
       into l_api_id, l_api_key, l_query_interval
       from dm_up_channel t
@@ -9713,14 +9714,14 @@ begin
      where t.script_id = l_script_id;
      */
 
-    -- ¸üĞÂ×´Ì¬
+    -- æ›´æ–°çŠ¶æ€
     update dm_order_query t
        set t.status      = deal_status.processing,
            t.robot_ip    = v_robot_ip,
            t.next_time   = sysdate + l_query_interval / 24 / 60 / 60,
            t.query_times = nvl(t.query_times, 0) + 1
      where t.bind_id = l_bind_id;
-    -- ×éÖ¯½Å±¾²ÎÊı
+    -- ç»„ç»‡è„šæœ¬å‚æ•°
     l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
     l_temp      := f_json_add(l_temp, 'bind_id', l_bind_id);
     l_temp      := f_json_add(l_temp, 'order_no', l_order_no);
@@ -9757,14 +9758,14 @@ prompt
 prompt Creating procedure SP_QUERY_SAVE
 prompt ================================
 prompt
-create or replace procedure dm_system.sp_query_save(v_bind_id    in varchar2, -- ¶©µ¥ºÅ
-                                          v_status     in number, -- ×´Ì¬: 0-³É¹¦ 90-Ê§°Ü
-                                          v_result_msg in varchar2, -- ½á¹ûÏûÏ¢
+create or replace procedure dm_system.sp_query_save(v_bind_id    in varchar2, -- è®¢å•å·
+                                          v_status     in number, -- çŠ¶æ€: 0-æˆåŠŸ 90-å¤±è´¥
+                                          v_result_msg in varchar2, -- ç»“æœæ¶ˆæ¯
                                           v_out_code   out number,
                                           v_out_msg    out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ±£´æ²éÑ¯
-  -- ´´½¨ÈË: zhusm 2019-05-26
+  -- åŠŸèƒ½: ä¿å­˜æŸ¥è¯¢
+  -- åˆ›å»ºäºº: zhusm 2019-05-26
   -----------------------------------------------------------------------
   l_script_id      number;
   l_query_max      number;
@@ -9773,9 +9774,9 @@ create or replace procedure dm_system.sp_query_save(v_bind_id    in varchar2, --
   l_order_no       varchar2(32);
 begin
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   
-  -- Ëø¼ÇÂ¼
+  -- é”è®°å½•
   select t.script_id, t.query_times, t.max_times, t.order_no
     into l_script_id, l_query_times, l_query_max, l_order_no
     from dm_order_query t
@@ -9791,7 +9792,7 @@ begin
      set t.result_msg = nvl(substr(v_result_msg, 1, 128), t.result_msg)
    where t.order_no = l_order_no;
 
-  -- ³É¹¦¹Ø±Õ²éÑ¯
+  -- æˆåŠŸå…³é—­æŸ¥è¯¢
   if (v_status = deal_status.succeed) then
     update dm_order_query t
        set t.status      = deal_status.succeed,
@@ -9802,7 +9803,7 @@ begin
     return;
   end if;
  
-  -- Ê§°Ü³¬ÏŞ¹Ø±Õ²éÑ¯
+  -- å¤±è´¥è¶…é™å…³é—­æŸ¥è¯¢
   if (l_query_max <> 0 and l_query_times >= l_query_max) then
     update dm_order_query t
        set t.status      = deal_status.failed,
@@ -9813,7 +9814,7 @@ begin
     return;
   end if;
  
-  -- ¿ÉÖØÊÔ
+  -- å¯é‡è¯•
   select t1.query_interval
     into l_query_interval
     from dm_up_channel t1
@@ -9841,14 +9842,14 @@ prompt
 prompt Creating procedure SP_REFUND_GET_BAT
 prompt ====================================
 prompt
-create or replace procedure dm_system.sp_refund_get_bat(v_robot_ip   varchar2, -- »úÆ÷ÈËIP
-                                              v_robot_code varchar2, -- »úÆ÷ÈË±àÂë
-                                              v_get_count  number, -- »ñÈ¡ÊıÁ¿
-                                              v_out_count  out number, -- Êä³öÌõÊı
+create or replace procedure dm_system.sp_refund_get_bat(v_robot_ip   varchar2, -- æœºå™¨äººIP
+                                              v_robot_code varchar2, -- æœºå™¨äººç¼–ç 
+                                              v_get_count  number, -- è·å–æ•°é‡
+                                              v_out_count  out number, -- è¾“å‡ºæ¡æ•°
                                               v_out_json   out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡ÍË¿î¼ÇÂ¼(ÓÃÓÚ»úÆ÷ÈËÍË¿î)
-  -- ´´½¨ÈË: zhusm 2019-05-16
+  -- åŠŸèƒ½: è·å–é€€æ¬¾è®°å½•(ç”¨äºæœºå™¨äººé€€æ¬¾)
+  -- åˆ›å»ºäºº: zhusm 2019-05-16
   -----------------------------------------------------------------------
   l_max_cntr number := 10;
   l_row_cntr number;
@@ -9860,8 +9861,8 @@ create or replace procedure dm_system.sp_refund_get_bat(v_robot_ip   varchar2, -
   l_account_type  number;
   l_app_id        varchar2(128);
   l_merchant_id   varchar2(128);
-  l_refund_fee    number; -- ÍË¿î½ğ¶î
-  l_refund_reason varchar2(128); -- ÍË¿îÔ­Òò
+  l_refund_fee    number; -- é€€æ¬¾é‡‘é¢
+  l_refund_reason varchar2(128); -- é€€æ¬¾åŸå› 
   l_script_path   varchar2(256);
   l_request_url   varchar2(128);
   l_notify_url    varchar2(128);
@@ -9878,14 +9879,14 @@ begin
     l_row_cntr := v_get_count;
   end if;
 
-  -- É¨Ãè¼ÇÂ¼
+  -- æ‰«æè®°å½•
   for r in (select t.record_id
               from dm_order_refund t
              where t.status = deal_status.waiting
                and t.service_code = v_robot_code
                and rownum <= l_row_cntr) loop
     begin
-      -- ÖØÖÃ±äÁ¿
+      -- é‡ç½®å˜é‡
       l_record_id     := null;
       l_order_no      := null;
       l_account_id    := null;
@@ -9898,7 +9899,7 @@ begin
       l_request_url   := null;
       begin
    
-        -- Ëø¼ÇÂ¼
+        -- é”è®°å½•
         select t.record_id,
                t.account_id,
                t.order_no,
@@ -9921,14 +9922,14 @@ begin
           continue;
       end;
    
-      -- Ö§¸¶ÕËºÅ
+      -- æ”¯ä»˜è´¦å·
       select t.account_type, t.app_id, t.merchant_id, t.refund_notify_url
         into l_account_type, l_app_id, l_merchant_id, l_notify_url
         from dm_pay_account t
        where t.account_id = l_account_id
          and t.status = enable_status.enabled;
    
-      -- ÍË¿î½Å±¾
+      -- é€€æ¬¾è„šæœ¬
       select t.request_url, t.script_path
         into l_request_url, l_script_path
         from dm_pay_script t
@@ -9936,14 +9937,14 @@ begin
          and t.script_type = script_type.refund_apply
          and t.status = enable_status.enabled;
  
-      -- ¸üĞÂÍË¿î¼ÇÂ¼
+      -- æ›´æ–°é€€æ¬¾è®°å½•
       update dm_order_refund t
          set t.robot_ip   = v_robot_ip,
              t.status     = deal_status.processing,
              t.start_time = sysdate
        where t.record_id = l_record_id;
    
-      -- ×éÖ¯½Å±¾²ÎÊı
+      -- ç»„ç»‡è„šæœ¬å‚æ•°
       l_temp      := f_json_add(l_temp, 'script_path', l_script_path);
       l_temp      := f_json_add(l_temp, 'record_id', l_record_id);
       l_temp      := f_json_add(l_temp, 'order_no', l_order_no);
@@ -9981,43 +9982,43 @@ prompt
 prompt Creating procedure SP_REFUND_SAVE
 prompt =================================
 prompt
-create or replace procedure dm_system.sp_refund_save(v_record_id  in varchar2, -- ¼ÇÂ¼±àºÅ
-                                           v_status     in varchar2, -- ÍË¿î×´Ì¬: 0-³É¹¦ 90-Ê§°Ü
-                                           v_result_msg in varchar2, -- ÍË¿î½á¹ûÏûÏ¢
-                                           v_refund_no  in varchar2, -- Æ½Ì¨ÍË¿îµ¥ºÅ
+create or replace procedure dm_system.sp_refund_save(v_record_id  in varchar2, -- è®°å½•ç¼–å·
+                                           v_status     in varchar2, -- é€€æ¬¾çŠ¶æ€: 0-æˆåŠŸ 90-å¤±è´¥
+                                           v_result_msg in varchar2, -- é€€æ¬¾ç»“æœæ¶ˆæ¯
+                                           v_refund_no  in varchar2, -- å¹³å°é€€æ¬¾å•å·
                                            v_out_code   out number,
                                            v_out_msg    out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ±£´æÍË¿î½á¹û
-  -- ´´½¨ÈË: zhusm 2019-05-16
-  -- ĞŞ¸ÄÈË: zhusm 2019-05-17
+  -- åŠŸèƒ½: ä¿å­˜é€€æ¬¾ç»“æœ
+  -- åˆ›å»ºäºº: zhusm 2019-05-16
+  -- ä¿®æ”¹äºº: zhusm 2019-05-17
   -----------------------------------------------------------------------
   l_term_no      varchar2(64);
   l_order_no     varchar2(64);
   l_account_id   number;
   l_account_type number;
-  l_refund_fee   number; -- ¶©µ¥ÍË¿î½ğ¶î
-  l_change_money number; -- Êµ¼ÊÍË¿î½ğ¶î
-  l_service_fee  number; -- ÊÖĞø·Ñ
+  l_refund_fee   number; -- è®¢å•é€€æ¬¾é‡‘é¢
+  l_change_money number; -- å®é™…é€€æ¬¾é‡‘é¢
+  l_service_fee  number; -- æ‰‹ç»­è´¹
   l_term_mode    number;
   l_term_price   number;
 
 begin
 
-  -- ²ÎÊı¼ì²é
+  -- å‚æ•°æ£€æŸ¥
   if (v_record_id is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '¼ÇÂ¼±àºÅÎª¿Õ';
+    v_out_msg  := 'è®°å½•ç¼–å·ä¸ºç©º';
     return;
   end if;
 
   if (v_status not in (deal_status.succeed, deal_status.failed)) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÍË¿î×´Ì¬´íÎó';
+    v_out_msg  := 'é€€æ¬¾çŠ¶æ€é”™è¯¯';
     return;
   end if;
 
-  -- ¼ÇÂ¼¼ì²é
+  -- è®°å½•æ£€æŸ¥
   begin
     select t.term_no,
            t.order_no,
@@ -10038,11 +10039,11 @@ begin
     when others then
       rollback;
       v_out_code := error_code.failed;
-      v_out_msg  := 'ÍË¿î¼ÇÂ¼²»´æÔÚ';
+      v_out_msg  := 'é€€æ¬¾è®°å½•ä¸å­˜åœ¨';
       return;
   end;
 
-  -- ¸üĞÂÍË¿î½á¹û
+  -- æ›´æ–°é€€æ¬¾ç»“æœ
   update dm_order_refund t
      set t.status         = v_status,
          t.result_msg     = nvl(substr(v_result_msg, 1, 128), t.result_msg),
@@ -10050,30 +10051,30 @@ begin
          t.finish_time    = sysdate
    where t.record_id = v_record_id;
   
-  -- ÍË¿îÊ§°Ü·µ»Ø
+  -- é€€æ¬¾å¤±è´¥è¿”å›
   if (v_status <> deal_status.succeed) then
     commit;
     v_out_code := error_code.success;
-    v_out_msg  := '²Ù×÷³É¹¦';
+    v_out_msg  := 'æ“ä½œæˆåŠŸ';
     return;
   end if;
 
-  -- ÍË¿î³É¹¦Á÷³Ì
+  -- é€€æ¬¾æˆåŠŸæµç¨‹
   update dm_order_main t
      set t.refund_status = deal_status.succeed
    where t.order_no = l_order_no;
 
   if (l_account_type = account_type.alipay) then
-    -- Ö§¸¶±¦²»ÍËÊÖĞø·Ñ(¿÷Ëğ)
+    -- æ”¯ä»˜å®ä¸é€€æ‰‹ç»­è´¹(äºæŸ)
     l_change_money := l_refund_fee;
     l_service_fee  := l_service_fee;
   else
-    -- Î¢ĞÅÒªÍËÊÖĞø·Ñ
+    -- å¾®ä¿¡è¦é€€æ‰‹ç»­è´¹
     l_change_money := l_refund_fee;
     l_service_fee  := 0;
   end if;
 
-  -- ´´½¨×Ê½ğÕË»§ÍË¿î±ä¶¯
+  -- åˆ›å»ºèµ„é‡‘è´¦æˆ·é€€æ¬¾å˜åŠ¨
   if (not (f_pay_fund_change_add(l_term_no,
                                  l_order_no,
                                  l_account_id,
@@ -10081,7 +10082,7 @@ begin
                                  l_change_money,
                                  l_service_fee,
                                  '_system',
-                                 '×Ô¶¯ÍË¿î',
+                                 'è‡ªåŠ¨é€€æ¬¾',
                                  v_out_msg))) then
     rollback;
     sp_system_log_add('sp_refund_save',
@@ -10091,7 +10092,7 @@ begin
     return;
   end if;
 
-  -- ´´½¨ÖÕ¶ËÍË¿î±ä¶¯
+  -- åˆ›å»ºç»ˆç«¯é€€æ¬¾å˜åŠ¨
   select t1.deduct_mode, t1.pay_price
     into l_term_mode, l_term_price
     from dm_term_product t1
@@ -10105,7 +10106,7 @@ begin
                                    change_type.income,
                                    l_term_price,
                                    '_system',
-                                   '×Ô¶¯ÍË¿î',
+                                   'è‡ªåŠ¨é€€æ¬¾',
                                    v_out_msg)) then
       rollback;
       v_out_code := error_code.failed;
@@ -10115,7 +10116,7 @@ begin
 
   commit;
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
 exception
   when others then
     rollback;
@@ -10139,10 +10140,10 @@ create or replace procedure dm_system.sp_statics_diagram(v_pid         varchar2,
 begin
   open v_out_data for
   
-    select count(*) ¶©µ¥Á¿,
-           nvl(sum(decode(t1.order_status, 0, 1, 0)), 0) ·¢»õÁ¿,
-           nvl(sum(decode(t2.activate_status, 0, 1, 0)), 0) ¼¤»îÁ¿,
-           nvl(sum(decode(t1.order_status, 90, 1, 0)), 0) Òì³£Á¿
+    select count(*) è®¢å•é‡,
+           nvl(sum(decode(t1.order_status, 0, 1, 0)), 0) å‘è´§é‡,
+           nvl(sum(decode(t2.activate_status, 0, 1, 0)), 0) æ¿€æ´»é‡,
+           nvl(sum(decode(t1.order_status, 90, 1, 0)), 0) å¼‚å¸¸é‡
       from dm_order_main t1
       left join dm_order_main_ext t2
         on t1.order_no = t2.order_no
@@ -10152,10 +10153,10 @@ begin
        and (t1.create_time <= to_date(v_end_time, 'YYYY/MM/DD') or
            v_end_time is null);
   /*
-    select count(*) ¶©µ¥Á¿,
-           nvl(sum(decode(t1.bind_status, 0, 1, 0)), 0) ·¢»õÁ¿,
-           nvl(sum(decode(t2.activate_status, 0, 1, 0)), 0) ¼¤»îÁ¿,
-           nvl(sum(decode(t1.bind_status, 90, 1, 0)), 0) Òì³£Á¿
+    select count(*) è®¢å•é‡,
+           nvl(sum(decode(t1.bind_status, 0, 1, 0)), 0) å‘è´§é‡,
+           nvl(sum(decode(t2.activate_status, 0, 1, 0)), 0) æ¿€æ´»é‡,
+           nvl(sum(decode(t1.bind_status, 90, 1, 0)), 0) å¼‚å¸¸é‡
       from dm_order_main t
       left join dm_order_bind t1
         on t.order_no = t1.order_no
@@ -10168,12 +10169,12 @@ begin
            v_end_time is null);
   */
   v_out_errcode := error_code.success;
-  v_out_msg     := '²Ù×÷³É¹¦';
+  v_out_msg     := 'æ“ä½œæˆåŠŸ';
 exception
   when others then
     v_out_errcode := error_code.failed;
-    v_out_msg     := '²Ù×÷Ê§°Ü' || sqlerrm;
-    sp_system_log_add('sp_statics_diagram', 1, '¹ı³ÌÒì³£: ' || sqlerrm);
+    v_out_msg     := 'æ“ä½œå¤±è´¥' || sqlerrm;
+    sp_system_log_add('sp_statics_diagram', 1, 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm);
 end;
 /
 
@@ -10181,15 +10182,15 @@ prompt
 prompt Creating procedure SP_TEST
 prompt ==========================
 prompt
-create or replace procedure dm_system.sp_test(v_product_no varchar2, -- ²úÆ·±àºÅ
+create or replace procedure dm_system.sp_test(v_product_no varchar2, -- äº§å“ç¼–å·
                                     v_out_code   out number,
                                     v_out_msg    out varchar2) as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ²âÊÔÓÃ´æ´¢
+  -- åŠŸèƒ½: æµ‹è¯•ç”¨å­˜å‚¨
   -----------------------------------------------------------------------
 
 begin
-  dbms_output.put_line('--²âÊÔ¿ªÊ¼---');
+  dbms_output.put_line('--æµ‹è¯•å¼€å§‹---');
 
 end;
 /
@@ -10198,16 +10199,16 @@ prompt
 prompt Creating procedure SP_VCODE1_CREATE
 prompt ===================================
 prompt
-create or replace procedure dm_system.sp_vcode1_create(v_phone_no     varchar2, -- °ìÀíÈËÊÖ»úºÅ
-                                             v_promote_guid varchar2, -- ÍÆ¹ãGUID
-                                             v_user_ip      varchar2, -- ÓÃ»§IP
-                                             v_out_code     out number, -- ´íÎóÂë
-                                             v_out_msg      out varchar2, -- ´íÎóÏûÏ¢
-                                             v_out_json     out varchar2) -- ÑéÖ¤Âë¶ÓÁĞ²ÎÊı
+create or replace procedure dm_system.sp_vcode1_create(v_phone_no     varchar2, -- åŠç†äººæ‰‹æœºå·
+                                             v_promote_guid varchar2, -- æ¨å¹¿GUID
+                                             v_user_ip      varchar2, -- ç”¨æˆ·IP
+                                             v_out_code     out number, -- é”™è¯¯ç 
+                                             v_out_msg      out varchar2, -- é”™è¯¯æ¶ˆæ¯
+                                             v_out_json     out varchar2) -- éªŒè¯ç é˜Ÿåˆ—å‚æ•°
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ê×´Î·¢ËÍÑéÖ¤Âë(Æ½Ì¨·¢ËÍ)
-  -- ´´½¨ÈË: zhusm 2019-08-26
+  -- åŠŸèƒ½: é¦–æ¬¡å‘é€éªŒè¯ç (å¹³å°å‘é€)
+  -- åˆ›å»ºäºº: zhusm 2019-08-26
   -----------------------------------------------------------------------
   l_count       number;
   l_carrier_no  varchar2(32);
@@ -10228,20 +10229,20 @@ create or replace procedure dm_system.sp_vcode1_create(v_phone_no     varchar2, 
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_phone_no is null or v_promote_guid is null or v_user_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- »ñÈ¡ºÅ¶Î
+  -- è·å–å·æ®µ
   if (not f_num_section_get(v_phone_no, v_out_msg, l_carrier_no, l_province_no, l_city_no)) then
     v_out_code := error_code.failed;
     return;
   end if;
 
-  -- ¼ì²éÍÆ¹ã
+  -- æ£€æŸ¥æ¨å¹¿
   select min(t.term_no)
     into l_term_no
     from dm_term_promote t
@@ -10250,11 +10251,11 @@ begin
 
   if (l_term_no is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÍÆ¹ã²»´æÔÚ»òÎ´ÆôÓÃ';
+    v_out_msg  := 'æ¨å¹¿ä¸å­˜åœ¨æˆ–æœªå¯ç”¨';
     return;
   end if;
 
-  -- ÏŞÖÆÆµÂÊ
+  -- é™åˆ¶é¢‘ç‡
   select count(1)
     into l_count
     from dm_order_vcode t
@@ -10264,11 +10265,11 @@ begin
 
   if (l_count >= 1) then
     v_out_code := error_code.failed;
-    v_out_msg  := '²Ù×÷Ì«¿ì£¬ÉÔºóÔÙÊÔ';
+    v_out_msg  := 'æ“ä½œå¤ªå¿«ï¼Œç¨åå†è¯•';
     return;
   end if;
 
-  -- ÏŞÖÆIP
+  -- é™åˆ¶IP
   select count(1)
     into l_count
     from dm_order_vcode t
@@ -10277,11 +10278,11 @@ begin
 
   if (l_count >= 5) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'IP³¬¹ıÏŞÖÆ£¬ÉÔºóÔÙÊÔ';
+    v_out_msg  := 'IPè¶…è¿‡é™åˆ¶ï¼Œç¨åå†è¯•';
     return;
   end if;
 
-  -- ¼ì²éÖÕ¶ËÍÆ¹ã
+  -- æ£€æŸ¥ç»ˆç«¯æ¨å¹¿
   if (not f_check_term_promote(l_term_no,
                                v_promote_guid,
                                v_out_msg,
@@ -10292,11 +10293,11 @@ begin
     return;
   end if;
 
-  -- Ìí¼Ó¼ÇÂ¼
+  -- æ·»åŠ è®°å½•
   l_order_no    := f_order_no_create();
   l_serial_no   := seq_vcode_serial_no.nextval;
   l_vcode       := trunc(dbms_random.value(100000, 999999));
-  l_template_id := '¡¾ÑéÖ¤Âë¡¿ÄúµÄÑéÖ¤ÂëÎª£º' || l_vcode || '£¬5·ÖÖÓÄÚÓĞĞ§¡£';
+  l_template_id := 'ã€éªŒè¯ç ã€‘æ‚¨çš„éªŒè¯ç ä¸ºï¼š' || l_vcode || 'ï¼Œ5åˆ†é’Ÿå†…æœ‰æ•ˆã€‚';
   insert into dm_order_vcode
     (order_no,
      term_no,
@@ -10340,7 +10341,7 @@ begin
   l_temp     := f_json_add(l_temp, 'content', l_template_id);
   l_temp     := f_json_add(l_temp, 'script_path', '../script/smsjk/vcode_send.lua');
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   commit;
 
@@ -10348,7 +10349,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_vcode1_create', 1, v_out_msg);
 end;
 /
@@ -10357,15 +10358,15 @@ prompt
 prompt Creating procedure SP_VCODE1_RETRY
 prompt ==================================
 prompt
-create or replace procedure dm_system.sp_vcode1_retry(v_order_no varchar2, -- ¶©µ¥ºÅ
-                                            v_user_ip  varchar2, -- ÓÃ»§IP
+create or replace procedure dm_system.sp_vcode1_retry(v_order_no varchar2, -- è®¢å•å·
+                                            v_user_ip  varchar2, -- ç”¨æˆ·IP
                                             v_out_code out number,
                                             v_out_msg  out varchar2,
-                                            v_out_json out varchar2) -- ÑéÖ¤Âë¶ÓÁĞ²ÎÊı: {"que_name":"","order_no":"","script_path":""}
+                                            v_out_json out varchar2) -- éªŒè¯ç é˜Ÿåˆ—å‚æ•°: {"que_name":"","order_no":"","script_path":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ÖØ¸´·¢ËÍÑéÖ¤Âë(Æ½Ì¨·¢ËÍ)
-  -- ´´½¨ÈË: zhusm 2019-08-26
+  -- åŠŸèƒ½: é‡å¤å‘é€éªŒè¯ç (å¹³å°å‘é€)
+  -- åˆ›å»ºäºº: zhusm 2019-08-26
   -----------------------------------------------------------------------
   l_order_no       varchar2(32);
   l_phone_no       varchar2(24);
@@ -10381,14 +10382,14 @@ create or replace procedure dm_system.sp_vcode1_retry(v_order_no varchar2, -- ¶©
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_order_no is null or v_user_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÓÃ»§IPÎª¿Õ';
+    v_out_msg  := 'ç”¨æˆ·IPä¸ºç©º';
     return;
   end if;
 
-  -- ¼ì²é·¢ËÍ¼ÇÂ¼
+  -- æ£€æŸ¥å‘é€è®°å½•
   begin
     select t.order_no,
            t.phone_no,
@@ -10405,29 +10406,29 @@ begin
   exception
     when others then
       v_out_code := error_code.failed;
-      v_out_msg  := '·Ç·¨¶©µ¥¾Ü¾ø´¦Àí';
+      v_out_msg  := 'éæ³•è®¢å•æ‹’ç»å¤„ç†';
       return;
   end;
 
   if (v_user_ip <> l_user_ip) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'Ìá½»IPÒì³£';
+    v_out_msg  := 'æäº¤IPå¼‚å¸¸';
     return;
   end if;
 
   if (l_send_times > l_send_max) then
     v_out_code := error_code.overload;
-    v_out_msg  := '·¢ËÍ´ÎÊı³¬ÏŞ';
+    v_out_msg  := 'å‘é€æ¬¡æ•°è¶…é™';
     return;
   end if;
 
   if (l_next_send_time > sysdate) then
     v_out_code := error_code.failed;
-    v_out_msg  := '·¢ËÍÆµÂÊÌ«¿ì';
+    v_out_msg  := 'å‘é€é¢‘ç‡å¤ªå¿«';
     return;
   end if;
 
-  -- ¼ì²é¶©µ¥
+  -- æ£€æŸ¥è®¢å•
   select max(t.order_status)
     into l_order_status
     from dm_order_main t
@@ -10436,20 +10437,20 @@ begin
   if (l_order_status is not null) then
     if (l_order_status = deal_status.succeed) then
       v_out_code := error_code.failed;
-      v_out_msg  := '¶©µ¥ÒÑ¾­³É¹¦';
+      v_out_msg  := 'è®¢å•å·²ç»æˆåŠŸ';
       return;
     end if;
     if (l_order_status <> deal_status.failed) then
       v_out_code := error_code.repeat;
-      v_out_msg  := '´æÔÚÔÚÍ¾¶©µ¥';
+      v_out_msg  := 'å­˜åœ¨åœ¨é€”è®¢å•';
       return;
     end if;
   end if;
 
-  -- ÖØ¸´·¢ËÍ
+  -- é‡å¤å‘é€
   l_serial_no   := seq_vcode_serial_no.nextval;
   l_vcode       := trunc(dbms_random.value(100000, 999999));
-  l_template_id := '¡¾ÑéÖ¤Âë¡¿ÄúµÄÑéÖ¤ÂëÎª£º' || l_vcode || '£¬5·ÖÖÓÄÚÓĞĞ§¡£';
+  l_template_id := 'ã€éªŒè¯ç ã€‘æ‚¨çš„éªŒè¯ç ä¸ºï¼š' || l_vcode || 'ï¼Œ5åˆ†é’Ÿå†…æœ‰æ•ˆã€‚';
   update dm_order_vcode t
      set t.send_status    = deal_status.processing,
          t.result_msg     = null,
@@ -10463,7 +10464,7 @@ begin
          t.user_ip        = substr(v_user_ip, 1, 17),
          t.verify_state   = deal_status.waiting
    where t.order_no = l_order_no;
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
 
   l_temp := f_json_add(l_temp, 'que_name', 'DM:TERM:VCODE1');
   l_temp := f_json_add(l_temp, 'order_no', l_order_no);
@@ -10475,7 +10476,7 @@ begin
                        '../script/smsjk/vcode_send.lua');
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   commit;
 
@@ -10483,7 +10484,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_vcode1_retry', 1, v_out_msg);
 end;
 /
@@ -10492,15 +10493,15 @@ prompt
 prompt Creating procedure SP_VCODE1_VERIFY
 prompt ===================================
 prompt
-create or replace procedure dm_system.sp_vcode1_verify(v_order_no varchar2, -- ¶©µ¥ºÅ
-                                             v_vcode    varchar2, -- ÑéÖ¤Âë
-                                             v_user_ip  varchar2, -- ÓÃ»§IP
-                                             v_out_code out number, -- ´íÎóÂë
-                                             v_out_msg  out varchar2) -- ´íÎóÏûÏ¢
+create or replace procedure dm_system.sp_vcode1_verify(v_order_no varchar2, -- è®¢å•å·
+                                             v_vcode    varchar2, -- éªŒè¯ç 
+                                             v_user_ip  varchar2, -- ç”¨æˆ·IP
+                                             v_out_code out number, -- é”™è¯¯ç 
+                                             v_out_msg  out varchar2) -- é”™è¯¯æ¶ˆæ¯
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ğ£Ñé¶ÌĞÅÑéÖ¤Âë(Æ½Ì¨·¢ËÍ)
-  -- ´´½¨ÈË: zhusm 2019-08-26
+  -- åŠŸèƒ½: æ ¡éªŒçŸ­ä¿¡éªŒè¯ç (å¹³å°å‘é€)
+  -- åˆ›å»ºäºº: zhusm 2019-08-26
   -----------------------------------------------------------------------
   l_send_status number;
   l_retry_times number;
@@ -10509,14 +10510,14 @@ create or replace procedure dm_system.sp_vcode1_verify(v_order_no varchar2, -- ¶
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_order_no is null or v_vcode is null or v_user_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- ¼ì²é¶©µ¥
+  -- æ£€æŸ¥è®¢å•
   select max(t.send_status), max(t.retry_times)
     into l_send_status, l_retry_times
     from dm_order_vcode t
@@ -10525,23 +10526,23 @@ begin
 
   if (l_send_status is null or l_retry_times is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÑéÖ¤ÂëÎ´·¢ËÍ';
+    v_out_msg  := 'éªŒè¯ç æœªå‘é€';
     return;
   end if;
 
   if (l_send_status <> deal_status.succeed) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÑéÖ¤Âë·¢ËÍÊ§°Ü, ÇëÖØÊÔ';
+    v_out_msg  := 'éªŒè¯ç å‘é€å¤±è´¥, è¯·é‡è¯•';
     return;
   end if;
 
   if (l_retry_times > 3) then
     v_out_code := error_code.overload;
-    v_out_msg  := 'ÖØÊÔ³¬¹ıÏŞÖÆ';
+    v_out_msg  := 'é‡è¯•è¶…è¿‡é™åˆ¶';
     return;
   end if;
 
-  -- ¼ì²éÌá½»IP
+  -- æ£€æŸ¥æäº¤IP
   select count(1)
     into l_count
     from dm_order_vcode t
@@ -10549,11 +10550,11 @@ begin
      and t.user_ip = v_user_ip;
   if (l_count <= 0) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'Ìá½»IPÒì³£';
+    v_out_msg  := 'æäº¤IPå¼‚å¸¸';
     return;
   end if;
 
-  -- ¼ì²éÑéÖ¤Âë
+  -- æ£€æŸ¥éªŒè¯ç 
   select count(1)
     into l_count
     from dm_order_vcode t
@@ -10563,11 +10564,11 @@ begin
      and t.vcode = v_vcode;
   if (l_count <= 0) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÑéÖ¤Âë´íÎó';
+    v_out_msg  := 'éªŒè¯ç é”™è¯¯';
     return;
   end if;
 
-  -- ¸üĞÂÑéÖ¤×´Ì¬
+  -- æ›´æ–°éªŒè¯çŠ¶æ€
   update dm_order_vcode t
      set t.verify_state = deal_status.succeed
    where t.order_no = v_order_no
@@ -10575,14 +10576,14 @@ begin
      and t.verify_state = deal_status.waiting;
 
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_vcode1_verify', 1, v_out_msg);
 end;
 /
@@ -10591,17 +10592,17 @@ prompt
 prompt Creating procedure SP_VCODE2_CREATE
 prompt ===================================
 prompt
-create or replace procedure dm_system.sp_vcode2_create(v_product_no   varchar2, -- ÖÕ¶Ë²úÆ·±àºÅ
-                                             v_phone_no     varchar2, -- °ìÀíÈËÊÖ»úºÅ
-                                             v_promote_guid varchar2, -- ÍÆ¹ãGUID
-                                             v_user_ip      varchar2, -- ÓÃ»§IP
+create or replace procedure dm_system.sp_vcode2_create(v_product_no   varchar2, -- ç»ˆç«¯äº§å“ç¼–å·
+                                             v_phone_no     varchar2, -- åŠç†äººæ‰‹æœºå·
+                                             v_promote_guid varchar2, -- æ¨å¹¿GUID
+                                             v_user_ip      varchar2, -- ç”¨æˆ·IP
                                              v_out_code     out number,
                                              v_out_msg      out varchar2,
-                                             v_out_json     out varchar2) -- ÑéÖ¤Âë¶ÓÁĞ²ÎÊı: {"que_name":"","order_no":"","script_path":""}
+                                             v_out_json     out varchar2) -- éªŒè¯ç é˜Ÿåˆ—å‚æ•°: {"que_name":"","order_no":"","script_path":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: Ê×´Î·¢ËÍÑéÖ¤Âë(ÉÏÓÎ·¢ËÍ)
-  -- ´´½¨ÈË: zhusm 2019-05-24
+  -- åŠŸèƒ½: é¦–æ¬¡å‘é€éªŒè¯ç (ä¸Šæ¸¸å‘é€)
+  -- åˆ›å»ºäºº: zhusm 2019-05-24
   -----------------------------------------------------------------------
   l_count         number;
   l_carrier_no    varchar2(32);
@@ -10629,15 +10630,15 @@ create or replace procedure dm_system.sp_vcode2_create(v_product_no   varchar2, 
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_product_no is null or v_phone_no is null or v_promote_guid is null or
      v_user_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '±Ø´«²ÎÊıÎª¿Õ';
+    v_out_msg  := 'å¿…ä¼ å‚æ•°ä¸ºç©º';
     return;
   end if;
 
-  -- »ñÈ¡ºÅ¶Î
+  -- è·å–å·æ®µ
   if (not f_num_section_get(v_phone_no,
                             v_out_msg,
                             l_carrier_no,
@@ -10647,7 +10648,7 @@ begin
     return;
   end if;
 
-  -- ¼ì²éÖÕ¶Ë²úÆ·
+  -- æ£€æŸ¥ç»ˆç«¯äº§å“
   begin
     select term_no, product_no, business_type, face_fee
       into l_term_no, l_term_prd_no, l_busi_type, l_face_fee
@@ -10670,11 +10671,11 @@ begin
   exception
     when others then
       v_out_code := error_code.failed;
-      v_out_msg  := '²úÆ·²»Ö§³Ö»òÎ´ÆôÓÃ';
+      v_out_msg  := 'äº§å“ä¸æ”¯æŒæˆ–æœªå¯ç”¨';
       return;
   end;
 
-  -- ¼ì²éÖÕ¶Ë
+  -- æ£€æŸ¥ç»ˆç«¯
   select count(1)
     into l_count
     from dm_term_info t
@@ -10683,11 +10684,11 @@ begin
 
   if (l_count <= 0) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÖÕ¶Ë²»Ö§³Ö»òÎ´ÆôÓÃ';
+    v_out_msg  := 'ç»ˆç«¯ä¸æ”¯æŒæˆ–æœªå¯ç”¨';
     return;
   end if;
 
-  -- ¼ì²éÖÕ¶ËÍÆ¹ã
+  -- æ£€æŸ¥ç»ˆç«¯æ¨å¹¿
   if (not f_check_term_promote(l_term_no,
                                v_promote_guid,
                                v_out_msg,
@@ -10698,7 +10699,7 @@ begin
     return;
   end if;
 
-  -- !!!ÉÂÎ÷ÒÆ¶¯Ö»ÄÜ°ìÀíÒ»´Î
+  -- !!!é™•è¥¿ç§»åŠ¨åªèƒ½åŠç†ä¸€æ¬¡
   select count(1)
     into l_count
     from dm_order_main t
@@ -10710,11 +10711,11 @@ begin
      and t.order_status <> deal_status.failed;
   if (l_count > 0) then
     v_out_code := error_code.repeat;
-    v_out_msg  := '²»¿ÉÖØ¸´°ìÀí';
+    v_out_msg  := 'ä¸å¯é‡å¤åŠç†';
     return;
   end if;
 
-  -- Ñ¡ÔñÉÏÓÎ²úÆ·
+  -- é€‰æ‹©ä¸Šæ¸¸äº§å“
   if (not f_bind_up_product(l_term_prd_no,
                             l_busi_type,
                             l_face_fee,
@@ -10733,21 +10734,21 @@ begin
     return;
   end if;
 
-  -- ¼ì²éÊÇ·ñ·¢»õ
+  -- æ£€æŸ¥æ˜¯å¦å‘è´§
   if (l_need_delivery = enable_status.disabled) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÉÏÓÎ²úÆ·´íÎó';
+    v_out_msg  := 'ä¸Šæ¸¸äº§å“é”™è¯¯';
     return;
   end if;
 
-  -- »ñÈ¡½Å±¾
+  -- è·å–è„šæœ¬
   select t.script_id, t.script_path, t.service_code
     into l_script_id, l_script_path, l_svc_code
     from dm_up_script t
    where t.channel_no = l_up_chnnl_no
      and t.script_type = script_type.vcode_send;
 
-  -- Ìí¼Ó¼ÇÂ¼
+  -- æ·»åŠ è®°å½•
   l_order_no := f_order_no_create();
   insert into dm_order_vcode
     (order_no,
@@ -10785,7 +10786,7 @@ begin
   l_temp     := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp     := f_json_add(l_temp, 'script_path', l_script_path);
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   commit;
 
@@ -10793,7 +10794,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_vcode2_create', 1, v_out_msg);
 end;
 /
@@ -10802,14 +10803,14 @@ prompt
 prompt Creating procedure SP_VCODE2_GET
 prompt ================================
 prompt
-create or replace procedure dm_system.sp_vcode2_get(v_order_no varchar2, -- ¶©µ¥ºÅ
+create or replace procedure dm_system.sp_vcode2_get(v_order_no varchar2, -- è®¢å•å·
                                           v_out_code out number,
                                           v_out_msg  out varchar2,
-                                          v_out_json out varchar2) -- »úÆ÷ÈË²ÎÊı(JSON)
+                                          v_out_json out varchar2) -- æœºå™¨äººå‚æ•°(JSON)
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: »ñÈ¡ÑéÖ¤Âë²ÎÊı(»úÆ÷ÈË·¢ÑéÖ¤Âë²ÎÊı)
-  -- ´´½¨ÈË: zhusm 2019-05-24
+  -- åŠŸèƒ½: è·å–éªŒè¯ç å‚æ•°(æœºå™¨äººå‘éªŒè¯ç å‚æ•°)
+  -- åˆ›å»ºäºº: zhusm 2019-05-24
   -----------------------------------------------------------------------
   l_phone_no    varchar2(32);
   l_up_chnnl_no varchar2(32);
@@ -10822,7 +10823,7 @@ create or replace procedure dm_system.sp_vcode2_get(v_order_no varchar2, -- ¶©µ¥
   l_temp        varchar2(2000) := '';
 begin
 
-  -- ¼ì²é¶©µ¥
+  -- æ£€æŸ¥è®¢å•
   begin
     select t.up_channel_no, t.up_product_no, t.phone_no
       into l_up_chnnl_no, l_up_prd_id, l_phone_no
@@ -10831,11 +10832,11 @@ begin
   exception
     when others then
       v_out_code := error_code.failed;
-      v_out_msg  := '¶©µ¥²»´æÔÚ';
+      v_out_msg  := 'è®¢å•ä¸å­˜åœ¨';
       return;
   end;
 
-  -- »ñÈ¡ÇşµÀÅäÖÃ
+  -- è·å–æ¸ é“é…ç½®
   select t1.api_id, t1.api_key, t2.api_url, t2.script_path
     into l_api_id, l_api_key, l_api_url, l_script_path
     from dm_up_channel t1
@@ -10851,14 +10852,14 @@ begin
     from dm_up_product t
    where t.product_no = l_up_prd_id
      and t.status = enable_status.enabled;
-  -- ¸üĞÂ·¢ËÍ×´Ì¬
+  -- æ›´æ–°å‘é€çŠ¶æ€
 
   update dm_order_vcode t
      set t.send_status = deal_status.processing
    where t.order_no = v_order_no
      and t.send_status = deal_status.waiting;
 
-  -- ¹¹Ôì²ÎÊı  
+  -- æ„é€ å‚æ•°  
   l_temp     := f_json_add(l_temp, 'up_channel_no', l_up_chnnl_no);
   l_temp     := f_json_add(l_temp, 'up_product_no', l_up_prd_no);
   l_temp     := f_json_add(l_temp, 'api_id', l_api_id);
@@ -10867,14 +10868,14 @@ begin
   l_temp     := f_json_add(l_temp, 'phone_no', l_phone_no);
   v_out_json := '{' || l_temp || '}';
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   commit;
 
 exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_vcode2_get', 1, v_out_msg);
 end;
 /
@@ -10883,15 +10884,15 @@ prompt
 prompt Creating procedure SP_VCODE2_RETRY
 prompt ==================================
 prompt
-create or replace procedure dm_system.sp_vcode2_retry(v_order_no varchar2, -- ¶©µ¥ºÅ
-                                            v_user_ip  varchar2, -- ÓÃ»§IP
+create or replace procedure dm_system.sp_vcode2_retry(v_order_no varchar2, -- è®¢å•å·
+                                            v_user_ip  varchar2, -- ç”¨æˆ·IP
                                             v_out_code out number,
                                             v_out_msg  out varchar2,
-                                            v_out_json out varchar2) -- ÑéÖ¤Âë¶ÓÁĞ²ÎÊı: {"que_name":"","order_no":"","script_path":""}
+                                            v_out_json out varchar2) -- éªŒè¯ç é˜Ÿåˆ—å‚æ•°: {"que_name":"","order_no":"","script_path":""}
  as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ÖØ¸´·¢ËÍÑéÖ¤Âë
-  -- ´´½¨ÈË: zhusm 2019-05-26
+  -- åŠŸèƒ½: é‡å¤å‘é€éªŒè¯ç 
+  -- åˆ›å»ºäºº: zhusm 2019-05-26
   -----------------------------------------------------------------------
   l_order_no       varchar2(32);
   l_next_send_time date;
@@ -10906,14 +10907,14 @@ create or replace procedure dm_system.sp_vcode2_retry(v_order_no varchar2, -- ¶©
 
 begin
 
-  -- ¼ì²é²ÎÊı
+  -- æ£€æŸ¥å‚æ•°
   if (v_user_ip is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := 'ÓÃ»§IPÎª¿Õ';
+    v_out_msg  := 'ç”¨æˆ·IPä¸ºç©º';
     return;
   end if;
 
-  -- ¼ì²é·¢ËÍ¼ÇÂ¼
+  -- æ£€æŸ¥å‘é€è®°å½•
   select min(t.order_no),
          min(t.next_send_time),
          min(t.send_times),
@@ -10924,23 +10925,23 @@ begin
 
   if (l_order_no is null) then
     v_out_code := error_code.failed;
-    v_out_msg  := '´íÎóµÄ¶©µ¥ºÅ';
+    v_out_msg  := 'é”™è¯¯çš„è®¢å•å·';
     return;
   end if;
 
   if (l_next_send_time > sysdate) then
     v_out_code := error_code.failed;
-    v_out_msg  := '·¢ËÍÆµÂÊÌ«¿ì';
+    v_out_msg  := 'å‘é€é¢‘ç‡å¤ªå¿«';
     return;
   end if;
 
   if (l_send_times >= l_send_max) then
     v_out_code := error_code.overload;
-    v_out_msg  := '·¢ËÍ´ÎÊı³¬ÏŞ';
+    v_out_msg  := 'å‘é€æ¬¡æ•°è¶…é™';
     return;
   end if;
 
-  -- ¼ì²é¶©µ¥
+  -- æ£€æŸ¥è®¢å•
   select max(t.order_status)
     into l_order_status
     from dm_order_main t
@@ -10949,24 +10950,24 @@ begin
   if (l_order_status is not null) then
     if (l_order_status = deal_status.succeed) then
       v_out_code := error_code.failed;
-      v_out_msg  := '¶©µ¥ÒÑ¾­³É¹¦';
+      v_out_msg  := 'è®¢å•å·²ç»æˆåŠŸ';
       return;
     end if;
 
     if (l_order_status <> deal_status.failed) then
       v_out_code := error_code.repeat;
-      v_out_msg  := '´æÔÚÔÚÍ¾¶©µ¥';
+      v_out_msg  := 'å­˜åœ¨åœ¨é€”è®¢å•';
       return;
     end if;
   end if;
 
-  -- »ñÈ¡²ÎÊı
+  -- è·å–å‚æ•°
   select t.script_path, t.service_code
     into l_script_path, l_svc_code
     from dm_up_script t
    where t.script_id = l_script_id;
 
-  -- ÖØ¸´·¢ËÍ
+  -- é‡å¤å‘é€
   update dm_order_vcode t
      set t.send_status    = deal_status.waiting,
          t.result_msg     = null,
@@ -10977,12 +10978,12 @@ begin
          t.user_ip        = substr(v_user_ip, 1, 17)
    where t.order_no = l_order_no;
 
-  -- ¹¹ÔìJSON
+  -- æ„é€ JSON
   l_temp     := f_json_add(l_temp, 'que_name', l_svc_code);
   l_temp     := f_json_add(l_temp, 'order_no', l_order_no);
   l_temp     := f_json_add(l_temp, 'script_path', l_script_path);
   v_out_code := error_code.success;
-  v_out_msg  := '²Ù×÷³É¹¦';
+  v_out_msg  := 'æ“ä½œæˆåŠŸ';
   v_out_json := '{' || l_temp || '}';
   commit;
 
@@ -10990,7 +10991,7 @@ exception
   when others then
     rollback;
     v_out_code := error_code.except;
-    v_out_msg  := '¹ı³ÌÒì³£: ' || sqlerrm;
+    v_out_msg  := 'è¿‡ç¨‹å¼‚å¸¸: ' || sqlerrm;
     sp_system_log_add('sp_vcode2_retry', 1, v_out_msg);
 end;
 /
@@ -11001,25 +11002,25 @@ prompt ================================
 prompt
 create or replace procedure dm_system.t_sp_test_zhu as
   -----------------------------------------------------------------------
-  -- ¹¦ÄÜ: ²âÊÔÉ¾³ı¶©µ¥Êı¾İ
+  -- åŠŸèƒ½: æµ‹è¯•åˆ é™¤è®¢å•æ•°æ®
   -----------------------------------------------------------------------
 
 begin
 
-  -- ±éÀúÊı¾İ
+  -- éå†æ•°æ®
   for e in (select t.order_no
               from dm_order_main_ext t
              where t.card_user_id = '513021198410035216') loop
-    -- É¾³ı°ó¶¨Êı¾İ
+    -- åˆ é™¤ç»‘å®šæ•°æ®
     for b in (select t.bind_id
                 from dm_order_bind t
                where t.order_no = e.order_no) loop
-      -- É¾³ıdm_order_bind_extÊı¾İ
+      -- åˆ é™¤dm_order_bind_extæ•°æ®
       delete from dm_order_bind_ext t where t.bind_id = b.bind_id;
-      -- É¾³ıdm_order_bindÊı¾İ
+      -- åˆ é™¤dm_order_bindæ•°æ®
       delete from dm_order_bind t where t.bind_id = b.bind_id;
     end loop;
-    -- É¾³ı¶©µ¥Êı¾İ
+    -- åˆ é™¤è®¢å•æ•°æ®
     delete from dm_order_main t where t.order_no = e.order_no;
     delete from dm_order_main_ext t where t.order_no = e.order_no;
   end loop;

@@ -10,6 +10,8 @@
 			"isPk": true,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
@@ -23,6 +25,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
@@ -36,6 +40,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
@@ -49,6 +55,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
@@ -63,6 +71,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
@@ -77,6 +87,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
@@ -91,6 +103,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
@@ -104,6 +118,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
@@ -118,6 +134,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
@@ -132,6 +150,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
@@ -145,6 +165,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
@@ -159,6 +181,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
@@ -174,5 +198,8 @@
 				"recordId"
 			]
 		}
-	}
+	},
+	"oneToMany": [],
+	"manyToOne": [],
+	"oneToOne": []
 }

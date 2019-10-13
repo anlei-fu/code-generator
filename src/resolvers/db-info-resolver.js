@@ -196,7 +196,6 @@ function parseConstraints($, el) {
                 divs = $(el).children("div");
 
         for (i = 1; i < divs.length; i++) {
-
                 // 1 is name ,2 is column
                 let sub_divs = $(divs[i]).children("div");
 
@@ -313,7 +312,7 @@ function parseProcedure(html) {
                 }
         } else {
                 name = names[0];
-                name=name.substr(0, name.length - 1)
+                name = name.substr(0, name.length - 1)
         }
 
         let proc = new Procedure(),
@@ -362,9 +361,65 @@ function formatString(s) {
         return ret;
 }
 
+function writeTables(dbs){
+        for (const item in dbs) {
+                let out="";
+                let template =
+`*   ***description***
+ 
+*  ***params***
+
+|名称| 类型 |是否可空 |主键 |默认值| 备注 |
+|---|----|---|--|---|----|\r\n`;
+                for (let tab in dbs[item].tables) {
+                       let content = `### ***${tab}***\r\n` + template;
+                        for (let col in dbs[item].tables[tab].columns) {
+                                let c = dbs[item].tables[tab].columns[col];
+                                let nullable=c.nullable;
+                                let dft=c.defaltValue||"--";
+                                let desc=c.description||"--";
+                                let pk=c.isPk ?"yes":"";
+                                content += `|${col}|${c.type.toString()}|${nullable}|${pk}|${dft}|${desc}|\r\n`;
+                        }
+                        out+="\r\n----\r\n"+content;
+                }
+
+                FILE.write("mds/" + item + "-tab.md", out);
+        }
+}
+
+function writeProc(dbs){
+        for (const item in dbs) {
+                let out="";
+                let template =
+`*   ***description***\r\n`;
+                let paraHead=`
+*  ***params***
+
+|名称| 类型 | out |默认值| 备注 |
+|---|----|-----|---|----|\r\n`;
+                for (let proc in dbs[item].procedures) {
+                       let content = `### ***${proc}***\r\n` + template;
+                       if(Object.keys( dbs[item].procedures[proc].parameters).length>0){
+                               content+=paraHead;
+                       }
+                        for (let para in dbs[item].procedures[proc].parameters) {
+                                let p = dbs[item].procedures[proc].parameters[para];
+                                content += `|${para}|${p.type.toString()}|${p.isOut ? "true" : "false"}|${p.defaltValue||"--"}|${p.description||""}|\r\n`;
+                        }
+                        out+="\r\n----\r\n"+content;
+                }
+
+                FILE.write("mds/" + item + "-proc.md", out);
+        }
+}
+
 function main() {
         let dbs = parse();
-
+        writeTables(dbs);
+        writeProc(dbs);
+        DIR.create("mds");
+        
         DIR.create("output");
         for (let db in dbs) {
                 DIR.create("output/" + db);

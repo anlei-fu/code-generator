@@ -9,11 +9,21 @@
 const {STR} =require("./../src/libs/str");
 const assert = require('assert');
 
+let sentence=`begin
+select t.province_no,
+       l_down_channel_no,
+       l_down_group_no
+  from fc_order_main t
+ inner join fc_down_product p
+    on t.down_product_id = p.pid
+ where t.order_no = v_order_no;
+`;
 function testSplitToWord(){
-        let text="1 2 (',')";
-        let words= STR.splitToWords(text);
-        console.log(words);
-        assert.equal(3,words.length);
+        
+        let words= STR.splitToWords(sentence);
+       words.forEach(w=>{
+         console.log(w);
+       })
 }
 
 function testRemoveWithMatch(){

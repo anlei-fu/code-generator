@@ -1,0 +1,126 @@
+{
+  "f_assign_iccno": [
+    {
+      "name": "from",
+      "tbale": "fc_iccid"
+    },
+    {
+      "name": "update",
+      "tbale": "fc_order_ext"
+    }
+  ],
+  "f_create_down_task": [
+    {
+      "name": "from",
+      "tbale": "fc_flow_step"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_order_main"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_order_main"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_down_script"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_down_script"
+    },
+    {
+      "name": "insert",
+      "tbale": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "tbale": "fc_order_express"
+    }
+  ],
+  "f_create_express_task": [
+    {
+      "name": "from",
+      "tbale": "fc_flow_step"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_order_main"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_up_script"
+    },
+    {
+      "name": "insert",
+      "tbale": "fc_flow_task"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_order_ext"
+    },
+    {
+      "name": "insert",
+      "tbale": "fc_order_express"
+    }
+  ],
+  "f_create_query": [
+    {
+      "name": "from",
+      "tbale": "fc_flow_task"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_up_channel"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_order_main"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_up_script"
+    },
+    {
+      "name": "insert",
+      "tbale": "fc_flow_task_query"
+    }
+  ],
+  "f_create_query_express_task": [
+    {
+      "name": "from",
+      "tbale": "fc_flow_step"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_flow_task"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_order_main"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_up_script"
+    },
+    {
+      "name": "insert",
+      "tbale": "fc_flow_task"
+    }
+  ],
+  "f_create_task_by_product": [
+    {
+      "name": "from",
+      "tbale": "fc_order_main"
+    },
+    {
+      "name": "from",
+      "tbale": "fc_up_channel"
+    },
+    {
+      "name": "insert",
+      "tbale": "fc_flow_task"
+    }
+  ]
+}

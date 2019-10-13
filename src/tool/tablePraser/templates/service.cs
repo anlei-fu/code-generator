@@ -99,9 +99,8 @@ namespace @project.name.UserService
            entity.TrimEmptyProperty();   
            entity.AddData(":PS",model.PageSize);
            entity.AddData(":PI",model.PageIndex);
-           @s.query.1
-           @s.query.2
-           @s.query.3
+           @query.1  @query.2 @query.3
+         
            model.TotalCount = CommFun.ToInt(handler.GetScalarByXmlTemplate("getCount", entity), 0).GetValueOrDefault();
             if(model.TotalCount > 0)
                 model.List = handler.GetDataListByTemplate("getList",entity);

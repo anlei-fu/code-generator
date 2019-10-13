@@ -35,3 +35,5 @@
     And return an object
  -
 
+### __filename    current file
+###  __dirname   current folder

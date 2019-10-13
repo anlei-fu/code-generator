@@ -10,6 +10,8 @@
 			"isPk": true,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
@@ -23,6 +25,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
@@ -37,6 +41,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
@@ -51,6 +57,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
@@ -64,6 +72,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
@@ -78,6 +88,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
@@ -91,6 +103,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
@@ -106,5 +120,8 @@
 				"id"
 			]
 		}
-	}
+	},
+	"oneToMany": [],
+	"manyToOne": [],
+	"oneToOne": []
 }

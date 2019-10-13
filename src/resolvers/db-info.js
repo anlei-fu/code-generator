@@ -75,7 +75,6 @@ exports.MappingColumn = class MappingColumn {
         constructor(table, column) {
                 this.table = table;
                 this.column = column;
-                this.joinType;
         }
 }
 
@@ -98,7 +97,7 @@ exports.Table = class Table extends DbObject {
                  */
                 this.primaryKey;
                 /**
-                 * 
+                 *  join tables
                  */
                 this.joins = {};
                 /**
@@ -109,7 +108,20 @@ exports.Table = class Table extends DbObject {
                  * 
                  */
                 this.indexes = {};
-        }
+                /***
+                 * 
+                 */
+                 this.oneToMany=[];
+                 /**
+                  * 
+                  */
+                 this.manyToOne=[];
+                 /**
+                  * 
+                  */
+                 this.oneToOne=[];
+                
+        }        
         /**
          * Generate create-table string
          */
@@ -268,11 +280,15 @@ exports.Column = class Column extends DbObject {
                  * @member {MappingColumn} mappingColumn,when render replace with another 
                  *  join table's column
                  */
-                this.mappingColumn;
+                this.mappingColumn={};
                 /**
                  * 
                  */
-                this.isFilter;
+                this.isFilter=false;
+                /**
+                 * 
+                 */
+                this.render;
         }
         toCreatString() {
                 var ret = "";

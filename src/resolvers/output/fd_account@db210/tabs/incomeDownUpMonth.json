@@ -10,6 +10,8 @@
 			"isPk": true,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
@@ -24,6 +26,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
@@ -37,6 +41,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
@@ -51,6 +57,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
@@ -65,6 +73,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
@@ -79,6 +89,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
@@ -93,6 +105,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
@@ -107,6 +121,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
@@ -121,6 +137,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
@@ -137,5 +155,8 @@
 				"id"
 			]
 		}
-	}
+	},
+	"oneToMany": [],
+	"manyToOne": [],
+	"oneToOne": []
 }

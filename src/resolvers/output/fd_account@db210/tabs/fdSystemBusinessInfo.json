@@ -10,6 +10,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
@@ -24,6 +26,8 @@
 			"isPk": false,
 			"unique": false,
 			"isEnum": false,
+			"mappingColumn": {},
+			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
@@ -34,5 +38,8 @@
 	"isInfamationTable": false,
 	"joins": {},
 	"constraints": {},
-	"indexes": {}
+	"indexes": {},
+	"oneToMany": [],
+	"manyToOne": [],
+	"oneToOne": []
 }

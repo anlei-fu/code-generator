@@ -1,5 +1,5 @@
 prompt PL/SQL Developer Export User Objects for user QXFC@DB210
-prompt Created by Administrator on 2019Äê10ÔÂ11ÈÕ
+prompt Created by Administrator on 2019å¹´10æœˆ11æ—¥
 set define off
 spool 3.log
 
@@ -31,25 +31,25 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.ACCT_SYNC_CONFIG
-  is 'Í¬²½¼ÇÕËÏµÍ³ÅäÖÃ';
+  is 'åŒæ­¥è®°è´¦ç³»ç»Ÿé…ç½®';
 comment on column QXFC.ACCT_SYNC_CONFIG.channel_type
-  is 'ÇşµÀÀàĞÍ 1:ÉÏÓÎ 2:ÏÂÓÎ';
+  is 'æ¸ é“ç±»å‹ 1:ä¸Šæ¸¸ 2:ä¸‹æ¸¸';
 comment on column QXFC.ACCT_SYNC_CONFIG.title
-  is '±êÌâ';
+  is 'æ ‡é¢˜';
 comment on column QXFC.ACCT_SYNC_CONFIG.change_type
-  is '×Ê½ğ±ä¸üÀàĞÍ';
+  is 'èµ„é‡‘å˜æ›´ç±»å‹';
 comment on column QXFC.ACCT_SYNC_CONFIG.last_exec_id
-  is 'ÉÏ´ÎÖ´ĞĞ±àºÅ';
+  is 'ä¸Šæ¬¡æ‰§è¡Œç¼–å·';
 comment on column QXFC.ACCT_SYNC_CONFIG.last_exec_time
-  is 'ÉÏ´ÎÖ´ĞĞÊ±¼ä';
+  is 'ä¸Šæ¬¡æ‰§è¡Œæ—¶é—´';
 comment on column QXFC.ACCT_SYNC_CONFIG.min_count
-  is '×îĞ¡±ÊÊıÍ¬²½Êı';
+  is 'æœ€å°ç¬”æ•°åŒæ­¥æ•°';
 comment on column QXFC.ACCT_SYNC_CONFIG.robot_ip
-  is '×îºóÖ´ĞĞ»úÆ÷ip';
+  is 'æœ€åæ‰§è¡Œæœºå™¨ip';
 comment on column QXFC.ACCT_SYNC_CONFIG.next_time
-  is 'ÏÂ´Îºó²¹Ê±¼ä';
+  is 'ä¸‹æ¬¡åè¡¥æ—¶é—´';
 comment on column QXFC.ACCT_SYNC_CONFIG.frequency
-  is 'Ö´ĞĞÆµÂÊ(Ãë)';
+  is 'æ‰§è¡Œé¢‘ç‡(ç§’)';
 alter table QXFC.ACCT_SYNC_CONFIG
   add constraint PK_SYNC_CONFIG_ID primary key (CHANNEL_TYPE)
   using index 
@@ -91,21 +91,21 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.ACCT_SYNC_ERROR
-  is 'Í¬²½´íÎó¼ÇÂ¼';
+  is 'åŒæ­¥é”™è¯¯è®°å½•';
 comment on column QXFC.ACCT_SYNC_ERROR.record_id
-  is '¼ÇÂ¼±àºÅ';
+  is 'è®°å½•ç¼–å·';
 comment on column QXFC.ACCT_SYNC_ERROR.channel_type
-  is 'ÀàĞÍ';
+  is 'ç±»å‹';
 comment on column QXFC.ACCT_SYNC_ERROR.change_type
-  is '±ä¸üÀàĞÍ';
+  is 'å˜æ›´ç±»å‹';
 comment on column QXFC.ACCT_SYNC_ERROR.error_count
-  is '´íÎó´ÎÊı';
+  is 'é”™è¯¯æ¬¡æ•°';
 comment on column QXFC.ACCT_SYNC_ERROR.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.ACCT_SYNC_ERROR.result_msg
-  is '´íÎóÏûÏ¢';
+  is 'é”™è¯¯æ¶ˆæ¯';
 comment on column QXFC.ACCT_SYNC_ERROR.has_warn
-  is 'ÊÇ·ñ±¨¾¯';
+  is 'æ˜¯å¦æŠ¥è­¦';
 
 prompt
 prompt Creating table FC_CHECK_CHARGE
@@ -141,37 +141,37 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_CHECK_CHARGE
-  is '½É·Ñ/Ğø·Ñ¼øÈ¨½Ó¿Ú';
+  is 'ç¼´è´¹/ç»­è´¹é‰´æƒæ¥å£';
 comment on column QXFC.FC_CHECK_CHARGE.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_CHECK_CHARGE.down_channel_no
-  is 'ÏÂÓÎÇşµÀ';
+  is 'ä¸‹æ¸¸æ¸ é“';
 comment on column QXFC.FC_CHECK_CHARGE.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_CHECK_CHARGE.idno
-  is 'Éí·İÖ¤ºÅ';
+  is 'èº«ä»½è¯å·';
 comment on column QXFC.FC_CHECK_CHARGE.brand_no
-  is '¿í´øÕÊºÅ';
+  is 'å®½å¸¦å¸å·';
 comment on column QXFC.FC_CHECK_CHARGE.phone
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column QXFC.FC_CHECK_CHARGE.biz_type
-  is 'ÀàĞÍ 2:¹Ì»°, 3:¿í´ø';
+  is 'ç±»å‹ 2:å›ºè¯, 3:å®½å¸¦';
 comment on column QXFC.FC_CHECK_CHARGE.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column QXFC.FC_CHECK_CHARGE.status
-  is '×´Ì¬ 20:µÈ´ı; 30:ÕıÔÚ´¦Àí 90:Ê§°Ü 0:³É¹¦';
+  is 'çŠ¶æ€ 20:ç­‰å¾…; 30:æ­£åœ¨å¤„ç† 90:å¤±è´¥ 0:æˆåŠŸ';
 comment on column QXFC.FC_CHECK_CHARGE.result
-  is '½á¹û';
+  is 'ç»“æœ';
 comment on column QXFC.FC_CHECK_CHARGE.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column QXFC.FC_CHECK_CHARGE.bus_svc
-  is '×ÜÏß·şÎñ';
+  is 'æ€»çº¿æœåŠ¡';
 comment on column QXFC.FC_CHECK_CHARGE.ip
   is 'IP';
 comment on column QXFC.FC_CHECK_CHARGE.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_CHECK_CHARGE.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 alter table QXFC.FC_CHECK_CHARGE
   add constraint PK_CHECK_ID primary key (ID)
   using index 
@@ -221,37 +221,37 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DOWN_CHANNEL
-  is 'ÏÂÓÎÇşµÀ±í';
+  is 'ä¸‹æ¸¸æ¸ é“è¡¨';
 comment on column QXFC.FC_DOWN_CHANNEL.channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_DOWN_CHANNEL.channel_name
-  is 'ÏÂÓÎÇşµÀÃû³Æ';
+  is 'ä¸‹æ¸¸æ¸ é“åç§°';
 comment on column QXFC.FC_DOWN_CHANNEL.channel_account
-  is 'ÇşµÀÕÊºÅ';
+  is 'æ¸ é“å¸å·';
 comment on column QXFC.FC_DOWN_CHANNEL.channel_key
-  is 'ÇşµÀKey';
+  is 'æ¸ é“Key';
 comment on column QXFC.FC_DOWN_CHANNEL.channel_token
-  is 'ÇşµÀToken';
+  is 'æ¸ é“Token';
 comment on column QXFC.FC_DOWN_CHANNEL.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_DOWN_CHANNEL.balance
-  is 'Óà¶î';
+  is 'ä½™é¢';
 comment on column QXFC.FC_DOWN_CHANNEL.need_notify
-  is 'ÊÇ·ñÍ¨Öª;0:Í¨Öª;1:²»Í¨Öª';
+  is 'æ˜¯å¦é€šçŸ¥;0:é€šçŸ¥;1:ä¸é€šçŸ¥';
 comment on column QXFC.FC_DOWN_CHANNEL.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_DOWN_CHANNEL.sync_status
-  is 'Í¬²½¼ÇÕËÏµÍ³×´Ì¬';
+  is 'åŒæ­¥è®°è´¦ç³»ç»ŸçŠ¶æ€';
 comment on column QXFC.FC_DOWN_CHANNEL.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_DOWN_CHANNEL.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_DOWN_CHANNEL.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_DOWN_CHANNEL.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_DOWN_CHANNEL.fd_channel_no
-  is '¼ÇÕËÏµÍ³ÇşµÀ±àºÅ';
+  is 'è®°è´¦ç³»ç»Ÿæ¸ é“ç¼–å·';
 alter table QXFC.FC_DOWN_CHANNEL
   add constraint PK_FC_DOWN_CHANNEL primary key (CHANNEL_NO)
   using index 
@@ -296,27 +296,27 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DOWN_EXCLUDE_UP
-  is 'ÏÂÓÎÅÅ³âÉÏÓÎ(±¸ÓÃ)';
+  is 'ä¸‹æ¸¸æ’æ–¥ä¸Šæ¸¸(å¤‡ç”¨)';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.down_group_no
-  is 'ÏÂÓÎ²úÆ··Ö×é';
+  is 'ä¸‹æ¸¸äº§å“åˆ†ç»„';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.up_group_no
-  is 'ÉÏÓÎ²úÆ··Ö×é';
+  is 'ä¸Šæ¸¸äº§å“åˆ†ç»„';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_DOWN_EXCLUDE_UP.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 alter table QXFC.FC_DOWN_EXCLUDE_UP
   add constraint PK_FC_DOWN_EXCLUDE_UP primary key (ID)
   using index 
@@ -380,65 +380,65 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DOWN_PRODUCT
-  is 'ÏÂÓÎÇşµÀ²úÆ·±í';
+  is 'ä¸‹æ¸¸æ¸ é“äº§å“è¡¨';
 comment on column QXFC.FC_DOWN_PRODUCT.pid
-  is '²úÆ·ID';
+  is 'äº§å“ID';
 comment on column QXFC.FC_DOWN_PRODUCT.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column QXFC.FC_DOWN_PRODUCT.product_no
-  is '²úÆ·±àÂë';
+  is 'äº§å“ç¼–ç ';
 comment on column QXFC.FC_DOWN_PRODUCT.product_name
-  is '²úÆ·Ãû³Æ';
+  is 'äº§å“åç§°';
 comment on column QXFC.FC_DOWN_PRODUCT.sku
   is 'SKUID';
 comment on column QXFC.FC_DOWN_PRODUCT.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_DOWN_PRODUCT.package_id
-  is 'Ì×²Í±àºÅ';
+  is 'å¥—é¤ç¼–å·';
 comment on column QXFC.FC_DOWN_PRODUCT.carrier_no
-  is 'ÔËÓªÉÌ;*:ËùÓĞ';
+  is 'è¿è¥å•†;*:æ‰€æœ‰';
 comment on column QXFC.FC_DOWN_PRODUCT.province_no
-  is 'Ê¡·İ;QG:È«¹ú';
+  is 'çœä»½;QG:å…¨å›½';
 comment on column QXFC.FC_DOWN_PRODUCT.city_no
-  is '³ÇÊĞ;*:È«ÊĞ';
+  is 'åŸå¸‚;*:å…¨å¸‚';
 comment on column QXFC.FC_DOWN_PRODUCT.sale_price
-  is 'ÊÛ¼Û';
+  is 'å”®ä»·';
 comment on column QXFC.FC_DOWN_PRODUCT.trade_fee
-  is '½»Ò×ÊÖĞø·Ñ';
+  is 'äº¤æ˜“æ‰‹ç»­è´¹';
 comment on column QXFC.FC_DOWN_PRODUCT.can_trial
-  is 'ÔÊĞíÊÔÓÃ;0:ÔÊĞí;1:²»ÔÊĞí';
+  is 'å…è®¸è¯•ç”¨;0:å…è®¸;1:ä¸å…è®¸';
 comment on column QXFC.FC_DOWN_PRODUCT.trial_day
-  is 'ÊÔÓÃÆÚ,µ¥Î»Ìì';
+  is 'è¯•ç”¨æœŸ,å•ä½å¤©';
 comment on column QXFC.FC_DOWN_PRODUCT.auto_active
-  is '³¬¹ıÊÔÓÃÆÚÊÇ·ñ×Ô¶¯¼¤»î/×ªÕı1:×Ô¶¯;2:ÊÖ¶¯';
+  is 'è¶…è¿‡è¯•ç”¨æœŸæ˜¯å¦è‡ªåŠ¨æ¿€æ´»/è½¬æ­£1:è‡ªåŠ¨;2:æ‰‹åŠ¨';
 comment on column QXFC.FC_DOWN_PRODUCT.group_no
-  is '·Ö×é±àºÅ';
+  is 'åˆ†ç»„ç¼–å·';
 comment on column QXFC.FC_DOWN_PRODUCT.bind_mode
-  is '°ó¶¨Ä£Ê½ 0:²»ÏŞ; 1:Ç¿ÖÆ';
+  is 'ç»‘å®šæ¨¡å¼ 0:ä¸é™; 1:å¼ºåˆ¶';
 comment on column QXFC.FC_DOWN_PRODUCT.status
-  is '×´Ì¬;0:ÆôÓÃ;1:½ûÓÃ';
+  is 'çŠ¶æ€;0:å¯ç”¨;1:ç¦ç”¨';
 comment on column QXFC.FC_DOWN_PRODUCT.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_DOWN_PRODUCT.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_DOWN_PRODUCT.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_DOWN_PRODUCT.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_DOWN_PRODUCT.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_DOWN_PRODUCT.icc_type
-  is '¿¨ÀàĞÍ 1:±¾µØĞ´¿¨; 2:¿ÕÖĞÈëÍø¿¨ 0:²»Ğ´¿¨';
+  is 'å¡ç±»å‹ 1:æœ¬åœ°å†™å¡; 2:ç©ºä¸­å…¥ç½‘å¡ 0:ä¸å†™å¡';
 comment on column QXFC.FC_DOWN_PRODUCT.flow_id
-  is '´¦ÀíÁ÷³Ì';
+  is 'å¤„ç†æµç¨‹';
 comment on column QXFC.FC_DOWN_PRODUCT.write_card_mode
-  is 'Ğ´¿¨·½Ê½ 0:²»Ğ´¿¨ 1:×Ô¶¯; 2:ÊÖ¶¯; 3:´ú¿ÍÏÂµ¥';
+  is 'å†™å¡æ–¹å¼ 0:ä¸å†™å¡ 1:è‡ªåŠ¨; 2:æ‰‹åŠ¨; 3:ä»£å®¢ä¸‹å•';
 comment on column QXFC.FC_DOWN_PRODUCT.fee_type
-  is 'ÊÖĞø·ÑÀàĞÍ 0:¶¨¶î 1:°´±ÈÀı';
+  is 'æ‰‹ç»­è´¹ç±»å‹ 0:å®šé¢ 1:æŒ‰æ¯”ä¾‹';
 comment on column QXFC.FC_DOWN_PRODUCT.reward
-  is 'Ó¶½ğ';
+  is 'ä½£é‡‘';
 comment on column QXFC.FC_DOWN_PRODUCT.reward_cntr
-  is '·ÖÆÚ´ÎÊı';
+  is 'åˆ†æœŸæ¬¡æ•°';
 alter table QXFC.FC_DOWN_PRODUCT
   add constraint PK_FC_DOWN_PRODUCT primary key (PID)
   using index 
@@ -490,41 +490,41 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DOWN_SCRIPT
-  is 'ÏÂÓÎ½Å±¾';
+  is 'ä¸‹æ¸¸è„šæœ¬';
 comment on column QXFC.FC_DOWN_SCRIPT.sid
-  is '½Å±¾ID';
+  is 'è„šæœ¬ID';
 comment on column QXFC.FC_DOWN_SCRIPT.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column QXFC.FC_DOWN_SCRIPT.script_type
-  is '½Å±¾ÀàĞÍ1:ÒµÎñ°ìÀí½á¹ûÍ¨Öª;2:ÍË¿î';
+  is 'è„šæœ¬ç±»å‹1:ä¸šåŠ¡åŠç†ç»“æœé€šçŸ¥;2:é€€æ¬¾';
 comment on column QXFC.FC_DOWN_SCRIPT.package_id
-  is 'Ì×²Í±àºÅ 0:ËùÓĞ';
+  is 'å¥—é¤ç¼–å· 0:æ‰€æœ‰';
 comment on column QXFC.FC_DOWN_SCRIPT.product_type
-  is '²úÆ·ÀàĞÍ;0:ËùÓĞ';
+  is 'äº§å“ç±»å‹;0:æ‰€æœ‰';
 comment on column QXFC.FC_DOWN_SCRIPT.carrier_no
-  is 'ÔËÓªÉÌ;*:ËùÓĞ';
+  is 'è¿è¥å•†;*:æ‰€æœ‰';
 comment on column QXFC.FC_DOWN_SCRIPT.province_no
-  is 'Ê¡·İ;QG:È«¹ú';
+  is 'çœä»½;QG:å…¨å›½';
 comment on column QXFC.FC_DOWN_SCRIPT.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column QXFC.FC_DOWN_SCRIPT.notify_url
-  is 'Í¨ÖªµØÖ·';
+  is 'é€šçŸ¥åœ°å€';
 comment on column QXFC.FC_DOWN_SCRIPT.svc_bus
-  is 'Í¨Öª·şÎñ';
+  is 'é€šçŸ¥æœåŠ¡';
 comment on column QXFC.FC_DOWN_SCRIPT.notify_limit
-  is 'Í¨Öª´ÎÊıÏŞÖÆ';
+  is 'é€šçŸ¥æ¬¡æ•°é™åˆ¶';
 comment on column QXFC.FC_DOWN_SCRIPT.interval
-  is 'Í¨Öª¼ä¸ô,µ¥Î»s';
+  is 'é€šçŸ¥é—´éš”,å•ä½s';
 comment on column QXFC.FC_DOWN_SCRIPT.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_DOWN_SCRIPT.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_DOWN_SCRIPT.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_DOWN_SCRIPT.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_DOWN_SCRIPT.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 alter table QXFC.FC_DOWN_SCRIPT
   add constraint PK_FC_DOWN_SCRIPT primary key (SID)
   using index 
@@ -570,29 +570,29 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DOWN_SPECIFY_UP
-  is 'ÏÂÓÎÖ¸¶¨ÉÏÓÎ';
+  is 'ä¸‹æ¸¸æŒ‡å®šä¸Šæ¸¸';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.down_group_no
-  is 'ÏÂÓÎ²úÆ··Ö×é';
+  is 'ä¸‹æ¸¸äº§å“åˆ†ç»„';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.up_group_no
-  is 'ÉÏÓÎ²úÆ··Ö×é';
+  is 'ä¸Šæ¸¸äº§å“åˆ†ç»„';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_DOWN_SPECIFY_UP.percent
-  is '·ÖÁ÷±È';
+  is 'åˆ†æµæ¯”';
 alter table QXFC.FC_DOWN_SPECIFY_UP
   add constraint PK_FC_DOWN_SPECIFY_UP primary key (ID)
   using index 
@@ -635,23 +635,23 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DZ_PHONE_ACTIVE
-  is 'ºÅ¿¨¼¤»îÊı¾İ';
+  is 'å·å¡æ¿€æ´»æ•°æ®';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.phone
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.trans_seq
-  is 'ÉÏÓÎÁ÷Ë®';
+  is 'ä¸Šæ¸¸æµæ°´';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.active_date
-  is '¼¤»îÊ±¼ä';
+  is 'æ¿€æ´»æ—¶é—´';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.active_status
-  is '¼¤»î×´Ì¬';
+  is 'æ¿€æ´»çŠ¶æ€';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.iccid
   is 'ICCID';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.status
-  is '×´Ì¬ 20:µÈ´ı¶ÔÕË; 30:¶ÔÕËÖĞ 0:¶ÔÕËÍê³É';
+  is 'çŠ¶æ€ 20:ç­‰å¾…å¯¹è´¦; 30:å¯¹è´¦ä¸­ 0:å¯¹è´¦å®Œæˆ';
 comment on column QXFC.FC_DZ_PHONE_ACTIVE.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 alter table QXFC.FC_DZ_PHONE_ACTIVE
   add constraint PK_DZ_ACTIVE_ID primary key (ID)
   using index 
@@ -693,21 +693,21 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DZ_RENEW_COST
-  is 'ºÅ¿¨¿í´øĞø·Ñ³É±¾';
+  is 'å·å¡å®½å¸¦ç»­è´¹æˆæœ¬';
 comment on column QXFC.FC_DZ_RENEW_COST.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_DZ_RENEW_COST.account
-  is 'ÊÖÀïºÅÂë';
+  is 'æ‰‹é‡Œå·ç ';
 comment on column QXFC.FC_DZ_RENEW_COST.tans_seq
-  is 'Á÷Ë®';
+  is 'æµæ°´';
 comment on column QXFC.FC_DZ_RENEW_COST.cost
-  is '³É±¾';
+  is 'æˆæœ¬';
 comment on column QXFC.FC_DZ_RENEW_COST.bill_date
-  is 'ÕËµ¥ÈÕÆÚ';
+  is 'è´¦å•æ—¥æœŸ';
 comment on column QXFC.FC_DZ_RENEW_COST.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_DZ_RENEW_COST.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 alter table QXFC.FC_DZ_RENEW_COST
   add constraint PK_RENEW_COST_ID primary key (ID)
   using index 
@@ -748,19 +748,19 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DZ_REWARD_BRAND_NEW
-  is '¿í´øĞÂ×°Ó¶½ğ';
+  is 'å®½å¸¦æ–°è£…ä½£é‡‘';
 comment on column QXFC.FC_DZ_REWARD_BRAND_NEW.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_DZ_REWARD_BRAND_NEW.trans_seq
-  is 'ÒµÎñÁ÷Ë®ºÅ';
+  is 'ä¸šåŠ¡æµæ°´å·';
 comment on column QXFC.FC_DZ_REWARD_BRAND_NEW.reward
-  is 'Ó¶½ğ';
+  is 'ä½£é‡‘';
 comment on column QXFC.FC_DZ_REWARD_BRAND_NEW.bill_date
-  is 'ÕËµ¥ÔÂ';
+  is 'è´¦å•æœˆ';
 comment on column QXFC.FC_DZ_REWARD_BRAND_NEW.status
-  is '×´Ì¬ 20:µÈ´ı 30:´¦ÀíÖĞ 0:³É¹¦';
+  is 'çŠ¶æ€ 20:ç­‰å¾… 30:å¤„ç†ä¸­ 0:æˆåŠŸ';
 comment on column QXFC.FC_DZ_REWARD_BRAND_NEW.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 alter table QXFC.FC_DZ_REWARD_BRAND_NEW
   add constraint PK_DZ_REWARD_NEW_ID primary key (ID)
   using index 
@@ -802,21 +802,21 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DZ_REWARD_RENEW
-  is 'ºÅ¿¨¿í´øĞø·ÑÓ¶½ğ';
+  is 'å·å¡å®½å¸¦ç»­è´¹ä½£é‡‘';
 comment on column QXFC.FC_DZ_REWARD_RENEW.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_DZ_REWARD_RENEW.account
-  is 'ÕÊºÅ';
+  is 'å¸å·';
 comment on column QXFC.FC_DZ_REWARD_RENEW.reward
-  is 'Ó¶½ğ';
+  is 'ä½£é‡‘';
 comment on column QXFC.FC_DZ_REWARD_RENEW.reward_type
-  is 'ÀàĞÍ 1:¿í´ø 2:ºÅ¿¨';
+  is 'ç±»å‹ 1:å®½å¸¦ 2:å·å¡';
 comment on column QXFC.FC_DZ_REWARD_RENEW.bill_date
-  is 'ÕËµ¥ÔÂ';
+  is 'è´¦å•æœˆ';
 comment on column QXFC.FC_DZ_REWARD_RENEW.status
-  is '×´Ì¬ 20:µÈ´ı 30:´¦ÀíÖĞ 0:³É¹¦';
+  is 'çŠ¶æ€ 20:ç­‰å¾… 30:å¤„ç†ä¸­ 0:æˆåŠŸ';
 comment on column QXFC.FC_DZ_REWARD_RENEW.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 alter table QXFC.FC_DZ_REWARD_RENEW
   add constraint PK_DZ_REWARD_ID primary key (ID)
   using index 
@@ -863,31 +863,31 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_DZ_TRADE_DETAIL
-  is '¶ÔÕËÃ÷Ï¸';
+  is 'å¯¹è´¦æ˜ç»†';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.bill_date
-  is 'ÕËµ¥Ê±¼ä';
+  is 'è´¦å•æ—¶é—´';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.type
-  is 'ÀàĞÍ 1:¿í´ø 2:ºÅ¿¨';
+  is 'ç±»å‹ 1:å®½å¸¦ 2:å·å¡';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.account
-  is 'ÓÃ»§ÕÊºÅ ÊÖ»úºÅ/¿í´øÕÊºÅ';
+  is 'ç”¨æˆ·å¸å· æ‰‹æœºå·/å®½å¸¦å¸å·';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.up_seq
-  is 'ÉÏÓÎÁ÷Ë®';
+  is 'ä¸Šæ¸¸æµæ°´';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.cost
-  is '³É±¾';
+  is 'æˆæœ¬';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.reward
-  is 'Ó¶½ğ';
+  is 'ä½£é‡‘';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.order_date
-  is '¶©µ¥Ê±¼ä';
+  is 'è®¢å•æ—¶é—´';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.create_date
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.status
-  is '×´Ì¬ 20:µÈ´ı¹ØÁª¶©µ¥ 30:µÈ´ı½áËã; 0:³É¹¦; 90:Ê§°Ü';
+  is 'çŠ¶æ€ 20:ç­‰å¾…å…³è”è®¢å• 30:ç­‰å¾…ç»“ç®—; 0:æˆåŠŸ; 90:å¤±è´¥';
 comment on column QXFC.FC_DZ_TRADE_DETAIL.msg
-  is 'ÏûÏ¢';
+  is 'æ¶ˆæ¯';
 alter table QXFC.FC_DZ_TRADE_DETAIL
   add constraint PK_DZ_DETAIL_ID primary key (ID)
   using index 
@@ -936,35 +936,35 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_ERROR_CODE.cid
-  is 'Ö÷¼ü';
+  is 'ä¸»é”®';
 comment on column QXFC.FC_ERROR_CODE.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column QXFC.FC_ERROR_CODE.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_ERROR_CODE.action_type
-  is '²Ù×÷ÀàĞÍ';
+  is 'æ“ä½œç±»å‹';
 comment on column QXFC.FC_ERROR_CODE.key_word1
-  is '¹Ø¼ü´Ê1';
+  is 'å…³é”®è¯1';
 comment on column QXFC.FC_ERROR_CODE.key_word2
-  is '¹Ø¼ü´Ê2
+  is 'å…³é”®è¯2
 ';
 comment on column QXFC.FC_ERROR_CODE.deal_type
-  is '´¦ÀíÀàĞÍ';
+  is 'å¤„ç†ç±»å‹';
 comment on column QXFC.FC_ERROR_CODE.status
-  is '×´Ì¬(½ûÓÃ/ÆôÓÃ)
+  is 'çŠ¶æ€(ç¦ç”¨/å¯ç”¨)
 ';
 comment on column QXFC.FC_ERROR_CODE.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_ERROR_CODE.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_ERROR_CODE.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_ERROR_CODE.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_ERROR_CODE.deal_msg
-  is '´íÎóÏûÏ¢';
+  is 'é”™è¯¯æ¶ˆæ¯';
 comment on column QXFC.FC_ERROR_CODE.is_warn
-  is 'ÊÇ·ñ¸æ¾¯ 0;¸æ¾¯ 1:²»¸æ¾¯';
+  is 'æ˜¯å¦å‘Šè­¦ 0;å‘Šè­¦ 1:ä¸å‘Šè­¦';
 
 prompt
 prompt Creating table FC_FLOW
@@ -994,25 +994,25 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_FLOW
-  is 'Á÷³Ì¿ØÖÆ';
+  is 'æµç¨‹æ§åˆ¶';
 comment on column QXFC.FC_FLOW.fid
-  is 'Á÷³Ì±àºÅ';
+  is 'æµç¨‹ç¼–å·';
 comment on column QXFC.FC_FLOW.flow_name
-  is 'Á÷³ÌÃû³Æ';
+  is 'æµç¨‹åç§°';
 comment on column QXFC.FC_FLOW.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_FLOW.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_FLOW.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_FLOW.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_FLOW.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_FLOW.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_FLOW.flow_type
-  is 'Á÷³ÌÀàĞÍ 1ÏÂÓÎ 2ÉÏÓÎ';
+  is 'æµç¨‹ç±»å‹ 1ä¸‹æ¸¸ 2ä¸Šæ¸¸';
 
 prompt
 prompt Creating table FC_FLOW_STEP
@@ -1045,31 +1045,31 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_FLOW_STEP
-  is 'Á÷³Ì²½Öè';
+  is 'æµç¨‹æ­¥éª¤';
 comment on column QXFC.FC_FLOW_STEP.action
-  is '²Ù×÷';
+  is 'æ“ä½œ';
 comment on column QXFC.FC_FLOW_STEP.fid
-  is 'Á÷³Ì±àºÅ';
+  is 'æµç¨‹ç¼–å·';
 comment on column QXFC.FC_FLOW_STEP.sno
-  is '²½Öè±àºÅ';
+  is 'æ­¥éª¤ç¼–å·';
 comment on column QXFC.FC_FLOW_STEP.script_type
-  is '¹ØÁªµÄ½Å±¾ÀàĞÍ';
+  is 'å…³è”çš„è„šæœ¬ç±»å‹';
 comment on column QXFC.FC_FLOW_STEP.step_name
-  is '²½ÖèÃû³Æ';
+  is 'æ­¥éª¤åç§°';
 comment on column QXFC.FC_FLOW_STEP.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_FLOW_STEP.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_FLOW_STEP.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_FLOW_STEP.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_FLOW_STEP.step_id
-  is 'Î¨Ò»±êÊ¶';
+  is 'å”¯ä¸€æ ‡è¯†';
 comment on column QXFC.FC_FLOW_STEP.face
-  is 'ÃæÖµ';
+  is 'é¢å€¼';
 comment on column QXFC.FC_FLOW_STEP.deal_mode
-  is '´¦Àí·½Ê½(0×Ô¶¯1×Ô¶¯)';
+  is 'å¤„ç†æ–¹å¼(0è‡ªåŠ¨1è‡ªåŠ¨)';
 alter table QXFC.FC_FLOW_STEP
   add constraint PK_STEP_ID primary key (STEP_ID)
   using index 
@@ -1133,65 +1133,65 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_FLOW_TASK
-  is 'Á÷³ÌÈÎÎñ';
+  is 'æµç¨‹ä»»åŠ¡';
 comment on column QXFC.FC_FLOW_TASK.tid
-  is 'ÈÎÎñ±àºÅ';
+  is 'ä»»åŠ¡ç¼–å·';
 comment on column QXFC.FC_FLOW_TASK.flow_id
-  is 'Á÷³Ì±àºÅ';
+  is 'æµç¨‹ç¼–å·';
 comment on column QXFC.FC_FLOW_TASK.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_FLOW_TASK.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column QXFC.FC_FLOW_TASK.action
-  is 'µ±Ç°²Ù×÷';
+  is 'å½“å‰æ“ä½œ';
 comment on column QXFC.FC_FLOW_TASK.script_type
-  is '½Å±¾ÀàĞÍ';
+  is 'è„šæœ¬ç±»å‹';
 comment on column QXFC.FC_FLOW_TASK.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_FLOW_TASK.script_id
-  is '½Å±¾ID';
+  is 'è„šæœ¬ID';
 comment on column QXFC.FC_FLOW_TASK.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column QXFC.FC_FLOW_TASK.svc_bus
-  is '×ÜÏß·şÎñ';
+  is 'æ€»çº¿æœåŠ¡';
 comment on column QXFC.FC_FLOW_TASK.ip
-  is '·¢»õIP';
+  is 'å‘è´§IP';
 comment on column QXFC.FC_FLOW_TASK.uptranseq
-  is 'ÉÏÓÎÁ÷Ë®';
+  is 'ä¸Šæ¸¸æµæ°´';
 comment on column QXFC.FC_FLOW_TASK.task_msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 comment on column QXFC.FC_FLOW_TASK.query_msg
-  is '²éÑ¯ÏûÏ¢';
+  is 'æŸ¥è¯¢æ¶ˆæ¯';
 comment on column QXFC.FC_FLOW_TASK.scan_id
-  is 'ºó²¹É¨ÃèID';
+  is 'åè¡¥æ‰«æID';
 comment on column QXFC.FC_FLOW_TASK.next_time
-  is 'ÏÂ´ÎÊ±¼ä';
+  is 'ä¸‹æ¬¡æ—¶é—´';
 comment on column QXFC.FC_FLOW_TASK.task_status
-  is 'ÈÎÎñ×´Ì¬';
+  is 'ä»»åŠ¡çŠ¶æ€';
 comment on column QXFC.FC_FLOW_TASK.manual_status
-  is 'ÈË¹¤ÉóºË×´Ì¬';
+  is 'äººå·¥å®¡æ ¸çŠ¶æ€';
 comment on column QXFC.FC_FLOW_TASK.task_start_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_FLOW_TASK.task_end_time
-  is '·¢»õ½áÊøÊ±¼ä';
+  is 'å‘è´§ç»“æŸæ—¶é—´';
 comment on column QXFC.FC_FLOW_TASK.up_product_id
-  is 'ÉÏÓÎ²úÆ·ID';
+  is 'ä¸Šæ¸¸äº§å“ID';
 comment on column QXFC.FC_FLOW_TASK.flow_mode
-  is '²½ÖèÇı¶¯Ä£Ê½ 0:×Ô¶¯; 1:ÊÖ¶¯';
+  is 'æ­¥éª¤é©±åŠ¨æ¨¡å¼ 0:è‡ªåŠ¨; 1:æ‰‹åŠ¨';
 comment on column QXFC.FC_FLOW_TASK.channel_name
-  is 'ÇşµÀÃû³Æ';
+  is 'æ¸ é“åç§°';
 comment on column QXFC.FC_FLOW_TASK.down_price
-  is 'ÏÂÓÎÊÛ¼Û';
+  is 'ä¸‹æ¸¸å”®ä»·';
 comment on column QXFC.FC_FLOW_TASK.trade_fee
-  is 'ÊÖĞø·Ñ';
+  is 'æ‰‹ç»­è´¹';
 comment on column QXFC.FC_FLOW_TASK.up_cost
-  is 'ÉÏÓÎ³É±¾';
+  is 'ä¸Šæ¸¸æˆæœ¬';
 comment on column QXFC.FC_FLOW_TASK.up_reward
-  is 'ÉÏÓÎÓ¶½ğ';
+  is 'ä¸Šæ¸¸ä½£é‡‘';
 comment on column QXFC.FC_FLOW_TASK.write_card_mode
-  is 'Ğ´¿¨·½Ê½';
+  is 'å†™å¡æ–¹å¼';
 comment on column QXFC.FC_FLOW_TASK.face
-  is 'ÃæÖµ';
+  is 'é¢å€¼';
 alter table QXFC.FC_FLOW_TASK
   add constraint PK_TASK_ID primary key (TID)
   using index 
@@ -1242,39 +1242,39 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_FLOW_TASK_QUERY
-  is 'ÈÎÎñ²éÑ¯';
+  is 'ä»»åŠ¡æŸ¥è¯¢';
 comment on column QXFC.FC_FLOW_TASK_QUERY.qid
-  is '²éÑ¯±àºÅ';
+  is 'æŸ¥è¯¢ç¼–å·';
 comment on column QXFC.FC_FLOW_TASK_QUERY.task_id
-  is 'ÈÎÎñ±àºÅ';
+  is 'ä»»åŠ¡ç¼–å·';
 comment on column QXFC.FC_FLOW_TASK_QUERY.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_FLOW_TASK_QUERY.script_id
-  is '½Å±¾±àºÅ';
+  is 'è„šæœ¬ç¼–å·';
 comment on column QXFC.FC_FLOW_TASK_QUERY.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column QXFC.FC_FLOW_TASK_QUERY.svc_bus
-  is '×ÜÏß·şÎñ';
+  is 'æ€»çº¿æœåŠ¡';
 comment on column QXFC.FC_FLOW_TASK_QUERY.ip
-  is '²éÑ¯IP';
+  is 'æŸ¥è¯¢IP';
 comment on column QXFC.FC_FLOW_TASK_QUERY.query_cntr
-  is '²éÑ¯´ÎÊı';
+  is 'æŸ¥è¯¢æ¬¡æ•°';
 comment on column QXFC.FC_FLOW_TASK_QUERY.query_msg
-  is '²éÑ¯ÏûÏ¢';
+  is 'æŸ¥è¯¢æ¶ˆæ¯';
 comment on column QXFC.FC_FLOW_TASK_QUERY.status
-  is '²éÑ¯×´Ì¬';
+  is 'æŸ¥è¯¢çŠ¶æ€';
 comment on column QXFC.FC_FLOW_TASK_QUERY.first_interval
-  is '²éÑ¯¼ä¸ô';
+  is 'æŸ¥è¯¢é—´éš”';
 comment on column QXFC.FC_FLOW_TASK_QUERY.next_interval
-  is 'ÏÂ´Î¼ä¸ô';
+  is 'ä¸‹æ¬¡é—´éš”';
 comment on column QXFC.FC_FLOW_TASK_QUERY.next_time
-  is 'ÏÂ´Î²éÑ¯Ê±¼ä';
+  is 'ä¸‹æ¬¡æŸ¥è¯¢æ—¶é—´';
 comment on column QXFC.FC_FLOW_TASK_QUERY.scan_id
-  is 'É¨ÃèÅú´Î';
+  is 'æ‰«ææ‰¹æ¬¡';
 comment on column QXFC.FC_FLOW_TASK_QUERY.start_time
-  is '¿ªÊ¼Ê±¼ä';
+  is 'å¼€å§‹æ—¶é—´';
 comment on column QXFC.FC_FLOW_TASK_QUERY.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 alter table QXFC.FC_FLOW_TASK_QUERY
   add constraint PK_TASK_QUERY_ID primary key (QID)
   using index 
@@ -1325,39 +1325,39 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_FUND_CHANGE_DOWN
-  is 'ÏÂÓÎ×Ê½ğ±ä¸ü±í';
+  is 'ä¸‹æ¸¸èµ„é‡‘å˜æ›´è¡¨';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.change_type
-  is '±ä¸üÀàĞÍ1:¿Û¿î;2:¼Ó¿î;3:ÍË¿î';
+  is 'å˜æ›´ç±»å‹1:æ‰£æ¬¾;2:åŠ æ¬¾;3:é€€æ¬¾';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.change_money
-  is '±ä¸ü½ğ¶î';
+  is 'å˜æ›´é‡‘é¢';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.old_balance
-  is '±ä¶¯Ç°Óà¶î';
+  is 'å˜åŠ¨å‰ä½™é¢';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.after_balance
-  is '±ä¶¯ºóÓà¶î';
+  is 'å˜åŠ¨åä½™é¢';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.change_time
-  is '±ä¸üÊ±¼ä';
+  is 'å˜æ›´æ—¶é—´';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.is_adjust
-  is 'ÊÇ·ñ½ÃÕı0:½ÃÕı;1:²»½ÃÕı';
+  is 'æ˜¯å¦çŸ«æ­£0:çŸ«æ­£;1:ä¸çŸ«æ­£';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.operate_user
-  is '²Ù×÷ÈË';
+  is 'æ“ä½œäºº';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.operate_type
-  is '²Ù×÷ÀàĞÍ1:ÏµÍ³;2:ÈË¹¤';
+  is 'æ“ä½œç±»å‹1:ç³»ç»Ÿ;2:äººå·¥';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.sync_status
-  is 'Í¬²½×´Ì¬20:µÈ´ıÍ¬²½;30:ÕıÔÚÍ¬²½;90:Í¬²½Ê§°Ü;0:Í¬²½³É¹¦';
+  is 'åŒæ­¥çŠ¶æ€20:ç­‰å¾…åŒæ­¥;30:æ­£åœ¨åŒæ­¥;90:åŒæ­¥å¤±è´¥;0:åŒæ­¥æˆåŠŸ';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.sync_end_time
-  is 'Í¬²½Íê³ÉÊ±¼ä';
+  is 'åŒæ­¥å®Œæˆæ—¶é—´';
 comment on column QXFC.FC_FUND_CHANGE_DOWN.trade_fee
-  is 'ÊÖĞø·Ñ';
+  is 'æ‰‹ç»­è´¹';
 alter table QXFC.FC_FUND_CHANGE_DOWN
   add constraint PK_FC_FUND_CHANGE_DOWN primary key (ID)
   using index 
@@ -1408,39 +1408,39 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_FUND_CHANGE_UP
-  is 'ÉÏÓÎ×Ê½ğ±ä¸ü±í';
+  is 'ä¸Šæ¸¸èµ„é‡‘å˜æ›´è¡¨';
 comment on column QXFC.FC_FUND_CHANGE_UP.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_FUND_CHANGE_UP.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_FUND_CHANGE_UP.channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_FUND_CHANGE_UP.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column QXFC.FC_FUND_CHANGE_UP.change_type
-  is '±ä¸üÀàĞÍ1:¿Û¿î;2:¼Ó¿î;3:ÍË¿î';
+  is 'å˜æ›´ç±»å‹1:æ‰£æ¬¾;2:åŠ æ¬¾;3:é€€æ¬¾';
 comment on column QXFC.FC_FUND_CHANGE_UP.change_money
-  is '±ä¸ü½ğ¶î';
+  is 'å˜æ›´é‡‘é¢';
 comment on column QXFC.FC_FUND_CHANGE_UP.old_balance
-  is '±ä¶¯Ç°Óà¶î';
+  is 'å˜åŠ¨å‰ä½™é¢';
 comment on column QXFC.FC_FUND_CHANGE_UP.after_balance
-  is '±ä¶¯ºóÓà¶î';
+  is 'å˜åŠ¨åä½™é¢';
 comment on column QXFC.FC_FUND_CHANGE_UP.change_time
-  is '±ä¸üÊ±¼ä';
+  is 'å˜æ›´æ—¶é—´';
 comment on column QXFC.FC_FUND_CHANGE_UP.is_adjust
-  is 'ÊÇ·ñ½ÃÕı0:½ÃÕı;1:²»½ÃÕı';
+  is 'æ˜¯å¦çŸ«æ­£0:çŸ«æ­£;1:ä¸çŸ«æ­£';
 comment on column QXFC.FC_FUND_CHANGE_UP.operate_user
-  is '²Ù×÷ÈË';
+  is 'æ“ä½œäºº';
 comment on column QXFC.FC_FUND_CHANGE_UP.operate_type
-  is '²Ù×÷ÀàĞÍ1:ÏµÍ³;2:ÈË¹¤';
+  is 'æ“ä½œç±»å‹1:ç³»ç»Ÿ;2:äººå·¥';
 comment on column QXFC.FC_FUND_CHANGE_UP.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_FUND_CHANGE_UP.sync_status
-  is 'Í¬²½×´Ì¬20:µÈ´ıÍ¬²½;30:ÕıÔÚÍ¬²½;90:Í¬²½Ê§°Ü;0:Í¬²½³É¹¦';
+  is 'åŒæ­¥çŠ¶æ€20:ç­‰å¾…åŒæ­¥;30:æ­£åœ¨åŒæ­¥;90:åŒæ­¥å¤±è´¥;0:åŒæ­¥æˆåŠŸ';
 comment on column QXFC.FC_FUND_CHANGE_UP.sync_time
-  is 'Í¬²½Ê±¼ä(ÊÊÓÃÓÚ²»Á¢¼´Í¬²½µÄ¶©µ¥)';
+  is 'åŒæ­¥æ—¶é—´(é€‚ç”¨äºä¸ç«‹å³åŒæ­¥çš„è®¢å•)';
 comment on column QXFC.FC_FUND_CHANGE_UP.sync_end_time
-  is 'Í¬²½Íê³ÉÊ±¼ä';
+  is 'åŒæ­¥å®Œæˆæ—¶é—´';
 alter table QXFC.FC_FUND_CHANGE_UP
   add constraint PK_FC_FUND_CHANGE_UP primary key (ID)
   using index 
@@ -1483,23 +1483,23 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_ICCID
-  is 'ICCID¿â´æ±í';
+  is 'ICCIDåº“å­˜è¡¨';
 comment on column QXFC.FC_ICCID.iccid
   is 'ICCID';
 comment on column QXFC.FC_ICCID.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column QXFC.FC_ICCID.province_no
-  is 'Ê¡·İ';
+  is 'çœä»½';
 comment on column QXFC.FC_ICCID.city_no
-  is '³ÇÊĞ';
+  is 'åŸå¸‚';
 comment on column QXFC.FC_ICCID.icc_type
-  is '¿¨ÀàĞÍ 1:±¾µØĞ´¿¨; 2:¿ÕÖĞÈëÍø¿¨';
+  is 'å¡ç±»å‹ 1:æœ¬åœ°å†™å¡; 2:ç©ºä¸­å…¥ç½‘å¡';
 comment on column QXFC.FC_ICCID.status
-  is '×´Ì¬ 0:¿ÉÓÃ; 1:½ûÓÃ 2:ÒÑÊ¹ÓÃ';
+  is 'çŠ¶æ€ 0:å¯ç”¨; 1:ç¦ç”¨ 2:å·²ä½¿ç”¨';
 comment on column QXFC.FC_ICCID.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_ICCID.section_type
-  is 'ºÅ¶ÎÀàĞÍ';
+  is 'å·æ®µç±»å‹';
 alter table QXFC.FC_ICCID
   add constraint PK_ICCID primary key (ICCID)
   using index 
@@ -1550,39 +1550,39 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_NOTIFY_RECORD
-  is 'ÏÂÓÎÍ¨Öª¼ÇÂ¼';
+  is 'ä¸‹æ¸¸é€šçŸ¥è®°å½•';
 comment on column QXFC.FC_NOTIFY_RECORD.id
-  is 'Í¨Öª¼ÇÂ¼ID';
+  is 'é€šçŸ¥è®°å½•ID';
 comment on column QXFC.FC_NOTIFY_RECORD.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_NOTIFY_RECORD.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_NOTIFY_RECORD.notify_type
-  is 'Í¨ÖªÀàĞÍ;1:ÒµÎñ³É¹¦Í¨Öª;2:ÍË¿î';
+  is 'é€šçŸ¥ç±»å‹;1:ä¸šåŠ¡æˆåŠŸé€šçŸ¥;2:é€€æ¬¾';
 comment on column QXFC.FC_NOTIFY_RECORD.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column QXFC.FC_NOTIFY_RECORD.notify_url
-  is 'Í¨ÖªURL';
+  is 'é€šçŸ¥URL';
 comment on column QXFC.FC_NOTIFY_RECORD.svc_bus
-  is '·şÎñÃû';
+  is 'æœåŠ¡å';
 comment on column QXFC.FC_NOTIFY_RECORD.notify_cntr
-  is 'Í¨Öª´ÎÊı';
+  is 'é€šçŸ¥æ¬¡æ•°';
 comment on column QXFC.FC_NOTIFY_RECORD.notify_limit
-  is 'Í¨Öª´ÎÊıÏŞÖÆ';
+  is 'é€šçŸ¥æ¬¡æ•°é™åˆ¶';
 comment on column QXFC.FC_NOTIFY_RECORD.interval
-  is 'Í¨Öª¼ä¸ô,µ¥Î»s';
+  is 'é€šçŸ¥é—´éš”,å•ä½s';
 comment on column QXFC.FC_NOTIFY_RECORD.ip
-  is 'Í¨ÖªIP';
+  is 'é€šçŸ¥IP';
 comment on column QXFC.FC_NOTIFY_RECORD.status
-  is '×´Ì¬;20:µÈ´ı;30:ÕıÔÚÍ¨Öª;90:Í¨ÖªÊ§°Ü;0:Í¨Öª³É¹¦';
+  is 'çŠ¶æ€;20:ç­‰å¾…;30:æ­£åœ¨é€šçŸ¥;90:é€šçŸ¥å¤±è´¥;0:é€šçŸ¥æˆåŠŸ';
 comment on column QXFC.FC_NOTIFY_RECORD.scan_id
-  is 'ºó²¹Åú´Î';
+  is 'åè¡¥æ‰¹æ¬¡';
 comment on column QXFC.FC_NOTIFY_RECORD.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_NOTIFY_RECORD.next_time
-  is 'ÏÂ´ÎÊ±¼ä';
+  is 'ä¸‹æ¬¡æ—¶é—´';
 comment on column QXFC.FC_NOTIFY_RECORD.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 alter table QXFC.FC_NOTIFY_RECORD
   add constraint PK_FC_NOTIFY_RECORD primary key (ID)
   using index 
@@ -1624,19 +1624,19 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_OPERATION.op_id
-  is 'Ö÷¼ü±àºÅ';
+  is 'ä¸»é”®ç¼–å·';
 comment on column QXFC.FC_OPERATION.key_id
-  is 'Êı¾İÖ÷¼üID';
+  is 'æ•°æ®ä¸»é”®ID';
 comment on column QXFC.FC_OPERATION.operate_type
-  is '²Ù×÷ÀàĞÍ';
+  is 'æ“ä½œç±»å‹';
 comment on column QXFC.FC_OPERATION.details
-  is '²Ù×÷ÏêÇé';
+  is 'æ“ä½œè¯¦æƒ…';
 comment on column QXFC.FC_OPERATION.operator
-  is '²Ù×÷ÈË';
+  is 'æ“ä½œäºº';
 comment on column QXFC.FC_OPERATION.operate_time
-  is '²Ù×÷Ê±¼ä';
+  is 'æ“ä½œæ—¶é—´';
 comment on column QXFC.FC_OPERATION.menu_path
-  is '²Ëµ¥Â·¾¶';
+  is 'èœå•è·¯å¾„';
 
 prompt
 prompt Creating table FC_ORDER_BIND
@@ -1692,77 +1692,77 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_ORDER_BIND
-  is '°ó¶¨±í';
+  is 'ç»‘å®šè¡¨';
 comment on column QXFC.FC_ORDER_BIND.bind_id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_ORDER_BIND.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_ORDER_BIND.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_ORDER_BIND.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_ORDER_BIND.up_channel_no
-  is 'ÉÏÓÎÇşµÀ';
+  is 'ä¸Šæ¸¸æ¸ é“';
 comment on column QXFC.FC_ORDER_BIND.up_product_id
-  is 'ÉÏÓÎ²úÆ·ID';
+  is 'ä¸Šæ¸¸äº§å“ID';
 comment on column QXFC.FC_ORDER_BIND.up_account_id
-  is 'ÉÏÓÎÕÊºÅ';
+  is 'ä¸Šæ¸¸å¸å·';
 comment on column QXFC.FC_ORDER_BIND.up_order_no
-  is 'ÉÏÓÎ¶©µ¥ºÅ';
+  is 'ä¸Šæ¸¸è®¢å•å·';
 comment on column QXFC.FC_ORDER_BIND.face
-  is 'ÃæÖµ';
+  is 'é¢å€¼';
 comment on column QXFC.FC_ORDER_BIND.down_price
-  is 'ÏÂÓÎÊÛ¼Û';
+  is 'ä¸‹æ¸¸å”®ä»·';
 comment on column QXFC.FC_ORDER_BIND.down_trade_fee
-  is 'ÏÂÓÎ½»Ò×ÊÖĞø·Ñ';
+  is 'ä¸‹æ¸¸äº¤æ˜“æ‰‹ç»­è´¹';
 comment on column QXFC.FC_ORDER_BIND.up_cost
-  is 'ÉÏÓÎ³É±¾';
+  is 'ä¸Šæ¸¸æˆæœ¬';
 comment on column QXFC.FC_ORDER_BIND.up_reward
-  is 'ÉÏÓÎÓ¶½ğ';
+  is 'ä¸Šæ¸¸ä½£é‡‘';
 comment on column QXFC.FC_ORDER_BIND.phone_no
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column QXFC.FC_ORDER_BIND.package_id
-  is 'Ì×²Í±àºÅ';
+  is 'å¥—é¤ç¼–å·';
 comment on column QXFC.FC_ORDER_BIND.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_ORDER_BIND.script_id
-  is '½Å±¾ID';
+  is 'è„šæœ¬ID';
 comment on column QXFC.FC_ORDER_BIND.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column QXFC.FC_ORDER_BIND.svc_bus
-  is '×ÜÏß·şÎñ';
+  is 'æ€»çº¿æœåŠ¡';
 comment on column QXFC.FC_ORDER_BIND.ip
-  is '·¢»õIP';
+  is 'å‘è´§IP';
 comment on column QXFC.FC_ORDER_BIND.bind_time
-  is '°ó¶¨Ê±¼ä';
+  is 'ç»‘å®šæ—¶é—´';
 comment on column QXFC.FC_ORDER_BIND.end_time
-  is '°ó¶¨½áÊøÊ±¼ä';
+  is 'ç»‘å®šç»“æŸæ—¶é—´';
 comment on column QXFC.FC_ORDER_BIND.delivery_start_time
-  is '·¢»õ¿ªÊ¼Ê±¼ä';
+  is 'å‘è´§å¼€å§‹æ—¶é—´';
 comment on column QXFC.FC_ORDER_BIND.delivery_end_time
-  is '·¢»õ½áÊøÊ±¼ä';
+  is 'å‘è´§ç»“æŸæ—¶é—´';
 comment on column QXFC.FC_ORDER_BIND.delivery_msg
-  is '·¢»õÏûÏ¢';
+  is 'å‘è´§æ¶ˆæ¯';
 comment on column QXFC.FC_ORDER_BIND.query_msg
-  is '²éÑ¯ÏûÏ¢';
+  is 'æŸ¥è¯¢æ¶ˆæ¯';
 comment on column QXFC.FC_ORDER_BIND.scan_id
-  is 'ºó²¹É¨ÃèID';
+  is 'åè¡¥æ‰«æID';
 comment on column QXFC.FC_ORDER_BIND.next_time
-  is 'ÏÂ´ÎÊ±¼ä';
+  is 'ä¸‹æ¬¡æ—¶é—´';
 comment on column QXFC.FC_ORDER_BIND.bind_status
-  is '°ó¶¨×´Ì¬;20:µÈ´ı;30:ÕıÔÚ°ó¶¨;90:Ê§°Ü;0:³É¹¦';
+  is 'ç»‘å®šçŠ¶æ€;20:ç­‰å¾…;30:æ­£åœ¨ç»‘å®š;90:å¤±è´¥;0:æˆåŠŸ';
 comment on column QXFC.FC_ORDER_BIND.manual_status
-  is 'ÈË¹¤ÉóºË×´Ì¬;10:ÎŞĞè´¦Àí;20:µÈ´ı;30:ÕıÔÚ´¦Àí;90:Ê§°Ü;0:³É¹¦';
+  is 'äººå·¥å®¡æ ¸çŠ¶æ€;10:æ— éœ€å¤„ç†;20:ç­‰å¾…;30:æ­£åœ¨å¤„ç†;90:å¤±è´¥;0:æˆåŠŸ';
 comment on column QXFC.FC_ORDER_BIND.refund_status
-  is 'ÍË¿î×´Ì¬;10:ÎŞĞè´¦Àí;20:µÈ´ı;30:ÕıÔÚÍË¿î;90:Ê§°Ü;0:³É¹¦';
+  is 'é€€æ¬¾çŠ¶æ€;10:æ— éœ€å¤„ç†;20:ç­‰å¾…;30:æ­£åœ¨é€€æ¬¾;90:å¤±è´¥;0:æˆåŠŸ';
 comment on column QXFC.FC_ORDER_BIND.refund_start_time
-  is 'ÍË¿îÉêÇëÊ±¼ä';
+  is 'é€€æ¬¾ç”³è¯·æ—¶é—´';
 comment on column QXFC.FC_ORDER_BIND.refund_end_time
-  is 'ÍË¿î½áÊøÊ±¼ä';
+  is 'é€€æ¬¾ç»“æŸæ—¶é—´';
 comment on column QXFC.FC_ORDER_BIND.action
-  is 'µ±Ç°²Ù×÷';
+  is 'å½“å‰æ“ä½œ';
 comment on column QXFC.FC_ORDER_BIND.flow_id
-  is 'Á÷³Ì±àºÅ';
+  is 'æµç¨‹ç¼–å·';
 alter table QXFC.FC_ORDER_BIND
   add constraint PK_FC_ORDER_BIND primary key (BIND_ID)
   using index 
@@ -1816,45 +1816,45 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_ORDER_EXPRESS
-  is '¿ìµİ·¢»õ¼ÇÂ¼±í';
+  is 'å¿«é€’å‘è´§è®°å½•è¡¨';
 comment on column QXFC.FC_ORDER_EXPRESS.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_ORDER_EXPRESS.taskid
-  is 'ÈÎÎñ±àºÅ';
+  is 'ä»»åŠ¡ç¼–å·';
 comment on column QXFC.FC_ORDER_EXPRESS.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_ORDER_EXPRESS.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_ORDER_EXPRESS.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_ORDER_EXPRESS.order_time
-  is 'ÏÂµ¥Ê±¼ä';
+  is 'ä¸‹å•æ—¶é—´';
 comment on column QXFC.FC_ORDER_EXPRESS.target_name
-  is 'ÊÕ¼şÈË';
+  is 'æ”¶ä»¶äºº';
 comment on column QXFC.FC_ORDER_EXPRESS.target_phone
-  is 'ÊÕ¼şÈËÊÖ»úºÅ';
+  is 'æ”¶ä»¶äººæ‰‹æœºå·';
 comment on column QXFC.FC_ORDER_EXPRESS.target_address
-  is 'ÊÕ»õµØÖ·';
+  is 'æ”¶è´§åœ°å€';
 comment on column QXFC.FC_ORDER_EXPRESS.express_no
-  is '¿ìµİµ¥ºÅ';
+  is 'å¿«é€’å•å·';
 comment on column QXFC.FC_ORDER_EXPRESS.express_name
-  is '¿ìµİ¹«Ë¾Ãû³Æ';
+  is 'å¿«é€’å…¬å¸åç§°';
 comment on column QXFC.FC_ORDER_EXPRESS.express_fee
-  is '¿ìµİ·Ñ';
+  is 'å¿«é€’è´¹';
 comment on column QXFC.FC_ORDER_EXPRESS.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_ORDER_EXPRESS.express_status
-  is '¿ìµİ×´Ì¬ 20:µÈ´ı´òÓ¡µ¥ºÅ; 30:´òÓ¡; 40:µÈ´ıÌìÃ¨·¢»õ; 90:·¢»õÊ§°Ü; 0:³É¹¦';
+  is 'å¿«é€’çŠ¶æ€ 20:ç­‰å¾…æ‰“å°å•å·; 30:æ‰“å°; 40:ç­‰å¾…å¤©çŒ«å‘è´§; 90:å‘è´§å¤±è´¥; 0:æˆåŠŸ';
 comment on column QXFC.FC_ORDER_EXPRESS.result_msg
-  is 'ÏûÏ¢';
+  is 'æ¶ˆæ¯';
 comment on column QXFC.FC_ORDER_EXPRESS.operate_user
-  is '¼Ä¼şÈË';
+  is 'å¯„ä»¶äºº';
 comment on column QXFC.FC_ORDER_EXPRESS.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_ORDER_EXPRESS.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_ORDER_EXPRESS.finish_time
-  is 'Íê³ÉÊ±¼ä';
+  is 'å®Œæˆæ—¶é—´';
 alter table QXFC.FC_ORDER_EXPRESS
   add constraint PK_FC_ORDER_DELIVERY primary key (ID)
   using index 
@@ -1911,49 +1911,49 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_ORDER_EXT.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_ORDER_EXT.active_real_name
-  is 'ºÅ¿¨ÊµÃûÈË';
+  is 'å·å¡å®åäºº';
 comment on column QXFC.FC_ORDER_EXT.active_idno
-  is 'ºÅ¿¨ÊµÃûÉí·İÖ¤ºÅ';
+  is 'å·å¡å®åèº«ä»½è¯å·';
 comment on column QXFC.FC_ORDER_EXT.brand_no
-  is 'Âò¼Ò¿í´øÕÊºÅ';
+  is 'ä¹°å®¶å®½å¸¦å¸å·';
 comment on column QXFC.FC_ORDER_EXT.buyer_nick
-  is 'Âò¼ÒÍúÍú';
+  is 'ä¹°å®¶æ—ºæ—º';
 comment on column QXFC.FC_ORDER_EXT.buyer_alipay_id
-  is 'Âò¼ÒÖ§¸¶±¦ÕÊºÅ';
+  is 'ä¹°å®¶æ”¯ä»˜å®å¸å·';
 comment on column QXFC.FC_ORDER_EXT.pay_order_no
-  is 'Ö§¸¶¶©µ¥ºÅ';
+  is 'æ”¯ä»˜è®¢å•å·';
 comment on column QXFC.FC_ORDER_EXT.buyer_name
-  is 'Âò¼ÒĞÕÃû';
+  is 'ä¹°å®¶å§“å';
 comment on column QXFC.FC_ORDER_EXT.buyer_phone
-  is 'ÊÕ¼şÈËÊÖ»úºÅ';
+  is 'æ”¶ä»¶äººæ‰‹æœºå·';
 comment on column QXFC.FC_ORDER_EXT.buyer_address
-  is 'Âò¼ÒµØÖ·';
+  is 'ä¹°å®¶åœ°å€';
 comment on column QXFC.FC_ORDER_EXT.buyer_message
-  is 'Âò¼ÒÁôÑÔ';
+  is 'ä¹°å®¶ç•™è¨€';
 comment on column QXFC.FC_ORDER_EXT.iccno
-  is 'ICCĞòÁĞºÅ';
+  is 'ICCåºåˆ—å·';
 comment on column QXFC.FC_ORDER_EXT.write_card
-  is 'ÊÇ·ñÊÇ×Ô¶¯Ğ´¿¨ 0:×Ô¶¯ 1:ÈË¹¤';
+  is 'æ˜¯å¦æ˜¯è‡ªåŠ¨å†™å¡ 0:è‡ªåŠ¨ 1:äººå·¥';
 comment on column QXFC.FC_ORDER_EXT.tmall_status
-  is 'ÌìÃ¨¶©µ¥×´Ì¬';
+  is 'å¤©çŒ«è®¢å•çŠ¶æ€';
 comment on column QXFC.FC_ORDER_EXT.tmall_order_date
-  is 'ÌìÃ¨¶©µ¥Ê±¼ä';
+  is 'å¤©çŒ«è®¢å•æ—¶é—´';
 comment on column QXFC.FC_ORDER_EXT.install_address
-  is '°²×°µØÖ·';
+  is 'å®‰è£…åœ°å€';
 comment on column QXFC.FC_ORDER_EXT.buyer_province
-  is 'Âò¼ÒÊ¡·İ';
+  is 'ä¹°å®¶çœä»½';
 comment on column QXFC.FC_ORDER_EXT.buyer_city
-  is '³ÇÊĞ';
+  is 'åŸå¸‚';
 comment on column QXFC.FC_ORDER_EXT.icc_type
-  is '¿¨ÀàĞÍ Í¬ÏÂÓÎ²úÆ·±íµÄiccType';
+  is 'å¡ç±»å‹ åŒä¸‹æ¸¸äº§å“è¡¨çš„iccType';
 comment on column QXFC.FC_ORDER_EXT.install_date
-  is '°²×°Ê±¼ä';
+  is 'å®‰è£…æ—¶é—´';
 comment on column QXFC.FC_ORDER_EXT.ext_info
-  is 'À©Õ¹ĞÅÏ¢';
+  is 'æ‰©å±•ä¿¡æ¯';
 comment on column QXFC.FC_ORDER_EXT.is_wuliu
-  is 'ÊÇ·ñĞèÒªÎïÁ÷, 0:ĞèÒª 1:²»ĞèÒª';
+  is 'æ˜¯å¦éœ€è¦ç‰©æµ, 0:éœ€è¦ 1:ä¸éœ€è¦';
 alter table QXFC.FC_ORDER_EXT
   add constraint PK_ORDER_EXT_ORDER_NO primary key (ORDER_NO)
   using index 
@@ -2028,87 +2028,87 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_ORDER_MAIN
-  is '¶©µ¥±í';
+  is 'è®¢å•è¡¨';
 comment on column QXFC.FC_ORDER_MAIN.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_ORDER_MAIN.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_ORDER_MAIN.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_ORDER_MAIN.down_product_no
-  is 'ÏÂÓÎ²úÆ·±àÂë';
+  is 'ä¸‹æ¸¸äº§å“ç¼–ç ';
 comment on column QXFC.FC_ORDER_MAIN.down_product_id
-  is 'ÏÂÓÎ²úÆ·ID';
+  is 'ä¸‹æ¸¸äº§å“ID';
 comment on column QXFC.FC_ORDER_MAIN.product_name
-  is '²úÆ·Ãû³Æ';
+  is 'äº§å“åç§°';
 comment on column QXFC.FC_ORDER_MAIN.package_id
-  is 'Ì×²Í±àºÅ';
+  is 'å¥—é¤ç¼–å·';
 comment on column QXFC.FC_ORDER_MAIN.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_ORDER_MAIN.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column QXFC.FC_ORDER_MAIN.province_no
-  is 'Ê¡·İ;QG:È«¹ú';
+  is 'çœä»½;QG:å…¨å›½';
 comment on column QXFC.FC_ORDER_MAIN.city_no
-  is '³ÇÊĞ:*:È«ÊĞ';
+  is 'åŸå¸‚:*:å…¨å¸‚';
 comment on column QXFC.FC_ORDER_MAIN.active_phone
-  is '¼¤»îÊÖ»úºÅ';
+  is 'æ¿€æ´»æ‰‹æœºå·';
 comment on column QXFC.FC_ORDER_MAIN.old_phone
-  is 'Î´°ìÀí³É¹¦µÄÊÖ»úºÅ';
+  is 'æœªåŠç†æˆåŠŸçš„æ‰‹æœºå·';
 comment on column QXFC.FC_ORDER_MAIN.face
-  is 'ÃæÖµ';
+  is 'é¢å€¼';
 comment on column QXFC.FC_ORDER_MAIN.pay_fee
-  is 'Ö§¸¶½ğ¶î';
+  is 'æ”¯ä»˜é‡‘é¢';
 comment on column QXFC.FC_ORDER_MAIN.trade_fee
-  is '½»Ò×ÊÖĞø·Ñ';
+  is 'äº¤æ˜“æ‰‹ç»­è´¹';
 comment on column QXFC.FC_ORDER_MAIN.buy_cntr
-  is 'ÊıÁ¿';
+  is 'æ•°é‡';
 comment on column QXFC.FC_ORDER_MAIN.trial_day
-  is 'ÊÔÓÃÆÚ';
+  is 'è¯•ç”¨æœŸ';
 comment on column QXFC.FC_ORDER_MAIN.auto_active
-  is 'ÊÇ·ñ×Ô¶¯¼¤»î';
+  is 'æ˜¯å¦è‡ªåŠ¨æ¿€æ´»';
 comment on column QXFC.FC_ORDER_MAIN.request_time
-  is 'ÇëÇóÊ±¼ä';
+  is 'è¯·æ±‚æ—¶é—´';
 comment on column QXFC.FC_ORDER_MAIN.order_timeout
-  is '¶©µ¥³¬Ê±Ê±¼ä';
+  is 'è®¢å•è¶…æ—¶æ—¶é—´';
 comment on column QXFC.FC_ORDER_MAIN.order_status
-  is '¶©µ¥×´Ì¬';
+  is 'è®¢å•çŠ¶æ€';
 comment on column QXFC.FC_ORDER_MAIN.refund_status
-  is 'ÍË¿î×´Ì¬';
+  is 'é€€æ¬¾çŠ¶æ€';
 comment on column QXFC.FC_ORDER_MAIN.refund_time
-  is 'ÍË¿îÊ±¼ä';
+  is 'é€€æ¬¾æ—¶é—´';
 comment on column QXFC.FC_ORDER_MAIN.active_status
-  is '¼¤»î×´Ì¬0:×ªÕı/¼¤»î90:Î´×ªÕı/Î´¼¤»î';
+  is 'æ¿€æ´»çŠ¶æ€0:è½¬æ­£/æ¿€æ´»90:æœªè½¬æ­£/æœªæ¿€æ´»';
 comment on column QXFC.FC_ORDER_MAIN.active_time
-  is '¼¤»îÊ±¼ä';
+  is 'æ¿€æ´»æ—¶é—´';
 comment on column QXFC.FC_ORDER_MAIN.active_timeout
-  is '¼¤»î³¬Ê±Ê±¼ä';
+  is 'æ¿€æ´»è¶…æ—¶æ—¶é—´';
 comment on column QXFC.FC_ORDER_MAIN.notify_status
-  is 'Í¨Öª×´Ì¬';
+  is 'é€šçŸ¥çŠ¶æ€';
 comment on column QXFC.FC_ORDER_MAIN.error_code
-  is '´íÎóÂë';
+  is 'é”™è¯¯ç ';
 comment on column QXFC.FC_ORDER_MAIN.error_msg
-  is '´íÎóÏûÏ¢';
+  is 'é”™è¯¯æ¶ˆæ¯';
 comment on column QXFC.FC_ORDER_MAIN.scan_id
-  is 'É¨ÃèÅú´Î';
+  is 'æ‰«ææ‰¹æ¬¡';
 comment on column QXFC.FC_ORDER_MAIN.bind_ip
-  is '°ó¶¨IP';
+  is 'ç»‘å®šIP';
 comment on column QXFC.FC_ORDER_MAIN.next_bind_time
-  is 'ÏÂ´Î°ó¶¨Ê±¼ä';
+  is 'ä¸‹æ¬¡ç»‘å®šæ—¶é—´';
 comment on column QXFC.FC_ORDER_MAIN.finish_time
-  is '¶©µ¥Íê³ÉÊ±¼ä';
+  is 'è®¢å•å®Œæˆæ—¶é—´';
 comment on column QXFC.FC_ORDER_MAIN.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_ORDER_MAIN.ext1
-  is 'À©Õ¹1';
+  is 'æ‰©å±•1';
 comment on column QXFC.FC_ORDER_MAIN.ext2
-  is 'À©Õ¹2';
+  is 'æ‰©å±•2';
 comment on column QXFC.FC_ORDER_MAIN.action
-  is 'µ±Ç°²Ù×÷';
+  is 'å½“å‰æ“ä½œ';
 comment on column QXFC.FC_ORDER_MAIN.flow_id
-  is 'Á÷³Ì±àºÅ';
+  is 'æµç¨‹ç¼–å·';
 comment on column QXFC.FC_ORDER_MAIN.action_no
-  is 'Á÷³Ì²½Öè action¶ÔÓ¦µÄĞòºÅ';
+  is 'æµç¨‹æ­¥éª¤ actionå¯¹åº”çš„åºå·';
 alter table QXFC.FC_ORDER_MAIN
   add constraint PK_FC_ORDER_MAIN primary key (ORDER_NO)
   using index 
@@ -2152,25 +2152,25 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_ORDER_OPERATE
-  is '¶©µ¥²Ù×÷¼ÇÂ¼';
+  is 'è®¢å•æ“ä½œè®°å½•';
 comment on column QXFC.FC_ORDER_OPERATE.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_ORDER_OPERATE.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_ORDER_OPERATE.bind_id
-  is '°ó¶¨±àºÅ';
+  is 'ç»‘å®šç¼–å·';
 comment on column QXFC.FC_ORDER_OPERATE.task_id
-  is 'ÈÎÎñ±àºÅ';
+  is 'ä»»åŠ¡ç¼–å·';
 comment on column QXFC.FC_ORDER_OPERATE.operate_user
-  is '²Ù×÷ÈË';
+  is 'æ“ä½œäºº';
 comment on column QXFC.FC_ORDER_OPERATE.operate_type
-  is '²Ù×÷ÀàĞÍ1:ÏµÍ³;2:ÈË¹¤';
+  is 'æ“ä½œç±»å‹1:ç³»ç»Ÿ;2:äººå·¥';
 comment on column QXFC.FC_ORDER_OPERATE.ip
   is 'IP';
 comment on column QXFC.FC_ORDER_OPERATE.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_ORDER_OPERATE.created_time
-  is '²Ù×÷Ê±¼ä';
+  is 'æ“ä½œæ—¶é—´';
 alter table QXFC.FC_ORDER_OPERATE
   add constraint PK_ORDER_OPERATE_ID primary key (ID)
   using index 
@@ -2232,61 +2232,61 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_ORDER_REFUND
-  is 'ÍË¿î¼ÇÂ¼±í';
+  is 'é€€æ¬¾è®°å½•è¡¨';
 comment on column QXFC.FC_ORDER_REFUND.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_ORDER_REFUND.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_ORDER_REFUND.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_ORDER_REFUND.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_ORDER_REFUND.down_product_no
-  is 'ÏÂÓÎ²úÆ·±àºÅ';
+  is 'ä¸‹æ¸¸äº§å“ç¼–å·';
 comment on column QXFC.FC_ORDER_REFUND.product_name
-  is '²úÆ·Ãû³Æ';
+  is 'äº§å“åç§°';
 comment on column QXFC.FC_ORDER_REFUND.buyer_nick
-  is 'Âò¼ÒÍúÍú';
+  is 'ä¹°å®¶æ—ºæ—º';
 comment on column QXFC.FC_ORDER_REFUND.tmall_refund_id
-  is 'ÌìÃ¨ÍË¿î¶©µ¥ºÅ';
+  is 'å¤©çŒ«é€€æ¬¾è®¢å•å·';
 comment on column QXFC.FC_ORDER_REFUND.tmall_refund_date
-  is 'ÌìÃ¨ÍË¿îÊ±¼ä';
+  is 'å¤©çŒ«é€€æ¬¾æ—¶é—´';
 comment on column QXFC.FC_ORDER_REFUND.tmall_refund_status
-  is 'ÌìÃ¨ÍË¿î¶©µ¥ºÅ';
+  is 'å¤©çŒ«é€€æ¬¾è®¢å•å·';
 comment on column QXFC.FC_ORDER_REFUND.reason
-  is 'ÍË¿îÔ­Òò';
+  is 'é€€æ¬¾åŸå› ';
 comment on column QXFC.FC_ORDER_REFUND.message
-  is 'ÏûÏ¢';
+  is 'æ¶ˆæ¯';
 comment on column QXFC.FC_ORDER_REFUND.tmall_goods_status
-  is '»õÎï×´Ì¬';
+  is 'è´§ç‰©çŠ¶æ€';
 comment on column QXFC.FC_ORDER_REFUND.tmall_order_status
-  is 'ÌìÃ¨¶©µ¥×´Ì¬';
+  is 'å¤©çŒ«è®¢å•çŠ¶æ€';
 comment on column QXFC.FC_ORDER_REFUND.refund_fee
-  is '½ğ¶î';
+  is 'é‡‘é¢';
 comment on column QXFC.FC_ORDER_REFUND.pay_order_no
-  is 'Ö§¸¶¶©µ¥ºÅ';
+  is 'æ”¯ä»˜è®¢å•å·';
 comment on column QXFC.FC_ORDER_REFUND.from_account
-  is 'ÍË¿îÕË»§';
+  is 'é€€æ¬¾è´¦æˆ·';
 comment on column QXFC.FC_ORDER_REFUND.to_account
-  is 'ÊÕ¿îÕË»§';
+  is 'æ”¶æ¬¾è´¦æˆ·';
 comment on column QXFC.FC_ORDER_REFUND.refund_status
-  is 'ÍË¿î×´Ì¬0:³É¹¦;10:µÈ´ıºËÊµ;20:µÈ´ı;30:ÕıÔÚÍË¿î90:ÍË¿îÊ§°Ü';
+  is 'é€€æ¬¾çŠ¶æ€0:æˆåŠŸ;10:ç­‰å¾…æ ¸å®;20:ç­‰å¾…;30:æ­£åœ¨é€€æ¬¾90:é€€æ¬¾å¤±è´¥';
 comment on column QXFC.FC_ORDER_REFUND.result_msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 comment on column QXFC.FC_ORDER_REFUND.refund_type
-  is 'ÍË¿îÀàĞÍ1:ÏßÉÏÍË¿î;2:ÏßÏÂÍË¿î';
+  is 'é€€æ¬¾ç±»å‹1:çº¿ä¸Šé€€æ¬¾;2:çº¿ä¸‹é€€æ¬¾';
 comment on column QXFC.FC_ORDER_REFUND.finish_time
-  is '½áÊøÊ±¼ä';
+  is 'ç»“æŸæ—¶é—´';
 comment on column QXFC.FC_ORDER_REFUND.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_ORDER_REFUND.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_ORDER_REFUND.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_ORDER_REFUND.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_ORDER_REFUND.confirm_user
-  is 'È·ÈÏÈË';
+  is 'ç¡®è®¤äºº';
 alter table QXFC.FC_ORDER_REFUND
   add constraint PK_FC_ORDER_REFUND primary key (ID)
   using index 
@@ -2332,15 +2332,15 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_PHONE_CHARGE
-  is 'ºÅÂë³ä»°·Ñ¼ÇÂ¼';
+  is 'å·ç å……è¯è´¹è®°å½•';
 comment on column QXFC.FC_PHONE_CHARGE.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_PHONE_CHARGE.creator
-  is '´´½¨ÈË';
+  is 'åˆ›å»ºäºº';
 comment on column QXFC.FC_PHONE_CHARGE.status
-  is 'Í¬process_status';
+  is 'åŒprocess_status';
 comment on column QXFC.FC_PHONE_CHARGE.activate_time
-  is '¼¤»îÊ±¼ä';
+  is 'æ¿€æ´»æ—¶é—´';
 create index QXFC.IDX_CHARGE_PHONE on QXFC.FC_PHONE_CHARGE (PHONE)
   tablespace USERS
   pctfree 10
@@ -2394,25 +2394,25 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_PRODUCT_PACKAGE
-  is '²úÆ·Ì×²Í±í';
+  is 'äº§å“å¥—é¤è¡¨';
 comment on column QXFC.FC_PRODUCT_PACKAGE.pkg_id
-  is '¹æÔò±àºÅ';
+  is 'è§„åˆ™ç¼–å·';
 comment on column QXFC.FC_PRODUCT_PACKAGE.pkg_name
-  is '¹æÔòÃû³Æ';
+  is 'è§„åˆ™åç§°';
 comment on column QXFC.FC_PRODUCT_PACKAGE.predeposit
-  is 'Ô¤´æ½ğ¶î';
+  is 'é¢„å­˜é‡‘é¢';
 comment on column QXFC.FC_PRODUCT_PACKAGE.month_rent
-  is 'ÔÂ×â';
+  is 'æœˆç§Ÿ';
 comment on column QXFC.FC_PRODUCT_PACKAGE.status
-  is '×´Ì¬ 0:ÆôÓÃ; 1:½ûÓÃ';
+  is 'çŠ¶æ€ 0:å¯ç”¨; 1:ç¦ç”¨';
 comment on column QXFC.FC_PRODUCT_PACKAGE.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_PRODUCT_PACKAGE.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_PRODUCT_PACKAGE.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_PRODUCT_PACKAGE.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 
 prompt
 prompt Creating table FC_PRODUCT_TYPE
@@ -2440,21 +2440,21 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_PRODUCT_TYPE
-  is '²úÆ··ÖÀà±í(´óÍõ¿¨/ÌìÍø¿¨...)';
+  is 'äº§å“åˆ†ç±»è¡¨(å¤§ç‹å¡/å¤©ç½‘å¡...)';
 comment on column QXFC.FC_PRODUCT_TYPE.type_id
-  is 'ÀàĞÍID';
+  is 'ç±»å‹ID';
 comment on column QXFC.FC_PRODUCT_TYPE.type_name
-  is 'ÀàĞÍÃû³Æ';
+  is 'ç±»å‹åç§°';
 comment on column QXFC.FC_PRODUCT_TYPE.status
-  is '×´Ì¬0:ÆôÓÃ;1:½ûÓÃ';
+  is 'çŠ¶æ€0:å¯ç”¨;1:ç¦ç”¨';
 comment on column QXFC.FC_PRODUCT_TYPE.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_PRODUCT_TYPE.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_PRODUCT_TYPE.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_PRODUCT_TYPE.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 alter table QXFC.FC_PRODUCT_TYPE
   add constraint PK_FC_PRODUCT_TYPE primary key (TYPE_ID)
   using index 
@@ -2498,25 +2498,25 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_SCAN_CONFIG
-  is 'ºò²¹ÅäÖÃ';
+  is 'å€™è¡¥é…ç½®';
 comment on column QXFC.FC_SCAN_CONFIG.scan_name
-  is 'Ãû³Æ';
+  is 'åç§°';
 comment on column QXFC.FC_SCAN_CONFIG.scan_title
-  is '±êÌâ';
+  is 'æ ‡é¢˜';
 comment on column QXFC.FC_SCAN_CONFIG.scan_interval
-  is 'ºó²¹É¨Ãè¼ä¸ô(Ãë)';
+  is 'åè¡¥æ‰«æé—´éš”(ç§’)';
 comment on column QXFC.FC_SCAN_CONFIG.once_count
-  is 'ºó²¹Ò»´Î¶àÉÙÌõÊı¾İ';
+  is 'åè¡¥ä¸€æ¬¡å¤šå°‘æ¡æ•°æ®';
 comment on column QXFC.FC_SCAN_CONFIG.do_interval
-  is 'ºó²¹¼ä¸ô(Ãë),ÏÂ´ÎÔÙÈë¶ÓÁĞÊ±¼ä';
+  is 'åè¡¥é—´éš”(ç§’),ä¸‹æ¬¡å†å…¥é˜Ÿåˆ—æ—¶é—´';
 comment on column QXFC.FC_SCAN_CONFIG.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_SCAN_CONFIG.last_exec_time
-  is '×î½üÖ´ĞĞÊ±¼ä';
+  is 'æœ€è¿‘æ‰§è¡Œæ—¶é—´';
 comment on column QXFC.FC_SCAN_CONFIG.next_exec_time
-  is 'ÏÂ´ÎÖ´ĞĞÊ±¼ä';
+  is 'ä¸‹æ¬¡æ‰§è¡Œæ—¶é—´';
 comment on column QXFC.FC_SCAN_CONFIG.last_exec_ip
-  is 'Ö´ĞĞip';
+  is 'æ‰§è¡Œip';
 
 prompt
 prompt Creating table FC_SMS_RECORD
@@ -2556,39 +2556,39 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_SMS_RECORD.sms_no
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_SMS_RECORD.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_SMS_RECORD.down_order_no
-  is 'ÏÂÓÎ¶©µ¥ºÅ';
+  is 'ä¸‹æ¸¸è®¢å•å·';
 comment on column QXFC.FC_SMS_RECORD.product_no
-  is '²úÆ·±àºÅ';
+  is 'äº§å“ç¼–å·';
 comment on column QXFC.FC_SMS_RECORD.phone
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column QXFC.FC_SMS_RECORD.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column QXFC.FC_SMS_RECORD.province_no
-  is 'Ê¡·İ';
+  is 'çœä»½';
 comment on column QXFC.FC_SMS_RECORD.city_no
-  is '³ÇÊĞ';
+  is 'åŸå¸‚';
 comment on column QXFC.FC_SMS_RECORD.up_channel_no
-  is 'ÉÏÓÎÇşµÀ';
+  is 'ä¸Šæ¸¸æ¸ é“';
 comment on column QXFC.FC_SMS_RECORD.up_product_no
-  is 'ÉÏÓÎ²úÆ·±àºÅ';
+  is 'ä¸Šæ¸¸äº§å“ç¼–å·';
 comment on column QXFC.FC_SMS_RECORD.up_account_id
-  is 'ÉÏÓÎÕÊºÅID';
+  is 'ä¸Šæ¸¸å¸å·ID';
 comment on column QXFC.FC_SMS_RECORD.up_product_id
-  is 'ÉÏÓÎ²úÆ·ID';
+  is 'ä¸Šæ¸¸äº§å“ID';
 comment on column QXFC.FC_SMS_RECORD.script_id
-  is '½Å±¾ID';
+  is 'è„šæœ¬ID';
 comment on column QXFC.FC_SMS_RECORD.api_url
-  is '½Ó¿ÚµØÖ·';
+  is 'æ¥å£åœ°å€';
 comment on column QXFC.FC_SMS_RECORD.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_SMS_RECORD.msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 comment on column QXFC.FC_SMS_RECORD.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_SMS_RECORD.cookie
   is 'cookie';
 comment on column QXFC.FC_SMS_RECORD.ip
@@ -2618,15 +2618,15 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_SYSTEM_CITY
-  is '³ÇÊĞ±í';
+  is 'åŸå¸‚è¡¨';
 comment on column QXFC.FC_SYSTEM_CITY.city_no
-  is 'ÊĞ±àºÅ';
+  is 'å¸‚ç¼–å·';
 comment on column QXFC.FC_SYSTEM_CITY.city_name
-  is 'Ãû³Æ';
+  is 'åç§°';
 comment on column QXFC.FC_SYSTEM_CITY.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_SYSTEM_CITY.province_no
-  is 'Ê¡id';
+  is 'çœid';
 
 prompt
 prompt Creating table FC_SYSTEM_DICTIONARY
@@ -2652,17 +2652,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_SYSTEM_DICTIONARY
-  is 'Êı¾İ×Öµä';
+  is 'æ•°æ®å­—å…¸';
 comment on column QXFC.FC_SYSTEM_DICTIONARY.dic_id
-  is '×Öµä±àºÅ';
+  is 'å­—å…¸ç¼–å·';
 comment on column QXFC.FC_SYSTEM_DICTIONARY.name
-  is '×ÖµäÃû³Æ';
+  is 'å­—å…¸åç§°';
 comment on column QXFC.FC_SYSTEM_DICTIONARY.value
-  is '×ÖµäÖµ';
+  is 'å­—å…¸å€¼';
 comment on column QXFC.FC_SYSTEM_DICTIONARY.short
-  is 'ÅÅĞò';
+  is 'æ’åº';
 comment on column QXFC.FC_SYSTEM_DICTIONARY.type
-  is 'ÀàĞÍ';
+  is 'ç±»å‹';
 
 prompt
 prompt Creating table FC_SYSTEM_LOG
@@ -2689,17 +2689,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_SYSTEM_LOG.id
-  is '±àºÅ';
+  is 'ç¼–å·';
 comment on column QXFC.FC_SYSTEM_LOG.object_name
-  is 'Ãû³Æ';
+  is 'åç§°';
 comment on column QXFC.FC_SYSTEM_LOG.error_level
-  is '´íÎó¼¶±ğ';
+  is 'é”™è¯¯çº§åˆ«';
 comment on column QXFC.FC_SYSTEM_LOG.error_desc
-  is '´íÎóÏûÏ¢';
+  is 'é”™è¯¯æ¶ˆæ¯';
 comment on column QXFC.FC_SYSTEM_LOG.trace_info
-  is '¶ÑÕ»ĞÅÏ¢';
+  is 'å †æ ˆä¿¡æ¯';
 comment on column QXFC.FC_SYSTEM_LOG.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 
 prompt
 prompt Creating table FC_SYSTEM_PROVINCE
@@ -2724,15 +2724,15 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_SYSTEM_PROVINCE
-  is 'Ê¡·İ±í';
+  is 'çœä»½è¡¨';
 comment on column QXFC.FC_SYSTEM_PROVINCE.province_no
-  is 'Ê¡±àºÅ';
+  is 'çœç¼–å·';
 comment on column QXFC.FC_SYSTEM_PROVINCE.province_name
-  is 'Ãû³Æ';
+  is 'åç§°';
 comment on column QXFC.FC_SYSTEM_PROVINCE.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_SYSTEM_PROVINCE.short
-  is 'ÅÅĞò';
+  is 'æ’åº';
 
 prompt
 prompt Creating table FC_TRADE_ANALYSE
@@ -2769,39 +2769,39 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_TRADE_ANALYSE
-  is 'ÏÂÓÎ½»Ò×±¨±í';
+  is 'ä¸‹æ¸¸äº¤æ˜“æŠ¥è¡¨';
 comment on column QXFC.FC_TRADE_ANALYSE.trade_date
-  is '½»Ò×Ê±¼ä';
+  is 'äº¤æ˜“æ—¶é—´';
 comment on column QXFC.FC_TRADE_ANALYSE.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_TRADE_ANALYSE.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_TRADE_ANALYSE.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column QXFC.FC_TRADE_ANALYSE.province_no
-  is 'Ê¡·İ';
+  is 'çœä»½';
 comment on column QXFC.FC_TRADE_ANALYSE.city_no
-  is 'µØÊĞ';
+  is 'åœ°å¸‚';
 comment on column QXFC.FC_TRADE_ANALYSE.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_TRADE_ANALYSE.package_type
-  is 'Ì×²Í';
+  is 'å¥—é¤';
 comment on column QXFC.FC_TRADE_ANALYSE.product_no
-  is '²úÆ·±àÂë';
+  is 'äº§å“ç¼–ç ';
 comment on column QXFC.FC_TRADE_ANALYSE.total_cntr
-  is '¶©µ¥±ÊÊı';
+  is 'è®¢å•ç¬”æ•°';
 comment on column QXFC.FC_TRADE_ANALYSE.total_fee
-  is '³É¹¦½ğ¶î';
+  is 'æˆåŠŸé‡‘é¢';
 comment on column QXFC.FC_TRADE_ANALYSE.trade_fee
-  is '³É¹¦ÃæÖµ';
+  is 'æˆåŠŸé¢å€¼';
 comment on column QXFC.FC_TRADE_ANALYSE.refund_fee
-  is 'ÍË¿î½ğ¶î';
+  is 'é€€æ¬¾é‡‘é¢';
 comment on column QXFC.FC_TRADE_ANALYSE.express_fee
-  is '¿ìµİ·Ñ';
+  is 'å¿«é€’è´¹';
 comment on column QXFC.FC_TRADE_ANALYSE.up_cost
-  is 'ÉÏÓÎ³É±¾';
+  is 'ä¸Šæ¸¸æˆæœ¬';
 comment on column QXFC.FC_TRADE_ANALYSE.up_reward
-  is 'ÉÏÓÎ·µÓ¶';
+  is 'ä¸Šæ¸¸è¿”ä½£';
 
 prompt
 prompt Creating table FC_TRADE_DOWN
@@ -2834,31 +2834,31 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_TRADE_DOWN
-  is 'ÏÂÓÎ½»Ò×±¨±í';
+  is 'ä¸‹æ¸¸äº¤æ˜“æŠ¥è¡¨';
 comment on column QXFC.FC_TRADE_DOWN.trade_date
-  is '½»Ò×Ê±¼ä';
+  is 'äº¤æ˜“æ—¶é—´';
 comment on column QXFC.FC_TRADE_DOWN.down_channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_TRADE_DOWN.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column QXFC.FC_TRADE_DOWN.province_no
-  is 'Ê¡·İ';
+  is 'çœä»½';
 comment on column QXFC.FC_TRADE_DOWN.city_no
-  is 'µØÊĞ';
+  is 'åœ°å¸‚';
 comment on column QXFC.FC_TRADE_DOWN.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_TRADE_DOWN.package_type
-  is 'Ì×²Í';
+  is 'å¥—é¤';
 comment on column QXFC.FC_TRADE_DOWN.product_no
-  is '²úÆ·±àÂë';
+  is 'äº§å“ç¼–ç ';
 comment on column QXFC.FC_TRADE_DOWN.total_cntr
-  is '¶©µ¥±ÊÊı';
+  is 'è®¢å•ç¬”æ•°';
 comment on column QXFC.FC_TRADE_DOWN.total_fee
-  is '³É¹¦½ğ¶î';
+  is 'æˆåŠŸé‡‘é¢';
 comment on column QXFC.FC_TRADE_DOWN.trade_fee
-  is '³É¹¦ÃæÖµ';
+  is 'æˆåŠŸé¢å€¼';
 comment on column QXFC.FC_TRADE_DOWN.refund_fee
-  is 'ÍË¿î½ğ¶î';
+  is 'é€€æ¬¾é‡‘é¢';
 
 prompt
 prompt Creating table FC_TRADE_UP
@@ -2892,33 +2892,33 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_TRADE_UP
-  is 'ÉÏÓÎ½»Ò×±¨±í';
+  is 'ä¸Šæ¸¸äº¤æ˜“æŠ¥è¡¨';
 comment on column QXFC.FC_TRADE_UP.trade_date
-  is '½»Ò×Ê±¼ä';
+  is 'äº¤æ˜“æ—¶é—´';
 comment on column QXFC.FC_TRADE_UP.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_TRADE_UP.carrier_no
-  is 'ÔËÓªÉÌ';
+  is 'è¿è¥å•†';
 comment on column QXFC.FC_TRADE_UP.province_no
-  is 'Ê¡·İ';
+  is 'çœä»½';
 comment on column QXFC.FC_TRADE_UP.city_no
-  is 'µØÊĞ';
+  is 'åœ°å¸‚';
 comment on column QXFC.FC_TRADE_UP.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_TRADE_UP.package_type
-  is 'Ì×²Í';
+  is 'å¥—é¤';
 comment on column QXFC.FC_TRADE_UP.product_no
-  is '²úÆ·±àÂë';
+  is 'äº§å“ç¼–ç ';
 comment on column QXFC.FC_TRADE_UP.total_cntr
-  is '¶©µ¥±ÊÊı';
+  is 'è®¢å•ç¬”æ•°';
 comment on column QXFC.FC_TRADE_UP.cost
-  is '³É±¾';
+  is 'æˆæœ¬';
 comment on column QXFC.FC_TRADE_UP.reward
-  is 'Ó¶½ğ';
+  is 'ä½£é‡‘';
 comment on column QXFC.FC_TRADE_UP.express_fee
-  is '¿ìµİ·Ñ';
+  is 'å¿«é€’è´¹';
 comment on column QXFC.FC_TRADE_UP.refund_fee
-  is 'ÍË¿î½ğ¶î';
+  is 'é€€æ¬¾é‡‘é¢';
 
 prompt
 prompt Creating table FC_UP_ACCOUNT
@@ -2956,41 +2956,41 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_UP_ACCOUNT
-  is 'ÉÏÓÎÕË»§±í';
+  is 'ä¸Šæ¸¸è´¦æˆ·è¡¨';
 comment on column QXFC.FC_UP_ACCOUNT.id
-  is 'ÕÊºÅ±àºÅ';
+  is 'å¸å·ç¼–å·';
 comment on column QXFC.FC_UP_ACCOUNT.channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_UP_ACCOUNT.account_no
-  is 'ÕÊºÅÃû';
+  is 'å¸å·å';
 comment on column QXFC.FC_UP_ACCOUNT.account_pwd
-  is 'ÕÊºÅÃÜÂë';
+  is 'å¸å·å¯†ç ';
 comment on column QXFC.FC_UP_ACCOUNT.balance
-  is 'Óà¶î';
+  is 'ä½™é¢';
 comment on column QXFC.FC_UP_ACCOUNT.carrier_no
-  is 'ÔËÓªÉÌ; *:ËùÓĞ';
+  is 'è¿è¥å•†; *:æ‰€æœ‰';
 comment on column QXFC.FC_UP_ACCOUNT.province_no
-  is 'Ê¡·İ; QG:È«¹ú';
+  is 'çœä»½; QG:å…¨å›½';
 comment on column QXFC.FC_UP_ACCOUNT.city_no
-  is '³ÇÊĞ; *:È«ÊĞ';
+  is 'åŸå¸‚; *:å…¨å¸‚';
 comment on column QXFC.FC_UP_ACCOUNT.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_UP_ACCOUNT.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_UP_ACCOUNT.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_UP_ACCOUNT.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_UP_ACCOUNT.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_UP_ACCOUNT.cookie
-  is 'ÍøÕ¾cookie';
+  is 'ç½‘ç«™cookie';
 comment on column QXFC.FC_UP_ACCOUNT.bind_phone
-  is '°ó¶¨ÊÖ»ú';
+  is 'ç»‘å®šæ‰‹æœº';
 comment on column QXFC.FC_UP_ACCOUNT.is_using
-  is 'ÊÇ·ñÕıÔÚÊ¹ÓÃ 0ÕıÔÚÊ¹ÓÃ 1¿ÕÏĞ';
+  is 'æ˜¯å¦æ­£åœ¨ä½¿ç”¨ 0æ­£åœ¨ä½¿ç”¨ 1ç©ºé—²';
 comment on column QXFC.FC_UP_ACCOUNT.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 
 prompt
 prompt Creating table FC_UP_ACCOUNT_EX
@@ -3017,17 +3017,17 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_UP_ACCOUNT_EX.channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_UP_ACCOUNT_EX.channel_pwd
-  is 'µÇÂ¼ÃÜÂë';
+  is 'ç™»å½•å¯†ç ';
 comment on column QXFC.FC_UP_ACCOUNT_EX.status
-  is '×´Ì¬0-ÆôÓÃ1-½ûÓÃ';
+  is 'çŠ¶æ€0-å¯ç”¨1-ç¦ç”¨';
 comment on column QXFC.FC_UP_ACCOUNT_EX.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_UP_ACCOUNT_EX.create_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_UP_ACCOUNT_EX.channel_user
-  is 'ÕË»§Ãû';
+  is 'è´¦æˆ·å';
 
 prompt
 prompt Creating table FC_UP_CHANNEL
@@ -3063,37 +3063,37 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_UP_CHANNEL
-  is 'ÉÏÓÎÇşµÀ±í';
+  is 'ä¸Šæ¸¸æ¸ é“è¡¨';
 comment on column QXFC.FC_UP_CHANNEL.channel_no
-  is 'ÏÂÓÎÇşµÀ±àºÅ';
+  is 'ä¸‹æ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_UP_CHANNEL.channel_name
-  is 'ÏÂÓÎÇşµÀÃû³Æ';
+  is 'ä¸‹æ¸¸æ¸ é“åç§°';
 comment on column QXFC.FC_UP_CHANNEL.notify_url
-  is '»Øµ÷µØÖ·';
+  is 'å›è°ƒåœ°å€';
 comment on column QXFC.FC_UP_CHANNEL.need_query
-  is 'ÊÇ·ñ²éÑ¯;0:²éÑ¯;1:²»²éÑ¯';
+  is 'æ˜¯å¦æŸ¥è¯¢;0:æŸ¥è¯¢;1:ä¸æŸ¥è¯¢';
 comment on column QXFC.FC_UP_CHANNEL.first_interval
-  is '³õ´Î²éÑ¯Ê±¼ä';
+  is 'åˆæ¬¡æŸ¥è¯¢æ—¶é—´';
 comment on column QXFC.FC_UP_CHANNEL.next_interval
-  is '²éÑ¯¼ä¸ô';
+  is 'æŸ¥è¯¢é—´éš”';
 comment on column QXFC.FC_UP_CHANNEL.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_UP_CHANNEL.balance
-  is 'Óà¶î';
+  is 'ä½™é¢';
 comment on column QXFC.FC_UP_CHANNEL.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_UP_CHANNEL.sync_status
-  is 'Í¬²½¼ÇÕËÏµÍ³×´Ì¬';
+  is 'åŒæ­¥è®°è´¦ç³»ç»ŸçŠ¶æ€';
 comment on column QXFC.FC_UP_CHANNEL.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_UP_CHANNEL.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_UP_CHANNEL.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_UP_CHANNEL.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_UP_CHANNEL.fd_channel_no
-  is '¼ÇÕËÏµÍ³ÇşµÀ±àºÅ';
+  is 'è®°è´¦ç³»ç»Ÿæ¸ é“ç¼–å·';
 alter table QXFC.FC_UP_CHANNEL
   add constraint PK_FC_UP_CHANNEL primary key (CHANNEL_NO)
   using index 
@@ -3144,37 +3144,37 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_UP_MANUAL_ORDER.order_no
-  is '¶©µ¥ºÅ';
+  is 'è®¢å•å·';
 comment on column QXFC.FC_UP_MANUAL_ORDER.product_no
-  is '²úÆ·±àºÅ';
+  is 'äº§å“ç¼–å·';
 comment on column QXFC.FC_UP_MANUAL_ORDER.product_name
-  is '²úÆ·Ãû³Æ';
+  is 'äº§å“åç§°';
 comment on column QXFC.FC_UP_MANUAL_ORDER.up_channel_no
-  is 'ÉÏÓÎÇşµÀ±àºÅ';
+  is 'ä¸Šæ¸¸æ¸ é“ç¼–å·';
 comment on column QXFC.FC_UP_MANUAL_ORDER.task_id
-  is 'ÈÎÎñ±àºÅ';
+  is 'ä»»åŠ¡ç¼–å·';
 comment on column QXFC.FC_UP_MANUAL_ORDER.user_name
-  is 'ÓÃ»§ĞÕÃû';
+  is 'ç”¨æˆ·å§“å';
 comment on column QXFC.FC_UP_MANUAL_ORDER.phone_no
-  is 'ºÅÂë';
+  is 'å·ç ';
 comment on column QXFC.FC_UP_MANUAL_ORDER.idno
-  is 'Éí·İÖ¤';
+  is 'èº«ä»½è¯';
 comment on column QXFC.FC_UP_MANUAL_ORDER.install_address
-  is '°²×°µØÖ·';
+  is 'å®‰è£…åœ°å€';
 comment on column QXFC.FC_UP_MANUAL_ORDER.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_UP_MANUAL_ORDER.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_UP_MANUAL_ORDER.brand_no
-  is '¿í´øÕËºÅ';
+  is 'å®½å¸¦è´¦å·';
 comment on column QXFC.FC_UP_MANUAL_ORDER.install_date
-  is '°²×°Ê±¼ä';
+  is 'å®‰è£…æ—¶é—´';
 comment on column QXFC.FC_UP_MANUAL_ORDER.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_UP_MANUAL_ORDER.end_time
-  is '½áÊøÊ±¼ä';
+  is 'ç»“æŸæ—¶é—´';
 comment on column QXFC.FC_UP_MANUAL_ORDER.result_msg
-  is '½á¹ûÏûÏ¢';
+  is 'ç»“æœæ¶ˆæ¯';
 
 prompt
 prompt Creating table FC_UP_PRODUCT
@@ -3218,51 +3218,51 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_UP_PRODUCT
-  is 'ÉÏÓÎÇşµÀ²úÆ·±í';
+  is 'ä¸Šæ¸¸æ¸ é“äº§å“è¡¨';
 comment on column QXFC.FC_UP_PRODUCT.pid
-  is '²úÆ·ID';
+  is 'äº§å“ID';
 comment on column QXFC.FC_UP_PRODUCT.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column QXFC.FC_UP_PRODUCT.product_no
-  is '²úÆ·±àÂë';
+  is 'äº§å“ç¼–ç ';
 comment on column QXFC.FC_UP_PRODUCT.product_name
-  is '²úÆ·Ãû³Æ';
+  is 'äº§å“åç§°';
 comment on column QXFC.FC_UP_PRODUCT.package_id
-  is 'Ì×²Í±àºÅ';
+  is 'å¥—é¤ç¼–å·';
 comment on column QXFC.FC_UP_PRODUCT.product_type
-  is '²úÆ·ÀàĞÍ';
+  is 'äº§å“ç±»å‹';
 comment on column QXFC.FC_UP_PRODUCT.carrier_no
-  is 'ÔËÓªÉÌ;*:ËùÓĞ';
+  is 'è¿è¥å•†;*:æ‰€æœ‰';
 comment on column QXFC.FC_UP_PRODUCT.province_no
-  is 'Ê¡·İ;QG:È«¹ú';
+  is 'çœä»½;QG:å…¨å›½';
 comment on column QXFC.FC_UP_PRODUCT.city_no
-  is '³ÇÊĞ;*:È«ÊĞ';
+  is 'åŸå¸‚;*:å…¨å¸‚';
 comment on column QXFC.FC_UP_PRODUCT.cost
-  is '³É±¾';
+  is 'æˆæœ¬';
 comment on column QXFC.FC_UP_PRODUCT.reward
-  is 'Ó¶½ğ';
+  is 'ä½£é‡‘';
 comment on column QXFC.FC_UP_PRODUCT.group_no
-  is '·Ö×é±àºÅ';
+  is 'åˆ†ç»„ç¼–å·';
 comment on column QXFC.FC_UP_PRODUCT.status
-  is '×´Ì¬;0:ÆôÓÃ;1:½ûÓÃ';
+  is 'çŠ¶æ€;0:å¯ç”¨;1:ç¦ç”¨';
 comment on column QXFC.FC_UP_PRODUCT.remark
-  is '±¸×¢';
+  is 'å¤‡æ³¨';
 comment on column QXFC.FC_UP_PRODUCT.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_UP_PRODUCT.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_UP_PRODUCT.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_UP_PRODUCT.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 comment on column QXFC.FC_UP_PRODUCT.debit_mode
-  is '¿Û¿îÄ£Ê½ 1:ÏÈ¿ÛºóÍË;2:¼¤»îºóÔÙ¿Û';
+  is 'æ‰£æ¬¾æ¨¡å¼ 1:å…ˆæ‰£åé€€;2:æ¿€æ´»åå†æ‰£';
 comment on column QXFC.FC_UP_PRODUCT.active_expire
-  is '¼¤»î³¬Ê±(Ìì)';
+  is 'æ¿€æ´»è¶…æ—¶(å¤©)';
 comment on column QXFC.FC_UP_PRODUCT.face
-  is 'ÃæÖµ';
+  is 'é¢å€¼';
 comment on column QXFC.FC_UP_PRODUCT.flow_id
-  is '´¦ÀíÁ÷³Ì';
+  is 'å¤„ç†æµç¨‹';
 alter table QXFC.FC_UP_PRODUCT
   add constraint PK_FC_UP_PRODUCT primary key (PID)
   using index 
@@ -3313,39 +3313,39 @@ tablespace USERS
     maxextents unlimited
   );
 comment on table QXFC.FC_UP_SCRIPT
-  is 'ÉÏÓÎ½Å±¾';
+  is 'ä¸Šæ¸¸è„šæœ¬';
 comment on column QXFC.FC_UP_SCRIPT.sid
-  is '½Å±¾ID';
+  is 'è„šæœ¬ID';
 comment on column QXFC.FC_UP_SCRIPT.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column QXFC.FC_UP_SCRIPT.script_type
-  is '½Å±¾ÀàĞÍ';
+  is 'è„šæœ¬ç±»å‹';
 comment on column QXFC.FC_UP_SCRIPT.product_type
-  is '²úÆ·ÀàĞÍ;0:ËùÓĞ';
+  is 'äº§å“ç±»å‹;0:æ‰€æœ‰';
 comment on column QXFC.FC_UP_SCRIPT.package_id
-  is 'Ì×²Í±àºÅ';
+  is 'å¥—é¤ç¼–å·';
 comment on column QXFC.FC_UP_SCRIPT.carrier_no
-  is 'ÔËÓªÉÌ;*:ËùÓĞ';
+  is 'è¿è¥å•†;*:æ‰€æœ‰';
 comment on column QXFC.FC_UP_SCRIPT.province_no
-  is 'Ê¡·İ;QG:È«¹ú';
+  is 'çœä»½;QG:å…¨å›½';
 comment on column QXFC.FC_UP_SCRIPT.city_no
-  is '³ÇÊĞ';
+  is 'åŸå¸‚';
 comment on column QXFC.FC_UP_SCRIPT.script_path
-  is '½Å±¾Â·¾¶';
+  is 'è„šæœ¬è·¯å¾„';
 comment on column QXFC.FC_UP_SCRIPT.up_url
-  is 'ÉÏÓÎ·şÎñµØÖ·';
+  is 'ä¸Šæ¸¸æœåŠ¡åœ°å€';
 comment on column QXFC.FC_UP_SCRIPT.svc_bus
-  is '×ÜÏß·şÎñ';
+  is 'æ€»çº¿æœåŠ¡';
 comment on column QXFC.FC_UP_SCRIPT.status
-  is '×´Ì¬';
+  is 'çŠ¶æ€';
 comment on column QXFC.FC_UP_SCRIPT.created_user
-  is '´´½¨Õß';
+  is 'åˆ›å»ºè€…';
 comment on column QXFC.FC_UP_SCRIPT.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_UP_SCRIPT.edit_user
-  is '¸üĞÂÈË';
+  is 'æ›´æ–°äºº';
 comment on column QXFC.FC_UP_SCRIPT.edit_time
-  is '¸üĞÂÊ±¼ä';
+  is 'æ›´æ–°æ—¶é—´';
 alter table QXFC.FC_UP_SCRIPT
   add constraint PK_FC_UP_SCRIPT primary key (SID)
   using index 
@@ -3388,21 +3388,21 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_WARN_MSG.id
-  is 'ÏûÏ¢±àºÅ';
+  is 'æ¶ˆæ¯ç¼–å·';
 comment on column QXFC.FC_WARN_MSG.title
-  is '±êÌâ';
+  is 'æ ‡é¢˜';
 comment on column QXFC.FC_WARN_MSG.keywords
-  is '¹Ø¼ü×Ö';
+  is 'å…³é”®å­—';
 comment on column QXFC.FC_WARN_MSG.content
-  is 'ÄÚÈİ';
+  is 'å†…å®¹';
 comment on column QXFC.FC_WARN_MSG.warn_level
-  is '¸æ¾¯¼¶±ğ';
+  is 'å‘Šè­¦çº§åˆ«';
 comment on column QXFC.FC_WARN_MSG.created_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_WARN_MSG.is_sync
-  is 'ÊÇ·ñ±»Í¬²½:1-Î´Í¬²½,0-±»Í¬²½';
+  is 'æ˜¯å¦è¢«åŒæ­¥:1-æœªåŒæ­¥,0-è¢«åŒæ­¥';
 comment on column QXFC.FC_WARN_MSG.sync_status
-  is 'Í¬²½×´Ì¬:20:µÈ´ıÍ¬²½,30:Í¬²½ÖĞ,0:Í¬²½Íê³É';
+  is 'åŒæ­¥çŠ¶æ€:20:ç­‰å¾…åŒæ­¥,30:åŒæ­¥ä¸­,0:åŒæ­¥å®Œæˆ';
 
 prompt
 prompt Creating table FC_YXHD_PHONE
@@ -3436,31 +3436,31 @@ tablespace USERS
     maxextents unlimited
   );
 comment on column QXFC.FC_YXHD_PHONE.channel_no
-  is 'ÇşµÀ±àºÅ';
+  is 'æ¸ é“ç¼–å·';
 comment on column QXFC.FC_YXHD_PHONE.phone
-  is 'ÊÖ»úºÅ';
+  is 'æ‰‹æœºå·';
 comment on column QXFC.FC_YXHD_PHONE.pkg_type
-  is 'Ì×²Í';
+  is 'å¥—é¤';
 comment on column QXFC.FC_YXHD_PHONE.limit_cntr
-  is 'ÏŞÖÆ´ÎÊı';
+  is 'é™åˆ¶æ¬¡æ•°';
 comment on column QXFC.FC_YXHD_PHONE.limit_type
-  is 'ÏŞÖÆÀàĞÍ 1:°´ÔÂ 2:°´Ìì';
+  is 'é™åˆ¶ç±»å‹ 1:æŒ‰æœˆ 2:æŒ‰å¤©';
 comment on column QXFC.FC_YXHD_PHONE.expire_date
-  is 'Ê§Ğ§Ê±¼ä';
+  is 'å¤±æ•ˆæ—¶é—´';
 comment on column QXFC.FC_YXHD_PHONE.charge_cntr
-  is 'µ±Ç°ÏŞÖÆÖÜÆÚÄÚ³äÖµ´ÎÊı';
+  is 'å½“å‰é™åˆ¶å‘¨æœŸå†…å……å€¼æ¬¡æ•°';
 comment on column QXFC.FC_YXHD_PHONE.total_cntr
-  is 'ÀÛ¼Æ³äÖµ´ÎÊı';
+  is 'ç´¯è®¡å……å€¼æ¬¡æ•°';
 comment on column QXFC.FC_YXHD_PHONE.last_charge_time
-  is '×îºó³äÖµÊ±¼ä';
+  is 'æœ€åå……å€¼æ—¶é—´';
 comment on column QXFC.FC_YXHD_PHONE.status
-  is '×´Ì¬ 0:ÆôÓÃ; 1:½ûÓÃ';
+  is 'çŠ¶æ€ 0:å¯ç”¨; 1:ç¦ç”¨';
 comment on column QXFC.FC_YXHD_PHONE.create_time
-  is '´´½¨Ê±¼ä';
+  is 'åˆ›å»ºæ—¶é—´';
 comment on column QXFC.FC_YXHD_PHONE.active_time
-  is '¼¤»îÊ±¼ä';
+  is 'æ¿€æ´»æ—¶é—´';
 comment on column QXFC.FC_YXHD_PHONE.hd_type
-  is '»î¶¯ÀàĞÍ 1:5ÕÛ»î¶¯ 2:8ÕÛ»î¶¯ 3:ÊÓÆµ»áÔ±';
+  is 'æ´»åŠ¨ç±»å‹ 1:5æŠ˜æ´»åŠ¨ 2:8æŠ˜æ´»åŠ¨ 3:è§†é¢‘ä¼šå‘˜';
 alter table QXFC.FC_YXHD_PHONE
   add constraint PK_YXHD_PHONE primary key (PHONE)
   using index 
@@ -3946,30 +3946,30 @@ prompt ============================
 prompt
 create or replace package qxfc.action_type is
 
-  /*Á÷³Ì²½ÖèÀàĞÍ*/
+  /*æµç¨‹æ­¥éª¤ç±»å‹*/
 
-  --»ñÈ¡ÊµÃûĞÅÏ¢
+  --è·å–å®åä¿¡æ¯
   get_identity constant varchar2(32) := 'get_identity';
 
-  --Ğ´¿¨
+  --å†™å¡
   write_card constant varchar2(32) := 'write_card';
 
-  --´ò¿ìµİµ¥
+  --æ‰“å¿«é€’å•
   print_express constant varchar2(32) := 'print_express';
 
-  --Æ½Ì¨·¢»õ
+  --å¹³å°å‘è´§
   plat_delivery constant varchar2(32) := 'plat_delivery';
 
-  --½É·Ñ
+  --ç¼´è´¹
   charge constant varchar2(32) := 'charge';
 
-  --Éè±¸
+  --è®¾å¤‡
   device constant varchar2(32) := 'device';
 
-  --Ô¤Ô¼°²×°
+  --é¢„çº¦å®‰è£…
   book_install constant varchar2(32) := 'book_install';
 
-  --²éÑ¯ÎïÁ÷ĞÅÏ¢
+  --æŸ¥è¯¢ç‰©æµä¿¡æ¯
   query_express constant varchar2(32) := 'query_mail';
 end;
 /
@@ -3981,7 +3981,7 @@ prompt
 create or replace package qxfc.active_status is
 
   /********************
-  *¼¤»î×´Ì¬
+  *æ¿€æ´»çŠ¶æ€
   *********************/
 
   no_need constant number(2) := 10;
@@ -4004,7 +4004,7 @@ prompt
 create or replace package qxfc.Bind_Mode is
 
   /********************
-  *°ó¶¨Ä£Ê½
+  *ç»‘å®šæ¨¡å¼
   *********************/
 
   Free constant number(2) := 0;
@@ -4028,12 +4028,12 @@ prompt ===========================
 prompt
 create or replace package qxfc.Debit_Mode is
 
-  -- ÉÏÓÎ¿Û¿îÄ£Ê½
+  -- ä¸Šæ¸¸æ‰£æ¬¾æ¨¡å¼
 
-  --ÏÈ¿Ûºó·µ
+  --å…ˆæ‰£åè¿”
   immediate CONSTANT Number(1) := 1;
 
-  --°´¼¤»î¿Û
+  --æŒ‰æ¿€æ´»æ‰£
   active CONSTANT Number(1) := 2;
 end;
 /
@@ -4045,13 +4045,13 @@ prompt
 create or replace package qxfc.enable_status is
 
   /********************
-  *×´Ì¬Âë
+  *çŠ¶æ€ç 
   *********************/
 
-  --ÆôÓÃ
+  --å¯ç”¨
   enabled constant number(1) := 0;
 
-  --½ûÓÃ
+  --ç¦ç”¨
   disabled constant number(1) := 1;
 
 end;
@@ -4064,16 +4064,16 @@ prompt
 create or replace package qxfc.error_code is
 
     /********************
-    *´íÎóÂë
+    *é”™è¯¯ç 
     *********************/
 
-    --³É¹¦
+    --æˆåŠŸ
     suc constant number(3) := 100;
 
-    --ÈË¹¤ÉóºË
+    --äººå·¥å®¡æ ¸
     manual constant number(3) := 999;
 
-    --´¦ÀíÊ§°Ü
+    --å¤„ç†å¤±è´¥
     failure constant number(3) := 200;
 end;
 /
@@ -4085,25 +4085,25 @@ prompt
 create or replace package qxfc.express_status is
 
   /********************
-  *¿ìµİ´¦Àí×´Ì¬
+  *å¿«é€’å¤„ç†çŠ¶æ€
   *********************/
 
-  --µÈ´ı´òÓ¡¿ìµİµ¥
+  --ç­‰å¾…æ‰“å°å¿«é€’å•
   wait_print constant number(2) := 10;
 
-  --ÕıÔÚ´òÓ¡
+  --æ­£åœ¨æ‰“å°
   printing constant number := 11;
 
-  --µÈ´ıÆ½Ì¨·¢»õ
+  --ç­‰å¾…å¹³å°å‘è´§
   wait_plat_delivery constant number(2) := 20;
 
-  --Æ½Ì¨·¢»õ´¦ÀíÖĞ
+  --å¹³å°å‘è´§å¤„ç†ä¸­
   delivery constant number := 30;
 
-  --È«²¿Ê§°Ü
+  --å…¨éƒ¨å¤±è´¥
   failure constant number(2) := 90;
 
-  --È«²¿³É¹¦
+  --å…¨éƒ¨æˆåŠŸ
   success constant number(2) := 0;
 end;
 /
@@ -4115,13 +4115,13 @@ prompt
 create or replace package qxfc.FEE_TYPE is
 
   /********************
-  *ÊÖĞø·ÑÀàĞÍ
+  *æ‰‹ç»­è´¹ç±»å‹
   *********************/
 
-  --¹Ì¶¨
+  --å›ºå®š
   fix constant number(1) := 0;
 
-  --°´±ÈÀı
+  --æŒ‰æ¯”ä¾‹
   rate constant number(1) := 1;
 
 end;
@@ -4134,13 +4134,13 @@ prompt
 create or replace package qxfc.flow_mode is
 
   /********************
-  *²½ÖèÇı¶¯·½Ê½
+  *æ­¥éª¤é©±åŠ¨æ–¹å¼
   *********************/
 
-  --×Ô¶¯
+  --è‡ªåŠ¨
   auto constant number(1) := 0;
 
-  --½ûÓÃ
+  --ç¦ç”¨
   manual constant number(1) := 1;
 end;
 /
@@ -4152,22 +4152,22 @@ prompt
 create or replace package qxfc.Fund_Change_Type is
 
   /********************
-  *×Ê½ğ±ä¶¯ÀàĞÍ
+  *èµ„é‡‘å˜åŠ¨ç±»å‹
   *********************/
 
-  --¼Ó¿î
+  --åŠ æ¬¾
   add CONSTANT Number(1) := 1;
 
-  --¿Û¿î
+  --æ‰£æ¬¾
   reduce CONSTANT Number(1) := 2;
 
-  --ÍË¿î
+  --é€€æ¬¾
   refund CONSTANT Number(1) := 3;
 
-  --Ó¶½ğ
+  --ä½£é‡‘
   reward constant number := 4;
 
-  --¿ìµİ·Ñ
+  --å¿«é€’è´¹
   express constant number := 5;
 end;
 /
@@ -4179,11 +4179,11 @@ prompt
 create or replace package qxfc.operate_type is
 
   /********************
-  *²Ù×÷ÀàĞÍ
+  *æ“ä½œç±»å‹
   *********************/
-  --ÈË¹¤
+  --äººå·¥
   manual constant number(1) :=1;
-  --ÏµÍ³×Ô¶¯
+  --ç³»ç»Ÿè‡ªåŠ¨
   system constant number(1) := 2;
 end;
 /
@@ -4195,22 +4195,22 @@ prompt
 create or replace package qxfc.order_status is
 
   /********************
-  *¶©µ¥×´Ì¬
+  *è®¢å•çŠ¶æ€
   *********************/
 
-  --µÈ´ı³õÊ¼»¯
+  --ç­‰å¾…åˆå§‹åŒ–
   wait_init constant number(2) := 10;
 
-  --µÈ´ı³äÖµ
+  --ç­‰å¾…å……å€¼
   wait constant number(2) := 20;
 
-  --ÕıÔÚ³äÖµ
+  --æ­£åœ¨å……å€¼
   process constant number(2) := 30;
 
-  --È«²¿Ê§°Ü
+  --å…¨éƒ¨å¤±è´¥
   failure constant number(2) := 90;
 
-  --È«²¿³É¹¦
+  --å…¨éƒ¨æˆåŠŸ
   success constant number(2) := 0;
 
 end;
@@ -4223,20 +4223,20 @@ prompt
 create or replace package qxfc.process_status is
 
   /********************
-  *´¦Àí×´Ì¬
+  *å¤„ç†çŠ¶æ€
   *********************/
   no_need constant number := 10;
 
-  --µÈ´ı
+  --ç­‰å¾…
   wait constant number := 20;
 
-  --ÕıÔÚ´¦Àí
+  --æ­£åœ¨å¤„ç†
   process constant number := 30;
 
-  --È«²¿Ê§°Ü
+  --å…¨éƒ¨å¤±è´¥
   failure constant number := 90;
 
-  --È«²¿³É¹¦
+  --å…¨éƒ¨æˆåŠŸ
   success constant number := 0;
 end;
 /
@@ -4248,22 +4248,22 @@ prompt
 create or replace package qxfc.refund_status is
 
   /********************
-  *ÍË¿î×´Ì¬
+  *é€€æ¬¾çŠ¶æ€
   *********************/
 
-  --µÈ´ıÈ·ÈÏ
+  --ç­‰å¾…ç¡®è®¤
   wait_confirm constant number(2) := 10;
 
-  --µÈ´ıÍË¿î
+  --ç­‰å¾…é€€æ¬¾
   wait constant number(2) := 20;
 
-  --ÕıÔÚÍË¿î
+  --æ­£åœ¨é€€æ¬¾
   process constant number(2) := 30;
 
-  --Ê§°Ü
+  --å¤±è´¥
   failure constant number(2) := 90;
 
-  --³É¹¦
+  --æˆåŠŸ
   success constant number(2) := 0;
 
 end;
@@ -4276,13 +4276,13 @@ prompt
 create or replace package qxfc.refund_type is
 
   /********************
-  *ÍË¿îÀàĞÍ
+  *é€€æ¬¾ç±»å‹
   *********************/
 
-  --ÏßÉÏÍË¿î
+  --çº¿ä¸Šé€€æ¬¾
   online constant number(2) := 1;
 
-  --ÏßÏÂÍË¿î
+  --çº¿ä¸‹é€€æ¬¾
   offline constant number := 2;
 
 end;
@@ -4294,40 +4294,40 @@ prompt ============================
 prompt
 create or replace package qxfc.script_type is
 
-  /*ÉÏÓÎ½Å±¾ÀàĞÍ*/
+  /*ä¸Šæ¸¸è„šæœ¬ç±»å‹*/
 
-  --´ò¿ìµİµ¥
+  --æ‰“å¿«é€’å•
   print_express constant number := 1;
 
-  --ÌÔ±¦·¢»õ
+  --æ·˜å®å‘è´§
   taobao_delivery constant number := 2;
 
-  --²éÑ¯
+  --æŸ¥è¯¢
   query constant number := 3;
 
-  --ÍË¿î
+  --é€€æ¬¾
   refund constant number := 4;
 
-  --Ğ´¿¨
+  --å†™å¡
   write_card constant number := 5;
 
-  --¿í´øĞø·Ñ
+  --å®½å¸¦ç»­è´¹
   brand_xf constant number := 6;
 
-  --ºÅ¿¨Ğø·Ñ
+  --å·å¡ç»­è´¹
   card_xf constant number := 7;
 
-  ------------------------ÏÂÓÎ½Å±¾ÀàĞÍ--------------
-  --¶©µ¥Í¨Öª
+  ------------------------ä¸‹æ¸¸è„šæœ¬ç±»å‹--------------
+  --è®¢å•é€šçŸ¥
   down_order_notify constant number := 31;
 
-  --ÍË¿îÍ¨Öª
+  --é€€æ¬¾é€šçŸ¥
   down_refund_notify constant number := 32;
 
-  --¸üĞÂ¿ìµİµ¥ºÅ
+  --æ›´æ–°å¿«é€’å•å·
   down_plat_delivery constant number := 33;
 
-  --»ñÈ¡ÊµÃûĞÅÏ¢
+  --è·å–å®åä¿¡æ¯
   down_get_identity constant number := 34;
 end;
 /
@@ -4338,12 +4338,12 @@ prompt =====================================
 prompt
 create or replace package qxfc.special_product_type is
 
-  /*²úÆ·ÀàĞÍ*/
+  /*äº§å“ç±»å‹*/
 
-  --¿ìµİ
+  --å¿«é€’
   express constant number := 1;
 
-  --Éè±¸
+  --è®¾å¤‡
   device constant number := 32;
 end;
 /
@@ -4354,11 +4354,11 @@ prompt ==============================
 prompt
 create or replace package qxfc.Warn_Keywords is
 
-  recv_exception constant varchar2(32) := 'ÊÕµ¥Òì³£';
+  recv_exception constant varchar2(32) := 'æ”¶å•å¼‚å¸¸';
 
-  flow_exception constant varchar2(32) := 'Á÷³ÌÒì³£';
+  flow_exception constant varchar2(32) := 'æµç¨‹å¼‚å¸¸';
 
-  task_exception constant varchar2(32) := 'ÈÎÎñÒì³£';
+  task_exception constant varchar2(32) := 'ä»»åŠ¡å¼‚å¸¸';
 
 end;
 /
@@ -4370,19 +4370,19 @@ prompt
 create or replace package qxfc.write_card_mode is
 
   /********************
-  *Ğ´¿¨·½Ê½
+  *å†™å¡æ–¹å¼
   *********************/
 
-  --ÎŞĞëĞ´¿¨
+  --æ— é¡»å†™å¡
   none constant number := 0;
 
-  --×Ô¶¯
+  --è‡ªåŠ¨
   auto constant number(1) := 1;
 
-  --ÊÖ¶¯
+  --æ‰‹åŠ¨
   manual constant number(1) := 2;
 
-  --Èı·½´ú¿ÍÏÂµ¥
+  --ä¸‰æ–¹ä»£å®¢ä¸‹å•
   proxy constant number := 3;
 end;
 /
@@ -4406,9 +4406,9 @@ create or replace function qxfc.f_assign_iccno(v_order_no    varchar2,
                                           v_ret_msg     out varchar2)
   return boolean is
   /*
-  ¹¦ÄÜ:·ÖÅäiccno
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-24
+  åŠŸèƒ½:åˆ†é…iccno
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-24
   */
   l_iccno varchar2(32);
 begin
@@ -4425,7 +4425,7 @@ begin
    where rownum = 1;
 
   if (l_iccno is null) then
-    v_ret_msg := 'Ã»ÓĞ¿ÉÓÃµÄICCNO';
+    v_ret_msg := 'æ²¡æœ‰å¯ç”¨çš„ICCNO';
     return false;
   end if;
 
@@ -4451,9 +4451,9 @@ create or replace function qxfc.f_create_down_task(v_flow_id     number,
                                               v_ret_svc     out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:´´½¨ºÍÏÂÓÎÏà¹ØÈÎÎñ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:åˆ›å»ºå’Œä¸‹æ¸¸ç›¸å…³ä»»åŠ¡
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_task_id         number;
   l_script_type     number;
@@ -4478,7 +4478,7 @@ begin
      and t.action = v_action;
 
   if (l_script_type is null) then
-    v_ret_msg := 'Ã»ÓĞÅäÖÃ¸ÃÀàĞÍµÄ½Å±¾';
+    v_ret_msg := 'æ²¡æœ‰é…ç½®è¯¥ç±»å‹çš„è„šæœ¬';
     return false;
   end if;
 
@@ -4508,7 +4508,7 @@ begin
 
   l_up_channel_no := l_down_channel_no;
   if (v_action = action_type.plat_delivery) then
-    --ÌìÃ¨¸üĞÂ¿ìµİµ¥ºÅÓëÖ®Ç°°ó¶¨µÄÇşµÀÃ»ÓĞ¹ØÏµ, ÕÒÏÂÓÎµÄ½Å±¾ÀàĞÍ
+    --å¤©çŒ«æ›´æ–°å¿«é€’å•å·ä¸ä¹‹å‰ç»‘å®šçš„æ¸ é“æ²¡æœ‰å…³ç³», æ‰¾ä¸‹æ¸¸çš„è„šæœ¬ç±»å‹
     l_script_type := script_type.down_plat_delivery;
     select min(t.sid), min(t.script_path), min(t.svc_bus)
       into l_script_id, l_script_path, l_svc_bus
@@ -4518,7 +4518,7 @@ begin
        and t.status = enable_status.enabled
        and rownum = 1;
   elsif (v_action = action_type.get_identity) then
-    --»ñÈ¡ÊµÃûĞÅÏ¢ÓëÖ®Ç°°ó¶¨µÄÇşµÀÃ»ÓĞ¹ØÏµ, ÕÒÏÂÓÎµÄ½Å±¾ÀàĞÍ
+    --è·å–å®åä¿¡æ¯ä¸ä¹‹å‰ç»‘å®šçš„æ¸ é“æ²¡æœ‰å…³ç³», æ‰¾ä¸‹æ¸¸çš„è„šæœ¬ç±»å‹
     l_script_type := script_type.down_get_identity;
     select min(t.sid), min(t.script_path), min(t.svc_bus)
       into l_script_id, l_script_path, l_svc_bus
@@ -4530,7 +4530,7 @@ begin
   end if;
 
   if (l_script_id is null) then
-    v_ret_msg := 'Ã»ÓĞÕÒµ½½Å±¾';
+    v_ret_msg := 'æ²¡æœ‰æ‰¾åˆ°è„šæœ¬';
     return false;
   end if;
 
@@ -4561,7 +4561,7 @@ begin
      l_svc_bus);
 
   if (v_action = action_type.plat_delivery) then
-    --ÌìÃ¨·¢»õºÍ¿ìµİ¹²ÓÃÒ»¸öExpress_Order, ¹ØÁªµ½ÌìÃ¨·¢»õtaskid
+    --å¤©çŒ«å‘è´§å’Œå¿«é€’å…±ç”¨ä¸€ä¸ªExpress_Order, å…³è”åˆ°å¤©çŒ«å‘è´§taskid
     update fc_order_express t
        set t.taskid = l_task_id
      where t.order_no = v_order_no
@@ -4590,9 +4590,9 @@ create or replace function qxfc.f_create_express_task(v_flow_id     number,
                                                  v_ret_svc     out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:´´½¨¿ìµİÈÎÎñ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:åˆ›å»ºå¿«é€’ä»»åŠ¡
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_task_id         number;
   l_script_type     number;
@@ -4620,7 +4620,7 @@ begin
      and t.action = v_action;
 
   if (l_script_type is null) then
-    v_ret_msg := 'Ã»ÓĞÅäÖÃ¸ÃÀàĞÍµÄ½Å±¾';
+    v_ret_msg := 'æ²¡æœ‰é…ç½®è¯¥ç±»å‹çš„è„šæœ¬';
     return false;
   end if;
 
@@ -4641,7 +4641,7 @@ begin
       on t.order_no = ex.order_no
    where t.order_no = v_order_no;
 
-  --´òÓ¡¿ìµİÓëÖ®Ç°°ó¶¨µÄÇşµÀÃ»ÓĞ¹ØÏµ
+  --æ‰“å°å¿«é€’ä¸ä¹‹å‰ç»‘å®šçš„æ¸ é“æ²¡æœ‰å…³ç³»
   select min(t.sid),
          min(t.script_path),
          min(t.svc_bus),
@@ -4685,7 +4685,7 @@ begin
    where rownum = 1;
 
   if (l_script_id is null) then
-    v_ret_msg := 'Ã»ÓĞÕÒµ½½Å±¾';
+    v_ret_msg := 'æ²¡æœ‰æ‰¾åˆ°è„šæœ¬';
     return false;
   end if;
 
@@ -4772,9 +4772,9 @@ create or replace function qxfc.f_create_query(v_task_id varchar2,
                                           v_ret_msg out varchar2)
   return boolean as
   /*
-    ¹¦ÄÜ:´´½¨²éÑ¯
-    ×÷Õß:jiyi
-    Ê±¼ä:2018-04-10
+    åŠŸèƒ½:åˆ›å»ºæŸ¥è¯¢
+    ä½œè€…:jiyi
+    æ—¶é—´:2018-04-10
   */
   l_need_query     number;
   l_up_channel_no  varchar2(128);
@@ -4791,7 +4791,7 @@ create or replace function qxfc.f_create_query(v_task_id varchar2,
   l_province_no    varchar2(32);
   l_city_no        varchar2(32);
 begin
-  --ÅĞ¶ÏÊÇ·ñĞèÒª²éÑ¯
+  --åˆ¤æ–­æ˜¯å¦éœ€è¦æŸ¥è¯¢
   select b.order_no, b.bind_id
     into l_order_no, l_bind_id
     from fc_flow_task b
@@ -4817,7 +4817,7 @@ begin
    where b.bind_id = l_bind_id;
 
   if (l_need_query <> enable_status.enabled) then
-    v_ret_msg := '²»ĞèÒª²éÑ¯';
+    v_ret_msg := 'ä¸éœ€è¦æŸ¥è¯¢';
     return false;
   end if;
 
@@ -4826,7 +4826,7 @@ begin
     from fc_order_main t
    where t.order_no = l_order_no;
 
-  --Ìí¼Ó²éÑ¯¼ÇÂ¼
+  --æ·»åŠ æŸ¥è¯¢è®°å½•
   select min(t.script_path), min(t.svc_bus), min(t.sid)
     into l_script_path, l_svc_bus, l_script_id
     from fc_up_script t
@@ -4841,7 +4841,7 @@ begin
      and rownum = 1;
 
   if (l_script_id is null) then
-    v_ret_msg := 'Î´ÅäÖÃ½Å±¾»ò½Å±¾±»½ûÓÃ';
+    v_ret_msg := 'æœªé…ç½®è„šæœ¬æˆ–è„šæœ¬è¢«ç¦ç”¨';
     return false;
   end if;
 
@@ -4870,7 +4870,7 @@ begin
      l_next_interval,
      sysdate);
 
-  v_ret_msg := '´´½¨²éÑ¯³É¹¦';
+  v_ret_msg := 'åˆ›å»ºæŸ¥è¯¢æˆåŠŸ';
   return true;
 end;
 /
@@ -4889,9 +4889,9 @@ create or replace function qxfc.f_create_query_express_task(v_flow_id     number
                                                        v_ret_svc     out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:´ú¿ÍÏÂµ¥²éÑ¯ÎïÁ÷ĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:ä»£å®¢ä¸‹å•æŸ¥è¯¢ç‰©æµä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_task_id         number;
   l_script_type     number;
@@ -4922,7 +4922,7 @@ begin
      and p.sno = t.sno - 1;
 
   if (l_script_type is null) then
-    v_ret_msg := 'Ã»ÓĞÅäÖÃ¸ÃÀàĞÍµÄ½Å±¾';
+    v_ret_msg := 'æ²¡æœ‰é…ç½®è¯¥ç±»å‹çš„è„šæœ¬';
     return false;
   end if;
 
@@ -4951,7 +4951,7 @@ begin
       on t.order_no = ex.order_no
    where t.order_no = v_order_no;
 
-  --»ñÈ¡²éÑ¯½Å±¾
+  --è·å–æŸ¥è¯¢è„šæœ¬
   select min(t.sid), min(t.script_path), min(t.svc_bus)
     into l_script_id, l_script_path, l_svc_bus
     from fc_up_script t
@@ -4964,7 +4964,7 @@ begin
      and rownum = 1;
 
   if (l_script_id is null) then
-    v_ret_msg := 'Ã»ÓĞÕÒµ½½Å±¾';
+    v_ret_msg := 'æ²¡æœ‰æ‰¾åˆ°è„šæœ¬';
     return false;
   end if;
 
@@ -5022,9 +5022,9 @@ create or replace function qxfc.f_create_task_by_product(v_flow_id      number,
                                                     v_ret_svc      out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:°´²úÆ·ÀàĞÍ´´½¨ÈÎÎñ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:æŒ‰äº§å“ç±»å‹åˆ›å»ºä»»åŠ¡
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_task_id         number;
   l_script_type     number;
@@ -5159,9 +5159,9 @@ create or replace function qxfc.f_warn_insert(v_title     varchar2,
                                          v_key_words varchar2,
                                          v_level     number) return boolean is
   /*
-     ¹¦ÄÜ£ºÌí¼Ó±¨¾¯¼ÇÂ¼
-     ×÷Õß£ºjiyi
-     Ê±¼ä£º2016-07-11 11:33:24
+     åŠŸèƒ½ï¼šæ·»åŠ æŠ¥è­¦è®°å½•
+     ä½œè€…ï¼šjiyi
+     æ—¶é—´ï¼š2016-07-11 11:33:24
   */
 
 begin
@@ -5186,7 +5186,7 @@ prompt
 create or replace procedure qxfc.sp_warn_insert(v_key_words varchar2,
                                            v_content   varchar2,
                                            v_level     number default 3) as
-  pragma autonomous_transaction; --×ÔÖÎÊÂÎñ
+  pragma autonomous_transaction; --è‡ªæ²»äº‹åŠ¡
   l_status boolean;
 begin
   l_status := f_warn_insert(v_key_words, v_content, v_key_words, v_level);
@@ -5213,9 +5213,9 @@ create or replace function qxfc.f_create_up_task(v_flow_id    number,
                                             v_ret_svc    out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:´´½¨ºÍÉÏÓÎÏà¹ØµÄÈÎÎñ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:åˆ›å»ºå’Œä¸Šæ¸¸ç›¸å…³çš„ä»»åŠ¡
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_task_id         number;
   l_bind_id         varchar2(32);
@@ -5251,7 +5251,7 @@ begin
      and t.action = v_action;
 
   if (l_script_type is null) then
-    v_ret_msg := 'Ã»ÓĞÅäÖÃ¸ÃÀàĞÍµÄ½Å±¾';
+    v_ret_msg := 'æ²¡æœ‰é…ç½®è¯¥ç±»å‹çš„è„šæœ¬';
     return false;
   end if;
 
@@ -5287,7 +5287,7 @@ begin
     from fc_down_product t
    where t.pid = l_product_id;
 
-  --»ñÈ¡ÉÏÓÎ²úÆ·ĞÅÏ¢
+  --è·å–ä¸Šæ¸¸äº§å“ä¿¡æ¯
   for it in (select up.channel_no,
                     up.product_no,
                     up.pid,
@@ -5364,7 +5364,7 @@ begin
   end loop;
 
   if (l_up_channel_no is null) then
-    l_msg := v_action || 'Ã»ÓĞ¿ÉÓÃÉÏÓÎÇşµÀ';
+    l_msg := v_action || 'æ²¡æœ‰å¯ç”¨ä¸Šæ¸¸æ¸ é“';
     update fc_order_main t
        set t.error_code   = 200,
            t.error_msg    = l_msg,
@@ -5373,7 +5373,7 @@ begin
   
     v_ret_msg := l_msg;
     sp_warn_insert(Warn_Keywords.task_exception,
-                   '¶©µ¥:' || l_order_no || l_msg,
+                   'è®¢å•:' || l_order_no || l_msg,
                    3);
     return false;
   end if;
@@ -5494,9 +5494,9 @@ create or replace function qxfc.f_create_task(v_flow_id     number,
                                          v_ret_svc     out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:´´½¨ÈÎÎñ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:åˆ›å»ºä»»åŠ¡
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_cntr number;
   l_ret  boolean;
@@ -5510,7 +5510,7 @@ begin
     v_ret_script  := '';
     v_ret_svc     := '';
     v_ret_task_id := -1;
-    v_ret_msg     := v_action || 'ÈÎÎñÒÑ¾­´æÔÚ';
+    v_ret_msg     := v_action || 'ä»»åŠ¡å·²ç»å­˜åœ¨';
     return false;
   end if;
 
@@ -5579,9 +5579,9 @@ prompt =================================
 prompt
 create or replace function qxfc.f_get_next_step(v_flow_id number, v_cur_step varchar2) return varchar2 as
   /*
-  ¹¦ÄÜ:»ñÈ¡Á÷³ÌÏÂ¸ö²½Öè
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-08
+  åŠŸèƒ½:è·å–æµç¨‹ä¸‹ä¸ªæ­¥éª¤
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-08
   */
   l_step varchar2(32);
 begin
@@ -5613,9 +5613,9 @@ create or replace function qxfc.f_execute_next_step(v_flow_id     number,
                                                v_ret_svc     out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:Ö´ĞĞÏÂÒ»²½
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:æ‰§è¡Œä¸‹ä¸€æ­¥
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_next_action  varchar2(32);
   l_bind_id      varchar2(32) := v_bind_id;
@@ -5668,14 +5668,14 @@ begin
      set t.bind_status       = l_bind_status,
          t.end_time          = l_end_time,
          t.delivery_end_time = l_end_time,
-         t.delivery_msg      = '´¦ÀíÖĞ',
+         t.delivery_msg      = 'å¤„ç†ä¸­',
          t.action            = l_next_action
    where t.bind_id = l_bind_id;
 
   update fc_order_main t
      set t.order_status = l_order_status,
          t.finish_time  = l_end_time,
-         t.error_msg    = '´¦ÀíÖĞ',
+         t.error_msg    = 'å¤„ç†ä¸­',
          t.action       = l_next_action
    where t.order_no = v_order_no;
   return true;
@@ -5698,9 +5698,9 @@ create or replace function qxfc.f_fund_change_down(v_down_channel  varchar2,
                                               v_operate_type  number default operate_type.system)
   return boolean as
   /*
-  ¹¦ÄÜ:ÏÂÓÎ×Ê½ğ±ä¸ü
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-13
+  åŠŸèƒ½:ä¸‹æ¸¸èµ„é‡‘å˜æ›´
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-13
   */
   l_cntr         number;
   l_old_balance  number;
@@ -5790,9 +5790,9 @@ create or replace function qxfc.f_fund_change_up(v_channel_no   varchar2,
                                             v_operator     varchar2 default 'system')
   return boolean as
   /*
-  ¹¦ÄÜ:ÉÏÓÎ×Ê½ğ±ä¸ü
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-13
+  åŠŸèƒ½:ä¸Šæ¸¸èµ„é‡‘å˜æ›´
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-13
   */
   l_old_balance number;
   l_up_cost     number;
@@ -5869,7 +5869,7 @@ create or replace function qxfc.f_trans_json_char(sourcestr in varchar2)
   l_tmp_str varchar2(4000);
 begin
   l_tmp_str := replace(sourcestr, '"', '\"');
-  l_tmp_str := translate(l_tmp_str, chr(13) || chr(10), ','); --Ìæ»»»»ĞĞ·ûºÅ
+  l_tmp_str := translate(l_tmp_str, chr(13) || chr(10), ','); --æ›¿æ¢æ¢è¡Œç¬¦å·
   return l_tmp_str;
 end;
 /
@@ -5961,9 +5961,9 @@ create or replace function qxfc.f_get_up_account(v_task_id      number,
                                             v_ret_acct_pwd out varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:»ñÈ¡ÉÏÓÎÕÊºÅ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-21
+  åŠŸèƒ½:è·å–ä¸Šæ¸¸å¸å·
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-21
   */
   l_up_channel_no varchar2(32);
   l_carrier_no    varchar2(32);
@@ -6009,9 +6009,9 @@ prompt ===============================
 prompt
 create or replace function qxfc.f_new_bind_id return varchar2 is
   /*
-     ¹¦ÄÜÉú³É°ó¶¨±àºÅ
-     ×÷Õß:jiyi
-     Ê±¼ä:2018-04-02
+     åŠŸèƒ½ç”Ÿæˆç»‘å®šç¼–å·
+     ä½œè€…:jiyi
+     æ—¶é—´:2018-04-02
   */
 
 begin
@@ -6035,15 +6035,15 @@ prompt
 prompt Creating function F_SCAN_MAIL
 prompt =============================
 prompt
-create or replace function qxfc.f_scan_mail(v_fr         number, --¸Ã¼ÇÂ¼ÏÂ´Î½øÈëºó²¹Ê±¼ä
-                                       v_once_count number, --Ã¿´Î×î´ó¼ÇÂ¼ÌõÊı
-                                       v_batch_id   out number, --Åú´ÎºÅ
-                                       v_count      out number --¼ÇÂ¼ÌõÊı
+create or replace function qxfc.f_scan_mail(v_fr         number, --è¯¥è®°å½•ä¸‹æ¬¡è¿›å…¥åè¡¥æ—¶é—´
+                                       v_once_count number, --æ¯æ¬¡æœ€å¤§è®°å½•æ¡æ•°
+                                       v_batch_id   out number, --æ‰¹æ¬¡å·
+                                       v_count      out number --è®°å½•æ¡æ•°
                                        ) return number is
   /*
-  ¹¦ÄÜ:ºó²¹Éú³É¿ìµİµ¥ºÅ
-  ×÷Õß:jiyi
-  Ê±¼ä:2016-05-30
+  åŠŸèƒ½:åè¡¥ç”Ÿæˆå¿«é€’å•å·
+  ä½œè€…:jiyi
+  æ—¶é—´:2016-05-30
   */
   l_id number;
 begin
@@ -6091,15 +6091,15 @@ prompt
 prompt Creating function F_SCAN_NOTIFY
 prompt ===============================
 prompt
-create or replace function qxfc.f_scan_notify(v_fr         number, --¸Ã¼ÇÂ¼ÏÂ´Î½øÈëºó²¹Ê±¼ä
-                                         v_once_count number, --Ã¿´Î×î´ó¼ÇÂ¼ÌõÊı
-                                         v_batch_id   out number, --Åú´ÎºÅ
-                                         v_count      out number --¼ÇÂ¼ÌõÊı
+create or replace function qxfc.f_scan_notify(v_fr         number, --è¯¥è®°å½•ä¸‹æ¬¡è¿›å…¥åè¡¥æ—¶é—´
+                                         v_once_count number, --æ¯æ¬¡æœ€å¤§è®°å½•æ¡æ•°
+                                         v_batch_id   out number, --æ‰¹æ¬¡å·
+                                         v_count      out number --è®°å½•æ¡æ•°
                                          ) return number is
   /*
-  ¹¦ÄÜ:ºó²¹Í¨Öª
-  ×÷Õß:jiyi
-  Ê±¼ä:2016-05-30
+  åŠŸèƒ½:åè¡¥é€šçŸ¥
+  ä½œè€…:jiyi
+  æ—¶é—´:2016-05-30
   */
   l_id number;
 begin
@@ -6144,15 +6144,15 @@ prompt
 prompt Creating function F_SCAN_PLAT_DELIVERY
 prompt ======================================
 prompt
-create or replace function qxfc.f_scan_plat_delivery(v_fr         number, --¸Ã¼ÇÂ¼ÏÂ´Î½øÈëºó²¹Ê±¼ä
-                                                v_once_count number, --Ã¿´Î×î´ó¼ÇÂ¼ÌõÊı
-                                                v_batch_id   out number, --Åú´ÎºÅ
-                                                v_count      out number --¼ÇÂ¼ÌõÊı
+create or replace function qxfc.f_scan_plat_delivery(v_fr         number, --è¯¥è®°å½•ä¸‹æ¬¡è¿›å…¥åè¡¥æ—¶é—´
+                                                v_once_count number, --æ¯æ¬¡æœ€å¤§è®°å½•æ¡æ•°
+                                                v_batch_id   out number, --æ‰¹æ¬¡å·
+                                                v_count      out number --è®°å½•æ¡æ•°
                                                 ) return number is
   /*
-  ¹¦ÄÜ:ºó²¹Æ½Ì¨·¢»õ
-  ×÷Õß:jiyi
-  Ê±¼ä:2016-05-30
+  åŠŸèƒ½:åè¡¥å¹³å°å‘è´§
+  ä½œè€…:jiyi
+  æ—¶é—´:2016-05-30
   */
   l_id number;
 begin
@@ -6200,15 +6200,15 @@ prompt
 prompt Creating function F_SCAN_TASK
 prompt =============================
 prompt
-create or replace function qxfc.f_scan_task(v_fr         number, --¸Ã¼ÇÂ¼ÏÂ´Î½øÈëºó²¹Ê±¼ä
-                                       v_once_count number, --Ã¿´Î×î´ó¼ÇÂ¼ÌõÊı
-                                       v_batch_id   out number, --Åú´ÎºÅ
-                                       v_count      out number --¼ÇÂ¼ÌõÊı
+create or replace function qxfc.f_scan_task(v_fr         number, --è¯¥è®°å½•ä¸‹æ¬¡è¿›å…¥åè¡¥æ—¶é—´
+                                       v_once_count number, --æ¯æ¬¡æœ€å¤§è®°å½•æ¡æ•°
+                                       v_batch_id   out number, --æ‰¹æ¬¡å·
+                                       v_count      out number --è®°å½•æ¡æ•°
                                        ) return number is
   /*
-  ¹¦ÄÜ:ºó²¹ÈÎÎñ
-  ×÷Õß:jiyi
-  Ê±¼ä:2016-05-30
+  åŠŸèƒ½:åè¡¥ä»»åŠ¡
+  ä½œè€…:jiyi
+  æ—¶é—´:2016-05-30
   */
   l_id number;
 begin
@@ -6306,9 +6306,9 @@ create or replace function qxfc.f_update_order_info(v_order_no        varchar2,
                                                v_seller_msg      varchar2)
   return boolean as
   /*
-  ¹¦ÄÜ:¸üĞÂ¶©µ¥ĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-19
+  åŠŸèƒ½:æ›´æ–°è®¢å•ä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-19
   */
 begin
   update fc_order_main t
@@ -6353,22 +6353,22 @@ prompt
 prompt Creating procedure ACCT_SYNC_GET
 prompt ================================
 prompt
-create or replace procedure qxfc.acct_sync_get(v_robot_ip    varchar2, --»úÆ÷±àºÅ
-                                          v_sync_type   number, --Í¬²½ÀàĞÍ:1-ÉÏÓÎ×Ê½ğ±ä¸ü, 2:ÏÂÓÎ×Ê½ğ±ä¸ü
-                                          v_change_type number, --×Ê½ğ±ä¸üÀàĞÍ
-                                          v_out_status  out number, --×´Ì¬:100±íÊ¾³É¹¦
-                                          v_out_msg     out varchar2, --´íÎóÏûÏ¢
-                                          v_begin_idx   out number, --¿ªÊ¼±àºÅ(±ÕÇø¼ä)
-                                          v_end_idx     out number --½áÊø±àºÅ(±ÕÇø¼ä)
+create or replace procedure qxfc.acct_sync_get(v_robot_ip    varchar2, --æœºå™¨ç¼–å·
+                                          v_sync_type   number, --åŒæ­¥ç±»å‹:1-ä¸Šæ¸¸èµ„é‡‘å˜æ›´, 2:ä¸‹æ¸¸èµ„é‡‘å˜æ›´
+                                          v_change_type number, --èµ„é‡‘å˜æ›´ç±»å‹
+                                          v_out_status  out number, --çŠ¶æ€:100è¡¨ç¤ºæˆåŠŸ
+                                          v_out_msg     out varchar2, --é”™è¯¯æ¶ˆæ¯
+                                          v_begin_idx   out number, --å¼€å§‹ç¼–å·(é—­åŒºé—´)
+                                          v_end_idx     out number --ç»“æŸç¼–å·(é—­åŒºé—´)
                                           ) as
   /*
-  ¹¦ÄÜ:×Ê½ğ±ä¶¯Í¬²½µ½¼ÇÕËÏµÍ³
-  ×÷Õß:jiyi
-  Ê±¼ä:2016-04-13
+  åŠŸèƒ½:èµ„é‡‘å˜åŠ¨åŒæ­¥åˆ°è®°è´¦ç³»ç»Ÿ
+  ä½œè€…:jiyi
+  æ—¶é—´:2016-04-13
   */
-  l_min_count    number; --×îĞ¡Í¬²½±ÊÊı
-  l_last_exec_id number; --ÉÏ´ÎÖ´ĞĞ±àºÅ
-  l_begin_time   date := to_date('2016-04-19', 'yyyy-mm-dd'); --Í¬²½³õÊ¼Ê±¼ä
+  l_min_count    number; --æœ€å°åŒæ­¥ç¬”æ•°
+  l_last_exec_id number; --ä¸Šæ¬¡æ‰§è¡Œç¼–å·
+  l_begin_time   date := to_date('2016-04-19', 'yyyy-mm-dd'); --åŒæ­¥åˆå§‹æ—¶é—´
   l_count        number;
 begin
   begin
@@ -6382,12 +6382,12 @@ begin
     when others then
       rollback;
       v_out_status := error_code.failure;
-      v_out_msg    := '»ñÈ¡ËøÊ§°Ü';
+      v_out_msg    := 'è·å–é”å¤±è´¥';
       return;
   end;
 
   if (l_last_exec_id is null) then
-    --ÉÏÓÎ¶©µ¥×Ê½ğ±ä¶¯
+    --ä¸Šæ¸¸è®¢å•èµ„é‡‘å˜åŠ¨
     if (v_sync_type = 1) then
       select max(t.id) + 1
         into l_last_exec_id
@@ -6408,7 +6408,7 @@ begin
     if (l_last_exec_id is null) then
       rollback;
       v_out_status := error_code.failure;
-      v_out_msg    := 'È¡³õÊ¼±àºÅÊ§°Ü';
+      v_out_msg    := 'å–åˆå§‹ç¼–å·å¤±è´¥';
       return;
     end if;
   end if;
@@ -6432,11 +6432,11 @@ begin
   if (l_count < 1) then
     rollback;
     v_out_status := error_code.failure;
-    v_out_msg    := '¼ÇÂ¼ÊıÌ«Ğ¡,ÎŞĞèÔÙÈ¡';
+    v_out_msg    := 'è®°å½•æ•°å¤ªå°,æ— éœ€å†å–';
     v_begin_idx  := null;
     v_end_idx    := null;
   
-    --ÖĞ¼äÎŞÊı¾İÊ±,ÍøÉÏ×Ô¶¯ÌøÒ»¸ñ
+    --ä¸­é—´æ— æ•°æ®æ—¶,ç½‘ä¸Šè‡ªåŠ¨è·³ä¸€æ ¼
     if (v_sync_type = 1) then
       select count(1)
         into l_count
@@ -6449,7 +6449,7 @@ begin
        where t.id >= l_last_exec_id + l_min_count;
     end if;
   
-    --×Ô¶¯ÌøÒ»¸ñÓĞÊı¾İ£¬ÏÂ´Î´ÓÕâÀï¿ªÊ¼
+    --è‡ªåŠ¨è·³ä¸€æ ¼æœ‰æ•°æ®ï¼Œä¸‹æ¬¡ä»è¿™é‡Œå¼€å§‹
     if (l_count > 0) then
       update acct_sync_config t
          set t.last_exec_id   = l_last_exec_id + l_min_count - 1,
@@ -6469,15 +6469,15 @@ begin
    where t.channel_type = v_sync_type
      and t.change_type = v_change_type;
   v_out_status := error_code.suc;
-  v_out_msg    := '»ñÈ¡³É¹¦';
+  v_out_msg    := 'è·å–æˆåŠŸ';
   commit;
   return;
 exception
   when others then
     rollback;
     v_out_status := error_code.failure;
-    v_out_msg    := 'Êı¾İ¿âÒì³£:' || sqlerrm;
-    sp_write_log('acct_sync_get', '²Ù×÷Ê§°Ü:' || v_out_msg);
+    v_out_msg    := 'æ•°æ®åº“å¼‚å¸¸:' || sqlerrm;
+    sp_write_log('acct_sync_get', 'æ“ä½œå¤±è´¥:' || v_out_msg);
 end;
 /
 
@@ -6485,24 +6485,24 @@ prompt
 prompt Creating procedure ACCT_SYNC_SAVE
 prompt =================================
 prompt
-create or replace procedure qxfc.acct_sync_save(v_id           varchar2, --»úÆ÷±àºÅ
-                                           v_channel_type number, --ÀàĞÍ:1-ÉÏÓÎ×Ê½ğ±ä¶¯,2-ÏÂÓÎ×Ê½ğ±ä¶¯
+create or replace procedure qxfc.acct_sync_save(v_id           varchar2, --æœºå™¨ç¼–å·
+                                           v_channel_type number, --ç±»å‹:1-ä¸Šæ¸¸èµ„é‡‘å˜åŠ¨,2-ä¸‹æ¸¸èµ„é‡‘å˜åŠ¨
                                            v_change_type  number,
-                                           v_status       number, --×´Ì¬:100-³É¹¦,ÆäËû±íÊ¾Ê§°Ü
-                                           v_msg          varchar2, --´íÎóÏûÏ¢
-                                           v_out_status   out number, --×´Ì¬:100±íÊ¾³É¹¦
+                                           v_status       number, --çŠ¶æ€:100-æˆåŠŸ,å…¶ä»–è¡¨ç¤ºå¤±è´¥
+                                           v_msg          varchar2, --é”™è¯¯æ¶ˆæ¯
+                                           v_out_status   out number, --çŠ¶æ€:100è¡¨ç¤ºæˆåŠŸ
                                            v_out_msg      out varchar2) as
   /*
-  ¹¦ÄÜ:×Ê½ğ±ä¶¯Í¬²½µ½¼ÇÕËÏµÍ³Í¬²½
-  ´´½¨ÈË:jiyi
-  Ê±¼ä:2016-04-13
+  åŠŸèƒ½:èµ„é‡‘å˜åŠ¨åŒæ­¥åˆ°è®°è´¦ç³»ç»ŸåŒæ­¥
+  åˆ›å»ºäºº:jiyi
+  æ—¶é—´:2016-04-13
   */
   l_error_count number;
   l_rid         number;
 begin
   if (v_channel_type <> 1 and v_channel_type <> 2) then
     v_out_status := error_code.failure;
-    v_out_msg    := '´íÎóµÄÀàĞÍ';
+    v_out_msg    := 'é”™è¯¯çš„ç±»å‹';
     return;
   end if;
 
@@ -6520,7 +6520,7 @@ begin
        for update;
   end if;
 
-  --Í¬²½Ê§°Ü
+  --åŒæ­¥å¤±è´¥
   if (v_status = error_code.suc) then
     if (v_channel_type = 1) then
       update fc_fund_change_up t
@@ -6533,7 +6533,7 @@ begin
     end if;
     commit;
     v_out_status := error_code.suc;
-    v_out_msg    := '±£´æ³É¹¦';
+    v_out_msg    := 'ä¿å­˜æˆåŠŸ';
     return;
   end if;
 
@@ -6550,7 +6550,7 @@ begin
        and t.channel_type = v_channel_type
        and t.change_type = v_change_type;
   
-    --ÉèÖÃ¼ÇÂ¼ÎªÊ§°Ü
+    --è®¾ç½®è®°å½•ä¸ºå¤±è´¥
     if (l_error_count > 3) then
       if (v_channel_type = 1) then
         update fc_fund_change_up t
@@ -6562,8 +6562,8 @@ begin
          where t.id = v_id;
       end if;
     
-      sp_warn_insert('Í¬²½¼ÇÕËÏµÍ³',
-                     v_id || 'Í¬²½¼ÇÕËÏµÍ³Ê§°Ü,ÇëÁªÏµ¹ÜÀíÔ±:' || v_msg);
+      sp_warn_insert('åŒæ­¥è®°è´¦ç³»ç»Ÿ',
+                     v_id || 'åŒæ­¥è®°è´¦ç³»ç»Ÿå¤±è´¥,è¯·è”ç³»ç®¡ç†å‘˜:' || v_msg);
     end if;
   else
     insert into acct_sync_error
@@ -6582,14 +6582,14 @@ begin
        substr(v_msg, 1, 100));
   end if;
   v_out_status := error_code.suc;
-  v_out_msg    := '±£´æ³É¹¦';
+  v_out_msg    := 'ä¿å­˜æˆåŠŸ';
   commit;
 exception
   when others then
     rollback;
     v_out_status := error_code.suc;
-    v_out_msg    := 'Êı¾İ¿âÒì³£:' || sqlerrm;
-    sp_write_log('acct_sync_save', '²Ù×÷Ê§°Ü:' || v_out_msg);
+    v_out_msg    := 'æ•°æ®åº“å¼‚å¸¸:' || sqlerrm;
+    sp_write_log('acct_sync_save', 'æ“ä½œå¤±è´¥:' || v_out_msg);
 end;
 /
 
@@ -6597,20 +6597,20 @@ prompt
 prompt Creating procedure BARABRABRABRBA
 prompt =================================
 prompt
-create or replace procedure qxfc.barabrabrabrba(v_query_time    varchar2, --²éÑ¯³õÊ¼ÈÕÆÚ
-                                           v_contrast_time varchar2, --²éÑ¯±È¶ÔÈÕÆÚ
-                                           v_channel       varchar2, --ÇşµÀ±àºÅ
-                                           v_carrier       varchar2, -- ÔËÓªÉÌ
-                                           v_business      number, --ÒµÎñÀàĞÍ
-                                           v_province      varchar2, --Ê¡·İ
-                                           v_face          number, --ÃæÖµ
+create or replace procedure qxfc.barabrabrabrba(v_query_time    varchar2, --æŸ¥è¯¢åˆå§‹æ—¥æœŸ
+                                           v_contrast_time varchar2, --æŸ¥è¯¢æ¯”å¯¹æ—¥æœŸ
+                                           v_channel       varchar2, --æ¸ é“ç¼–å·
+                                           v_carrier       varchar2, -- è¿è¥å•†
+                                           v_business      number, --ä¸šåŠ¡ç±»å‹
+                                           v_province      varchar2, --çœä»½
+                                           v_face          number, --é¢å€¼
                                            v_out_errcode   out number,
                                            v_out_msg       out varchar2,
                                            v_out_data      out pkg_cursor.pointer) as
   /*
-   0:²éÑ¯ÈÕ
-   1:»·±ÈÈÕ
-   2:Í¬±ÈÈÕ
+   0:æŸ¥è¯¢æ—¥
+   1:ç¯æ¯”æ—¥
+   2:åŒæ¯”æ—¥
   */
   l_start_time    date;
   l_end_time      date;
@@ -6664,7 +6664,7 @@ begin
              v_province is null)
          and (t.product_face = v_face or v_face is null)
        group by t.carrier_no, t.business_type, t1.name, ci.carrier_name),
-    -- »·±ÈÇ°Ò»Ìì
+    -- ç¯æ¯”å‰ä¸€å¤©
     res1 as
      (select 1 z,
              t.carrier_no a,
@@ -6699,7 +6699,7 @@ begin
              v_province is null)
          and (t.product_face = v_face or v_face is null)
        group by t.carrier_no, t.business_type, t1.name, ci.carrier_name),
-    -- Í¬±ÈÉÏ¸öÔÂµ±Ìì
+    -- åŒæ¯”ä¸Šä¸ªæœˆå½“å¤©
     res2 as
      (select 2 z,
              t.carrier_no a,
@@ -6736,21 +6736,21 @@ begin
        group by t.carrier_no, t.business_type, t1.name, ci.carrier_name)
     select r0.a,
            r0.b,
-           r0.c "ÒµÎñÀàĞÍ",
-           r0.d "ÔËÓªÉÌ",
-           r0.e "ÊÕµ¥±ÊÊı",
-           round(r0.e / r1.e * 100, 3) || '%' "»·±ÈÊÕµ¥",
-           round(r0.e / r3.e * 100, 3) || '%' "Í¬±ÈÊÕµ¥",
-           r0.f "ÏúÊÛ¶î(Ôª)",
-           round(r0.f / r1.f * 100, 3) || '%' "»·±ÈÏúÊÛ",
-           round(r0.f / r3.f * 100, 3) || '%' "Í¬±ÈÏúÊÛ",
-           r0.g "µ±Ç°ÊÕÒæ(Ôª)",
-           round(r0.g / r1.g * 100, 3) || '%' "»·±ÈÊÕÒæ",
-           round(r0.g / r3.g * 100, 3) || '%' "Í¬±ÈÊÕÒæ",
-           r0.h "µ±Ç°ÊÕÒæ",
-           round(r0.h - r1.h) "»·±ÈÊÕÒæÂÊ",
-           r0.i "µ±Ç°³É¹¦ÂÊ",
-           (r0.i - r1.i) "»·±È³É¹¦ÂÊ"
+           r0.c "ä¸šåŠ¡ç±»å‹",
+           r0.d "è¿è¥å•†",
+           r0.e "æ”¶å•ç¬”æ•°",
+           round(r0.e / r1.e * 100, 3) || '%' "ç¯æ¯”æ”¶å•",
+           round(r0.e / r3.e * 100, 3) || '%' "åŒæ¯”æ”¶å•",
+           r0.f "é”€å”®é¢(å…ƒ)",
+           round(r0.f / r1.f * 100, 3) || '%' "ç¯æ¯”é”€å”®",
+           round(r0.f / r3.f * 100, 3) || '%' "åŒæ¯”é”€å”®",
+           r0.g "å½“å‰æ”¶ç›Š(å…ƒ)",
+           round(r0.g / r1.g * 100, 3) || '%' "ç¯æ¯”æ”¶ç›Š",
+           round(r0.g / r3.g * 100, 3) || '%' "åŒæ¯”æ”¶ç›Š",
+           r0.h "å½“å‰æ”¶ç›Š",
+           round(r0.h - r1.h) "ç¯æ¯”æ”¶ç›Šç‡",
+           r0.i "å½“å‰æˆåŠŸç‡",
+           (r0.i - r1.i) "ç¯æ¯”æˆåŠŸç‡"
       from res0 r0
       left join res1 r1
         on r0.a = r1.a
@@ -6760,12 +6760,12 @@ begin
        and r0.b = r3.b;
 
   v_out_errcode := error_code.suc;
-  v_out_msg     := '²Ù×÷³É¹¦';
+  v_out_msg     := 'æ“ä½œæˆåŠŸ';
 exception
   when others then
     v_out_errcode := error_code.failure;
-    v_out_msg     := '²Ù×÷Ê§°Ü' || sqlerrm;
-    mr_sp_write_log('sp_st_down_trade', v_out_errcode, sqlerrm, '²Ù×÷Ê§°Ü');
+    v_out_msg     := 'æ“ä½œå¤±è´¥' || sqlerrm;
+    mr_sp_write_log('sp_st_down_trade', v_out_errcode, sqlerrm, 'æ“ä½œå¤±è´¥');
 end;
 /
 
@@ -6780,11 +6780,11 @@ create or replace procedure qxfc.sp_add_operate_log(v_order_no     varchar2,
                                                v_taskid       number default 0,
                                                v_ip           varchar2 default '',
                                                v_operator     varchar2 default 'system') as
-  pragma autonomous_transaction; --×ÔÖÎÊÂÎñ
+  pragma autonomous_transaction; --è‡ªæ²»äº‹åŠ¡
   /*
-  ¹¦ÄÜ:Ìí¼Ó¶©µ¥²Ù×÷¼ÇÂ¼
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:æ·»åŠ è®¢å•æ“ä½œè®°å½•
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
 begin
   insert into FC_order_operate
@@ -6824,9 +6824,9 @@ create or replace procedure qxfc.sp_assign_imsi(v_order_no varchar2,
                                            v_ret_code out number,
                                            v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:ÎªºÃ¿¨·ÖÅäIMSI
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-24
+  åŠŸèƒ½:ä¸ºå¥½å¡åˆ†é…IMSI
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-24
   */
   l_imsi varchar2(32);
   l_cntr number;
@@ -6839,14 +6839,14 @@ begin
   if (l_imsi is not null) then
     rollback;
     v_ret_code := error_code.failure;
-    v_ret_msg  := 'ÒÑÉèÖÃIMSI';
+    v_ret_msg  := 'å·²è®¾ç½®IMSI';
   end if;
 
   select count(1) into l_cntr from fc_order_ext t where t.iccno = v_imsi;
   if (l_cntr > 0) then
     rollback;
     v_ret_code := error_code.failure;
-    v_ret_msg  := 'ÒÑ·ÖÅä¸øÆäËüºÃ¿¨';
+    v_ret_msg  := 'å·²åˆ†é…ç»™å…¶å®ƒå¥½å¡';
   end if;
 
   update fc_order_ext t set t.iccno = v_imsi where t.order_no = v_order_no;
@@ -6863,9 +6863,9 @@ prompt =======================================
 prompt
 create or replace procedure qxfc.sp_auto_flow_execute as
   /*
-  ¹¦ÄÜ:×Ô¶¯Çı¶¯Á÷³Ì
-  ×÷Õß:jiyi
-  Ê±¼ä:2018Äê5ÔÂ1ÈÕ
+  åŠŸèƒ½:è‡ªåŠ¨é©±åŠ¨æµç¨‹
+  ä½œè€…:jiyi
+  æ—¶é—´:2018å¹´5æœˆ1æ—¥
   */
   l_ret_task_id number;
   l_ret_msg     varchar2(128);
@@ -6939,15 +6939,15 @@ prompt ========================================
 prompt
 create or replace procedure qxfc.sp_auto_trade_analyse as
   /*
-  ¹¦ÄÜ:½»Ò×·ÖÎö
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-20
+  åŠŸèƒ½:äº¤æ˜“åˆ†æ
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-20
   */
   l_last_date  date;
   l_order_time date;
   l_end_time   date := sysdate - 1;
 begin
-  --Èç¹û¿ìÕÕ±íÖĞÃ»ÓĞÊı¾İ£¬Ä¬ÈÏÉú³É15ÌìÊı¾İ
+  --å¦‚æœå¿«ç…§è¡¨ä¸­æ²¡æœ‰æ•°æ®ï¼Œé»˜è®¤ç”Ÿæˆ15å¤©æ•°æ®
   select trunc(nvl(max(t.trade_date), sysdate - 30))
     into l_last_date
     from fc_trade_analyse t;
@@ -7067,15 +7067,15 @@ prompt =====================================
 prompt
 create or replace procedure qxfc.sp_auto_trade_down as
   /*
-  ¹¦ÄÜ:ÏÂÓÎ½»Ò×·ÖÎö
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-20
+  åŠŸèƒ½:ä¸‹æ¸¸äº¤æ˜“åˆ†æ
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-20
   */
   l_last_date  date;
   l_order_time date;
   l_end_time   date := sysdate - 1;
 begin
-  --Èç¹û¿ìÕÕ±íÖĞÃ»ÓĞÊı¾İ£¬Ä¬ÈÏÉú³É15ÌìÊı¾İ
+  --å¦‚æœå¿«ç…§è¡¨ä¸­æ²¡æœ‰æ•°æ®ï¼Œé»˜è®¤ç”Ÿæˆ15å¤©æ•°æ®
   select trunc(nvl(max(t.trade_date), sysdate - 30))
     into l_last_date
     from fc_trade_down t;
@@ -7141,9 +7141,9 @@ prompt
 create or replace procedure qxfc.sp_dz_brand_new as
   pragma autonomous_transaction;
   /*
-  ¹¦ÄÜ:ĞÂ×°¿í´ø¶ÔÕË
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-09
+  åŠŸèƒ½:æ–°è£…å®½å¸¦å¯¹è´¦
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-09
   */
   l_order_no     varchar2(32);
   l_up_cost      number(20, 5);
@@ -7224,7 +7224,7 @@ begin
          20,
          'OK');
     
-      --¸üĞÂ¼¤»î×´Ì¬
+      --æ›´æ–°æ¿€æ´»çŠ¶æ€
       update fc_order_main m
          set m.active_status = process_status.success,
              m.active_time   = it.bill_date
@@ -7249,9 +7249,9 @@ prompt
 create or replace procedure qxfc.sp_dz_order_renew as
   pragma autonomous_transaction;
   /*
-  ¹¦ÄÜ:ºÅ¿¨¿í´øĞø·Ñ¶ÔÕË
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-09
+  åŠŸèƒ½:å·å¡å®½å¸¦ç»­è´¹å¯¹è´¦
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-09
   */
   l_order_no   varchar2(32);
   l_up_cost    number(20, 5);
@@ -7323,9 +7323,9 @@ prompt
 create or replace procedure qxfc.sp_dz_phone_active as
   pragma autonomous_transaction;
   /*
-  ¹¦ÄÜ:¶ÔÕËºÅ¿¨¼¤»î
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-09
+  åŠŸèƒ½:å¯¹è´¦å·å¡æ¿€æ´»
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-09
   */
   l_order_no   varchar2(32);
   l_up_cost    number(20, 5);
@@ -7386,10 +7386,10 @@ begin
          20,
          'OK');
     
-      --¸üĞÂ¼¤»î×´Ì¬
+      --æ›´æ–°æ¿€æ´»çŠ¶æ€
       update fc_order_main m
          set m.active_status = decode(it.active_status,
-                                      'ÒÑÉúĞ§',
+                                      'å·²ç”Ÿæ•ˆ',
                                       process_status.success,
                                       process_status.failure),
              m.active_time   = it.active_date
@@ -7415,9 +7415,9 @@ prompt ===================================
 prompt
 create or replace procedure qxfc.sp_auto_trade_dz as
   /*
-  ¹¦ÄÜ:×Ô¶¯¶ÔÕË
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-09
+  åŠŸèƒ½:è‡ªåŠ¨å¯¹è´¦
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-09
   */
 begin
   sp_dz_phone_active();
@@ -7432,15 +7432,15 @@ prompt ===================================
 prompt
 create or replace procedure qxfc.sp_auto_trade_Up as
   /*
-  ¹¦ÄÜ:ÉÏÓÎ½»Ò×·ÖÎö
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-20
+  åŠŸèƒ½:ä¸Šæ¸¸äº¤æ˜“åˆ†æ
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-20
   */
   l_last_date  date;
   l_order_time date;
   l_end_time   date := sysdate - 1;
 begin
-  --Èç¹û¿ìÕÕ±íÖĞÃ»ÓĞÊı¾İ£¬Ä¬ÈÏÉú³É15ÌìÊı¾İ
+  --å¦‚æœå¿«ç…§è¡¨ä¸­æ²¡æœ‰æ•°æ®ï¼Œé»˜è®¤ç”Ÿæˆ15å¤©æ•°æ®
   select trunc(nvl(max(t.trade_date), sysdate - 30))
     into l_last_date
     from fc_trade_up t;
@@ -7510,9 +7510,9 @@ create or replace procedure qxfc.sp_charge_retry(v_id       varchar,
                                             v_ret_code out number,
                                             v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:´æ·ÑËÍ·Ñ³äÖµÖØÊÔ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-03
+  åŠŸèƒ½:å­˜è´¹é€è´¹å……å€¼é‡è¯•
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-03
   */
   l_id              number;
   l_task_id         number;
@@ -7561,7 +7561,7 @@ begin
       sp_add_operate_log(l_order_no,
                          '',
                          operate_type.manual,
-                         '´æ·ÑËÍ·Ñ¶©µ¥:' || l_order_no || 'ÖØÊÔ',
+                         'å­˜è´¹é€è´¹è®¢å•:' || l_order_no || 'é‡è¯•',
                          l_task_id,
                          '',
                          v_operator);
@@ -7571,7 +7571,7 @@ begin
       when others then
         rollback;
         sp_write_log('sp_charge_retry',
-                     l_task_id || 'ÖØÊÔÊ§°Ü:' || sqlerrm);
+                     l_task_id || 'é‡è¯•å¤±è´¥:' || sqlerrm);
         v_ret_code := error_code.failure;
         v_ret_msg  := sqlerrm;
     end;
@@ -7588,9 +7588,9 @@ create or replace procedure qxfc.sp_cookie_get_by_city(v_carrier_no varchar2,
                                                   v_ret_code   out number,
                                                   v_ret_msg    out varchar2) as
   /*
-  ¹¦ÄÜ:»ñÈ¡cookie
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-21
+  åŠŸèƒ½:è·å–cookie
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-21
   */
 begin
   select t.cookie
@@ -7626,9 +7626,9 @@ prompt ==================================
 prompt
 create or replace procedure qxfc.sp_create_query(v_task_id number, v_ret_msg out varchar2) as
   /*
-  ¹¦ÄÜ:´´½¨²éÑ¯
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-10
+  åŠŸèƒ½:åˆ›å»ºæŸ¥è¯¢
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-10
   */
   l_ret boolean;
 begin
@@ -7641,7 +7641,7 @@ begin
 exception
   when others then
     rollback;
-    sp_write_log('sp_create_task_query', '´´½¨²éÑ¯Òì³£:[' || v_task_id || '],' || sqlerrm);
+    sp_write_log('sp_create_task_query', 'åˆ›å»ºæŸ¥è¯¢å¼‚å¸¸:[' || v_task_id || '],' || sqlerrm);
 end;
 /
 
@@ -7649,26 +7649,26 @@ prompt
 prompt Creating procedure SP_DA_REWARD
 prompt ===============================
 prompt
-create or replace procedure qxfc.sp_da_reward(v_begin_time   varchar2, --¿ªÊ¼Ê±¼ä
-                                         v_end_time     varchar2, --½áÊøÊ±¼ä
-                                         v_up_channel   varchar2, --ÉÏÓÎÇşµÀ
-                                         v_product_type varchar2, --²úÆ·ÀàĞÍ
+create or replace procedure qxfc.sp_da_reward(v_begin_time   varchar2, --å¼€å§‹æ—¶é—´
+                                         v_end_time     varchar2, --ç»“æŸæ—¶é—´
+                                         v_up_channel   varchar2, --ä¸Šæ¸¸æ¸ é“
+                                         v_product_type varchar2, --äº§å“ç±»å‹
                                          v_ret_code     out number,
                                          v_ret_msg      out varchar2,
                                          v_ret_data     out data_cursor.pointer) as
   /*
-  ¹¦ÄÜ:Ó¶½ğ±¨±í
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-28
+  åŠŸèƒ½:ä½£é‡‘æŠ¥è¡¨
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-28
   */
   l_begin_time date := trunc(to_date(v_begin_time, 'yyyy-mm-dd hh24:mi:ss'));
   l_end_time   date := trunc(to_date(v_end_time, 'yyyy-mm-dd hh24:mi:ss')) + 1;
 begin
   open v_ret_data for
-    select c.channel_name ÇşµÀÃû³Æ,
-           p.type_name ²úÆ·ÀàĞÍ,
-           sum(t.change_money) Ó¶½ğ,
-           to_char(t.change_time, 'yyyy-MM-dd') ÊÕ¿îÊ±¼ä
+    select c.channel_name æ¸ é“åç§°,
+           p.type_name äº§å“ç±»å‹,
+           sum(t.change_money) ä½£é‡‘,
+           to_char(t.change_time, 'yyyy-MM-dd') æ”¶æ¬¾æ—¶é—´
       from fc_fund_change_up t
      inner join fc_order_main m
         on m.order_no = t.order_no
@@ -7685,7 +7685,7 @@ begin
               p.type_name,
               to_char(t.change_time, 'yyyy-MM-dd')
     union all
-    select '', '×Ü¼Æ', sum(t.change_money), ''
+    select '', 'æ€»è®¡', sum(t.change_money), ''
       from fc_fund_change_up t
      inner join fc_order_main m
         on m.order_no = t.order_no
@@ -7708,30 +7708,30 @@ prompt
 prompt Creating procedure SP_DA_TRADE_CHANNEL
 prompt ======================================
 prompt
-create or replace procedure qxfc.sp_da_trade_channel(v_begin_time   varchar2, --¿ªÊ¼Ê±¼ä
-                                                v_end_time     varchar2, --½áÊøÊ±¼ä
-                                                v_up_channel   varchar2, --ÉÏÓÎÇşµÀ
-                                                v_down_channel varchar2, --ÏÂÓÎÇşµÀ
-                                                v_product_type varchar2, --²úÆ·ÀàĞÍ                                                
+create or replace procedure qxfc.sp_da_trade_channel(v_begin_time   varchar2, --å¼€å§‹æ—¶é—´
+                                                v_end_time     varchar2, --ç»“æŸæ—¶é—´
+                                                v_up_channel   varchar2, --ä¸Šæ¸¸æ¸ é“
+                                                v_down_channel varchar2, --ä¸‹æ¸¸æ¸ é“
+                                                v_product_type varchar2, --äº§å“ç±»å‹                                                
                                                 v_ret_code     out number,
                                                 v_ret_msg      out varchar2,
                                                 v_ret_data     out data_cursor.pointer) as
   /*
-  ¹¦ÄÜ:ÇşµÀ½»Ò×·ÖÎö±¨±í
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-28
+  åŠŸèƒ½:æ¸ é“äº¤æ˜“åˆ†ææŠ¥è¡¨
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-28
   */
   l_begin_time date := trunc(to_date(v_begin_time, 'yyyy-mm-dd hh24:mi:ss'));
   l_end_time   date := trunc(to_date(v_end_time, 'yyyy-mm-dd hh24:mi:ss')) + 1;
 begin
   if (v_down_channel is not null) then
     open v_ret_data for
-      select p.type_name ²úÆ·ÀàĞÍ,
-             c.channel_name ÏÂÓÎÇşµÀ,
-             sum(t.total_cntr) ¶©µ¥Êı,
-             sum(t.total_fee) Ó¦ÊÕ¿î,
-             sum(t.trade_fee) ½»Ò×·Ñ,
-             sum(t.refund_fee) ÍË¿î
+      select p.type_name äº§å“ç±»å‹,
+             c.channel_name ä¸‹æ¸¸æ¸ é“,
+             sum(t.total_cntr) è®¢å•æ•°,
+             sum(t.total_fee) åº”æ”¶æ¬¾,
+             sum(t.trade_fee) äº¤æ˜“è´¹,
+             sum(t.refund_fee) é€€æ¬¾
         from fc_trade_down t
        inner join fc_down_channel c
           on c.channel_no = t.down_channel_no
@@ -7743,7 +7743,7 @@ begin
          and (t.product_type = v_product_type or v_product_type is null)
        group by c.channel_name, p.type_name
       union all
-      select '×Ü¼Æ',
+      select 'æ€»è®¡',
              '',
              sum(t.total_cntr),
              sum(t.total_fee),
@@ -7762,13 +7762,13 @@ begin
          and (t.product_type = v_product_type or v_product_type is null);
   else
     open v_ret_data for
-      select p.type_name ²úÆ·ÀàĞÍ,
-             c.channel_name ÉÏÓÎÇşµÀ,
-             sum(t.total_cntr) ¶©µ¥Êı,
-             sum(t.cost) ³É±¾,
-             sum(t.express_fee) ÓÊ·Ñ,
-             sum(t.reward) Ó¶½ğ,
-             sum(t.refund_fee) ÍË¿î
+      select p.type_name äº§å“ç±»å‹,
+             c.channel_name ä¸Šæ¸¸æ¸ é“,
+             sum(t.total_cntr) è®¢å•æ•°,
+             sum(t.cost) æˆæœ¬,
+             sum(t.express_fee) é‚®è´¹,
+             sum(t.reward) ä½£é‡‘,
+             sum(t.refund_fee) é€€æ¬¾
         from fc_trade_up t
        inner join fc_up_channel c
           on c.channel_no = t.up_channel_no
@@ -7780,7 +7780,7 @@ begin
          and (t.product_type = v_product_type or v_product_type is null)
        group by c.channel_name, p.type_name
       union all
-      select '×Ü¼Æ',
+      select 'æ€»è®¡',
              '',
              sum(t.total_cntr),
              sum(t.cost),
@@ -7810,12 +7810,12 @@ prompt
 create or replace procedure qxfc.sp_delivery_get(v_task_id  number,
                                             v_robot_ip varchar2, --IP
                                             v_ret_code out number,
-                                            v_ret_msg  out varchar2 --½á¹ûĞÅÏ¢(json)
+                                            v_ret_msg  out varchar2 --ç»“æœä¿¡æ¯(json)
                                             ) as
   /*
-  ¹¦ÄÜ:»ñÈ¡·¢»õĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:è·å–å‘è´§ä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_bind_id         number;
   l_order_no        varchar2(32);
@@ -7854,7 +7854,7 @@ begin
      and t.task_status = process_status.wait
      for update nowait;
 
-  --1.»ñÈ¡·¢»õĞÅÏ¢
+  --1.è·å–å‘è´§ä¿¡æ¯
   select t.face,
          t.up_channel_no,
          t.up_product_id,
@@ -7916,7 +7916,7 @@ begin
     from fc_product_package t
    where t.pkg_id = l_package_id;
 
-  --2.»ñÈ¡ÕË»§ĞÅÏ¢
+  --2.è·å–è´¦æˆ·ä¿¡æ¯
   select t.account_no, t.account_pwd
     into l_account, l_key
     from fc_up_account t
@@ -7927,7 +7927,7 @@ begin
     from fc_up_channel t
    where t.channel_no = l_up_channel_no;
 
-  --3.»ñÈ¡½Ó¿ÚĞÅÏ¢
+  --3.è·å–æ¥å£ä¿¡æ¯
   select t.up_url
     into l_api_url
     from fc_up_script t
@@ -7958,7 +7958,7 @@ begin
   v_ret_msg := f_json_add(v_ret_msg, 'down_order_no', l_down_order_no);
   v_ret_msg := '{' || f_json_add(v_ret_msg, 'notify_url', l_notify_url) || '}';
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status = process_status.process, t.ip = v_robot_ip
    where t.tid = v_task_id;
@@ -7969,7 +7969,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     '·¢»õ',
+                     'å‘è´§',
                      v_task_id,
                      v_robot_ip);
 exception
@@ -7988,9 +7988,9 @@ prompt
 create or replace procedure qxfc.sp_down_channel_key_get(v_channel_no varchar2,
                                                     v_ret_msg    out varchar2) as
   /*
-  ¹¦ÄÜ:»ñÈ¡ÇşµÀkey
-  ×÷Õß:jiyi
-  Ê±¼ä:2017-01-16
+  åŠŸèƒ½:è·å–æ¸ é“key
+  ä½œè€…:jiyi
+  æ—¶é—´:2017-01-16
   */
   l_key        varchar2(128);
   l_channel_no varchar2(32);
@@ -8022,9 +8022,9 @@ create or replace procedure qxfc.sp_express_get(v_task_id  number,
                                            v_ret_code out number,
                                            v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:»ñÈ¡¿ìµİĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:è·å–å¿«é€’ä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_bind_id        number;
   l_down_chanel_no varchar2(32);
@@ -8048,7 +8048,7 @@ begin
      and t.task_status = process_status.wait
      for update nowait;
 
-  --1.»ñÈ¡¿ìµİĞÅÏ¢
+  --1.è·å–å¿«é€’ä¿¡æ¯
   select t.id,
          t.target_name,
          t.target_phone,
@@ -8067,7 +8067,7 @@ begin
      and t.express_status = express_status.wait_print
      for update nowait;
 
-  --2.»ñÈ¡ÕË»§ĞÅÏ¢
+  --2.è·å–è´¦æˆ·ä¿¡æ¯
   select min(t.account_no), min(t.account_pwd)
     into l_account, l_key
     from fc_up_account t
@@ -8079,7 +8079,7 @@ begin
     from fc_up_channel t
    where t.channel_no = l_up_channel_no;
 
-  --3.»ñÈ¡½Ó¿ÚĞÅÏ¢
+  --3.è·å–æ¥å£ä¿¡æ¯
   select t.up_url
     into l_api_url
     from fc_up_script t
@@ -8091,7 +8091,7 @@ begin
   v_ret_msg := f_json_add(v_ret_msg, 'order_no', l_order_no);
   v_ret_msg := f_json_add(v_ret_msg, 'down_order_no', l_down_order_no);
   v_ret_msg := f_json_add(v_ret_msg, 'svc_url', l_api_url);
-  v_ret_msg := f_json_add(v_ret_msg, 'sender_name', 'ËÄ´¨Ç§ĞĞ');
+  v_ret_msg := f_json_add(v_ret_msg, 'sender_name', 'å››å·åƒè¡Œ');
   v_ret_msg := f_json_add(v_ret_msg, 'sender_phone', '123456');
   v_ret_msg := f_json_add(v_ret_msg, 'recv_name', l_recv_name);
   v_ret_msg := f_json_add(v_ret_msg, 'recv_phone', l_recv_phone);
@@ -8103,12 +8103,12 @@ begin
                           to_char(sysdate, 'yyyyMMdd'));
   v_ret_msg := '{' || f_json_add(v_ret_msg, 'notify_url', l_notify_url) || '}';
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status = process_status.process, t.ip = v_robot_ip
    where t.tid = v_task_id;
 
-  --¸üĞÂ¿ìµİ¼ÇÂ¼×´Ì¬
+  --æ›´æ–°å¿«é€’è®°å½•çŠ¶æ€
   update fc_order_express t
      set t.express_status = express_status.printing
    where t.id = l_exp_id;
@@ -8118,7 +8118,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.system,
-                     '´òÓ¡¿ìµİµ¥ºÅ',
+                     'æ‰“å°å¿«é€’å•å·',
                      v_task_id,
                      v_robot_ip);
 exception
@@ -8139,9 +8139,9 @@ create or replace procedure qxfc.sp_express_plat_get(v_task_id  number,
                                                 v_ret_code out number,
                                                 v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:»ñÈ¡¸üĞÂ¿ìµİµ¥ºÅµ½µçÉÌÆ½Ì¨
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:è·å–æ›´æ–°å¿«é€’å•å·åˆ°ç”µå•†å¹³å°
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_exp_id          number;
   l_bind_id         number;
@@ -8164,7 +8164,7 @@ begin
      and t.task_status = process_status.wait
      for update nowait;
 
-  --1.»ñÈ¡¿ìµİĞÅÏ¢,ÓĞ¿ìµİ¼ÇÂ¼ÔòÊÇÊµÌå·¢»õ,·ñÔòĞéÄâ·¢»õ
+  --1.è·å–å¿«é€’ä¿¡æ¯,æœ‰å¿«é€’è®°å½•åˆ™æ˜¯å®ä½“å‘è´§,å¦åˆ™è™šæ‹Ÿå‘è´§
   select count(1)
     into l_cntr
     from fc_order_express t
@@ -8206,12 +8206,12 @@ begin
   v_ret_msg := '{' ||
                f_json_add(v_ret_msg, 'mail_no', nvl(l_express_no, '')) || '}';
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status = process_status.process, t.ip = v_robot_ip
    where t.tid = v_task_id;
 
-  --¸üĞÂ¿ìµİ¼ÇÂ¼×´Ì¬
+  --æ›´æ–°å¿«é€’è®°å½•çŠ¶æ€
   update fc_order_express t
      set t.express_status = express_status.delivery
    where t.id = l_exp_id;
@@ -8222,7 +8222,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.system,
-                     '¸üĞÂ¿ìµİµ¥ºÅµ½ÉÌ¼ÒÆ½Ì¨',
+                     'æ›´æ–°å¿«é€’å•å·åˆ°å•†å®¶å¹³å°',
                      v_task_id,
                      v_robot_ip);
 exception
@@ -8243,9 +8243,9 @@ create or replace procedure qxfc.sp_express_plat_save(v_task_id number,
                                                  v_msg     varchar2,
                                                  v_ret_msg out varchar2) as
   /*
-  ¹¦ÄÜ:¸üĞÂµçÉÌÆ½Ì¨¿ìµİµ¥ºÅ±£´æ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-12
+  åŠŸèƒ½:æ›´æ–°ç”µå•†å¹³å°å¿«é€’å•å·ä¿å­˜
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-12
   */
   l_exp_id      number;
   l_task_id     number;
@@ -8292,14 +8292,14 @@ begin
   if (v_status = process_status.failure) then
     commit;
     sp_warn_insert(warn_keywords.task_exception,
-                   l_order_no || 'Æ½Ì¨·¢»õÒì³£,ÇëÈË¹¤´¦Àí');
+                   l_order_no || 'å¹³å°å‘è´§å¼‚å¸¸,è¯·äººå·¥å¤„ç†');
     v_ret_msg := f_get_task_result(l_order_no,
                                    error_code.failure,
-                                   'ÈÎÎñ½øÈëÈË¹¤ÉóºË');
+                                   'ä»»åŠ¡è¿›å…¥äººå·¥å®¡æ ¸');
     return;
   end if;
 
-  --ÍÆ¶¯Á÷³Ì
+  --æ¨åŠ¨æµç¨‹
   l_ret := f_execute_next_step(l_flow_id,
                                l_action,
                                l_order_no,
@@ -8332,7 +8332,7 @@ exception
     rollback;
     v_ret_msg := f_get_task_result(l_order_no, error_code.failure, sqlerrm);
     sp_write_log('sp_express_plat_save',
-                 '±£´æµçÉÌ¿ìµİÈÎÎñÒì³£:[' || v_task_id || ',' || v_msg || ']');
+                 'ä¿å­˜ç”µå•†å¿«é€’ä»»åŠ¡å¼‚å¸¸:[' || v_task_id || ',' || v_msg || ']');
 end;
 /
 
@@ -8345,9 +8345,9 @@ create or replace procedure qxfc.sp_express_query_get(v_task_id  number,
                                                  v_ret_code out number,
                                                  v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:´ú¿ÍÏÂµ¥¿ìµİ²éÑ¯
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:ä»£å®¢ä¸‹å•å¿«é€’æŸ¥è¯¢
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_bind_id       number;
   l_order_no      varchar2(32);
@@ -8372,14 +8372,14 @@ begin
     from fc_order_ext t
    where t.order_no = l_order_no;
 
-  --2.»ñÈ¡ÕË»§ĞÅÏ¢
+  --2.è·å–è´¦æˆ·ä¿¡æ¯
   select min(t.account_no), min(t.account_pwd)
     into l_account, l_key
     from fc_up_account t
    where t.channel_no = l_up_channel_no
      and rownum = 1;
 
-  --3.»ñÈ¡½Ó¿ÚĞÅÏ¢
+  --3.è·å–æ¥å£ä¿¡æ¯
   select t.up_url
     into l_api_url
     from fc_up_script t
@@ -8394,7 +8394,7 @@ begin
   v_ret_msg := f_json_add(v_ret_msg, 'channel_user', l_account);
   v_ret_msg := '{' || f_json_add(v_ret_msg, 'channel_key', l_key) || '}';
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status = process_status.process, t.ip = v_robot_ip
    where t.tid = v_task_id;
@@ -8404,7 +8404,7 @@ begin
   /*sp_add_operate_log(l_order_no,
   l_bind_id,
   operate_type.system,
-  '²éÑ¯´ú¿ÍÏÂµ¥¿ìµİºÅ',
+  'æŸ¥è¯¢ä»£å®¢ä¸‹å•å¿«é€’å·',
   v_task_id,
   v_robot_ip);*/
 exception
@@ -8427,9 +8427,9 @@ create or replace procedure qxfc.sp_express_query_save(v_task_id   number,
                                                   v_msg       varchar2,
                                                   v_ret_msg   out varchar2) as
   /*
-  ¹¦ÄÜ:Èı·½¿ìµİ²éÑ¯½á¹û±£´æ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-12
+  åŠŸèƒ½:ä¸‰æ–¹å¿«é€’æŸ¥è¯¢ç»“æœä¿å­˜
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-12
   */
   l_task_id         number;
   l_flow_id         number;
@@ -8542,7 +8542,7 @@ begin
      express_status.wait_plat_delivery,
      'system');
 
-  --ÍÆ¶¯Á÷³Ì
+  --æ¨åŠ¨æµç¨‹
   l_ret := f_execute_next_step(l_flow_id,
                                l_action,
                                l_order_no,
@@ -8575,7 +8575,7 @@ exception
     rollback;
     v_ret_msg := f_get_task_result(l_order_no, error_code.failure, sqlerrm);
     sp_write_log('sp_express_query_save',
-                 '´ú¿ÍÏÂµ¥¿ìµİ²éÑ¯±£´æÒì³£:[' || v_task_id || ',' || v_mail_no || ',' ||
+                 'ä»£å®¢ä¸‹å•å¿«é€’æŸ¥è¯¢ä¿å­˜å¼‚å¸¸:[' || v_task_id || ',' || v_mail_no || ',' ||
                  v_msg || ']');
 end;
 /
@@ -8590,9 +8590,9 @@ create or replace procedure qxfc.sp_express_save(v_task_id number,
                                             v_msg     varchar2,
                                             v_ret_msg out varchar2) as
   /*
-  ¹¦ÄÜ:¿ìµİ½á¹û±£´æ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-12
+  åŠŸèƒ½:å¿«é€’ç»“æœä¿å­˜
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-12
   */
   l_exp_id         number;
   l_task_id        number;
@@ -8638,7 +8638,7 @@ begin
      and t.express_status = express_status.printing
      for update;
 
-  --ÅĞ¶ÏÊÇ·ñ»¹ÓĞºóĞø²½Öè
+  --åˆ¤æ–­æ˜¯å¦è¿˜æœ‰åç»­æ­¥éª¤
   l_next_action := f_get_next_step(l_flow_id, l_action);
   if (v_status = process_status.success and
      l_next_action = action_type.plat_delivery) then
@@ -8668,10 +8668,10 @@ begin
   if (v_status = process_status.failure) then
     commit;
     sp_warn_insert(warn_keywords.task_exception,
-                   l_order_no || '´òÓ¡¿ìµİµ¥Òì³£:' || v_msg || ',ÇëÈË¹¤´¦Àí');
+                   l_order_no || 'æ‰“å°å¿«é€’å•å¼‚å¸¸:' || v_msg || ',è¯·äººå·¥å¤„ç†');
     v_ret_msg := f_get_task_result(l_order_no,
                                    error_code.failure,
-                                   'ÈÎÎñ½øÈëÈË¹¤ÉóºË');
+                                   'ä»»åŠ¡è¿›å…¥äººå·¥å®¡æ ¸');
     return;
   end if;
 
@@ -8680,22 +8680,22 @@ begin
     from fc_up_product t
    where t.pid = l_up_product_id;
 
-  --Ìí¼Ó×Ê½ğ±ä¸ü
+  --æ·»åŠ èµ„é‡‘å˜æ›´
   l_ret := f_fund_change_up(l_up_channel_no,
                             l_order_no,
                             l_task_id,
                             fund_change_type.express,
                             l_cost,
-                            l_order_no || '¶©µ¥¿ìµİ·Ñ');
+                            l_order_no || 'è®¢å•å¿«é€’è´¹');
   if (not l_ret) then
     rollback;
     v_ret_msg := f_get_task_result(l_order_no,
                                    error_code.failure,
-                                   'Ìí¼Ó¿ìµİ×Ê½ğ±ä¸üÊ§°Ü');
+                                   'æ·»åŠ å¿«é€’èµ„é‡‘å˜æ›´å¤±è´¥');
     return;
   end if;
 
-  --ÍÆ¶¯Á÷³Ì
+  --æ¨åŠ¨æµç¨‹
   l_ret := f_execute_next_step(l_flow_id,
                                l_action,
                                l_order_no,
@@ -8728,7 +8728,7 @@ exception
     rollback;
     v_ret_msg := f_get_task_result(l_order_no, error_code.failure, sqlerrm);
     sp_write_log('sp_express_save',
-                 '±£´æ¿ìµİÈÎÎñÒì³£:[' || v_task_id || ',' || v_mail_no || ',' ||
+                 'ä¿å­˜å¿«é€’ä»»åŠ¡å¼‚å¸¸:[' || v_task_id || ',' || v_mail_no || ',' ||
                  v_msg || ']');
 end;
 /
@@ -8742,9 +8742,9 @@ create or replace procedure qxfc.sp_express_update(v_task_id number,
                                               v_msg     varchar2,
                                               v_ret_msg out varchar2) as
   /*
-  ¹¦ÄÜ:¿ìµİ¸üĞÂ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-12
+  åŠŸèƒ½:å¿«é€’æ›´æ–°
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-12
   */
   l_exp_id   number;
   l_task_id  number;
@@ -8786,7 +8786,7 @@ exception
                                    sqlerrm,
                                    v_task_id);
     sp_write_log('sp_express_update',
-                 '¸üĞÂ¿ìµİÈÎÎñÒì³£:[' || v_task_id || ',' || v_mail_no || ',' ||
+                 'æ›´æ–°å¿«é€’ä»»åŠ¡å¼‚å¸¸:[' || v_task_id || ',' || v_mail_no || ',' ||
                  v_msg || ']');
 end;
 /
@@ -8800,9 +8800,9 @@ create or replace procedure qxfc.sp_identity_info_get(v_task_id  number,
                                                  v_ret_code out number,
                                                  v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:»ñÈ¡ÊµÃûĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:è·å–å®åä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_bind_id         number;
   l_order_no        varchar2(32);
@@ -8836,7 +8836,7 @@ begin
   v_ret_msg := '{' ||
                f_json_add(v_ret_msg, 'app_secret', l_down_app_secret) || '}';
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status = process_status.process, t.ip = v_robot_ip
    where t.tid = v_task_id;
@@ -8847,7 +8847,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.system,
-                     '»ñÈ¡ÊµÃûÉí·İĞÅÏ¢',
+                     'è·å–å®åèº«ä»½ä¿¡æ¯',
                      v_task_id,
                      v_robot_ip);
 exception
@@ -8866,7 +8866,7 @@ prompt
 create or replace procedure qxfc.sp_identity_info_save(v_task_id         number,
                                                   v_status          number,
                                                   v_msg             varchar2,
-                                                  v_package_phone   varchar2, --ĞÂ°ìÀíµÄºÅÂë
+                                                  v_package_phone   varchar2, --æ–°åŠç†çš„å·ç 
                                                   v_idno            varchar2,
                                                   v_real_name       varchar2,
                                                   v_install_address varchar2,
@@ -8877,17 +8877,17 @@ create or replace procedure qxfc.sp_identity_info_save(v_task_id         number,
                                                   v_memo            varchar2,
                                                   v_ret_msg         out varchar2) as
   /*
-  ¹¦ÄÜ:¸üĞÂÊµÃûĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-12
+  åŠŸèƒ½:æ›´æ–°å®åä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-12
   */
   l_task_id       number;
   l_flow_id       number;
   l_action        varchar2(32);
   l_order_no      varchar2(32);
   l_bind_id       varchar2(32);
-  l_city_no       varchar2(32); --¹éÊô³ÇÊĞ
-  l_province_no   varchar2(32); --¹éÊôÊ¡·İ
+  l_city_no       varchar2(32); --å½’å±åŸå¸‚
+  l_province_no   varchar2(32); --å½’å±çœä»½
   l_recv_province varchar2(32);
   l_recv_city     varchar2(32);
   l_msg           varchar2(128);
@@ -8916,10 +8916,10 @@ begin
   if (v_status = process_status.failure) then
     commit;
     sp_warn_insert(warn_keywords.task_exception,
-                   l_order_no || '»ñÈ¡ÊµÃûĞÅÏ¢Òì³£:' || v_msg || ',ÇëÈË¹¤´¦Àí');
+                   l_order_no || 'è·å–å®åä¿¡æ¯å¼‚å¸¸:' || v_msg || ',è¯·äººå·¥å¤„ç†');
     v_ret_msg := f_get_task_result(l_order_no,
                                    error_code.failure,
-                                   'ÈÎÎñ½øÈëÈË¹¤ÉóºË');
+                                   'ä»»åŠ¡è¿›å…¥äººå·¥å®¡æ ¸');
     return;
   end if;
 
@@ -8945,7 +8945,7 @@ begin
      where t.province_name like '%' || v_recv_province || '%';
   end if;
 
-  --¸ù¾İ¹éÊôµØ¸üĞÂÊ¡·İ/³ÇÊĞ
+  --æ ¹æ®å½’å±åœ°æ›´æ–°çœä»½/åŸå¸‚
   update fc_order_main t
      set t.active_phone = nvl(v_package_phone, t.active_phone),
          t.city_no      = nvl(l_city_no, '*'),
@@ -8979,7 +8979,7 @@ begin
 
   commit;
 
-  --ÍÆ¶¯Á÷³Ì
+  --æ¨åŠ¨æµç¨‹
   l_ret := f_execute_next_step(l_flow_id,
                                l_action,
                                l_order_no,
@@ -9014,7 +9014,7 @@ exception
     rollback;
     v_ret_msg := f_get_task_result(l_order_no, error_code.failure, sqlerrm);
     sp_write_log('sp_identity_info_save',
-                 '±£´æÊµÃûĞÅÏ¢Òì³£:[' || v_task_id || ',' || v_msg || ']');
+                 'ä¿å­˜å®åä¿¡æ¯å¼‚å¸¸:[' || v_task_id || ',' || v_msg || ']');
 end;
 /
 
@@ -9032,9 +9032,9 @@ create or replace procedure qxfc.sp_manual_book_install(v_task_id      number,
                                                    v_ret_code     out number,
                                                    v_ret_msg      out varchar2) as
   /*
-  ¹¦ÄÜ:ÈË¹¤Ô¤Ô¼°²×°
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-27
+  åŠŸèƒ½:äººå·¥é¢„çº¦å®‰è£…
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-27
   */
   l_task_id      number;
   l_flow_id      number;
@@ -9066,7 +9066,7 @@ begin
          t.manual_status = process_status.success,
          t.task_msg      = decode(v_status,
                                   process_status.success,
-                                  '°²×°Ê±¼ä:' || v_install_date,
+                                  'å®‰è£…æ—¶é—´:' || v_install_date,
                                   v_msg)
    where t.tid = v_task_id;
 
@@ -9082,19 +9082,19 @@ begin
                                l_svc_bus);
   if (l_ret) then
     v_ret_code := error_code.suc;
-    v_ret_msg  := '³É¹¦';
+    v_ret_msg  := 'æˆåŠŸ';
     commit;
   else
     rollback;
     v_ret_code := error_code.failure;
-    v_ret_msg  := '²Ù×÷Ô¤Ô¼Ê§°Ü';
+    v_ret_msg  := 'æ“ä½œé¢„çº¦å¤±è´¥';
     return;
   end if;
 
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     '°²×°Ê±¼ä:' || v_install_date,
+                     'å®‰è£…æ—¶é—´:' || v_install_date,
                      v_task_id,
                      '',
                      v_operator);
@@ -9118,9 +9118,9 @@ create or replace procedure qxfc.sp_manual_express(v_task_id    number,
                                               v_ret_code   out number,
                                               v_ret_msg    out varchar2) as
   /*
-  ¹¦ÄÜ:ÊÖ¶¯´òÓ¡¿ìµİ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-27
+  åŠŸèƒ½:æ‰‹åŠ¨æ‰“å°å¿«é€’
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-27
   */
   l_task_id        number;
   l_flow_id        number;
@@ -9141,7 +9141,7 @@ begin
      and t.manual_status = process_status.wait
      for update;
 
-  --ÅĞ¶ÏÊÇ·ñ»¹ÓĞºóĞø²½Öè
+  --åˆ¤æ–­æ˜¯å¦è¿˜æœ‰åç»­æ­¥éª¤
   l_next_action := f_get_next_step(l_flow_id, l_action);
   if (l_next_action = action_type.plat_delivery) then
     l_express_status := express_status.wait_plat_delivery;
@@ -9154,7 +9154,7 @@ begin
          t.up_channel_no = v_channel_no,
          t.task_status   = process_status.success,
          t.manual_status = process_status.success,
-         t.task_msg      = 'ÊÖ¶¯·¢»õ:' || v_mail_no,
+         t.task_msg      = 'æ‰‹åŠ¨å‘è´§:' || v_mail_no,
          t.task_end_time = sysdate
    where t.tid = v_task_id;
 
@@ -9170,7 +9170,7 @@ begin
                                l_order_no,
                                l_bind_id,
                                process_status.success,
-                               'ÊÖ¶¯·¢»õ:' || v_mail_no,
+                               'æ‰‹åŠ¨å‘è´§:' || v_mail_no,
                                l_ret_task_id,
                                v_ret_msg,
                                l_script,
@@ -9187,7 +9187,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     'ÊÖ¶¯·¢»õ:' || v_mail_no,
+                     'æ‰‹åŠ¨å‘è´§:' || v_mail_no,
                      v_task_id,
                      '',
                      v_operator);
@@ -9213,9 +9213,9 @@ create or replace procedure qxfc.sp_manual_identity_auth(v_task_id       number,
                                                     v_ret_code      out number,
                                                     v_ret_msg       out varchar2) as
   /*
-  ¹¦ÄÜ:ÊÖ¶¯Éí·İÈÏÖ¤
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-27
+  åŠŸèƒ½:æ‰‹åŠ¨èº«ä»½è®¤è¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-27
   */
   l_task_id     number;
   l_flow_id     number;
@@ -9237,7 +9237,7 @@ begin
   update fc_flow_task t
      set t.task_status   = process_status.success,
          t.manual_status = process_status.failure,
-         t.task_msg      = 'ÈË¹¤ÍêÉÆÊµÃûĞÅÏ¢',
+         t.task_msg      = 'äººå·¥å®Œå–„å®åä¿¡æ¯',
          t.task_end_time = sysdate
    where t.tid = v_task_id;
 
@@ -9254,7 +9254,7 @@ begin
                                l_order_no,
                                l_bind_id,
                                process_status.success,
-                               'ÈË¹¤ÍêÉÆÊµÃûĞÅÏ¢',
+                               'äººå·¥å®Œå–„å®åä¿¡æ¯',
                                l_ret_task_id,
                                v_ret_msg,
                                l_script,
@@ -9271,7 +9271,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     '¶©µ¥:' || l_order_no || 'ÈË¹¤ÍêÉÆÊµÃûĞÅÏ¢OK',
+                     'è®¢å•:' || l_order_no || 'äººå·¥å®Œå–„å®åä¿¡æ¯OK',
                      v_task_id,
                      '',
                      v_operator);
@@ -9289,16 +9289,16 @@ prompt Creating procedure SP_MANUAL_RENEW
 prompt ==================================
 prompt
 create or replace procedure qxfc.sp_manual_renew(v_task_id   number,
-                                            v_status    number, --0:³É¹¦ 90:Ê§°Ü
+                                            v_status    number, --0:æˆåŠŸ 90:å¤±è´¥
                                             v_trans_seq varchar2,
                                             v_remark    varchar2,
                                             v_operator  varchar2,
                                             v_ret_code  out number,
                                             v_ret_msg   out varchar2) as
   /*
-  ¹¦ÄÜ:ÊÖ¶¯Ğø·Ñ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-27
+  åŠŸèƒ½:æ‰‹åŠ¨ç»­è´¹
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-27
   */
   l_task_id     number;
   l_flow_id     number;
@@ -9347,7 +9347,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     '¶©µ¥:' || l_order_no || ',' || l_action || 'ÊÖ¶¯Ğø·Ñ',
+                     'è®¢å•:' || l_order_no || ',' || l_action || 'æ‰‹åŠ¨ç»­è´¹',
                      v_task_id,
                      '',
                      v_operator);
@@ -9365,7 +9365,7 @@ prompt Creating procedure SP_MANUAL_WRITE_CARD
 prompt =======================================
 prompt
 create or replace procedure qxfc.sp_manual_write_card(v_task_id   number,
-                                                 v_status    number, --0:³É¹¦ 90:Ê§°Ü
+                                                 v_status    number, --0:æˆåŠŸ 90:å¤±è´¥
                                                  v_trans_seq varchar2,
                                                  v_remark    varchar2,
                                                  v_operator  varchar2,
@@ -9373,9 +9373,9 @@ create or replace procedure qxfc.sp_manual_write_card(v_task_id   number,
                                                  v_ret_code  out number,
                                                  v_ret_msg   out varchar2) as
   /*
-  ¹¦ÄÜ:ÊÖ¶¯Ğ´¿¨
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-27
+  åŠŸèƒ½:æ‰‹åŠ¨å†™å¡
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-27
   */
   l_task_id     number;
   l_flow_id     number;
@@ -9398,7 +9398,7 @@ begin
      set t.write_card = write_card_mode.manual
    where t.order_no = l_order_no;
 
-  --¸üĞÂĞÂµÄÊÖ»úºÅ
+  --æ›´æ–°æ–°çš„æ‰‹æœºå·
   if (v_newphone is not null and length(v_newphone) > 0) then
     update fc_order_main t
        set t.active_phone = v_newphone
@@ -9435,7 +9435,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     '¶©µ¥:' || l_order_no || ',' || l_action || '¸ÄÎªÊÖ¶¯Ğ´¿¨',
+                     'è®¢å•:' || l_order_no || ',' || l_action || 'æ”¹ä¸ºæ‰‹åŠ¨å†™å¡',
                      v_task_id,
                      '',
                      v_operator);
@@ -9457,9 +9457,9 @@ create or replace procedure qxfc.sp_order_bind(v_order_no varchar2,
                                           v_ret_msg  out varchar2) as
   pragma autonomous_transaction;
   /*
-  ¹¦ÄÜ:°ó¶¨
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:ç»‘å®š
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_bind_id         varchar2(32);
   l_order_no        varchar2(64);
@@ -9523,7 +9523,7 @@ begin
     from fc_down_product t
    where t.pid = l_product_id;
 
-  --»ñÈ¡ÉÏÓÎ²úÆ·ĞÅÏ¢
+  --è·å–ä¸Šæ¸¸äº§å“ä¿¡æ¯
   for it in (select up.channel_no,
                     up.product_no,
                     up.pid,
@@ -9599,7 +9599,7 @@ begin
   end loop;
 
   if (l_up_channel_no is null) then
-    l_msg := 'Ã»ÓĞ¿ÉÓÃÉÏÓÎÇşµÀ';
+    l_msg := 'æ²¡æœ‰å¯ç”¨ä¸Šæ¸¸æ¸ é“';
     update fc_order_main t
        set t.error_code   = 200,
            t.error_msg    = l_msg,
@@ -9609,7 +9609,7 @@ begin
   
     v_ret_msg := f_get_bind_result(l_bind_id, '200', l_msg);
     sp_warn_insert(Warn_Keywords.task_exception,
-                   '¶©µ¥' || l_order_no || l_msg,
+                   'è®¢å•' || l_order_no || l_msg,
                    3);
     return;
   end if;
@@ -9667,11 +9667,11 @@ begin
   update fc_order_main t
      set t.bind_ip      = v_robot_ip,
          t.order_status = order_status.process,
-         t.error_msg    = '°ó¶¨³É¹¦'
+         t.error_msg    = 'ç»‘å®šæˆåŠŸ'
    where t.order_no = l_order_no;
   commit;
 
-  --´´½¨ÈÎÎñ
+  --åˆ›å»ºä»»åŠ¡
   l_ret := f_create_task(l_flow_id,
                          l_flow_step,
                          l_order_no,
@@ -9684,15 +9684,15 @@ begin
     rollback;
     update fc_order_bind t
        set t.bind_status  = process_status.failure,
-           t.delivery_msg = '´´½¨ÈÎÎñÊ§°Ü:' || l_task_msg
+           t.delivery_msg = 'åˆ›å»ºä»»åŠ¡å¤±è´¥:' || l_task_msg
      where t.bind_id = l_bind_id;
   
     update fc_order_main t
        set t.order_status = order_status.failure,
-           t.error_msg    = '´´½¨ÈÎÎñÊ§°Ü:' || l_task_msg
+           t.error_msg    = 'åˆ›å»ºä»»åŠ¡å¤±è´¥:' || l_task_msg
      where t.order_no = l_order_no;
   
-    sp_warn_insert('°ó¶¨¸æ¾¯', l_order_no || '´´½¨ÈÎÎñÊ§°Ü:' || l_task_msg);
+    sp_warn_insert('ç»‘å®šå‘Šè­¦', l_order_no || 'åˆ›å»ºä»»åŠ¡å¤±è´¥:' || l_task_msg);
   end if;
 
   commit;
@@ -9700,11 +9700,11 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.system,
-                     '°ó¶¨³É¹¦');
+                     'ç»‘å®šæˆåŠŸ');
 exception
   when others then
     rollback;
-    sp_write_log('sp_order_bind', '°ó¶¨Òì³£:' || sqlerrm);
+    sp_write_log('sp_order_bind', 'ç»‘å®šå¼‚å¸¸:' || sqlerrm);
     v_ret_msg := f_get_bind_result('', error_code.failure, sqlerrm);
 end;
 /
@@ -9717,9 +9717,9 @@ create or replace procedure qxfc.sp_order_query(v_coopId    varchar2,
                                            v_coopOrder varchar2,
                                            v_ret_msg   out varchar2) as
   /*
-  ¹¦ÄÜ:¶©µ¥²éÑ¯
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-11
+  åŠŸèƒ½:è®¢å•æŸ¥è¯¢
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-11
   */
   l_order_no     varchar2(32);
   l_order_status number;
@@ -9757,9 +9757,9 @@ create or replace procedure qxfc.sp_recv_check_charge(v_down_channel_no varchar2
                                                  v_carrier_no      varchar2,
                                                  v_ret_msg         out varchar2) as
   /*
-  ¹¦ÄÜ:½É·Ñ/Ğø·Ñ¼øÈ¨±£´æ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-14
+  åŠŸèƒ½:ç¼´è´¹/ç»­è´¹é‰´æƒä¿å­˜
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-14
   */
   l_id         number;
   l_carrier_no varchar2(32) := v_carrier_no;
@@ -9835,9 +9835,9 @@ create or replace procedure qxfc.sp_recv_order(v_coopId          varchar2,
                                           v_ext2            varchar2,
                                           v_ret_msg         out varchar2) as
   /*
-  ¹¦ÄÜ:ÊÕµ¥
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-01
+  åŠŸèƒ½:æ”¶å•
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-01
   */
   l_channel_no      varchar2(32);
   l_order_no        varchar2(32) := '';
@@ -9872,7 +9872,7 @@ begin
      and t.down_order_no = v_coopOrderNo;
 
   if (l_order_no is null and v_tmall_status <> 'WAIT_SELLER_SEND_GOODS') then
-    v_ret_msg := f_get_task_result(l_order_no, '101', 'ÌìÃ¨¶©µ¥×´Ì¬²»ÕıÈ·');
+    v_ret_msg := f_get_task_result(l_order_no, '101', 'å¤©çŒ«è®¢å•çŠ¶æ€ä¸æ­£ç¡®');
     return;
   end if;
 
@@ -9897,7 +9897,7 @@ begin
    where t.channel_no = v_coopId
      and t.status = enable_status.enabled;
   if (l_channel_no is null) then
-    v_ret_msg := f_get_task_result(l_order_no, '102', 'ÇşµÀ²»¿ÉÓÃ');
+    v_ret_msg := f_get_task_result(l_order_no, '102', 'æ¸ é“ä¸å¯ç”¨');
     return;
   end if;
 
@@ -9941,16 +9941,16 @@ begin
      and rownum = 1;
 
   if (l_product_id is null) then
-    v_ret_msg := f_get_task_result(l_order_no, '103', '²úÆ·²»´æÔÚ»ò²»¿ÉÓÃ');
+    v_ret_msg := f_get_task_result(l_order_no, '103', 'äº§å“ä¸å­˜åœ¨æˆ–ä¸å¯ç”¨');
     sp_warn_insert(warn_keywords.recv_exception,
-                   '[' || v_coopOrderNo || ',' || v_productNo || ']²»´æÔÚ»ò²»¿ÉÓÃ');
+                   '[' || v_coopOrderNo || ',' || v_productNo || ']ä¸å­˜åœ¨æˆ–ä¸å¯ç”¨');
     return;
   end if;
 
   if (l_product_fee <> v_payFee) then
-    v_ret_msg := f_get_task_result(l_order_no, '104', '½ğ¶î²»ÕıÈ·');
+    v_ret_msg := f_get_task_result(l_order_no, '104', 'é‡‘é¢ä¸æ­£ç¡®');
     sp_warn_insert(warn_keywords.recv_exception,
-                   '[' || v_coopOrderNo || ',' || v_productNo || ']²úÆ·½ğ¶î²»Ò»ÖÂ');
+                   '[' || v_coopOrderNo || ',' || v_productNo || ']äº§å“é‡‘é¢ä¸ä¸€è‡´');
     return;
   end if;
 
@@ -10058,17 +10058,17 @@ begin
      to_date(v_tmall_orderDate, 'yyyyMMddHH24miss'),
      v_installAdress);
 
-  --Ìí¼ÓÏÂÓÎ×Ê½ğ±ä¸ü
+  --æ·»åŠ ä¸‹æ¸¸èµ„é‡‘å˜æ›´
   l_ret := f_fund_change_down(v_coopId,
                               v_coopOrderNo,
                               l_order_no,
                               v_payFee,
                               fund_change_type.add,
-                              'ĞÂ¶©µ¥¼Ó¿î',
+                              'æ–°è®¢å•åŠ æ¬¾',
                               l_trade_fee);
   commit;
 
-  --ÉèÖÃiccid
+  --è®¾ç½®iccid
   if (l_icc_type in (1, 2)) then
     l_ret := f_assign_iccno(l_order_no,
                             l_icc_type,
@@ -10083,7 +10083,7 @@ begin
     end if;
   end if;
 
-  --´´½¨ÈÎÎñ,Çı¶¯Á÷³Ì
+  --åˆ›å»ºä»»åŠ¡,é©±åŠ¨æµç¨‹
   l_ret := f_create_task(l_flow_id,
                          l_flow_step,
                          l_order_no,
@@ -10100,7 +10100,7 @@ begin
                                  l_script_path,
                                  l_svc_bus);
   commit;
-  sp_add_operate_log(l_order_no, '', operate_type.system, 'ÊÕµ¥³É¹¦');
+  sp_add_operate_log(l_order_no, '', operate_type.system, 'æ”¶å•æˆåŠŸ');
 exception
   when others then
     rollback;
@@ -10108,7 +10108,7 @@ exception
     v_ret_msg  := f_get_task_result(l_order_no, error_code.failure, sqlerrm);
     sp_write_log('sp_recv_order', sqlerrm);
     sp_warn_insert(warn_keywords.recv_exception,
-                   v_coopOrderNo || 'ÊÕµ¥Òì³£:' || sqlerrm);
+                   v_coopOrderNo || 'æ”¶å•å¼‚å¸¸:' || sqlerrm);
 end;
 /
 
@@ -10130,9 +10130,9 @@ create or replace procedure qxfc.s0p_recv_refund(v_down_channel_no     varchar2,
                                            v_attribute           varchar2,
                                            v_ret_msg             out varchar2) as
   /*
-  ¹¦ÄÜ:ÍË¿î¶©µ¥±£´æ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:é€€æ¬¾è®¢å•ä¿å­˜
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_cntr            number;
   l_order_no        varchar2(32);
@@ -10149,7 +10149,7 @@ begin
    where t.down_channel_no = v_down_channel_no
      and t.down_order_no = v_down_order_no;
   if (l_cntr > 0) then
-    --¸üĞÂÍË¿îĞÅÏ¢
+    --æ›´æ–°é€€æ¬¾ä¿¡æ¯
     update fc_order_refund t
        set t.message             = v_attribute,
            t.tmall_refund_status = v_tmall_refund_status,
@@ -10170,7 +10170,7 @@ begin
    where t.down_channel_no = v_down_channel_no
      and t.down_order_no = v_down_order_no;
   if (l_order_no is null) then
-    v_ret_msg := f_get_refund_result('', error_code.failure, '¶©µ¥²»´æÔÚ');
+    v_ret_msg := f_get_refund_result('', error_code.failure, 'è®¢å•ä¸å­˜åœ¨');
     return;
   end if;
 
@@ -10182,7 +10182,7 @@ begin
   if (l_pay_fee < v_refund_fee) then
     v_ret_msg := f_get_refund_result('',
                                      error_code.failure,
-                                     'ÍË¿î½ğ¶î²»ÕıÈ·');
+                                     'é€€æ¬¾é‡‘é¢ä¸æ­£ç¡®');
     return;
   end if;
 
@@ -10247,9 +10247,9 @@ begin
 exception
   when others then
     rollback;
-    v_ret_msg := f_get_refund_result('', 200, '±£´æÍË¿î¶©µ¥Òì³£');
+    v_ret_msg := f_get_refund_result('', 200, 'ä¿å­˜é€€æ¬¾è®¢å•å¼‚å¸¸');
     sp_write_log('sp_recv_refund',
-                 '±£´æÍË¿î¶©µ¥Òì³£:[' || v_down_order_no || '],' || sqlerrm);
+                 'ä¿å­˜é€€æ¬¾è®¢å•å¼‚å¸¸:[' || v_down_order_no || '],' || sqlerrm);
 end;
 /
 
@@ -10259,17 +10259,17 @@ prompt =========================================
 prompt
 create or replace procedure qxfc.sp_recv_refund_offline(v_down_channel_no varchar2,
                                                    v_down_order_no   varchar2,
-                                                   v_refund_fee      number, --ÍË¿î½ğ¶î
-                                                   v_refund_from     varchar2, --³öÕËÕÊºÅ
-                                                   v_refund_to       varchar2, --ÊÕ¿îÕÊºÅ
-                                                   v_remark          varchar2, --±¸×¢
+                                                   v_refund_fee      number, --é€€æ¬¾é‡‘é¢
+                                                   v_refund_from     varchar2, --å‡ºè´¦å¸å·
+                                                   v_refund_to       varchar2, --æ”¶æ¬¾å¸å·
+                                                   v_remark          varchar2, --å¤‡æ³¨
                                                    v_operator        varchar2,
                                                    v_ret_code        out number,
                                                    v_ret_msg         out varchar2) as
   /*
-  ¹¦ÄÜ:ÏßÏÂÍË¿î
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-09
+  åŠŸèƒ½:çº¿ä¸‹é€€æ¬¾
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-09
   */
   l_cntr            number;
   l_order_no        varchar2(32);
@@ -10290,7 +10290,7 @@ begin
 
   if (l_cntr > 0) then
     v_ret_code := error_code.failure;
-    v_ret_msg  := 'ÒÑÍË¿î';
+    v_ret_msg  := 'å·²é€€æ¬¾';
     return;
   end if;
 
@@ -10305,13 +10305,13 @@ begin
 
   if (l_order_no is null) then
     v_ret_code := error_code.failure;
-    v_ret_msg  := '¶©µ¥²»´æÔÚ';
+    v_ret_msg  := 'è®¢å•ä¸å­˜åœ¨';
     return;
   end if;
 
   if (l_pay_fee < v_refund_fee) then
     v_ret_code := error_code.failure;
-    v_ret_msg  := 'ÍË¿î½ğ¶î²»ÕıÈ·';
+    v_ret_msg  := 'é€€æ¬¾é‡‘é¢ä¸æ­£ç¡®';
     return;
   end if;
 
@@ -10361,22 +10361,22 @@ begin
      sysdate,
      sysdate);
 
-  --Ìí¼ÓÏÂÓÎ×Ê½ğ±ä¸ü
+  --æ·»åŠ ä¸‹æ¸¸èµ„é‡‘å˜æ›´
   l_ret := f_fund_change_down(v_down_channel_no,
                               v_down_order_no,
                               l_order_no,
                               v_refund_fee,
                               fund_change_type.refund,
-                              l_order_no || 'ÏßÏÂÍË¿î');
+                              l_order_no || 'çº¿ä¸‹é€€æ¬¾');
 
   if (not l_ret) then
     rollback;
     v_ret_code := error_code.failure;
-    v_ret_msg  := 'ÏÂÓÎ×Ê½ğ±ä¸üÊ§°Ü';
+    v_ret_msg  := 'ä¸‹æ¸¸èµ„é‡‘å˜æ›´å¤±è´¥';
     return;
   end if;
 
-  --¸üĞÂ¶©µ¥±íÍË¿î×´Ì¬
+  --æ›´æ–°è®¢å•è¡¨é€€æ¬¾çŠ¶æ€
   update fc_order_main t
      set t.refund_status = refund_status.success, t.refund_time = sysdate
    where t.order_no = l_order_no;
@@ -10392,19 +10392,19 @@ begin
   sp_add_operate_log(l_order_no,
                      '',
                      operate_type.manual,
-                     'ÏßÏÂÍË¿î',
+                     'çº¿ä¸‹é€€æ¬¾',
                      0,
                      '',
                      v_operator);
   v_ret_code := error_code.suc;
-  v_ret_msg  := 'ÏßÏÂÍË¿î³É¹¦';
+  v_ret_msg  := 'çº¿ä¸‹é€€æ¬¾æˆåŠŸ';
 exception
   when others then
     rollback;
     v_ret_code := error_code.failure;
     v_ret_msg  := sqlerrm;
     sp_write_log('sp_recv_refund_offline',
-                 '±£´æÍË¿î¶©µ¥Òì³£:[' || v_down_order_no || '],' || sqlerrm);
+                 'ä¿å­˜é€€æ¬¾è®¢å•å¼‚å¸¸:[' || v_down_order_no || '],' || sqlerrm);
 end;
 /
 
@@ -10419,9 +10419,9 @@ create or replace procedure qxfc.sp_refund_confirm(v_refund_ids varchar2,
                                               v_ret_code   out number,
                                               v_ret_msg    out varchar2) as
   /*
-  ¹¦ÄÜ:ÍË¿îÈ·ÈÏ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-24
+  åŠŸèƒ½:é€€æ¬¾ç¡®è®¤
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-24
   */
   l_id     number;
   l_status number;
@@ -10470,7 +10470,7 @@ begin
   end loop;
 
   v_ret_code := error_code.suc;
-  v_ret_msg  := 'ÅúÁ¿ÍË¿îÈ·ÈÏ³É¹¦';
+  v_ret_msg  := 'æ‰¹é‡é€€æ¬¾ç¡®è®¤æˆåŠŸ';
 end;
 /
 
@@ -10478,16 +10478,16 @@ prompt
 prompt Creating procedure SP_SCAN_DB
 prompt =============================
 prompt
-create or replace procedure qxfc.sp_scan_db(v_scan_name      varchar2, --Ãû³Æ,
-                                       v_robot_ip       varchar2, --»úÆ÷ÈËIP
-                                       v_out_error_code out number, --100:³É¹¦;200:Ê§°Ü
-                                       v_out_count      out number, --¼ÇÂ¼ÌõÊı
+create or replace procedure qxfc.sp_scan_db(v_scan_name      varchar2, --åç§°,
+                                       v_robot_ip       varchar2, --æœºå™¨äººIP
+                                       v_out_error_code out number, --100:æˆåŠŸ;200:å¤±è´¥
+                                       v_out_count      out number, --è®°å½•æ¡æ•°
                                        v_out_batch_id   out number,
                                        v_out_msg        out varchar2) as
   /*
-  ¹¦ÄÜ:ºó²¹É¨Ãè
-  ×÷Õß:jiyi
-  Ê±¼ä:2016-05-30
+  åŠŸèƒ½:åè¡¥æ‰«æ
+  ä½œè€…:jiyi
+  æ—¶é—´:2016-05-30
   */
   l_frequency    number;
   l_once_count   number;
@@ -10508,45 +10508,45 @@ begin
     when others then
       rollback;
       v_out_error_code := error_code.failure;
-      v_out_msg        := 'Ö´ĞĞÊ±¼äÎ´µ½';
+      v_out_msg        := 'æ‰§è¡Œæ—¶é—´æœªåˆ°';
       return;
   end;
 
   if (l_status <> enable_status.enabled) then
     rollback;
     v_out_error_code := error_code.failure;
-    v_out_msg        := v_scan_name || 'ºó²¹±»ÔİÍ£';
+    v_out_msg        := v_scan_name || 'åè¡¥è¢«æš‚åœ';
     return;
   end if;
 
   if (v_scan_name = 'task') then
-    --1.ÈÎÎñ
+    --1.ä»»åŠ¡
     v_out_error_code := f_scan_task(l_do_frequency,
                                     l_once_count,
                                     v_out_batch_id,
                                     v_out_count);
 
   elsif (v_scan_name = 'notify') then
-    --2.Í¨Öª
+    --2.é€šçŸ¥
     v_out_error_code := f_scan_notify(l_do_frequency,
                                       l_once_count,
                                       v_out_batch_id,
                                       v_out_count);
   elsif (v_scan_name = 'mail') then
-    --3.Éú³É¿ìµİµ¥ºÅ
+    --3.ç”Ÿæˆå¿«é€’å•å·
     v_out_error_code := f_scan_mail(l_do_frequency,
                                     l_once_count,
                                     v_out_batch_id,
                                     v_out_count);
   elsif (v_scan_name = 'delivery') then
-    --4.Æ½Ì¨·¢»õ
+    --4.å¹³å°å‘è´§
     v_out_error_code := f_scan_plat_delivery(l_do_frequency,
                                              l_once_count,
                                              v_out_batch_id,
                                              v_out_count);
   else
-    --Ö÷¶¯Å×Òì³£
-    raise_application_error(-20001, '²»´æÔÚµÄÃû³Æ:' || v_scan_name);
+    --ä¸»åŠ¨æŠ›å¼‚å¸¸
+    raise_application_error(-20001, 'ä¸å­˜åœ¨çš„åç§°:' || v_scan_name);
   end if;
 
   update fc_scan_config t
@@ -10556,9 +10556,9 @@ begin
    where t.scan_name = v_scan_name;
 
   if (v_out_error_code = error_code.suc) then
-    v_out_msg := '²Ù×÷³É¹¦';
+    v_out_msg := 'æ“ä½œæˆåŠŸ';
   else
-    v_out_msg := 'ÎŞÊı¾İ';
+    v_out_msg := 'æ— æ•°æ®';
   end if;
 
   commit;
@@ -10576,15 +10576,15 @@ prompt Creating procedure SP_TASK_AUDIT_SAVE
 prompt =====================================
 prompt
 create or replace procedure qxfc.sp_task_audit_save(v_task_id  number,
-                                               v_status   number, --0:³É¹¦;90:Ê§°Ü
+                                               v_status   number, --0:æˆåŠŸ;90:å¤±è´¥
                                                v_remark   varchar2,
                                                v_operator varchar2,
                                                v_ret_code out number,
                                                v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:ÈÎÎñÉóºË±£´æ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-27
+  åŠŸèƒ½:ä»»åŠ¡å®¡æ ¸ä¿å­˜
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-27
   */
   l_task_id     number;
   l_flow_id     number;
@@ -10631,7 +10631,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     '¶©µ¥:' || l_order_no || ',' || l_action || 'ÉóºËÎª:' ||
+                     'è®¢å•:' || l_order_no || ',' || l_action || 'å®¡æ ¸ä¸º:' ||
                      v_status,
                      v_task_id,
                      '',
@@ -10652,12 +10652,12 @@ prompt
 create or replace procedure qxfc.sp_task_get(v_task_id  number,
                                         v_robot_ip varchar2, --IP
                                         v_ret_code out number,
-                                        v_ret_msg  out varchar2 --½á¹ûĞÅÏ¢(json)
+                                        v_ret_msg  out varchar2 --ç»“æœä¿¡æ¯(json)
                                         ) as
   /*
-  ¹¦ÄÜ:»ñÈ¡·¢»õĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:è·å–å‘è´§ä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_bind_id         number;
   l_order_no        varchar2(32);
@@ -10696,7 +10696,7 @@ begin
      and t.task_status = process_status.wait
      for update nowait;
 
-  --1.»ñÈ¡·¢»õĞÅÏ¢
+  --1.è·å–å‘è´§ä¿¡æ¯
   select t.face,
          t.up_channel_no,
          t.up_product_id,
@@ -10758,7 +10758,7 @@ begin
     from fc_product_package t
    where t.pkg_id = l_package_id;
 
-  --2.»ñÈ¡ÕË»§ĞÅÏ¢
+  --2.è·å–è´¦æˆ·ä¿¡æ¯
   select t.account_no, t.account_pwd
     into l_account, l_key
     from fc_up_account t
@@ -10769,7 +10769,7 @@ begin
     from fc_up_channel t
    where t.channel_no = l_up_channel_no;
 
-  --3.»ñÈ¡½Ó¿ÚĞÅÏ¢
+  --3.è·å–æ¥å£ä¿¡æ¯
   select t.up_url
     into l_api_url
     from fc_up_script t
@@ -10800,7 +10800,7 @@ begin
   v_ret_msg := f_json_add(v_ret_msg, 'down_order_no', l_down_order_no);
   v_ret_msg := '{' || f_json_add(v_ret_msg, 'notify_url', l_notify_url) || '}';
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status = process_status.process, t.ip = v_robot_ip
    where t.tid = v_task_id;
@@ -10811,7 +10811,7 @@ begin
   sp_add_operate_log(l_order_no,
                      l_bind_id,
                      operate_type.manual,
-                     '·¢»õ',
+                     'å‘è´§',
                      v_task_id,
                      v_robot_ip);
 exception
@@ -10832,9 +10832,9 @@ create or replace procedure qxfc.sp_task_retry(v_task_id  number,
                                           v_ret_code out number,
                                           v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:ÈÎÎñÖØÊÔ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-05-03
+  åŠŸèƒ½:ä»»åŠ¡é‡è¯•
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-05-03
   */
   l_task_id  number;
   l_order_no varchar2(32);
@@ -10869,7 +10869,7 @@ begin
   sp_add_operate_log(l_order_no,
                      '',
                      operate_type.manual,
-                     '¶©µ¥:' || l_order_no || ',' || l_action || 'ÖØÊÔ',
+                     'è®¢å•:' || l_order_no || ',' || l_action || 'é‡è¯•',
                      v_task_id,
                      '',
                      v_operator);
@@ -10878,7 +10878,7 @@ begin
 exception
   when others then
     rollback;
-    sp_write_log('sp_task_retry', v_task_id || 'ÖØÊÔÊ§°Ü:' || sqlerrm);
+    sp_write_log('sp_task_retry', v_task_id || 'é‡è¯•å¤±è´¥:' || sqlerrm);
     v_ret_code := error_code.failure;
     v_ret_msg  := sqlerrm;
 end;
@@ -10893,9 +10893,9 @@ create or replace procedure qxfc.sp_task_update(v_task_id number,
                                            v_msg     varchar2,
                                            v_ret_msg out varchar2) as
   /*
-  ¹¦ÄÜ:ÈÎÎñ¸üĞÂ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-12
+  åŠŸèƒ½:ä»»åŠ¡æ›´æ–°
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-12
   */
   l_task_id  number;
   l_order_no varchar2(32);
@@ -10924,7 +10924,7 @@ exception
                                    sqlerrm,
                                    v_task_id);
     sp_write_log('sp_task_update',
-                 '¸üĞÂÈÎÎñÒì³£:[' || v_task_id || ',' || v_transeq || ',' ||
+                 'æ›´æ–°ä»»åŠ¡å¼‚å¸¸:[' || v_task_id || ',' || v_transeq || ',' ||
                  v_msg || ']');
 end;
 /
@@ -10933,15 +10933,15 @@ prompt
 prompt Creating procedure SP_WRITE_CARD_GET
 prompt ====================================
 prompt
-create or replace procedure qxfc.sp_write_card_get(v_task_id  varchar2, --ÈÎÎñ±àºÅ
+create or replace procedure qxfc.sp_write_card_get(v_task_id  varchar2, --ä»»åŠ¡ç¼–å·
                                               v_robot_ip varchar2, --IP
                                               v_ret_code out number,
-                                              v_ret_msg  out varchar2 --½á¹ûĞÅÏ¢(json)
+                                              v_ret_msg  out varchar2 --ç»“æœä¿¡æ¯(json)
                                               ) as
   /*
-  ¹¦ÄÜ:»ñÈ¡Ğ´¿¨·¢»õĞÅÏ¢
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-02
+  åŠŸèƒ½:è·å–å†™å¡å‘è´§ä¿¡æ¯
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-02
   */
   l_bind_id            number;
   l_order_no           varchar2(32);
@@ -11005,7 +11005,7 @@ begin
      and t.task_status = process_status.wait
      for update nowait;
 
-  --1.»ñÈ¡·¢»õĞÅÏ¢
+  --1.è·å–å‘è´§ä¿¡æ¯
   select t.face,
          t.down_channel_no,
          t.down_order_no,
@@ -11078,17 +11078,17 @@ begin
     from fc_system_province t
    where t.province_no = l_province_no;
 
-  --2.»ñÈ¡ÕË»§ĞÅÏ¢
+  --2.è·å–è´¦æˆ·ä¿¡æ¯
   l_ret := f_get_up_account(v_task_id, l_order_no, l_acct_id, l_account, l_key);
   if (not l_ret) then
     v_ret_code := error_code.failure;
-    v_ret_msg  := '»ñÈ¡ÉÏÓÎÕÊºÅ´íÎó';
+    v_ret_msg  := 'è·å–ä¸Šæ¸¸å¸å·é”™è¯¯';
     return;
   end if;
 
   select t.notify_url into l_notify_url from fc_up_channel t where t.channel_no = l_up_channel_no;
 
-  --3.»ñÈ¡½Ó¿ÚĞÅÏ¢
+  --3.è·å–æ¥å£ä¿¡æ¯
   select t.up_url into l_api_url from fc_up_script t where t.sid = l_script_id;
 
   v_ret_msg := f_json_add(v_ret_msg, 'taskid', v_task_id);
@@ -11127,14 +11127,14 @@ begin
   v_ret_msg := f_json_add(v_ret_msg, 'remark', l_remark);
   v_ret_msg := '{' || f_json_add(v_ret_msg, 'notify_url', l_notify_url) || '}';
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status = process_status.process, t.ip = v_robot_ip
    where t.tid = v_task_id;
 
   commit;
   v_ret_code := error_code.suc;
-  sp_add_operate_log(l_order_no, l_bind_id, operate_type.system, 'Ğ´¿¨', v_task_id, v_robot_ip);
+  sp_add_operate_log(l_order_no, l_bind_id, operate_type.system, 'å†™å¡', v_task_id, v_robot_ip);
 exception
   when others then
     rollback;
@@ -11155,9 +11155,9 @@ create or replace procedure qxfc.sp_write_card_save(v_task_id  varchar2,
                                                v_newphone varchar2 default '',
                                                v_ret_msg  out varchar2) as
   /*
-  ¹¦ÄÜ:Ğ´ºÅ¿¨±£´æ
-  ×÷Õß:jiyi
-  Ê±¼ä:2018-04-08
+  åŠŸèƒ½:å†™å·å¡ä¿å­˜
+  ä½œè€…:jiyi
+  æ—¶é—´:2018-04-08
   */
   l_task_id       number;
   l_order_no      varchar2(32);
@@ -11199,14 +11199,14 @@ begin
     from fc_up_product t
    where t.pid = l_up_product_id;
 
-  --¸üĞÂĞÂµÄÊÖ»úºÅ
+  --æ›´æ–°æ–°çš„æ‰‹æœºå·
   if (v_newphone is not null and length(v_newphone) > 0) then
     update fc_order_main t
        set t.active_phone = v_newphone
      where t.order_no = l_order_no;
   end if;
 
-  --¸üĞÂÈÎÎñĞÅÏ¢
+  --æ›´æ–°ä»»åŠ¡ä¿¡æ¯
   update fc_flow_task t
      set t.task_status   = v_status,
          t.manual_status = decode(v_status,
@@ -11221,14 +11221,14 @@ begin
   if (v_status = process_status.failure) then
     commit;
     sp_warn_insert(warn_keywords.task_exception,
-                   l_order_no || 'Ğ´¿¨Òì³£:' || v_msg || ',ÇëÈË¹¤´¦Àí');
+                   l_order_no || 'å†™å¡å¼‚å¸¸:' || v_msg || ',è¯·äººå·¥å¤„ç†');
     v_ret_msg := f_get_task_result(l_order_no,
                                    error_code.failure,
-                                   'ÈÎÎñ½øÈëÈË¹¤ÉóºË');
+                                   'ä»»åŠ¡è¿›å…¥äººå·¥å®¡æ ¸');
     return;
   end if;
 
-  --Ìí¼Ó×Ê½ğ±ä¸ü
+  --æ·»åŠ èµ„é‡‘å˜æ›´
   if (v_status = process_status.success and
      l_debit_mode = debit_mode.immediate) then
     l_ret := f_fund_change_up(l_up_channel_no,
@@ -11236,17 +11236,17 @@ begin
                               l_task_id,
                               fund_change_type.reduce,
                               l_cost,
-                              l_order_no || '¶©µ¥¿Û¿î');
+                              l_order_no || 'è®¢å•æ‰£æ¬¾');
     if (not l_ret) then
       rollback;
       v_ret_msg := f_get_task_result(l_order_no,
                                      error_code.failure,
-                                     'Ìí¼ÓÉÏÓÎ×Ê½ğ±ä¸üÊ§°Ü');
+                                     'æ·»åŠ ä¸Šæ¸¸èµ„é‡‘å˜æ›´å¤±è´¥');
       return;
     end if;
   end if;
 
-  --´¦ÀíÁ÷³Ì
+  --å¤„ç†æµç¨‹
   l_ret := f_execute_next_step(l_flow_id,
                                l_action,
                                l_order_no,
@@ -11291,9 +11291,9 @@ create or replace procedure qxfc.st_sp_remove_complaints(v_id       in varchar2,
 
                                                     ) as
   /********************************
-  ×÷Õß£ºguowei
-  Ê±¼ä£º2019/7/9
-  ÃèÊö£ºÍ¶Ëß±íÒÆ¿â²Ù×÷
+  ä½œè€…ï¼šguowei
+  æ—¶é—´ï¼š2019/7/9
+  æè¿°ï¼šæŠ•è¯‰è¡¨ç§»åº“æ“ä½œ
   ********************************/
   l_msg     varchar2(2000);
   l_cntr    number;

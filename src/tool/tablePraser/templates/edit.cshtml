@@ -1,0 +1,43 @@
+@model SettleAccount.Model.CompanySettlementConfigListModel
+@using Lib4Net.Core
+<script type="text/javascript">
+    $(function () {
+        $('#mainForm').validate({
+            errorClass: "error",
+            focusInvalid: true,
+            submitHandler: function (form) {
+                if (!$(form).valid()) {
+                    return false;
+                }
+                var data = $(form).serialize();
+                $.ajax({
+                    type: "post",
+                    data: data,
+                    url: "/@table.name/Edit",
+                    success: function (data) {
+                        data = $.parseJSON(data);
+                        alert(data.Message);
+                        if (data.Status) {
+                            $.paging.submit();
+                        }
+                        return false;
+                    },
+                    error: function () {
+                        alert("请求出错");
+                    }
+                });
+            },
+            rules: {
+                 @rules
+            }
+        });
+    });
+
+
+</script>
+<form id="mainForm" method="post">
+<input type="hidden" name="ConfigId" value="@Model.List[0].ConfigId" />
+<table class="w500">
+    @items
+</table>
+</form>
