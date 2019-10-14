@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <table name="@table.name">
+    <fields>
+@fields
+    </fields>
+  </table>
+  <template>
+    <item name="getList">
+      <sql>
+        <![CDATA[
+          select  t.*
+                    from (SELECT RID
+                            FROM (SELECT R.RID, ROWNUM LINENUM
+                                    FROM (SELECT t.rowid RID
+                                          FROM  @table.name t
+                                            WHERE 
+                                            1=1
+                                           ORDER BY t.Create_Time DESC) R
+                                   WHERE ROWNUM <= { :PS} * { :PI})
+                           WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
+                   inner join @table.name t on tab.rid = t.rowid
+        ]]>
+      </sql>
+    </item>
+    <item name="getCount">
+      <sql>
+        <![CDATA[
+          SELECT COUNT(1) FROM @table.name  t  WHERE 
+                                             1=1
+        ]]>
+      </sql>
+    </item>
+  </template>
+</config>

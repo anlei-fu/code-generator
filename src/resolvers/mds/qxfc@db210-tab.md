@@ -729,6 +729,30 @@
 |activateTime|date|false||--|激活时间|
 
 ----
+### ***fcPreCharge***
+*   ***description***
+ 
+*  ***params***
+
+|名称| 类型 |是否可空 |主键 |默认值| 备注 |
+|---|----|---|--|---|----|
+|id|number|false||--|--|
+|phone|varchar2|false||--|--|
+|preFace|number|false||--|预存面值|
+|preChargeTime|date|false||sysdate|预存充值时间|
+|preChargeStatus|number|false||20|预存状态|
+|chargeFace|number|false||--|每月充值面值|
+|chargeStartTime|date|false||--|开始时间|
+|chargeEndTime|date|false||--|结束时间|
+|limitCntr|number|false||--|充值次数|
+|chargeCntr|number|false||--|以充值次数|
+|chargeStatus|number|false||10|充值状态|
+|creator|varchar2|false||--|--|
+|createTime|date|false||sysdate|--|
+|hkOrderNo|varchar2|false||--|号卡订单号|
+|nextTime|date|false||--|--|
+
+----
 ### ***fcProductPackage***
 *   ***description***
  

@@ -99,7 +99,6 @@ namespace @project.name.UserService
            entity.TrimEmptyProperty();   
            entity.AddData(":PS",model.PageSize);
            entity.AddData(":PI",model.PageIndex);
-           @query.1  @query.2 @query.3
          
            model.TotalCount = CommFun.ToInt(handler.GetScalarByXmlTemplate("getCount", entity), 0).GetValueOrDefault();
             if(model.TotalCount > 0)
@@ -125,7 +124,6 @@ namespace @project.name.UserService
        {
            return new Result(handler.Delete(id));
        }
-@s.exportExcel
-@s.importExcel
+
     }
 }

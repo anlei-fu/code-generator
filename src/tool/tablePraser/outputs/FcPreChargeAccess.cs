@@ -11,11 +11,10 @@ using QXFC.Entity;
 
 namespace QXFC.DBAccess
 {
-
       ///<summary>
-      ///关于的数据操作对象
+      ///关于@table.chineseName的数据操作对象
       ///</summary>
-    public class FcPhoneChargeDataAccess:DataAccessObjects<FcPhoneCharge>,IFcPhoneChargeDataAccess
+    public class FCPreChargeDataAccess:DataAccessObjects<FCPreCharge>,IFCPreChargeDataAccess
     {
     
     }

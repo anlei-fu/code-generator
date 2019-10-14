@@ -17,24 +17,24 @@ using QXFC.Utility;
 namespace QXFC.UserService
 {
    /// <summary>
-    /// 服务操作: FcPhoneCharge(下游脚本)
+    /// 服务操作: FCPreCharge(下游脚本)
     /// </summary>
-   public class FcPhoneChargeService:Singleton<FcPhoneChargeService>
+   public class FCPreChargeService:Singleton<FCPreChargeService>
     {
-       private IFcPhoneChargeHandler handler;
+       private IFCPreChargeHandler handler;
        private static readonly  string ORDER_BY="";
-       public FcPhoneChargeService()
+       public FCPreChargeService()
        {
-           handler = BusinessLogicFactory.Instance.GetProvider<IFcPhoneChargeHandler>();
+           handler = BusinessLogicFactory.Instance.GetProvider<IFCPreChargeHandler>();
        }
          /// <summary>
        /// 查询单条数据,用于详细页面显示
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public FcPhoneChargeItemModel Query(string id)
+       public FCPreChargeItemModel Query(string id)
        {
-           FcPhoneChargeItemModel model = new FcPhoneChargeItemModel();
+           FCPreChargeItemModel model = new FCPreChargeItemModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -44,9 +44,9 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public FcPhoneChargeItemModel QueryItem(string id)
+       public FCPreChargeItemModel QueryItem(string id)
        {
-           FcPhoneChargeItemModel model = new FcPhoneChargeItemModel();
+           FCPreChargeItemModel model = new FCPreChargeItemModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -56,9 +56,9 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public FcPhoneChargeViewModel View(string id)
+       public FCPreChargeViewModel View(string id)
        {
-           FcPhoneChargeViewModel model = new FcPhoneChargeViewModel();
+           FCPreChargeViewModel model = new FCPreChargeViewModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -67,7 +67,7 @@ namespace QXFC.UserService
        /// 获取数据列表
        /// </summary>
        /// <returns></returns>
-       public List<MFcPhoneCharge> GetDataList()
+       public List<FCPreCharge> GetDataList()
        {
            return handler.GetDataList(ORDER_BY);
        }
@@ -76,10 +76,10 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="json">json数据</param>
        /// <returns></returns>
-       public List<MFcPhoneCharge> GetDataList(string json)
+       public List<FCPreCharge> GetDataList(string json)
        {
-           MFcPhoneCharge data =
-               JsonData.JavaScriptDeserialize<MFcPhoneCharge>(json);
+           FCPreCharge data =
+               JsonData.JavaScriptDeserialize<FCPreCharge>(json);
            return handler.GetDataList(data, ORDER_BY, Lib4Net.DB.MatchMode.Exact);
        }
         /// <summary>
@@ -87,10 +87,10 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="nvc">参数集合</param>
        /// <returns></returns>
-       public FcPhoneChargeListModel Query(NameValueCollection nvc)
+       public FCPreChargeListModel Query(NameValueCollection nvc)
        {
-           FcPhoneChargeListModel model = new FcPhoneChargeListModel();
-           MFcPhoneCharge entity = new MFcPhoneCharge();
+           FCPreChargeListModel model = new FCPreChargeListModel();
+           FCPreCharge entity = new FCPreCharge();
            model.PageSize = CommFun.ToInt(nvc["ps"],
                SettingHelper.Instance.GetInt("PageSize", 10)).Value;
            model.PageIndex= CommFun.ToInt(nvc["pi"],
@@ -99,6 +99,7 @@ namespace QXFC.UserService
            entity.TrimEmptyProperty();   
            entity.AddData(":PS",model.PageSize);
            entity.AddData(":PI",model.PageIndex);
+         
            model.TotalCount = CommFun.ToInt(handler.GetScalarByXmlTemplate("getCount", entity), 0).GetValueOrDefault();
             if(model.TotalCount > 0)
                 model.List = handler.GetDataListByTemplate("getList",entity);
@@ -110,9 +111,8 @@ namespace QXFC.UserService
        /// <param name="id">主键编号</param>
        /// <param name="entity">实体数据</param>
        /// <returns></returns>
-       public IResult Save(string id,MFcPhoneCharge entity)
+       public IResult Save(string id,FCPreCharge entity)
        {
-           
            return handler.Save(id,entity);
        }
         /// <summary>
@@ -124,6 +124,6 @@ namespace QXFC.UserService
        {
            return new Result(handler.Delete(id));
        }
-      
+
     }
 }

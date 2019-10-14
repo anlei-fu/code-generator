@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using Lib4Net.DB;
 using QXFC.Entity;
@@ -11,7 +8,7 @@ namespace QXFC.Interfaces.Logic
     /// <summary>
     /// 逻辑接口:@table.chineseName
     /// </summary>   
-    public interface I@table.name
+    public interface I@table.nameHandler
     {
         /// <summary>
         /// 获取单条数据
@@ -35,15 +32,12 @@ namespace QXFC.Interfaces.Logic
         /// <returns></returns>
        @table.name GetSingleData(@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
-
         /// <summary>
         /// 获取所有数据
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
         List<@table.name> GetDataList(string orderBy = "");
-
-
         /// <summary>
         /// 获取指定条件的数据列表
         /// </summary>

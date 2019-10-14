@@ -14,6 +14,8 @@ namespace QXFC.Entity
     [ODXmlConfig(EntityConfigType.Xml, "", "~/config/econfig/@table.name.xml")]
     public class @table.name : EntityBase
     {
-      @Slot
+      @field
+
+      @property
     }
 }

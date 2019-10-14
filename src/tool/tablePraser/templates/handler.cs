@@ -110,7 +110,6 @@ namespace @project.name.Logic
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
             return dbAccess.GetPagerDataList(query, pageSize, pageIndex, orderBy, mmode, cmode);
-
         }
         /// <summary>
         /// 获取分页数据集
@@ -185,7 +184,6 @@ namespace @project.name.Logic
         {
             return dbAccess.Update(vo);
         }
-
         /// <summary>
         /// 获取指定条件的记录总数
         /// </summary>
@@ -198,7 +196,6 @@ namespace @project.name.Logic
         {
             return dbAccess.GetCount(query, mmode, cmode);
         }
-
         /// <summary>
         /// 根据模板名称获取第一行一列的值
         /// </summary>
@@ -209,7 +206,6 @@ namespace @project.name.Logic
         {
             return dbAccess.GetScalarByTemplate(xmlTemplateName, vo);
         }
-
         /// <summary>
         /// 根据模板获取实体信息
         /// </summary>
@@ -239,7 +235,5 @@ namespace @project.name.Logic
         {
             return dbAccess.GetSingleDataByTemplate(xmlTemplateName, vo);
         }
-@s.exportExcel
-@s.importExcel
     }
 }

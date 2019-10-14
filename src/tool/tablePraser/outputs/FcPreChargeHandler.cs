@@ -16,22 +16,22 @@ using Lib4Net.Logs;
 namespace QXFC.Logic
 {
     /// <summary>
-    /// 逻辑处理：FcPhoneCharge(订单表)
+    /// 逻辑处理：FCPreCharge(订单表)
     /// </summary>
-    public class FcPhoneChargeHandler : IFcPhoneChargeHandler
+    public class FCPreChargeHandler : IFCPreChargeHandler
     {
-        private IFcPhoneChargeDataAccess dbAccess;
+        private IFCPreChargeDataAccess dbAccess;
         ILogger logger = LoggerManager.Instance.GetLogger("web");
-        public FcPhoneChargeHandler()
+        public FCPreChargeHandler()
         {
-            dbAccess = DataAccessFactory.Instance.GetProvider<IFcPhoneChargeDataAccess>();
+            dbAccess = DataAccessFactory.Instance.GetProvider<IFCPreChargeDataAccess>();
         }
         /// <summary>
         /// 获取单条数据
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public FcPhoneCharge GetData(string id)
+        public FCPreCharge GetData(string id)
         {
             return dbAccess.GetData(id);
         }
@@ -52,7 +52,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>   
-        public FcPhoneCharge GetSingleData(FcPhoneCharge query, string orderBy = "",
+        public FCPreCharge GetSingleData(FCPreCharge query, string orderBy = "",
             MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
@@ -63,7 +63,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        public List<FcPhoneCharge> GetDataList(string orderBy = "")
+        public List<FCPreCharge> GetDataList(string orderBy = "")
         {
             return dbAccess.GetDataList(dbAccess.EmptyEntity, orderBy);
         }
@@ -76,7 +76,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public List<FcPhoneCharge> GetDataList(FcPhoneCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public List<FCPreCharge> GetDataList(FCPreCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataList(query, orderBy, mmode, cmode);
@@ -89,7 +89,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public DataSet GetDataSet(FcPhoneCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public DataSet GetDataSet(FCPreCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataSet(query, orderBy, mmode, cmode);
@@ -105,12 +105,11 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public List<FcPhoneCharge> GetPagerDataList(FcPhoneCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public List<FCPreCharge> GetPagerDataList(FCPreCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
             return dbAccess.GetPagerDataList(query, pageSize, pageIndex, orderBy, mmode, cmode);
-
         }
         /// <summary>
         /// 获取分页数据集
@@ -123,7 +122,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public DataSet GetPagerDataSet(FcPhoneCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public DataSet GetPagerDataSet(FCPreCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -136,7 +135,7 @@ namespace QXFC.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(string id, FcPhoneCharge vo)
+        public IResult Save(string id, FCPreCharge vo)
         {
             bool status=false;
             IResult result = new Result(status);
@@ -156,7 +155,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(FcPhoneCharge vo)
+        public IResult Save(FCPreCharge vo)
         {
             IResult result = new Result(false);
            bool status=dbAccess.Save(vo)>0;
@@ -172,7 +171,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool CreateNew(FcPhoneCharge vo)
+        public bool CreateNew(FCPreCharge vo)
         {
             return dbAccess.CreateNew(vo);
         }
@@ -181,11 +180,10 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool Update(FcPhoneCharge vo)
+        public bool Update(FCPreCharge vo)
         {
             return dbAccess.Update(vo);
         }
-
         /// <summary>
         /// 获取指定条件的记录总数
         /// </summary>
@@ -193,30 +191,28 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public int GetCount(FcPhoneCharge query, MatchMode mmode = MatchMode.Exact,
+        public int GetCount(FCPreCharge query, MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetCount(query, mmode, cmode);
         }
-
         /// <summary>
         /// 根据模板名称获取第一行一列的值
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public object GetScalarByXmlTemplate(string xmlTemplateName, FcPhoneCharge vo)
+        public object GetScalarByXmlTemplate(string xmlTemplateName, FCPreCharge vo)
         {
             return dbAccess.GetScalarByTemplate(xmlTemplateName, vo);
         }
-
         /// <summary>
         /// 根据模板获取实体信息
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public List<FcPhoneCharge> GetDataListByTemplate(string xmlTemplateName, FcPhoneCharge vo)
+        public List<FCPreCharge> GetDataListByTemplate(string xmlTemplateName, FCPreCharge vo)
         {
             return dbAccess.GetDataListByTemplate(xmlTemplateName, vo);
         }
@@ -226,7 +222,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public DataSet GetDataSetByTemplate(string xmlTemplateName, FcPhoneCharge vo)
+        public DataSet GetDataSetByTemplate(string xmlTemplateName, FCPreCharge vo)
         {
             return dbAccess.GetDataSetByTemplate(xmlTemplateName, vo);
         }
@@ -235,52 +231,9 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public FcPhoneCharge GetSingleDataByTemplate(string xmlTemplateName, FcPhoneCharge vo)
+        public FCPreCharge GetSingleDataByTemplate(string xmlTemplateName, FCPreCharge vo)
         {
             return dbAccess.GetSingleDataByTemplate(xmlTemplateName, vo);
-        }
-
-
-        /// <summary>
-        /// 线下退款
-        /// </summary>
-        /// <param name="dChannelNo">渠道编号</param>
-        /// <param name="dOrderNo">订单编号</param>
-        /// <param name="refundFee">退款金额</param>
-        /// <param name="refundFrom">出账账号</param>
-        /// <param name="refundTo">收款账号</param>
-        /// <param name="msg">备注</param>
-        /// <param name="operate">操作人</param>
-        /// <returns></returns>
-        public IResult RecvRefund(string dChannelNo, string dOrderNo, int? refundFee, string refundFrom, string refundTo, string remark, string operate)
-        {
-            DbParameter[] paramss = new DbParameter[] 
-            {
-                new DbParameter { Name = "v_down_channel_no", Value = dChannelNo },
-                new DbParameter { Name = "v_down_order_no", Value = dOrderNo },
-                new DbParameter { Name = "v_refund_fee", Value = refundFee },
-                new DbParameter { Name = "v_refund_from", Value = refundFrom },
-                new DbParameter { Name = "v_refund_to", Value = refundTo },
-                new DbParameter { Name = "v_remark", Value = remark },
-                new DbParameter { Name = "v_operator", Value = operate },
-                new DbParameter { Name = "v_ret_code", Direction = System.Data.ParameterDirection.Output },
-                new DbParameter { Name = "v_ret_msg", Direction = System.Data.ParameterDirection.Output }
-            };
-            var rev = dbAccess.DbProvider.ExcuteProcToArray("sp_recv_refund_offline", paramss);
-            return new Result(CommFun.ToInt(rev[0], 0).Value == 100, rev[1].ToString());
-        }
-
-        public IResult SetWuliuMode(string OrderNo,string mode)
-        {
-            DbParameter[] paramss = new DbParameter[] 
-            {
-                new DbParameter { Name = "v_order_no", Value = OrderNo },
-                new DbParameter { Name = "v_mode", Value = mode },
-                new DbParameter { Name = "v_ret_code", Direction = System.Data.ParameterDirection.Output },
-                new DbParameter { Name = "v_ret_msg", Direction = System.Data.ParameterDirection.Output }
-            };
-            var rev = dbAccess.DbProvider.ExcuteProcToArray("sp_set_wuliu_mode", paramss);
-            return new Result(CommFun.ToInt(rev[0], 0).Value == 100, rev[1].ToString());
         }
     }
 }

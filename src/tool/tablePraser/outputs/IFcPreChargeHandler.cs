@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using Lib4Net.DB;
 using QXFC.Entity;
@@ -9,17 +6,16 @@ using Lib4Net.Comm;
 namespace QXFC.Interfaces.Logic
 {
     /// <summary>
-    /// 逻辑接口:订单表
+    /// 逻辑接口:@table.chineseName
     /// </summary>   
-    public interface IFCOrderMainHandler
+    public interface IFCPreChargeHandler
     {
-    
-     /// <summary>
+        /// <summary>
         /// 获取单条数据
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        FcPhoneCharge GetData(string id);
+       FCPreCharge GetData(string id);
         /// <summary>
         /// 删除数据
         /// </summary>
@@ -34,17 +30,14 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        FcPhoneCharge GetSingleData(FcPhoneCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       FCPreCharge GetSingleData(FCPreCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
-
         /// <summary>
         /// 获取所有数据
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        List<FcPhoneCharge> GetDataList(string orderBy = "");
-
-
+        List<FCPreCharge> GetDataList(string orderBy = "");
         /// <summary>
         /// 获取指定条件的数据列表
         /// </summary>
@@ -53,10 +46,8 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        List<FcPhoneCharge> GetDataList(FcPhoneCharge query,string orderBy="",MatchMode mmode=MatchMode.Exact,
+        List<FCPreCharge> GetDataList(FCPreCharge query,string orderBy="",MatchMode mmode=MatchMode.Exact,
             ConnectMode cmode=ConnectMode.And);
-
-
         /// <summary>
         /// 获取指定条件的数据集
         /// </summary>
@@ -65,9 +56,8 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        DataSet GetDataSet(FcPhoneCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        DataSet GetDataSet(FCPreCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
-
         /// <summary>
         /// 获取分页数据列表
         /// </summary>
@@ -79,9 +69,8 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        List<FcPhoneCharge> GetPagerDataList(FcPhoneCharge query,int pageSize,int pageIndex,out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        List<FCPreCharge> GetPagerDataList(FCPreCharge query,int pageSize,int pageIndex,out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
-
         /// <summary>
         /// 获取分页数据集
         /// </summary>
@@ -93,7 +82,7 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        DataSet GetPagerDataSet(FcPhoneCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        DataSet GetPagerDataSet(FCPreCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 添加或修改数据,id为空时为添加，否则为修改
@@ -101,26 +90,25 @@ namespace QXFC.Interfaces.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        IResult Save(string id, FcPhoneCharge vo);
+        IResult Save(string id,FCPreCharge vo);
         /// <summary>
         /// 添加或修改数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        IResult Save(FcPhoneCharge vo);
+        IResult Save(FCPreCharge vo);
         /// <summary>
         /// 添加新数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        bool CreateNew(FcPhoneCharge vo);
+        bool CreateNew(FCPreCharge vo);
         /// <summary>
         /// 根据主键值修改实体数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        bool Update(FcPhoneCharge vo);
-
+        bool Update(FCPreCharge vo);
         /// <summary>
         /// 获取指定条件的记录总数
         /// </summary>
@@ -128,39 +116,34 @@ namespace QXFC.Interfaces.Logic
          /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        int GetCount(FcPhoneCharge query, MatchMode mmode = MatchMode.Exact,
+        int GetCount(FCPreCharge query, MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
-
         /// <summary>
         /// 根据模板名称获取第一行一列的值
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        object GetScalarByXmlTemplate(string xmlTemplateName, FcPhoneCharge vo);
+        object GetScalarByXmlTemplate(string xmlTemplateName,FCPreCharge vo);
         /// <summary>
         /// 根据模板获取实体信息
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        List<FcPhoneCharge> GetDataListByTemplate(string xmlTemplateName, FcPhoneCharge vo);
+        List<FCPreCharge> GetDataListByTemplate(string xmlTemplateName,FCPreCharge vo);
         /// <summary>
         /// 根据模版获取DataSet
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        DataSet GetDataSetByTemplate(string xmlTemplateName, FcPhoneCharge vo);
+        DataSet GetDataSetByTemplate(string xmlTemplateName,FCPreCharge vo);
         /// <summary>
         /// 查询单实体信息(单实体数据)
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        FcPhoneCharge GetSingleDataByTemplate(string xmlTemplateName, FcPhoneCharge vo);
-
-        IResult RecvRefund(string dChannelNo, string dOrderNo, int? refundFee, string refundFrom, string refundTo, string remark, string operate);
-
-        IResult SetWuliuMode(string OrderNo, string mode);
+       FCPreCharge GetSingleDataByTemplate(string xmlTemplateName,FCPreCharge vo);
     }
 }

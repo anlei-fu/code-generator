@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-12 14:28:50
+ * @LastEditTime: 2019-10-14 10:56:15
  */
 /**
  * imports  @const cheerio see https://github.com/cheeriojs/cheerio
@@ -103,10 +103,14 @@ function parsePackage(html) {
                 let text = $(pres[i]).text().trim().replace(":=", " = ");
                 text = text.substr(0, text.length - 1);
                 let segs = STR.splitToWords(text);
-
-                let name = segs[0],
+                let name="";
+                try{
+                 name= segs[0],
                         sqlType = SqlType.parse(segs[2]),
                         value = parseValue(segs[4]);
+                }catch {
+                        console.log(text);
+                }
 
 
                 pkg[name] = new SqlConstant(name, "");

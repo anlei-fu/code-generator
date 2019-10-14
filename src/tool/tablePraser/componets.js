@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-25 13:17:04
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-25 13:36:36
+ * @LastEditTime: 2019-10-14 17:31:59
  */
 
 var { requireNotNull } = require("./../libs/utils");
@@ -86,15 +86,17 @@ exports.option = (name, id, service, value, text, dft) => {
  */
 exports.tiemRange = (name) => {
         name = name || TIMERANGETITLE;
-        view = FILE.read("../componets/timeRange.cshtml")
+        html = FILE.read("../componets/timeRange.cshtml")
                 .replace(/@name/g, name);
 
         return { filer: view };
 }
 
+exports.option1=(name,...items)=>{
 
+}
 
-exports.mutipleRadios = (id, ...items) => {
+exports.mutipleRadioInput = (id, ...items) => {
         let js, view = {};
         js.slot = "";
         js.content = "";
@@ -112,11 +114,6 @@ exports.associatedSelects = (option1, option2) => {
 
 }
 
-function exportExcel(){
-      let btn="";
-      let js=FILE.read();
-      return {btn,js} ;
-}
 
 function renderMutipleRadio(id, ...items) {
 

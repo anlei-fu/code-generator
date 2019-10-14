@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <table name="_FC_PRE_CHARGE">
+    <fields>
+      <filed pname="Id" name="_ID" label=""/>
+      <filed pname="Phone" name="_PHONE" label=""/>
+      <filed pname="PreFace" name="_PRE_FACE" label="预存面值"/>
+      <filed pname="PreChargeTime" name="_PRE_CHARGE_TIME" label="预存充值时间"/>
+      <filed pname="PreChargeStatus" name="_PRE_CHARGE_STATUS" label="预存状态"/>
+      <filed pname="ChargeFace" name="_CHARGE_FACE" label="每月充值面值"/>
+      <filed pname="ChargeStartTime" name="_CHARGE_START_TIME" label="开始时间"/>
+      <filed pname="ChargeEndTime" name="_CHARGE_END_TIME" label="结束时间"/>
+      <filed pname="LimitCntr" name="_LIMIT_CNTR" label="充值次数"/>
+      <filed pname="ChargeCntr" name="_CHARGE_CNTR" label="以充值次数"/>
+      <filed pname="ChargeStatus" name="_CHARGE_STATUS" label="充值状态"/>
+      <filed pname="Creator" name="_CREATOR" label=""/>
+      <filed pname="CreateTime" name="_CREATE_TIME" label=""/>
+      <filed pname="HkOrderNo" name="_HK_ORDER_NO" label="号卡订单号"/>
+      <filed pname="NextTime" name="_NEXT_TIME" label=""/>
+
+    </fields>
+  </table>
+  <template>
+    <item name="getList">
+      <sql>
+        <![CDATA[
+          select  t.*
+                    from (SELECT RID
+                            FROM (SELECT R.RID, ROWNUM LINENUM
+                                    FROM (SELECT t.rowid RID
+                                          FROM  _FC_PRE_CHARGE t
+                                            WHERE 
+                                            1=1
+                                           ORDER BY t.Create_Time DESC) R
+                                   WHERE ROWNUM <= { :PS} * { :PI})
+                           WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
+                   inner join _FC_PRE_CHARGE t on tab.rid = t.rowid
+        ]]>
+      </sql>
+    </item>
+    <item name="getCount">
+      <sql>
+        <![CDATA[
+          SELECT COUNT(1) FROM _FC_PRE_CHARGE  t  WHERE 
+                                             1=1
+        ]]>
+      </sql>
+    </item>
+  </template>
+</config>
