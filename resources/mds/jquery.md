@@ -8,211 +8,213 @@
  -->
 ### Notice
 ----
-### 1.  jquery-elemnet   
+### 1.  Jquery-element  api 
 ``` js
     // Document References
-    // Cheerio https://github.com/cheeriojs/cheerio
+    // Jquery https://github.com/Jqueryjs/Jquery
     // JQuery http://api.jquery.com
 
-    [index: number]: CheerioElement;
+    [index: number]: JqueryElement;
     length: number;
 
     // Attributes
 
     attr(): {[attr: string]: string};
     attr(name: string): string;
-    attr(name: string, value: AttrFunction): Cheerio;
+    attr(name: string, value: AttrFunction): Jquery;
     // `value` *can* be `any` here but:
     // 1. That makes type-checking the function-type useless
     // 2. It's converted to a string anyways
-    attr(name: string, value: string): Cheerio;
+    attr(name: string, value: string): Jquery;
     // The map's values *can* be `any` but they'll all be cast to strings
     // regardless.
-    attr(map: {[key: string]: any}): Cheerio;
+    attr(map: {[key: string]: any}): Jquery;
 
     data(): any;
     data(name: string): any;
     data(name: string, value: any): any;
 
     val(): string;
-    val(value: string): Cheerio;
+    val(value: string): Jquery;
 
-    removeAttr(name: string): Cheerio;
+    removeAttr(name: string): Jquery;
 
-    has(selector: string): Cheerio;
-    has(element: CheerioElement): Cheerio;
+    has(selector: string): Jquery;
+    has(element: JqueryElement): Jquery;
 
     hasClass(className: string): boolean;
-    addClass(classNames: string): Cheerio;
+    addClass(classNames: string): Jquery;
 
-    removeClass(): Cheerio;
-    removeClass(className: string): Cheerio;
-    removeClass(func: (index: number, className: string) => string): Cheerio;
+    removeClass(): Jquery;
+    removeClass(className: string): Jquery;
+    removeClass(func: (index: number, className: string) => string): Jquery;
 
-    toggleClass(className: string): Cheerio;
-    toggleClass(className: string, toggleSwitch: boolean): Cheerio;
-    toggleClass(toggleSwitch?: boolean): Cheerio;
-    toggleClass(func: (index: number, className: string, toggleSwitch: boolean) => string, toggleSwitch?: boolean): Cheerio;
-
+    toggleClass(className: string): Jquery;
+    toggleClass(className: string, toggleSwitch: boolean): Jquery;
+    toggleClass(toggleSwitch?: boolean): Jquery;
+    toggleClass(func: (index: number, className: string, toggleSwitch: boolean) => string, toggleSwitch?: boolean): Jquery;
+    
     is(selector: string): boolean;
-    is(element: CheerioElement): boolean;
-    is(element: CheerioElement[]): boolean;
-    is(selection: Cheerio): boolean;
-    is(func: (index: number, element: CheerioElement) => boolean): boolean;
+    is(element: JqueryElement): boolean;
+    is(element: JqueryElement[]): boolean;
+    is(selection: Jquery): boolean;
+    is(func: (index: number, element: JqueryElement) => boolean): boolean;
 
-    // Form
+    // Form Json
     serialize(): string;
     serializeArray(): {name: string, value: string}[];
 
     // Traversing
     
-    find(selector: string): Cheerio;
-    find(element: Cheerio): Cheerio;
-
-    parent(selector?: string): Cheerio;
-    parents(selector?: string): Cheerio;
-    parentsUntil(selector?: string, filter?: string): Cheerio;
-    parentsUntil(element: CheerioElement, filter?: string): Cheerio;
-    parentsUntil(element: Cheerio, filter?: string): Cheerio;
-
+    find(selector: string): Jquery;
+    find(element: Jquery): Jquery;
+    //Direct parent
+    parent(selector?: string): Jquery;
+    //All parent
+    parents(selector?: string): Jquery;
+    parentsUntil(selector?: string, filter?: string): Jquery;
+    parentsUntil(element: JqueryElement, filter?: string): Jquery;
+    parentsUntil(element: Jquery, filter?: string): Jquery;
+    // has property like type,id
     prop(name: string): any;
-    prop(name: string, value: any): Cheerio;
+    prop(name: string, value: any): Jquery;
 
-    closest(): Cheerio;
-    closest(selector: string): Cheerio;
+    closest(): Jquery;
+    closest(selector: string): Jquery;
 
-    next(selector?: string): Cheerio;
-    nextAll(): Cheerio;
-    nextAll(selector: string): Cheerio;
+    next(selector?: string): Jquery;
+    nextAll(): Jquery;
+    nextAll(selector: string): Jquery;
 
-    nextUntil(selector?: string, filter?: string): Cheerio;
-    nextUntil(element: CheerioElement, filter?: string): Cheerio;
-    nextUntil(element: Cheerio, filter?: string): Cheerio;
+    nextUntil(selector?: string, filter?: string): Jquery;
+    nextUntil(element: JqueryElement, filter?: string): Jquery;
+    nextUntil(element: Jquery, filter?: string): Jquery;
 
-    prev(selector?: string): Cheerio;
-    prevAll(): Cheerio;
-    prevAll(selector: string): Cheerio;
+    prev(selector?: string): Jquery;
+    prevAll(): Jquery;
+    prevAll(selector: string): Jquery;
 
-    prevUntil(selector?: string, filter?: string): Cheerio;
-    prevUntil(element: CheerioElement, filter?: string): Cheerio;
-    prevUntil(element: Cheerio, filter?: string): Cheerio;
+    prevUntil(selector?: string, filter?: string): Jquery;
+    prevUntil(element: JqueryElement, filter?: string): Jquery;
+    prevUntil(element: Jquery, filter?: string): Jquery;
+    // Subtract collection
+    slice(start: number, end?: number): Jquery;
 
-    slice(start: number, end?: number): Cheerio;
+    siblings(selector?: string): Jquery;
 
-    siblings(selector?: string): Cheerio;
+    children(selector?: string): Jquery;
 
-    children(selector?: string): Cheerio;
+    contents(): Jquery;
+    // Should use $(el) or $(this) 
+    each(func: (index: number, element: JqueryElement) => any): Jquery;
+    map(func: (index: number, element: JqueryElement) => any): Jquery;
+     
+    filter(selector: string): Jquery;
+    filter(selection: Jquery): Jquery;
+    filter(element: JqueryElement): Jquery;
+    filter(elements: JqueryElement[]): Jquery;
+    filter(func: (index: number, element: JqueryElement) => boolean): Jquery;
 
-    contents(): Cheerio;
+    not(selector: string): Jquery;
+    not(selection: Jquery): Jquery;
+    not(element: JqueryElement): Jquery;
+    not(func: (index: number, element: JqueryElement) => boolean): Jquery;
+    //Single of collection
+    first(): Jquery;
+    last(): Jquery;
 
-    each(func: (index: number, element: CheerioElement) => any): Cheerio;
-    map(func: (index: number, element: CheerioElement) => any): Cheerio;
-
-    filter(selector: string): Cheerio;
-    filter(selection: Cheerio): Cheerio;
-    filter(element: CheerioElement): Cheerio;
-    filter(elements: CheerioElement[]): Cheerio;
-    filter(func: (index: number, element: CheerioElement) => boolean): Cheerio;
-
-    not(selector: string): Cheerio;
-    not(selection: Cheerio): Cheerio;
-    not(element: CheerioElement): Cheerio;
-    not(func: (index: number, element: CheerioElement) => boolean): Cheerio;
-
-    first(): Cheerio;
-    last(): Cheerio;
-
-    eq(index: number): Cheerio;
-
+    eq(index: number): Jquery;
+    // JqueryElement[]
     get(): any[];
+    //JqueryElement
     get(index: number): any;
 
     index(): number;
     index(selector: string): number;
-    index(selection: Cheerio): number;
+    index(selection: Jquery): number;
 
-    end(): Cheerio;
+    end(): Jquery;
 
-    add(selectorOrHtml: string): Cheerio;
-    add(selector: string, context: Document): Cheerio;
-    add(element: CheerioElement): Cheerio;
-    add(elements: CheerioElement[]): Cheerio;
-    add(selection: Cheerio): Cheerio;
+    add(selectorOrHtml: string): Jquery;
+    add(selector: string, context: Document): Jquery;
+    add(element: JqueryElement): Jquery;
+    add(elements: JqueryElement[]): Jquery;
+    add(selection: Jquery): Jquery;
 
-    addBack():Cheerio;
-    addBack(filter: string):Cheerio;
+    addBack():Jquery;
+    addBack(filter: string):Jquery;
 
     // Manipulation
-    appendTo(target: Cheerio) : Cheerio
-    prependTo(target: Cheerio) : Cheerio
+    appendTo(target: Jquery) : Jquery
+    prependTo(target: Jquery) : Jquery
 
-    append(content: string, ...contents: any[]): Cheerio;
-    append(content: Document, ...contents: any[]): Cheerio;
-    append(content: Document[], ...contents: any[]): Cheerio;
-    append(content: Cheerio, ...contents: any[]): Cheerio;
+    append(content: string, ...contents: any[]): Jquery;
+    append(content: Document, ...contents: any[]): Jquery;
+    append(content: Document[], ...contents: any[]): Jquery;
+    append(content: Jquery, ...contents: any[]): Jquery;
 
-    prepend(content: string, ...contents: any[]): Cheerio;
-    prepend(content: Document, ...contents: any[]): Cheerio;
-    prepend(content: Document[], ...contents: any[]): Cheerio;
-    prepend(content: Cheerio, ...contents: any[]): Cheerio;
+    prepend(content: string, ...contents: any[]): Jquery;
+    prepend(content: Document, ...contents: any[]): Jquery;
+    prepend(content: Document[], ...contents: any[]): Jquery;
+    prepend(content: Jquery, ...contents: any[]): Jquery;
 
-    after(content: string, ...contents: any[]): Cheerio;
-    after(content: Document, ...contents: any[]): Cheerio;
-    after(content: Document[], ...contents: any[]): Cheerio;
-    after(content: Cheerio, ...contents: any[]): Cheerio;
+    after(content: string, ...contents: any[]): Jquery;
+    after(content: Document, ...contents: any[]): Jquery;
+    after(content: Document[], ...contents: any[]): Jquery;
+    after(content: Jquery, ...contents: any[]): Jquery;
 
-    insertAfter(content: string): Cheerio;
-    insertAfter(content: Document): Cheerio;
-    insertAfter(content: Cheerio): Cheerio;
+    insertAfter(content: string): Jquery;
+    insertAfter(content: Document): Jquery;
+    insertAfter(content: Jquery): Jquery;
 
-    before(content: string, ...contents: any[]): Cheerio;
-    before(content: Document, ...contents: any[]): Cheerio;
-    before(content: Document[], ...contents: any[]): Cheerio;
-    before(content: Cheerio, ...contents: any[]): Cheerio;
+    before(content: string, ...contents: any[]): Jquery;
+    before(content: Document, ...contents: any[]): Jquery;
+    before(content: Document[], ...contents: any[]): Jquery;
+    before(content: Jquery, ...contents: any[]): Jquery;
 
-    insertBefore(content: string): Cheerio;
-    insertBefore(content: Document): Cheerio;
-    insertBefore(content: Cheerio): Cheerio;
+    insertBefore(content: string): Jquery;
+    insertBefore(content: Document): Jquery;
+    insertBefore(content: Jquery): Jquery;
 
-    remove(selector?: string): Cheerio;
+    remove(selector?: string): Jquery;
 
-    replaceWith(content: string): Cheerio;
-    replaceWith(content: CheerioElement): Cheerio;
-    replaceWith(content: CheerioElement[]): Cheerio;
-    replaceWith(content: Cheerio): Cheerio;
-    replaceWith(content: () => Cheerio): Cheerio;
+    replaceWith(content: string): Jquery;
+    replaceWith(content: JqueryElement): Jquery;
+    replaceWith(content: JqueryElement[]): Jquery;
+    replaceWith(content: Jquery): Jquery;
+    replaceWith(content: () => Jquery): Jquery;
 
-    empty(): Cheerio;
+    empty(): Jquery;
 
     html(): string | null;
-    html(html: string): Cheerio;
+    html(html: string): Jquery;
 
     text(): string;
-    text(text: string): Cheerio;
+    text(text: string): Jquery;
 
-    wrap(content: string): Cheerio;
-    wrap(content: Document): Cheerio;
-    wrap(content: Cheerio): Cheerio;
-
+    wrap(content: string): Jquery;
+    wrap(content: Document): Jquery;
+    wrap(content: Jquery): Jquery;
+    // like background
     css(propertyName: string): string;
     css(propertyNames: string[]): string[];
-    css(propertyName: string, value: string): Cheerio;
-    css(propertyName: string, value: number): Cheerio;
-    css(propertyName: string, func: (index: number, value: string) => string): Cheerio;
-    css(propertyName: string, func: (index: number, value: string) => number): Cheerio;
-    css(properties: Object): Cheerio;
+    css(propertyName: string, value: string): Jquery;
+    css(propertyName: string, value: number): Jquery;
+    css(propertyName: string, func: (index: number, value: string) => string): Jquery;
+    css(propertyName: string, func: (index: number, value: string) => number): Jquery;
+    css(properties: Object): Jquery;
 
     // Rendering
 
     // Miscellaneous
 
-    clone(): Cheerio;
+    clone(): Jquery;
 
     // Not Documented
 
-    toArray(): CheerioElement[];
+    toArray(): JqueryElement[];
 ``` 
-### 2. element
+### 2. Selecctor
 | 选择器 | 实例选取  
 |-----------|--------------|
 | * | 所有元素  |

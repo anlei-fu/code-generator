@@ -17,7 +17,6 @@
       <filed pname="CreateTime" name="_CREATE_TIME" label=""/>
       <filed pname="HkOrderNo" name="_HK_ORDER_NO" label="号卡订单号"/>
       <filed pname="NextTime" name="_NEXT_TIME" label=""/>
-
     </fields>
   </table>
   <template>

@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-10-14 11:24:11
  */
 //imports
-const { requireNotNull, defaultValue, EMPTY } = require("./utils")
+const { requireNotNull, EMPTY } = require("./utils")
 /**
  * @description Select  matched sections of input string and remove left,right pattern both;
  * @param {String} input 
@@ -23,8 +23,9 @@ function select(input, left, right, start, count) {
         requireNotNull(right);
         start = start || 0;
         count = count || 1;
-        let i = 0;
-        var ls = [];
+
+        let i = 0,
+           ls = [];
 
         while (true) {
                 i = input.indexOf(left, start);
@@ -61,8 +62,9 @@ function select1(input, left, right, start, count) {
 
         start = start || 0;
         count = count || -1;
-        let i = 0;
-        var ls = [];
+
+        let i = 0,
+           ls = [];
 
         while (true) {
                 i = input.indexOf(left, start);
@@ -137,7 +139,6 @@ function removeWithMatch(input, left, right) {
  * @returns {String}
  */
 function removeWithMatchMany(input, option) {
-        var selects = select1(input, left, right);
 
         for (const item in option) {
                 input = removeWithMatch(ite, option[item]);
@@ -213,8 +214,9 @@ function split1(input, splitor, start, count) {
 
         start = start || 0;
         count = count || -1;
-        var i = 0;
-        var ls = [];
+
+        let i = 0,
+           ls = [];
 
         while (true) {
                 i = input.indexOf(splitor, start);
@@ -250,9 +252,9 @@ function repeat(pattern, times) {
  */
 function splitToWords(input) {
         requireNotNull(input);
-        let isSkipping = false;
-        let ls = [];
-        var w = EMPTY;
+        let isSkipping = false,
+            ls = [],
+            w = EMPTY;
         // iterate input
         for (const c of input) {
 
@@ -292,7 +294,6 @@ function splitToWords(input) {
 function upperFirstLetter(input) {
         return `${input.substr(0, 1).toUpperCase()}${input.substr(1, input.length - 1)}`;
 }
-
 
 exports.STR = {
         select,

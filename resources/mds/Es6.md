@@ -8,7 +8,7 @@
  -->
 ### ...
 ---
-### array
+### array methods
 ---
 ``` js
  every((x,index,array =>boolean)) // All elements satisfy filter

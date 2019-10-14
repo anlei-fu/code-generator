@@ -6,14 +6,14 @@ using System.Data;
 using Lib4Net.Comm;
 using Lib4Net.DB;
 using Lib4Net.Core;
-using QXFC.Entity;
-using QXFC.Interfaces.Logic;
-using QXFC.Interfaces.DBAccess;
-using QXFC.DataAccessFactories;
+using QXFQ.Entity;
+using QXFQ.Interfaces.Logic;
+using QXFQ.Interfaces.DBAccess;
+using QXFQ.DataAccessFactories;
 using System.Collections;
 using Lib4Net.Logs;
 
-namespace QXFC.Logic
+namespace QXFQ.Logic
 {
     /// <summary>
     /// 逻辑处理：FCPreCharge(订单表)
@@ -67,7 +67,6 @@ namespace QXFC.Logic
         {
             return dbAccess.GetDataList(dbAccess.EmptyEntity, orderBy);
         }
-
         /// <summary>
         /// 获取指定条件的数据列表
         /// </summary>
@@ -143,7 +142,7 @@ namespace QXFC.Logic
                 status= dbAccess.CreateNew(vo);
             else
                 status= dbAccess.Update(id, vo);
-           if (status)
+            if (status)
             {
                 result=new Result(true);
                 result["id"] = CommFun.GetString(dbAccess.Builder.ODMapConfig.PrimaryKeyField.GetValue(vo));
@@ -158,7 +157,7 @@ namespace QXFC.Logic
         public IResult Save(FCPreCharge vo)
         {
             IResult result = new Result(false);
-           bool status=dbAccess.Save(vo)>0;
+            bool status=dbAccess.Save(vo)>0;
             if (status)
             {
                 result = new Result(true);

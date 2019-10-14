@@ -24,19 +24,13 @@ const ROOT = "./../../resources/plsqldoc";
  * @returns {[Db]}
  * */
 function parse() {
+
         let html = FILE.read(`${ROOT}/frame_Index.html`),
                 $ = cheerio.load(html),
+                names_els = $("div.main_title"),
+                db_els = $("div.main_table").next(),
                 dbs = {};
 
-        //jq collection can not iterate ,jsut can do for
-        // class='main_title' db names
-        let names_els = $("div.main_title");
-
-        // sibling sorted left to right in the same layer, 
-        //it has no bussiness with the position compare to current element
-        let db_els = $("div.main_table").next();
-
-        console.log(db_els.length);
         for (let i = 0; i < names_els.length; i++) {
                 let name = $(names_els[i]).text();
                 dbs[name] = parseDb($, db_els[i])
@@ -52,9 +46,9 @@ function parse() {
  * @returns {Db} 
  */
 function parseDb($, el) {
-        // count should be 8
-        let tbs = $(el).children("div");
-        let db = new Db();
+        // count should be 8 odds are names, singles are targets
+        let tbs = $(el).children("div"),
+                db = new Db();
         // packages
         db.packages = parseComponent($, tbs[1], parsePackage);
         //tables
@@ -73,12 +67,12 @@ function parseDb($, el) {
  * @param {Function:()=>Any} fun  ()=> any
  */
 function parseComponent($, el, func) {
-        let component = {};
-        let a_els = $(el).children("div");
+        let a_els = $(el).children("div"),
+                component = {};
 
         for (let i = 0; i < a_els.length; i++) {
-                let name = $(a_els[i]).children("div").children("div").text().trim();
-                let path = `${ROOT}/${$(a_els[i]).children("div").children("div").attr("href")}`;
+                let name = $(a_els[i]).children("div").children("div").text().trim(),
+                        path = `${ROOT}/${$(a_els[i]).children("div").children("div").attr("href")}`;
 
                 if (func == parseTable) {
                         name = NamingStrategy.toCamel(name);
@@ -102,13 +96,15 @@ function parsePackage(html) {
 
                 let text = $(pres[i]).text().trim().replace(":=", " = ");
                 text = text.substr(0, text.length - 1);
-                let segs = STR.splitToWords(text);
-                let name="";
-                try{
-                 name= segs[0],
-                        sqlType = SqlType.parse(segs[2]),
-                        value = parseValue(segs[4]);
-                }catch {
+
+                let segs = STR.splitToWords(text),
+                        name = "";
+
+                try {
+                        name = segs[0],
+                                sqlType = SqlType.parse(segs[2]),
+                                value = parseValue(segs[4]);
+                } catch {
                         console.log(text);
                 }
 
@@ -128,29 +124,30 @@ function parseTable(html) {
 
         let $ = cheerio.load(html),
                 name = $(".main_title").text().replace("table ", ""),
-                tab = new Table(NamingStrategy.toCamel(name), "");
+                tab = new Table(NamingStrategy.toCamel(name), ""),
+                samples = $(".simple_table");
 
-        let samples = $(".simple_table");
         tab.columns = parseColumns($, samples[0]);
 
         if (samples.length > 1) {
                 tab.constraints = parseConstraints($, samples[1]);
-                // set column's ispk by iterate constraint
+
+                // determine  column is or not ispk by iterate constraints and compare
                 for (let constraint in tab.constraints) {
+
                         for (let cons of tab.constraints[constraint].columns) {
+
                                 for (let col in tab.columns) {
-                                        if (col == cons) {
+                                        if (col == cons)
                                                 tab.columns[col].isPk = true;
-                                        }
                                 }
                         }
                 }
         }
 
 
-        if (samples.length > 2) {
+        if (samples.length > 2)
                 tab.indexes = parseIndex($, samples[2]);
-        }
 
         return tab;
 }
@@ -168,17 +165,16 @@ function parseColumns($, el) {
 
                 // get all 5  cells
                 // 1 : name ,2 : type ,3 : nullable 4: defaultValue 5: comments
-                let sub_divs = $(divs[i]).children("div");
-
-                let raw_name = $(sub_divs[0]).text().trim(),
+                let sub_divs = $(divs[i]).children("div"),
+                        raw_name = $(sub_divs[0]).text().trim(),
                         raw_type = $(sub_divs[1]).text().trim(),
                         raw_nullable = $(sub_divs[2]).text().trim(),
                         raw_def = $(sub_divs[3]).text().trim(),
                         raw_desc = $(sub_divs[4]).text().trim();
 
-                let name = NamingStrategy.toCamel(raw_name);
+                let name = NamingStrategy.toCamel(raw_name),
+                        column = new Column(name, raw_desc);
 
-                let column = new Column(name, raw_desc);
                 column.type = SqlType.parse(raw_type);
                 column.nullable = raw_nullable == "Y";
                 column.defaltValue = raw_def == "" ? null : parseValue(raw_def);
@@ -201,9 +197,8 @@ function parseConstraints($, el) {
 
         for (i = 1; i < divs.length; i++) {
                 // 1 is name ,2 is column
-                let sub_divs = $(divs[i]).children("div");
-
-                let constraint = new Constraint(),
+                let sub_divs = $(divs[i]).children("div"),
+                        constraint = new Constraint(),
                         raw_name = $(sub_divs[0]).text().trim(),
                         raw_column = $(sub_divs[1]).text().trim();
 
@@ -229,6 +224,7 @@ function parseFunction(html) {
                 text = $("pre.decl_text").text();
 
         text = STR.removeWithMatch(text, "--", "\n");
+
         let names = STR.select1(text, " ", "("),
                 name = "";
 
@@ -243,7 +239,7 @@ function parseFunction(html) {
                 returnPos = text.indexOf("return"),
                 paramsText = STR.select(text, "(", ")")[0];
 
-        if (typeof paramsText != "undefined")
+        if (!paramsText)
                 func.parameters = parseParameter(paramsText);
 
         func.returnType = text.substr(returnPos + 6, text.length - returnPos - 6)
@@ -260,10 +256,14 @@ function parseParameter(text) {
         let parameters = {};
         // remove comment
         text = STR.removeWithMatch(text, "--", "\n");
+        // replace "," in one function ,cause will do  split by  ",", just one function was changed
         text = text.replace("','", "' '");
+
         let params = text.split(",");
-        params.forEach(e => {
-                let words = STR.splitToWords(e),
+
+        params.forEach(seg => {
+
+                let words = STR.splitToWords(seg),
                         para = new Parameter(words[0]);
 
                 // len>4 has default value and in/out
@@ -364,54 +364,64 @@ function formatString(s) {
 
         return ret;
 }
-
-function writeTables(dbs){
+/**
+ * 
+ * @param {{Db}} dbs 
+ */
+function writeTables(dbs) {
         for (const item in dbs) {
-                let out="";
-                let template =
-`*   ***description***
+                let out = "",
+                        template =
+                                `*   ***description***
  
 *  ***params***
 
 |名称| 类型 |是否可空 |主键 |默认值| 备注 |
 |---|----|---|--|---|----|\r\n`;
                 for (let tab in dbs[item].tables) {
-                       let content = `### ***${tab}***\r\n` + template;
+
+                        let content = `### ***${tab}***\r\n` + template;
                         for (let col in dbs[item].tables[tab].columns) {
-                                let c = dbs[item].tables[tab].columns[col];
-                                let nullable=c.nullable;
-                                let dft=c.defaltValue||"--";
-                                let desc=c.description||"--";
-                                let pk=c.isPk ?"yes":"";
+
+                                let c = dbs[item].tables[tab].columns[col],
+                                        nullable = c.nullable,
+                                        dft = c.defaltValue || "--",
+                                        desc = c.description || "--",
+                                        pk = c.isPk ? "yes" : "";
+
                                 content += `|${col}|${c.type.toString()}|${nullable}|${pk}|${dft}|${desc}|\r\n`;
                         }
-                        out+="\r\n----\r\n"+content;
+                        out += "\r\n----\r\n" + content;
                 }
 
                 FILE.write("mds/" + item + "-tab.md", out);
         }
 }
 
-function writeProc(dbs){
+/**
+ * 
+ * @param {{Db}} dbs 
+ */
+function writeProc(dbs) {
         for (const item in dbs) {
-                let out="";
+                let out = "";
                 let template =
-`*   ***description***\r\n`;
-                let paraHead=`
+                        `*   ***description***\r\n`;
+                let paraHead = `
 *  ***params***
 
 |名称| 类型 | out |默认值| 备注 |
 |---|----|-----|---|----|\r\n`;
                 for (let proc in dbs[item].procedures) {
-                       let content = `### ***${proc}***\r\n` + template;
-                       if(Object.keys( dbs[item].procedures[proc].parameters).length>0){
-                               content+=paraHead;
-                       }
+                        let content = `### ***${proc}***\r\n` + template;
+                        if (Object.keys(dbs[item].procedures[proc].parameters).length > 0) {
+                                content += paraHead;
+                        }
                         for (let para in dbs[item].procedures[proc].parameters) {
                                 let p = dbs[item].procedures[proc].parameters[para];
-                                content += `|${para}|${p.type.toString()}|${p.isOut ? "true" : "false"}|${p.defaltValue||"--"}|${p.description||""}|\r\n`;
+                                content += `|${para}|${p.type.toString()}|${p.isOut ? "true" : "false"}|${p.defaltValue || "--"}|${p.description || ""}|\r\n`;
                         }
-                        out+="\r\n----\r\n"+content;
+                        out += "\r\n----\r\n" + content;
                 }
 
                 FILE.write("mds/" + item + "-proc.md", out);
@@ -423,7 +433,7 @@ function main() {
         writeTables(dbs);
         writeProc(dbs);
         DIR.create("mds");
-        
+
         DIR.create("output");
         for (let db in dbs) {
                 DIR.create("output/" + db);

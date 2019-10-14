@@ -1,7 +1,7 @@
 using Lib4Net.DB;
-using QXFC.Entity;
+using QXFQ.Entity;
 
-namespace QXFC.Interfaces.DBAccess
+namespace QXFQ.Interfaces.DBAccess
 {
     public interface IFCPreChargeDataAccess : IFCPreChargeObjects<FCPreCharge>
     {

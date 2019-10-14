@@ -44,6 +44,7 @@ exports.arrayToSet = (array) => {
  */
 exports.parseValue = (value) => {
         value = value.trim();
+        
         if (value.length == 0) {
                 return value;
         } else if ((value.startsWith("\"") && value.endsWith("\""))

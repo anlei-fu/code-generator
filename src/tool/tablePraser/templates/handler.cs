@@ -67,7 +67,6 @@ namespace @project.name.Logic
         {
             return dbAccess.GetDataList(dbAccess.EmptyEntity, orderBy);
         }
-
         /// <summary>
         /// 获取指定条件的数据列表
         /// </summary>
@@ -143,7 +142,7 @@ namespace @project.name.Logic
                 status= dbAccess.CreateNew(vo);
             else
                 status= dbAccess.Update(id, vo);
-           if (status)
+            if (status)
             {
                 result=new Result(true);
                 result["id"] = CommFun.GetString(dbAccess.Builder.ODMapConfig.PrimaryKeyField.GetValue(vo));
@@ -158,7 +157,7 @@ namespace @project.name.Logic
         public IResult Save(@table.name vo)
         {
             IResult result = new Result(false);
-           bool status=dbAccess.Save(vo)>0;
+            bool status=dbAccess.Save(vo)>0;
             if (status)
             {
                 result = new Result(true);

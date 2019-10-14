@@ -2,7 +2,7 @@
 <config>
   <table name="@table.name">
     <fields>
-@fields
+      @fields
     </fields>
   </table>
   <template>

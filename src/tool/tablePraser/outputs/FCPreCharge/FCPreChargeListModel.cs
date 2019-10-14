@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using QXFC.Entity;
-namespace QXFC.Model
+using QXFQ.Entity;
+namespace QXFQ.Model
 {
     /// <summary>
     /// 实体:MFCPreCharge 的列表页面Model
