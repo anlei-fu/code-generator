@@ -4,12 +4,12 @@ using System.Text;
 using Lib4Net.Comm;
 using Lib4Net.ORM;
 using Lib4Net.DB;
-using QXFQ.Interfaces.DBAccess;
-using QXFQ.Entity;
+using QXFC.Interfaces.DBAccess;
+using QXFC.Entity;
 
 
 
-namespace QXFQ.DBAccess
+namespace QXFC.DBAccess
 {
       ///<summary>
       ///关于@table.chineseName的数据操作对象

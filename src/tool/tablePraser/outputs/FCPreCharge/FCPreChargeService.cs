@@ -7,14 +7,14 @@ using Lib4Net.Core;
 using Lib4Net.Framework.Settings;
 using Lib4Net.Comm;
 using Lib4Net.Data;
-using QXFQ.Entity;
-using QXFQ.Model;
-using QXFQ.Interfaces.Logic;
-using QXFQ.LogicFactories;
-using QXFQ.Utility;
+using QXFC.Entity;
+using QXFC.Model;
+using QXFC.Interfaces.Logic;
+using QXFC.LogicFactories;
+using QXFC.Utility;
 
 
-namespace QXFQ.UserService
+namespace QXFC.UserService
 {
    /// <summary>
     /// 服务操作: FCPreCharge(下游脚本)

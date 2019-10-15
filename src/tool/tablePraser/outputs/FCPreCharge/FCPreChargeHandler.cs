@@ -6,14 +6,14 @@ using System.Data;
 using Lib4Net.Comm;
 using Lib4Net.DB;
 using Lib4Net.Core;
-using QXFQ.Entity;
-using QXFQ.Interfaces.Logic;
-using QXFQ.Interfaces.DBAccess;
-using QXFQ.DataAccessFactories;
+using QXFC.Entity;
+using QXFC.Interfaces.Logic;
+using QXFC.Interfaces.DBAccess;
+using QXFC.DataAccessFactories;
 using System.Collections;
 using Lib4Net.Logs;
 
-namespace QXFQ.Logic
+namespace QXFC.Logic
 {
     /// <summary>
     /// 逻辑处理：FCPreCharge(订单表)

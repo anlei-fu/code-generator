@@ -7,12 +7,12 @@ using Lib4Net.Core;
 using Lib4Net.Framework.Settings;
 using Lib4Net.Comm;
 using Lib4Net.Logs;
-using QXFQ.UserService;
-using QXFQ.Entity;
-using QXFQ.Model;
-using QXFQ.Utility;
+using QXFC.UserService;
+using QXFC.Entity;
+using QXFC.Model;
+using QXFC.Utility;
 
-namespace QXFQ.UserWeb.Controllers
+namespace QXFC.UserWeb.Controllers
 {
     /// <summary>
     /// Controller：FCPreCharge(流程控制)
