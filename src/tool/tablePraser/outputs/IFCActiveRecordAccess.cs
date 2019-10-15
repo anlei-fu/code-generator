@@ -3,7 +3,7 @@ using QXFC.Entity;
 
 namespace QXFC.Interfaces.DBAccess
 {
-    public interface IFCPreChargeDataAccess : IFCPreChargeObjects<FCPreCharge>
+    public interface IFCActiveRecordDataAccess : IFCActiveRecordObjects<FCActiveRecord>
     {
      
     }

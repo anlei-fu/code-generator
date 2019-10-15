@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-23 16:06:05
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-11 17:48:42
+ * @LastEditTime: 2019-10-15 10:29:43
  */
 /**
  * Check target is defined, if target not defiend will throw an error
@@ -20,24 +20,7 @@ exports.requireNotNull = target => {
         // if (typeof target == "undefined")
         //         throw new Error " target can not be null!";
 }
-/**
- * @description Convert @see {Array} to @see {Set} 
- * @param {[Any]} array 
- * @returns {Set<Any>}
- */
-exports.arrayToSet = (array) => {
-        let s = new Set();
 
-        if (typeof array == UNDEFINED)
-                return s;
-
-        array.forEach(element => {
-                if (!s.has(element))
-                        s.add(element);
-        });
-
-        return s;
-}
 /**
  * 
  * @param {String} value
@@ -57,4 +40,100 @@ exports.parseValue = (value) => {
                 let reg = /^(-?\d+)(\.\d+)?$/;
                 return reg.test(value) ? parseFloat(value) : value;
         }
+}
+
+/*------------------------------------------------array---------------------------------------------------*/
+/**
+ * @description Convert @see {Array} to @see {Set} 
+ * @param {[Any]} array 
+ * @returns {Set<Any>}
+ */
+function toSet(array) {
+        let s = new Set();
+
+        array.forEach(x => {
+                if (!s.has(x))
+                        s.add(x);
+        });
+
+        return s;
+}
+/**
+ * 
+ * @param {[Any]} array 
+ * @param {(Any)=>String} keySelector 
+ * @returns {Map<String,Any>}
+ */
+function toMap(array, keySelector) {
+        let map = new Map();
+
+        array.forEach(x => {
+                map.set(keySelector(x), x);
+        })
+
+        return map;
+}
+exports.ARRAY = {
+        toSet,
+        toMap
+}
+/*-----------------------------------------------object--------------------------------------------------------------*/
+/**
+ * 
+ * @param {Object} self 
+ * @param {Object} other 
+ * @param {boolean} override 
+ */
+function extend(self, other, override) {
+        let keys;
+        if (!override)
+                keys = toSet(Object.keys(self));
+
+        for (const p in other) {
+                if (override) {
+                        self[p] = other[p];
+                } else {
+                        if (!keys.has(p))
+                                self[p] = other[p];
+                }
+        }
+}
+/**
+ * 
+ * @param {Object} self 
+ * @param {Object} other 
+ */
+function deepExtend(self,other){
+        let keys= toSet(Object.keys(self));
+
+        for(const p of other){
+            if(keys.has(p)){
+                 deepExtend(self[p],other[p]);
+            } else {
+                    self[p]=other[p];
+            }
+        }
+}
+/**
+ * 
+ * @param {Object} target 
+ * @returns {Object}
+ */
+function clone(target){
+   return JSON.parse(JSON.stringify(target));
+}
+
+exports.OBJECT={
+        extend,
+        deepExtend,
+        clone
+}
+/*-------------------------------------------------------------------function---------------------------------------------------------------*/
+
+function extend(self,other){
+        Function
+}
+/*-------------------------------------------------------------------class----------------------------------------------------------------------*/
+function extend(self,other){
+
 }

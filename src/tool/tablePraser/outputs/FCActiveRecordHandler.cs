@@ -16,22 +16,22 @@ using Lib4Net.Logs;
 namespace QXFC.Logic
 {
     /// <summary>
-    /// 逻辑处理：FCPreCharge(订单表)
+    /// 逻辑处理：FCActiveRecord(订单表)
     /// </summary>
-    public class FCPreChargeHandler : IFCPreChargeHandler
+    public class FCActiveRecordHandler : IFCActiveRecordHandler
     {
-        private IFCPreChargeDataAccess dbAccess;
+        private IFCActiveRecordDataAccess dbAccess;
         ILogger logger = LoggerManager.Instance.GetLogger("web");
-        public FCPreChargeHandler()
+        public FCActiveRecordHandler()
         {
-            dbAccess = DataAccessFactory.Instance.GetProvider<IFCPreChargeDataAccess>();
+            dbAccess = DataAccessFactory.Instance.GetProvider<IFCActiveRecordDataAccess>();
         }
         /// <summary>
         /// 获取单条数据
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public FCPreCharge GetData(string id)
+        public FCActiveRecord GetData(string id)
         {
             return dbAccess.GetData(id);
         }
@@ -52,7 +52,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>   
-        public FCPreCharge GetSingleData(FCPreCharge query, string orderBy = "",
+        public FCActiveRecord GetSingleData(FCActiveRecord query, string orderBy = "",
             MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
@@ -63,7 +63,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        public List<FCPreCharge> GetDataList(string orderBy = "")
+        public List<FCActiveRecord> GetDataList(string orderBy = "")
         {
             return dbAccess.GetDataList(dbAccess.EmptyEntity, orderBy);
         }
@@ -76,7 +76,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public List<FCPreCharge> GetDataList(FCPreCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public List<FCActiveRecord> GetDataList(FCActiveRecord query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataList(query, orderBy, mmode, cmode);
@@ -89,7 +89,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public DataSet GetDataSet(FCPreCharge query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public DataSet GetDataSet(FCActiveRecord query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataSet(query, orderBy, mmode, cmode);
@@ -105,7 +105,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public List<FCPreCharge> GetPagerDataList(FCPreCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public List<FCActiveRecord> GetPagerDataList(FCActiveRecord query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -122,7 +122,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public DataSet GetPagerDataSet(FCPreCharge query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public DataSet GetPagerDataSet(FCActiveRecord query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -135,7 +135,7 @@ namespace QXFC.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(string id, FCPreCharge vo)
+        public IResult Save(string id, FCActiveRecord vo)
         {
             bool status=false;
             IResult result = new Result(status);
@@ -155,7 +155,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(FCPreCharge vo)
+        public IResult Save(FCActiveRecord vo)
         {
             IResult result = new Result(false);
            bool status=dbAccess.Save(vo)>0;
@@ -171,7 +171,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool CreateNew(FCPreCharge vo)
+        public bool CreateNew(FCActiveRecord vo)
         {
             return dbAccess.CreateNew(vo);
         }
@@ -180,7 +180,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool Update(FCPreCharge vo)
+        public bool Update(FCActiveRecord vo)
         {
             return dbAccess.Update(vo);
         }
@@ -191,7 +191,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public int GetCount(FCPreCharge query, MatchMode mmode = MatchMode.Exact,
+        public int GetCount(FCActiveRecord query, MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetCount(query, mmode, cmode);
@@ -202,7 +202,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public object GetScalarByXmlTemplate(string xmlTemplateName, FCPreCharge vo)
+        public object GetScalarByXmlTemplate(string xmlTemplateName, FCActiveRecord vo)
         {
             return dbAccess.GetScalarByTemplate(xmlTemplateName, vo);
         }
@@ -212,7 +212,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public List<FCPreCharge> GetDataListByTemplate(string xmlTemplateName, FCPreCharge vo)
+        public List<FCActiveRecord> GetDataListByTemplate(string xmlTemplateName, FCActiveRecord vo)
         {
             return dbAccess.GetDataListByTemplate(xmlTemplateName, vo);
         }
@@ -222,7 +222,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public DataSet GetDataSetByTemplate(string xmlTemplateName, FCPreCharge vo)
+        public DataSet GetDataSetByTemplate(string xmlTemplateName, FCActiveRecord vo)
         {
             return dbAccess.GetDataSetByTemplate(xmlTemplateName, vo);
         }
@@ -231,7 +231,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public FCPreCharge GetSingleDataByTemplate(string xmlTemplateName, FCPreCharge vo)
+        public FCActiveRecord GetSingleDataByTemplate(string xmlTemplateName, FCActiveRecord vo)
         {
             return dbAccess.GetSingleDataByTemplate(xmlTemplateName, vo);
         }

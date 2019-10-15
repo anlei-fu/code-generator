@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-14 09:05:18
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-14 18:06:27
+ * @LastEditTime: 2019-10-15 15:38:41
  */
 
 
@@ -209,8 +209,8 @@ function main() {
 
 
   let tab = JSON.parse(FILE.read("tab.txt"));
-  let g = new Generator(tab, "FCPreCharge", "QXFC");
-  let name = STR.upperFirstLetter(tab.name);
+  let g = new Generator(tab, "FCActiveRecord", "QXFC");
+  let name = "FCActiveRecord";
   FILE.write(`outputs/${name}.cs`, g.generateEntity());
   FILE.write(`outputs/${name}Access.cs`, g.generateAccess());
   FILE.write(`outputs/I${name}Access.cs`, g.generateIAccess());

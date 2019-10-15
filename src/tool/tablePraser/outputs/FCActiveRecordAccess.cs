@@ -14,7 +14,7 @@ namespace QXFC.DBAccess
       ///<summary>
       ///关于@table.chineseName的数据操作对象
       ///</summary>
-    public class FCPreChargeDataAccess:DataAccessObjects<FCPreCharge>,IFCPreChargeDataAccess
+    public class FCActiveRecordDataAccess:DataAccessObjects<FCActiveRecord>,IFCActiveRecordDataAccess
     {
     
     }

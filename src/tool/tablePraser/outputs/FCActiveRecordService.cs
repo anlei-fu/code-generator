@@ -17,24 +17,24 @@ using QXFC.Utility;
 namespace QXFC.UserService
 {
    /// <summary>
-    /// 服务操作: FCPreCharge(下游脚本)
+    /// 服务操作: FCActiveRecord(下游脚本)
     /// </summary>
-   public class FCPreChargeService:Singleton<FCPreChargeService>
+   public class FCActiveRecordService:Singleton<FCActiveRecordService>
     {
-       private IFCPreChargeHandler handler;
+       private IFCActiveRecordHandler handler;
        private static readonly  string ORDER_BY="";
-       public FCPreChargeService()
+       public FCActiveRecordService()
        {
-           handler = BusinessLogicFactory.Instance.GetProvider<IFCPreChargeHandler>();
+           handler = BusinessLogicFactory.Instance.GetProvider<IFCActiveRecordHandler>();
        }
          /// <summary>
        /// 查询单条数据,用于详细页面显示
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public FCPreChargeItemModel Query(string id)
+       public FCActiveRecordItemModel Query(string id)
        {
-           FCPreChargeItemModel model = new FCPreChargeItemModel();
+           FCActiveRecordItemModel model = new FCActiveRecordItemModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -44,9 +44,9 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public FCPreChargeItemModel QueryItem(string id)
+       public FCActiveRecordItemModel QueryItem(string id)
        {
-           FCPreChargeItemModel model = new FCPreChargeItemModel();
+           FCActiveRecordItemModel model = new FCActiveRecordItemModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -56,9 +56,9 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public FCPreChargeViewModel View(string id)
+       public FCActiveRecordViewModel View(string id)
        {
-           FCPreChargeViewModel model = new FCPreChargeViewModel();
+           FCActiveRecordViewModel model = new FCActiveRecordViewModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -67,7 +67,7 @@ namespace QXFC.UserService
        /// 获取数据列表
        /// </summary>
        /// <returns></returns>
-       public List<FCPreCharge> GetDataList()
+       public List<FCActiveRecord> GetDataList()
        {
            return handler.GetDataList(ORDER_BY);
        }
@@ -76,10 +76,10 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="json">json数据</param>
        /// <returns></returns>
-       public List<FCPreCharge> GetDataList(string json)
+       public List<FCActiveRecord> GetDataList(string json)
        {
-           FCPreCharge data =
-               JsonData.JavaScriptDeserialize<FCPreCharge>(json);
+           FCActiveRecord data =
+               JsonData.JavaScriptDeserialize<FCActiveRecord>(json);
            return handler.GetDataList(data, ORDER_BY, Lib4Net.DB.MatchMode.Exact);
        }
         /// <summary>
@@ -87,10 +87,10 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="nvc">参数集合</param>
        /// <returns></returns>
-       public FCPreChargeListModel Query(NameValueCollection nvc)
+       public FCActiveRecordListModel Query(NameValueCollection nvc)
        {
-           FCPreChargeListModel model = new FCPreChargeListModel();
-           FCPreCharge entity = new FCPreCharge();
+           FCActiveRecordListModel model = new FCActiveRecordListModel();
+           FCActiveRecord entity = new FCActiveRecord();
            model.PageSize = CommFun.ToInt(nvc["ps"],
                SettingHelper.Instance.GetInt("PageSize", 10)).Value;
            model.PageIndex= CommFun.ToInt(nvc["pi"],
@@ -111,7 +111,7 @@ namespace QXFC.UserService
        /// <param name="id">主键编号</param>
        /// <param name="entity">实体数据</param>
        /// <returns></returns>
-       public IResult Save(string id,FCPreCharge entity)
+       public IResult Save(string id,FCActiveRecord entity)
        {
            return handler.Save(id,entity);
        }

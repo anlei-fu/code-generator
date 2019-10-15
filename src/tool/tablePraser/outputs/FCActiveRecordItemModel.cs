@@ -8,13 +8,13 @@ namespace QXFC.Model
     /// <summary>
     /// 实体:MChinnel 的列表页面Model
     /// </summary>
-	public class FCPreChargeItemModel
+	public class FCActiveRecordItemModel
     {
-        private FCPreCharge _currentModel=new FCPreCharge();
+        private FCActiveRecord _currentModel=new FCActiveRecord();
         /// <summary>
         /// 当前实体元素
         /// </summary>
-        public FCPreCharge CurrentModel
+        public FCActiveRecord CurrentModel
         {
             get { return _currentModel; }
             set { _currentModel = value; }

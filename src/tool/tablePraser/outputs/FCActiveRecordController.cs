@@ -15,9 +15,9 @@ using QXFC.Utility;
 namespace QXFC.UserWeb.Controllers
 {
     /// <summary>
-    /// Controller：FCPreCharge(流程控制)
+    /// Controller：FCActiveRecord(流程控制)
     /// </summary>
-    public class FCPreChargeController : MainBaseController
+    public class FCActiveRecordController : MainBaseController
     {
         /// <summary>
         /// 显示列表页面数据
@@ -25,7 +25,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View(FCPreChargeService.Instance.Query(Request.QueryString));
+            return View(FCActiveRecordService.Instance.Query(Request.QueryString));
         }
         /// <summary>
         /// 预览详细信息页面
@@ -34,7 +34,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Details(string id)
         {
-            return View(FCPreChargeService.Instance.Query(id));
+            return View(FCActiveRecordService.Instance.Query(id));
         }
         /// <summary>
         /// 保存或修改页面
@@ -43,7 +43,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Item(string id)
         {
-            return View(FCPreChargeService.Instance.QueryItem(id));
+            return View(FCActiveRecordService.Instance.QueryItem(id));
         }
         /// <summary>
         /// 克隆页面
@@ -52,7 +52,7 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult ItemClone(string id)
         {
-            return View(FCPreChargeService.Instance.QueryItem(id));
+            return View(FCActiveRecordService.Instance.QueryItem(id));
         }
         /// <summary>
         /// 预览页面
@@ -61,13 +61,13 @@ namespace QXFC.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult View(string id)
         {
-            return View(FCPreChargeService.Instance.View(id));
+            return View(FCActiveRecordService.Instance.View(id));
         }
         public string Item()
         {
             try
             {
-                FCPreCharge entity = new FCPreCharge();
+                FCActiveRecord entity = new FCActiveRecord();
                 entity.SetData(Request.Form);
                 entity.TrimEmptyProperty();
                 string id = Request.Form["__id"];
@@ -98,7 +98,7 @@ namespace QXFC.UserWeb.Controllers
         {
             try
             {
-                IResult result = FCPreChargeService.Instance.Delete(id);
+                IResult result = FCActiveRecordService.Instance.Delete(id);
                 if (result.Status)
                 {
                     result.SetSuccessMessage("删除成功");

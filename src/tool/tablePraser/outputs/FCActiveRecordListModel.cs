@@ -6,18 +6,18 @@ using QXFC.Entity;
 namespace QXFC.Model
 {
     /// <summary>
-    /// 实体:MFCPreCharge 的列表页面Model
+    /// 实体:MFCActiveRecord 的列表页面Model
     /// </summary>
-	public class FCPreChargeListModel
+	public class FCActiveRecordListModel
     {
-       private List<FCPreCharge> _list=new List<FCPreCharge>();
+       private List<FCActiveRecord> _list=new List<FCActiveRecord>();
        private int _pageSize;
        private int _pageIndex;
        private int _totalCount;
         /// <summary>
        /// 记录列表
        /// </summary>
-       public List<FCPreCharge> List
+       public List<FCActiveRecord> List
        {
            get { return _list; }
            set { _list = value; }
