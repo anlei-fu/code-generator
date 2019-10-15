@@ -44,8 +44,13 @@ function main() {
 
 function getFuncName(text) {
         let segs = STR.select(text, ".", "(");
-        return segs.length == 0 ?
-                "unknow" : segs[0];
+
+        if(segs.length!=0)
+           return segs[0];
+        
+        let raw_name =STR.splitToWords(text)[4];
+
+        return raw_name.split(".")[1];
 }
 
 function getNotice(text) {

@@ -34,6 +34,26 @@
 |hasWarn|number|false||1|是否报警|
 
 ----
+### ***fcActiveRecord***
+*   ***description***
+ 
+*  ***params***
+
+|名称| 类型 |是否可空 |主键 |默认值| 备注 |
+|---|----|---|--|---|----|
+|id|number|false||--|--|
+|taskId|varchar2|false||--|--|
+|phone|varchar2|false||--|--|
+|idno|varchar2|false||--|--|
+|activeStatus|number|false||--|--|
+|activeTime|date|false||--|--|
+|firstChargeStatus|number|false||--|--|
+|firstChargeTime|date|false||--|--|
+|dealStatus|number|false||20|--|
+|dealMsg|varchar2|false||--|--|
+|createTime|date|false||--|--|
+
+----
 ### ***fcCheckCharge***
 *   ***description***
  

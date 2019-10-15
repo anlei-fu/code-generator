@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-14 09:05:18
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-14 18:06:27
+ * @LastEditTime: 2019-10-15 15:38:41
  */
 //imports
 const { FILE } = require("./../../libs/file");
@@ -203,6 +203,7 @@ class Generator {
  */
 function main(name, project, option) {
   let tab = JSON.parse(FILE.read("tab.txt"));
+<<<<<<< HEAD
   let g = new Generator(tab, name, project, option);
   DIR.create(`outputs/${name}`);
   FILE.write(`outputs/${name}/${name}.cs`, g.generateEntity());
@@ -215,6 +216,20 @@ function main(name, project, option) {
   FILE.write(`outputs/${name}/${name}Controller.cs`, g.generateController());
   FILE.write(`outputs/${name}/${name}Service.cs`, g.generateSerivece());
   FILE.write(`outputs/${name}/${name}.xml`, g.generateEntityConfig());
+=======
+  let g = new Generator(tab, "FCActiveRecord", "QXFC");
+  let name = "FCActiveRecord";
+  FILE.write(`outputs/${name}.cs`, g.generateEntity());
+  FILE.write(`outputs/${name}Access.cs`, g.generateAccess());
+  FILE.write(`outputs/I${name}Access.cs`, g.generateIAccess());
+  FILE.write(`outputs/I${name}Handler.cs`, g.generateIHandler());
+  FILE.write(`outputs/${name}Handler.cs`, g.generateHandler());
+  FILE.write(`outputs/${name}ItemModel.cs`, g.generateItemModel());
+  FILE.write(`outputs/${name}ListModel.cs`, g.generateModeList());
+  FILE.write(`outputs/${name}Controller.cs`, g.generateController());
+  FILE.write(`outputs/${name}Service.cs`, g.generateSerivece());
+  FILE.write(`outputs/${name}.xml`, g.generateEntityConfig());
+>>>>>>> de7a4b4ae3e6e1a69400d95b26d2451824502979
 
 }
 /**
