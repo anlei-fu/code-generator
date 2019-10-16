@@ -36,7 +36,9 @@ function create(path) {
  * @param {String} path 
  */
 function remove(path) {
-        requireNotNull(path);
+
+        if(!exists(path))
+            return;
 
         fs.readdirSync(path)
                 .forEach(file => {

@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:11:25
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-30 11:09:48
+ * @LastEditTime: 2019-10-16 15:41:18
  */
 // import
 const { requireNotNull } = require("./utils")
@@ -48,9 +48,9 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @param {String?} charset ,Charset name
  * @returns {String}
  */
- function read(path, charset) {
+function read(path, charset) {
         requireNotNull(path);
-        return  fs.readFileSync(path, defaultCharset(charset)).toString();
+        return fs.readFileSync(path, defaultCharset(charset)).toString();
 }
 /**
  *@description Write data into  file
@@ -58,10 +58,10 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @param {String} data ,Data to write 
  * @param {String?} charset, Charset name 
  */
- function write(path, data, charset) {
+function write(path, data, charset) {
         requireNotNull(path);
         requireNotNull(data);
-         fs.writeFileSync(path, data, defaultCharset(charset));
+        fs.writeFileSync(path, data, defaultCharset(charset));
 }
 /**
  * @descrip Append line  at the end of file,data+"\r\n";
@@ -79,10 +79,10 @@ function appendLine(path, data, charset) {
  * @param {String} data  to append
  * @param {String?} charset, Charset name 
  */
- function append(path, data, charset) {
+function append(path, data, charset) {
         requireNotNull(path);
         requireNotNull(data);
-         fs.appendFileSync(path, data, defaultCharset(charset));
+        fs.appendFileSync(path, data, defaultCharset(charset));
 }
 /**
  * @description Copy file
@@ -96,13 +96,13 @@ function copy(source, destination, rmSource) {
         fs.copySync(source, destination);
 
         if (rmSource)
-                 fs.unlinkSync(source);
+                fs.unlinkSync(source);
 }
 /**
  * @description Remove file 
  * @param {String} path 
  */
- function remove(path) {
+function remove(path) {
         if (exists(path))
                 fs.unlinkSync(path);
 }
@@ -113,7 +113,7 @@ function copy(source, destination, rmSource) {
  */
 function exists(path) {
         requireNotNull(path);
-        return  fs.existsSync(path);
+        return fs.existsSync(path);
 }
 /**
  * Exports

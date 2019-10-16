@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-30 10:25:32
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-30 11:36:33
+ * @LastEditTime: 2019-10-16 09:27:51
  -->
 ### Notice
 ----
@@ -255,5 +255,12 @@
 | :disabled | 所有禁用的 input 元素  |
 | :selected | 所有被选取的 input 元素  |
 | :checked | 所有被选中的 input 元素  |
+
+-----------------------------------------------
+jQuery.extend(object): c# 扩展方法
+jQuery.fn.extend(object): 继承类型
+
+　　
+
 
  

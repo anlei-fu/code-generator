@@ -4,14 +4,14 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 10:22:34
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-27 14:23:52
+ * @LastEditTime: 2019-10-16 16:13:10
  */
 /**
  * imports
  */
-const { FILE } = require("./../libs/file");
-const { DIR } = require("./../libs/dir");
-const { arrayToSet } = require("./../libs/utils");
+const { FILE } = require("../../libs/file");
+const { DIR } = require("../../libs/dir");
+const { arrayToSet } = require("../../libs/utils");
 /**
  * Macros need to config
  */
@@ -90,11 +90,11 @@ function clearConfig(dbConfigs) {
  */
 function removeUselessFiles() {
 
-        DIR.remove(`${BASE_PATH}/Content`)
-                .remove(`${BASE_PATH}/Scripts`);
+        DIR.remove(`${BASE_PATH}/Content`);
+        DIR.remove(`${BASE_PATH}/Scripts`);
 
         FILE.remove(`${BASE_PATH}/Global.asax`)
-                .remove(`${BASE_PATH}/Web.config`);
+        FILE.remove(`${BASE_PATH}/Web.config`);
 }
 
 /**
@@ -103,9 +103,9 @@ function removeUselessFiles() {
  */
 function main(modules) {
         clearBins();
-        clearView(arrayToSet(modules));
-        clearConfig(arrayToSet(modules));
+        clearView(new Set(modules));
+        clearConfig(new Set(modules));
         removeUselessFiles();
 }
 // run main
-main(["FCOrderBind"]);
+main(["FCActiveRecord"]);

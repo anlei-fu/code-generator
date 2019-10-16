@@ -1,28 +1,28 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
- <head>
- <link rel="stylesheet" type="text/css" href="../../plsqldoc.css">
- <title>procedure sp_statics_diagram</title>
- <meta name="object" content="procedure">
- <meta name="name" content="db210 dm_system.sp_statics_diagram">
- <meta name="description" content="select count(*) &#35746;&#21333;&#37327;,">
-</head>
-<body>
-<div width="100%"><div>
-<div><p align="left"><strong><small>dm_system@db210</small></strong></div>
-<div><p align="right"><strong><small><div href="../../index.html">index</div></small></strong></div>
-</div></div>
-<div class="main_table"><div><div class="desc_text">
-<p class="main_title">procedure sp_statics_diagram</p>
-<pre class="decl_text">
-procedure sp_statics_diagram(v_pid         varchar2,
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>Procedure sp_statics_diagram</TITLE>
+ <META name="object" content="PROCEDURE">
+ <META name="name" content="DB210 DM_SYSTEM.sp_statics_diagram">
+ <META name="description" content="select count(*) &#35746;&#21333;&#37327;,">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>DM_SYSTEM@DB210</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">Procedure sp_statics_diagram</P>
+<PRE CLASS="DECL_TEXT">
+Procedure sp_statics_diagram(v_pid         varchar2,
                              v_begin_time  varchar2,
                              v_end_time    varchar2,
                              v_out_errcode out number,
                              v_out_msg     out varchar2,
                              v_out_data    out pkg_cursor.pointer)
 
-</pre><br>
+</PRE><BR>
 select count(*) &#35746;&#21333;&#37327;,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nvl(sum(decode(t1.bind_status, 0, 1, 0)), 0) &#21457;&#36135;&#37327;,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nvl(sum(decode(t2.activate_status, 0, 1, 0)), 0) &#28608;&#27963;&#37327;,<br>
@@ -33,15 +33,15 @@ select count(*) &#35746;&#21333;&#37327;,<br>
 &nbsp; left join dm_order_bind_ext t2<br>
 &nbsp;&nbsp;&nbsp; on t2.bind_id = t1.bind_id<br>
 &nbsp;where t.promoter_id = v_pid<br>
-&nbsp;&nbsp; and (t.create_time &gt;= to_date(v_begin_time, 'yyyy/mm/dd') or<br>
+&nbsp;&nbsp; and (t.create_time &gt;= TO_DATE(v_begin_time, 'YYYY/MM/DD') or<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v_begin_time is null)<br>
-&nbsp;&nbsp; and (t.create_time &lt;= to_date(v_end_time, 'yyyy/mm/dd') or<br>
+&nbsp;&nbsp; and (t.create_time &lt;= TO_DATE(v_end_time, 'YYYY/MM/DD') or<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v_end_time is null);<br>
 
-<br>
-</div></div></div>
-<hr>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-</body>
-</html>
+<BR>
+</TD></TR></TABLE>
+<HR>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

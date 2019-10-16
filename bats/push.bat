@@ -7,10 +7,10 @@ set /p msg=
 :: choose project
 if %proj% == dm ( 
 cd %DM_GIT%
-echo "pull dm ..."
+echo "push dm ..."
 ) else ( 
 cd %FC_GIT%
-echo " pull fc ..."
+echo " push fc ..."
 )
 :: add all file
 git add -A .

@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-01 16:53:22
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-01 17:07:53
+ * @LastEditTime: 2019-10-16 14:22:28
  -->
 # Oracle
 ---
@@ -67,4 +67,15 @@ end f_test_pipe;
 select * from table(f_test_pipe(20));
 
 select * from the(select f_test_pipe(20) from dual);
+```
+-------
+## ***functions***
+
+- ***trunc***
+``` plsql
+trunc(sysdate,'yyyy') -- 2019/1/1
+trunc(sysdate,'mm') -- 2019/10/1
+trunc(sysdate,'dd') -- 2019/10/16
+trunc(sysdate,'hh') -- 2019/10/16 14:00:00
+trunc(sysdate,'mi') -- 2019/10/16 14:22:00
 ```
