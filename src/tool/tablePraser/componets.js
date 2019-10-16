@@ -8,7 +8,7 @@
  */
 
 var { requireNotNull } = require("./../libs/utils");
-var { FILE } = require("./../libs/file");
+var { FILE } = require("./../../libs/file");
 const PLZSELECT = "";
 const TIMERANGETITLE = "";
 class RenderParameter {
@@ -84,29 +84,45 @@ exports.option = (name, id, service, value, text, dft) => {
  * 
  * @param {String?} name  title
  */
-exports.tiemRange = (name) => {
-        name = name || TIMERANGETITLE;
-        html = FILE.read("../componets/timeRange.cshtml")
-                .replace(/@name/g, name);
+exports.dateFilter = ({name,lable}) => {
+        let html=File.read("templates/dateFilter.cshtml")
+                     .replace("@name",name)
+                     .replace("@lable",lable);
 
-        return { filer: view };
+        return {html};
 }
+/**
+ * items [{lable,value}]
+ */
+exports.option1=({name,lable,items})=>{
+        let temp="";
+        let item=FILE.read("templates/option1-item.cshtml");
+       items.forEach(x=>{
+            temp+=item.replace("@lable",x.lable)
+                      .replace("@value",x.value);
+       })
 
-exports.option1=(name,...items)=>{
+       let html=FILE.read("templates/option1.cshtml")
+                    .replace("@name",name)
+                    .replace("@value",lable)
+                    .replace("@items",temp);
+      return {html};
 
 }
+/**
+ * items[{lable,name}]
+ */
+exports.mutipleInput = ({name, items}) => {
+        let js=FILE.read("templates/mutiple-input.js"),
+            item=FILE.read("templates/mutiple-input-item.js"),
+            temp="";
 
-exports.mutipleRadioInput = (id, ...items) => {
-        let js, view = {};
-        js.slot = "";
-        js.content = "";
+            items.forEach(x=>{
+                    temp+=item.replace("@name",x.name)
+                              .replace("@lable",x.name);
+            })
 
-        items.forEach(x => {
-
-        });
-
-        view.content = renderMutipleRadio(id, item);
-        view.pos = "";
+        let html
 
         return { js, view }
 }
@@ -114,6 +130,9 @@ exports.associatedSelects = (option1, option2) => {
 
 }
 
+exports.add=()=>{
+    return FILE.read("templates/add.cshtml");
+}
 
 function renderMutipleRadio(id, ...items) {
 
