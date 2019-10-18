@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Collections.Specialized;
 using Lib4Net.Core;
 using Lib4Net.Framework.Settings;
@@ -12,7 +10,6 @@ using @project.name.Model;
 using @project.name.Interfaces.Logic;
 using @project.name.LogicFactories;
 using @project.name.Utility;
-
 
 namespace @project.name.UserService
 {

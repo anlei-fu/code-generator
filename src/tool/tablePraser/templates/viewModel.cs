@@ -4,7 +4,7 @@ namespace @project.name.Model
     /// <summary>
     /// 实体:MChinnel 的列表页面Model
     /// </summary>
-	public class @table.nameItemModel
+	public class FCYxhdPhoneViewModel
     {
         private @table.name _currentModel=new @table.name();
         /// <summary>
@@ -19,9 +19,5 @@ namespace @project.name.Model
         /// 主键编号
         /// </summary>
         public string Id{get;set;}
-        /// <summary>
-        /// 处理消息
-        /// </summary>
-        public string Message{get;set;}
     }
 }

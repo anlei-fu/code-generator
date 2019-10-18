@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Data;
 using Lib4Net.DB;
-using QXFC.Entity;
+using @project.name.Entity;
 using Lib4Net.Comm;
-namespace QXFC.Interfaces.Logic
+namespace @project.name.Interfaces.Logic
 {
     /// <summary>
     /// 逻辑接口:@table.chineseName

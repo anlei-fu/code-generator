@@ -4,54 +4,18 @@
  * @Author: fuanlei
  * @Date: 2019-09-25 13:17:04
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-14 17:31:59
+ * @LastEditTime: 2019-10-17 09:57:56
  */
 
 var { requireNotNull } = require("./../libs/utils");
 var { FILE } = require("./../../libs/file");
 const PLZSELECT = "";
 const TIMERANGETITLE = "";
-class RenderParameter {
-        constructor() {
-                this.viewParameters = {};
-                this.jsParameters = {};
-        }
-}
-class Index {
 
-}
-class Edit {
+const DEFAULT_OPTION = "";
+const EMPTY = "";
 
-}
-class Import {
 
-}
-class Config {
-        constructor() {
-                this.index = {};
-                this.edit;
-                this.detail;
-        }
-}
-
-class Context {
-        constructor() {
-                this.projectName;
-                this.service;
-                this.handler;
-                this.ihandler;
-                this.controller;
-        }
-}
-/**
- * 4 positions
- * 4 counters
- */
-class Template {
-        constructor() {
-
-        }
-}
 /**
  * 
  * @param {String} name  lable name
@@ -61,80 +25,87 @@ class Template {
  * @param {String} text     text property name
  * @param {String?} dft   default item
  */
-exports.option = (name, id, service, value, text, dft) => {
-        requireNotNull(name);
-        requireNotNull(id);
-        requireNotNull(service),
-                requireNotNull(value),
-                requireNotNull(text),
-                dft = dft || PLZSELECT;
-        let view;
+function option(label, name, value, text, dft) {
+        dft = dft || DEFAULT_OPTION;
 
-        view = FILE.read("../componets/select.cshtml")
-                .replace(/@Name/g, name)
-                .replace(/@Id/g, id)
-                .replace(/@Service/g, service)
-                .replace(/@Value/gvalue)
-                .replace(/@Default/g, dft);
+        let html = FILE.read("templates/option.cshtml")
+                .replace("@name", name)
+                .replace("@lable", lable)
+                .replace("@text", text)
+                .replace("@value", value)
+                .replace("@default-option", dft);
+        return { html };
+}
+/**
+ * 
+ * @param {{String,String}} param0  
+ * lable ,name
+ * 
+ */
+function dateFilter({ name, lable }) {
+        let html = File.read("templates/dateFilter.cshtml")
+                .replace("@name", name)
+                .replace("@lable", lable);
 
-        return { filter: view };
+        return { html };
+}
+/**
+ * 
+ * @param {{String,String,[{String,String}]}} param0 
+ *  item {label,value}
+ */
+function option1({ name, lable, items }) {
+        let temp = "";
+
+        let item = FILE.read("templates/option1-item.cshtml");
+        items.forEach(x => {
+                temp += item.replace("@lable", x.lable)
+                        .replace("@value", x.value);
+        })
+
+        let html = FILE.read("templates/option1.cshtml")
+                .replace("@label", lable)
+                .replace("@name", name)
+                .replace("@items", temp);
+
+        return { html };
 
 }
 /**
  * 
- * @param {String?} name  title
+ * @param {{String,[{String,String}]}} param0 
+ * item {name,lable}
  */
-exports.dateFilter = ({name,lable}) => {
-        let html=File.read("templates/dateFilter.cshtml")
-                     .replace("@name",name)
-                     .replace("@lable",lable);
+function mutipleInput({ name, items }) {
+        let js = FILE.read("templates/mutiple-input.js"),
+                item = FILE.read("templates/mutiple-input-item.js"),
+                temp = "";
 
-        return {html};
+        items.forEach(x, i => {
+                temp += item.replace("@name", x.name)
+                        .replace("@lable", x.label)
+                        .replace("@index", i);
+        })
+
+        let html = FILE.read("templates/mutiple-input.cshtml")
+                .replace("@items", temp)
+                .replace("@default-item", items[0].name);
+
+        return { js, html }
 }
-/**
- * items [{lable,value}]
- */
-exports.option1=({name,lable,items})=>{
-        let temp="";
-        let item=FILE.read("templates/option1-item.cshtml");
-       items.forEach(x=>{
-            temp+=item.replace("@lable",x.lable)
-                      .replace("@value",x.value);
-       })
-
-       let html=FILE.read("templates/option1.cshtml")
-                    .replace("@name",name)
-                    .replace("@value",lable)
-                    .replace("@items",temp);
-      return {html};
-
-}
-/**
- * items[{lable,name}]
- */
-exports.mutipleInput = ({name, items}) => {
-        let js=FILE.read("templates/mutiple-input.js"),
-            item=FILE.read("templates/mutiple-input-item.js"),
-            temp="";
-
-            items.forEach(x=>{
-                    temp+=item.replace("@name",x.name)
-                              .replace("@lable",x.name);
-            })
-
-        let html
-
-        return { js, view }
-}
-exports.associatedSelects = (option1, option2) => {
+function associatedSelects(option1, option2) {
 
 }
 
-exports.add=()=>{
-    return FILE.read("templates/add.cshtml");
+function add() {
+        return FILE.read("templates/add.cshtml");
 }
 
 function renderMutipleRadio(id, ...items) {
 
+
+}
+
+exports.COMPONENTS = {
 
 }

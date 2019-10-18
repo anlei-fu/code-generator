@@ -4,13 +4,14 @@
  * @Author: fuanlei
  * @Date: 2019-10-14 09:05:18
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-15 15:38:41
+ * @LastEditTime: 2019-10-17 09:34:48
  */
 //imports
 const { FILE } = require("./../../libs/file");
 const { DIR } = require("./../../libs/dir");
 const { STR } = require("./../../libs/str");
 const { NamingStrategy } = require("./../../libs/naming-stratey");
+const {COMPONENTS}=require(".componets");
 
 const CLASS_IDENT = "    ";
 const PROPERTY_IDENT = "        ";
@@ -259,7 +260,9 @@ let optionExample = {
     other: {}
   },
   index: {
-
+        filters:[
+          ()=>COMPONENTS,
+        ]
   },
   import: {
     column: ["Phone", "PreChargeFace"]
