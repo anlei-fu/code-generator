@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-15 09:26:36
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-15 15:22:23
+ * @LastEditTime: 2019-10-21 09:16:44
  */
 
 exports.CharSequenceReader = class CharSequenceReader {
@@ -32,19 +32,19 @@ exports.CharSequenceReader = class CharSequenceReader {
         /**
          * 
          */
-        previous  step => this._text[this._current - step || 1];
+        previous (step){return this._text[this._current - (step || 1)];}
         /**
          * 
          */
-        forward = step => this._text[this._current + step || 1];
+        forward (step) {return this._text[this._current + (step || 1)];}
         /**
          * 
          */
-        hasPrevious = step => this._current - step || 1 > -1;
+        hasPrevious (step){return this._current - (step || 1) > -1;}
         /**
          * 
          */
-        hasNext = step => this._current + step || 1 < this._text.length;
+        hasNext (step) {return this._current + (step || 1) < this._text.length;}
         /**
          * 
          * @param {Number} step 

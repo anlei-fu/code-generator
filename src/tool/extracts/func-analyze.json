@@ -1,126 +1,2228 @@
 {
-  "f_assign_iccno": [
+  "sp_write_log": [
+    {
+      "name": "insert into",
+      "table": "fc_system_log\r"
+    }
+  ],
+  "f_warn_insert": [
+    {
+      "name": "insert into",
+      "table": "FC_WARN_MSG\r"
+    }
+  ],
+  "sp_warn_insert": [],
+  "f_create_up_task": [
+    {
+      "name": "assign",
+      "table": ""
+    },
     {
       "name": "from",
-      "tbale": "fc_iccid"
+      "table": "fc_flow_step"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_product"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_script"
+    },
+    {
+      "name": "join",
+      "table": "fc_flow_step"
+    },
+    {
+      "name": "call",
+      "table": "script_type\r"
+    },
+    {
+      "name": "from",
+      "table": "fc_down_exclude_up"
+    },
+    {
+      "name": "from",
+      "table": "fc_down_specify_up"
     },
     {
       "name": "update",
-      "tbale": "fc_order_ext"
-    }
-  ],
-  "f_create_down_task": [
-    {
-      "name": "from",
-      "tbale": "fc_flow_step"
+      "table": "fc_order_main"
     },
     {
-      "name": "from",
-      "tbale": "fc_order_main"
-    },
-    {
-      "name": "from",
-      "tbale": "fc_order_main"
-    },
-    {
-      "name": "from",
-      "tbale": "fc_down_script"
-    },
-    {
-      "name": "from",
-      "tbale": "fc_down_script"
-    },
-    {
-      "name": "insert",
-      "tbale": "fc_flow_task"
+      "name": "insert into",
+      "table": "fc_flow_task\r"
     },
     {
       "name": "update",
-      "tbale": "fc_order_express"
+      "table": "fc_flow_task"
     }
   ],
-  "f_create_express_task": [
+  "f_create_task": [
     {
-      "name": "from",
-      "tbale": "fc_flow_step"
+      "name": "assign",
+      "table": ""
     },
     {
       "name": "from",
-      "tbale": "fc_order_main"
+      "table": "fc_flow_task"
     },
     {
-      "name": "from",
-      "tbale": "fc_up_script"
-    },
-    {
-      "name": "insert",
-      "tbale": "fc_flow_task"
-    },
-    {
-      "name": "from",
-      "tbale": "fc_order_ext"
-    },
-    {
-      "name": "insert",
-      "tbale": "fc_order_express"
+      "name": "update",
+      "table": "fc_flow_task"
     }
   ],
-  "f_create_query": [
+  "f_get_next_step": [
     {
-      "name": "from",
-      "tbale": "fc_flow_task"
+      "name": "assign",
+      "table": ""
     },
     {
       "name": "from",
-      "tbale": "fc_up_channel"
+      "table": "fc_flow_step"
     },
     {
-      "name": "from",
-      "tbale": "fc_order_main"
-    },
-    {
-      "name": "from",
-      "tbale": "fc_up_script"
-    },
-    {
-      "name": "insert",
-      "tbale": "fc_flow_task_query"
+      "name": "join",
+      "table": "fc_flow_step"
     }
   ],
-  "f_create_query_express_task": [
+  "f_execute_next_step": [
     {
-      "name": "from",
-      "tbale": "fc_flow_step"
+      "name": "assign",
+      "table": ""
     },
     {
       "name": "from",
-      "tbale": "fc_flow_task"
+      "table": "fc_order_bind"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
     },
     {
       "name": "from",
-      "tbale": "fc_order_main"
+      "table": "fc_order_main"
     },
     {
-      "name": "from",
-      "tbale": "fc_up_script"
+      "name": "lock table",
+      "table": ""
     },
     {
-      "name": "insert",
-      "tbale": "fc_flow_task"
+      "name": "update",
+      "table": "fc_order_bind"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
     }
   ],
-  "f_create_task_by_product": [
+  "f_fund_change_down": [
     {
-      "name": "from",
-      "tbale": "fc_order_main"
+      "name": "assign",
+      "table": ""
     },
     {
       "name": "from",
-      "tbale": "fc_up_channel"
+      "table": "dual"
     },
     {
-      "name": "insert",
-      "tbale": "fc_flow_task"
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_down"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_fund_change_down\r"
     }
-  ]
+  ],
+  "f_fund_change_up": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "dual"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_fund_change_up\r"
+    }
+  ],
+  "f_trans_json_char": [],
+  "f_json_add": [],
+  "f_get_bind_result": [],
+  "f_get_refund_result": [],
+  "f_get_task_result": [],
+  "f_get_up_account": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_account"
+    }
+  ],
+  "f_new_bind_id return varchar2 is\r\n/*\r\n功能生成绑定编号\r\n作者:jiyi\r\n时间:2018-04-02\r\n*/\r\nbegin\r\nreturn to_char": [],
+  "f_new_order_no return varchar2 is\r\nl_result varchar2": [],
+  "f_scan_mail": [
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "f_scan_notify": [
+    {
+      "name": "from",
+      "table": "fc_notify_record"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_notify_record"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_notify_record"
+    }
+  ],
+  "f_scan_plat_delivery": [
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "f_scan_task": [
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "f_split_str": [],
+  "f_update_order_info": [
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_ext"
+    }
+  ],
+  "f_update_task_msg": [
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "acct_sync_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "acct_sync_config"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_down"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_down"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_down"
+    },
+    {
+      "name": "update",
+      "table": "acct_sync_config"
+    },
+    {
+      "name": "update",
+      "table": "acct_sync_config"
+    }
+  ],
+  "acct_sync_save": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_down"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "update",
+      "table": "fc_fund_change_down"
+    },
+    {
+      "name": "update",
+      "table": "acct_sync_error"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "acct_sync_error"
+    },
+    {
+      "name": "update",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "update",
+      "table": "fc_fund_change_down"
+    },
+    {
+      "name": "insert into",
+      "table": "acct_sync_error\r"
+    }
+  ],
+  "barabrabrabrba": [
+    {
+      "name": "from",
+      "table": "down_channel_day_trade"
+    },
+    {
+      "name": "join",
+      "table": "mr_system_dictionary"
+    },
+    {
+      "name": "join",
+      "table": "mr_carrier_info"
+    },
+    {
+      "name": "call",
+      "table": "business_type"
+    },
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "call",
+      "table": "province_no"
+    },
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "from",
+      "table": "down_channel_day_trade"
+    },
+    {
+      "name": "join",
+      "table": "mr_system_dictionary"
+    },
+    {
+      "name": "join",
+      "table": "mr_carrier_info"
+    },
+    {
+      "name": "call",
+      "table": "e_contrast_time\r"
+    },
+    {
+      "name": "call",
+      "table": "business_type"
+    },
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "call",
+      "table": "province_no"
+    },
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "from",
+      "table": "down_channel_day_trade"
+    },
+    {
+      "name": "join",
+      "table": "mr_system_dictionary"
+    },
+    {
+      "name": "join",
+      "table": "mr_carrier_info"
+    },
+    {
+      "name": "call",
+      "table": "business_type"
+    },
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "call",
+      "table": "province_no"
+    },
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "from",
+      "table": "res0"
+    },
+    {
+      "name": "join",
+      "table": "res1"
+    },
+    {
+      "name": "join",
+      "table": "res2"
+    }
+  ],
+  "sp_add_operate_log": [
+    {
+      "name": "insert into",
+      "table": "FC_order_operate\r"
+    }
+  ],
+  "sp_assign_imsi": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_ext"
+    }
+  ],
+  "sp_auto_flow_execute as\r\n/*\r\n功能:自动驱动流程\r\n作者:jiyi\r\n时间:2018年5月1日\r\n*/\r\nl_ret_task_id number;\r\nl_ret_msg     varchar2": [
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_auto_flow_vo_execute as\r\nl_ret_task_id number;\r\nl_ret_msg     varchar2": [
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_step"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_auto_trade_analyse as\r\n/*\r\n功能:交易分析\r\n作者:jiyi\r\n时间:2018-04-20\r\n*/\r\nl_last_date  date;\r\nl_order_time date;\r\nl_end_time   date := sysdate - 1;\r\nbegin\r\n--如果快照表中没有数据，默认生成15天数据\r\nselect trunc": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_trade_analyse"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_trade_analyse\r"
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "call",
+      "table": "change_type"
+    },
+    {
+      "name": "join",
+      "table": "("
+    },
+    {
+      "name": "from",
+      "table": "fc_order_refund"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_main"
+    }
+  ],
+  "sp_auto_trade_down as\r\n/*\r\n功能:下游交易分析\r\n作者:jiyi\r\n时间:2018-04-20\r\n*/\r\nl_last_date  date;\r\nl_order_time date;\r\nl_end_time   date := sysdate - 1;\r\nbegin\r\n--如果快照表中没有数据，默认生成15天数据\r\nselect trunc": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_trade_down"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_trade_down\r"
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_fund_change_down"
+    }
+  ],
+  "sp_dz_brand_new as\r\npragma autonomous_transaction;\r\n/*\r\n功能:新装宽带对账\r\n作者:jiyi\r\n时间:2018-05-09\r\n*/\r\nl_order_no     varchar2": [
+    {
+      "name": "from",
+      "table": "fc_dz_reward_brand_new"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_dz_reward_brand_new"
+    },
+    {
+      "name": "join",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "join",
+      "table": "fc_dz_reward_brand_new"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_dz_trade_detail\r"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_dz_reward_brand_new"
+    }
+  ],
+  "sp_dz_order_renew as\r\npragma autonomous_transaction;\r\n/*\r\n功能:号卡宽带续费对账\r\n作者:jiyi\r\n时间:2018-05-09\r\n*/\r\nl_order_no   varchar2": [
+    {
+      "name": "from",
+      "table": "fc_dz_reward_renew"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "call",
+      "table": "order_no\r"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_dz_renew_cost"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_dz_trade_detail\r"
+    },
+    {
+      "name": "update",
+      "table": "fc_dz_reward_renew"
+    },
+    {
+      "name": "update",
+      "table": "fc_dz_renew_cost"
+    }
+  ],
+  "sp_dz_phone_active as\r\npragma autonomous_transaction;\r\n/*\r\n功能:对账号卡激活\r\n作者:jiyi\r\n时间:2018-05-09\r\n*/\r\nl_order_no   varchar2": [
+    {
+      "name": "from",
+      "table": "fc_dz_phone_active"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_dz_reward_renew"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_dz_renew_cost"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_dz_trade_detail\r"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_dz_phone_active"
+    },
+    {
+      "name": "update",
+      "table": "fc_dz_reward_renew"
+    },
+    {
+      "name": "update",
+      "table": "fc_dz_renew_cost"
+    }
+  ],
+  "sp_auto_trade_dz as\r\n/*\r\n功能:自动对账\r\n作者:jiyi\r\n时间:2018-05-09\r\n*/\r\nbegin\r\nsp_dz_phone_active": [],
+  "sp_auto_trade_Up as\r\n/*\r\n功能:上游交易分析\r\n作者:jiyi\r\n时间:2018-04-20\r\n*/\r\nl_last_date  date;\r\nl_order_time date;\r\nl_end_time   date := sysdate - 1;\r\nbegin\r\n--如果快照表中没有数据，默认生成15天数据\r\nselect trunc": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_trade_up"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_trade_up\r"
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_fund_change_up"
+    }
+  ],
+  "sp_charge_retry": [
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_phone_charge"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_phone_charge"
+    }
+  ],
+  "sp_cookie_get_by_city": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_account"
+    }
+  ],
+  "sp_create_query": [],
+  "sp_da_reward": [
+    {
+      "name": "from",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "join",
+      "table": "fc_product_type"
+    },
+    {
+      "name": "from",
+      "table": "fc_fund_change_up"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "join",
+      "table": "fc_product_type"
+    }
+  ],
+  "sp_da_trade_channel": [
+    {
+      "name": "from",
+      "table": "fc_trade_down"
+    },
+    {
+      "name": "join",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "join",
+      "table": "fc_product_type"
+    },
+    {
+      "name": "from",
+      "table": "fc_trade_down"
+    },
+    {
+      "name": "join",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "join",
+      "table": "fc_product_type"
+    },
+    {
+      "name": "join",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "from",
+      "table": "fc_trade_up"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "join",
+      "table": "fc_product_type"
+    },
+    {
+      "name": "from",
+      "table": "fc_trade_up"
+    },
+    {
+      "name": "join",
+      "table": "fc_product_type"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_channel"
+    }
+  ],
+  "sp_delivery_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_bind"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_product"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_product_package"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_account"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_script"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_down_channel_key_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_channel"
+    }
+  ],
+  "sp_express_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_account"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_script"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    }
+  ],
+  "sp_express_plat_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    }
+  ],
+  "sp_express_plat_save": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_express_query_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_account"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_script"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_express_query_save": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_order_express\r"
+    }
+  ],
+  "sp_express_save": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_product"
+    }
+  ],
+  "sp_express_update": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "call",
+      "table": "express_status"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_identity_info_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_identity_info_save": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_system_city"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_system_city"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_system_province"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_ext"
+    }
+  ],
+  "sp_manual_book_install": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_manual_express": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    }
+  ],
+  "sp_manual_identity_auth": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_ext"
+    }
+  ],
+  "sp_manual_renew": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_manual_write_card": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_order_bind": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_product"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_account"
+    },
+    {
+      "name": "join",
+      "table": "fc_up_script"
+    },
+    {
+      "name": "join",
+      "table": "fc_product_package"
+    },
+    {
+      "name": "join",
+      "table": "fc_flow_step"
+    },
+    {
+      "name": "call",
+      "table": "script_type\r"
+    },
+    {
+      "name": "from",
+      "table": "fc_down_exclude_up"
+    },
+    {
+      "name": "from",
+      "table": "fc_down_specify_up"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_order_bind\r"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_bind"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    }
+  ],
+  "sp_order_query": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    }
+  ],
+  "sp_recv_check_charge": [
+    {
+      "name": "insert into",
+      "table": "fc_check_charge\r"
+    }
+  ],
+  "sp_recv_order": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_channel"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_step"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_order_main\r"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_order_ext\r"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    }
+  ],
+  "s0p_recv_refund": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_refund"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_refund"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_order_refund\r"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_bind"
+    }
+  ],
+  "sp_recv_refund_offline": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_refund"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "insert into",
+      "table": "fc_order_refund\r"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_bind"
+    }
+  ],
+  "sp_refund_confirm": [
+    {
+      "name": "from",
+      "table": "fc_order_refund"
+    },
+    {
+      "name": "from",
+      "table": "table"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_refund"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_order_refund"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_bind"
+    }
+  ],
+  "sp_scan_db": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_scan_config"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_scan_config"
+    }
+  ],
+  "sp_task_audit_save": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_task_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_bind"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_product"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_product_package"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_account"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_script"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_task_retry": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_express"
+    }
+  ],
+  "sp_task_update": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_write_card_get": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "join",
+      "table": "fc_order_ext"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_down_product"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_product"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_product_package"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_system_city"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_system_province"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_system_city"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_system_province"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_channel"
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_script"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "sp_write_card_save": [
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_flow_task"
+    },
+    {
+      "name": "lock table",
+      "table": ""
+    },
+    {
+      "name": "assign",
+      "table": ""
+    },
+    {
+      "name": "from",
+      "table": "fc_up_product"
+    },
+    {
+      "name": "update",
+      "table": "fc_order_main"
+    },
+    {
+      "name": "update",
+      "table": "fc_flow_task"
+    }
+  ],
+  "st_sp_remove_complaints": [
+    {
+      "name": "insert into",
+      "table": "ST_Down_Complaints\r"
+    },
+    {
+      "name": "from",
+      "table": "ST_Down_Complaints_hs"
+    },
+    {
+      "name": "from",
+      "table": "ST_Down_Complaints_hs"
+    }
+  ],
+  "Test": []
 }

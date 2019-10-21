@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-15 11:02:58
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-15 15:14:19
+ * @LastEditTime: 2019-10-21 11:09:49
  */
 const { CharSequenceReader } = require("./char-sequence-reader");
 const { Token, TOKEN_TYPE } = require("./token");
@@ -19,7 +19,6 @@ class Tokenizer {
          */
         constructor(reader) {
                 this._reader = reader;
-                this._keywords = keywords;
                 this._output = [];
         }
         /**
@@ -131,6 +130,12 @@ class Tokenizer {
                         let c = this._reader.next();
                         temp += c;
 
+                        let t = "";
+
+                        if (c == "/") {
+                                t = this._reader.previous();
+                        }
+
                         if (c == "/" && this._reader.previous() == "*") {
                                 break;
                         }
@@ -181,12 +186,14 @@ class Tokenizer {
                 let dotFound = false;
                 let temp = current;
                 while (this._reader.hasNext()) {
-                        let c = this._reader.current();
-                        if (c = ".") {
-                                if (dotFound)
+                        let c = this._reader.next();
+                        if (c == ".") {
+                                if (!dotFound) {
                                         dotFound = true;
+                                        temp+=".";
+                                }
                                 else
-                                        break;
+                                     break;
                         } else if (REGEX.isNumber.test(c)) {
                                 temp += c;
                         } else {
@@ -194,7 +201,7 @@ class Tokenizer {
                         }
                 }
                 //should check again
-                this._output.push(temp, TOKEN_TYPE.number);
+                this._output.push(new Token(temp, TOKEN_TYPE.number));
         }
         /**
          * 
@@ -202,6 +209,7 @@ class Tokenizer {
          */
         skipWhiteSpace(current) {
                 let temp = current;
+                let end = false;
                 while (this._reader.hasNext()) {
                         let c = this._reader.next();
                         switch (c) {
@@ -214,8 +222,12 @@ class Tokenizer {
                                         break;
                                 default:
                                         this._reader.back();
-                                        return;
+                                        end = true;
+                                        break;
                         }
+
+                        if (end)
+                                break;
                 }
 
                 this._output.push(new Token(temp, TOKEN_TYPE.blank));
@@ -238,9 +250,17 @@ class Tokenizer {
                                 case "\f":
                                         end = true;
                                         break;
+                                default:
+                                        if (!OPERATORS.has(c)) {
+                                                temp += c;
+                                        } else {
+                                                this._reader.back();
+                                                end = true;
+                                        }
+                                        break;
                         }
-
-                        if (end || OPERATORS.has(c))
+                        
+                        if (end)
                                 break;
                 }
                 this._output.push(new Token(temp, TOKEN_TYPE.symbol));

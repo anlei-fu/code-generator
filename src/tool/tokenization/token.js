@@ -4,20 +4,20 @@
  * @Author: fuanlei
  * @Date: 2019-10-15 09:19:07
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-15 14:30:10
+ * @LastEditTime: 2019-10-21 09:18:25
  */
-exports.TOKEN_TYPE= {
+exports.TOKEN_TYPE = {
         keyword: "keyword",
         string: "string",
         boolean: "boolean",
         number: "number",
         operator: "operator",
-        symbol:"symbol",
-        comment:"comment",
-        blank
+        symbol: "symbol",
+        comment: "comment",
+        blank:"blank"
 }
 
-exports.Token=class Token {
+exports.Token = class Token {
         /**
          * 
          * @param {String} value 
@@ -30,21 +30,21 @@ exports.Token=class Token {
         /**
          * 
          */
-        isString = () => this.type = TOKEN_TYPE.string;
+        isString() { return this.type = TOKEN_TYPE.string }
         /**
          * 
          */
-        isBoolean = () => this.type = TOKEN_TYPE.boolean;
+        isBoolean() { return this.type = TOKEN_TYPE.boolean; }
         /**
          * 
          */
-        isNumber = () => this.type = TOKEN_TYPE.number;
+        isNumber() { return this.type = TOKEN_TYPE.number; }
         /**
          * 
          */
-        isOperator = () => this.type = TOKEN_TYPE.operator;
+        isOperator() { return this.type = TOKEN_TYPE.operator; }
         /**
          * 
          */
-        toString = () => `${this.type}:${this.value}`;
+        toString() { return `${this.type}:${this.value}`; }
 }

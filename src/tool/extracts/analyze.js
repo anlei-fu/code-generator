@@ -1,9 +1,19 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-10-14 09:05:18
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-10-21 12:34:15
+ */
 const { FILE } = require("./../../libs/file");
 const { STR } = require("./../../libs/str");
+const { tokenize } = require("./../tokenization/tokenizer");
+const { TOKEN_TYPE } = require("./../tokenization/token");
 class Notice {
-        constructor(name, tbale) {
+        constructor(name, table) {
                 this.name = name;
-                this.tbale = tbale;
+                this.table = table;
         }
 }
 
@@ -11,7 +21,7 @@ class Notice {
  * 
  */
 function getFunctions() {
-        let lines = FILE.readLines("func.sql");
+        let lines = FILE.readLines("fc/proc.sql");
         let temp = "";
         console.log(lines.length);
         let ls = [];
@@ -45,35 +55,53 @@ function main() {
 function getFuncName(text) {
         let segs = STR.select(text, ".", "(");
 
-        if(segs.length!=0)
-           return segs[0];
-        
-        let raw_name =STR.splitToWords(text)[4];
+        if (segs.length != 0)
+                return segs[0];
+
+        let raw_name = STR.splitToWords(text)[4];
 
         return raw_name.split(".")[1];
 }
 
 function getNotice(text) {
+
         let notices = [];
-        let words = STR.splitToWords(text);
-        console.log(words.length);
-        words.forEach((w, i) => {
-                if (w.toLowerCase() == "from" && i < words.length - 1) {
-                        if (!words[i + 1].startsWith("("))
-                                notices.push(new Notice("from", words[i + 1]));
-                }
-                console.log(w);
 
-                if (w.toLowerCase() == "update") {
+        tokenize(text).forEach((x, i, tokens) => {
 
-                        if (!words[i - 1].startsWith("for"))
-                                notices.push(new Notice("update", words[i + 1]));
+                if (x.type == TOKEN_TYPE.symbol) {
+                        let v = x.value.toLowerCase()
+                        if (v == "from") {
+                                if (tokens[i + 1].value != "("){
+                                        notices.push(new Notice("from", tokens[i + 1].value));
+                                        console.log(tokens[i + 1]);
+                                }
+                        } else if (v == "into") {
+                                if (tokens[i - 1].value.toLowerCase() == "insert") {
+                                        notices.push(new Notice("insert into", tokens[i + 1].value));
+                                } else {
+                                        notices.push(new Notice("assign", ""));
+                                }
+                        } else if (v == "update") {
+                                if (tokens[i - 1].value.toLowerCase() == "for") {
+                                        notices.push(new Notice("lock table", ""));
+                                } else {
+                                        notices.push(new Notice("update", tokens[i + 1].value));
+                                }
+
+                        } else if (v == "join") {
+                                notices.push(new Notice("join", tokens[i + 1].value));
+                        } else {
+                                if (tokens[i + 2].value == "(" 
+                                   && v.indexOf("_") != -1
+                                   &&!v.startsWith("l")
+                                   &&!v.startsWith("v")) {
+                                        notices.push(new Notice("call", v));
+                                }
+                        }
                 }
-                
-                if (w.toLowerCase() == "into") {
-                        if (words[i - 1].toLowerCase().startsWith("insert"))
-                                notices.push(new Notice("insert", words[i + 1]));
-                }
+
+
         });
 
         return notices;

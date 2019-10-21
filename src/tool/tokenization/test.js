@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-15 15:15:16
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-15 15:18:57
+ * @LastEditTime: 2019-10-21 10:22:51
  */
 const{tokenize}=require("./tokenizer");
 
@@ -27,3 +27,5 @@ function testTokenize(){
           console.log(x);
   })
 }
+
+testTokenize();
