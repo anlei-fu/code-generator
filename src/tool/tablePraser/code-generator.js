@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-14 09:05:18
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-17 09:34:48
+ * @LastEditTime: 2019-10-22 09:49:38
  */
 //imports
 const { FILE } = require("./../../libs/file");
@@ -72,6 +72,7 @@ class Generator {
    *  dao config
    */
   generateEntityConfig() {
+
     let fileds = "";
     for (let c in this.table.columns) {
 
@@ -87,10 +88,30 @@ class Generator {
 
       fileds += `label="${x.description}"/>\r\n`;
     }
+    
+    let filters="";
+
+    if(this.option){
+
+      if(this.option.columns){
+         this.option.columns.forEach(x=>{
+             filters+=`{&@${x}}\r\n`;
+         });
+      }
+
+      if(this.option.additionals){
+          this.option.additionals.forEach(x=>{
+            filters+=`${x()}\r\n`;
+          })
+      }
+    }
+ 
+
 
     return FILE.read("templates/config.xml")
       .replace(new RegExp("@table.name", "g"), NamingStrategy.toHungary(this.table.name).toUpperCase())
-      .replace("@fields", fileds.trim());
+      .replace("@fields", fileds.trim())
+      .replace("@filter",filters);
   }
   /**
    *  entities
@@ -152,6 +173,17 @@ class Generator {
    *  controller
    */
   generateController() {
+     let exportExcel="",
+         importExcel="";
+
+         if(this.option.exportExcel){
+
+         }
+
+         if(this.option.importExcel){
+           
+         }
+
     return this.filts(FILE.read("./templates/controller.cs"));
   }
 
@@ -232,8 +264,7 @@ function main(name, project, option) {
  *    }
  *    viewList:[],
  *    import:{
- *             columns:[String],
- *             additional:[()=>String]
+ *             resolvers:[{column,resolve}]
  *    },
  *    index:{
  *              check,
@@ -242,7 +273,8 @@ function main(name, project, option) {
  *              cells:{name:()=>String}
  *    },
  *    add: {
- *             items:[()=>{js,html}]
+ *             items:[()=>{js,html}],
+ *             rules:[{name,regex}]
  *    },
  *    detail:{
  *    },

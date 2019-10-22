@@ -16,6 +16,7 @@
                                           FROM  @table.name t
                                             WHERE 
                                             1=1
+                                            @filters
                                            ORDER BY t.Create_Time DESC) R
                                    WHERE ROWNUM <= { :PS} * { :PI})
                            WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
@@ -28,8 +29,10 @@
         <![CDATA[
           SELECT COUNT(1) FROM @table.name  t  WHERE 
                                              1=1
+                                             @filters
         ]]>
       </sql>
     </item>
+    @additionals
   </template>
 </config>

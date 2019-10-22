@@ -145,5 +145,6 @@ namespace @project.name.Interfaces.Logic
         /// <param name="id">主键编号</param>
         /// <returns></returns>
        @table.name GetSingleDataByTemplate(string xmlTemplateName,@table.name vo);
+@additionals
     }
 }

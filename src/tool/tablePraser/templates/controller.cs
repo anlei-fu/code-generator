@@ -115,7 +115,6 @@ namespace @project.name.UserWeb.Controllers
                 return new Result(false, e.Message).ToString();
             }
         }
-@s.exportExcel
-@s.importExcel
+@additionals
     }
 }

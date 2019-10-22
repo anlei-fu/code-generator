@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-25 11:43:26
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-11 16:45:16
+ * @LastEditTime: 2019-10-22 15:11:12
  */
 const { requireNotNull } = require("./utils")
 const fs = require("fs");
@@ -37,8 +37,8 @@ function create(path) {
  */
 function remove(path) {
 
-        if(!exists(path))
-            return;
+        if (!exists(path))
+                return;
 
         fs.readdirSync(path)
                 .forEach(file => {
@@ -84,6 +84,26 @@ function getFolders(path) {
                 })
 
         return ls;
+}
+/**
+ * @param {String} target 
+ */
+function copy(target, destination) {
+        if (!exists(target))
+                return;
+
+        let segs = target.split("/");
+        let desFolder = destination + "/" + segs[segs.length - 1];
+        create(desFolder);
+
+        fs.readdirSync(target).forEach(f => {
+                if (fs.statSync(f).isDirectory()) {
+                        fs.copyFileSync(target + "/" + f, desFolder + "/" + f);
+                } else {
+                        copy(target + "/" + f, desFolder);
+                }
+        })
+
 }
 // Exports
 exports.DIR = {

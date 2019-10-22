@@ -1,0 +1,976 @@
+{
+	"UrlMappings": {
+		"UrlGroup": [
+			{
+				"$": {
+					"name": "/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "充值订单查询",
+							"name": "^/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "*"
+				},
+				"url": [
+					{
+						"$": {
+							"name": "^/404.html$"
+						}
+					},
+					{
+						"$": {
+							"title": "index",
+							"name": "^/system/index"
+						}
+					},
+					{
+						"$": {
+							"title": "index",
+							"name": "^$"
+						}
+					},
+					{
+						"$": {
+							"title": "index",
+							"name": "^/$"
+						}
+					},
+					{
+						"$": {
+							"title": "抱歉，出错啦",
+							"name": "^/shared/error"
+						}
+					},
+					{
+						"$": {
+							"title": "AJAX异步操作",
+							"name": "^/userajax/([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "操作成功",
+							"name": "^/shared([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "帮助中心",
+							"name": "^/help([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "获取City",
+							"name": "^/FCSystemCity/GetCity([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "订单详情",
+							"name": "^/FCOrderMain/Details([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "压缩图片",
+							"name": "^/FCOrderMain/YaSuo([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCSystemDictionary/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "数据字典",
+							"name": "^/FCSystemDictionary/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCSystemDictionary/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCSystemDictionary/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"_": "\r\n    \r\n    \r\n    \r\n    \r\n    \\\r\n    \r\n    \r\n  ",
+				"$": {
+					"name": "/FCOrderMain/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "订单查询",
+							"name": "^/FCOrderMain/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "订单导出",
+							"name": "^/FCOrderMain/Excel([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "退款",
+							"name": "^/FCOrderMain/Refund([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "用户自提",
+							"name": "^/FCOrderMain/SetWuliuMode([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "预览",
+							"name": "^/FCOrderMain/Preview([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "地址转换",
+							"name": "^/FCOrderMain/AdressChange([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "更新身份证照片",
+							"name": "^/FCOrderMain/UpdateImage([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCOrderBind/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "绑定查询",
+							"name": "^/FCOrderBind/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCUpchannel/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "上游渠道",
+							"name": "^/FCUpchannel/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCUpchannel/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCUpchannel/delete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "上游渠道下属账户",
+							"name": "^/FCUpchannel/AddUserIndex([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "下属账户添加",
+							"name": "^/FCUpchannel/AddUserItem([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "下属账户删除",
+							"name": "^/FCUpchannel/AddUserDelete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "下属账户编辑",
+							"name": "^/FCUpchannel/EditUserItem([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCDownchannel/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "下游渠道",
+							"name": "^/FCDownchannel/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCDownchannel/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCDownchannel/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCUpProduct/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "上游产品",
+							"name": "^/FCUpProduct/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCUpProduct/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "克隆",
+							"name": "^/FCUpProduct/clone([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCUpProduct/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCDownProduct/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "下游产品",
+							"name": "^/FCDownProduct/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCDownProduct/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "克隆",
+							"name": "^/FCDownProduct/clone([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCDownProduct/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCUpScript/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "上游脚本",
+							"name": "^/FCUpScript/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCUpScript/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCUpScript/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCDownScript/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "下游脚本",
+							"name": "^/FCDownScript/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCDownScript/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCDownScript/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCDownSpecifyUp/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "下游指定上游",
+							"name": "^/FCDownSpecifyUp/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCDownSpecifyUp/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCDownSpecifyUp/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCDownExcludeUp/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "下游排斥上游",
+							"name": "^/FCDownExcludeUp/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCDownExcludeUp/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCDownExcludeUp/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCProductPackage/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "套餐管理",
+							"name": "^/FCProductPackage/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCProductPackage/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCProductPackage/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCProductType/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "产品类型",
+							"name": "^/FCProductType/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCProductType/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCProductType/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCFLOW/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "流程管理",
+							"name": "^/FCFLOW/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCFLOW/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCFLOW/delete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "步骤管理",
+							"name": "^/FCFlowStep/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCFlowStep/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCFlowStep/delete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "查看详情",
+							"name": "^/FCFLOW/QueryForSelect([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCFundChangeDown/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "下游交易报表",
+							"name": "^/FCFundChangeDown/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCFundChangeUp/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "上游交易报表",
+							"name": "^/FCFundChangeUp/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCUpAccount/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "上游账户",
+							"name": "^/FCUpAccount/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCUpAccount/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCUpAccount/delete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "清除Cookies",
+							"name": "^/FCUpAccount/ClearUpAccountCookies([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "禁用账户",
+							"name": "^/FCUpAccount/ConfirmFibdden([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCOrderRefund/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "退款记录查询",
+							"name": "^/FCOrderRefund/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑退款",
+							"name": "^/FCOrderRefund/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "退款确认",
+							"name": "^/FCOrderRefund/ConfirmRefund([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "下载退款订单",
+							"name": "^/FCOrderRefund/ExportExcel([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCOrderExpress/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "发货订单查询",
+							"name": "^/FCOrderExpress/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCFlowTask/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "上游账户",
+							"name": "^/FCFlowTask/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCFlowTask/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCFlowTask/delete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "订单导出",
+							"name": "^/FCFlowTask/Excel([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(打印快递)",
+							"name": "^/FCFlowTask/ManualPrintExpress([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(获取实名信息)",
+							"name": "^/FCFlowTask/ManualIdentityAuth([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(写卡)",
+							"name": "^/FCFlowTask/ManualWriteCard([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(预约安装)",
+							"name": "^/FCFlowTask/ManualBookInstall([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(宽带续费)",
+							"name": "^/FCFlowTask/ManualRenew([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(打包设备)",
+							"name": "^/FCFlowTask/ManualDevice([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(查询物流)",
+							"name": "^/FCFlowTask/ManualQueryMail([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "人工操作(查询激活)",
+							"name": "^/FCFlowTask/ManualQueryAction([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "重试",
+							"name": "^/FCFlowTask/ReCry([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "立即执行",
+							"name": "^/FCFlowTask/RmmediateExecution([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "导入exe",
+							"name": "^/FCFlowTask/ImportExcel([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCNotifyRecord/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "通知查询",
+							"name": "^/FCNotifyRecord/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCOrderMain/searchorderlist"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "简单查询",
+							"name": "^/FCOrderMain/searchorderlist([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCNotifyRecord/RewardQuery"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "佣金报表",
+							"name": "^/FCNotifyRecord/RewardQuery([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCNotifyRecord/TradeChannel"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "渠道交易分析报表",
+							"name": "^/FCNotifyRecord/TradeChannel([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCICCID/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "ICCID",
+							"name": "^/FCICCID/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCICCID/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCICCID/delete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "导入",
+							"name": "^/FCICCID/ImportExcel([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCErrorCode/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "ErrorCode",
+							"name": "^/FCErrorCode/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑添加",
+							"name": "^/FCErrorCode/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCErrorCode/delete([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCSmsRecord/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "SmsRecord",
+							"name": "^/FCSmsRecord/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCOperation/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "FCOperation",
+							"name": "^/FCOperation/index([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCYxhdPhone/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "营销活动",
+							"name": "^/FCYxhdPhone/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "添加",
+							"name": "^/FCYxhdPhone/Item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "删除",
+							"name": "^/FCYxhdPhone/delete([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "导入",
+							"name": "^/FCYxhdPhone/ImportExcel([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "导出",
+							"name": "^/FCYxhdPhone/Excel([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "编辑",
+							"name": "^/FCYxhdPhone/ItemChannel([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCPhoneCharge/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "FCPhoneCharge",
+							"name": "^/FCPhoneCharge/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "FCPhoneItem",
+							"name": "^/FCPhoneCharge/item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "FCPhoneImportExcel",
+							"name": "^/FCPhoneCharge/ImportExcel([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "重试",
+							"name": "^/FCPhoneCharge/Retry([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCPreCharge/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "FCPhoneCharge",
+							"name": "^/FCPreCharge/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "FCPreChargeItem",
+							"name": "^/FCPreCharge/item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "FCPreChargeImportExcel",
+							"name": "^/FCPreCharge/ImportExcel([\\w/]*)$"
+						}
+					}
+				]
+			},
+			{
+				"$": {
+					"name": "/FCActiveRecord/index"
+				},
+				"url": [
+					{
+						"$": {
+							"title": "FCPhoneCharge",
+							"name": "^/FCActiveRecord/index([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "FCActiveRecordItem",
+							"name": "^/FCActiveRecord/item([\\w/]*)$"
+						}
+					},
+					{
+						"$": {
+							"title": "FCActiveRecordImportExcel",
+							"name": "^/FCActiveRecord/ImportExcel([\\w/]*)$"
+						}
+					}
+				]
+			}
+		]
+	}
+}

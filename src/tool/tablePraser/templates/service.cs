@@ -121,6 +121,6 @@ namespace @project.name.UserService
        {
            return new Result(handler.Delete(id));
        }
-
+@additionals
     }
 }
