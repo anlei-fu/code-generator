@@ -9,15 +9,15 @@
     <item name="getList">
       <sql>
         <![CDATA[
-          select  t.*
+          @returnFileds
                     from (SELECT RID
                             FROM (SELECT R.RID, ROWNUM LINENUM
                                     FROM (SELECT t.rowid RID
                                           FROM  @table.name t
-                                            WHERE 
+                                          WHERE 
                                             1=1
                                             @filters
-                                           ORDER BY t.Create_Time DESC) R
+                                          @orderBy) R
                                    WHERE ROWNUM <= { :PS} * { :PI})
                            WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
                    inner join @table.name t on tab.rid = t.rowid

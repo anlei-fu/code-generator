@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-14 10:56:15
+ * @LastEditTime: 2019-10-23 10:29:27
  */
 /**
  * imports  @const cheerio see https://github.com/cheeriojs/cheerio
@@ -128,6 +128,7 @@ function parseTable(html) {
                 samples = $(".simple_table");
 
         tab.columns = parseColumns($, samples[0]);
+        tab.rawName = NamingStrategy.toHungary(tab.name).toUpperCase();
 
         if (samples.length > 1) {
                 tab.constraints = parseConstraints($, samples[1]);
@@ -138,8 +139,28 @@ function parseTable(html) {
                         for (let cons of tab.constraints[constraint].columns) {
 
                                 for (let col in tab.columns) {
-                                        if (col == cons)
+                                        // set chinese name
+                                        tab.columns[col].chineseName = getChineseName(tab.columns[col].description);
+
+                                        if (tab.columns[col].chineseName == "") {
+                                                tab.columns[col].chineseName = tab.columns[col].name;
+                                        }
+
+                                        //set column raw name
+                                        tab.columns[col].rawName = NamingStrategy.toHungary(tab.columns[col].name)
+                                                .toUpperCase();
+                                        // set pk
+                                        if (col == cons) {
                                                 tab.columns[col].isPk = true;
+
+                                                // set sequence
+                                                if (tab.columns[col].type.name == "number") {
+                                                        tab.columns[col].autoIncrement = true;
+                                                        tab.columns[col].sequence = `SEQ_${tab.rawName}_${tab.columns[col].rawName}`;
+                                                }
+                                        }
+
+
                                 }
                         }
                 }
@@ -151,6 +172,25 @@ function parseTable(html) {
 
         return tab;
 }
+/**
+ * 
+ * @param {String} comment 
+ * @returns {String}
+ */
+function getChineseName(comment) {
+
+        if (!comment || comment.trim() == "")
+                return "";
+
+        if (comment.trim() == "主键")
+                return "";
+
+        if (comment.indexOf(":") != -1)
+                return comment.split(":")[0];
+
+        return comment.trim();
+}
+
 /**
  * Resolve column info 
  * @param {CheerioStatic} $ 

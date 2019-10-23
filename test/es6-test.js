@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-16 09:15:03
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-16 10:39:14
+ * @LastEditTime: 2019-10-23 11:45:01
  */
 const assert=require("assert");
 function testExtension(){
@@ -54,3 +54,12 @@ function testDate(){
 }
 
 testDate();
+
+function testPropertyVisitor(){
+        let a={name:"hhhh"};
+        let c="name";
+        delete a[c];
+        console.log(a.name);
+}
+
+testPropertyVisitor();

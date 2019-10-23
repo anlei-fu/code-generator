@@ -4,8 +4,9 @@
  # @Author: fuanlei
  # @Date: 2019-10-18 11:14:20
  # @LastEditors: fuanlei
- # @LastEditTime: 2019-10-18 11:47:02
+ # @LastEditTime: 2019-10-23 13:52:21
  ###
+ 
 cd /home/fuanlei
 mkdir  /usr/java   /usr/redis /usr/hadoop /usr/mongodb /usr/kafka /usr/mysql /usr/erlang /usr/spark /usr/docker /usr/kubernate /usr/zookeeper
 mv  jdk-11.0.4_linux-x64_bin.tar.gz  /usr/java

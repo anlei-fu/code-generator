@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-23 16:06:05
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-15 10:29:43
+ * @LastEditTime: 2019-10-23 11:46:32
  */
 /**
  * Check target is defined, if target not defiend will throw an error
@@ -27,7 +27,7 @@ exports.requireNotNull = target => {
  */
 exports.parseValue = (value) => {
         value = value.trim();
-        
+
         if (value.length == 0) {
                 return value;
         } else if ((value.startsWith("\"") && value.endsWith("\""))
@@ -104,15 +104,15 @@ function extend(self, other, override) {
  * @param {Object} self 
  * @param {Object} other 
  */
-function deepExtend(self,other){
-        let keys= toSet(Object.keys(self));
+function deepExtend(self, other) {
+        let keys = toSet(Object.keys(self));
 
-        for(const p of other){
-            if(keys.has(p)){
-                 deepExtend(self[p],other[p]);
-            } else {
-                    self[p]=other[p];
-            }
+        for (const p of other) {
+                if (keys.has(p)) {
+                        deepExtend(self[p], other[p]);
+                } else {
+                        self[p] = other[p];
+                }
         }
 }
 /**
@@ -120,21 +120,69 @@ function deepExtend(self,other){
  * @param {Object} target 
  * @returns {Object}
  */
-function clone(target){
-   return JSON.parse(JSON.stringify(target));
+function clone(target) {
+        return JSON.parse(JSON.stringify(target));
 }
+/**
+ * 
+ * @param {Any} obj 
+ */
+function toArray(obj) {
+        let ls = []
 
-exports.OBJECT={
+        for (let k in obj) {
+                ls.push(obj[k]);
+        }
+
+        return ls;
+}
+/**
+ * 
+ * @param {Any} obj 
+ * @param {String} key 
+ * @returns {boolean}
+ */
+function hasKey(obj,key){
+   return  new Set(Object.keys(obj)).has(key);
+}
+/**
+ * 
+ * @param {Any} obj 
+ * @param {(key:String,value:Any)=>void} consumer 
+ */
+function forEach(obj,consumer){
+    
+    if(!consumer)
+       throw new ReferenceError("consumer can not be null!");
+ 
+    for( const c in obj){
+            consumer(c,obj[c]);
+    }
+}
+/**
+ * 
+ * @param {Any} obj 
+ * @param {String} key 
+ */
+function deleteKey(obj,key){
+     if(!hasKey(obj,key))
+        return;
+ 
+     delete obj[key];
+}
+exports.OBJECT = {
         extend,
         deepExtend,
-        clone
+        clone,
+        toArray,
+        hasKey,
+        forEach
 }
 /*-------------------------------------------------------------------function---------------------------------------------------------------*/
 
-function extend(self,other){
-        Function
+function extend(self, other) {
 }
 /*-------------------------------------------------------------------class----------------------------------------------------------------------*/
-function extend(self,other){
+function extend(self, other) {
 
 }

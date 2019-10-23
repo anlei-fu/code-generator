@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:13:28
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-14 11:24:11
+ * @LastEditTime: 2019-10-23 10:54:10
  */
 //imports
 const { requireNotNull, EMPTY } = require("./utils")
@@ -25,7 +25,7 @@ function select(input, left, right, start, count) {
         count = count || 1;
 
         let i = 0,
-           ls = [];
+                ls = [];
 
         while (true) {
                 i = input.indexOf(left, start);
@@ -64,7 +64,7 @@ function select1(input, left, right, start, count) {
         count = count || -1;
 
         let i = 0,
-           ls = [];
+                ls = [];
 
         while (true) {
                 i = input.indexOf(left, start);
@@ -152,7 +152,7 @@ function removeWithMatchMany(input, option) {
  */
 function makeOraginalRegexPattern(patter) {
         let out = "";
-       
+
         for (const c of patter) {
                 switch (c) {
                         case "*":
@@ -216,7 +216,7 @@ function split1(input, splitor, start, count) {
         count = count || -1;
 
         let i = 0,
-           ls = [];
+                ls = [];
 
         while (true) {
                 i = input.indexOf(splitor, start);
@@ -253,8 +253,8 @@ function repeat(pattern, times) {
 function splitToWords(input) {
         requireNotNull(input);
         let isSkipping = false,
-            ls = [],
-            w = EMPTY;
+                ls = [],
+                w = EMPTY;
         // iterate input
         for (const c of input) {
 
@@ -290,9 +290,45 @@ function splitToWords(input) {
 /**
  * 
  * @param {String} input 
+ * @returns {String}
  */
 function upperFirstLetter(input) {
         return `${input.substr(0, 1).toUpperCase()}${input.substr(1, input.length - 1)}`;
+}
+/**
+ * 
+ * @param {String} input 
+ * @returns {String}
+ */
+function lowerFirstLetter(input) {
+        return `${input.substr(0, 1).toLowerCase()}${input.substr(1, input.length - 1)}`;
+}
+/**
+ * 
+ * @param {String} input 
+ * @returns {[String]}
+ */
+function splitToLines(input) {
+        return input.split("\n");
+}
+/**
+ * 
+ * @param {String} input 
+ * @returns {String}
+ */
+function removeEmptyLine(input) {
+        let temp = "";
+        splitToLines(input).forEach(l => {
+                if (l.trim() != "")
+                        temp += l + "\n";
+        })
+        return temp;
+}
+/**
+ * 
+ */
+function formatWords(input, option) {
+
 }
 
 exports.STR = {
@@ -306,5 +342,8 @@ exports.STR = {
         upperFirstLetter,
         repeat,
         removeWithMatch,
-        removeWithMatchMany
+        removeWithMatchMany,
+        removeEmptyLine,
+        splitToLines,
+        lowerFirstLetter
 }

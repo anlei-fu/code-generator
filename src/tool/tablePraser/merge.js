@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-25 11:44:06
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-22 15:48:57
+ * @LastEditTime: 2019-10-23 09:26:59
  */
 var { FILE } = require("./../../libs/file");
 var { DIR } = require("./../../libs/dir");
@@ -21,18 +21,18 @@ const DATA_LAYER = "User Layer";
 const DATA_LAYER = "Service Layer";
 
 //ouput files
-const ENTITY_FILE = `${TABLE}.cs`;
-const CONTROLLER_FILE = `${TABLE}Controller.cs`;
-const IACCESS_FILE = `I${TABLE}Access.cs`;
-const ACCESS_FILE = `${TABLE}Access.cs`;
-const IHANDLER_FILE = `I${TABLE}Handler.cs`;
-const HANDLER_FILE = `${TABLEY}Handler.cs`;
-const SERVICE_FILE = `${TABLE}Service.cs`;
-const CONFIG_FILE = `${TABLE}Service.xml`;
-const OUT_VIEW_FOLDER = `${TABLE}`;
-const ITEM_MODEL_FILE = `${TABLE}ItemModel.cs`;
-const LIST_MODEL_FILE = `${TABLE}ListModel.cs`;
-const VIEW_MODEL_FILE = `${TABLE}ViewModel.cs`;
+const ENTITY_FILE = `${OUTPUT}/${TABLE}/${TABLE}.cs`;
+const CONTROLLER_FILE = `${OUTPUT}/${TABLE}/${TABLE}Controller.cs`;
+const IACCESS_FILE = `${OUTPUT}/${TABLE}/I${TABLE}Access.cs`;
+const ACCESS_FILE = `${OUTPUT}/${TABLE}/${TABLE}Access.cs`;
+const IHANDLER_FILE = `${OUTPUT}/${TABLE}/I${TABLE}Handler.cs`;
+const HANDLER_FILE = `${OUTPUT}/${TABLE}/${TABLEY}Handler.cs`;
+const SERVICE_FILE = `${OUTPUT}/${TABLE}/${TABLE}Service.cs`;
+const CONFIG_FILE = `${OUTPUT}/${TABLE}/${TABLE}Service.xml`;
+const OUT_VIEW_FOLDER = `${OUTPUT}/${TABLE}/${TABLE}`;
+const ITEM_MODEL_FILE = `${OUTPUT}/${TABLE}/${TABLE}ItemModel.cs`;
+const LIST_MODEL_FILE = `${OUTPUT}/${TABLE}/${TABLE}ListModel.cs`;
+const VIEW_MODEL_FILE = `${OUTPUT}/${TABLE}/${TABLE}ViewModel.cs`;
 
 
 
@@ -111,10 +111,10 @@ function merge() {
 
 
 async function mergeEconfig() {
-
         FILE.copy(CONFIG_FILE, DB_CONFIG_FOLEDER);
         let prj = await XML.toJson(FILE.read(CONTROLLER_PROJECT))
-        prj.ItemGroup[2].Content
+        prj.ItemGroup[3].Content.push({$:{Include:`Config\\EConfig\\${CONFIG_FILE}`},SubType:["Designer"]});
+        FILE.write(CONTROLLER_PROJECT,XML.toXml(prj));
 }
 
 

@@ -4,16 +4,13 @@
  * @Author: fuanlei
  * @Date: 2019-09-25 13:17:04
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-22 15:53:07
+ * @LastEditTime: 2019-10-23 14:11:46
  */
 
-var { requireNotNull } = require("./../libs/utils");
-var { FILE } = require("./../../libs/file");
-const PLZSELECT = "";
-const TIMERANGETITLE = "";
-
-const DEFAULT_OPTION = "";
-const EMPTY = "";
+const { FILE } = require("./../../libs/file");
+const { STR } = require("./../../libs/str");
+const DEFAULT_OPTION = "------请选择------";
+const { OBJECT } = require("./../../libs/utils");
 
 
 /**
@@ -108,28 +105,32 @@ function renderMutipleRadio(id, ...items) {
 }
 /**
  * 
- * @param {*} table 
- * @param {{columns:[String],additional:[()=>String]}} config 
+ * @param {*} tab 
+ * @param {{columns:[String],additional:[()=>String],returnFields:[String],orderBy:{name,type}}} option 
  * @returns {{controller:String,
  *            html:String,
  *            js:String,
  *            service:String,
  *            config:String}}
  */
-function renderExportExcel(table, config) {
+function renderExportExcel(table, option) {
 
         // controller
         let headers = "",
                 body = "",
-                ident = "";
-        table.columns.forEach(x, i, array => {
-                let name;
+                ident = "",
+                tab = OBJECT.clone(table);
+
+        tab.columns = OBJECT.toArray(tab.columns);
+
+        tab.columns.forEach(x, i, array => {
+                let name = STR.upperFirstLetter(x.name);
                 if (i != array.length - 1) {
                         headers += `${ident}"${x.chineseName}",\r\n`;
-                        body += `row["${x.chineseName}"] = item.${name};`
                 } else {
                         headers += `${ident}"${x.chineseName}"\r\n`;
                 }
+                body += `row["${x.chineseName}"] = item.${name};\r\n`
         });
 
         let controller = FILE.read("templates/export-excel-controller.cs")
@@ -139,16 +140,36 @@ function renderExportExcel(table, config) {
 
         //config
         let filters = "";
-        config.columns.forEach(x => {
+        option.columns.forEach(x => {
                 filters += `{&@t.${x}}\r\n`;
         });
 
-        config.additionals.forEach(x => {
+        option.additionals.forEach(x => {
                 filters += `${x()}\r\n`;
         })
 
-        let filters = FILE.read("templates/export-excel-config.xml")
-                .replace("@filters", filters);
+        let orderBy = "";
+        if (option.orderBy) {
+                orderBy = `ORDER BY ${option.orderBy.name} ${option.orderBy.type} `;
+        }
+
+        let returnFields = "t.*";
+        if (option.returnFileds) {
+                option.returnFileds.push("t.*");
+                returnFields = "";
+                option.returnFilelds.forEach(x, i, array => {
+                        if (i != array.length - 1)
+                                returnFields += `${x},\r\n`;
+                        else
+                                returnFields += `${x}\r\n`;
+                });
+        }
+
+
+        let config = FILE.read("templates/export-excel-config.xml")
+                .replace("@filters", filters)
+                .replace("@orderBy", orderBy)
+                .replace("@returnFields", returnFields);
 
         // service
         let service = FILE.read("templates/exports-excel-service.cs");
@@ -161,7 +182,7 @@ function renderExportExcel(table, config) {
 
         return {
                 controller,
-                config: filters,
+                config,
                 service,
                 html,
                 js
@@ -169,7 +190,7 @@ function renderExportExcel(table, config) {
 }
 /**
  * 
- * @param {[{column:String,resolve:()=>String}]} resolvers 
+ * @param {[{name:()=>String}]} resolvers 
  * @returns {{
  * controller:String,
  * html:String,
@@ -188,8 +209,8 @@ function renderImportExcel(resolvers) {
 
         // service
         let temp = "";
-        resolvers.forEach(x => {
-                temp += `entity.${x.column} = ${x.resolve()};\r\n`;
+        OBJECT.forEach(resolvers, (key, value) => {
+                temp += `entity.${key} = ${value()};\r\n`;
         });
         let service = FILE.read("templates/import-excel-service.cs")
                 .replace("@resolvers", temp);
@@ -229,12 +250,14 @@ function renderEdit(items, rules) {
                 temp = "",
                 r = "";
 
+        // key items
         items.forEach(x => {
                 let componet = x();
                 j += componet.js || "";
                 temp += componet.html || "";
         });
 
+        // rules
         rules.forEach(x => {
                 if (x.regex) {
                         r += `${x.name}:{required:true,${x.regex}:true},\r\n`
@@ -263,34 +286,55 @@ function renderEdit(items, rules) {
 }
 /**
  * 
- * @param {*} table 
+ * @param {Any} table 
  * @param {{check:boolean,delete:boolean,edite:boolean}} option
+ * @param {{name:()=>String}} cells
  * @returns {{html:String}}
  */
-function renderTable(table,option) {
+function renderTable(table, option, cells) {
+
+        let tab = OBJECT.clone(table);
+        tab.columns = OBJECT.toArray(tab.columns);
+
+        tab.columns.forEach(x => {
+                x.name = STR.upperFirstLetter(x);
+        });
+
         let headers = "",
                 bodys = "";
-        
 
-        
-        table.columns.forEach(x => {
+        tab.columns.forEach(x => {
                 headers += `<th>${x.chineseName}</th>\r\n`;
-                body += `<td>item.${x.name}</td>\r\n`;
+
+                let content = `item.${x.name}`;
+
+                if (cells && OBJECT.hasKey(cells, x.name))
+                        content = cells[x.name]();
+
+                bodys += `<td>${content}</td>\r\n`;
         })
 
-        if(option){
-                
-                if(option.delete){
+        if (option) {
+                headers += `<th>操作</th>\r\n`;
 
+                let op = `<td>\r\n`;
+
+
+                if (option.edite) {
+                        op += `<a href="javascript:void(0)" onclick="edit('@item.${tab.columns[1].name}')">修改</a>\r\n`;
                 }
 
-                if(option.edite){
+                if (option.delete) {
+                        op += `<a href="javascript:void(0)" onclick="del('@item.${tab.columns[1].name}',this)"> 删除</a>\r\n`;
+                }
+                op += `</td>`;
 
+                if (option.check) {
+                        headers = `` + headers;
+                        bodys = `` + bodys;
                 }
 
-                if(option.check){
-
-                }
+                bodys += op;
         }
 
         let html = FILE.read("templates/table.cshtml")
@@ -305,5 +349,13 @@ function renderIndex(table) {
 }
 
 exports.COMPONENTS = {
-
+        renderDateFilter,
+        renderEdit,
+        renderExportExcel,
+        renderImportExcel,
+        renderIndex,
+        renderOption,
+        renderOption1,
+        renderTable,
+        renderMutipleInput,
 }

@@ -4,14 +4,14 @@
  * @Author: fuanlei
  * @Date: 2019-10-14 09:05:18
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-22 09:49:38
+ * @LastEditTime: 2019-10-23 14:15:20
  */
 //imports
 const { FILE } = require("./../../libs/file");
 const { DIR } = require("./../../libs/dir");
 const { STR } = require("./../../libs/str");
 const { NamingStrategy } = require("./../../libs/naming-stratey");
-const {COMPONENTS}=require(".componets");
+const { COMPONENTS } = require("componets");
 
 const CLASS_IDENT = "    ";
 const PROPERTY_IDENT = "        ";
@@ -84,34 +84,43 @@ class Generator {
       fileds += `${CONFIG_FILED_IDENT}<filed pname="${pname}" name="${cname}" `;
 
       if (x.isPk)
-        fileds += `isPk="ture"`;
+        fileds += `isPk="ture" `;
+
+      if (x.autoIncrement) {
+        fileds += "buildType=\"0\" ";
+        fileds += `valueSql="SELECT ${x.sequence}.NEXTVAL FROM DUAL" `;
+      }
 
       fileds += `label="${x.description}"/>\r\n`;
     }
-    
-    let filters="";
 
-    if(this.option){
+    let filters = "";
 
-      if(this.option.columns){
-         this.option.columns.forEach(x=>{
-             filters+=`{&@${x}}\r\n`;
-         });
-      }
+    if (this.option) {
+      // default sql filters
+      if (this.option.config) {
 
-      if(this.option.additionals){
-          this.option.additionals.forEach(x=>{
-            filters+=`${x()}\r\n`;
+        if (this.option.config.columns) {
+          this.option.columns.forEach(x => {
+            filters += `{&@${x}}\r\n`;
+          });
+        }
+
+        if (this.option.config.additionals) {
+          this.option.additionals.forEach(x => {
+            filters += `${x()}\r\n`;
           })
+        }
       }
+
     }
- 
+
 
 
     return FILE.read("templates/config.xml")
       .replace(new RegExp("@table.name", "g"), NamingStrategy.toHungary(this.table.name).toUpperCase())
       .replace("@fields", fileds.trim())
-      .replace("@filter",filters);
+      .replace("@filter", filters);
   }
   /**
    *  entities
@@ -173,16 +182,16 @@ class Generator {
    *  controller
    */
   generateController() {
-     let exportExcel="",
-         importExcel="";
+    let exportExcel = "",
+      importExcel = "";
 
-         if(this.option.exportExcel){
+    if (this.option.exportExcel) {
 
-         }
+    }
 
-         if(this.option.importExcel){
-           
-         }
+    if (this.option.importExcel) {
+
+    }
 
     return this.filts(FILE.read("./templates/controller.cs"));
   }
@@ -260,15 +269,15 @@ function main(name, project, option) {
  * {
  *    config {
  *     columns:[String],   ---  filter columns
- *     additionals:[()=>String] 
+ *     additionals:[()=>String],
+ *     oderBy:{name,type},
+ *     returnFileds:[String],
+ *     templates:[()=>String] 
  *    }
  *    viewList:[],
- *    import:{
- *             resolvers:[{column,resolve}]
- *    },
+ *   
  *    index:{
  *              check,
- *              delete,
  *              filters:[()=>{js,html}],
  *              cells:{name:()=>String}
  *    },
@@ -277,6 +286,9 @@ function main(name, project, option) {
  *             rules:[{name,regex}]
  *    },
  *    detail:{
+ *    },
+ *    import:{
+ *             resolvers:[{column,resolve}]
  *    },
  *    export:boolean,  ----- with export fearture
  *    delete:boolean   ----- with delete fearture
@@ -292,9 +304,9 @@ let optionExample = {
     other: {}
   },
   index: {
-        filters:[
-          ()=>COMPONENTS,
-        ]
+    filters: [
+      () => COMPONENTS,
+    ]
   },
   import: {
     column: ["Phone", "PreChargeFace"]
