@@ -108,4 +108,4 @@ function main(modules) {
         removeUselessFiles();
 }
 // run main
-main(["FCActiveRecord"]);
+main(["FCFlowTask"]);
