@@ -21,6 +21,7 @@
 |ServletResponse||
 |FilterChain||
 |HttpMessageConverter|serializer|
+|AliasRegistry||
 ----
 
 ### config
@@ -50,6 +51,9 @@
 |---|---|
 |HttpStatus||
 |MediaType||
+|AdviceMode||
+|SessionTrackingMode|cookie, ssl ,url|
+|ScopedProxyMode| DEFAULT,NO,INTERFACES,TARGET_CLASS;|
 
 -------
 
@@ -58,6 +62,7 @@
 |name|description|
 |----|---|
 |ResourceBundle||
+|InputSource|{systemId,publiId,encoding}|
 
 ----
 
@@ -95,3 +100,121 @@
 |@Valid|	指定递归验证（下篇讲）关联的对象；如用户对象中有个地址对象属性，如果想在验证用户对象时一起验证地址对象的话，在地址对象上加@Valid注解即可级联验证
 
 ------
+# Bean
+----
+
+### Bedefination
+
+- parent name
+- class name
+- scope
+- lazy init
+- is autowired candidate
+- is primary
+- factory method
+- hasConstructorArgumentValues
+- getInitMethodName
+
+-----
+
+### BeanFactory
+
+- ObjectFactory :getObject<T>
+- ObjectProvider
+- ListableBeanFactory :getBeans =>bean[]
+- HierarchicalBeanFactory :getBeanFactory
+- AutowireCapableBeanFactory : autowire beanproperties
+
+### Wrapper
+
+- BeanWrapper => get propertityDescriptors []
+
+### Element
+
+- AnnotatedElement: getAnnotations()
+- BeanMetadataElement: getSource()
+
+----
+
+### Accessor
+
+- AttributeAccessor :get attribute =>object
+- PropertyAccessor : get Property value 
+
+----
+
+### Coverters
+
+- TypeConverter
+- ConversionService :type converter
+
+----
+
+### Editor
+
+- PropertyEditor :set property value
+
+### Context
+- ApplicationContext :{Environment,ApplicationName,DisplayName,Parent,beanFactory}
+- AccessControlContext  : Accesss Control
+- ServletContext :{RequestDispatcher,}
+- RefreshableApplicationContext : refrsh beanfactory
+
+---
+
+### Serverlet
+
+- service(request,response)
+- ServerletRequet ServerletResponse
+
+### Descripor
+
+- PropertyDescriptor : property metadata with editor
+- JspConfigDescriptor
+- TaglibDescriptor
+- JspPropertyGroupDescriptor
+----
+
+### BeanPostProcessor (beforeInit,afterInit)
+
+- 
+
+### Registory
+
+- FilterRegistration 
+- ServletRegistration
+
+---
+
+###  Reader
+- AnnotatedBeanDefinitionReader
+- XmlBeanDefinitionReader
+
+---
+
+### Resolver
+
+- ScopeMetadataResolver :(bedefination)=>scopedmetadata
+- EntityResolver
+
+### MetaData
+
+- ScopeMetadata : scope ,ScopedProxyMode
+- AnnotatedTypeMetadata :Annotation[]
+
+----
+
+### Evaluator
+
+-
+
+-----
+
+### Scanner
+
+- ClassPathBeanDefinitionScanner 
+
+
+
+
+
