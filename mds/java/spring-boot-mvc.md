@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-25 11:23:02
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-25 17:09:59
+ * @LastEditTime: 2019-10-28 12:39:06
  -->
 ### Main Class
 ----
@@ -40,6 +40,7 @@
 |@ExceptionHandler||
 |@ResponseBody||
 |@ResponseStatus||
+|@ModelAttribute||
 
 -----
 

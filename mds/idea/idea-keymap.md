@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-24 16:19:29
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-25 16:52:11
+ * @LastEditTime: 2019-10-28 10:32:17
  -->
 ### KeyMap
 -----
@@ -26,4 +26,5 @@
 |<kbd>ctrl+alt+o</kbd>|remove useless imports|
 |<kbd>ctrl+shift+u</kbd>|diagram|
 |<kbd>alt+7</kbd>|class members|
+|<kbd>f2/shiftf2</kbd>|view error|
 
