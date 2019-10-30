@@ -20,3 +20,4 @@
 |closeVal|string|
 |title|string|
 |statusbar|html|
+|button|{name,callback}|
