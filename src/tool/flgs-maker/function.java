@@ -1,6 +1,6 @@
 
 
-public  static  Integer check@name1(Integer input){
+public  static  boolean check@name1(Integer input){
         return  checkValue(input,@name0);
     }
     

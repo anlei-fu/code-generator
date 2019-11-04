@@ -1,6 +1,6 @@
 
-    private static Integer checkValue(Integer input, Map<Integer, String> map) {
-        return map.containsKey(input) ? input : null;
+    private static boolean checkValue(Integer input, Map<Integer, String> map) {
+        return   input==null?true:map.containsKey(input);
     }
 
     private static String getName(Integer input, Map<Integer, String> map) {

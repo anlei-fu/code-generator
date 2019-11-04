@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-02 10:21:21
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-02 11:47:06
+ * @LastEditTime: 2019-11-04 14:43:47
  */
 
 const {FILE}=require("./../../libs/file")
@@ -26,6 +26,12 @@ function make(){
          let item=FILE.read("template.java").replace(/@name/g,key) 
          .replace("@description",value[0][1]);
          let temp="";
+         let annotation=FILE.read("annotation.java").replace(/@name/g,STR.upperFirstLetter(key));
+         FILE.write(`output/annotation/${STR.upperFirstLetter(key)}Validate.java`,annotation);
+         let validator=FILE.read("validator.java").replace(/@name/g,STR.upperFirstLetter(key));
+         FILE.write(`output/validator/${STR.upperFirstLetter(key)}Validator.java`,validator);
+
+
          func+=FILE.read("function.java").replace(/@name0/g,value[0][2])
                                          .replace(/@name1/g,STR.upperFirstLetter(value[0][2]));
 
@@ -38,7 +44,7 @@ function make(){
      });
 
      console.log(func);
-     FILE.write("output.java",FILE.read("header.java") +output+func+FILE.read("tail.java"));
+     FILE.write("output/output.java",FILE.read("header.java") +output+func+FILE.read("tail.java"));
 
 }
 
