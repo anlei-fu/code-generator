@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-25 14:47:21
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-25 14:52:24
+ * @LastEditTime: 2019-10-29 14:46:17
  -->
 # Aop
 ----
@@ -18,3 +18,7 @@
              object[]  getargs();
        }
    ```
+
+2. classes
+
+- CglibAopProxy

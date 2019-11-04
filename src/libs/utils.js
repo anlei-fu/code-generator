@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-23 16:06:05
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-23 11:46:32
+ * @LastEditTime: 2019-11-02 10:37:27
  */
 /**
  * Check target is defined, if target not defiend will throw an error
@@ -74,9 +74,31 @@ function toMap(array, keySelector) {
 
         return map;
 }
+
+/**
+ * 
+ * @param {[Any]} array 
+ * @param {Any=>String} keySelector 
+ * @returns {Map<String,[Any]>}
+ */
+function groupBy(array,keySelector){
+        let map = new Map();
+
+        array.forEach(x => {
+               let key=keySelector(x);
+               if(!map.has(key)){
+                   map.set(key,[]);   
+               }
+               map.get(key).push(x);
+        })
+
+        return map;
+}
+
 exports.ARRAY = {
         toSet,
-        toMap
+        toMap,
+        groupBy
 }
 /*-----------------------------------------------object--------------------------------------------------------------*/
 /**

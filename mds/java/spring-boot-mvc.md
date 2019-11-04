@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-25 11:23:02
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-25 17:09:59
+ * @LastEditTime: 2019-11-01 17:27:37
  -->
 ### Main Class
 ----
@@ -22,6 +22,7 @@
 |FilterChain||
 |HttpMessageConverter|serializer|
 |AliasRegistry||
+|UserDetails||
 ----
 
 ### config
@@ -41,7 +42,14 @@
 |@ExceptionHandler||
 |@ResponseBody||
 |@ResponseStatus||
-
+|@ModelAttribute|swagger 参数需要|
+|@Validated| 对参数（class）进行校验|
+|@RequestParam||
+|@RequestBody||
+|@PathVarible||
+|@CookieValue||
+|@RequestHeader||
+|@SessionAttributes||
 -----
 
 ### enums
