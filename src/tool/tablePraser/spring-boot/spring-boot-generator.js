@@ -122,7 +122,7 @@ let model = {
 }
 
 let req = {
-        
+
         name: "",
         description: "",
         items: [{ name, type, dexription }]
@@ -179,7 +179,6 @@ let config = {
                         path: "",
                         description: "",
                         serverlet: [
-                                +k+
                                 {
                                         name: "",
                                         method: "",
@@ -187,28 +186,22 @@ let config = {
                                         description: "",
                                         reqs: [
                                                 {
-
+                                                        name: "",
+                                                        description: "",
+                                                        items: [
+                                                                {
+                                                                        name, type, dexription
+                                                                }
+                                                        ]
                                                 }
                                         ],
                                         resp: {
-                                                name,
-                                                type,
-                                                model: [
-                                                        {
-                                                                name: "",
-                                                                description: "",
-                                                                items: [
-                                                                        {
-                                                                                name, type, dexription
-                                                                        }
-                                                                ]
-                                                        }
-                                                ]
+                                                type
                                         },
-                                        service:{
-                                                name:"",
-                                                serviceName:"",
-                                                parameter:{
+                                        service: {
+                                                name: "",
+                                                serviceName: "",
+                                                parameter: {
                                                         name: "",
                                                         description: "",
                                                         items: [
@@ -217,10 +210,21 @@ let config = {
                                                                 }
                                                         ]
                                                 },
-                                                mapper:{
-                                                        name:"",
-                                                        mapperMethod:"",
-                                                        ret:{
+                                                resp: {
+                                                        name,
+                                                        description: "",
+                                                        items: [
+                                                                {
+                                                                        name, type, dexription
+                                                                }
+                                                        ]
+
+                                                }
+                                                ,
+                                                mapper: {
+                                                        name: "",
+                                                        mapperMethod: "",
+                                                        ret: {
 
                                                         }
                                                 }
