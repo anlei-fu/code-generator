@@ -29,9 +29,6 @@
  *  element -> hasChildNodes
  */
 
-
-
-
 const { DOMParser } = require("xmldom");
 const { OBJECT } = require("./utils");
 
@@ -69,7 +66,7 @@ function selectAll(node, predict) {
         predict = predict || function (x) { return true; }
         let ls = [];
         OBJECT.forEach(node.childNodes, (key, value) => {
-                if (key == "length" || key == "item" || key == toString)
+                if (key == "length" || key == "item" || key == "toString")
                         return;
 
                 if (predict(value))
@@ -88,11 +85,11 @@ function selectAll(node, predict) {
  * @param {Node} node 
  * @param {String} key 
  */
-function containsAttr(node, key) {
-        return getAttr(node, key) != undefined;
+function hasAttribute(node, key) {
+        return getAttribute(node, key) != undefined;
 }
 
-function getAttr(node, key) {
+function getAttribute(node, key) {
         if (node.attributes) {
                 for (let k in node.attributes) {
                         if (node.attributes[k].nodeName == key) {
@@ -124,7 +121,7 @@ exports.XML_DOM = {
         load,
         selectAll,
         selectDirect,
-        getAttr,
-        containsAttr,
+        getAttr: getAttribute,
+        containsAttr: hasAttribute,
         setAttr
 }

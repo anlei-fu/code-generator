@@ -66,7 +66,7 @@ queueLimit?: number;}} config
                                 if (error) {
                                         reject(error)
                                 } else {
-                                        // this is strict mode ?
+                                        // is strict mode ?
                                         if (typeof results.affectedRows == "number") {
                                                 resolve(results.affectedRows);
                                         } else {

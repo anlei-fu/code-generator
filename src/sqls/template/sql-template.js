@@ -33,7 +33,7 @@ exports.SqlSegment = class SqlSegment {
 /**
  * @member {[Node]} children 
  */
-class Node {
+exports.Node=class Node {
         constructor() {
                 this.children = [];
         }
@@ -41,43 +41,21 @@ class Node {
 
         }
 }
-/**
- * @member {String} id
- */
 
-class MapperNode {
+exports.SqlNode=class SqlNode {
         constructor() {
                 this.id;
         }
 }
 
-/**
- * @member {String} path
- */
-class ImportNode {
-        constructor() {
-                this.path = path;
-        }
-}
-
-/**
- * 
- */
-
-class SqlNode {
-        constructor() {
-                this.id;
-        }
-}
-
-class WhereNode extends Node {
+exports.WhereNode=class WhereNode extends Node {
         render() {
                 super.render();
 
         }
 }
 
-class ForEachNode extends Node {
+exports.ForEachNode=class ForEachNode extends Node {
         constructor() {
                 this.collection;
                 this.index;
@@ -87,19 +65,19 @@ class ForEachNode extends Node {
         }
 }
 
-class IfNode extends Node {
+exports.IfNode=class IfNode extends Node {
         constructor() {
                 this.test = "";
         }
 }
 
-class ContentNode extends Node {
+exports.ContentNode=class ContentNode extends Node {
         constructor() {
                 this.template = "";
         }
 }
 
-class IncludeNode extends Node {
+exports.IncludeNode=class IncludeNode extends Node {
         constructor(refId) {
                 this.refId = refId;
         }
