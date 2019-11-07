@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-30 14:13:47
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-11 10:38:21
+ * @LastEditTime: 2019-11-07 17:30:49
  */
 const { STR } = require("./str");
 /**
@@ -32,7 +32,8 @@ function toCamel(input) {
         let ret = "";
         split(input).forEach((word, i) => {
                 if (word != "_") {
-                        if (i != 0) {
+                        console.log(word);
+                        if (ret != "") {
                                 ret += STR.upperFirstLetter(word.toLowerCase());
                         } else {
                                 ret += word.toLowerCase();
@@ -51,10 +52,20 @@ function toHungary(input) {
         let ret = "";
 
         split(input).forEach(word => {
-                if (word != "_") {
-                        ret += "_" + word.toLowerCase();
+                if (word == "_") {
+                        if (ret != "" && !ret.endsWith("_")) {
+                                ret += "_";
+                        }
                 } else {
-                        ret += "_";
+                        if (ret == "") {
+                                ret += word.toLowerCase();
+                        } else {
+                                if (ret.endsWith("_")) {
+                                        ret += word.toLowerCase();
+                                } else {
+                                        ret += "_" + ret.toLowerCase();
+                                }
+                        }
                 }
         });
 
@@ -70,6 +81,30 @@ function split(input) {
         var ls = [];
         var word = "";
 
+        let isUpper = false;
+
+        /**
+         * 
+         * @param {boolean} upper
+         * @returns {boolean} 
+         */
+        function finishWord(upper, char) {
+                if (word == "") {
+                        isUpper = upper;
+                        word += char;
+                } else {
+                        if ((isUpper && upper) || (!isUpper && !upper)) {
+                                word += char;
+                        } else {
+                                ls.push(word);
+                                word = "";
+                                return true;
+                        }
+
+                        return false;
+                }
+        }
+
         for (let i = 0; i < input.length; i++) {
 
                 let c = input.charAt(i);
@@ -82,10 +117,12 @@ function split(input) {
                         ls.push(c);
                 }
                 else if (c >= "A" && c <= "Z") {
-                        if (word != "")
-                                ls.push(word);
+                        if (finishWord(true, c))
+                                --i;
 
-                        word = c;
+                } else if (c >= "a" && c <= "z") {
+                        if (finishWord(false, c))
+                                --i;
                 } else {
                         word += c;
                 }
@@ -99,6 +136,6 @@ function split(input) {
 
 exports.NamingStrategy = {
         toHungary,
-         toCamel,
+        toCamel,
         toPascal
 }

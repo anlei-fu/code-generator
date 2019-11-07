@@ -1,701 +1,145 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>&#xD;
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ED9ABE6E-FDBF-4F92-8658-747C0E717CDA}</ProjectGuid>
-    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QXFC.UserWeb</RootNamespace>
-    <AssemblyName>QXFC.UserWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
-    <SccProjectName>&#xD;
-    </SccProjectName>
-    <SccLocalPath>&#xD;
-    </SccLocalPath>
-    <SccAuxPath>&#xD;
-    </SccAuxPath>
-    <SccProvider>&#xD;
-    </SccProvider>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Enyim.Caching">
-      <HintPath>..\..\..\..\..\..\公共基础项目_研发一\publib\Enyim.Caching.dll</HintPath>
-    </Reference>
-    <Reference Include="Lib4Net4.Core">
-      <HintPath>..\..\..\..\..\..\公共基础项目_研发一\publib\Lib4Net4.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Lib4Net4.Framework">
-      <HintPath>..\..\..\..\..\..\公共基础项目_研发一\publib\Lib4Net4.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\..\公共基础项目_研发一\publib\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="LoginSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\公共基础项目_研发一\publib\LoginSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\..\公共基础项目_研发一\publib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Oracle.DataAccess, Version=2.111.7.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\公共基础项目_研发一\publib\Oracle.DataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\公共基础项目_研发一\publib\Oracle.ManagedDataAccess.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\ClassLibrary\System.Web.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages"/>
-    <Reference Include="System.Web.Helpers"/>
-    <Reference Include="Microsoft.CSharp"/>
-    <Reference Include="System"/>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Drawing"/>
-    <Reference Include="System.Web.DynamicData"/>
-    <Reference Include="System.Web.Entity"/>
-    <Reference Include="System.Web.ApplicationServices"/>
-    <Reference Include="System.ComponentModel.DataAnnotations"/>
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Web"/>
-    <Reference Include="System.Web.Extensions"/>
-    <Reference Include="System.Web.Abstractions"/>
-    <Reference Include="System.Web.Routing"/>
-    <Reference Include="System.Xml"/>
-    <Reference Include="System.Configuration"/>
-    <Reference Include="System.Web.Services"/>
-    <Reference Include="System.EnterpriseServices"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controllers\FCActiveRecordController.cs"/>
-    <Compile Include="Controllers\FCDownchannelController.cs"/>
-    <Compile Include="Controllers\FCDownExcludeUpController.cs"/>
-    <Compile Include="Controllers\FCDownProductController.cs"/>
-    <Compile Include="Controllers\FCDownScriptController.cs"/>
-    <Compile Include="Controllers\FCDownSpecifyUpController.cs"/>
-    <Compile Include="Controllers\FCFLOWController.cs"/>
-    <Compile Include="Controllers\FCFlowStepController.cs"/>
-    <Compile Include="Controllers\FCFlowTaskController.cs"/>
-    <Compile Include="Controllers\FCFundChangeDownController.cs"/>
-    <Compile Include="Controllers\FCFundChangeUpController.cs"/>
-    <Compile Include="Controllers\FCICCIDController.cs"/>
-    <Compile Include="Controllers\FCNotifyRecordController.cs"/>
-    <Compile Include="Controllers\FCOrderExpressController.cs"/>
-    <Compile Include="Controllers\FCOrderExtController.cs"/>
-    <Compile Include="Controllers\FCOrderMainController.cs"/>
-    <Compile Include="Controllers\FCOrderOperateController.cs"/>
-    <Compile Include="Controllers\FCOrderRefundController.cs"/>
-    <Compile Include="Controllers\FCPhoneChargeController.cs"/>
-    <Compile Include="Controllers\FCPreChargeController.cs"/>
-    <Compile Include="Controllers\FCProductPackageController.cs"/>
-    <Compile Include="Controllers\FCProductTypeController.cs"/>
-    <Compile Include="Controllers\FCSystemCityController.cs"/>
-    <Compile Include="Controllers\FCSystemDictionaryController.cs"/>
-    <Compile Include="Controllers\FCUpAccountController.cs"/>
-    <Compile Include="Controllers\FCUpchannelController.cs"/>
-    <Compile Include="Controllers\FCUpProductController.cs"/>
-    <Compile Include="Controllers\FCUpScriptController.cs"/>
-    <Compile Include="Controllers\MainBaseController.cs"/>
-    <Compile Include="Controllers\MemberController.cs"/>
-    <Compile Include="Controllers\SharedController.cs"/>
-    <Compile Include="Controllers\SystemController.cs"/>
-    <Compile Include="Controllers\FCOrderBindController.cs"/>
-    <Compile Include="Controllers\FCErrorCodeController.cs"/>
-    <Compile Include="Controllers\FCSmsRecordController.cs"/>
-    <Compile Include="Controllers\FCOperationController.cs"/>
-    <Compile Include="Controllers\FCYxhdPhoneController.cs"/>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Config\BusinessLogic.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\CacheConfig.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\DataAccess.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCActiveRecord.xml"/>
-    <Content Include="Config\EConfig\FCDownchannel.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCDownExcludeUp.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCDownProduct.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCDownScript.xml"/>
-    <Content Include="Config\EConfig\FCDownSpecifyUp.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCFLOW.xml"/>
-    <Content Include="Config\EConfig\FCFlowStep.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCFlowTask.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCFundChangeDown.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCFundChangeUp.xml"/>
-    <Content Include="Config\EConfig\FCICCID.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCNotifyRecord.xml"/>
-    <Content Include="Config\EConfig\FCOrderBind.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCOrderExpress.xml"/>
-    <Content Include="Config\EConfig\FCOrderExt.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCOrderMain.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCOrderOperate.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCOrderRefund.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCPhoneCharge.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCPreCharge.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCProductPackage.xml"/>
-    <Content Include="Config\EConfig\FCProductType.xml"/>
-    <Content Include="Config\EConfig\FCSystemCity.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCSystemDictionary.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCSystemProvince.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCUpAccount.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCUpchannel.xml"/>
-    <Content Include="Config\EConfig\FCUpProduct.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCUpScript.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCErrorCode.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCSmsRecord.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCUpManualOrder.xml"/>
-    <Content Include="Config\EConfig\FCUpAccountEx.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCOperation.xml"/>
-    <Content Include="Config\EConfig\FCYxhdPhone.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\EConfig\FCFlowTaskQuery.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\ErrorCode.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\Lib4NetLog.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\Settings.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\UrlMappingConfig.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Content\comm.css"/>
-    <Content Include="Content\Css\comm.css"/>
-    <Content Include="Content\Css\main.css"/>
-    <Content Include="Content\Css\pagination.css"/>
-    <Content Include="Content\Css\user_layout.css"/>
-    <Content Include="Content\dialog.css"/>
-    <Content Include="Content\Images\add_btn_bg.gif"/>
-    <Content Include="Content\Images\add_btn_bg.png"/>
-    <Content Include="Content\Images\advertising1.jpg"/>
-    <Content Include="Content\Images\advertising2.jpg"/>
-    <Content Include="Content\Images\apply_refund.gif"/>
-    <Content Include="Content\Images\apply_refund1.gif"/>
-    <Content Include="Content\Images\apply_refund2.gif"/>
-    <Content Include="Content\Images\bgkuang.jpg"/>
-    <Content Include="Content\Images\blue_btn.gif"/>
-    <Content Include="Content\Images\button_g.gif"/>
-    <Content Include="Content\Images\button_grey_pause.png"/>
-    <Content Include="Content\Images\button_next.gif"/>
-    <Content Include="Content\Images\cancel.gif"/>
-    <Content Include="Content\Images\cancel_failure.gif"/>
-    <Content Include="Content\Images\center_bg.jpg"/>
-    <Content Include="Content\Images\center_head_bg.gif"/>
-    <Content Include="Content\Images\center_logo_bg.gif"/>
-    <Content Include="Content\Images\chuli_icon.png"/>
-    <Content Include="Content\Images\cjzd_set_icon.gif"/>
-    <Content Include="Content\Images\conpu.gif"/>
-    <Content Include="Content\Images\contact_icon.jpg"/>
-    <Content Include="Content\Images\contact_us.gif"/>
-    <Content Include="Content\Images\contact_us.jpg"/>
-    <Content Include="Content\Images\contact_us_bg.jpg"/>
-    <Content Include="Content\Images\con_center.png"/>
-    <Content Include="Content\Images\con_center_back.png"/>
-    <Content Include="Content\Images\con_left_menu_nav.png"/>
-    <Content Include="Content\Images\corner.gif"/>
-    <Content Include="Content\Images\corner1.gif"/>
-    <Content Include="Content\Images\cwgl_pic.png"/>
-    <Content Include="Content\Images\czbb_pic.png"/>
-    <Content Include="Content\Images\c_menu_li.gif"/>
-    <Content Include="Content\Images\c_menu_title.gif"/>
-    <Content Include="Content\Images\c_menu_title1.gif"/>
-    <Content Include="Content\Images\c_menu_title2.gif"/>
-    <Content Include="Content\Images\c_menu_top.gif"/>
-    <Content Include="Content\Images\datePicker.gif"/>
-    <Content Include="Content\Images\ddgl_pic.png"/>
-    <Content Include="Content\Images\delete.png"/>
-    <Content Include="Content\Images\dlx.gif"/>
-    <Content Include="Content\Images\dou_login.gif"/>
-    <Content Include="Content\Images\dou_login1.gif"/>
-    <Content Include="Content\Images\dou_login2.gif"/>
-    <Content Include="Content\Images\dou_login3.gif"/>
-    <Content Include="Content\Images\down.gif"/>
-    <Content Include="Content\Images\dropdown.blue.active.png"/>
-    <Content Include="Content\Images\dropdown.blue.hover.png"/>
-    <Content Include="Content\Images\dropdown.blue.png"/>
-    <Content Include="Content\Images\dt_logo.gif"/>
-    <Content Include="Content\Images\err.gif"/>
-    <Content Include="Content\Images\export_btnn.gif"/>
-    <Content Include="Content\Images\footer_bg.png"/>
-    <Content Include="Content\Images\foot_img_line.png"/>
-    <Content Include="Content\Images\fwdw.gif"/>
-    <Content Include="Content\Images\fwdw1.gif"/>
-    <Content Include="Content\Images\game_1.gif"/>
-    <Content Include="Content\Images\game_charg.jpg"/>
-    <Content Include="Content\Images\game_charg1.jpg"/>
-    <Content Include="Content\Images\game_charg2.gif"/>
-    <Content Include="Content\Images\game_charg5.gif"/>
-    <Content Include="Content\Images\game_charg7.gif"/>
-    <Content Include="Content\Images\game_charg8.gif"/>
-    <Content Include="Content\Images\game_fail1.gif"/>
-    <Content Include="Content\Images\game_list.gif"/>
-    <Content Include="Content\Images\game_list1.gif"/>
-    <Content Include="Content\Images\game_list10.gif"/>
-    <Content Include="Content\Images\game_list11.gif"/>
-    <Content Include="Content\Images\game_list12.jpg"/>
-    <Content Include="Content\Images\game_list13.gif"/>
-    <Content Include="Content\Images\game_list14.gif"/>
-    <Content Include="Content\Images\game_list2.gif"/>
-    <Content Include="Content\Images\game_list3.gif"/>
-    <Content Include="Content\Images\game_list4.gif"/>
-    <Content Include="Content\Images\game_list5.gif"/>
-    <Content Include="Content\Images\game_list6.gif"/>
-    <Content Include="Content\Images\game_list7.gif"/>
-    <Content Include="Content\Images\game_list8.gif"/>
-    <Content Include="Content\Images\game_list9.gif"/>
-    <Content Include="Content\Images\game_rcg.gif"/>
-    <Content Include="Content\Images\game_recharge.gif"/>
-    <Content Include="Content\Images\game_success1.gif"/>
-    <Content Include="Content\Images\game_tle_bg.gif"/>
-    <Content Include="Content\Images\general_bg.gif"/>
-    <Content Include="Content\Images\gen_but.gif"/>
-    <Content Include="Content\Images\header_ph.jpg"/>
-    <Content Include="Content\Images\icon_more.gif"/>
-    <Content Include="Content\Images\ico_list.png"/>
-    <Content Include="Content\Images\img_test.jpg"/>
-    <Content Include="Content\Images\init_btn.png"/>
-    <Content Include="Content\Images\input_bg.gif"/>
-    <Content Include="Content\Images\input_bg.jpg"/>
-    <Content Include="Content\Images\k_phone.gif"/>
-    <Content Include="Content\Images\lbbL.png"/>
-    <Content Include="Content\Images\lbbR.png"/>
-    <Content Include="Content\Images\lbht.gif"/>
-    <Content Include="Content\Images\lbr.png"/>
-    <Content Include="Content\Images\lbtL.png"/>
-    <Content Include="Content\Images\list_way1.gif"/>
-    <Content Include="Content\Images\list_way2.gif"/>
-    <Content Include="Content\Images\logining.gif"/>
-    <Content Include="Content\Images\login\login_bg_pic01.jpg"/>
-    <Content Include="Content\Images\login\login_bg_pic02.jpg"/>
-    <Content Include="Content\Images\login_btn.gif"/>
-    <Content Include="Content\Images\login_button.jpg"/>
-    <Content Include="Content\Images\logo.png"/>
-    <Content Include="Content\Images\logo1.jpg"/>
-    <Content Include="Content\Images\logo2.jpg"/>
-    <Content Include="Content\Images\logo_bg.jpg"/>
-    <Content Include="Content\Images\logo_user_bg.jpg"/>
-    <Content Include="Content\Images\longin_bg.jpg"/>
-    <Content Include="Content\Images\magnifier.jpg"/>
-    <Content Include="Content\Images\mail_bg.png"/>
-    <Content Include="Content\Images\man.png"/>
-    <Content Include="Content\Images\menu_bg.gif"/>
-    <Content Include="Content\Images\menu_hv.gif"/>
-    <Content Include="Content\Images\message_tab_icon.gif"/>
-    <Content Include="Content\Images\msg_bg.png"/>
-    <Content Include="Content\Images\nav_bg.png"/>
-    <Content Include="Content\Images\nav_list_right.png"/>
-    <Content Include="Content\Images\new_features.png"/>
-    <Content Include="Content\Images\next.png"/>
-    <Content Include="Content\Images\no.png"/>
-    <Content Include="Content\Images\nub_blue_btn.gif"/>
-    <Content Include="Content\Images\num_bg.gif"/>
-    <Content Include="Content\Images\order_list.gif"/>
-    <Content Include="Content\Images\order_list1.gif"/>
-    <Content Include="Content\Images\order_list2.gif"/>
-    <Content Include="Content\Images\payout_way.gif"/>
-    <Content Include="Content\Images\payout_way1.gif"/>
-    <Content Include="Content\Images\payout_way2.gif"/>
-    <Content Include="Content\Images\payout_way3.gif"/>
-    <Content Include="Content\Images\pay_sure.gif"/>
-    <Content Include="Content\Images\phone_rcg.gif"/>
-    <Content Include="Content\Images\ph_payout.gif"/>
-    <Content Include="Content\Images\ph_payout1.jpg"/>
-    <Content Include="Content\Images\ph_payout2.gif"/>
-    <Content Include="Content\Images\ph_payout3.gif"/>
-    <Content Include="Content\Images\ph_payout4.gif"/>
-    <Content Include="Content\Images\ph_payout5.gif"/>
-    <Content Include="Content\Images\ph_recharge.gif"/>
-    <Content Include="Content\Images\pick_up.gif"/>
-    <Content Include="Content\Images\register1.gif"/>
-    <Content Include="Content\Images\register2.gif"/>
-    <Content Include="Content\Images\register3.gif"/>
-    <Content Include="Content\Images\register4.gif"/>
-    <Content Include="Content\Images\register5.gif"/>
-    <Content Include="Content\Images\register8.gif"/>
-    <Content Include="Content\Images\sett_but.gif"/>
-    <Content Include="Content\Images\show.png"/>
-    <Content Include="Content\Images\sid_icon1.gif"/>
-    <Content Include="Content\Images\start_up_btn .gif"/>
-    <Content Include="Content\Images\start_up_btn.gif"/>
-    <Content Include="Content\Images\statistics.gif"/>
-    <Content Include="Content\Images\submit.png"/>
-    <Content Include="Content\Images\success.gif"/>
-    <Content Include="Content\Images\sw_save.gif"/>
-    <Content Include="Content\Images\tab_menu_bg.gif"/>
-    <Content Include="Content\Images\tab_menu_select.gif"/>
-    <Content Include="Content\Images\tel.gif"/>
-    <Content Include="Content\Images\title_bg_pic1.gif"/>
-    <Content Include="Content\Images\top_img_line.png"/>
-    <Content Include="Content\Images\top_line.png"/>
-    <Content Include="Content\Images\triangle.gif"/>
-    <Content Include="Content\Images\ucenter_logo.jpg"/>
-    <Content Include="Content\Images\up.gif"/>
-    <Content Include="Content\Images\url_p.png"/>
-    <Content Include="Content\Images\user.gif"/>
-    <Content Include="Content\Images\userman.png"/>
-    <Content Include="Content\Images\user_search.gif"/>
-    <Content Include="Content\Images\user_search1.png"/>
-    <Content Include="Content\Images\user_search2.gif"/>
-    <Content Include="Content\Images\warning_pic.png"/>
-    <Content Include="Content\Images\xtpz_pic.png"/>
-    <Content Include="Content\Images\yes.png"/>
-    <Content Include="Content\Images\yhgl_pic.png"/>
-    <Content Include="Content\Images\yygl_pic.png"/>
-    <Content Include="Content\init_cardpool.css"/>
-    <Content Include="Content\jquery.multiSelect.css"/>
-    <Content Include="Content\jquery.select.debug.css"/>
-    <Content Include="Content\lv\1.png"/>
-    <Content Include="Content\lv\2.png"/>
-    <Content Include="Content\lv\3.png"/>
-    <Content Include="Content\lv\4.png"/>
-    <Content Include="Content\lv\5.png"/>
-    <Content Include="Content\lv\0.png"/>
-    <Content Include="Content\main.css"/>
-    <Content Include="Content\order_detail.css"/>
-    <Content Include="Content\pagination.css"/>
-    <Content Include="Content\report.css"/>
-    <Content Include="Content\reset-min.css"/>
-    <Content Include="Content\skin.css"/>
-    <Content Include="Content\st_main.css"/>
-    <Content Include="Content\user_layout.css"/>
-    <Content Include="Global.asax"/>
-    <Content Include="Scripts\ArtDialog\artDialog.js"/>
-    <Content Include="Scripts\ArtDialog\plugins\iframeTools.js"/>
-    <Content Include="Scripts\ArtDialog\skins\aero.css"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\aero_s.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\aero_s2.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_close.hover.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_close.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_e.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_n.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_ne.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_nw.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_s.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_se.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_sw.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_title_icon.png"/>
-    <Content Include="Scripts\ArtDialog\skins\aero\ie6\aui_w.png"/>
-    <Content Include="Scripts\ArtDialog\skins\chrome.css"/>
-    <Content Include="Scripts\ArtDialog\skins\chrome\border.png"/>
-    <Content Include="Scripts\ArtDialog\skins\chrome\chrome_s.png"/>
-    <Content Include="Scripts\ArtDialog\skins\default.css"/>
-    <Content Include="Scripts\ArtDialog\skins\icons\error.png"/>
-    <Content Include="Scripts\ArtDialog\skins\icons\face-sad.png"/>
-    <Content Include="Scripts\ArtDialog\skins\icons\face-smile.png"/>
-    <Content Include="Scripts\ArtDialog\skins\icons\loading.gif"/>
-    <Content Include="Scripts\ArtDialog\skins\icons\question.png"/>
-    <Content Include="Scripts\ArtDialog\skins\icons\succeed.png"/>
-    <Content Include="Scripts\ArtDialog\skins\icons\warning.png"/>
-    <Content Include="Scripts\Calendar\calendar.js"/>
-    <Content Include="Scripts\Calendar\config.js"/>
-    <Content Include="Scripts\Calendar\lang\en.js"/>
-    <Content Include="Scripts\Calendar\lang\zh-cn.js"/>
-    <Content Include="Scripts\Calendar\lang\zh-tw.js"/>
-    <Content Include="Scripts\Calendar\My97DatePicker.htm"/>
-    <Content Include="Scripts\Calendar\skin\datePicker.gif"/>
-    <Content Include="Scripts\Calendar\skin\default\datepicker.css"/>
-    <Content Include="Scripts\Calendar\skin\default\img.gif"/>
-    <Content Include="Scripts\Calendar\skin\WdatePicker.css"/>
-    <Content Include="Scripts\Calendar\skin\whyGreen\bg.jpg"/>
-    <Content Include="Scripts\Calendar\skin\whyGreen\datepicker.css"/>
-    <Content Include="Scripts\Calendar\skin\whyGreen\img.gif"/>
-    <Content Include="Scripts\Calendar\WdatePicker.js"/>
-    <Content Include="Scripts\changeMoney.js"/>
-    <Content Include="Scripts\cityByprovince.js"/>
-    <Content Include="Scripts\Common.js"/>
-    <Content Include="Scripts\finicialManage.js"/>
-    <Content Include="Scripts\init_cardpool.js"/>
-    <Content Include="Scripts\jquery-1.12.4.min.js"/>
-    <Content Include="Scripts\jquery-1.4.4.min.js"/>
-    <Content Include="Scripts\jquery-blockui.js"/>
-    <Content Include="Scripts\jquery-ui.min.js"/>
-    <Content Include="Scripts\jquery.contextmenu.r2.js"/>
-    <Content Include="Scripts\jquery.cookie.js"/>
-    <Content Include="Scripts\jquery.pagination.js"/>
-    <Content Include="Scripts\jquery.paging.js"/>
-    <Content Include="Scripts\jquery.query.js"/>
-    <Content Include="Scripts\jquery.select.debug.js"/>
-    <Content Include="Scripts\jquery.serialize.js"/>
-    <Content Include="Scripts\jquery.tablesorter.min.js"/>
-    <Content Include="Scripts\jquery.treeview.min.js"/>
-    <Content Include="Scripts\jquery.validate.js"/>
-    <Content Include="Scripts\menu.js"/>
-    <Content Include="Scripts\MessageBox.js"/>
-    <Content Include="Scripts\messagePop.js"/>
-    <Content Include="Scripts\notCopy.js"/>
-    <Content Include="Scripts\ordermain.js"/>
-    <Content Include="Scripts\page.list.js"/>
-    <Content Include="Scripts\page.validate.js"/>
-    <Content Include="Scripts\plugin.chinese.to.pinyin.js"/>
-    <Content Include="Scripts\popDialog.js"/>
-    <Content Include="Scripts\Ss\icon_more.gif"/>
-    <Content Include="Scripts\Ss\icon_more_hover.gif"/>
-    <Content Include="Scripts\Ss\jquery.select1.0.css"/>
-    <Content Include="Scripts\Ss\jquery.select1.0.js"/>
-    <Content Include="Scripts\sysframe.js"/>
-    <Content Include="Scripts\Validate\error.png"/>
-    <Content Include="Scripts\Validate\jquery.validate1.12.release.css"/>
-    <Content Include="Scripts\Validate\jquery.validate1.12.release.js"/>
-    <Content Include="Scripts\Validate\succeed.png"/>
-    <Content Include="Scripts\zk.textSelect.js"/>
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Shared\Error.cshtml"/>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DownLoad\ICCID导入模板.xlsx"/>
-    <None Include="Scripts\ArtDialog.rar"/>
-    <None Include="Scripts\Calendar\skin\whyGreen\Thumbs.db"/>
-    <None Include="Views\FCOrderRefund\Index.cshtml"/>
-    <Content Include="Views\FCOrderMain\Index.cshtml"/>
-    <Content Include="Views\FCSystemDictionary\Index.cshtml"/>
-    <Content Include="Views\FCSystemDictionary\Item.cshtml"/>
-    <Content Include="Views\FCOrderBind\Index.cshtml"/>
-    <Content Include="Views\FCUpchannel\Index.cshtml"/>
-    <Content Include="Views\FCUpchannel\Item.cshtml"/>
-    <Content Include="Views\FCDownchannel\Index.cshtml"/>
-    <Content Include="Views\FCDownchannel\Item.cshtml"/>
-    <Content Include="Views\FCUpProduct\Index.cshtml"/>
-    <Content Include="Views\FCUpProduct\Item.cshtml"/>
-    <Content Include="Views\FCDownProduct\Index.cshtml"/>
-    <Content Include="Views\FCDownProduct\Item.cshtml"/>
-    <Content Include="Views\FCUpScript\Index.cshtml"/>
-    <Content Include="Views\FCUpScript\Item.cshtml"/>
-    <Content Include="Views\FCDownScript\Index.cshtml"/>
-    <Content Include="Views\FCDownScript\Item.cshtml"/>
-    <Content Include="Views\FCDownSpecifyUp\Index.cshtml"/>
-    <Content Include="Views\FCDownSpecifyUp\Item.cshtml"/>
-    <Content Include="Views\FCDownExcludeUp\Index.cshtml"/>
-    <Content Include="Views\FCDownExcludeUp\Item.cshtml"/>
-    <Content Include="Views\FCProductPackage\Index.cshtml"/>
-    <Content Include="Views\FCProductPackage\Item.cshtml"/>
-    <Content Include="Views\FCProductType\Index.cshtml"/>
-    <Content Include="Views\FCProductType\Item.cshtml"/>
-    <Content Include="Views\FCFLOW\Index.cshtml"/>
-    <Content Include="Views\FCFLOW\Item.cshtml"/>
-    <Content Include="Views\FCFundChangeUp\Index.cshtml"/>
-    <Content Include="Views\FCFundChangeDown\Index.cshtml"/>
-    <Content Include="Views\FCFlowStep\Item.cshtml"/>
-    <Content Include="Views\FCFlowStep\Index.cshtml"/>
-    <Content Include="Views\FCUpAccount\Index.cshtml"/>
-    <Content Include="Views\FCUpAccount\Item.cshtml"/>
-    <Content Include="Views\FCOrderMain\Details.cshtml"/>
-    <Content Include="Views\FCFlowTask\Index.cshtml"/>
-    <Content Include="Views\FCFlowTask\Item.cshtml"/>
-    <Content Include="Views\FCOrderMain\SearchOrderList.cshtml"/>
-    <Content Include="Views\FCOrderExpress\Index.cshtml"/>
-    <Content Include="Views\FCNotifyRecord\Index.cshtml"/>
-    <Content Include="Views\FCICCID\Item.cshtml"/>
-    <Content Include="Views\FCICCID\Index.cshtml"/>
-    <Content Include="Views\FCNotifyRecord\RewardQuery.cshtml"/>
-    <Content Include="Views\FCNotifyRecord\TradeChannel.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualPrintExpress.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualWriteCard.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualIdentityAuth.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualBookInstall.cshtml"/>
-    <Content Include="Views\FCICCID\ImportExcel.cshtml"/>
-    <Content Include="Views\FCOrderMain\Refund.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualRenew.cshtml"/>
-    <Content Include="Views\FCFlowTask\ImportExcel.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualDevice.cshtml"/>
-    <Content Include="Views\FCFLOW\ItemClone.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualQueryMail.cshtml"/>
-    <Content Include="Views\FCFlowTask\ManualQueryAction.cshtml"/>
-    <Content Include="Views\FCOrderMain\Preview.cshtml"/>
-    <Content Include="Views\FCDownProduct\Clone.cshtml"/>
-    <Content Include="Views\FCActiveRecord\ImportExcel.cshtml"/>
-    <Content Include="Views\FCActiveRecord\Index.cshtml"/>
-    <Content Include="Views\FCActiveRecord\Item.cshtml"/>
-    <Content Include="Views\FCOrderMain\UpdateImage.cshtml"/>
-    <Content Include="Views\FCOrderRefund\Item.cshtml"/>
-    <Content Include="Views\FCUpAccount\ClearUpAccountCookies.cshtml"/>
-    <Content Include="Views\FCErrorCode\Index.cshtml"/>
-    <Content Include="Views\FCErrorCode\Item.cshtml"/>
-    <Content Include="Views\FCSmsRecord\Index.cshtml"/>
-    <Content Include="Views\FCUpchannel\AddUserIndex.cshtml"/>
-    <Content Include="Views\FCOperation\Index.cshtml"/>
-    <Content Include="Views\FCYxhdPhone\Index.cshtml"/>
-    <Content Include="Views\FCYxhdPhone\Item.cshtml"/>
-    <Content Include="Views\FCYxhdPhone\ImportExcel.cshtml"/>
-    <Content Include="Views\FCUpProduct\Clone.cshtml"/>
-    <Content Include="Views\FCYxhdPhone\ItemChannel.cshtml"/>
-    <Content Include="Views\FCPhoneCharge\Index.cshtml"/>
-    <Content Include="Views\FCPhoneCharge\ImportExcel.cshtml"/>
-    <Content Include="Views\FCPhoneCharge\Item.cshtml"/>
-    <Content Include="Views\FCPreCharge\ImportExcel.cshtml"/>
-    <Content Include="Views\FCPreCharge\Index.cshtml"/>
-    <Content Include="Views\FCPreCharge\Item.cshtml"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml"/>
-    <Content Include="Views\Shared\NavigateMenu.cshtml"/>
-    <Content Include="Views\Shared\NoPermission.cshtml"/>
-    <Content Include="Views\System\Index.cshtml"/>
-    <Content Include="Views\ViewStart.cshtml"/>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common Layer\QXFC.Entity\QXFC.Entity.csproj">
-      <Project>{BF4BE8ED-1502-464D-8341-F260356A7324}</Project>
-      <Name>QXFC.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common Layer\QXFC.Interfaces\QXFC.Interfaces.csproj">
-      <Project>{E454D93D-E193-4CDA-BC73-668644E32C09}</Project>
-      <Name>QXFC.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common Layer\QXFC.Utility\QXFC.Utility.csproj">
-      <Project>{5ADC1695-B401-4E12-BDD7-67BF2C7DC02C}</Project>
-      <Name>QXFC.Utility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data Layer\QXFC.DBAccess\QXFC.DBAccess.csproj">
-      <Project>{3F302949-4B5F-4E73-BF28-3A9EF4090419}</Project>
-      <Name>QXFC.DBAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data Layer\QXFC.DataAccessFactory\QXFC.DataAccessFactory.csproj">
-      <Project>{AA9B21C3-42F5-4654-80C4-EEB99D5A602E}</Project>
-      <Name>QXFC.DataAccessFactory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Logic Layer\QXFC.Logic\QXFC.Logic.csproj">
-      <Project>{4C5D5633-8C08-4239-B047-195DDBF30E55}</Project>
-      <Name>QXFC.Logic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Logic Layer\QXFC.LogicFactory\QXFC.LogicFactory.csproj">
-      <Project>{FA15BCF9-2CC0-4627-BD4F-E8393CB089C0}</Project>
-      <Name>QXFC.LogicFactory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Service Layer\QXFC.Model\QXFC.Model.csproj">
-      <Project>{7CEE363C-E0F9-427B-988B-59955643469B}</Project>
-      <Name>QXFC.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Service Layer\QXFC.UserService\QXFC.UserService.csproj">
-      <Project>{AE9A8857-B524-41C9-B40E-C3C93B2865C6}</Project>
-      <Name>QXFC.UserService</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\ArtDialog\skins\black\"/>
-    <Folder Include="Scripts\ArtDialog\skins\blue\"/>
-    <Folder Include="Scripts\ArtDialog\skins\green\"/>
-    <Folder Include="Scripts\ArtDialog\skins\idialog\"/>
-    <Folder Include="Scripts\ArtDialog\skins\opera\"/>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets"/>
-  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
-    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)"/>
-  </Target>
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3650</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>&#xD;
-          </IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>&#xD;
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-</Project>
+<mapper namespace="com.qianxingniwo.information.mapper.SummaryMapper">
+  <select id="getSummary" parameterType="com.qianxingniwo.information.pojo.parameters.SummeryParameter" resultType="com.qianxingniwo.information.pojo.model.SummaryItemModel">
+    &#xD;
+        select&#xD;
+        count(*) as count ,&#xD;
+        t1.receiving_unit as division_name,&#xD;
+        t1.receiving_workarea_info as division_code&#xD;
+        from damage_repository t1&#xD;
+        inner join damage_repository_device t2 on t1.order_detail_id= t2.order_detail_id&#xD;
+        where&#xD;
+        1=1&#xD;
+&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        and t1.create_time&gt;#{startTime,jdbcType=TIMESTAMP}&#xD;
+        and t1.create_time &lt; #{endTime,jdbcType=TIMESTAMP}&#xD;
+        group by t1.receiving_unit ,t1.receiving_workarea_info&#xD;
+    
+    <if test="damageLevel!=null">&#xD;
+            and t1.damage_level =#{damageLevel,jdbcType=INTEGER}&#xD;
+        </if>
+    <if test="damageOld!=null">&#xD;
+            and t1.damage_old=#{damageOld,jdbcType=INTEGER}&#xD;
+        </if>
+    <if test="defectsExtents!=null">
+      &#xD;
+            and t1.damage_type in&#xD;
+            &#xD;
+        
+      <foreach collection="defectsExtents" open="(" close=")" separator=",">&#xD;
+                #{item,jdbcType=INTEGER}&#xD;
+            </foreach>
+    </if>
+    <if test="dealStatus!=null">&#xD;
+            and t1.deal_status=#{dealStatus,jdbcType=INTEGER}&#xD;
+        </if>
+    <if test="deviceType!=null">&#xD;
+            and t2.device_type=#{deviceType,jdbcType=INTEGER}&#xD;
+        </if>
+  </select>
+  <select id="getDivisionDamageDetails" parameterType="com.qianxingniwo.information.pojo.parameters.DivisionSummeryParameter" resultType="com.qianxingniwo.information.pojo.model.DamageDetailModel">
+    &#xD;
+        select&#xD;
+        -- main&#xD;
+        t1.order_detail_id,&#xD;
+        t1.order_no,&#xD;
+        t1.detect_time,&#xD;
+        t1.detect_stuff,&#xD;
+        t1.damage_type,&#xD;
+        t1.damage_level,&#xD;
+        t1.damage_detail,&#xD;
+        t1.damage_code,&#xD;
+        t1.damage_old,&#xD;
+        t1.damage_old_id,&#xD;
+        t1.receiving_unit,&#xD;
+        t1.receiving_user,&#xD;
+        t1.remark,&#xD;
+        t1.receiving_workarea_info,&#xD;
+        t1.deal_status,&#xD;
+        t1.import_status,&#xD;
+        t1.is_delete,&#xD;
+        t1.operator,&#xD;
+        t1.cancel,&#xD;
+        -- device&#xD;
+        t2.device_name,&#xD;
+        t2.device_code,&#xD;
+        t2.device_type_code,&#xD;
+        t2.device_type,&#xD;
+        t2.seal_number,&#xD;
+        t2.factory,&#xD;
+        t2.nature,&#xD;
+        t2.total_weight,&#xD;
+        t2.user_date,&#xD;
+        t2.radius,&#xD;
+        t2.sleeper,&#xD;
+        t2.rail_type,&#xD;
+        -- position&#xD;
+        t3.line_id,&#xD;
+        t3.line_name,&#xD;
+        t3.line_category,&#xD;
+        t3.direction,&#xD;
+        t3.station_id,&#xD;
+        t3.miles,&#xD;
+        t3.thigh_track_id,&#xD;
+        t3.stock_exchange,&#xD;
+        t3.damage_position,&#xD;
+        t3.hole_position,&#xD;
+        t3.bridge_tunnel,&#xD;
+        -- work area&#xD;
+        t4.short_name as workarea_name,&#xD;
+        -- detect stuff&#xD;
+        t5.name as detect_staff_name&#xD;
+        from damage_repository t1&#xD;
+        inner join damage_repository_device t2 on t1.order_detail_id= t2.order_detail_id&#xD;
+        inner join damage_repository_position t3 on t1.order_detail_id= t3.order_detail_id&#xD;
+        inner join workarea_info t4 on t1.receiving_workarea_info=t4.id&#xD;
+        inner  join detect_staff_info t5 on t1.detect_stuff=t5.id&#xD;
+        where&#xD;
+        1=1&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        &#xD;
+&#xD;
+        and t1.create_time &gt;#{startTime,jdbcType=TIMESTAMP}&#xD;
+        and t1.create_time &lt;#{endTime,jdbcType=TIMESTAMP}&#xD;
+        and t1.receiving_unit=#{divisionCode,jdbcType=VARCHAR}&#xD;
+    
+    <if test="damageLevel!=null">&#xD;
+            and t1.damage_level =#{damageLevel,jdbcType=INTEGER}&#xD;
+        </if>
+    <if test="damageOld!=null">&#xD;
+            and t1.damage_old=#{damageOld,jdbcType=INTEGER}&#xD;
+        </if>
+    <if test="defectsExtents!=null">
+      &#xD;
+            and t1.damage_type in&#xD;
+            &#xD;
+        
+      <foreach collection="defectsExtents" open="(" close=")" separator=",">&#xD;
+                #{item,jdbcType=INTEGER}&#xD;
+            </foreach>
+    </if>
+    <if test="dealStatus!=null">&#xD;
+            and t1.deal_status=#{dealStatus,jdbcType=INTEGER}&#xD;
+        </if>
+    <if test="deviceType!=null">&#xD;
+            and t2.device_type=#{deviceType,jdbcType=INTEGER}&#xD;
+        </if>
+  </select>
+</mapper>

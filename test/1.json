@@ -1,14 +1,111 @@
 {
-	"realName": "李珂",
-	"holdUrl": "http://182.140.244.57:8090/201910/2019102314393324147.png",
-	"certNo": "371721200203265721",
-	"backUrl": "http://182.140.244.57:8090/201910/2019102314383824145.jpg",
-	"frontUrl": "http://182.140.244.57:8090/201910/2019101414055821896.png"
-}
-{
-	"backUrl": "http://182.140.244.57:8090/201910/2019101817001822465.png",
-	"holdUrl": "http://182.140.244.57:8090/201910/2019101815302622417.png",
-	"frontUrl": "http://182.140.244.57:8090/201910/2019102314270424129.png",
-	"realName": "王艳亮",
-	"certNo": "140425198903200852"
+	"mapper": {
+		"$": {
+			"namespace": "com.qianxingniwo.information.mapper.SummaryMapper"
+		},
+		"select": [
+			{
+				"_": "\r\n        select\r\n        count(*) as count ,\r\n        t1.receiving_unit as division_name,\r\n        t1.receiving_workarea_info as division_code\r\n        from damage_repository t1\r\n        inner join damage_repository_device t2 on t1.order_detail_id= t2.order_detail_id\r\n        where\r\n        1=1\r\n\r\n        \r\n\r\n        \r\n\r\n        \r\n\r\n        \r\n\r\n        \r\n\r\n        and t1.create_time>#{startTime,jdbcType=TIMESTAMP}\r\n        and t1.create_time < #{endTime,jdbcType=TIMESTAMP}\r\n        group by t1.receiving_unit ,t1.receiving_workarea_info\r\n    ",
+				"$": {
+					"id": "getSummary",
+					"parameterType": "com.qianxingniwo.information.pojo.parameters.SummeryParameter",
+					"resultType": "com.qianxingniwo.information.pojo.model.SummaryItemModel"
+				},
+				"if": [
+					{
+						"_": "\r\n            and t1.damage_level =#{damageLevel,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "damageLevel!=null"
+						}
+					},
+					{
+						"_": "\r\n            and t1.damage_old=#{damageOld,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "damageOld!=null"
+						}
+					},
+					{
+						"_": "\r\n            and t1.damage_type in\r\n            \r\n        ",
+						"$": {
+							"test": "defectsExtents!=null"
+						},
+						"foreach": [
+							{
+								"_": "\r\n                #{item,jdbcType=INTEGER}\r\n            ",
+								"$": {
+									"collection": "defectsExtents",
+									"open": "(",
+									"close": ")",
+									"separator": ","
+								}
+							}
+						]
+					},
+					{
+						"_": "\r\n            and t1.deal_status=#{dealStatus,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "dealStatus!=null"
+						}
+					},
+					{
+						"_": "\r\n            and t2.device_type=#{deviceType,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "deviceType!=null"
+						}
+					}
+				]
+			},
+			{
+				"_": "\r\n        select\r\n        -- main\r\n        t1.order_detail_id,\r\n        t1.order_no,\r\n        t1.detect_time,\r\n        t1.detect_stuff,\r\n        t1.damage_type,\r\n        t1.damage_level,\r\n        t1.damage_detail,\r\n        t1.damage_code,\r\n        t1.damage_old,\r\n        t1.damage_old_id,\r\n        t1.receiving_unit,\r\n        t1.receiving_user,\r\n        t1.remark,\r\n        t1.receiving_workarea_info,\r\n        t1.deal_status,\r\n        t1.import_status,\r\n        t1.is_delete,\r\n        t1.operator,\r\n        t1.cancel,\r\n        -- device\r\n        t2.device_name,\r\n        t2.device_code,\r\n        t2.device_type_code,\r\n        t2.device_type,\r\n        t2.seal_number,\r\n        t2.factory,\r\n        t2.nature,\r\n        t2.total_weight,\r\n        t2.user_date,\r\n        t2.radius,\r\n        t2.sleeper,\r\n        t2.rail_type,\r\n        -- position\r\n        t3.line_id,\r\n        t3.line_name,\r\n        t3.line_category,\r\n        t3.direction,\r\n        t3.station_id,\r\n        t3.miles,\r\n        t3.thigh_track_id,\r\n        t3.stock_exchange,\r\n        t3.damage_position,\r\n        t3.hole_position,\r\n        t3.bridge_tunnel,\r\n        -- work area\r\n        t4.short_name as workarea_name,\r\n        -- detect stuff\r\n        t5.name as detect_staff_name\r\n        from damage_repository t1\r\n        inner join damage_repository_device t2 on t1.order_detail_id= t2.order_detail_id\r\n        inner join damage_repository_position t3 on t1.order_detail_id= t3.order_detail_id\r\n        inner join workarea_info t4 on t1.receiving_workarea_info=t4.id\r\n        inner  join detect_staff_info t5 on t1.detect_stuff=t5.id\r\n        where\r\n        1=1\r\n        \r\n\r\n        \r\n\r\n        \r\n\r\n        \r\n\r\n        \r\n\r\n        and t1.create_time >#{startTime,jdbcType=TIMESTAMP}\r\n        and t1.create_time <#{endTime,jdbcType=TIMESTAMP}\r\n        and t1.receiving_unit=#{divisionCode,jdbcType=VARCHAR}\r\n    ",
+				"$": {
+					"id": "getDivisionDamageDetails",
+					"parameterType": "com.qianxingniwo.information.pojo.parameters.DivisionSummeryParameter",
+					"resultType": "com.qianxingniwo.information.pojo.model.DamageDetailModel"
+				},
+				"if": [
+					{
+						"_": "\r\n            and t1.damage_level =#{damageLevel,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "damageLevel!=null"
+						}
+					},
+					{
+						"_": "\r\n            and t1.damage_old=#{damageOld,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "damageOld!=null"
+						}
+					},
+					{
+						"_": "\r\n            and t1.damage_type in\r\n            \r\n        ",
+						"$": {
+							"test": "defectsExtents!=null"
+						},
+						"foreach": [
+							{
+								"_": "\r\n                #{item,jdbcType=INTEGER}\r\n            ",
+								"$": {
+									"collection": "defectsExtents",
+									"open": "(",
+									"close": ")",
+									"separator": ","
+								}
+							}
+						]
+					},
+					{
+						"_": "\r\n            and t1.deal_status=#{dealStatus,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "dealStatus!=null"
+						}
+					},
+					{
+						"_": "\r\n            and t2.device_type=#{deviceType,jdbcType=INTEGER}\r\n        ",
+						"$": {
+							"test": "deviceType!=null"
+						}
+					}
+				]
+			}
+		]
+	}
 }
