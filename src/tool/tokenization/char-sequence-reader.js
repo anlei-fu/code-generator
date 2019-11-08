@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-15 09:26:36
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-21 09:16:44
+ * @LastEditTime: 2019-11-08 11:21:07
  */
 
 exports.CharSequenceReader = class CharSequenceReader {
@@ -14,7 +14,7 @@ exports.CharSequenceReader = class CharSequenceReader {
          */
         constructor(text) {
 
-                this._current = 0;
+                this._current = -1;
                 this._text = text;
         }
         /**

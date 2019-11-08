@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-25 11:23:02
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-01 17:27:37
+ * @LastEditTime: 2019-11-08 17:02:00
  -->
 ### Main Class
 ----
@@ -50,6 +50,13 @@
 |@CookieValue||
 |@RequestHeader||
 |@SessionAttributes||
+|@ConfigurationProperties| resolve config from config file|
+|@EnableConfigurationProperties| do resolve from properties file|
+|@ConditionalOnClass||
+|@ConditionalOnBean||
+|@AutoConfigureAfter||
+|@PostConstruct| after autowire finish|
+|@PreConstruct| before autowire|
 -----
 
 ### enums

@@ -4,10 +4,16 @@
  * @Author: fuanlei
  * @Date: 2019-11-07 16:20:07
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-07 16:38:30
+ * @LastEditTime: 2019-11-08 15:50:51
  */
 const { SqlSegment, SqlTemplate } = require("./sql-template");
-const { } = require("./../../tool/tokenization/char-sequence-reader");
+const { CharSequenceReader } = require("./../../tool/tokenization/char-sequence-reader");
+
+/**
+ * 
+ * @param {String} text 
+ * @returns {SqlTemplate}
+ */
 
 function parse(text) {
         let reader = new CharSequenceReader(text),
@@ -19,19 +25,22 @@ function parse(text) {
          * 
          * @param {boolean} repd 
          */
-        function checkVaribleStart(repd) {
+        function checkVaribleStart(repd, char) {
                 if (isParsingVarible) {
-                        buffer += c;
+                        buffer += char;
                 } else {
-                        if (!reader.previous() == "\\" && reader.hasNext() && reader.next() == "{") {
+
+                        if (reader.previous() != "\\" && reader.hasNext() && reader.next() == "{") {
                                 if (buffer.length != 0)
-                                        template.segments.push(new Segment(buffer, false));
+                                        template.segments.push(new SqlSegment(buffer, false));
                                 buffer = "";
                                 isParsingVarible = true;
                                 replaceDirect = repd;
                         } else {
-                                buffer += c;
-                                reader.back();
+                                if (reader.previous() == "\\")
+                                        buffer = buffer.substr(0, buffer.length - 1);
+
+                                buffer += char;
                         }
                 }
         }
@@ -49,34 +58,42 @@ function parse(text) {
                 let c = reader.next();
                 switch (c) {
                         case "#":
-                                checkVaribleStart(false);
+                                checkVaribleStart(false, c);
                                 break;
                         case "$":
-                                checkVaribleStart(true);
+                                checkVaribleStart(true, c);
                                 break;
                         case "}":
                                 if (isParsingVarible) {
-                                        template.segments.push(new SqlSegment(formatVarible(buffer), true, replaceDirect));
-                                        isParsingVarible = false;
-                                        buffer = "";
+                                        if (reader.previous() == "\\") {
+                                                buffer = buffer.substr(0, buffer.length - 1);
+                                                buffer+=c;
+                                        } else {
+                                                template.segments.push(new SqlSegment(formatVarible(buffer), true, replaceDirect));
+                                                isParsingVarible = false;
+                                                buffer = "";
+                                        }
                                 } else {
                                         buffer += c;
                                 }
                                 break;
                         default:
                                 buffer += c;
+                                break;
                 }
 
         }
 
-        if (buffer != "" && !isParsingVarible) {
-                template.push(new Segment(buffer, template));
-        } else {
-                throw new Error(`unexcepted end`);
+        if (buffer != "") {
+                if (!isParsingVarible) {
+                        template.segments.push(new SqlSegment(buffer,false));
+                } else {
+                        throw new Error(`unexcepted end`);
+                }
         }
+
         return template;
 }
 
-exports = {
-        parse
-}
+exports.parse = parse;
+

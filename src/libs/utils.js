@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-23 16:06:05
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-02 10:37:27
+ * @LastEditTime: 2019-11-08 15:00:56
  */
 /**
  * Check target is defined, if target not defiend will throw an error
@@ -81,15 +81,15 @@ function toMap(array, keySelector) {
  * @param {Any=>String} keySelector 
  * @returns {Map<String,[Any]>}
  */
-function groupBy(array,keySelector){
+function groupBy(array, keySelector) {
         let map = new Map();
 
         array.forEach(x => {
-               let key=keySelector(x);
-               if(!map.has(key)){
-                   map.set(key,[]);   
-               }
-               map.get(key).push(x);
+                let key = keySelector(x);
+                if (!map.has(key)) {
+                        map.set(key, []);
+                }
+                map.get(key).push(x);
         })
 
         return map;
@@ -164,41 +164,73 @@ function toArray(obj) {
  * @param {String} key 
  * @returns {boolean}
  */
-function hasKey(obj,key){
-   return  new Set(Object.keys(obj)).has(key);
+function hasKey(obj, key) {
+        return new Set(Object.keys(obj)).has(key);
 }
 /**
  * 
  * @param {Any} obj 
  * @param {(key:String,value:Any)=>void} consumer 
  */
-function forEach(obj,consumer){
-    
-    if(!consumer)
-       throw new ReferenceError("consumer can not be null!");
- 
-    for( const c in obj){
-            consumer(c,obj[c]);
-    }
+function forEach(obj, consumer) {
+
+        if (!consumer)
+                throw new ReferenceError("consumer can not be null!");
+
+        for (const c in obj) {
+                consumer(c, obj[c]);
+        }
 }
 /**
  * 
  * @param {Any} obj 
  * @param {String} key 
  */
-function deleteKey(obj,key){
-     if(!hasKey(obj,key))
-        return;
- 
-     delete obj[key];
+function deleteKey(obj, key) {
+        if (!hasKey(obj, key))
+                return;
+
+        delete obj[key];
 }
+/**
+ * 
+ * @param {any} obj 
+ * @param {String} key 
+ * @returns {any|undefined}
+ */
+function getValue(obj, key) {
+        let keys = key.split(",");
+        for (const k of keys) {
+                if (obj[k]) {
+                        obj = obj[k]
+                } else {
+                        return undefined;
+                }
+        }
+
+        return obj;
+}
+/**
+ * 
+ * @param {Map} map 
+ */
+function mapToObject(map) {
+        let obj={};
+        map.forEach((v,k)=>{
+           obj[k]=v;
+        });
+        return obj;
+}
+
 exports.OBJECT = {
         extend,
         deepExtend,
         clone,
         toArray,
         hasKey,
-        forEach
+        forEach,
+        getValue,
+        mapToObject
 }
 /*-------------------------------------------------------------------function---------------------------------------------------------------*/
 
@@ -207,4 +239,41 @@ function extend(self, other) {
 /*-------------------------------------------------------------------class----------------------------------------------------------------------*/
 function extend(self, other) {
 
+}
+
+/*--------------------------------------------------------------------type----------------------------------------------------------------------------*/
+
+function isArray(obj) {
+        return obj instanceof Array
+}
+
+function isObject(obj) {
+        return obj instanceof Object;
+}
+
+function isString(obj) {
+        return obj.constructor == String;
+}
+
+function isFunction(obj) {
+        return obj.constructor == Function;
+}
+
+function isNumber(obj) {
+        return obj.constructor == Number;
+}
+
+function isBoolean(obj) {
+        return obj.constructor == Boolean;
+}
+
+
+
+exports.TYPE = {
+        isArray,
+        isObject,
+        isString,
+        isFunction,
+        isNumber,
+        isBoolean
 }

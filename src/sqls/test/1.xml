@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+    <import path="./2.xml"/>
+    <select id="0">
+     select *from user where id=${id};
+    </select>
+    <select id="1" parameterType="java.lang.Integer" resultType="com.qianxingniwo.information.pojo.model.DamageDetailModel">
+        select
+        -- main
+        t1.order_detail_id,
+        t1.order_no,
+        t1.detect_time,
+        t1.detect_stuff,
+        t1.damage_type,
+        t1.damage_level,
+        t1.damage_detail,
+        t1.damage_code,
+        t1.damage_old,
+        t1.damage_old_id,
+        t1.receiving_unit,
+        t1.receiving_user,
+        t1.remark,
+        t1.receiving_workarea_info,
+        t1.deal_status,
+        t1.import_status,
+        t1.is_delete,
+        t1.operator,
+        t1.cancel,
+        -- device
+        t2.device_name,
+        t2.device_code,
+        t2.device_type_code,
+        t2.device_type,
+        t2.seal_number,
+        t2.factory,
+        t2.nature,
+        t2.total_weight,
+        t2.user_date,
+        t2.radius,
+        t2.sleeper,
+        t2.rail_type,
+        -- position
+        t3.line_id,
+        t3.line_name,
+        t3.line_category,
+        t3.direction,
+        t3.station_id,
+        t3.miles,
+        t3.thigh_track_id,
+        t3.stock_exchange,
+        t3.damage_position,
+        t3.hole_position,
+        t3.bridge_tunnel,
+        -- work area
+        t4.short_name as workarea_name,
+        -- detect stuff
+        t5.name as detect_staff_name,
+        -- track division
+        t7.short_name as track_division_name
+        from damage_repository t1
+        inner join damage_repository_device t2 on t1.order_detail_id= t2.order_detail_id
+        inner join damage_repository_position t3 on t1.order_detail_id= t3.order_detail_id
+        inner join workarea_info t4 on t1.receiving_workarea_info=t4.id
+        inner  join detect_staff_info t5 on t1.detect_stuff=t5.id
+        inner  join station_info t6 on t3.station_id=t6.id
+        inner join  track_division_info t7 on t6.track_division_id=t7.id
+        where t1.order_detail_id=#{_parameter,jdbcType=INTEGER}
+    </select>
+    <select id="2" parameterType="java.util.List" resultType="com.qianxingniwo.information.pojo.model.DealRecordModel">
+        select
+        t1.deal_remark,
+        t1.deal_time,
+        t2.short_name as workShop,
+        t3.short_name as charger
+        from deal_record t1
+        inner join workshop_info t2 on t1.workshop_info_id=t2.id
+        inner join workarea_info t3 on t1.workarea_id= t3.id
+        <where>
+           and
+           1=1
+            <if test="ls">
+        t1.order_detail_id in
+                <foreach collection="ls" item="item" open="(" close=")" separator=","> 
+                   #{item,jdbcType=INTEGER}
+                </foreach>
+            </if>
+        </where>
+        order by t1.create_time desc
+    </select>
+    <select id="3" parameterType="java.util.List" resultType="com.qianxingniwo.information.pojo.model.DetectRecordModel">
+        select
+        t1.detect_time,
+        t1.detect_stuff,
+        t1.damage_level as damage_level,
+        t1.damage_detail,
+        t2.short_name as workarea_name
+        from damage_repository t1
+        inner join workarea_info t2 on t1.receiving_workarea_info =t2.id
+        where
+        t1.order_detail_id in
+        <foreach collection="ls" item="item" open="(" close=")" separator=","> #{item,jdbcType=INTEGER}
+        </foreach>
+        order by t1.create_time desc
+    </select>
+</mapper>

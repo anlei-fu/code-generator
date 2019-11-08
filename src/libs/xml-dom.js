@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-07 14:05:41
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-07 15:51:26
+ * @LastEditTime: 2019-11-08 14:30:51
  */
 
 
@@ -121,7 +121,7 @@ exports.XML_DOM = {
         load,
         selectAll,
         selectDirect,
-        getAttr: getAttribute,
+        getAttribute,
         containsAttr: hasAttribute,
         setAttr
 }
