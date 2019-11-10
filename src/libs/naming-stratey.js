@@ -16,9 +16,7 @@ function toPascal(input) {
         let ret = "";
 
         split(input).forEach(word => {
-                if (word != "_") {
                         ret += STR.upperFirstLetter(word.toLowerCase());
-                }
         });
 
         return ret;
@@ -30,9 +28,8 @@ function toPascal(input) {
  */
 function toCamel(input) {
         let ret = "";
-        split(input).forEach((word, i) => {
+        split(input).forEach(word => {
                 if (word != "_") {
-                        console.log(word);
                         if (ret != "") {
                                 ret += STR.upperFirstLetter(word.toLowerCase());
                         } else {
@@ -51,22 +48,11 @@ function toCamel(input) {
 function toHungary(input) {
         let ret = "";
 
-        split(input).forEach(word => {
-                if (word == "_") {
-                        if (ret != "" && !ret.endsWith("_")) {
-                                ret += "_";
-                        }
-                } else {
-                        if (ret == "") {
-                                ret += word.toLowerCase();
-                        } else {
-                                if (ret.endsWith("_")) {
-                                        ret += word.toLowerCase();
-                                } else {
-                                        ret += "_" + ret.toLowerCase();
-                                }
-                        }
-                }
+        split(input).forEach((word, i, array) => {
+                if (i != array.length - 1)
+                        ret += word.toLowerCase() + "_";
+                else
+                        ret += word.toLowerCase();
         });
 
         return ret;
@@ -77,61 +63,30 @@ function toHungary(input) {
  * @returns {[String]}
  */
 function split(input) {
-        input = input.trim();
-        var ls = [];
-        var word = "";
+        if (input.indexOf("_") != -1)
+                return input.split("_");
 
-        let isUpper = false;
+        if (input == "")
+                throw new Error("input can not be empty!");
 
-        /**
-         * 
-         * @param {boolean} upper
-         * @returns {boolean} 
-         */
-        function finishWord(upper, char) {
-                if (word == "") {
-                        isUpper = upper;
-                        word += char;
-                } else {
-                        if ((isUpper && upper) || (!isUpper && !upper)) {
-                                word += char;
-                        } else {
-                                ls.push(word);
-                                word = "";
-                                return true;
-                        }
+        let word = input[0];
+        let ls = [];
 
-                        return false;
-                }
-        }
-
-        for (let i = 0; i < input.length; i++) {
-
+        for (let i = 1; i < input.length; i++) {
                 let c = input.charAt(i);
-                if (c == "_") {
-                        if (word != "") {
-                                ls.push(word);
-                                word = "";
-                        }
 
-                        ls.push(c);
-                }
-                else if (c >= "A" && c <= "Z") {
-                        if (finishWord(true, c))
-                                --i;
-
-                } else if (c >= "a" && c <= "z") {
-                        if (finishWord(false, c))
-                                --i;
+                if (c >= "A" && c <= "Z") {
+                        ls.push(word);
+                        word = c;
                 } else {
                         word += c;
                 }
         }
 
-        if (word != "")
-                ls.push(word);
+        ls.push(word);
 
         return ls;
+
 }
 
 exports.NamingStrategy = {
