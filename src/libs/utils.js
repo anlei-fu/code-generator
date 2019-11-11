@@ -12,6 +12,7 @@
  */
 exports.UNDEFINED = "undefined";
 exports.EMPTY = "";
+
 /**
  * @description Check target is null or not, if null throw an argument error;
  * @param {Any} target 
@@ -44,6 +45,7 @@ exports.parseValue = (value) => {
 }
 
 /*------------------------------------------------array---------------------------------------------------*/
+
 /**
  * @description Convert @see {Array} to @see {Set} 
  * @param {[Any]} array 
@@ -59,6 +61,7 @@ function toSet(array) {
 
         return s;
 }
+
 /**
  * 
  * @param {[Any]} array 
@@ -100,7 +103,8 @@ exports.ARRAY = {
         toMap,
         groupBy
 }
-/*-----------------------------------------------object--------------------------------------------------------------*/
+/*-------------------------------------------------------------------object---------------------------------------------------------------------------*/
+
 /**
  * 
  * @param {Object} self 
@@ -121,6 +125,7 @@ function extend(self, other, override) {
                 }
         }
 }
+
 /**
  * 
  * @param {Object} self 
@@ -137,6 +142,7 @@ function deepExtend(self, other) {
                 }
         }
 }
+
 /**
  * 
  * @param {Object} target 
@@ -145,6 +151,7 @@ function deepExtend(self, other) {
 function clone(target) {
         return JSON.parse(JSON.stringify(target));
 }
+
 /**
  * 
  * @param {Any} obj 
@@ -158,6 +165,7 @@ function toArray(obj) {
 
         return ls;
 }
+
 /**
  * 
  * @param {Any} obj 
@@ -167,6 +175,7 @@ function toArray(obj) {
 function hasKey(obj, key) {
         return new Set(Object.keys(obj)).has(key);
 }
+
 /**
  * 
  * @param {Any} obj 
@@ -181,6 +190,7 @@ function forEach(obj, consumer) {
                 consumer(c, obj[c]);
         }
 }
+
 /**
  * 
  * @param {Any} obj 
@@ -192,6 +202,7 @@ function deleteKey(obj, key) {
 
         delete obj[key];
 }
+
 /**
  * 
  * @param {any} obj 
@@ -210,14 +221,15 @@ function getValue(obj, key) {
 
         return obj;
 }
+
 /**
- * 
+ * @description To resolve @see Map can not be stringified by JSON method
  * @param {Map} map 
  */
 function mapToObject(map) {
-        let obj={};
-        map.forEach((v,k)=>{
-           obj[k]=v;
+        let obj = {};
+        map.forEach((v, k) => {
+                obj[k] = v;
         });
         return obj;
 }
@@ -232,10 +244,12 @@ exports.OBJECT = {
         getValue,
         mapToObject
 }
+
 /*-------------------------------------------------------------------function---------------------------------------------------------------*/
 
 function extend(self, other) {
 }
+
 /*-------------------------------------------------------------------class----------------------------------------------------------------------*/
 function extend(self, other) {
 

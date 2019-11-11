@@ -22,8 +22,6 @@ function select(item, prefix = "", ident = "") {
                                                 content += `as ${x.alias},\r\n`;
 
                                         buffer += content;
-
-
                                 } else {
                                         buffer += `${ident}\t\t${x},\r\n`;
                                 }

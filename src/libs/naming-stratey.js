@@ -6,7 +6,9 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-11-07 17:30:49
  */
+
 const { STR } = require("./str");
+
 /**
  * 
  * @param {String} input 
@@ -14,13 +16,13 @@ const { STR } = require("./str");
  */
 function toPascal(input) {
         let ret = "";
-
         split(input).forEach(word => {
-                        ret += STR.upperFirstLetter(word.toLowerCase());
+                ret += STR.upperFirstLetter(word.toLowerCase());
         });
 
         return ret;
 }
+
 /**
  * 
  * @param {String} input 
@@ -29,17 +31,12 @@ function toPascal(input) {
 function toCamel(input) {
         let ret = "";
         split(input).forEach(word => {
-                if (word != "_") {
-                        if (ret != "") {
-                                ret += STR.upperFirstLetter(word.toLowerCase());
-                        } else {
-                                ret += word.toLowerCase();
-                        }
-                }
+                ret += ret != "" ? STR.upperFirstLetter(word.toLowerCase()) : word.toLowerCase();
         });
 
         return ret;
 }
+
 /**
  * 
  * @param {String} input
@@ -47,18 +44,16 @@ function toCamel(input) {
  */
 function toHungary(input) {
         let ret = "";
-
         split(input).forEach((word, i, array) => {
-                if (i != array.length - 1)
-                        ret += word.toLowerCase() + "_";
-                else
-                        ret += word.toLowerCase();
+                ret += i != array.length - 1
+                        ? word.toLowerCase() + "_" : word.toLowerCase();
         });
 
         return ret;
 }
+
 /**
- * 
+ * @description Split to words, 1. split by '_' if contains any '_' 2. tokenlize 
  * @param {String} input 
  * @returns {[String]}
  */

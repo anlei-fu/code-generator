@@ -8,6 +8,7 @@
  */
 const { requireNotNull } = require("./utils")
 const fs = require("fs");
+
 /**
  * @description Dose directory exists;
  * @param {String} path 
@@ -19,6 +20,7 @@ function exists(path) {
         return fs.existsSync(path)
                 && fs.lstatSync(path).isDirectory();
 }
+
 /**
  * @description Create a new directory
  * @param {String} path 
@@ -30,6 +32,7 @@ function create(path) {
 
         fs.mkdirSync(path);
 }
+
 /**
  * @description Remove a directory
  * @todo  Want to remove a folder  msut remove sub-folder first,So need a recursive processing;
@@ -54,6 +57,7 @@ function remove(path) {
 
         return exports.FILE;
 }
+
 /**
  * @description Get all files in current directory
  * @param {String} path 
@@ -69,6 +73,7 @@ function getFiles(path) {
                 })
         return ls;
 }
+
 /**
  * @description Get all sub-folders of current folder
  * @param {String} path 
@@ -85,6 +90,7 @@ function getFolders(path) {
 
         return ls;
 }
+
 /**
  * @param {String} target 
  */
@@ -105,6 +111,7 @@ function copy(target, destination) {
         })
 
 }
+
 // Exports
 exports.DIR = {
         getFiles,

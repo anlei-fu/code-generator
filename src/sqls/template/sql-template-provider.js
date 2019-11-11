@@ -17,9 +17,11 @@ exports.SqlTemplateProvider = class SqlTemplateProvider {
                 this._map = new Map();
                 this._loadedFiles = new Set();
         }
+        
         get(name) {
                 return this._map.get(name);
         }
+
         /**
          * 
          * @param {String} file  main mapper file path
@@ -67,7 +69,9 @@ function load(file, loadedFiles, templates) {
                                 resolveSqlNode(y, templates, namespace, file);
                         });
 
+
 }
+
 /**
  * 
  * @param {Node} node 
@@ -86,9 +90,7 @@ function resolveSqlNode(node, templates, namespace, file) {
                 throw new Error(`sql ${namespace}.${id} already exists in templates in file :${file}`)
 
         let sqlNode = new SqlNode(`${namespace}.${id}`,node.tagName);
-
         resolveCore(node, templates, file, sqlNode);
-
         templates.set(`${namespace}.${id}`, sqlNode);
 
 }
@@ -111,6 +113,7 @@ function resoleForEach(node, templates, file) {
 
         return forEachNode;
 }
+
 /**
  * 
  * @param {Node} node 
@@ -123,6 +126,7 @@ function resolveIf(node, templates, file) {
         resolveCore(node, templates, file, ifNode);
         return ifNode;
 }
+
 /**
  * 
  * @param {Node} node 
@@ -134,6 +138,7 @@ function resolveWhere(node, templates, file) {
         resolveCore(node, templates, file, whereNode);
         return whereNode;
 }
+
 /**
  * 
  * @param {Node} node 
@@ -151,6 +156,7 @@ function resolveInclude(node, templates, file) {
 
         return templates.get(refId);
 }
+
 /**
  * 
  * @param {Node} node 
@@ -173,6 +179,7 @@ function resolveCore(node, templates, file, sqlNode) {
                 }
         });
 }
+
 /**
  * 
  * @param {Node} node 

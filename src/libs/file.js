@@ -7,13 +7,16 @@
  * @LastEditTime: 2019-10-16 15:41:18
  */
 // import
+
 const { requireNotNull } = require("./utils")
 const fs = require("fs");
+
 /**
  * @description Check encoding by given ,If null return "utf-8" ;
  * @param {String} charset 
  */
 const defaultCharset = (charset) => { encoding: charset || "utf8" };
+
 /**
  * @description Read all lines from file, read all data from file then split into lines;
  * @param {String} path , File to read
@@ -42,6 +45,7 @@ function readLines(path, charset, trim, ignoreEmpty) {
         }
         return ls;
 }
+
 /**
  * @description Read data from file
  * @param {String} path , File to read
@@ -52,6 +56,7 @@ function read(path, charset) {
         requireNotNull(path);
         return fs.readFileSync(path, defaultCharset(charset)).toString();
 }
+
 /**
  *@description Write data into  file
  * @param {String} path , File to write
@@ -63,6 +68,7 @@ function write(path, data, charset) {
         requireNotNull(data);
         fs.writeFileSync(path, data, defaultCharset(charset));
 }
+
 /**
  * @descrip Append line  at the end of file,data+"\r\n";
  * @param {String} path , File path
@@ -73,6 +79,7 @@ function appendLine(path, data, charset) {
         append(path, data + "\r\n", charset);
 
 }
+
 /**
  * @description Append data  at the end of file;
  * @param {String} path , File path
@@ -84,6 +91,7 @@ function append(path, data, charset) {
         requireNotNull(data);
         fs.appendFileSync(path, data, defaultCharset(charset));
 }
+
 /**
  * @description Copy file
  * @param {String} source 
@@ -98,6 +106,7 @@ function copy(source, destination, rmSource) {
         if (rmSource)
                 fs.unlinkSync(source);
 }
+
 /**
  * @description Remove file 
  * @param {String} path 
@@ -106,6 +115,7 @@ function remove(path) {
         if (exists(path))
                 fs.unlinkSync(path);
 }
+
 /**
  * @description Check does file exists
  * @param {String} path 
@@ -115,6 +125,7 @@ function exists(path) {
         requireNotNull(path);
         return fs.existsSync(path);
 }
+
 /**
  * Exports
  */

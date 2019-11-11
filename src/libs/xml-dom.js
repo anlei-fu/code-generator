@@ -101,6 +101,7 @@ function getAttribute(node, key) {
 
         return undefined;
 }
+
 /**
  * 
  * @param {Node} node 

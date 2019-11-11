@@ -8,6 +8,7 @@
  */
 const { UNDEFINED, requireNotNull } = require("./../libs/utils");
 const { STR } = require("./../libs/str");
+
 /**
  * Sql base class
  */
@@ -19,8 +20,8 @@ class DbObject {
         toString() {
                 return `${this.name}\r\n${typeof this}\r\n${this.description}`;
         }
-
 }
+
 /**
  * Class of sql db
  */
@@ -53,12 +54,14 @@ exports.Db = class Db extends DbObject {
                 this.jobs = {};
         }
 }
+
 /**
  * Class of sql packege
  */
 exports.Package = class Package extends DbObject {
 
 }
+
 /**
  * Class of join relation
  */
@@ -68,6 +71,7 @@ exports.Join = class Join {
                 this.condition = condition;
         }
 }
+
 /**
  *  Class of mapping columns
  */
@@ -122,60 +126,70 @@ exports.Table = class Table extends DbObject {
                  this.oneToOne=[];
                 
         }        
+
         /**
          * Generate create-table string
          */
         toCreateString() {
 
         }
+
         /**
          * Render insert string
          */
         renderInsert(parameter) {
 
         }
+
         /**
          * Render bulk-insert string
          */
         renderInsertMany() {
 
         }
+
         /**
          * Render drop string
          */
         renderDrop() {
 
         }
+
         /**
          * Render delete-by-key  string
          */
         renderDeleteByKey() {
 
         }
+
         /**
          * Generate clear-all string
          */
         generateClear() {
 
         }
+
         /**
          * Render update by key
          */
         renderUpdateByKey() {
 
         }
+
         /**
          *  Generate select all sql string
          */
         generateGetAll() {
 
         }
+
         /**
          *  Generate count(*) string
          */
         generateGetCount() {
 
         }
+
         /**
          * Render get by key
          */
@@ -183,10 +197,12 @@ exports.Table = class Table extends DbObject {
 
         }
 }
+
 /**
  * Class of sql type 
  */
 exports.SqlType = class SqlType {
+
         /**
          * 
          * @param {String} name 
@@ -196,6 +212,7 @@ exports.SqlType = class SqlType {
                 this.name = name;
                 this.length = length;
         }
+
         /**
          * @static
          * @param {String} str 
@@ -209,6 +226,7 @@ exports.SqlType = class SqlType {
                         : new SqlType(STR.removeWithMatch(str, "(", ")"), 
                                       new Number(segs[0]).valueOf());
         }
+
         toCSharpType(){
                 if(this.name.indexOf("char")!=-1)
                    return "string";
@@ -218,6 +236,7 @@ exports.SqlType = class SqlType {
                 
                 return this.length>20?"decimal?":"int?";
         }
+
         /**
          * to sql-type string,type|type(length)
          */
@@ -226,32 +245,38 @@ exports.SqlType = class SqlType {
                         this.name : `${this.name}(${this.length})`;
         }
 }
+
 /**
  * Class of sql column
  */
 exports.Column = class Column extends DbObject {
         constructor(name, description) {
                 super(name, description);
+
                 /**
                  * @member {String} columnName, mapped column 
                  * @required
                  */
                 this.columnName;
+
                 /**
                  * @member {SqlType}  
                  * @required
                  */
                 this.type;
+
                 /**
                  * @member {boolean}
                  * @default  true
                  */
                 this.nullable = true;
+
                 /**
                  * @member {boolean}
                  * @default false
                  */
                 this.autoIncrement = false;
+
                 /**
                  * @member {boolean}
                  * @default false
@@ -299,12 +324,14 @@ exports.Column = class Column extends DbObject {
                  */
                 this.render;
         }
+
         toCreatString() {
                 var ret = "";
 
         }
 
 }
+
 /**
  * Class of sequence
  */
@@ -316,6 +343,7 @@ exports.Sequence = class Sequence extends DbObject {
                 return `SELECT ${this.name}.nextVal FROM DUAL`;
         }
 }
+
 /**
  * 
  */
@@ -327,6 +355,7 @@ exports.Parameter = class Parameter extends DbObject {
                 this.defaultValue;
         }
 }
+
 /**
  * Class of procedurea
  */
@@ -357,6 +386,7 @@ exports.Function = class Function extends DbObject {
 class Job {
 
 }
+
 /**
  * Class of sql constraint
  */
@@ -370,6 +400,7 @@ exports.Constraint = class Constraint extends DbObject {
                 this.columns = [];
         }
 }
+
 /**
  * Class of sql index
  */
@@ -401,6 +432,7 @@ exports.SqlValue = class SqlValue {
                 this.value = value;
         }
 }
+
 /**
  * Class of sql constant
  */

@@ -6,8 +6,10 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-10-23 10:54:10
  */
+
 //imports
 const { requireNotNull, EMPTY } = require("./utils")
+
 /**
  * @description Select  matched sections of input string and remove left,right pattern both;
  * @param {String} input 
@@ -46,6 +48,7 @@ function select(input, left, right, start, count) {
 
         return ls;
 }
+
 /**
  * @description  Select  matched section of string ,keep left and right  pattern both in result
  * @param {String} input 
@@ -86,13 +89,13 @@ function select1(input, left, right, start, count) {
 
         return ls;
 }
+
 /**
- * @description replace many  times with replace pairs , don't think about pairs's order
+ * @description Replace many  times with replace pairs , don't think about pairs's order
  * @param {String} input 
  * @param {Map<String,String>?} pairs 
  * @returns {String}
  */
-
 function replace(input, pairs) {
         requireNotNull(input);
         pairs = pairs || {};
@@ -102,6 +105,7 @@ function replace(input, pairs) {
 
         return input;
 }
+
 /**
  * @description Remove patterns from string
  * @param {String} input 
@@ -117,6 +121,7 @@ function remove(input, array) {
 
         return input;
 }
+
 /**
  * 
  * @param {String} input 
@@ -132,6 +137,7 @@ function removeWithMatch(input, left, right) {
 
         return input;
 }
+
 /**
  * 
  * @param {String} input 
@@ -146,6 +152,7 @@ function removeWithMatchMany(input, option) {
 
         return input;
 }
+
 /**
  * 
  * @param {String} patter 
@@ -200,8 +207,9 @@ function arrayToString(array, prefix, suffix) {
 
         return result;
 }
+
 /**
- * Splite input string into sections by splitor
+ *@description Splite input string into sections by splitor
  * @param {String} input 
  * @param {String} splitor 
  * @param {Number?} start  start position
@@ -231,6 +239,7 @@ function split1(input, splitor, start, count) {
                 start = i + splitor.length;
         }
 }
+
 /**
  * Repeat a pattern  by times
  * @param {String} pattern 
@@ -245,6 +254,7 @@ function repeat(pattern, times) {
 
         return pattern;
 }
+
 /**
  * @description Split text into words by blank chars splitors (" ","\r","\n","\t","\f","\b")
  * @param {String} input 
@@ -287,6 +297,7 @@ function splitToWords(input) {
 
         return ls;
 }
+
 /**
  * 
  * @param {String} input 
@@ -295,6 +306,7 @@ function splitToWords(input) {
 function upperFirstLetter(input) {
         return `${input.substr(0, 1).toUpperCase()}${input.substr(1, input.length - 1)}`;
 }
+
 /**
  * 
  * @param {String} input 
@@ -303,6 +315,7 @@ function upperFirstLetter(input) {
 function lowerFirstLetter(input) {
         return `${input.substr(0, 1).toLowerCase()}${input.substr(1, input.length - 1)}`;
 }
+
 /**
  * 
  * @param {String} input 
@@ -311,6 +324,7 @@ function lowerFirstLetter(input) {
 function splitToLines(input) {
         return input.split("\n");
 }
+
 /**
  * 
  * @param {String} input 
@@ -324,6 +338,7 @@ function removeEmptyLine(input) {
         })
         return temp;
 }
+
 /**
  * 
  */

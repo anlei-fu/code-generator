@@ -7,21 +7,23 @@
  * @LastEditTime: 2019-10-22 14:24:54
  */
 const xml2js = require('xml2js');
+
 /**
  * 
- * @param {String} text 
+ * @param {String} xml 
  * @returns {Any}
  */
-async function toJson(text) {
-        return await new xml2js.Parser().parseStringPromise(text);
+async function toJson(xml) {
+        return await new xml2js.Parser().parseStringPromise(xml);
 }
+
 /**
  * 
- * @param {Any} data 
+ * @param {Any} json 
  * @returns {String}
  */
-function toXml(data) {
-        return new xml2js.Builder().buildObject(data);
+function toXml(json) {
+        return new xml2js.Builder().buildObject(json);
 }
 
 exports.XML = {

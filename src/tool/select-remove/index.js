@@ -6,14 +6,17 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-09-30 11:33:03
  */
+
 var { STR } = require("./../../libs/str")
 var { FILE } = require("./../../libs/file")
+
 /**
  * replace string many times
  * @param {Option} map 
  * @param {String?} input  file
  * @param {String?} output  file
  */
+
 function replace(map, input, output) {
         input = input || "input";
         output = output || "output";
@@ -27,5 +30,6 @@ function replace(map, input, output) {
         FILE.write(output, text);
         console.log("Completed!");
 }
+
 // do work
 replace({ tr: "th", td: "th" });

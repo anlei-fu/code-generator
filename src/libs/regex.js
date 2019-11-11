@@ -6,6 +6,7 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-10-22 09:30:22
  */
+
 exports.REGEX={
         isNumber:/^[0-9]+$/,
         isPhone:/d/,

@@ -11,6 +11,7 @@ const { DIR } = require("./../libs/dir");
 const { STR } = require("./../libs/str");
 
 const ROOT = "./../../resources/plsqldoc";
+
 /**
  * 
  * @param {String} folder 
@@ -25,6 +26,7 @@ function format(folder) {
                 format(`${folder}/${dir}`);
         });
 }
+
 /**
  * 
  * @param {String} text 
@@ -46,6 +48,7 @@ function formatCore(text) {
 
         return STR.replace(text, pairs);
 }
+
 /**
  *  main
  */

@@ -6,8 +6,9 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-10-23 10:29:27
  */
+
 /**
- * imports  @const cheerio see https://github.com/cheeriojs/cheerio
+ * imports  @const cheerio @see https://github.com/cheeriojs/cheerio
  */
 const { parseValue } = require("./../libs/utils");
 const cheerio = require("cheerio");
@@ -19,6 +20,7 @@ const { Table, Column, SqlType, Package, Constraint, Function, Procedure, Db, Sq
         = require("./db-info");
 
 const ROOT = "./../../resources/plsqldoc";
+
 /**
  * @param {String} path ,main page path
  * @returns {[Db]}
@@ -39,6 +41,7 @@ function parse() {
 
         return dbs;
 }
+
 /**
  * 
  * @param {CheerioStatic} $ 
@@ -60,6 +63,7 @@ function parseDb($, el) {
 
         return db;
 }
+
 /**
  * 
  * @param {CheerioStatic} $ 
@@ -83,6 +87,7 @@ function parseComponent($, el, func) {
 
         return component;
 }
+
 /**
  * Value element '<pre class="decl_text">'
  * @param {String} html 
@@ -115,6 +120,7 @@ function parsePackage(html) {
 
         return pkg;
 }
+
 /**
  * 
  * @param {String} html 
@@ -139,6 +145,7 @@ function parseTable(html) {
                         for (let cons of tab.constraints[constraint].columns) {
 
                                 for (let col in tab.columns) {
+
                                         // set chinese name
                                         tab.columns[col].chineseName = getChineseName(tab.columns[col].description);
 
@@ -149,6 +156,7 @@ function parseTable(html) {
                                         //set column raw name
                                         tab.columns[col].rawName = NamingStrategy.toHungary(tab.columns[col].name)
                                                 .toUpperCase();
+
                                         // set pk
                                         if (col == cons) {
                                                 tab.columns[col].isPk = true;
@@ -172,6 +180,7 @@ function parseTable(html) {
 
         return tab;
 }
+
 /**
  * 
  * @param {String} comment 
@@ -199,6 +208,7 @@ function getChineseName(comment) {
  */
 function parseColumns($, el) {
         let columns = {};
+
         // get column rows start with 1
         let divs = $(el).children("div");
         for (let i = 1; i < divs.length; i++) {
@@ -218,12 +228,14 @@ function parseColumns($, el) {
                 column.type = SqlType.parse(raw_type);
                 column.nullable = raw_nullable == "Y";
                 column.defaltValue = raw_def == "" ? null : parseValue(raw_def);
+
                 //add new item
                 columns[name] = column;
         }
 
         return columns;
 }
+
 /**
  * @description tr[1] is the target
  * start from 1 ,because 0 is column infomation
@@ -236,6 +248,7 @@ function parseConstraints($, el) {
                 divs = $(el).children("div");
 
         for (i = 1; i < divs.length; i++) {
+
                 // 1 is name ,2 is column
                 let sub_divs = $(divs[i]).children("div"),
                         constraint = new Constraint(),
@@ -287,6 +300,7 @@ function parseFunction(html) {
 
         return func;
 }
+
 /**
  * 
  * @param {String} text 
@@ -294,8 +308,10 @@ function parseFunction(html) {
  */
 function parseParameter(text) {
         let parameters = {};
+
         // remove comment
         text = STR.removeWithMatch(text, "--", "\n");
+
         // replace "," in one function ,cause will do  split by  ",", just one function was changed
         text = text.replace("','", "' '");
 
@@ -389,6 +405,7 @@ function formatToSqlString(sqlType, val) {
                 throw "unexcepted error happend!";
         }
 }
+
 /**
  * @param {String} s
  */
@@ -404,6 +421,7 @@ function formatString(s) {
 
         return ret;
 }
+
 /**
  * 
  * @param {{Db}} dbs 

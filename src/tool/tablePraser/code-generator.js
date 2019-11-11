@@ -6,6 +6,7 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-10-23 14:15:20
  */
+
 //imports
 const { FILE } = require("./../../libs/file");
 const { DIR } = require("./../../libs/dir");
@@ -47,7 +48,9 @@ function toCSharpType(name, length) {
   return this.length > 20 ?
     "decimal?" : "int?";
 }
+
 class Generator {
+
   /**
    * 
    * @param {Object} table 
@@ -62,12 +65,14 @@ class Generator {
     this.projectName = projectName;
     this.option = option;
   }
+
   /**
    * Url mapping config
    */
   generateUrlConfig() {
 
   }
+
   /**
    *  dao config
    */
@@ -122,6 +127,7 @@ class Generator {
       .replace("@fields", fileds.trim())
       .replace("@filter", filters);
   }
+
   /**
    *  entities
    */
@@ -146,12 +152,14 @@ class Generator {
 
     return this.filts(text);
   }
+
   /**
    *  iaccess
    */
   generateIAccess() {
     return this.filts(FILE.read("./templates/iaccess.cs"));
   }
+
   /**
    *  ihandler
    */
@@ -172,12 +180,14 @@ class Generator {
   generateSerivece() {
     return this.filts(FILE.read("./templates/service.cs"))
   }
+
   /**
    * acccess
    */
   generateAccess() {
     return this.filts(FILE.read("./templates/access.cs"));
   }
+
   /**
    *  controller
    */
@@ -202,18 +212,21 @@ class Generator {
   generateIndex() {
 
   }
+
   /**
    * editpage
    */
   generateEidt() {
 
   }
+
   /**
    * import page
    */
   generateImport() {
 
   }
+
   /**
    *  modal list
    */
@@ -221,15 +234,18 @@ class Generator {
     return this.filts(FILE.read("./templates/listModal.cs"));
 
   }
+
   generateItemModel() {
     return this.filts(FILE.read("./templates/itemModal.cs"));
   }
+
   /**
    * view list
    */
   generateViewList() {
 
   }
+
   /**
    * Replace @table.name & @project.name
    * @param {String} text 
@@ -240,6 +256,7 @@ class Generator {
   }
 
 }
+
 /**
  * 
  * @param {String} name table name
@@ -262,8 +279,8 @@ function main(name, project, option) {
   FILE.write(`outputs/${name}/${name}Service.cs`, g.generateSerivece());
   FILE.write(`outputs/${name}/${name}.xml`, g.generateEntityConfig());
 
-
 }
+
 /**
  * option:
  * {

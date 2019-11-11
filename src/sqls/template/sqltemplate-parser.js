@@ -14,15 +14,16 @@ const { CharSequenceReader } = require("./../../tool/tokenization/char-sequence-
  * @param {String} text 
  * @returns {SqlTemplate}
  */
-
 function parse(text) {
+
         let reader = new CharSequenceReader(text),
                 template = new SqlTemplate(),
                 buffer = "",
                 isParsingVarible = false,
                 replaceDirect = false;
+
         /**
-         * 
+         * @description Check is varible start and which kind of varible 
          * @param {boolean} repd 
          */
         function checkVaribleStart(repd, char) {
@@ -30,6 +31,7 @@ function parse(text) {
                         buffer += char;
                 } else {
 
+                        // Check  escape pattern "\$"||"\#"
                         if (reader.previous() != "\\" && reader.hasNext() && reader.next() == "{") {
                                 if (buffer.length != 0)
                                         template.segments.push(new SqlSegment(buffer, false));
@@ -46,7 +48,7 @@ function parse(text) {
         }
 
         /**
-         * 
+         * @description Trim 
          * @param {String} text 
          * @returns {String}
          */
@@ -65,9 +67,11 @@ function parse(text) {
                                 break;
                         case "}":
                                 if (isParsingVarible) {
+
+                                        // Check  escape pattern "\{"
                                         if (reader.previous() == "\\") {
                                                 buffer = buffer.substr(0, buffer.length - 1);
-                                                buffer+=c;
+                                                buffer += c;
                                         } else {
                                                 template.segments.push(new SqlSegment(formatVarible(buffer), true, replaceDirect));
                                                 isParsingVarible = false;
@@ -86,7 +90,7 @@ function parse(text) {
 
         if (buffer != "") {
                 if (!isParsingVarible) {
-                        template.segments.push(new SqlSegment(buffer,false));
+                        template.segments.push(new SqlSegment(buffer, false));
                 } else {
                         throw new Error(`unexcepted end`);
                 }

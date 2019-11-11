@@ -8,6 +8,7 @@
  */
 var { STR } = require("./../libs/str")
 var { FILE } = require("./../libs/file")
+
 /**
  * replace string many times
  * @param {Option} map 
@@ -22,5 +23,6 @@ function replace(map, input, output) {
         FILE.write(output, text);
         console.log("Completed!");
 }
+
 // do work
 replace({ tr: "th", td: "th" });

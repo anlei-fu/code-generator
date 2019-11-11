@@ -6,6 +6,7 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-10-21 09:18:25
  */
+
 exports.TOKEN_TYPE = {
         keyword: "keyword",
         string: "string",
@@ -14,7 +15,7 @@ exports.TOKEN_TYPE = {
         operator: "operator",
         symbol: "symbol",
         comment: "comment",
-        blank:"blank"
+        blank: "blank"
 }
 
 exports.Token = class Token {
@@ -27,22 +28,27 @@ exports.Token = class Token {
                 this.value = value;
                 this.type = type;
         }
+
         /**
          * 
          */
         isString() { return this.type = TOKEN_TYPE.string }
+
         /**
          * 
          */
         isBoolean() { return this.type = TOKEN_TYPE.boolean; }
+
         /**
          * 
          */
         isNumber() { return this.type = TOKEN_TYPE.number; }
+
         /**
          * 
          */
         isOperator() { return this.type = TOKEN_TYPE.operator; }
+
         /**
          * 
          */

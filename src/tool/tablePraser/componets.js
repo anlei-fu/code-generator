@@ -34,6 +34,7 @@ function renderOption(lable, name, value, text, dft) {
                 .replace("@default-option", dft);
         return { html };
 }
+
 /**
  * 
  * @param {{name:String,lable:String}} param0  
@@ -47,6 +48,7 @@ function renderDateFilter({ name, lable }) {
 
         return { html };
 }
+
 /**
  * 
  * @param {{String,String,[{String,String}]}} param0 
@@ -69,6 +71,7 @@ function renderOption1({ name, lable, items }) {
         return { html };
 
 }
+
 /**
  * 
  * @param {{String,[{name:String,lable:String}]}} param0 
@@ -91,6 +94,7 @@ function renderMutipleInput({ name, items }) {
 
         return { js, html }
 }
+
 function associatedSelects(option1, option2) {
 
 }
@@ -103,6 +107,7 @@ function renderMutipleRadio(id, ...items) {
 
 
 }
+
 /**
  * 
  * @param {*} tab 
@@ -125,11 +130,10 @@ function renderExportExcel(table, option) {
 
         tab.columns.forEach(x, i, array => {
                 let name = STR.upperFirstLetter(x.name);
-                if (i != array.length - 1) {
-                        headers += `${ident}"${x.chineseName}",\r\n`;
-                } else {
-                        headers += `${ident}"${x.chineseName}"\r\n`;
-                }
+                
+                headers += i != array.length - 1
+                        ? `${ident}"${x.chineseName}",\r\n` : `${ident}"${x.chineseName}"\r\n`;
+
                 body += `row["${x.chineseName}"] = item.${name};\r\n`
         });
 
@@ -158,10 +162,7 @@ function renderExportExcel(table, option) {
                 option.returnFileds.push("t.*");
                 returnFields = "";
                 option.returnFilelds.forEach(x, i, array => {
-                        if (i != array.length - 1)
-                                returnFields += `${x},\r\n`;
-                        else
-                                returnFields += `${x}\r\n`;
+                        returnFields += i != array.length - 1 ? `${x},\r\n` : `${x}\r\n`;
                 });
         }
 
@@ -188,6 +189,7 @@ function renderExportExcel(table, option) {
                 js
         };
 }
+
 /**
  * 
  * @param {[{name:()=>String}]} resolvers 
@@ -237,6 +239,7 @@ function renderImportExcel(resolvers) {
                 page
         }
 }
+
 /**
  * 
  * @param {[()=>{js:String,html:String}]} items 
@@ -259,11 +262,8 @@ function renderEdit(items, rules) {
 
         // rules
         rules.forEach(x => {
-                if (x.regex) {
-                        r += `${x.name}:{required:true,${x.regex}:true},\r\n`
-                } else {
-                        r += `${x.name}:{required:true},\r\n`;
-                }
+                r += x.regex ?
+                        `${x.name}:{required:true,${x.regex}:true},\r\n` : `${x.name}:{required:true},\r\n`;
 
                 r = r.substr(0, r.length - 3) + "\r\n";
         })
@@ -284,6 +284,7 @@ function renderEdit(items, rules) {
         };
 
 }
+
 /**
  * 
  * @param {Any} table 
@@ -320,13 +321,12 @@ function renderTable(table, option, cells) {
                 let op = `<td>\r\n`;
 
 
-                if (option.edite) {
+                if (option.edite)
                         op += `<a href="javascript:void(0)" onclick="edit('@item.${tab.columns[1].name}')">修改</a>\r\n`;
-                }
 
-                if (option.delete) {
+                if (option.delete)
                         op += `<a href="javascript:void(0)" onclick="del('@item.${tab.columns[1].name}',this)"> 删除</a>\r\n`;
-                }
+
                 op += `</td>`;
 
                 if (option.check) {

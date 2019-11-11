@@ -40,7 +40,7 @@ queueLimit?: number;}} config
         /**
          * 
          * @param {String} sql
-         * @returns {Promise<{results,fields}>} 
+         * @returns {Promise<[any]]>} 
          * @exception {SqlError}
          */
         query(sql) {
@@ -55,7 +55,6 @@ queueLimit?: number;}} config
         }
 
         /**
-         * 
          * @param {String} sql
          * @returns {Promise<number>}  fields effected
          * @exception {SqlError}

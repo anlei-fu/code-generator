@@ -14,11 +14,13 @@ exports.SqlTemplate = class SqlTemplate {
         constructor() {
                 this.segments = [];
         }
+
         render(option) {
                 let ret = "";
                 this.segments.forEach(x => {
                         ret += x.render(option);
                 });
+
                 return ret;
         }
 }
@@ -34,7 +36,14 @@ exports.SqlSegment = class SqlSegment {
                 this.isVarible = isVarible;
                 this.replaceDirect = replaceDirect;
         }
+
         render(option) {
+
+                /**
+                 *  1. Not varible
+                 *  2. Varible needs format to sql-string
+                 *  3. Just replace directly
+                 */
                 if (!this.isVarible) {
                         return this.name;
                 } else if (!this.replaceDirect) {
@@ -46,12 +55,15 @@ exports.SqlSegment = class SqlSegment {
                         return SQL_UTILS.getSqlString(value);
                 } else {
                         let value = OBJECT.getValue(option, this.name);
+                        
                         if (!value)
                                 throw new Error("can not find parameter:" + this.name);
+
                         return value;
                 }
         }
 }
+
 /**
  * @member {[Node]} children 
  */
@@ -59,6 +71,7 @@ exports.Node = class Node {
         constructor() {
                 this.children = [];
         }
+
         /**
          * 
          * @param {any} option
@@ -73,7 +86,12 @@ exports.Node = class Node {
         }
 }
 
+/**
+ * @member {String} id
+ * @member {String} type
+ */
 exports.SqlNode = class SqlNode extends this.Node {
+
         /**
          * 
          * @param {String} id 
@@ -87,7 +105,9 @@ exports.SqlNode = class SqlNode extends this.Node {
 }
 
 exports.WhereNode = class WhereNode extends this.Node {
+
         /**
+         * @description  trim where section (where and|or|else)
          * @override
          * @param {any} option 
          */
@@ -114,6 +134,7 @@ exports.WhereNode = class WhereNode extends this.Node {
  * @member {String} seperator
  * @member {String} close
  * @member {String} open
+ * @member {String} item
  */
 exports.ForEachNode = class ForEachNode extends this.Node {
         constructor() {
@@ -125,6 +146,7 @@ exports.ForEachNode = class ForEachNode extends this.Node {
                 this.close = "";
                 this.open = "";
         }
+
         /**
          * @override
          * @param {any} option 
@@ -140,7 +162,10 @@ exports.ForEachNode = class ForEachNode extends this.Node {
 
                 if (this.open)
                         ret += this.open;
-
+                
+                /**
+                 *  Just array or object can passed into foreach node
+                 */
                 if (TYPE.isArray(value)) {
                         console.log("here");
                         value.forEach((v, i, array) => {
@@ -156,8 +181,9 @@ exports.ForEachNode = class ForEachNode extends this.Node {
 
                 } else if (TYPE.isObject(value)) {
                         OBJECT.forEach((k, v) => {
+                                let item={ key: k, value: v };
                                 this.children.forEach(x => {
-                                        ret += x.render({ item: { key: k, value: v } });
+                                        ret += x.render(item);
                                 });
 
                                 if (this.separator && i != array.length - 1)
@@ -165,7 +191,7 @@ exports.ForEachNode = class ForEachNode extends this.Node {
                         });
 
                 } else {
-                        throw new Error(`unexcepted data type passed into foreach collection(${this.collection}),date:${typeof value}`);
+                        throw new Error(`unexcepted data type passed into foreach collection(${this.collection}),data:${typeof value}`);
                 }
 
                 if (this.close)
@@ -181,6 +207,7 @@ exports.IfNode = class IfNode extends this.Node {
                 super();
                 this.test = "";
         }
+
         /**
          * @override
          * @param {any} option 
@@ -188,12 +215,14 @@ exports.IfNode = class IfNode extends this.Node {
          */
         render(option) {
                 let value = OBJECT.getValue(option, this.test);
-
                 return value ? super.render(option) : "";
         }
 
 }
 
+/**
+ * @member {SqlTemplate} template
+ */
 exports.TemplateNode = class TemplateNode extends this.Node {
         constructor() {
                 super();
