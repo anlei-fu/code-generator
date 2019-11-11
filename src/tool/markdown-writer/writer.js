@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-21 14:03:26
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-21 14:22:02
+ * @LastEditTime: 2019-11-11 09:20:52
  */
 
 
@@ -12,11 +12,11 @@
 /**
  * 
  * @param {[String]} headers 
- * @param {[Any=>String)]} columns 
- * @param {[Any]} datas 
+ * @param {[String|Any=>String)]} columns 
+ * @param {[String|Any=>String]} datas 
  * @param {Any} param3  {title,tail}
  */
-function writeTable(headers, columns, datas, { title, tail }) {
+function writeTable(headers, columns, datas, title) {
         let output = "";
 
         if (title)

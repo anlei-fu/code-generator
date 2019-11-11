@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-30 16:36:43
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-06 10:27:42
+ * @LastEditTime: 2019-11-11 15:31:22
  -->
 ### ...
 ---
@@ -160,3 +160,9 @@ const arr = [ ...oldArr ]
 ```
 
 -----
+
+###  Notice
+
+- js function can override  not surport polymorphic
+- var can overlay ,let can not overlay
+- without var ,it also surpports

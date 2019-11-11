@@ -7,9 +7,9 @@
  * @LastEditTime: 2019-11-04 14:43:47
  */
 
-const {FILE}=require("./../../libs/file")
-const {STR}=require("./../../libs/str")
-const {ARRAY}=require("./../../libs/utils")
+const {FILE}=require("../../libs/file")
+const {STR}=require("../../libs/str")
+const {ARRAY}=require("../../libs/utils")
 
 function make(){
 
