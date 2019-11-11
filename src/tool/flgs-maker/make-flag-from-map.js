@@ -1,0 +1,3 @@
+function make(name,map) {
+        
+}

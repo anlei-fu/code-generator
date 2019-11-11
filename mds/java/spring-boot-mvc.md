@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-25 11:23:02
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-08 17:02:00
+ * @LastEditTime: 2019-11-11 16:46:17
  -->
 ### Main Class
 ----
@@ -229,6 +229,43 @@
 - ClassPathBeanDefinitionScanner 
 
 
+------
 
+### logging
+
+- logging.level.{key}={value}  loggin map
+- logging.config={config file path}
+- logging.path=/Users/jackie/workspace/rome/ 
+- logging.file=springbootdemo.log (if null default spring.log)
+- logging.level.root=warn
+- logging.pattern.console=%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n 
+- logging.pattern.file=%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n
+
+
+----
+
+### Filters
+
+filter->interceptor->controller-advise->aspct
+
+----
+
+### cross domain (http->https, ports, domain)
+- CORS
+- JSONP
+- origin  source domain (check by server)
+
+``` json
+//指定允许其他域名访问
+'Access-Control-Allow-Origin:http://172.20.0.206'//一般用法（*，指定域，动态设置），3是因为*不允许携带认证头和cookies
+//是否允许后续请求携带认证信息（cookies）,该值只能是true,否则不返回
+'Access-Control-Allow-Credentials:true'
+//预检结果缓存时间,也就是上面说到的缓存啦
+'Access-Control-Max-Age: 1800'
+//允许的请求类型
+'Access-Control-Allow-Methods:GET,POST,PUT,POST'
+//允许的请求头字段
+'Access-Control-Allow-Headers:x-requested-with,content-type'
+```
 
 

@@ -322,6 +322,8 @@ $.ajaxSetup({
 |ifModified|Boolean|(默认: false) 仅在服务器数据改变时获取新数据。使用 HTTP 包 Last-Modified 头信息判断。
 |processData|Boolean|(默认: true) 默认情况下，发送的数据将被转换为对象(技术上讲并非字符串) 以配合默认内容类型 "application/x-www-form-urlencoded"。如果要发送 DOM 树信息或其它不希望转换的信息，请设置为 false。
 |success|Function|请求成功后回调函数。这个方法有两个参数：服务器返回数据，返回状态function (data, textStatus) {          // data could be xmlDoc, jsonObj, html, text, etc...          this; // the options for this ajax request          }
+
+- data 默认格式化方式为 form-data  ，传json 需调用 JSON.stringify() 格式化数据
 　　
 
 
