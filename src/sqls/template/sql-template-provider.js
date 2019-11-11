@@ -14,18 +14,18 @@ const { WhereNode, IfNode, SqlNode, TemplateNode, ForEachNode } = require("./sql
 
 exports.SqlTemplateProvider = class SqlTemplateProvider {
         constructor() {
-                this.map = new Map();
+                this._map = new Map();
                 this._loadedFiles = new Set();
         }
         get(name) {
-                return this.map.get(name);
+                return this._map.get(name);
         }
         /**
          * 
          * @param {String} file  main mapper file path
          */
         load(file) {
-                load(file, this._loadedFiles, this.map);
+                load(file, this._loadedFiles, this._map);
         }
 }
 
