@@ -101,7 +101,7 @@ function from(option) {
  * @param {String} table 
  * @returns {String}
  */
-function update(table) {
+function update(table,columns) {
      return `update ${NamingStrategy.toHungary(table)}\r\n`;
 }
 
