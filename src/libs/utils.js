@@ -12,6 +12,7 @@
  */
 exports.UNDEFINED = "undefined";
 exports.EMPTY = "";
+const {STR}=require("./str");
 
 /**
  * @description Check target is null or not, if null throw an argument error;
@@ -221,6 +222,19 @@ function getValue(obj, key) {
 
         return obj;
 }
+
+function text(obj,name){
+    let json=JSON.stringify(obj);
+    STR.select1(json,"\"","\":").forEach(x=>{
+            json=json.replace(x,x.replace("\"",""));
+    })
+
+    return `let ${name} = ${json}\r\n`;
+}
+
+
+
+
 
 /**
  * @description To resolve @see Map can not be stringified by JSON method

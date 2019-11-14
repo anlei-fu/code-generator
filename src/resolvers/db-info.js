@@ -315,14 +315,21 @@ exports.Column = class Column extends DbObject {
                  *  join table's column
                  */
                 this.mappingColumn={};
+
                 /**
                  * 
                  */
                 this.isFilter=false;
+
                 /**
                  * 
                  */
                 this.render;
+
+                /**
+                 * 
+                 */
+                this.datas=[];
         }
 
         toCreatString() {
