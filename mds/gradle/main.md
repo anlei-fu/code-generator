@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-13 18:05:40
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-13 18:12:12
+ * @LastEditTime: 2019-11-14 09:53:43
  -->
 ### command
 
@@ -32,3 +32,24 @@ implementation：只能在内部使用此模块，比如我在一个libiary中�
 - releaseCompile（releaseImplementation）作用：
 
 -------
+
+### error
+
+- 乱码
+
+``` groovy
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+```
+
+- lombok 无法使用
+
+``` groovy
+ annotationProcessor 'org.projectlombok:lombok:1.18.2'
+ compileOnly 'org.projectlombok:lombok:1.18.2'
+ // idea File/Setting/Build/Compile/JavaCompile/AllowAnnotationProcess
+```
+
+
+
