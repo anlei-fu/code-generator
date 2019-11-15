@@ -1,0 +1,1659 @@
+[
+	{
+		"name": "contractMain",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "合同编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "合同发起人",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractType": {
+				"name": "contractType",
+				"description": "合同类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractTitle": {
+				"name": "contractTitle",
+				"description": "合同标题",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"rawContractFile": {
+				"name": "rawContractFile",
+				"description": "原始合同文件",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"rawContractHash": {
+				"name": "rawContractHash",
+				"description": "原始合同Hash",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"signExpireTime": {
+				"name": "signExpireTime",
+				"description": "签约截止日期",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"contractState": {
+				"name": "contractState",
+				"description": "合同状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"signContractFile": {
+				"name": "signContractFile",
+				"description": "签约合同文件",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"signContractHash": {
+				"name": "signContractHash",
+				"description": "签约合同Hash",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"effectTime": {
+				"name": "effectTime",
+				"description": "合同生效时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"expireTime": {
+				"name": "expireTime",
+				"description": "合同失效时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"validPeriod": {
+				"name": "validPeriod",
+				"description": "合同有效期",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractPrice": {
+				"name": "contractPrice",
+				"description": "合同价格",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "contractNotaryRecord",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractId": {
+				"name": "contractId",
+				"description": "合同编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"proposer": {
+				"name": "proposer",
+				"description": "公证申请人",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"notaryChannel": {
+				"name": "notaryChannel",
+				"description": "公证渠道",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"notaryStatus": {
+				"name": "notaryStatus",
+				"description": "公证状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"notaryStartTime": {
+				"name": "notaryStartTime",
+				"description": "公证发起时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"notaryEndTime": {
+				"name": "notaryEndTime",
+				"description": "公证完成时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "contractSign",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "签约编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "用户编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"signSubject": {
+				"name": "signSubject",
+				"description": "签署主体",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"subjectType": {
+				"name": "subjectType",
+				"description": "主体类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"signPerson": {
+				"name": "signPerson",
+				"description": "签署人",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"signStatus": {
+				"name": "signStatus",
+				"description": "签署状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"signSort": {
+				"name": "signSort",
+				"description": "签署顺序",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"needPay": {
+				"name": "needPay",
+				"description": "需要付费",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"notifyPhone": {
+				"name": "notifyPhone",
+				"description": "通知号码",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"notifyEmail": {
+				"name": "notifyEmail",
+				"description": "通知邮箱",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"notifyCount": {
+				"name": "notifyCount",
+				"description": "通知次数",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"shortMsg": {
+				"name": "shortMsg",
+				"description": "私信内容",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 256
+				}
+			},
+			"signUrl": {
+				"name": "signUrl",
+				"description": "签署URL",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"signTime": {
+				"name": "signTime",
+				"description": "签署时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"signIp": {
+				"name": "signIp",
+				"description": "签署IP",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 16
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "contractSignRecord",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractId": {
+				"name": "contractId",
+				"description": "合同编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"signId": {
+				"name": "signId",
+				"description": "签约编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"signPerson": {
+				"name": "signPerson",
+				"description": "签署人",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"signBeforeFile": {
+				"name": "signBeforeFile",
+				"description": "签署前合同",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"signBeforeHash": {
+				"name": "signBeforeHash",
+				"description": "签署前Hash",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"signAfterFile": {
+				"name": "signAfterFile",
+				"description": "签署后合同",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"signAfterHash": {
+				"name": "signAfterHash",
+				"description": "签署后Hash",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "mealConfig",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "套餐编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"mealName": {
+				"name": "mealName",
+				"description": "套餐名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"mealType": {
+				"name": "mealType",
+				"description": "套餐类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"remark": {
+				"name": "remark",
+				"description": "套餐备注",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"price": {
+				"name": "price",
+				"description": "套餐价格",
+				"nullable": true,
+				"type": {
+					"name": "float"
+				}
+			},
+			"discount": {
+				"name": "discount",
+				"description": "套餐折扣",
+				"nullable": true,
+				"type": {
+					"name": "float"
+				}
+			},
+			"contracts": {
+				"name": "contracts",
+				"description": "合同份数",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"status": {
+				"name": "status",
+				"description": "套餐状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "notaryChannel",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "渠道编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"channelName": {
+				"name": "channelName",
+				"description": "渠道名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"remark": {
+				"name": "remark",
+				"description": "渠道备注",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"apiUrl": {
+				"name": "apiUrl",
+				"description": "接口地址",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"apiKey": {
+				"name": "apiKey",
+				"description": "接口key",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"status": {
+				"name": "status",
+				"description": "状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "receiptAccount",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"accountType": {
+				"name": "accountType",
+				"description": "账号类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"accountName": {
+				"name": "accountName",
+				"description": "账号名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"platAppId": {
+				"name": "platAppId",
+				"description": "支付平台ID",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"platAppSecret": {
+				"name": "platAppSecret",
+				"description": "支付平台Secret",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"merchantNo": {
+				"name": "merchantNo",
+				"description": "商户编号",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"signKey": {
+				"name": "signKey",
+				"description": "签名KEY",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"certPath": {
+				"name": "certPath",
+				"description": "证书路径",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"certPwd": {
+				"name": "certPwd",
+				"description": "证书密码",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"publicKey": {
+				"name": "publicKey",
+				"description": "加密公钥",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"privateKey": {
+				"name": "privateKey",
+				"description": "解密验签私钥",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"balance": {
+				"name": "balance",
+				"description": "账户余额",
+				"nullable": true,
+				"type": {
+					"name": "float"
+				}
+			},
+			"authRedirectUrl": {
+				"name": "authRedirectUrl",
+				"description": "API授权跳转URL",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"payRedirectUrl": {
+				"name": "payRedirectUrl",
+				"description": "支付完跳转URL",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"payCallbackUrl": {
+				"name": "payCallbackUrl",
+				"description": "支付结果回调URL",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"refundCallbackUrl": {
+				"name": "refundCallbackUrl",
+				"description": "退款结果回调URL",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"status": {
+				"name": "status",
+				"description": "状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"remark": {
+				"name": "remark",
+				"description": "备注",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "systemContractTemplate",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractType": {
+				"name": "contractType",
+				"description": "合同分类",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractName": {
+				"name": "contractName",
+				"description": "合同名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"contractFile": {
+				"name": "contractFile",
+				"description": "合同内容",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "systemDictionary",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"type": {
+				"name": "type",
+				"description": "字典类型",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"value": {
+				"name": "value",
+				"description": "字典值",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"sortNum": {
+				"name": "sortNum",
+				"description": "字典排序",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"remark": {
+				"name": "remark",
+				"description": "字典备注",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			}
+		}
+	},
+	{
+		"name": "systemLog",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"module": {
+				"name": "module",
+				"description": "模块名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"summary": {
+				"name": "summary",
+				"description": "日志摘要",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"content": {
+				"name": "content",
+				"description": "日志内容",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 256
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userAccountInfo",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "用户编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"accountType": {
+				"name": "accountType",
+				"description": "账号类型: 1-手机 2-邮箱 3-支付宝小程序",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userName": {
+				"name": "userName",
+				"description": "登录账号",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"loginPwd": {
+				"name": "loginPwd",
+				"description": "登录密码",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"verifyState": {
+				"name": "verifyState",
+				"description": "实名状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"alipayMpid": {
+				"name": "alipayMpid",
+				"description": "支付宝小程序UID",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"lastLoginIp": {
+				"name": "lastLoginIp",
+				"description": "上次登录IP",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 16
+				}
+			},
+			"lastLoginTime": {
+				"name": "lastLoginTime",
+				"description": "上次登录时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userCompanyInfo",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "企业编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "用户编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"companyName": {
+				"name": "companyName",
+				"description": "企业名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"contactAddress": {
+				"name": "contactAddress",
+				"description": "企业地址",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"licenseNo": {
+				"name": "licenseNo",
+				"description": "营业执照号",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"legalPerson": {
+				"name": "legalPerson",
+				"description": "企业法人",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"contactPhone": {
+				"name": "contactPhone",
+				"description": "法人联系电话",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 24
+				}
+			},
+			"idCardNo": {
+				"name": "idCardNo",
+				"description": "法人身份证号",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"idCardPicFront": {
+				"name": "idCardPicFront",
+				"description": "法人身份证国徽照",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"idCardPicBack": {
+				"name": "idCardPicBack",
+				"description": "法人身份证人像照",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"licensePicFront": {
+				"name": "licensePicFront",
+				"description": "企业营业执照",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"verifyState": {
+				"name": "verifyState",
+				"description": "认证状态",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"verifyStartTime": {
+				"name": "verifyStartTime",
+				"description": "认证开始时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"verifyEndTime": {
+				"name": "verifyEndTime",
+				"description": "认证完成时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"authorizer": {
+				"name": "authorizer",
+				"description": "授权签署人",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"authIdNo": {
+				"name": "authIdNo",
+				"description": "授权人身份证号",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"authFile": {
+				"name": "authFile",
+				"description": "授权文件",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userConsumeRecord",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"accountId": {
+				"name": "accountId",
+				"description": "账户编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractId": {
+				"name": "contractId",
+				"description": "合同编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"consumeType": {
+				"name": "consumeType",
+				"description": "消费类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"consumeAmount": {
+				"name": "consumeAmount",
+				"description": "消费份数",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"consumeBefore": {
+				"name": "consumeBefore",
+				"description": "消费前剩余",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"consumeAfter": {
+				"name": "consumeAfter",
+				"description": "消费后剩余",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"remark": {
+				"name": "remark",
+				"description": "备注",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userContactInfo",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "用户编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractName": {
+				"name": "contractName",
+				"description": "联系人",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"contractPhone": {
+				"name": "contractPhone",
+				"description": "联系电话",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 24
+				}
+			},
+			"contractEmail": {
+				"name": "contractEmail",
+				"description": "联系邮箱",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			}
+		}
+	},
+	{
+		"name": "userContractTemplate",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "创建人编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"belongType": {
+				"name": "belongType",
+				"description": "模板归属类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"belongId": {
+				"name": "belongId",
+				"description": "模板归属编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractName": {
+				"name": "contractName",
+				"description": "合同名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"contractFile": {
+				"name": "contractFile",
+				"description": "合同文件",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userPurchaseRecord",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "用户编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"contractType": {
+				"name": "contractType",
+				"description": "合同类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"mealId": {
+				"name": "mealId",
+				"description": "套餐编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"mealPrice": {
+				"name": "mealPrice",
+				"description": "套餐价格",
+				"nullable": true,
+				"type": {
+					"name": "float"
+				}
+			},
+			"contractCount": {
+				"name": "contractCount",
+				"description": "套餐合同份数",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"purchaseBefore": {
+				"name": "purchaseBefore",
+				"description": "合同份数(购买前)",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"purchaseAfter": {
+				"name": "purchaseAfter",
+				"description": "合同份数(购买后)",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userRealInfo",
+		"columns": {
+			"userId": {
+				"name": "userId",
+				"description": "用户编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"realName": {
+				"name": "realName",
+				"description": "用户姓名",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 32
+				}
+			},
+			"idCardNo": {
+				"name": "idCardNo",
+				"description": "身份证号",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 24
+				}
+			},
+			"idCardPicFront": {
+				"name": "idCardPicFront",
+				"description": "身份证国徽照",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"idCardPicBack": {
+				"name": "idCardPicBack",
+				"description": "身份证人像照",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"idCardPicHand": {
+				"name": "idCardPicHand",
+				"description": "身份证手持照",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"verifyStartTime": {
+				"name": "verifyStartTime",
+				"description": "认证开始时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			},
+			"verifyEndTime": {
+				"name": "verifyEndTime",
+				"description": "认证完成时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userSignSeal",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "创建人编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"belongType": {
+				"name": "belongType",
+				"description": "签章归属类型",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"belongId": {
+				"name": "belongId",
+				"description": "签章归属编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"signName": {
+				"name": "signName",
+				"description": "签章名称",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 64
+				}
+			},
+			"signPic": {
+				"name": "signPic",
+				"description": "签章图片",
+				"nullable": true,
+				"type": {
+					"name": "varchar",
+					"length": 128
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	},
+	{
+		"name": "userWallet",
+		"columns": {
+			"id": {
+				"name": "id",
+				"description": "编号",
+				"isPk": true,
+				"nullable": false,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"userId": {
+				"name": "userId",
+				"description": "用户编号",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"personBalance": {
+				"name": "personBalance",
+				"description": "个人余额(份数)",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"companyBalance": {
+				"name": "companyBalance",
+				"description": "企业余额(份数)",
+				"nullable": true,
+				"type": {
+					"name": "int",
+					"length": 11
+				}
+			},
+			"createTime": {
+				"name": "createTime",
+				"description": "创建时间",
+				"nullable": true,
+				"type": {
+					"name": "datetime"
+				}
+			}
+		}
+	}
+]

@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:13:28
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-23 10:54:10
+ * @LastEditTime: 2019-11-15 13:03:05
  */
 
 //imports
@@ -59,10 +59,6 @@ function select(input, left, right, start, count) {
  * @returns {[String]}
  */
 function select1(input, left, right, start, count) {
-        requireNotNull(input);
-        requireNotNull(left);
-        requireNotNull(right);
-
         start = start || 0;
         count = count || -1;
 
@@ -346,6 +342,20 @@ function formatWords(input, option) {
 
 }
 
+/**
+ * 
+ * @param {String} input 
+ * @returns {String}
+ */
+function reverse(input) {
+        let output = "";
+        for (const c of input)
+                output = c + output;
+
+        return output;
+}
+
+
 exports.STR = {
         select,
         select1,
@@ -360,5 +370,6 @@ exports.STR = {
         removeWithMatchMany,
         removeEmptyLine,
         splitToLines,
-        lowerFirstLetter
+        lowerFirstLetter,
+        reverse
 }

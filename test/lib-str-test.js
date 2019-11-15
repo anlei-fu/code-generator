@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-11 10:57:11
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-11 14:37:09
+ * @LastEditTime: 2019-11-15 13:06:04
  */
 const {STR} =require("./../src/libs/str");
 const assert = require('assert');
@@ -34,6 +34,19 @@ function testRemoveWithMatch(){
         //assert.equal("123",text);
 }
 
+function testSelect1(){
+  let text=`v_once_count number, --每次最大记录条数
+  v_batch_id   out number, --批次号\n`;
 
-testSplitToWord();
-testRemoveWithMatch();
+  console.log(STR.select1(text,"v","r"));
+}
+
+function testReverse(){
+  let text="125678";
+  console.log(STR.reverse(text));
+}
+
+testReverse();
+//testSelect1();
+// testSplitToWord();
+// testRemoveWithMatch();

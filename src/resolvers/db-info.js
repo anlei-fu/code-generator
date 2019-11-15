@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:28:55
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-23 10:08:35
+ * @LastEditTime: 2019-11-15 10:06:19
  */
 const { UNDEFINED, requireNotNull } = require("./../libs/utils");
 const { STR } = require("./../libs/str");
@@ -31,27 +31,27 @@ exports.Db = class Db extends DbObject {
                 /**
                  * @member {{Package}}
                  */
-                this.packages = {};
+                this.packages;
                 /**
                 * @member {{Procedure}}
                 */
-                this.procedures = {};
+                this.procedures;
                 /**
                 * @member {{Sequence}}
                 */
-                this.sequences = {};
+                this.sequences;
                 /**
                 * @member {{Table}}
                 */
-                this.tables = {};
+                this.tables;
                 /**
                 * @member {{Function}}
                 */
-                this.functions = {};
+                this.functions;
                 /**
                 * @member {{Job}}
                 */
-                this.jobs = {};
+                this.jobs;
         }
 }
 
@@ -95,7 +95,7 @@ exports.Table = class Table extends DbObject {
                 /**
                  * @member {boolean} isInfinite role as providing infomation or saving data  
                  */
-                this.isInfamationTable = false;
+                this.isInfamationTable;
                 /**
                  * @member {String} primaryKey ,identity column name
                  */
@@ -103,29 +103,29 @@ exports.Table = class Table extends DbObject {
                 /**
                  *  join tables
                  */
-                this.joins = {};
+                this.joins;
                 /**
                  * @member {Constraints}
                  */
-                this.constraints = {};
+                this.constraints;
                 /**
                  * 
                  */
-                this.indexes = {};
+                this.indexes;
                 /***
                  * 
                  */
-                 this.oneToMany=[];
-                 /**
-                  * 
-                  */
-                 this.manyToOne=[];
-                 /**
-                  * 
-                  */
-                 this.oneToOne=[];
-                
-        }        
+                this.oneToMany;
+                /**
+                 * 
+                 */
+                this.manyToOne;
+                /**
+                 * 
+                 */
+                this.oneToOne;
+
+        }
 
         /**
          * Generate create-table string
@@ -223,18 +223,18 @@ exports.SqlType = class SqlType {
 
                 return segs.length == 0
                         ? new SqlType(str.trim())
-                        : new SqlType(STR.removeWithMatch(str, "(", ")"), 
-                                      new Number(segs[0]).valueOf());
+                        : new SqlType(STR.removeWithMatch(str, "(", ")"),
+                                new Number(segs[0]).valueOf());
         }
 
-        toCSharpType(){
-                if(this.name.indexOf("char")!=-1)
-                   return "string";
-                
-                if(this.name=="date")
-                   return "DateTime?";
-                
-                return this.length>20?"decimal?":"int?";
+        toCSharpType() {
+                if (this.name.indexOf("char") != -1)
+                        return "string";
+
+                if (this.name == "date")
+                        return "DateTime?";
+
+                return this.length > 20 ? "decimal?" : "int?";
         }
 
         /**
@@ -269,19 +269,19 @@ exports.Column = class Column extends DbObject {
                  * @member {boolean}
                  * @default  true
                  */
-                this.nullable = true;
+                this.nullable;
 
                 /**
                  * @member {boolean}
                  * @default false
                  */
-                this.autoIncrement = false;
+                this.autoIncrement;
 
                 /**
                  * @member {boolean}
                  * @default false
                  */
-                this.isPk = false;
+                this.isPk;
                 /**
                  * @member {Sequence?} if @member autoIncrement is true ,
                  *  should map a @see {Sequence}
@@ -300,7 +300,7 @@ exports.Column = class Column extends DbObject {
                  * @member {boolean} unique ,unique constraint
                  * @default false
                  */
-                this.unique = false;
+                this.unique;
                 /**
                  * @member {String} chineseName
                  */
@@ -309,17 +309,17 @@ exports.Column = class Column extends DbObject {
                  * @member {boolean} isEnum, render a select controle if true
                  * @required
                  */
-                this.isEnum = false;
+                this.isEnum;
                 /**
                  * @member {MappingColumn} mappingColumn,when render replace with another 
                  *  join table's column
                  */
-                this.mappingColumn={};
+                this.mappingColumn;
 
                 /**
                  * 
                  */
-                this.isFilter=false;
+                this.isFilter;
 
                 /**
                  * 
@@ -329,7 +329,7 @@ exports.Column = class Column extends DbObject {
                 /**
                  * 
                  */
-                this.datas=[];
+                this.datas;
         }
 
         toCreatString() {

@@ -4,15 +4,16 @@
  * @Author: fuanlei
  * @Date: 2019-09-23 16:06:05
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-08 15:00:56
+ * @LastEditTime: 2019-11-15 15:37:07
  */
 /**
  * Check target is defined, if target not defiend will throw an error
  * @param {Any} target 
  */
+const { STR} = require("./str");
 exports.UNDEFINED = "undefined";
 exports.EMPTY = "";
-const {STR}=require("./str");
+
 
 /**
  * @description Check target is null or not, if null throw an argument error;
@@ -223,18 +224,50 @@ function getValue(obj, key) {
         return obj;
 }
 
-function text(obj,name){
-    let json=JSON.stringify(obj);
-    STR.select1(json,"\"","\":").forEach(x=>{
-            json=json.replace(x,x.replace("\"",""));
-    })
-
-    return `let ${name} = ${json}\r\n`;
+/**
+ * 
+ * @param {any} obj 
+ * @param {String} name  let name
+ * @returns {String}
+ */
+function text(obj, name) {
+        let json = JSON.stringify(obj, null, "  ");
+        json=doReplace(json);
+        return `let ${name} = ${json};\r\n\r\n`;
 }
 
+/**
+ * 
+ * @param {String} json 
+ * @returns {String}
+ */
+function doReplace(json) {
+        let str=require("./../libs/str").STR;
+        json = str.reverse(json);
+        let output = "";
+        let isInQuote = false;
+        for (let i = 0; i < json.length; i++) {
+                if (json[i] == ":") {
+                        if (i < json.length - 1 && json[i + 1] == "\"")
+                                isInQuote = true;
 
+                        output += json[i];
+                        i += 1;
+                }
+                else if (json[i] == "\"") {
+                        if (isInQuote) {
+                                isInQuote = false;
+                        } else {
+                                output += json[i];
+                        }
 
+                } else {
+                        output += json[i];
+                }
+        }
 
+        return str.reverse(output);
+}
 
 /**
  * @description To resolve @see Map can not be stringified by JSON method
@@ -256,7 +289,8 @@ exports.OBJECT = {
         hasKey,
         forEach,
         getValue,
-        mapToObject
+        mapToObject,
+        text
 }
 
 /*-------------------------------------------------------------------function---------------------------------------------------------------*/

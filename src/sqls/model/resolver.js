@@ -1,27 +1,58 @@
-const {MysqlExcutor}=require("./../mysql-excutor/mysql-excutor")
-const { Table, Column, SqlType, Package, Constraint, Function, Procedure, Db, SqlConstant, SqlValue, Parameter, Index }
-        = require("./../../resolvers/db-info");
-async function resolve(config){
-      let excutor=new MysqlExcutor(config);
-      let datas= await excutor.query("");
-      let tables=new Map();;
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-11-15 09:10:04
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-11-15 15:43:24
+ */
+const { MysqlExcutor } = require("./../mysql-excutor/mysql-excutor");
+const { Table, Column, SqlType } = require("./../../resolvers/db-info");
+const { NamingStrategy } = require("./../../libs/naming-stratey")
 
-      datas.forEach(x=>{
-          let table=x.table;
+const sql = `select * from INFORMATION_SCHEMA.Columns
+where table_schema=`;
 
-          if(!tables.has(table))
-                  tables.set(table,new Table(table));
+/**
+ * 
+ * @param {Sqlconnfig} config
+ * @param {String} schema
+ * @returns {[Table]} 
+ */
+async function resolve(config, schema) {
+        let excutor = new MysqlExcutor(config);
+        let datas = await excutor.query(sql + `'${schema}'`);
+        let tables = new Map();;
 
-          let column=new Column();
-          column.isPk=x.isPk;
-          column.name=x.name;
-          column.nullable=x.nullable;
-          column.description=x.description;
-          column.autoIncrement=x.autoIncrement;
-          column.type=SqlType.parse(x.type);
+        datas.forEach(x => {
+                let table = NamingStrategy.toCamel(x.tableName);
 
-          tables.get(table).columns[x.name]=column;
-      });
-    
-    return tables.values();
+                if (!tables.has(table))
+                        tables.set(table, new Table(table));
+
+                let column = new Column();
+                if (x.columnKey && x.columnKey.indexOf("PRI") != -1) {
+                        column.isPk = true;
+                        tables.get(table).primaryKey = column.name;
+                }
+
+                if (x.extra == "auto_increment")
+                        column.autoIncrement = true;
+
+                column.name = NamingStrategy.toCamel(x.columnName);
+                column.nullable = x.isNullable == "YES";
+                column.description = x.columnComment;
+                column.type = SqlType.parse(x.columnType);
+                tables.get(table).columns[column.name] = column;
+        });
+
+        let ls = [];
+
+        tables.forEach(v => {
+                ls.push(v);
+        })
+        console.log("finish resolve!");
+        return ls;
 }
+
+exports.resolve = resolve;
