@@ -89,6 +89,11 @@ function hasAttribute(node, key) {
         return getAttribute(node, key) != undefined;
 }
 
+/**
+ * 
+ * @param {Node} node 
+ * @param {String} key 
+ */
 function getAttribute(node, key) {
         if (node.attributes) {
                 for (let k in node.attributes) {
@@ -108,7 +113,7 @@ function getAttribute(node, key) {
  * @param {String} key 
  * @param {String} value 
  */
-function setAttr(node, key, value) {
+function setAttribute(node, key, value) {
         if (node.attributes) {
                 for (let k in node.attributes) {
                         if (node.attributes[k].nodeName == key)
@@ -117,12 +122,11 @@ function setAttr(node, key, value) {
         }
 }
 
-
 exports.XML_DOM = {
         load,
         selectAll,
         selectDirect,
         getAttribute,
         containsAttr: hasAttribute,
-        setAttr
+        setAttr: setAttribute
 }

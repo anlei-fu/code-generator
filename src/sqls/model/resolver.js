@@ -11,17 +11,17 @@ const { Table, Column, SqlType } = require("./../../resolvers/db-info");
 const { NamingStrategy } = require("./../../libs/naming-stratey")
 
 const sql = `select * from INFORMATION_SCHEMA.Columns
-where table_schema=`;
+where table_schema`;
 
 /**
- * 
- * @param {Sqlconnfig} config
+ * @description Resolve table infos by schema
+ * @param {SqlConfig} sqlConfig
  * @param {String} schema
  * @returns {[Table]} 
  */
-async function resolve(config, schema) {
-        let excutor = new MysqlExcutor(config);
-        let datas = await excutor.query(sql + `'${schema}'`);
+async function resolve(sqlConfig, schema) {
+        let excutor = new MysqlExcutor(sqlConfig);
+        let datas = await excutor.query(`${sql}='${schema}'`);
         let tables = new Map();;
 
         datas.forEach(x => {
@@ -47,10 +47,10 @@ async function resolve(config, schema) {
         });
 
         let ls = [];
-
-        tables.forEach(v => {
-                ls.push(v);
+        tables.forEach(x => {
+                ls.push(x);
         })
+
         console.log("finish resolve!");
         return ls;
 }

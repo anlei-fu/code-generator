@@ -6,7 +6,6 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-10-22 15:11:12
  */
-const { requireNotNull } = require("./utils")
 const fs = require("fs");
 
 /**
@@ -15,8 +14,6 @@ const fs = require("fs");
  * @returns {boolean}
  */
 function exists(path) {
-        requireNotNull(path)
-
         return fs.existsSync(path)
                 && fs.lstatSync(path).isDirectory();
 }
@@ -64,13 +61,13 @@ function remove(path) {
  * @returns {[String]} File names, relative path of  current folder
  */
 function getFiles(path) {
-        requireNotNull(path);
-        var ls = [];
+        let ls = [];
         fs.readdirSync(path)
                 .forEach(file => {
                         if (!fs.statSync(`${path}/${file}`).isDirectory())
                                 ls.push(file);
                 })
+
         return ls;
 }
 
@@ -80,7 +77,6 @@ function getFiles(path) {
  * @returns {[String]}  Sub folder names, relative path of current folder
  */
 function getFolders(path) {
-        requireNotNull(path);
         var ls = [];
         fs.readdirSync(path)
                 .forEach(dir => {

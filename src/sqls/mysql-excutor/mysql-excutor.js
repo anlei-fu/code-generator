@@ -11,10 +11,6 @@ const mysql = require("mysql");
 const { NamingStrategy } = require("../../libs/naming-stratey");
 const { OBJECT } = require("../../libs/utils");
 
-/**
- * 
- */
-
 class MysqlExcutor {
         /**
          * 
@@ -46,10 +42,11 @@ queueLimit?: number;}} config
         query(sql) {
                 return new Promise((resolve, reject) => {
                         this.pool.query(sql, (error, results) => {
-                                if (error)
+                                if (error) {
                                         reject(error)
-                                else
+                                } else {
                                         resolve(merge(results));
+                                }
                         });
                 });
         }

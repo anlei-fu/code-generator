@@ -48,6 +48,7 @@ function parse(text) {
         }
 
         /**
+         * @private
          * @description Trim 
          * @param {String} text 
          * @returns {String}
@@ -80,12 +81,12 @@ function parse(text) {
                                 } else {
                                         buffer += c;
                                 }
+                                
                                 break;
                         default:
                                 buffer += c;
                                 break;
                 }
-
         }
 
         if (buffer != "") {

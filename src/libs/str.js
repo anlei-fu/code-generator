@@ -87,7 +87,7 @@ function select1(input, left, right, start, count) {
 }
 
 /**
- * @description Replace many  times with replace pairs , don't think about pairs's order
+ * @description Replace input str many times with replace pairs , not think about pairs's order
  * @param {String} input 
  * @param {Map<String,String>?} pairs 
  * @returns {String}
@@ -142,9 +142,8 @@ function removeWithMatch(input, left, right) {
  */
 function removeWithMatchMany(input, option) {
 
-        for (const item in option) {
+        for (const item in option)
                 input = removeWithMatch(ite, option[item]);
-        }
 
         return input;
 }
@@ -213,9 +212,6 @@ function arrayToString(array, prefix, suffix) {
  * return an array of string
  */
 function split1(input, splitor, start, count) {
-        requireNotNull(input);
-        requireNotNull(splitor);
-
         start = start || 0;
         count = count || -1;
 
@@ -243,8 +239,6 @@ function split1(input, splitor, start, count) {
  * return repeated  string 
  */
 function repeat(pattern, times) {
-        requireNotNull(pattern);
-
         for (let i = 0; i < times; i++)
                 pattern += pattern;
 
@@ -257,10 +251,10 @@ function repeat(pattern, times) {
  * @returns {[String]}
  */
 function splitToWords(input) {
-        requireNotNull(input);
         let isSkipping = false,
                 ls = [],
                 w = EMPTY;
+
         // iterate input
         for (const c of input) {
 
@@ -276,13 +270,16 @@ function splitToWords(input) {
                                                 ls.push(w);
                                                 w = EMPTY;
                                         }
+
                                         isSkipping = true;
                                 }
+
                                 break;
                         default:
                                 if (isSkipping) {
                                         isSkipping = false;
                                 }
+
                                 w += c;
                                 break;
                 }
@@ -332,6 +329,7 @@ function removeEmptyLine(input) {
                 if (l.trim() != "")
                         temp += l + "\n";
         })
+
         return temp;
 }
 
@@ -354,7 +352,6 @@ function reverse(input) {
 
         return output;
 }
-
 
 exports.STR = {
         select,

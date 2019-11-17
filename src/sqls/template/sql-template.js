@@ -11,8 +11,11 @@ const { OBJECT } = require("./../../libs/utils");
 const { SQL_UTILS } = require("./../utils");
 const { TYPE } = require("./../../libs/utils");
 exports.SqlTemplate = class SqlTemplate {
-        constructor() {
+        constructor(text) {
                 this.segments = [];
+
+                if(text)
+                   this.segments.push(new SqlSegment(text,false));
         }
 
         render(option) {
@@ -55,7 +58,7 @@ exports.SqlSegment = class SqlSegment {
                         return SQL_UTILS.getSqlString(value);
                 } else {
                         let value = OBJECT.getValue(option, this.name);
-                        
+
                         if (!value)
                                 throw new Error("can not find parameter:" + this.name);
 
@@ -70,6 +73,10 @@ exports.SqlSegment = class SqlSegment {
 exports.Node = class Node {
         constructor() {
                 this.children = [];
+        }
+
+        push(node){
+           this.children.push(node);
         }
 
         /**
@@ -104,6 +111,27 @@ exports.SqlNode = class SqlNode extends this.Node {
         }
 }
 
+exports.TrimNode = class TrimNode extends this.Node {
+
+        constructor(prefix,suffix,suffixOverrides){
+                super();
+                this.prefix=prefix;
+                this.suffix=suffix;
+                this.suffixOverrides=suffixOverrides;
+        }
+
+        /**
+         * @description
+         * @override
+         * @param {any} option
+         * @param {any} option
+         */
+        render(option) {
+
+        }
+
+}
+
 exports.WhereNode = class WhereNode extends this.Node {
 
         /**
@@ -114,17 +142,17 @@ exports.WhereNode = class WhereNode extends this.Node {
         render(option) {
                 let ret = super.render(option).trim().toLowerCase();
 
-                if(ret=="")
-                    return ret;
-                
-                if(ret.startsWith("and"))
-                   ret =ret.replace("and","");
-                
-                if(ret.startsWith("or")){
-                        ret=ret.replace("or","");
+                if (ret == "")
+                        return ret;
+
+                if (ret.startsWith("and"))
+                        ret = ret.replace("and", "");
+
+                if (ret.startsWith("or")) {
+                        ret = ret.replace("or", "");
                 }
 
-                return "where"+ret;
+                return "where" + ret;
         }
 }
 
@@ -159,10 +187,9 @@ exports.ForEachNode = class ForEachNode extends this.Node {
                         throw new Error(`value(${this.collection}) can not be found!`)
 
                 let ret = "";
-
                 if (this.open)
                         ret += this.open;
-                
+
                 /**
                  *  Just array or object can passed into foreach node
                  */
@@ -178,10 +205,9 @@ exports.ForEachNode = class ForEachNode extends this.Node {
                                         ret += this.separator;
                         });
 
-
                 } else if (TYPE.isObject(value)) {
                         OBJECT.forEach((k, v) => {
-                                let item={ key: k, value: v };
+                                let item = { key: k, value: v };
                                 this.children.forEach(x => {
                                         ret += x.render(item);
                                 });
@@ -198,7 +224,6 @@ exports.ForEachNode = class ForEachNode extends this.Node {
                         ret += this.close;
 
                 return ret;
-
         }
 }
 
@@ -224,9 +249,13 @@ exports.IfNode = class IfNode extends this.Node {
  * @member {SqlTemplate} template
  */
 exports.TemplateNode = class TemplateNode extends this.Node {
-        constructor() {
+        constructor(text) {
                 super();
                 this.template;
+
+                if(text){
+                        this.template=new SqlTemplate(text);
+                }
         }
 
         /**

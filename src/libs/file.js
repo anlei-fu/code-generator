@@ -6,9 +6,8 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-10-16 15:41:18
  */
-// import
 
-const { requireNotNull } = require("./utils")
+// import
 const fs = require("fs");
 
 /**
@@ -53,19 +52,16 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @returns {String}
  */
 function read(path, charset) {
-        requireNotNull(path);
         return fs.readFileSync(path, defaultCharset(charset)).toString();
 }
 
 /**
- *@description Write data into  file
+ * @description Write data into  file
  * @param {String} path , File to write
  * @param {String} data ,Data to write 
  * @param {String?} charset, Charset name 
  */
 function write(path, data, charset) {
-        requireNotNull(path);
-        requireNotNull(data);
         fs.writeFileSync(path, data, defaultCharset(charset));
 }
 
@@ -87,8 +83,6 @@ function appendLine(path, data, charset) {
  * @param {String?} charset, Charset name 
  */
 function append(path, data, charset) {
-        requireNotNull(path);
-        requireNotNull(data);
         fs.appendFileSync(path, data, defaultCharset(charset));
 }
 
@@ -99,8 +93,6 @@ function append(path, data, charset) {
  * @param {boolean?} rmSource ,If true , After copying complete , Remove source file
  */
 function copy(source, destination, rmSource) {
-        requireNotNull(source);
-        requireNotNull(destination);
         fs.copySync(source, destination);
 
         if (rmSource)
@@ -122,7 +114,6 @@ function remove(path) {
  * @returns {boolean}
  */
 function exists(path) {
-        requireNotNull(path);
         return fs.existsSync(path);
 }
 
