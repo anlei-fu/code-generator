@@ -1,11 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: fuanlei
- * @Date: 2019-09-29 09:07:57
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-09-29 16:33:01
- */
 @echo off
 F:
 echo " input project name 'dm' or 'fc' "

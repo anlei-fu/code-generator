@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-21 17:30:06
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-21 17:41:23
+ * @LastEditTime: 2019-11-21 15:35:37
  -->
 ### command
 ----
@@ -15,6 +15,7 @@
 -  ***./zkServer.sh restarts***
 
 2. client
+- ***create -s***
 - ***zkCli.sh  -timeout 0  -r  -server  ip:port***
 - ***stat path***
 - ***ls path***

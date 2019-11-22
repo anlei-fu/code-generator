@@ -1,0 +1,1 @@
+|<p class="row">@name</p>|<a href="@url">@url</a>|<p class="method">@method</p>|@params|@data|<p class="row">@elapse</p>|<p class="row">@status</p>|@response|<p class="@success-class">@success-text</p>|
