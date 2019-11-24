@@ -1,0 +1,1 @@
+const checkResult = ["success", "blocked", "cookieInvalid", "notMatch"];
