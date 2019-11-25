@@ -1,3 +1,10 @@
 class Worker{
         
+        start(){
+
+        }
+
+        init(){
+                
+        }
 }

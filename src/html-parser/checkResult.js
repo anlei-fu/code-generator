@@ -1,1 +1,1 @@
-const checkResult = ["success", "blocked", "cookieInvalid", "notMatch"];
+const checkResult = new Set(["success", "blocked", "cookieInvalid", "notMatch"]);

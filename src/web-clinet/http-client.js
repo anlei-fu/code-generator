@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-11 09:26:39
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-21 14:05:02
+ * @LastEditTime: 2019-11-25 19:02:12
  */
 const axios = require('axios');
 const { config } = require("./test-config");
@@ -54,8 +54,9 @@ function runTest(testName, tester) {
                         .catch(err => {
                                 console.log(err);
                                 record.sucess = false;
+                                if(err.response)
                                 record.status = err.response.status;
-                                record.response = error.message;
+                                record.response = err.message;
                                 record.elapse = new Date().getTime() - start.getTime();
                                 ls.push(record);
                         });
@@ -83,13 +84,21 @@ function buildRecord(item) {
         return record;
 }
 
+/**
+ * 
+ * @param {*} testName 
+ * @param {*} tester 
+ * @param {[]} records 
+ * @param {*} baseUrl 
+ */
 function write(testName, tester, records,baseUrl) {
+          
+        records.sort((x,y)=>x.name>y.name);
 
         console.log(records.length);
 
         let output = FILE.read("./templates/header.md")
                 .replace("@testName", testName)
-                .replace("@tester", tester)
                 .replace("@date", DATE.toyyyy_MM_dd_hh_mm_ss(DATE.now()))
                 .replace("@baseURL",baseUrl);
 
@@ -108,7 +117,7 @@ function write(testName, tester, records,baseUrl) {
                         html = html.replace(/\n/g, "</br>");
                         item = item.replace("@data", html);
                 } else {
-                        item = item.replace("@data", "");
+                        item = item.replace("@data", "--");
                 }
 
                 if (x.params) {
@@ -116,7 +125,7 @@ function write(testName, tester, records,baseUrl) {
                         html = html.replace(/\n/g, "</br>");
                         item = item.replace("@params", html);
                 } else {
-                        item = item.replace("@params", "");
+                        item = item.replace("@params", "--");
                 }
 
                 if (x.response) {
@@ -124,7 +133,7 @@ function write(testName, tester, records,baseUrl) {
                         html = html.replace(/\n/g, "</br>");
                         item = item.replace("@response", html);
                 } else {
-                        item = item.replace("@response", "");
+                        item = item.replace("@response", "--");
                 }
 
                 if(x.sucess){
@@ -148,5 +157,5 @@ function makeJson(data) {
 
 
 /*---------------------------------------------------------------------main-----------------------------------------------------------------------------*/
-runTest("template", "fuanlei");
+runTest("6.合同模板接口及示例", "fuanlei");
 
