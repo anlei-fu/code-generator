@@ -4,51 +4,29 @@
  * @Author: fuanlei
  * @Date: 2019-09-30 09:46:25
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-10 13:02:26
+ * @LastEditTime: 2019-11-27 11:20:20
  */
-var cheerio=require("cheerio");
-var {FILE} =require("./../libs/file");
-var $ =cheerio.load(FILE.read("1.html"),{normalizeWhitespace:true,});
-
-// var a =$("body").children("div")   // all div
-//                 .children("a");  // all a
-
-// Children ("a") return all sub-child not direct
-// text return all inner html not only self's innerText
-// parent return parent element
-// sublings direct include left and right
-// children represent "get all" ,not only direct
-// html() just return children content  not include self 
-// not all element has text() method
-// first is not the first-children, just first index of result collection
-var a=$("div.123").children("a");
-//console.log("root:"+$("div[class='123']").html());
-console.log($(a).children("p").text());
-
- for (let i=0;i<a.length;i++) {
-         console.log("tag-name:"+ a[i].tagName);
-         console.log("html:"+ $(a[i]).html());
- }
+var cheerio = require("cheerio");
+var { FILE } = require("./../libs/file");
+let start = new Date().getTime();
+let src=FILE.read("1.html");
+var $ = cheerio.load(src, { normalizeWhitespace: true, });
+let elapse = (new Date().getTime()) - start;
+console.log("length:"+src.length);
+console.log("elapse:"+elapse);
+// 1. Children ("a") return all sub-child not direct
+// 2. text return all inner html not only self's innerText
+// 3. parent return parent element
+// 4. sublings direct include left and right
+// 5. children represent "get all" ,not only direct
+// 6. html() just return children content  not include self 
+// 7. not all element has text() method
+// 8. first is not the first-children, just first index of result collection
+let length = $("table").children("thead").find("th").length;
+console.log(length);
 
 
-// var a =$("body").children("div")   // all div
-//                 .children("a");  // all a
-//  var text= a.text(); // last a's inner-text
-
- var text= a.text(); //last a's inner-text
 
 
- // $("body").children("div")[1]  => element
- // $("body").children("div").get(1) =>element
- // $($("body").children("div")[1]) =>jq-element-collection
- // $(element) => jq-element
- // '$' can do select ,convert to jq-element-collection
- // $ root => html
- // $(element) => reset root to element
- // select ,childen,  
- // sublings all not left or right
- // parent just 1 element
-console.log("inner-text:"+ text);
-console.log( "length:"+a.length);
 
 

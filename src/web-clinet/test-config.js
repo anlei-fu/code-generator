@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-20 15:27:16
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-25 19:50:16
+ * @LastEditTime: 2019-11-27 19:26:46
  */
 exports.config = {
         defaultConfig: {
@@ -19,169 +19,326 @@ exports.config = {
                 assert: (data) => data.code == "100",
         },
         groups: [
+                //--------------------------2 企业---------------------
                 {
-                        baseUrl: "/compony",
-                        group:"2. 企业",
+                        baseUrl: "/company",
+                        name: "2 企业",
                         items: [{
-                                name: "2.1.添加企业 ",
-                                url: "/company",
+                                name: "2.1 添加企业 <br> /company",
                                 method: "post",
                                 data: {
-
+                                        userId: 1,
+                                        componyName: "microsoft",
+                                        email: "123@ms.com",
+                                        organizationType: 1,
+                                        identificationType: 1,
+                                        licenseNo: "5665",
+                                        legalPerson: "someone",
+                                        contactPhone: "13888888888",
+                                        idCard: "5656565656",
+                                        idCardPicFront: "front.png",
+                                        idCardPicBack: "back.png",
+                                        licensePicFront: "licence.png",
+                                        authorizedPerson: " big guy",
+                                        authorizedPhoneNo: "911",
+                                        authorizedIdNo: "666",
+                                        authorizeFile: "123.pdf"
                                 },
                         },
                         {
-                                name: "2.2 修改企业",
-                                url: "/company/{companyId}",
-                                method: "put",
-                        },
-                        {
-                                name: "2.3 删除企业",
-                                url: "/5",
+                                name: "2.2 修改企业 <br>/company/{componyId}",
+                                url: "/107",
                                 method: "put",
                                 data: {
-                                        contractName: "测试模板1",// 合同名称
-                                        contractFile: "456.pdf", // 合同pdf文件地址
-                                        contractType: 7 // 合同类型
+                                        userId: 1,
+                                        componyName: "microsoft",
+                                        email: "123@ms.com",
+                                        organizationType: 1,
+                                        identificationType: 1,
+                                        licenseNo: "5665",
+                                        legalPerson: "someone",
+                                        contactPhone: "13888888888",
+                                        idCard: "5656565656",
+                                        idCardPicFront: "front.png",
+                                        idCardPicBack: "back.png",
+                                        licensePicFront: "licence.png",
+                                        authorizedPerson: " big guy",
+                                        authorizedPhoneNo: "911",
+                                        authorizedIdNo: "666",
+                                        authorizeFile: "123.pdf"
                                 },
-
                         },
                         {
-                                name: "2.4 获取用户企业信息列表",
-                                url: "",
+                                name: "2.3 删除企业 <br>/company/{componyId}",
+                                url: "/108",
+                                method: "delete",
+                        },
+                        {
+                                name: "2.4 获取用户企业信息列表 <br>/company",
                                 method: "get",
                                 params: {
+                                        userId: 567,
                                         pageSize: 1,
                                         pageIndex: 25
                                 },
 
                         },
                         {
-                                name: "2.5.获取用户企业详情",
-                                url: "/2",
-                                method: "delete",
+                                name: "2.5 获取用户企业详情 <br>/company/{componyId}",
+                                url: "/107",
+                                method: "get",
                         },
                         {
-                                name: "2.6.修改用户企业信息",
-                                url: "/2",
-                                method: "delete",
+                                name: "2.6 企业实名认证(君子签) <br>/company/junzq/certifi/{companyId}",
+                                url: "/junzq/certifi/107",
+                                method: "post",
                         },
                         {
-                                name: "2.7.实名认证: 调用君子签接口",
-                                url: "/2",
-                                method: "delete",
+                                name: "2.7 修改企业实名认证(君子签) <br>/company/junzq/certifi/{companyId}",
+                                url: "/junzq/certifi/107",
+                                method: "put",
                         },
 
                         ]
                 }
                 ,
+                //------------------------------------------3 合同----------------------------
                 {
                         baseUrl: "/contract",
-                        group:"3. 合同",
+                        name: "3 合同",
                         items: [{
-                                name: "3.1 上传合同 ",
-                                url: "/company",
+                                name: "3.1 添加合同  <br>/contract",
                                 method: "post",
                                 data: {
+                                        id: 1,
+                                        userId: 1,
+                                        contractType: 1,
+                                        contractTitle: 1,
+                                        rawContractFile: 1,
+                                        rawContractHash: "789",
+                                        signExpireTime: "2019-11-19T08:00:15.000+0000",
+                                        contractState: 1,
+                                        signContractFile: "12.pdf",
+                                        signContractHash: "12323",
+                                        effectTime: "2019-12-19T08:00:15.000+0000",
+                                        expireTime: "2019-12-19T08:00:15.000+0000",
+                                        validPeriod: 6,
+                                        contractPrice: 6.6,
+                                        configUrl: "123.net",
+                                        configShortUrl: "789.net",
+                                        jzqContractNo: "4565",
+                                        jzqContractFile: "8989.pdf",
 
                                 },
                         },
                         {
-                                name: "3.2.发起签约",
+                                name: "3.2 获取合同  <br>/contract约",
                                 url: "/contract/sign/{contractId}",
-                                method: "put",
+                                method: "get",
+                                params: {
+                                        pageIndex: 1,
+                                        pageSize: 1
+                                }
                         },
                         {
-                                name: "3.3.签约: 校验签约方和账户是否相同,检查是否需要付费,调用支付宝接口活体认证,提交君子签接口",
-                                url: "/contract/sign/junzq/{contractId}",
-                                method: "post",
-                                data: {
-
+                                name: "3.3 获取合同详情 <br>/contract/{contractId}",
+                                url: "/1",
+                                method: "get",
+                        },
+                        {
+                                name: "3.4 获取原始合同文件 <br>/contract/raw/{contractId}",
+                                url: "/raw/1",
+                                method: "get",
+                        },
+                        {
+                                name: "3.5 获取用户合同总数 <br>/contract/sum",
+                                url: "/sum",
+                                method: "get",
+                                params: {
+                                        userId: 1
                                 },
                         },
                         {
-                                name: "3.4.设置合同印章位置",
-                                url: "/contract/sign/seal/{contractId}",
-                                method: "put",
-                        },
-                        {
-                                name: "3.5.获取合同列表 ",
-                                url: "/contract/{contractId}",
-                                method: "post",
-                                data: {
-
+                                name: "3.6 获取用户签约列表 <br>/contract/sign",
+                                url: "/sign",
+                                method: "get",
+                                params: {
+                                        userId: 1
                                 },
-                        },
-                        {
-                                name: "3.6.获取合同详情",
-                                url: "/contract/sign/junzq/{contractId}",
-                                method: "put",
                         },
                         {
                                 name: "3.7.查看合同内容 ",
                                 url: "/company",
-                                method: "post",
-                                data: {
-
+                                method: "get",
+                                params: {
+                                        userId: 1
                                 },
                         },
                         {
-                                name: "3.8.根据url参数获取签约路径",
-                                url: "/contract/raw/{contractId}",
-                                method: "put",
+                                name: "3.8 发起签约 <br>/contract/sign/{contractId}",
+                                url: "/sign/1",
+                                method: "post",
+                                data: {
+                                        id: 1,
+                                        userId: 1,
+                                        contractType: 1,
+                                        contractTitle: 1,
+                                        rawContractFile: 1,
+                                        rawContractHash: "789",
+                                        signExpireTime: "2019-11-17T08:00:15.000+0000",
+                                        contractState: 1,
+                                        signContractFile: "12.pdf",
+                                        signContractHash: "12323",
+                                        effectTime: "2019-12-19T08:00:15.000+0000",
+                                        expireTime: "2019-12-19T08:00:15.000+0000",
+                                        validPeriod: 6,
+                                        contractPrice: 6.6,
+                                        configUrl: "123.net",
+                                        configShortUrl: "789.net",
+                                        jzqContractNo: "4565",
+                                        jzqContractFile: "8989.pdf",
+                                }
+                        },
+                        {
+                                name: "3.8 设置签约印章位置 <br>/contract/sign/seal/{contractId}",
+                                url: "/sign/seal/1",
+                                method: "post",
+                                data: {
+                                        signPosition: "121"
+                                }
+                        },
+                        {
+                                name: "3.9 提交签约(君子签) <br>/contract/sign/junzq/{contractId}",
+                                url: "/sign/junzq/1",
+                                method: "post",
+                        },
+                        {
+                                name: "3.10 合同查看(君子签) <br>/contract/sign/junzq/url",
+                                url: "/sign/junzq/url",
+                                method: "post",
+                                data: {
+                                        contractId:1,
+                                        fullName:"contract1",
+                                        identityCard:"123456789",
+                                        identityType:1
+                                }
+                        },
+                        {
+                                name: "3.11 生成签约链接(君子签) <br>/contract/sign/junzq/{contractId}",
+                                url: "/sign/junzq/1",
+                                method: "get",
+                        },
+                        {
+                                name: "3.12 PC端 我收到的 合同列表 <br>/contract/merchant/received",
+                                url: "/merchant/received",
+                                method: "get",
+                                params: {
+                                        userId:1,
+                                        startTime:"2019-11-12T08:00:15.000+0000",
+                                        endTime:"2019-11-19T08:00:15.000+0000",
+                                        contractTitle:"test",
+                                        formatName:"unknow",
+                                        signStatus:1,
+                                        pageIndex:1,
+                                        pageSize:1
+                                }
+                        },
+                        {
+                                name: "3.12 PC端 我发起的 端合同列表 <br>/contract/contract/merchant/initiate",
+                                url: "/merchant/initiate",
+                                method: "get",
+                                params: {
+                                        userId:1,
+                                        startTime:"2019-11-29T08:00:15.000+0000",
+                                        endTime:"2019-11-30T08:00:15.000+0000",
+                                        contractTitle:"test",
+                                        formatName:"unknow",
+                                        signStatus:1,
+                                        pageIndex:1,
+                                        pageSize:1
+                                }
                         },
                         ]
                 }
                 ,
+                //-------------------------------------------4 钱包--------------------------
                 {
-                        baseUrl: "/compony",
-                        group:"4 钱包",
+                        baseUrl: "/wallet",
+                        name: "4 钱包",
                         items: [{
-                                name: "4.1 查询钱包余额 ",
-                                url: "/company",
+                                name: "4.1 查询钱包余额 <br>/wallet ",
+                                method: "get",
+                                params: {
+                                        userId: 1
+                                },
+                        },
+                        {
+                                name: "4.2 查询购买记录 <br>/wallet/purchase",
+                                url: "/purchase",
+                                method: "get",
+                                params: {
+                                        userId: 1,
+                                        pageIndex: 1,
+                                        pageSize: 1,
+                                }
+                        },
+                        {
+                                name: "4.3 查询消费记录 <br>/wallet/consume",
+                                url: "/consume",
+                                method: "get",
+                                params: {
+                                        userId: 1,
+                                        pageIndex: 1,
+                                        pageSize: 1,
+                                },
+                        },
+                        {
+                                name: "4.4 扣取合同份数 <br>/wallet/consume",
+                                url: "/consume",
                                 method: "post",
                                 data: {
-
+                                        userId: 1,
+                                        contractId: 1
                                 },
                         },
                         {
-                                name: "4.2 查询购买记录",
-                                url: "/company/{companyId}",
-                                method: "put",
-                        },
-                        {
-                                name: "4.3 查询消费记录",
-                                url: "/5",
-                                method: "put",
-                                data: {
-                                        contractName: "测试模板1",// 合同名称
-                                        contractFile: "456.pdf", // 合同pdf文件地址
-                                        contractType: 7 // 合同类型
+                                name: "4.5 获取购买状态 <br>/wallet/purchase/status",
+                                url: "/purchase/status",
+                                method: "get",
+                                params: {
+                                        purchaseId: "1",
                                 },
-
                         },
 
                         ]
                 }
                 ,
+                //-------------------------------------------5 套餐--------------------------
                 {
                         baseUrl: "/meal",
-                        group:"5 套餐",
+                        name: "5 套餐",
                         items: [{
-                                name: "5.1 获取套餐列表 ",
+                                name: "5.1 获取套餐列表 <br>/meal",
                                 method: "get",
-                                data: {
-
-                                },
+                                params: {
+                                        pageIndex: 1,
+                                        pageSize: 1
+                                }
+                        },
+                        {
+                                name: "5.2 获取套餐详情 <br>/meal/{套餐id}",
+                                method: "get",
+                                url: "/2",
                         },
                         ]
                 }
                 ,
+                //------------------------------------------6 模板--------------------------
                 {
                         baseUrl: "/sysTemplate",
-
+                        name: "6 模板",
                         items: [{
-                                name: "6.3 新增模板 ",
+                                name: "6.3 新增模板 <br>/sysTemplate",
                                 url: "",
                                 method: "post",
                                 data: {
@@ -192,12 +349,12 @@ exports.config = {
                                 },
                         },
                         {
-                                name: "6.6 查询模板详情/{模板id}",
+                                name: "6.6 查询模板详情 <br>/sysTemplate/{模板id}",
                                 url: "/5",
                                 method: "get",
                         },
                         {
-                                name: "6.4 更新模板/{模板id}",
+                                name: "6.4 更新模板 <br>/sysTemplate/{模板id}",
                                 url: "/5",
                                 method: "put",
                                 data: {
@@ -208,17 +365,16 @@ exports.config = {
 
                         },
                         {
-                                name: "6.1 查询系统模板分页数据",
+                                name: "6.1 查询系统模板分页数据 <br>/sysTemplate",
                                 url: "",
                                 method: "get",
                                 params: {
                                         pageSize: 1,
-                                        pageIndex: 25
+                                        pageIndex: 1
                                 },
-
                         },
                         {
-                                name: "6.5 删除模板/{模板id}",
+                                name: "6.5 删除模板/{模板id} <br>/sysTemplate/{模板id}",
                                 url: "/2",
                                 method: "delete",
                         },
@@ -226,100 +382,136 @@ exports.config = {
                         ]
                 }
                 ,
+                //-----------------------------------------7 联系人--------------------------
                 {
                         baseUrl: "/contact",
-                        group:"7 联系人",
+                        name: "7 联系人",
                         items: [{
-                                name: "7.1.获取用户联系人列表 ",
+                                name: "7.1 获取联系人列表 <br>/contact ",
                                 method: "get",
-                                data: {
-
+                                params: {
+                                        pageSize: 1,
+                                        pageIndex: 1,
+                                        userId:3
                                 },
                         },
                         {
-                                name: "7.2.添加用户联系人 ",
+                                name: "7.2 添加用户联系人 <br>/contact",
                                 method: "post",
                                 data: {
-
+                                          userId:"9",
+                                         contactName:"xxxx",
+                                        contactPhone:"1555555555",
+                                         contactEmail:"45656565@sss.com"
                                 },
                         },
                         {
-                                name: "7.3.修改联系人 ",
-                                url:"contact/{contactId}",
+                                name: "7.3 修改联系人 <br>contact/{contactId} ",
+                                url: "/3",
                                 method: "put",
                                 data: {
-
+                                        contactName:"yyyyy",
+                                        contactPhone:"1777777777",
+                                        contactEmail:"45656565@sss.com"
                                 },
                         },
 
                         {
-                                name: "7.4.删除用户联系人 ",
-                                url:"contact/{contactId}",
-                                method: "get",
-                                data: {
-
-                                },
+                                name: "7.4 删除用户联系人 contact/{contactId}",
+                                url: "/1",
+                                method: "delete",
                         },
                         ]
                 }
                 ,
+                //--------------------------------------------8 签章--------------------------
                 {
                         baseUrl: "/seal",
-                        group:"8 签章",
+                        name: "8 签章",
+                        url: "/1",
                         items: [{
-                                name: "8.1.获取印章列表 ",
+                                name: "8.1 获取印章列表 <br>/seal/{userId} ",
                                 method: "get",
-                                data: {
-
+                                url: "/1",
+                                params: {
+                                        pageSize: 1,
+                                        pageIndex: 1
                                 },
                         },
                         {
-                                name: "8.2.上传印章 ",
+                                name: "8.2 新增印章 <br>/seal/{userId}",
                                 method: "post",
+                                url: "/1",
                                 data: {
-
+                                        belongType: 1,
+                                        belongId: 1,
+                                        signPic: "123.png",
+                                        signName: "xxx compony"
                                 },
                         },
                         {
-                                name: "8.3.创建手写签名 ",
-                                url:"contact/{contactId}",
+                                name: "8.3 删除印章 <br>/seal/{userId}/{sealId}",
+                                url: "/1/2",
+                                method: "delete",
+                        },
+                        {
+                                name: "8.3 更新印章 <br>/seal/{userId}/{sealId}",
+                                url: "/1/3",
                                 method: "put",
                                 data: {
-
-                                },
+                                        belongId: 7,
+                                        signPic: "789.png",
+                                        signName: "ms"
+                                }
                         },
                         ]
                 }
                 ,
+                //------------------------------------------9 用户模板----------------------
                 {
-                        baseUrl: "/seal",
-                        group:"9 签章",
+                        baseUrl: "/userTemplate",
+                        name: "9 用户模板",
                         items: [{
-                                name: "8.1.获取印章列表 ",
-                                method: "get",
-                                data: {
-
-                                },
-                        },
-                        {
-                                name: "8.2.上传印章 ",
+                                name: "9.1 新增模板 <br>/userTemplate/{userId}",
+                                url: "/1",
                                 method: "post",
                                 data: {
-
+                                        contractName: "测试模板1",// 合同名称
+                                        contractFile: "abc.pdf", // 合同pdf文件地址
+                                        belongType: 1, // 合同类型
+                                        belongId: 13
                                 },
                         },
                         {
-                                name: "8.3.创建手写签名 ",
-                                url:"contact/{contactId}",
+                                name: "9.2 删除用户模板 <br>/userTemplate/{userId}",
+                                url: "/1/3",
+                                method: "delete",
+                        },
+                        {
+                                name: "9.3 更新模板 <br>/userTemplate/{userId}",
+                                url: "/1/4",
                                 method: "put",
                                 data: {
-
+                                        contractName: "测试模板1",// 合同名称
+                                        contractFile: "456.pdf", // 合同pdf文件地址
+                                        belongType: 1, // 合同类型
+                                        belongId: 13
                                 },
+
+                        },
+                        {
+                                name: "9.4 查询系统模板分页数据 <br>/userTemplate/{userId}",
+                                url: "/1",
+                                method: "get",
+                                params: {
+                                        pageSize: 1,
+                                        pageIndex: 25
+                                },
+
                         },
                         ]
                 }
                 ,
-
         ]
 
 };

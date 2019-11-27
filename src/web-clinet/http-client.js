@@ -4,158 +4,170 @@
  * @Author: fuanlei
  * @Date: 2019-11-11 09:26:39
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-25 19:02:12
+ * @LastEditTime: 2019-11-26 15:09:25
  */
 const axios = require('axios');
 const { config } = require("./test-config");
 const { TestRecord } = require("./test-record");
 const { OBJECT } = require("./../libs/utils");
 const { FILE } = require("./../libs/file");
-const { DATE } = require("./../libs/date");
-const showdown = require('showdown');
 
-let converter = new showdown.Converter();
-let instance = axios.default.create(config.defaultConfig);
+// create request instance
+const doRequest = axios.default.create(config.defaultConfig);
 
+/**
+ *  main 
+ */
+function main() {
+
+        // sum of all test item
+        let total = 0;
+        config.groups.forEach(group => {
+                group.items.forEach(ite => {
+                        total++;
+                });
+        });
+
+        console.log(total);
+
+        let finished = 0;
+
+        //  records groups [{name:string,records:[]}]
+        let recordsGroup = [];
+        config.groups.forEach(group => {
+
+                // records group item
+                let recordsItem = {
+                        name: group.name,
+                        baseUrl: group.baseUrl,
+                        records: []
+                };
+                recordsGroup.push(recordsItem);
+
+                group.items.forEach(item => {
+                        let req = buildRequest(item, group),
+                                itemRecord = buildRecord(req),
+                                startTime = new Date();
+
+                        // do request
+                        doRequest(req)
+                                .then(resp => {
+                                        itemRecord.status = resp.status;
+                                        itemRecord.response = resp.data;
+                                        itemRecord.elapse = new Date().getTime() - startTime.getTime();
+                                        finished++;
+                                        itemRecord.sucess = typeof req.assert == undefined
+                                                ? true : req.assert(resp.data);
+                                })
+                                .catch(err => {
+                                        if (err.response)
+                                                itemRecord.status = err.response.status;
+
+                                        itemRecord.sucess = false;
+                                        itemRecord.response = err.message;
+                                        itemRecord.elapse = new Date().getTime() - startTime.getTime();
+                                        finished++;
+                                });
+
+                        recordsItem.records.push(itemRecord);
+                })
+        });
+
+        // wait all task finished and write file
+        setTimeout(() => {
+                if (finished == total)
+                        write(recordsGroup);
+        }, 200);
+}
 
 /**
  * 
- * @param {String} testName 
- * @param {String} tester 
+ * @param {{url,params,data,method,headers}} item 
+ * @param {url,params,data,method,headers} group 
  */
-function runTest(testName, tester) {
+function buildRequest(item, group) {
+        let req = OBJECT.clone(config.defaultConfig);
+        req.assert = config.defaultConfig.assert;
+        OBJECT.extend(req, item, true);
+        req.url = `${config.defaultConfig.baseURL}${group.baseUrl}`;
 
-        let ls = [];
-        let t = 0;
-        config.items.forEach(x => {
+        if(item.url)
+          req.url+=item.url;
 
-                let req = buildRequest(x);
-                let record = buildRecord(req);
-                let start = new Date();
-
-                instance(req)
-                        .then(resp => {
-                                record.status = resp.status;
-                                record.response = resp.data;
-                                if (req.assert) {
-                                        if (req.assert(resp.data)) {
-                                                record.sucess = true;
-                                        } else {
-                                                record.sucess = false;
-                                        }
-                                } else {
-                                        record.sucess = true;
-                                }
-                                record.elapse = new Date().getTime() - start.getTime();
-                                ls.push(record);
-                                t++;
-
-                        })
-                        .catch(err => {
-                                console.log(err);
-                                record.sucess = false;
-                                if(err.response)
-                                record.status = err.response.status;
-                                record.response = err.message;
-                                record.elapse = new Date().getTime() - start.getTime();
-                                ls.push(record);
-                        });
-
-        })
-
-        setTimeout(() => {
-                if (t == config.items.length)
-                        write(testName, tester, ls,config.defaultConfig.baseURL);
-        }, 200);
-
+        console.log(req.url);
+        return req;
 }
 
-function buildRequest(item) {
-        let c = OBJECT.clone(config.defaultConfig);
-        c.path = c.baseUrl + item.path;
-        c.assert=config.defaultConfig.assert;
-        OBJECT.extend(c, item, true);
-        return c;
-}
-
-function buildRecord(item) {
+/**
+ * 
+ * @param {url,params,data,method,headers} req 
+ */
+function buildRecord(req) {
         let record = new TestRecord();
-        OBJECT.extend(record, item);
+        OBJECT.extend(record, req);
         return record;
 }
 
 /**
  * 
- * @param {*} testName 
- * @param {*} tester 
- * @param {[]} records 
- * @param {*} baseUrl 
+ * @param {[{name:string,records:[]}}]} groups 
  */
-function write(testName, tester, records,baseUrl) {
-          
-        records.sort((x,y)=>x.name>y.name);
+function write(groups) {
 
-        console.log(records.length);
+        let output = "";
+        groups.sort((x, y) => x.name > y.name);
 
-        let output = FILE.read("./templates/header.md")
-                .replace("@testName", testName)
-                .replace("@date", DATE.toyyyy_MM_dd_hh_mm_ss(DATE.now()))
-                .replace("@baseURL",baseUrl);
+        groups.forEach(group => {
 
-        records.forEach(x => {
-              
-                let item = FILE.read("./templates/item.md");
-                item = item.replace("@group", x.group)
-                        .replace("@name", x.name)
-                        .replace(/@url/g, x.url)
-                        .replace("@status", x.status)
-                        .replace("@method", x.method)
-                        .replace("@elapse", x.elapse);
+                // build header
+                output += FILE.read("./templates/header.md")
+                        .replace("@testName", group.name);
 
-                if (x.data) {
-                        let html = makeJson(x.data);
-                        html = html.replace(/\n/g, "</br>");
-                        item = item.replace("@data", html);
-                } else {
-                        item = item.replace("@data", "--");
-                }
+                // build items
+                group.records.sort((x, y) => x.name > y.name);
+                group.records.forEach(x => {
+                        item = FILE.read("./templates/item.md")
+                                .replace("@group", x.group)
+                                .replace("@name", x.name)
+                                .replace(/@url/g, x.url)
+                                .replace("@status", x.status)
+                                .replace("@method", x.method)
+                                .replace("@elapse", x.elapse);
 
-                if (x.params) {
-                        let html = makeJson(x.params);
-                        html = html.replace(/\n/g, "</br>");
-                        item = item.replace("@params", html);
-                } else {
-                        item = item.replace("@params", "--");
-                }
+                        item = doReplace(item, "@data", x.data);
+                        item = doReplace(item, "@params", x.params);
+                        item = doReplace(item, "@response", x.response);
 
-                if (x.response) {
-                        let html = makeJson(x.response);
-                        html = html.replace(/\n/g, "</br>");
-                        item = item.replace("@response", html);
-                } else {
-                        item = item.replace("@response", "--");
-                }
+                        item = x.sucess ? item.replace("@success-class", "success").replace("@success-text", "成功")
+                                : item.replace("@success-class", "fail").replace("@success-text", "失败");
 
-                if(x.sucess){
-                   item=item.replace("@success-class","success")
-                            .replace("@success-text","成功");
-                }else{
-                        item=item.replace("@success-class","fail")
-                        .replace("@success-text","失败");
-                }
-
-                output += item;
+                        output += item;
+                });
         });
 
-        FILE.write(`./output/${testName}.md`, output);
-
+        FILE.write(`./output/123.md`, FILE.read("./templates/style.html") + output);
 }
 
+/**
+ * 
+ * @param {String} item 
+ * @param {String} pattern 
+ * @param {any} data 
+ */
+function doReplace(item, pattern, data) {
+        return data == undefined || Object.keys(data).length == 0 ?
+                item.replace(pattern, "--")
+                : item.replace(pattern, makeJson(data).replace(/\n/g, "</br>"));
+}
+
+/**
+ * 
+ * @param {any} data 
+ */
 function makeJson(data) {
-        return converter.makeHtml(`<div class="code">${JSON.stringify(data, null, "  ")}</div>`)
+        return `<div class="code">${JSON.stringify(data, null, "  ")}</div>`;
 }
-
 
 /*---------------------------------------------------------------------main-----------------------------------------------------------------------------*/
-runTest("6.合同模板接口及示例", "fuanlei");
+main();
 
