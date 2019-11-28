@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-11 09:26:39
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-26 15:09:25
+ * @LastEditTime: 2019-11-27 20:08:05
  */
 const axios = require('axios');
 const { config } = require("./test-config");
@@ -27,7 +27,7 @@ function main() {
                         total++;
                 });
         });
-
+        
         console.log(total);
 
         let finished = 0;
@@ -73,11 +73,13 @@ function main() {
                 })
         });
 
-        // wait all task finished and write file
-        setTimeout(() => {
-                if (finished == total)
+        // wait all task finish and write file
+        let timer = setInterval(() => {
+                if (finished == total) {
                         write(recordsGroup);
-        }, 200);
+                        clearInterval(timer);
+                }
+        }, 150);
 }
 
 /**
@@ -91,8 +93,8 @@ function buildRequest(item, group) {
         OBJECT.extend(req, item, true);
         req.url = `${config.defaultConfig.baseURL}${group.baseUrl}`;
 
-        if(item.url)
-          req.url+=item.url;
+        if (item.url)
+                req.url += item.url;
 
         console.log(req.url);
         return req;
@@ -113,7 +115,6 @@ function buildRecord(req) {
  * @param {[{name:string,records:[]}}]} groups 
  */
 function write(groups) {
-
         let output = "";
         groups.sort((x, y) => x.name > y.name);
 

@@ -4,14 +4,14 @@
  * @Author: fuanlei
  * @Date: 2019-11-20 15:27:16
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-27 19:26:46
+ * @LastEditTime: 2019-11-28 11:05:56
  */
 exports.config = {
         defaultConfig: {
                 group: "user template",
                 baseURL: "http://localhost:1024",
                 headers: {
-
+ "Authorization":"eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1NzQ5MTAwMzQsImlzcyI6ImlzcyIsInN1YiI6IjEiLCJleHAiOjE1NzU2NTEyOTl9.OvS59z9wOVMgI9zbbfrF1_PtPV1ufyzJX95lbf5x5Txy9him7j6X2NBIfGCe5L36Ci87SNcS1cByIBz6yPZ_FA"
                 },
                 method: "get",
                 timeout: 10 * 1000,
@@ -35,7 +35,7 @@ exports.config = {
                                         licenseNo: "5665",
                                         legalPerson: "someone",
                                         contactPhone: "13888888888",
-                                        idCard: "5656565656",
+                                        idCardNo: "5656565656",
                                         idCardPicFront: "front.png",
                                         idCardPicBack: "back.png",
                                         licensePicFront: "licence.png",
@@ -399,9 +399,9 @@ exports.config = {
                                 name: "7.2 添加用户联系人 <br>/contact",
                                 method: "post",
                                 data: {
-                                          userId:"9",
+                                         userId:"9",
                                          contactName:"xxxx",
-                                        contactPhone:"1555555555",
+                                         contactPhone:"1555555555",
                                          contactEmail:"45656565@sss.com"
                                 },
                         },
@@ -428,20 +428,17 @@ exports.config = {
                 {
                         baseUrl: "/seal",
                         name: "8 签章",
-                        url: "/1",
                         items: [{
-                                name: "8.1 获取印章列表 <br>/seal/{userId} ",
+                                name: "8.1 获取印章列表 <br>/seal ",
                                 method: "get",
-                                url: "/1",
                                 params: {
                                         pageSize: 1,
                                         pageIndex: 1
                                 },
                         },
                         {
-                                name: "8.2 新增印章 <br>/seal/{userId}",
+                                name: "8.2 新增印章 <br>/seal",
                                 method: "post",
-                                url: "/1",
                                 data: {
                                         belongType: 1,
                                         belongId: 1,
@@ -450,13 +447,13 @@ exports.config = {
                                 },
                         },
                         {
-                                name: "8.3 删除印章 <br>/seal/{userId}/{sealId}",
-                                url: "/1/2",
+                                name: "8.3 删除印章 <br>/seal/{sealId}",
+                                url: "/2",
                                 method: "delete",
                         },
                         {
-                                name: "8.3 更新印章 <br>/seal/{userId}/{sealId}",
-                                url: "/1/3",
+                                name: "8.4 更新印章 <br>/seal/{sealId}",
+                                url: "/3",
                                 method: "put",
                                 data: {
                                         belongId: 7,
@@ -472,7 +469,7 @@ exports.config = {
                         baseUrl: "/userTemplate",
                         name: "9 用户模板",
                         items: [{
-                                name: "9.1 新增模板 <br>/userTemplate/{userId}",
+                                name: "9.1 新增模板 <br>/userTemplate",
                                 url: "/1",
                                 method: "post",
                                 data: {
@@ -483,13 +480,13 @@ exports.config = {
                                 },
                         },
                         {
-                                name: "9.2 删除用户模板 <br>/userTemplate/{userId}",
-                                url: "/1/3",
+                                name: "9.2 删除用户模板 <br>/userTemplate",
+                                url: "/3",
                                 method: "delete",
                         },
                         {
-                                name: "9.3 更新模板 <br>/userTemplate/{userId}",
-                                url: "/1/4",
+                                name: "9.3 更新模板 <br>/userTemplate",
+                                url: "/4",
                                 method: "put",
                                 data: {
                                         contractName: "测试模板1",// 合同名称
@@ -497,11 +494,9 @@ exports.config = {
                                         belongType: 1, // 合同类型
                                         belongId: 13
                                 },
-
                         },
                         {
-                                name: "9.4 查询系统模板分页数据 <br>/userTemplate/{userId}",
-                                url: "/1",
+                                name: "9.4 查询系统模板分页数据 <br>/userTemplate",
                                 method: "get",
                                 params: {
                                         pageSize: 1,
