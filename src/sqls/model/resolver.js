@@ -9,8 +9,11 @@
 const { MysqlExcutor } = require("./../mysql-excutor/mysql-excutor");
 const { Table, Column, SqlType } = require("./../../resolvers/db-info");
 const { NamingStrategy } = require("./../../libs/naming-stratey")
+const { ARRAY } = require("./../../libs/utils")
 
-const sql = `select * from INFORMATION_SCHEMA.Columns
+const columnQuery = `select * from INFORMATION_SCHEMA.Columns
+where table_schema`;
+const tableQuery = `select * from INFORMATION_SCHEMA.Tables
 where table_schema`;
 
 /**
@@ -21,19 +24,22 @@ where table_schema`;
  */
 async function resolve(sqlConfig, schema) {
         let excutor = new MysqlExcutor(sqlConfig);
-        let datas = await excutor.query(`${sql}='${schema}'`);
-        let tables = new Map();;
+        let tables=await excutor.query(`${tableQuery}='${schema}'`);
+         tables=ARRAY.toMap(tables,x=>x.tableName);
+        let columns = await excutor.query(`${columnQuery}='${schema}'`);
+        let output = new Map();
 
-        datas.forEach(x => {
+        columns.forEach(x => {
                 let table = NamingStrategy.toCamel(x.tableName);
-
-                if (!tables.has(table))
-                        tables.set(table, new Table(table));
+                if (!output.has(table)){
+                        output.set(table, new Table(table));
+                        output.get(table).description=tables.get(x.tableName).tableComment;
+                }
 
                 let column = new Column();
                 if (x.columnKey && x.columnKey.indexOf("PRI") != -1) {
                         column.isPk = true;
-                        tables.get(table).primaryKey = column.name;
+                        output.get(table).primaryKey = column.name;
                 }
 
                 if (x.extra == "auto_increment")
@@ -43,11 +49,11 @@ async function resolve(sqlConfig, schema) {
                 column.nullable = x.isNullable == "YES";
                 column.description = x.columnComment;
                 column.type = SqlType.parse(x.columnType);
-                tables.get(table).columns[column.name] = column;
+                output.get(table).columns[column.name] = column;
         });
 
         let ls = [];
-        tables.forEach(x => {
+        output.forEach(x => {
                 ls.push(x);
         })
 

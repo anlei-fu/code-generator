@@ -64,12 +64,23 @@ function split(input) {
         if (input == "")
                 throw new Error("input can not be empty!");
 
-        let word = input[0];
         let ls = [];
 
+        let allUpper = true;
+        for (let i = 0; i < input.length; i++) {
+                let c = input.charAt(i);
+                if (c >= "a" && c <= "z")
+                        allUpper = false;
+        }
+
+        if (allUpper) {
+                ls.push(input);
+                return ls;
+        }
+
+        let word = input[0];
         for (let i = 1; i < input.length; i++) {
                 let c = input.charAt(i);
-
                 if (c >= "A" && c <= "Z") {
                         ls.push(word);
                         word = c;

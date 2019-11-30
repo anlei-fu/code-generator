@@ -1,0 +1,2 @@
+private @type @name;
+

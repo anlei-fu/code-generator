@@ -5,11 +5,15 @@ class Task {
                 this.taskConfig;
                 this.worker;
                 this.recorder;
+                this.stillWork;
         }
 
-        run() {
-                let stillWork;
+        stop(){
 
+        }
+
+        start() {
+                
                 try {
                         if (this.excuting < this.max) {
                                 
@@ -29,6 +33,7 @@ class Task {
                 } catch (error) {
                         this.failedCount++;
                         stillwork = this.recorder.failedCount > this.recorder.maxFailedCount;
+                }
 
                         if (stillWork) {
                                 setTimeout(this.schedule, this.delay);
@@ -39,7 +44,7 @@ class Task {
                 }
 
                 schedule() {
-                        this.run();
+                        this.start();
                 }
 
 

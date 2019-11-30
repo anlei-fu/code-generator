@@ -93,7 +93,7 @@ function append(path, data, charset) {
  * @param {boolean?} rmSource ,If true , After copying complete , Remove source file
  */
 function copy(source, destination, rmSource) {
-        fs.copySync(source, destination);
+        fs.copyFileSync(source, destination);
 
         if (rmSource)
                 fs.unlinkSync(source);

@@ -25,7 +25,7 @@
   ``` sql
    use mysql;
    select host,user,plugin from user \G;
-   ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+   ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '2011801243';
    flush privileges;
   ```
 4. create user

@@ -10,7 +10,7 @@ const { NamingStrategy } = require("./../src/libs/naming-stratey");
 
 
 function test1() {
-        let result = NamingStrategy.toPascal("damage_respository");
+        let result = NamingStrategy.toCamel("DAMAGE");
         console.log(result);
 
 }

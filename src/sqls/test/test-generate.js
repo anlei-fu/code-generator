@@ -11,11 +11,12 @@ const { generate } = require("./../model/model-generator")
 async function test() {
         generate({
                 user: "root",
-                password: "rTo0CesHi2018Qx",
-                host: "192.168.0.36",
-                database: "contract_sign"
+                password: "2011801243",
+                host: "127.0.0.1",
+                database: "spider"
         },
-                "contract_sign");
+                "spider",
+                "./output/spider");
 }
 
 test();

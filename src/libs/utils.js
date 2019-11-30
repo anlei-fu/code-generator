@@ -76,7 +76,7 @@ function toMap(array, keySelector) {
         array.forEach(x => {
                 map.set(keySelector(x), x);
         })
-
+        
         return map;
 }
 
