@@ -1,16 +1,17 @@
-class DownLoadError extends Error {
-        constructor() {
+exports.DownLoadError = class DownLoadError extends Error {
+        constructor(config, status) {
                 super();
-                this.url;
-                this.downloadConfig;
-                this.statusCode;
+                this.downloadConfig = config;
+                this.statusCode = status;
         }
 }
 
-class ExtractError extends Error {
+exports.ExtractError = class ExtractError extends Error {
         constructor() {
                 super();
                 this.url;
                 this.html;
+                this.extractorFile;
+                this.extractorVersion;
         }
 }

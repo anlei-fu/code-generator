@@ -91,9 +91,9 @@ function groupBy(array, keySelector) {
 
         array.forEach(x => {
                 let key = keySelector(x);
-                if (!map.has(key)) {
+                if (!map.has(key)) 
                         map.set(key, []);
-                }
+                        
                 map.get(key).push(x);
         })
 
@@ -161,9 +161,8 @@ function clone(target) {
 function toArray(obj) {
         let ls = []
 
-        for (let k in obj) {
+        for (let k in obj) 
                 ls.push(obj[k]);
-        }
 
         return ls;
 }
@@ -188,9 +187,8 @@ function forEach(obj, consumer) {
         if (!consumer)
                 throw new ReferenceError("consumer can not be null!");
 
-        for (const c in obj) {
+        for (const c in obj) 
                 consumer(c, obj[c]);
-        }
 }
 
 /**

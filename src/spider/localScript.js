@@ -1,5 +1,9 @@
 class LocalScriptManager{
-        store(taskId,version){
+        constructor(){
+                this.scriptUrl;
+        }
+
+        store(taskId,version,content){
 
         }
 

@@ -1,6 +1,6 @@
 
 class Reporter{
-        reportError(taskId,workerId,taskId,errors){
+        reportTask(taskId,workerId,taskId,errors,datas){
 
         }
 }
