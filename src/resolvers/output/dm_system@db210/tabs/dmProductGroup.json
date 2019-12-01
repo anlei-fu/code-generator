@@ -5,85 +5,65 @@
 		"groupNo": {
 			"name": "groupNo",
 			"description": "分组编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "分组编号",
+			"rawName": "GROUP_NO",
+			"isPk": true
 		},
 		"groupName": {
 			"name": "groupName",
 			"description": "分组名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "分组名称",
+			"rawName": "GROUP_NAME"
 		},
 		"remark": {
 			"name": "remark",
 			"description": "备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注",
+			"rawName": "REMARK"
 		},
 		"createUser": {
 			"name": "createUser",
 			"description": "创建人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建人",
+			"rawName": "CREATE_USER"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_PRODUCT_GROUP",
 	"constraints": {
 		"pkProductGroupNo": {
 			"name": "pkProductGroupNo",
@@ -91,8 +71,5 @@
 				"groupNo"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

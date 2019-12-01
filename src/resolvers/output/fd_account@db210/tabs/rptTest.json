@@ -5,41 +5,23 @@
 		"channelNo": {
 			"name": "channelNo",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"profit": {
 			"name": "profit",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
-	"constraints": {},
-	"indexes": {},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	"rawName": "RPT_TEST"
 }

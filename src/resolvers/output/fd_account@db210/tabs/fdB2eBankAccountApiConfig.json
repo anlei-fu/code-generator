@@ -5,342 +5,260 @@
 		"configId": {
 			"name": "configId",
 			"description": "配置编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "配置编号",
+			"rawName": "CONFIG_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_B2E_BANK_ACCOUNT_API_CONFIG_CONFIG_ID"
 		},
 		"bankAccountId": {
 			"name": "bankAccountId",
 			"description": "银行账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行账户编号",
+			"rawName": "BANK_ACCOUNT_ID"
 		},
 		"tokenKey": {
 			"name": "tokenKey",
 			"description": "签名key",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "签名key",
+			"rawName": "TOKEN_KEY"
 		},
 		"receiveQueryMq": {
 			"name": "receiveQueryMq",
 			"description": "下游收款查询mq",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游收款查询mq",
+			"rawName": "RECEIVE_QUERY_MQ"
 		},
 		"addMq": {
 			"name": "addMq",
 			"description": "上游加款mq",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游加款mq",
+			"rawName": "ADD_MQ"
 		},
 		"addQueryMq": {
 			"name": "addQueryMq",
 			"description": "上游加款查询mq",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游加款查询mq",
+			"rawName": "ADD_QUERY_MQ"
 		},
 		"bankBalanceMq": {
 			"name": "bankBalanceMq",
 			"description": "银行余额查询mq",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行余额查询mq",
+			"rawName": "BANK_BALANCE_MQ"
 		},
 		"merchantNo": {
 			"name": "merchantNo",
 			"description": "客户账户编号,对应client_id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "客户账户编号,对应client_id",
+			"rawName": "MERCHANT_NO"
 		},
 		"merchantPassword": {
 			"name": "merchantPassword",
 			"description": "客户账户密码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "客户账户密码",
+			"rawName": "MERCHANT_PASSWORD"
 		},
 		"userNo": {
 			"name": "userNo",
 			"description": "用户登录账户,对应user_id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "用户登录账户,对应user_id",
+			"rawName": "USER_NO"
 		},
 		"userPassword": {
 			"name": "userPassword",
 			"description": "登录密码,对应user_pswd",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "登录密码,对应user_pswd",
+			"rawName": "USER_PASSWORD"
 		},
 		"currencyCode": {
 			"name": "currencyCode",
 			"description": "交易货币种类",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "交易货币种类",
+			"rawName": "CURRENCY_CODE"
 		},
 		"language": {
 			"name": "language",
 			"description": "接口编码语言",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "接口编码语言",
+			"rawName": "LANGUAGE"
 		},
 		"appId": {
 			"name": "appId",
 			"description": "应用程序编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "应用程序编码",
+			"rawName": "APP_ID"
 		},
 		"appVer": {
 			"name": "appVer",
 			"description": "应用程序版本",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "应用程序版本",
+			"rawName": "APP_VER"
 		},
 		"bankAddMq": {
 			"name": "bankAddMq",
 			"description": "上游银企直连加款mq",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游银企直连加款mq",
+			"rawName": "BANK_ADD_MQ"
 		},
 		"bankAddQueryMq": {
 			"name": "bankAddQueryMq",
 			"description": "上游银企直联加款查询mq",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游银企直联加款查询mq",
+			"rawName": "BANK_ADD_QUERY_MQ"
 		},
 		"proxyMerchantNo": {
 			"name": "proxyMerchantNo",
 			"description": "代付商户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "代付商户编号",
+			"rawName": "PROXY_MERCHANT_NO"
 		},
 		"proxyMerchantPwd": {
 			"name": "proxyMerchantPwd",
 			"description": "代付商户密码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "代付商户密码",
+			"rawName": "PROXY_MERCHANT_PWD"
 		},
 		"proxyPriMerchantNo": {
 			"name": "proxyPriMerchantNo",
 			"description": "代付对私商户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "代付对私商户编号",
+			"rawName": "PROXY_PRI_MERCHANT_NO"
 		},
 		"proxyPriMerchantPwd": {
 			"name": "proxyPriMerchantPwd",
 			"description": "代付对私商户密码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "代付对私商户密码",
+			"rawName": "PROXY_PRI_MERCHANT_PWD"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_B2E_BANK_ACCOUNT_API_CONFIG",
 	"constraints": {
 		"pkFdB2eBankConfig": {
 			"name": "pkFdB2eBankConfig",
@@ -348,8 +266,5 @@
 				"configId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

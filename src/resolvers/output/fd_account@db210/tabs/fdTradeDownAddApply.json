@@ -5,338 +5,256 @@
 		"applyId": {
 			"name": "applyId",
 			"description": "申请编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请编号",
+			"rawName": "APPLY_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_TRADE_DOWN_ADD_APPLY_APPLY_ID"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"accountId": {
 			"name": "accountId",
 			"description": "渠道账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道账户编号",
+			"rawName": "ACCOUNT_ID"
 		},
 		"addAmount": {
 			"name": "addAmount",
 			"description": "申请加款金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请加款金额",
+			"rawName": "ADD_AMOUNT"
 		},
 		"applyAccountNo": {
 			"name": "applyAccountNo",
 			"description": "客户打款账号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "客户打款账号",
+			"rawName": "APPLY_ACCOUNT_NO"
 		},
 		"bankType": {
 			"name": "bankType",
 			"description": "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19e钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19e钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
+			"rawName": "BANK_TYPE"
 		},
 		"applyAccountName": {
 			"name": "applyAccountName",
 			"description": "客户账户名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "客户账户名称",
+			"rawName": "APPLY_ACCOUNT_NAME"
 		},
 		"applyOpenBankName": {
 			"name": "applyOpenBankName",
 			"description": "客户开户行名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "客户开户行名称",
+			"rawName": "APPLY_OPEN_BANK_NAME"
 		},
 		"status": {
 			"name": "status",
 			"description": "处理状态0：处理完成，10：未处理，20：处理中，90：处理失败",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理状态0：处理完成，10：未处理，20：处理中，90：处理失败",
+			"rawName": "STATUS"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "申请时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请时间",
+			"rawName": "CREATE_TIME"
 		},
 		"createUser": {
 			"name": "createUser",
 			"description": "申请人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请人",
+			"rawName": "CREATE_USER"
 		},
 		"payTime": {
 			"name": "payTime",
 			"description": "付款时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "付款时间",
+			"rawName": "PAY_TIME"
 		},
 		"tranNo": {
 			"name": "tranNo",
 			"description": "柜员交易号（处理成功添加）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "柜员交易号（处理成功添加）",
+			"rawName": "TRAN_NO"
 		},
 		"handleTime": {
 			"name": "handleTime",
 			"description": "处理时间（处理后添加）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理时间（处理后添加）",
+			"rawName": "HANDLE_TIME"
 		},
 		"errorMsg": {
 			"name": "errorMsg",
 			"description": "错误消息（处理失败后添加）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "错误消息（处理失败后添加）",
+			"rawName": "ERROR_MSG"
 		},
 		"flowStatus": {
 			"name": "flowStatus",
 			"description": "流水状态修改  0：已修改，10：未修改 ，20：修改中，90：失败",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 10
+			"nullable": false,
+			"defaltValue": 10,
+			"chineseName": "流水状态修改  0：已修改，10：未修改 ，20：修改中，90：失败",
+			"rawName": "FLOW_STATUS"
 		},
 		"auditUser": {
 			"name": "auditUser",
 			"description": "处理人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 100
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理人",
+			"rawName": "AUDIT_USER"
 		},
 		"auditMemo": {
 			"name": "auditMemo",
 			"description": "处理备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 200
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理备注",
+			"rawName": "AUDIT_MEMO"
 		},
 		"bankAccountId": {
 			"name": "bankAccountId",
 			"description": "收款银行id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "收款银行id",
+			"rawName": "BANK_ACCOUNT_ID"
 		},
 		"reciveTime": {
 			"name": "reciveTime",
 			"description": "收款时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "收款时间",
+			"rawName": "RECIVE_TIME"
 		},
 		"memo": {
 			"name": "memo",
 			"description": "加款申请备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 200
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "加款申请备注",
+			"rawName": "MEMO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_TRADE_DOWN_ADD_APPLY",
 	"constraints": {
 		"pkB2eDownApplyId": {
 			"name": "pkB2eDownApplyId",
@@ -344,8 +262,5 @@
 				"applyId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

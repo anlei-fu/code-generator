@@ -1,0 +1,3 @@
+<if test="@property!=null ">
+    @content
+</if>

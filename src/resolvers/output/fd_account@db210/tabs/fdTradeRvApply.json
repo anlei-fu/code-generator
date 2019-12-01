@@ -5,340 +5,258 @@
 		"applyId": {
 			"name": "applyId",
 			"description": "申请记录编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请记录编号",
+			"rawName": "APPLY_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_TRADE_RV_APPLY_APPLY_ID"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"accountId": {
 			"name": "accountId",
 			"description": "账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户编号",
+			"rawName": "ACCOUNT_ID"
 		},
 		"channelType": {
 			"name": "channelType",
 			"description": "渠道类型，1上游，2下游",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道类型，1上游，2下游",
+			"rawName": "CHANNEL_TYPE"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"billType": {
 			"name": "billType",
 			"description": "前后项信息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "前后项信息",
+			"rawName": "BILL_TYPE"
 		},
 		"differAmount": {
 			"name": "differAmount",
 			"description": "差异金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "差异金额",
+			"rawName": "DIFFER_AMOUNT"
 		},
 		"differReason": {
 			"name": "differReason",
 			"description": "差异原因",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 1024
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "差异原因",
+			"rawName": "DIFFER_REASON"
 		},
 		"differDetail": {
 			"name": "differDetail",
 			"description": "差异详情",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 3072
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "差异详情",
+			"rawName": "DIFFER_DETAIL"
 		},
 		"applyTime": {
 			"name": "applyTime",
 			"description": "申请时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请时间",
+			"rawName": "APPLY_TIME"
 		},
 		"applyUser": {
 			"name": "applyUser",
 			"description": "申请人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请人",
+			"rawName": "APPLY_USER"
 		},
 		"applyStatus": {
 			"name": "applyStatus",
 			"description": "申请所处状态 1提交申请，9作废，0处理完成",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "申请所处状态 1提交申请，9作废，0处理完成",
+			"rawName": "APPLY_STATUS"
 		},
 		"dealRvType": {
 			"name": "dealRvType",
 			"description": "处理平账类型，1交易平账，2余额平账",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理平账类型，1交易平账，2余额平账",
+			"rawName": "DEAL_RV_TYPE"
 		},
 		"dealBusinessType": {
 			"name": "dealBusinessType",
 			"description": "处理业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理业务类型",
+			"rawName": "DEAL_BUSINESS_TYPE"
 		},
 		"dealBillType": {
 			"name": "dealBillType",
 			"description": "处理前后项信息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理前后项信息",
+			"rawName": "DEAL_BILL_TYPE"
 		},
 		"dealTradeAmount": {
 			"name": "dealTradeAmount",
 			"description": "处理平账交易金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理平账交易金额",
+			"rawName": "DEAL_TRADE_AMOUNT"
 		},
 		"dealRealAmount": {
 			"name": "dealRealAmount",
 			"description": "处理平账真实金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理平账真实金额",
+			"rawName": "DEAL_REAL_AMOUNT"
 		},
 		"dealTime": {
 			"name": "dealTime",
 			"description": "处理时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理时间",
+			"rawName": "DEAL_TIME"
 		},
 		"dealUser": {
 			"name": "dealUser",
 			"description": "处理人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理人",
+			"rawName": "DEAL_USER"
 		},
 		"dealFlowId": {
 			"name": "dealFlowId",
 			"description": "关联平账流水号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "关联平账流水号",
+			"rawName": "DEAL_FLOW_ID"
 		},
 		"dealMemo": {
 			"name": "dealMemo",
 			"description": "处理备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理备注",
+			"rawName": "DEAL_MEMO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_TRADE_RV_APPLY",
 	"constraints": {
 		"pkRvApplyId": {
 			"name": "pkRvApplyId",
@@ -346,8 +264,5 @@
 				"applyId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

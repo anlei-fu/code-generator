@@ -5,409 +5,305 @@
 		"orderNo": {
 			"name": "orderNo",
 			"description": "订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单号",
+			"rawName": "ORDER_NO",
+			"isPk": true
 		},
 		"termNo": {
 			"name": "termNo",
 			"description": "终端编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "终端编号",
+			"rawName": "TERM_NO"
 		},
 		"termProductNo": {
 			"name": "termProductNo",
 			"description": "终端产品编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "终端产品编码",
+			"rawName": "TERM_PRODUCT_NO"
 		},
 		"upChannelNo": {
 			"name": "upChannelNo",
 			"description": "上游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游渠道编号",
+			"rawName": "UP_CHANNEL_NO"
 		},
 		"upProductNo": {
 			"name": "upProductNo",
 			"description": "上游产品编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游产品编号",
+			"rawName": "UP_PRODUCT_NO"
 		},
 		"phoneNo": {
 			"name": "phoneNo",
 			"description": "手机号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "手机号",
+			"rawName": "PHONE_NO"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"carrierNo": {
 			"name": "carrierNo",
 			"description": "运营商编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "运营商编码",
+			"rawName": "CARRIER_NO"
 		},
 		"provinceNo": {
 			"name": "provinceNo",
 			"description": "省份编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "省份编码",
+			"rawName": "PROVINCE_NO"
 		},
 		"cityNo": {
 			"name": "cityNo",
 			"description": "地市编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "地市编码",
+			"rawName": "CITY_NO"
 		},
 		"promoteId": {
 			"name": "promoteId",
 			"description": "推广编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "推广编号",
+			"rawName": "PROMOTE_ID"
 		},
 		"scriptId": {
 			"name": "scriptId",
 			"description": "脚本编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "脚本编号",
+			"rawName": "SCRIPT_ID"
 		},
 		"sendTimes": {
 			"name": "sendTimes",
 			"description": "发送次数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "发送次数",
+			"rawName": "SEND_TIMES"
 		},
 		"sendStatus": {
 			"name": "sendStatus",
 			"description": "短信状态: 0-发送成功 20-等待发送 30-发送中 90-发送失败  99-发送未知",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 20
+			"nullable": false,
+			"defaltValue": 20,
+			"chineseName": "短信状态",
+			"rawName": "SEND_STATUS"
 		},
 		"retryTimes": {
 			"name": "retryTimes",
 			"description": "重试次数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "重试次数",
+			"rawName": "RETRY_TIMES"
 		},
 		"nextSendTime": {
 			"name": "nextSendTime",
 			"description": "下次发送时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate + 1/24/60"
+			"nullable": false,
+			"defaltValue": "sysdate + 1/24/60",
+			"chineseName": "下次发送时间",
+			"rawName": "NEXT_SEND_TIME"
 		},
 		"resultMsg": {
 			"name": "resultMsg",
 			"description": "发送结果消息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "发送结果消息",
+			"rawName": "RESULT_MSG"
 		},
 		"userIp": {
 			"name": "userIp",
 			"description": "用户ip",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "用户ip",
+			"rawName": "USER_IP"
 		},
 		"vcode": {
 			"name": "vcode",
 			"description": "用户验证码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "用户验证码",
+			"rawName": "VCODE"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"finishTime": {
 			"name": "finishTime",
 			"description": "完成时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "完成时间",
+			"rawName": "FINISH_TIME"
 		},
 		"promoterId": {
 			"name": "promoterId",
 			"description": "推广人编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "推广人编号",
+			"rawName": "PROMOTER_ID"
 		},
 		"labelId": {
 			"name": "labelId",
 			"description": "推广人标签编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "推广人标签编号",
+			"rawName": "LABEL_ID"
 		},
 		"templateId": {
 			"name": "templateId",
 			"description": "短信模板id(暂存短信内容)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "短信模板id(暂存短信内容)",
+			"rawName": "TEMPLATE_ID"
 		},
 		"verifyState": {
 			"name": "verifyState",
 			"description": "验证状态: 0-验证通过 20-等待验证  90-验证未通过",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "验证状态",
+			"rawName": "VERIFY_STATE"
 		},
 		"serialNo": {
 			"name": "serialNo",
 			"description": "发送流水号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "发送流水号",
+			"rawName": "SERIAL_NO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_ORDER_VCODE",
 	"constraints": {
 		"pkOrderVcodeOrderNo": {
 			"name": "pkOrderVcodeOrderNo",
@@ -415,8 +311,5 @@
 				"orderNo"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

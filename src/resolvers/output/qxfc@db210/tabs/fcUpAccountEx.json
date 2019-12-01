@@ -5,103 +5,61 @@
 		"channelNo": {
 			"name": "channelNo",
 			"description": "上游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"channelPwd": {
 			"name": "channelPwd",
 			"description": "登录密码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"status": {
 			"name": "status",
 			"description": "状态0-启用1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": "sysdate"
 		},
 		"createUser": {
 			"name": "createUser",
 			"description": "创建者",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"channelUser": {
 			"name": "channelUser",
 			"description": "账户名",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
-	"constraints": {},
-	"indexes": {},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	"rawName": "FC_UP_ACCOUNT_EX"
 }

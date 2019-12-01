@@ -5,54 +5,44 @@
 		"id": {
 			"name": "id",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "id",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_SYSTEM_BUSINESS_STATIS_MAP_ID"
 		},
 		"localBusinessType": {
 			"name": "localBusinessType",
 			"description": "记账系统业务类型编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记账系统业务类型编号",
+			"rawName": "LOCAL_BUSINESS_TYPE"
 		},
 		"statisticsType": {
 			"name": "statisticsType",
 			"description": "财务渠道分类",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "财务渠道分类",
+			"rawName": "STATISTICS_TYPE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_SYSTEM_BUSINESS_STATIS_MAP",
 	"constraints": {
 		"pkBusStatisMapId": {
 			"name": "pkBusStatisMapId",
@@ -60,8 +50,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

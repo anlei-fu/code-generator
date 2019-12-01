@@ -5,306 +5,186 @@
 		"downChannelNo": {
 			"name": "downChannelNo",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"carrierNo": {
 			"name": "carrierNo",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"province": {
 			"name": "province",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"city": {
 			"name": "city",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"type": {
 			"name": "type",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"rent": {
 			"name": "rent",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"deposit": {
 			"name": "deposit",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"price": {
 			"name": "price",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"iccType": {
 			"name": "iccType",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"fee": {
 			"name": "fee",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"cost": {
 			"name": "cost",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"reward": {
 			"name": "reward",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"productNo": {
 			"name": "productNo",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"trial": {
 			"name": "trial",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"debitMode": {
 			"name": "debitMode",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"upChannel": {
 			"name": "upChannel",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"groupNo": {
 			"name": "groupNo",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"flow": {
 			"name": "flow",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"createDate": {
 			"name": "createDate",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": "sysdate"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
-	"constraints": {},
-	"indexes": {},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	"rawName": "TB_TEMP"
 }

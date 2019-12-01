@@ -5,279 +5,171 @@
 		"id": {
 			"name": "id",
 			"description": "流水编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"bankAccountId": {
 			"name": "bankAccountId",
 			"description": "银行账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"cardNo": {
 			"name": "cardNo",
 			"description": "己方银行账户",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"bankType": {
 			"name": "bankType",
 			"description": "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19e钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"tranDate": {
 			"name": "tranDate",
 			"description": "交易时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"tranNo": {
 			"name": "tranNo",
 			"description": "柜员交易号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"sumTranNo": {
 			"name": "sumTranNo",
 			"description": "总交易流水号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"tranAmount": {
 			"name": "tranAmount",
 			"description": "交易金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"creditDebitFlag": {
 			"name": "creditDebitFlag",
 			"description": "借贷标识d:借，c：贷",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 3
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"oppAccountNo": {
 			"name": "oppAccountNo",
 			"description": "对方账号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"oppAccountName": {
 			"name": "oppAccountName",
 			"description": "对方账户名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"oppOpenBankName": {
 			"name": "oppOpenBankName",
 			"description": "对方开户行名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"abstract": {
 			"name": "abstract",
 			"description": "附言",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"balance": {
 			"name": "balance",
 			"description": "账户余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"hostTranCode": {
 			"name": "hostTranCode",
 			"description": "主机交易码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"cashTransferFlag": {
 			"name": "cashTransferFlag",
 			"description": "现转标识 0：现金；1：转帐",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 2
 			},
+			"nullable": false,
 			"defaltValue": null
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
-	"constraints": {},
-	"indexes": {},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	"rawName": "FD_BANK_STREAM_FULL"
 }

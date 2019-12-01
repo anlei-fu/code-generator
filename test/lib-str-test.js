@@ -4,20 +4,12 @@
  * @Author: fuanlei
  * @Date: 2019-10-11 10:57:11
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-15 13:06:04
+ * @LastEditTime: 2019-11-29 14:23:35
  */
 const {STR} =require("./../src/libs/str");
 const assert = require('assert');
 
-let sentence=`begin
-select t.province_no,
-       l_down_channel_no,
-       l_down_group_no
-  from fc_order_main t
- inner join fc_down_product p
-    on t.down_product_id = p.pid
- where t.order_no = v_order_no;
-`;
+let sentence=`alipay constant number(2)  =  1`;
 function testSplitToWord(){
         
         let words= STR.splitToWords(sentence);
@@ -46,7 +38,7 @@ function testReverse(){
   console.log(STR.reverse(text));
 }
 
-testReverse();
+//testReverse();
 //testSelect1();
-// testSplitToWord();
+testSplitToWord();
 // testRemoveWithMatch();

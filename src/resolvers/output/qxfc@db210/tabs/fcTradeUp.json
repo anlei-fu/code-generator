@@ -5,215 +5,131 @@
 		"tradeDate": {
 			"name": "tradeDate",
 			"description": "交易时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"upChannelNo": {
 			"name": "upChannelNo",
 			"description": "上游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"carrierNo": {
 			"name": "carrierNo",
 			"description": "运营商",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"provinceNo": {
 			"name": "provinceNo",
 			"description": "省份",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 10
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"cityNo": {
 			"name": "cityNo",
 			"description": "地市",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"productType": {
 			"name": "productType",
 			"description": "产品类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"packageType": {
 			"name": "packageType",
 			"description": "套餐",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"productNo": {
 			"name": "productNo",
 			"description": "产品编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"totalCntr": {
 			"name": "totalCntr",
 			"description": "订单笔数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"cost": {
 			"name": "cost",
 			"description": "成本",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"reward": {
 			"name": "reward",
 			"description": "佣金",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"expressFee": {
 			"name": "expressFee",
 			"description": "快递费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"refundFee": {
 			"name": "refundFee",
 			"description": "退款金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
+			"nullable": false,
 			"defaltValue": null
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
-	"constraints": {},
-	"indexes": {},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	"rawName": "FC_TRADE_UP"
 }

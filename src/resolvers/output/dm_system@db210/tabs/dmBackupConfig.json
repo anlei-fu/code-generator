@@ -5,159 +5,121 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "记录编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记录编号",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_DM_BACKUP_CONFIG_RECORD_ID"
 		},
 		"backupName": {
 			"name": "backupName",
 			"description": "后补名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "后补名称",
+			"rawName": "BACKUP_NAME"
 		},
 		"backupTitle": {
 			"name": "backupTitle",
 			"description": "后补标题",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 100
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "后补标题",
+			"rawName": "BACKUP_TITLE"
 		},
 		"scanMax": {
 			"name": "scanMax",
 			"description": "扫描最大笔数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 500
+			"nullable": false,
+			"defaltValue": 500,
+			"chineseName": "扫描最大笔数",
+			"rawName": "SCAN_MAX"
 		},
 		"scanInterval": {
 			"name": "scanInterval",
 			"description": "扫描间隔(秒)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 10
+			"nullable": false,
+			"defaltValue": 10,
+			"chineseName": "扫描间隔(秒)",
+			"rawName": "SCAN_INTERVAL"
 		},
 		"nextInterval": {
 			"name": "nextInterval",
 			"description": "下次间隔(秒)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 60
+			"nullable": false,
+			"defaltValue": 60,
+			"chineseName": "下次间隔(秒)",
+			"rawName": "NEXT_INTERVAL"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态: 0-启用 1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "STATUS"
 		},
 		"lastExec": {
 			"name": "lastExec",
 			"description": "最近执行时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "最近执行时间",
+			"rawName": "LAST_EXEC"
 		},
 		"nextExec": {
 			"name": "nextExec",
 			"description": "下次执行时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "下次执行时间",
+			"rawName": "NEXT_EXEC"
 		},
 		"robotIp": {
 			"name": "robotIp",
 			"description": "机器人ip",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "机器人ip",
+			"rawName": "ROBOT_IP"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_BACKUP_CONFIG",
 	"constraints": {
 		"pkBackupConfigId": {
 			"name": "pkBackupConfigId",
@@ -165,8 +127,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

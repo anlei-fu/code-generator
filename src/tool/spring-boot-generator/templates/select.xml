@@ -1,0 +1,9 @@
+<select id="@id">
+  selectfm,
+  @columns
+  form @tableName
+  @joins
+  <where>
+   @conditions
+  </where>
+</select>

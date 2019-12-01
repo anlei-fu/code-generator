@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-27 11:03:58
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-27 16:13:15
+ * @LastEditTime: 2019-12-01 17:35:42
  */
 const axios = require('axios');
 const { FILE } = require('./../libs/file');
@@ -30,10 +30,8 @@ function writeFromUrl(file, url, select, encoding = "utf-8", renders) {
                         if (resp.data) {
                                 let html = iconv.decode(resp.data, encoding)
                                         .replace("\r\n", "");
-                                let $ = cheerio.load(html);
-                                cheerioTableparser($);
-                                let data = $(select).parsetable(true, true, true);
-                                let converted = convert(data);
+
+                                let converted = resolve(html,select);
                                 writeFromJson(file, converted.headers, converted.items, renders);
                         }
                         console.log("completed!");
@@ -42,6 +40,29 @@ function writeFromUrl(file, url, select, encoding = "utf-8", renders) {
                         console.log(err);
                         console.log("failed!");
                 });
+}
+
+/**
+ * 
+ * @param {String} file 
+ * @param {String} select 
+ * @param {*} renders 
+ */
+function writeFromFile(file,output,select,renders){
+        let converted = resolve(FILE.read(file),select);
+        writeFromJson(output, converted.headers, converted.items, renders);
+}
+
+/**
+ * 
+ * @param {String} html 
+ * @returns {[[String]]}
+ */
+function resolve(html,select) {
+        let $ = cheerio.load(html);
+        cheerioTableparser($);
+        let datas= $(select).parsetable(true, true, true);
+        return convert(datas);
 }
 
 /**
@@ -101,6 +122,4 @@ function writeFromJson(file, headers, items, renders = {}) {
 }
 
 // ------------------------------------------------------------------------main-------------------------------------------------------------
-writeFromUrl("1.md",
-        "https://docs.open.alipay.com/api_5/koubei.trade.order.consult",
-        "#common-req-params");
+writeFromFile("1.html","1.md","table");

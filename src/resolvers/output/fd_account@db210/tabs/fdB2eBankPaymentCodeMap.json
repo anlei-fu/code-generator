@@ -5,86 +5,68 @@
 		"id": {
 			"name": "id",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "id",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_B2E_BANK_PAYMENT_CODE_MAP_ID"
 		},
 		"bankPaymentType": {
 			"name": "bankPaymentType",
 			"description": "银行支付方式",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行支付方式",
+			"rawName": "BANK_PAYMENT_TYPE"
 		},
 		"codeType": {
 			"name": "codeType",
 			"description": "编码类型1.付款类，2付款结果查询",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "编码类型1.付款类，2付款结果查询",
+			"rawName": "CODE_TYPE"
 		},
 		"code": {
 			"name": "code",
 			"description": "银行接口编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行接口编码",
+			"rawName": "CODE"
 		},
 		"remark": {
 			"name": "remark",
 			"description": "备注说明",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注说明",
+			"rawName": "REMARK"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_B2E_BANK_PAYMENT_CODE_MAP",
 	"constraints": {
 		"pkPaymentCodeMapId": {
 			"name": "pkPaymentCodeMapId",
@@ -92,8 +74,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

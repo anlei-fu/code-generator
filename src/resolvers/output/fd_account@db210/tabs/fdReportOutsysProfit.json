@@ -5,84 +5,66 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "recordId",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_REPORT_OUTSYS_PROFIT_RECORD_ID"
 		},
 		"sourceSystemId": {
 			"name": "sourceSystemId",
 			"description": "外部系统编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "外部系统编号",
+			"rawName": "SOURCE_SYSTEM_ID"
 		},
 		"recordDate": {
 			"name": "recordDate",
 			"description": "记录时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记录时间",
+			"rawName": "RECORD_DATE"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"profit": {
 			"name": "profit",
 			"description": "利润数据",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "利润数据",
+			"rawName": "PROFIT"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_REPORT_OUTSYS_PROFIT",
 	"constraints": {
 		"pkOutsysProfitId": {
 			"name": "pkOutsysProfitId",
@@ -90,8 +72,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

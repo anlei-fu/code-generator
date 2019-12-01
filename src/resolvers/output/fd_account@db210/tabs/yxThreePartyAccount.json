@@ -5,242 +5,184 @@
 		"accountId": {
 			"name": "accountId",
 			"description": "三方账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "三方账户编号",
+			"rawName": "ACCOUNT_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_YX_THREE_PARTY_ACCOUNT_ACCOUNT_ID"
 		},
 		"accountName": {
 			"name": "accountName",
 			"description": "账户名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户名称",
+			"rawName": "ACCOUNT_NAME"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"agentId": {
 			"name": "agentId",
 			"description": "代理商编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "代理商编号",
+			"rawName": "AGENT_ID"
 		},
 		"channelType": {
 			"name": "channelType",
 			"description": "渠道类型1:上游;2:下游",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道类型1",
+			"rawName": "CHANNEL_TYPE"
 		},
 		"balance": {
 			"name": "balance",
 			"description": "余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "余额",
+			"rawName": "BALANCE"
 		},
 		"accountType": {
 			"name": "accountType",
 			"description": "账户类型:1支出;2:收入",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户类型",
+			"rawName": "ACCOUNT_TYPE"
 		},
 		"creditAmount": {
 			"name": "creditAmount",
 			"description": "授信金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "授信金额",
+			"rawName": "CREDIT_AMOUNT"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态0-启用1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 2
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "状态0-启用1-禁用",
+			"rawName": "STATUS"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"createUser": {
 			"name": "createUser",
 			"description": "创建人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建人",
+			"rawName": "CREATE_USER"
 		},
 		"updateTime": {
 			"name": "updateTime",
 			"description": "修改时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "修改时间",
+			"rawName": "UPDATE_TIME"
 		},
 		"updateUser": {
 			"name": "updateUser",
 			"description": "更新人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "更新人",
+			"rawName": "UPDATE_USER"
 		},
 		"companyId": {
 			"name": "companyId",
 			"description": "公司编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "公司编号",
+			"rawName": "COMPANY_ID"
 		},
 		"systemId": {
 			"name": "systemId",
 			"description": "系统编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "系统编号",
+			"rawName": "SYSTEM_ID"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "YX_THREE_PARTY_ACCOUNT",
 	"constraints": {
 		"pkYxTherrPartyAccountId": {
 			"name": "pkYxTherrPartyAccountId",
@@ -248,8 +190,5 @@
 				"accountId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

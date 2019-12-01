@@ -5,207 +5,157 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "记录编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记录编号",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_DM_TERM_PRODUCT_RULE_RECORD_ID"
 		},
 		"termNo": {
 			"name": "termNo",
 			"description": "终端编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "终端编号",
+			"rawName": "TERM_NO"
 		},
 		"productNo": {
 			"name": "productNo",
 			"description": "产品编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "产品编号",
+			"rawName": "PRODUCT_NO"
 		},
 		"ruleType": {
 			"name": "ruleType",
 			"description": "规则类型: 1-ip 2-手机号 3-年龄 4-身份证 5-地址",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "规则类型",
+			"rawName": "RULE_TYPE"
 		},
 		"ruleCondition": {
 			"name": "ruleCondition",
 			"description": "规则条件: 1-范围 2-等于 3-不等于 4-包含 5-不包含 6-不超过(时间段内)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "规则条件",
+			"rawName": "RULE_CONDITION"
 		},
 		"ruleValueA": {
 			"name": "ruleValueA",
 			"description": "规则取值a",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "规则取值a",
+			"rawName": "RULE_VALUE_A"
 		},
 		"ruleValueB": {
 			"name": "ruleValueB",
 			"description": "规则取值b",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "规则取值b",
+			"rawName": "RULE_VALUE_B"
 		},
 		"priority": {
 			"name": "priority",
 			"description": "优先级",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "优先级",
+			"rawName": "PRIORITY"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态: 0-启用 1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "STATUS"
 		},
 		"createUser": {
 			"name": "createUser",
 			"description": "创建人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建人",
+			"rawName": "CREATE_USER"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"updateUser": {
 			"name": "updateUser",
 			"description": "更新人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "更新人",
+			"rawName": "UPDATE_USER"
 		},
 		"updateTime": {
 			"name": "updateTime",
 			"description": "更新时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "更新时间",
+			"rawName": "UPDATE_TIME"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_TERM_PRODUCT_RULE",
 	"constraints": {
 		"pkTermProductRuleId": {
 			"name": "pkTermProductRuleId",
@@ -213,8 +163,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

@@ -5,117 +5,91 @@
 		"id": {
 			"name": "id",
 			"description": "编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "编号",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_RPT_MERGE_INNER_CHANNEL_MAP_ID"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"channelName": {
 			"name": "channelName",
 			"description": "渠道名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 100
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道名称",
+			"rawName": "CHANNEL_NAME"
 		},
 		"channelType": {
 			"name": "channelType",
 			"description": "渠道类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道类型",
+			"rawName": "CHANNEL_TYPE"
 		},
 		"companyId": {
 			"name": "companyId",
 			"description": "公司编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "公司编号",
+			"rawName": "COMPANY_ID"
 		},
 		"addUser": {
 			"name": "addUser",
 			"description": "添加人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "添加人",
+			"rawName": "ADD_USER"
 		},
 		"addTime": {
 			"name": "addTime",
 			"description": "添加时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "添加时间",
+			"rawName": "ADD_TIME"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "RPT_MERGE_INNER_CHANNEL_MAP",
 	"constraints": {
 		"pkInnerChannelId": {
 			"name": "pkInnerChannelId",
@@ -123,8 +97,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

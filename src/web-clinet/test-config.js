@@ -4,14 +4,14 @@
  * @Author: fuanlei
  * @Date: 2019-11-20 15:27:16
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-28 11:05:56
+ * @LastEditTime: 2019-11-29 10:23:40
  */
 exports.config = {
         defaultConfig: {
                 group: "user template",
                 baseURL: "http://localhost:1024",
                 headers: {
- "Authorization":"eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1NzQ5MTAwMzQsImlzcyI6ImlzcyIsInN1YiI6IjEiLCJleHAiOjE1NzU2NTEyOTl9.OvS59z9wOVMgI9zbbfrF1_PtPV1ufyzJX95lbf5x5Txy9him7j6X2NBIfGCe5L36Ci87SNcS1cByIBz6yPZ_FA"
+ "Authorization":"eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1NzQ5OTMyNTQsImlzcyI6ImlzcyIsInN1YiI6IjM2IiwiZXhwIjoxNTc1NzM0NTE5fQ.4aM9RBH9qHZcjfxcbXDAfNzPWRB6bFKs48Wm6kaDv6ZoPgaImI3bKNNOfBCjbml1QIzOArsSV-EO0vvq3Xx_Mw"
                 },
                 method: "get",
                 timeout: 10 * 1000,
@@ -322,7 +322,9 @@ exports.config = {
                                 method: "get",
                                 params: {
                                         pageIndex: 1,
-                                        pageSize: 1
+                                        pageSize: 1,
+                                        mealType:2
+
                                 }
                         },
                         {
@@ -470,7 +472,6 @@ exports.config = {
                         name: "9 用户模板",
                         items: [{
                                 name: "9.1 新增模板 <br>/userTemplate",
-                                url: "/1",
                                 method: "post",
                                 data: {
                                         contractName: "测试模板1",// 合同名称
@@ -489,7 +490,7 @@ exports.config = {
                                 url: "/4",
                                 method: "put",
                                 data: {
-                                        contractName: "测试模板1",// 合同名称
+                                        contractName: "测试模板2",// 合同名称
                                         contractFile: "456.pdf", // 合同pdf文件地址
                                         belongType: 1, // 合同类型
                                         belongId: 13

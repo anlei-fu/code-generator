@@ -5,355 +5,269 @@
 		"accountId": {
 			"name": "accountId",
 			"description": "支付账号编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付账号编号",
+			"rawName": "ACCOUNT_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_DM_PAY_ACCOUNT_ACCOUNT_ID"
 		},
 		"accountType": {
 			"name": "accountType",
 			"description": "账号类型: 1-支付宝 2-微信",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账号类型",
+			"rawName": "ACCOUNT_TYPE"
 		},
 		"appId": {
 			"name": "appId",
 			"description": "开放平台appid",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "开放平台appid",
+			"rawName": "APP_ID"
 		},
 		"appSecret": {
 			"name": "appSecret",
 			"description": "开放平台appsecret",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "开放平台appsecret",
+			"rawName": "APP_SECRET"
 		},
 		"merchantId": {
 			"name": "merchantId",
 			"description": "商户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "商户编号",
+			"rawName": "MERCHANT_ID"
 		},
 		"signKey": {
 			"name": "signKey",
 			"description": "签名key",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "签名key",
+			"rawName": "SIGN_KEY"
 		},
 		"certPath": {
 			"name": "certPath",
 			"description": "证书路径",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "证书路径",
+			"rawName": "CERT_PATH"
 		},
 		"certPwd": {
 			"name": "certPwd",
 			"description": "证书密码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "证书密码",
+			"rawName": "CERT_PWD"
 		},
 		"publicKey": {
 			"name": "publicKey",
 			"description": "加密公钥",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 4000
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "加密公钥",
+			"rawName": "PUBLIC_KEY"
 		},
 		"privateKey": {
 			"name": "privateKey",
 			"description": "解密/验签私钥",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 4000
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "解密/验签私钥",
+			"rawName": "PRIVATE_KEY"
 		},
 		"balance": {
 			"name": "balance",
 			"description": "账户余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "账户余额",
+			"rawName": "BALANCE"
 		},
 		"authRedirectUrl": {
 			"name": "authRedirectUrl",
 			"description": "api授权跳转地址",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "api授权跳转地址",
+			"rawName": "AUTH_REDIRECT_URL"
 		},
 		"payRedirectUrl": {
 			"name": "payRedirectUrl",
 			"description": "支付完跳转地址",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付完跳转地址",
+			"rawName": "PAY_REDIRECT_URL"
 		},
 		"payNotifyUrl": {
 			"name": "payNotifyUrl",
 			"description": "支付结果回调地址",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付结果回调地址",
+			"rawName": "PAY_NOTIFY_URL"
 		},
 		"refundNotifyUrl": {
 			"name": "refundNotifyUrl",
 			"description": "退款回调地址",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "退款回调地址",
+			"rawName": "REFUND_NOTIFY_URL"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态: 0-启用 1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "STATUS"
 		},
 		"remark": {
 			"name": "remark",
 			"description": "备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注",
+			"rawName": "REMARK"
 		},
 		"createUser": {
 			"name": "createUser",
 			"description": "创建人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建人",
+			"rawName": "CREATE_USER"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"updateUser": {
 			"name": "updateUser",
 			"description": "更新人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "更新人",
+			"rawName": "UPDATE_USER"
 		},
 		"updateTime": {
 			"name": "updateTime",
 			"description": "更新时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "更新时间",
+			"rawName": "UPDATE_TIME"
 		},
 		"accountName": {
 			"name": "accountName",
 			"description": "账号名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账号名称",
+			"rawName": "ACCOUNT_NAME"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_PAY_ACCOUNT",
 	"constraints": {
 		"pkPayAcntId": {
 			"name": "pkPayAcntId",
@@ -361,8 +275,5 @@
 				"accountId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

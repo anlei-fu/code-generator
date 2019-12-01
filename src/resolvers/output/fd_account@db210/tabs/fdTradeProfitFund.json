@@ -5,212 +5,162 @@
 		"fundId": {
 			"name": "fundId",
 			"description": "主键（利润任务相同）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "主键（利润任务相同）",
+			"rawName": "FUND_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_TRADE_PROFIT_FUND_FUND_ID"
 		},
 		"recordId": {
 			"name": "recordId",
 			"description": "月报表编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "月报表编号",
+			"rawName": "RECORD_ID"
 		},
 		"companyId": {
 			"name": "companyId",
 			"description": "公司编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "公司编号",
+			"rawName": "COMPANY_ID"
 		},
 		"billType": {
 			"name": "billType",
 			"description": "利润类型:1-前向2-后向",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "利润类型",
+			"rawName": "BILL_TYPE"
 		},
 		"snapTime": {
 			"name": "snapTime",
 			"description": "月份",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "月份",
+			"rawName": "SNAP_TIME"
 		},
 		"changeType": {
 			"name": "changeType",
 			"description": "变动类型（11总利润加款12总利润平账加款13总利润平账减款21提取利润加款22提取利润红冲）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 2
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动类型（11总利润加款12总利润平账加款13总利润平账减款21提取利润加款22提取利润红冲）",
+			"rawName": "CHANGE_TYPE"
 		},
 		"dealCount": {
 			"name": "dealCount",
 			"description": "总利润加款统计条数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 10
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "总利润加款统计条数",
+			"rawName": "DEAL_COUNT"
 		},
 		"totalProfitsFund": {
 			"name": "totalProfitsFund",
 			"description": "总利润变动金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "总利润变动金额",
+			"rawName": "TOTAL_PROFITS_FUND"
 		},
 		"drawProfitsFund": {
 			"name": "drawProfitsFund",
 			"description": "已提取利润变动金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "已提取利润变动金额",
+			"rawName": "DRAW_PROFITS_FUND"
 		},
 		"totalProfitsBalance": {
 			"name": "totalProfitsBalance",
 			"description": "总利润余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "总利润余额",
+			"rawName": "TOTAL_PROFITS_BALANCE"
 		},
 		"drawProfitsBalance": {
 			"name": "drawProfitsBalance",
 			"description": "已提取利润余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "已提取利润余额",
+			"rawName": "DRAW_PROFITS_BALANCE"
 		},
 		"coProfitsBalance": {
 			"name": "coProfitsBalance",
 			"description": "公司利润余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "公司利润余额",
+			"rawName": "CO_PROFITS_BALANCE"
 		},
 		"changeDate": {
 			"name": "changeDate",
 			"description": "变动时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "变动时间",
+			"rawName": "CHANGE_DATE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_TRADE_PROFIT_FUND",
 	"constraints": {
 		"pkTradeProfitFund": {
 			"name": "pkTradeProfitFund",
@@ -218,8 +168,5 @@
 				"fundId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

@@ -5,85 +5,67 @@
 		"id": {
 			"name": "id",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "id",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_B2E_SYSTEM_LOG_ID"
 		},
 		"accountId": {
 			"name": "accountId",
 			"description": "账户名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户名称",
+			"rawName": "ACCOUNT_ID"
 		},
 		"accountName": {
 			"name": "accountName",
 			"description": "账户名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户名称",
+			"rawName": "ACCOUNT_NAME"
 		},
 		"lastFailTime": {
 			"name": "lastFailTime",
 			"description": "上次执行失败时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上次执行失败时间",
+			"rawName": "LAST_FAIL_TIME"
 		},
 		"failReason": {
 			"name": "failReason",
 			"description": "失败原因",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "失败原因",
+			"rawName": "FAIL_REASON"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_B2E_SYSTEM_LOG",
 	"constraints": {
 		"pkB2eLogId": {
 			"name": "pkB2eLogId",
@@ -91,8 +73,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

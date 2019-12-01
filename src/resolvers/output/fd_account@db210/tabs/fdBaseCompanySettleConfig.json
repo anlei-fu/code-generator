@@ -5,213 +5,163 @@
 		"configId": {
 			"name": "configId",
 			"description": "配置编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "配置编号",
+			"rawName": "CONFIG_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_BASE_COMPANY_SETTLE_CONFIG_CONFIG_ID"
 		},
 		"oweCompany": {
 			"name": "oweCompany",
 			"description": "欠款公司",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "欠款公司",
+			"rawName": "OWE_COMPANY"
 		},
 		"recvCompany": {
 			"name": "recvCompany",
 			"description": "收款公司",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "收款公司",
+			"rawName": "RECV_COMPANY"
 		},
 		"upChannelNo": {
 			"name": "upChannelNo",
 			"description": "上游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "*"
+			"nullable": false,
+			"defaltValue": "*",
+			"chineseName": "上游渠道编号",
+			"rawName": "UP_CHANNEL_NO"
 		},
 		"downChannelNo": {
 			"name": "downChannelNo",
 			"description": "下游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "*"
+			"nullable": false,
+			"defaltValue": "*",
+			"chineseName": "下游渠道编号",
+			"rawName": "DOWN_CHANNEL_NO"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"carrierNo": {
 			"name": "carrierNo",
 			"description": "运营商",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "*"
+			"nullable": false,
+			"defaltValue": "*",
+			"chineseName": "运营商",
+			"rawName": "CARRIER_NO"
 		},
 		"provinceNo": {
 			"name": "provinceNo",
 			"description": "省份",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "*"
+			"nullable": false,
+			"defaltValue": "*",
+			"chineseName": "省份",
+			"rawName": "PROVINCE_NO"
 		},
 		"cityNo": {
 			"name": "cityNo",
 			"description": "地市",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "*"
+			"nullable": false,
+			"defaltValue": "*",
+			"chineseName": "地市",
+			"rawName": "CITY_NO"
 		},
 		"settleCost": {
 			"name": "settleCost",
 			"description": "结算折扣",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "结算折扣",
+			"rawName": "SETTLE_COST"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "STATUS"
 		},
 		"lastUpdateTime": {
 			"name": "lastUpdateTime",
 			"description": "最后更新时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "最后更新时间",
+			"rawName": "LAST_UPDATE_TIME"
 		},
 		"lastUpdateUser": {
 			"name": "lastUpdateUser",
 			"description": "最后更新人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "最后更新人",
+			"rawName": "LAST_UPDATE_USER"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_BASE_COMPANY_SETTLE_CONFIG",
 	"constraints": {
 		"pkFdBaseCompanySettleme": {
 			"name": "pkFdBaseCompanySettleme",
@@ -219,8 +169,5 @@
 				"configId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

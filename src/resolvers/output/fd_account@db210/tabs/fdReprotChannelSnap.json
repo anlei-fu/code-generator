@@ -5,165 +5,127 @@
 		"snapId": {
 			"name": "snapId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "snapId",
+			"rawName": "SNAP_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_REPROT_CHANNEL_SNAP_SNAP_ID"
 		},
 		"channelType": {
 			"name": "channelType",
 			"description": "渠道类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道类型",
+			"rawName": "CHANNEL_TYPE"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"billType": {
 			"name": "billType",
 			"description": "利润类型:1-前向2-后向",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "利润类型",
+			"rawName": "BILL_TYPE"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"realCostFee": {
 			"name": "realCostFee",
 			"description": "实际账户扣款",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "实际账户扣款",
+			"rawName": "REAL_COST_FEE"
 		},
 		"orderCostFee": {
 			"name": "orderCostFee",
 			"description": "下单扣款",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下单扣款",
+			"rawName": "ORDER_COST_FEE"
 		},
 		"addAmount": {
 			"name": "addAmount",
 			"description": "加款金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "加款金额",
+			"rawName": "ADD_AMOUNT"
 		},
 		"balance": {
 			"name": "balance",
 			"description": "渠道余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道余额",
+			"rawName": "BALANCE"
 		},
 		"snapDate": {
 			"name": "snapDate",
 			"description": "快照日期",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "快照日期",
+			"rawName": "SNAP_DATE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_REPROT_CHANNEL_SNAP",
 	"constraints": {
 		"pkReprotChannelSnap": {
 			"name": "pkReprotChannelSnap",
@@ -171,8 +133,5 @@
 				"snapId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

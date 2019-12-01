@@ -5,149 +5,115 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "编号",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_YX_TRADE_AGENCY_ASSIGNED_RECORD_ID"
 		},
 		"yxOrderId": {
 			"name": "yxOrderId",
 			"description": "记账系统订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "记账系统订单号",
+			"rawName": "YX_ORDER_ID"
 		},
 		"agentId": {
 			"name": "agentId",
 			"description": "单代理人编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "单代理人编号",
+			"rawName": "AGENT_ID"
 		},
 		"orderSource": {
 			"name": "orderSource",
 			"description": "订单来源（系统编号）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单来源（系统编号）",
+			"rawName": "ORDER_SOURCE"
 		},
 		"agentFee": {
 			"name": "agentFee",
 			"description": "单代理人代理费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "单代理人代理费",
+			"rawName": "AGENT_FEE"
 		},
 		"changeType": {
 			"name": "changeType",
 			"description": "2：扣款，3：退款",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 2
+			"nullable": false,
+			"defaltValue": 2,
+			"chineseName": "2：扣款，3：退款",
+			"rawName": "CHANGE_TYPE"
 		},
 		"changeTime": {
 			"name": "changeTime",
 			"description": "变动时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "变动时间",
+			"rawName": "CHANGE_TIME"
 		},
 		"settleStatus": {
 			"name": "settleStatus",
 			"description": "结算状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "结算状态",
+			"rawName": "SETTLE_STATUS"
 		},
 		"memo": {
 			"name": "memo",
 			"description": "备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注",
+			"rawName": "MEMO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "YX_TRADE_AGENCY_ASSIGNED",
 	"constraints": {
 		"pkYxAgencyAssignedRI": {
 			"name": "pkYxAgencyAssignedRI",
@@ -155,8 +121,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

@@ -5,101 +5,79 @@
 		"id": {
 			"name": "id",
 			"description": "编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "编号",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_INCOME_DOWN_UP_TRADE_ID"
 		},
 		"tradeDate": {
 			"name": "tradeDate",
 			"description": "交易日期",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易日期",
+			"rawName": "TRADE_DATE"
 		},
 		"downChannelNo": {
 			"name": "downChannelNo",
 			"description": "下游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游渠道编号",
+			"rawName": "DOWN_CHANNEL_NO"
 		},
 		"upChannelNo": {
 			"name": "upChannelNo",
 			"description": "上游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游渠道编号",
+			"rawName": "UP_CHANNEL_NO"
 		},
 		"tradeAmount": {
 			"name": "tradeAmount",
 			"description": "交易金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易金额",
+			"rawName": "TRADE_AMOUNT"
 		},
 		"tradeProfit": {
 			"name": "tradeProfit",
 			"description": "交易利润",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易利润",
+			"rawName": "TRADE_PROFIT"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "INCOME_DOWN_UP_TRADE",
 	"constraints": {
 		"pkIncomeDownUpTradeid": {
 			"name": "pkIncomeDownUpTradeid",
@@ -107,8 +85,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

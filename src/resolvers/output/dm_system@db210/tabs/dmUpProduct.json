@@ -5,365 +5,273 @@
 		"productNo": {
 			"name": "productNo",
 			"description": "产品编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "产品编号",
+			"rawName": "PRODUCT_NO",
+			"isPk": true
 		},
 		"productName": {
 			"name": "productName",
 			"description": "产品名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "产品名称",
+			"rawName": "PRODUCT_NAME"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"upProductNo": {
 			"name": "upProductNo",
 			"description": "上游产品编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游产品编码",
+			"rawName": "UP_PRODUCT_NO"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"carrierNo": {
 			"name": "carrierNo",
 			"description": "运营商",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "运营商",
+			"rawName": "CARRIER_NO"
 		},
 		"provinceNo": {
 			"name": "provinceNo",
 			"description": "省份: qg-全国",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "qg"
+			"nullable": false,
+			"defaltValue": "qg",
+			"chineseName": "省份",
+			"rawName": "PROVINCE_NO"
 		},
 		"cityNo": {
 			"name": "cityNo",
 			"description": "城市: *-全省",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "*"
+			"nullable": false,
+			"defaltValue": "*",
+			"chineseName": "城市",
+			"rawName": "CITY_NO"
 		},
 		"faceFee": {
 			"name": "faceFee",
 			"description": "面值",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "面值",
+			"rawName": "FACE_FEE"
 		},
 		"normalPrice": {
 			"name": "normalPrice",
 			"description": "标准价格",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "标准价格",
+			"rawName": "NORMAL_PRICE"
 		},
 		"deductPrice": {
 			"name": "deductPrice",
 			"description": "扣款价格",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "扣款价格",
+			"rawName": "DEDUCT_PRICE"
 		},
 		"realPrice": {
 			"name": "realPrice",
 			"description": "实际价格",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "实际价格",
+			"rawName": "REAL_PRICE"
 		},
 		"needVcode": {
 			"name": "needVcode",
 			"description": "需要验证码: 0-需要 1-不需要",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "需要验证码",
+			"rawName": "NEED_VCODE"
 		},
 		"needDelivery": {
 			"name": "needDelivery",
 			"description": "需要发货: 0-需要 1-不需要",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "需要发货",
+			"rawName": "NEED_DELIVERY"
 		},
 		"needCardUid": {
 			"name": "needCardUid",
 			"description": "需要身份证号: 0-需要 1-不需要",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "需要身份证号",
+			"rawName": "NEED_CARD_UID"
 		},
 		"pictureMode": {
 			"name": "pictureMode",
 			"description": "身份证照模式: 0-无需照片 1-重提照片 2-重提订单",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "身份证照模式",
+			"rawName": "PICTURE_MODE"
 		},
 		"groupNo": {
 			"name": "groupNo",
 			"description": "分组编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "分组编号",
+			"rawName": "GROUP_NO"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态: 0-启用 1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "STATUS"
 		},
 		"remark": {
 			"name": "remark",
 			"description": "备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注",
+			"rawName": "REMARK"
 		},
 		"createUser": {
 			"name": "createUser",
 			"description": "创建人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建人",
+			"rawName": "CREATE_USER"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"updateUser": {
 			"name": "updateUser",
 			"description": "更新人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "更新人",
+			"rawName": "UPDATE_USER"
 		},
 		"updateTime": {
 			"name": "updateTime",
 			"description": "更新时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "更新时间",
+			"rawName": "UPDATE_TIME"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_UP_PRODUCT",
 	"constraints": {
 		"pkUpProductId": {
 			"name": "pkUpProductId",
@@ -371,8 +279,5 @@
 				"productNo"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

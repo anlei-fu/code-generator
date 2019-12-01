@@ -5,165 +5,127 @@
 		"id": {
 			"name": "id",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "id",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_TRADE_ACTIVITY_DETAILS_ID"
 		},
 		"activityId": {
 			"name": "activityId",
 			"description": "活动编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "活动编号",
+			"rawName": "ACTIVITY_ID"
 		},
 		"tradeRecordNo": {
 			"name": "tradeRecordNo",
 			"description": "交易系统记录编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易系统记录编号",
+			"rawName": "TRADE_RECORD_NO"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "记账系统业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记账系统业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"billType": {
 			"name": "billType",
 			"description": "交易类型，1前向，2后向",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易类型，1前向，2后向",
+			"rawName": "BILL_TYPE"
 		},
 		"changeType": {
 			"name": "changeType",
 			"description": "活动变动类型，1预付款，2增加后返利润，3减少后返利润",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "活动变动类型，1预付款，2增加后返利润，3减少后返利润",
+			"rawName": "CHANGE_TYPE"
 		},
 		"changeAmount": {
 			"name": "changeAmount",
 			"description": "变动金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动金额",
+			"rawName": "CHANGE_AMOUNT"
 		},
 		"changeTime": {
 			"name": "changeTime",
 			"description": "变动时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动时间",
+			"rawName": "CHANGE_TIME"
 		},
 		"changeUser": {
 			"name": "changeUser",
 			"description": "变动人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动人",
+			"rawName": "CHANGE_USER"
 		},
 		"memo": {
 			"name": "memo",
 			"description": "备注信息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注信息",
+			"rawName": "MEMO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_TRADE_ACTIVITY_DETAILS",
 	"constraints": {
 		"pkActivityDetailsId": {
 			"name": "pkActivityDetailsId",
@@ -171,8 +133,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

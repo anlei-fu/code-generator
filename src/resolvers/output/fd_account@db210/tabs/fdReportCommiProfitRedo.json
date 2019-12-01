@@ -5,501 +5,379 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "recordId",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_REPORT_COMMI_PROFIT_REDO_RECORD_ID"
 		},
 		"companyId": {
 			"name": "companyId",
 			"description": "公司编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "公司编号",
+			"rawName": "COMPANY_ID"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"accountId": {
 			"name": "accountId",
 			"description": "支付账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付账户编号",
+			"rawName": "ACCOUNT_ID"
 		},
 		"channelType": {
 			"name": "channelType",
 			"description": "渠道类型1.上游2．下游",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道类型1.上游2．下游",
+			"rawName": "CHANNEL_TYPE"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"billType": {
 			"name": "billType",
 			"description": "利润类型，1.前向，2后向",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "利润类型，1.前向，2后向",
+			"rawName": "BILL_TYPE"
 		},
 		"totalUnit": {
 			"name": "totalUnit",
 			"description": "充值规格",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "充值规格",
+			"rawName": "TOTAL_UNIT"
 		},
 		"totalFace": {
 			"name": "totalFace",
 			"description": "充值面值",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "充值面值",
+			"rawName": "TOTAL_FACE"
 		},
 		"drawAmount": {
 			"name": "drawAmount",
 			"description": "扣款金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "扣款金额",
+			"rawName": "DRAW_AMOUNT"
 		},
 		"realAmount": {
 			"name": "realAmount",
 			"description": "实际金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "实际金额",
+			"rawName": "REAL_AMOUNT"
 		},
 		"commission": {
 			"name": "commission",
 			"description": "佣金",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "佣金",
+			"rawName": "COMMISSION"
 		},
 		"profits": {
 			"name": "profits",
 			"description": "利润",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "利润",
+			"rawName": "PROFITS"
 		},
 		"serviceFee": {
 			"name": "serviceFee",
 			"description": "实时扣除佣金(手续费)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "实时扣除佣金(手续费)",
+			"rawName": "SERVICE_FEE"
 		},
 		"refundTotalUnit": {
 			"name": "refundTotalUnit",
 			"description": "退款规格",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "退款规格",
+			"rawName": "REFUND_TOTAL_UNIT"
 		},
 		"refundTotalFace": {
 			"name": "refundTotalFace",
 			"description": "退款面值",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "退款面值",
+			"rawName": "REFUND_TOTAL_FACE"
 		},
 		"refundDrawAmount": {
 			"name": "refundDrawAmount",
 			"description": "退款金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "退款金额",
+			"rawName": "REFUND_DRAW_AMOUNT"
 		},
 		"refundRealAmount": {
 			"name": "refundRealAmount",
 			"description": "实际退款金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "实际退款金额",
+			"rawName": "REFUND_REAL_AMOUNT"
 		},
 		"refundCommission": {
 			"name": "refundCommission",
 			"description": "退回佣金",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "退回佣金",
+			"rawName": "REFUND_COMMISSION"
 		},
 		"refundProfits": {
 			"name": "refundProfits",
 			"description": "退回利润",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "退回利润",
+			"rawName": "REFUND_PROFITS"
 		},
 		"refundServiceFee": {
 			"name": "refundServiceFee",
 			"description": "退回实时扣除佣金（手续费）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "退回实时扣除佣金（手续费）",
+			"rawName": "REFUND_SERVICE_FEE"
 		},
 		"upManyFace": {
 			"name": "upManyFace",
 			"description": "上游多冲的面值",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "上游多冲的面值",
+			"rawName": "UP_MANY_FACE"
 		},
 		"upManyAmount": {
 			"name": "upManyAmount",
 			"description": "上游多冲的金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "上游多冲的金额",
+			"rawName": "UP_MANY_AMOUNT"
 		},
 		"snapTime": {
 			"name": "snapTime",
 			"description": "快照时间(交易数据日期)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "快照时间(交易数据日期)",
+			"rawName": "SNAP_TIME"
 		},
 		"addStatus": {
 			"name": "addStatus",
 			"description": "账户加款状态 1.未开始，2.正在扣款，0.扣款完成，9.加款失败",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "账户加款状态 1.未开始，2.正在扣款，0.扣款完成，9.加款失败",
+			"rawName": "ADD_STATUS"
 		},
 		"statisticsType": {
 			"name": "statisticsType",
 			"description": "统计类型，1.流量数据包，2前向流量充值，3话费、固话，4.加油卡充值，5.q币、游戏币",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "统计类型，1.流量数据包，2前向流量充值，3话费、固话，4.加油卡充值，5.q币、游戏币",
+			"rawName": "STATISTICS_TYPE"
 		},
 		"channelName": {
 			"name": "channelName",
 			"description": "渠道名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 100
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道名称",
+			"rawName": "CHANNEL_NAME"
 		},
 		"accountName": {
 			"name": "accountName",
 			"description": "支付账户名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 100
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付账户名称",
+			"rawName": "ACCOUNT_NAME"
 		},
 		"syncStatus": {
 			"name": "syncStatus",
 			"description": "同步诚实系统状态，0同步完成，1未进行同步，2正在同步，9同步失败",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "同步诚实系统状态，0同步完成，1未进行同步，2正在同步，9同步失败",
+			"rawName": "SYNC_STATUS"
 		},
 		"syncBatch": {
 			"name": "syncBatch",
 			"description": "数据同步批次号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "数据同步批次号",
+			"rawName": "SYNC_BATCH"
 		},
 		"channelSourceSystem": {
 			"name": "channelSourceSystem",
 			"description": "渠道所属系统编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道所属系统编号",
+			"rawName": "CHANNEL_SOURCE_SYSTEM"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_REPORT_COMMI_PROFIT_REDO",
 	"constraints": {
 		"pkReportCommiProfit2": {
 			"name": "pkReportCommiProfit2",
@@ -507,8 +385,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

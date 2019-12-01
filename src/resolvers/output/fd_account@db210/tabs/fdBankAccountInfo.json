@@ -5,323 +5,245 @@
 		"accountId": {
 			"name": "accountId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "accountId",
+			"rawName": "ACCOUNT_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_BANK_ACCOUNT_INFO_ACCOUNT_ID"
 		},
 		"title": {
 			"name": "title",
 			"description": "标题",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "标题",
+			"rawName": "TITLE"
 		},
 		"accountName": {
 			"name": "accountName",
 			"description": "账号名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账号名称",
+			"rawName": "ACCOUNT_NAME"
 		},
 		"cardNo": {
 			"name": "cardNo",
 			"description": "账户卡号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户卡号",
+			"rawName": "CARD_NO"
 		},
 		"bankType": {
 			"name": "bankType",
 			"description": "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19e钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19e钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
+			"rawName": "BANK_TYPE"
 		},
 		"assetType": {
 			"name": "assetType",
 			"description": "1.银行卡 0. 三方平台",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "1.银行卡 0. 三方平台",
+			"rawName": "ASSET_TYPE"
 		},
 		"bankAddress": {
 			"name": "bankAddress",
 			"description": "开户行",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "开户行",
+			"rawName": "BANK_ADDRESS"
 		},
 		"isUseAddAmount": {
 			"name": "isUseAddAmount",
 			"description": "是否用于加款",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "是否用于加款",
+			"rawName": "IS_USE_ADD_AMOUNT"
 		},
 		"balance": {
 			"name": "balance",
 			"description": "余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "余额",
+			"rawName": "BALANCE"
 		},
 		"companyId": {
 			"name": "companyId",
 			"description": "所属公司",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "所属公司",
+			"rawName": "COMPANY_ID"
 		},
 		"remark": {
 			"name": "remark",
 			"description": "备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注",
+			"rawName": "REMARK"
 		},
 		"createdBy": {
 			"name": "createdBy",
 			"description": "创建人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建人",
+			"rawName": "CREATED_BY"
 		},
 		"createdTime": {
 			"name": "createdTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATED_TIME"
 		},
 		"lastEditUser": {
 			"name": "lastEditUser",
 			"description": "最后更新人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "最后更新人",
+			"rawName": "LAST_EDIT_USER"
 		},
 		"lastEditTime": {
 			"name": "lastEditTime",
 			"description": "最后更新时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "最后更新时间",
+			"rawName": "LAST_EDIT_TIME"
 		},
 		"isB2e": {
 			"name": "isB2e",
 			"description": "是否为银企直联账户",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "是否为银企直联账户",
+			"rawName": "IS_B2E"
 		},
 		"provinceNo": {
 			"name": "provinceNo",
 			"description": "账户省份编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "账户省份编号",
+			"rawName": "PROVINCE_NO"
 		},
 		"cityNo": {
 			"name": "cityNo",
 			"description": "账户城市编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "账户城市编号",
+			"rawName": "CITY_NO"
 		},
 		"queryBalance": {
 			"name": "queryBalance",
 			"description": "查询余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "查询余额",
+			"rawName": "QUERY_BALANCE"
 		},
 		"queryTime": {
 			"name": "queryTime",
 			"description": "余额查询时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "余额查询时间",
+			"rawName": "QUERY_TIME"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_BANK_ACCOUNT_INFO",
 	"constraints": {
 		"pkBankAccountInfo": {
 			"name": "pkBankAccountInfo",
@@ -329,8 +251,5 @@
 				"accountId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

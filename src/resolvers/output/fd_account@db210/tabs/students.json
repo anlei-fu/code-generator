@@ -5,88 +5,52 @@
 		"sno": {
 			"name": "sno",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 3
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"sname": {
 			"name": "sname",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 4
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"ssex": {
 			"name": "ssex",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 2
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"sbirthday": {
 			"name": "sbirthday",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"class": {
 			"name": "class",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 5
 			},
+			"nullable": false,
 			"defaltValue": null
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
-	"constraints": {},
-	"indexes": {},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	"rawName": "STUDENTS"
 }

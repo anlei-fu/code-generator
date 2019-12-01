@@ -33,6 +33,5 @@
         ]]>
       </sql>
     </item>
-    @additionals
   </template>
 </config>

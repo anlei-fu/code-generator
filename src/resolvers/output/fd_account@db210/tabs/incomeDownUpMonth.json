@@ -5,149 +5,115 @@
 		"id": {
 			"name": "id",
 			"description": "编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "编号",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_INCOME_DOWN_UP_MONTH_ID"
 		},
 		"tradeMonth": {
 			"name": "tradeMonth",
 			"description": "交易月份",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易月份",
+			"rawName": "TRADE_MONTH"
 		},
 		"downChannelNo": {
 			"name": "downChannelNo",
 			"description": "下游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游渠道编号",
+			"rawName": "DOWN_CHANNEL_NO"
 		},
 		"downChannelName": {
 			"name": "downChannelName",
 			"description": "下游渠道名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游渠道名称",
+			"rawName": "DOWN_CHANNEL_NAME"
 		},
 		"upChannelNo": {
 			"name": "upChannelNo",
 			"description": "上游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游渠道编号",
+			"rawName": "UP_CHANNEL_NO"
 		},
 		"upChannelName": {
 			"name": "upChannelName",
 			"description": "上游渠道名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游渠道名称",
+			"rawName": "UP_CHANNEL_NAME"
 		},
 		"downGroupId": {
 			"name": "downGroupId",
 			"description": "下游分组",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游分组",
+			"rawName": "DOWN_GROUP_ID"
 		},
 		"tradeAmount": {
 			"name": "tradeAmount",
 			"description": "交易金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易金额",
+			"rawName": "TRADE_AMOUNT"
 		},
 		"tradeProfit": {
 			"name": "tradeProfit",
 			"description": "交易利润",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易利润",
+			"rawName": "TRADE_PROFIT"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "INCOME_DOWN_UP_MONTH",
 	"constraints": {
 		"pkIncomeDownUpMonthid": {
 			"name": "pkIncomeDownUpMonthid",
@@ -155,8 +121,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

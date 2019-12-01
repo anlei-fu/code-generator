@@ -5,459 +5,345 @@
 		"tid": {
 			"name": "tid",
 			"description": "任务编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "任务编号",
+			"rawName": "TID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FC_FLOW_TASK_TID"
 		},
 		"flowId": {
 			"name": "flowId",
 			"description": "流程编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "流程编号",
+			"rawName": "FLOW_ID"
 		},
 		"orderNo": {
 			"name": "orderNo",
 			"description": "订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单号",
+			"rawName": "ORDER_NO"
 		},
 		"bindId": {
 			"name": "bindId",
 			"description": "绑定编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "绑定编号",
+			"rawName": "BIND_ID"
 		},
 		"action": {
 			"name": "action",
 			"description": "当前操作",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "当前操作",
+			"rawName": "ACTION"
 		},
 		"scriptType": {
 			"name": "scriptType",
 			"description": "脚本类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "脚本类型",
+			"rawName": "SCRIPT_TYPE"
 		},
 		"upChannelNo": {
 			"name": "upChannelNo",
 			"description": "上游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游渠道编号",
+			"rawName": "UP_CHANNEL_NO"
 		},
 		"scriptId": {
 			"name": "scriptId",
 			"description": "脚本id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "脚本id",
+			"rawName": "SCRIPT_ID"
 		},
 		"scriptPath": {
 			"name": "scriptPath",
 			"description": "脚本路径",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "脚本路径",
+			"rawName": "SCRIPT_PATH"
 		},
 		"svcBus": {
 			"name": "svcBus",
 			"description": "总线服务",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "总线服务",
+			"rawName": "SVC_BUS"
 		},
 		"ip": {
 			"name": "ip",
 			"description": "发货ip",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "发货ip",
+			"rawName": "IP"
 		},
 		"uptranseq": {
 			"name": "uptranseq",
 			"description": "上游流水",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游流水",
+			"rawName": "UPTRANSEQ"
 		},
 		"taskMsg": {
 			"name": "taskMsg",
 			"description": "结果消息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "结果消息",
+			"rawName": "TASK_MSG"
 		},
 		"queryMsg": {
 			"name": "queryMsg",
 			"description": "查询消息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "查询消息",
+			"rawName": "QUERY_MSG"
 		},
 		"scanId": {
 			"name": "scanId",
 			"description": "后补扫描id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "后补扫描id",
+			"rawName": "SCAN_ID"
 		},
 		"nextTime": {
 			"name": "nextTime",
 			"description": "下次时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下次时间",
+			"rawName": "NEXT_TIME"
 		},
 		"taskStatus": {
 			"name": "taskStatus",
 			"description": "任务状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 20
+			"nullable": false,
+			"defaltValue": 20,
+			"chineseName": "任务状态",
+			"rawName": "TASK_STATUS"
 		},
 		"manualStatus": {
 			"name": "manualStatus",
 			"description": "人工审核状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 10
+			"nullable": false,
+			"defaltValue": 10,
+			"chineseName": "人工审核状态",
+			"rawName": "MANUAL_STATUS"
 		},
 		"taskStartTime": {
 			"name": "taskStartTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "TASK_START_TIME"
 		},
 		"taskEndTime": {
 			"name": "taskEndTime",
 			"description": "发货结束时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "发货结束时间",
+			"rawName": "TASK_END_TIME"
 		},
 		"upProductId": {
 			"name": "upProductId",
 			"description": "上游产品id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上游产品id",
+			"rawName": "UP_PRODUCT_ID"
 		},
 		"flowMode": {
 			"name": "flowMode",
 			"description": "步骤驱动模式 0:自动; 1:手动",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "步骤驱动模式 0",
+			"rawName": "FLOW_MODE"
 		},
 		"channelName": {
 			"name": "channelName",
 			"description": "渠道名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道名称",
+			"rawName": "CHANNEL_NAME"
 		},
 		"downPrice": {
 			"name": "downPrice",
 			"description": "下游售价",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "下游售价",
+			"rawName": "DOWN_PRICE"
 		},
 		"tradeFee": {
 			"name": "tradeFee",
 			"description": "手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "手续费",
+			"rawName": "TRADE_FEE"
 		},
 		"upCost": {
 			"name": "upCost",
 			"description": "上游成本",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "上游成本",
+			"rawName": "UP_COST"
 		},
 		"upReward": {
 			"name": "upReward",
 			"description": "上游佣金",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "上游佣金",
+			"rawName": "UP_REWARD"
 		},
 		"writeCardMode": {
 			"name": "writeCardMode",
 			"description": "写卡方式",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "写卡方式",
+			"rawName": "WRITE_CARD_MODE"
 		},
 		"face": {
 			"name": "face",
 			"description": "面值",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "面值",
+			"rawName": "FACE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FC_FLOW_TASK",
 	"constraints": {
 		"pkTaskId": {
 			"name": "pkTaskId",
@@ -465,8 +351,5 @@
 				"tid"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

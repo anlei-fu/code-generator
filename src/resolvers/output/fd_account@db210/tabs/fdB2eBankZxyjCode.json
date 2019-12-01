@@ -5,102 +5,80 @@
 		"id": {
 			"name": "id",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "id",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_B2E_BANK_ZXYJ_CODE_ID"
 		},
 		"bankType": {
 			"name": "bankType",
 			"description": "银行类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行类型",
+			"rawName": "BANK_TYPE"
 		},
 		"bankGrade": {
 			"name": "bankGrade",
 			"description": "银行等级，0总行，1省分行，2市分行",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行等级，0总行，1省分行，2市分行",
+			"rawName": "BANK_GRADE"
 		},
 		"cantonCode": {
 			"name": "cantonCode",
 			"description": "地区编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "地区编码",
+			"rawName": "CANTON_CODE"
 		},
 		"bankCode": {
 			"name": "bankCode",
 			"description": "银行编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行编码",
+			"rawName": "BANK_CODE"
 		},
 		"bankName": {
 			"name": "bankName",
 			"description": "银行名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 126
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行名称",
+			"rawName": "BANK_NAME"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_B2E_BANK_ZXYJ_CODE",
 	"constraints": {
 		"pkZxyjCodeId": {
 			"name": "pkZxyjCodeId",
@@ -108,8 +86,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

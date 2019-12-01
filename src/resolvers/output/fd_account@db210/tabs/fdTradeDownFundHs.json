@@ -5,228 +5,174 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "recordId",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_TRADE_DOWN_FUND_HS_RECORD_ID"
 		},
 		"fdOrderId": {
 			"name": "fdOrderId",
 			"description": "记账系统订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "记账系统订单号",
+			"rawName": "FD_ORDER_ID"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "下游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"accountId": {
 			"name": "accountId",
 			"description": "下游支付账号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游支付账号",
+			"rawName": "ACCOUNT_ID"
 		},
 		"tradeOrderNo": {
 			"name": "tradeOrderNo",
 			"description": "交易系统订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "交易系统订单号",
+			"rawName": "TRADE_ORDER_NO"
 		},
 		"extOrderNo": {
 			"name": "extOrderNo",
 			"description": "扩展订单号交易系统供",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "扩展订单号交易系统供",
+			"rawName": "EXT_ORDER_NO"
 		},
 		"orderSource": {
 			"name": "orderSource",
 			"description": "订单来源（系统编号）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "订单来源（系统编号）",
+			"rawName": "ORDER_SOURCE"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "变动创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "变动创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"orderTime": {
 			"name": "orderTime",
 			"description": "订单日期(交易系统下单日期)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单日期(交易系统下单日期)",
+			"rawName": "ORDER_TIME"
 		},
 		"changeType": {
 			"name": "changeType",
 			"description": "变更类型   1:加款 2：交易扣款 3：交易退款",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变更类型   1",
+			"rawName": "CHANGE_TYPE"
 		},
 		"changeAmount": {
 			"name": "changeAmount",
 			"description": "变动金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动金额",
+			"rawName": "CHANGE_AMOUNT"
 		},
 		"balance": {
 			"name": "balance",
 			"description": "账户余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户余额",
+			"rawName": "BALANCE"
 		},
 		"memo": {
 			"name": "memo",
 			"description": "备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 1024
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注",
+			"rawName": "MEMO"
 		},
 		"serviceFee": {
 			"name": "serviceFee",
 			"description": "下游扣款退款时产生的手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "下游扣款退款时产生的手续费",
+			"rawName": "SERVICE_FEE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_TRADE_DOWN_FUND_HS",
 	"constraints": {
 		"pkTradeDownFundH": {
 			"name": "pkTradeDownFundH",
@@ -234,8 +180,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

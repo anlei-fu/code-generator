@@ -5,134 +5,104 @@
 		"id": {
 			"name": "id",
 			"description": "编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "编号",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_B2E_BANK_PAYMENT_SERVICE_ID"
 		},
 		"bankType": {
 			"name": "bankType",
 			"description": "银行类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行类型",
+			"rawName": "BANK_TYPE"
 		},
 		"paymentType": {
 			"name": "paymentType",
 			"description": "加款方式",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "加款方式",
+			"rawName": "PAYMENT_TYPE"
 		},
 		"minAmount": {
 			"name": "minAmount",
 			"description": "收取下限金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "收取下限金额",
+			"rawName": "MIN_AMOUNT"
 		},
 		"maxAmount": {
 			"name": "maxAmount",
 			"description": "收取上限金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "收取上限金额",
+			"rawName": "MAX_AMOUNT"
 		},
 		"singleAmount": {
 			"name": "singleAmount",
 			"description": "单笔收取手续费金额（和折扣配合使用）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "单笔收取手续费金额（和折扣配合使用）",
+			"rawName": "SINGLE_AMOUNT"
 		},
 		"discount": {
 			"name": "discount",
 			"description": "单笔收取手续费折扣（和金额配合使用）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "单笔收取手续费折扣（和金额配合使用）",
+			"rawName": "DISCOUNT"
 		},
 		"maxServiceFee": {
 			"name": "maxServiceFee",
 			"description": "最大手续费(计算的手续费不能超过该值)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "最大手续费(计算的手续费不能超过该值)",
+			"rawName": "MAX_SERVICE_FEE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_B2E_BANK_PAYMENT_SERVICE",
 	"constraints": {
 		"pkFdB2eBankServiceFee": {
 			"name": "pkFdB2eBankServiceFee",
@@ -140,8 +110,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

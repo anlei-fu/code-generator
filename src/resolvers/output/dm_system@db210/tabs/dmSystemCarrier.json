@@ -5,54 +5,42 @@
 		"carrierNo": {
 			"name": "carrierNo",
 			"description": "运营商编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 10
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "运营商编号",
+			"rawName": "CARRIER_NO",
+			"isPk": true
 		},
 		"carrierName": {
 			"name": "carrierName",
 			"description": "运营商名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "运营商名称",
+			"rawName": "CARRIER_NAME"
 		},
 		"enable": {
 			"name": "enable",
 			"description": "状态: 0-启用 1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "ENABLE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_SYSTEM_CARRIER",
 	"constraints": {
 		"pkSysCarrierId": {
 			"name": "pkSysCarrierId",
@@ -60,8 +48,5 @@
 				"carrierNo"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

@@ -4,15 +4,15 @@
  * @Author: fuanlei
  * @Date: 2019-10-14 09:05:18
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-23 14:15:20
+ * @LastEditTime: 2019-11-29 15:26:58
  */
 
 //imports
 const { FILE } = require("./../../libs/file");
 const { DIR } = require("./../../libs/dir");
 const { STR } = require("./../../libs/str");
-const { NamingStrategy } = require("./../../libs/naming-stratey");
-const { COMPONENTS } = require("componets");
+const { NamingStrategy } = require("./../../libs/naming-strategy");
+const { COMPONENTS } = require("./componets.js");
 
 const CLASS_IDENT = "    ";
 const PROPERTY_IDENT = "        ";
@@ -48,6 +48,69 @@ function toCSharpType(name, length) {
   return this.length > 20 ?
     "decimal?" : "int?";
 }
+
+let optionExample = {
+  config: {
+    filters: ["ChargeStatus", "Phone", "HkOrder"],
+    additional: [() => "{&@ss}"],
+    oderby: "",
+    other: {}
+  },
+  index: {
+    filters: [
+      () => COMPONENTS,
+    ]
+  },
+  import: {
+    column: ["Phone", "PreChargeFace"]
+  },
+  add: {
+
+  }
+};
+
+
+class GenerateConfig{
+   constructor(){
+     this.entityConfig;
+     this.indexConfig;
+   }
+  
+}
+
+class EntityConfig{
+    constructor(){
+      this.filters;
+      this.additional;
+      this.returnColumns;
+      this.joinTables;
+    }
+}
+
+class JoinTable{
+  constructor(){
+    this.table1;
+    this.table2;
+  }
+}
+
+class IndexViewConfig{
+    constructor(){
+      this.filters;
+      this.cells;
+      this.check;
+    }
+}
+class IndexConfig{
+
+}
+
+class ImportConfig{
+
+}
+
+
+
 
 class Generator {
 
@@ -101,27 +164,25 @@ class Generator {
 
     let filters = "";
 
-    if (this.option) {
-      // default sql filters
-      if (this.option.config) {
+    // if (this.option) {
+    //   // default sql filters
+    //   if (this.option.config) {
 
-        if (this.option.config.columns) {
-          this.option.columns.forEach(x => {
-            filters += `{&@${x}}\r\n`;
-          });
-        }
+    //     if (this.option.config.columns) {
+    //       this.option.columns.forEach(x => {
+    //         filters += `{&@${x}}\r\n`;
+    //       });
+    //     }
 
-        if (this.option.config.additionals) {
-          this.option.additionals.forEach(x => {
-            filters += `${x()}\r\n`;
-          })
-        }
-      }
+    //     if (this.option.config.additionals) {
+    //       this.option.additionals.forEach(x => {
+    //         filters += `${x()}\r\n`;
+    //       })
+    //     }
+    //   }
 
-    }
-
-
-
+    // }
+    
     return FILE.read("templates/config.xml")
       .replace(new RegExp("@table.name", "g"), NamingStrategy.toHungary(this.table.name).toUpperCase())
       .replace("@fields", fileds.trim())
@@ -164,7 +225,7 @@ class Generator {
    *  ihandler
    */
   generateIHandler() {
-    this.filts(FILE.read("./templates/ihandler.cs"));
+   return this.filts(FILE.read("./templates/ihandler.cs"));
   }
 
   /**
@@ -192,16 +253,16 @@ class Generator {
    *  controller
    */
   generateController() {
-    let exportExcel = "",
-      importExcel = "";
+    // let exportExcel = "",
+    //   importExcel = "";
 
-    if (this.option.exportExcel) {
+    // if (this.option.exportExcel) {
 
-    }
+    // }
 
-    if (this.option.importExcel) {
+    // if (this.option.importExcel) {
 
-    }
+    // }
 
     return this.filts(FILE.read("./templates/controller.cs"));
   }
@@ -264,7 +325,7 @@ class Generator {
  * @param {Object} option  @see below
  */
 function main(name, project, option) {
-  let tab = JSON.parse(FILE.read("tab.txt"));
+  let tab = JSON.parse(FILE.read("tab.json"));
 
   let g = new Generator(tab, name, project, option);
   DIR.create(`outputs/${name}`);
@@ -313,25 +374,25 @@ function main(name, project, option) {
  */
 const QXFC = "QXFC";
 const DM = "DM";
-let optionExample = {
-  config: {
-    filters: ["ChargeStatus", "Phone", "HkOrder"],
-    additional: [() => "{&@ss}"],
-    oderby: "",
-    other: {}
-  },
-  index: {
-    filters: [
-      () => COMPONENTS,
-    ]
-  },
-  import: {
-    column: ["Phone", "PreChargeFace"]
-  },
-  add: {
+// let optionExample = {
+//   config: {
+//     filters: ["ChargeStatus", "Phone", "HkOrder"],
+//     additional: [() => "{&@ss}"],
+//     oderby: "",
+//     other: {}
+//   },
+//   index: {
+//     filters: [
+//       () => COMPONENTS,
+//     ]
+//   },
+//   import: {
+//     column: ["Phone", "PreChargeFace"]
+//   },
+//   add: {
 
-  }
-};
+//   }
+// };
 let option;
 // ----------------------------------------------- main---------------------------------------------
-main("FCPreCharge", QXFC, option);
+main("FCLimtIdInfo", QXFC, option);

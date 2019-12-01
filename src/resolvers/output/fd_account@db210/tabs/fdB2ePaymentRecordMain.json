@@ -5,562 +5,424 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "记录编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记录编号",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_B2E_PAYMENT_RECORD_MAIN_RECORD_ID"
 		},
 		"bankId": {
 			"name": "bankId",
 			"description": "出账银行编号（fd_b2e_bank_payment_account.bank_account_id）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "出账银行编号（fd_b2e_bank_payment_account.bank_account_id）",
+			"rawName": "BANK_ID"
 		},
 		"bankAddTypeId": {
 			"name": "bankAddTypeId",
 			"description": "银行卡转账(fd_b2e_bank_payment_account.id)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "银行卡转账(fd_b2e_bank_payment_account.id)",
+			"rawName": "BANK_ADD_TYPE_ID"
 		},
 		"paymentType": {
 			"name": "paymentType",
 			"description": "转账类型:1.上游渠道加款，2.下游渠道返佣，3.支付押金，4.支付保证金",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "转账类型",
+			"rawName": "PAYMENT_TYPE"
 		},
 		"bankCardNo": {
 			"name": "bankCardNo",
 			"description": "付款银行账户",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "付款银行账户",
+			"rawName": "BANK_CARD_NO"
 		},
 		"bankCardName": {
 			"name": "bankCardName",
 			"description": "付款账户名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "付款账户名称",
+			"rawName": "BANK_CARD_NAME"
 		},
 		"recvType": {
 			"name": "recvType",
 			"description": "收款方类型,1上游、2下游、3其它",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "收款方类型,1上游、2下游、3其它",
+			"rawName": "RECV_TYPE"
 		},
 		"channalNo": {
 			"name": "channalNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNAL_NO"
 		},
 		"channelAccountId": {
 			"name": "channelAccountId",
 			"description": "渠道账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道账户编号",
+			"rawName": "CHANNEL_ACCOUNT_ID"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"totalAmount": {
 			"name": "totalAmount",
 			"description": "总付款金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "总付款金额",
+			"rawName": "TOTAL_AMOUNT"
 		},
 		"totalServiceFee": {
 			"name": "totalServiceFee",
 			"description": "总需支付的手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "总需支付的手续费",
+			"rawName": "TOTAL_SERVICE_FEE"
 		},
 		"whiteListId": {
 			"name": "whiteListId",
 			"description": "白名单编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "白名单编号",
+			"rawName": "WHITE_LIST_ID"
 		},
 		"clientReceiveCardNo": {
 			"name": "clientReceiveCardNo",
 			"description": "客户收款银行卡编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "客户收款银行卡编号",
+			"rawName": "CLIENT_RECEIVE_CARD_NO"
 		},
 		"subRecordCount": {
 			"name": "subRecordCount",
 			"description": "子记录总条数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "子记录总条数",
+			"rawName": "SUB_RECORD_COUNT"
 		},
 		"intSubAmount": {
 			"name": "intSubAmount",
 			"description": "前n-1笔转账金额的单笔金额（(sub_record_count-1)*int_sub_amount+last_sub_amount）=total_amount",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "前n-1笔转账金额的单笔金额（(sub_record_count-1)*int_sub_amount+last_sub_amount）=total_amount",
+			"rawName": "INT_SUB_AMOUNT"
 		},
 		"lastSubAmount": {
 			"name": "lastSubAmount",
 			"description": "最后一笔金额（余数）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "最后一笔金额（余数）",
+			"rawName": "LAST_SUB_AMOUNT"
 		},
 		"intSubServiceFee": {
 			"name": "intSubServiceFee",
 			"description": "前n-1笔手续费的单笔手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "前n-1笔手续费的单笔手续费",
+			"rawName": "INT_SUB_SERVICE_FEE"
 		},
 		"lastSubServiceFee": {
 			"name": "lastSubServiceFee",
 			"description": "最后一笔的手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "最后一笔的手续费",
+			"rawName": "LAST_SUB_SERVICE_FEE"
 		},
 		"submitSuccessAmount": {
 			"name": "submitSuccessAmount",
 			"description": "提交成功金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "提交成功金额",
+			"rawName": "SUBMIT_SUCCESS_AMOUNT"
 		},
 		"arrivalSuccessAmount": {
 			"name": "arrivalSuccessAmount",
 			"description": "成功到账金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "成功到账金额",
+			"rawName": "ARRIVAL_SUCCESS_AMOUNT"
 		},
 		"arrivalServiceFee": {
 			"name": "arrivalServiceFee",
 			"description": "成功到账的手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "成功到账的手续费",
+			"rawName": "ARRIVAL_SERVICE_FEE"
 		},
 		"expireTime": {
 			"name": "expireTime",
 			"description": "过期时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "过期时间",
+			"rawName": "EXPIRE_TIME"
 		},
 		"paymentAuditType": {
 			"name": "paymentAuditType",
 			"description": "转账金额审核类型 1:运营审核  2：财务审核",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "转账金额审核类型 1",
+			"rawName": "PAYMENT_AUDIT_TYPE"
 		},
 		"paymentAuditStatus": {
 			"name": "paymentAuditStatus",
 			"description": "转账金额审核状态，1未开始,2等待执行,3正在执行,0执行完成 9取消",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "转账金额审核状态，1未开始,2等待执行,3正在执行,0执行完成 9取消",
+			"rawName": "PAYMENT_AUDIT_STATUS"
 		},
 		"paymentAuditUser": {
 			"name": "paymentAuditUser",
 			"description": "转账金额审核操作人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "转账金额审核操作人",
+			"rawName": "PAYMENT_AUDIT_USER"
 		},
 		"paymentAuditTime": {
 			"name": "paymentAuditTime",
 			"description": "转账金额审核操作时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "转账金额审核操作时间",
+			"rawName": "PAYMENT_AUDIT_TIME"
 		},
 		"receivedAuditStatus": {
 			"name": "receivedAuditStatus",
 			"description": "到账审核状态1未开始,2等待执行,3正在执行,0执行完成 9无需处理",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "到账审核状态1未开始,2等待执行,3正在执行,0执行完成 9无需处理",
+			"rawName": "RECEIVED_AUDIT_STATUS"
 		},
 		"receivedAuditUser": {
 			"name": "receivedAuditUser",
 			"description": "到账审核人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "到账审核人",
+			"rawName": "RECEIVED_AUDIT_USER"
 		},
 		"receivedAuditTime": {
 			"name": "receivedAuditTime",
 			"description": "到账审核时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "到账审核时间",
+			"rawName": "RECEIVED_AUDIT_TIME"
 		},
 		"receivedAuditMemo": {
 			"name": "receivedAuditMemo",
 			"description": "到账审核备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "到账审核备注",
+			"rawName": "RECEIVED_AUDIT_MEMO"
 		},
 		"receivedSuccessAmount": {
 			"name": "receivedSuccessAmount",
 			"description": "已录入系统的支付金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "已录入系统的支付金额",
+			"rawName": "RECEIVED_SUCCESS_AMOUNT"
 		},
 		"receivedSuccessServiceFee": {
 			"name": "receivedSuccessServiceFee",
 			"description": "已录入系统的支付手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "已录入系统的支付手续费",
+			"rawName": "RECEIVED_SUCCESS_SERVICE_FEE"
 		},
 		"createType": {
 			"name": "createType",
 			"description": "1.系统自动创建，2.操作员手工添加",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "1.系统自动创建，2.操作员手工添加",
+			"rawName": "CREATE_TYPE"
 		},
 		"addMemo": {
 			"name": "addMemo",
 			"description": "添加转账记录备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 1024
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "添加转账记录备注",
+			"rawName": "ADD_MEMO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_B2E_PAYMENT_RECORD_MAIN",
 	"constraints": {
 		"pkFdB2eTfrMainRecord": {
 			"name": "pkFdB2eTfrMainRecord",
@@ -568,8 +430,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

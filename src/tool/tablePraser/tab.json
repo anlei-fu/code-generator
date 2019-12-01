@@ -1,0 +1,111 @@
+{
+	"name": "fcLimitIdinfo",
+	"description": "",
+	"columns": {
+		"id": {
+			"name": "id",
+			"description": "",
+			"type": {
+				"name": "number"
+			},
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "id",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FC_LIMIT_IDINFO_ID"
+		},
+		"idName": {
+			"name": "idName",
+			"description": "",
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "idName",
+			"rawName": "ID_NAME"
+		},
+		"idNo": {
+			"name": "idNo",
+			"description": "",
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "idNo",
+			"rawName": "ID_NO"
+		},
+		"status": {
+			"name": "status",
+			"description": "状态;0:启用;1:禁用",
+			"type": {
+				"name": "number",
+				"length": 20
+			},
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态;0",
+			"rawName": "STATUS"
+		},
+		"createdUser": {
+			"name": "createdUser",
+			"description": "创建者",
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建者",
+			"rawName": "CREATED_USER"
+		},
+		"createdTime": {
+			"name": "createdTime",
+			"description": "创建时间",
+			"type": {
+				"name": "date"
+			},
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATED_TIME"
+		},
+		"editUser": {
+			"name": "editUser",
+			"description": "更新人",
+			"type": {
+				"name": "varchar2",
+				"length": 32
+			},
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "更新人",
+			"rawName": "EDIT_USER"
+		},
+		"editTime": {
+			"name": "editTime",
+			"description": "更新时间",
+			"type": {
+				"name": "date"
+			},
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "更新时间",
+			"rawName": "EDIT_TIME"
+		}
+	},
+	"rawName": "FC_LIMIT_IDINFO",
+	"constraints": {
+		"pkLimitIdinfoId": {
+			"name": "pkLimitIdinfoId",
+			"columns": [
+				"id"
+			]
+		}
+	}
+}

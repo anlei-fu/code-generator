@@ -5,54 +5,44 @@
 		"mapId": {
 			"name": "mapId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "mapId",
+			"rawName": "MAP_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_BASE_UP_SYSTEM_MAP_MAP_ID"
 		},
 		"sourceSystemId": {
 			"name": "sourceSystemId",
 			"description": "系统编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "系统编号",
+			"rawName": "SOURCE_SYSTEM_ID"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_BASE_UP_SYSTEM_MAP",
 	"constraints": {
 		"pkBaseUpSystemMap": {
 			"name": "pkBaseUpSystemMap",
@@ -60,8 +50,5 @@
 				"mapId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

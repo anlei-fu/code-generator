@@ -5,38 +5,32 @@
 		"id": {
 			"name": "id",
 			"description": "限定编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "限定编号",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_SUP_BASE_PRO_UP_SCOPE_ID"
 		},
 		"proUpChannelNo": {
 			"name": "proUpChannelNo",
 			"description": "生产系统限定上游渠道",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "生产系统限定上游渠道",
+			"rawName": "PRO_UP_CHANNEL_NO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "SUP_BASE_PRO_UP_SCOPE",
 	"constraints": {
 		"pkSupScopeId": {
 			"name": "pkSupScopeId",
@@ -44,8 +38,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

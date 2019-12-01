@@ -41,7 +41,7 @@
 
 |名称| 类型 |是否可空 |主键 |默认值| 备注 |
 |---|----|---|--|---|----|
-|id|number|false||--|--|
+|id|number|false||--|主键|
 |taskId|varchar2|false||--|--|
 |phone|varchar2|false||--|--|
 |idno|varchar2|false||--|--|
@@ -480,6 +480,41 @@
 |status|number|false||--|状态 0:可用; 1:禁用 2:已使用|
 |createTime|date|false||sysdate|创建时间|
 |sectionType|varchar2|false||1|号段类型|
+
+----
+### ***fcLimitArea***
+*   ***description***
+ 
+*  ***params***
+
+|名称| 类型 |是否可空 |主键 |默认值| 备注 |
+|---|----|---|--|---|----|
+|limitId|number|false||--|限制id|
+|productId|number|false||--|产品id|
+|provinceNo|varchar2|false||--|省份;|
+|cityNo|varchar2|false||--|城市;|
+|status|number|false||--|状态;0:启用;1:禁用|
+|createdUser|varchar2|false||--|创建者|
+|createdTime|date|false||sysdate|创建时间|
+|editUser|varchar2|false||--|更新人|
+|editTime|date|false||--|更新时间|
+
+----
+### ***fcLimitIdinfo***
+*   ***description***
+ 
+*  ***params***
+
+|名称| 类型 |是否可空 |主键 |默认值| 备注 |
+|---|----|---|--|---|----|
+|id|number|false|yes|--|--|
+|idName|varchar2|false||--|--|
+|idNo|varchar2|false||--|--|
+|status|number|false||--|状态;0:启用;1:禁用|
+|createdUser|varchar2|false||--|创建者|
+|createdTime|date|false||sysdate|创建时间|
+|editUser|varchar2|false||--|更新人|
+|editTime|date|false||--|更新时间|
 
 ----
 ### ***fcNotifyRecord***

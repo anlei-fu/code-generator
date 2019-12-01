@@ -5,564 +5,420 @@
 		"orderNo": {
 			"name": "orderNo",
 			"description": "订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单号",
+			"rawName": "ORDER_NO",
+			"isPk": true
 		},
 		"termNo": {
 			"name": "termNo",
 			"description": "终端编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "终端编号",
+			"rawName": "TERM_NO"
 		},
 		"productNo": {
 			"name": "productNo",
 			"description": "产品编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "产品编号",
+			"rawName": "PRODUCT_NO"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型: 1-电话号卡 2-手机话费 3-手机流量 4-手机套餐",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"phoneNo": {
 			"name": "phoneNo",
 			"description": "办理账号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "办理账号",
+			"rawName": "PHONE_NO"
 		},
 		"carrierNo": {
 			"name": "carrierNo",
 			"description": "运营商编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 5
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "运营商编码",
+			"rawName": "CARRIER_NO"
 		},
 		"provinceNo": {
 			"name": "provinceNo",
 			"description": "省份编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 5
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "省份编码",
+			"rawName": "PROVINCE_NO"
 		},
 		"cityNo": {
 			"name": "cityNo",
 			"description": "地市编码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 5
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "地市编码",
+			"rawName": "CITY_NO"
 		},
 		"userIp": {
 			"name": "userIp",
 			"description": "用户ip",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "用户ip",
+			"rawName": "USER_IP"
 		},
 		"promoteId": {
 			"name": "promoteId",
 			"description": "推广编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "推广编号",
+			"rawName": "PROMOTE_ID"
 		},
 		"accountId": {
 			"name": "accountId",
 			"description": "收款账号id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "收款账号id",
+			"rawName": "ACCOUNT_ID"
 		},
 		"needVcode": {
 			"name": "needVcode",
 			"description": "需要验证码: 0-需要 1-不需要",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "需要验证码",
+			"rawName": "NEED_VCODE"
 		},
 		"orderFace": {
 			"name": "orderFace",
 			"description": "订单面值",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单面值",
+			"rawName": "ORDER_FACE"
 		},
 		"payPrice": {
 			"name": "payPrice",
 			"description": "支付价格",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付价格",
+			"rawName": "PAY_PRICE"
 		},
 		"costPrice": {
 			"name": "costPrice",
 			"description": "成本价格",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "成本价格",
+			"rawName": "COST_PRICE"
 		},
 		"serviceFee": {
 			"name": "serviceFee",
 			"description": "手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "手续费",
+			"rawName": "SERVICE_FEE"
 		},
 		"succMoney": {
 			"name": "succMoney",
 			"description": "成功金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "成功金额",
+			"rawName": "SUCC_MONEY"
 		},
 		"payStatus": {
 			"name": "payStatus",
 			"description": "支付状态: 0-成功 10-无需处理 20-等待支付 30-支付中 90-失败",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付状态",
+			"rawName": "PAY_STATUS"
 		},
 		"orderStatus": {
 			"name": "orderStatus",
 			"description": "订单状态: 0-成功 10-无需处理 20-等待处理 30-处理中 90-失败",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单状态",
+			"rawName": "ORDER_STATUS"
 		},
 		"refundStatus": {
 			"name": "refundStatus",
 			"description": "退款状态: 0-成功 10-无需处理 20-等待退款 30-退款中 90-失败",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 10
+			"nullable": false,
+			"defaltValue": 10,
+			"chineseName": "退款状态",
+			"rawName": "REFUND_STATUS"
 		},
 		"manualStatus": {
 			"name": "manualStatus",
 			"description": "人工状态: 0-成功 10-无需处理 20-等待审核 90-审核成功",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 10
+			"nullable": false,
+			"defaltValue": 10,
+			"chineseName": "人工状态",
+			"rawName": "MANUAL_STATUS"
 		},
 		"payFinishTime": {
 			"name": "payFinishTime",
 			"description": "支付完成时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付完成时间",
+			"rawName": "PAY_FINISH_TIME"
 		},
 		"platTradeNo": {
 			"name": "platTradeNo",
 			"description": "支付平台流水号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付平台流水号",
+			"rawName": "PLAT_TRADE_NO"
 		},
 		"platTradeMsg": {
 			"name": "platTradeMsg",
 			"description": "平台支付消息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "平台支付消息",
+			"rawName": "PLAT_TRADE_MSG"
 		},
 		"resultMsg": {
 			"name": "resultMsg",
 			"description": "结果消息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "结果消息",
+			"rawName": "RESULT_MSG"
 		},
 		"errorCode": {
 			"name": "errorCode",
 			"description": "终端错误码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "终端错误码",
+			"rawName": "ERROR_CODE"
 		},
 		"errorDesc": {
 			"name": "errorDesc",
 			"description": "终端错误描述",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "终端错误描述",
+			"rawName": "ERROR_DESC"
 		},
 		"serverIp": {
 			"name": "serverIp",
 			"description": "收单服务器ip",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 16
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "收单服务器ip",
+			"rawName": "SERVER_IP"
 		},
 		"createTime": {
 			"name": "createTime",
 			"description": "创建时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "创建时间",
+			"rawName": "CREATE_TIME"
 		},
 		"finishTime": {
 			"name": "finishTime",
 			"description": "完成时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "完成时间",
+			"rawName": "FINISH_TIME"
 		},
 		"closeTime": {
 			"name": "closeTime",
 			"description": "自动关闭时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate+5/24/60"
+			"nullable": false,
+			"defaltValue": "sysdate+5/24/60",
+			"chineseName": "自动关闭时间",
+			"rawName": "CLOSE_TIME"
 		},
 		"promoterId": {
 			"name": "promoterId",
 			"description": "推广人编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "推广人编号",
+			"rawName": "PROMOTER_ID"
 		},
 		"labelId": {
 			"name": "labelId",
 			"description": "推广人标签编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "推广人标签编号",
+			"rawName": "LABEL_ID"
 		},
 		"bindNextTime": {
 			"name": "bindNextTime",
 			"description": "下次绑定时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下次绑定时间",
+			"rawName": "BIND_NEXT_TIME"
 		},
 		"bindTimes": {
 			"name": "bindTimes",
 			"description": "绑定次数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "绑定次数",
+			"rawName": "BIND_TIMES"
 		},
 		"bindBatchNo": {
 			"name": "bindBatchNo",
 			"description": "绑定批次号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "绑定批次号",
+			"rawName": "BIND_BATCH_NO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_ORDER_MAIN",
 	"constraints": {
 		"pkOrderMainId": {
 			"name": "pkOrderMainId",
@@ -570,8 +426,5 @@
 				"orderNo"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

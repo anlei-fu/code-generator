@@ -5,70 +5,56 @@
 		"dicId": {
 			"name": "dicId",
 			"description": "字典编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 10
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "字典编号",
+			"rawName": "DIC_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_DM_SYSTEM_DICTIONARY_DIC_ID"
 		},
 		"type": {
 			"name": "type",
 			"description": "字典类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "字典类型",
+			"rawName": "TYPE"
 		},
 		"name": {
 			"name": "name",
 			"description": "字典名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "字典名称",
+			"rawName": "NAME"
 		},
 		"value": {
 			"name": "value",
 			"description": "字典值",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "字典值",
+			"rawName": "VALUE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_SYSTEM_DICTIONARY",
 	"constraints": {
 		"pkSysDicId": {
 			"name": "pkSysDicId",
@@ -76,8 +62,5 @@
 				"dicId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

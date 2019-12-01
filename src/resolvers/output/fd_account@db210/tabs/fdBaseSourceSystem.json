@@ -5,54 +5,44 @@
 		"sourceSystemId": {
 			"name": "sourceSystemId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "sourceSystemId",
+			"rawName": "SOURCE_SYSTEM_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_BASE_SOURCE_SYSTEM_SOURCE_SYSTEM_ID"
 		},
 		"sourceSystemName": {
 			"name": "sourceSystemName",
 			"description": "系统名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "系统名称",
+			"rawName": "SOURCE_SYSTEM_NAME"
 		},
 		"text": {
 			"name": "text",
 			"description": "显示名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "显示名称",
+			"rawName": "TEXT"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_BASE_SOURCE_SYSTEM",
 	"constraints": {
 		"pkBaseSourceSystem": {
 			"name": "pkBaseSourceSystem",
@@ -60,8 +50,5 @@
 				"sourceSystemId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

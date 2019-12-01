@@ -5,70 +5,56 @@
 		"id": {
 			"name": "id",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "id",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_SYSTEM_BUSINESS_MAP_ID"
 		},
 		"sourceSystemId": {
 			"name": "sourceSystemId",
 			"description": "系统id",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "系统id",
+			"rawName": "SOURCE_SYSTEM_ID"
 		},
 		"outerBusinessType": {
 			"name": "outerBusinessType",
 			"description": "外部系统业务类型编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "外部系统业务类型编号",
+			"rawName": "OUTER_BUSINESS_TYPE"
 		},
 		"localBusinessType": {
 			"name": "localBusinessType",
 			"description": "记账系统业务类型编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记账系统业务类型编号",
+			"rawName": "LOCAL_BUSINESS_TYPE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_SYSTEM_BUSINESS_MAP",
 	"constraints": {
 		"pkSystemBusinessMap": {
 			"name": "pkSystemBusinessMap",
@@ -76,8 +62,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

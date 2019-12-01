@@ -5,353 +5,265 @@
 		"orderNo": {
 			"name": "orderNo",
 			"description": "订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单号",
+			"rawName": "ORDER_NO",
+			"isPk": true
 		},
 		"activeRealName": {
 			"name": "activeRealName",
 			"description": "号卡实名人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "号卡实名人",
+			"rawName": "ACTIVE_REAL_NAME"
 		},
 		"activeIdno": {
 			"name": "activeIdno",
 			"description": "号卡实名身份证号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "号卡实名身份证号",
+			"rawName": "ACTIVE_IDNO"
 		},
 		"brandNo": {
 			"name": "brandNo",
 			"description": "买家宽带帐号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "买家宽带帐号",
+			"rawName": "BRAND_NO"
 		},
 		"buyerNick": {
 			"name": "buyerNick",
 			"description": "买家旺旺",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "买家旺旺",
+			"rawName": "BUYER_NICK"
 		},
 		"buyerAlipayId": {
 			"name": "buyerAlipayId",
 			"description": "买家支付宝帐号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "买家支付宝帐号",
+			"rawName": "BUYER_ALIPAY_ID"
 		},
 		"payOrderNo": {
 			"name": "payOrderNo",
 			"description": "支付订单号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付订单号",
+			"rawName": "PAY_ORDER_NO"
 		},
 		"buyerName": {
 			"name": "buyerName",
 			"description": "买家姓名",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "买家姓名",
+			"rawName": "BUYER_NAME"
 		},
 		"buyerPhone": {
 			"name": "buyerPhone",
 			"description": "收件人手机号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "收件人手机号",
+			"rawName": "BUYER_PHONE"
 		},
 		"buyerAddress": {
 			"name": "buyerAddress",
 			"description": "买家地址",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "买家地址",
+			"rawName": "BUYER_ADDRESS"
 		},
 		"buyerMessage": {
 			"name": "buyerMessage",
 			"description": "买家留言",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "买家留言",
+			"rawName": "BUYER_MESSAGE"
 		},
 		"iccno": {
 			"name": "iccno",
 			"description": "icc序列号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "icc序列号",
+			"rawName": "ICCNO"
 		},
 		"writeCard": {
 			"name": "writeCard",
 			"description": "是否是自动写卡 0:自动 1:人工",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "是否是自动写卡 0",
+			"rawName": "WRITE_CARD"
 		},
 		"tmallStatus": {
 			"name": "tmallStatus",
 			"description": "天猫订单状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "天猫订单状态",
+			"rawName": "TMALL_STATUS"
 		},
 		"tmallOrderDate": {
 			"name": "tmallOrderDate",
 			"description": "天猫订单时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "天猫订单时间",
+			"rawName": "TMALL_ORDER_DATE"
 		},
 		"installAddress": {
 			"name": "installAddress",
 			"description": "安装地址",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "安装地址",
+			"rawName": "INSTALL_ADDRESS"
 		},
 		"buyerProvince": {
 			"name": "buyerProvince",
 			"description": "买家省份",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "买家省份",
+			"rawName": "BUYER_PROVINCE"
 		},
 		"buyerCity": {
 			"name": "buyerCity",
 			"description": "城市",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "城市",
+			"rawName": "BUYER_CITY"
 		},
 		"iccType": {
 			"name": "iccType",
 			"description": "卡类型 同下游产品表的icctype",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "卡类型 同下游产品表的icctype",
+			"rawName": "ICC_TYPE"
 		},
 		"installDate": {
 			"name": "installDate",
 			"description": "安装时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "安装时间",
+			"rawName": "INSTALL_DATE"
 		},
 		"extInfo": {
 			"name": "extInfo",
 			"description": "扩展信息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 512
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "扩展信息",
+			"rawName": "EXT_INFO"
 		},
 		"isWuliu": {
 			"name": "isWuliu",
 			"description": "是否需要物流, 0:需要 1:不需要",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "是否需要物流, 0",
+			"rawName": "IS_WULIU"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FC_ORDER_EXT",
 	"constraints": {
 		"pkOrderExtOrderNo": {
 			"name": "pkOrderExtOrderNo",
@@ -359,8 +271,5 @@
 				"orderNo"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

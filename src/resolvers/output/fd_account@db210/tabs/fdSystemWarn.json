@@ -5,181 +5,139 @@
 		"warnId": {
 			"name": "warnId",
 			"description": "报警编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "报警编号",
+			"rawName": "WARN_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_SYSTEM_WARN_WARN_ID"
 		},
 		"uniqId": {
 			"name": "uniqId",
 			"description": "唯一标识",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "唯一标识",
+			"rawName": "UNIQ_ID"
 		},
 		"warnLevel": {
 			"name": "warnLevel",
 			"description": "等级",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 2
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "等级",
+			"rawName": "WARN_LEVEL"
 		},
 		"warnType": {
 			"name": "warnType",
 			"description": "类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 2
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "类型",
+			"rawName": "WARN_TYPE"
 		},
 		"title": {
 			"name": "title",
 			"description": "标题",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "标题",
+			"rawName": "TITLE"
 		},
 		"warnDate": {
 			"name": "warnDate",
 			"description": "报警时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "报警时间",
+			"rawName": "WARN_DATE"
 		},
 		"content": {
 			"name": "content",
 			"description": "报警内容",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "报警内容",
+			"rawName": "CONTENT"
 		},
 		"syncStatus": {
 			"name": "syncStatus",
 			"description": "同步状态 0同步完成  1未同步 2正在同步",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "同步状态 0同步完成  1未同步 2正在同步",
+			"rawName": "SYNC_STATUS"
 		},
 		"keyWord": {
 			"name": "keyWord",
 			"description": "关键字",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "关键字",
+			"rawName": "KEY_WORD"
 		},
 		"syncBatchId": {
 			"name": "syncBatchId",
 			"description": "批次号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "批次号",
+			"rawName": "SYNC_BATCH_ID"
 		},
 		"systemNo": {
 			"name": "systemNo",
 			"description": "",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "sa"
+			"nullable": false,
+			"defaltValue": "sa",
+			"chineseName": "systemNo",
+			"rawName": "SYSTEM_NO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_SYSTEM_WARN",
 	"constraints": {
 		"pkBalanceWarnId": {
 			"name": "pkBalanceWarnId",
@@ -187,8 +145,5 @@
 				"warnId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

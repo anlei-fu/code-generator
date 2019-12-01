@@ -5,245 +5,187 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "记录编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "记录编号",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_SUP_TRADE_DOWN_MANUAL_RECORD_ID"
 		},
 		"downChannelNo": {
 			"name": "downChannelNo",
 			"description": "下游渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游渠道编号",
+			"rawName": "DOWN_CHANNEL_NO"
 		},
 		"downAccountId": {
 			"name": "downAccountId",
 			"description": "下游账户编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "下游账户编号",
+			"rawName": "DOWN_ACCOUNT_ID"
 		},
 		"hasAdjust": {
 			"name": "hasAdjust",
 			"description": "是否已红冲过",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "是否已红冲过",
+			"rawName": "HAS_ADJUST"
 		},
 		"adjustRecordId": {
 			"name": "adjustRecordId",
 			"description": "红冲的记录编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "红冲的记录编号",
+			"rawName": "ADJUST_RECORD_ID"
 		},
 		"changeType": {
 			"name": "changeType",
 			"description": "变动类型（加款、加款红冲、提款、提款红冲，余额平账、交易平账）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动类型（加款、加款红冲、提款、提款红冲，余额平账、交易平账）",
+			"rawName": "CHANGE_TYPE"
 		},
 		"changeTime": {
 			"name": "changeTime",
 			"description": "变动时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "变动时间",
+			"rawName": "CHANGE_TIME"
 		},
 		"changeAmount": {
 			"name": "changeAmount",
 			"description": "变动金额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动金额",
+			"rawName": "CHANGE_AMOUNT"
 		},
 		"balance": {
 			"name": "balance",
 			"description": "账户余额",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "账户余额",
+			"rawName": "BALANCE"
 		},
 		"bankCardNo": {
 			"name": "bankCardNo",
 			"description": "加款/提款对应银行账户",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "加款/提款对应银行账户",
+			"rawName": "BANK_CARD_NO"
 		},
 		"bankRecordId": {
 			"name": "bankRecordId",
 			"description": "加款/提款银行资金变动编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "加款/提款银行资金变动编号",
+			"rawName": "BANK_RECORD_ID"
 		},
 		"bankServiceId": {
 			"name": "bankServiceId",
 			"description": "提款银行收取手续费编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "提款银行收取手续费编号",
+			"rawName": "BANK_SERVICE_ID"
 		},
 		"bankRelateId": {
 			"name": "bankRelateId",
 			"description": "可红冲记录和银行相关记录关联编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "可红冲记录和银行相关记录关联编号",
+			"rawName": "BANK_RELATE_ID"
 		},
 		"memo": {
 			"name": "memo",
 			"description": "备注",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "备注",
+			"rawName": "MEMO"
 		},
 		"createdBy": {
 			"name": "createdBy",
 			"description": "创建人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "创建人",
+			"rawName": "CREATED_BY"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "SUP_TRADE_DOWN_MANUAL",
 	"constraints": {
 		"pkSupTradeDownManrecordId": {
 			"name": "pkSupTradeDownManrecordId",
@@ -251,8 +193,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

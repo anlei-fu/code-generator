@@ -5,86 +5,68 @@
 		"recordId": {
 			"name": "recordId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "recordId",
+			"rawName": "RECORD_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_TRADE_BASE_JOIN_RECORD_ID"
 		},
 		"joinCode1": {
 			"name": "joinCode1",
 			"description": "关联字段1",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "关联字段1",
+			"rawName": "JOIN_CODE1"
 		},
 		"joinCode2": {
 			"name": "joinCode2",
 			"description": "关联字段2",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "关联字段2",
+			"rawName": "JOIN_CODE2"
 		},
 		"joinMemo": {
 			"name": "joinMemo",
 			"description": "关联备注信息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 1024
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "关联备注信息",
+			"rawName": "JOIN_MEMO"
 		},
 		"joinType": {
 			"name": "joinType",
 			"description": "关联类型 1.上游佣金关联，2下游佣金关联",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": "-"
+			"nullable": false,
+			"defaltValue": "-",
+			"chineseName": "关联类型 1.上游佣金关联，2下游佣金关联",
+			"rawName": "JOIN_TYPE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_TRADE_BASE_JOIN",
 	"constraints": {
 		"pkJoinRecordId": {
 			"name": "pkJoinRecordId",
@@ -92,8 +74,5 @@
 				"recordId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

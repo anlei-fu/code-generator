@@ -5,143 +5,109 @@
 		"channelType": {
 			"name": "channelType",
 			"description": "渠道类型 1:上游 2:下游",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道类型 1",
+			"rawName": "CHANNEL_TYPE",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_ACCT_SYNC_CONFIG_CHANNEL_TYPE"
 		},
 		"title": {
 			"name": "title",
 			"description": "标题",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 100
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "标题",
+			"rawName": "TITLE"
 		},
 		"changeType": {
 			"name": "changeType",
 			"description": "资金变更类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "资金变更类型",
+			"rawName": "CHANGE_TYPE"
 		},
 		"lastExecId": {
 			"name": "lastExecId",
 			"description": "上次执行编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "上次执行编号",
+			"rawName": "LAST_EXEC_ID"
 		},
 		"lastExecTime": {
 			"name": "lastExecTime",
 			"description": "上次执行时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "上次执行时间",
+			"rawName": "LAST_EXEC_TIME"
 		},
 		"minCount": {
 			"name": "minCount",
 			"description": "最小笔数同步数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 100
+			"nullable": false,
+			"defaltValue": 100,
+			"chineseName": "最小笔数同步数",
+			"rawName": "MIN_COUNT"
 		},
 		"robotIp": {
 			"name": "robotIp",
 			"description": "最后执行机器ip",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "最后执行机器ip",
+			"rawName": "ROBOT_IP"
 		},
 		"nextTime": {
 			"name": "nextTime",
 			"description": "下次后补时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "下次后补时间",
+			"rawName": "NEXT_TIME"
 		},
 		"frequency": {
 			"name": "frequency",
 			"description": "执行频率(秒)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 60
+			"nullable": false,
+			"defaltValue": 60,
+			"chineseName": "执行频率(秒)",
+			"rawName": "FREQUENCY"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "ACCT_SYNC_CONFIG",
 	"constraints": {
 		"pkSyncConfigId": {
 			"name": "pkSyncConfigId",
@@ -149,8 +115,5 @@
 				"channelType"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

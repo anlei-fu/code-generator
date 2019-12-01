@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <table name="FC_LIMIT_IDINFO">
+    <fields>
+      <filed pname="Id" name="ID" isPk="ture" buildType="0" valueSql="SELECT SEQ_FC_LIMIT_IDINFO_ID.NEXTVAL FROM DUAL" label=""/>
+      <filed pname="IdName" name="ID_NAME" label=""/>
+      <filed pname="IdNo" name="ID_NO" label=""/>
+      <filed pname="Status" name="STATUS" label="状态;0:启用;1:禁用"/>
+      <filed pname="CreatedUser" name="CREATED_USER" label="创建者"/>
+      <filed pname="CreatedTime" name="CREATED_TIME" label="创建时间"/>
+      <filed pname="EditUser" name="EDIT_USER" label="更新人"/>
+      <filed pname="EditTime" name="EDIT_TIME" label="更新时间"/>
+    </fields>
+  </table>
+  <template>
+    <item name="getList">
+      <sql>
+        <![CDATA[
+          @returnFileds
+                    from (SELECT RID
+                            FROM (SELECT R.RID, ROWNUM LINENUM
+                                    FROM (SELECT t.rowid RID
+                                          FROM  FC_LIMIT_IDINFO t
+                                          WHERE 
+                                            1=1
+                                            s
+                                          @orderBy) R
+                                   WHERE ROWNUM <= { :PS} * { :PI})
+                           WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
+                   inner join FC_LIMIT_IDINFO t on tab.rid = t.rowid
+        ]]>
+      </sql>
+    </item>
+    <item name="getCount">
+      <sql>
+        <![CDATA[
+          SELECT COUNT(1) FROM FC_LIMIT_IDINFO  t  WHERE 
+                                             1=1
+                                             @filters
+        ]]>
+      </sql>
+    </item>
+  </template>
+</config>

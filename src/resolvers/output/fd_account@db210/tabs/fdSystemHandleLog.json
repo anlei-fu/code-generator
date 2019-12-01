@@ -5,85 +5,67 @@
 		"logId": {
 			"name": "logId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "logId",
+			"rawName": "LOG_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_SYSTEM_HANDLE_LOG_LOG_ID"
 		},
 		"handleModule": {
 			"name": "handleModule",
 			"description": "操作功能模块",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "操作功能模块",
+			"rawName": "HANDLE_MODULE"
 		},
 		"handleUser": {
 			"name": "handleUser",
 			"description": "操作人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "操作人",
+			"rawName": "HANDLE_USER"
 		},
 		"handleTime": {
 			"name": "handleTime",
 			"description": "操作时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "操作时间",
+			"rawName": "HANDLE_TIME"
 		},
 		"handleParams": {
 			"name": "handleParams",
 			"description": "参数",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 256
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "参数",
+			"rawName": "HANDLE_PARAMS"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_SYSTEM_HANDLE_LOG",
 	"constraints": {
 		"pkLogId": {
 			"name": "pkLogId",
@@ -91,8 +73,5 @@
 				"logId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

@@ -5,70 +5,56 @@
 		"mapId": {
 			"name": "mapId",
 			"description": "主键",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "mapId",
+			"rawName": "MAP_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_BASE_UP_ACCOUNT_MAP_MAP_ID"
 		},
 		"channelNo": {
 			"name": "channelNo",
 			"description": "渠道编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "渠道编号",
+			"rawName": "CHANNEL_NO"
 		},
 		"accountId": {
 			"name": "accountId",
 			"description": "支付账号编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "支付账号编号",
+			"rawName": "ACCOUNT_ID"
 		},
 		"isMainChannel": {
 			"name": "isMainChannel",
 			"description": "是否主关系",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "是否主关系",
+			"rawName": "IS_MAIN_CHANNEL"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_BASE_UP_ACCOUNT_MAP",
 	"constraints": {
 		"pkBaseUpAccountMap": {
 			"name": "pkBaseUpAccountMap",
@@ -76,8 +62,5 @@
 				"mapId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

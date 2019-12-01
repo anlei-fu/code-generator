@@ -5,147 +5,87 @@
 		"scanName": {
 			"name": "scanName",
 			"description": "名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"scanTitle": {
 			"name": "scanTitle",
 			"description": "标题",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 100
 			},
+			"nullable": false,
 			"defaltValue": null
 		},
 		"scanInterval": {
 			"name": "scanInterval",
 			"description": "后补扫描间隔(秒)",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": 20
 		},
 		"onceCount": {
 			"name": "onceCount",
 			"description": "后补一次多少条数据",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": 1000
 		},
 		"doInterval": {
 			"name": "doInterval",
 			"description": "后补间隔(秒),下次再入队列时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": 60
 		},
 		"status": {
 			"name": "status",
 			"description": "状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
+			"nullable": false,
 			"defaltValue": 0
 		},
 		"lastExecTime": {
 			"name": "lastExecTime",
 			"description": "最近执行时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": "sysdate"
 		},
 		"nextExecTime": {
 			"name": "nextExecTime",
 			"description": "下次执行时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
+			"nullable": false,
 			"defaltValue": "sysdate"
 		},
 		"lastExecIp": {
 			"name": "lastExecIp",
 			"description": "执行ip",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
+			"nullable": false,
 			"defaltValue": null
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
-	"constraints": {},
-	"indexes": {},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	"rawName": "FC_SCAN_CONFIG"
 }

@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-23 10:29:27
+ * @LastEditTime: 2019-11-29 14:47:21
  */
 
 /**
@@ -15,11 +15,11 @@ const cheerio = require("cheerio");
 const { FILE } = require("./../libs/FILE");
 const { DIR } = require("./../libs/dir");
 const { STR } = require("./../libs/str");
-const { NamingStrategy } = require("./../libs/naming-stratey");
+const { NamingStrategy } = require("./../libs/naming-strategy");
 const { Table, Column, SqlType, Package, Constraint, Function, Procedure, Db, SqlConstant, SqlValue, Parameter, Index }
         = require("./db-info");
 
-const ROOT = "./../../resources/plsqldoc";
+const ROOT = "C:/Users/Administrator/Documents/plsqldoc";
 
 /**
  * @param {String} path ,main page path
@@ -99,23 +99,26 @@ function parsePackage(html) {
         let pres = $("pre.decl_text");
         for (let i = 0; i < pres.length; i++) {
 
-                let text = $(pres[i]).text().trim().replace(":=", " = ");
-                text = text.substr(0, text.length - 1);
+                let text = $(pres[i]).text()
+                                     .trim()
+                                     .replace(":=", " = ");
 
-                let segs = STR.splitToWords(text),
+                let segs = STR.splitToWords(text.substr(0, text.length - 1)),
                         name = "";
 
+                       
                 try {
-                        name = segs[0],
-                                sqlType = SqlType.parse(segs[2]),
-                                value = parseValue(segs[4]);
-                } catch {
+                        name = segs[0];
+                        let sqlType = SqlType.parse(segs[2]),
+                        value = parseValue(segs[4]);
+                        pkg[name] = new SqlConstant(name, "");
+                        pkg[name].value = new SqlValue(sqlType, value);
+                             
+                } catch(error) {
+                        console.log(error);
+                        console.log(segs);
                         console.log(text);
                 }
-
-
-                pkg[name] = new SqlConstant(name, "");
-                pkg[name].value = new SqlValue(sqlType, value);
         }
 
         return pkg;
@@ -292,7 +295,7 @@ function parseFunction(html) {
                 returnPos = text.indexOf("return"),
                 paramsText = STR.select(text, "(", ")")[0];
 
-        if (!paramsText)
+        if (paramsText)
                 func.parameters = parseParameter(paramsText);
 
         func.returnType = text.substr(returnPos + 6, text.length - returnPos - 6)

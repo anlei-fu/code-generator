@@ -5,53 +5,43 @@
 		"id": {
 			"name": "id",
 			"description": "编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "编号",
+			"rawName": "ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_CZTH_TRADE_SERVICE_FEE_ID"
 		},
 		"monthDate": {
 			"name": "monthDate",
 			"description": "月份时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "月份时间",
+			"rawName": "MONTH_DATE"
 		},
 		"serviceFee": {
 			"name": "serviceFee",
 			"description": "手续费",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "手续费",
+			"rawName": "SERVICE_FEE"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "CZTH_TRADE_SERVICE_FEE",
 	"constraints": {
 		"pkCzthFeeId": {
 			"name": "pkCzthFeeId",
@@ -59,8 +49,5 @@
 				"id"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

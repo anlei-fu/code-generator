@@ -5,133 +5,103 @@
 		"configId": {
 			"name": "configId",
 			"description": "配置编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "配置编号",
+			"rawName": "CONFIG_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_BASE_COMPANY_SETTLE_NEW_CONFIG_ID"
 		},
 		"profitCompanyId": {
 			"name": "profitCompanyId",
 			"description": "获取利润公司编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "获取利润公司编号",
+			"rawName": "PROFIT_COMPANY_ID"
 		},
 		"relatedCompanyId": {
 			"name": "relatedCompanyId",
 			"description": "对应公司编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "对应公司编号",
+			"rawName": "RELATED_COMPANY_ID"
 		},
 		"statisticsType": {
 			"name": "statisticsType",
 			"description": "统计类型，1.流量数据包，2前向流量充值，3话费、固话，4.加油卡充值，5.q币、游戏币",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "统计类型，1.流量数据包，2前向流量充值，3话费、固话，4.加油卡充值，5.q币、游戏币",
+			"rawName": "STATISTICS_TYPE"
 		},
 		"profitCost": {
 			"name": "profitCost",
 			"description": "利润折扣",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": null
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "利润折扣",
+			"rawName": "PROFIT_COST"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "STATUS"
 		},
 		"lastUpdateTime": {
 			"name": "lastUpdateTime",
 			"description": "最后更新时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "最后更新时间",
+			"rawName": "LAST_UPDATE_TIME"
 		},
 		"lastUpdateUser": {
 			"name": "lastUpdateUser",
 			"description": "最后更新人",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "最后更新人",
+			"rawName": "LAST_UPDATE_USER"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_BASE_COMPANY_SETTLE_NEW",
 	"constraints": {
 		"pkConfigId": {
 			"name": "pkConfigId",
@@ -139,8 +109,5 @@
 				"configId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

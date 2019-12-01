@@ -10,7 +10,7 @@ const { FILE } = require("./../libs/file");
 const { DIR } = require("./../libs/dir");
 const { STR } = require("./../libs/str");
 
-const ROOT = "./../../resources/plsqldoc";
+const ROOT = "C:/Users/Administrator/Documents/plsqldoc";
 
 /**
  * 

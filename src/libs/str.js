@@ -4,12 +4,11 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:13:28
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-15 13:03:05
+ * @LastEditTime: 2019-11-29 14:46:25
  */
 
 //imports
-const { requireNotNull, EMPTY } = require("./utils")
-
+const { requireNotNull} = require("./utils")
 /**
  * @description Select  matched sections of input string and remove left,right pattern both;
  * @param {String} input 
@@ -20,9 +19,6 @@ const { requireNotNull, EMPTY } = require("./utils")
  * @returns {[String]}
  */
 function select(input, left, right, start, count) {
-        requireNotNull(input);
-        requireNotNull(left);
-        requireNotNull(right);
         start = start || 0;
         count = count || 1;
 
@@ -128,7 +124,7 @@ function remove(input, array) {
 function removeWithMatch(input, left, right) {
 
         select1(input, left, right).forEach(x => {
-                input = input.replace(new RegExp(makeOraginalRegexPattern(x), "g"), EMPTY);
+                input = input.replace(new RegExp(makeOraginalRegexPattern(x), "g"), "");
         });
 
         return input;
@@ -253,7 +249,7 @@ function repeat(pattern, times) {
 function splitToWords(input) {
         let isSkipping = false,
                 ls = [],
-                w = EMPTY;
+                w = "";
 
         // iterate input
         for (const c of input) {
@@ -266,9 +262,9 @@ function splitToWords(input) {
                         case "\t":
                         case " ":
                                 if (!isSkipping) {
-                                        if (w != EMPTY) {
+                                        if (w != "") {
                                                 ls.push(w);
-                                                w = EMPTY;
+                                                w = "";
                                         }
 
                                         isSkipping = true;
@@ -285,7 +281,7 @@ function splitToWords(input) {
                 }
         }
 
-        if (w != EMPTY)
+        if (w != "")
                 ls.push(w);
 
         return ls;

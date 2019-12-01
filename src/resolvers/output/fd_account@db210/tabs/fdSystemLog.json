@@ -5,133 +5,103 @@
 		"logId": {
 			"name": "logId",
 			"description": "日志流水号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "日志流水号",
+			"rawName": "LOG_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_SYSTEM_LOG_LOG_ID"
 		},
 		"objectName": {
 			"name": "objectName",
 			"description": "对象名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "对象名称",
+			"rawName": "OBJECT_NAME"
 		},
 		"errorCode": {
 			"name": "errorCode",
 			"description": "错误码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": 200
+			"nullable": false,
+			"defaltValue": 200,
+			"chineseName": "错误码",
+			"rawName": "ERROR_CODE"
 		},
 		"errorDesc": {
 			"name": "errorDesc",
 			"description": "错误信息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 255
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "错误信息",
+			"rawName": "ERROR_DESC"
 		},
 		"manualDesc": {
 			"name": "manualDesc",
 			"description": "人工描述",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 255
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "人工描述",
+			"rawName": "MANUAL_DESC"
 		},
 		"createdTime": {
 			"name": "createdTime",
 			"description": "发生时间",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": "sysdate"
+			"nullable": false,
+			"defaltValue": "sysdate",
+			"chineseName": "发生时间",
+			"rawName": "CREATED_TIME"
 		},
 		"trace": {
 			"name": "trace",
 			"description": "异常跟踪",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 512
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "异常跟踪",
+			"rawName": "TRACE"
 		},
 		"errorLevel": {
 			"name": "errorLevel",
 			"description": "错误级别",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 8
 			},
-			"defaltValue": "error"
+			"nullable": false,
+			"defaltValue": "error",
+			"chineseName": "错误级别",
+			"rawName": "ERROR_LEVEL"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_SYSTEM_LOG",
 	"constraints": {
 		"pkFdSystemLog": {
 			"name": "pkFdSystemLog",
@@ -139,8 +109,5 @@
 				"logId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

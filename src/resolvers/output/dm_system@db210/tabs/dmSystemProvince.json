@@ -5,70 +5,54 @@
 		"provinceNo": {
 			"name": "provinceNo",
 			"description": "省份编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 4
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "省份编号",
+			"rawName": "PROVINCE_NO",
+			"isPk": true
 		},
 		"provinceName": {
 			"name": "provinceName",
 			"description": "省份名称",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "省份名称",
+			"rawName": "PROVINCE_NAME"
 		},
 		"enable": {
 			"name": "enable",
 			"description": "状态: 0-启用 1-禁用",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "状态",
+			"rawName": "ENABLE"
 		},
 		"sortId": {
 			"name": "sortId",
 			"description": "排序编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 2
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "排序编号",
+			"rawName": "SORT_ID"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_SYSTEM_PROVINCE",
 	"constraints": {
 		"pkSysProvcId": {
 			"name": "pkSysProvcId",
@@ -76,8 +60,5 @@
 				"provinceNo"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

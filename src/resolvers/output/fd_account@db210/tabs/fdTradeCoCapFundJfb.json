@@ -5,101 +5,79 @@
 		"changeId": {
 			"name": "changeId",
 			"description": "变动编号，和fd_trade_co_cap_fund对应",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "变动编号，和fd_trade_co_cap_fund对应",
+			"rawName": "CHANGE_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_FD_TRADE_CO_CAP_FUND_JFB_CHANGE_ID"
 		},
 		"tradeMonth": {
 			"name": "tradeMonth",
 			"description": "积分交易月份",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "date"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "积分交易月份",
+			"rawName": "TRADE_MONTH"
 		},
 		"downChannelNo": {
 			"name": "downChannelNo",
 			"description": "交易下游渠道",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易下游渠道",
+			"rawName": "DOWN_CHANNEL_NO"
 		},
 		"downAccountId": {
 			"name": "downAccountId",
 			"description": "交易下游渠道账户",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "交易下游渠道账户",
+			"rawName": "DOWN_ACCOUNT_ID"
 		},
 		"businessType": {
 			"name": "businessType",
 			"description": "业务类型",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "业务类型",
+			"rawName": "BUSINESS_TYPE"
 		},
 		"settleStatus": {
 			"name": "settleStatus",
 			"description": "开票结算状态 0.已结算，1等待结算，9无需结算",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 3
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "开票结算状态 0.已结算，1等待结算，9无需结算",
+			"rawName": "SETTLE_STATUS"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "FD_TRADE_CO_CAP_FUND_JFB",
 	"constraints": {
 		"pkJfbId": {
 			"name": "pkJfbId",
@@ -107,8 +85,5 @@
 				"changeId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

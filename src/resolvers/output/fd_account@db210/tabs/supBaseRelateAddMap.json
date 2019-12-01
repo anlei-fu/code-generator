@@ -5,70 +5,56 @@
 		"mapId": {
 			"name": "mapId",
 			"description": "关联编号",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 20
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "关联编号",
+			"rawName": "MAP_ID",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_SUP_BASE_RELATE_ADD_MAP_MAP_ID"
 		},
 		"supUpChannelNo": {
 			"name": "supUpChannelNo",
 			"description": "sup上游渠道",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "sup上游渠道",
+			"rawName": "SUP_UP_CHANNEL_NO"
 		},
 		"supDownChannelNo": {
 			"name": "supDownChannelNo",
 			"description": "sup下游渠道",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "sup下游渠道",
+			"rawName": "SUP_DOWN_CHANNEL_NO"
 		},
 		"proUpChannelNo": {
 			"name": "proUpChannelNo",
 			"description": "生产系统上游渠道（需为千行）",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 32
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "生产系统上游渠道（需为千行）",
+			"rawName": "PRO_UP_CHANNEL_NO"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "SUP_BASE_RELATE_ADD_MAP",
 	"constraints": {
 		"pkSupBaseRelateAddMmapId": {
 			"name": "pkSupBaseRelateAddMmapId",
@@ -76,8 +62,5 @@
 				"mapId"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }

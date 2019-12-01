@@ -5,179 +5,137 @@
 		"errorCode": {
 			"name": "errorCode",
 			"description": "错误码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": true,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "错误码",
+			"rawName": "ERROR_CODE",
+			"isPk": true,
+			"autoIncrement": true,
+			"sequence": "SEQ_DM_SYSTEM_DEAL_CODE_ERROR_CODE"
 		},
 		"dealCode": {
 			"name": "dealCode",
 			"description": "处理码: 0-处理成功 1-处理失败 9-未知",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 2
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "处理码",
+			"rawName": "DEAL_CODE"
 		},
 		"allowRebind": {
 			"name": "allowRebind",
 			"description": "允许再次绑定: 0-允许 1-不允许",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "允许再次绑定",
+			"rawName": "ALLOW_REBIND"
 		},
 		"allowRetry": {
 			"name": "allowRetry",
 			"description": "订单失败重试: 0-允许 1-不允许",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "订单失败重试",
+			"rawName": "ALLOW_RETRY"
 		},
 		"toManual": {
 			"name": "toManual",
 			"description": "进入人工审核: 0-是 1-否",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "进入人工审核",
+			"rawName": "TO_MANUAL"
 		},
 		"delayFailed": {
 			"name": "delayFailed",
 			"description": "是否延迟失败: 0-是 1-否",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": 1
+			"nullable": false,
+			"defaltValue": 1,
+			"chineseName": "是否延迟失败",
+			"rawName": "DELAY_FAILED"
 		},
 		"delayMinute": {
 			"name": "delayMinute",
 			"description": "延迟失败分钟",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number"
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "延迟失败分钟",
+			"rawName": "DELAY_MINUTE"
 		},
 		"orderCode": {
 			"name": "orderCode",
 			"description": "订单错误码",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 10
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单错误码",
+			"rawName": "ORDER_CODE"
 		},
 		"orderDesc": {
 			"name": "orderDesc",
 			"description": "订单错误消息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 128
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "订单错误消息",
+			"rawName": "ORDER_DESC"
 		},
 		"errorMsg": {
 			"name": "errorMsg",
 			"description": "错误消息",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "varchar2",
 				"length": 64
 			},
-			"defaltValue": null
+			"nullable": false,
+			"defaltValue": null,
+			"chineseName": "错误消息",
+			"rawName": "ERROR_MSG"
 		},
 		"status": {
 			"name": "status",
 			"description": "状态",
-			"nullable": false,
-			"autoIncrement": false,
-			"isPk": false,
-			"unique": false,
-			"isEnum": false,
-			"mappingColumn": {},
-			"isFilter": false,
 			"type": {
 				"name": "number",
 				"length": 1
 			},
-			"defaltValue": 0
+			"nullable": false,
+			"defaltValue": 0,
+			"chineseName": "状态",
+			"rawName": "STATUS"
 		}
 	},
-	"isInfamationTable": false,
-	"joins": {},
+	"rawName": "DM_SYSTEM_DEAL_CODE",
 	"constraints": {
 		"pkSysDealCodeId": {
 			"name": "pkSysDealCodeId",
@@ -185,8 +143,5 @@
 				"errorCode"
 			]
 		}
-	},
-	"oneToMany": [],
-	"manyToOne": [],
-	"oneToOne": []
+	}
 }
