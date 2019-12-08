@@ -65,7 +65,6 @@ class Variable {
                 this.defaultValue = defaultValue;
                 this.prefix = prefix;
                 this.suffix = suffix;
-
         }
 }
 

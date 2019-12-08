@@ -22,6 +22,7 @@ function getSqlString(obj) {
                 let ret = "";
                 for (const c of obj)
                         ret += c == "'" ? "''" : c;
+                        
                 return ret;
         }
 

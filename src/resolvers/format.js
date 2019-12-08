@@ -43,7 +43,6 @@ function formatCore(text) {
                 "</td>": "</div>",
                 "<a":"<div",
                 "</a>":"</div>"
-
         };
 
         return STR.replace(text, pairs);

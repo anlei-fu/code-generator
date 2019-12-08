@@ -334,7 +334,6 @@ exports.Column = class Column extends DbObject {
 
         toCreatString() {
                 var ret = "";
-
         }
 
 }

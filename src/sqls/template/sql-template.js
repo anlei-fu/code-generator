@@ -14,8 +14,8 @@ exports.SqlTemplate = class SqlTemplate {
         constructor(text) {
                 this.segments = [];
 
-                if(text)
-                   this.segments.push(new SqlSegment(text,false));
+                if (text)
+                        this.segments.push(new SqlSegment(text, false));
         }
 
         render(option) {
@@ -58,7 +58,6 @@ exports.SqlSegment = class SqlSegment {
                         return SQL_UTILS.getSqlString(value);
                 } else {
                         let value = OBJECT.getValue(option, this.name);
-
                         if (!value)
                                 throw new Error("can not find parameter:" + this.name);
 
@@ -75,8 +74,8 @@ exports.Node = class Node {
                 this.children = [];
         }
 
-        push(node){
-           this.children.push(node);
+        push(node) {
+                this.children.push(node);
         }
 
         /**
@@ -113,11 +112,11 @@ exports.SqlNode = class SqlNode extends this.Node {
 
 exports.TrimNode = class TrimNode extends this.Node {
 
-        constructor(prefix,suffix,suffixOverrides){
+        constructor(prefix, suffix, suffixOverrides) {
                 super();
-                this.prefix=prefix;
-                this.suffix=suffix;
-                this.suffixOverrides=suffixOverrides;
+                this.prefix = prefix;
+                this.suffix = suffix;
+                this.suffixOverrides = suffixOverrides;
         }
 
         /**
@@ -148,9 +147,8 @@ exports.WhereNode = class WhereNode extends this.Node {
                 if (ret.startsWith("and"))
                         ret = ret.replace("and", "");
 
-                if (ret.startsWith("or")) {
+                if (ret.startsWith("or"))
                         ret = ret.replace("or", "");
-                }
 
                 return "where" + ret;
         }
@@ -196,7 +194,6 @@ exports.ForEachNode = class ForEachNode extends this.Node {
                 if (TYPE.isArray(value)) {
                         console.log("here");
                         value.forEach((v, i, array) => {
-
                                 this.children.forEach(x => {
                                         ret += x.render({ item: v })
                                 });
@@ -253,9 +250,8 @@ exports.TemplateNode = class TemplateNode extends this.Node {
                 super();
                 this.template;
 
-                if(text){
-                        this.template=new SqlTemplate(text);
-                }
+                if (text)
+                        this.template = new SqlTemplate(text);
         }
 
         /**
