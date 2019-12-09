@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-27 16:27:10
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-29 14:47:21
+ * @LastEditTime: 2019-12-02 17:53:05
  */
 
 /**
@@ -32,6 +32,7 @@ function parse() {
                 names_els = $("div.main_title"),
                 db_els = $("div.main_table").next(),
                 dbs = {};
+       
 
         for (let i = 0; i < names_els.length; i++) {
                 let name = $(names_els[i]).text();
@@ -527,4 +528,6 @@ function main() {
 }
 
 // run
-main();
+//main();
+
+exports.parserTable=parseTable;

@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-14 09:05:18
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-29 15:26:58
+ * @LastEditTime: 2019-12-02 18:11:10
  */
 
 //imports
@@ -149,7 +149,7 @@ class Generator {
         cname = NamingStrategy.toHungary(x.name)
           .toUpperCase();
 
-      fileds += `${CONFIG_FILED_IDENT}<filed pname="${pname}" name="${cname}" `;
+      fileds += `${CONFIG_FILED_IDENT}<field pname="${pname}" name="${cname}" `;
 
       if (x.isPk)
         fileds += `isPk="ture" `;
@@ -164,29 +164,18 @@ class Generator {
 
     let filters = "";
 
-    // if (this.option) {
-    //   // default sql filters
-    //   if (this.option.config) {
-
-    //     if (this.option.config.columns) {
-    //       this.option.columns.forEach(x => {
-    //         filters += `{&@${x}}\r\n`;
-    //       });
-    //     }
-
-    //     if (this.option.config.additionals) {
-    //       this.option.additionals.forEach(x => {
-    //         filters += `${x()}\r\n`;
-    //       })
-    //     }
-    //   }
-
-    // }
+      if (this.option) {
+        if (this.option.columns) {
+          this.option.columns.forEach(x=> {
+            filters += `                                             {&@t.${x}}\r\n`;
+          });
+        }
+    }
     
     return FILE.read("templates/config.xml")
-      .replace(new RegExp("@table.name", "g"), NamingStrategy.toHungary(this.table.name).toUpperCase())
+      .replace(new RegExp("@name", "g"), NamingStrategy.toHungary(this.table.name).toUpperCase())
       .replace("@fields", fileds.trim())
-      .replace("@filter", filters);
+      .replace("@filters", filters);
   }
 
   /**
@@ -329,7 +318,7 @@ function main(name, project, option) {
 
   let g = new Generator(tab, name, project, option);
   DIR.create(`outputs/${name}`);
-  FILE.write(`outputs/${name}/${name}.cs`, g.generateEntity());
+  FILE.write(`outputs/${name}/M${name}.cs`, g.generateEntity());
   FILE.write(`outputs/${name}/${name}Access.cs`, g.generateAccess());
   FILE.write(`outputs/${name}/I${name}Access.cs`, g.generateIAccess());
   FILE.write(`outputs/${name}/I${name}Handler.cs`, g.generateIHandler());
@@ -393,6 +382,8 @@ const DM = "DM";
 
 //   }
 // };
-let option;
+let option={
+  columns:["RuleType","ValueType","Status","ProductId"],
+};
 // ----------------------------------------------- main---------------------------------------------
-main("FCLimtIdInfo", QXFC, option);
+main("FCLimitRuleUp", QXFC, option);

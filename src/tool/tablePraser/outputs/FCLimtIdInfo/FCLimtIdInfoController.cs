@@ -67,7 +67,7 @@ namespace QXFC.UserWeb.Controllers
         {
             try
             {
-                FCLimtIdInfo entity = new FCLimtIdInfo();
+                MFCLimtIdInfo entity = new MFCLimtIdInfo();
                 entity.SetData(Request.Form);
                 entity.TrimEmptyProperty();
                 string id = Request.Form["__id"];
@@ -115,6 +115,5 @@ namespace QXFC.UserWeb.Controllers
                 return new Result(false, e.Message).ToString();
             }
         }
-@additionals
     }
 }

@@ -15,7 +15,7 @@ namespace QXFC.Interfaces.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-       FCLimtIdInfo GetData(string id);
+        MFCLimtIdInfo GetData(string id);
         /// <summary>
         /// 删除数据
         /// </summary>
@@ -30,14 +30,14 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       FCLimtIdInfo GetSingleData(FCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        MFCLimtIdInfo GetSingleData(MFCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 获取所有数据
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        List<FCLimtIdInfo> GetDataList(string orderBy = "");
+        List<MFCLimtIdInfo> GetDataList(string orderBy = "");
         /// <summary>
         /// 获取指定条件的数据列表
         /// </summary>
@@ -46,7 +46,7 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        List<FCLimtIdInfo> GetDataList(FCLimtIdInfo query,string orderBy="",MatchMode mmode=MatchMode.Exact,
+        List<MFCLimtIdInfo> GetDataList(MFCLimtIdInfo query,string orderBy="",MatchMode mmode=MatchMode.Exact,
             ConnectMode cmode=ConnectMode.And);
         /// <summary>
         /// 获取指定条件的数据集
@@ -56,7 +56,7 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        DataSet GetDataSet(FCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        DataSet GetDataSet(MFCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 获取分页数据列表
@@ -69,7 +69,7 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        List<FCLimtIdInfo> GetPagerDataList(FCLimtIdInfo query,int pageSize,int pageIndex,out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        List<MFCLimtIdInfo> GetPagerDataList(MFCLimtIdInfo query,int pageSize,int pageIndex,out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 获取分页数据集
@@ -82,7 +82,7 @@ namespace QXFC.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        DataSet GetPagerDataSet(FCLimtIdInfo query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        DataSet GetPagerDataSet(MFCLimtIdInfo query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 添加或修改数据,id为空时为添加，否则为修改
@@ -90,25 +90,25 @@ namespace QXFC.Interfaces.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        IResult Save(string id,FCLimtIdInfo vo);
+        IResult Save(string id,MFCLimtIdInfo vo);
         /// <summary>
         /// 添加或修改数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        IResult Save(FCLimtIdInfo vo);
+        IResult Save(MFCLimtIdInfo vo);
         /// <summary>
         /// 添加新数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        bool CreateNew(FCLimtIdInfo vo);
+        bool CreateNew(MFCLimtIdInfo vo);
         /// <summary>
         /// 根据主键值修改实体数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        bool Update(FCLimtIdInfo vo);
+        bool Update(MFCLimtIdInfo vo);
         /// <summary>
         /// 获取指定条件的记录总数
         /// </summary>
@@ -116,7 +116,7 @@ namespace QXFC.Interfaces.Logic
          /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        int GetCount(FCLimtIdInfo query, MatchMode mmode = MatchMode.Exact,
+        int GetCount(MFCLimtIdInfo query, MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 根据模板名称获取第一行一列的值
@@ -124,27 +124,27 @@ namespace QXFC.Interfaces.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        object GetScalarByXmlTemplate(string xmlTemplateName,FCLimtIdInfo vo);
+        object GetScalarByXmlTemplate(string xmlTemplateName,MFCLimtIdInfo vo);
         /// <summary>
         /// 根据模板获取实体信息
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        List<FCLimtIdInfo> GetDataListByTemplate(string xmlTemplateName,FCLimtIdInfo vo);
+        List<MFCLimtIdInfo> GetDataListByTemplate(string xmlTemplateName,MFCLimtIdInfo vo);
         /// <summary>
         /// 根据模版获取DataSet
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        DataSet GetDataSetByTemplate(string xmlTemplateName,FCLimtIdInfo vo);
+        DataSet GetDataSetByTemplate(string xmlTemplateName,MFCLimtIdInfo vo);
         /// <summary>
         /// 查询单实体信息(单实体数据)
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-       FCLimtIdInfo GetSingleDataByTemplate(string xmlTemplateName,FCLimtIdInfo vo);
+       MFCLimtIdInfo GetSingleDataByTemplate(string xmlTemplateName,MFCLimtIdInfo vo);
 @additionals
     }
 }

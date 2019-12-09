@@ -64,7 +64,7 @@ namespace @project.name.UserService
        /// 获取数据列表
        /// </summary>
        /// <returns></returns>
-       public List<@table.name> GetDataList()
+       public List<M@table.name> GetDataList()
        {
            return handler.GetDataList(ORDER_BY);
        }
@@ -73,10 +73,10 @@ namespace @project.name.UserService
        /// </summary>
        /// <param name="json">json数据</param>
        /// <returns></returns>
-       public List<@table.name> GetDataList(string json)
+       public List<M@table.name> GetDataList(string json)
        {
-           @table.name data =
-               JsonData.JavaScriptDeserialize<@table.name>(json);
+           M@table.name data =
+               JsonData.JavaScriptDeserialize<M@table.name>(json);
            return handler.GetDataList(data, ORDER_BY, Lib4Net.DB.MatchMode.Exact);
        }
         /// <summary>
@@ -87,7 +87,7 @@ namespace @project.name.UserService
        public @table.nameListModel Query(NameValueCollection nvc)
        {
            @table.nameListModel model = new @table.nameListModel();
-           @table.name entity = new @table.name();
+           M@table.name entity = new M@table.name();
            model.PageSize = CommFun.ToInt(nvc["ps"],
                SettingHelper.Instance.GetInt("PageSize", 10)).Value;
            model.PageIndex= CommFun.ToInt(nvc["pi"],
@@ -108,7 +108,7 @@ namespace @project.name.UserService
        /// <param name="id">主键编号</param>
        /// <param name="entity">实体数据</param>
        /// <returns></returns>
-       public IResult Save(string id,@table.name entity)
+       public IResult Save(string id,M@table.name entity)
        {
            return handler.Save(id,entity);
        }
@@ -121,6 +121,5 @@ namespace @project.name.UserService
        {
            return new Result(handler.Delete(id));
        }
-@additionals
     }
 }

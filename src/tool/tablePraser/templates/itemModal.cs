@@ -6,11 +6,11 @@ namespace @project.name.Model
     /// </summary>
 	public class @table.nameItemModel
     {
-        private @table.name _currentModel=new @table.name();
+        private M@table.name _currentModel=new M@table.name();
         /// <summary>
         /// 当前实体元素
         /// </summary>
-        public @table.name CurrentModel
+        public M@table.name CurrentModel
         {
             get { return _currentModel; }
             set { _currentModel = value; }

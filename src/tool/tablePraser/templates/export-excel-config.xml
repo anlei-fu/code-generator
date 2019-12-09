@@ -1,19 +1,12 @@
 <item name="exportExcel">
         <sql>
-                <![CDATA[
+<![CDATA[
               SELECT  t.*
-                    FROM (
-                         SELECT 
-                                r.Rid
-                         FROM (
-                                SELECT  t.rowid RID 
-                                FROM  @table.name t  
-                                WHERE    
-                                     1=1
-                                     @filtes
-                                ) r
-                           ) tab
-                   INNER JOIN @table.name t ON tab.rid = t.rowid
+              FROM @name t  
+              WHERE    
+                  1=1
+@filters
+              @orderBy      
         ]]>
         </sql>
 </item>

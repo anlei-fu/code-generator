@@ -31,7 +31,7 @@ namespace @project.name.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public @table.name GetData(string id)
+        public M@table.name GetData(string id)
         {
             return dbAccess.GetData(id);
         }
@@ -52,7 +52,7 @@ namespace @project.name.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>   
-        public @table.name GetSingleData(@table.name query, string orderBy = "",
+        public M@table.name GetSingleData(M@table.name query, string orderBy = "",
             MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
@@ -63,7 +63,7 @@ namespace @project.name.Logic
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        public List<@table.name> GetDataList(string orderBy = "")
+        public List<M@table.name> GetDataList(string orderBy = "")
         {
             return dbAccess.GetDataList(dbAccess.EmptyEntity, orderBy);
         }
@@ -75,7 +75,7 @@ namespace @project.name.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public List<@table.name> GetDataList(@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public List<M@table.name> GetDataList(M@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataList(query, orderBy, mmode, cmode);
@@ -88,7 +88,7 @@ namespace @project.name.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public DataSet GetDataSet(@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public DataSet GetDataSet(M@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataSet(query, orderBy, mmode, cmode);
@@ -104,7 +104,7 @@ namespace @project.name.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public List<@table.name> GetPagerDataList(@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public List<M@table.name> GetPagerDataList(M@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -121,7 +121,7 @@ namespace @project.name.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public DataSet GetPagerDataSet(@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public DataSet GetPagerDataSet(M@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -134,7 +134,7 @@ namespace @project.name.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(string id, @table.name vo)
+        public IResult Save(string id, M@table.name vo)
         {
             bool status=false;
             IResult result = new Result(status);
@@ -154,7 +154,7 @@ namespace @project.name.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(@table.name vo)
+        public IResult Save(M@table.name vo)
         {
             IResult result = new Result(false);
             bool status=dbAccess.Save(vo)>0;
@@ -170,7 +170,7 @@ namespace @project.name.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool CreateNew(@table.name vo)
+        public bool CreateNew(M@table.name vo)
         {
             return dbAccess.CreateNew(vo);
         }
@@ -179,7 +179,7 @@ namespace @project.name.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool Update(@table.name vo)
+        public bool Update(M@table.name vo)
         {
             return dbAccess.Update(vo);
         }
@@ -190,7 +190,7 @@ namespace @project.name.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public int GetCount(@table.name query, MatchMode mmode = MatchMode.Exact,
+        public int GetCount(M@table.name query, MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetCount(query, mmode, cmode);
@@ -201,7 +201,7 @@ namespace @project.name.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public object GetScalarByXmlTemplate(string xmlTemplateName, @table.name vo)
+        public object GetScalarByXmlTemplate(string xmlTemplateName, M@table.name vo)
         {
             return dbAccess.GetScalarByTemplate(xmlTemplateName, vo);
         }
@@ -211,7 +211,7 @@ namespace @project.name.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public List<@table.name> GetDataListByTemplate(string xmlTemplateName, @table.name vo)
+        public List<M@table.name> GetDataListByTemplate(string xmlTemplateName, M@table.name vo)
         {
             return dbAccess.GetDataListByTemplate(xmlTemplateName, vo);
         }
@@ -221,7 +221,7 @@ namespace @project.name.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public DataSet GetDataSetByTemplate(string xmlTemplateName, @table.name vo)
+        public DataSet GetDataSetByTemplate(string xmlTemplateName, M@table.name vo)
         {
             return dbAccess.GetDataSetByTemplate(xmlTemplateName, vo);
         }
@@ -230,7 +230,7 @@ namespace @project.name.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public @table.name GetSingleDataByTemplate(string xmlTemplateName, @table.name vo)
+        public M@table.name GetSingleDataByTemplate(string xmlTemplateName, M@table.name vo)
         {
             return dbAccess.GetSingleDataByTemplate(xmlTemplateName, vo);
         }

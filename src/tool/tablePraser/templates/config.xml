@@ -9,27 +9,31 @@
     <item name="getList">
       <sql>
         <![CDATA[
-          @returnFileds
-                    from (SELECT RID
-                            FROM (SELECT R.RID, ROWNUM LINENUM
+          SELETC t.* FROM
+                      (SELECT RID
+                          FROM (SELECT R.RID, ROWNUM LINENUM
                                     FROM (SELECT t.rowid RID
-                                          FROM  @table.name t
+                                          FROM  @name t
                                           WHERE 
-                                            1=1
-                                            @filters
-                                          @orderBy) R
+                                             1=1
+                                             {&@t.CreateTime >= to_date($ST,'YYYY-MM-DD')}
+                                             {&@t.CreateTime < to_date($ET,'YYYY-MM-DD')}
+@filters
+                                   ORDER BY t.CreateTime DESC) R
                                    WHERE ROWNUM <= { :PS} * { :PI})
                            WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
-                   inner join @table.name t on tab.rid = t.rowid
+                   inner join @name t on tab.rid = t.rowid
         ]]>
       </sql>
     </item>
     <item name="getCount">
       <sql>
         <![CDATA[
-          SELECT COUNT(1) FROM @table.name  t  WHERE 
+          SELECT COUNT(1) FROM @name  t  WHERE 
                                              1=1
-                                             @filters
+@filters
+                                             {&@t.CreateTime >= to_date($ST,'YYYY-MM-DD')}
+                                             {&@t.CreateTime < to_date($ET,'YYYY-MM-DD')}
         ]]>
       </sql>
     </item>

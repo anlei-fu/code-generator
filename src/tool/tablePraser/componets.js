@@ -4,14 +4,15 @@
  * @Author: fuanlei
  * @Date: 2019-09-25 13:17:04
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-10-23 14:11:46
+ * @LastEditTime: 2019-12-02 16:10:40
  */
-
+const { NamingStrategy } = require("./../../libs/naming-strategy");
 const { FILE } = require("./../../libs/file");
 const { STR } = require("./../../libs/str");
 const DEFAULT_OPTION = "------请选择------";
 const { OBJECT } = require("./../../libs/utils");
 
+const root="C:/Users/Administrator/Desktop/code-generator/src/tool/tablePraser/templates";
 
 /**
  * 
@@ -26,7 +27,7 @@ const { OBJECT } = require("./../../libs/utils");
 function renderOption(lable, name, value, text, dft) {
         dft = dft || DEFAULT_OPTION;
 
-        let html = FILE.read("templates/option.cshtml")
+        let html = FILE.read(`${root}/option.cshtml`)
                 .replace("@name", name)
                 .replace("@lable", lable)
                 .replace("@text", text)
@@ -42,7 +43,7 @@ function renderOption(lable, name, value, text, dft) {
  * 
  */
 function renderDateFilter({ name, lable }) {
-        let html = File.read("templates/dateFilter.cshtml")
+        let html = File.read(`${root}/dateFilter.cshtml`)
                 .replace("@name", name)
                 .replace("@lable", lable);
 
@@ -57,13 +58,13 @@ function renderDateFilter({ name, lable }) {
 function renderOption1({ name, lable, items }) {
         let temp = "";
 
-        let item = FILE.read("templates/option1-item.cshtml");
+        let item = FILE.read(`${root}/option1-item.cshtml`);
         items.forEach(x => {
                 temp += item.replace("@lable", x.lable)
                         .replace("@value", x.value);
         })
 
-        let html = FILE.read("templates/option1.cshtml")
+        let html = FILE.read(`${root}/option1.cshtml`)
                 .replace("@label", lable)
                 .replace("@name", name)
                 .replace("@items", temp);
@@ -78,7 +79,7 @@ function renderOption1({ name, lable, items }) {
  * @returns {{js:String,html:String}}
  */
 function renderMutipleInput({ name, items }) {
-        let js = FILE.read("templates/mutiple-input.js"),
+        let js = FILE.read(`${root}/mutiple-input.js`),
                 item = FILE.read("templates/mutiple-input-item.js"),
                 temp = "";
 
@@ -88,7 +89,7 @@ function renderMutipleInput({ name, items }) {
                         .replace("@index", i);
         })
 
-        let html = FILE.read("templates/mutiple-input.cshtml")
+        let html = FILE.read(`${root}/mutiple-input.cshtml`)
                 .replace("@items", temp)
                 .replace("@default-item", items[0].name);
 
@@ -100,7 +101,7 @@ function associatedSelects(option1, option2) {
 }
 
 function add() {
-        return { html: FILE.read("templates/add.cshtml") };
+        return { html: FILE.read(`${root}/add.cshtml`) };
 }
 
 function renderMutipleRadio(id, ...items) {
@@ -123,31 +124,34 @@ function renderExportExcel(table, option) {
         // controller
         let headers = "",
                 body = "",
-                ident = "",
+                ident = "               ",
                 tab = OBJECT.clone(table);
 
+        let name=NamingStrategy.toPascal(tab.name).replace("Fc","FC");
         tab.columns = OBJECT.toArray(tab.columns);
 
-        tab.columns.forEach(x, i, array => {
+        tab.columns.forEach((x, i, array) => {
                 let name = STR.upperFirstLetter(x.name);
                 
                 headers += i != array.length - 1
-                        ? `${ident}"${x.chineseName}",\r\n` : `${ident}"${x.chineseName}"\r\n`;
+                        ? `${ident}"${x.description}",\r\n` : `${ident}"${x.description}"\r\n`;
 
-                body += `row["${x.chineseName}"] = item.${name};\r\n`
+                body += `${ident}row["${x.description}"] = item.${name};\r\n`
         });
 
-        let controller = FILE.read("templates/export-excel-controller.cs")
+        let controller = FILE.read(`${root}/export-excel-controller.cs`)
                 .replace("@headers", headers)
-                .replace("@bodys", body);
+                .replace("@bodys", body)
+                .replace("@name",name);
 
 
         //config
         let filters = "";
         option.columns.forEach(x => {
-                filters += `{&@t.${x}}\r\n`;
+                filters += `                  {&@t.${x}}\r\n`;
         });
 
+        if(option.additionals)
         option.additionals.forEach(x => {
                 filters += `${x()}\r\n`;
         })
@@ -167,19 +171,20 @@ function renderExportExcel(table, option) {
         }
 
 
-        let config = FILE.read("templates/export-excel-config.xml")
+        let config = FILE.read(`${root}/export-excel-config.xml`)
                 .replace("@filters", filters)
                 .replace("@orderBy", orderBy)
-                .replace("@returnFields", returnFields);
+                .replace("@returnFields", returnFields)
+                .replace(/@name/g,NamingStrategy.toHungary(tab.name).toUpperCase());
 
         // service
-        let service = FILE.read("templates/exports-excel-service.cs");
+        let service = FILE.read(`${root}/export-excel-service.cs`).replace(/@name/g,name);
 
         //html
-        let html = FILE.read("templates/exports-excel.cshtml");
+        let html = FILE.read(`${root}/export-excel.cshtml`);
 
         //js
-        let js = FILE.read("export-excel.js");
+        let js = FILE.read(`${root}/export-excel.js`).replace("@name",name);
 
         return {
                 controller,
@@ -204,30 +209,30 @@ function renderExportExcel(table, option) {
  */
 function renderImportExcel(resolvers) {
         // controller
-        let controller = FILE.read("templates/import-excel-controller.cs");
+        let controller = FILE.read(`${root}/import-excel-controller.cs`);
 
         // html
-        let html = FILE.read("templates/import-excel.cshtml");
+        let html = FILE.read(`${root}/import-excel.cshtml`);
 
         // service
         let temp = "";
         OBJECT.forEach(resolvers, (key, value) => {
                 temp += `entity.${key} = ${value()};\r\n`;
         });
-        let service = FILE.read("templates/import-excel-service.cs")
+        let service = FILE.read(`${root}/import-excel-service.cs`)
                 .replace("@resolvers", temp);
 
         // handler
-        let handler = FILE.read("templates/import-excel-handler.cs");
+        let handler = FILE.read(`${root}/import-excel-handler.cs`);
 
         // ihandler
-        let ihandler = FILE.read("templates/import-excel-ihandler.cs");
+        let ihandler = FILE.read(`${root}/import-excel-ihandler.cs`);
 
         // html
-        let html = FILE.read("templates/import-excel.cshtml");
+        let html = FILE.read(`${root}/import-excel.cshtml`);
 
         // page
-        let page = FILE.read("templates/import-excel-page.cshtml");
+        let page = FILE.read(`${root}/import-excel-page.cshtml`);
 
         return {
                 controller,
@@ -248,7 +253,7 @@ function renderImportExcel(resolvers) {
  */
 function renderEdit(items, rules) {
         // page
-        let page = FILE.read("templates/edit-page.cshtml"),
+        let page = FILE.read(`${root}/edit-page.cshtml`),
                 j = "",
                 temp = "",
                 r = "";
@@ -273,9 +278,9 @@ function renderEdit(items, rules) {
                 .replace("@js", j);
 
         // js
-        let js = FILE.read("templates/edit.js");
+        let js = FILE.read(`${root}/edit.js`);
 
-        let html = FILE.read("templates/add.cshtml");
+        let html = FILE.read(`${root}/add.cshtml`);
 
         return {
                 page,
@@ -305,7 +310,7 @@ function renderTable(table, option, cells) {
                 bodys = "";
 
         tab.columns.forEach(x => {
-                headers += `<th>${x.chineseName}</th>\r\n`;
+                headers += `<th>${x.description}</th>\r\n`;
 
                 let content = `item.${x.name}`;
 

@@ -53,3 +53,5 @@ function formatCore(text) {
  *  main
  */
  format(ROOT);
+
+ exports.formatCore=formatCore;

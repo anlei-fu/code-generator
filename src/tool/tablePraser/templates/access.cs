@@ -14,7 +14,7 @@ namespace @project.name.DBAccess
       ///<summary>
       ///关于@table.chineseName的数据操作对象
       ///</summary>
-    public class @table.nameDataAccess:DataAccessObjects<@table.name>,I@table.nameDataAccess
+    public class @table.nameDataAccess:DataAccessObjects<M@table.name>,I@table.nameDataAccess
     {
     
     }

@@ -41,6 +41,17 @@
 
 ------
 
+### aria-label aria-labelledbym aria-hidde
+
+```html
+<form role = "form">
+  <div class="form-group col-lg-3 form-horizontal"> 
+    <input type = "text" id = "idCard" class="form-control" aria-label = "身份证号"> 
+  </div>
+</form>
+
+```
+----
 
 ### display
 

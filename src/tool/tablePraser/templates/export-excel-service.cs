@@ -1,11 +1,11 @@
         /// <summary>
-        /// 查询所有满足条件的记录
+        /// 导出excel
         /// </summary>
         /// <param name="nvc"></param>
         /// <returns></returns>
-        public FCOrderRefundListModel ExportExcel(NameValueCollection nvc)
+        public @nameListModel ExportExcel(NameValueCollection nvc)
         {
-            var entity = new @table.name();
+            var entity = new M@name();
             entity.SetData(nvc, false);
             entity.TrimEmptyProperty();
 
@@ -14,7 +14,7 @@
             entity.AddData("ST", st);
             entity.AddData("ET", et);
 
-            var model = new @table.nameListModel();
+            var model = new @nameListModel();
 
             model.List = handler.GetDataListByTemplate("exportExcel", entity);
 

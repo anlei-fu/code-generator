@@ -1,4 +1,5 @@
 using @project.name.Entity;
+using System.Collections.Generic;
 namespace @project.name.Model
 {
     /// <summary>
@@ -6,14 +7,14 @@ namespace @project.name.Model
     /// </summary>
 	public class @table.nameListModel
     {
-       private List<@table.name> _list=new List<@table.name>();
+       private List<M@table.name> _list=new List<M@table.name>();
        private int _pageSize;
        private int _pageIndex;
        private int _totalCount;
         /// <summary>
        /// 记录列表
        /// </summary>
-       public List<@table.name> List
+       public List<M@table.name> List
        {
            get { return _list; }
            set { _list = value; }

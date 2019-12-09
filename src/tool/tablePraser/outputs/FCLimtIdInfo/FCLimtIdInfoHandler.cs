@@ -31,7 +31,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public FCLimtIdInfo GetData(string id)
+        public MFCLimtIdInfo GetData(string id)
         {
             return dbAccess.GetData(id);
         }
@@ -52,7 +52,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>   
-        public FCLimtIdInfo GetSingleData(FCLimtIdInfo query, string orderBy = "",
+        public MFCLimtIdInfo GetSingleData(MFCLimtIdInfo query, string orderBy = "",
             MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
@@ -63,7 +63,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        public List<FCLimtIdInfo> GetDataList(string orderBy = "")
+        public List<MFCLimtIdInfo> GetDataList(string orderBy = "")
         {
             return dbAccess.GetDataList(dbAccess.EmptyEntity, orderBy);
         }
@@ -75,7 +75,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public List<FCLimtIdInfo> GetDataList(FCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public List<MFCLimtIdInfo> GetDataList(MFCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataList(query, orderBy, mmode, cmode);
@@ -88,7 +88,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public DataSet GetDataSet(FCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        public DataSet GetDataSet(MFCLimtIdInfo query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetDataSet(query, orderBy, mmode, cmode);
@@ -104,7 +104,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public List<FCLimtIdInfo> GetPagerDataList(FCLimtIdInfo query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public List<MFCLimtIdInfo> GetPagerDataList(MFCLimtIdInfo query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -121,7 +121,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       public DataSet GetPagerDataSet(FCLimtIdInfo query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+       public DataSet GetPagerDataSet(MFCLimtIdInfo query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             totalCount = dbAccess.GetCount(query, mmode, cmode);
@@ -134,7 +134,7 @@ namespace QXFC.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(string id, FCLimtIdInfo vo)
+        public IResult Save(string id, MFCLimtIdInfo vo)
         {
             bool status=false;
             IResult result = new Result(status);
@@ -154,7 +154,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public IResult Save(FCLimtIdInfo vo)
+        public IResult Save(MFCLimtIdInfo vo)
         {
             IResult result = new Result(false);
             bool status=dbAccess.Save(vo)>0;
@@ -170,7 +170,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool CreateNew(FCLimtIdInfo vo)
+        public bool CreateNew(MFCLimtIdInfo vo)
         {
             return dbAccess.CreateNew(vo);
         }
@@ -179,7 +179,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        public bool Update(FCLimtIdInfo vo)
+        public bool Update(MFCLimtIdInfo vo)
         {
             return dbAccess.Update(vo);
         }
@@ -190,7 +190,7 @@ namespace QXFC.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        public int GetCount(FCLimtIdInfo query, MatchMode mmode = MatchMode.Exact,
+        public int GetCount(MFCLimtIdInfo query, MatchMode mmode = MatchMode.Exact,
               ConnectMode cmode = ConnectMode.And)
         {
             return dbAccess.GetCount(query, mmode, cmode);
@@ -201,7 +201,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public object GetScalarByXmlTemplate(string xmlTemplateName, FCLimtIdInfo vo)
+        public object GetScalarByXmlTemplate(string xmlTemplateName, MFCLimtIdInfo vo)
         {
             return dbAccess.GetScalarByTemplate(xmlTemplateName, vo);
         }
@@ -211,7 +211,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public List<FCLimtIdInfo> GetDataListByTemplate(string xmlTemplateName, FCLimtIdInfo vo)
+        public List<MFCLimtIdInfo> GetDataListByTemplate(string xmlTemplateName, MFCLimtIdInfo vo)
         {
             return dbAccess.GetDataListByTemplate(xmlTemplateName, vo);
         }
@@ -221,7 +221,7 @@ namespace QXFC.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        public DataSet GetDataSetByTemplate(string xmlTemplateName, FCLimtIdInfo vo)
+        public DataSet GetDataSetByTemplate(string xmlTemplateName, MFCLimtIdInfo vo)
         {
             return dbAccess.GetDataSetByTemplate(xmlTemplateName, vo);
         }
@@ -230,7 +230,7 @@ namespace QXFC.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public FCLimtIdInfo GetSingleDataByTemplate(string xmlTemplateName, FCLimtIdInfo vo)
+        public MFCLimtIdInfo GetSingleDataByTemplate(string xmlTemplateName, MFCLimtIdInfo vo)
         {
             return dbAccess.GetSingleDataByTemplate(xmlTemplateName, vo);
         }

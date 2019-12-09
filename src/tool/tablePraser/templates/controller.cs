@@ -67,11 +67,11 @@ namespace @project.name.UserWeb.Controllers
         {
             try
             {
-                @table.name entity = new @table.name();
+                M@table.name entity = new M@table.name();
                 entity.SetData(Request.Form);
                 entity.TrimEmptyProperty();
                 string id = Request.Form["__id"];
-@s.item.1 
+                IResult result = FCDownchannelService.Instance.Save(id, entity);
                 if (result.Status)
                 {
                     result.SetSuccessMessage("保存成功");
@@ -115,6 +115,5 @@ namespace @project.name.UserWeb.Controllers
                 return new Result(false, e.Message).ToString();
             }
         }
-@additionals
     }
 }

@@ -6,11 +6,11 @@ namespace QXFC.Model
     /// </summary>
 	public class FCLimtIdInfoItemModel
     {
-        private FCLimtIdInfo _currentModel=new FCLimtIdInfo();
+        private MFCLimtIdInfo _currentModel=new MFCLimtIdInfo();
         /// <summary>
         /// 当前实体元素
         /// </summary>
-        public FCLimtIdInfo CurrentModel
+        public MFCLimtIdInfo CurrentModel
         {
             get { return _currentModel; }
             set { _currentModel = value; }

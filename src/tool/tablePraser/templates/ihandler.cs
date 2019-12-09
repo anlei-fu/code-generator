@@ -15,7 +15,7 @@ namespace @project.name.Interfaces.Logic
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-       @table.name GetData(string id);
+        M@table.name GetData(string id);
         /// <summary>
         /// 删除数据
         /// </summary>
@@ -30,14 +30,14 @@ namespace @project.name.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-       @table.name GetSingleData(@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        M@table.name GetSingleData(M@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 获取所有数据
         /// </summary>
         /// <param name="orderBy">排序字段</param>
         /// <returns></returns>
-        List<@table.name> GetDataList(string orderBy = "");
+        List<M@table.name> GetDataList(string orderBy = "");
         /// <summary>
         /// 获取指定条件的数据列表
         /// </summary>
@@ -46,7 +46,7 @@ namespace @project.name.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        List<@table.name> GetDataList(@table.name query,string orderBy="",MatchMode mmode=MatchMode.Exact,
+        List<M@table.name> GetDataList(M@table.name query,string orderBy="",MatchMode mmode=MatchMode.Exact,
             ConnectMode cmode=ConnectMode.And);
         /// <summary>
         /// 获取指定条件的数据集
@@ -56,7 +56,7 @@ namespace @project.name.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        DataSet GetDataSet(@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        DataSet GetDataSet(M@table.name query, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 获取分页数据列表
@@ -69,7 +69,7 @@ namespace @project.name.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        List<@table.name> GetPagerDataList(@table.name query,int pageSize,int pageIndex,out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        List<M@table.name> GetPagerDataList(M@table.name query,int pageSize,int pageIndex,out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 获取分页数据集
@@ -82,7 +82,7 @@ namespace @project.name.Interfaces.Logic
         /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        DataSet GetPagerDataSet(@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
+        DataSet GetPagerDataSet(M@table.name query, int pageSize, int pageIndex, out int totalCount, string orderBy = "", MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 添加或修改数据,id为空时为添加，否则为修改
@@ -90,25 +90,25 @@ namespace @project.name.Interfaces.Logic
         /// <param name="id">主键值</param>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        IResult Save(string id,@table.name vo);
+        IResult Save(string id,M@table.name vo);
         /// <summary>
         /// 添加或修改数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        IResult Save(@table.name vo);
+        IResult Save(M@table.name vo);
         /// <summary>
         /// 添加新数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        bool CreateNew(@table.name vo);
+        bool CreateNew(M@table.name vo);
         /// <summary>
         /// 根据主键值修改实体数据
         /// </summary>
         /// <param name="vo">实体数据</param>
         /// <returns></returns>
-        bool Update(@table.name vo);
+        bool Update(M@table.name vo);
         /// <summary>
         /// 获取指定条件的记录总数
         /// </summary>
@@ -116,7 +116,7 @@ namespace @project.name.Interfaces.Logic
          /// <param name="mmode">字符串匹配模式 Exact：精确匹配 Vague：模糊匹配</param>
         /// <param name="cmode">条件连接字符串 And 或 OR</param>
         /// <returns></returns>
-        int GetCount(@table.name query, MatchMode mmode = MatchMode.Exact,
+        int GetCount(M@table.name query, MatchMode mmode = MatchMode.Exact,
             ConnectMode cmode = ConnectMode.And);
         /// <summary>
         /// 根据模板名称获取第一行一列的值
@@ -124,27 +124,26 @@ namespace @project.name.Interfaces.Logic
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        object GetScalarByXmlTemplate(string xmlTemplateName,@table.name vo);
+        object GetScalarByXmlTemplate(string xmlTemplateName,M@table.name vo);
         /// <summary>
         /// 根据模板获取实体信息
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        List<@table.name> GetDataListByTemplate(string xmlTemplateName,@table.name vo);
+        List<M@table.name> GetDataListByTemplate(string xmlTemplateName,M@table.name vo);
         /// <summary>
         /// 根据模版获取DataSet
         /// </summary>
         /// <param name="xmlTemplateName">模板名称</param>
         /// <param name="vo">实体</param>
         /// <returns></returns>
-        DataSet GetDataSetByTemplate(string xmlTemplateName,@table.name vo);
+        DataSet GetDataSetByTemplate(string xmlTemplateName,M@table.name vo);
         /// <summary>
         /// 查询单实体信息(单实体数据)
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-       @table.name GetSingleDataByTemplate(string xmlTemplateName,@table.name vo);
-@additionals
+       M@table.name GetSingleDataByTemplate(string xmlTemplateName,M@table.name vo);
     }
 }

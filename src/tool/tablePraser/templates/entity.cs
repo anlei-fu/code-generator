@@ -10,7 +10,7 @@ namespace QXFC.Entity
     ///
     ///</summary>
     [ODXmlConfig(EntityConfigType.Xml, "", "~/config/econfig/@table.name.xml")]
-    public class @table.name : EntityBase
+    public class M@table.name : EntityBase
     {
 @field
 @property

@@ -7,7 +7,7 @@
         [HttpPost]
         public string Item()
         {
-            @table.name entity = new @table.name();
+            M@table.name entity = new M@table.name();
             entity.SetData(Request.Form);
             entity.TrimEmptyProperty();
             string id = Request.Form["__id"];

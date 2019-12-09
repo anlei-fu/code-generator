@@ -6,14 +6,14 @@ namespace QXFC.Model
     /// </summary>
 	public class FCLimtIdInfoListModel
     {
-       private List<FCLimtIdInfo> _list=new List<FCLimtIdInfo>();
+       private List<MFCLimtIdInfo> _list=new List<MFCLimtIdInfo>();
        private int _pageSize;
        private int _pageIndex;
        private int _totalCount;
         /// <summary>
        /// 记录列表
        /// </summary>
-       public List<FCLimtIdInfo> List
+       public List<MFCLimtIdInfo> List
        {
            get { return _list; }
            set { _list = value; }

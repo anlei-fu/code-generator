@@ -64,7 +64,7 @@ namespace QXFC.UserService
        /// 获取数据列表
        /// </summary>
        /// <returns></returns>
-       public List<FCLimtIdInfo> GetDataList()
+       public List<MFCLimtIdInfo> GetDataList()
        {
            return handler.GetDataList(ORDER_BY);
        }
@@ -73,10 +73,10 @@ namespace QXFC.UserService
        /// </summary>
        /// <param name="json">json数据</param>
        /// <returns></returns>
-       public List<FCLimtIdInfo> GetDataList(string json)
+       public List<MFCLimtIdInfo> GetDataList(string json)
        {
-           FCLimtIdInfo data =
-               JsonData.JavaScriptDeserialize<FCLimtIdInfo>(json);
+           MFCLimtIdInfo data =
+               JsonData.JavaScriptDeserialize<MFCLimtIdInfo>(json);
            return handler.GetDataList(data, ORDER_BY, Lib4Net.DB.MatchMode.Exact);
        }
         /// <summary>
@@ -87,7 +87,7 @@ namespace QXFC.UserService
        public FCLimtIdInfoListModel Query(NameValueCollection nvc)
        {
            FCLimtIdInfoListModel model = new FCLimtIdInfoListModel();
-           FCLimtIdInfo entity = new FCLimtIdInfo();
+           MFCLimtIdInfo entity = new MFCLimtIdInfo();
            model.PageSize = CommFun.ToInt(nvc["ps"],
                SettingHelper.Instance.GetInt("PageSize", 10)).Value;
            model.PageIndex= CommFun.ToInt(nvc["pi"],
@@ -108,7 +108,7 @@ namespace QXFC.UserService
        /// <param name="id">主键编号</param>
        /// <param name="entity">实体数据</param>
        /// <returns></returns>
-       public IResult Save(string id,FCLimtIdInfo entity)
+       public IResult Save(string id,MFCLimtIdInfo entity)
        {
            return handler.Save(id,entity);
        }
@@ -121,6 +121,5 @@ namespace QXFC.UserService
        {
            return new Result(handler.Delete(id));
        }
-@additionals
     }
 }
