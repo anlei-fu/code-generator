@@ -16,6 +16,7 @@ class ModelGenerator {
                 DIR.create(`./output/${this.project}/main`);
                 DIR.create(`./output/${this.project}/main/java`);
                 DIR.create(`./output/${this.project}/main/java/com`);
+
                 let root = `./output/${this.project}/main/java/com/${this.project}`;
                 DIR.create(root);
                 DIR.create(`${root}/service`);
@@ -49,9 +50,10 @@ class ModelGenerator {
                                 let item ="    "+FILE.read("./templates/daoItem.java");
                                 let annotation = "";
                                 annotation = `    @ApiModelProperty("${column.description}")\r\n`;
-                                if (!column.nullable) {
+
+                                if (!column.nullable) 
                                         annotation += "    @NotNull\r\n"
-                                }
+
                                 item = annotation + item;
                                 items += item.replace("@type", getJavaType(column.type))
                                         .replace("@name", column.name);
@@ -92,9 +94,11 @@ class ModelGenerator {
                                 this.doReplace(`./templates/${template}`, STR.upperFirstLetter(table.name),table.description));
                 });
         }
+        
         doReplace(file, name,description) {
                 return this.finalReplace(FILE.read(file), name,description);
         }
+
         finalReplace(input, name,description="") {
                 return input.replace(/@name/g, name)
                         .replace(/@project/g, this.project)

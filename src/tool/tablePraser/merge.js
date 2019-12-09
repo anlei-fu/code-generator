@@ -45,6 +45,7 @@ const ENTITY_PROJECT = `${BASE_PATH}/${COMMON_LAYER}/${PROJECT}.${ENTITY}/${PROJ
 const DBACCESS = "DbAccess";
 const DBACCESS_FOLEDER = `${BASE_PATH}/${DATA_LAYER}/${PROJECT}.${DBACCESS}`;
 const DBACCESS_PROJECT = `${BASE_PATH}/${DBACCESS_FOLEDER}/${PROJECT}.${DBACCESS}.csproj`;
+
 //idbacess
 const IDBACCESS_FOLEDER = `${BASE_PATH}/${COMMON_LAYER}/${PROJECT}.Interfaces/DataAccess`;
 const IDBACCESS_PROJECT = `${BASE_PATH}/${COMMON_LAYER}/${PROJECT}.Interfaces/${PROJECT}.Interfaces.csproj`;
@@ -61,7 +62,6 @@ const SERVICE_PROJECT = `${BASE_PATH}/${SERVICE_FOLEDER}/${PROJECT}.UserService.
 const CONTROLLER_FOLEDER = `${BASE_PATH}/${USER_LAYER}/${PROJECT}.UserWeb/Controllers`;
 const CONTROLLER_PROJECT = `${BASE_PATH}/${USER_LAYER}/${PROJECT}.UserWeb/${PROJECT}.UserWeb.csproj;`
 
-
 //view
 const VIEW_FOLEDER = `${BASE_PATH}/${USER_LAYER}/${PROJECT}.UserWeb/Views`;
 
@@ -75,8 +75,6 @@ const URL_MAPPING_FILE = `${BASE_PATH}/${CONFIG_FOLDER}/UrlMappingConfig.xml`;
 //list model
 const SERVICE_MOMDEL_FOLEDER = `${BASE_PATH}/${SERVICE_LAYER}/${PROJECT}.Model`;
 const SERVICE_MOMDEL_PROJECT = `${BASE_PATH}/${SERVICE_MOMDEL_FOLEDER}/${PROJECT}.Model.csproj`;
-
-
 
 /**
  * Merge all files
@@ -136,8 +134,7 @@ async function mergeView() {
         let prj = await XML.toJson(FILE.read(CONTROLLER_PROJECT))
         DIR.getFiles(OUT_VIEW_FOLDER).forEach(x => {
                 prj.ItemGroup[3].Content.push({ $: { Include: `views\\${ENTITY}\\${x}` } });
-        }
-        );
+        });
         FILE.write(project, XML.toXml(CONTROLLER_PROJECT));
 }
 

@@ -16,11 +16,11 @@ const { CharSequenceReader } = require("./../../tool/tokenization/char-sequence-
  */
 function parse(text) {
 
-        let reader = new CharSequenceReader(text),
-                template = new SqlTemplate(),
-                buffer = "",
-                isParsingVarible = false,
-                replaceDirect = false;
+        let reader = new CharSequenceReader(text)
+                , template = new SqlTemplate()
+                , buffer = ""
+                , isParsingVarible = false
+                , replaceDirect = false;
 
         /**
          * @description Check is varible start and which kind of varible 
@@ -35,6 +35,7 @@ function parse(text) {
                         if (reader.previous() != "\\" && reader.hasNext() && reader.next() == "{") {
                                 if (buffer.length != 0)
                                         template.segments.push(new SqlSegment(buffer, false));
+
                                 buffer = "";
                                 isParsingVarible = true;
                                 replaceDirect = repd;
@@ -81,7 +82,6 @@ function parse(text) {
                                 } else {
                                         buffer += c;
                                 }
-                                
                                 break;
                         default:
                                 buffer += c;

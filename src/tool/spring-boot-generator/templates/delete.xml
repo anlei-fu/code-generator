@@ -1,6 +1,4 @@
 <delete id="@id">
         delete from @tableName
-       <where>
-               @conditions
-        </where>
+@where
 </delete>

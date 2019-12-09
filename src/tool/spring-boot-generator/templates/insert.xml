@@ -1,10 +1,6 @@
 <insert id="@id" parameterType="com.@project.pojo.dao.@nameDao">
-        insert  into @tableName
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-              @columns
-        </trim>
-         values
-         <trim prefix="(" suffix=")" suffixOverrides=",">
-              @properties
-          </trim>
+      insert  into @tableName
+@columns
+      values
+@properties
 </insert>

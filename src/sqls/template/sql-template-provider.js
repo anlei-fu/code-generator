@@ -17,7 +17,7 @@ exports.SqlTemplateProvider = class SqlTemplateProvider {
                 this._map = new Map();
                 this._loadedFiles = new Set();
         }
-        
+
         get(name) {
                 return this._map.get(name);
         }
@@ -65,7 +65,7 @@ function load(file, loadedFiles, templates) {
 
         XML_DOM.selectDirect(mapper[0],
                 x => x.tagName == "sql" || x.tagName == "update" || x.tagName == "insert"
-                        || x.tagName == "delete" ||x.tagName == "select").forEach(y => {
+                        || x.tagName == "delete" || x.tagName == "select").forEach(y => {
                                 resolveSqlNode(y, templates, namespace, file);
                         });
 
@@ -89,7 +89,7 @@ function resolveSqlNode(node, templates, namespace, file) {
         if (templates.has(`${namespace}.${id}`))
                 throw new Error(`sql ${namespace}.${id} already exists in templates in file :${file}`)
 
-        let sqlNode = new SqlNode(`${namespace}.${id}`,node.tagName);
+        let sqlNode = new SqlNode(`${namespace}.${id}`, node.tagName);
         resolveCore(node, templates, file, sqlNode);
         templates.set(`${namespace}.${id}`, sqlNode);
 
@@ -188,10 +188,8 @@ function resolveCore(node, templates, file, sqlNode) {
  */
 function resolveTemplate(node, templates, file) {
         let templateNode = new TemplateNode();
-
-        if (node.nodeValue) {
+        if (node.nodeValue)
                 templateNode.template = parse(node.nodeValue);
-        }
 
         return templateNode;
 }

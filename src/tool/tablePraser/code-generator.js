@@ -155,7 +155,7 @@ class Generator {
         fileds += `isPk="ture" `;
 
       if (x.autoIncrement) {
-        fileds += "buildType=\"0\" ";
+        fileds += "buildType=\"0\"";
         fileds += `valueSql="SELECT ${x.sequence}.NEXTVAL FROM DUAL" `;
       }
 

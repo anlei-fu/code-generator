@@ -13,6 +13,6 @@
 - _parameter
 - {order}
 
-#数据库字段开启驼峰命名转换
+- 数据库字段开启驼峰命名转换
 mybatis.configuration.map-underscore-to-camel-case=true
 
