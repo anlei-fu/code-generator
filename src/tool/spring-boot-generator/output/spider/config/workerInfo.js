@@ -1,5 +1,17 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-09 09:22:22
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-12-10 09:48:12
+ */
 const { workerInfo } = require("./../db/main")
-
+const {builder}=require("./../../../builder")
+const {columnBuilder}=require("./../../../columnBuilder")
+const {joinBuilder}=require("./../../../joinBuilder")
+const {fieldBuilder: FieldBuilder}=require("./../../../fieldBuilder")
+const {reqBuilder}=require("./../../../reqBuilder")
 
 exports.workerInfoConfig = {
         name: "workerInfo",
@@ -7,17 +19,16 @@ exports.workerInfoConfig = {
 
                 // insert
                 builder(workerInfo, "insert", "add")
-                        .includes(
-                                columnsBuilder(workerInfo.columnsArray)
-                                        .exclude(["id"])
-                                        .build()
-                        )
-                        .build(),
+                        .includes( columns=>{
+                                columns.includes
+                        }
+                               
+                        ),
 
                 // deleteById
                 builder(workerInfo, "delete", "deleteById")
                         .conditions(conditions => {
-
+                            
                         })
                         .controller(controller => {
                                 controller.path("/workerInfo/{id}")
@@ -48,7 +59,7 @@ exports.workerInfoConfig = {
                 builder(workerInfo, "update", "updateById")
                         .conditions([{ name: "id", required: true }])
                         .includes(
-                                columnsBuilder(workerInfo.columnsArray)
+                                columnBuilder(workerInfo.columnsArray)
                                         .exclude(["id"])
                                         .build()
                         )

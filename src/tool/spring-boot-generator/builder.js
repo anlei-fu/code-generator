@@ -1,41 +1,84 @@
-exports.builder= function() {
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-09 09:22:22
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-12-10 11:51:46
+ */
+const { columnBuilder } = require("./columnBuilder");
+const { controllerBuilder } = require("./controllerBuilder");
+const { joinBuilder } = require("./joinBuilder")
 
-        function build() {
-            return this;
-        }
+exports.builder = function () {
+        this.includes = new columnBuilder();
+        this.conditions = new columnBuilder();
+        this.controller = new controllerBuilder();
+        this.joins = [];
 
-        function join(join) {
-                this.joins.push(join);
+        /**
+         * Add join
+         * 
+         * @param {(any) => void} configer 
+         * @returns {builder}
+         */
+        function join(configer) {
+                let builder = new joinBuilder();
+                configer(builder);
+                this.joins.push(builder);
                 return this;
         }
 
-        function includes(includes) {
-                this.includes=includes;
+        /**
+         * Config include
+         * 
+         * @param {(any) => void} configer 
+         * @returns {builder}
+         */
+        function includes(configer) {
+                configer(this.includes);
                 return this;
         }
 
-        function conditions(conditions) {
-                this.conditions=conditions;
+        /**
+         * Config condition
+         * 
+         * @param {(any) => void} configer 
+         * @returns {builder}
+         */
+        function conditions(configer) {
+                configer(this.conditions);
                 return this;
         }
 
-        function req(req) {
-                this.req=req;
-                return this;
-        }
-
+        /**
+         * Do not config controller
+         * 
+         * @returns {builder}
+         */
         function noController() {
-                this.noController=true;
+                this.noController = true;
                 return this;
         }
 
+        /**
+         * Config service
+         * 
+         * @returns {builder}
+         */
         function noService() {
-                this.noService=true;
-            return this;
+                this.noService = true;
+                return this;
         }
 
-        function controller(){
-                this.controller=controller;
+        /**
+         * Config contrpller
+         * 
+         * @param {controllerBuilder} configer 
+         * @returns {builder}
+         */
+        function controller(configer) {
+                configer(this.controller);
                 return this;
         }
 }

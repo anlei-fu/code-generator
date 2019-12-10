@@ -1,22 +1,36 @@
+const { columnBuilder } = require("./columnBuilder");
 exports.joinBuilder = function (table, type, joinCondition) {
-        this.table1 = table;
+        this.includes = new columnBuilder();
+        this.conditions = new columnBuilder();
+        this.table = table;
         this.type = type;
         this.joinCondition = joinCondition;
 
-        function build() {
+        /**
+         * Config includes
+         * 
+         * @param {any => void} configer 
+         */
+        function includes(configer) {
+                configer(this.includes);
                 return this;
         }
 
-        function includes(includes) {
-                this.includes = includes;
+        /**
+         * Config conditions
+         * 
+         * @param {any => void} configer 
+         * @returns {joinBuilder}
+         */
+        function conditions(configer) {
+                configer(this.conditions);
                 return this;
         }
 
-        function conditions(conditions) {
-                this.conditions = conditionsl;
-                return this;
-        }
-
+        /***
+         * Set alias
+         * @returns {joinBuilder}
+         */
         function alias(alias) {
                 this.alias = alias;
                 return this;

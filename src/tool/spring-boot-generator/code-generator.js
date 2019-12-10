@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-12-01 09:02:39
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-01 14:51:59
+ * @LastEditTime: 2019-12-10 16:44:09
  */
 const { FILE } = require("../../libs/file")
 const { STR } = require("../../libs/str")
@@ -222,7 +222,6 @@ exports.SqlGenerator = class SqlGenerator {
                         }
                         content = content.replace(pattern, columns);
                 }
-
                 return content;
         }
 

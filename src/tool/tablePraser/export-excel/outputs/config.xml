@@ -1,0 +1,14 @@
+<item name="exportExcel">
+        <sql>
+<![CDATA[
+              SELECT  t.*
+              FROM FC_PHONE_CHARGE t  
+              WHERE    
+                  1=1
+                  {&@t.Status}
+                  {&@t.Phone}
+
+                    
+        ]]>
+        </sql>
+</item>
