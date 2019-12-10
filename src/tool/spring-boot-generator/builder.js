@@ -81,4 +81,18 @@ exports.builder = function () {
                 configer(this.controller);
                 return this;
         }
+
+        function build() {
+                if (this.joins) {
+                        this.joins.forEach(join => {
+                                join.build();
+                        })
+                }
+
+                if (this.conditions)
+                        this.conditions.build();
+
+                if (this.includes)
+                        this.includes.build();
+        }
 }

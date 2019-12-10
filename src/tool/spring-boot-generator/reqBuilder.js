@@ -1,6 +1,6 @@
 const { fieldBuilder } = require("./fieldBuilder")
 exports.reqBuilder = function () {
-        this.items = [];
+        this.fields = [];
         this.exclude = [];
         this.novalidated = true;
 
@@ -21,7 +21,7 @@ exports.reqBuilder = function () {
         function field(configer) {
                 let builder = new fieldBuilder();
                 configer(builder);
-                this.items.push(builder);
+                this.fields.push(builder);
                 return this;
         }
 
@@ -59,6 +59,11 @@ exports.reqBuilder = function () {
          */
         function page() {
                 this.extendPage = true;
+                return this;
+        }
+
+        function from(from) {
+                this.from = from;
                 return this;
         }
 }

@@ -35,4 +35,11 @@ exports.joinBuilder = function (table, type, joinCondition) {
                 this.alias = alias;
                 return this;
         }
+
+        function build(){
+                this.includes.build();
+                this.conditions.build();
+        }
+
+        
 }

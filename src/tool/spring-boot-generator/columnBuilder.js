@@ -6,9 +6,9 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-12-10 11:21:46
  */
-const { TYPE } = require("./../../libs/utils")
-exports.columnBuilder = (items) => {
-        this.items = items;
+const { TYPE,OBJECT } = require("./../../libs/utils")
+exports.columnBuilder = () => {
+        this.items = {};
 
         /**
          * Add items
@@ -66,6 +66,11 @@ exports.columnBuilder = (items) => {
                 return this;
         }
 
+        function build() {
+                this.includes = OBJECT.toArray(this.includes);
+        }
+
+
         /**
          * Dispatch func , accetp item {string|[string]} and 
          * a consumer<string> func
@@ -92,7 +97,7 @@ exports.columnBuilder = (items) => {
          * @param {String|[String]} item  
          */
         function _aliasCore(alias, item) {
-
+                _setProperty(item, "alias", alias);
         }
 
         /**
@@ -102,17 +107,43 @@ exports.columnBuilder = (items) => {
          * @param {String} item  
          */
         function _includeCore(item) {
+                _checkType(item);
 
+                if (TYPE.isString(item)) {
+                        if (this.includes[item])
+                                return;
+                        this.include[item] = { name: item };
+                } else {
+                        if (!item.name)
+                                throw new TypeError(`unexcepted type ${item}`);
+
+                        if (this.includes[item.name])
+                                return;
+
+                        this.includes[item.name] = item;
+                }
         }
 
         /**
          * Remove item from items
          * 
          * @private
-         * @param {String|[String]} item 
+         * @param {String|object} item 
          */
         function _excludeCore(item) {
+                _checkType(item);
 
+                if (TYPE.isString(item)) {
+                        if (!this.includes[item])
+                                return;
+                        delete this.include[item];
+                } else {
+
+                        if (!this.includes[item.name])
+                                return;
+
+                        delete this.includes[item.name];
+                }
         }
 
         /**
@@ -122,7 +153,7 @@ exports.columnBuilder = (items) => {
          * @param {String|[String]} item  
          */
         function _requireCore(item) {
-
+                _setProperty(item, "required", true);
         }
 
         /**
@@ -130,6 +161,19 @@ exports.columnBuilder = (items) => {
          * @param {String|[String]} item 
          */
         function _unrequireCore(item) {
+                _setProperty(item, "required", false)
 
+        }
+
+        function _setProperty(item, key, value) {
+                if (!TYPE.isObject(item))
+                        item = { name: item, key: value };
+
+                item[key] = value
+        }
+
+        function _checkType(obj) {
+                if (!TYPE.isString(item) || !TYPE.isObject(item))
+                        throw new TypeError(`unexcepted type ${item}`);
         }
 }
