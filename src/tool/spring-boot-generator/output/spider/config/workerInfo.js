@@ -22,9 +22,6 @@ exports.workerInfoConfig = {
                         .req(reqBuilder=>{
                                 reqBuilder.from("@PathVariable");
                         })
-                        .resp(respBuilder=>{
-                                respBuilder.type("boolean");
-                        })
                         .build(),
 
                 // deleteById
@@ -34,9 +31,6 @@ exports.workerInfoConfig = {
                         })
                         .req(reqBuilder=>{
                                 reqBuilder.from("@PathVariable");
-                        })
-                        .resp(respBuilder=>{
-                                respBuilder.type("boolean");
                         })
                         .build(),
 
@@ -52,9 +46,6 @@ exports.workerInfoConfig = {
                         .req(reqBuilder=>{
                                 reqBuilder.from("@PathVariable");
                         })
-                        .resp(respBuilder=>{
-                                respBuilder.type("boolean");
-                        })
                         .build(),
 
                 // findById
@@ -69,8 +60,7 @@ exports.workerInfoConfig = {
                                 reqBuilder.from("@PathVariable");
                         })
                         .resp(respBuilder => {
-                                respBuilder.name("@Name")
-                                        .type("single");
+                                respBuilder.type("single");
                         })
                         .build(),
         ]

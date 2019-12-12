@@ -1,5 +1,0 @@
-
-exports.generateController=(config)=>{
-
-}
-

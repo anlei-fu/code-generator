@@ -14,6 +14,9 @@ const ident1 = "  ";
 const ident2 = "    ";
 const ident3 = "      ";
 const ident4 = "        "
+const returnTypeList = "List<@type>";
+const returnTypePageInfo = "PageInfo<@type>";
+const returnTypeController = "R<@type>";
 
 exports.SqlGenerator = class SqlGenerator {
 
@@ -53,6 +56,12 @@ exports.SqlGenerator = class SqlGenerator {
          */
         constructor(config) {
                 this.config = config;
+                this.mapper;
+                this.mapperConfig;
+                this.service;
+                this.serviceImpl;
+                this.controller;
+
         }
 
         /**
@@ -62,15 +71,218 @@ exports.SqlGenerator = class SqlGenerator {
          * @returns {String}
          */
         render() {
+                let item = "";
                 if (this.config.type == "insert") {
-                        return this._renderInsert();
+                        item = this._renderInsert();
                 } else if (this.config.type == "update") {
-                        return this._renderUpdate();
+                        item = this._renderUpdate();
                 } else if (this.config.type == "delete") {
-                        return this._renderDelete();
+                        item = this._renderDelete();
                 } else {
-                        return this._renderSelect();
+                        item = this._renderSelect();
                 }
+
+                this.mapperConfig.push(item);
+        }
+
+       writeParam(reqs) {
+                if (reqs.length!=1) {
+
+                }
+        }
+
+        writeReq() {
+                this.config.reqs.forEach(x => {
+                        if (x.doCreate) {
+                                if (!x.name)
+                                        x.name = config.id + "Req";
+
+                                let items = config.type == "insert" ? this._getIncludes() : this._getConditions();
+
+                                if (x.excludes) 
+                                        items.filter(item => !x.excludes.has(item.name));
+
+                                if (x.fields) {
+                                        x.fields.concat(items);
+                                } else {
+                                        x.fields = items;
+                                }
+
+                                x.folder = this.config.reqFolder;
+
+                                this.writeReq(x);
+                        }
+                });
+
+        }
+
+        writeResp(config) {
+                if (config.type == "select") {
+                       if(config.resp.doCreate){
+                               if(!config.resp.name)
+                                  config.resp.name="";
+                                
+                                let includes=this._getIncludes();
+                       }
+                }
+
+        }
+
+        renderController(config) {
+                let name = config.id;
+                let path = config.controller.path;
+                let returnType = "";
+                let content = "";
+                let params = "";
+                let mapping = "";
+                let serviceParams;
+                if (config.controller) {
+                        config.reqs.forEach(x => {
+
+                        });
+
+                        if (config.type == "select") {
+                                mapping = "GetMapping";
+
+                        } else if (config.type == "update") {
+                                mapping = "PutMapping";
+
+                        } else if (config.type == "delete") {
+                                mapping = "DeleteMapping";
+                        } else {
+                                mapping = "PostMapping";
+                        }
+
+                        if (config.params) {
+                                let paramsParams = "";
+                                config.reqs.forEach(x => {
+
+                                });
+                        } else {
+                                config.reqs.forEach(x => {
+
+                                });
+                        }
+
+                        if (config.type == "select") {
+                                if (config.resp.doCreate) {
+
+
+                                } else {
+
+                                }
+                        } else {
+
+                        }
+                }
+        }
+
+        renderService(config) {
+                if (config.service) {
+                        this.service.push(this.renderMapperItem(config, true));
+                }
+        }
+
+        renderServiceImpl(config) {
+                let params = "";
+                let content = "";
+                let suffix = "";
+                let returnType = "";
+                let mapperParams = "";
+                if (config.service) {
+                        if (config.param) {
+                                params = config.param.name + " param";
+                                mapperParams = "param";
+                                if (config.param.defaultValues) {
+                                        config.param.defaultValues.forEach(x => {
+                                                content += `param.set${x.name}(${x.value});\r\n`;
+                                        });
+                                }
+                        } else {
+                                config.reqs.forEach(x => {
+                                        params += `${x.type} ${x.name}, `;
+                                        mapperParams += `${x.name}, `;
+                                })
+
+                                params = params.trimRight();
+                                params = params.substr(0, params.length - 1);
+                                mapperParams = params.trimRight();
+                                mapperParams = params.substr(0, mapperParams.length - 1);
+                        }
+                        if (config.type == "select") {
+                                if (config.resp.type != "single") {
+                                        returnType = config.resp.doCreate
+                                                ? returnTypePageInfo.replace("@type", config.resp.name)
+                                                : returnTypePageInfo.replace("@type", config.table.name);
+                                } else {
+                                        returnType = config.resp.doCreate
+                                                ? config.resp.name
+                                                : config.table.name;
+                                }
+                                suffix = "";
+
+                        } else {
+                                suffix = " > 0";
+                                returnType = "boolean";
+                        }
+                }
+
+                this.serviceImpl.push(FILE.read("./template/serviceImpl-item.java")
+                        .replace("@return", returnType)
+                        .replace("@content", content)
+                        .replace("@params", params)
+                        .replace("@mapperParams", mapperParams)
+                        .replace("@suffix", suffix));
+        }
+
+
+
+        renderMapperItem(config, service) {
+
+                let returnType = "";
+                if (config.type != "select") {
+                        returnType = "int";
+                } else {
+                        let resp = config.resp ? config.resp.name : config.table.name;
+                        returnType = service
+                                ? returnTypePageInfo.replace("@type", resp)
+                                : returnTypeList.replace("@type", resp);
+                }
+
+                let params = "";
+                if (config.param) {
+                        params = config.param.name + " param";
+                } else {
+                        config.reqs.forEach(x => {
+                                params += service
+                                        ? `${x.type} ("${x.name}") ${x.name}, `
+                                        : `${x.type} @Params("${x.name}") ${x.name}, `;
+                        });
+                        params = params.trimRight();
+                        params = params.substr(0, params.length - 1);
+                }
+
+
+                return `@return @name(@params);\r\n`.replace("@name", config.name)
+                        .replace("@return", returnType)
+                        .replace("@params", params);
+        }
+        renderMapper(config) {
+                this.mapper.push(this.renderMapperItem(config, false));
+        }
+
+        writeController(){
+
+        }
+
+        writeMapper(){
+
+        }
+        writeService(){
+
+        }
+        writeServiceImpl(){
+                
         }
 
         /**
