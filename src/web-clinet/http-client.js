@@ -4,10 +4,10 @@
  * @Author: fuanlei
  * @Date: 2019-11-11 09:26:39
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-27 20:08:05
+ * @LastEditTime: 2019-12-12 11:47:16
  */
 const axios = require('axios');
-const { config } = require("./test-config");
+const { config } = require("./admin-test-config");
 const { TestRecord } = require("./test-record");
 const { OBJECT } = require("./../libs/utils");
 const { FILE } = require("./../libs/file");

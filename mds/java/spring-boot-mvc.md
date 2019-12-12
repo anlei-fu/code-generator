@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-10-25 11:23:02
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-11 16:46:17
+ * @LastEditTime: 2019-12-12 15:06:48
  -->
 ### Main Class
 ----
@@ -267,5 +267,19 @@ filter->interceptor->controller-advise->aspct
 //允许的请求头字段
 'Access-Control-Allow-Headers:x-requested-with,content-type'
 ```
+
+### @Inherited
+------
+类继承关系中@Inherited的作用
+
+类继承关系中，子类会继承父类使用的注解中被@Inherited修饰的注解
+
+接口继承关系中@Inherited的作用
+
+接口继承关系中，子接口不会继承父接口中的任何注解，不管父接口中使用的注解有没有被@Inherited修饰
+
+类实现接口关系中@Inherited的作用
+
+类实现接口时不会继承任何接口中定义的注解
 
 
