@@ -1,0 +1,14 @@
+{
+        "code": 100,
+        "message": "操作成功",
+        "data": {
+                "userId": 79,
+                "realName": "郭巍",
+                "idCardNo": "510812199304110030",
+                "idCardPicFront": null,
+                "idCardPicBack": null,
+                "idCardPicHand": null,
+                "verifyStartTime": "2019-12-04T11:27:17.000+0000",
+                "verifyEndTime": "2019-12-04T11:27:17.000+0000"
+        }
+}

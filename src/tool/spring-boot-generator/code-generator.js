@@ -4,11 +4,12 @@
  * @Author: fuanlei
  * @Date: 2019-12-01 09:02:39
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-10 16:44:09
+ * @LastEditTime: 2019-12-13 09:42:51
  */
 const { FILE } = require("../../libs/file")
 const { STR } = require("../../libs/str")
 const { NamingStrategy } = require("../../libs/naming-strategy")
+const {isSimpleJavaType}=require("./utils")
 
 const ident1 = "  ";
 const ident2 = "    ";
@@ -87,7 +88,7 @@ exports.SqlGenerator = class SqlGenerator {
 
        writeParam(reqs) {
                 if (reqs.length!=1) {
-
+                      
                 }
         }
 
@@ -138,7 +139,13 @@ exports.SqlGenerator = class SqlGenerator {
                 let serviceParams;
                 if (config.controller) {
                         config.reqs.forEach(x => {
-
+                              if(isSimpleJavaType(x.type)){
+                                  params+=`${x.from} ${xx.type} ${x.name}, `;
+                              }else{
+                                 params+=`${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `;
+                              }
+                              params = params.trimRight();
+                              params = params.substr(0, params.length - 1);
                         });
 
                         if (config.type == "select") {
@@ -156,23 +163,38 @@ exports.SqlGenerator = class SqlGenerator {
                         if (config.params) {
                                 let paramsParams = "";
                                 config.reqs.forEach(x => {
-
+                                    paramsParams+=`${x.name}, `;
                                 });
+                                paramsParams = paramsParams.trimRight();
+                                paramsParams = paramsParams.substr(0, paramsParams.length - 1);
+                                serviceParams="param";
+                                content="";
                         } else {
+                                content="";
                                 config.reqs.forEach(x => {
-
+                                        serviceParams+=`${x.name}, `;
                                 });
+                                serviceParams = serviceParams.trimRight();
+                                serviceParams = serviceParams.substr(0, serviceParams.length - 1);
                         }
 
                         if (config.type == "select") {
                                 if (config.resp.doCreate) {
-
+                                     if(!config.resp.single){
+                                        returnType=returnTypeController.replace("@type",`PageInfo<${config.resp.name}>`);
+                                     }else{
+                                        returnType=returnTypeController.replace("@type",config.table.name);
+                                     }
 
                                 } else {
-
+                                    if(!config.resp.single){
+                                        returnType=returnTypeController.replace("@type",`PageInfo<${config.table.name}>`);
+                                    }else{
+                                        returnType=returnTypeController.replace("@type",config.table.name);
+                                    }
                                 }
                         } else {
-
+                            returnType="R";
                         }
                 }
         }

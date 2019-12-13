@@ -1,0 +1,32 @@
+    <select id="getContract" parameterType="com.qxnw.admin.entity.request.ContractSignDTO">
+        select
+        t1.*
+        from contract_sign t1
+        -- inner join system_dictionary t2 on t1.verify_state=t2.value and t2.type='verify_state'
+        <where>
+            <if test="mobile != null">
+               mobile=#{mobile}
+            </if>
+            <if test="email != null">
+               and email=#{email}
+            </if>
+            <if test="compony != null">
+               and compony=#{compony}
+            </if>
+            <if test="realName != null">
+               and real_name=#{realName}
+            </if>
+            <if test="signStatus != null">
+               and sign_status=#{signStatus}
+            </if>
+            <if test="needPay != null">
+               and need_pay=#{needPay}
+            </if>
+            <if test="payStatus != null">
+               and pay_status=#{payStatus}
+            </if>
+            and create_time>#{createTime}
+            and create_time &lt;#{createTime}
+        </where>
+        order by t1.create_time desc
+    </select>
