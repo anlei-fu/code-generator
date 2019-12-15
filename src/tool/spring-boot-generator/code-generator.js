@@ -143,8 +143,6 @@ class Generator {
                 this.controller = [];
         }
 
-
-
         /**
          * Write all files
          * 
@@ -174,7 +172,6 @@ class Generator {
                         this.writeMapperConfig();
                         this.writeService();
                         this.writeServiceImpl();
-
                 });
         }
 
@@ -301,7 +298,6 @@ class Generator {
                 });
 
                 constructParams = this._removeLastComa(constructParams);
-
         }
 
         /**
@@ -332,7 +328,6 @@ class Generator {
                         .replace("@content", this.arrayToString(items));
 
                 FILE.write(`${this.config.mapperConfigFolder}/${this.config.name}Mapper.xml`, content);
-
         }
 
         /**
@@ -344,6 +339,7 @@ class Generator {
                 array.forEach(x => {
                         ret += x;
                 });
+                
                 return ret;
         }
 
