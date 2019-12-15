@@ -1,14 +1,8 @@
 package com.@project.service;
 
-import com.@project.pojo.dao.@nameDao;
+import com.@project.pojo.entity.@name;
 
 public interface @nameService {
 
-    boolean add(@nameDao dao);
-
-    boolean deleteById(Integer id);
-
-    boolean updateById(Integer id,@nameDao dao);
-
-    @nameDao findById(Integer id);
+@content
 }

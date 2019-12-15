@@ -52,10 +52,10 @@ let columnsArray = [
 
 function create() {
   return {
-  domainId: 571,
-  id: 713,
-  model: "模型659",
-  taskId: 248
+  domainId: 775,
+  id: 616,
+  model: "模型826",
+  taskId: 880
 };
 }
 

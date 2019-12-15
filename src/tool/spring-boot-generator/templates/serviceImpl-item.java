@@ -1,5 +1,5 @@
-@Override
-public @returnType @name(@param) {
+    @Override
+    public @serviceImplReturnType @name(@serviceImplParams) {
         @content
-    return mapper.@name(@paramName)@suffix;
-}
+        return mapper.@name(@serviceMapperParams)@suffix;
+    }

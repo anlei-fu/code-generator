@@ -10,6 +10,7 @@ exports.joinBuilder = function (table, type, joinCondition) {
          * Config includes
          * 
          * @param {any => void} configer 
+         * @returns {joinBuilder}
          */
         function includes(configer) {
                 configer(this.includes);
@@ -29,6 +30,7 @@ exports.joinBuilder = function (table, type, joinCondition) {
 
         /***
          * Set alias
+         * 
          * @returns {joinBuilder}
          */
         function alias(alias) {
@@ -36,6 +38,9 @@ exports.joinBuilder = function (table, type, joinCondition) {
                 return this;
         }
 
+        /**
+         * @return {joinBuilder}
+         */
         function build(){
                 this.includes.build();
                 this.conditions.build();

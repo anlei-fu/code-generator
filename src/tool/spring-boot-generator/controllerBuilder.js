@@ -21,18 +21,6 @@ exports.controllerBuilder = function () {
         }
 
         /**
-         * Add req
-         * 
-         * @param {reqBuilder} configer 
-         */
-        function req(configer) {
-                let builder = new reqBuilder();
-                configer(builder);
-                this.reqs.push(builder);
-                return this;
-        }
-
-        /**
          * Set description
          * 
          * @param {String} description 

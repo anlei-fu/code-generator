@@ -62,11 +62,11 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "创建时间955",
-  file: "文件678",
-  id: 959,
-  taskConfigMainId: 658,
-  version: 891
+  createTime: "创建时间233",
+  file: "文件727",
+  id: 327,
+  taskConfigMainId: 653,
+  version: 635
 };
 }
 

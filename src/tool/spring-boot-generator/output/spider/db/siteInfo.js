@@ -51,10 +51,10 @@ let columnsArray = [
 
 function create() {
   return {
-  description: "描述733",
-  id: 102,
-  mainDomain: "主站809",
-  type: "网站类型656"
+  description: "描述260",
+  id: 114,
+  mainDomain: "主站594",
+  type: "网站类型147"
 };
 }
 

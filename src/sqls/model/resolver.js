@@ -8,7 +8,7 @@
  */
 const { MysqlExcutor } = require("./../mysql-excutor/mysql-excutor");
 const { Table, Column, SqlType } = require("./../../resolvers/db-info");
-const { NamingStrategy } = require("./../../libs/naming-stratey")
+const { NamingStrategy } = require("./../../libs/naming-strategy")
 const { ARRAY } = require("./../../libs/utils")
 
 const columnQuery = `select * from INFORMATION_SCHEMA.Columns

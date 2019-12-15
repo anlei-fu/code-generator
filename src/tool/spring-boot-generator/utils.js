@@ -5,6 +5,8 @@ exports.getJavaType = function (sqlType) {
                 return "Long";
         } else if (sqlType.name.indexOf("small") != -1) {
                 return "Boolean";
+        }else if(sqlType.name.indexOf("time"!=-1)){
+                return "Date";       
         } else {
                 return "Integer";
         }

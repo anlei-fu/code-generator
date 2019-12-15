@@ -8,7 +8,7 @@
  */
 
 const mysql = require("mysql");
-const { NamingStrategy } = require("../../libs/naming-stratey");
+const { NamingStrategy } = require("../../libs/naming-strategy");
 const { OBJECT } = require("../../libs/utils");
 
 class MysqlExcutor {

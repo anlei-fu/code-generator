@@ -5,8 +5,10 @@ exports.reqBuilder = function () {
         this.novalidated = true;
 
         /**
+         * Remove columns
          * 
          * @param {String|[String]} items 
+         * @returns {reqBuilder}
          */
         function exclude(items) {
                 this.exclude = items;
@@ -17,6 +19,7 @@ exports.reqBuilder = function () {
          * Add a field
          * 
          * @param {any =>void} configer 
+         * @returns {reqBuilder}
          */
         function field(configer) {
                 let builder = new fieldBuilder();
@@ -29,6 +32,7 @@ exports.reqBuilder = function () {
          * Set name
          * 
          * @param {String} name 
+         * @returns {reqBuilder}
          */
         function name(name) {
                 this.name = name;
@@ -39,6 +43,7 @@ exports.reqBuilder = function () {
          * Set description
          * 
          * @param {String} description 
+         * @returns {reqBuilder}
          */
         function description(description) {
                 this.description = description;
@@ -48,6 +53,8 @@ exports.reqBuilder = function () {
 
         /**
          * Mark as no need validate-operation
+         * 
+         * @returns {readonly}
          */
         function novalidated() {
                 this.novalidated = false;
@@ -56,12 +63,20 @@ exports.reqBuilder = function () {
 
         /**
          * Set extends from page
+         * 
+         * @returns {reqBuilder}
          */
         function page() {
                 this.extendPage = true;
                 return this;
         }
 
+        /**
+         * Set from property
+         * 
+         * @param {String} from 
+         * @returns {reqBuilder}
+         */
         function from(from) {
                 this.from = from;
                 return this;

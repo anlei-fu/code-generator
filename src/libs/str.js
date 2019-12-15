@@ -349,6 +349,20 @@ function reverse(input) {
         return output;
 }
 
+/**
+ * Trim right and remove last coma of pattern
+ * 
+ * @param {String} pattern 
+ * @returns {String}
+ */
+function removeLastComa(pattern){
+        pattern = pattern.trimRight();
+        if (pattern[pattern.length - 1] == ",")
+                pattern = pattern.substr(0, pattern.length - 1);
+
+        return pattern;
+}
+
 exports.STR = {
         select,
         select1,
@@ -364,5 +378,6 @@ exports.STR = {
         removeEmptyLine,
         splitToLines,
         lowerFirstLetter,
-        reverse
+        reverse,
+        removeLastComa
 }

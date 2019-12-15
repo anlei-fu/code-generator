@@ -24,7 +24,7 @@ async function generate(config, schema,outputFolder="./output") {
         let main = "";
         tables.forEach(x => {
                 let output = "";
-                main += FILE.read("./template/main.js").replace(/@name/g, x.name);
+                main += FILE.read("./templates/main.js").replace(/@name/g, x.name);
                 output = OBJECT.text(x, x.name);
                 output += OBJECT.text(Object.keys(x.columns), "columnsArray");
 
@@ -33,12 +33,12 @@ async function generate(config, schema,outputFolder="./output") {
                         instance[k] = SQL_UTILS.getTestValue(v.description, v.type);
                 });
 
-                output += FILE.read("./template/create.js").replace("@data",
+                output += FILE.read("./templates/create.js").replace("@data",
                         OBJECT.text(instance, "")
                                 .replace("let", "")
                                 .replace("=", "")
                                 .trim());
-                output += FILE.read("./template/extend.js").replace(/@x/g, x.name);
+                output += FILE.read("./templates/extend.js").replace(/@x/g, x.name);
 
                 FILE.write(`${outputFolder}/${x.name}.js`, output);
         });

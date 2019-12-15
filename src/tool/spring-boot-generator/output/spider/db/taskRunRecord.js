@@ -82,13 +82,13 @@ let columnsArray = [
 
 function create() {
   return {
-  endTime: 115,
-  id: 242,
-  pageDownloaded: 794,
-  startTime: 436,
-  success: 654,
-  taskId: 346,
-  workerJoined: 580
+  endTime: 916,
+  id: 515,
+  pageDownloaded: 741,
+  startTime: 187,
+  success: 19,
+  taskId: 98,
+  workerJoined: 542
 };
 }
 

@@ -1,65 +1,48 @@
-const { SqlGenerator } = require("./code-generator");
+const { Generator } = require("./code-generator");
 const { FILE } = require("./../../libs/file")
+const { init } = require("./init")
 const { workerInfo, workerRunRecord } = require("./../../sqls/test/output/spider/main")
 
 let config = {
-        type: "update",
-        includes: workerInfo.columnsArray,
-        id: "doUpdate",
-        conditions: [{ name: "id", required: false }, { name: "joinTime", required: true }],
         table: workerInfo,
-        joins: [{
-                table1: workerRunRecord,
-                type: "inner",
-                includes: ["startTime"],
-                joinCondition: "worker_info.id = worker_run_record.worker_id",
-                alias: "t",
-                conditions: ["startTime"]
+        name: "WorkerInfo",
+        items: [{
+                includes: workerInfo.columnsArray,
+                type: "select",
+                id: "GetById",
+                conditions: ["id"],
+                controller: {},
+                reqs: [{
+                        name: "id",
+                        type: "Integer",
+                        from: "@PathVarible"
+                }],
+                resp: {
+                        doCreate: true,
+                        single: true
+                }
         }]
 
 }
 
-function main() {
-        let generator = new SqlGenerator(config);
-        FILE.write("1.xml", generator.render());
+async function main(project,dbConfig) {
+        await init(project, dbConfig);
+
+        let root=`./output/${project}/src/main/java/com/${project}`;
+        config.controlerFolder = `${root}/controller`;
+        config.mapperFolder = `${root}/mapper`;
+        config.mapperConfigFolder =`./output/${project}/src/main/resource/mapper`;
+        config.reqFolder =`${root}/pojo/req`;
+        config.respFolder = `${root}/pojo/resp`;
+        config.serviceFolder = `${root}/service`;
+        config.serviceImplFolder =`${root}/service/impl`;
+        config.entityFolder=`${root}/pojo/entity`;
+
+        let generator = new Generator(config);
+        generator.writeAll();
+    
 }
 
-let configs = {
-        name: "workerInfo",
-        items: [
-
-                // insert
-                builder(workerInfo, "insert", "add")
-                        .includes(
-                                columnsBuilder(workerInfo.columnsArray)
-                                        .exclude(["id"])
-                                        .build()
-                        )
-                        .build(),
-
-                // deleteById
-                builder(workerInfo, "delete", "deleteById")
-                        .conditions([{ name: "id", required: true }])
-                        .build(),
-
-                // updateById
-                builder(workerInfo, "update", "updateById")
-                        .conditions([{ name: "id", required: true }])
-                        .includes(
-                                columnsBuilder(workerInfo.columnsArray)
-                                        .exclude(["id"])
-                                        .build()
-                        )
-                        .build(),
-
-                // findById
-                builder(workerInfo, "select", "findById")
-                        .conditions([{ name: "id", required: true }])
-                        .includes(workerInfo.columnsArray)
-                        .build(),
-
-        ]
-};
 
 
 
@@ -68,4 +51,4 @@ let configs = {
 
 
 /*-------------------------------------------------main--------------------------------------------------*/
-main();
+main("spider",{host:"localhost",port:"3306",db:"spider",user:"root",password:"2011801243"});

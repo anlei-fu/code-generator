@@ -70,7 +70,6 @@ exports.columnBuilder = () => {
                 this.includes = OBJECT.toArray(this.includes);
         }
 
-
         /**
          * Dispatch func , accetp item {string|[string]} and 
          * a consumer<string> func
@@ -157,6 +156,7 @@ exports.columnBuilder = () => {
         }
 
         /**
+         * 
          * @private
          * @param {String|[String]} item 
          */
@@ -165,6 +165,13 @@ exports.columnBuilder = () => {
 
         }
 
+        /**
+         * 
+         * @private
+         * @param {*} item 
+         * @param {*} key 
+         * @param {*} value 
+         */
         function _setProperty(item, key, value) {
                 if (!TYPE.isObject(item))
                         item = { name: item, key: value };
@@ -172,6 +179,12 @@ exports.columnBuilder = () => {
                 item[key] = value
         }
 
+        /**
+         * Check type is correct
+         * 
+         * @private
+         * @param {any} obj 
+         */
         function _checkType(obj) {
                 if (!TYPE.isString(item) || !TYPE.isObject(item))
                         throw new TypeError(`unexcepted type ${item}`);

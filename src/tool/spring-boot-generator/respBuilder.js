@@ -1,7 +1,7 @@
 exports.respBuilder = () => {
 
         /**
-         * 
+         * @returns
          */
         function doCreate() {
                 this.doCreate = true;
@@ -9,7 +9,7 @@ exports.respBuilder = () => {
         }
 
         /**
-         * 
+         * @returns
          */
         function single() {
                 this.single = true;
@@ -30,6 +30,7 @@ exports.respBuilder = () => {
         /**
          * 
          * @param {String} description 
+         * @returns
          */
         function description(description) {
                 this.description = description;

@@ -7,316 +7,744 @@
  * @LastEditTime: 2019-12-13 09:42:51
  */
 const { FILE } = require("../../libs/file")
+const { OBJECT } = require("../../libs/utils")
 const { STR } = require("../../libs/str")
 const { NamingStrategy } = require("../../libs/naming-strategy")
-const {isSimpleJavaType}=require("./utils")
+const { isSimpleJavaType, getJavaType } = require("./utils")
 
 const ident1 = "  ";
-const ident2 = "    ";
 const ident3 = "      ";
 const ident4 = "        "
-const returnTypeList = "List<@type>";
-const returnTypePageInfo = "PageInfo<@type>";
-const returnTypeController = "R<@type>";
 
-exports.SqlGenerator = class SqlGenerator {
+class Field {
+        constructor() {
+                this.name = "";
+                this.type = "";
+                this.description = "";
+                this.validates = [""];
+        }
+}
+
+/**
+ * Join properties
+ */
+class Join {
+        constructor() {
+                this.includes = [];
+                this.conditions = [];
+                this.alias = "";
+                this.joinCondition = "";
+        }
+}
+
+/**
+ * Req properties
+ */
+class Req {
+        constructor() {
+                this.name = "";
+                this.description = "";
+                this.exlcludes = new Set();
+                this.type = "";
+                this.doCreate = false;
+                this.fields = [new Field()];
+                this.page = false;
+        }
+}
+
+/**
+ * Params properties
+ */
+class Params {
+        constructor() {
+                this.name = "";
+                this.description = "";
+                this.req = new Req();
+                this.fields = [new Field()];
+                this.defaultValues = new Map();
+        }
+}
+
+/**
+ * Resp properties
+ */
+class Resp {
+        constructor() {
+                this.name = "";
+                this.description = "";
+                this.doCreate = false;
+                this.single = false;
+        }
+}
+
+/**
+ * Controller properties
+ */
+class Controller {
+        constructor() {
+                this.path = "";
+                this.description = "";
+        }
+}
+
+/**
+ * Config properties
+ */
+class Config {
+        constructor() {
+                this.id = "";
+                this.type = "";
+                this.table = {};
+                this.includes = [];
+                this.conditions = [];
+                this.joins = [new Join()];
+                this.noController = false;
+                this.noService = false;
+                this.controller = new Controller();
+                this.reqs = [new Req()];
+                this.resp = new Resp();
+                this.params = new Params();
+        }
+}
+
+/**
+ * GeneratorConfig properties
+ */
+class GeneratorConfig {
+        constructor() {
+                this.controlerFolder = "";
+                this.mapperFolder = "";
+                this.mapperConfigFolder = "";
+                this.reqFolder = "";
+                this.respFolder = "";
+                this.serviceFolder = "";
+                this.serviceImplFolder = "";
+                this.project = "";
+                this.entityFolder = "";
+                this.items = [new Config()];
+        }
+}
+
+/**
+ *  Genearte web project with spring-boot, mysql, mybatis, vue, ivue and  maven 
+ */
+class Generator {
 
         /**
          * 
-         * @param {
-                       {
-                                id:String,
-                                table:Table,
-                                type:String,
-                                includes:[String|{name:String,reuired:boolean,alias:String}],
-                                conditions:[String|{name:String,reuired:boolean,alias:String}],
-                                join:{
-                                        type:String,
-                                        table1:{
-                                             alias:String,
-                                             table:Table, 
-                                             includes:[String|{name:String,reuired:boolean,alias:String}], 
-                                             conditions:[String|{name:String,reuired:boolean,alias:String}],
-                                        },
-                                        table2:{
-                                                alias:String,
-                                                table:Table, 
-                                                includes:[String|{name:String,reuired:boolean,alias:String}], 
-                                                conditions:[String|{name:String,reuired:boolean,alias:String}],
-                                        }
-                                },
-                                outputType:String,
-                                req:{
-                                        includes:[{name:String,type:String,from:String}],
-                                        excludes:[String],
-                                },
-                                resp:boolean,
-                                controller:boolean
-                        }
-          } config 
+         * @param {GeneratorConfig} config 
          */
         constructor(config) {
                 this.config = config;
-                this.mapper;
-                this.mapperConfig;
-                this.service;
-                this.serviceImpl;
-                this.controller;
+                this.mapper = [];
+                this.mapperConfig = [];
+                this.service = [];
+                this.serviceImpl = [];
+                this.controller = [];
+        }
+
+
+
+        /**
+         * Write all files
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        writeAll() {
+                this.initTable(this.config.table);
+                this.config.items.forEach(x => {
+                        if (x.joins) {
+                                x.joins.forEach(join => {
+                                        this.initTable(join.table);
+                                });
+                        }
+                        this.initConfig(x);
+                        this.getControllerItem(x);
+                        this.getMapperItem(x);
+                        this.getServiceImplItem(x);
+                        this.getServiceItem(x);
+                        this.writeReq(x);
+                        this.writeResp(x);
+                        if (x.params)
+                                this.writeParams(x);
+                        this.writeEntity();
+                        this.writeMapper();
+                        this.writeController();
+                        this.writeMapperConfig();
+                        this.writeService();
+                        this.writeServiceImpl();
+
+                });
+        }
+
+        /**
+         * 
+         * @param {Config} config 
+         */
+        initConfig(config) {
+                config.reqs.forEach(x => {
+                        if (x.doCreate) {
+                                x.name = x.name || config.id + "Req";
+                                x.description = x.description || "";
+                        }
+                });
+
+                if (config.resp.doCreate) {
+                        config.resp.name = config.resp.name || config.id + "Resp";
+                        config.resp.description = config.resp.description || "";
+                }
+
+                if (config.params) {
+                        config.params.name = config.params.name || config.id + "Params";
+                        config.params.description = config.params.description || "";
+                }
+        }
+
+        initTable(table) {
+                OBJECT.forEach(table.columns, (key, value) => {
+                        table.columns[key].type = getJavaType(value.type);
+                });
+        }
+
+        writeEntity() {
+                var entity = {};
+                entity.name = STR.upperFirstLetter(this.config.table.name);
+                entity.description = this.config.table.description;
+                entity.fields = OBJECT.toArray(this.config.table.columns);
+                this._writeEntity(this.config.entityFolder, entity);
+        }
+
+        /**
+         * Write req file
+         * 
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        writeReq(config) {
+                config.reqs.forEach(x => {
+                        if (x.doCreate) {
+
+                                let items = config.type == "insert" ? this._getIncludes(config) : this._getConditions(config);
+                                if (x.excludes)
+                                        items.filter(item => !x.exlcludes.has(item.name));
+
+                                x.fields = x.fields ? x.fields.concat(items) : items;
+
+                                x.fields.forEach(field => {
+                                        if (field.required) {
+                                                if (!field.validates) {
+                                                        field.validates = ["@NotNull"];
+                                                } else {
+                                                        field.validates.push("@NotNull");
+                                                }
+                                        }
+                                });
+
+                                this._writeEntity(this.config.reqFolder, x);
+                        }
+                });
+        }
+
+        /**
+         * Write resp file
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        writeResp(config) {
+                if (config.type == "select") {
+                        if (config.resp.doCreate) {
+                                config.resp.fields = this._getIncludes(config);
+                                this._writeEntity(this.config.respFolder, config.resp);
+                        }
+                }
+        }
+
+        /**
+         * Write param file
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        writeParams(config) {
+                let constructorContent = "";
+                let fields = "";
+                let constructParams = this._getReqParams(config);
+                let getters = "";
+                let hasDate = false;
+                config.params.fields.forEach(x => {
+                        fileds += `private ${x.type} ${x.name};\r\n`;
+                        constructParams += `${x.type} ${x.name}, `;
+                        constructorContent += `this.${x.name}=${x.name};\r\n`;
+
+                        if (!isSimpleJavaType(x.type)) {
+                                x.fields.forEach(field => {
+                                        if (x.type == "Date")
+                                                hasDate = true;
+
+                                        getters += FILE.read("./templates/param-getter-item.java")
+                                                .replace(/@name/g, field.name)
+                                                .replace("@type", field.type)
+                                                .replace("@reqName", x.name);
+                                });
+                        } else {
+                                if (x.type == "Date")
+                                        hasDate = true;
+
+                                getters += FILE.read("./templates/param-getter-item2.java")
+                                        .replace(/@name/g, x.name)
+                                        .replace("@type", x.type);
+                        }
+
+                });
+
+                constructParams = this._removeLastComa(constructParams);
 
         }
 
         /**
-         * Main render function
-         * 
-         * @private
-         * @returns {String}
+         * Write mapper file
          */
-        render() {
-                let item = "";
-                if (this.config.type == "insert") {
-                        item = this._renderInsert();
-                } else if (this.config.type == "update") {
-                        item = this._renderUpdate();
-                } else if (this.config.type == "delete") {
-                        item = this._renderDelete();
-                } else {
-                        item = this._renderSelect();
-                }
+        writeMapper() {
+                let items=[];
+                this.config.items.forEach(x=>{
+                  items.push(this.getMapperItem(x));
+                });
+                let content = FILE.read("./templates/mapper.java")
+                        .replace(/@name/g, this.config.name)
+                        .replace("@content", this.arrayToString(items));
 
-                this.mapperConfig.push(item);
+                FILE.write(`${this.config.mapperFolder}/${this.config.name}Mapper.java`, content);
         }
 
-       writeParam(reqs) {
-                if (reqs.length!=1) {
-                      
-                }
+        /**
+         * Write mapper config file
+         */
+        writeMapperConfig() {
+                let items=[];
+                this.config.items.forEach(x=>{
+                  items.push(this.getMapperConfigItem(x));
+                });
+                let content = FILE.read("./templates/mapper.xml")
+                        .replace(/@name/g, this.config.name)
+                        .replace("@content", this.arrayToString(items));
+
+                FILE.write(`${this.config.mapperConfigFolder}/${this.config.name}Mapper.xml`, content);
+
         }
 
-        writeReq() {
-                this.config.reqs.forEach(x => {
-                        if (x.doCreate) {
-                                if (!x.name)
-                                        x.name = config.id + "Req";
+        /**
+         * 
+         * @param {[String]} array 
+         */
+        arrayToString(array) {
+                let ret = "";
+                array.forEach(x => {
+                        ret += x;
+                });
+                return ret;
+        }
 
-                                let items = config.type == "insert" ? this._getIncludes() : this._getConditions();
-
-                                if (x.excludes) 
-                                        items.filter(item => !x.excludes.has(item.name));
-
-                                if (x.fields) {
-                                        x.fields.concat(items);
-                                } else {
-                                        x.fields = items;
-                                }
-
-                                x.folder = this.config.reqFolder;
-
-                                this.writeReq(x);
-                        }
+        /**
+         * Write controller file
+         */
+        writeController() {
+                let items = [];
+                this.config.items.forEach(x => {
+                        items.push(this.getControllerItem(x));
                 });
 
+                let content = FILE.read("./templates/controller.java")
+                        .replace(/@name/g, this.config.name)
+                        .replace("@content", this.arrayToString(items))
+                        .replace("@description", this.config.table.description);
+
+                FILE.write(`${this.config.controlerFolder}/${this.config.name}Controller.java`, content);
         }
 
-        writeResp(config) {
-                if (config.type == "select") {
-                       if(config.resp.doCreate){
-                               if(!config.resp.name)
-                                  config.resp.name="";
-                                
-                                let includes=this._getIncludes();
-                       }
-                }
+        /**
+         * Write service file
+         */
+        writeService() {
+                let items = [];
+                this.config.items.forEach(x => {
+                        items.push(this.getServiceItem(x));
+                });
 
+                let content = FILE.read("./templates/service.java")
+                        .replace(/@name/g, this.config.name)
+                        .replace("@content", this.arrayToString(items));
+
+                FILE.write(`${this.config.serviceFolder}/${this.config.name}Service.java`, content);
         }
 
-        renderController(config) {
-                let name = config.id;
-                let path = config.controller.path;
-                let returnType = "";
-                let content = "";
-                let params = "";
-                let mapping = "";
-                let serviceParams;
-                if (config.controller) {
-                        config.reqs.forEach(x => {
-                              if(isSimpleJavaType(x.type)){
-                                  params+=`${x.from} ${xx.type} ${x.name}, `;
-                              }else{
-                                 params+=`${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `;
-                              }
-                              params = params.trimRight();
-                              params = params.substr(0, params.length - 1);
-                        });
+        /**
+         * Write service impl file
+         */
+        writeServiceImpl() {
+                let items=[];
+                this.config.items.forEach(x=>{
+                   items.push(this.getServiceImplItem(x));
+                });
+                let content = FILE.read("./templates/serviceImpl.java")
+                        .replace(/@name/g, this.config.name)
+                        .replace("@content", this.arrayToString(items));
 
-                        if (config.type == "select") {
-                                mapping = "GetMapping";
-
-                        } else if (config.type == "update") {
-                                mapping = "PutMapping";
-
-                        } else if (config.type == "delete") {
-                                mapping = "DeleteMapping";
-                        } else {
-                                mapping = "PostMapping";
-                        }
-
-                        if (config.params) {
-                                let paramsParams = "";
-                                config.reqs.forEach(x => {
-                                    paramsParams+=`${x.name}, `;
-                                });
-                                paramsParams = paramsParams.trimRight();
-                                paramsParams = paramsParams.substr(0, paramsParams.length - 1);
-                                serviceParams="param";
-                                content="";
-                        } else {
-                                content="";
-                                config.reqs.forEach(x => {
-                                        serviceParams+=`${x.name}, `;
-                                });
-                                serviceParams = serviceParams.trimRight();
-                                serviceParams = serviceParams.substr(0, serviceParams.length - 1);
-                        }
-
-                        if (config.type == "select") {
-                                if (config.resp.doCreate) {
-                                     if(!config.resp.single){
-                                        returnType=returnTypeController.replace("@type",`PageInfo<${config.resp.name}>`);
-                                     }else{
-                                        returnType=returnTypeController.replace("@type",config.table.name);
-                                     }
-
-                                } else {
-                                    if(!config.resp.single){
-                                        returnType=returnTypeController.replace("@type",`PageInfo<${config.table.name}>`);
-                                    }else{
-                                        returnType=returnTypeController.replace("@type",config.table.name);
-                                    }
-                                }
-                        } else {
-                            returnType="R";
-                        }
-                }
+                FILE.write(`${this.config.serviceImplFolder}/${this.config.name}ServiceImpl.java`, content);
         }
 
-        renderService(config) {
-                if (config.service) {
-                        this.service.push(this.renderMapperItem(config, true));
-                }
-        }
+        /**
+         * Get mapper interface item
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        getMapperItem(config) {
 
-        renderServiceImpl(config) {
-                let params = "";
-                let content = "";
-                let suffix = "";
-                let returnType = "";
+                // get mapper params
                 let mapperParams = "";
-                if (config.service) {
-                        if (config.param) {
-                                params = config.param.name + " param";
-                                mapperParams = "param";
-                                if (config.param.defaultValues) {
-                                        config.param.defaultValues.forEach(x => {
-                                                content += `param.set${x.name}(${x.value});\r\n`;
-                                        });
-                                }
-                        } else {
-                                config.reqs.forEach(x => {
-                                        params += `${x.type} ${x.name}, `;
-                                        mapperParams += `${x.name}, `;
-                                })
-
-                                params = params.trimRight();
-                                params = params.substr(0, params.length - 1);
-                                mapperParams = params.trimRight();
-                                mapperParams = params.substr(0, mapperParams.length - 1);
-                        }
-                        if (config.type == "select") {
-                                if (config.resp.type != "single") {
-                                        returnType = config.resp.doCreate
-                                                ? returnTypePageInfo.replace("@type", config.resp.name)
-                                                : returnTypePageInfo.replace("@type", config.table.name);
-                                } else {
-                                        returnType = config.resp.doCreate
-                                                ? config.resp.name
-                                                : config.table.name;
-                                }
-                                suffix = "";
-
-                        } else {
-                                suffix = " > 0";
-                                returnType = "boolean";
-                        }
-                }
-
-                this.serviceImpl.push(FILE.read("./template/serviceImpl-item.java")
-                        .replace("@return", returnType)
-                        .replace("@content", content)
-                        .replace("@params", params)
-                        .replace("@mapperParams", mapperParams)
-                        .replace("@suffix", suffix));
-        }
-
-
-
-        renderMapperItem(config, service) {
-
-                let returnType = "";
-                if (config.type != "select") {
-                        returnType = "int";
-                } else {
-                        let resp = config.resp ? config.resp.name : config.table.name;
-                        returnType = service
-                                ? returnTypePageInfo.replace("@type", resp)
-                                : returnTypeList.replace("@type", resp);
-                }
-
-                let params = "";
-                if (config.param) {
-                        params = config.param.name + " param";
-                } else {
+                if (!config.params) {
                         config.reqs.forEach(x => {
-                                params += service
-                                        ? `${x.type} ("${x.name}") ${x.name}, `
-                                        : `${x.type} @Params("${x.name}") ${x.name}, `;
+                                mapperParams += `@Params("${x.name}") ${x.type} ${x.name}, `;
                         });
-                        params = params.trimRight();
-                        params = params.substr(0, params.length - 1);
+
+                        mapperParams = this._removeLastComa(mapperParams);
+                } else {
+                        mapperParams = `${Str.upperFirstLetter(config.params.name)} params`;
                 }
 
+                // get return type
+                let mapperReturnType = "";
+                if (config.type == "select") {
+                        if (config.resp.single) {
+                                mapperReturnType = config.resp.doCreate
+                                        ? STR.upperFirstLetter(config.resp.name)
+                                        : STR.upperFirstLetter(this.config.table.name);
+                        } else {
+                                mapperReturnType = config.resp.doCreate
+                                        ? `List<${STR.upperFirstLetter(config.resp.name)}>`
+                                        : `List<${STR.upperFirstLetter(this.config.table.name)}>`;
+                        }
+                } else {
+                        mapperReturnType = "int";
+                }
 
-                return `@return @name(@params);\r\n`.replace("@name", config.name)
-                        .replace("@return", returnType)
-                        .replace("@params", params);
+                return FILE.read("./templates/mapper-item.java")
+                        .replace("@name", config.id)
+                        .replace("@mapperReturnType", mapperReturnType)
+                        .replace("@mapperParams", mapperParams);
         }
-        renderMapper(config) {
-                this.mapper.push(this.renderMapperItem(config, false));
+
+        /**
+         * Get mapper config item
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        getMapperConfigItem(config) {
+                switch (config.type) {
+                        case "insert": return this._renderInsert(config);
+                        case "update": return this._renderUpdate(config);
+                        case "delete": return this._renderDelete(config);
+                        default: return this._renderSelect(config);
+                }
         }
 
-        writeController(){
+        /**
+         * Get service interface item
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        getServiceItem(config) {
+                let serviceParams = this._getReqParamsWithType(config);
 
+                // get return type
+                let serviceReturnType = "";
+                if (config.type == "select") {
+                        if (config.resp.single) {
+                                serviceReturnType = config.resp.doCreate
+                                        ? STR.upperFirstLetter(config.resp.name)
+                                        : STR.upperFirstLetter(this.config.table.name);
+                        } else {
+                                serviceReturnType = config.resp.doCreate
+                                        ? `PageInfo<${STR.upperFirstLetter(config.resp.name)}>`
+                                        : `PageInfo<${STR.upperFirstLetter(this.config.table.name)}>`;
+                        }
+                } else {
+                        serviceReturnType = "boolean";
+                }
+
+                return FILE.read("./templates/service-item.java")
+                        .replace("@serviceParams", serviceParams)
+                        .replace("@serviceReturnType", serviceReturnType)
+                        .replace(/@name/g, config.id);
         }
 
-        writeMapper(){
+        /**
+         * Get service impl item
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        getServiceImplItem(config) {
+                let serviceParams = this._getReqParamsWithType(config);
+                let suffix="";
 
-        }
-        writeService(){
+                // get return type
+                let serviceReturnType = "";
+                if (config.type == "select") {
+                        if (config.resp.single) {
+                                serviceReturnType = config.resp.doCreate
+                                        ? STR.upperFirstLetter(config.resp.name)
+                                        : STR.upperFirstLetter(this.config.table.name);
+                        } else {
+                                serviceReturnType = config.resp.doCreate
+                                        ? `PageInfo<${STR.upperFirstLetter(config.resp.name)}>`
+                                        : `PageInfo<${STR.upperFirstLetter(this.config.table.name)}>`;
+                        }
+                } else {
+                        serviceReturnType = "boolean";
+                        suffix=" > 0";
+                }
 
-        }
-        writeServiceImpl(){
+                let content = "";
+                if (config.params)
+                        this._getServiceImplContent(config);
+
+                let serviceMapperParams = config.param ? "params" : this._getReqParams(config);
+
+                let ret= FILE.read("./templates/serviceImpl-item.java")
+                        .replace(/@name/g, config.id)
+                        .replace("@serviceImplParams", serviceParams)
+                        .replace("@serviceMapperParams", serviceMapperParams)
+                        .replace("@serviceImplReturnType", serviceReturnType)
+                        .replace("@suffix",suffix)
+                        .replace("@content", content);
                 
+                        return STR.removeEmptyLine(ret)+"\r\n";
+        }
+
+        /**
+         * Get controller item
+         * 
+         * @param {Config} config 
+         * @returns {String}
+         */
+        getControllerItem(config) {
+
+                // is generate controller
+
+                let controllerParams = this._getControllerParams(config)
+                        , httpMapping = this._getHttpMapping(config)
+                        , serviceParams = this._getReqParams(config)
+                        , description = config.controller.description || ""
+                        , controllerReturnType = this._getControllerReturnType(config);
+
+
+                return FILE.read("./templates/controller-item.java")
+                        .replace(/@name/g, config.id)
+                        .replace("@httpMapping", httpMapping)
+                        .replace("@controllerReturnType", controllerReturnType)
+                        .replace("@serviceParams", serviceParams)
+                        .replace("@description", description)
+                        .replace("@controllerParams", controllerParams);
+        }
+
+        /**
+         * Write req or resp file 
+         * 
+         * @private
+         * @param {String} folder 
+         * @param {Req} entity 
+         */
+        _writeEntity(folder, entity) {
+                let template = FILE.read("./templates/entity.java")
+                        , content = ""
+                        , header = ""
+                        , hasDate = false
+                        , validates = "";
+
+                entity.fields.forEach(x => {
+                        let field = FILE.read("./templates/entity-item.java");
+                        if (x.type == "Date")
+                                hasDate = true;
+
+                        if (x.validates) {
+                                x.validates.forEach(validate => {
+                                        validates += validate + "\r\n";
+                                });
+                        }
+
+                        field = field.replace("@name", x.name)
+                                .replace("@type", x.type)
+                                .replace("@description", x.description)
+                                .replace("@validates", validates);
+
+                        content += STR.removeEmptyLine(field) + "\r\n";
+                });
+
+                template = template.replace("@header", header)
+                        .replace("@description", entity.description)
+                        .replace("@name", entity.name)
+                        .replace("@content", content.trimRight() + "\r\n");
+
+                FILE.write(`${folder}/${entity.name}.java`, template);
+        }
+
+        /**
+         * Get controler params 
+         * 
+         * @private
+         * @param {Config} config 
+         * @returns {String}
+         */
+        _getControllerParams(config) {
+                let params = "";
+                config.reqs.forEach(x => {
+                        params += isSimpleJavaType(x.type)
+                                ? `${x.from} ${x.type} ${x.name}, `.trimLeft()
+                                : `${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
+                });
+
+                return this._removeLastComa(params);
+        }
+
+        /**
+         * Get http mapping annotation
+         * 
+         * @private
+         * @param {Config} config 
+         * @returns {String}
+         */
+        _getHttpMapping(config) {
+                let mapping = "";
+                if (config.type == "select") {
+                        mapping = "GetMapping";
+                } else if (config.type == "update") {
+                        mapping = "PutMapping";
+                } else if (config.type == "delete") {
+                        mapping = "DeleteMapping";
+                } else {
+                        mapping = "PostMapping";
+                }
+
+                let path = config.controller.path || `/${this.config.table.name}/${config.id}`;
+
+                return `${mapping}(path="${path}")`;
+        }
+
+        /**
+         * Trim end and remove last coma of pattern
+         * 
+         * @private
+         * @param {String} pattern 
+         * @returns {String}
+         */
+        _removeLastComa(pattern) {
+                return STR.removeLastComa(pattern);
+        }
+
+
+        /**
+         * Get req params with type field
+         * 
+         * @private
+         * @param {Config} config 
+         * @returns {String}
+         */
+        _getReqParamsWithType(config) {
+                let params = "";
+                config.reqs.forEach(x => {
+                        params += `${x.type} ${x.name}, `;
+                });
+
+                return this._removeLastComa(params);
+        }
+
+        /**
+         * Get req params
+         * 
+         * @private
+         * @param {Config} config 
+         * @returns {String}
+         */
+        _getReqParams(config) {
+                let params = "";
+                config.reqs.forEach(x => {
+                        params += `${x.name}, `;
+                });
+
+                return this._removeLastComa(params);
+        }
+
+        /**
+         * Get service impl content 
+         * if params ,create instance and set default values
+         * 
+         * @private
+         * @param {Config} config 
+         * @returns {String}
+         */
+        _getServiceImplContent(config) {
+                let content = `${config.params.name} params = new ${config.params.name}(@params)`;
+                content = content.replace("@params", this._getReqParams(config));
+                if (config.params.defaultValues) {
+                        config.params.defaultValues.forEach((value, key) => {
+                                content += `params.set${STR.upperFirstLetter(key)}(${value});\r\n`;
+                        });
+                }
+
+                return content;
+        }
+
+        /**
+         * Get serviceImpl's mapper params
+         * 
+         * @private
+         * @param {Config} config 
+         * @returns {String}
+         */
+        _getServiceImplMapperParams(config) {
+                return config.params ? "params" : this._getReqParams(config);
+        }
+
+        /**
+         * Get controller return type
+         * 
+         * @private
+         * @param {Config} config 
+         * @returns {String}
+         */
+        _getControllerReturnType(config) {
+                if (config.type != "select")
+                        return "R";
+
+                // single or page info
+                if (config.resp.single) {
+                        return config.resp.doCreate
+                                ? `R<${STR.upperFirstLetter(config.resp.name)}>`
+                                : `R<${STR.upperFirstLetter(this.config.table.name)}>`;
+                } else {
+                        return config.resp.doCreate
+                                ? `R<PageInfo<${STR.upperFirstLetter(config.resp.name)}>>`
+                                : `R<PageInfo<${STR.upperFirstLetter(this.config.table.name)}>>`;
+                }
         }
 
         /**
          * Render insert statement
          * 
          * @private
+         * @param {Config} config
          * @returns {String}
          */
-        _renderInsert() {
+        _renderInsert(config) {
                 let columns = "(";
                 let properties = "(";
-                this._getIncludes().forEach(x => {
+                this._getIncludes(config).forEach(x => {
                         columns += x.required
                                 ? this._renderColumn(x, ",", ident3) :
                                 this._renderIfColumn(x, ",", ident3);
@@ -329,18 +757,20 @@ exports.SqlGenerator = class SqlGenerator {
                 let content = FILE.read("./templates/insert.xml");
                 content = this._renderTrim(content, columns, "@columns");
                 content = this._renderTrim(content, properties, "@properties");
-                return this._finalReplace(content);
+
+                return this._finalReplace(config, content);
         }
 
         /**
          * Render delete statement
          * 
          * @private
+         * @param {Config} config
          * @returns {String}
          */
-        _renderDelete() {
+        _renderDelete(config) {
                 let conditions = "";
-                this._getConditions().forEach((x, i) => {
+                this._getConditions(config).forEach((x, i) => {
                         conditions += x.required
                                 ? i == 0 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "and ", "", ident3)
                                 : i == 0 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "and ", "", ident3);
@@ -349,18 +779,19 @@ exports.SqlGenerator = class SqlGenerator {
                 let content = FILE.read("./templates/delete.xml");
                 content = this._renderWhere(content, conditions);
 
-                return this._finalReplace(content);
+                return this._finalReplace(config, content);
         }
 
         /**
          * Render update statement
          * 
          * @private
+         * @param {Config} config
          * @returns {String}
          */
-        _renderUpdate() {
+        _renderUpdate(config) {
                 let columns = "";
-                this._getIncludes().forEach((x, i, array) => {
+                this._getIncludes(config).forEach((x, i, array) => {
                         columns += x.required
                                 ? i == array.length - 1 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "", ",", ident3)
                                 : i == array.length - 1 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "", ",", ident3);
@@ -368,7 +799,7 @@ exports.SqlGenerator = class SqlGenerator {
                 });
 
                 let conditions = "";
-                this._getConditions().forEach((x, i) => {
+                this._getConditions(config).forEach((x, i) => {
                         conditions += x.required
                                 ? i == 0 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "and ", "", ident3)
                                 : i == 0 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "and ", "", ident3);
@@ -378,18 +809,19 @@ exports.SqlGenerator = class SqlGenerator {
                 content = this._renderSet(content, columns);
                 content = this._renderWhere(content, conditions);
 
-                return this._finalReplace(content);
+                return this._finalReplace(config, content);
         }
 
         /**
          * Render select statement
          * 
          * @private
+         * @param {Config} config
          * @returns {String}
          */
-        _renderSelect() {
+        _renderSelect(config) {
                 let columns = "";
-                this._getIncludes().forEach(x => {
+                this._getIncludes(config).forEach(x => {
                         columns += this._renderColumn(x, ",", ident3);
                 });
 
@@ -402,15 +834,16 @@ exports.SqlGenerator = class SqlGenerator {
                 });
 
                 let joins = "";
-                if (this.config.joins)
-                        joins = this._renderJoins(this.config.joins);
+                if (config.joins)
+                        joins = this._renderJoins(config.joins);
 
                 let content = FILE.read("./templates/select.xml")
                         .replace("@joins", joins);
+
                 content = this._renderTrim(content, columns, "@columns");
                 content = this._renderWhere(content, conditions);
 
-                return this._finalReplace(content);
+                return this._finalReplace(config, content);
         }
 
         /**
@@ -456,6 +889,7 @@ exports.SqlGenerator = class SqlGenerator {
                         }
                         content = content.replace(pattern, columns);
                 }
+
                 return content;
         }
 
@@ -485,11 +919,11 @@ exports.SqlGenerator = class SqlGenerator {
          * @param {String} content 
          * @returns {String}
          */
-        _finalReplace(content) {
+        _finalReplace(config, content) {
                 return STR.removeEmptyLine(content)
-                        .replace("@id", this.config.id)
+                        .replace("@id", config.id)
                         .replace("@tableName",
-                                NamingStrategy.toHungary(this.config.table.name).toLowerCase())
+                                NamingStrategy.toHungary(config.table.name).toLowerCase())
         }
 
         /**
@@ -581,6 +1015,7 @@ exports.SqlGenerator = class SqlGenerator {
                 joins.forEach(x => {
                         output += this._renderJoin(x);
                 });
+
                 return output;
         }
 
@@ -602,8 +1037,8 @@ exports.SqlGenerator = class SqlGenerator {
          * @private
          * @returns {[Column]}
          */
-        _getIncludes() {
-                return this._getItems(false);
+        _getIncludes(config) {
+                return this._getItems(config, false);
         }
 
         /**
@@ -612,8 +1047,8 @@ exports.SqlGenerator = class SqlGenerator {
          * @private
          * @returns {[Column]}
          */
-        _getConditions() {
-                return this._getItems(true);
+        _getConditions(config) {
+                return this._getItems(config, true);
         }
 
         /**
@@ -621,19 +1056,22 @@ exports.SqlGenerator = class SqlGenerator {
          * ,or select columns, or update columns
          * 
          * @private
+         * @param {Config} config
          * @param {boolen} isCondition 
          * @returns {[Column]}
          */
-        _getItems(isCondition = false) {
+        _getItems(config, isCondition = false) {
+                console.log(Object.keys(config));
                 let columns = [];
                 if (isCondition) {
-                        this._merge(columns, this._getColumns(this.config.table, this.config.conditions, true));
+                        this._merge(columns, this._getColumns(this.config.table, config.conditions, true));
                 } else {
-                        this._merge(columns, this._getColumns(this.config.table, this.config.includes));
+                        this._merge(columns, this._getColumns(this.config.table, config.includes));
                 }
 
-                if (this.config.joins) {
-                        this.config.joins.forEach(join => {
+                // if type is "select" and has join option
+                if (config.joins) {
+                        config.joins.forEach(join => {
                                 if (isCondition) {
                                         this._merge(columns, this._getColumns(join.table1, join.conditions, true))
                                 } else {
@@ -646,7 +1084,8 @@ exports.SqlGenerator = class SqlGenerator {
         }
 
         /**
-         * Append array2's elements into array1
+         * Append array2's elements into array1, avod empty array concat 
+         * another array cause type change to [[]]
          * 
          * @private
          * @param {[]} array1 
@@ -666,13 +1105,14 @@ exports.SqlGenerator = class SqlGenerator {
          * @param {[String]} columnNames 
          * @returns {[Column]}
          */
-        _getColumns(table, columnNames = [], isCondition) {
+        _getColumns(table, columnNames = [], isCondition = false) {
                 let columns = [];
                 columnNames.forEach(x => {
                         let column = this._getColumn(table, x);
                         column.required = isCondition ? x.required
                                 : this.config.type == "insert" || this.type == "update" ? !column.nullable : x.required;
 
+                        // set properties giving by config "x"
                         column.alias = x.alias;
                         column.rawName = this._getRawName(table, column, x.prefix);
                         columns.push(column);
@@ -713,4 +1153,15 @@ exports.SqlGenerator = class SqlGenerator {
                         : prefix ? `${prefix}.${NamingStrategy.toHungary(column.name)}`
                                 : `${NamingStrategy.toHungary(table.name).toLowerCase()}.${NamingStrategy.toHungary(column.name)}`;
         }
+}
+
+module.exports = {
+        Config,
+        GeneratorConfig,
+        Join,
+        Req,
+        Resp,
+        Params,
+        Controller,
+        Generator
 }
