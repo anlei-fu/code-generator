@@ -9,7 +9,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class undefined {
+public class GetWorkerInfoByIdResp {
 
     @ApiModelProperty("描述")
     private String description;

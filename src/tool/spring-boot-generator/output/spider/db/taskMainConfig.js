@@ -82,13 +82,13 @@ let columnsArray = [
 
 function create() {
   return {
-  agent: "浏览器代理654",
-  encoding: "编码231",
-  id: 523,
-  pattern: "pattern839",
-  scriptVersion: "脚本版本160",
-  taskId: 201,
-  timeout: 808
+  agent: "浏览器代理227",
+  encoding: "编码644",
+  id: 476,
+  pattern: "pattern734",
+  scriptVersion: "脚本版本185",
+  taskId: 758,
+  timeout: 479
 };
 }
 

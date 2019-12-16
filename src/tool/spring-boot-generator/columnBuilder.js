@@ -180,7 +180,7 @@ exports.columnBuilder = () => {
         }
 
         /**
-         * Check type is correct
+         * Check  is type correct
          * 
          * @private
          * @param {any} obj 

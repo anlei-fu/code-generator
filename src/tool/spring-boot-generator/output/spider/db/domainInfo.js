@@ -102,15 +102,15 @@ let columnsArray = [
 
 function create() {
   return {
-  domain: "网站名字562",
-  domainId: 181,
-  encoding: "编码717",
-  httpProtocal: "协议类型418",
-  id: 250,
-  maxSpeed: 765,
-  needCookie: 66,
-  remark: "备注436",
-  type: "网站类型999"
+  domain: "网站名字249",
+  domainId: 434,
+  encoding: "编码625",
+  httpProtocal: "协议类型657",
+  id: 667,
+  maxSpeed: 692,
+  needCookie: 106,
+  remark: "备注467",
+  type: "网站类型628"
 };
 }
 

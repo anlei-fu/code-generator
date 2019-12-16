@@ -573,17 +573,19 @@ class Generator {
                                 break;
                 }
 
-                id += this.config.name + "By"
+               
                 let conditions = this._getConditions(config);
 
                 if (conditions.length == 1) {
+                        id += this.config.name + "By"
                         id += STR.upperFirstLetter(conditions[0].name);
-                } else {
+                } else if(conditions.length<4) {
                         conditions.forEach((x, i, array) => {
                                 id += i == array.length - 1
                                         ? "And" + STR.upperFirstLetter(x.name)
                                         : STR.upperFirstLetter(x.name);
                         });
+                        id += this.config.name + "By"
                 }
 
                 return id;
@@ -598,10 +600,10 @@ class Generator {
         getDefaultReqs(config) {
                 let conditions = this._getConditions(config);
 
-                if (conditions.length > 2) {
-
+                if (conditions.length > 3) {
+                      return [{doCreate:true}];
                 } else {
-
+                     return conditions;
                 }
         }
 
@@ -656,7 +658,7 @@ class Generator {
                 let ptterns = {
                         header,
                         description: entity.description,
-                        name: entity.name,
+                        name: entity.type,
                         content
                 }
 

@@ -9,7 +9,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class req {
+public class GetWorkerInfoByIdReq {
 
     @ApiModelProperty("ip")
     private String ip;

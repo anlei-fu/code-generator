@@ -10,7 +10,9 @@ const { columnBuilder } = require("./columnBuilder");
 const { controllerBuilder } = require("./controllerBuilder");
 const { joinBuilder } = require("./joinBuilder")
 
-exports.builder = function () {
+exports.builder = function (type,id) {
+        this.type=type;
+        this.id=id;
         this.includes = new columnBuilder();
         this.conditions = new columnBuilder();
         this.controller = new controllerBuilder();

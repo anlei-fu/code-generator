@@ -91,14 +91,14 @@ let columnsArray = [
 
 function create() {
   return {
-  amount: 15,
-  chargeAccount: "支付账号330",
-  chargeTime: 776,
-  id: 315,
-  orderId: "订单id622",
-  status: 824,
-  userId: 632,
-  way: 613
+  amount: 589,
+  chargeAccount: "支付账号601",
+  chargeTime: 451,
+  id: 43,
+  orderId: "订单id350",
+  status: 960,
+  userId: 368,
+  way: 424
 };
 }
 

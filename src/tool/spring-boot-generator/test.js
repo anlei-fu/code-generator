@@ -10,14 +10,14 @@ const { Generator } = require("./code-generator");
 const { init } = require("./init")
 const { workerInfo, workerRunRecord } = require("./../../sqls/test/output/spider/main")
 
-let config = {
+exports.workerInfo = {
         table: workerInfo,
         name: "WorkerInfo",
         items: [{
                 includes: workerInfo.columnsArray,
                 type: "select",
                 id: "getWorkerInfoById",
-                conditions: ["id", "ip", "joinTime"],
+                conditions: ["id"],
                 controller: {
                         path: "/workerInfo/{id}"
                 },
@@ -25,10 +25,7 @@ let config = {
                         name: "id",
                         type: "Integer",
                         from: "@PathVarible"
-                }, {
-                        doCreate: true,
-                        excludes: new Set(["id"])
-                }
+                }, 
                 ],
                 resp: {
                         doCreate: true,
@@ -69,22 +66,22 @@ let config = {
 
 }
 
-function main(project, dbConfig) {
-        //       init(project, dbConfig);
+async function main(project, dbConfig) {
+        await       init(project, dbConfig);
 
-        let root = `./output/${project}/src/main/java/com/${project}`;
-        config.controlerFolder = `${root}/controller`;
-        config.mapperFolder = `${root}/mapper`;
-        config.mapperConfigFolder = `./output/${project}/src/main/resource/mapper`;
-        config.reqFolder = `${root}/pojo/req`;
-        config.respFolder = `${root}/pojo/resp`;
-        config.serviceFolder = `${root}/service`;
-        config.serviceImplFolder = `${root}/service/impl`;
-        config.entityFolder = `${root}/pojo/entity`;
-        config.project = project;
+        // let root = `./output/${project}/src/main/java/com/${project}`;
+        // config.controlerFolder = `${root}/controller`;
+        // config.mapperFolder = `${root}/mapper`;
+        // config.mapperConfigFolder = `./output/${project}/src/main/resource/mapper`;
+        // config.reqFolder = `${root}/pojo/req`;
+        // config.respFolder = `${root}/pojo/resp`;
+        // config.serviceFolder = `${root}/service`;
+        // config.serviceImplFolder = `${root}/service/impl`;
+        // config.entityFolder = `${root}/pojo/entity`;
+        // config.project = project;
 
-        let generator = new Generator(config);
-        generator.writeAll();
+        // let generator = new Generator(config);
+        // generator.writeAll();
 
 }
 
@@ -96,4 +93,4 @@ function main(project, dbConfig) {
 
 
 /*-------------------------------------------------main--------------------------------------------------*/
-main("spider", { host: "localhost", port: "3306", db: "spider", user: "root", password: "2011801243" });
+main("test", { host: "localhost", port: "3306", db: "test", user: "root", password: "2011801243" });
