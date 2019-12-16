@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-11-20 15:27:16
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-13 15:21:56
+ * @LastEditTime: 2019-12-16 17:12:54
  */
 exports.config = {
         defaultConfig: {
@@ -84,9 +84,12 @@ exports.config = {
                                 name: "2.2.2 用户联系人 <br> /user/contact",
                                 url: "/contact",
                                 params: {
-                                        //contactName:"超",
-                                        contactPhone: "1187",
-                                        // contactEmail:"151"
+                                        //  contactName:"",
+                                        //  contactPhone: "",
+                                        //  contactEmail:"",
+                                        userId: 77,
+                                        pageSize: 1,
+                                        pageIndex: 1,
                                 }
 
                         }, {
@@ -97,21 +100,29 @@ exports.config = {
                                         idCardNo: "",
                                         phone: "",
                                         email: "",
-                                        pageSize:1,
-                                        pageIndex:1,
-                                        startTime:null,
-                                        endTime:null
+                                        pageSize: 1,
+                                        pageIndex: 1,
+                                        startTime: null,
+                                        endTime: null
                                 }
                         }, {
                                 name: "2.2.1 用户企业 <br> /user/company",
                                 url: "/company",
                                 params: {
-                                        userName: "",
+                                        userRealName: "",
+                                        userPhoneNo: "",
+                                        userEmail: "",
+                                        userIdCardNo: "",
                                         companyName: "",
                                         legalPerson: "",
                                         licenceNo: "",
-                                        organizationType: 1,
-                                        verifyState: 1
+                                        organizationType: 0,
+                                        identificationType: 0,
+                                        verifyState: 0,
+                                        pageIndex: 1,
+                                        pageSize: 1,
+                                        startTime: null,
+                                        endTime: null,
                                 }
                         }]
 

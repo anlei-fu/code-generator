@@ -2,13 +2,18 @@
         "code": 100,
         "message": "操作成功",
         "data": {
-                "userId": 79,
-                "realName": "郭巍",
-                "idCardNo": "510812199304110030",
-                "idCardPicFront": null,
-                "idCardPicBack": null,
-                "idCardPicHand": null,
-                "verifyStartTime": "2019-12-04T11:27:17.000+0000",
-                "verifyEndTime": "2019-12-04T11:27:17.000+0000"
+                "total": 15,
+                "pages": null,
+                "pageIndex": 1,
+                "pageSize": 1,
+                "list": [
+                        {
+                                "id": 36,
+                                "userId": 76,
+                                "contactName": "邓孝辉",
+                                "contactPhone": "15102879405",
+                                "contactEmail": "360062490@qq.com"
+                        }
+                ]
         }
 }

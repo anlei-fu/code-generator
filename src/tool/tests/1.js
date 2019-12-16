@@ -4,19 +4,17 @@
  * @Author: fuanlei
  * @Date: 2019-12-13 14:09:53
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-13 15:22:40
+ * @LastEditTime: 2019-12-16 17:11:12
  */
 let a = {
-        name: "2.1.2 用户实名 <br> /user/real",
-        url: "/real",
+        name: "2.2.2 用户联系人 <br> /user/contact",
+        url: "/contact",
         params: {
-                realName: "",
-                idCardNo: "",
-                phone: "",
-                email: "",
+                contactName: "",
+                contactPhone: "",
+                contactEmail: "",
                 pageSize: 1,
                 pageIndex: 1,
-                startTime: null,
-                endTime: null
         }
+
 }
