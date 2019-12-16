@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class @nameController {
 
     @Autowired
-    private @nameService service;
+    private @nameService @snameService;
 
     @content
 }

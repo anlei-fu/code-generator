@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-09-20 14:13:28
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-29 14:46:25
+ * @LastEditTime: 2019-12-16 14:28:07
  */
 
 //imports
@@ -89,9 +89,6 @@ function select1(input, left, right, start, count) {
  * @returns {String}
  */
 function replace(input, pairs) {
-        requireNotNull(input);
-        pairs = pairs || {};
-
         for (const e in pairs)
                 input = input.replace(new RegExp(makeOraginalRegexPattern(e), 'g'), pairs[e]);
 
@@ -146,12 +143,11 @@ function removeWithMatchMany(input, option) {
 
 /**
  * 
- * @param {String} patter 
+ * @param {String} pattern 
  */
-function makeOraginalRegexPattern(patter) {
+function makeOraginalRegexPattern(pattern) {
         let out = "";
-
-        for (const c of patter) {
+        for (const c of pattern) {
                 switch (c) {
                         case "*":
                         case "$":
@@ -187,12 +183,8 @@ function makeOraginalRegexPattern(patter) {
  * @param {String?} suffix 
  * @returns {[String]}
  */
-function arrayToString(array, prefix, suffix) {
-        var result = EMPTY;
-        array = array || [];
-        prefix = prefix || EMPTY;
-        suffix = suffix || EMPTY;
-
+function arrayToString(array, prefix="", suffix="") {
+        let result="";
         for (const item of array)
                 result += `${prefix}${item}${suffix}`;
 

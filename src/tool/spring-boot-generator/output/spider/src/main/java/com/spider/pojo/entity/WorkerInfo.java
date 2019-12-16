@@ -1,4 +1,4 @@
-package com.@project.pojo.entity;
+package com.spider.pojo.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -9,21 +9,21 @@ import lombok.Setter;
 @ApiModel("worker info")
 @Getter
 @Setter
-public class WorkerInfo {
+public class undefined {
 
     @ApiModelProperty("描述")
     private String description;
 
     @ApiModelProperty("编号")
-    private Date id;
+    private Integer id;
 
     @ApiModelProperty("ip")
     private String ip;
 
     @ApiModelProperty("加入时间")
-    private Long joinTime;
+    private Integer joinTime;
 
     @ApiModelProperty("最后运行时间")
-    private Long lastRunTime;
+    private Integer lastRunTime;
 
 }

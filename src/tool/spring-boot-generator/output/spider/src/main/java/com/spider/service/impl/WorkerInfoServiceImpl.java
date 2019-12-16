@@ -1,7 +1,7 @@
-package com.@project.service.impl;
+package com.spider.service.impl;
 
-import com.@project.mapper.WorkerInfoMapper;
-import com.@project.pojo.entity.WorkerInfo;
+import com.spider.mapper.WorkerInfoMapper;
+import com.spider.pojo.entity.WorkerInfo;
 import com.spider.service.WorkerInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,21 @@ import org.springframework.stereotype.Service;
 public class WorkerInfoServiceImpl implements WorkerInfoService {
 
     @Autowired
-    private WorkerInfoMapper mapper;
+    private WorkerInfoMapper workerInfoMapper;
 
     @Override
-    public GetByIdResp GetById(Integer id) {
-        return mapper.GetById(id);
+    public GetWorkerInfoByIdResp getWorkerInfoById(Integer id, GetWorkerInfoByIdReq req) {
+        return workerInfoMapper.getWorkerInfoById(id, req);
+    }
+
+    @Override
+    public boolean deleteWorkerInfoById(Integer id) {
+        return workerInfoMapper.deleteWorkerInfoById(id) > 0;
+    }
+
+    @Override
+    public PageInfo<WorkerInfo> getWorkerInfoByIp(String ip) {
+        return workerInfoMapper.getWorkerInfoByIp(ip);
     }
 
 

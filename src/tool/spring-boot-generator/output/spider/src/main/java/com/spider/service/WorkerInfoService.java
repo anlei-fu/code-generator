@@ -1,9 +1,11 @@
-package com.@project.service;
+package com.spider.service;
 
-import com.@project.pojo.entity.WorkerInfo;
+import com.spider.pojo.entity.WorkerInfo;
 
 public interface WorkerInfoService {
 
-    GetByIdResp GetById(Integer id);
+    GetWorkerInfoByIdResp getWorkerInfoById(Integer id, GetWorkerInfoByIdReq req);
+    boolean deleteWorkerInfoById(Integer id);
+    PageInfo<WorkerInfo> getWorkerInfoByIp(String ip);
 
 }

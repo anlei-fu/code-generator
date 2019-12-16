@@ -10,13 +10,13 @@ const { generate } = require("./../../sqls/model/model-generator")
  * @param {String} user 
  * @param {String} password 
  */
-async function init(project, dbConfig) {
+ function init(project, dbConfig) {
 
         // create project required folders
         makeAllFolders(project);
 
         // generate db info
-      await  generate(dbConfig, project,`./output/${project}/db`);
+     // await  generate(dbConfig, project,`./output/${project}/db`);
 }
 
 /**

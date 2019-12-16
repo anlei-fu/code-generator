@@ -4,7 +4,7 @@
  * @Author: fuanlei
  * @Date: 2019-12-01 09:02:39
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-13 09:42:51
+ * @LastEditTime: 2019-12-16 16:16:36
  */
 const { FILE } = require("../../libs/file")
 const { OBJECT } = require("../../libs/utils")
@@ -15,6 +15,12 @@ const { isSimpleJavaType, getJavaType } = require("./utils")
 const ident1 = "  ";
 const ident3 = "      ";
 const ident4 = "        "
+const DATE_PACKAGE = "import java.util.Date;";
+const HTTP_MAPPINGS = new Map();
+HTTP_MAPPINGS.set("select", "GetMapping")
+        .set("update", "PutMapping")
+        .set("delete", "DeleteMapping")
+        .set("insert", "PostMapping");
 
 class Field {
         constructor() {
@@ -119,6 +125,7 @@ class GeneratorConfig {
                 this.respFolder = "";
                 this.serviceFolder = "";
                 this.serviceImplFolder = "";
+                this.name = "";
                 this.project = "";
                 this.entityFolder = "";
                 this.items = [new Config()];
@@ -150,22 +157,29 @@ class Generator {
          * @returns {String}
          */
         writeAll() {
+
+                if (!this.config.name)
+                        throw new Error("config name property is required!")
+
+                if (!this.config.table)
+                        throw new Error("config table property is required!")
+
                 this.initTable(this.config.table);
+
                 this.config.items.forEach(x => {
                         if (x.joins) {
                                 x.joins.forEach(join => {
                                         this.initTable(join.table);
                                 });
                         }
+
                         this.initConfig(x);
-                        this.getControllerItem(x);
-                        this.getMapperItem(x);
-                        this.getServiceImplItem(x);
-                        this.getServiceItem(x);
                         this.writeReq(x);
                         this.writeResp(x);
+
                         if (x.params)
                                 this.writeParams(x);
+
                         this.writeEntity();
                         this.writeMapper();
                         this.writeController();
@@ -176,37 +190,60 @@ class Generator {
         }
 
         /**
+         * Check and set default config if absent
          * 
          * @param {Config} config 
          */
         initConfig(config) {
+
+                config.type = config.type || "select";
+
+                if (!config.id)
+                        config.id = this.getDefaultId(config);
+
+                if (!config.reqs)
+                        config.reqs = this.getDefaultReqs(config);
+
                 config.reqs.forEach(x => {
                         if (x.doCreate) {
-                                x.name = x.name || config.id + "Req";
+                                x.type = x.type || STR.upperFirstLetter(config.id) + "Req";
+                                x.name = x.name || "req";
                                 x.description = x.description || "";
                         }
                 });
 
-                if (config.resp.doCreate) {
-                        config.resp.name = config.resp.name || config.id + "Resp";
+                if (!config.resp)
+                        config.resp = this.getDefaultResp(config);
+
+                if (config.resp && config.resp.doCreate) {
+                        config.resp.type = config.resp.type || STR.upperFirstLetter(config.id) + "Resp";
                         config.resp.description = config.resp.description || "";
                 }
 
                 if (config.params) {
-                        config.params.name = config.params.name || config.id + "Params";
+                        config.params.type = config.params.type || STR.upperFirstLetter(config.id) + "Params";
+                        config.params.name = config.params.name || "params";
                         config.params.description = config.params.description || "";
                 }
         }
 
+        /**
+         * Init table columns
+         * 
+         * @param {Table} table 
+         */
         initTable(table) {
                 OBJECT.forEach(table.columns, (key, value) => {
                         table.columns[key].type = getJavaType(value.type);
                 });
         }
 
+        /**
+         * Write entity file
+         */
         writeEntity() {
                 var entity = {};
-                entity.name = STR.upperFirstLetter(this.config.table.name);
+                entity.type = this.config.name;
                 entity.description = this.config.table.description;
                 entity.fields = OBJECT.toArray(this.config.table.columns);
                 this._writeEntity(this.config.entityFolder, entity);
@@ -222,10 +259,9 @@ class Generator {
         writeReq(config) {
                 config.reqs.forEach(x => {
                         if (x.doCreate) {
-
                                 let items = config.type == "insert" ? this._getIncludes(config) : this._getConditions(config);
                                 if (x.excludes)
-                                        items.filter(item => !x.exlcludes.has(item.name));
+                                        items = items.filter(item => !x.excludes.has(item.name));
 
                                 x.fields = x.fields ? x.fields.concat(items) : items;
 
@@ -238,7 +274,6 @@ class Generator {
                                                 }
                                         }
                                 });
-
                                 this._writeEntity(this.config.reqFolder, x);
                         }
                 });
@@ -268,7 +303,7 @@ class Generator {
         writeParams(config) {
                 let constructorContent = "";
                 let fields = "";
-                let constructParams = this._getReqParams(config);
+                let constructParams = this._getReqParamsWithoutType(config);
                 let getters = "";
                 let hasDate = false;
                 config.params.fields.forEach(x => {
@@ -304,91 +339,50 @@ class Generator {
          * Write mapper file
          */
         writeMapper() {
-                let items=[];
-                this.config.items.forEach(x=>{
-                  items.push(this.getMapperItem(x));
-                });
-                let content = FILE.read("./templates/mapper.java")
-                        .replace(/@name/g, this.config.name)
-                        .replace("@content", this.arrayToString(items));
-
-                FILE.write(`${this.config.mapperFolder}/${this.config.name}Mapper.java`, content);
+                this._writeCore(`${this.config.mapperFolder}/${this.config.name}Mapper.java`,
+                        null,
+                        this.getMapperItem,
+                        "./templates/mapper.java");
         }
 
         /**
          * Write mapper config file
          */
         writeMapperConfig() {
-                let items=[];
-                this.config.items.forEach(x=>{
-                  items.push(this.getMapperConfigItem(x));
-                });
-                let content = FILE.read("./templates/mapper.xml")
-                        .replace(/@name/g, this.config.name)
-                        .replace("@content", this.arrayToString(items));
-
-                FILE.write(`${this.config.mapperConfigFolder}/${this.config.name}Mapper.xml`, content);
-        }
-
-        /**
-         * 
-         * @param {[String]} array 
-         */
-        arrayToString(array) {
-                let ret = "";
-                array.forEach(x => {
-                        ret += x;
-                });
-                
-                return ret;
+                this._writeCore(`${this.config.mapperConfigFolder}/${this.config.name}Mapper.xml`,
+                        null,
+                        this.getMapperConfigItem,
+                        "./templates/mapper.xml");
         }
 
         /**
          * Write controller file
          */
         writeController() {
-                let items = [];
-                this.config.items.forEach(x => {
-                        items.push(this.getControllerItem(x));
-                });
-
-                let content = FILE.read("./templates/controller.java")
-                        .replace(/@name/g, this.config.name)
-                        .replace("@content", this.arrayToString(items))
-                        .replace("@description", this.config.table.description);
-
-                FILE.write(`${this.config.controlerFolder}/${this.config.name}Controller.java`, content);
+                this._writeCore(`${this.config.controlerFolder}/${this.config.name}Controller.java`,
+                        null,
+                        this.getControllerItem,
+                        "./templates/controller.java");
         }
 
         /**
          * Write service file
          */
         writeService() {
-                let items = [];
-                this.config.items.forEach(x => {
-                        items.push(this.getServiceItem(x));
-                });
-
-                let content = FILE.read("./templates/service.java")
-                        .replace(/@name/g, this.config.name)
-                        .replace("@content", this.arrayToString(items));
-
-                FILE.write(`${this.config.serviceFolder}/${this.config.name}Service.java`, content);
+                this._writeCore(`${this.config.serviceFolder}/${this.config.name}Service.java`,
+                        null,
+                        this.getServiceItem,
+                        "./templates/service.java");
         }
 
         /**
          * Write service impl file
          */
         writeServiceImpl() {
-                let items=[];
-                this.config.items.forEach(x=>{
-                   items.push(this.getServiceImplItem(x));
-                });
-                let content = FILE.read("./templates/serviceImpl.java")
-                        .replace(/@name/g, this.config.name)
-                        .replace("@content", this.arrayToString(items));
-
-                FILE.write(`${this.config.serviceImplFolder}/${this.config.name}ServiceImpl.java`, content);
+                this._writeCore(`${this.config.serviceImplFolder}/${this.config.name}ServiceImpl.java`,
+                        null,
+                        this.getServiceImplItem,
+                        "./templates/serviceImpl.java");
         }
 
         /**
@@ -398,17 +392,18 @@ class Generator {
          * @returns {String}
          */
         getMapperItem(config) {
-
+                //  this pointer changed ,should call or apply(this,params)
+                //  outter if just pass func(arg) then inner won't know who is this pointer,
+                //  function is not a part of instance but 
                 // get mapper params
                 let mapperParams = "";
                 if (!config.params) {
                         config.reqs.forEach(x => {
                                 mapperParams += `@Params("${x.name}") ${x.type} ${x.name}, `;
                         });
-
                         mapperParams = this._removeLastComa(mapperParams);
                 } else {
-                        mapperParams = `${Str.upperFirstLetter(config.params.name)} params`;
+                        mapperParams = `${STR.upperFirstLetter(config.params.name)} params`;
                 }
 
                 // get return type
@@ -416,25 +411,28 @@ class Generator {
                 if (config.type == "select") {
                         if (config.resp.single) {
                                 mapperReturnType = config.resp.doCreate
-                                        ? STR.upperFirstLetter(config.resp.name)
-                                        : STR.upperFirstLetter(this.config.table.name);
+                                        ? STR.upperFirstLetter(config.resp.type)
+                                        : this.config.name;
                         } else {
                                 mapperReturnType = config.resp.doCreate
-                                        ? `List<${STR.upperFirstLetter(config.resp.name)}>`
-                                        : `List<${STR.upperFirstLetter(this.config.table.name)}>`;
+                                        ? `List<${STR.upperFirstLetter(config.resp.type)}>`
+                                        : `List<${this.config.name}>`;
                         }
                 } else {
                         mapperReturnType = "int";
                 }
 
-                return FILE.read("./templates/mapper-item.java")
-                        .replace("@name", config.id)
-                        .replace("@mapperReturnType", mapperReturnType)
-                        .replace("@mapperParams", mapperParams);
+                let patterns = {
+                        name: config.id,
+                        mapperReturnType,
+                        mapperParams
+                }
+
+                return this._replaceCore("./templates/mapper-item.java", patterns, true)
         }
 
         /**
-         * Get mapper config item
+         * Get mapper config item, dispatch by "config.type"
          * 
          * @param {Config} config 
          * @returns {String}
@@ -462,21 +460,24 @@ class Generator {
                 if (config.type == "select") {
                         if (config.resp.single) {
                                 serviceReturnType = config.resp.doCreate
-                                        ? STR.upperFirstLetter(config.resp.name)
+                                        ? STR.upperFirstLetter(config.resp.type)
                                         : STR.upperFirstLetter(this.config.table.name);
                         } else {
                                 serviceReturnType = config.resp.doCreate
-                                        ? `PageInfo<${STR.upperFirstLetter(config.resp.name)}>`
+                                        ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>`
                                         : `PageInfo<${STR.upperFirstLetter(this.config.table.name)}>`;
                         }
                 } else {
                         serviceReturnType = "boolean";
                 }
 
-                return FILE.read("./templates/service-item.java")
-                        .replace("@serviceParams", serviceParams)
-                        .replace("@serviceReturnType", serviceReturnType)
-                        .replace(/@name/g, config.id);
+                let patterns = {
+                        serviceParams,
+                        serviceReturnType,
+                        name: config.id
+                };
+
+                return this._replaceCore("./templates/service-item.java", patterns, true);
         }
 
         /**
@@ -486,41 +487,41 @@ class Generator {
          * @returns {String}
          */
         getServiceImplItem(config) {
-                let serviceParams = this._getReqParamsWithType(config);
-                let suffix="";
+                let serviceImplParams = this._getReqParamsWithType(config)
+                        , suffix = "";
 
                 // get return type
-                let serviceReturnType = "";
+                let serviceImplReturnType = "";
                 if (config.type == "select") {
                         if (config.resp.single) {
-                                serviceReturnType = config.resp.doCreate
-                                        ? STR.upperFirstLetter(config.resp.name)
-                                        : STR.upperFirstLetter(this.config.table.name);
+                                serviceImplReturnType = config.resp.doCreate
+                                        ? STR.upperFirstLetter(config.resp.type)
+                                        : this.config.name;
                         } else {
-                                serviceReturnType = config.resp.doCreate
-                                        ? `PageInfo<${STR.upperFirstLetter(config.resp.name)}>`
-                                        : `PageInfo<${STR.upperFirstLetter(this.config.table.name)}>`;
+                                serviceImplReturnType = config.resp.doCreate
+                                        ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>`
+                                        : `PageInfo<${this.config.name}>`;
                         }
                 } else {
-                        serviceReturnType = "boolean";
-                        suffix=" > 0";
+                        serviceImplReturnType = "boolean";
+                        suffix = " > 0";
                 }
 
-                let content = "";
-                if (config.params)
-                        this._getServiceImplContent(config);
+                let content = !config.params ? "" : this._getServiceImplContent(config)
+                        , serviceImplMapperParams = config.param ? "params" : this._getReqParamsWithoutType(config)
+                        , patterns = {
+                                name: config.id,
+                                serviceImplParams,
+                                serviceImplReturnType,
+                                serviceImplMapperParams,
+                                suffix,
+                                content,
+                                sname: STR.lowerFirstLetter(this.config.name)
+                        };
 
-                let serviceMapperParams = config.param ? "params" : this._getReqParams(config);
+                let ret = this._replaceCore("./templates/serviceImpl-item.java", patterns, true);
 
-                let ret= FILE.read("./templates/serviceImpl-item.java")
-                        .replace(/@name/g, config.id)
-                        .replace("@serviceImplParams", serviceParams)
-                        .replace("@serviceMapperParams", serviceMapperParams)
-                        .replace("@serviceImplReturnType", serviceReturnType)
-                        .replace("@suffix",suffix)
-                        .replace("@content", content);
-                
-                        return STR.removeEmptyLine(ret)+"\r\n";
+                return STR.removeEmptyLine(ret) + "\r\n";
         }
 
         /**
@@ -530,64 +531,197 @@ class Generator {
          * @returns {String}
          */
         getControllerItem(config) {
-
-                // is generate controller
-
                 let controllerParams = this._getControllerParams(config)
                         , httpMapping = this._getHttpMapping(config)
-                        , serviceParams = this._getReqParams(config)
+                        , serviceParams = this._getReqParamsWithoutType(config)
                         , description = config.controller.description || ""
                         , controllerReturnType = this._getControllerReturnType(config);
 
+                let patterns = {
+                        name: config.id,
+                        httpMapping,
+                        controllerReturnType,
+                        serviceParams,
+                        description,
+                        controllerParams,
+                        sname: STR.lowerFirstLetter(this.config.name)
+                };
 
-                return FILE.read("./templates/controller-item.java")
-                        .replace(/@name/g, config.id)
-                        .replace("@httpMapping", httpMapping)
-                        .replace("@controllerReturnType", controllerReturnType)
-                        .replace("@serviceParams", serviceParams)
-                        .replace("@description", description)
-                        .replace("@controllerParams", controllerParams);
+                return this._replaceCore("./templates/controller-item.java", patterns);
+        }
+
+        /**
+         * Analyze and generate default id
+         * 
+         * 
+         * @param {Config} config 
+         */
+        getDefaultId(config) {
+                let id = "";
+                switch (config.type) {
+                        case "select":
+                                id = "get";
+                                break;
+                        case "delete":
+                                id = "get";
+                                break;
+                        case "insert":
+                                id = "add";
+                                break;
+                        default:
+                                id = "update";
+                                break;
+                }
+
+                id += this.config.name + "By"
+                let conditions = this._getConditions(config);
+
+                if (conditions.length == 1) {
+                        id += STR.upperFirstLetter(conditions[0].name);
+                } else {
+                        conditions.forEach((x, i, array) => {
+                                id += i == array.length - 1
+                                        ? "And" + STR.upperFirstLetter(x.name)
+                                        : STR.upperFirstLetter(x.name);
+                        });
+                }
+
+                return id;
+        }
+
+        /**
+         * Analyze and generate default req
+         * 
+         * 
+         * @param {Config} config 
+         */
+        getDefaultReqs(config) {
+                let conditions = this._getConditions(config);
+
+                if (conditions.length > 2) {
+
+                } else {
+
+                }
+        }
+
+        /**
+         * Analyze and generate default resp config
+         * 
+         * 
+         * @param {Config} config 
+         */
+        getDefaultResp(config) {
+                if (config.type == "select" && config.joins) {
+                        return { doCreate:true };
+                } else {
+                        return { doCreate:false };
+                }
         }
 
         /**
          * Write req or resp file 
          * 
          * @private
-         * @param {String} folder 
-         * @param {Req} entity 
+         * @param {String} folder output folder
+         * @param {Req} entity  to write
          */
         _writeEntity(folder, entity) {
-                let template = FILE.read("./templates/entity.java")
-                        , content = ""
+                let content = ""
                         , header = ""
-                        , hasDate = false
                         , validates = "";
 
+                // generate all field items
                 entity.fields.forEach(x => {
-                        let field = FILE.read("./templates/entity-item.java");
-                        if (x.type == "Date")
-                                hasDate = true;
-
                         if (x.validates) {
                                 x.validates.forEach(validate => {
                                         validates += validate + "\r\n";
                                 });
                         }
 
-                        field = field.replace("@name", x.name)
-                                .replace("@type", x.type)
-                                .replace("@description", x.description)
-                                .replace("@validates", validates);
+                        let patterns = {
+                                name: x.name,
+                                type: x.type,
+                                description: x.description,
+                                validates
+                        };
+
+                        let field = this._replaceCore("./templates/entity-item.java", patterns, true);
 
                         content += STR.removeEmptyLine(field) + "\r\n";
                 });
 
-                template = template.replace("@header", header)
-                        .replace("@description", entity.description)
-                        .replace("@name", entity.name)
-                        .replace("@content", content.trimRight() + "\r\n");
+                content = content.trimRight() + "\r\n";
 
-                FILE.write(`${folder}/${entity.name}.java`, template);
+                let ptterns = {
+                        header,
+                        description: entity.description,
+                        name: entity.name,
+                        content
+                }
+
+                let template = this._replaceCore("./templates/entity.java", ptterns, true);
+
+                this._writeCore(`${folder}/${entity.type}.java`, template);
+        }
+
+        /**
+        * Replace templates with patterns
+        * if "isfile==true",content means the path of template file,
+        * otherwise means some text. 
+        * 
+        * @private
+        * @param {String} content  text or path
+        * @param {Map} patterns     
+        * @param {boolean} isfile   
+        * @returns {String}
+        */
+        _replaceCore(content, patterns, isfile = true) {
+                let map = {};
+                OBJECT.forEach(patterns, (key, value) => {
+                        map["@" + key] = value;
+                });
+                return isfile ? STR.replace(FILE.read(content), map) : STR.replace(content, map);
+        }
+
+        /**
+         * Write file 
+         * if content is null, getter and templatePath is enabled
+         * means will do a generate content and write operation,
+         * otherwise just replace content and write file
+         * 
+         * @private
+         * @param {String} path  output file path
+         * @param {String} content  some text or null
+         * @param {(Config)=>String} getter 
+         * @param {String} templatePath  template file path
+         */
+        _writeCore(path, content, getter, templatePath) {
+
+                let patterns = {
+                        name: this.config.name,
+                        project: this.config.project,
+                        description: "",
+                        sname: STR.lowerFirstLetter(this.config.name)
+                };
+
+                if (!content) {
+                        if (!getter || !templatePath)
+                                throw new Error("unexcepted params");
+
+                        let items = [];
+                        this.config.items.forEach(x => {
+                                // pass this to getter
+                                items.push(getter.call(this, x));
+                        });
+
+                        patterns.content = STR.arrayToString(items),
+                                content = this._replaceCore(templatePath, patterns, true);
+                } else {
+                        content = this._replaceCore(content, patterns, false);
+                }
+
+                FILE.write(path, content);
         }
 
         /**
@@ -600,9 +734,10 @@ class Generator {
         _getControllerParams(config) {
                 let params = "";
                 config.reqs.forEach(x => {
+                        x.from = x.from || "";
                         params += isSimpleJavaType(x.type)
                                 ? `${x.from} ${x.type} ${x.name}, `.trimLeft()
-                                : `${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
+                                : `${x.from} @Validated @ModelAttribute ${x.type} req, `.trimLeft();
                 });
 
                 return this._removeLastComa(params);
@@ -616,20 +751,12 @@ class Generator {
          * @returns {String}
          */
         _getHttpMapping(config) {
-                let mapping = "";
-                if (config.type == "select") {
-                        mapping = "GetMapping";
-                } else if (config.type == "update") {
-                        mapping = "PutMapping";
-                } else if (config.type == "delete") {
-                        mapping = "DeleteMapping";
-                } else {
-                        mapping = "PostMapping";
-                }
+                if (!HTTP_MAPPINGS.has(config.type))
+                        throw new Error(`unexceted type(${config.type})`);
 
                 let path = config.controller.path || `/${this.config.table.name}/${config.id}`;
 
-                return `${mapping}(path="${path}")`;
+                return `${HTTP_MAPPINGS.get(config.type)}(path="${path}")`;
         }
 
         /**
@@ -642,7 +769,6 @@ class Generator {
         _removeLastComa(pattern) {
                 return STR.removeLastComa(pattern);
         }
-
 
         /**
          * Get req params with type field
@@ -667,7 +793,7 @@ class Generator {
          * @param {Config} config 
          * @returns {String}
          */
-        _getReqParams(config) {
+        _getReqParamsWithoutType(config) {
                 let params = "";
                 config.reqs.forEach(x => {
                         params += `${x.name}, `;
@@ -686,7 +812,9 @@ class Generator {
          */
         _getServiceImplContent(config) {
                 let content = `${config.params.name} params = new ${config.params.name}(@params)`;
-                content = content.replace("@params", this._getReqParams(config));
+                content = content.replace("@params", this._getReqParamsWithoutType(config));
+
+                // if has default values, generate set expression
                 if (config.params.defaultValues) {
                         config.params.defaultValues.forEach((value, key) => {
                                 content += `params.set${STR.upperFirstLetter(key)}(${value});\r\n`;
@@ -698,13 +826,14 @@ class Generator {
 
         /**
          * Get serviceImpl's mapper params
+         * default name is "params" if generate Params entity
          * 
          * @private
          * @param {Config} config 
          * @returns {String}
          */
         _getServiceImplMapperParams(config) {
-                return config.params ? "params" : this._getReqParams(config);
+                return config.params ? "params" : this._getReqParamsWithoutType(config);
         }
 
         /**
@@ -721,12 +850,12 @@ class Generator {
                 // single or page info
                 if (config.resp.single) {
                         return config.resp.doCreate
-                                ? `R<${STR.upperFirstLetter(config.resp.name)}>`
-                                : `R<${STR.upperFirstLetter(this.config.table.name)}>`;
+                                ? `R<${STR.upperFirstLetter(config.resp.type)}>`
+                                : `R<${this.config.name}>`;
                 } else {
                         return config.resp.doCreate
-                                ? `R<PageInfo<${STR.upperFirstLetter(config.resp.name)}>>`
-                                : `R<PageInfo<${STR.upperFirstLetter(this.config.table.name)}>>`;
+                                ? `R<PageInfo<${STR.upperFirstLetter(config.resp.type)}>>`
+                                : `R<PageInfo<${this.config.name}>>`;
                 }
         }
 
@@ -823,7 +952,7 @@ class Generator {
 
                 // join alias
                 let conditions = "";
-                this._getConditions().forEach((x, i) => {
+                this._getConditions(config).forEach((x, i) => {
                         conditions += x.required
                                 ? i == 0 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "and ", "", ident3)
                                 : i == 0 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "and ", "", ident3);
@@ -919,7 +1048,7 @@ class Generator {
                 return STR.removeEmptyLine(content)
                         .replace("@id", config.id)
                         .replace("@tableName",
-                                NamingStrategy.toHungary(config.table.name).toLowerCase())
+                                NamingStrategy.toHungary(this.config.table.name).toLowerCase());
         }
 
         /**
@@ -1044,7 +1173,7 @@ class Generator {
          * @returns {[Column]}
          */
         _getConditions(config) {
-                return this._getItems(config, true);
+                return config.type == "insert" ? this._getItems(config, false) : this._getItems(config, true);
         }
 
         /**
@@ -1057,40 +1186,25 @@ class Generator {
          * @returns {[Column]}
          */
         _getItems(config, isCondition = false) {
-                console.log(Object.keys(config));
                 let columns = [];
                 if (isCondition) {
-                        this._merge(columns, this._getColumns(this.config.table, config.conditions, true));
+                        columns = columns.concat(this._getColumns(this.config.table, config.conditions, true));
                 } else {
-                        this._merge(columns, this._getColumns(this.config.table, config.includes));
+                        columns = columns.concat(this._getColumns(this.config.table, config.includes, false));
                 }
 
                 // if type is "select" and has join option
                 if (config.joins) {
                         config.joins.forEach(join => {
                                 if (isCondition) {
-                                        this._merge(columns, this._getColumns(join.table1, join.conditions, true))
+                                        columns = columns.concat(this._getColumns(join.table1, join.conditions, true));
                                 } else {
-                                        this._merge(columns, this._getColumns(join.table1, join.includes))
+                                        columns = columns.concat(this._getColumns(join.table1, join.includes, false));
                                 }
                         });
                 }
 
                 return columns;
-        }
-
-        /**
-         * Append array2's elements into array1, avod empty array concat 
-         * another array cause type change to [[]]
-         * 
-         * @private
-         * @param {[]} array1 
-         * @param {[]} array2 
-         */
-        _merge(array1, array2) {
-                array2.forEach(x => {
-                        array1.push(x);
-                });
         }
 
         /**

@@ -1,6 +1,6 @@
-@httpMapping
-    @ApiOperation("@description")
+@ApiOperation("@description")
+    @httpMapping
     public @controllerReturnType @name(@controllerParams) {
-        return R.doResponse(() -> service.@name(@serviceParams));
+        return R.doResponse(() -> @snameService.@name(@serviceParams));
     }
     

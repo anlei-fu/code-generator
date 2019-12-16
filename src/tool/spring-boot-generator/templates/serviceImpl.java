@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class @nameServiceImpl implements @nameService {
 
     @Autowired
-    private @nameMapper mapper;
+    private @nameMapper @snameMapper;
 
 @content
 }
