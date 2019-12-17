@@ -36,6 +36,7 @@ class Field {
  */
 class Join {
         constructor() {
+                this.table={}
                 this.includes = [];
                 this.conditions = [];
                 this.alias = "";
@@ -53,8 +54,7 @@ class Req {
                 this.exlcludes = new Set();
                 this.type = "";
                 this.doCreate = false;
-                this.fields = [new Field()];
-                this.page = false;
+                this.fields = [new Field()]; // just for write entity
         }
 }
 
@@ -228,7 +228,7 @@ class Generator {
         }
 
         /**
-         * Init table columns
+         * Init table columns ,convert 'origin type' to 'java type'
          * 
          * @param {Table} table 
          */

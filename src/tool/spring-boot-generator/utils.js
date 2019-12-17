@@ -4,9 +4,24 @@
  * @Author: fuanlei
  * @Date: 2019-12-01 09:02:40
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-16 14:44:37
+ * @LastEditTime: 2019-12-17 13:03:35
+ */
+
+const BASIC_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String", "Long", "Double"]);
+
+/**
+ *  Convert sql type to java type
+ * 
+ * 
+ * 
+ *  @param { {name:String,length:number} } sqlType
  */
 exports.getJavaType = function (sqlType) {
+
+        // already been converted
+        if (!sqlType.name)
+                return sqlType;
+
         if (sqlType.name.indexOf("char") != -1) {
                 return "String";
         } else if (sqlType.name.indexOf("integer") != -1) {
@@ -28,7 +43,10 @@ exports.getJavaType = function (sqlType) {
                 return "Integer";
         }
 }
-const types = new Set(["Integer", "Float", "Date", "Boolean", "String", "Long", "Double"]);
+
+/**
+ * Check is simple java type
+ */
 exports.isSimpleJavaType = (type) => {
-        return types.has(type);
+        return BASIC_TYPES.has(type);
 }

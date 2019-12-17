@@ -12,7 +12,7 @@ let damageRepositoryDevice = {
     },
     deviceCode: {
       name: "deviceCode",
-      description: "钢轨号/焊缝号/岔道号",
+      description: "位置唯一钢轨号/焊缝号/岔道号",
       nullable: true,
       type: {
         name: "varchar",
@@ -84,11 +84,11 @@ let damageRepositoryDevice = {
     },
     railType: {
       name: "railType",
-      description: "轨型",
+      description: "铁轨类型",
       nullable: true,
       type: {
         name: "int",
-        length: 11
+        length: 32
       }
     },
     sealNumber: {
@@ -115,6 +115,24 @@ let damageRepositoryDevice = {
       nullable: true,
       type: {
         name: "float"
+      }
+    },
+    trackNo: {
+      name: "trackNo",
+      description: "钢轨号",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: 32
+      }
+    },
+    turnoutNo: {
+      name: "turnoutNo",
+      description: "道岔号",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: 32
       }
     },
     updateTime: {
@@ -151,27 +169,31 @@ let columnsArray = [
   "sealNumber",
   "sleeper",
   "totalWeight",
+  "trackNo",
+  "turnoutNo",
   "updateTime",
   "userDate"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-23 2:3:41",
-  deviceCode: "钢轨号/焊缝号/岔道号77",
-  deviceName: "设备名称57",
-  deviceType: 625,
-  deviceTypeCode: "道岔配轨/焊缝(类型)号646",
-  factory: "生产厂449",
-  nature: "材质503",
-  orderDetailId: 743,
-  radius: 247,
-  railType: 40,
-  sealNumber: "钢轨热印号678",
-  sleeper: 757,
-  totalWeight: 39,
-  updateTime: "2019-12-15 2:3:41",
-  userDate: "出厂年月146"
+  createTime: "2019-12-17 :3:35",
+  deviceCode: "位置唯一钢轨号/焊缝号/岔道号612",
+  deviceName: "设备名称419",
+  deviceType: 390,
+  deviceTypeCode: "道岔配轨/焊缝(类型)号879",
+  factory: "生产厂74",
+  nature: "材质421",
+  orderDetailId: 207,
+  radius: 499,
+  railType: 291,
+  sealNumber: "钢轨热印号703",
+  sleeper: 979,
+  totalWeight: 800,
+  trackNo: "钢轨号300",
+  turnoutNo: "道岔号631",
+  updateTime: "2019-12-24 :3:35",
+  userDate: "出厂年月108"
 };
 }
 

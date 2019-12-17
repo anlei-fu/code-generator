@@ -100,6 +100,15 @@ let weldingInfo = {
         length: 11
       }
     },
+    reinforceWelding: {
+      name: "reinforceWelding",
+      description: "是否加固焊接",
+      nullable: true,
+      type: {
+        name: "int",
+        length: 11
+      }
+    },
     remark: {
       name: "remark",
       description: "备注",
@@ -118,9 +127,27 @@ let weldingInfo = {
         length: 11
       }
     },
+    stationId: {
+      name: "stationId",
+      description: "车站编号",
+      nullable: true,
+      type: {
+        name: "int",
+        length: 11
+      }
+    },
     status: {
       name: "status",
       description: "状态",
+      nullable: true,
+      type: {
+        name: "int",
+        length: 11
+      }
+    },
+    thighTrackId: {
+      name: "thighTrackId",
+      description: "股道编号",
       nullable: true,
       type: {
         name: "int",
@@ -195,13 +222,22 @@ let weldingInfo = {
         name: "float"
       }
     },
-    weldUserId: {
-      name: "weldUserId",
-      description: "焊接人",
+    weldUser: {
+      name: "weldUser",
+      description: "鐒婃帴浜?",
       nullable: true,
       type: {
-        name: "int",
-        length: 11
+        name: "varchar",
+        length: 255
+      }
+    },
+    welderUnit: {
+      name: "welderUnit",
+      description: "焊接人员所属单位",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: 255
       }
     },
     weldingNo: {
@@ -255,9 +291,12 @@ let columnsArray = [
   "operator",
   "position",
   "positionCategory",
+  "reinforceWelding",
   "remark",
   "side",
+  "stationId",
   "status",
+  "thighTrackId",
   "thignTrackCategory",
   "trackGlancingFlatness",
   "trackId",
@@ -266,7 +305,8 @@ let columnsArray = [
   "updateTime",
   "weldDate",
   "weldTrackTemperature",
-  "weldUserId",
+  "weldUser",
+  "welderUnit",
   "weldingNo",
   "weldingType",
   "weldingWay",
@@ -275,33 +315,37 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-12-15 2:3:41",
-  direction: 156,
-  holeNum: 283,
-  id: 468,
-  innerGlancingFlatness: 983,
-  isDelete: 199,
-  lineId: 891,
-  miles: 796,
-  operator: 755,
-  position: 423,
-  positionCategory: 377,
-  remark: "备注549",
-  side: 471,
-  status: 807,
-  thignTrackCategory: 466,
-  trackGlancingFlatness: 749,
-  trackId: 667,
-  turnoutId: 534,
-  turnoutThignCategory: 828,
-  updateTime: "2019-12-15 2:3:41",
-  weldDate: "2019-12-15 2:3:41",
-  weldTrackTemperature: 700,
-  weldUserId: 901,
-  weldingNo: "焊缝标识421",
-  weldingType: 205,
-  weldingWay: 290,
-  workareaId: 916
+  createTime: "2020-1-17 :3:35",
+  direction: 48,
+  holeNum: 560,
+  id: 570,
+  innerGlancingFlatness: 40,
+  isDelete: 812,
+  lineId: 883,
+  miles: 972,
+  operator: 916,
+  position: 425,
+  positionCategory: 331,
+  reinforceWelding: 902,
+  remark: "备注92",
+  side: 322,
+  stationId: 818,
+  status: 788,
+  thighTrackId: 591,
+  thignTrackCategory: 787,
+  trackGlancingFlatness: 38,
+  trackId: 351,
+  turnoutId: 172,
+  turnoutThignCategory: 683,
+  updateTime: "2019-12-17 :3:35",
+  weldDate: "2019-11-17 :3:35",
+  weldTrackTemperature: 932,
+  weldUser: "鐒婃帴浜?170",
+  welderUnit: "焊接人员所属单位255",
+  weldingNo: "焊缝标识554",
+  weldingType: 191,
+  weldingWay: 70,
+  workareaId: 328
 };
 }
 

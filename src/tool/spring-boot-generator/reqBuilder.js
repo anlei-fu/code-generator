@@ -1,30 +1,45 @@
-const { fieldBuilder } = require("./fieldBuilder")
-exports.reqBuilder = function () {
-        this.fields = [];
-        this.exclude = [];
-        this.novalidated = true;
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-17 09:09:58
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-12-17 11:41:16
+ */
+exports.reqBuilder = function reqBuilder() {
+        this._excludes = [];
+        this._noValidated = true;
+        this._validates = [];
 
         /**
-         * Remove columns
+         * Determine  is create new entity
          * 
-         * @param {String|[String]} items 
          * @returns {reqBuilder}
          */
-        function exclude(items) {
-                this.exclude = items;
+        this.doCreate = function doCreate() {
+                this._doCreate = true;
                 return this;
         }
 
         /**
-         * Add a field
+         * Remove columns
          * 
-         * @param {any =>void} configer 
+         * @param {String|Object | [String|Object]} items 
          * @returns {reqBuilder}
          */
-        function field(configer) {
-                let builder = new fieldBuilder();
-                configer(builder);
-                this.fields.push(builder);
+        this.excludes = function excludes(items) {
+                this._excludes = items;
+                return this;
+        }
+
+        /**
+         * Set type of fields
+         * 
+         * @param {String} type
+         * @returns {reqBuilder}
+         */
+        this.type = function type(type) {
+                this._type = type;
                 return this;
         }
 
@@ -34,8 +49,8 @@ exports.reqBuilder = function () {
          * @param {String} name 
          * @returns {reqBuilder}
          */
-        function name(name) {
-                this.name = name;
+        this.name = (name) => {
+                this._name = name;
                 return this;
         }
 
@@ -45,8 +60,8 @@ exports.reqBuilder = function () {
          * @param {String} description 
          * @returns {reqBuilder}
          */
-        function description(description) {
-                this.description = description;
+        this.description = (description) => {
+                this._description = description;
                 return this;
 
         }
@@ -56,18 +71,8 @@ exports.reqBuilder = function () {
          * 
          * @returns {readonly}
          */
-        function novalidated() {
-                this.novalidated = false;
-                return this;
-        }
-
-        /**
-         * Set extends from page
-         * 
-         * @returns {reqBuilder}
-         */
-        function page() {
-                this.extendPage = true;
+        this.noValidated = () => {
+                this._novalidated = false;
                 return this;
         }
 
@@ -77,8 +82,21 @@ exports.reqBuilder = function () {
          * @param {String} from 
          * @returns {reqBuilder}
          */
-        function from(from) {
-                this.from = from;
+        this.from = (from) => {
+                this._from = from;
                 return this;
+        }
+
+        this.build = function build() {
+                return {
+                        doCreate: this._doCreate,
+                        from: this._from,
+                        noValidated: this._novalidated,
+                        description: this._description,
+                        name: this._name,
+                        type: this._type,
+                        excludes: this._excludes,
+                        validates:this._validates,
+                }
         }
 }

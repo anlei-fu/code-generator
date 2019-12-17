@@ -2,9 +2,18 @@ let damageRepository = {
   name: "damageRepository",
   description: "伤损归档",
   columns: {
+    analysisResult: {
+      name: "analysisResult",
+      description: "1.检验通过,2.数据重复,3.数据异常,4.疑似前后伤",
+      nullable: true,
+      type: {
+        name: "int",
+        length: 32
+      }
+    },
     auditStatus: {
       name: "auditStatus",
-      description: "删除审计状态",
+      description: "删除审计状:-1审计成功,1待审计",
       nullable: true,
       type: {
         name: "int",
@@ -13,11 +22,20 @@ let damageRepository = {
     },
     cancel: {
       name: "cancel",
-      description: "销号状态",
+      description: "销号状:-1销号成功,1未销号",
       nullable: true,
       type: {
         name: "int",
         length: 11
+      }
+    },
+    checkEquipment: {
+      name: "checkEquipment",
+      description: "1.钢轨探伤仪,2.焊缝探伤仪,3.通用探伤仪,4.手工检查,5.双轨探伤仪,6.探伤车",
+      nullable: true,
+      type: {
+        name: "int",
+        length: 32
       }
     },
     createTime: {
@@ -30,7 +48,7 @@ let damageRepository = {
     },
     damageCode: {
       name: "damageCode",
-      description: "浼ゆ崯缂栫爜",
+      description: "伤损编码",
       nullable: true,
       type: {
         name: "varchar",
@@ -46,9 +64,9 @@ let damageRepository = {
         length: 128
       }
     },
-    damageLeve: {
-      name: "damageLeve",
-      description: "损伤程度",
+    damageLevel: {
+      name: "damageLevel",
+      description: "伤损程度",
       nullable: true,
       type: {
         name: "int",
@@ -91,6 +109,14 @@ let damageRepository = {
         length: 32
       }
     },
+    deleteTime: {
+      name: "deleteTime",
+      description: "删除时间",
+      nullable: true,
+      type: {
+        name: "datetime"
+      }
+    },
     detectStuff: {
       name: "detectStuff",
       description: "检查人员",
@@ -124,6 +150,14 @@ let damageRepository = {
       type: {
         name: "int",
         length: 11
+      }
+    },
+    lastDetectTime: {
+      name: "lastDetectTime",
+      description: "末次检测时间",
+      nullable: true,
+      type: {
+        name: "datetime"
       }
     },
     operator: {
@@ -203,20 +237,24 @@ let damageRepository = {
 };
 
 let columnsArray = [
+  "analysisResult",
   "auditStatus",
   "cancel",
+  "checkEquipment",
   "createTime",
   "damageCode",
   "damageDetail",
-  "damageLeve",
+  "damageLevel",
   "damageOld",
   "damageOldId",
   "damageType",
   "dealStatus",
+  "deleteTime",
   "detectStuff",
   "detectTime",
   "importStatus",
   "isDelete",
+  "lastDetectTime",
   "operator",
   "orderDetailId",
   "orderNo",
@@ -229,28 +267,32 @@ let columnsArray = [
 
 function create() {
   return {
-  auditStatus: 963,
-  cancel: 943,
-  createTime: "2019-12-16 2:3:41",
-  damageCode: "浼ゆ崯缂栫爜841",
-  damageDetail: "损伤详情321",
-  damageLeve: 178,
-  damageOld: 756,
-  damageOldId: 478,
-  damageType: 784,
-  dealStatus: 188,
-  detectStuff: 776,
-  detectTime: "2019-11-16 2:3:41",
-  importStatus: 254,
-  isDelete: 132,
-  operator: 889,
-  orderDetailId: 673,
-  orderNo: "伤损单号650",
-  receivingUnit: "接收单位554",
-  receivingUser: "接收人306",
-  receivingWorkareaInfo: 403,
-  remark: "备注605",
-  updateTime: "2019-12-15 2:3:41"
+  analysisResult: 977,
+  auditStatus: 181,
+  cancel: 237,
+  checkEquipment: 503,
+  createTime: "2020-1-17 :3:35",
+  damageCode: "伤损编码728",
+  damageDetail: "损伤详情700",
+  damageLevel: 954,
+  damageOld: 169,
+  damageOldId: 86,
+  damageType: 312,
+  dealStatus: 722,
+  deleteTime: "2019-11-17 :3:35",
+  detectStuff: 55,
+  detectTime: "2019-12-17 :3:35",
+  importStatus: 766,
+  isDelete: 923,
+  lastDetectTime: "2019-12-17 :3:35",
+  operator: 751,
+  orderDetailId: 643,
+  orderNo: "伤损单号272",
+  receivingUnit: "接收单位4",
+  receivingUser: "接收人569",
+  receivingWorkareaInfo: 234,
+  remark: "备注869",
+  updateTime: "2019-12-16 :3:35"
 };
 }
 

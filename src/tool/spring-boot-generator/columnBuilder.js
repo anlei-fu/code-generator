@@ -4,11 +4,12 @@
  * @Author: fuanlei
  * @Date: 2019-12-09 09:22:22
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-10 11:21:46
+ * @LastEditTime: 2019-12-17 17:50:05
  */
-const { TYPE,OBJECT } = require("./../../libs/utils")
-exports.columnBuilder = () => {
-        this.items = {};
+const { TYPE, OBJECT } = require("./../../libs/utils")
+exports.columnBuilder = function columBuilder() {
+
+        this._includes = {};
 
         /**
          * Add items
@@ -16,8 +17,8 @@ exports.columnBuilder = () => {
          * @param {String|[String]} item 
          * @returns {columBuilder}
          */
-        function include(item) {
-                _dispatch(item, _includeCore);
+        this.includes = (item) => {
+                this._dispatch(item, this._includeCore);
                 return this;
         }
 
@@ -27,32 +28,66 @@ exports.columnBuilder = () => {
          * @param {String|[String]} item 
          * @returns {columBuilder}
          */
-        function exclude(item) {
-                _dispatch(item, _excludeCore);
+        this.excludes = (item) => {
+                this._dispatch(item, this._excludeCore);
                 return this;
+        }
+
+        /**
+         * Set item expression
+         * 
+         */
+        this.expression = function (item, expression) {
+
         }
 
         /**
          * Set alias
          * 
          * @param {String} alias 
-         * @param {String|[String]} item 
+         * @param {String} item 
          * @returns {columBuilder}
          */
-        function alias(alias, item) {
-                _dispatch(item, _aliasCore);
+        this.alias = (item, alias) => {
+                this._aliasCore(this._addIfAbsent(item), alias);
                 return this;
         }
 
         /**
-         * Set required false
+         * Set prefix in every field
          * 
-         * @param {String|[String]} item 
+         * @returns {columnBuilder}
+         */
+        this.prefixAll = function prefixAll() {
+                return this.prefix(this._includes);
+        }
+
+        /**
+         * Set prefix
+         * 
+         * @param {String|[String]} item
+         * @param {String} prefix
+         * @returns {columnBuilder}
+         */
+        this.prefix = function prefix(item, prefix) {
+                if (TYPE.isArray(item)) {
+                        item.forEach(x => {
+                                this._prefixCore(this._addIfAbsent(x), prefix);
+                        });
+                } else {
+                        this._prefixCore(this._addIfAbsent(item), prefix);
+                }
+
+                return this;
+        }
+
+        /**
+         * Set required to true in every field
+         * 
          * @returns {columBuilder}
          */
-        function unrequire(item) {
-                _dispatch(item, _unrequireCore);
-                return this;
+        this.requireAll = function requireAll() {
+                return this.require(this._includes);
         }
 
         /**
@@ -61,13 +96,47 @@ exports.columnBuilder = () => {
          * @param {String|[String]} item 
          * @returns {columBuilder}
          */
-        function require(item) {
-                _dispatch(item, _requireCore);
+        this.require = (item) => {
+                this._dispatch(item, this._requireCore);
                 return this;
         }
 
-        function build() {
-                this.includes = OBJECT.toArray(this.includes);
+        /**
+         * Set required to false in every field
+         * 
+         * @returns {columBuilder}
+         */
+        this.unrequireAll = function unrequireAll() {
+                return this.unrequire(this._includes);
+        }
+
+        /**
+         * Set required false
+         * 
+         * @param {String|[String]} item 
+         * @returns {columBuilder}
+         */
+        this.unrequire = (item) => {
+                this._dispatch(item, this._unrequireCore);
+                return this;
+        }
+
+        /**
+         * Add into includes if absent
+         * 
+         * @param {String|{name:String}} item
+         * @returns {columnBuilder}
+         */
+        this._addIfAbsent = function addIfAbsent(item) {
+                let key = TYPE.isString(item) ? item : item.name;
+
+                if (!key)
+                        throw new TypeError(`unexcepted type of item (${item})`);
+
+                if (!this._includes[key])
+                        this.includes(item);
+
+                return this._includes[key];
         }
 
         /**
@@ -78,25 +147,14 @@ exports.columnBuilder = () => {
          * @param {String|[String]} item  
          * @param {(String)=>void} cosumer 
          */
-        function _dispatch(item, cosumer) {
+        this._dispatch = function dispatch(item, cosumer) {
                 if (TYPE.isArray(item)) {
                         item.forEach(x => {
-                                cosumer(x);
+                                cosumer.call(this, x);
                         });
                 } else {
-                        cosumer(item);
+                        cosumer.call(this, item);
                 }
-        }
-
-        /**
-         * Set items[item].alias alias
-         * 
-         * @private
-         * @param {String} alias 
-         * @param {String|[String]} item  
-         */
-        function _aliasCore(alias, item) {
-                _setProperty(item, "alias", alias);
         }
 
         /**
@@ -105,88 +163,118 @@ exports.columnBuilder = () => {
          * @private
          * @param {String} item  
          */
-        function _includeCore(item) {
-                _checkType(item);
+        this._includeCore = (item) => {
+                this._checkType(item);
 
                 if (TYPE.isString(item)) {
-                        if (this.includes[item])
+                        if (this._includes[item])
                                 return;
-                        this.include[item] = { name: item };
+                        
+                        // change type to object 
+                        this._includes[item] = { name: item };
                 } else {
-                        if (!item.name)
-                                throw new TypeError(`unexcepted type ${item}`);
-
-                        if (this.includes[item.name])
+                        
+                        if (this._includes[item.name])
                                 return;
 
-                        this.includes[item.name] = item;
+                        this._includes[item.name] = item;
                 }
         }
 
         /**
-         * Remove item from items
+         * Set items[item].alias alias
+         * 
+         * @private
+         * @param {Object} item  
+         * @param {String} alias 
+         */
+        this._aliasCore = (item, alias) => {
+                this._setProperty(item, "alias", alias);
+        }
+
+        /**
+         * 
+         * @param {String|[Object]} item  
+         * @param {String} prefix 
+         */
+        this._prefixCore = (item, prefix) => {
+                this._setProperty(item, "prefix", prefix);
+        }
+
+        /**
+         * Remove item from includes
          * 
          * @private
          * @param {String|object} item 
          */
-        function _excludeCore(item) {
-                _checkType(item);
+        this._excludeCore = (item) => {
+                this._checkType(item);
 
-                if (TYPE.isString(item)) {
-                        if (!this.includes[item])
-                                return;
-                        delete this.include[item];
-                } else {
+                let key = TYPE.isString(item) ? item : item.name;
+                if (!key)
+                        throw new Error(`unexcepted type (${item})`);
 
-                        if (!this.includes[item.name])
-                                return;
-
-                        delete this.includes[item.name];
-                }
+                if (this._includes[key])
+                        delete this._includes[key];
         }
 
         /**
-         * Set items[item].required true
+         * Set required to true
          * 
          * @private
          * @param {String|[String]} item  
          */
-        function _requireCore(item) {
-                _setProperty(item, "required", true);
+        this._requireCore = (item) => {
+                this._setProperty(item, "required", true);
         }
 
         /**
+         * Set required to false
          * 
          * @private
          * @param {String|[String]} item 
          */
-        function _unrequireCore(item) {
-                _setProperty(item, "required", false)
+        this._unrequireCore = (item) => {
+                this._setProperty(item, "required", false)
 
         }
 
         /**
+         * Set property in item
          * 
          * @private
-         * @param {*} item 
-         * @param {*} key 
-         * @param {*} value 
+         * @param {Object} item 
+         * @param {String} key 
+         * @param {String} value 
          */
-        function _setProperty(item, key, value) {
-                if (!TYPE.isObject(item))
-                        item = { name: item, key: value };
+        this._setProperty = (item, key, value) => {
+                if (TYPE.isObject(item)) {
+                        item[key] = value;
+                        return;
+                }
 
-                item[key] = value
+                throw new TypeError(`unexcepted type (${item})`);
         }
 
         /**
          * Check  is type correct
          * 
          * @private
-         * @param {any} obj 
+         * @param {any} item 
          */
-        function _checkType(obj) {
-                if (!TYPE.isString(item) || !TYPE.isObject(item))
-                        throw new TypeError(`unexcepted type ${item}`);
+        this._checkType = (item) => {
+
+                if (!TYPE.isString(item) && !TYPE.isObject(item))
+                        throw new TypeError(`unexcepted type ${item},require 'String' or 'Object'`);
+
+                if (TYPE.isObject(item) && !item.name)
+                        throw new TypeError("name property is required!");
+        }
+
+        /**
+         * Internal call
+         */
+        this.build = () => {
+                return OBJECT.toArray(this._includes);
         }
 }

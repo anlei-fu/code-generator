@@ -4,27 +4,68 @@
  * @Author: fuanlei
  * @Date: 2019-12-09 09:22:22
  * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-10 11:51:46
+ * @LastEditTime: 2019-12-17 16:32:32
  */
 const { columnBuilder } = require("./columnBuilder");
 const { controllerBuilder } = require("./controllerBuilder");
 const { joinBuilder } = require("./joinBuilder")
+const { reqBuilder } = require("./reqBuilder")
+const { respBuilder } = require("./respBuilder")
+const { paramBuilder } = require("./paramBuilder")
 
-exports.builder = function (type,id) {
-        this.type=type;
-        this.id=id;
-        this.includes = new columnBuilder();
-        this.conditions = new columnBuilder();
-        this.controller = new controllerBuilder();
+exports.builder = function builder(type, id) {
+        this.type = type;
+        this.id = id;
+        this._includes = new columnBuilder();
+        this._conditions = new columnBuilder();
+        this._controller = new controllerBuilder();
+        this.reqs = [];
+        this._resp = new respBuilder();
+        this._params = new paramBuilder();
         this.joins = [];
+
+        /**
+         * Config req
+         * 
+         * @param { (reqBuilder) => void} configer
+         * @returns {builder}
+         */
+        this.req = function req(configer) {
+                let builder = new reqBuilder();
+                configer(builder);
+                this.reqs.push(builder);
+                return this;
+        }
+
+        /**
+         * Config resp
+         * 
+         * @param {(respBuilder)=>void}
+         * @returns {builder}
+         */
+        this.resp = function resp(configer) {
+                configer(this._resp);
+                return this;
+        }
+
+        /**
+         * Config params
+         * 
+         * @param {(paramBuilder)=>void}
+         * @returns {builder}
+         */
+        this.params = function params(configer) {
+                configer(this._params);
+                return this;
+        }
 
         /**
          * Add join
          * 
-         * @param {(any) => void} configer 
+         * @param { (joinBuilder) => void} configer 
          * @returns {builder}
          */
-        function join(configer) {
+        this.join = function join(configer) {
                 let builder = new joinBuilder();
                 configer(builder);
                 this.joins.push(builder);
@@ -34,22 +75,22 @@ exports.builder = function (type,id) {
         /**
          * Config include
          * 
-         * @param {(any) => void} configer 
+         * @param {(columnBuilder) => void} configer 
          * @returns {builder}
          */
-        function includes(configer) {
-                configer(this.includes);
+        this.includes = function include(configer) {
+                configer(this._includes);
                 return this;
         }
 
         /**
          * Config condition
          * 
-         * @param {(any) => void} configer 
+         * @param {(columnBuilder) => void} configer 
          * @returns {builder}
          */
-        function conditions(configer) {
-                configer(this.conditions);
+        this.conditions = function conditions(configer) {
+                configer(this._conditions);
                 return this;
         }
 
@@ -58,7 +99,7 @@ exports.builder = function (type,id) {
          * 
          * @returns {builder}
          */
-        function noController() {
+        this.noController = function noController() {
                 this.noController = true;
                 return this;
         }
@@ -68,33 +109,46 @@ exports.builder = function (type,id) {
          * 
          * @returns {builder}
          */
-        function noService() {
+        this.noService = function noService() {
                 this.noService = true;
                 return this;
         }
 
         /**
-         * Config contrpller
+         * Config controller
          * 
-         * @param {controllerBuilder} configer 
+         * @param {(controllerBuilder)=>void} configer 
          * @returns {builder}
          */
-        function controller(configer) {
-                configer(this.controller);
+        this.controller = function controller(configer) {
+                configer(this._controller);
                 return this;
         }
 
-        function build() {
-                if (this.joins) {
-                        this.joins.forEach(join => {
-                                join.build();
-                        })
-                }
+        this.build = function build() {
+                let joins = [];
+                this.joins.forEach(x => {
+                        joins.push(x.build());
+                });
 
-                if (this.conditions)
-                        this.conditions.build();
+                let reqs = [];
+                this.reqs.forEach(x => {
+                        reqs.push(x.build());
+                });
 
-                if (this.includes)
-                        this.includes.build();
+
+                return {
+                        id: this.id,
+                        type: this.type,
+                        reqs: reqs,
+                        resp: this._resp.build(),
+                        params: this._params.build(),
+                        controller: this._controller.build(),
+                        includes: this._includes.build(),
+                        conditions: this._conditions.build(),
+                        noController: this.noController,
+                        noService: this.noService,
+                        joins: joins
+                };
         }
 }

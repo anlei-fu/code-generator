@@ -1,30 +1,38 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-17 09:09:58
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-12-17 14:34:14
+ */
 const { columnBuilder } = require("./columnBuilder");
-exports.joinBuilder = function (table, type, joinCondition) {
-        this.includes = new columnBuilder();
-        this.conditions = new columnBuilder();
-        this.table = table;
-        this.type = type;
-        this.joinCondition = joinCondition;
+exports.joinBuilder = function joinBuilder(table, type, joinCondition) {
+        this._includes = new columnBuilder();
+        this._conditions = new columnBuilder();
+        this._table = table;
+        this._type = type;
+        this._joinCondition = joinCondition;
 
         /**
          * Config includes
          * 
-         * @param {any => void} configer 
+         * @param {columnBuilder => void} configer 
          * @returns {joinBuilder}
          */
-        function includes(configer) {
-                configer(this.includes);
+        this.includes = (configer) => {
+                configer(this._includes);
                 return this;
         }
 
         /**
          * Config conditions
          * 
-         * @param {any => void} configer 
+         * @param {columnBuilder => void} configer 
          * @returns {joinBuilder}
          */
-        function conditions(configer) {
-                configer(this.conditions);
+        this.conditions = (configer) => {
+                configer(this._conditions);
                 return this;
         }
 
@@ -33,18 +41,21 @@ exports.joinBuilder = function (table, type, joinCondition) {
          * 
          * @returns {joinBuilder}
          */
-        function alias(alias) {
+        this.alias = (alias) => {
                 this.alias = alias;
+                this._includes.prefixAll(alias);
+                this._conditions.prefixAll(alias);
                 return this;
         }
+
+        this.type=
 
         /**
          * @return {joinBuilder}
          */
-        function build(){
+        this.build = () => {
                 this.includes.build();
                 this.conditions.build();
         }
 
-        
 }

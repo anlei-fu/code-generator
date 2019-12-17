@@ -90,14 +90,14 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2020-1-16 2:3:41",
-  groupName: "班组名称452",
-  id: 139,
-  isDelete: 905,
-  leaderId: 74,
-  operator: 817,
-  status: 171,
-  updateTime: "2019-12-23 2:3:41"
+  createTime: "2020-1-17 :3:35",
+  groupName: "班组名称461",
+  id: 409,
+  isDelete: 948,
+  leaderId: 107,
+  operator: 508,
+  status: 175,
+  updateTime: "2019-11-17 :3:35"
 };
 }
 
