@@ -90,14 +90,14 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-12-24 :3:35",
-  id: 509,
-  isDelete: 558,
-  operator: 255,
-  trackCode: "轨道编码71",
-  trackDivisionId: 485,
-  trackType: 455,
-  updateTime: "2019-12-24 :3:35"
+  createTime: "2019-12-17 2:3:19",
+  id: 775,
+  isDelete: 249,
+  operator: 379,
+  trackCode: "轨道编码380",
+  trackDivisionId: 901,
+  trackType: 469,
+  updateTime: "2020-1-17 2:3:19"
 };
 }
 

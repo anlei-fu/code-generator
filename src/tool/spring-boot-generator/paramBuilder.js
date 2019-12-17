@@ -15,7 +15,7 @@ exports.paramBuilder = function paramBuilder() {
          * 
          * @returns {paramBuilder}
          */
-        this.doCreate = function doCreate() {
+        this.doCreate = () => {
                 this._doCreate = true;
                 return this;
         }
@@ -25,7 +25,7 @@ exports.paramBuilder = function paramBuilder() {
          * @param {String} description
          * @returns {paramBuilder}
          */
-        this.description = function description(description) {
+        this.description = (description) => {
                 this._description = description;
                 return this;
         }
@@ -34,7 +34,7 @@ exports.paramBuilder = function paramBuilder() {
          * @param {String} name
          * @returns {paramBuilder}
          */
-        this.name = function name(name) {
+        this.name = (name) => {
                 this._name = name;
                 return this;
         }
@@ -43,20 +43,20 @@ exports.paramBuilder = function paramBuilder() {
          * Add default value item
          * 
          * @param {String} key 
-         * @param {String} value 
+         * @param {String} expression 
          * @returns {paramBuilder}
          */
-        this.defaultValue = function defaultValue(key, value) {
-                this._defaultValues.set(key, value);
+        this.defaultValue = (key, expression) => {
+                this._defaultValues.set(key, expression);
                 return this;
         }
 
-        this.build=function build(){
+        this.build = () => {
                 return {
-                        name:this._name,
-                        description:this._description,
-                        doCreate:this._doCreate,
-                        defaultValues:this._defaultValues
+                        name: this._name,
+                        description: this._description,
+                        doCreate: this._doCreate,
+                        defaultValues: this._defaultValues
                 }
         }
 }

@@ -12,7 +12,7 @@ exports.columnBuilder = function columBuilder() {
         this._includes = {};
 
         /**
-         * Add items
+         * Add items into includes
          * 
          * @param {String|[String]} item 
          * @returns {columBuilder}
@@ -23,7 +23,7 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Remove items
+         * Remove items from includes
          * 
          * @param {String|[String]} item 
          * @returns {columBuilder}
@@ -34,15 +34,15 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set item expression
+         * Set property "expression"
          * 
          */
-        this.expression = function (item, expression) {
+        this.expression = (item, expression) => {
 
         }
 
         /**
-         * Set alias
+         * Set property "alias"
          * 
          * @param {String} alias 
          * @param {String} item 
@@ -54,27 +54,32 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set prefix in every field
+         * Set property "prefix" every item
          * 
          * @returns {columnBuilder}
          */
-        this.prefixAll = function prefixAll() {
-                return this.prefix(this._includes);
+        this.prefixAll = (prefix) => {
+                return this.prefix(this._includes, prefix);
         }
 
         /**
-         * Set prefix
+         * Set property "prefix"
          * 
          * @param {String|[String]} item
          * @param {String} prefix
          * @returns {columnBuilder}
          */
-        this.prefix = function prefix(item, prefix) {
+        this.prefix = (item, prefix) => {
                 if (TYPE.isArray(item)) {
                         item.forEach(x => {
                                 this._prefixCore(this._addIfAbsent(x), prefix);
                         });
-                } else {
+                } else if (TYPE.isObject(item)) {
+                        OBJECT.forEach(item, (key, value) => {
+                                this._prefixCore(this._addIfAbsent(value), prefix);
+                        });
+                }
+                else {
                         this._prefixCore(this._addIfAbsent(item), prefix);
                 }
 
@@ -82,16 +87,16 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set required to true in every field
+         * Set property "required" to true every item
          * 
          * @returns {columBuilder}
          */
-        this.requireAll = function requireAll() {
+        this.requireAll = () => {
                 return this.require(this._includes);
         }
 
         /**
-         * Set required true
+         * Set property "required" true
          * 
          * @param {String|[String]} item 
          * @returns {columBuilder}
@@ -102,16 +107,16 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set required to false in every field
+         * Set property "required" to false every item
          * 
          * @returns {columBuilder}
          */
-        this.unrequireAll = function unrequireAll() {
+        this.unrequireAll = () => {
                 return this.unrequire(this._includes);
         }
 
         /**
-         * Set required false
+         * Set property "required" to false
          * 
          * @param {String|[String]} item 
          * @returns {columBuilder}
@@ -124,10 +129,11 @@ exports.columnBuilder = function columBuilder() {
         /**
          * Add into includes if absent
          * 
+         * @private
          * @param {String|{name:String}} item
          * @returns {columnBuilder}
          */
-        this._addIfAbsent = function addIfAbsent(item) {
+        this._addIfAbsent = (item) => {
                 let key = TYPE.isString(item) ? item : item.name;
 
                 if (!key)
@@ -147,7 +153,7 @@ exports.columnBuilder = function columBuilder() {
          * @param {String|[String]} item  
          * @param {(String)=>void} cosumer 
          */
-        this._dispatch = function dispatch(item, cosumer) {
+        this._dispatch = (item, cosumer) => {
                 if (TYPE.isArray(item)) {
                         item.forEach(x => {
                                 cosumer.call(this, x);
@@ -158,7 +164,7 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Add item into items
+         * Add item into includes
          * 
          * @private
          * @param {String} item  
@@ -169,11 +175,11 @@ exports.columnBuilder = function columBuilder() {
                 if (TYPE.isString(item)) {
                         if (this._includes[item])
                                 return;
-                        
+
                         // change type to object 
                         this._includes[item] = { name: item };
                 } else {
-                        
+
                         if (this._includes[item.name])
                                 return;
 
@@ -182,7 +188,7 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set items[item].alias alias
+         * Set property "alias"
          * 
          * @private
          * @param {Object} item  
@@ -193,7 +199,9 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
+         * Set property "prefix"
          * 
+         * @private
          * @param {String|[Object]} item  
          * @param {String} prefix 
          */
@@ -219,7 +227,7 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set required to true
+         * Set property "required" to true
          * 
          * @private
          * @param {String|[String]} item  
@@ -229,7 +237,7 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set required to false
+         * Set property "required" to false
          * 
          * @private
          * @param {String|[String]} item 
@@ -240,7 +248,7 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Set property in item
+         * Set property of item
          * 
          * @private
          * @param {Object} item 
@@ -263,7 +271,6 @@ exports.columnBuilder = function columBuilder() {
          * @param {any} item 
          */
         this._checkType = (item) => {
-
                 if (!TYPE.isString(item) && !TYPE.isObject(item))
                         throw new TypeError(`unexcepted type ${item},require 'String' or 'Object'`);
 
@@ -272,7 +279,8 @@ exports.columnBuilder = function columBuilder() {
         }
 
         /**
-         * Internal call
+         * Internal call, normalize includes
+         * 
          */
         this.build = () => {
                 return OBJECT.toArray(this._includes);

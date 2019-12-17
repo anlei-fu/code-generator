@@ -1,49 +1,80 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-17 09:09:58
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-12-17 11:00:16
+ */
 const { detectStaffInfo } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
 exports.detectStaffInfoConfig = {
         table: detectStaffInfo,
         name: "DetectStaffInfo",
-        items: [
+                items: [
+                        
+                        // add
+                        builder()
+                                .type("insert")
+                                .id("add")
+                                .controller(controller => {
+                                        controller.path("/detectStaffInfo/{id}");
+                                }).req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                }),
 
-                // add
-                builder("insert", "addDetectStaffInfo").controller(controller => {
-                        controller.path("/detectStaffInfo/{id}");
-                }).req(req => {
-                        req.doCreate()
-                                .excludes("id");
-                }),
+                        // deleteById
+                        builder()
+                                .type("delete")
+                                .id("deleteDetectStaffInfoById")
+                                .controller(controller => {
+                                        controller.path("/detectStaffInfo/{id}");
+                                }).req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                }),
 
-                // deleteById
-                builder("delete", "deleteDetectStaffInfoById").controller(controller => {
-                        controller.path("/detectStaffInfo/{id}");
-                }).req(req => {
-                        req.name("id")
-                                .type("Integer")
-                                .from("@PathVarible");
-                }),
+                        // updateById
+                        builder()
+                                .type("update")
+                                .id("updateDetectStaffInfoById")
+                                .controller(controller => {
+                                        controller.path("/detectStaffInfo/{id}");
+                                }).req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                }).req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                }),
 
-                // updateById
-                builder("update", "updateDetectStaffInfoById").controller(controller => {
-                        controller.path("/detectStaffInfo/{id}");
-                }).req(req => {
-                        req.name("id")
-                                .type("Integer")
-                                .from("@PathVarible");
-                }).req(req => {
-                        req.doCreate()
-                                .excludes("id");
-                }),
+                        // getById
+                        builder()
+                                .type("selete")
+                                .id("getDetectStaffInfoById")
+                                .controller(controller => {
+                                        controller.path("/detectStaffInfo/{id}");
+                                }).req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                }).resp(resp => {
+                                        resp.single();
+                                }),
 
-                // getById
-                builder("select", "getDetectStaffInfoById").controller(controller => {
-                        controller.path("/detectStaffInfo/{id}");
-                }).req(req => {
-                        req.name("id")
-                                .type("Integer")
-                                .from("@PathVarible");
-                }).resp(resp => {
-                        resp.doCreate();
-                }),
-        ]
+                        // getList
+                        builder()
+                                .type("selete")
+                                .id("getDetectStaffInfoList")
+                                .controller(controller => {
+                                        controller.path("/detectStaffInfo");
+                                }).req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                })
+                ]
 }

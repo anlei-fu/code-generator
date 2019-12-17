@@ -11,27 +11,44 @@ const { columnBuilder } = require("./columnBuilder");
 
 function testBuilder() {
         let c = new builder("select", "1")
-                     .controller(c=>{
-                             c.path("12")
-                             .description("1212");
-                     }).includes(c=>{
-                             c.includes(["id","ip","name"])
-                              .prefixAll("aa")
-                              .alias("id","jk");
-                     }).build();
+                .req(req => {
+                        req.type("Integer")
+                                .name("id")
+                                .from("@PathVarible")
+                })
+                .req(req => {
+                        req.doCreate()
+                                .excludes("id");
+                })
+                .conditions(conditions => {
+                        conditions.includes(["id"]);
+                })
+                .resp(resp => {
+                        resp.doCreate()
+                            .description("sdasa")
+                            .single();
+                })
+                .alias("t1")
+                .controller(c => {
+                        c.path("12")
+                                .description("1212");
+                }).includes(c => {
+                        c.includes(["id", "ip", "name"])
+                                .alias("id", "jk");
+                }).build();
 
         console.log(c);
-     
+
 }
 
 function testColumnBuilder() {
-    let builder=new columnBuilder();
-    builder.includes(["id","ip"])
-            .alias("id","name")
-            .prefix("id","t1")
-            .excludes("id");
-    
-    console.log(builder);
+        let builder = new columnBuilder();
+        builder.includes(["id", "ip"])
+                .alias("id", "name")
+                .prefix("id", "t1")
+                .excludes("id");
+
+        console.log(builder);
 
 }
 

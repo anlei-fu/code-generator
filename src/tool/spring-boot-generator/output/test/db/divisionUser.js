@@ -80,13 +80,13 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-12-17 :3:35",
-  divisionId: 62,
-  id: 964,
-  isDelete: 951,
-  operator: 886,
-  updateTime: "2020-1-17 :3:35",
-  userId: 889
+  createTime: "2019-12-17 2:3:19",
+  divisionId: 94,
+  id: 34,
+  isDelete: 331,
+  operator: 595,
+  updateTime: "2019-11-17 2:3:19",
+  userId: 96
 };
 }
 

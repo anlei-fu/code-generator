@@ -90,14 +90,14 @@ let columnsArray = [
 
 function create() {
   return {
-  bureauCode: "铁路局编码671",
-  bureauName: "铁路局名称933",
-  createTime: "2019-12-17 :3:35",
-  id: 873,
-  inputCode: "输入代码539",
-  isDelete: 577,
-  operator: 240,
-  updateTime: "2020-1-17 :3:35"
+  bureauCode: "铁路局编码894",
+  bureauName: "铁路局名称798",
+  createTime: "2019-12-24 2:3:19",
+  id: 661,
+  inputCode: "输入代码610",
+  isDelete: 427,
+  operator: 230,
+  updateTime: "2019-11-17 2:3:19"
 };
 }
 

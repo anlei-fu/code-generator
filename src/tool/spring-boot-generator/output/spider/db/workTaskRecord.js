@@ -112,16 +112,16 @@ let columnsArray = [
 
 function create() {
   return {
-  downloadSucess: 953,
-  endTime: 52,
-  exitCode: 627,
-  id: 246,
-  pageDownloaded: 192,
-  startTime: 530,
-  success: 409,
-  taskId: 592,
-  taskMainConfigId: 705,
-  workerId: 879
+  downloadSucess: 661,
+  endTime: 281,
+  exitCode: 37,
+  id: 808,
+  pageDownloaded: 576,
+  startTime: 861,
+  success: 289,
+  taskId: 832,
+  taskMainConfigId: 507,
+  workerId: 80
 };
 }
 

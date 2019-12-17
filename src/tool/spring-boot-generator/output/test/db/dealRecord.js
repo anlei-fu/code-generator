@@ -47,19 +47,11 @@ let dealRecord = {
     },
     deleteAuditStatus: {
       name: "deleteAuditStatus",
-      description: "删除审计状:-1审计成功,1待审计",
+      description: "删除审计状态",
       nullable: true,
       type: {
         name: "int",
         length: 11
-      }
-    },
-    deleteTime: {
-      name: "deleteTime",
-      description: "删除时间",
-      nullable: true,
-      type: {
-        name: "datetime"
       }
     },
     id: {
@@ -136,7 +128,6 @@ let columnsArray = [
   "dealResult",
   "dealTime",
   "deleteAuditStatus",
-  "deleteTime",
   "id",
   "isDelete",
   "operator",
@@ -148,20 +139,19 @@ let columnsArray = [
 
 function create() {
   return {
-  cmdNo: "施工命令行65",
-  createTime: "2019-12-16 :3:35",
-  dealRemark: "处置说明746",
-  dealResult: 281,
-  dealTime: "2019-12-24 :3:35",
-  deleteAuditStatus: 464,
-  deleteTime: "2020-1-17 :3:35",
-  id: 905,
-  isDelete: 799,
-  operator: 260,
-  orderDetailId: 697,
-  updateTime: "2020-1-17 :3:35",
-  workareaId: 396,
-  workshopInfoId: 481
+  cmdNo: "施工命令行560",
+  createTime: "2019-12-17 2:3:19",
+  dealRemark: "处置说明481",
+  dealResult: 210,
+  dealTime: "2019-11-17 2:3:19",
+  deleteAuditStatus: 235,
+  id: 486,
+  isDelete: 837,
+  operator: 450,
+  orderDetailId: 938,
+  updateTime: "2019-11-17 2:3:19",
+  workareaId: 265,
+  workshopInfoId: 134
 };
 }
 

@@ -109,14 +109,6 @@ let thighTrackInfo = {
         length: 11
       }
     },
-    thighTrackLength: {
-      name: "thighTrackLength",
-      description: "鑲￠亾闀垮害",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
     thighTrackNo: {
       name: "thighTrackNo",
       description: "股道号",
@@ -126,9 +118,17 @@ let thighTrackInfo = {
         length: 16
       }
     },
-    thighTrackType: {
-      name: "thighTrackType",
-      description: "鑲￠亾绫诲瀷",
+    thignTrackLength: {
+      name: "thignTrackLength",
+      description: "股道长度",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    thignTrackType: {
+      name: "thignTrackType",
+      description: "股道类型",
       nullable: true,
       type: {
         name: "int",
@@ -152,9 +152,9 @@ let thighTrackInfo = {
         name: "datetime"
       }
     },
-    workareaId: {
-      name: "workareaId",
-      description: "宸ュ尯缂栧彿",
+    workshopId: {
+      name: "workshopId",
+      description: "工区编号",
       nullable: true,
       type: {
         name: "int",
@@ -177,34 +177,34 @@ let columnsArray = [
   "sortNum",
   "stationId",
   "status",
-  "thighTrackLength",
   "thighTrackNo",
-  "thighTrackType",
+  "thignTrackLength",
+  "thignTrackType",
   "tieCategory",
   "updateTime",
-  "workareaId"
+  "workshopId"
 ];
 
 function create() {
   return {
-  createTime: "2020-1-17 :3:35",
-  curveRadius: 668,
-  direction: 789,
-  gradeSectionLength: 802,
-  id: 996,
-  isDelete: 470,
-  lineId: 227,
-  maxGradient: 656,
-  operator: 298,
-  sortNum: "排序编号897",
-  stationId: 357,
-  status: 96,
-  thighTrackLength: 679,
-  thighTrackNo: "股道号762",
-  thighTrackType: 40,
-  tieCategory: 328,
-  updateTime: "2020-1-17 :3:35",
-  workareaId: 641
+  createTime: "2019-11-17 2:3:19",
+  curveRadius: 562,
+  direction: 923,
+  gradeSectionLength: 80,
+  id: 872,
+  isDelete: 585,
+  lineId: 140,
+  maxGradient: 281,
+  operator: 837,
+  sortNum: "排序编号811",
+  stationId: 647,
+  status: 356,
+  thighTrackNo: "股道号540",
+  thignTrackLength: 326,
+  thignTrackType: 338,
+  tieCategory: 797,
+  updateTime: "2020-1-17 2:3:19",
+  workshopId: 578
 };
 }
 

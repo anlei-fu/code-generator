@@ -112,16 +112,16 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: 453,
-  description: "描述3",
-  endTime: 551,
-  id: 326,
-  level: 705,
-  mainConfigId: 758,
-  queueId: "queue id844",
-  status: 697,
-  topicId: 464,
-  userId: 114
+  createTime: 972,
+  description: "描述80",
+  endTime: 513,
+  id: 421,
+  level: 269,
+  mainConfigId: 204,
+  queueId: "queue id387",
+  status: 908,
+  topicId: 53,
+  userId: 477
 };
 }
 

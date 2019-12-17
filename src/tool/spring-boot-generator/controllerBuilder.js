@@ -9,30 +9,32 @@
 exports.controllerBuilder = function controllerBuilder() {
 
         /**
-         * Set path
+         * Set property "path"
          * 
          * @param {String} path 
          */
-        this.path = function path(path) {
+        this.path = (path) => {
                 this._path = path;
                 return this;
         }
 
         /**
-         * Set description
+         * Set property "description"
          * 
          * @param {String} description 
          */
-        this.description = function description(description) {
+        this.description = (description) => {
                 this._description = description;
                 return this;
         }
 
+        /**
+         *  Internal call
+         */
         this.build = () => {
                 return {
                         description: this._description,
                         path: this._path
                 };
         }
-
 }

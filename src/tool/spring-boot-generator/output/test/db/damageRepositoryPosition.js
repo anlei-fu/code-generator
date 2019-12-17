@@ -148,20 +148,20 @@ let columnsArray = [
 
 function create() {
   return {
-  bridgeTunnel: 297,
-  createTime: "2020-1-17 :3:35",
-  damagePosition: 157,
-  direction: 794,
-  holePosition: 916,
-  lineCategory: 145,
-  lineId: 757,
-  lineName: "线名653",
-  miles: 472,
-  orderDetailId: 24,
-  stationId: 686,
-  stockExchange: 155,
-  thighTrackId: 184,
-  updateTime: "2019-12-17 :3:35"
+  bridgeTunnel: 654,
+  createTime: "2019-12-24 2:3:19",
+  damagePosition: 855,
+  direction: 695,
+  holePosition: 64,
+  lineCategory: 649,
+  lineId: 776,
+  lineName: "线名738",
+  miles: 383,
+  orderDetailId: 499,
+  stationId: 993,
+  stockExchange: 949,
+  thighTrackId: 659,
+  updateTime: "2019-12-17 2:3:19"
 };
 }
 

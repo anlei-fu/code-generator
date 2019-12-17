@@ -137,19 +137,19 @@ let columnsArray = [
 
 function create() {
   return {
-  centDistance: 193,
-  createTime: "2019-12-24 :3:35",
-  direction: 525,
-  endDistance: 206,
-  id: 36,
-  isDelete: 189,
-  lineId: 246,
-  operator: 104,
-  sortNum: "排序编号557",
-  startDistance: 190,
-  stationId: 476,
-  status: 813,
-  updateTime: "2019-12-24 :3:35"
+  centDistance: 247,
+  createTime: "2019-12-24 2:3:19",
+  direction: 680,
+  endDistance: 602,
+  id: 617,
+  isDelete: 575,
+  lineId: 846,
+  operator: 604,
+  sortNum: "排序编号326",
+  startDistance: 287,
+  stationId: 324,
+  status: 978,
+  updateTime: "2019-12-16 2:3:19"
 };
 }
 

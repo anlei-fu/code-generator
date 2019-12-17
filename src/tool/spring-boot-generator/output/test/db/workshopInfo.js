@@ -120,17 +120,17 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-12-24 :3:35",
-  fullName: "车间名称672",
-  id: 686,
-  inputCode: "输入代码561",
-  isDelete: 659,
-  lineId: 293,
-  operator: 984,
-  shortName: "车间简称956",
-  trackDivisionId: 208,
-  updateTime: "2019-12-24 :3:35",
-  workshopType: 291
+  createTime: "2019-12-17 2:3:19",
+  fullName: "车间名称228",
+  id: 852,
+  inputCode: "输入代码32",
+  isDelete: 136,
+  lineId: 483,
+  operator: 96,
+  shortName: "车间简称993",
+  trackDivisionId: 182,
+  updateTime: "2019-12-16 2:3:19",
+  workshopType: 798
 };
 }
 

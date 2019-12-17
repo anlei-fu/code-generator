@@ -1,49 +1,80 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-17 09:09:58
+ * @LastEditors: fuanlei
+ * @LastEditTime: 2019-12-17 11:00:16
+ */
 const { worshopBoundaryInfo } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
 exports.worshopBoundaryInfoConfig = {
         table: worshopBoundaryInfo,
         name: "WorshopBoundaryInfo",
-        items: [
+                items: [
+                        
+                        // add
+                        builder()
+                                .type("insert")
+                                .id("add")
+                                .controller(controller => {
+                                        controller.path("/worshopBoundaryInfo/{id}");
+                                }).req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                }),
 
-                // add
-                builder("insert", "addWorshopBoundaryInfo").controller(controller => {
-                        controller.path("/worshopBoundaryInfo/{id}");
-                }).req(req => {
-                        req.doCreate()
-                                .excludes("id");
-                }),
+                        // deleteById
+                        builder()
+                                .type("delete")
+                                .id("deleteWorshopBoundaryInfoById")
+                                .controller(controller => {
+                                        controller.path("/worshopBoundaryInfo/{id}");
+                                }).req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                }),
 
-                // deleteById
-                builder("delete", "deleteWorshopBoundaryInfoById").controller(controller => {
-                        controller.path("/worshopBoundaryInfo/{id}");
-                }).req(req => {
-                        req.name("id")
-                                .type("Integer")
-                                .from("@PathVarible");
-                }),
+                        // updateById
+                        builder()
+                                .type("update")
+                                .id("updateWorshopBoundaryInfoById")
+                                .controller(controller => {
+                                        controller.path("/worshopBoundaryInfo/{id}");
+                                }).req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                }).req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                }),
 
-                // updateById
-                builder("update", "updateWorshopBoundaryInfoById").controller(controller => {
-                        controller.path("/worshopBoundaryInfo/{id}");
-                }).req(req => {
-                        req.name("id")
-                                .type("Integer")
-                                .from("@PathVarible");
-                }).req(req => {
-                        req.doCreate()
-                                .excludes("id");
-                }),
+                        // getById
+                        builder()
+                                .type("selete")
+                                .id("getWorshopBoundaryInfoById")
+                                .controller(controller => {
+                                        controller.path("/worshopBoundaryInfo/{id}");
+                                }).req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                }).resp(resp => {
+                                        resp.single();
+                                }),
 
-                // getById
-                builder("select", "getWorshopBoundaryInfoById").controller(controller => {
-                        controller.path("/worshopBoundaryInfo/{id}");
-                }).req(req => {
-                        req.name("id")
-                                .type("Integer")
-                                .from("@PathVarible");
-                }).resp(resp => {
-                        resp.doCreate();
-                }),
-        ]
+                        // getList
+                        builder()
+                                .type("selete")
+                                .id("getWorshopBoundaryInfoList")
+                                .controller(controller => {
+                                        controller.path("/worshopBoundaryInfo");
+                                }).req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                })
+                ]
 }

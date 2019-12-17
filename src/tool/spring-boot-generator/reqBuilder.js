@@ -16,7 +16,7 @@ exports.reqBuilder = function reqBuilder() {
          * 
          * @returns {reqBuilder}
          */
-        this.doCreate = function doCreate() {
+        this.doCreate = () => {
                 this._doCreate = true;
                 return this;
         }
@@ -27,7 +27,7 @@ exports.reqBuilder = function reqBuilder() {
          * @param {String|Object | [String|Object]} items 
          * @returns {reqBuilder}
          */
-        this.excludes = function excludes(items) {
+        this.excludes = (items) => {
                 this._excludes = items;
                 return this;
         }
@@ -38,7 +38,7 @@ exports.reqBuilder = function reqBuilder() {
          * @param {String} type
          * @returns {reqBuilder}
          */
-        this.type = function type(type) {
+        this.type = (type) => {
                 this._type = type;
                 return this;
         }
@@ -87,7 +87,7 @@ exports.reqBuilder = function reqBuilder() {
                 return this;
         }
 
-        this.build = function build() {
+        this.build = () => {
                 return {
                         doCreate: this._doCreate,
                         from: this._from,
@@ -96,7 +96,7 @@ exports.reqBuilder = function reqBuilder() {
                         name: this._name,
                         type: this._type,
                         excludes: this._excludes,
-                        validates:this._validates,
+                        validates: this._validates,
                 }
         }
 }

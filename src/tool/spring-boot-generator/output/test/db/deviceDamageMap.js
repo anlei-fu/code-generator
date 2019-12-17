@@ -52,10 +52,10 @@ let columnsArray = [
 
 function create() {
   return {
-  damageId: 412,
-  deivceId: 576,
-  deviceType: 868,
-  id: 241
+  damageId: 739,
+  deivceId: 890,
+  deviceType: 604,
+  id: 259
 };
 }
 

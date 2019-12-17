@@ -110,16 +110,16 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-11-17 :3:35",
-  damageDesc: "伤损类型描述36",
-  damageNo: "伤损类型编码596",
-  damageType: 622,
-  id: 472,
-  isDelete: 404,
-  operator: 240,
-  sortNum: "排序编号474",
-  status: 39,
-  updateTime: "2019-12-24 :3:35"
+  createTime: "2019-11-17 2:3:19",
+  damageDesc: "伤损类型描述513",
+  damageNo: "伤损类型编码644",
+  damageType: 801,
+  id: 953,
+  isDelete: 248,
+  operator: 968,
+  sortNum: "排序编号990",
+  status: 325,
+  updateTime: "2019-12-24 2:3:19"
 };
 }
 

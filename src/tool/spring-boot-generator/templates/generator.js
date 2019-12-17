@@ -11,8 +11,8 @@ function build() {
         all.forEach(x => {
 
                 // set output folders
-                let root = "./src/spider/main/java/com/@project";
-                x.mapperFolder = `./src/@project/main/resource/mapper`;
+                let root = "./@project/src/@project/src/main/java/com/@project";
+                x.mapperFolder = `./@project/src/@project/main/resource/mapper`;
                 x.mapperConfigFolder = `${root}/mapper`;
                 x.controllerFolder = `${root}/controller`;
                 x.serviceFolder = `${root}/service`;

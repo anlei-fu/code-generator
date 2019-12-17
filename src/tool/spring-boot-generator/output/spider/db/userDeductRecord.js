@@ -61,11 +61,11 @@ let columnsArray = [
 
 function create() {
   return {
-  amount: 16,
-  deductTime: 392,
-  id: 648,
-  price: 96,
-  taskId: 675
+  amount: 539,
+  deductTime: 718,
+  id: 575,
+  price: 12,
+  taskId: 615
 };
 }
 

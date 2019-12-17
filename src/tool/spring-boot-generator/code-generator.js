@@ -36,7 +36,7 @@ class Field {
  */
 class Join {
         constructor() {
-                this.table={}
+                this.table = {}
                 this.includes = [];
                 this.conditions = [];
                 this.alias = "";
@@ -175,17 +175,25 @@ class Generator {
 
                         this.initConfig(x);
                         this.writeReq(x);
+
                         this.writeResp(x);
 
-                        if (x.params)
+                        if (x.params.doCreate)
                                 this.writeParams(x);
 
                         this.writeEntity();
                         this.writeMapper();
-                        this.writeController();
                         this.writeMapperConfig();
-                        this.writeService();
-                        this.writeServiceImpl();
+
+                        if (!x.noController)
+                                this.writeController();
+
+                        if (!x.noService) {
+                                this.writeService();
+                                this.writeServiceImpl();
+                        }
+
+                        this.config.alias = undefined;
                 });
         }
 
@@ -196,13 +204,17 @@ class Generator {
          */
         initConfig(config) {
 
+                if (config.alias)
+                        config.table.alias = config.alias;
+
                 config.type = config.type || "select";
 
                 if (!config.id)
                         config.id = this.getDefaultId(config);
 
-                if (!config.reqs)
-                        config.reqs = this.getDefaultReqs(config);
+
+                if (config.reqs.length == 0)
+                        config.reqs.push(this.getDefaultReqs(config));
 
                 config.reqs.forEach(x => {
                         if (x.doCreate) {
@@ -212,18 +224,26 @@ class Generator {
                         }
                 });
 
-                if (!config.resp)
-                        config.resp = this.getDefaultResp(config);
-
-                if (config.resp && config.resp.doCreate) {
+                if (config.resp.doCreate) {
                         config.resp.type = config.resp.type || STR.upperFirstLetter(config.id) + "Resp";
                         config.resp.description = config.resp.description || "";
                 }
 
-                if (config.params) {
+                if (config.params.doCreate) {
                         config.params.type = config.params.type || STR.upperFirstLetter(config.id) + "Params";
                         config.params.name = config.params.name || "params";
                         config.params.description = config.params.description || "";
+                }
+
+                if (!config.noController) {
+                        config.controller.path = config.controller.path || `/${STR.lowerFirstLetter(config.name)}/${config.id}`;
+                        config.controller.description = config.controller.description || "";
+                }
+
+                if (config.joins) {
+                        config.joins.forEach(x => {
+                                x.type = x.type || "left";
+                        });
                 }
         }
 
@@ -573,13 +593,13 @@ class Generator {
                                 break;
                 }
 
-               
+
                 let conditions = this._getConditions(config);
 
                 if (conditions.length == 1) {
                         id += this.config.name + "By"
                         id += STR.upperFirstLetter(conditions[0].name);
-                } else if(conditions.length<4) {
+                } else if (conditions.length < 4) {
                         conditions.forEach((x, i, array) => {
                                 id += i == array.length - 1
                                         ? "And" + STR.upperFirstLetter(x.name)
@@ -601,9 +621,9 @@ class Generator {
                 let conditions = this._getConditions(config);
 
                 if (conditions.length > 3) {
-                      return [{doCreate:true}];
+                        return [{ doCreate: true }];
                 } else {
-                     return conditions;
+                        return conditions;
                 }
         }
 
@@ -615,9 +635,9 @@ class Generator {
          */
         getDefaultResp(config) {
                 if (config.type == "select" && config.joins) {
-                        return { doCreate:true };
+                        return { doCreate: true };
                 } else {
-                        return { doCreate:false };
+                        return { doCreate: false };
                 }
         }
 
@@ -1154,8 +1174,11 @@ class Generator {
          * @returns {String} 
          */
         _renderJoin(join) {
-                return join.alias ? `${ident1}${join.type} join ${this._getRawName(join.table1)} as ${join.alias} on ${join.joinCondition}`
-                        : `${ident1}${join.type} join ${this._getRawName(join.table1)} on ${join.joinCondition}`;
+                let content = join.table.alias ? `${ident1}${join.type} join ${this._getRawName(join.table)} as ${join.table.alias} on ${join.joinCondition}`
+                        : `${ident1}${join.type} join ${this._getRawName(join.table)} on ${join.joinCondition}`;
+
+                join.table.alias = null;
+                return content;
         }
 
         /**
@@ -1214,19 +1237,20 @@ class Generator {
          * 
          * @private
          * @param {Table} table 
-         * @param {[String]} columnNames 
+         * @param {[Object]} columnConfigs 
          * @returns {[Column]}
          */
-        _getColumns(table, columnNames = [], isCondition = false) {
+        _getColumns(table, columnConfigs = [], isCondition = false) {
                 let columns = [];
-                columnNames.forEach(x => {
+                columnConfigs.forEach(x => {
                         let column = this._getColumn(table, x);
                         column.required = isCondition ? x.required
                                 : this.config.type == "insert" || this.type == "update" ? !column.nullable : x.required;
 
                         // set properties giving by config "x"
                         column.alias = x.alias;
-                        column.rawName = this._getRawName(table, column, x.prefix);
+                        column.prefix = x.prefix;
+                        column.rawName = this._getRawName(table, column);
                         columns.push(column);
                 });
 
@@ -1238,18 +1262,19 @@ class Generator {
          * 
          * @private
          * @param {Table} table 
-         * @param {String|{name:String,required:boolean}} columnName 
+         * @param {Object} columnConfig 
          * @returns {Column}
          */
-        _getColumn(table, columnName) {
-                let name = columnName.name || columnName;
+        _getColumn(table, columnConfig) {
+                let name = columnConfig.name || columnConfig;
                 if (table.columns[name]) {
                         table.columns[name].required = null;
                         table.columns[name].alias = null;
+                        table.columns[name].prefix = null;
                         return table.columns[name];
                 }
 
-                throw new Error(`column(${columnName}) can not be found in table(${table})`);
+                throw new Error(`column(${columnConfig}) can not be found in table(${table})`);
         }
 
         /**
@@ -1261,9 +1286,12 @@ class Generator {
          * @returns {String}
          */
         _getRawName(table, column, prefix) {
-                return !column ? NamingStrategy.toHungary(table.name).toLowerCase()
-                        : prefix ? `${prefix}.${NamingStrategy.toHungary(column.name)}`
-                                : `${NamingStrategy.toHungary(table.name).toLowerCase()}.${NamingStrategy.toHungary(column.name)}`;
+
+                if (!column)
+                        return table.alias || NamingStrategy.toHungary(table.name).toLowerCase();
+
+                return column.prefix ? `${prefix}.${NamingStrategy.toHungary(column.name)}`
+                        : `${NamingStrategy.toHungary(table.name).toLowerCase()}.${NamingStrategy.toHungary(column.name)}`;
         }
 }
 

@@ -13,24 +13,55 @@ const { reqBuilder } = require("./reqBuilder")
 const { respBuilder } = require("./respBuilder")
 const { paramBuilder } = require("./paramBuilder")
 
-exports.builder = function builder(type, id) {
-        this.type = type;
-        this.id = id;
+exports.builder = function builder() {
+        this._type;
+        this._id;
         this._includes = new columnBuilder();
         this._conditions = new columnBuilder();
         this._controller = new controllerBuilder();
         this.reqs = [];
         this._resp = new respBuilder();
         this._params = new paramBuilder();
+        this._alias;
         this.joins = [];
 
         /**
-         * Config req
+         * Set property "id"
          * 
-         * @param { (reqBuilder) => void} configer
          * @returns {builder}
          */
-        this.req = function req(configer) {
+        this.id = (id) => {
+                this._id = id;
+                return this;
+        }
+
+        /**
+         * Set property "id"
+         * 
+         * @returns {builder}
+         */
+        this.type = (type) => {
+                this._type = type;
+                return this;
+        }
+
+        /**
+         * Set property "alias"
+         * 
+         * @returns {builder}
+         */
+        this.alias = (alias) => {
+                this._alias = alias;
+                return this;
+        }
+
+        /**
+         * Add req item
+         * 
+         * @param {(reqBuilder) => void} configer to config new req item
+         * @returns {builder}
+         */
+        this.req = (configer) => {
                 let builder = new reqBuilder();
                 configer(builder);
                 this.reqs.push(builder);
@@ -40,10 +71,10 @@ exports.builder = function builder(type, id) {
         /**
          * Config resp
          * 
-         * @param {(respBuilder)=>void}
+         * @param {(respBuilder) => void} config to config resp
          * @returns {builder}
          */
-        this.resp = function resp(configer) {
+        this.resp = (configer) => {
                 configer(this._resp);
                 return this;
         }
@@ -51,21 +82,21 @@ exports.builder = function builder(type, id) {
         /**
          * Config params
          * 
-         * @param {(paramBuilder)=>void}
+         * @param {(paramBuilder) => void} configer to config params
          * @returns {builder}
          */
-        this.params = function params(configer) {
+        this.params = (configer) => {
                 configer(this._params);
                 return this;
         }
 
         /**
-         * Add join
+         * Add join item
          * 
-         * @param { (joinBuilder) => void} configer 
+         * @param {(joinBuilder) => void} configer to config new join item
          * @returns {builder}
          */
-        this.join = function join(configer) {
+        this.join = (configer) => {
                 let builder = new joinBuilder();
                 configer(builder);
                 this.joins.push(builder);
@@ -73,12 +104,12 @@ exports.builder = function builder(type, id) {
         }
 
         /**
-         * Config include
+         * Config includes
          * 
-         * @param {(columnBuilder) => void} configer 
+         * @param {(columnBuilder) => void} configer  to build a includes collection
          * @returns {builder}
          */
-        this.includes = function include(configer) {
+        this.includes = (configer) => {
                 configer(this._includes);
                 return this;
         }
@@ -86,46 +117,50 @@ exports.builder = function builder(type, id) {
         /**
          * Config condition
          * 
-         * @param {(columnBuilder) => void} configer 
+         * @param {(columnBuilder) => void} configer  to build a conditions collection
          * @returns {builder}
          */
-        this.conditions = function conditions(configer) {
+        this.conditions = (configer) => {
                 configer(this._conditions);
                 return this;
         }
 
         /**
-         * Do not config controller
+         * Set do not generate controller file
          * 
          * @returns {builder}
          */
-        this.noController = function noController() {
-                this.noController = true;
+        this.noController = () => {
+                this._noController = true;
                 return this;
         }
 
         /**
-         * Config service
+         * Set do not generate service and service-impl file
          * 
          * @returns {builder}
          */
-        this.noService = function noService() {
-                this.noService = true;
+        this.noService = () => {
+                this._noService = true;
                 return this;
         }
 
         /**
          * Config controller
          * 
-         * @param {(controllerBuilder)=>void} configer 
+         * @param {(controllerBuilder) => void} configer  to config controller
          * @returns {builder}
          */
-        this.controller = function controller(configer) {
+        this.controller = (configer) => {
                 configer(this._controller);
                 return this;
         }
 
-        this.build = function build() {
+        /**
+         * Build a generator config item
+         */
+        this.build = () => {
+
                 let joins = [];
                 this.joins.forEach(x => {
                         joins.push(x.build());
@@ -136,19 +171,24 @@ exports.builder = function builder(type, id) {
                         reqs.push(x.build());
                 });
 
+                if (this._alias) {
+                        this._includes.prefixAll(this._alias);
+                        this._conditions.prefixAll(this._alias);
+                }
 
                 return {
-                        id: this.id,
-                        type: this.type,
+                        id: this._id,
+                        type: this._type,
                         reqs: reqs,
                         resp: this._resp.build(),
                         params: this._params.build(),
                         controller: this._controller.build(),
                         includes: this._includes.build(),
                         conditions: this._conditions.build(),
-                        noController: this.noController,
-                        noService: this.noService,
-                        joins: joins
+                        noController: this._noController,
+                        noService: this._noService,
+                        joins: joins,
+                        alias: this._alias
                 };
         }
 }
