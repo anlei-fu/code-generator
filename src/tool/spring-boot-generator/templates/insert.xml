@@ -1,6 +1,6 @@
-<insert id="@id" parameterType="com.@project.pojo.dao.@nameDao">
-      insert  into @tableName
+    <insert id="@id" parameterType="com.@project.pojo.dao.@nameDao">
+          insert  into @tableName
 @columns
-      values
+          values
 @properties
-</insert>
+    </insert>

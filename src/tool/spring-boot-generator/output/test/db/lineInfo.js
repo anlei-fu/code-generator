@@ -44,6 +44,15 @@ let lineInfo = {
         length: 32
       }
     },
+    gaugeType: {
+      name: "gaugeType",
+      description: "轨距类型",
+      nullable: true,
+      type: {
+        name: "int",
+        length: 11
+      }
+    },
     grade: {
       name: "grade",
       description: "线路等级",
@@ -213,6 +222,7 @@ let columnsArray = [
   "createTime",
   "distance",
   "fullName",
+  "gaugeType",
   "grade",
   "id",
   "inputCode",
@@ -235,29 +245,30 @@ let columnsArray = [
 
 function create() {
   return {
-  ballastType: 589,
-  commissioningDate: "2019-12-17 2:3:19",
-  createTime: "2020-1-17 2:3:19",
-  distance: 154,
-  fullName: "线路全称78",
-  grade: 819,
-  id: 799,
-  inputCode: "输入代码676",
-  isDelete: 417,
-  limitGrad: 838,
-  lineBranches: 126,
-  lineCode: "线路编码120",
-  lineNum: 564,
-  minRadiusCurve: 589,
-  nature: 557,
-  operateType: 70,
-  operator: 394,
-  shortName: "线路简称727",
-  status: 412,
-  trackType: 132,
-  tractionType: 137,
-  updateTime: "2019-12-24 2:3:19",
-  yearVolume: 831
+  ballastType: 783,
+  commissioningDate: "2019-11-18 1::37",
+  createTime: "2020-1-18 1::37",
+  distance: 674,
+  fullName: "线路全称666",
+  gaugeType: 984,
+  grade: 998,
+  id: 850,
+  inputCode: "输入代码530",
+  isDelete: 126,
+  limitGrad: 551,
+  lineBranches: 790,
+  lineCode: "线路编码641",
+  lineNum: 86,
+  minRadiusCurve: 98,
+  nature: 469,
+  operateType: 74,
+  operator: 980,
+  shortName: "线路简称969",
+  status: 938,
+  trackType: 946,
+  tractionType: 130,
+  updateTime: "2019-11-18 1::37",
+  yearVolume: 885
 };
 }
 

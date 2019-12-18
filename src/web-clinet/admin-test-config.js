@@ -3,8 +3,8 @@
  * @version: 
  * @Author: fuanlei
  * @Date: 2019-11-20 15:27:16
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-16 17:12:54
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-18 11:25:52
  */
 exports.config = {
         defaultConfig: {
@@ -96,14 +96,14 @@ exports.config = {
                                 name: "2.1.2 用户实名 <br> /user/real",
                                 url: "/real",
                                 params: {
-                                        realName: "",
-                                        idCardNo: "",
-                                        phone: "",
-                                        email: "",
-                                        pageSize: 1,
-                                        pageIndex: 1,
-                                        startTime: null,
-                                        endTime: null
+                                        // realName: "",
+                                        // idCardNo: "",
+                                        // phone: "",
+                                        // email: "",
+                                        // pageSize: 1,
+                                        // pageIndex: 1,
+                                        // startTime: null,
+                                        // endTime: null
                                 }
                         }, {
                                 name: "2.2.1 用户企业 <br> /user/company",

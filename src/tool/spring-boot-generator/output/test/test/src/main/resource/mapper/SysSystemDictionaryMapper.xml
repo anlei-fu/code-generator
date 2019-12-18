@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.SysSystemDictionaryMapper">
+     <insert id="addSysSystemDictionary" parameterType="com.@project.pojo.dao.@nameDao">
+          insert  into sys_system_dictionary
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="enumName != null">
+            sys_system_dictionary.enum_name,
+          </if>
+          <if test="enumType != null">
+            sys_system_dictionary.enum_type,
+          </if>
+          <if test="sortId != null">
+            sys_system_dictionary.sort_id,
+          </if>
+          <if test="status != null">
+            sys_system_dictionary.status,
+          </if>
+          <if test="systemId != null">
+            sys_system_dictionary.system_id,
+          </if>
+          <if test="text != null">
+            sys_system_dictionary.text,
+          </if>
+          <if test="value != null">
+            sys_system_dictionary.value,
+          </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="enumName != null">
+            #{enumName},
+          </if>
+          <if test="enumType != null">
+            #{enumType},
+          </if>
+          <if test="sortId != null">
+            #{sortId},
+          </if>
+          <if test="status != null">
+            #{status},
+          </if>
+          <if test="systemId != null">
+            #{systemId},
+          </if>
+          <if test="text != null">
+            #{text},
+          </if>
+          <if test="value != null">
+            #{value},
+          </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteSysSystemDictionaryByDicid">
+        delete from sys_system_dictionary
+        <where>
+          <if test="dicid != null">
+            sys_system_dictionary.dicid = #{dicid}
+          </if>
+        </where>
+    </delete>
+
+    <update id="updateSysSystemDictionaryByDicid">
+      update sys_system_dictionary
+        <set>
+          <if test="enumName != null">
+            sys_system_dictionary.enum_name = #{enumName},
+          </if>
+          <if test="enumType != null">
+            sys_system_dictionary.enum_type = #{enumType},
+          </if>
+          <if test="sortId != null">
+            sys_system_dictionary.sort_id = #{sortId},
+          </if>
+          <if test="status != null">
+            sys_system_dictionary.status = #{status},
+          </if>
+          <if test="systemId != null">
+            sys_system_dictionary.system_id = #{systemId},
+          </if>
+          <if test="text != null">
+            sys_system_dictionary.text = #{text},
+          </if>
+          <if test="value != null">
+            sys_system_dictionary.value = #{value}
+          </if>
+        </set>
+        <where>
+          <if test="dicid != null">
+            sys_system_dictionary.dicid = #{dicid}
+          </if>
+        </where>
+    </update>
+
+  <select id="getSysSystemDictionaryByDicid">
+        select
+            sys_system_dictionary.dicid,
+            sys_system_dictionary.enum_name,
+            sys_system_dictionary.enum_type,
+            sys_system_dictionary.sort_id,
+            sys_system_dictionary.status,
+            sys_system_dictionary.system_id,
+            sys_system_dictionary.text,
+            sys_system_dictionary.value
+        form sys_system_dictionary
+                <where>
+          <if test="dicid != null">
+            sys_system_dictionary.dicid = #{dicid}
+          </if>
+        </where>
+  </select>
+
+  <select id="getSysSystemDictionaryList">
+        select
+            sys_system_dictionary.dicid,
+            sys_system_dictionary.enum_name,
+            sys_system_dictionary.enum_type,
+            sys_system_dictionary.sort_id,
+            sys_system_dictionary.status,
+            sys_system_dictionary.system_id,
+            sys_system_dictionary.text,
+            sys_system_dictionary.value
+        form sys_system_dictionary
+                <where>
+          <if test="enumName != null">
+            sys_system_dictionary.enum_name = #{enumName}
+          </if>
+          <if test="enumType != null">
+            and sys_system_dictionary.enum_type = #{enumType}
+          </if>
+          <if test="sortId != null">
+            and sys_system_dictionary.sort_id = #{sortId}
+          </if>
+          <if test="status != null">
+            and sys_system_dictionary.status = #{status}
+          </if>
+          <if test="systemId != null">
+            and sys_system_dictionary.system_id = #{systemId}
+          </if>
+          <if test="text != null">
+            and sys_system_dictionary.text = #{text}
+          </if>
+          <if test="value != null">
+            and sys_system_dictionary.value = #{value}
+          </if>
+        </where>
+  </select>
+</mapper>

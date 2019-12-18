@@ -78,13 +78,13 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2020-1-17 2:3:19",
-  isDelete: 938,
-  orderNo: "伤损单号444",
-  submitStaff: 21,
-  submitTime: "2019-11-17 2:3:19",
-  updateTime: "2019-12-17 2:3:19",
-  workareaId: 263
+  createTime: "2020-1-18 1::37",
+  isDelete: 243,
+  orderNo: "伤损单号955",
+  submitStaff: 154,
+  submitTime: "2019-11-18 1::37",
+  updateTime: "2019-12-25 1::37",
+  workareaId: 567
 };
 }
 

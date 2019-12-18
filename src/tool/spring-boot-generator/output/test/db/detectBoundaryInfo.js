@@ -168,22 +168,22 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-11-17 2:3:19",
-  direction: 129,
-  endMiles: 476,
-  id: 102,
-  isDelete: 881,
-  lineId: 12,
-  longChain: 995,
-  operateStatus: 34,
-  operator: 984,
-  remark: "备注465",
-  startMiles: 163,
-  status: 230,
-  trackDisCategory: 654,
-  trackType: 366,
-  updateTime: "2019-11-17 2:3:19",
-  workshopId: 633
+  createTime: "2020-1-18 1::37",
+  direction: 718,
+  endMiles: 230,
+  id: 611,
+  isDelete: 509,
+  lineId: 446,
+  longChain: 692,
+  operateStatus: 251,
+  operator: 195,
+  remark: "备注455",
+  startMiles: 207,
+  status: 241,
+  trackDisCategory: 856,
+  trackType: 33,
+  updateTime: "2019-11-18 1::37",
+  workshopId: 329
 };
 }
 

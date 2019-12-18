@@ -135,8 +135,8 @@ let worshopBoundaryInfo = {
         name: "datetime"
       }
     },
-    workshopId: {
-      name: "workshopId",
+    workareaId: {
+      name: "workareaId",
       description: "工区编号",
       nullable: true,
       type: {
@@ -163,27 +163,27 @@ let columnsArray = [
   "trackCategory",
   "trackType",
   "updateTime",
-  "workshopId"
+  "workareaId"
 ];
 
 function create() {
   return {
-  createTime: "2019-11-17 2:3:19",
-  direction: 908,
-  endMiles: 532,
-  id: 344,
-  isDelete: 480,
-  lineId: 654,
-  longChain: 745,
-  operateStatus: 344,
-  operator: 973,
-  remark: "备注752",
-  startMiles: 842,
-  status: 843,
-  trackCategory: 76,
-  trackType: 379,
-  updateTime: "2019-12-17 2:3:19",
-  workshopId: 24
+  createTime: "2019-11-18 1::37",
+  direction: 711,
+  endMiles: 294,
+  id: 764,
+  isDelete: 179,
+  lineId: 47,
+  longChain: 299,
+  operateStatus: 963,
+  operator: 955,
+  remark: "备注516",
+  startMiles: 634,
+  status: 682,
+  trackCategory: 261,
+  trackType: 472,
+  updateTime: "2019-12-25 1::37",
+  workareaId: 155
 };
 }
 

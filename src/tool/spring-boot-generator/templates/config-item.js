@@ -3,8 +3,8 @@
  * @version: 
  * @Author: fuanlei
  * @Date: 2019-12-17 09:09:58
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-17 11:00:16
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-18 10:56:34
  */
 const { @sname } = require("./../db/main")
 const { builder } = require("./../../../builder")
@@ -15,66 +15,104 @@ exports.@snameConfig = {
                 items: [
                         
                         // add
-                        builder()
+                        new builder()
                                 .type("insert")
-                                .id("add")
-                                .controller(controller => {
-                                        controller.path("/@sname/{id}");
-                                }).req(req => {
-                                        req.doCreate()
-                                                .excludes("id");
-                                }),
-
-                        // deleteById
-                        builder()
-                                .type("delete")
-                                .id("delete@nameById")
-                                .controller(controller => {
-                                        controller.path("/@sname/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }),
-
-                        // updateById
-                        builder()
-                                .type("update")
-                                .id("update@nameById")
-                                .controller(controller => {
-                                        controller.path("/@sname/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }).req(req => {
-                                        req.doCreate()
-                                                .excludes("id");
-                                }),
-
-                        // getById
-                        builder()
-                                .type("selete")
-                                .id("get@nameById")
-                                .controller(controller => {
-                                        controller.path("/@sname/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }).resp(resp => {
-                                        resp.single();
-                                }),
-
-                        // getList
-                        builder()
-                                .type("selete")
-                                .id("get@nameList")
+                                .id("add@name")
+                                .includes(c=>{
+                                        c.includes(@sname.columnsArray)
+                                         .excludes("@skey")
+                                })
                                 .controller(controller => {
                                         controller.path("/@sname");
                                 }).req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                                .excludes("@skey");
                                 })
+                                .build(),
+
+                        // deleteById
+                        new builder()
+                                .type("delete")
+                                .id("delete@nameBy@key")
+                                .conditions(c =>{
+                                        c.includes("@skey")
+                                })
+                                .controller(controller => {
+                                        controller.path("/@sname/{@skey}");
+                                })
+                                .req(req => {
+                                        req.name("@skey")
+                                                .type("Integer")
+                                                .from("@PathVariable");
+                                })
+                                .build(),
+
+                        // updateById
+                        new builder()
+                                .type("update")
+                                .id("update@nameBy@key")
+                                .includes(c=>{
+                                        c.includes(@sname.columnsArray)
+                                         .excludes("@skey")
+                                })
+                                .conditions(c =>{
+                                        c.includes("@skey")
+                                })
+                                .controller(controller => {
+                                        controller.path("/@sname/{@skey}");
+                                })
+                                .req(req => {
+                                        req.name("@skey")
+                                                .type("Integer")
+                                                .from("@PathVariable");
+                                })
+                                .req(req => {
+                                        req.doCreate()
+                                                .excludes("@skey");
+                                })
+                                .build(),
+
+                        // getById
+                        new builder()
+                                .type("select")
+                                .id("get@nameBy@key")
+                                .includes(c=>{
+                                        c.includes(@sname.columnsArray)
+                                })
+                                .conditions(c =>{
+                                        c.includes("@skey")
+                                })
+                                .controller(controller => {
+                                        controller.path("/@sname/{@skey}");
+                                })
+                                .req(req => {
+                                        req.name("@skey")
+                                                .type("Integer")
+                                                .from("@PathVariable");
+                                })
+                                .resp(resp => {
+                                        resp.single();
+                                })
+                                .build(),
+
+                        // getList
+                        new builder()
+                                .type("select")
+                                .includes(c=>{
+                                        c.includes(@sname.columnsArray)
+                                })
+                                .conditions(c=>{
+                                        c.includes(@sname.columnsArray)
+                                         .excludes("@skey")
+                                })
+                                .id("get@nameList")
+                                .controller(controller => {
+                                        controller.path("/@sname");
+                                })
+                                .req(req => {
+                                        req.doCreate()
+                                                .excludes("@skey");
+                                })
+                                .build()
                 ]
 }

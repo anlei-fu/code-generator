@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.StationLineMapper">
+     <insert id="addStationLine" parameterType="com.@project.pojo.dao.@nameDao">
+          insert  into station_line
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="centDistance != null">
+            station_line.cent_distance,
+          </if>
+          <if test="createTime != null">
+            station_line.create_time,
+          </if>
+          <if test="direction != null">
+            station_line.direction,
+          </if>
+          <if test="endDistance != null">
+            station_line.end_distance,
+          </if>
+          <if test="isDelete != null">
+            station_line.is_delete,
+          </if>
+          <if test="lineId != null">
+            station_line.line_id,
+          </if>
+          <if test="operator != null">
+            station_line.operator,
+          </if>
+          <if test="sortNum != null">
+            station_line.sort_num,
+          </if>
+          <if test="startDistance != null">
+            station_line.start_distance,
+          </if>
+          <if test="stationId != null">
+            station_line.station_id,
+          </if>
+          <if test="status != null">
+            station_line.status,
+          </if>
+          <if test="updateTime != null">
+            station_line.update_time,
+          </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="centDistance != null">
+            #{centDistance},
+          </if>
+          <if test="createTime != null">
+            #{createTime},
+          </if>
+          <if test="direction != null">
+            #{direction},
+          </if>
+          <if test="endDistance != null">
+            #{endDistance},
+          </if>
+          <if test="isDelete != null">
+            #{isDelete},
+          </if>
+          <if test="lineId != null">
+            #{lineId},
+          </if>
+          <if test="operator != null">
+            #{operator},
+          </if>
+          <if test="sortNum != null">
+            #{sortNum},
+          </if>
+          <if test="startDistance != null">
+            #{startDistance},
+          </if>
+          <if test="stationId != null">
+            #{stationId},
+          </if>
+          <if test="status != null">
+            #{status},
+          </if>
+          <if test="updateTime != null">
+            #{updateTime},
+          </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteStationLineById">
+        delete from station_line
+        <where>
+          <if test="id != null">
+            station_line.id = #{id}
+          </if>
+        </where>
+    </delete>
+
+    <update id="updateStationLineById">
+      update station_line
+        <set>
+          <if test="centDistance != null">
+            station_line.cent_distance = #{centDistance},
+          </if>
+          <if test="createTime != null">
+            station_line.create_time = #{createTime},
+          </if>
+          <if test="direction != null">
+            station_line.direction = #{direction},
+          </if>
+          <if test="endDistance != null">
+            station_line.end_distance = #{endDistance},
+          </if>
+          <if test="isDelete != null">
+            station_line.is_delete = #{isDelete},
+          </if>
+          <if test="lineId != null">
+            station_line.line_id = #{lineId},
+          </if>
+          <if test="operator != null">
+            station_line.operator = #{operator},
+          </if>
+          <if test="sortNum != null">
+            station_line.sort_num = #{sortNum},
+          </if>
+          <if test="startDistance != null">
+            station_line.start_distance = #{startDistance},
+          </if>
+          <if test="stationId != null">
+            station_line.station_id = #{stationId},
+          </if>
+          <if test="status != null">
+            station_line.status = #{status},
+          </if>
+          <if test="updateTime != null">
+            station_line.update_time = #{updateTime}
+          </if>
+        </set>
+        <where>
+          <if test="id != null">
+            station_line.id = #{id}
+          </if>
+        </where>
+    </update>
+
+  <select id="getStationLineById">
+        select
+            station_line.cent_distance,
+            station_line.create_time,
+            station_line.direction,
+            station_line.end_distance,
+            station_line.id,
+            station_line.is_delete,
+            station_line.line_id,
+            station_line.operator,
+            station_line.sort_num,
+            station_line.start_distance,
+            station_line.station_id,
+            station_line.status,
+            station_line.update_time
+        form station_line
+                <where>
+          <if test="id != null">
+            station_line.id = #{id}
+          </if>
+        </where>
+  </select>
+
+  <select id="getStationLineList">
+        select
+            station_line.cent_distance,
+            station_line.create_time,
+            station_line.direction,
+            station_line.end_distance,
+            station_line.id,
+            station_line.is_delete,
+            station_line.line_id,
+            station_line.operator,
+            station_line.sort_num,
+            station_line.start_distance,
+            station_line.station_id,
+            station_line.status,
+            station_line.update_time
+        form station_line
+                <where>
+          <if test="centDistance != null">
+            station_line.cent_distance = #{centDistance}
+          </if>
+          <if test="createTime != null">
+            and station_line.create_time = #{createTime}
+          </if>
+          <if test="direction != null">
+            and station_line.direction = #{direction}
+          </if>
+          <if test="endDistance != null">
+            and station_line.end_distance = #{endDistance}
+          </if>
+          <if test="isDelete != null">
+            and station_line.is_delete = #{isDelete}
+          </if>
+          <if test="lineId != null">
+            and station_line.line_id = #{lineId}
+          </if>
+          <if test="operator != null">
+            and station_line.operator = #{operator}
+          </if>
+          <if test="sortNum != null">
+            and station_line.sort_num = #{sortNum}
+          </if>
+          <if test="startDistance != null">
+            and station_line.start_distance = #{startDistance}
+          </if>
+          <if test="stationId != null">
+            and station_line.station_id = #{stationId}
+          </if>
+          <if test="status != null">
+            and station_line.status = #{status}
+          </if>
+          <if test="updateTime != null">
+            and station_line.update_time = #{updateTime}
+          </if>
+        </where>
+  </select>
+</mapper>

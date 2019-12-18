@@ -224,9 +224,9 @@ let turnoutInfo = {
         name: "datetime"
       }
     },
-    workshopId: {
-      name: "workshopId",
-      description: "工区编号",
+    workareaId: {
+      name: "workareaId",
+      description: "宸ュ尯缂栧彿",
       nullable: false,
       type: {
         name: "int",
@@ -262,37 +262,37 @@ let columnsArray = [
   "turnoutNo",
   "turnoutType",
   "updateTime",
-  "workshopId"
+  "workareaId"
 ];
 
 function create() {
   return {
-  commissioningDate: "2019-12-24 2:3:19",
-  createTime: "2019-12-17 2:3:19",
-  direction: 535,
-  frogNo: "辙叉号334",
-  frogStructure: 664,
-  hasMovablePointFrog: 408,
-  hasSwitchRail: 469,
-  id: 492,
-  isDelete: 81,
-  lineId: 73,
-  miles: 913,
-  operator: 710,
-  position: 912,
-  remark: "备注914",
-  sortNum: "排序编号601",
-  stationId: 894,
-  status: 902,
-  switchRailType: 507,
-  thighTrackId: 118,
-  trackType: 208,
-  turnoutKind: 591,
-  turnoutLength: 470,
-  turnoutNo: "岔道号957",
-  turnoutType: 341,
-  updateTime: "2019-12-16 2:3:19",
-  workshopId: 557
+  commissioningDate: "2019-11-18 1::37",
+  createTime: "2019-12-25 1::37",
+  direction: 453,
+  frogNo: "辙叉号166",
+  frogStructure: 624,
+  hasMovablePointFrog: 205,
+  hasSwitchRail: 659,
+  id: 2,
+  isDelete: 533,
+  lineId: 479,
+  miles: 332,
+  operator: 410,
+  position: 820,
+  remark: "备注371",
+  sortNum: "排序编号84",
+  stationId: 249,
+  status: 6,
+  switchRailType: 402,
+  thighTrackId: 783,
+  trackType: 259,
+  turnoutKind: 47,
+  turnoutLength: 535,
+  turnoutNo: "岔道号797",
+  turnoutType: 129,
+  updateTime: "2019-12-25 1::37",
+  workareaId: 883
 };
 }
 

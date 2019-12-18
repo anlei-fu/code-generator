@@ -21,7 +21,18 @@ async function init(project, dbConfig) {
         let tableNames = [];
         tables.forEach(x => {
                 tableNames.push(x.name);
-                generateConfigItem(root, x.name);
+
+                let pk;
+                for(const c in x.columns){
+                    pk=pk||c;
+
+                    if(x.columns[c].isPk){
+                            pk=x.columns[c].name;
+                            break;
+                    }
+                }
+                pk=pk||x.columns[key].name;
+                generateConfigItem(root, x.name,pk);
         });
 
         // create all.js
@@ -113,11 +124,13 @@ function makeAllFolders(project, dbConfig) {
  * @param {String} root 
  * @param {String} tableName 
  */
-function generateConfigItem(root, tableName) {
+function generateConfigItem(root, tableName,primaryKey) {
         let templates = FILE.read("./templates/config-item.js");
         let patterns = {
                 "@name": STR.upperFirstLetter(tableName),
-                "@sname": tableName
+                "@sname": tableName,
+                "@key":STR.upperFirstLetter(primaryKey),
+                "@skey":primaryKey
         };
         templates = STR.replace(templates, patterns);
         FILE.write(`${root}/${tableName}.js`, templates);

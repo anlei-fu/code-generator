@@ -23,7 +23,7 @@ let loginUser = {
     },
     name: {
       name: "name",
-      description: "用户名",
+      description: "名字",
       nullable: true,
       type: {
         name: "varchar",
@@ -32,11 +32,11 @@ let loginUser = {
     },
     password: {
       name: "password",
-      description: "密码",
+      description: "密码3",
       nullable: true,
       type: {
         name: "varchar",
-        length: 225
+        length: 26
       }
     },
     state: {
@@ -80,13 +80,13 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-12-16 2:3:19",
-  id: 913,
-  name: "用户名437",
-  password: "密码215",
-  state: "357",
-  type: "41",
-  updateTime: "2019-12-16 2:3:19"
+  createTime: "2019-12-18 1::37",
+  id: 822,
+  name: "名字146",
+  password: "密码3445",
+  state: "427",
+  type: "240",
+  updateTime: "2019-12-17 1::37"
 };
 }
 

@@ -205,26 +205,26 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2020-1-17 2:3:19",
-  direction: 799,
-  endMiles: 24,
-  id: 535,
-  inputCode: "输入码33",
-  isDelete: 545,
-  length: 521,
-  lineId: 740,
-  longChain: 633,
-  middleMiles: 347,
-  operator: 165,
-  remark: "备注796",
-  side: 637,
-  startMiles: 818,
-  status: 914,
-  trackDistance: 796,
-  trackDivisionId: 495,
-  tunneName: "隧道名159",
-  tunneNo: "隧道号193",
-  updateTime: "2020-1-17 2:3:19"
+  createTime: "2019-12-18 1::37",
+  direction: 354,
+  endMiles: 806,
+  id: 576,
+  inputCode: "输入码818",
+  isDelete: 21,
+  length: 421,
+  lineId: 433,
+  longChain: 591,
+  middleMiles: 591,
+  operator: 743,
+  remark: "备注485",
+  side: 759,
+  startMiles: 632,
+  status: 703,
+  trackDistance: 89,
+  trackDivisionId: 975,
+  tunneName: "隧道名633",
+  tunneNo: "隧道号778",
+  updateTime: "2019-12-17 1::37"
 };
 }
 

@@ -109,6 +109,14 @@ let thighTrackInfo = {
         length: 11
       }
     },
+    thighTrackLength: {
+      name: "thighTrackLength",
+      description: "鑲￠亾闀垮害",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
     thighTrackNo: {
       name: "thighTrackNo",
       description: "股道号",
@@ -118,17 +126,9 @@ let thighTrackInfo = {
         length: 16
       }
     },
-    thignTrackLength: {
-      name: "thignTrackLength",
-      description: "股道长度",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
-    thignTrackType: {
-      name: "thignTrackType",
-      description: "股道类型",
+    thighTrackType: {
+      name: "thighTrackType",
+      description: "鑲￠亾绫诲瀷",
       nullable: true,
       type: {
         name: "int",
@@ -152,9 +152,9 @@ let thighTrackInfo = {
         name: "datetime"
       }
     },
-    workshopId: {
-      name: "workshopId",
-      description: "工区编号",
+    workareaId: {
+      name: "workareaId",
+      description: "宸ュ尯缂栧彿",
       nullable: true,
       type: {
         name: "int",
@@ -177,34 +177,34 @@ let columnsArray = [
   "sortNum",
   "stationId",
   "status",
+  "thighTrackLength",
   "thighTrackNo",
-  "thignTrackLength",
-  "thignTrackType",
+  "thighTrackType",
   "tieCategory",
   "updateTime",
-  "workshopId"
+  "workareaId"
 ];
 
 function create() {
   return {
-  createTime: "2019-11-17 2:3:19",
-  curveRadius: 562,
-  direction: 923,
-  gradeSectionLength: 80,
-  id: 872,
-  isDelete: 585,
-  lineId: 140,
-  maxGradient: 281,
-  operator: 837,
-  sortNum: "排序编号811",
-  stationId: 647,
-  status: 356,
-  thighTrackNo: "股道号540",
-  thignTrackLength: 326,
-  thignTrackType: 338,
-  tieCategory: 797,
-  updateTime: "2020-1-17 2:3:19",
-  workshopId: 578
+  createTime: "2019-12-17 1::37",
+  curveRadius: 977,
+  direction: 315,
+  gradeSectionLength: 500,
+  id: 106,
+  isDelete: 366,
+  lineId: 551,
+  maxGradient: 410,
+  operator: 595,
+  sortNum: "排序编号586",
+  stationId: 869,
+  status: 823,
+  thighTrackLength: 224,
+  thighTrackNo: "股道号283",
+  thighTrackType: 795,
+  tieCategory: 5,
+  updateTime: "2019-11-18 1::37",
+  workareaId: 781
 };
 }
 

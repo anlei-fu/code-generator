@@ -80,13 +80,13 @@ let columnsArray = [
 
 function create() {
   return {
-  bureauId: 905,
-  createTime: "2019-12-16 2:3:19",
-  id: 452,
-  lineId: 986,
-  operator: 114,
-  sortNum: "排序编号203",
-  updateTime: "2019-12-24 2:3:19"
+  bureauId: 469,
+  createTime: "2019-12-25 1::37",
+  id: 774,
+  lineId: 48,
+  operator: 84,
+  sortNum: "排序编号507",
+  updateTime: "2019-12-25 1::37"
 };
 }
 

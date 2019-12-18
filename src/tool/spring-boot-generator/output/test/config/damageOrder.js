@@ -3,8 +3,8 @@
  * @version: 
  * @Author: fuanlei
  * @Date: 2019-12-17 09:09:58
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-17 11:00:16
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-18 10:56:34
  */
 const { damageOrder } = require("./../db/main")
 const { builder } = require("./../../../builder")
@@ -15,66 +15,104 @@ exports.damageOrderConfig = {
                 items: [
                         
                         // add
-                        builder()
+                        new builder()
                                 .type("insert")
-                                .id("add")
-                                .controller(controller => {
-                                        controller.path("/damageOrder/{id}");
-                                }).req(req => {
-                                        req.doCreate()
-                                                .excludes("id");
-                                }),
-
-                        // deleteById
-                        builder()
-                                .type("delete")
-                                .id("deleteDamageOrderById")
-                                .controller(controller => {
-                                        controller.path("/damageOrder/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }),
-
-                        // updateById
-                        builder()
-                                .type("update")
-                                .id("updateDamageOrderById")
-                                .controller(controller => {
-                                        controller.path("/damageOrder/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }).req(req => {
-                                        req.doCreate()
-                                                .excludes("id");
-                                }),
-
-                        // getById
-                        builder()
-                                .type("selete")
-                                .id("getDamageOrderById")
-                                .controller(controller => {
-                                        controller.path("/damageOrder/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }).resp(resp => {
-                                        resp.single();
-                                }),
-
-                        // getList
-                        builder()
-                                .type("selete")
-                                .id("getDamageOrderList")
+                                .id("addDamageOrder")
+                                .includes(c=>{
+                                        c.includes(damageOrder.columnsArray)
+                                         .excludes("orderNo")
+                                })
                                 .controller(controller => {
                                         controller.path("/damageOrder");
                                 }).req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                                .excludes("orderNo");
                                 })
+                                .build(),
+
+                        // deleteById
+                        new builder()
+                                .type("delete")
+                                .id("deleteDamageOrderByOrderNo")
+                                .conditions(c =>{
+                                        c.includes("orderNo")
+                                })
+                                .controller(controller => {
+                                        controller.path("/damageOrder/{orderNo}");
+                                })
+                                .req(req => {
+                                        req.name("orderNo")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                })
+                                .build(),
+
+                        // updateById
+                        new builder()
+                                .type("update")
+                                .id("updateDamageOrderByOrderNo")
+                                .includes(c=>{
+                                        c.includes(damageOrder.columnsArray)
+                                         .excludes("orderNo")
+                                })
+                                .conditions(c =>{
+                                        c.includes("orderNo")
+                                })
+                                .controller(controller => {
+                                        controller.path("/damageOrder/{orderNo}");
+                                })
+                                .req(req => {
+                                        req.name("orderNo")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                })
+                                .req(req => {
+                                        req.doCreate()
+                                                .excludes("orderNo");
+                                })
+                                .build(),
+
+                        // getById
+                        new builder()
+                                .type("select")
+                                .id("getDamageOrderByOrderNo")
+                                .includes(c=>{
+                                        c.includes(damageOrder.columnsArray)
+                                })
+                                .conditions(c =>{
+                                        c.includes("orderNo")
+                                })
+                                .controller(controller => {
+                                        controller.path("/damageOrder/{orderNo}");
+                                })
+                                .req(req => {
+                                        req.name("orderNo")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                })
+                                .resp(resp => {
+                                        resp.single();
+                                })
+                                .build(),
+
+                        // getList
+                        new builder()
+                                .type("select")
+                                .includes(c=>{
+                                        c.includes(damageOrder.columnsArray)
+                                })
+                                .conditions(c=>{
+                                        c.includes(damageOrder.columnsArray)
+                                         .excludes("orderNo")
+                                })
+                                .id("getDamageOrderList")
+                                .controller(controller => {
+                                        controller.path("/damageOrder");
+                                })
+                                .req(req => {
+                                        req.doCreate()
+                                                .excludes("orderNo");
+                                })
+                                .build()
                 ]
 }

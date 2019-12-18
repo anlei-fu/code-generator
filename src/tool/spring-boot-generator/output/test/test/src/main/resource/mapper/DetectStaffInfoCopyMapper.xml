@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.DetectStaffInfoCopyMapper">
+     <insert id="addDetectStaffInfoCopy" parameterType="com.@project.pojo.dao.@nameDao">
+          insert  into detect_staff_info_copy
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="birthday != null">
+            detect_staff_info_copy.birthday,
+          </if>
+          <if test="contact != null">
+            detect_staff_info_copy.contact,
+          </if>
+          <if test="createTime != null">
+            detect_staff_info_copy.create_time,
+          </if>
+          <if test="eduDegree != null">
+            detect_staff_info_copy.edu_degree,
+          </if>
+          <if test="gender != null">
+            detect_staff_info_copy.gender,
+          </if>
+          <if test="gradeGainDate != null">
+            detect_staff_info_copy.grade_gain_date,
+          </if>
+          <if test="gradeId != null">
+            detect_staff_info_copy.grade_id,
+          </if>
+          <if test="idCardNo != null">
+            detect_staff_info_copy.id_card_no,
+          </if>
+          <if test="isDelete != null">
+            detect_staff_info_copy.is_delete,
+          </if>
+          <if test="name != null">
+            detect_staff_info_copy.name,
+          </if>
+          <if test="operator != null">
+            detect_staff_info_copy.operator,
+          </if>
+          <if test="positionId != null">
+            detect_staff_info_copy.position_id,
+          </if>
+          <if test="qualificationAuditDate != null">
+            detect_staff_info_copy.qualification_audit_date,
+          </if>
+          <if test="qualificationGainDate != null">
+            detect_staff_info_copy.qualification_gain_date,
+          </if>
+          <if test="qualificationGrade != null">
+            detect_staff_info_copy.qualification_grade,
+          </if>
+          <if test="qualificationInvalidDate != null">
+            detect_staff_info_copy.qualification_invalid_date,
+          </if>
+          <if test="qualificationValidTime != null">
+            detect_staff_info_copy.qualification_valid_time,
+          </if>
+          <if test="remark != null">
+            detect_staff_info_copy.remark,
+          </if>
+          <if test="status != null">
+            detect_staff_info_copy.status,
+          </if>
+          <if test="tecCategory != null">
+            detect_staff_info_copy.tec_category,
+          </if>
+          <if test="updateTime != null">
+            detect_staff_info_copy.update_time,
+          </if>
+          <if test="workareaId != null">
+            detect_staff_info_copy.workarea_id,
+          </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="birthday != null">
+            #{birthday},
+          </if>
+          <if test="contact != null">
+            #{contact},
+          </if>
+          <if test="createTime != null">
+            #{createTime},
+          </if>
+          <if test="eduDegree != null">
+            #{eduDegree},
+          </if>
+          <if test="gender != null">
+            #{gender},
+          </if>
+          <if test="gradeGainDate != null">
+            #{gradeGainDate},
+          </if>
+          <if test="gradeId != null">
+            #{gradeId},
+          </if>
+          <if test="idCardNo != null">
+            #{idCardNo},
+          </if>
+          <if test="isDelete != null">
+            #{isDelete},
+          </if>
+          <if test="name != null">
+            #{name},
+          </if>
+          <if test="operator != null">
+            #{operator},
+          </if>
+          <if test="positionId != null">
+            #{positionId},
+          </if>
+          <if test="qualificationAuditDate != null">
+            #{qualificationAuditDate},
+          </if>
+          <if test="qualificationGainDate != null">
+            #{qualificationGainDate},
+          </if>
+          <if test="qualificationGrade != null">
+            #{qualificationGrade},
+          </if>
+          <if test="qualificationInvalidDate != null">
+            #{qualificationInvalidDate},
+          </if>
+          <if test="qualificationValidTime != null">
+            #{qualificationValidTime},
+          </if>
+          <if test="remark != null">
+            #{remark},
+          </if>
+          <if test="status != null">
+            #{status},
+          </if>
+          <if test="tecCategory != null">
+            #{tecCategory},
+          </if>
+          <if test="updateTime != null">
+            #{updateTime},
+          </if>
+          <if test="workareaId != null">
+            #{workareaId},
+          </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteDetectStaffInfoCopyById">
+        delete from detect_staff_info_copy
+        <where>
+          <if test="id != null">
+            detect_staff_info_copy.id = #{id}
+          </if>
+        </where>
+    </delete>
+
+    <update id="updateDetectStaffInfoCopyById">
+      update detect_staff_info_copy
+        <set>
+          <if test="birthday != null">
+            detect_staff_info_copy.birthday = #{birthday},
+          </if>
+          <if test="contact != null">
+            detect_staff_info_copy.contact = #{contact},
+          </if>
+          <if test="createTime != null">
+            detect_staff_info_copy.create_time = #{createTime},
+          </if>
+          <if test="eduDegree != null">
+            detect_staff_info_copy.edu_degree = #{eduDegree},
+          </if>
+          <if test="gender != null">
+            detect_staff_info_copy.gender = #{gender},
+          </if>
+          <if test="gradeGainDate != null">
+            detect_staff_info_copy.grade_gain_date = #{gradeGainDate},
+          </if>
+          <if test="gradeId != null">
+            detect_staff_info_copy.grade_id = #{gradeId},
+          </if>
+          <if test="idCardNo != null">
+            detect_staff_info_copy.id_card_no = #{idCardNo},
+          </if>
+          <if test="isDelete != null">
+            detect_staff_info_copy.is_delete = #{isDelete},
+          </if>
+          <if test="name != null">
+            detect_staff_info_copy.name = #{name},
+          </if>
+          <if test="operator != null">
+            detect_staff_info_copy.operator = #{operator},
+          </if>
+          <if test="positionId != null">
+            detect_staff_info_copy.position_id = #{positionId},
+          </if>
+          <if test="qualificationAuditDate != null">
+            detect_staff_info_copy.qualification_audit_date = #{qualificationAuditDate},
+          </if>
+          <if test="qualificationGainDate != null">
+            detect_staff_info_copy.qualification_gain_date = #{qualificationGainDate},
+          </if>
+          <if test="qualificationGrade != null">
+            detect_staff_info_copy.qualification_grade = #{qualificationGrade},
+          </if>
+          <if test="qualificationInvalidDate != null">
+            detect_staff_info_copy.qualification_invalid_date = #{qualificationInvalidDate},
+          </if>
+          <if test="qualificationValidTime != null">
+            detect_staff_info_copy.qualification_valid_time = #{qualificationValidTime},
+          </if>
+          <if test="remark != null">
+            detect_staff_info_copy.remark = #{remark},
+          </if>
+          <if test="status != null">
+            detect_staff_info_copy.status = #{status},
+          </if>
+          <if test="tecCategory != null">
+            detect_staff_info_copy.tec_category = #{tecCategory},
+          </if>
+          <if test="updateTime != null">
+            detect_staff_info_copy.update_time = #{updateTime},
+          </if>
+          <if test="workareaId != null">
+            detect_staff_info_copy.workarea_id = #{workareaId}
+          </if>
+        </set>
+        <where>
+          <if test="id != null">
+            detect_staff_info_copy.id = #{id}
+          </if>
+        </where>
+    </update>
+
+  <select id="getDetectStaffInfoCopyById">
+        select
+            detect_staff_info_copy.birthday,
+            detect_staff_info_copy.contact,
+            detect_staff_info_copy.create_time,
+            detect_staff_info_copy.edu_degree,
+            detect_staff_info_copy.gender,
+            detect_staff_info_copy.grade_gain_date,
+            detect_staff_info_copy.grade_id,
+            detect_staff_info_copy.id,
+            detect_staff_info_copy.id_card_no,
+            detect_staff_info_copy.is_delete,
+            detect_staff_info_copy.name,
+            detect_staff_info_copy.operator,
+            detect_staff_info_copy.position_id,
+            detect_staff_info_copy.qualification_audit_date,
+            detect_staff_info_copy.qualification_gain_date,
+            detect_staff_info_copy.qualification_grade,
+            detect_staff_info_copy.qualification_invalid_date,
+            detect_staff_info_copy.qualification_valid_time,
+            detect_staff_info_copy.remark,
+            detect_staff_info_copy.status,
+            detect_staff_info_copy.tec_category,
+            detect_staff_info_copy.update_time,
+            detect_staff_info_copy.workarea_id
+        form detect_staff_info_copy
+                <where>
+          <if test="id != null">
+            detect_staff_info_copy.id = #{id}
+          </if>
+        </where>
+  </select>
+
+  <select id="getDetectStaffInfoCopyList">
+        select
+            detect_staff_info_copy.birthday,
+            detect_staff_info_copy.contact,
+            detect_staff_info_copy.create_time,
+            detect_staff_info_copy.edu_degree,
+            detect_staff_info_copy.gender,
+            detect_staff_info_copy.grade_gain_date,
+            detect_staff_info_copy.grade_id,
+            detect_staff_info_copy.id,
+            detect_staff_info_copy.id_card_no,
+            detect_staff_info_copy.is_delete,
+            detect_staff_info_copy.name,
+            detect_staff_info_copy.operator,
+            detect_staff_info_copy.position_id,
+            detect_staff_info_copy.qualification_audit_date,
+            detect_staff_info_copy.qualification_gain_date,
+            detect_staff_info_copy.qualification_grade,
+            detect_staff_info_copy.qualification_invalid_date,
+            detect_staff_info_copy.qualification_valid_time,
+            detect_staff_info_copy.remark,
+            detect_staff_info_copy.status,
+            detect_staff_info_copy.tec_category,
+            detect_staff_info_copy.update_time,
+            detect_staff_info_copy.workarea_id
+        form detect_staff_info_copy
+                <where>
+          <if test="birthday != null">
+            detect_staff_info_copy.birthday = #{birthday}
+          </if>
+          <if test="contact != null">
+            and detect_staff_info_copy.contact = #{contact}
+          </if>
+          <if test="createTime != null">
+            and detect_staff_info_copy.create_time = #{createTime}
+          </if>
+          <if test="eduDegree != null">
+            and detect_staff_info_copy.edu_degree = #{eduDegree}
+          </if>
+          <if test="gender != null">
+            and detect_staff_info_copy.gender = #{gender}
+          </if>
+          <if test="gradeGainDate != null">
+            and detect_staff_info_copy.grade_gain_date = #{gradeGainDate}
+          </if>
+          <if test="gradeId != null">
+            and detect_staff_info_copy.grade_id = #{gradeId}
+          </if>
+          <if test="idCardNo != null">
+            and detect_staff_info_copy.id_card_no = #{idCardNo}
+          </if>
+          <if test="isDelete != null">
+            and detect_staff_info_copy.is_delete = #{isDelete}
+          </if>
+          <if test="name != null">
+            and detect_staff_info_copy.name = #{name}
+          </if>
+          <if test="operator != null">
+            and detect_staff_info_copy.operator = #{operator}
+          </if>
+          <if test="positionId != null">
+            and detect_staff_info_copy.position_id = #{positionId}
+          </if>
+          <if test="qualificationAuditDate != null">
+            and detect_staff_info_copy.qualification_audit_date = #{qualificationAuditDate}
+          </if>
+          <if test="qualificationGainDate != null">
+            and detect_staff_info_copy.qualification_gain_date = #{qualificationGainDate}
+          </if>
+          <if test="qualificationGrade != null">
+            and detect_staff_info_copy.qualification_grade = #{qualificationGrade}
+          </if>
+          <if test="qualificationInvalidDate != null">
+            and detect_staff_info_copy.qualification_invalid_date = #{qualificationInvalidDate}
+          </if>
+          <if test="qualificationValidTime != null">
+            and detect_staff_info_copy.qualification_valid_time = #{qualificationValidTime}
+          </if>
+          <if test="remark != null">
+            and detect_staff_info_copy.remark = #{remark}
+          </if>
+          <if test="status != null">
+            and detect_staff_info_copy.status = #{status}
+          </if>
+          <if test="tecCategory != null">
+            and detect_staff_info_copy.tec_category = #{tecCategory}
+          </if>
+          <if test="updateTime != null">
+            and detect_staff_info_copy.update_time = #{updateTime}
+          </if>
+          <if test="workareaId != null">
+            and detect_staff_info_copy.workarea_id = #{workareaId}
+          </if>
+        </where>
+  </select>
+</mapper>

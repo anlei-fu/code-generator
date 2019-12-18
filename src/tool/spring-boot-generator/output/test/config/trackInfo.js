@@ -3,8 +3,8 @@
  * @version: 
  * @Author: fuanlei
  * @Date: 2019-12-17 09:09:58
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-17 11:00:16
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-18 10:56:34
  */
 const { trackInfo } = require("./../db/main")
 const { builder } = require("./../../../builder")
@@ -15,66 +15,104 @@ exports.trackInfoConfig = {
                 items: [
                         
                         // add
-                        builder()
+                        new builder()
                                 .type("insert")
-                                .id("add")
-                                .controller(controller => {
-                                        controller.path("/trackInfo/{id}");
-                                }).req(req => {
-                                        req.doCreate()
-                                                .excludes("id");
-                                }),
-
-                        // deleteById
-                        builder()
-                                .type("delete")
-                                .id("deleteTrackInfoById")
-                                .controller(controller => {
-                                        controller.path("/trackInfo/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }),
-
-                        // updateById
-                        builder()
-                                .type("update")
-                                .id("updateTrackInfoById")
-                                .controller(controller => {
-                                        controller.path("/trackInfo/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }).req(req => {
-                                        req.doCreate()
-                                                .excludes("id");
-                                }),
-
-                        // getById
-                        builder()
-                                .type("selete")
-                                .id("getTrackInfoById")
-                                .controller(controller => {
-                                        controller.path("/trackInfo/{id}");
-                                }).req(req => {
-                                        req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVarible");
-                                }).resp(resp => {
-                                        resp.single();
-                                }),
-
-                        // getList
-                        builder()
-                                .type("selete")
-                                .id("getTrackInfoList")
+                                .id("addTrackInfo")
+                                .includes(c=>{
+                                        c.includes(trackInfo.columnsArray)
+                                         .excludes("id")
+                                })
                                 .controller(controller => {
                                         controller.path("/trackInfo");
                                 }).req(req => {
                                         req.doCreate()
                                                 .excludes("id");
                                 })
+                                .build(),
+
+                        // deleteById
+                        new builder()
+                                .type("delete")
+                                .id("deleteTrackInfoById")
+                                .conditions(c =>{
+                                        c.includes("id")
+                                })
+                                .controller(controller => {
+                                        controller.path("/trackInfo/{id}");
+                                })
+                                .req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                })
+                                .build(),
+
+                        // updateById
+                        new builder()
+                                .type("update")
+                                .id("updateTrackInfoById")
+                                .includes(c=>{
+                                        c.includes(trackInfo.columnsArray)
+                                         .excludes("id")
+                                })
+                                .conditions(c =>{
+                                        c.includes("id")
+                                })
+                                .controller(controller => {
+                                        controller.path("/trackInfo/{id}");
+                                })
+                                .req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                })
+                                .req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                })
+                                .build(),
+
+                        // getById
+                        new builder()
+                                .type("select")
+                                .id("getTrackInfoById")
+                                .includes(c=>{
+                                        c.includes(trackInfo.columnsArray)
+                                })
+                                .conditions(c =>{
+                                        c.includes("id")
+                                })
+                                .controller(controller => {
+                                        controller.path("/trackInfo/{id}");
+                                })
+                                .req(req => {
+                                        req.name("id")
+                                                .type("Integer")
+                                                .from("@PathVarible");
+                                })
+                                .resp(resp => {
+                                        resp.single();
+                                })
+                                .build(),
+
+                        // getList
+                        new builder()
+                                .type("select")
+                                .includes(c=>{
+                                        c.includes(trackInfo.columnsArray)
+                                })
+                                .conditions(c=>{
+                                        c.includes(trackInfo.columnsArray)
+                                         .excludes("id")
+                                })
+                                .id("getTrackInfoList")
+                                .controller(controller => {
+                                        controller.path("/trackInfo");
+                                })
+                                .req(req => {
+                                        req.doCreate()
+                                                .excludes("id");
+                                })
+                                .build()
                 ]
 }

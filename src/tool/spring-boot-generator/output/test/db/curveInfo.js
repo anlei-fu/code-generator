@@ -18,6 +18,15 @@ let curveInfo = {
         name: "datetime"
       }
     },
+    curveDirection: {
+      name: "curveDirection",
+      description: "鏇茬嚎鏂瑰悜",
+      nullable: true,
+      type: {
+        name: "int",
+        length: 11
+      }
+    },
     curveId: {
       name: "curveId",
       description: "曲线编号",
@@ -29,26 +38,17 @@ let curveInfo = {
         length: 11
       }
     },
-    cuvreDirection: {
-      name: "cuvreDirection",
-      description: "曲线方向",
-      nullable: true,
-      type: {
-        name: "int",
-        length: 11
-      }
-    },
-    cuvreLength: {
-      name: "cuvreLength",
-      description: "曲线长",
+    curveLength: {
+      name: "curveLength",
+      description: "鏇茬嚎闀?",
       nullable: true,
       type: {
         name: "float"
       }
     },
-    cuvreReadius: {
-      name: "cuvreReadius",
-      description: "曲线半径",
+    curveReadius: {
+      name: "curveReadius",
+      description: "鏇茬嚎鍗婂緞",
       nullable: true,
       type: {
         name: "float"
@@ -216,9 +216,9 @@ let curveInfo = {
         name: "float"
       }
     },
-    trackDivision: {
-      name: "trackDivision",
-      description: "工务段编号",
+    trackDivisionId: {
+      name: "trackDivisionId",
+      description: "宸ュ姟娈电紪鍙?",
       nullable: true,
       type: {
         name: "int",
@@ -239,10 +239,10 @@ let curveInfo = {
 let columnsArray = [
   "averageSpeed",
   "createTime",
+  "curveDirection",
   "curveId",
-  "cuvreDirection",
-  "cuvreLength",
-  "cuvreReadius",
+  "curveLength",
+  "curveReadius",
   "direction",
   "endMiles",
   "endSlowLength",
@@ -262,39 +262,39 @@ let columnsArray = [
   "steeringAngle",
   "trackDisType",
   "trackDisWide",
-  "trackDivision",
+  "trackDivisionId",
   "updateTime"
 ];
 
 function create() {
   return {
-  averageSpeed: 662,
-  createTime: "2020-1-17 2:3:19",
-  curveId: 731,
-  cuvreDirection: 28,
-  cuvreLength: 405,
-  cuvreReadius: 972,
-  direction: 685,
-  endMiles: 5,
-  endSlowLength: 386,
-  endTangentLength: 882,
-  isDelete: 250,
-  lineId: 934,
-  longChain: 256,
-  operator: 355,
-  overHeight: 161,
-  remark: "备注329",
-  side: 79,
-  slopeRate: 348,
-  startMiles: 320,
-  startSlowLength: 57,
-  startTangentLength: 698,
-  status: 251,
-  steeringAngle: 368,
-  trackDisType: 684,
-  trackDisWide: 584,
-  trackDivision: 806,
-  updateTime: "2019-12-24 2:3:19"
+  averageSpeed: 297,
+  createTime: "2019-12-17 1::37",
+  curveDirection: 115,
+  curveId: 326,
+  curveLength: 273,
+  curveReadius: 376,
+  direction: 753,
+  endMiles: 608,
+  endSlowLength: 759,
+  endTangentLength: 995,
+  isDelete: 696,
+  lineId: 212,
+  longChain: 144,
+  operator: 561,
+  overHeight: 969,
+  remark: "备注292",
+  side: 583,
+  slopeRate: 184,
+  startMiles: 222,
+  startSlowLength: 750,
+  startTangentLength: 926,
+  status: 522,
+  steeringAngle: 600,
+  trackDisType: 370,
+  trackDisWide: 33,
+  trackDivisionId: 716,
+  updateTime: "2019-11-18 1::37"
 };
 }
 

@@ -1,4 +1,3 @@
-
     @Override
     public @serviceImplReturnType @name(@serviceImplParams) {
         @content

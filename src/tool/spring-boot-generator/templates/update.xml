@@ -1,5 +1,5 @@
-<update id="@id">
-  update @tableName
+    <update id="@id">
+      update @tableName
 @set
 @where
-</update>
+    </update>

@@ -100,15 +100,15 @@ let columnsArray = [
 
 function create() {
   return {
-  bureauId: 887,
-  createTime: "2019-12-16 2:3:19",
-  fullName: "工务段名称770",
-  id: 995,
-  inputCode: "输入代码8",
-  isDelete: 320,
-  operator: 829,
-  shortName: "工务段简称304",
-  updateTime: "2019-12-17 2:3:19"
+  bureauId: 216,
+  createTime: "2019-12-25 1::37",
+  fullName: "工务段名称896",
+  id: 627,
+  inputCode: "输入代码978",
+  isDelete: 131,
+  operator: 878,
+  shortName: "工务段简称687",
+  updateTime: "2019-12-18 1::37"
 };
 }
 

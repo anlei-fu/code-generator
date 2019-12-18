@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.DetectGroupMapper">
+     <insert id="addDetectGroup" parameterType="com.@project.pojo.dao.@nameDao">
+          insert  into detect_group
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="createTime != null">
+            detect_group.create_time,
+          </if>
+          <if test="groupName != null">
+            detect_group.group_name,
+          </if>
+          <if test="isDelete != null">
+            detect_group.is_delete,
+          </if>
+          <if test="leaderId != null">
+            detect_group.leader_id,
+          </if>
+          <if test="operator != null">
+            detect_group.operator,
+          </if>
+          <if test="status != null">
+            detect_group.status,
+          </if>
+          <if test="updateTime != null">
+            detect_group.update_time,
+          </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="createTime != null">
+            #{createTime},
+          </if>
+          <if test="groupName != null">
+            #{groupName},
+          </if>
+          <if test="isDelete != null">
+            #{isDelete},
+          </if>
+          <if test="leaderId != null">
+            #{leaderId},
+          </if>
+          <if test="operator != null">
+            #{operator},
+          </if>
+          <if test="status != null">
+            #{status},
+          </if>
+          <if test="updateTime != null">
+            #{updateTime},
+          </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteDetectGroupById">
+        delete from detect_group
+        <where>
+          <if test="id != null">
+            detect_group.id = #{id}
+          </if>
+        </where>
+    </delete>
+
+    <update id="updateDetectGroupById">
+      update detect_group
+        <set>
+          <if test="createTime != null">
+            detect_group.create_time = #{createTime},
+          </if>
+          <if test="groupName != null">
+            detect_group.group_name = #{groupName},
+          </if>
+          <if test="isDelete != null">
+            detect_group.is_delete = #{isDelete},
+          </if>
+          <if test="leaderId != null">
+            detect_group.leader_id = #{leaderId},
+          </if>
+          <if test="operator != null">
+            detect_group.operator = #{operator},
+          </if>
+          <if test="status != null">
+            detect_group.status = #{status},
+          </if>
+          <if test="updateTime != null">
+            detect_group.update_time = #{updateTime}
+          </if>
+        </set>
+        <where>
+          <if test="id != null">
+            detect_group.id = #{id}
+          </if>
+        </where>
+    </update>
+
+  <select id="getDetectGroupById">
+        select
+            detect_group.create_time,
+            detect_group.group_name,
+            detect_group.id,
+            detect_group.is_delete,
+            detect_group.leader_id,
+            detect_group.operator,
+            detect_group.status,
+            detect_group.update_time
+        form detect_group
+                <where>
+          <if test="id != null">
+            detect_group.id = #{id}
+          </if>
+        </where>
+  </select>
+
+  <select id="getDetectGroupList">
+        select
+            detect_group.create_time,
+            detect_group.group_name,
+            detect_group.id,
+            detect_group.is_delete,
+            detect_group.leader_id,
+            detect_group.operator,
+            detect_group.status,
+            detect_group.update_time
+        form detect_group
+                <where>
+          <if test="createTime != null">
+            detect_group.create_time = #{createTime}
+          </if>
+          <if test="groupName != null">
+            and detect_group.group_name = #{groupName}
+          </if>
+          <if test="isDelete != null">
+            and detect_group.is_delete = #{isDelete}
+          </if>
+          <if test="leaderId != null">
+            and detect_group.leader_id = #{leaderId}
+          </if>
+          <if test="operator != null">
+            and detect_group.operator = #{operator}
+          </if>
+          <if test="status != null">
+            and detect_group.status = #{status}
+          </if>
+          <if test="updateTime != null">
+            and detect_group.update_time = #{updateTime}
+          </if>
+        </where>
+  </select>
+</mapper>

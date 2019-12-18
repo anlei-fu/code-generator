@@ -1,7 +1,7 @@
-<select id="@id">
-  select
+  <select id="@id">
+        select
 @columns
-  form @tableName
-@joins
-@where
-</select>
+        form @tableName
+        @joins
+        @where
+  </select>

@@ -3,9 +3,10 @@
  * @version: 
  * @Author: fuanlei
  * @Date: 2019-12-17 09:09:58
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-17 11:41:16
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-18 11:49:04
  */
+const { TYPE} = require("./../../libs/utils")
 exports.reqBuilder = function reqBuilder() {
         this._excludes = [];
         this._noValidated = true;
@@ -28,7 +29,7 @@ exports.reqBuilder = function reqBuilder() {
          * @returns {reqBuilder}
          */
         this.excludes = (items) => {
-                this._excludes = items;
+                this._excludes =TYPE.isString(items)?[items]:items;
                 return this;
         }
 
@@ -95,7 +96,7 @@ exports.reqBuilder = function reqBuilder() {
                         description: this._description,
                         name: this._name,
                         type: this._type,
-                        excludes: this._excludes,
+                        excludes: new Set(this._excludes),
                         validates: this._validates,
                 }
         }

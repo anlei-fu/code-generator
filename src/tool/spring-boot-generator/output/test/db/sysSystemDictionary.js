@@ -92,14 +92,14 @@ let columnsArray = [
 
 function create() {
   return {
-  dicid: 658,
-  enumName: "751",
-  enumType: "鏋氫妇绫诲瀷633",
+  dicid: 559,
+  enumName: "755",
+  enumType: "鏋氫妇绫诲瀷939",
   sortId: 526,
-  status: 975,
-  systemId: 74,
-  text: "鏋氫妇椤瑰叿浣撳悕瀛?495",
-  value: "鏋氫妇value109"
+  status: 258,
+  systemId: 545,
+  text: "鏋氫妇椤瑰叿浣撳悕瀛?849",
+  value: "鏋氫妇value562"
 };
 }
 

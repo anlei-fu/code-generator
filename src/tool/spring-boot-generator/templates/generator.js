@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-17 09:09:58
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-18 10:49:05
+ */
 const { all } = require("./config/all")
 const { Generator } = require("./../../code-generator")
 
@@ -11,17 +19,23 @@ function build() {
         all.forEach(x => {
 
                 // set output folders
-                let root = "./@project/src/@project/src/main/java/com/@project";
-                x.mapperFolder = `./@project/src/@project/main/resource/mapper`;
-                x.mapperConfigFolder = `${root}/mapper`;
+                let root = "./@project/src/main/java/com/@project";
+                x.mapperFolder = `${root}/mapper`;
+                x.mapperConfigFolder = `./@project/src/main/resource/mapper`;
                 x.controllerFolder = `${root}/controller`;
                 x.serviceFolder = `${root}/service`;
                 x.serviceImplFolder = `${root}/service/impl`;
+                x.entityFolder = `${root}/pojo/entity`;
                 x.reqFolder = `${root}/pojo/req`;
                 x.respFolder = `${root}/pojo/resp`;
-                x.paramFolder = `${root}/pojo/params`;
+                x.paramsFolder = `${root}/pojo/param`;
 
                 let generator = new Generator(x);
                 generator.writeAll();
         });
+        
+        console.log("completed!");
 }
+
+/*-------------------------------------------------run--------------------------------------------------------*/
+build();

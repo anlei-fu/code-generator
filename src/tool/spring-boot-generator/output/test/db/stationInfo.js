@@ -170,22 +170,22 @@ let columnsArray = [
 
 function create() {
   return {
-  createTime: "2019-11-17 2:3:19",
-  fullName: "车站全称936",
-  id: 750,
-  inputCode: "输入代码384",
-  isDelete: 808,
-  jobType: 679,
-  operator: 269,
-  shortName: "车站简称195",
-  stationCode: "车站编码993",
-  stationGrade: 955,
-  stationType: 903,
-  status: 479,
-  ternoutNum: 374,
-  thighTrackNum: 566,
-  trackDivisionId: 196,
-  updateTime: "2019-12-24 2:3:19"
+  createTime: "2019-12-18 1::37",
+  fullName: "车站全称407",
+  id: 397,
+  inputCode: "输入代码9",
+  isDelete: 239,
+  jobType: 995,
+  operator: 815,
+  shortName: "车站简称883",
+  stationCode: "车站编码772",
+  stationGrade: 195,
+  stationType: 797,
+  status: 223,
+  ternoutNum: 193,
+  thighTrackNum: 259,
+  trackDivisionId: 446,
+  updateTime: "2019-11-18 1::37"
 };
 }
 
