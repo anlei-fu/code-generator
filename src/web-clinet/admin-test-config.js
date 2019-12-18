@@ -46,16 +46,16 @@ exports.config = {
                                 params: {
                                         company: "",
                                         realName: "",
-                                        mobile: "",
-                                        email: "",
-                                        signStatus: 0,
-                                        needPay: 0,
-                                        payStatus: 4,
-                                        subjectType: 1,
-                                        pageSize: 1,
-                                        pageIndex: 1,
-                                        startTime: null,
-                                        endTimeTime: null
+                                        // mobile: "",
+                                        // email: "",
+                                        // signStatus: 0,
+                                        // needPay: 0,
+                                        // payStatus: 4,
+                                        // subjectType: 1,
+                                        // pageSize: 1,
+                                        // pageIndex: 1,
+                                        // startTime: null,
+                                        // endTimeTime: null
                                 }
                         }]
                 },
