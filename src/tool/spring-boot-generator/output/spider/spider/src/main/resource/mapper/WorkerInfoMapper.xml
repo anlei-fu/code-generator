@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.WorkerInfoMapper">
+    <insert id="addWorkerInfo">
+          insert  into worker_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="description != null">
+              worker_info.description,
+            </if>
+              worker_info.ip,
+            <if test="joinTime != null">
+              worker_info.join_time,
+            </if>
+            <if test="lastRunTime != null">
+              worker_info.last_run_time,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="description != null">
+              #{description},
+            </if>
+              #{ip},
+            <if test="joinTime != null">
+              #{joinTime},
+            </if>
+            <if test="lastRunTime != null">
+              #{lastRunTime},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteWorkerInfoById">
+          delete from worker_info
+          <where>
+            <if test="id != null">
+              worker_info.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateWorkerInfoById">
+        update worker_info
+        <set>
+            <if test="description != null">
+              worker_info.description = #{description},
+            </if>
+            <if test="ip != null">
+              worker_info.ip = #{ip},
+            </if>
+            <if test="joinTime != null">
+              worker_info.join_time = #{joinTime},
+            </if>
+            <if test="lastRunTime != null">
+              worker_info.last_run_time = #{lastRunTime}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              worker_info.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getWorkerInfoById">
+          select
+              worker_info.description,
+              worker_info.id,
+              worker_info.ip,
+              worker_info.join_time,
+              worker_info.last_run_time
+          form worker_info
+          <where>
+            <if test="id != null">
+              worker_info.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getWorkerInfoList">
+          select
+              worker_info.description,
+              worker_info.id,
+              worker_info.ip,
+              worker_info.join_time,
+              worker_info.last_run_time
+          form worker_info
+          <where>
+            <if test="description != null">
+              worker_info.description = #{description}
+            </if>
+            <if test="ip != null">
+              and worker_info.ip = #{ip}
+            </if>
+            <if test="joinTime != null">
+              and worker_info.join_time = #{joinTime}
+            </if>
+            <if test="lastRunTime != null">
+              and worker_info.last_run_time = #{lastRunTime}
+            </if>
+          </where>
+    </select>
+</mapper>

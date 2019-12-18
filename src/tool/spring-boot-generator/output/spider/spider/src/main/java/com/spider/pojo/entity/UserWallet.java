@@ -1,0 +1,38 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: fuanlei
+ * @Date: 2019-12-17 09:09:58
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-18 14:55:53
+ */
+package com.undefined.pojo.entity;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+@import
+
+@ApiModel("用户钱包")
+@Getter
+@Setter
+public class UserWallet {
+
+    @ApiModelProperty("创建时间")
+    private Integer createTime;
+
+    @ApiModelProperty("编号")
+    private Integer id;
+
+    @ApiModelProperty("余额")
+    @NotNull
+    private Float total;
+
+    @ApiModelProperty("用户id")
+    @NotNull
+@NotNull
+    private String userId;
+
+}

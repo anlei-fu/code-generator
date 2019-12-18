@@ -12,9 +12,9 @@ const { STR } = require("../../libs/str")
 const { NamingStrategy } = require("../../libs/naming-strategy")
 const { isSimpleJavaType, getJavaType } = require("./utils")
 
-const ident1 = "  ";
-const ident3 = "          ";
-const ident4 = "            "
+const IDENT_2 = "  ";
+const IDENT_8 = "          ";
+const IDENT_10 = "            ";
 const DATE_PACKAGE = "import java.util.Date;";
 const HTTP_MAPPINGS = new Map();
 HTTP_MAPPINGS.set("select", "GetMapping")
@@ -263,6 +263,10 @@ class Generator {
                 entity.description = this.config.table.description;
                 entity.fields = OBJECT.toArray(this.config.table.columns);
                 this._writeEntity(this.config.entityFolder, entity);
+                this.config.packages[String.upperFirstLetter(entity.type)]={
+                        type:"entity",
+                        isSystem:false
+                };
         }
 
         /**
@@ -277,13 +281,13 @@ class Generator {
                         if (x.doCreate) {
                                 let items = config.type == "insert" ? this._getIncludes(config) : this._getConditions(config);
 
-                                if(config.type=="update")
-                                        items=items.concat(this._getIncludes(config));
+                                if (config.type == "update")
+                                        items = items.concat(this._getIncludes(config));
 
                                 if (x.excludes)
                                         items = items.filter(item => !x.excludes.has(item.name));
 
-                                x.fields =items;
+                                x.fields = items;
 
                                 x.fields.forEach(field => {
                                         if (field.required) {
@@ -294,7 +298,13 @@ class Generator {
                                                 }
                                         }
                                 });
+                                x.page=!config.resp.single;
                                 this._writeEntity(this.config.reqFolder, x);
+
+                                this.config.packages[String.upperFirstLetter(x.name)]={
+                                        type:"req",
+                                        isSystem:false
+                                };
                         }
                 });
         }
@@ -310,6 +320,10 @@ class Generator {
                         if (config.resp.doCreate) {
                                 config.resp.fields = this._getIncludes(config);
                                 this._writeEntity(this.config.respFolder, config.resp);
+                                this.config.packages[String.upperFirstLetter(config.resp.name)]={
+                                        type:"resp",
+                                        isSystem:false
+                                };
                         }
                 }
         }
@@ -353,6 +367,11 @@ class Generator {
                 });
 
                 constructParams = this._removeLastComa(constructParams);
+
+                this.config.packages[String.upperFirstLetter(config.params.name)]={
+                        type:"params",
+                        isSystem:false
+                };
         }
 
         /**
@@ -679,6 +698,17 @@ class Generator {
                 this._writeCore(`${folder}/${entity.type}.java`, template);
         }
 
+        _renderPackage(content){
+                let packages=STR.select1(content,"@packages","@packages")[0];
+                let lines=STR.splitToLines(packages);
+
+                OBJECT.forEach(this.config.packages,(key,value)=>{
+                      if(content.indexOf(key)!=-1&&!packages.includes(key)){
+                              if()
+                      }
+                });
+        }
+
         /**
         * Replace templates with patterns
         * if "isfile==true",content means the path of template file,
@@ -726,7 +756,7 @@ class Generator {
                         let items = [];
                         this.config.items.forEach(x => {
                                 // pass this to getter
-                                items.push(getter.call(this, x)+"\r\n");
+                                items.push(getter.call(this, x) + "\r\n");
                         });
 
                         patterns.content = STR.arrayToString(items).trimRight(),
@@ -884,13 +914,14 @@ class Generator {
                 let columns = "(";
                 let properties = "(";
                 this._getIncludes(config).forEach(x => {
+                        console.log(x);
                         columns += x.required
-                                ? this._renderColumn(x, ",", ident3) :
-                                this._renderIfColumn(x, ",", ident3);
+                                ? this._renderColumn(x, ",", IDENT_10) :
+                                this._renderIfColumn(x, ",", IDENT_10);
 
                         properties += x.required
-                                ? this._renderProperty(x, ",", ident3) :
-                                this._renderIfProperty(x, ",", ident3);
+                                ? this._renderProperty(x, ",", IDENT_10) :
+                                this._renderIfProperty(x, ",", IDENT_10);
                 });
 
                 let content = FILE.read(`${__dirname}/templates/insert.xml`);
@@ -911,8 +942,8 @@ class Generator {
                 let conditions = "";
                 this._getConditions(config).forEach((x, i) => {
                         conditions += x.required
-                                ? i == 0 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "and ", "", ident3)
-                                : i == 0 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "and ", "", ident3);
+                                ? i == 0 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "and ", "", IDENT_10)
+                                : i == 0 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "and ", "", IDENT_10);
                 });
 
                 let content = FILE.read(`${__dirname}/templates/delete.xml`);
@@ -932,16 +963,16 @@ class Generator {
                 let columns = "";
                 this._getIncludes(config).forEach((x, i, array) => {
                         columns += x.required
-                                ? i == array.length - 1 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "", ",", ident3)
-                                : i == array.length - 1 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "", ",", ident3);
+                                ? i == array.length - 1 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "", ",", IDENT_10)
+                                : i == array.length - 1 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "", ",", IDENT_10);
 
                 });
 
                 let conditions = "";
                 this._getConditions(config).forEach((x, i) => {
                         conditions += x.required
-                                ? i == 0 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "and ", "", ident3)
-                                : i == 0 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "and ", "", ident3);
+                                ? i == 0 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "and ", "", IDENT_10)
+                                : i == 0 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "and ", "", IDENT_10);
                 });
 
                 let content = FILE.read(`${__dirname}/templates/update.xml`);
@@ -961,15 +992,15 @@ class Generator {
         _renderSelect(config) {
                 let columns = "";
                 this._getIncludes(config).forEach(x => {
-                        columns += this._renderColumn(x, ",", ident3);
+                        columns += this._renderColumn(x, ",", IDENT_10);
                 });
 
                 // join alias
                 let conditions = "";
                 this._getConditions(config).forEach((x, i) => {
                         conditions += x.required
-                                ? i == 0 ? this._renderAsign(x, "", "", ident3) : this._renderAsign(x, "and ", "", ident3)
-                                : i == 0 ? this._renderIfAsign(x, "", "", ident3) : this._renderIfAsign(x, "and ", "", ident3);
+                                ? i == 0 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "and ", "", IDENT_10)
+                                : i == 0 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "and ", "", IDENT_10);
                 });
 
                 let joins = "";
@@ -1046,7 +1077,7 @@ class Generator {
                                 FILE.read(`${__dirname}/templates/where.xml`).replace("@content", conditions));
                 } else {
                         conditions = conditions.trimLeft();
-                        content = content.replace("@where", ident1 + "where\r\n" + ident4 + conditions);
+                        content = content.replace("@where", IDENT_2 + "where\r\n" + IDENT_8 + conditions);
                 }
 
                 return content;
@@ -1166,8 +1197,8 @@ class Generator {
          * @returns {String} 
          */
         _renderJoin(join) {
-                let content = join.table.alias ? `${ident1}${join.type} join ${this._getRawName(join.table)} as ${join.table.alias} on ${join.joinCondition}`
-                        : `${ident1}${join.type} join ${this._getRawName(join.table)} on ${join.joinCondition}`;
+                let content = join.table.alias ? `${IDENT_8}${join.type} join ${this._getRawName(join.table)} as ${join.table.alias} on ${join.joinCondition}`
+                        : `${IDENT_8}${join.type} join ${this._getRawName(join.table)} on ${join.joinCondition}`;
 
                 join.table.alias = null;
                 return content;
@@ -1190,7 +1221,7 @@ class Generator {
          * @returns {[Column]}
          */
         _getConditions(config) {
-                return config.type == "insert" ? this._getItems(config, false) : this._getItems(config, true);
+                return this._getItems(config, true);
         }
 
         /**
@@ -1205,15 +1236,15 @@ class Generator {
         _getItems(config, isCondition = false) {
                 let columns = [];
                 columns = isCondition
-                        ? columns.concat(this._getColumns(this.config.table, config.conditions, true))
-                        : columns.concat(this._getColumns(this.config.table, config.includes, false));
+                        ? columns.concat(this._getColumns(this.config.table, config.conditions, true,config))
+                        : columns.concat(this._getColumns(this.config.table, config.includes, false,config));
 
                 // if type is "select" and has join option
                 if (config.joins) {
                         config.joins.forEach(join => {
                                 columns = isCondition
-                                        ? columns.concat(this._getColumns(join.table1, join.conditions, true))
-                                        : columns.concat(this._getColumns(join.table1, join.includes, false));
+                                        ? columns.concat(this._getColumns(join.table, join.conditions, true,config))
+                                        : columns.concat(this._getColumns(join.table, join.includes, false,config));
                         });
                 }
 
@@ -1228,12 +1259,12 @@ class Generator {
          * @param {[Object]} columnConfigs 
          * @returns {[Column]}
          */
-        _getColumns(table, columnConfigs = [], isCondition = false) {
+        _getColumns(table, columnConfigs = [], isCondition = false,config) {
                 let columns = [];
                 columnConfigs.forEach(x => {
                         let column = this._getColumn(table, x);
-                        column.required = isCondition ? x.required
-                                : this.config.type == "insert" || this.type == "update" ? !column.nullable : x.required;
+                        column.required = config.type == "insert" ? !column.nullable
+                                : isCondition ? x.required : false;
 
                         // set properties giving by config "x"
                         column.alias = x.alias;

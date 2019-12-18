@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.AdminInfoMapper">
+    <insert id="addAdminInfo">
+          insert  into admin_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              admin_info.account,
+            <if test="level != null">
+              admin_info.level,
+            </if>
+              admin_info.password,
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              #{account},
+            <if test="level != null">
+              #{level},
+            </if>
+              #{password},
+          </trim>
+    </insert>
+
+    <delete id="deleteAdminInfoById">
+          delete from admin_info
+          <where>
+            <if test="id != null">
+              admin_info.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateAdminInfoById">
+        update admin_info
+        <set>
+            <if test="account != null">
+              admin_info.account = #{account},
+            </if>
+            <if test="level != null">
+              admin_info.level = #{level},
+            </if>
+            <if test="password != null">
+              admin_info.password = #{password}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              admin_info.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getAdminInfoById">
+          select
+              admin_info.account,
+              admin_info.id,
+              admin_info.level,
+              admin_info.password
+          form admin_info
+          <where>
+            <if test="id != null">
+              admin_info.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getAdminInfoList">
+          select
+              admin_info.account,
+              admin_info.id,
+              admin_info.level,
+              admin_info.password
+          form admin_info
+          <where>
+            <if test="account != null">
+              admin_info.account = #{account}
+            </if>
+            <if test="level != null">
+              and admin_info.level = #{level}
+            </if>
+            <if test="password != null">
+              and admin_info.password = #{password}
+            </if>
+          </where>
+    </select>
+</mapper>

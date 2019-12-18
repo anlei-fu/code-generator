@@ -1,4 +1,4 @@
-    <insert id="@id" parameterType="com.@project.pojo.dao.@nameDao">
+    <insert id="@id">
           insert  into @tableName
 @columns
           values

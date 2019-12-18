@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.DomainBlockRecordMapper">
+    <insert id="addDomainBlockRecord">
+          insert  into domain_block_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="blockTime != null">
+              domain_block_record.block_time,
+            </if>
+              domain_block_record.domain_id,
+            <if test="remark != null">
+              domain_block_record.remark,
+            </if>
+              domain_block_record.task_id,
+              domain_block_record.user_id,
+              domain_block_record.worker_id,
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="blockTime != null">
+              #{blockTime},
+            </if>
+              #{domainId},
+            <if test="remark != null">
+              #{remark},
+            </if>
+              #{taskId},
+              #{userId},
+              #{workerId},
+          </trim>
+    </insert>
+
+    <delete id="deleteDomainBlockRecordById">
+          delete from domain_block_record
+          <where>
+            <if test="id != null">
+              domain_block_record.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateDomainBlockRecordById">
+        update domain_block_record
+        <set>
+            <if test="blockTime != null">
+              domain_block_record.block_time = #{blockTime},
+            </if>
+            <if test="domainId != null">
+              domain_block_record.domain_id = #{domainId},
+            </if>
+            <if test="remark != null">
+              domain_block_record.remark = #{remark},
+            </if>
+            <if test="taskId != null">
+              domain_block_record.task_id = #{taskId},
+            </if>
+            <if test="userId != null">
+              domain_block_record.user_id = #{userId},
+            </if>
+            <if test="workerId != null">
+              domain_block_record.worker_id = #{workerId}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              domain_block_record.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getDomainBlockRecordById">
+          select
+              domain_block_record.block_time,
+              domain_block_record.domain_id,
+              domain_block_record.id,
+              domain_block_record.remark,
+              domain_block_record.task_id,
+              domain_block_record.user_id,
+              domain_block_record.worker_id
+          form domain_block_record
+          <where>
+            <if test="id != null">
+              domain_block_record.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getDomainBlockRecordList">
+          select
+              domain_block_record.block_time,
+              domain_block_record.domain_id,
+              domain_block_record.id,
+              domain_block_record.remark,
+              domain_block_record.task_id,
+              domain_block_record.user_id,
+              domain_block_record.worker_id
+          form domain_block_record
+          <where>
+            <if test="blockTime != null">
+              domain_block_record.block_time = #{blockTime}
+            </if>
+            <if test="domainId != null">
+              and domain_block_record.domain_id = #{domainId}
+            </if>
+            <if test="remark != null">
+              and domain_block_record.remark = #{remark}
+            </if>
+            <if test="taskId != null">
+              and domain_block_record.task_id = #{taskId}
+            </if>
+            <if test="userId != null">
+              and domain_block_record.user_id = #{userId}
+            </if>
+            <if test="workerId != null">
+              and domain_block_record.worker_id = #{workerId}
+            </if>
+          </where>
+    </select>
+</mapper>

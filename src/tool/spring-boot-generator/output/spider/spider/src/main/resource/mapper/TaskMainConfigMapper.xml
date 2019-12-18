@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.TaskMainConfigMapper">
+    <insert id="addTaskMainConfig">
+          insert  into task_main_config
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="agent != null">
+              task_main_config.agent,
+            </if>
+            <if test="encoding != null">
+              task_main_config.encoding,
+            </if>
+            <if test="pattern != null">
+              task_main_config.pattern,
+            </if>
+            <if test="scriptVersion != null">
+              task_main_config.script_version,
+            </if>
+              task_main_config.task_id,
+            <if test="timeout != null">
+              task_main_config.timeout,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="agent != null">
+              #{agent},
+            </if>
+            <if test="encoding != null">
+              #{encoding},
+            </if>
+            <if test="pattern != null">
+              #{pattern},
+            </if>
+            <if test="scriptVersion != null">
+              #{scriptVersion},
+            </if>
+              #{taskId},
+            <if test="timeout != null">
+              #{timeout},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteTaskMainConfigById">
+          delete from task_main_config
+          <where>
+            <if test="id != null">
+              task_main_config.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateTaskMainConfigById">
+        update task_main_config
+        <set>
+            <if test="agent != null">
+              task_main_config.agent = #{agent},
+            </if>
+            <if test="encoding != null">
+              task_main_config.encoding = #{encoding},
+            </if>
+            <if test="pattern != null">
+              task_main_config.pattern = #{pattern},
+            </if>
+            <if test="scriptVersion != null">
+              task_main_config.script_version = #{scriptVersion},
+            </if>
+            <if test="taskId != null">
+              task_main_config.task_id = #{taskId},
+            </if>
+            <if test="timeout != null">
+              task_main_config.timeout = #{timeout}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              task_main_config.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getTaskMainConfigById">
+          select
+              task_main_config.agent,
+              task_main_config.encoding,
+              task_main_config.id,
+              task_main_config.pattern,
+              task_main_config.script_version,
+              task_main_config.task_id,
+              task_main_config.timeout
+          form task_main_config
+          <where>
+            <if test="id != null">
+              task_main_config.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getTaskMainConfigList">
+          select
+              task_main_config.agent,
+              task_main_config.encoding,
+              task_main_config.id,
+              task_main_config.pattern,
+              task_main_config.script_version,
+              task_main_config.task_id,
+              task_main_config.timeout
+          form task_main_config
+          <where>
+            <if test="agent != null">
+              task_main_config.agent = #{agent}
+            </if>
+            <if test="encoding != null">
+              and task_main_config.encoding = #{encoding}
+            </if>
+            <if test="pattern != null">
+              and task_main_config.pattern = #{pattern}
+            </if>
+            <if test="scriptVersion != null">
+              and task_main_config.script_version = #{scriptVersion}
+            </if>
+            <if test="taskId != null">
+              and task_main_config.task_id = #{taskId}
+            </if>
+            <if test="timeout != null">
+              and task_main_config.timeout = #{timeout}
+            </if>
+          </where>
+    </select>
+</mapper>

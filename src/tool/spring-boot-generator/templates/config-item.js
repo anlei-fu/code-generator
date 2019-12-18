@@ -1,11 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: fuanlei
- * @Date: 2019-12-17 09:09:58
- * @LastEditors  : fuanlei
- * @LastEditTime : 2019-12-18 10:56:34
- */
 const { @sname } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
@@ -18,8 +10,8 @@ exports.@snameConfig = {
                         new builder()
                                 .type("insert")
                                 .id("add@name")
-                                .includes(c=>{
-                                        c.includes(@sname.columnsArray)
+                                .includes(collection => {
+                                        collection.includes(@sname.columnsArray)
                                          .excludes("@skey")
                                 })
                                 .controller(controller => {
@@ -34,8 +26,9 @@ exports.@snameConfig = {
                         new builder()
                                 .type("delete")
                                 .id("delete@nameBy@key")
-                                .conditions(c =>{
-                                        c.includes("@skey")
+                                .conditions(collection => {
+                                        collection.includes("@skey")
+                                         .require("@sky")
                                 })
                                 .controller(controller => {
                                         controller.path("/@sname/{@skey}");
@@ -51,12 +44,13 @@ exports.@snameConfig = {
                         new builder()
                                 .type("update")
                                 .id("update@nameBy@key")
-                                .includes(c=>{
-                                        c.includes(@sname.columnsArray)
+                                .includes(collection => {
+                                        collection.includes(@sname.columnsArray)
                                          .excludes("@skey")
                                 })
-                                .conditions(c =>{
-                                        c.includes("@skey")
+                                .conditions(collection => {
+                                        collection.includes("@skey")
+                                         .require("@sky")
                                 })
                                 .controller(controller => {
                                         controller.path("/@sname/{@skey}");
@@ -76,11 +70,12 @@ exports.@snameConfig = {
                         new builder()
                                 .type("select")
                                 .id("get@nameBy@key")
-                                .includes(c=>{
-                                        c.includes(@sname.columnsArray)
+                                .includes(collection=>{
+                                        collection.includes(@sname.columnsArray)
                                 })
-                                .conditions(c =>{
-                                        c.includes("@skey")
+                                .conditions(collection =>{
+                                        collection.includes("@skey")
+                                         .require("@sky")
                                 })
                                 .controller(controller => {
                                         controller.path("/@sname/{@skey}");
@@ -98,11 +93,11 @@ exports.@snameConfig = {
                         // getList
                         new builder()
                                 .type("select")
-                                .includes(c=>{
-                                        c.includes(@sname.columnsArray)
+                                .includes(collection=>{
+                                        collection.includes(@sname.columnsArray)
                                 })
-                                .conditions(c=>{
-                                        c.includes(@sname.columnsArray)
+                                .conditions(collection=>{
+                                        collection.includes(@sname.columnsArray)
                                          .excludes("@skey")
                                 })
                                 .id("get@nameList")

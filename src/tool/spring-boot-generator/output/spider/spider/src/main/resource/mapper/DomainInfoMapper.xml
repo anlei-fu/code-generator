@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.DomainInfoMapper">
+    <insert id="addDomainInfo">
+          insert  into domain_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="domain != null">
+              domain_info.domain,
+            </if>
+              domain_info.domain_id,
+            <if test="encoding != null">
+              domain_info.encoding,
+            </if>
+            <if test="httpProtocal != null">
+              domain_info.http_protocal,
+            </if>
+              domain_info.max_speed,
+              domain_info.need_cookie,
+            <if test="remark != null">
+              domain_info.remark,
+            </if>
+            <if test="type != null">
+              domain_info.type,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="domain != null">
+              #{domain},
+            </if>
+              #{domainId},
+            <if test="encoding != null">
+              #{encoding},
+            </if>
+            <if test="httpProtocal != null">
+              #{httpProtocal},
+            </if>
+              #{maxSpeed},
+              #{needCookie},
+            <if test="remark != null">
+              #{remark},
+            </if>
+            <if test="type != null">
+              #{type},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteDomainInfoById">
+          delete from domain_info
+          <where>
+            <if test="id != null">
+              domain_info.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateDomainInfoById">
+        update domain_info
+        <set>
+            <if test="domain != null">
+              domain_info.domain = #{domain},
+            </if>
+            <if test="domainId != null">
+              domain_info.domain_id = #{domainId},
+            </if>
+            <if test="encoding != null">
+              domain_info.encoding = #{encoding},
+            </if>
+            <if test="httpProtocal != null">
+              domain_info.http_protocal = #{httpProtocal},
+            </if>
+            <if test="maxSpeed != null">
+              domain_info.max_speed = #{maxSpeed},
+            </if>
+            <if test="needCookie != null">
+              domain_info.need_cookie = #{needCookie},
+            </if>
+            <if test="remark != null">
+              domain_info.remark = #{remark},
+            </if>
+            <if test="type != null">
+              domain_info.type = #{type}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              domain_info.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getDomainInfoById">
+          select
+              domain_info.domain,
+              domain_info.domain_id,
+              domain_info.encoding,
+              domain_info.http_protocal,
+              domain_info.id,
+              domain_info.max_speed,
+              domain_info.need_cookie,
+              domain_info.remark,
+              domain_info.type
+          form domain_info
+          <where>
+            <if test="id != null">
+              domain_info.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getDomainInfoList">
+          select
+              domain_info.domain,
+              domain_info.domain_id,
+              domain_info.encoding,
+              domain_info.http_protocal,
+              domain_info.id,
+              domain_info.max_speed,
+              domain_info.need_cookie,
+              domain_info.remark,
+              domain_info.type
+          form domain_info
+          <where>
+            <if test="domain != null">
+              domain_info.domain = #{domain}
+            </if>
+            <if test="domainId != null">
+              and domain_info.domain_id = #{domainId}
+            </if>
+            <if test="encoding != null">
+              and domain_info.encoding = #{encoding}
+            </if>
+            <if test="httpProtocal != null">
+              and domain_info.http_protocal = #{httpProtocal}
+            </if>
+            <if test="maxSpeed != null">
+              and domain_info.max_speed = #{maxSpeed}
+            </if>
+            <if test="needCookie != null">
+              and domain_info.need_cookie = #{needCookie}
+            </if>
+            <if test="remark != null">
+              and domain_info.remark = #{remark}
+            </if>
+            <if test="type != null">
+              and domain_info.type = #{type}
+            </if>
+          </where>
+    </select>
+</mapper>

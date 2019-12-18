@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.UserDeductRecordMapper">
+    <insert id="addUserDeductRecord">
+          insert  into user_deduct_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              user_deduct_record.amount,
+            <if test="deductTime != null">
+              user_deduct_record.deduct_time,
+            </if>
+              user_deduct_record.price,
+              user_deduct_record.task_id,
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              #{amount},
+            <if test="deductTime != null">
+              #{deductTime},
+            </if>
+              #{price},
+              #{taskId},
+          </trim>
+    </insert>
+
+    <delete id="deleteUserDeductRecordById">
+          delete from user_deduct_record
+          <where>
+            <if test="id != null">
+              user_deduct_record.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateUserDeductRecordById">
+        update user_deduct_record
+        <set>
+            <if test="amount != null">
+              user_deduct_record.amount = #{amount},
+            </if>
+            <if test="deductTime != null">
+              user_deduct_record.deduct_time = #{deductTime},
+            </if>
+            <if test="price != null">
+              user_deduct_record.price = #{price},
+            </if>
+            <if test="taskId != null">
+              user_deduct_record.task_id = #{taskId}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              user_deduct_record.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getUserDeductRecordById">
+          select
+              user_deduct_record.amount,
+              user_deduct_record.deduct_time,
+              user_deduct_record.id,
+              user_deduct_record.price,
+              user_deduct_record.task_id
+          form user_deduct_record
+          <where>
+            <if test="id != null">
+              user_deduct_record.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getUserDeductRecordList">
+          select
+              user_deduct_record.amount,
+              user_deduct_record.deduct_time,
+              user_deduct_record.id,
+              user_deduct_record.price,
+              user_deduct_record.task_id
+          form user_deduct_record
+          <where>
+            <if test="amount != null">
+              user_deduct_record.amount = #{amount}
+            </if>
+            <if test="deductTime != null">
+              and user_deduct_record.deduct_time = #{deductTime}
+            </if>
+            <if test="price != null">
+              and user_deduct_record.price = #{price}
+            </if>
+            <if test="taskId != null">
+              and user_deduct_record.task_id = #{taskId}
+            </if>
+          </where>
+    </select>
+</mapper>

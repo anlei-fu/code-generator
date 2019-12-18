@@ -57,6 +57,7 @@ async function init(project, dbConfig) {
 function makeAllFolders(project, dbConfig) {
 
         // base structure
+        DIR.create(`./output/`);
         DIR.create(`./output/${project}`);
         DIR.create(`./output/${project}/db`);
         DIR.create(`./output/${project}/config`);

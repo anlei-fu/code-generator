@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.UserChargeRecordMapper">
+    <insert id="addUserChargeRecord">
+          insert  into user_charge_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              user_charge_record.amount,
+              user_charge_record.charge_account,
+            <if test="chargeTime != null">
+              user_charge_record.charge_time,
+            </if>
+              user_charge_record.order_id,
+              user_charge_record.status,
+              user_charge_record.user_id,
+              user_charge_record.way,
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              #{amount},
+              #{chargeAccount},
+            <if test="chargeTime != null">
+              #{chargeTime},
+            </if>
+              #{orderId},
+              #{status},
+              #{userId},
+              #{way},
+          </trim>
+    </insert>
+
+    <delete id="deleteUserChargeRecordById">
+          delete from user_charge_record
+          <where>
+            <if test="id != null">
+              user_charge_record.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateUserChargeRecordById">
+        update user_charge_record
+        <set>
+            <if test="amount != null">
+              user_charge_record.amount = #{amount},
+            </if>
+            <if test="chargeAccount != null">
+              user_charge_record.charge_account = #{chargeAccount},
+            </if>
+            <if test="chargeTime != null">
+              user_charge_record.charge_time = #{chargeTime},
+            </if>
+            <if test="orderId != null">
+              user_charge_record.order_id = #{orderId},
+            </if>
+            <if test="status != null">
+              user_charge_record.status = #{status},
+            </if>
+            <if test="userId != null">
+              user_charge_record.user_id = #{userId},
+            </if>
+            <if test="way != null">
+              user_charge_record.way = #{way}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              user_charge_record.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getUserChargeRecordById">
+          select
+              user_charge_record.amount,
+              user_charge_record.charge_account,
+              user_charge_record.charge_time,
+              user_charge_record.id,
+              user_charge_record.order_id,
+              user_charge_record.status,
+              user_charge_record.user_id,
+              user_charge_record.way
+          form user_charge_record
+          <where>
+            <if test="id != null">
+              user_charge_record.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getUserChargeRecordList">
+          select
+              user_charge_record.amount,
+              user_charge_record.charge_account,
+              user_charge_record.charge_time,
+              user_charge_record.id,
+              user_charge_record.order_id,
+              user_charge_record.status,
+              user_charge_record.user_id,
+              user_charge_record.way
+          form user_charge_record
+          <where>
+            <if test="amount != null">
+              user_charge_record.amount = #{amount}
+            </if>
+            <if test="chargeAccount != null">
+              and user_charge_record.charge_account = #{chargeAccount}
+            </if>
+            <if test="chargeTime != null">
+              and user_charge_record.charge_time = #{chargeTime}
+            </if>
+            <if test="orderId != null">
+              and user_charge_record.order_id = #{orderId}
+            </if>
+            <if test="status != null">
+              and user_charge_record.status = #{status}
+            </if>
+            <if test="userId != null">
+              and user_charge_record.user_id = #{userId}
+            </if>
+            <if test="way != null">
+              and user_charge_record.way = #{way}
+            </if>
+          </where>
+    </select>
+</mapper>

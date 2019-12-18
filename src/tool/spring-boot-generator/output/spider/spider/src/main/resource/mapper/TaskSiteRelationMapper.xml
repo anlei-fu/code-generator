@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.undefined.mapper.TaskSiteRelationMapper">
+    <insert id="addTaskSiteRelation">
+          insert  into task_site_relation
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="domain != null">
+              task_site_relation.domain,
+            </if>
+              task_site_relation.site_id,
+              task_site_relation.task_id,
+              task_site_relation.user_id,
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="domain != null">
+              #{domain},
+            </if>
+              #{siteId},
+              #{taskId},
+              #{userId},
+          </trim>
+    </insert>
+
+    <delete id="deleteTaskSiteRelationById">
+          delete from task_site_relation
+          <where>
+            <if test="id != null">
+              task_site_relation.id = #{id}
+            </if>
+          </where>
+    </delete>
+
+    <update id="updateTaskSiteRelationById">
+        update task_site_relation
+        <set>
+            <if test="domain != null">
+              task_site_relation.domain = #{domain},
+            </if>
+            <if test="siteId != null">
+              task_site_relation.site_id = #{siteId},
+            </if>
+            <if test="taskId != null">
+              task_site_relation.task_id = #{taskId},
+            </if>
+            <if test="userId != null">
+              task_site_relation.user_id = #{userId}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+              task_site_relation.id = #{id}
+            </if>
+          </where>
+    </update>
+
+    <select id="getTaskSiteRelationById">
+          select
+              task_site_relation.domain,
+              task_site_relation.id,
+              task_site_relation.site_id,
+              task_site_relation.task_id,
+              task_site_relation.user_id
+          form task_site_relation
+          <where>
+            <if test="id != null">
+              task_site_relation.id = #{id}
+            </if>
+          </where>
+    </select>
+
+    <select id="getTaskSiteRelationList">
+          select
+              task_site_relation.domain,
+              task_site_relation.id,
+              task_site_relation.site_id,
+              task_site_relation.task_id,
+              task_site_relation.user_id
+          form task_site_relation
+          <where>
+            <if test="domain != null">
+              task_site_relation.domain = #{domain}
+            </if>
+            <if test="siteId != null">
+              and task_site_relation.site_id = #{siteId}
+            </if>
+            <if test="taskId != null">
+              and task_site_relation.task_id = #{taskId}
+            </if>
+            <if test="userId != null">
+              and task_site_relation.user_id = #{userId}
+            </if>
+          </where>
+    </select>
+</mapper>
