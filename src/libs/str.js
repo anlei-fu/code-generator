@@ -3,8 +3,8 @@
  * @version: 1.0
  * @Author: fuanlei
  * @Date: 2019-09-20 14:13:28
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-16 14:28:07
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-19 10:53:59
  */
 
 //imports
@@ -18,9 +18,7 @@ const { requireNotNull} = require("./utils")
  * @param {Number?} count  desired count
  * @returns {[String]}
  */
-function select(input, left, right, start, count) {
-        start = start || 0;
-        count = count || 1;
+function select(input, left, right, start=0, count=1) {
 
         let i = 0,
                 ls = [];
@@ -31,15 +29,17 @@ function select(input, left, right, start, count) {
                 if (i == -1)
                         break;
 
-                start = input.indexOf(right, i);
+                start = input.indexOf(right, i+left.length);
 
                 if (start == -1) {
                         break;
                 } else {
-                        ls.push(input.substr(i + 1, start - i - 1));
+                        ls.push(input.substr(i, start - i +right.length+1));
                         if (count != -1 && ls.length > count)
                                 break;
                 }
+
+                start +=right.length;
         }
 
         return ls;
@@ -102,11 +102,10 @@ function replace(input, pairs) {
  * @returns {String}
  */
 function remove(input, array) {
-        requireNotNull(input);
-        array = array || [];
+        array=   typeof array=="string"?[array]:array;
 
         for (const item of array)
-                input = input.replace(new RegExp(makeOraginalRegexPattern(item), 'g'), EMPTY);
+                input = input.replace(new RegExp(makeOraginalRegexPattern(item), 'g'),"");
 
         return input;
 }

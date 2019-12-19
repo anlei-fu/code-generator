@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.LoginUserMapper">
+    <insert id="addLoginUser">
+          insert  into login_user
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              login_user.create_time,
+            </if>
+            <if test="name != null">
+              login_user.name,
+            </if>
+            <if test="password != null">
+              login_user.password,
+            </if>
+            <if test="state != null">
+              login_user.state,
+            </if>
+            <if test="type != null">
+              login_user.type,
+            </if>
+            <if test="updateTime != null">
+              login_user.update_time,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+            <if test="name != null">
+              #{name},
+            </if>
+            <if test="password != null">
+              #{password},
+            </if>
+            <if test="state != null">
+              #{state},
+            </if>
+            <if test="type != null">
+              #{type},
+            </if>
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteLoginUserById">
+          delete from login_user
+  where
+          login_user.id = #{id}
+    </delete>
+
+    <update id="updateLoginUserById">
+        update login_user
+        <set>
+            <if test="createTime != null">
+              login_user.create_time = #{createTime},
+            </if>
+            <if test="name != null">
+              login_user.name = #{name},
+            </if>
+            <if test="password != null">
+              login_user.password = #{password},
+            </if>
+            <if test="state != null">
+              login_user.state = #{state},
+            </if>
+            <if test="type != null">
+              login_user.type = #{type},
+            </if>
+            <if test="updateTime != null">
+              login_user.update_time = #{updateTime}
+            </if>
+        </set>
+  where
+          login_user.id = #{id}
+    </update>
+
+    <select id="getLoginUserById" resultType="com.@project.pojo.@resultType">
+          select
+              login_user.create_time,
+              login_user.id,
+              login_user.name,
+              login_user.password,
+              login_user.state,
+              login_user.type,
+              login_user.update_time
+          form login_user
+  where
+          login_user.id = #{id}
+    </select>
+
+    <select id="getLoginUserList" resultType="com.@project.pojo.@resultType">
+          select
+              login_user.create_time,
+              login_user.id,
+              login_user.name,
+              login_user.password,
+              login_user.state,
+              login_user.type,
+              login_user.update_time
+          form login_user
+          <where>
+            <if test="createTime != null">
+              login_user.create_time = #{createTime}
+            </if>
+            <if test="name != null">
+              and login_user.name = #{name}
+            </if>
+            <if test="password != null">
+              and login_user.password = #{password}
+            </if>
+            <if test="state != null">
+              and login_user.state = #{state}
+            </if>
+            <if test="type != null">
+              and login_user.type = #{type}
+            </if>
+            <if test="updateTime != null">
+              and login_user.update_time = #{updateTime}
+            </if>
+          </where>
+    </select>
+</mapper>

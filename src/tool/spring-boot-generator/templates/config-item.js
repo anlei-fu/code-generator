@@ -28,7 +28,7 @@ exports.@snameConfig = {
                                 .id("delete@nameBy@key")
                                 .conditions(collection => {
                                         collection.includes("@skey")
-                                         .require("@sky")
+                                         .require("@skey")
                                 })
                                 .controller(controller => {
                                         controller.path("/@sname/{@skey}");
@@ -50,7 +50,7 @@ exports.@snameConfig = {
                                 })
                                 .conditions(collection => {
                                         collection.includes("@skey")
-                                         .require("@sky")
+                                         .require("@skey")
                                 })
                                 .controller(controller => {
                                         controller.path("/@sname/{@skey}");
@@ -75,7 +75,7 @@ exports.@snameConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("@skey")
-                                         .require("@sky")
+                                         .require("@skey")
                                 })
                                 .controller(controller => {
                                         controller.path("/@sname/{@skey}");

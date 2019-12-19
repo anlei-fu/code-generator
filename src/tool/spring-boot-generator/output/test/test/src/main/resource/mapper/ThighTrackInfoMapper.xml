@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.ThighTrackInfoMapper">
+    <insert id="addThighTrackInfo">
+          insert  into thigh_track_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              thigh_track_info.create_time,
+            </if>
+            <if test="curveRadius != null">
+              thigh_track_info.curve_radius,
+            </if>
+            <if test="direction != null">
+              thigh_track_info.direction,
+            </if>
+            <if test="gradeSectionLength != null">
+              thigh_track_info.grade_section_length,
+            </if>
+              thigh_track_info.is_delete,
+            <if test="lineId != null">
+              thigh_track_info.line_id,
+            </if>
+            <if test="maxGradient != null">
+              thigh_track_info.max_gradient,
+            </if>
+            <if test="operator != null">
+              thigh_track_info.operator,
+            </if>
+            <if test="sortNum != null">
+              thigh_track_info.sort_num,
+            </if>
+            <if test="stationId != null">
+              thigh_track_info.station_id,
+            </if>
+            <if test="status != null">
+              thigh_track_info.status,
+            </if>
+            <if test="thighTrackLength != null">
+              thigh_track_info.thigh_track_length,
+            </if>
+            <if test="thighTrackNo != null">
+              thigh_track_info.thigh_track_no,
+            </if>
+            <if test="thighTrackType != null">
+              thigh_track_info.thigh_track_type,
+            </if>
+            <if test="tieCategory != null">
+              thigh_track_info.tie_category,
+            </if>
+            <if test="updateTime != null">
+              thigh_track_info.update_time,
+            </if>
+            <if test="workareaId != null">
+              thigh_track_info.workarea_id,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+            <if test="curveRadius != null">
+              #{curveRadius},
+            </if>
+            <if test="direction != null">
+              #{direction},
+            </if>
+            <if test="gradeSectionLength != null">
+              #{gradeSectionLength},
+            </if>
+              #{isDelete},
+            <if test="lineId != null">
+              #{lineId},
+            </if>
+            <if test="maxGradient != null">
+              #{maxGradient},
+            </if>
+            <if test="operator != null">
+              #{operator},
+            </if>
+            <if test="sortNum != null">
+              #{sortNum},
+            </if>
+            <if test="stationId != null">
+              #{stationId},
+            </if>
+            <if test="status != null">
+              #{status},
+            </if>
+            <if test="thighTrackLength != null">
+              #{thighTrackLength},
+            </if>
+            <if test="thighTrackNo != null">
+              #{thighTrackNo},
+            </if>
+            <if test="thighTrackType != null">
+              #{thighTrackType},
+            </if>
+            <if test="tieCategory != null">
+              #{tieCategory},
+            </if>
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+            <if test="workareaId != null">
+              #{workareaId},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteThighTrackInfoById">
+          delete from thigh_track_info
+  where
+          thigh_track_info.id = #{id}
+    </delete>
+
+    <update id="updateThighTrackInfoById">
+        update thigh_track_info
+        <set>
+            <if test="createTime != null">
+              thigh_track_info.create_time = #{createTime},
+            </if>
+            <if test="curveRadius != null">
+              thigh_track_info.curve_radius = #{curveRadius},
+            </if>
+            <if test="direction != null">
+              thigh_track_info.direction = #{direction},
+            </if>
+            <if test="gradeSectionLength != null">
+              thigh_track_info.grade_section_length = #{gradeSectionLength},
+            </if>
+            <if test="isDelete != null">
+              thigh_track_info.is_delete = #{isDelete},
+            </if>
+            <if test="lineId != null">
+              thigh_track_info.line_id = #{lineId},
+            </if>
+            <if test="maxGradient != null">
+              thigh_track_info.max_gradient = #{maxGradient},
+            </if>
+            <if test="operator != null">
+              thigh_track_info.operator = #{operator},
+            </if>
+            <if test="sortNum != null">
+              thigh_track_info.sort_num = #{sortNum},
+            </if>
+            <if test="stationId != null">
+              thigh_track_info.station_id = #{stationId},
+            </if>
+            <if test="status != null">
+              thigh_track_info.status = #{status},
+            </if>
+            <if test="thighTrackLength != null">
+              thigh_track_info.thigh_track_length = #{thighTrackLength},
+            </if>
+            <if test="thighTrackNo != null">
+              thigh_track_info.thigh_track_no = #{thighTrackNo},
+            </if>
+            <if test="thighTrackType != null">
+              thigh_track_info.thigh_track_type = #{thighTrackType},
+            </if>
+            <if test="tieCategory != null">
+              thigh_track_info.tie_category = #{tieCategory},
+            </if>
+            <if test="updateTime != null">
+              thigh_track_info.update_time = #{updateTime},
+            </if>
+            <if test="workareaId != null">
+              thigh_track_info.workarea_id = #{workareaId}
+            </if>
+        </set>
+  where
+          thigh_track_info.id = #{id}
+    </update>
+
+    <select id="getThighTrackInfoById" resultType="com.@project.pojo.@resultType">
+          select
+              thigh_track_info.create_time,
+              thigh_track_info.curve_radius,
+              thigh_track_info.direction,
+              thigh_track_info.grade_section_length,
+              thigh_track_info.id,
+              thigh_track_info.is_delete,
+              thigh_track_info.line_id,
+              thigh_track_info.max_gradient,
+              thigh_track_info.operator,
+              thigh_track_info.sort_num,
+              thigh_track_info.station_id,
+              thigh_track_info.status,
+              thigh_track_info.thigh_track_length,
+              thigh_track_info.thigh_track_no,
+              thigh_track_info.thigh_track_type,
+              thigh_track_info.tie_category,
+              thigh_track_info.update_time,
+              thigh_track_info.workarea_id
+          form thigh_track_info
+  where
+          thigh_track_info.id = #{id}
+    </select>
+
+    <select id="getThighTrackInfoList" resultType="com.@project.pojo.@resultType">
+          select
+              thigh_track_info.create_time,
+              thigh_track_info.curve_radius,
+              thigh_track_info.direction,
+              thigh_track_info.grade_section_length,
+              thigh_track_info.id,
+              thigh_track_info.is_delete,
+              thigh_track_info.line_id,
+              thigh_track_info.max_gradient,
+              thigh_track_info.operator,
+              thigh_track_info.sort_num,
+              thigh_track_info.station_id,
+              thigh_track_info.status,
+              thigh_track_info.thigh_track_length,
+              thigh_track_info.thigh_track_no,
+              thigh_track_info.thigh_track_type,
+              thigh_track_info.tie_category,
+              thigh_track_info.update_time,
+              thigh_track_info.workarea_id
+          form thigh_track_info
+          <where>
+            <if test="createTime != null">
+              thigh_track_info.create_time = #{createTime}
+            </if>
+            <if test="curveRadius != null">
+              and thigh_track_info.curve_radius = #{curveRadius}
+            </if>
+            <if test="direction != null">
+              and thigh_track_info.direction = #{direction}
+            </if>
+            <if test="gradeSectionLength != null">
+              and thigh_track_info.grade_section_length = #{gradeSectionLength}
+            </if>
+            <if test="isDelete != null">
+              and thigh_track_info.is_delete = #{isDelete}
+            </if>
+            <if test="lineId != null">
+              and thigh_track_info.line_id = #{lineId}
+            </if>
+            <if test="maxGradient != null">
+              and thigh_track_info.max_gradient = #{maxGradient}
+            </if>
+            <if test="operator != null">
+              and thigh_track_info.operator = #{operator}
+            </if>
+            <if test="sortNum != null">
+              and thigh_track_info.sort_num = #{sortNum}
+            </if>
+            <if test="stationId != null">
+              and thigh_track_info.station_id = #{stationId}
+            </if>
+            <if test="status != null">
+              and thigh_track_info.status = #{status}
+            </if>
+            <if test="thighTrackLength != null">
+              and thigh_track_info.thigh_track_length = #{thighTrackLength}
+            </if>
+            <if test="thighTrackNo != null">
+              and thigh_track_info.thigh_track_no = #{thighTrackNo}
+            </if>
+            <if test="thighTrackType != null">
+              and thigh_track_info.thigh_track_type = #{thighTrackType}
+            </if>
+            <if test="tieCategory != null">
+              and thigh_track_info.tie_category = #{tieCategory}
+            </if>
+            <if test="updateTime != null">
+              and thigh_track_info.update_time = #{updateTime}
+            </if>
+            <if test="workareaId != null">
+              and thigh_track_info.workarea_id = #{workareaId}
+            </if>
+          </where>
+    </select>
+</mapper>

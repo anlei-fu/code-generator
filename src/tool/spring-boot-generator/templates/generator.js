@@ -7,6 +7,7 @@
  * @LastEditTime : 2019-12-18 10:49:05
  */
 const { all } = require("./config/all")
+const { packages } = require("./packages")
 const { Generator } = require("./../../code-generator")
 
 /**
@@ -16,37 +17,7 @@ const { Generator } = require("./../../code-generator")
  */
 
 function build() {
-        let packages={
-                List:{
-                        package:"import java.util.List;",
-                        isSystem:true,
-                },
-                Date:{
-                      package:"import java.util.Date;",
-                      isSystem:true,
-                },
-                "@Params":{
-                        isSystem:false,
-                        package:"import org.apache.ibatis.annotations.Param;",
-                },
-                PageInfo:{
-                        package:"import com.github.pagehelper.PageInfo;",
-                        isSystem:false
-                },
-                "@NotBlank":{
-                        package:"import javax.validation.constraints.NotBlank;",
-                        isSystem:true
-                },
-                "@NotBlank":{
-                        package:"import javax.validation.constraints.NotNull;",
-                        isSystem:true
-                },
-                "@NotNull":{
-                        package:"import javax.validation.constraints.NotNull;",
-                        isSystem:true
-                },
-
-        }
+        
         all.forEach(x => {
                 x.packages=packages;
                 // set output folders
@@ -60,6 +31,7 @@ function build() {
                 x.reqFolder = `${root}/pojo/req`;
                 x.respFolder = `${root}/pojo/resp`;
                 x.paramsFolder = `${root}/pojo/param`;
+                x.project="@project";
 
                 let generator = new Generator(x);
                 generator.writeAll();

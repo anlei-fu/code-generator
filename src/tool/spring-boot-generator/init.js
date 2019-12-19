@@ -45,6 +45,8 @@ async function init(project, dbConfig) {
         // create index.js
         FILE.write(`./output/${project}/index.js`, FILE.read("./templates/generator.js").replace(/@project/g, project));
 
+        FILE.copy('./templates/packages.js',`./output/${project}/packages.js`);
+
         // generate all table infos
         await generate(dbConfig, dbConfig.db, `./output/${project}/db`);
 }

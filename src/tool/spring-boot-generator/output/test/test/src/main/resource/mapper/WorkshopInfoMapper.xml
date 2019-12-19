@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.WorkshopInfoMapper">
+    <insert id="addWorkshopInfo">
+          insert  into workshop_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              workshop_info.create_time,
+            </if>
+              workshop_info.full_name,
+            <if test="inputCode != null">
+              workshop_info.input_code,
+            </if>
+              workshop_info.is_delete,
+            <if test="lineId != null">
+              workshop_info.line_id,
+            </if>
+            <if test="operator != null">
+              workshop_info.operator,
+            </if>
+            <if test="shortName != null">
+              workshop_info.short_name,
+            </if>
+            <if test="trackDivisionId != null">
+              workshop_info.track_division_id,
+            </if>
+            <if test="updateTime != null">
+              workshop_info.update_time,
+            </if>
+            <if test="workshopType != null">
+              workshop_info.workshop_type,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+              #{fullName},
+            <if test="inputCode != null">
+              #{inputCode},
+            </if>
+              #{isDelete},
+            <if test="lineId != null">
+              #{lineId},
+            </if>
+            <if test="operator != null">
+              #{operator},
+            </if>
+            <if test="shortName != null">
+              #{shortName},
+            </if>
+            <if test="trackDivisionId != null">
+              #{trackDivisionId},
+            </if>
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+            <if test="workshopType != null">
+              #{workshopType},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteWorkshopInfoById">
+          delete from workshop_info
+  where
+          workshop_info.id = #{id}
+    </delete>
+
+    <update id="updateWorkshopInfoById">
+        update workshop_info
+        <set>
+            <if test="createTime != null">
+              workshop_info.create_time = #{createTime},
+            </if>
+            <if test="fullName != null">
+              workshop_info.full_name = #{fullName},
+            </if>
+            <if test="inputCode != null">
+              workshop_info.input_code = #{inputCode},
+            </if>
+            <if test="isDelete != null">
+              workshop_info.is_delete = #{isDelete},
+            </if>
+            <if test="lineId != null">
+              workshop_info.line_id = #{lineId},
+            </if>
+            <if test="operator != null">
+              workshop_info.operator = #{operator},
+            </if>
+            <if test="shortName != null">
+              workshop_info.short_name = #{shortName},
+            </if>
+            <if test="trackDivisionId != null">
+              workshop_info.track_division_id = #{trackDivisionId},
+            </if>
+            <if test="updateTime != null">
+              workshop_info.update_time = #{updateTime},
+            </if>
+            <if test="workshopType != null">
+              workshop_info.workshop_type = #{workshopType}
+            </if>
+        </set>
+  where
+          workshop_info.id = #{id}
+    </update>
+
+    <select id="getWorkshopInfoById" resultType="com.@project.pojo.@resultType">
+          select
+              workshop_info.create_time,
+              workshop_info.full_name,
+              workshop_info.id,
+              workshop_info.input_code,
+              workshop_info.is_delete,
+              workshop_info.line_id,
+              workshop_info.operator,
+              workshop_info.short_name,
+              workshop_info.track_division_id,
+              workshop_info.update_time,
+              workshop_info.workshop_type
+          form workshop_info
+  where
+          workshop_info.id = #{id}
+    </select>
+
+    <select id="getWorkshopInfoList" resultType="com.@project.pojo.@resultType">
+          select
+              workshop_info.create_time,
+              workshop_info.full_name,
+              workshop_info.id,
+              workshop_info.input_code,
+              workshop_info.is_delete,
+              workshop_info.line_id,
+              workshop_info.operator,
+              workshop_info.short_name,
+              workshop_info.track_division_id,
+              workshop_info.update_time,
+              workshop_info.workshop_type
+          form workshop_info
+          <where>
+            <if test="createTime != null">
+              workshop_info.create_time = #{createTime}
+            </if>
+            <if test="fullName != null">
+              and workshop_info.full_name = #{fullName}
+            </if>
+            <if test="inputCode != null">
+              and workshop_info.input_code = #{inputCode}
+            </if>
+            <if test="isDelete != null">
+              and workshop_info.is_delete = #{isDelete}
+            </if>
+            <if test="lineId != null">
+              and workshop_info.line_id = #{lineId}
+            </if>
+            <if test="operator != null">
+              and workshop_info.operator = #{operator}
+            </if>
+            <if test="shortName != null">
+              and workshop_info.short_name = #{shortName}
+            </if>
+            <if test="trackDivisionId != null">
+              and workshop_info.track_division_id = #{trackDivisionId}
+            </if>
+            <if test="updateTime != null">
+              and workshop_info.update_time = #{updateTime}
+            </if>
+            <if test="workshopType != null">
+              and workshop_info.workshop_type = #{workshopType}
+            </if>
+          </where>
+    </select>
+</mapper>

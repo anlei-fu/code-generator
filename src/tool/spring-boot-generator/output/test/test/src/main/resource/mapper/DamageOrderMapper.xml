@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.DamageOrderMapper">
+    <insert id="addDamageOrder">
+          insert  into damage_order
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              damage_order.create_time,
+            </if>
+              damage_order.is_delete,
+            <if test="submitStaff != null">
+              damage_order.submit_staff,
+            </if>
+            <if test="submitTime != null">
+              damage_order.submit_time,
+            </if>
+            <if test="updateTime != null">
+              damage_order.update_time,
+            </if>
+            <if test="workareaId != null">
+              damage_order.workarea_id,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+              #{isDelete},
+            <if test="submitStaff != null">
+              #{submitStaff},
+            </if>
+            <if test="submitTime != null">
+              #{submitTime},
+            </if>
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+            <if test="workareaId != null">
+              #{workareaId},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteDamageOrderByOrderNo">
+          delete from damage_order
+  where
+          damage_order.order_no = #{orderNo}
+    </delete>
+
+    <update id="updateDamageOrderByOrderNo">
+        update damage_order
+        <set>
+            <if test="createTime != null">
+              damage_order.create_time = #{createTime},
+            </if>
+            <if test="isDelete != null">
+              damage_order.is_delete = #{isDelete},
+            </if>
+            <if test="submitStaff != null">
+              damage_order.submit_staff = #{submitStaff},
+            </if>
+            <if test="submitTime != null">
+              damage_order.submit_time = #{submitTime},
+            </if>
+            <if test="updateTime != null">
+              damage_order.update_time = #{updateTime},
+            </if>
+            <if test="workareaId != null">
+              damage_order.workarea_id = #{workareaId}
+            </if>
+        </set>
+  where
+          damage_order.order_no = #{orderNo}
+    </update>
+
+    <select id="getDamageOrderByOrderNo" resultType="com.@project.pojo.@resultType">
+          select
+              damage_order.create_time,
+              damage_order.is_delete,
+              damage_order.order_no,
+              damage_order.submit_staff,
+              damage_order.submit_time,
+              damage_order.update_time,
+              damage_order.workarea_id
+          form damage_order
+  where
+          damage_order.order_no = #{orderNo}
+    </select>
+
+    <select id="getDamageOrderList" resultType="com.@project.pojo.@resultType">
+          select
+              damage_order.create_time,
+              damage_order.is_delete,
+              damage_order.order_no,
+              damage_order.submit_staff,
+              damage_order.submit_time,
+              damage_order.update_time,
+              damage_order.workarea_id
+          form damage_order
+          <where>
+            <if test="createTime != null">
+              damage_order.create_time = #{createTime}
+            </if>
+            <if test="isDelete != null">
+              and damage_order.is_delete = #{isDelete}
+            </if>
+            <if test="submitStaff != null">
+              and damage_order.submit_staff = #{submitStaff}
+            </if>
+            <if test="submitTime != null">
+              and damage_order.submit_time = #{submitTime}
+            </if>
+            <if test="updateTime != null">
+              and damage_order.update_time = #{updateTime}
+            </if>
+            <if test="workareaId != null">
+              and damage_order.workarea_id = #{workareaId}
+            </if>
+          </where>
+    </select>
+</mapper>

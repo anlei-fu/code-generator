@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.DevicePositionMapper">
+    <insert id="addDevicePosition">
+          insert  into device_position
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              device_position.create_time,
+            </if>
+            <if test="deviceCode != null">
+              device_position.device_code,
+            </if>
+            <if test="deviceNo != null">
+              device_position.device_no,
+            </if>
+            <if test="direction != null">
+              device_position.direction,
+            </if>
+            <if test="lineCategory != null">
+              device_position.line_category,
+            </if>
+            <if test="lineId != null">
+              device_position.line_id,
+            </if>
+            <if test="lineName != null">
+              device_position.line_name,
+            </if>
+            <if test="miles != null">
+              device_position.miles,
+            </if>
+            <if test="stationId != null">
+              device_position.station_id,
+            </if>
+            <if test="stockExchange != null">
+              device_position.stock_exchange,
+            </if>
+            <if test="thighTrackId != null">
+              device_position.thigh_track_id,
+            </if>
+            <if test="trackId != null">
+              device_position.track_id,
+            </if>
+            <if test="updateTime != null">
+              device_position.update_time,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+            <if test="deviceCode != null">
+              #{deviceCode},
+            </if>
+            <if test="deviceNo != null">
+              #{deviceNo},
+            </if>
+            <if test="direction != null">
+              #{direction},
+            </if>
+            <if test="lineCategory != null">
+              #{lineCategory},
+            </if>
+            <if test="lineId != null">
+              #{lineId},
+            </if>
+            <if test="lineName != null">
+              #{lineName},
+            </if>
+            <if test="miles != null">
+              #{miles},
+            </if>
+            <if test="stationId != null">
+              #{stationId},
+            </if>
+            <if test="stockExchange != null">
+              #{stockExchange},
+            </if>
+            <if test="thighTrackId != null">
+              #{thighTrackId},
+            </if>
+            <if test="trackId != null">
+              #{trackId},
+            </if>
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteDevicePositionById">
+          delete from device_position
+  where
+          device_position.id = #{id}
+    </delete>
+
+    <update id="updateDevicePositionById">
+        update device_position
+        <set>
+            <if test="createTime != null">
+              device_position.create_time = #{createTime},
+            </if>
+            <if test="deviceCode != null">
+              device_position.device_code = #{deviceCode},
+            </if>
+            <if test="deviceNo != null">
+              device_position.device_no = #{deviceNo},
+            </if>
+            <if test="direction != null">
+              device_position.direction = #{direction},
+            </if>
+            <if test="lineCategory != null">
+              device_position.line_category = #{lineCategory},
+            </if>
+            <if test="lineId != null">
+              device_position.line_id = #{lineId},
+            </if>
+            <if test="lineName != null">
+              device_position.line_name = #{lineName},
+            </if>
+            <if test="miles != null">
+              device_position.miles = #{miles},
+            </if>
+            <if test="stationId != null">
+              device_position.station_id = #{stationId},
+            </if>
+            <if test="stockExchange != null">
+              device_position.stock_exchange = #{stockExchange},
+            </if>
+            <if test="thighTrackId != null">
+              device_position.thigh_track_id = #{thighTrackId},
+            </if>
+            <if test="trackId != null">
+              device_position.track_id = #{trackId},
+            </if>
+            <if test="updateTime != null">
+              device_position.update_time = #{updateTime}
+            </if>
+        </set>
+  where
+          device_position.id = #{id}
+    </update>
+
+    <select id="getDevicePositionById" resultType="com.@project.pojo.@resultType">
+          select
+              device_position.create_time,
+              device_position.device_code,
+              device_position.device_no,
+              device_position.direction,
+              device_position.id,
+              device_position.line_category,
+              device_position.line_id,
+              device_position.line_name,
+              device_position.miles,
+              device_position.station_id,
+              device_position.stock_exchange,
+              device_position.thigh_track_id,
+              device_position.track_id,
+              device_position.update_time
+          form device_position
+  where
+          device_position.id = #{id}
+    </select>
+
+    <select id="getDevicePositionList" resultType="com.@project.pojo.@resultType">
+          select
+              device_position.create_time,
+              device_position.device_code,
+              device_position.device_no,
+              device_position.direction,
+              device_position.id,
+              device_position.line_category,
+              device_position.line_id,
+              device_position.line_name,
+              device_position.miles,
+              device_position.station_id,
+              device_position.stock_exchange,
+              device_position.thigh_track_id,
+              device_position.track_id,
+              device_position.update_time
+          form device_position
+          <where>
+            <if test="createTime != null">
+              device_position.create_time = #{createTime}
+            </if>
+            <if test="deviceCode != null">
+              and device_position.device_code = #{deviceCode}
+            </if>
+            <if test="deviceNo != null">
+              and device_position.device_no = #{deviceNo}
+            </if>
+            <if test="direction != null">
+              and device_position.direction = #{direction}
+            </if>
+            <if test="lineCategory != null">
+              and device_position.line_category = #{lineCategory}
+            </if>
+            <if test="lineId != null">
+              and device_position.line_id = #{lineId}
+            </if>
+            <if test="lineName != null">
+              and device_position.line_name = #{lineName}
+            </if>
+            <if test="miles != null">
+              and device_position.miles = #{miles}
+            </if>
+            <if test="stationId != null">
+              and device_position.station_id = #{stationId}
+            </if>
+            <if test="stockExchange != null">
+              and device_position.stock_exchange = #{stockExchange}
+            </if>
+            <if test="thighTrackId != null">
+              and device_position.thigh_track_id = #{thighTrackId}
+            </if>
+            <if test="trackId != null">
+              and device_position.track_id = #{trackId}
+            </if>
+            <if test="updateTime != null">
+              and device_position.update_time = #{updateTime}
+            </if>
+          </where>
+    </select>
+</mapper>

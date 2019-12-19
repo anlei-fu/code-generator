@@ -6,8 +6,8 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-12-17 16:24:30
  */
-const { builder } = require("./builder");
-const { columnBuilder } = require("./columnBuilder");
+const { builder } = require("./builders/builder");
+const { columnBuilder } = require("./builders/columnBuilder");
 
 function testBuilder() {
         let c = new builder("select", "1")

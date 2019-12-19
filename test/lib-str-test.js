@@ -3,8 +3,8 @@
  * @version: 
  * @Author: fuanlei
  * @Date: 2019-10-11 10:57:11
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-29 14:23:35
+ * @LastEditors  : fuanlei
+ * @LastEditTime : 2019-12-19 11:09:54
  */
 const {STR} =require("./../src/libs/str");
 const assert = require('assert');
@@ -38,7 +38,31 @@ function testReverse(){
   console.log(STR.reverse(text));
 }
 
+
+function testSelect(){
+  let text=`@packages
+  import com.github.pagehelper.PageInfo;
+  import com.test.pojo.entity.DamageRepositoryDevice;
+  import com.test.pojo.req.AddDamageRepositoryDeviceReq;
+  import com.test.pojo.req.GetDamageRepositoryDeviceListReq;
+  import com.test.pojo.req.UpdateDamageRepositoryDeviceByOrderDetailIdReq;
+  import com.test.pojo.resp.R;
+  import com.test.service.DamageRepositoryDeviceService;
+  import io.swagger.annotations.Api;
+  import io.swagger.annotations.ApiOperation;
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.validation.annotation.Validated;
+  import org.springframework.web.bind.annotation.*;
+  @packages @packages 111 @packages`;
+
+  let ls= STR.select(text,"@package","@package");
+  console.log(ls.length);
+  console.log(ls);
+}
+
 //testReverse();
 //testSelect1();
-testSplitToWord();
+//testSplitToWord();
 // testRemoveWithMatch();
+
+testSelect();

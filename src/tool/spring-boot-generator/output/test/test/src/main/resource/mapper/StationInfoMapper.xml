@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.StationInfoMapper">
+    <insert id="addStationInfo">
+          insert  into station_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              station_info.create_time,
+            </if>
+            <if test="fullName != null">
+              station_info.full_name,
+            </if>
+            <if test="inputCode != null">
+              station_info.input_code,
+            </if>
+            <if test="isDelete != null">
+              station_info.is_delete,
+            </if>
+            <if test="jobType != null">
+              station_info.job_type,
+            </if>
+            <if test="operator != null">
+              station_info.operator,
+            </if>
+            <if test="shortName != null">
+              station_info.short_name,
+            </if>
+            <if test="stationCode != null">
+              station_info.station_code,
+            </if>
+            <if test="stationGrade != null">
+              station_info.station_grade,
+            </if>
+            <if test="stationType != null">
+              station_info.station_type,
+            </if>
+            <if test="status != null">
+              station_info.status,
+            </if>
+            <if test="ternoutNum != null">
+              station_info.ternout_num,
+            </if>
+            <if test="thighTrackNum != null">
+              station_info.thigh_track_num,
+            </if>
+              station_info.track_division_id,
+            <if test="updateTime != null">
+              station_info.update_time,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+            <if test="fullName != null">
+              #{fullName},
+            </if>
+            <if test="inputCode != null">
+              #{inputCode},
+            </if>
+            <if test="isDelete != null">
+              #{isDelete},
+            </if>
+            <if test="jobType != null">
+              #{jobType},
+            </if>
+            <if test="operator != null">
+              #{operator},
+            </if>
+            <if test="shortName != null">
+              #{shortName},
+            </if>
+            <if test="stationCode != null">
+              #{stationCode},
+            </if>
+            <if test="stationGrade != null">
+              #{stationGrade},
+            </if>
+            <if test="stationType != null">
+              #{stationType},
+            </if>
+            <if test="status != null">
+              #{status},
+            </if>
+            <if test="ternoutNum != null">
+              #{ternoutNum},
+            </if>
+            <if test="thighTrackNum != null">
+              #{thighTrackNum},
+            </if>
+              #{trackDivisionId},
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteStationInfoById">
+          delete from station_info
+  where
+          station_info.id = #{id}
+    </delete>
+
+    <update id="updateStationInfoById">
+        update station_info
+        <set>
+            <if test="createTime != null">
+              station_info.create_time = #{createTime},
+            </if>
+            <if test="fullName != null">
+              station_info.full_name = #{fullName},
+            </if>
+            <if test="inputCode != null">
+              station_info.input_code = #{inputCode},
+            </if>
+            <if test="isDelete != null">
+              station_info.is_delete = #{isDelete},
+            </if>
+            <if test="jobType != null">
+              station_info.job_type = #{jobType},
+            </if>
+            <if test="operator != null">
+              station_info.operator = #{operator},
+            </if>
+            <if test="shortName != null">
+              station_info.short_name = #{shortName},
+            </if>
+            <if test="stationCode != null">
+              station_info.station_code = #{stationCode},
+            </if>
+            <if test="stationGrade != null">
+              station_info.station_grade = #{stationGrade},
+            </if>
+            <if test="stationType != null">
+              station_info.station_type = #{stationType},
+            </if>
+            <if test="status != null">
+              station_info.status = #{status},
+            </if>
+            <if test="ternoutNum != null">
+              station_info.ternout_num = #{ternoutNum},
+            </if>
+            <if test="thighTrackNum != null">
+              station_info.thigh_track_num = #{thighTrackNum},
+            </if>
+            <if test="trackDivisionId != null">
+              station_info.track_division_id = #{trackDivisionId},
+            </if>
+            <if test="updateTime != null">
+              station_info.update_time = #{updateTime}
+            </if>
+        </set>
+  where
+          station_info.id = #{id}
+    </update>
+
+    <select id="getStationInfoById" resultType="com.@project.pojo.@resultType">
+          select
+              station_info.create_time,
+              station_info.full_name,
+              station_info.id,
+              station_info.input_code,
+              station_info.is_delete,
+              station_info.job_type,
+              station_info.operator,
+              station_info.short_name,
+              station_info.station_code,
+              station_info.station_grade,
+              station_info.station_type,
+              station_info.status,
+              station_info.ternout_num,
+              station_info.thigh_track_num,
+              station_info.track_division_id,
+              station_info.update_time
+          form station_info
+  where
+          station_info.id = #{id}
+    </select>
+
+    <select id="getStationInfoList" resultType="com.@project.pojo.@resultType">
+          select
+              station_info.create_time,
+              station_info.full_name,
+              station_info.id,
+              station_info.input_code,
+              station_info.is_delete,
+              station_info.job_type,
+              station_info.operator,
+              station_info.short_name,
+              station_info.station_code,
+              station_info.station_grade,
+              station_info.station_type,
+              station_info.status,
+              station_info.ternout_num,
+              station_info.thigh_track_num,
+              station_info.track_division_id,
+              station_info.update_time
+          form station_info
+          <where>
+            <if test="createTime != null">
+              station_info.create_time = #{createTime}
+            </if>
+            <if test="fullName != null">
+              and station_info.full_name = #{fullName}
+            </if>
+            <if test="inputCode != null">
+              and station_info.input_code = #{inputCode}
+            </if>
+            <if test="isDelete != null">
+              and station_info.is_delete = #{isDelete}
+            </if>
+            <if test="jobType != null">
+              and station_info.job_type = #{jobType}
+            </if>
+            <if test="operator != null">
+              and station_info.operator = #{operator}
+            </if>
+            <if test="shortName != null">
+              and station_info.short_name = #{shortName}
+            </if>
+            <if test="stationCode != null">
+              and station_info.station_code = #{stationCode}
+            </if>
+            <if test="stationGrade != null">
+              and station_info.station_grade = #{stationGrade}
+            </if>
+            <if test="stationType != null">
+              and station_info.station_type = #{stationType}
+            </if>
+            <if test="status != null">
+              and station_info.status = #{status}
+            </if>
+            <if test="ternoutNum != null">
+              and station_info.ternout_num = #{ternoutNum}
+            </if>
+            <if test="thighTrackNum != null">
+              and station_info.thigh_track_num = #{thighTrackNum}
+            </if>
+            <if test="trackDivisionId != null">
+              and station_info.track_division_id = #{trackDivisionId}
+            </if>
+            <if test="updateTime != null">
+              and station_info.update_time = #{updateTime}
+            </if>
+          </where>
+    </select>
+</mapper>

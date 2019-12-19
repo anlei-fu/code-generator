@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.DamageRepositoryMapper">
+    <insert id="addDamageRepository">
+          insert  into damage_repository
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="analysisResult != null">
+              damage_repository.analysis_result,
+            </if>
+            <if test="auditStatus != null">
+              damage_repository.audit_status,
+            </if>
+            <if test="cancel != null">
+              damage_repository.cancel,
+            </if>
+            <if test="checkEquipment != null">
+              damage_repository.check_equipment,
+            </if>
+            <if test="createTime != null">
+              damage_repository.create_time,
+            </if>
+            <if test="damageCode != null">
+              damage_repository.damage_code,
+            </if>
+            <if test="damageDetail != null">
+              damage_repository.damage_detail,
+            </if>
+            <if test="damageLevel != null">
+              damage_repository.damage_level,
+            </if>
+            <if test="damageOld != null">
+              damage_repository.damage_old,
+            </if>
+            <if test="damageOldId != null">
+              damage_repository.damage_old_id,
+            </if>
+            <if test="damageType != null">
+              damage_repository.damage_type,
+            </if>
+            <if test="dealStatus != null">
+              damage_repository.deal_status,
+            </if>
+            <if test="deleteTime != null">
+              damage_repository.delete_time,
+            </if>
+            <if test="detectStuff != null">
+              damage_repository.detect_stuff,
+            </if>
+            <if test="detectTime != null">
+              damage_repository.detect_time,
+            </if>
+            <if test="importStatus != null">
+              damage_repository.import_status,
+            </if>
+              damage_repository.is_delete,
+            <if test="lastDetectTime != null">
+              damage_repository.last_detect_time,
+            </if>
+            <if test="operator != null">
+              damage_repository.operator,
+            </if>
+            <if test="orderNo != null">
+              damage_repository.order_no,
+            </if>
+            <if test="receivingUnit != null">
+              damage_repository.receiving_unit,
+            </if>
+            <if test="receivingUser != null">
+              damage_repository.receiving_user,
+            </if>
+            <if test="receivingWorkareaInfo != null">
+              damage_repository.receiving_workarea_info,
+            </if>
+            <if test="remark != null">
+              damage_repository.remark,
+            </if>
+            <if test="updateTime != null">
+              damage_repository.update_time,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="analysisResult != null">
+              #{analysisResult},
+            </if>
+            <if test="auditStatus != null">
+              #{auditStatus},
+            </if>
+            <if test="cancel != null">
+              #{cancel},
+            </if>
+            <if test="checkEquipment != null">
+              #{checkEquipment},
+            </if>
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+            <if test="damageCode != null">
+              #{damageCode},
+            </if>
+            <if test="damageDetail != null">
+              #{damageDetail},
+            </if>
+            <if test="damageLevel != null">
+              #{damageLevel},
+            </if>
+            <if test="damageOld != null">
+              #{damageOld},
+            </if>
+            <if test="damageOldId != null">
+              #{damageOldId},
+            </if>
+            <if test="damageType != null">
+              #{damageType},
+            </if>
+            <if test="dealStatus != null">
+              #{dealStatus},
+            </if>
+            <if test="deleteTime != null">
+              #{deleteTime},
+            </if>
+            <if test="detectStuff != null">
+              #{detectStuff},
+            </if>
+            <if test="detectTime != null">
+              #{detectTime},
+            </if>
+            <if test="importStatus != null">
+              #{importStatus},
+            </if>
+              #{isDelete},
+            <if test="lastDetectTime != null">
+              #{lastDetectTime},
+            </if>
+            <if test="operator != null">
+              #{operator},
+            </if>
+            <if test="orderNo != null">
+              #{orderNo},
+            </if>
+            <if test="receivingUnit != null">
+              #{receivingUnit},
+            </if>
+            <if test="receivingUser != null">
+              #{receivingUser},
+            </if>
+            <if test="receivingWorkareaInfo != null">
+              #{receivingWorkareaInfo},
+            </if>
+            <if test="remark != null">
+              #{remark},
+            </if>
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteDamageRepositoryByOrderDetailId">
+          delete from damage_repository
+  where
+          damage_repository.order_detail_id = #{orderDetailId}
+    </delete>
+
+    <update id="updateDamageRepositoryByOrderDetailId">
+        update damage_repository
+        <set>
+            <if test="analysisResult != null">
+              damage_repository.analysis_result = #{analysisResult},
+            </if>
+            <if test="auditStatus != null">
+              damage_repository.audit_status = #{auditStatus},
+            </if>
+            <if test="cancel != null">
+              damage_repository.cancel = #{cancel},
+            </if>
+            <if test="checkEquipment != null">
+              damage_repository.check_equipment = #{checkEquipment},
+            </if>
+            <if test="createTime != null">
+              damage_repository.create_time = #{createTime},
+            </if>
+            <if test="damageCode != null">
+              damage_repository.damage_code = #{damageCode},
+            </if>
+            <if test="damageDetail != null">
+              damage_repository.damage_detail = #{damageDetail},
+            </if>
+            <if test="damageLevel != null">
+              damage_repository.damage_level = #{damageLevel},
+            </if>
+            <if test="damageOld != null">
+              damage_repository.damage_old = #{damageOld},
+            </if>
+            <if test="damageOldId != null">
+              damage_repository.damage_old_id = #{damageOldId},
+            </if>
+            <if test="damageType != null">
+              damage_repository.damage_type = #{damageType},
+            </if>
+            <if test="dealStatus != null">
+              damage_repository.deal_status = #{dealStatus},
+            </if>
+            <if test="deleteTime != null">
+              damage_repository.delete_time = #{deleteTime},
+            </if>
+            <if test="detectStuff != null">
+              damage_repository.detect_stuff = #{detectStuff},
+            </if>
+            <if test="detectTime != null">
+              damage_repository.detect_time = #{detectTime},
+            </if>
+            <if test="importStatus != null">
+              damage_repository.import_status = #{importStatus},
+            </if>
+            <if test="isDelete != null">
+              damage_repository.is_delete = #{isDelete},
+            </if>
+            <if test="lastDetectTime != null">
+              damage_repository.last_detect_time = #{lastDetectTime},
+            </if>
+            <if test="operator != null">
+              damage_repository.operator = #{operator},
+            </if>
+            <if test="orderNo != null">
+              damage_repository.order_no = #{orderNo},
+            </if>
+            <if test="receivingUnit != null">
+              damage_repository.receiving_unit = #{receivingUnit},
+            </if>
+            <if test="receivingUser != null">
+              damage_repository.receiving_user = #{receivingUser},
+            </if>
+            <if test="receivingWorkareaInfo != null">
+              damage_repository.receiving_workarea_info = #{receivingWorkareaInfo},
+            </if>
+            <if test="remark != null">
+              damage_repository.remark = #{remark},
+            </if>
+            <if test="updateTime != null">
+              damage_repository.update_time = #{updateTime}
+            </if>
+        </set>
+  where
+          damage_repository.order_detail_id = #{orderDetailId}
+    </update>
+
+    <select id="getDamageRepositoryByOrderDetailId" resultType="com.@project.pojo.@resultType">
+          select
+              damage_repository.analysis_result,
+              damage_repository.audit_status,
+              damage_repository.cancel,
+              damage_repository.check_equipment,
+              damage_repository.create_time,
+              damage_repository.damage_code,
+              damage_repository.damage_detail,
+              damage_repository.damage_level,
+              damage_repository.damage_old,
+              damage_repository.damage_old_id,
+              damage_repository.damage_type,
+              damage_repository.deal_status,
+              damage_repository.delete_time,
+              damage_repository.detect_stuff,
+              damage_repository.detect_time,
+              damage_repository.import_status,
+              damage_repository.is_delete,
+              damage_repository.last_detect_time,
+              damage_repository.operator,
+              damage_repository.order_detail_id,
+              damage_repository.order_no,
+              damage_repository.receiving_unit,
+              damage_repository.receiving_user,
+              damage_repository.receiving_workarea_info,
+              damage_repository.remark,
+              damage_repository.update_time
+          form damage_repository
+  where
+          damage_repository.order_detail_id = #{orderDetailId}
+    </select>
+
+    <select id="getDamageRepositoryList" resultType="com.@project.pojo.@resultType">
+          select
+              damage_repository.analysis_result,
+              damage_repository.audit_status,
+              damage_repository.cancel,
+              damage_repository.check_equipment,
+              damage_repository.create_time,
+              damage_repository.damage_code,
+              damage_repository.damage_detail,
+              damage_repository.damage_level,
+              damage_repository.damage_old,
+              damage_repository.damage_old_id,
+              damage_repository.damage_type,
+              damage_repository.deal_status,
+              damage_repository.delete_time,
+              damage_repository.detect_stuff,
+              damage_repository.detect_time,
+              damage_repository.import_status,
+              damage_repository.is_delete,
+              damage_repository.last_detect_time,
+              damage_repository.operator,
+              damage_repository.order_detail_id,
+              damage_repository.order_no,
+              damage_repository.receiving_unit,
+              damage_repository.receiving_user,
+              damage_repository.receiving_workarea_info,
+              damage_repository.remark,
+              damage_repository.update_time
+          form damage_repository
+          <where>
+            <if test="analysisResult != null">
+              damage_repository.analysis_result = #{analysisResult}
+            </if>
+            <if test="auditStatus != null">
+              and damage_repository.audit_status = #{auditStatus}
+            </if>
+            <if test="cancel != null">
+              and damage_repository.cancel = #{cancel}
+            </if>
+            <if test="checkEquipment != null">
+              and damage_repository.check_equipment = #{checkEquipment}
+            </if>
+            <if test="createTime != null">
+              and damage_repository.create_time = #{createTime}
+            </if>
+            <if test="damageCode != null">
+              and damage_repository.damage_code = #{damageCode}
+            </if>
+            <if test="damageDetail != null">
+              and damage_repository.damage_detail = #{damageDetail}
+            </if>
+            <if test="damageLevel != null">
+              and damage_repository.damage_level = #{damageLevel}
+            </if>
+            <if test="damageOld != null">
+              and damage_repository.damage_old = #{damageOld}
+            </if>
+            <if test="damageOldId != null">
+              and damage_repository.damage_old_id = #{damageOldId}
+            </if>
+            <if test="damageType != null">
+              and damage_repository.damage_type = #{damageType}
+            </if>
+            <if test="dealStatus != null">
+              and damage_repository.deal_status = #{dealStatus}
+            </if>
+            <if test="deleteTime != null">
+              and damage_repository.delete_time = #{deleteTime}
+            </if>
+            <if test="detectStuff != null">
+              and damage_repository.detect_stuff = #{detectStuff}
+            </if>
+            <if test="detectTime != null">
+              and damage_repository.detect_time = #{detectTime}
+            </if>
+            <if test="importStatus != null">
+              and damage_repository.import_status = #{importStatus}
+            </if>
+            <if test="isDelete != null">
+              and damage_repository.is_delete = #{isDelete}
+            </if>
+            <if test="lastDetectTime != null">
+              and damage_repository.last_detect_time = #{lastDetectTime}
+            </if>
+            <if test="operator != null">
+              and damage_repository.operator = #{operator}
+            </if>
+            <if test="orderNo != null">
+              and damage_repository.order_no = #{orderNo}
+            </if>
+            <if test="receivingUnit != null">
+              and damage_repository.receiving_unit = #{receivingUnit}
+            </if>
+            <if test="receivingUser != null">
+              and damage_repository.receiving_user = #{receivingUser}
+            </if>
+            <if test="receivingWorkareaInfo != null">
+              and damage_repository.receiving_workarea_info = #{receivingWorkareaInfo}
+            </if>
+            <if test="remark != null">
+              and damage_repository.remark = #{remark}
+            </if>
+            <if test="updateTime != null">
+              and damage_repository.update_time = #{updateTime}
+            </if>
+          </where>
+    </select>
+</mapper>

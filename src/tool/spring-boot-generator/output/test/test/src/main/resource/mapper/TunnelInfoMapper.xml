@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.TunnelInfoMapper">
+    <insert id="addTunnelInfo">
+          insert  into tunnel_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              tunnel_info.create_time,
+            </if>
+            <if test="direction != null">
+              tunnel_info.direction,
+            </if>
+            <if test="endMiles != null">
+              tunnel_info.end_miles,
+            </if>
+            <if test="inputCode != null">
+              tunnel_info.input_code,
+            </if>
+              tunnel_info.is_delete,
+            <if test="length != null">
+              tunnel_info.length,
+            </if>
+            <if test="lineId != null">
+              tunnel_info.line_id,
+            </if>
+            <if test="longChain != null">
+              tunnel_info.long_chain,
+            </if>
+            <if test="middleMiles != null">
+              tunnel_info.middle_miles,
+            </if>
+            <if test="operator != null">
+              tunnel_info.operator,
+            </if>
+            <if test="remark != null">
+              tunnel_info.remark,
+            </if>
+            <if test="side != null">
+              tunnel_info.side,
+            </if>
+            <if test="startMiles != null">
+              tunnel_info.start_miles,
+            </if>
+            <if test="status != null">
+              tunnel_info.status,
+            </if>
+            <if test="trackDistance != null">
+              tunnel_info.track_distance,
+            </if>
+            <if test="trackDivisionId != null">
+              tunnel_info.track_division_id,
+            </if>
+            <if test="tunneName != null">
+              tunnel_info.tunne_name,
+            </if>
+            <if test="tunneNo != null">
+              tunnel_info.tunne_no,
+            </if>
+            <if test="updateTime != null">
+              tunnel_info.update_time,
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">
+              #{createTime},
+            </if>
+            <if test="direction != null">
+              #{direction},
+            </if>
+            <if test="endMiles != null">
+              #{endMiles},
+            </if>
+            <if test="inputCode != null">
+              #{inputCode},
+            </if>
+              #{isDelete},
+            <if test="length != null">
+              #{length},
+            </if>
+            <if test="lineId != null">
+              #{lineId},
+            </if>
+            <if test="longChain != null">
+              #{longChain},
+            </if>
+            <if test="middleMiles != null">
+              #{middleMiles},
+            </if>
+            <if test="operator != null">
+              #{operator},
+            </if>
+            <if test="remark != null">
+              #{remark},
+            </if>
+            <if test="side != null">
+              #{side},
+            </if>
+            <if test="startMiles != null">
+              #{startMiles},
+            </if>
+            <if test="status != null">
+              #{status},
+            </if>
+            <if test="trackDistance != null">
+              #{trackDistance},
+            </if>
+            <if test="trackDivisionId != null">
+              #{trackDivisionId},
+            </if>
+            <if test="tunneName != null">
+              #{tunneName},
+            </if>
+            <if test="tunneNo != null">
+              #{tunneNo},
+            </if>
+            <if test="updateTime != null">
+              #{updateTime},
+            </if>
+          </trim>
+    </insert>
+
+    <delete id="deleteTunnelInfoById">
+          delete from tunnel_info
+  where
+          tunnel_info.id = #{id}
+    </delete>
+
+    <update id="updateTunnelInfoById">
+        update tunnel_info
+        <set>
+            <if test="createTime != null">
+              tunnel_info.create_time = #{createTime},
+            </if>
+            <if test="direction != null">
+              tunnel_info.direction = #{direction},
+            </if>
+            <if test="endMiles != null">
+              tunnel_info.end_miles = #{endMiles},
+            </if>
+            <if test="inputCode != null">
+              tunnel_info.input_code = #{inputCode},
+            </if>
+            <if test="isDelete != null">
+              tunnel_info.is_delete = #{isDelete},
+            </if>
+            <if test="length != null">
+              tunnel_info.length = #{length},
+            </if>
+            <if test="lineId != null">
+              tunnel_info.line_id = #{lineId},
+            </if>
+            <if test="longChain != null">
+              tunnel_info.long_chain = #{longChain},
+            </if>
+            <if test="middleMiles != null">
+              tunnel_info.middle_miles = #{middleMiles},
+            </if>
+            <if test="operator != null">
+              tunnel_info.operator = #{operator},
+            </if>
+            <if test="remark != null">
+              tunnel_info.remark = #{remark},
+            </if>
+            <if test="side != null">
+              tunnel_info.side = #{side},
+            </if>
+            <if test="startMiles != null">
+              tunnel_info.start_miles = #{startMiles},
+            </if>
+            <if test="status != null">
+              tunnel_info.status = #{status},
+            </if>
+            <if test="trackDistance != null">
+              tunnel_info.track_distance = #{trackDistance},
+            </if>
+            <if test="trackDivisionId != null">
+              tunnel_info.track_division_id = #{trackDivisionId},
+            </if>
+            <if test="tunneName != null">
+              tunnel_info.tunne_name = #{tunneName},
+            </if>
+            <if test="tunneNo != null">
+              tunnel_info.tunne_no = #{tunneNo},
+            </if>
+            <if test="updateTime != null">
+              tunnel_info.update_time = #{updateTime}
+            </if>
+        </set>
+  where
+          tunnel_info.id = #{id}
+    </update>
+
+    <select id="getTunnelInfoById" resultType="com.@project.pojo.@resultType">
+          select
+              tunnel_info.create_time,
+              tunnel_info.direction,
+              tunnel_info.end_miles,
+              tunnel_info.id,
+              tunnel_info.input_code,
+              tunnel_info.is_delete,
+              tunnel_info.length,
+              tunnel_info.line_id,
+              tunnel_info.long_chain,
+              tunnel_info.middle_miles,
+              tunnel_info.operator,
+              tunnel_info.remark,
+              tunnel_info.side,
+              tunnel_info.start_miles,
+              tunnel_info.status,
+              tunnel_info.track_distance,
+              tunnel_info.track_division_id,
+              tunnel_info.tunne_name,
+              tunnel_info.tunne_no,
+              tunnel_info.update_time
+          form tunnel_info
+  where
+          tunnel_info.id = #{id}
+    </select>
+
+    <select id="getTunnelInfoList" resultType="com.@project.pojo.@resultType">
+          select
+              tunnel_info.create_time,
+              tunnel_info.direction,
+              tunnel_info.end_miles,
+              tunnel_info.id,
+              tunnel_info.input_code,
+              tunnel_info.is_delete,
+              tunnel_info.length,
+              tunnel_info.line_id,
+              tunnel_info.long_chain,
+              tunnel_info.middle_miles,
+              tunnel_info.operator,
+              tunnel_info.remark,
+              tunnel_info.side,
+              tunnel_info.start_miles,
+              tunnel_info.status,
+              tunnel_info.track_distance,
+              tunnel_info.track_division_id,
+              tunnel_info.tunne_name,
+              tunnel_info.tunne_no,
+              tunnel_info.update_time
+          form tunnel_info
+          <where>
+            <if test="createTime != null">
+              tunnel_info.create_time = #{createTime}
+            </if>
+            <if test="direction != null">
+              and tunnel_info.direction = #{direction}
+            </if>
+            <if test="endMiles != null">
+              and tunnel_info.end_miles = #{endMiles}
+            </if>
+            <if test="inputCode != null">
+              and tunnel_info.input_code = #{inputCode}
+            </if>
+            <if test="isDelete != null">
+              and tunnel_info.is_delete = #{isDelete}
+            </if>
+            <if test="length != null">
+              and tunnel_info.length = #{length}
+            </if>
+            <if test="lineId != null">
+              and tunnel_info.line_id = #{lineId}
+            </if>
+            <if test="longChain != null">
+              and tunnel_info.long_chain = #{longChain}
+            </if>
+            <if test="middleMiles != null">
+              and tunnel_info.middle_miles = #{middleMiles}
+            </if>
+            <if test="operator != null">
+              and tunnel_info.operator = #{operator}
+            </if>
+            <if test="remark != null">
+              and tunnel_info.remark = #{remark}
+            </if>
+            <if test="side != null">
+              and tunnel_info.side = #{side}
+            </if>
+            <if test="startMiles != null">
+              and tunnel_info.start_miles = #{startMiles}
+            </if>
+            <if test="status != null">
+              and tunnel_info.status = #{status}
+            </if>
+            <if test="trackDistance != null">
+              and tunnel_info.track_distance = #{trackDistance}
+            </if>
+            <if test="trackDivisionId != null">
+              and tunnel_info.track_division_id = #{trackDivisionId}
+            </if>
+            <if test="tunneName != null">
+              and tunnel_info.tunne_name = #{tunneName}
+            </if>
+            <if test="tunneNo != null">
+              and tunnel_info.tunne_no = #{tunneNo}
+            </if>
+            <if test="updateTime != null">
+              and tunnel_info.update_time = #{updateTime}
+            </if>
+          </where>
+    </select>
+</mapper>
