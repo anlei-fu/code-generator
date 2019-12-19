@@ -1,14 +1,14 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
 
-const _SetRender = new SimpleRender({}, `${__dirname}/templates/Set.xml`);
+const SET_RENDER = new SimpleRender({}, `${__dirname}/templates/set.xml`);
 
 /**
  * 
- * @param {object} config 
+ * @param {{content:String}}} model 
  * @returns {String}
  */
-function renderSet(config){
-     return _SetRender.renderTemplate(config);
+function renderSet(model) {
+     return SET_RENDER.renderTemplate(model);
 }
 
-exports.renderSet=renderSet
+exports.renderSet = renderSet

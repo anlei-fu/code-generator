@@ -1,20 +1,14 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-
-const _joinItemRender = new SimpleRender({}, `${__dirname}/templates/join-item.xml`);
 const _joinRender = new SimpleRender({}, `${__dirname}/templates/join.xml`);
 
 /**
+ * Render join 
  * 
- * @param {join} join 
- * @returns {String}
+ * @param {{alias:String,table:String,type:String,condition:String}} model
+ * @returns {String} 
  */
-function renderJoin(join) {
-        let content = "";
-        join.items.forEach(x => {
-                content += _joinItemRender.renderTemplate(x);
-        });
-
-        return _joinRender.renderTemplate({ content });
+function renderJoin(model) {
+        return _joinRender.renderTemplate(model);
 }
 
 exports.renderJoin = renderJoin;

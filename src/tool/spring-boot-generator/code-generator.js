@@ -454,43 +454,7 @@ class Generator {
                 FILE.write(path, this._renderPackage(content));
         }
 
-        /**
-         * Trim end and remove last coma of pattern
-         * 
-         * @private
-         * @param {String} pattern 
-         * @returns {String}
-         */
-        _removeLastComa(pattern) {
-                return STR.removeLastComa(pattern);
-        }
-        
-        /**
-         * Render insert statement
-         * 
-         * @private
-         * @param {Config} config
-         * @returns {String}
-         */
-        _renderInsert(config) {
-                let columns = "(";
-                let properties = "(";
-                this._getIncludes(config).forEach(x => {
-                        columns += x.required
-                                ? this._renderColumn(x, ",", IDENT_10) :
-                                this._renderIfColumn(x, ",", IDENT_10);
 
-                        properties += x.required
-                                ? this._renderProperty(x, ",", IDENT_10) :
-                                this._renderIfProperty(x, ",", IDENT_10);
-                });
-
-                let content = FILE.read(`${__dirname}/templates/insert.xml`);
-                content = this._renderTrim(content, columns, "@columns");
-                content = this._renderTrim(content, properties, "@properties");
-
-                return this._finalReplace(config, content);
-        }
 
         renderColumnCore(columns) {
                 columns += x.required
@@ -498,157 +462,13 @@ class Generator {
                         this._renderIfColumn(x, ",", IDENT_10);
         }
 
-        /**
-         * Render delete statement
-         * 
-         * @private
-         * @param {Config} config
-         * @returns {String}
-         */
-        _renderDelete(config) {
-                let conditions = "";
-                this._getConditions(config).forEach((x, i) => {
-                        conditions += x.required
-                                ? i == 0 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "and ", "", IDENT_10)
-                                : i == 0 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "and ", "", IDENT_10);
-                });
 
-                let content = FILE.read(`${__dirname}/templates/delete.xml`);
-                content = this._renderWhere(content, conditions);
 
-                return this._finalReplace(config, content);
-        }
 
-        /**
-         * Render update statement
-         * 
-         * @private
-         * @param {Config} config
-         * @returns {String}
-         */
-        _renderUpdate(config) {
-                let columns = "";
-                this._getIncludes(config).forEach((x, i, array) => {
-                        columns += x.required
-                                ? i == array.length - 1 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "", ",", IDENT_10)
-                                : i == array.length - 1 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "", ",", IDENT_10);
 
-                });
 
-                let conditions = "";
-                this._getConditions(config).forEach((x, i) => {
-                        conditions += x.required
-                                ? i == 0 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "and ", "", IDENT_10)
-                                : i == 0 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "and ", "", IDENT_10);
-                });
 
-                let content = FILE.read(`${__dirname}/templates/update.xml`);
-                content = this._renderSet(content, columns);
-                content = this._renderWhere(content, conditions);
 
-                return this._finalReplace(config, content);
-        }
-
-        /**
-         * Render select statement
-         * 
-         * @private
-         * @param {Config} config
-         * @returns {String}
-         */
-        _renderSelect(config) {
-                let columns = "";
-                this._getIncludes(config).forEach(x => {
-                        columns += this._renderColumn(x, ",", IDENT_10);
-                });
-
-                // join alias
-                let conditions = "";
-                this._getConditions(config).forEach((x, i) => {
-                        conditions += x.required
-                                ? i == 0 ? this._renderAsign(x, "", "", IDENT_10) : this._renderAsign(x, "and ", "", IDENT_10)
-                                : i == 0 ? this._renderIfAsign(x, "", "", IDENT_10) : this._renderIfAsign(x, "and ", "", IDENT_10);
-                });
-
-                let joins = "";
-                if (config.joins)
-                        joins = this._renderJoins(config.joins);
-
-                let content = FILE.read(`${__dirname}/templates/select.xml`)
-                        .replace("@joins", joins);
-
-                content = this._renderTrim(content, columns, "@columns");
-                content = this._renderWhere(content, conditions);
-
-                return this._finalReplace(config, content);
-        }
-
-        /**
-         * 
-         * @param {String} content 
-         * @param {*} items 
-         */
-        _renderSet(content, items) {
-                return items.indexOf("</if>") != -1
-                        ? content.replace("@set", FILE.read(`${__dirname}/templates/set.xml`).replace("@content", items))
-                        : content = content.replace("@set", items);
-        }
-
-        /**
-         * Render trim segment
-         * 
-         * @param {String} content 
-         * @param {String} columns 
-         * @param {String} pattern
-         * @returns {String} 
-         */
-        _renderTrim(content, columns, pattern) {
-                if (columns.indexOf("</if>") != -1) {
-                        let trim = FILE.read(`${__dirname}/templates/trim.xml`);
-                        if (columns.indexOf("(") == -1) {
-                                trim = trim.replace("@prefix", "")
-                                        .replace("@suffix", "");
-                        } else {
-                                trim = trim.replace("@prefix", " prefix=\"(\"")
-                                        .replace("@suffix", " suffix=\")\"");
-                                columns = columns.replace("(", "");
-                        }
-
-                        content = content.replace(pattern, trim.replace("@content", columns));
-                }
-                else {
-                        if (columns.length != 0) {
-                                columns = columns.trimRight();
-                                columns = columns.substr(0, columns.length - 1);
-
-                                if (columns.indexOf("(") != -1)
-                                        columns += ")";
-                        }
-                        content = content.replace(pattern, columns);
-                }
-
-                return content;
-        }
-
-        /**
-         * Render where segment
-         * 
-         * @private
-         * @param {String} content 
-         * @param {String} conditions 
-         * @returns {String}
-         */
-        _renderWhere(content, conditions) {
-                if (conditions.indexOf("</if>") != -1) {
-                        content = content.replace("@where",
-                                FILE.read(`${__dirname}/templates/where.xml`).replace("@content", conditions));
-                } else {
-                        conditions = conditions.trimLeft();
-                        content = content.replace("@where", IDENT_2 + "where\r\n" + IDENT_8 + conditions);
-                }
-
-                return content;
-        }
 
         /**
          * 
@@ -663,133 +483,16 @@ class Generator {
                                 NamingStrategy.toHungary(this.config.table.name).toLowerCase());
         }
 
-        /**
-         * Render if column expression
-         * 
-         * @private
-         * @param {Column} column 
-         * @param {String} property 
-         * @param {String} suffix 
-         */
-        _renderIfColumn(column, suffix = ",", ident) {
-                return column.alias
-                        ? `${ident}<if test="${column.name} != null">\r\n${ident}  ${column.rawName} as ${column.alias}${suffix}\r\n${ident}</if>\r\n`
-                        : `${ident}<if test="${column.name} != null">\r\n${ident}  ${column.rawName}${suffix}\r\n${ident}</if>\r\n`;
-        }
 
-        /**
-         * Render if property expression
-         * 
-         * @private
-         * @param {String} property 
-         * @param {String} suffix 
-         * @returns {String}
-         */
-        _renderIfProperty(column, suffix, ident) {
-                return `${ident}<if test="${column.name} != null">\r\n${ident}  #{${column.name}}${suffix}\r\n${ident}</if>\r\n`;
-        }
 
-        /**
-         * Render if assign expression
-         * 
-         * @private
-         * @param {Column} column 
-         * @param {String} property 
-         * @param {String} suffix
-         * @returns {String} 
-         */
-        _renderIfAsign(column, prefix = "and", suffix = ",", ident) {
-                return `${ident}<if test="${column.name} != null">\r\n${ident}  ${prefix}${column.rawName} = #{${column.name}}${suffix}\r\n${ident}</if>\r\n`;
-        }
 
-        /**
-         * Render assign expression
-         * 
-         * @private
-         * @param {Column} column 
-         * @param {String} property 
-         * @param {String} suffix
-         * @returns {String} 
-         */
-        _renderAsign(column, prefix = "and", suffix = ",", ident) {
-                return `${ident}  ${prefix}${column.rawName} = #{${column.name}}${suffix}\r\n`;
-        }
 
-        /**
-         * Render column field
-         * 
-         * @private
-         * @param {Column} column 
-         * @param {String} suffix 
-         * @returns {String}
-         */
-        _renderColumn(column, suffix = ",", ident) {
-                return column.alias ? `${ident}  ${column.rawName} as ${column.alias}${suffix}\r\n`
-                        : `${ident}  ${column.rawName}${suffix}\r\n`;
-        }
 
-        /**
-         * Render property field
-         * 
-         * @private
-         * @param {String} property 
-         * @param {String} suffix
-         * @returns {String} 
-         */
-        _renderProperty(column, suffix = ",", ident) {
-                return `${ident}  #{${column.name}}${suffix}\r\n`;
-        }
 
-        /**
-         * Render joins
-         * 
-         * @private
-         * @param {[Joins]} joins 
-         * @returns {String}
-         */
-        _renderJoins(joins) {
-                let output = "";
-                joins.forEach(x => {
-                        output += this._renderJoin(x);
-                });
 
-                return output;
-        }
 
-        /**
-         * Render join 
-         * 
-         * @private
-         * @param {Join} join
-         * @returns {String} 
-         */
-        _renderJoin(join) {
-                let content = join.table.alias ? `${IDENT_8}${join.type} join ${this._getRawName(join.table)} as ${join.table.alias} on ${join.joinCondition}`
-                        : `${IDENT_8}${join.type} join ${this._getRawName(join.table)} on ${join.joinCondition}`;
 
-                join.table.alias = null;
-                return content;
-        }
 
-        /**
-         * Get all select columns ,or update columns ,or insert columns
-         * 
-         * @private
-         * @returns {[Column]}
-         */
-        _getIncludes(config) {
-                return this._getItems(config, false);
-        }
-
-        /**
-         * Get all codition columns
-         * 
-         * @private
-         * @returns {[Column]}
-         */
-        _getConditions(config) {
-                return this._getItems(config, true);
-        }
 
         /**
          * If is {isCondition} is true ,return all condition columns 

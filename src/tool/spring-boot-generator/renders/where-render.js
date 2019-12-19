@@ -1,14 +1,14 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
 
-const _whereRender = new SimpleRender({}, `${__dirname}/templates/where.xml`);
+const WHERE_RENDER = new SimpleRender({}, `${__dirname}/templates/where.xml`);
 
 /**
  * 
- * @param {object} config 
+ * @param {object} model 
  * @returns {String}
  */
-function renderWhere(config){
-     return _whereRender.renderTemplate(config);
+function renderWhere(model) {
+     return WHERE_RENDER.renderTemplate(model);
 }
 
-exports.renderWhere=renderWhere
+exports.renderWhere = renderWhere
