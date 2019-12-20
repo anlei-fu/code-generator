@@ -1,4 +1,4 @@
-function renderConditions() {
+function renderConditions(config) {
 
 }
 

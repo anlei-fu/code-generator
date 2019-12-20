@@ -1,6 +1,7 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-
-const _whereRender = new SimpleRender({}, `${__dirname}/templates/serviceImpl.java`);
+const {getReqParamsWithType,getReqParamsWithType}=require("./../req-common")
+const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
+const SERVICE_IMPL_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl.java`);
 
 /**
  * 
@@ -8,7 +9,13 @@ const _whereRender = new SimpleRender({}, `${__dirname}/templates/serviceImpl.ja
  * @returns {String}
  */
 function renderServiceImpl(config) {
-        return _whereRender.renderTemplate(config);
+        let content = "";
+        config.items.forEach(x => {
+                let item = getServiceImplItem(x,config.name);
+                content += SERVICE_IMPL_ITEM_RENDER.renderTemplate(item);
+        });
+
+        return SERVICE_IMPL_RENDER.renderTemplate({ content });
 }
 
 /**
@@ -17,15 +24,15 @@ function renderServiceImpl(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function getServiceImplItem(config) {
+function getServiceImplItem(config,name) {
         return {
                 name: config.id,
-                serviceImplParams: this._getReqParamsWithType(config),
-                serviceImplReturnType: this.getServiceReturnType(config),
-                serviceImplMapperParams: config.param ? "params" : this._getReqParamsWithoutType(config),
+                serviceImplParams: getReqParamsWithType(config),
+                serviceImplReturnType: getServiceReturnType(config),
+                serviceImplMapperParams: config.param ? "params" : getReqParamsWithoutType(config),
                 suffix: config.type == "select" ? "" : " > 0",
-                content: !config.params.doCreate ? "" : this._getServiceImplContent(config),
-                sname: STR.lowerFirstLetter(this.config.name)
+                content: !config.params.doCreate ? "" : getServiceImplContent(config),
+                sname: STR.lowerFirstLetter(name)
         };
 }
 
@@ -37,8 +44,8 @@ function getServiceImplItem(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function _getServiceImplMapperParams(config) {
-        return config.params.doCreate ? "params" : this._getReqParamsWithoutType(config);
+function getServiceImplMapperParams(config) {
+        return config.params.doCreate ? "params" : getReqParamsWithoutType(config);
 }
 
 /**
@@ -49,9 +56,9 @@ function _getServiceImplMapperParams(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function _getServiceImplContent(config) {
+function getServiceImplContent(config) {
         let content = `${config.params.name} params = new ${config.params.name}(@params)`;
-        content = content.replace("@params", this._getReqParamsWithoutType(config));
+        content = content.replace("@params", getReqParamsWithoutType(config));
 
         // if has default values, generate set expression
         if (config.params.defaultValues) {

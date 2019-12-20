@@ -12,10 +12,10 @@ _columnsRender.setTempalte(`${ident}  @column@alias@suffix\r\n`);
  * @returns {String}
  */
 function renderColumn(model) {
-        model.alias = "as " + model.alias + " " || " ";
+        model.alias =model.alias?`as ${model.alias}`:" ";
         let content = _columnsRender.renderTemplate(model);
         model.content = content;
-        return model.ifExpression ? renderIf(model) : content;
+        return  renderIf(model);
 }
 
 exports.renderColumn = renderColumn;

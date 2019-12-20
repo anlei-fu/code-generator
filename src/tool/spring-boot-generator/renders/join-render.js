@@ -1,5 +1,6 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const _joinRender = new SimpleRender({}, `${__dirname}/templates/join.xml`);
+const _joinRender = new SimpleRender({});
+_joinRender.setTempalte("@type join @table@alias on @joinCondition")
 
 /**
  * Render join 
@@ -8,6 +9,7 @@ const _joinRender = new SimpleRender({}, `${__dirname}/templates/join.xml`);
  * @returns {String} 
  */
 function renderJoin(model) {
+        model.alias=model.alias?`as ${model.alias}`:"";
         return _joinRender.renderTemplate(model);
 }
 

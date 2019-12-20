@@ -1,17 +1,18 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-
+const {getReqParamsWithType,getReqParamsWithType}=require("./../req-common")
 const _serviceItemRender = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
 const _serviceRender = new SimpleRender({}, `${__dirname}/templates/service.java`);
 
 /**
  * 
- * @param {service} service 
+ * @param {service} config 
  * @returns {String}
  */
-function renderService(service) {
+function renderService(config) {
         let content = "";
-        service.items.forEach(x => {
-                content += _serviceItemRender.renderTemplate(x);
+        config.items.forEach(x => {
+                let item = getServiceItem(x,config.name);
+                content += _serviceItemRender.renderTemplate(item);
         });
 
         return _serviceRender.renderTemplate({ content });
@@ -23,21 +24,21 @@ function renderService(service) {
  * @param {Config} config 
  * @returns {String}
  */
-function getServiceItem(config) {
+function getServiceItem(config,name) {
         return {
-                serviceParams: this._getReqParamsWithType(config),
-                serviceReturnType: this.getServiceReturnType,
+                serviceParams: getReqParamsWithType(config),
+                serviceReturnType: getServiceReturnType(config,name),
                 name: config.id
         };
 }
 
-function getServiceReturnType(config) {
+function getServiceReturnType(config,name) {
         if (config.type != "select")
                 return "boolean";
 
         return config.resp.single
-                ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : this.config.name
-                : config.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>` : `PageInfo<${this.config.name}>`;
+                ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name
+                : config.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>` : `PageInfo<${name}>`;
 }
 
 exports.renderService = renderService;

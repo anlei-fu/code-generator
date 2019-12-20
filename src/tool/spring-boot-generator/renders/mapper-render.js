@@ -1,20 +1,21 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
 
-const _mapperItemRender = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);
-const _mapperRender = new SimpleRender({}, `${__dirname}/templates/mapper.java`);
+const MAPPER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);
+const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`);
 
 /**
  * 
- * @param {mapper} mapper 
+ * @param {GeneratorConfig} config 
  * @returns {String}
  */
-function renderMapper(mapper) {
+function renderMapper(config) {
         let content = "";
-        mapper.items.forEach(x => {
-                content += _mapperItemRender.renderTemplate(x);
+        config.items.forEach(x => {
+                let item=getMapperItem(x,config.name);
+                content += MAPPER_ITEM_RENDER.renderTemplate(item);
         });
 
-        return _mapperRender.renderTemplate({ content });
+        return MAPPER_RENDER.renderTemplate({ content });
 }
 
 
@@ -24,11 +25,11 @@ function renderMapper(mapper) {
  * @param {Config} config 
  * @returns {String}
  */
-function getMapperItem(config) {
+function getMapperItem(config,name) {
         return {
                 name: config.id,
-                mapperReturnType: this.getMapperReturnType(config),
-                mapperParams: this.getMapperParams(config)
+                mapperReturnType: getMapperReturnType(config,name),
+                mapperParams: getMapperParams(config)
         }
 }
 
@@ -52,14 +53,14 @@ function getMapperParams(config) {
         return mapperParams;
 }
 
-function getMapperReturnType(config) {
+function getMapperReturnType(config,name) {
 
         if (config.type != "select")
                 return "int";
 
         return config.resp.single
-                ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : this.config.name
-                : config.resp.doCreate ? `List<${STR.upperFirstLetter(config.resp.type)}>` : `List<${this.config.name}>`;
+                ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name
+                : config.resp.doCreate ? `List<${STR.upperFirstLetter(config.resp.type)}>` : `List<${name}>`;
 }
 
 

@@ -1,3 +1,6 @@
+const { STR } = require("./../../libs/str")
+const CACHE = new Map();
+
 /**
  * Get req params with type field
  * 
@@ -5,13 +8,8 @@
  * @param {Config} config 
  * @returns {String}
  */
-function _getReqParamsWithType(config) {
-        let params = "";
-        config.reqs.forEach(x => {
-                params += `${x.type} ${x.name}, `;
-        });
-
-        return this._removeLastComa(params);
+function getReqParamsWithType(config) {
+        return getReqParams(config, true);
 }
 
 /**
@@ -21,11 +19,27 @@ function _getReqParamsWithType(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function _getReqParamsWithoutType(config) {
+function getReqParamsWithoutType(config) {
+        return getReqParams(config, false);
+}
+
+function getReqParams(config, type) {
+        let key = config.id + type;
+        if (CACHE.has(key))
+                return CACHE.get(key)
+
         let params = "";
         config.reqs.forEach(x => {
-                params += `${x.name}, `;
+                params += type ? `${x.type} ${x.name}, ` : `${x.name}, `;
         });
 
-        return this._removeLastComa(params);
+        params = STR.removeLastComa(params);
+        CACHE.set(key, params);
+        return params;
+}
+
+
+module.exports = {
+        getReqParamsWithoutType,
+        getReqParamsWithType
 }

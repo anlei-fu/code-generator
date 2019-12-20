@@ -1,6 +1,5 @@
-const { getConditions } = require("./../condition-getter");
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const { renderExpression } = require("./expression-render");
+const { renderConditions } = require("./conditions-render");
 
 const DELETE_RENDER = new SimpleRender({}, `${__dirname}/templates/delete.xml`);
 
@@ -13,17 +12,12 @@ const DELETE_RENDER = new SimpleRender({}, `${__dirname}/templates/delete.xml`);
  * @returns {String}
  */
 function renderDelete(config) {
-        let conditions = "";
-        getConditions(config).forEach((x, i) => {
-                conditions += renderExpression(x);
-        });
-
-        let deleteConfig = {
+        let deleteModel = {
                 id: config.id,
-                conditions: renderWhere({ content: conditions })
+                conditions: renderConditions(config)
         }
 
-        return DELETE_RENDER.renderTemplate(deleteConfig);
+        return DELETE_RENDER.renderTemplate(deleteModel);
 }
 
 exports.renderDelete = renderDelete;

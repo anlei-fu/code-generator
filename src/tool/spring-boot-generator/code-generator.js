@@ -316,10 +316,7 @@ class Generator {
          * Write mapper file
          */
         writeMapper() {
-                this._writeCore(`${this.config.mapperFolder}/${this.config.name}Mapper.java`,
-                        null,
-                        this.getMapperItem,
-                        `${__dirname}/templates/mapper.java`);
+                
         }
 
         /**
