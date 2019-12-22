@@ -23,14 +23,21 @@ function getReqParamsWithoutType(config) {
         return getReqParams(config, false);
 }
 
-function getReqParams(config, type) {
-        let key = config.id + type;
+/**
+ * Get req params core
+ * 
+ * @param {Config} config 
+ * @param {boolean} withType 
+ * @returns {String}
+ */
+function getReqParams(config, withType) {
+        let key = config.id + withType;
         if (CACHE.has(key))
                 return CACHE.get(key)
 
         let params = "";
         config.reqs.forEach(x => {
-                params += type ? `${x.type} ${x.name}, ` : `${x.name}, `;
+                params += withType ? `${x.type} ${x.name}, ` : `${x.name}, `;
         });
 
         params = STR.removeLastComa(params);
@@ -38,8 +45,37 @@ function getReqParams(config, type) {
         return params;
 }
 
+function generateReq(config,req){
+        let conditions= getConditions(config);
+        let additions=[];
+        conditions=conditions.filter(x=>!req.excludes.has(x.name));
+        conditions.forEach(x=>{
+             if(req.validates.has(x))
+                 x.validates=[];
+
+             if(x.range){
+                 additions.push({name:`${x.name}Min`,type:x.type,validates:x.validates});
+                 additions.push({name:`${x.name}Max`,type:x.type,validates:x.validates});
+             }
+
+             if(x.timeRange){
+                additions.push({name:`${x.name}Start`,type:x.type,validates:x.validates});
+                additions.push({name:`${x.name}End`,type:x.type,validates:x.validates});
+             }
+        });
+
+        
+
+      return  conditions.concat(additions);
+}
+
+function generateValidates(column,req){
+     
+}
+
 
 module.exports = {
         getReqParamsWithoutType,
-        getReqParamsWithType
+        getReqParamsWithType,
+        generateReq
 }

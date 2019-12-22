@@ -6,18 +6,21 @@
  * @LastEditors  : fuanlei
  * @LastEditTime : 2019-12-18 11:49:04
  */
-const { TYPE} = require("../../../libs/utils")
-exports.reqBuilder = function reqBuilder() {
-        this._excludes = [];
-        this._noValidated = true;
-        this._validates = [];
+const { TYPE } = require("../../../libs/utils")
+class ReqBuilder {
+        constructor() {
+
+                this._excludes = [];
+                this._noValidated = true;
+                this._validates = new Map();
+        }
 
         /**
          * Determine  is create new entity
          * 
          * @returns {reqBuilder}
          */
-        this.doCreate = () => {
+        doCreate() {
                 this._doCreate = true;
                 return this;
         }
@@ -28,9 +31,80 @@ exports.reqBuilder = function reqBuilder() {
          * @param {String|Object | [String|Object]} items 
          * @returns {reqBuilder}
          */
-        this.excludes = (items) => {
-                this._excludes =TYPE.isString(items)?[items]:items;
+        excludes(item) {
+                this._excludes = TYPE.isString(items) ? [items] : items;
                 return this;
+        }
+
+        /**
+         * Add '@NotNull' validate
+         * 
+         * @param {string|[String]} item 
+         */
+        requireItem(item) {
+                if (TYPE.isString(item)) {
+                        this._addValidateCore(item, "@NotNull");
+
+                } else {
+                        item.forEach(x => {
+                                this._addValidateCore(item, "@NotNull");
+                        });
+                }
+
+                return this;
+        }
+
+        validate(item,validate){
+                if (TYPE.isString(item)) {
+                        this._addValidateCore(item, validate);
+
+                } else {
+                        item.forEach(x => {
+                                this._addValidateCore(item, validate);
+                        });
+                }
+
+                return this;
+
+        }
+
+
+        /**
+         * Add 'NotBlank' validate
+         * 
+         * @param {string|[String]} item 
+         */
+        notBlank(item) {
+                if (TYPE.isString(item)) {
+                        this._addValidateCore(item, "@NotBlank");
+
+                } else {
+                        item.forEach(x => {
+                                this._addValidateCore(item, "@NotBlank");
+                        });
+                }
+
+                return this;
+        }
+
+        /**
+         * Add range validates
+         * 
+         * 
+         * @param {String|[String]} item 
+         * @param {Number} max 
+         * @param {Number} min 
+         */
+        range(item, max, min) {
+                if (TYPE.isString(item)) {
+                        this._addValidateCore(item, `@NotBlank(max=${max},min=${min})`);
+
+                } else {
+                        item.forEach(x => {
+                                this._addValidateCore(item, `@NotBlank(max=${max},min=${min})`);
+                        });
+                }
+
         }
 
         /**
@@ -39,7 +113,7 @@ exports.reqBuilder = function reqBuilder() {
          * @param {String} type
          * @returns {reqBuilder}
          */
-        this.type = (type) => {
+        type(type) {
                 this._type = type;
                 return this;
         }
@@ -50,7 +124,7 @@ exports.reqBuilder = function reqBuilder() {
          * @param {String} name 
          * @returns {reqBuilder}
          */
-        this.name = (name) => {
+        name(name) {
                 this._name = name;
                 return this;
         }
@@ -61,7 +135,7 @@ exports.reqBuilder = function reqBuilder() {
          * @param {String} description 
          * @returns {reqBuilder}
          */
-        this.description = (description) => {
+        description(description) {
                 this._description = description;
                 return this;
 
@@ -72,7 +146,7 @@ exports.reqBuilder = function reqBuilder() {
          * 
          * @returns {readonly}
          */
-        this.noValidated = () => {
+        noValidated() {
                 this._novalidated = false;
                 return this;
         }
@@ -83,12 +157,15 @@ exports.reqBuilder = function reqBuilder() {
          * @param {String} from 
          * @returns {reqBuilder}
          */
-        this.from = (from) => {
+        from(from) {
                 this._from = from;
                 return this;
         }
 
-        this.build = () => {
+        /**
+         * 
+         */
+        build() {
                 return {
                         doCreate: this._doCreate,
                         from: this._from,
@@ -99,5 +176,19 @@ exports.reqBuilder = function reqBuilder() {
                         excludes: new Set(this._excludes),
                         validates: this._validates,
                 }
+        }
+
+        /**
+         * 
+         * @param {String} item 
+         * @param {String} validate 
+         */
+        _addValidateCore(item, validate) {
+                if (!this._validates.has(item))
+                        this._validates.set(item, new Set());
+
+                if (!this._validates[item].has(validate))
+                        this._validates[item].add(validate);
+
         }
 }

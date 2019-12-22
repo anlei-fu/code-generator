@@ -2,7 +2,7 @@ const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-r
 const { renderIf } = require("./if-render");
 
 const _asignRender = new SimpleRender();
-_asignRender.setTempalte(`${ident} @column=#{@property}\r\n`);
+_asignRender.setTempalte(`${ident} @column = #{@property}\r\n`);
 
 /**
  * Render assign expression

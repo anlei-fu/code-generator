@@ -1,7 +1,0 @@
-function analyzeConditions(){
-
-}
-
-function analyzeIncludes(){
-        
-}
