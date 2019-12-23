@@ -8,6 +8,8 @@
  */
 const { all } = require("./config/all")
 const { packages } = require("./packages")
+const {PackegeRender } = require("./../../renders/package-render");
+const {Writer} =require("./../../writer")
 const { Generator } = require("./../../code-generator")
 
 /**
@@ -18,8 +20,9 @@ const { Generator } = require("./../../code-generator")
 
 function build() {
         
+        let packageRender=new PackegeRender("@project");
+        let writer =new Writer("@project");
         all.forEach(x => {
-                x.packages=packages;
                 // set output folders
                 let root = "./@project/src/main/java/com/@project";
                 x.mapperFolder = `${root}/mapper`;
@@ -33,8 +36,8 @@ function build() {
                 x.paramsFolder = `${root}/pojo/param`;
                 x.project="@project";
 
-                let generator = new Generator(x);
-                generator.writeAll();
+                let generator = new Generator(x,writer,packageRender);
+                generator.generate();
         });
         
         console.log("completed!");

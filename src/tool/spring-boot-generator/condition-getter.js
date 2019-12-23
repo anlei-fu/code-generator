@@ -16,7 +16,6 @@ function getConditions(config) {
                 return CACHE.get(config.id);
 
         let conditions = [];
-        console.log(config);
         config.conditions.forEach(x => {
                 conditions.push(getColumn(config.table, x));
         });

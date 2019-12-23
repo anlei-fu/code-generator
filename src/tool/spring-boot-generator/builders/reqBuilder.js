@@ -166,6 +166,7 @@ class ReqBuilder {
          * 
          */
         build() {
+
                 return {
                         doCreate: this._doCreate,
                         from: this._from,
@@ -189,6 +190,7 @@ class ReqBuilder {
 
                 if (!this._validates.get(item).has(validate))
                         this._validates.get(item).add(validate);
+                
         }
 }
 

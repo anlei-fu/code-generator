@@ -1,2 +1,0 @@
-    @mapperReturnType @name(@mapperParams);
-    

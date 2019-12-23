@@ -1,4 +1,7 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
+const { getReqParamsWithoutType } = require("./../req-common")
+const { STR } = require("./../../../libs/str")
+const { isSimpleJavaType } = require("./../utils")
 
 const _controllerItemRender = new SimpleRender({}, `${__dirname}/templates/controller-item.java`);
 const _controllerRender = new SimpleRender({}, `${__dirname}/templates/controller.java`);
@@ -11,16 +14,19 @@ HTTP_MAPPINGS.set("select", "@GetMapping")
 
 /**
  * 
- * @param {Controller} controller 
+ * @param {Controller} config 
  * @returns {String}
  */
-function renderController(controller) {
+function renderController(config) {
         let content = "";
-        controller.items.forEach(x => {
-                content += _controllerItemRender.renderTemplate(x);
+        config.items.forEach(x => {
+                let item=_controllerItemRender.renderTemplate(getControllerItem(x, config.name))
+                content +=item;
         });
 
-        return _controllerRender.renderTemplate({ content });
+        content=content.trimRight()+"\r\n";
+
+        return _controllerRender.renderTemplate({ content,sname:STR.lowerFirstLetter(config.name) });
 }
 
 /**
@@ -29,15 +35,15 @@ function renderController(controller) {
  * @param {Config} config 
  * @returns {String}
  */
-function getControllerItem(config) {
+function getControllerItem(config, name) {
         return {
                 name: config.id,
                 httpMapping: getHttpMapping(config),
-                controllerReturnType: getControllerReturnType(config),
+                controllerReturnType: getControllerReturnType(config, name),
                 serviceParams: getReqParamsWithoutType(config),
                 description: config.controller.description || "",
-                controllerParams,
-                sname: STR.lowerFirstLetter(this.config.name)
+                controllerParams: getControllerParams(config),
+                sname: STR.lowerFirstLetter(name),
         };
 }
 
@@ -57,7 +63,7 @@ function getControllerParams(config) {
                         : `${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
         });
 
-        return this._removeLastComa(params);
+        return STR.removeLastComa(params);
 }
 
 /**
@@ -83,7 +89,7 @@ function getHttpMapping(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function getControllerReturnType(config) {
+function getControllerReturnType(config, name) {
         if (config.type != "select")
                 return "R";
 
@@ -91,11 +97,11 @@ function getControllerReturnType(config) {
         if (config.resp.single) {
                 return config.resp.doCreate
                         ? `R<${STR.upperFirstLetter(config.resp.type)}>`
-                        : `R<${this.config.name}>`;
+                        : `R<${name}>`;
         } else {
                 return config.resp.doCreate
                         ? `R<PageInfo<${STR.upperFirstLetter(config.resp.type)}>>`
-                        : `R<PageInfo<${this.config.name}>>`;
+                        : `R<PageInfo<${name}>>`;
         }
 }
 

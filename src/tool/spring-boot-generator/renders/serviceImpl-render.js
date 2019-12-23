@@ -1,5 +1,6 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const {getReqParamsWithType}=require("./../req-common")
+const { getReqParamsWithType, getReqParamsWithoutType } = require("./../req-common")
+const { STR } = require("./../../../libs/str")
 const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
 const SERVICE_IMPL_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl.java`);
 
@@ -11,11 +12,12 @@ const SERVICE_IMPL_RENDER = new SimpleRender({}, `${__dirname}/templates/service
 function renderServiceImpl(config) {
         let content = "";
         config.items.forEach(x => {
-                let item = getServiceImplItem(x,config.name);
-                content += SERVICE_IMPL_ITEM_RENDER.renderTemplate(item);
+                let item = getServiceImplItem(x, config.name);
+                content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
         });
 
-        return SERVICE_IMPL_RENDER.renderTemplate({ content });
+        content = content.trimRight() + "\r\n";
+        return SERVICE_IMPL_RENDER.renderTemplate({ content, sname: STR.lowerFirstLetter(config.name) });
 }
 
 /**
@@ -24,29 +26,18 @@ function renderServiceImpl(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function getServiceImplItem(config,name) {
+function getServiceImplItem(config, name) {
         return {
                 name: config.id,
                 serviceImplParams: getReqParamsWithType(config),
-                serviceImplReturnType: getServiceReturnType(config),
-                serviceImplMapperParams: config.param ? "params" : getReqParamsWithoutType(config),
+                serviceImplReturnType: getServiceReturnType(config, name),
+                serviceImplMapperParams: config.params.doCreate ? "params" : getReqParamsWithoutType(config),
                 suffix: config.type == "select" ? "" : " > 0",
                 content: !config.params.doCreate ? "" : getServiceImplContent(config),
                 sname: STR.lowerFirstLetter(name)
         };
 }
 
-/**
- * Get serviceImpl's mapper params
- * default name is "params" if generate Params entity
- * 
- * @private
- * @param {Config} config 
- * @returns {String}
- */
-function getServiceImplMapperParams(config) {
-        return config.params.doCreate ? "params" : getReqParamsWithoutType(config);
-}
 
 /**
  * Get service impl content 
@@ -69,5 +60,20 @@ function getServiceImplContent(config) {
 
         return content;
 }
+/**
+ * 
+ * @param {Config} config 
+ * @param {String} name
+ * @returns {String} 
+ */
+function getServiceReturnType(config, name) {
+        if (config.type != "select")
+                return "boolean";
+
+        return config.resp.single
+                ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name
+                : config.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>` : `PageInfo<${name}>`;
+}
+
 
 exports.renderServiceImpl = renderServiceImpl

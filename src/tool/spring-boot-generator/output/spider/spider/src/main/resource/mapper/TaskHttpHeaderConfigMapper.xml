@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.TaskHttpHeaderConfigMapper">
+    <insert id="addTaskHttpHeaderConfig">
+          insert  into @tableName
+          <trimprefix="("suffix=")" suffixOverrides=",">
+undefinedundefinedundefinedundefined
+          </trim>
+          values
+          <trimprefix="("suffix=")" suffixOverrides=",">
+@content
+          </trim>
+    </insert>    <delete id="deleteTaskHttpHeaderConfigById">
+          delete from @tableName
+@where
+    </delete>    <update id="updateTaskHttpHeaderConfigById">
+        update @tableName
+@set
+@where
+    </update>    <select id="getTaskHttpHeaderConfigById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskHttpHeaderConfigName
+
+@where
+    </select>    <select id="getTaskHttpHeaderConfigList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskHttpHeaderConfigName
+
+@where
+    </select>
+</mapper>

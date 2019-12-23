@@ -1,5 +1,37 @@
-const {STR}=require("./../../../libs/str")
+const { STR } = require("./../../../libs/str")
 const PACKAGES = new Map();
+PACKAGES.set("List<", {
+        package: "import java.util.List;",
+        isSystem: true,
+});
+PACKAGES.set("Date ", {
+        package: "import java.util.Date;",
+        isSystem: true,
+});
+
+PACKAGES.set("@Params", {
+        isSystem: false,
+        package: "import org.apache.ibatis.annotations.Param;",
+});
+
+PACKAGES.set("@NotBlank", {
+        package: "import javax.validation.constraints.NotBlank;",
+        isSystem: true
+});
+
+PACKAGES.set("@NotNull", {
+        package: "import javax.validation.constraints.NotNull;",
+        isSystem: true
+});
+
+PACKAGES.set("PageInfo<", {
+        package: "import com.github.pagehelper.PageInfo;",
+        isSystem: false
+});
+
+
+
+
 
 class PackegeRender {
         constructor(project) {
@@ -12,7 +44,7 @@ class PackegeRender {
          */
         addPackage(pk) {
                 if (!PACKAGES.has(pk.name))
-                        PACKAGES.set(pk.name);
+                        PACKAGES.set(pk.name, pk);
         }
 
         /**
@@ -21,6 +53,8 @@ class PackegeRender {
          * @returns {String}
          */
         renderPackage(content) {
+
+                // find @package segment
                 let ls = STR.select(content, "@packages", "@packages");
                 if (ls.length == 0)
                         return content;
@@ -32,14 +66,19 @@ class PackegeRender {
                                 .split("\r\n");
 
                 PACKAGES.forEach((value, key) => {
+                        if(value.type){
+                                if(content.indexOf(key+" ")==-1&&content.indexOf("<"+key)==-1)
+                                  return;
+                        }
+
                         if (content.indexOf(key) == -1 || packagesPattern.includes(key))
                                 return;
 
-                        // if (value.isSystem) {
-                        //         systems.push(value.package);
-                        // } else {
-                        //         others.push(value.package || `import com.@project.pojo.${value.type}.${key};`);
-                        // }
+                        if (value.isSystem) {
+                                systems.push(value.package);
+                        } else {
+                                others.push(value.package || `import com.@project.pojo.${value.type}.${key};`);
+                        }
                 });
 
                 others.forEach((x, i) => {

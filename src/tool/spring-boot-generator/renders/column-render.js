@@ -18,4 +18,4 @@ function renderColumn(model) {
         return  renderIf(model);
 }
 
-exports.renderColumn = renderColumn;
+exports.renderColumn = renderColumn

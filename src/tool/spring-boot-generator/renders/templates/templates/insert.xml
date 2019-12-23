@@ -1,6 +1,0 @@
-    <insert id="@id">
-          insert  into @tableName
-@columns
-          values
-@properties
-    </insert>

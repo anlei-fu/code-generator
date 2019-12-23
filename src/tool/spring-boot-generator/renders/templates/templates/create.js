@@ -1,4 +1,0 @@
-function create() {
-  return @data
-}
-

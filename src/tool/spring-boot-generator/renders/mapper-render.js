@@ -17,6 +17,8 @@ function renderMapper(config) {
                 content += MAPPER_ITEM_RENDER.renderTemplate(item);
         });
 
+        content=content.trimRight()+"\r\n";
+
         return MAPPER_RENDER.renderTemplate({ content });
 }
 
@@ -51,7 +53,7 @@ function getMapperParams(config) {
                 });
                 mapperParams = STR.removeLastComa(mapperParams);
         } else {
-                mapperParams = isSimpleJavaType(config.reqs[0].type)
+                mapperParams = !isSimpleJavaType(config.reqs[0].type)
                         ? `${config.reqs[0].type} ${config.reqs[0].name}`
                         : `@Params("${config.reqs[0].name}") ${config.reqs[0].type} ${config.reqs[0].name}`;
         }

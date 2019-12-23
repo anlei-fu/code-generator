@@ -1,7 +1,0 @@
-    <select id="@id" resultType="com.@project.pojo.@resultType">
-          select
-@columns
-          form @tableName
-@joins
-@where
-    </select>

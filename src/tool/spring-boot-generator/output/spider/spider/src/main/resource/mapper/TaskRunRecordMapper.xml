@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.TaskRunRecordMapper">
+    <insert id="addTaskRunRecord">
+          insert  into @tableName
+          <trimprefix="("suffix=")" suffixOverrides=",">
+undefinedundefinedundefinedundefinedundefinedundefined
+          </trim>
+          values
+          <trimprefix="("suffix=")" suffixOverrides=",">
+@content
+          </trim>
+    </insert>    <delete id="deleteTaskRunRecordById">
+          delete from @tableName
+@where
+    </delete>    <update id="updateTaskRunRecordById">
+        update @tableName
+@set
+@where
+    </update>    <select id="getTaskRunRecordById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskRunRecordName
+
+@where
+    </select>    <select id="getTaskRunRecordList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskRunRecordName
+
+@where
+    </select>
+</mapper>

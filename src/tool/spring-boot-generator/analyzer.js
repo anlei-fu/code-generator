@@ -16,7 +16,13 @@ const createSelectExcludes = () => {
                         "path",
                         "pic",
                         "img",
-                        "avartar"
+                        "avartar",
+                        "pwd",
+                        "password",
+                        "secret",
+                        "hash",
+                        "credential",
+                        "cookie"
                 ],
                 Integer: [
 

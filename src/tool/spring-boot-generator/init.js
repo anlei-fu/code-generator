@@ -74,6 +74,7 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`./output/${project}/${project}/src/main`);
         DIR.create(`./output/${project}/${project}/src/main/java`);
         DIR.create(`./output/${project}/${project}/src/main/java/com`);
+        
         let root = `./output/${project}/${project}/src/main/java/com/${project}`;
         DIR.create(root);
         DIR.create(`${root}/service`);
@@ -86,7 +87,7 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`${root}/pojo/entity`);
         DIR.create(`${root}/pojo/param`);
         DIR.create(`${root}/config`);
-        DIR.create(`${root}/util`);
+        DIR.create(`${root}/utils`);
         DIR.create(`${root}/exception`);
 
         // resource items
@@ -106,6 +107,8 @@ function makeAllFolders(project, dbConfig) {
         FILE.copy("./templates/SwaggerConfig.java", `${root}/config/SwaggerConfig.java`);
         FILE.copy("./templates/ValidatorConfig.java", `${root}/config/ValidatorConfig.java`);
         FILE.copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resource/logback.xml`);
+        FILE.copy("./templates/PageReq.java",`${root}/pojo/req/PageReq.java`)
+        FILE.copy("./templates/PageHelperUtils.java",`${root}/utils/PageHelperUtils.java`)
 
         // pom.xml
         let pom = FILE.read("./templates/pom.xml")

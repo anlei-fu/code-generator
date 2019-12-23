@@ -117,7 +117,7 @@ const { generateReq } = require("./req-common");
 const { Writer } = require("./writer");
 const { getJavaType } = require("./utils");
 const { getConditions } = require("./condition-getter")
-const {PackegeRender} =require("./renders/package-render")
+const { PackegeRender } = require("./renders/package-render")
 
 
 /**
@@ -129,18 +129,18 @@ class Generator {
          * 
          * @param {GeneratorConfig} config 
          */
-        constructor(config) {
+        constructor(config, writer, packageRebder) {
                 this._checkConfig(config);
                 this._config = config;
 
                 this._initTable(config.table);
-                config.items.forEach(x=>{
-                        x.table=config.table;
+                config.items.forEach(x => {
+                        x.table = config.table;
                         this._initConfig(x);
                 });
-               
-                this._packageRender = new PackegeRender();
-                this._writer = new Writer(config.project);
+
+                this._packageRender = packageRebder;
+                this._writer = writer;
         }
 
 
@@ -152,12 +152,6 @@ class Generator {
          */
         generate() {
 
-                this._generateMapper();
-                this._generateMapperConfig();
-                this._generateService();
-                this._generateServiceImpl();
-                this._generateController();
-
                 // entites
                 this._generateEntity();
                 this._config.items.forEach(x => {
@@ -165,6 +159,14 @@ class Generator {
                         this._generateResp(x);
                         this._generateParams(x);
                 });
+
+                this._generateMapper();
+                this._generateMapperConfig();
+                this._generateService();
+                this._generateServiceImpl();
+                this._generateController();
+
+
         }
 
 
@@ -292,13 +294,17 @@ class Generator {
          */
         _generateEntity() {
                 var entity = {};
-                entity.type = this._config.name;
+                entity.name = this._config.name;
+                entity.type = "entity";
                 entity.description = this._config.table.description;
                 entity.fields = OBJECT.toArray(this._config.table.columns);
-                this._writer.writeEntity(this._config.name,Render.renderEntity(entity));
+                let content = Render.renderEntity(entity);
+                content = this._packageRender.renderPackage(content);
+                this._writer.writeEntity(this._config.name, content);
 
                 this._packageRender.addPackage({
-                        name: STR.upperFirstLetter(entity.type),
+                        name: STR.upperFirstLetter(entity.name),
+                        type: "entity",
                         isSystem: false
                 });
         }
@@ -309,7 +315,7 @@ class Generator {
         _generateMapper() {
                 let mapper = Render.renderMapper(this._config);
                 mapper = this._packageRender.renderPackage(mapper);
-                this._writer.writeMapper(this._config.name,mapper);
+                this._writer.writeMapper(this._config.name, mapper);
         }
 
         /**
@@ -317,7 +323,7 @@ class Generator {
          */
         _generateMapperConfig() {
                 let mapperConfig = Render.renderMapperConfig(this._config);
-                this._writer.writeMapperConfig(this._config.name,mapperConfig);
+                this._writer.writeMapperConfig(this._config.name, mapperConfig);
         }
 
         /**
@@ -326,7 +332,7 @@ class Generator {
         _generateService() {
                 let service = Render.renderService(this._config);
                 service = this._packageRender.renderPackage(service);
-                this._writer.writeController(this._config.name,service);
+                this._writer.writeService(this._config.name, service);
         }
 
         /**
@@ -335,7 +341,7 @@ class Generator {
         _generateServiceImpl() {
                 let serviceImpl = Render.renderServiceImpl(this._config);
                 serviceImpl = this._packageRender.renderPackage(serviceImpl);
-                this._writer.writeServiceImpl(this._config.name,serviceImpl);
+                this._writer.writeServiceImpl(this._config.name, serviceImpl);
         }
 
         /**
@@ -344,7 +350,7 @@ class Generator {
         _generateController() {
                 let controller = Render.renderController(this._config);
                 controller = this._packageRender.renderPackage(controller);
-                this._writer.writeController(this._config.name,controller);
+                this._writer.writeController(this._config.name, controller);
         }
 
         /**
@@ -359,12 +365,18 @@ class Generator {
                         if (x.doCreate) {
                                 let req = {};
                                 req.type = x.type;
-                                req.fields = generateReq(config,x);
+                                req.fields = generateReq(config, x);
                                 req.description = x.description;
-                                this._writer.writeReq(this._config.name,Render.renderEntity(req));
+                                req.validates = x.validates;
+                                req.name = x.type;
+                                req.type = "req";
+                                let content = Render.renderEntity(req);
+                                content = this._packageRender.renderPackage(content);
+                                this._writer.writeReq(x.type, content);
 
                                 this._packageRender.addPackage({
                                         name: x.type,
+                                        type: "req",
                                         isSystem: false
                                 });
                         }

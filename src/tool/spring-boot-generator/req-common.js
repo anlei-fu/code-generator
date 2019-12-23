@@ -1,5 +1,6 @@
 const { STR } = require("./../../libs/str")
 const {getConditions}=require("./condition-getter")
+const {getIncludes}=require("./includes-getter")
 const CACHE = new Map();
 
 /**
@@ -53,12 +54,23 @@ function getReqParams(config, withType) {
  * @param {ReqConfig} req 
  */
 function generateReq(config, req) {
-        let conditions = getConditions(config);
-        let additions = [];
+        let conditions;
+        if(config.type=="select"||config.type=="delete"){
+                conditions = getConditions(config);
+        }else if(config.type=="insert"){
+                conditions=getIncludes(config);
+        }else{
+                conditions=getIncludes(config).concat(getConditions(config));
+        }
         conditions = conditions.filter(x => !req.excludes.has(x.name));
+        let additions=[];
+       
         conditions.forEach(x => {
-                if (req.validates.has(x))
-                        x.validates = [];
+              
+                if (req.validates.has(x)){
+                        console.log("found");
+                        x.validates = req.validates.get(x);
+                }
 
                 if (x.range) {
                         additions.push({ name: `${x.name}Min`, type: x.type, validates: x.validates });

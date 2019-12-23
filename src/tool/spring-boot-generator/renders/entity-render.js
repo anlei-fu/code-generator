@@ -17,7 +17,7 @@ function renderEntity(entity) {
                         name: x.name,
                         type: x.type,
                         description: x.description,
-                        validates: STR.arrayToString(entity.validates=[])
+                        validates: STR.arrayToString(x.validates=[])
                 };
 
                 let field = _entityItemRender.renderTemplate(itemPatterns);
@@ -27,8 +27,10 @@ function renderEntity(entity) {
         content = content.trimRight() + "\r\n";
         let patterns = {
                 description: entity.description,
-                name: entity.type,
-                content
+                name: entity.name,
+                content,
+                type:entity.type,
+                extends:entity.extends?`extends ${entity.extends}`:""
         }
 
         return _entityRender.renderTemplate(patterns)

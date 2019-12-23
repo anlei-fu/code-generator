@@ -17,42 +17,44 @@ class Writer {
         }
 
         writeController(name, content) {
-                this.writeCore(`${this._controllerFolder}/${name}Controller.java`, content);
+                this.writeCore(`${this._controllerFolder}/${name}Controller.java`, content,name);
         }
 
         writeMapper(name, content) {
-                this.writeCore(`${this.mapperFolder}/${name}Mapper.java`, content);
+                this.writeCore(`${this.mapperFolder}/${name}Mapper.java`, content,name);
         }
         writeMapperConfig(name, content) {
-                this.writeCore(`${this.mapperConfigFolder}/${name}Mapper.xml`, content);
+                this.writeCore(`${this.mapperConfigFolder}/${name}Mapper.xml`, content,name);
         }
 
         writeService(name, content) {
-                this.writeCore(`${this.serviceFolder}/${name}Service.java`, content);
+                this.writeCore(`${this.serviceFolder}/${name}Service.java`, content,name);
         }
 
         writeServiceImpl(name, content) {
-                this.writeCore(`${this.serviceImplFolder}/${name}ServiceImpl.java`, content);
+                this.writeCore(`${this.serviceImplFolder}/${name}ServiceImpl.java`, content,name);
         }
 
         writeEntity(name, content) {
-                this.writeCore(`${this.entityFolder}/${name}.java`, content);
+                this.writeCore(`${this.entityFolder}/${name}.java`, content,name);
         }
 
         writeReq(name, content) {
-                this.writeCore(`${this.reqFolder}/${name}Req.java`, content);
+                this.writeCore(`${this.reqFolder}/${name}.java`, content,name);
         }
         writeResp(name, content) {
-                this.writeCore(`${this.respFolder}/${name}Resp.java`, content);
+                this.writeCore(`${this.respFolder}/${name}.java`, content,name);
         }
         writeParams(name, content) {
-                this.writeCore(`${this.paramsFolder}/${name}Params.java`, content);
+                this.writeCore(`${this.paramsFolder}/${name}.java`, content,name);
         }
 
-        writeCore(path, content) {
-                console.log(this.project);
-                console.log(content);
-                FILE.write(path, STR.replace(content, { "@project": this.project }));
+        writeCore(path, content,name) {
+                FILE.write(path, this.finalReplace(content,name));
+        }
+
+        finalReplace(content,name){
+              return  STR.replace(content, { "@project": this.project,"@name":name })
         }
 }
 

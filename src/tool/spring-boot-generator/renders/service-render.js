@@ -15,6 +15,7 @@ function renderService(config) {
                 content += _serviceItemRender.renderTemplate(item);
         });
 
+        content=content.trimRight()+"\r\n";
         return _serviceRender.renderTemplate({ content });
 }
 
