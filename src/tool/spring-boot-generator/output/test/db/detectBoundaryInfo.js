@@ -2,31 +2,6 @@ let detectBoundaryInfo = {
   name: "detectBoundaryInfo",
   description: "探伤管界",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    direction: {
-      name: "direction",
-      description: "行别",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    endMiles: {
-      name: "endMiles",
-      description: "终点里程",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
     id: {
       name: "id",
       description: "探伤管界编号",
@@ -38,10 +13,10 @@ let detectBoundaryInfo = {
         length: null
       }
     },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
+    workshopId: {
+      name: "workshopId",
+      description: "工区编号",
+      nullable: true,
       type: {
         name: "int",
         length: null
@@ -56,39 +31,12 @@ let detectBoundaryInfo = {
         length: null
       }
     },
-    longChain: {
-      name: "longChain",
-      description: "长链标记",
+    direction: {
+      name: "direction",
+      description: "行别",
       nullable: true,
       type: {
         name: "int",
-        length: null
-      }
-    },
-    operateStatus: {
-      name: "operateStatus",
-      description: "运营状态",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    remark: {
-      name: "remark",
-      description: "备注",
-      nullable: true,
-      type: {
-        name: "varchar",
         length: null
       }
     },
@@ -100,9 +48,17 @@ let detectBoundaryInfo = {
         name: "float"
       }
     },
-    status: {
-      name: "status",
-      description: "状态",
+    endMiles: {
+      name: "endMiles",
+      description: "终点里程",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    trackType: {
+      name: "trackType",
+      description: "轨道类型",
       nullable: true,
       type: {
         name: "int",
@@ -118,13 +74,57 @@ let detectBoundaryInfo = {
         length: null
       }
     },
-    trackType: {
-      name: "trackType",
-      description: "轨道类型",
+    operateStatus: {
+      name: "operateStatus",
+      description: "运营状态",
       nullable: true,
       type: {
         name: "int",
         length: null
+      }
+    },
+    longChain: {
+      name: "longChain",
+      description: "长链标记",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    remark: {
+      name: "remark",
+      description: "备注",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    status: {
+      name: "status",
+      description: "状态",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
       }
     },
     updateTime: {
@@ -135,9 +135,9 @@ let detectBoundaryInfo = {
         name: "datetime"
       }
     },
-    workshopId: {
-      name: "workshopId",
-      description: "工区编号",
+    operator: {
+      name: "operator",
+      description: "操作人",
       nullable: true,
       type: {
         name: "int",
@@ -148,42 +148,42 @@ let detectBoundaryInfo = {
 };
 
 let columnsArray = [
-  "createTime",
-  "direction",
-  "endMiles",
   "id",
-  "isDelete",
+  "workshopId",
   "lineId",
-  "longChain",
-  "operateStatus",
-  "operator",
-  "remark",
+  "direction",
   "startMiles",
-  "status",
-  "trackDisCategory",
+  "endMiles",
   "trackType",
+  "trackDisCategory",
+  "operateStatus",
+  "longChain",
+  "remark",
+  "status",
+  "isDelete",
+  "createTime",
   "updateTime",
-  "workshopId"
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2019-11-19 1:4:50",
-  direction: 957,
-  endMiles: 550,
-  id: 721,
-  isDelete: 138,
-  lineId: 607,
-  longChain: 297,
-  operateStatus: 418,
-  operator: 529,
-  remark: "备注787",
-  startMiles: 977,
-  status: 946,
-  trackDisCategory: 475,
-  trackType: 427,
-  updateTime: "2019-12-19 1:4:50",
-  workshopId: 481
+  id: 291,
+  workshopId: 199,
+  lineId: 837,
+  direction: 879,
+  startMiles: 793,
+  endMiles: 712,
+  trackType: 910,
+  trackDisCategory: 762,
+  operateStatus: 470,
+  longChain: 432,
+  remark: "备注369",
+  status: 808,
+  isDelete: 494,
+  createTime: "2020-1-23 1:3:35",
+  updateTime: "2019-12-22 1:3:35",
+  operator: 818
 };
 }
 

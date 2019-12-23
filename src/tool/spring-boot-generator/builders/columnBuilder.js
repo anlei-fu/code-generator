@@ -50,6 +50,17 @@ exports.ColumnBuilder = class ColumnBuilder {
         }
 
         /**
+         * Set expression
+         * 
+         * @param {String|[String]|{name:String}|[{name:String}]} item 
+         * @param {String} expression 
+         * @returns {ColumnBuilder}
+         */
+         expression(item,expression){
+                 return this._setProperty(item,"expression",expression);
+         } 
+
+        /**
          * Set property "alias"
          * 
          * @param {String|[String]|{name:String}|[{name:String}]} item 
@@ -217,7 +228,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @param {String|{name:String}} item 
          */
         _excludeCore(item) {
-                if (!TYPE.isString(item) || !TYPE.isObject(item))
+                if (!(TYPE.isString(item) || TYPE.isObject(item)))
                         throw new TypeError(`required type is 'String' or 'Object', but input is ${typeof item}`);
 
                 if (TYPE.isObject(item) && !item.name)
@@ -274,7 +285,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @param {String} key 
          * @param {Any} value 
          */
-        _setPropertyCore = (item, key, value) => {
+        _setPropertyCore(item, key, value){
                 item = this._addIfAbsent(item);
                 item[key] = value;
         }
@@ -286,9 +297,9 @@ exports.ColumnBuilder = class ColumnBuilder {
         * @param {String|{name:String}} item
         * @returns {ColumnBuilder}
         */
-        _addIfAbsent = (item) => {
+        _addIfAbsent(item){
 
-                if (!TYPE.isString(item) || !TYPE.isObject(item))
+                if (!(TYPE.isString(item) || TYPE.isObject(item)))
                         throw new TypeError(`required type is 'String' or 'Object', but input is ${typeof item}`);
 
                 if (TYPE.isObject(item) && !item.name)
@@ -307,7 +318,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * Internal call, normalize includes
          * 
          */
-        build = () => {
+        build(){
                 return OBJECT.toArray(this._includes);
         }
 }

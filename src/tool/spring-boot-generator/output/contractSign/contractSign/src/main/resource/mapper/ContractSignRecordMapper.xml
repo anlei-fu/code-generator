@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contractSign.mapper.@nameMapper">
+    <insert id="addContractSignRecord">
+          insert  into @tableName
+          <trimprefix="("suffix=")" suffixOverrides=",">
+undefinedundefinedundefinedundefinedundefinedundefinedundefined
+          </trim>
+          values
+          <trimprefix="("suffix=")" suffixOverrides=",">
+@content
+          </trim>
+    </insert>    <delete id="deleteContractSignRecordById">
+          delete from @tableName
+@where
+    </delete>    <update id="updateContractSignRecordById">
+        update @tableName
+@set
+@where
+    </update>    <select id="getContractSignRecordById" resultType="com.contractSign.pojo.@resultType">
+          select
+undefined
+          form contractSignRecordName
+
+@where
+    </select>    <select id="getContractSignRecordList" resultType="com.contractSign.pojo.@resultType">
+          select
+undefined
+          form contractSignRecordName
+
+@where
+    </select>
+</mapper>

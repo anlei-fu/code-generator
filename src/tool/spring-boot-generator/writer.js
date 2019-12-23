@@ -3,7 +3,7 @@ const { STR } = require("./../../libs/str")
 class Writer {
 
         constructor(project) {
-                this.project = project;
+                this.project = project||"";
                 let root = `./${project}/src/main/java/com/${project}`;
                 this.mapperFolder = `${root}/mapper`;
                 this.mapperConfigFolder = `./${project}/src/main/resource/mapper`;
@@ -50,6 +50,8 @@ class Writer {
         }
 
         writeCore(path, content) {
+                console.log(this.project);
+                console.log(content);
                 FILE.write(path, STR.replace(content, { "@project": this.project }));
         }
 }

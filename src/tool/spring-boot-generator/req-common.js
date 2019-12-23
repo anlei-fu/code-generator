@@ -1,4 +1,5 @@
 const { STR } = require("./../../libs/str")
+const {getConditions}=require("./condition-getter")
 const CACHE = new Map();
 
 /**
@@ -45,34 +46,33 @@ function getReqParams(config, withType) {
         return params;
 }
 
-function generateReq(config,req){
-        let conditions= getConditions(config);
-        let additions=[];
-        conditions=conditions.filter(x=>!req.excludes.has(x.name));
-        conditions.forEach(x=>{
-             if(req.validates.has(x))
-                 x.validates=[];
+/**
+ * Generate Req entity
+ * 
+ * @param {Config} config 
+ * @param {ReqConfig} req 
+ */
+function generateReq(config, req) {
+        let conditions = getConditions(config);
+        let additions = [];
+        conditions = conditions.filter(x => !req.excludes.has(x.name));
+        conditions.forEach(x => {
+                if (req.validates.has(x))
+                        x.validates = [];
 
-             if(x.range){
-                 additions.push({name:`${x.name}Min`,type:x.type,validates:x.validates});
-                 additions.push({name:`${x.name}Max`,type:x.type,validates:x.validates});
-             }
+                if (x.range) {
+                        additions.push({ name: `${x.name}Min`, type: x.type, validates: x.validates });
+                        additions.push({ name: `${x.name}Max`, type: x.type, validates: x.validates });
+                }
 
-             if(x.timeRange){
-                additions.push({name:`${x.name}Start`,type:x.type,validates:x.validates});
-                additions.push({name:`${x.name}End`,type:x.type,validates:x.validates});
-             }
+                if (x.timeRange) {
+                        additions.push({ name: `${x.name}Start`, type: x.type, validates: x.validates });
+                        additions.push({ name: `${x.name}End`, type: x.type, validates: x.validates });
+                }
         });
 
-        
-
-      return  conditions.concat(additions);
+        return conditions.concat(additions);
 }
-
-function generateValidates(column,req){
-     
-}
-
 
 module.exports = {
         getReqParamsWithoutType,

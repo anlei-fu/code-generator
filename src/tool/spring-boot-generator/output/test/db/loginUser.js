@@ -2,14 +2,6 @@ let loginUser = {
   name: "loginUser",
   description: "",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
     id: {
       name: "id",
       description: "",
@@ -39,6 +31,15 @@ let loginUser = {
         length: null
       }
     },
+    type: {
+      name: "type",
+      description: "",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
     state: {
       name: "state",
       description: "",
@@ -48,13 +49,12 @@ let loginUser = {
         length: null
       }
     },
-    type: {
-      name: "type",
+    createTime: {
+      name: "createTime",
       description: "",
       nullable: true,
       type: {
-        name: "varchar",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -69,24 +69,24 @@ let loginUser = {
 };
 
 let columnsArray = [
-  "createTime",
   "id",
   "name",
   "password",
-  "state",
   "type",
+  "state",
+  "createTime",
   "updateTime"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-19 1:4:50",
-  id: 372,
-  name: "名字867",
-  password: "密码3264",
-  state: "466",
-  type: "754",
-  updateTime: "2019-12-18 1:4:50"
+  id: 648,
+  name: "名字444",
+  password: "密码3125",
+  type: "430",
+  state: "587",
+  createTime: "2019-11-23 1:3:35",
+  updateTime: "2019-12-23 1:3:35"
 };
 }
 

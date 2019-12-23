@@ -6,18 +6,18 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-12-17 16:32:32
  */
-const { columnBuilder } = require("./columnBuilder");
+const { ColumnBuilder } = require("./columnBuilder");
 const { controllerBuilder } = require("./controllerBuilder");
 const { joinBuilder } = require("./joinBuilder")
-const { reqBuilder } = require("./reqBuilder")
+const { ReqBuilder } = require("./reqBuilder")
 const { respBuilder } = require("./respBuilder")
 const { paramBuilder } = require("./paramBuilder")
 
 exports.builder = function builder() {
         this._type;
         this._id;
-        this._includes = new columnBuilder();
-        this._conditions = new columnBuilder();
+        this._includes = new ColumnBuilder();
+        this._conditions = new ColumnBuilder();
         this._controller = new controllerBuilder();
         this.reqs = [];
         this._resp = new respBuilder();
@@ -62,7 +62,7 @@ exports.builder = function builder() {
          * @returns {builder}
          */
         this.req = (configer) => {
-                let builder = new reqBuilder();
+                let builder = new ReqBuilder();
                 configer(builder);
                 this.reqs.push(builder);
                 return this;

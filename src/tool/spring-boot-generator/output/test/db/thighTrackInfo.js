@@ -2,39 +2,6 @@ let thighTrackInfo = {
   name: "thighTrackInfo",
   description: "股道信息",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    curveRadius: {
-      name: "curveRadius",
-      description: "曲线半径",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
-    direction: {
-      name: "direction",
-      description: "行别",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    gradeSectionLength: {
-      name: "gradeSectionLength",
-      description: "坡段长度",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
     id: {
       name: "id",
       description: "股道编号",
@@ -46,10 +13,10 @@ let thighTrackInfo = {
         length: null
       }
     },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
+    stationId: {
+      name: "stationId",
+      description: "车站编号",
+      nullable: true,
       type: {
         name: "int",
         length: null
@@ -64,57 +31,13 @@ let thighTrackInfo = {
         length: null
       }
     },
-    maxGradient: {
-      name: "maxGradient",
-      description: "最大坡度",
+    workareaId: {
+      name: "workareaId",
+      description: "宸ュ尯缂栧彿",
       nullable: true,
       type: {
         name: "int",
         length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    sortNum: {
-      name: "sortNum",
-      description: "排序编号",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    stationId: {
-      name: "stationId",
-      description: "车站编号",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    status: {
-      name: "status",
-      description: "状态",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    thighTrackLength: {
-      name: "thighTrackLength",
-      description: "鑲￠亾闀垮害",
-      nullable: true,
-      type: {
-        name: "float"
       }
     },
     thighTrackNo: {
@@ -135,6 +58,15 @@ let thighTrackInfo = {
         length: null
       }
     },
+    direction: {
+      name: "direction",
+      description: "行别",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
     tieCategory: {
       name: "tieCategory",
       description: "轨枕类别",
@@ -142,6 +74,74 @@ let thighTrackInfo = {
       type: {
         name: "int",
         length: null
+      }
+    },
+    maxGradient: {
+      name: "maxGradient",
+      description: "最大坡度",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    curveRadius: {
+      name: "curveRadius",
+      description: "曲线半径",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    gradeSectionLength: {
+      name: "gradeSectionLength",
+      description: "坡段长度",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    thighTrackLength: {
+      name: "thighTrackLength",
+      description: "鑲￠亾闀垮害",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    sortNum: {
+      name: "sortNum",
+      description: "排序编号",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    status: {
+      name: "status",
+      description: "状态",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
       }
     },
     updateTime: {
@@ -152,9 +152,9 @@ let thighTrackInfo = {
         name: "datetime"
       }
     },
-    workareaId: {
-      name: "workareaId",
-      description: "宸ュ尯缂栧彿",
+    operator: {
+      name: "operator",
+      description: "操作人",
       nullable: true,
       type: {
         name: "int",
@@ -165,46 +165,46 @@ let thighTrackInfo = {
 };
 
 let columnsArray = [
-  "createTime",
-  "curveRadius",
-  "direction",
-  "gradeSectionLength",
   "id",
-  "isDelete",
-  "lineId",
-  "maxGradient",
-  "operator",
-  "sortNum",
   "stationId",
-  "status",
-  "thighTrackLength",
+  "lineId",
+  "workareaId",
   "thighTrackNo",
   "thighTrackType",
+  "direction",
   "tieCategory",
+  "maxGradient",
+  "curveRadius",
+  "gradeSectionLength",
+  "thighTrackLength",
+  "sortNum",
+  "status",
+  "isDelete",
+  "createTime",
   "updateTime",
-  "workareaId"
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2020-1-19 1:4:50",
-  curveRadius: 294,
-  direction: 594,
-  gradeSectionLength: 734,
-  id: 846,
-  isDelete: 237,
-  lineId: 587,
-  maxGradient: 606,
-  operator: 676,
-  sortNum: "排序编号254",
-  stationId: 147,
-  status: 844,
-  thighTrackLength: 493,
-  thighTrackNo: "股道号222",
-  thighTrackType: 636,
-  tieCategory: 866,
-  updateTime: "2019-12-19 1:4:50",
-  workareaId: 841
+  id: 813,
+  stationId: 420,
+  lineId: 913,
+  workareaId: 870,
+  thighTrackNo: "股道号802",
+  thighTrackType: 792,
+  direction: 153,
+  tieCategory: 311,
+  maxGradient: 260,
+  curveRadius: 253,
+  gradeSectionLength: 106,
+  thighTrackLength: 991,
+  sortNum: "排序编号661",
+  status: 228,
+  isDelete: 513,
+  createTime: "2019-11-23 1:3:35",
+  updateTime: "2019-11-23 1:3:35",
+  operator: 447
 };
 }
 

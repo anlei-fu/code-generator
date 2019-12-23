@@ -2,37 +2,15 @@ let lineInfo = {
   name: "lineInfo",
   description: "线路信息",
   columns: {
-    ballastType: {
-      name: "ballastType",
-      description: "道床类别",
-      nullable: true,
+    id: {
+      name: "id",
+      description: "线路编号",
+      isPk: true,
+      autoIncrement: true,
+      nullable: false,
       type: {
         name: "int",
         length: null
-      }
-    },
-    commissioningDate: {
-      name: "commissioningDate",
-      description: "投产日期",
-      nullable: true,
-      type: {
-        name: "date"
-      }
-    },
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    distance: {
-      name: "distance",
-      description: "线路里程",
-      nullable: true,
-      type: {
-        name: "float"
       }
     },
     fullName: {
@@ -44,9 +22,36 @@ let lineInfo = {
         length: null
       }
     },
-    gaugeType: {
-      name: "gaugeType",
-      description: "轨距类型",
+    shortName: {
+      name: "shortName",
+      description: "线路简称",
+      nullable: false,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    lineCode: {
+      name: "lineCode",
+      description: "线路编码",
+      nullable: false,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    inputCode: {
+      name: "inputCode",
+      description: "输入代码",
+      nullable: false,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    nature: {
+      name: "nature",
+      description: "线路性质",
       nullable: true,
       type: {
         name: "int",
@@ -62,30 +67,36 @@ let lineInfo = {
         length: null
       }
     },
-    id: {
-      name: "id",
-      description: "线路编号",
-      isPk: true,
-      autoIncrement: true,
-      nullable: false,
+    trackType: {
+      name: "trackType",
+      description: "轨道类型",
+      nullable: true,
       type: {
         name: "int",
         length: null
       }
     },
-    inputCode: {
-      name: "inputCode",
-      description: "输入代码",
-      nullable: false,
+    distance: {
+      name: "distance",
+      description: "线路里程",
+      nullable: true,
       type: {
-        name: "varchar",
+        name: "float"
+      }
+    },
+    tractionType: {
+      name: "tractionType",
+      description: "牵引类型",
+      nullable: true,
+      type: {
+        name: "int",
         length: null
       }
     },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
+    gaugeType: {
+      name: "gaugeType",
+      description: "轨距类型",
+      nullable: true,
       type: {
         name: "int",
         length: null
@@ -99,22 +110,20 @@ let lineInfo = {
         name: "float"
       }
     },
-    lineBranches: {
-      name: "lineBranches",
-      description: "线路干支",
+    minRadiusCurve: {
+      name: "minRadiusCurve",
+      description: "最小曲线半径",
       nullable: true,
       type: {
-        name: "int",
-        length: null
+        name: "float"
       }
     },
-    lineCode: {
-      name: "lineCode",
-      description: "线路编码",
-      nullable: false,
+    yearVolume: {
+      name: "yearVolume",
+      description: "年运量(万吨)",
+      nullable: true,
       type: {
-        name: "varchar",
-        length: null
+        name: "float"
       }
     },
     lineNum: {
@@ -126,17 +135,9 @@ let lineInfo = {
         length: null
       }
     },
-    minRadiusCurve: {
-      name: "minRadiusCurve",
-      description: "最小曲线半径",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
-    nature: {
-      name: "nature",
-      description: "线路性质",
+    ballastType: {
+      name: "ballastType",
+      description: "道床类别",
       nullable: true,
       type: {
         name: "int",
@@ -152,21 +153,20 @@ let lineInfo = {
         length: null
       }
     },
-    operator: {
-      name: "operator",
-      description: "操作人",
+    commissioningDate: {
+      name: "commissioningDate",
+      description: "投产日期",
+      nullable: true,
+      type: {
+        name: "date"
+      }
+    },
+    lineBranches: {
+      name: "lineBranches",
+      description: "线路干支",
       nullable: true,
       type: {
         name: "int",
-        length: null
-      }
-    },
-    shortName: {
-      name: "shortName",
-      description: "线路简称",
-      nullable: false,
-      type: {
-        name: "varchar",
         length: null
       }
     },
@@ -179,22 +179,21 @@ let lineInfo = {
         length: null
       }
     },
-    trackType: {
-      name: "trackType",
-      description: "轨道类型",
-      nullable: true,
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
       type: {
         name: "int",
         length: null
       }
     },
-    tractionType: {
-      name: "tractionType",
-      description: "牵引类型",
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
       nullable: true,
       type: {
-        name: "int",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -205,70 +204,71 @@ let lineInfo = {
         name: "datetime"
       }
     },
-    yearVolume: {
-      name: "yearVolume",
-      description: "年运量(万吨)",
+    operator: {
+      name: "operator",
+      description: "操作人",
       nullable: true,
       type: {
-        name: "float"
+        name: "int",
+        length: null
       }
     }
   }
 };
 
 let columnsArray = [
-  "ballastType",
-  "commissioningDate",
-  "createTime",
-  "distance",
-  "fullName",
-  "gaugeType",
-  "grade",
   "id",
-  "inputCode",
-  "isDelete",
-  "limitGrad",
-  "lineBranches",
-  "lineCode",
-  "lineNum",
-  "minRadiusCurve",
-  "nature",
-  "operateType",
-  "operator",
+  "fullName",
   "shortName",
-  "status",
+  "lineCode",
+  "inputCode",
+  "nature",
+  "grade",
   "trackType",
+  "distance",
   "tractionType",
+  "gaugeType",
+  "limitGrad",
+  "minRadiusCurve",
+  "yearVolume",
+  "lineNum",
+  "ballastType",
+  "operateType",
+  "commissioningDate",
+  "lineBranches",
+  "status",
+  "isDelete",
+  "createTime",
   "updateTime",
-  "yearVolume"
+  "operator"
 ];
 
 function create() {
   return {
-  ballastType: 621,
-  commissioningDate: "2019-12-19 1:4:50",
-  createTime: "2019-12-18 1:4:50",
-  distance: 670,
-  fullName: "线路全称353",
-  gaugeType: 47,
-  grade: 248,
-  id: 103,
-  inputCode: "输入代码887",
-  isDelete: 155,
-  limitGrad: 195,
-  lineBranches: 311,
-  lineCode: "线路编码252",
-  lineNum: 423,
-  minRadiusCurve: 937,
-  nature: 428,
-  operateType: 712,
-  operator: 816,
-  shortName: "线路简称476",
-  status: 231,
-  trackType: 811,
-  tractionType: 461,
-  updateTime: "2019-11-19 1:4:50",
-  yearVolume: 65
+  id: 606,
+  fullName: "线路全称418",
+  shortName: "线路简称341",
+  lineCode: "线路编码941",
+  inputCode: "输入代码635",
+  nature: 191,
+  grade: 889,
+  trackType: 967,
+  distance: 693,
+  tractionType: 724,
+  gaugeType: 94,
+  limitGrad: 899,
+  minRadiusCurve: 966,
+  yearVolume: 833,
+  lineNum: 728,
+  ballastType: 379,
+  operateType: 706,
+  commissioningDate: "2019-12-30 1:3:35",
+  lineBranches: 44,
+  status: 775,
+  isDelete: 278,
+  createTime: "2019-12-23 1:3:35",
+  updateTime: "2019-12-22 1:3:35",
+  operator: 824
 };
 }
 

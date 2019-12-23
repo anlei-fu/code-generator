@@ -2,4 +2,4 @@ function renderConditions(config) {
 
 }
 
-exports.renderConditions = renderCondition;
+exports.renderConditions = renderConditions;

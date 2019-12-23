@@ -31,7 +31,7 @@ class ReqBuilder {
          * @param {String|Object | [String|Object]} items 
          * @returns {reqBuilder}
          */
-        excludes(item) {
+        excludes(items) {
                 this._excludes = TYPE.isString(items) ? [items] : items;
                 return this;
         }
@@ -187,8 +187,9 @@ class ReqBuilder {
                 if (!this._validates.has(item))
                         this._validates.set(item, new Set());
 
-                if (!this._validates[item].has(validate))
-                        this._validates[item].add(validate);
-
+                if (!this._validates.get(item).has(validate))
+                        this._validates.get(item).add(validate);
         }
 }
+
+exports.ReqBuilder=ReqBuilder;

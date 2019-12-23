@@ -1,24 +1,32 @@
 const { divisionUser } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.divisionUserConfig = {
         table: divisionUser,
         name: "DivisionUser",
                 items: [
-                        
+
                         // add
+                        // id validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDivisionUser")
                                 .includes(collection => {
                                         collection.includes(divisionUser.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/divisionUser");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("id","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +36,44 @@ exports.divisionUserConfig = {
                                 .id("deleteDivisionUserById")
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/divisionUser/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+
                         new builder()
                                 .type("update")
                                 .id("updateDivisionUserById")
                                 .includes(collection => {
                                         collection.includes(divisionUser.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/divisionUser/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+
                                 })
                                 .build(),
 
@@ -75,15 +86,15 @@ exports.divisionUserConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/divisionUser/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +102,7 @@ exports.divisionUserConfig = {
                                 .build(),
 
                         // getList
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +110,9 @@ exports.divisionUserConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(divisionUser.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getDivisionUserList")
                                 .controller(controller => {
@@ -106,7 +120,8 @@ exports.divisionUserConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+
                                 })
                                 .build()
                 ]

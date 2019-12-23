@@ -51,6 +51,9 @@ exports.paramBuilder = function paramBuilder() {
                 return this;
         }
 
+        /**
+         * 
+         */
         this.build = () => {
                 return {
                         name: this._name,

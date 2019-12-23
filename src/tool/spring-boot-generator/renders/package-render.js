@@ -1,13 +1,18 @@
-
+const {STR}=require("./../../../libs/str")
 const PACKAGES = new Map();
 
 class PackegeRender {
-        constructor(project){
-                this._project=project;
+        constructor(project) {
+                this._project = project;
         }
-        addPackage(package) {
-                if (!PACKAGES.has(package.name))
-                        PACKAGES.set(package.name);
+
+        /**
+         * 
+         * @param {Package} pk 
+         */
+        addPackage(pk) {
+                if (!PACKAGES.has(pk.name))
+                        PACKAGES.set(pk.name);
         }
 
         /**
@@ -23,18 +28,18 @@ class PackegeRender {
                 let packagesPattern = ls[0]
                         , systems = []
                         , others = STR.remove(packagesPattern, "@packages")
-                                .replace(/@project/g,this._project)
+                                .replace(/@project/g, this._project)
                                 .split("\r\n");
 
                 PACKAGES.forEach((value, key) => {
-                        if (content.indexOf(key) == -1 || packages.includes(key))
+                        if (content.indexOf(key) == -1 || packagesPattern.includes(key))
                                 return;
 
-                        if (value.isSystem) {
-                                systems.push(value.package);
-                        } else {
-                                others.push(value.package || `import com.@project.pojo.${value.type}.${key};`);
-                        }
+                        // if (value.isSystem) {
+                        //         systems.push(value.package);
+                        // } else {
+                        //         others.push(value.package || `import com.@project.pojo.${value.type}.${key};`);
+                        // }
                 });
 
                 others.forEach((x, i) => {
@@ -61,4 +66,4 @@ class PackegeRender {
         }
 }
 
-module.PackegeRender = PackegeRender;
+exports.PackegeRender = PackegeRender;

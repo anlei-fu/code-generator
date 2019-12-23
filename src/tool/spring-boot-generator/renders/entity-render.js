@@ -17,7 +17,7 @@ function renderEntity(entity) {
                         name: x.name,
                         type: x.type,
                         description: x.description,
-                        validates: STR.arrayToString(entity.validates)
+                        validates: STR.arrayToString(entity.validates=[])
                 };
 
                 let field = _entityItemRender.renderTemplate(itemPatterns);

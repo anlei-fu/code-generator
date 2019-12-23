@@ -73,7 +73,7 @@ exports.SimpleRender = class SimpleRender {
                 if (!this._template)
                         throw new Error("no template set to this render!");
 
-                return this.renderContent(this._template, generate, config);
+                return this.renderContent(this._template,config,generate);
         }
 
         /**
@@ -97,10 +97,11 @@ exports.SimpleRender = class SimpleRender {
         generatePattern(config = {}) {
                 let copy = OBJECT.clone(this._basePatterns);
                 OBJECT.extend(copy, config);
+                let _new={};
                 OBJECT.forEach(copy, (key, value) => {
-                        patterns[`${this._prefix}${key}${this._suffix}`] = value;
+                        _new[`${this._prefix}${key}${this._suffix}`] = value;
                 });
-                return copy;
+                return _new;
         }
 
 }

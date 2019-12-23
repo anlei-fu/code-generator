@@ -24,8 +24,8 @@ function renderInsert(model) {
 
         let insertModel = {
                 id: model.id,
-                columns: renderTrim({ content: columns, suffix=")", prefix="(" }),
-                properties: renderTrim({ properties: properties, suffix=")", prefix="(" }),
+                columns: renderTrim({ content: columns, suffix:")", prefix:"(" }),
+                properties: renderTrim({ properties: properties, suffix:")", prefix:"(" }),
         }
 
         return INSERT_RENDER.renderTemplate(insertModel);

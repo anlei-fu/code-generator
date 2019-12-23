@@ -2,31 +2,6 @@ let tunnelInfo = {
   name: "tunnelInfo",
   description: "隧道信息",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    direction: {
-      name: "direction",
-      description: "行别",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    endMiles: {
-      name: "endMiles",
-      description: "终点里程",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
     id: {
       name: "id",
       description: "隧道编号",
@@ -35,6 +10,24 @@ let tunnelInfo = {
       nullable: false,
       type: {
         name: "int",
+        length: null
+      }
+    },
+    tunneNo: {
+      name: "tunneNo",
+      description: "隧道号",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    tunneName: {
+      name: "tunneName",
+      description: "隧道名",
+      nullable: true,
+      type: {
+        name: "varchar",
         length: null
       }
     },
@@ -47,21 +40,13 @@ let tunnelInfo = {
         length: null
       }
     },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
+    trackDivisionId: {
+      name: "trackDivisionId",
+      description: "工务段编号",
+      nullable: true,
       type: {
         name: "int",
         length: null
-      }
-    },
-    length: {
-      name: "length",
-      description: "全长",
-      nullable: true,
-      type: {
-        name: "float"
       }
     },
     lineId: {
@@ -73,13 +58,46 @@ let tunnelInfo = {
         length: null
       }
     },
-    longChain: {
-      name: "longChain",
-      description: "长链标记",
+    side: {
+      name: "side",
+      description: "线别",
       nullable: true,
       type: {
         name: "int",
         length: null
+      }
+    },
+    direction: {
+      name: "direction",
+      description: "行别",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    trackDistance: {
+      name: "trackDistance",
+      description: "轨距",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    startMiles: {
+      name: "startMiles",
+      description: "起点里程",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    endMiles: {
+      name: "endMiles",
+      description: "终点里程",
+      nullable: true,
+      type: {
+        name: "float"
       }
     },
     middleMiles: {
@@ -90,9 +108,17 @@ let tunnelInfo = {
         name: "float"
       }
     },
-    operator: {
-      name: "operator",
-      description: "操作人",
+    length: {
+      name: "length",
+      description: "全长",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    longChain: {
+      name: "longChain",
+      description: "长链标记",
       nullable: true,
       type: {
         name: "int",
@@ -108,23 +134,6 @@ let tunnelInfo = {
         length: null
       }
     },
-    side: {
-      name: "side",
-      description: "线别",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    startMiles: {
-      name: "startMiles",
-      description: "起点里程",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
     status: {
       name: "status",
       description: "状态",
@@ -134,39 +143,21 @@ let tunnelInfo = {
         length: null
       }
     },
-    trackDistance: {
-      name: "trackDistance",
-      description: "轨距",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
-    trackDivisionId: {
-      name: "trackDivisionId",
-      description: "工务段编号",
-      nullable: true,
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
       type: {
         name: "int",
         length: null
       }
     },
-    tunneName: {
-      name: "tunneName",
-      description: "隧道名",
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
       nullable: true,
       type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    tunneNo: {
-      name: "tunneNo",
-      description: "隧道号",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -176,55 +167,64 @@ let tunnelInfo = {
       type: {
         name: "datetime"
       }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "createTime",
-  "direction",
-  "endMiles",
   "id",
-  "inputCode",
-  "isDelete",
-  "length",
-  "lineId",
-  "longChain",
-  "middleMiles",
-  "operator",
-  "remark",
-  "side",
-  "startMiles",
-  "status",
-  "trackDistance",
-  "trackDivisionId",
-  "tunneName",
   "tunneNo",
-  "updateTime"
+  "tunneName",
+  "inputCode",
+  "trackDivisionId",
+  "lineId",
+  "side",
+  "direction",
+  "trackDistance",
+  "startMiles",
+  "endMiles",
+  "middleMiles",
+  "length",
+  "longChain",
+  "remark",
+  "status",
+  "isDelete",
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2020-1-19 1:4:50",
-  direction: 476,
-  endMiles: 626,
-  id: 833,
-  inputCode: "输入码565",
-  isDelete: 135,
-  length: 24,
-  lineId: 228,
-  longChain: 761,
-  middleMiles: 317,
-  operator: 955,
-  remark: "备注461",
-  side: 942,
-  startMiles: 50,
-  status: 767,
-  trackDistance: 12,
-  trackDivisionId: 525,
-  tunneName: "隧道名229",
-  tunneNo: "隧道号168",
-  updateTime: "2019-12-19 1:4:50"
+  id: 787,
+  tunneNo: "隧道号232",
+  tunneName: "隧道名867",
+  inputCode: "输入码677",
+  trackDivisionId: 437,
+  lineId: 141,
+  side: 147,
+  direction: 280,
+  trackDistance: 189,
+  startMiles: 982,
+  endMiles: 80,
+  middleMiles: 459,
+  length: 254,
+  longChain: 686,
+  remark: "备注13",
+  status: 385,
+  isDelete: 62,
+  createTime: "2019-11-23 1:3:35",
+  updateTime: "2019-12-23 1:3:35",
+  operator: 410
 };
 }
 

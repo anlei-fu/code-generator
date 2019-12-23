@@ -115,6 +115,9 @@ const { STR } = require("../../libs/str");
 const { Render } = require("./renders/render.js");
 const { generateReq } = require("./req-common");
 const { Writer } = require("./writer");
+const { getJavaType } = require("./utils");
+const { getConditions } = require("./condition-getter")
+const {PackegeRender} =require("./renders/package-render")
 
 
 /**
@@ -129,7 +132,13 @@ class Generator {
         constructor(config) {
                 this._checkConfig(config);
                 this._config = config;
-                this._initConfig(config);
+
+                this._initTable(config.table);
+                config.items.forEach(x=>{
+                        x.table=config.table;
+                        this._initConfig(x);
+                });
+               
                 this._packageRender = new PackegeRender();
                 this._writer = new Writer(config.project);
         }
@@ -159,14 +168,14 @@ class Generator {
         }
 
 
-        _checkConfig() {
-                if (!this._config.name)
+        _checkConfig(config) {
+                if (!config.name)
                         throw new Error("config name property is required!")
 
-                if (!this._config.table)
+                if (!config.table)
                         throw new Error("config table property is required!")
 
-                this._config.items.forEach(item => {
+                config.items.forEach(item => {
                         item.joins.forEach(join => {
                                 if (!join.joinCondition || !join.table)
                                         throw new Error("join config incorrect");
@@ -175,13 +184,12 @@ class Generator {
         }
 
         _initConfig(config) {
-                this._initTable(config.table);
 
                 if (config.alias)
                         this._config.table.alias = config.alias;
 
                 config.type = config.type || "select";
-                config.id = config.id || getDefaultId(config);
+                config.id = config.id || this._getDefaultId(config);
 
                 if (config.reqs.length == 0)
                         config.reqs = getDefaultReqs(config);
@@ -211,6 +219,47 @@ class Generator {
                 }
         }
 
+        /**
+         * Analyze and generate default id
+         * 
+         *  {get|delete|update|add}{entity}ByxxyyAndzz
+         * 
+         * @param {Config} config 
+         */
+        _getDefaultId(config) {
+                let id = "";
+                switch (config.type) {
+                        case "select":
+                                id = "get";
+                                break;
+                        case "delete":
+                                id = "get";
+                                break;
+                        case "insert":
+                                id = "add";
+                                break;
+                        default:
+                                id = "update";
+                                break;
+                }
+
+                let conditions = getConditions(config);
+                if (conditions.length == 1) {
+                        id += config.name + "By"
+                        id += STR.upperFirstLetter(conditions[0].name);
+                } else if (conditions.length < 4) {
+                        conditions.forEach((x, i, array) => {
+                                id += i == array.length - 1
+                                        ? "And" + STR.upperFirstLetter(x.name)
+                                        : STR.upperFirstLetter(x.name);
+                        });
+                        id += config.name + "By"
+                } else {
+                        id += config.name;
+                }
+
+                return id;
+        }
         /**
          * Init table columns ,convert 'origin type' to 'java type'
          * 
@@ -246,10 +295,10 @@ class Generator {
                 entity.type = this._config.name;
                 entity.description = this._config.table.description;
                 entity.fields = OBJECT.toArray(this._config.table.columns);
-                this._writer.writeEntity(entity);
+                this._writer.writeEntity(this._config.name,Render.renderEntity(entity));
 
                 this._packageRender.addPackage({
-                        name:STR.upperFirstLetter(type),
+                        name: STR.upperFirstLetter(entity.type),
                         isSystem: false
                 });
         }
@@ -260,7 +309,7 @@ class Generator {
         _generateMapper() {
                 let mapper = Render.renderMapper(this._config);
                 mapper = this._packageRender.renderPackage(mapper);
-                this._writer.writeMapper(mapper);
+                this._writer.writeMapper(this._config.name,mapper);
         }
 
         /**
@@ -268,7 +317,7 @@ class Generator {
          */
         _generateMapperConfig() {
                 let mapperConfig = Render.renderMapperConfig(this._config);
-                this._writer.writeMapperConfig(mapperConfig);
+                this._writer.writeMapperConfig(this._config.name,mapperConfig);
         }
 
         /**
@@ -277,16 +326,16 @@ class Generator {
         _generateService() {
                 let service = Render.renderService(this._config);
                 service = this._packageRender.renderPackage(service);
-                this._writer.writeController(service);
+                this._writer.writeController(this._config.name,service);
         }
 
         /**
          * Write service impl file
          */
         _generateServiceImpl() {
-                let serviceImpl = Render.renderService(this._config);
+                let serviceImpl = Render.renderServiceImpl(this._config);
                 serviceImpl = this._packageRender.renderPackage(serviceImpl);
-                this._writer.writeController(serviceImpl);
+                this._writer.writeServiceImpl(this._config.name,serviceImpl);
         }
 
         /**
@@ -295,7 +344,7 @@ class Generator {
         _generateController() {
                 let controller = Render.renderController(this._config);
                 controller = this._packageRender.renderPackage(controller);
-                this._writer.writeController(controller);
+                this._writer.writeController(this._config.name,controller);
         }
 
         /**
@@ -310,12 +359,12 @@ class Generator {
                         if (x.doCreate) {
                                 let req = {};
                                 req.type = x.type;
-                                req.fields = generateReq(config);
-                                req.description=x.description;
-                                this._writer.writeReq(Render.renderEntity(req));
+                                req.fields = generateReq(config,x);
+                                req.description = x.description;
+                                this._writer.writeReq(this._config.name,Render.renderEntity(req));
 
                                 this._packageRender.addPackage({
-                                        name:x.type,
+                                        name: x.type,
                                         isSystem: false
                                 });
                         }
@@ -331,14 +380,14 @@ class Generator {
          */
         _generateResp(config) {
                 if (config.resp.doCreate) {
-                        let resp = {};
-                        resp.type = config.resp.type;
-                        resp.fields = getRespFields(config);
-                        resp.description=config.resp.description;
-                        this._writer.writeResp(config);
+                        // let resp = {};
+                        // resp.type = config.resp.type;
+                        // resp.fields = getRespFields(config);
+                        // resp.description = config.resp.description;
+                        // this._writer.writeResp(config);
 
                         this._packageRender.addPackage({
-                                name:STR.config.resp.type,
+                                name: STR.config.resp.type,
                                 isSystem: false
                         });
                 }

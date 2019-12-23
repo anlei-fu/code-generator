@@ -3,6 +3,7 @@ const { STR } = require("./../../libs/str");
 const { FILE } = require("./../../libs/file");
 const { generate } = require("./../../sqls/model/model-generator")
 const { resolve } = require("./../../sqls/model/resolver")
+const { BuilderConfigGenerator } = require("./config-template-generator")
 
 /**
  * Initialize a spring boot CRUD web project 
@@ -23,16 +24,16 @@ async function init(project, dbConfig) {
                 tableNames.push(x.name);
 
                 let pk;
-                for(const c in x.columns){
-                    pk=pk||c;
+                for (const c in x.columns) {
+                        pk = pk || c;
 
-                    if(x.columns[c].isPk){
-                            pk=x.columns[c].name;
-                            break;
-                    }
+                        if (x.columns[c].isPk) {
+                                pk = x.columns[c].name;
+                                break;
+                        }
                 }
-                pk=pk||x.columns[key].name;
-                generateConfigItem(root, x.name,pk);
+                pk = pk || x.columns[key].name;
+                generateConfigItem(root, x, pk);
         });
 
         // create all.js
@@ -45,10 +46,12 @@ async function init(project, dbConfig) {
         // create index.js
         FILE.write(`./output/${project}/index.js`, FILE.read("./templates/generator.js").replace(/@project/g, project));
 
-        FILE.copy('./templates/packages.js',`./output/${project}/packages.js`);
+        FILE.copy('./templates/packages.js', `./output/${project}/packages.js`);
 
         // generate all table infos
         await generate(dbConfig, dbConfig.db, `./output/${project}/db`);
+
+        console.log(`project ${project} init finished!`);
 }
 
 /**
@@ -124,19 +127,19 @@ function makeAllFolders(project, dbConfig) {
 /**
  * Generate confi item
  * 
- * @param {String} root 
+ * @param {String} configRoot 
  * @param {String} tableName 
  */
-function generateConfigItem(root, tableName,primaryKey) {
-        let templates = FILE.read("./templates/config-item.js");
+function generateConfigItem(configRoot, table, primaryKey) {
+        let templates = new BuilderConfigGenerator().generate(table);
         let patterns = {
-                "@name": STR.upperFirstLetter(tableName),
-                "@sname": tableName,
-                "@key":STR.upperFirstLetter(primaryKey),
-                "@skey":primaryKey
+                "@name": STR.upperFirstLetter(table.name),
+                "@sname": table.name,
+                "@key": STR.upperFirstLetter(primaryKey),
+                "@skey": primaryKey
         };
         templates = STR.replace(templates, patterns);
-        FILE.write(`${root}/${tableName}.js`, templates);
+        FILE.write(`${configRoot}/${table.name}.js`, templates);
 }
 
 exports.init = init;

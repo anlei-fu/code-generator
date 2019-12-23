@@ -1,8 +1,8 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
 const { renderIf } = require("./if-render");
-
+const IF_IDENT="";
 const _columnsRender = new SimpleRender();
-_columnsRender.setTempalte(`${ident}  @column@alias@suffix\r\n`);
+_columnsRender.setTempalte(`${IF_IDENT}  @column@alias@suffix\r\n`);
 
 /**
  * Render if column expression
@@ -12,7 +12,7 @@ _columnsRender.setTempalte(`${ident}  @column@alias@suffix\r\n`);
  * @returns {String}
  */
 function renderColumn(model) {
-        model.alias =model.alias?`as ${model.alias}`:" ";
+        model.alias =model.alias?`as ${model.alias} `:" ";
         let content = _columnsRender.renderTemplate(model);
         model.content = content;
         return  renderIf(model);

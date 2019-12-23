@@ -2,29 +2,30 @@ let divisionUser = {
   name: "divisionUser",
   description: "工务段用户关系表",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    divisionId: {
-      name: "divisionId",
-      description: "工务段id",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
     id: {
       name: "id",
       description: "编号",
       isPk: true,
       autoIncrement: true,
       nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    userId: {
+      name: "userId",
+      description: "用户id",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    divisionId: {
+      name: "divisionId",
+      description: "工务段id",
+      nullable: true,
       type: {
         name: "int",
         length: null
@@ -39,13 +40,12 @@ let divisionUser = {
         length: null
       }
     },
-    operator: {
-      name: "operator",
-      description: "操作人",
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
       nullable: true,
       type: {
-        name: "int",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -56,9 +56,9 @@ let divisionUser = {
         name: "datetime"
       }
     },
-    userId: {
-      name: "userId",
-      description: "用户id",
+    operator: {
+      name: "operator",
+      description: "操作人",
       nullable: true,
       type: {
         name: "int",
@@ -69,24 +69,24 @@ let divisionUser = {
 };
 
 let columnsArray = [
-  "createTime",
-  "divisionId",
   "id",
+  "userId",
+  "divisionId",
   "isDelete",
-  "operator",
+  "createTime",
   "updateTime",
-  "userId"
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-19 1:4:50",
-  divisionId: 335,
-  id: 632,
-  isDelete: 47,
-  operator: 549,
-  updateTime: "2019-11-19 1:4:50",
-  userId: 15
+  id: 930,
+  userId: 884,
+  divisionId: 869,
+  isDelete: 747,
+  createTime: "2020-1-23 1:3:35",
+  updateTime: "2019-12-22 1:3:35",
+  operator: 846
 };
 }
 

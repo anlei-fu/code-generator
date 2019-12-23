@@ -9,13 +9,14 @@ const CACHE = new Map();
  */
 function getConditions(config) {
 
-        if (config.type == "insert")
-                throw new Error("insert has no conditions");
+        // if (config.type == "insert")
+        //         throw new Error("insert has no conditions");
 
         if (CACHE.has(config.id))
                 return CACHE.get(config.id);
 
         let conditions = [];
+        console.log(config);
         config.conditions.forEach(x => {
                 conditions.push(getColumn(config.table, x));
         });

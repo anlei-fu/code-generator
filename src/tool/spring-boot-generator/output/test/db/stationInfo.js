@@ -2,23 +2,6 @@ let stationInfo = {
   name: "stationInfo",
   description: "车站信息",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    fullName: {
-      name: "fullName",
-      description: "车站全称",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
     id: {
       name: "id",
       description: "车站编号",
@@ -30,39 +13,21 @@ let stationInfo = {
         length: null
       }
     },
-    inputCode: {
-      name: "inputCode",
-      description: "输入代码",
+    trackDivisionId: {
+      name: "trackDivisionId",
+      description: "公务段编号",
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    fullName: {
+      name: "fullName",
+      description: "车站全称",
       nullable: true,
       type: {
         name: "varchar",
-        length: null
-      }
-    },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    jobType: {
-      name: "jobType",
-      description: "技术作业别",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
-      nullable: true,
-      type: {
-        name: "int",
         length: null
       }
     },
@@ -84,12 +49,12 @@ let stationInfo = {
         length: null
       }
     },
-    stationGrade: {
-      name: "stationGrade",
-      description: "车站等级",
+    inputCode: {
+      name: "inputCode",
+      description: "输入代码",
       nullable: true,
       type: {
-        name: "int",
+        name: "varchar",
         length: null
       }
     },
@@ -102,18 +67,18 @@ let stationInfo = {
         length: null
       }
     },
-    status: {
-      name: "status",
-      description: "状态",
+    stationGrade: {
+      name: "stationGrade",
+      description: "车站等级",
       nullable: true,
       type: {
         name: "int",
         length: null
       }
     },
-    ternoutNum: {
-      name: "ternoutNum",
-      description: "岔道数量",
+    jobType: {
+      name: "jobType",
+      description: "技术作业别",
       nullable: true,
       type: {
         name: "int",
@@ -129,13 +94,39 @@ let stationInfo = {
         length: null
       }
     },
-    trackDivisionId: {
-      name: "trackDivisionId",
-      description: "公务段编号",
-      nullable: false,
+    ternoutNum: {
+      name: "ternoutNum",
+      description: "岔道数量",
+      nullable: true,
       type: {
         name: "int",
         length: null
+      }
+    },
+    status: {
+      name: "status",
+      description: "状态",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
       }
     },
     updateTime: {
@@ -145,47 +136,56 @@ let stationInfo = {
       type: {
         name: "datetime"
       }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "createTime",
-  "fullName",
   "id",
-  "inputCode",
-  "isDelete",
-  "jobType",
-  "operator",
+  "trackDivisionId",
+  "fullName",
   "shortName",
   "stationCode",
-  "stationGrade",
+  "inputCode",
   "stationType",
-  "status",
-  "ternoutNum",
+  "stationGrade",
+  "jobType",
   "thighTrackNum",
-  "trackDivisionId",
-  "updateTime"
+  "ternoutNum",
+  "status",
+  "isDelete",
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-18 1:4:50",
-  fullName: "车站全称613",
-  id: 143,
-  inputCode: "输入代码446",
-  isDelete: 747,
-  jobType: 312,
-  operator: 257,
-  shortName: "车站简称399",
-  stationCode: "车站编码429",
-  stationGrade: 587,
-  stationType: 684,
-  status: 903,
-  ternoutNum: 665,
-  thighTrackNum: 607,
-  trackDivisionId: 490,
-  updateTime: "2019-11-19 1:4:50"
+  id: 131,
+  trackDivisionId: 234,
+  fullName: "车站全称252",
+  shortName: "车站简称9",
+  stationCode: "车站编码404",
+  inputCode: "输入代码994",
+  stationType: 49,
+  stationGrade: 901,
+  jobType: 666,
+  thighTrackNum: 135,
+  ternoutNum: 433,
+  status: 279,
+  isDelete: 704,
+  createTime: "2019-11-23 1:3:35",
+  updateTime: "2020-1-23 1:3:35",
+  operator: 301
 };
 }
 

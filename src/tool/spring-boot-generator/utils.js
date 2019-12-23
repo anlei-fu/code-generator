@@ -17,6 +17,8 @@ const BASIC_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String", "L
  *  @param { {name:String,length:number} } sqlType
  */
 exports.getJavaType = function (sqlType) {
+        if (typeof sqlType == "string")
+                return sqlType;
 
         // already been converted
         if (!sqlType.name)
@@ -37,7 +39,7 @@ exports.getJavaType = function (sqlType) {
         }
         else if (sqlType.name.indexOf("small") != -1) {
                 return "Boolean";
-        } else if (sqlType.name.indexOf("time") != -1) {
+        } else if (sqlType.name.indexOf("time") != -1 || sqlType.name.indexOf("date") != -1) {
                 return "Date";
         } else {
                 return "Integer";

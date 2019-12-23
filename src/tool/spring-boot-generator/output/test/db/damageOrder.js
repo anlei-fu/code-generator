@@ -2,23 +2,6 @@ let damageOrder = {
   name: "damageOrder",
   description: "伤损单",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
     orderNo: {
       name: "orderNo",
       description: "伤损单号",
@@ -26,6 +9,15 @@ let damageOrder = {
       nullable: false,
       type: {
         name: "varchar",
+        length: null
+      }
+    },
+    workareaId: {
+      name: "workareaId",
+      description: "探伤工区",
+      nullable: true,
+      type: {
+        name: "int",
         length: null
       }
     },
@@ -46,6 +38,23 @@ let damageOrder = {
         name: "datetime"
       }
     },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
+      }
+    },
     updateTime: {
       name: "updateTime",
       description: "更新时间",
@@ -53,38 +62,29 @@ let damageOrder = {
       type: {
         name: "datetime"
       }
-    },
-    workareaId: {
-      name: "workareaId",
-      description: "探伤工区",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
     }
   }
 };
 
 let columnsArray = [
-  "createTime",
-  "isDelete",
   "orderNo",
+  "workareaId",
   "submitStaff",
   "submitTime",
-  "updateTime",
-  "workareaId"
+  "isDelete",
+  "createTime",
+  "updateTime"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-19 1:4:50",
-  isDelete: 839,
-  orderNo: "伤损单号216",
-  submitStaff: 868,
-  submitTime: "2019-12-19 1:4:50",
-  updateTime: "2020-1-19 1:4:50",
-  workareaId: 459
+  orderNo: "伤损单号527",
+  workareaId: 993,
+  submitStaff: 195,
+  submitTime: "2019-11-23 1:3:35",
+  isDelete: 459,
+  createTime: "2019-12-23 1:3:35",
+  updateTime: "2019-12-23 1:3:35"
 };
 }
 

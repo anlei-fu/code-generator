@@ -2,23 +2,6 @@ let detectGoupUser = {
   name: "detectGoupUser",
   description: "探伤班组人员",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    groupId: {
-      name: "groupId",
-      description: "班组编号",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
     id: {
       name: "id",
       description: "组员编号",
@@ -30,10 +13,10 @@ let detectGoupUser = {
         length: null
       }
     },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
+    groupId: {
+      name: "groupId",
+      description: "班组编号",
+      nullable: true,
       type: {
         name: "int",
         length: null
@@ -42,15 +25,6 @@ let detectGoupUser = {
     memberId: {
       name: "memberId",
       description: "成员编号",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
       nullable: true,
       type: {
         name: "int",
@@ -66,6 +40,23 @@ let detectGoupUser = {
         length: null
       }
     },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
+      }
+    },
     updateTime: {
       name: "updateTime",
       description: "更新时间",
@@ -73,31 +64,40 @@ let detectGoupUser = {
       type: {
         name: "datetime"
       }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "createTime",
-  "groupId",
   "id",
-  "isDelete",
+  "groupId",
   "memberId",
-  "operator",
   "status",
-  "updateTime"
+  "isDelete",
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2020-1-19 1:4:50",
-  groupId: 258,
-  id: 836,
-  isDelete: 889,
-  memberId: 414,
-  operator: 101,
-  status: 780,
-  updateTime: "2019-12-26 1:4:50"
+  id: 900,
+  groupId: 605,
+  memberId: 442,
+  status: 107,
+  isDelete: 10,
+  createTime: "2020-1-23 1:3:35",
+  updateTime: "2019-12-22 1:3:35",
+  operator: 34
 };
 }
 

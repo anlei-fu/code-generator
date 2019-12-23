@@ -1,17 +1,19 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-
-const _mapperConfigItemRender = new SimpleRender({}, `${__dirname}/templates/mapperConfig-item.java`);
-const _mapperConfigRender = new SimpleRender({}, `${__dirname}/templates/mapperConfig.java`);
+const { renderSelect } = require("./select-render")
+const { renderUpdate } = require("./update-render")
+const { renderDelete } = require("./delete-render")
+const { renderInsert } = require("./insert-render")
+const _mapperConfigRender = new SimpleRender({}, `${__dirname}/templates/mapper.xml`);
 
 /**
  * 
  * @param {mapperConfig} mapperConfig 
  * @returns {String}
  */
-function renderMapperConfig(mapperConfig) {
+function renderMapperConfig(config) {
         let content = "";
-        mapperConfig.items.forEach(x => {
-                content += _mapperConfigItemRender.renderTemplate(x);
+        config.items.forEach(x => {
+                content += renderMapperConfigItem(x);
         });
 
         return _mapperConfigRender.renderTemplate({ content });
@@ -23,15 +25,13 @@ function renderMapperConfig(mapperConfig) {
  * @param {Config} config 
  * @returns {String}
  */
-function getMapperConfigItem(config) {
+function renderMapperConfigItem(config) {
         switch (config.type) {
-                case "insert": return this._renderInsert(config);
-                case "update": return this._renderUpdate(config);
-                case "delete": return this._renderDelete(config);
-                default: return this._renderSelect(config);
+                case "insert": return renderInsert(config);
+                case "update": return renderUpdate(config);
+                case "delete": return renderDelete(config);
+                default: return renderSelect(config);
         }
 }
-
-
 
 exports.renderMapperConfig = renderMapperConfig;

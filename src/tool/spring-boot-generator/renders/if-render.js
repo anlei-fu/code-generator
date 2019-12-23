@@ -1,7 +1,8 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
 
+const IF_IDENT="";
 const _ifRender = new SimpleRender();
-_ifRender.setTempalte(`${ident}<if test="@expression">\r\n${ident}@prefix@content${ident}</if>\r\n`);
+_ifRender.setTempalte(`${IF_IDENT}<if test="@expression">\r\n${IF_IDENT}@prefix@content${IF_IDENT}</if>\r\n`);
 
 /**
  * 

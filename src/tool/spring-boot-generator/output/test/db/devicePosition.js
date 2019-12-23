@@ -2,41 +2,6 @@ let devicePosition = {
   name: "devicePosition",
   description: "设备-位置映射",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    deviceCode: {
-      name: "deviceCode",
-      description: "设备位置唯一编号",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    deviceNo: {
-      name: "deviceNo",
-      description: "设备编号(对应导入标号)",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    direction: {
-      name: "direction",
-      description: "行别",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
     id: {
       name: "id",
       description: "主键",
@@ -48,12 +13,30 @@ let devicePosition = {
         length: null
       }
     },
-    lineCategory: {
-      name: "lineCategory",
-      description: "线别",
+    deviceCode: {
+      name: "deviceCode",
+      description: "设备位置唯一编号",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    trackId: {
+      name: "trackId",
+      description: "钢轨id",
       nullable: true,
       type: {
         name: "int",
+        length: null
+      }
+    },
+    deviceNo: {
+      name: "deviceNo",
+      description: "设备编号(对应导入标号)",
+      nullable: true,
+      type: {
+        name: "varchar",
         length: null
       }
     },
@@ -75,6 +58,33 @@ let devicePosition = {
         length: null
       }
     },
+    lineCategory: {
+      name: "lineCategory",
+      description: "线别",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    direction: {
+      name: "direction",
+      description: "行别",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    stationId: {
+      name: "stationId",
+      description: "车站编号",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
     miles: {
       name: "miles",
       description: "里程",
@@ -83,9 +93,9 @@ let devicePosition = {
         name: "float"
       }
     },
-    stationId: {
-      name: "stationId",
-      description: "车站编号",
+    thighTrackId: {
+      name: "thighTrackId",
+      description: "股道号",
       nullable: true,
       type: {
         name: "int",
@@ -101,22 +111,12 @@ let devicePosition = {
         length: null
       }
     },
-    thighTrackId: {
-      name: "thighTrackId",
-      description: "股道号",
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
       nullable: true,
       type: {
-        name: "int",
-        length: null
-      }
-    },
-    trackId: {
-      name: "trackId",
-      description: "钢轨id",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -131,38 +131,38 @@ let devicePosition = {
 };
 
 let columnsArray = [
-  "createTime",
-  "deviceCode",
-  "deviceNo",
-  "direction",
   "id",
-  "lineCategory",
+  "deviceCode",
+  "trackId",
+  "deviceNo",
   "lineId",
   "lineName",
-  "miles",
+  "lineCategory",
+  "direction",
   "stationId",
-  "stockExchange",
+  "miles",
   "thighTrackId",
-  "trackId",
+  "stockExchange",
+  "createTime",
   "updateTime"
 ];
 
 function create() {
   return {
-  createTime: "2020-1-19 1:4:50",
-  deviceCode: "设备位置唯一编号78",
-  deviceNo: "设备编号(对应导入标号)521",
-  direction: 640,
-  id: 707,
-  lineCategory: 431,
-  lineId: 233,
-  lineName: "线名587",
-  miles: 555,
-  stationId: 575,
-  stockExchange: 360,
-  thighTrackId: 868,
-  trackId: 411,
-  updateTime: "2019-11-19 1:4:50"
+  id: 178,
+  deviceCode: "设备位置唯一编号25",
+  trackId: 880,
+  deviceNo: "设备编号(对应导入标号)76",
+  lineId: 12,
+  lineName: "线名114",
+  lineCategory: 984,
+  direction: 71,
+  stationId: 610,
+  miles: 268,
+  thighTrackId: 730,
+  stockExchange: 260,
+  createTime: "2019-11-23 1:3:35",
+  updateTime: "2020-1-23 1:3:35"
 };
 }
 

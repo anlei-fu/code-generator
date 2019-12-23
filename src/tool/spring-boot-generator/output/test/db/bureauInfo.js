@@ -2,12 +2,14 @@ let bureauInfo = {
   name: "bureauInfo",
   description: "铁路局信息",
   columns: {
-    bureauCode: {
-      name: "bureauCode",
-      description: "铁路局编码",
+    id: {
+      name: "id",
+      description: "铁路局编号",
+      isPk: true,
+      autoIncrement: true,
       nullable: false,
       type: {
-        name: "varchar",
+        name: "int",
         length: null
       }
     },
@@ -20,22 +22,12 @@ let bureauInfo = {
         length: null
       }
     },
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    id: {
-      name: "id",
-      description: "铁路局编号",
-      isPk: true,
-      autoIncrement: true,
+    bureauCode: {
+      name: "bureauCode",
+      description: "铁路局编码",
       nullable: false,
       type: {
-        name: "int",
+        name: "varchar",
         length: null
       }
     },
@@ -57,13 +49,12 @@ let bureauInfo = {
         length: null
       }
     },
-    operator: {
-      name: "operator",
-      description: "操作人",
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
       nullable: true,
       type: {
-        name: "int",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -73,31 +64,40 @@ let bureauInfo = {
       type: {
         name: "datetime"
       }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "bureauCode",
-  "bureauName",
-  "createTime",
   "id",
+  "bureauName",
+  "bureauCode",
   "inputCode",
   "isDelete",
-  "operator",
-  "updateTime"
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  bureauCode: "铁路局编码1",
-  bureauName: "铁路局名称504",
-  createTime: "2019-12-18 1:4:50",
-  id: 216,
-  inputCode: "输入代码328",
-  isDelete: 882,
-  operator: 999,
-  updateTime: "2019-12-26 1:4:50"
+  id: 928,
+  bureauName: "铁路局名称902",
+  bureauCode: "铁路局编码415",
+  inputCode: "输入代码615",
+  isDelete: 911,
+  createTime: "2019-12-22 1:3:35",
+  updateTime: "2019-12-23 1:3:35",
+  operator: 444
 };
 }
 

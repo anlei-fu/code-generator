@@ -1,24 +1,32 @@
 const { bureauLineOrder } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.bureauLineOrderConfig = {
         table: bureauLineOrder,
         name: "BureauLineOrder",
                 items: [
-                        
+
                         // add
+                        // id validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addBureauLineOrder")
                                 .includes(collection => {
                                         collection.includes(bureauLineOrder.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/bureauLineOrder");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("id","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +36,44 @@ exports.bureauLineOrderConfig = {
                                 .id("deleteBureauLineOrderById")
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/bureauLineOrder/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+
                         new builder()
                                 .type("update")
                                 .id("updateBureauLineOrderById")
                                 .includes(collection => {
                                         collection.includes(bureauLineOrder.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/bureauLineOrder/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+
                                 })
                                 .build(),
 
@@ -75,15 +86,15 @@ exports.bureauLineOrderConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/bureauLineOrder/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +102,7 @@ exports.bureauLineOrderConfig = {
                                 .build(),
 
                         // getList
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +110,9 @@ exports.bureauLineOrderConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(bureauLineOrder.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getBureauLineOrderList")
                                 .controller(controller => {
@@ -106,7 +120,8 @@ exports.bureauLineOrderConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+
                                 })
                                 .build()
                 ]

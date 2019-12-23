@@ -1,5 +1,5 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const {getReqParamsWithType,getReqParamsWithType}=require("./../req-common")
+const {getReqParamsWithType}=require("./../req-common")
 const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
 const SERVICE_IMPL_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl.java`);
 

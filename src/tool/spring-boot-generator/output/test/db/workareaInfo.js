@@ -2,23 +2,6 @@ let workareaInfo = {
   name: "workareaInfo",
   description: "线路工区",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    fullName: {
-      name: "fullName",
-      description: "工区名称",
-      nullable: false,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
     id: {
       name: "id",
       description: "工区编号",
@@ -30,30 +13,12 @@ let workareaInfo = {
         length: null
       }
     },
-    inputCode: {
-      name: "inputCode",
-      description: "输入代码",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
+    fullName: {
+      name: "fullName",
+      description: "工区名称",
       nullable: false,
       type: {
-        name: "int",
-        length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
-      nullable: true,
-      type: {
-        name: "int",
+        name: "varchar",
         length: null
       }
     },
@@ -66,12 +31,13 @@ let workareaInfo = {
         length: null
       }
     },
-    updateTime: {
-      name: "updateTime",
-      description: "更新时间",
+    inputCode: {
+      name: "inputCode",
+      description: "输入代码",
       nullable: true,
       type: {
-        name: "datetime"
+        name: "varchar",
+        length: null
       }
     },
     workshopId: {
@@ -82,33 +48,67 @@ let workareaInfo = {
         name: "int",
         length: null
       }
+    },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
+      }
+    },
+    updateTime: {
+      name: "updateTime",
+      description: "更新时间",
+      nullable: true,
+      type: {
+        name: "datetime"
+      }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "createTime",
-  "fullName",
   "id",
-  "inputCode",
-  "isDelete",
-  "operator",
+  "fullName",
   "shortName",
+  "inputCode",
+  "workshopId",
+  "isDelete",
+  "createTime",
   "updateTime",
-  "workshopId"
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-19 1:4:50",
-  fullName: "工区名称189",
-  id: 853,
-  inputCode: "输入代码400",
-  isDelete: 186,
-  operator: 13,
-  shortName: "工区简称144",
-  updateTime: "2019-11-19 1:4:50",
-  workshopId: 864
+  id: 836,
+  fullName: "工区名称765",
+  shortName: "工区简称291",
+  inputCode: "输入代码51",
+  workshopId: 323,
+  isDelete: 538,
+  createTime: "2019-12-30 1:3:35",
+  updateTime: "2019-12-30 1:3:35",
+  operator: 518
 };
 }
 

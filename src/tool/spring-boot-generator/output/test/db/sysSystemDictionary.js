@@ -31,6 +31,24 @@ let sysSystemDictionary = {
         length: null
       }
     },
+    text: {
+      name: "text",
+      description: "鏋氫妇椤瑰叿浣撳悕瀛?",
+      nullable: false,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    value: {
+      name: "value",
+      description: "鏋氫妇value",
+      nullable: false,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
     sortId: {
       name: "sortId",
       description: "鎺掑簭",
@@ -57,24 +75,6 @@ let sysSystemDictionary = {
         name: "int",
         length: null
       }
-    },
-    text: {
-      name: "text",
-      description: "鏋氫妇椤瑰叿浣撳悕瀛?",
-      nullable: false,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    value: {
-      name: "value",
-      description: "鏋氫妇value",
-      nullable: false,
-      type: {
-        name: "varchar",
-        length: null
-      }
     }
   }
 };
@@ -83,23 +83,23 @@ let columnsArray = [
   "dicid",
   "enumName",
   "enumType",
+  "text",
+  "value",
   "sortId",
   "status",
-  "systemId",
-  "text",
-  "value"
+  "systemId"
 ];
 
 function create() {
   return {
-  dicid: 885,
-  enumName: "963",
-  enumType: "鏋氫妇绫诲瀷222",
-  sortId: 853,
-  status: 207,
-  systemId: 322,
-  text: "鏋氫妇椤瑰叿浣撳悕瀛?203",
-  value: "鏋氫妇value754"
+  dicid: 806,
+  enumName: "142",
+  enumType: "鏋氫妇绫诲瀷163",
+  text: "鏋氫妇椤瑰叿浣撳悕瀛?303",
+  value: "鏋氫妇value14",
+  sortId: 553,
+  status: 401,
+  systemId: 947
 };
 }
 

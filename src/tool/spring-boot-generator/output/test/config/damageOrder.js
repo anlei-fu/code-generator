@@ -1,24 +1,34 @@
 const { damageOrder } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.damageOrderConfig = {
         table: damageOrder,
         name: "DamageOrder",
                 items: [
-                        
+
                         // add
+                        // orderNo validate : @NotNull  
+                        // isDelete validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDamageOrder")
                                 .includes(collection => {
                                         collection.includes(damageOrder.columnsArray)
-                                         .excludes("orderNo")
+                                                  .excludes("orderNo")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/damageOrder");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("orderNo");
+                                           .excludes("orderNo")
+                                           .validate("orderNo","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +38,44 @@ exports.damageOrderConfig = {
                                 .id("deleteDamageOrderByOrderNo")
                                 .conditions(collection => {
                                         collection.includes("orderNo")
-                                         .require("orderNo")
+                                                  .require("orderNo")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageOrder/{orderNo}");
                                 })
                                 .req(req => {
                                         req.name("orderNo")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+
                         new builder()
                                 .type("update")
                                 .id("updateDamageOrderByOrderNo")
                                 .includes(collection => {
                                         collection.includes(damageOrder.columnsArray)
-                                         .excludes("orderNo")
+                                                  .excludes("orderNo")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("orderNo")
-                                         .require("orderNo")
+                                                  .require("orderNo")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageOrder/{orderNo}");
                                 })
                                 .req(req => {
                                         req.name("orderNo")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("orderNo");
+                                           .excludes("orderNo")
+
                                 })
                                 .build(),
 
@@ -75,15 +88,15 @@ exports.damageOrderConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("orderNo")
-                                         .require("orderNo")
+                                                  .require("orderNo")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageOrder/{orderNo}");
                                 })
                                 .req(req => {
                                         req.name("orderNo")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +104,7 @@ exports.damageOrderConfig = {
                                 .build(),
 
                         // getList
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +112,9 @@ exports.damageOrderConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(damageOrder.columnsArray)
-                                         .excludes("orderNo")
+                                                  .excludes("orderNo")
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getDamageOrderList")
                                 .controller(controller => {
@@ -106,7 +122,8 @@ exports.damageOrderConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("orderNo");
+                                           .excludes("orderNo")
+
                                 })
                                 .build()
                 ]

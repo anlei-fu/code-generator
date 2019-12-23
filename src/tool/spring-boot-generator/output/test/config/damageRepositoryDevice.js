@@ -1,24 +1,32 @@
 const { damageRepositoryDevice } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.damageRepositoryDeviceConfig = {
         table: damageRepositoryDevice,
         name: "DamageRepositoryDevice",
                 items: [
-                        
+
                         // add
+                        // orderDetailId validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDamageRepositoryDevice")
                                 .includes(collection => {
                                         collection.includes(damageRepositoryDevice.columnsArray)
-                                         .excludes("orderDetailId")
+                                                  .excludes("orderDetailId")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepositoryDevice");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("orderDetailId");
+                                           .excludes("orderDetailId")
+                                           .validate("orderDetailId","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +36,46 @@ exports.damageRepositoryDeviceConfig = {
                                 .id("deleteDamageRepositoryDeviceByOrderDetailId")
                                 .conditions(collection => {
                                         collection.includes("orderDetailId")
-                                         .require("orderDetailId")
+                                                  .require("orderDetailId")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepositoryDevice/{orderDetailId}");
                                 })
                                 .req(req => {
                                         req.name("orderDetailId")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+                        // deviceType validate : @Enum(deviceType)  
+                        // railType validate : @Enum(railType)
                         new builder()
                                 .type("update")
                                 .id("updateDamageRepositoryDeviceByOrderDetailId")
                                 .includes(collection => {
                                         collection.includes(damageRepositoryDevice.columnsArray)
-                                         .excludes("orderDetailId")
+                                                  .excludes("orderDetailId")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("orderDetailId")
-                                         .require("orderDetailId")
+                                                  .require("orderDetailId")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepositoryDevice/{orderDetailId}");
                                 })
                                 .req(req => {
                                         req.name("orderDetailId")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("orderDetailId");
+                                           .excludes("orderDetailId")
+                                           .validate("deviceType","@Enum(deviceType)")
+                                           .validate("railType","@Enum(railType)")
                                 })
                                 .build(),
 
@@ -75,15 +88,15 @@ exports.damageRepositoryDeviceConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("orderDetailId")
-                                         .require("orderDetailId")
+                                                  .require("orderDetailId")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepositoryDevice/{orderDetailId}");
                                 })
                                 .req(req => {
                                         req.name("orderDetailId")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +104,10 @@ exports.damageRepositoryDeviceConfig = {
                                 .build(),
 
                         // getList
+                        // deviceName excluded 
+                        // deviceType validate : @Enum(deviceType)  
+                        // railType validate : @Enum(railType)  
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +115,10 @@ exports.damageRepositoryDeviceConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(damageRepositoryDevice.columnsArray)
-                                         .excludes("orderDetailId")
+                                                  .excludes("orderDetailId")
+                                                  .excludes(["deviceName"])
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getDamageRepositoryDeviceList")
                                 .controller(controller => {
@@ -106,7 +126,9 @@ exports.damageRepositoryDeviceConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("orderDetailId");
+                                           .excludes("orderDetailId")
+                                           .validate("deviceType","@Enum(deviceType)")
+                                           .validate("railType","@Enum(railType)")
                                 })
                                 .build()
                 ]

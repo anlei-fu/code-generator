@@ -1,24 +1,34 @@
 const { worshopBoundaryInfo } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.worshopBoundaryInfoConfig = {
         table: worshopBoundaryInfo,
         name: "WorshopBoundaryInfo",
                 items: [
-                        
+
                         // add
+                        // id validate : @NotNull  
+                        // isDelete validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addWorshopBoundaryInfo")
                                 .includes(collection => {
                                         collection.includes(worshopBoundaryInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/worshopBoundaryInfo");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("id","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +38,48 @@ exports.worshopBoundaryInfoConfig = {
                                 .id("deleteWorshopBoundaryInfoById")
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/worshopBoundaryInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+                        // trackType validate : @Enum(trackType)  
+                        // operateStatus validate : @Enum(operateStatus)  
+                        // status validate : @Enum(status)
                         new builder()
                                 .type("update")
                                 .id("updateWorshopBoundaryInfoById")
                                 .includes(collection => {
                                         collection.includes(worshopBoundaryInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/worshopBoundaryInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("trackType","@Enum(trackType)")
+                                           .validate("operateStatus","@Enum(operateStatus)")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build(),
 
@@ -75,15 +92,15 @@ exports.worshopBoundaryInfoConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/worshopBoundaryInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +108,11 @@ exports.worshopBoundaryInfoConfig = {
                                 .build(),
 
                         // getList
+                        // trackType validate : @Enum(trackType)  
+                        // operateStatus validate : @Enum(operateStatus)  
+                        // remark excluded 
+                        // status validate : @Enum(status)  
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +120,10 @@ exports.worshopBoundaryInfoConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(worshopBoundaryInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["remark"])
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getWorshopBoundaryInfoList")
                                 .controller(controller => {
@@ -106,7 +131,10 @@ exports.worshopBoundaryInfoConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("trackType","@Enum(trackType)")
+                                           .validate("operateStatus","@Enum(operateStatus)")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build()
                 ]

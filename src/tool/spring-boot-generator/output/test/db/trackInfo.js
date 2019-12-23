@@ -2,19 +2,38 @@ let trackInfo = {
   name: "trackInfo",
   description: "钢轨信息",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
     id: {
       name: "id",
       description: "轨道编号",
       isPk: true,
       autoIncrement: true,
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    trackCode: {
+      name: "trackCode",
+      description: "轨道编码",
+      nullable: false,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    trackType: {
+      name: "trackType",
+      description: "钢轨类型",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    trackDivisionId: {
+      name: "trackDivisionId",
+      description: "工务段编号",
       nullable: false,
       type: {
         name: "int",
@@ -30,40 +49,12 @@ let trackInfo = {
         length: null
       }
     },
-    operator: {
-      name: "operator",
-      description: "操作人",
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
       nullable: true,
       type: {
-        name: "int",
-        length: null
-      }
-    },
-    trackCode: {
-      name: "trackCode",
-      description: "轨道编码",
-      nullable: false,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    trackDivisionId: {
-      name: "trackDivisionId",
-      description: "工务段编号",
-      nullable: false,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    trackType: {
-      name: "trackType",
-      description: "钢轨类型",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -73,31 +64,40 @@ let trackInfo = {
       type: {
         name: "datetime"
       }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "createTime",
   "id",
-  "isDelete",
-  "operator",
   "trackCode",
-  "trackDivisionId",
   "trackType",
-  "updateTime"
+  "trackDivisionId",
+  "isDelete",
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-19 1:4:50",
-  id: 572,
-  isDelete: 999,
-  operator: 816,
-  trackCode: "轨道编码747",
-  trackDivisionId: 111,
-  trackType: 836,
-  updateTime: "2019-12-18 1:4:50"
+  id: 641,
+  trackCode: "轨道编码247",
+  trackType: 396,
+  trackDivisionId: 358,
+  isDelete: 23,
+  createTime: "2019-11-23 1:3:35",
+  updateTime: "2019-12-22 1:3:35",
+  operator: 36
 };
 }
 

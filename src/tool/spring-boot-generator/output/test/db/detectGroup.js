@@ -2,23 +2,6 @@ let detectGroup = {
   name: "detectGroup",
   description: "探伤班组信息",
   columns: {
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    groupName: {
-      name: "groupName",
-      description: "班组名称",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
     id: {
       name: "id",
       description: "班组编号",
@@ -30,27 +13,18 @@ let detectGroup = {
         length: null
       }
     },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
+    groupName: {
+      name: "groupName",
+      description: "班组名称",
+      nullable: true,
       type: {
-        name: "int",
+        name: "varchar",
         length: null
       }
     },
     leaderId: {
       name: "leaderId",
       description: "班组组长",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
       nullable: true,
       type: {
         name: "int",
@@ -66,6 +40,23 @@ let detectGroup = {
         length: null
       }
     },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
+      }
+    },
     updateTime: {
       name: "updateTime",
       description: "更新时间",
@@ -73,31 +64,40 @@ let detectGroup = {
       type: {
         name: "datetime"
       }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "createTime",
-  "groupName",
   "id",
-  "isDelete",
+  "groupName",
   "leaderId",
-  "operator",
   "status",
-  "updateTime"
+  "isDelete",
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  createTime: "2019-12-18 1:4:50",
-  groupName: "班组名称488",
-  id: 428,
-  isDelete: 1,
-  leaderId: 534,
-  operator: 442,
-  status: 422,
-  updateTime: "2019-12-18 1:4:50"
+  id: 396,
+  groupName: "班组名称304",
+  leaderId: 754,
+  status: 667,
+  isDelete: 877,
+  createTime: "2019-12-30 1:3:35",
+  updateTime: "2019-12-22 1:3:35",
+  operator: 576
 };
 }
 

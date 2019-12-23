@@ -2,25 +2,29 @@ let detectDeviceInfo = {
   name: "detectDeviceInfo",
   description: "探伤仪器",
   columns: {
-    commissioningDate: {
-      name: "commissioningDate",
-      description: "投产日期",
-      nullable: true,
+    id: {
+      name: "id",
+      description: "探伤仪器编号",
+      isPk: true,
+      autoIncrement: true,
+      nullable: false,
       type: {
-        name: "date"
+        name: "int",
+        length: null
       }
     },
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
+    workareaId: {
+      name: "workareaId",
+      description: "探伤工区编号",
       nullable: true,
       type: {
-        name: "datetime"
+        name: "int",
+        length: null
       }
     },
-    deivceNo: {
-      name: "deivceNo",
-      description: "仪器编号",
+    deviceName: {
+      name: "deviceName",
+      description: "仪器名称",
       nullable: true,
       type: {
         name: "varchar",
@@ -36,21 +40,21 @@ let detectDeviceInfo = {
         length: null
       }
     },
-    deviceName: {
-      name: "deviceName",
-      description: "仪器名称",
+    deivceNo: {
+      name: "deivceNo",
+      description: "仪器编号",
       nullable: true,
       type: {
         name: "varchar",
         length: null
       }
     },
-    durableYears: {
-      name: "durableYears",
-      description: "可用年限",
+    manufacturer: {
+      name: "manufacturer",
+      description: "制造厂家",
       nullable: true,
       type: {
-        name: "int",
+        name: "varchar",
         length: null
       }
     },
@@ -79,12 +83,85 @@ let detectDeviceInfo = {
         name: "float"
       }
     },
-    id: {
-      name: "id",
-      description: "探伤仪器编号",
-      isPk: true,
-      autoIncrement: true,
-      nullable: false,
+    purchasePrice: {
+      name: "purchasePrice",
+      description: "购置价格",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    commissioningDate: {
+      name: "commissioningDate",
+      description: "投产日期",
+      nullable: true,
+      type: {
+        name: "date"
+      }
+    },
+    durableYears: {
+      name: "durableYears",
+      description: "可用年限",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    scrapDate: {
+      name: "scrapDate",
+      description: "报废日期",
+      nullable: true,
+      type: {
+        name: "date"
+      }
+    },
+    length: {
+      name: "length",
+      description: "外形长度",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    width: {
+      name: "width",
+      description: "外形宽度",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    weight: {
+      name: "weight",
+      description: "外形高度",
+      nullable: true,
+      type: {
+        name: "float"
+      }
+    },
+    useStatus: {
+      name: "useStatus",
+      description: "使用状态",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    remark: {
+      name: "remark",
+      description: "备注",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    status: {
+      name: "status",
+      description: "状态",
+      nullable: true,
       type: {
         name: "int",
         length: null
@@ -99,64 +176,12 @@ let detectDeviceInfo = {
         length: null
       }
     },
-    length: {
-      name: "length",
-      description: "外形长度",
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
       nullable: true,
       type: {
-        name: "float"
-      }
-    },
-    manufacturer: {
-      name: "manufacturer",
-      description: "制造厂家",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    purchasePrice: {
-      name: "purchasePrice",
-      description: "购置价格",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
-    remark: {
-      name: "remark",
-      description: "备注",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    scrapDate: {
-      name: "scrapDate",
-      description: "报废日期",
-      nullable: true,
-      type: {
-        name: "date"
-      }
-    },
-    status: {
-      name: "status",
-      description: "状态",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
+        name: "datetime"
       }
     },
     updateTime: {
@@ -167,34 +192,9 @@ let detectDeviceInfo = {
         name: "datetime"
       }
     },
-    useStatus: {
-      name: "useStatus",
-      description: "使用状态",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    weight: {
-      name: "weight",
-      description: "外形高度",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
-    width: {
-      name: "width",
-      description: "外形宽度",
-      nullable: true,
-      type: {
-        name: "float"
-      }
-    },
-    workareaId: {
-      name: "workareaId",
-      description: "探伤工区编号",
+    operator: {
+      name: "operator",
+      description: "操作人",
       nullable: true,
       type: {
         name: "int",
@@ -205,56 +205,56 @@ let detectDeviceInfo = {
 };
 
 let columnsArray = [
-  "commissioningDate",
-  "createTime",
-  "deivceNo",
-  "deviceMode",
+  "id",
+  "workareaId",
   "deviceName",
-  "durableYears",
+  "deviceMode",
+  "deivceNo",
+  "manufacturer",
   "exFactoryDate",
   "fixedAssetsNo",
   "fixedAssetsPrice",
-  "id",
-  "isDelete",
-  "length",
-  "manufacturer",
-  "operator",
   "purchasePrice",
-  "remark",
+  "commissioningDate",
+  "durableYears",
   "scrapDate",
-  "status",
-  "updateTime",
-  "useStatus",
-  "weight",
+  "length",
   "width",
-  "workareaId"
+  "weight",
+  "useStatus",
+  "remark",
+  "status",
+  "isDelete",
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  commissioningDate: "2019-12-18 1:4:50",
-  createTime: "2019-12-18 1:4:50",
-  deivceNo: "仪器编号756",
-  deviceMode: "仪器型号507",
-  deviceName: "仪器名称335",
-  durableYears: 259,
-  exFactoryDate: "2019-12-19 1:4:50",
-  fixedAssetsNo: "固定资产编号607",
-  fixedAssetsPrice: 433,
-  id: 820,
-  isDelete: 158,
-  length: 225,
-  manufacturer: "制造厂家536",
-  operator: 246,
-  purchasePrice: 269,
-  remark: "备注886",
-  scrapDate: "2019-12-26 1:4:50",
-  status: 315,
-  updateTime: "2019-12-18 1:4:50",
-  useStatus: 247,
-  weight: 691,
-  width: 624,
-  workareaId: 223
+  id: 784,
+  workareaId: 112,
+  deviceName: "仪器名称261",
+  deviceMode: "仪器型号685",
+  deivceNo: "仪器编号658",
+  manufacturer: "制造厂家348",
+  exFactoryDate: "2019-11-23 1:3:35",
+  fixedAssetsNo: "固定资产编号679",
+  fixedAssetsPrice: 369,
+  purchasePrice: 902,
+  commissioningDate: "2019-12-23 1:3:35",
+  durableYears: 177,
+  scrapDate: "2019-12-22 1:3:35",
+  length: 356,
+  width: 644,
+  weight: 845,
+  useStatus: 37,
+  remark: "备注589",
+  status: 746,
+  isDelete: 534,
+  createTime: "2019-12-30 1:3:35",
+  updateTime: "2019-12-23 1:3:35",
+  operator: 518
 };
 }
 

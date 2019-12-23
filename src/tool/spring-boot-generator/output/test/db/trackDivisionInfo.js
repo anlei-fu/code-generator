@@ -2,10 +2,57 @@ let trackDivisionInfo = {
   name: "trackDivisionInfo",
   description: "工务段信息",
   columns: {
+    id: {
+      name: "id",
+      description: "编号",
+      isPk: true,
+      autoIncrement: true,
+      nullable: false,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    fullName: {
+      name: "fullName",
+      description: "工务段名称",
+      nullable: false,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    shortName: {
+      name: "shortName",
+      description: "工务段简称",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    inputCode: {
+      name: "inputCode",
+      description: "输入代码",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
     bureauId: {
       name: "bureauId",
       description: "铁路局编号",
       nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
       type: {
         name: "int",
         length: null
@@ -19,42 +66,12 @@ let trackDivisionInfo = {
         name: "datetime"
       }
     },
-    fullName: {
-      name: "fullName",
-      description: "工务段名称",
-      nullable: false,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    id: {
-      name: "id",
-      description: "编号",
-      isPk: true,
-      autoIncrement: true,
-      nullable: false,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    inputCode: {
-      name: "inputCode",
-      description: "输入代码",
+    updateTime: {
+      name: "updateTime",
+      description: "更新时间",
       nullable: true,
       type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
-      type: {
-        name: "int",
-        length: null
+        name: "datetime"
       }
     },
     operator: {
@@ -65,50 +82,33 @@ let trackDivisionInfo = {
         name: "int",
         length: null
       }
-    },
-    shortName: {
-      name: "shortName",
-      description: "工务段简称",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    updateTime: {
-      name: "updateTime",
-      description: "更新时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
     }
   }
 };
 
 let columnsArray = [
-  "bureauId",
-  "createTime",
-  "fullName",
   "id",
-  "inputCode",
-  "isDelete",
-  "operator",
+  "fullName",
   "shortName",
-  "updateTime"
+  "inputCode",
+  "bureauId",
+  "isDelete",
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  bureauId: 426,
-  createTime: "2019-12-18 1:4:50",
-  fullName: "工务段名称528",
-  id: 732,
-  inputCode: "输入代码791",
-  isDelete: 635,
-  operator: 908,
-  shortName: "工务段简称334",
-  updateTime: "2019-11-19 1:4:50"
+  id: 942,
+  fullName: "工务段名称420",
+  shortName: "工务段简称932",
+  inputCode: "输入代码449",
+  bureauId: 847,
+  isDelete: 970,
+  createTime: "2019-12-22 1:3:35",
+  updateTime: "2019-12-23 1:3:35",
+  operator: 684
 };
 }
 

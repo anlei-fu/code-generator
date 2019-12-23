@@ -1,24 +1,34 @@
 const { detectGroup } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.detectGroupConfig = {
         table: detectGroup,
         name: "DetectGroup",
                 items: [
-                        
+
                         // add
+                        // id validate : @NotNull  
+                        // isDelete validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDetectGroup")
                                 .includes(collection => {
                                         collection.includes(detectGroup.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGroup");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("id","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +38,44 @@ exports.detectGroupConfig = {
                                 .id("deleteDetectGroupById")
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGroup/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+                        // status validate : @Enum(status)
                         new builder()
                                 .type("update")
                                 .id("updateDetectGroupById")
                                 .includes(collection => {
                                         collection.includes(detectGroup.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGroup/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build(),
 
@@ -75,15 +88,15 @@ exports.detectGroupConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGroup/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +104,9 @@ exports.detectGroupConfig = {
                                 .build(),
 
                         // getList
+                        // groupName excluded 
+                        // status validate : @Enum(status)  
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +114,10 @@ exports.detectGroupConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(detectGroup.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["groupName"])
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getDetectGroupList")
                                 .controller(controller => {
@@ -106,7 +125,8 @@ exports.detectGroupConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build()
                 ]

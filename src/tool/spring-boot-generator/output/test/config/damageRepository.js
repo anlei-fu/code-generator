@@ -1,24 +1,34 @@
 const { damageRepository } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.damageRepositoryConfig = {
         table: damageRepository,
         name: "DamageRepository",
                 items: [
-                        
+
                         // add
+                        // orderDetailId validate : @NotNull  
+                        // isDelete validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDamageRepository")
                                 .includes(collection => {
                                         collection.includes(damageRepository.columnsArray)
-                                         .excludes("orderDetailId")
+                                                  .excludes("orderDetailId")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepository");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("orderDetailId");
+                                           .excludes("orderDetailId")
+                                           .validate("orderDetailId","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +38,52 @@ exports.damageRepositoryConfig = {
                                 .id("deleteDamageRepositoryByOrderDetailId")
                                 .conditions(collection => {
                                         collection.includes("orderDetailId")
-                                         .require("orderDetailId")
+                                                  .require("orderDetailId")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepository/{orderDetailId}");
                                 })
                                 .req(req => {
                                         req.name("orderDetailId")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+                        // damageType validate : @Enum(damageType)  
+                        // damageLevel validate : @Enum(damageLevel)  
+                        // dealStatus validate : @Enum(dealStatus)  
+                        // importStatus validate : @Enum(importStatus)  
+                        // auditStatus validate : @Enum(auditStatus)
                         new builder()
                                 .type("update")
                                 .id("updateDamageRepositoryByOrderDetailId")
                                 .includes(collection => {
                                         collection.includes(damageRepository.columnsArray)
-                                         .excludes("orderDetailId")
+                                                  .excludes("orderDetailId")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("orderDetailId")
-                                         .require("orderDetailId")
+                                                  .require("orderDetailId")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepository/{orderDetailId}");
                                 })
                                 .req(req => {
                                         req.name("orderDetailId")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("orderDetailId");
+                                           .excludes("orderDetailId")
+                                           .validate("damageType","@Enum(damageType)")
+                                           .validate("damageLevel","@Enum(damageLevel)")
+                                           .validate("dealStatus","@Enum(dealStatus)")
+                                           .validate("importStatus","@Enum(importStatus)")
+                                           .validate("auditStatus","@Enum(auditStatus)")
                                 })
                                 .build(),
 
@@ -75,15 +96,15 @@ exports.damageRepositoryConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("orderDetailId")
-                                         .require("orderDetailId")
+                                                  .require("orderDetailId")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepository/{orderDetailId}");
                                 })
                                 .req(req => {
                                         req.name("orderDetailId")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +112,15 @@ exports.damageRepositoryConfig = {
                                 .build(),
 
                         // getList
+                        // detectTime expression : timeRange
+                        // damageType validate : @Enum(damageType)  
+                        // damageLevel validate : @Enum(damageLevel)  
+                        // damageDetail excluded 
+                        // remark excluded 
+                        // dealStatus validate : @Enum(dealStatus)  
+                        // importStatus validate : @Enum(importStatus)  
+                        // createTime expression : timeRange
+                        // auditStatus validate : @Enum(auditStatus)
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +128,11 @@ exports.damageRepositoryConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(damageRepository.columnsArray)
-                                         .excludes("orderDetailId")
+                                                  .excludes("orderDetailId")
+                                                  .excludes(["damageDetail","remark"])
+                                                  .expression("detectTime","timeRange")
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getDamageRepositoryList")
                                 .controller(controller => {
@@ -106,7 +140,12 @@ exports.damageRepositoryConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("orderDetailId");
+                                           .excludes("orderDetailId")
+                                           .validate("damageType","@Enum(damageType)")
+                                           .validate("damageLevel","@Enum(damageLevel)")
+                                           .validate("dealStatus","@Enum(dealStatus)")
+                                           .validate("importStatus","@Enum(importStatus)")
+                                           .validate("auditStatus","@Enum(auditStatus)")
                                 })
                                 .build()
                 ]

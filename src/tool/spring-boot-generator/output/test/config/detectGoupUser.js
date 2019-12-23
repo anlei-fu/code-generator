@@ -1,24 +1,34 @@
 const { detectGoupUser } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.detectGoupUserConfig = {
         table: detectGoupUser,
         name: "DetectGoupUser",
                 items: [
-                        
+
                         // add
+                        // id validate : @NotNull  
+                        // isDelete validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDetectGoupUser")
                                 .includes(collection => {
                                         collection.includes(detectGoupUser.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGoupUser");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("id","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +38,44 @@ exports.detectGoupUserConfig = {
                                 .id("deleteDetectGoupUserById")
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGoupUser/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+                        // status validate : @Enum(status)
                         new builder()
                                 .type("update")
                                 .id("updateDetectGoupUserById")
                                 .includes(collection => {
                                         collection.includes(detectGoupUser.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGoupUser/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build(),
 
@@ -75,15 +88,15 @@ exports.detectGoupUserConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGoupUser/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +104,8 @@ exports.detectGoupUserConfig = {
                                 .build(),
 
                         // getList
+                        // status validate : @Enum(status)  
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +113,9 @@ exports.detectGoupUserConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(detectGoupUser.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getDetectGoupUserList")
                                 .controller(controller => {
@@ -106,7 +123,8 @@ exports.detectGoupUserConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build()
                 ]

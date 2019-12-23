@@ -2,23 +2,6 @@ let bureauLineOrder = {
   name: "bureauLineOrder",
   description: "铁路局线路",
   columns: {
-    bureauId: {
-      name: "bureauId",
-      description: "铁路局编号",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
     id: {
       name: "id",
       description: "编号",
@@ -30,18 +13,18 @@ let bureauLineOrder = {
         length: null
       }
     },
-    lineId: {
-      name: "lineId",
-      description: "线路编号",
+    bureauId: {
+      name: "bureauId",
+      description: "铁路局编号",
       nullable: true,
       type: {
         name: "int",
         length: null
       }
     },
-    operator: {
-      name: "operator",
-      description: "操作人",
+    lineId: {
+      name: "lineId",
+      description: "线路编号",
       nullable: true,
       type: {
         name: "int",
@@ -57,6 +40,14 @@ let bureauLineOrder = {
         length: null
       }
     },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
+      }
+    },
     updateTime: {
       name: "updateTime",
       description: "更新时间",
@@ -64,29 +55,38 @@ let bureauLineOrder = {
       type: {
         name: "datetime"
       }
+    },
+    operator: {
+      name: "operator",
+      description: "操作人",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
     }
   }
 };
 
 let columnsArray = [
-  "bureauId",
-  "createTime",
   "id",
+  "bureauId",
   "lineId",
-  "operator",
   "sortNum",
-  "updateTime"
+  "createTime",
+  "updateTime",
+  "operator"
 ];
 
 function create() {
   return {
-  bureauId: 170,
-  createTime: "2019-11-19 1:4:50",
-  id: 340,
-  lineId: 699,
-  operator: 195,
-  sortNum: "排序编号545",
-  updateTime: "2020-1-19 1:4:50"
+  id: 208,
+  bureauId: 405,
+  lineId: 258,
+  sortNum: "排序编号506",
+  createTime: "2019-12-30 1:3:35",
+  updateTime: "2019-12-30 1:3:35",
+  operator: 556
 };
 }
 

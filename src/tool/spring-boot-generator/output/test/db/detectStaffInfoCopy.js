@@ -2,34 +2,38 @@ let detectStaffInfoCopy = {
   name: "detectStaffInfoCopy",
   description: "探伤人员",
   columns: {
-    birthday: {
-      name: "birthday",
-      description: "出生日期",
-      nullable: true,
+    id: {
+      name: "id",
+      description: "探伤人员编号",
+      isPk: true,
+      autoIncrement: true,
+      nullable: false,
       type: {
-        name: "date"
+        name: "int",
+        length: null
       }
     },
-    contact: {
-      name: "contact",
-      description: "联系电话",
+    workareaId: {
+      name: "workareaId",
+      description: "探伤工区编号",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    name: {
+      name: "name",
+      description: "姓名",
       nullable: true,
       type: {
         name: "varchar",
         length: null
       }
     },
-    createTime: {
-      name: "createTime",
-      description: "创建时间",
-      nullable: true,
-      type: {
-        name: "datetime"
-      }
-    },
-    eduDegree: {
-      name: "eduDegree",
-      description: "文化程度",
+    positionId: {
+      name: "positionId",
+      description: "职位编号",
       nullable: true,
       type: {
         name: "int",
@@ -45,12 +49,39 @@ let detectStaffInfoCopy = {
         length: null
       }
     },
-    gradeGainDate: {
-      name: "gradeGainDate",
-      description: "职称获得时间",
+    idCardNo: {
+      name: "idCardNo",
+      description: "身份证",
+      nullable: true,
+      type: {
+        name: "varchar",
+        length: null
+      }
+    },
+    birthday: {
+      name: "birthday",
+      description: "出生日期",
       nullable: true,
       type: {
         name: "date"
+      }
+    },
+    eduDegree: {
+      name: "eduDegree",
+      description: "文化程度",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
+      }
+    },
+    tecCategory: {
+      name: "tecCategory",
+      description: "技术类别",
+      nullable: true,
+      type: {
+        name: "int",
+        length: null
       }
     },
     gradeId: {
@@ -62,73 +93,9 @@ let detectStaffInfoCopy = {
         length: null
       }
     },
-    id: {
-      name: "id",
-      description: "探伤人员编号",
-      isPk: true,
-      autoIncrement: true,
-      nullable: false,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    idCardNo: {
-      name: "idCardNo",
-      description: "身份证",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    isDelete: {
-      name: "isDelete",
-      description: "删除标记",
-      nullable: false,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    name: {
-      name: "name",
-      description: "姓名",
-      nullable: true,
-      type: {
-        name: "varchar",
-        length: null
-      }
-    },
-    operator: {
-      name: "operator",
-      description: "操作人",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    positionId: {
-      name: "positionId",
-      description: "职位编号",
-      nullable: true,
-      type: {
-        name: "int",
-        length: null
-      }
-    },
-    qualificationAuditDate: {
-      name: "qualificationAuditDate",
-      description: "探伤资质复审日期",
-      nullable: true,
-      type: {
-        name: "date"
-      }
-    },
-    qualificationGainDate: {
-      name: "qualificationGainDate",
-      description: "探伤资质发证日期",
+    gradeGainDate: {
+      name: "gradeGainDate",
+      description: "职称获得时间",
       nullable: true,
       type: {
         name: "date"
@@ -143,9 +110,17 @@ let detectStaffInfoCopy = {
         length: null
       }
     },
-    qualificationInvalidDate: {
-      name: "qualificationInvalidDate",
-      description: "探伤资质截止日期",
+    qualificationGainDate: {
+      name: "qualificationGainDate",
+      description: "探伤资质发证日期",
+      nullable: true,
+      type: {
+        name: "date"
+      }
+    },
+    qualificationAuditDate: {
+      name: "qualificationAuditDate",
+      description: "探伤资质复审日期",
       nullable: true,
       type: {
         name: "date"
@@ -157,6 +132,23 @@ let detectStaffInfoCopy = {
       nullable: true,
       type: {
         name: "int",
+        length: null
+      }
+    },
+    qualificationInvalidDate: {
+      name: "qualificationInvalidDate",
+      description: "探伤资质截止日期",
+      nullable: true,
+      type: {
+        name: "date"
+      }
+    },
+    contact: {
+      name: "contact",
+      description: "联系电话",
+      nullable: true,
+      type: {
+        name: "varchar",
         length: null
       }
     },
@@ -178,13 +170,21 @@ let detectStaffInfoCopy = {
         length: null
       }
     },
-    tecCategory: {
-      name: "tecCategory",
-      description: "技术类别",
-      nullable: true,
+    isDelete: {
+      name: "isDelete",
+      description: "删除标记",
+      nullable: false,
       type: {
         name: "int",
         length: null
+      }
+    },
+    createTime: {
+      name: "createTime",
+      description: "创建时间",
+      nullable: true,
+      type: {
+        name: "datetime"
       }
     },
     updateTime: {
@@ -195,9 +195,9 @@ let detectStaffInfoCopy = {
         name: "datetime"
       }
     },
-    workareaId: {
-      name: "workareaId",
-      description: "探伤工区编号",
+    operator: {
+      name: "operator",
+      description: "操作人",
       nullable: true,
       type: {
         name: "int",
@@ -208,56 +208,56 @@ let detectStaffInfoCopy = {
 };
 
 let columnsArray = [
-  "birthday",
-  "contact",
-  "createTime",
-  "eduDegree",
-  "gender",
-  "gradeGainDate",
-  "gradeId",
   "id",
-  "idCardNo",
-  "isDelete",
+  "workareaId",
   "name",
-  "operator",
   "positionId",
-  "qualificationAuditDate",
-  "qualificationGainDate",
+  "gender",
+  "idCardNo",
+  "birthday",
+  "eduDegree",
+  "tecCategory",
+  "gradeId",
+  "gradeGainDate",
   "qualificationGrade",
-  "qualificationInvalidDate",
+  "qualificationGainDate",
+  "qualificationAuditDate",
   "qualificationValidTime",
+  "qualificationInvalidDate",
+  "contact",
   "remark",
   "status",
-  "tecCategory",
+  "isDelete",
+  "createTime",
   "updateTime",
-  "workareaId"
+  "operator"
 ];
 
 function create() {
   return {
-  birthday: "2019-12-19 1:4:50",
-  contact: "联系电话51",
-  createTime: "2019-12-19 1:4:50",
-  eduDegree: 376,
-  gender: 861,
-  gradeGainDate: "2020-1-19 1:4:50",
-  gradeId: 185,
-  id: 796,
-  idCardNo: "身份证809",
-  isDelete: 290,
-  name: "姓名678",
-  operator: 192,
-  positionId: 667,
-  qualificationAuditDate: "2019-11-19 1:4:50",
-  qualificationGainDate: "2019-11-19 1:4:50",
-  qualificationGrade: 172,
-  qualificationInvalidDate: "2020-1-19 1:4:50",
-  qualificationValidTime: 436,
-  remark: "备注729",
-  status: 162,
-  tecCategory: 200,
-  updateTime: "2020-1-19 1:4:50",
-  workareaId: 477
+  id: 815,
+  workareaId: 513,
+  name: "姓名437",
+  positionId: 462,
+  gender: 752,
+  idCardNo: "身份证930",
+  birthday: "2019-12-22 1:3:35",
+  eduDegree: 681,
+  tecCategory: 660,
+  gradeId: 114,
+  gradeGainDate: "2019-11-23 1:3:35",
+  qualificationGrade: 37,
+  qualificationGainDate: "2019-11-23 1:3:35",
+  qualificationAuditDate: "2019-11-23 1:3:35",
+  qualificationValidTime: 378,
+  qualificationInvalidDate: "2019-12-23 1:3:35",
+  contact: "联系电话327",
+  remark: "备注495",
+  status: 729,
+  isDelete: 878,
+  createTime: "2019-12-30 1:3:35",
+  updateTime: "2019-12-23 1:3:35",
+  operator: 146
 };
 }
 

@@ -1,24 +1,34 @@
 const { weldingInfo } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.weldingInfoConfig = {
         table: weldingInfo,
         name: "WeldingInfo",
                 items: [
-                        
+
                         // add
+                        // id validate : @NotNull  
+                        // isDelete validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addWeldingInfo")
                                 .includes(collection => {
                                         collection.includes(weldingInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/weldingInfo");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("id","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +38,46 @@ exports.weldingInfoConfig = {
                                 .id("deleteWeldingInfoById")
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/weldingInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+                        // weldingType validate : @Enum(weldingType)  
+                        // status validate : @Enum(status)
                         new builder()
                                 .type("update")
                                 .id("updateWeldingInfoById")
                                 .includes(collection => {
                                         collection.includes(weldingInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/weldingInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("weldingType","@Enum(weldingType)")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build(),
 
@@ -75,15 +90,15 @@ exports.weldingInfoConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/weldingInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +106,10 @@ exports.weldingInfoConfig = {
                                 .build(),
 
                         // getList
+                        // weldingType validate : @Enum(weldingType)  
+                        // status validate : @Enum(status)  
+                        // remark excluded 
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +117,10 @@ exports.weldingInfoConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(weldingInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["remark"])
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getWeldingInfoList")
                                 .controller(controller => {
@@ -106,7 +128,9 @@ exports.weldingInfoConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("weldingType","@Enum(weldingType)")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build()
                 ]

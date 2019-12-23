@@ -1,0 +1,5 @@
+    <update id="@id">
+        update @tableName
+@set
+@where
+    </update>

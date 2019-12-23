@@ -1,24 +1,34 @@
 const { detectStaffInfo } = require("./../db/main")
 const { builder } = require("./../../../builder")
 
+
 exports.detectStaffInfoConfig = {
         table: detectStaffInfo,
         name: "DetectStaffInfo",
                 items: [
-                        
+
                         // add
+                        // id validate : @NotNull  
+                        // isDelete validate : @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDetectStaffInfo")
                                 .includes(collection => {
                                         collection.includes(detectStaffInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["createTime","updateTime"])
+
                                 })
                                 .controller(controller => {
                                         controller.path("/detectStaffInfo");
-                                }).req(req => {
+                                })
+                                .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("id","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -28,41 +38,46 @@ exports.detectStaffInfoConfig = {
                                 .id("deleteDetectStaffInfoById")
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectStaffInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .build(),
 
                         // updateById
+                        // gender validate : @Enum(gender)  
+                        // status validate : @Enum(status)
                         new builder()
                                 .type("update")
                                 .id("updateDetectStaffInfoById")
                                 .includes(collection => {
                                         collection.includes(detectStaffInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+
                                 })
                                 .conditions(collection => {
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectStaffInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("gender","@Enum(gender)")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build(),
 
@@ -75,15 +90,15 @@ exports.detectStaffInfoConfig = {
                                 })
                                 .conditions(collection =>{
                                         collection.includes("id")
-                                         .require("id")
+                                                  .require("id")
                                 })
                                 .controller(controller => {
                                         controller.path("/detectStaffInfo/{id}");
                                 })
                                 .req(req => {
                                         req.name("id")
-                                                .type("Integer")
-                                                .from("@PathVariable");
+                                           .type("Integer")
+                                           .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
@@ -91,6 +106,11 @@ exports.detectStaffInfoConfig = {
                                 .build(),
 
                         // getList
+                        // name excluded 
+                        // gender validate : @Enum(gender)  
+                        // remark excluded 
+                        // status validate : @Enum(status)  
+                        // createTime expression : timeRange
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -98,7 +118,10 @@ exports.detectStaffInfoConfig = {
                                 })
                                 .conditions(collection=>{
                                         collection.includes(detectStaffInfo.columnsArray)
-                                         .excludes("id")
+                                                  .excludes("id")
+                                                  .excludes(["name","remark"])
+                                                  .expression("createTime","timeRange")
+
                                 })
                                 .id("getDetectStaffInfoList")
                                 .controller(controller => {
@@ -106,7 +129,9 @@ exports.detectStaffInfoConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                                .excludes("id");
+                                           .excludes("id")
+                                           .validate("gender","@Enum(gender)")
+                                           .validate("status","@Enum(status)")
                                 })
                                 .build()
                 ]

@@ -1,5 +1,5 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const {getReqParamsWithType,getReqParamsWithType}=require("./../req-common")
+const {getReqParamsWithType}=require("./../req-common")
 const _serviceItemRender = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
 const _serviceRender = new SimpleRender({}, `${__dirname}/templates/service.java`);
 
@@ -32,6 +32,12 @@ function getServiceItem(config,name) {
         };
 }
 
+/**
+ * 
+ * @param {Config} config 
+ * @param {String} name
+ * @returns {String} 
+ */
 function getServiceReturnType(config,name) {
         if (config.type != "select")
                 return "boolean";
