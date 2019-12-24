@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetTaskCookieConfigListReq  {
+public class GetTaskCookieConfigListReq extends PageReq {
 
     @ApiModelProperty("创建时间")
     private Integer createTime;
@@ -20,9 +20,6 @@ public class GetTaskCookieConfigListReq  {
 
     @ApiModelProperty("失效时间")
     private Integer expiration;
-
-    @ApiModelProperty("key")
-    private String key;
 
     @ApiModelProperty("主配置id")
     private Integer taskConfigMainId;

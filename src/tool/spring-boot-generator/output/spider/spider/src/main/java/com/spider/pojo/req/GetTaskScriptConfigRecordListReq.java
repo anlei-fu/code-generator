@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetTaskScriptConfigRecordListReq  {
+public class GetTaskScriptConfigRecordListReq extends PageReq {
 
     @ApiModelProperty("操作类型")
     private Integer action;

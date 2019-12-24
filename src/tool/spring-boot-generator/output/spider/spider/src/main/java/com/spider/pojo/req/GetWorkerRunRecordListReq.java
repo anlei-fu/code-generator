@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetWorkerRunRecordListReq  {
+public class GetWorkerRunRecordListReq extends PageReq {
 
     @ApiModelProperty("结束时间")
     private Integer endTime;

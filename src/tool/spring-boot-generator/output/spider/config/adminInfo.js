@@ -10,7 +10,8 @@ exports.adminInfoConfig = {
                         // add
                         // account : validate --- @NotNull  
                         // id : validate --- @NotNull  
-                        // password : validate --- @NotNull
+                        // level : validate --- @Enum("level")  
+                        // password : validate --- @NotNull  @Password
                         new builder()
                                 .type("insert")
                                 .id("addAdminInfo")
@@ -27,7 +28,9 @@ exports.adminInfoConfig = {
                                            .excludes("id")
                                            .validate("account","@NotNull")
                                            .validate("id","@NotNull")
+                                           .validate("level","@Enum(\"level\")")
                                            .validate("password","@NotNull")
+                                           .validate("password","@Password")
                                 })
                                 .build(),
 
@@ -50,7 +53,7 @@ exports.adminInfoConfig = {
                                 .build(),
 
                         // updateById
-                        // level : validate --- @Enum(level)  
+                        // level : validate --- @Enum("level")  
                         // password : validate --- @Password
                         new builder()
                                 .type("update")
@@ -75,7 +78,7 @@ exports.adminInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("level","@Enum(level)")
+                                           .validate("level","@Enum(\"level\")")
                                            .validate("password","@Password")
                                 })
                                 .build(),
@@ -105,7 +108,7 @@ exports.adminInfoConfig = {
                                 .build(),
 
                         // getList
-                        // level : validates --- @Enum(level)  
+                        // level : validates --- @Enum("level")  
                         // password : excluded
                         new builder()
                                 .type("select")
@@ -124,7 +127,7 @@ exports.adminInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("level","@Enum(level)")
+                                           .validate("level","@Enum(\"level\")")
                                 })
                                 .build()
                 ]

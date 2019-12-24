@@ -12,7 +12,7 @@ exports.userChargeRecordConfig = {
                         // chargeAccount : validate --- @NotNull  
                         // id : validate --- @NotNull  
                         // orderId : validate --- @NotNull  
-                        // status : validate --- @NotNull  
+                        // status : validate --- @NotNull  @Enum("status")  
                         // userId : validate --- @NotNull  
                         // way : validate --- @NotNull
                         new builder()
@@ -34,6 +34,7 @@ exports.userChargeRecordConfig = {
                                            .validate("id","@NotNull")
                                            .validate("orderId","@NotNull")
                                            .validate("status","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                            .validate("userId","@NotNull")
                                            .validate("way","@NotNull")
                                 })
@@ -58,7 +59,7 @@ exports.userChargeRecordConfig = {
                                 .build(),
 
                         // updateById
-                        // status : validate --- @Enum(status)
+                        // status : validate --- @Enum("status")
                         new builder()
                                 .type("update")
                                 .id("updateUserChargeRecordById")
@@ -82,7 +83,7 @@ exports.userChargeRecordConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(status)")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -111,7 +112,8 @@ exports.userChargeRecordConfig = {
                                 .build(),
 
                         // getList
-                        // status : validates --- @Enum(status)
+                        // amount : expression --- range
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -120,7 +122,7 @@ exports.userChargeRecordConfig = {
                                 .conditions(collection=>{
                                         collection.includes(userChargeRecord.columnsArray)
                                                   .excludes("id")
-
+                                                  .expression("amount","range")
                                 })
                                 .id("getUserChargeRecordList")
                                 .controller(controller => {
@@ -129,7 +131,7 @@ exports.userChargeRecordConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(status)")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build()
                 ]

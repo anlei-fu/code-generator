@@ -103,7 +103,7 @@ exports.taskCookieConfigConfig = {
                                 .build(),
 
                         // getList
-
+                        // key : excluded
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -112,7 +112,7 @@ exports.taskCookieConfigConfig = {
                                 .conditions(collection=>{
                                         collection.includes(taskCookieConfig.columnsArray)
                                                   .excludes("id")
-
+                                                  .excludes(["key"])
                                 })
                                 .id("getTaskCookieConfigList")
                                 .controller(controller => {

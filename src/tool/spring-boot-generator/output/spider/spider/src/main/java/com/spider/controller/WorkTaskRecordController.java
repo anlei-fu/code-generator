@@ -7,6 +7,7 @@ import com.spider.pojo.req.GetWorkTaskRecordListReq;
 import com.spider.pojo.req.UpdateWorkTaskRecordByIdReq;
 import com.spider.pojo.resp.R;
 import com.spider.service.WorkTaskRecordService;
+import com.spider.validate.annotation.Path;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

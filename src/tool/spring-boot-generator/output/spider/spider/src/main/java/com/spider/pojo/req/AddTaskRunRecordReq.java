@@ -5,12 +5,14 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 
 
 @ApiModel("")
 @Getter
 @Setter
-public class AddTaskRunRecordReq  {
+public class AddTaskRunRecordReq extends PageReq {
 
     @ApiModelProperty("结束时间")
     private Integer endTime;
@@ -25,6 +27,7 @@ public class AddTaskRunRecordReq  {
     private Integer success;
 
     @ApiModelProperty("任务id")
+    @NotNull
     private Integer taskId;
 
     @ApiModelProperty("参与worker数量")

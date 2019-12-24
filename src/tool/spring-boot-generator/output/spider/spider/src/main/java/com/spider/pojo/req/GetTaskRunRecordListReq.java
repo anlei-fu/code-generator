@@ -10,13 +10,16 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetTaskRunRecordListReq  {
+public class GetTaskRunRecordListReq extends PageReq {
 
     @ApiModelProperty("结束时间")
     private Integer endTime;
 
-    @ApiModelProperty("网页下载数量")
-    private Integer pageDownloaded;
+    @ApiModelProperty("网页下载数量 min")
+    private Integer pageDownloadedMin;
+
+    @ApiModelProperty("网页下载数量 max")
+    private Integer pageDownloadedMax;
 
     @ApiModelProperty("开始时间")
     private Integer startTime;

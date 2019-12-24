@@ -7,6 +7,7 @@ import com.spider.pojo.req.GetDomainInfoListReq;
 import com.spider.pojo.req.UpdateDomainInfoByIdReq;
 import com.spider.pojo.resp.R;
 import com.spider.service.DomainInfoService;
+import com.spider.validate.annotation.Path;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

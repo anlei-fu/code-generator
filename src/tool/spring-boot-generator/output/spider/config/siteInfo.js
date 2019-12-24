@@ -8,7 +8,8 @@ exports.siteInfoConfig = {
                 items: [
 
                         // add
-                        // id : validate --- @NotNull
+                        // id : validate --- @NotNull  
+                        // mainDomain : validate --- @Url
                         new builder()
                                 .type("insert")
                                 .id("addSiteInfo")
@@ -24,6 +25,7 @@ exports.siteInfoConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("id","@NotNull")
+                                           .validate("mainDomain","@Url")
                                 })
                                 .build(),
 
@@ -46,7 +48,6 @@ exports.siteInfoConfig = {
                                 .build(),
 
                         // updateById
-                        // description : validate --- @Ip  
                         // mainDomain : validate --- @Url
                         new builder()
                                 .type("update")
@@ -71,7 +72,6 @@ exports.siteInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("description","@Ip")
                                            .validate("mainDomain","@Url")
                                 })
                                 .build(),

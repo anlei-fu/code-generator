@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetTaskScriptConfigListReq  {
+public class GetTaskScriptConfigListReq extends PageReq {
 
     @ApiModelProperty("创建时间")
     private String createTime;

@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetDomainBlockRecordListReq  {
+public class GetDomainBlockRecordListReq extends PageReq {
 
     @ApiModelProperty("屏蔽时间")
     private Integer blockTime;

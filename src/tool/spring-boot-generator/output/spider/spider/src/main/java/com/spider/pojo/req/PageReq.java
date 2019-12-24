@@ -1,4 +1,4 @@
-package com.@project.pojo.req;
+package com.spider.pojo.req;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

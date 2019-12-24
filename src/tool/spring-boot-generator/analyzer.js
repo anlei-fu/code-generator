@@ -1,60 +1,165 @@
 
+let a = "";
 const createSelectExcludes = () => {
         return {
-                String: [
-                        "remark",
-                        "message",
-                        "description",
-                        "msg",
-                        "detail",
-                        "name",
-                        "info",
-                        "infomation",
-                        "log",
-                        "url",
-                        "file",
-                        "path",
-                        "pic",
-                        "img",
-                        "avartar",
-                        "pwd",
-                        "password",
-                        "secret",
-                        "hash",
-                        "credential",
-                        "cookie"
-                ],
-                Integer: [
+                String: {
+                        remark: {
 
-                ],
-                Float: [
+                        },
+                        message: {
+                                matcher: x => x.toLowerCase().includes("message"),
+                        },
+                        description: {
 
-                ],
-                Date: [
+                        },
+                        memo:{
 
-                ]
+                        },
+                        summary:{
+
+                        },
+                        text:{
+
+                        },
+                        msg: {
+                                matcher: x => x.toLowerCase().includes("msg"),
+                        },
+                        detail: {
+                                matcher: x => x.toLowerCase().endsWith("detail"),
+                        },
+                        name: {
+                                matcher: x => x.toLowerCase().includes("name"),
+                        },
+                        info: {
+                                matcher: x => x.toLowerCase().includes("info"),
+                        },
+                        log: {
+                                matcher: x => x.toLowerCase().includes("log"),
+                        },
+                        url: {
+                                matcher: x => x.toLowerCase().includes("url"),
+                        },
+                        file: {
+                                matcher: x => x.toLowerCase().includes("file"),
+                        },
+                        path: {
+                                matcher: x => x.toLowerCase().includes("path"),
+                        },
+                        pic: {
+                                matcher: x => x.toLowerCase().includes("pic"),
+                        },
+                        img: {
+                                matcher: x => x.toLowerCase().includes("img"),
+                        },
+                        avartar: {
+                                matcher: x => x.toLowerCase().includes("avartar"),
+                        },
+                        pwd: {
+                                matcher: x => x.toLowerCase().includes("pwd"),
+                        },
+                        password: {
+                                matcher: x => x.toLowerCase().includes("password"),
+                        },
+                        secret: {
+                                matcher: x => x.toLowerCase().includes("secrate"),
+                        },
+                        hash: {
+                                matcher: x => x.toLowerCase().includes("hash"),
+                        },
+                        credential: {
+                                matcher: x => x.toLowerCase().includes("credentia"),
+
+                        },
+                        cookie: {
+                                matcher: x => x.toLowerCase().includes("cookie"),
+                        },
+                        sign: {
+                                matcher: x => x.toLowerCase().includes("sign"),
+                        },
+                        key: {
+                                matcher: x => x.toLowerCase().includes("key"),
+                        }
+                        ,
+                        Integer: [
+
+                        ],
+                        Float: [
+
+                        ],
+                        Date: [
+
+                        ]
+                }
         }
 }
 
 const createExpression = () => {
         return {
                 Integer: {
-                        price: "range",
-                        total: "range",
-                        discount: "range",
-                        age: "range",
-                        count: "range",
-                        sum: "range",
-                        amount: "range",
+                        price: {
+                                matcher: x => x.toLowerCase().endsWith("price"),
+                                expression: "range"
+                        },
+                        total: {
+                                matcher: x => x.toLowerCase().startsWith("total"),
+                                expression: "range",
+                        },
+                        discount: {
+                                matcher: x => x.toLowerCase().endsWith("discount"),
+                                expression: "range",
+                        },
+                        age: {
+                                expression: "range",
+                        },
+                        count: {
+                                matcher: x => x.toLowerCase().endsWith("count"),
+                                expression: "range",
+                        },
+                        sum: {
+                                matcher: x => x.toLowerCase() == "sum",
+                                expression: "range",
+                        },
+                        amount: {
+                                matcher: x => x.toLowerCase().endsWith("amount"),
+                                expression: "range",
+                        },
                 },
                 Float: {
-                        price: "range",
-                        discount: "range",
-                        sum: "range",
+                        price: {
+                                matcher: x => x.toLowerCase().endsWith("price"),
+                                expression: "range"
+                        },
+                        total: {
+                                matcher: x => x.toLowerCase().startsWith("total"),
+                                expression: "range",
+                        },
+                        discount: {
+                                matcher: x => x.toLowerCase().endsWith("discount"),
+                                expression: "range",
+                        },
+                        age: {
+                                expression: "range",
+                        },
+                        count: {
+                                matcher: x => x.toLowerCase().endsWith("count"),
+                                expression: "range",
+                        },
+                        sum: {
+                                matcher: x => x.toLowerCase() == "sum",
+                                expression: "range",
+                        },
+                        amount: {
+                                matcher: x => x.toLowerCase().endsWith("amount"),
+                                expression: "range",
+                        },
                 },
                 Date: {
-                        createTime: "timeRange",
-                        detectTime: "timeRange"
+                        createTime: {
+                                expression: "timeRange"
+                        },
+                        detectTime: {
+                                expression: "timeRange"
+                        }
                 }
         }
 }
@@ -64,42 +169,52 @@ const createValidates = () => {
         return {
                 String: {
                         "phone": {
+                                matcher: (x) => x.toLowerCase().includes("phone"),
                                 validate: "@Phone"
                         },
                         "mobile": {
+                                matcher: (x) => x.toLowerCase().includes("mobile"),
                                 validate: "@Phone"
                         },
                         "telephone": {
+                                matcher: (x) => x.toLowerCase().includes("tel"),
                                 validate: "@Telephone"
                         },
                         "idCardNo": {
                                 validate: "@IdCardNo"
                         },
                         "email": {
+                                matcher: (x) => x.toLowerCase().includes("email"),
                                 validate: "@Email"
                         },
                         "pwd": {
+                                matcher: (x) => x.toLowerCase().includes("pwd"),
                                 validate: "@Password"
                         },
                         "password": {
                                 validate: "@Password"
                         },
                         "url": {
+                                matcher: (x) => x.toLowerCase().includes("url"),
                                 validate: "@Url"
                         },
                         "path": {
+                                matcher: (x) => x.toLowerCase().includes("path"),
                                 validate: "@Path"
                         },
                         "file": {
+                                matcher: (x) => x.toLowerCase().includes("file"),
                                 validate: "@Path"
                         },
                         "domain": {
                                 validate: "@Url"
                         },
                         "host": {
+                                matcher: (x) => x.toLowerCase() == "host",
                                 validate: "@Url"
                         },
                         "ip": {
+                                matcher: (x) => x.endsWith("Ip")||x.toLowerCase()=="ip",
                                 validate: "@Ip"
                         },
                         "postCode": {
@@ -109,22 +224,26 @@ const createValidates = () => {
 
                 Integer: {
                         "status": {
-                                generator: (name) => "@Enum(@type)".replace("@type", name),
+                                matcher: (x) => x.toLowerCase().endsWith("status"),
+                                generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                         },
                         "state": {
-                                generator: (name) => "@Enum(@type)".replace("@type", name),
+                                matcher: (x) => x.toLowerCase().endsWith("state"),
+                                generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                         },
                         "type": {
-                                generator: (name) => "@Enum(@type)".replace("@type", name),
+                                matcher: (x) => x.toLowerCase().endsWith("type"),
+                                generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                         },
                         "level": {
-                                generator: (name) => "@Enum(@type)".replace("@type", name),
+                                matcher: (x) => x.toLowerCase().endsWith("level"),
+                                generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                         },
                         "gender": {
-                                validate: "@Enum(gender)"
+                                validate: "@Enum(\"gender\")"
                         },
                         "sex": {
-                                validate: "@Enum(sex)"
+                                validate: "@Enum(\"sex\")"
                         },
 
                 }
@@ -166,12 +285,14 @@ class AnalyzerBase {
                         return validates;
 
                 for (const item in this.validates[type]) {
-                        if (name.toLowerCase().indexOf(item) != -1) {
-                                if (this.validates[type][item].generator) {
-                                        validates.push(this.validates[type][item].generator(name))
-                                } else {
-                                        validates.push(this.validates[type][item].validate);
-                                }
+                        let match = this.validates[type][item].matcher ? this.validates[type][item].matcher(name) : name.toLowerCase().indexOf(item) != -1;
+                        if (!match)
+                                continue;
+
+                        if (this.validates[type][item].generator) {
+                                validates.push(this.validates[type][item].generator(name))
+                        } else {
+                                validates.push(this.validates[type][item].validate);
                         }
                 }
 
@@ -245,9 +366,12 @@ class SelectAnalyzer extends AnalyzerBase {
         shouldBeCandidate(type, name) {
                 if (!this.excludes[type])
                         return true;
+                for (const item in this.excludes[type]) {
+                        let match = this.excludes[type][item].matcher
+                                ? this.excludes[type][item].matcher(name)
+                                : name.toLowerCase().indexOf(item) != -1
 
-                for (const item of this.excludes[type]) {
-                        if (name.toLowerCase().indexOf(item) != -1)
+                        if (match)
                                 return false;
                 }
 
@@ -265,8 +389,13 @@ class SelectAnalyzer extends AnalyzerBase {
                         return null;
 
                 for (const item in this.expressions[type]) {
-                        if (name.toLowerCase() == item.toLowerCase())
-                                return this.expressions[type][item];
+
+                        let match = this.expressions[type][item].matcher
+                                ? this.expressions[type][item].matcher(name)
+                                : name.toLowerCase().indexOf(item) != -1
+
+                        if (match)
+                                return this.expressions[type][item].expression;
                 }
 
                 return null;
@@ -338,8 +467,12 @@ class InsertAnalyzer extends AnalyzerBase {
                 if (!this.excludes[type])
                         return true;
 
-                for (const item of this.excludes[type]) {
-                        if (column.name.toLowerCase().indexOf(item.toLowerCase()) != -1)
+                for (const item in this.excludes[type]) {
+                        let match = this.excludes[type][item].matcher
+                                ? this.excludes[type][item].matcher(column.name)
+                                : column.name.toLowerCase().indexOf(item) != -1
+
+                        if (match)
                                 return false;
                 }
 
@@ -353,13 +486,17 @@ class InsertAnalyzer extends AnalyzerBase {
          * @param {} column 
          */
         getValidates(column) {
-                let type = "";
+                let type = getJavaType(column.type);
                 let validates = [];
 
                 if (!column.nullable)
                         validates.push("@NotNull");
 
-                return validates.concat(super.getValidates(type, column.name));
+                let ret= validates.concat(super.getValidates(type, column.name));
+
+               
+
+                  return ret;
         }
 }
 
@@ -393,8 +530,13 @@ class UpdateAnlyzer extends AnalyzerBase {
                 if (!this.excludes[type])
                         return true;
 
+
                 for (const item in this.excludes[type]) {
-                        if (name.toLowerCase().indexOf(item) != -1)
+                        let match = this.excludes[type][item].matcher
+                                ? this.excludes[type][item].matcher(name)
+                                : name.toLowerCase().indexOf(item) != -1
+
+                        if (match)
                                 return false;
                 }
 

@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateUserWalletByIdReq  {
+public class UpdateUserWalletByIdReq extends PageReq {
 
     @ApiModelProperty("创建时间")
     private Integer createTime;

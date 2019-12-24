@@ -1,6 +1,6 @@
 const { STR } = require("./../../libs/str")
-const {getConditions}=require("./condition-getter")
-const {getIncludes}=require("./includes-getter")
+const { getConditions } = require("./condition-getter")
+const { getIncludes } = require("./includes-getter")
 const CACHE = new Map();
 
 /**
@@ -55,35 +55,34 @@ function getReqParams(config, withType) {
  */
 function generateReq(config, req) {
         let conditions;
-        if(config.type=="select"||config.type=="delete"){
+        if (config.type == "select" || config.type == "delete") {
                 conditions = getConditions(config);
-        }else if(config.type=="insert"){
-                conditions=getIncludes(config);
-        }else{
-                conditions=getIncludes(config).concat(getConditions(config));
+        } else if (config.type == "insert") {
+                conditions = getIncludes(config);
+        } else {
+                conditions = getIncludes(config).concat(getConditions(config));
         }
         conditions = conditions.filter(x => !req.excludes.has(x.name));
-        let additions=[];
-       
+        let rets = [];
+
         conditions.forEach(x => {
-              
-                if (req.validates.has(x)){
-                        console.log("found");
-                        x.validates = req.validates.get(x);
-                }
 
-                if (x.range) {
-                        additions.push({ name: `${x.name}Min`, type: x.type, validates: x.validates });
-                        additions.push({ name: `${x.name}Max`, type: x.type, validates: x.validates });
-                }
+                if (req.validates.has(x.name))
+                        x.validates = req.validates.get(x.name);
 
-                if (x.timeRange) {
-                        additions.push({ name: `${x.name}Start`, type: x.type, validates: x.validates });
-                        additions.push({ name: `${x.name}End`, type: x.type, validates: x.validates });
+                let expression = x.expression;
+                if (expression == "range") {
+                        rets.push({ name: `${x.name}Min`, type: x.type, validates: x.validates, description: `${x.description} min` });
+                        rets.push({ name: `${x.name}Max`, type: x.type, validates: x.validates, description: `${x.description} max` });
+                } else if (expression == "timeRange") {
+                        rets.push({ name: `${x.name}Start`, type: x.type, validates: x.validates, description: `${x.description} start time` });
+                        rets.push({ name: `${x.name}End`, type: x.type, validates: x.validates, description: `${x.description} end time` });
+                } else {
+                        rets.push(x);
                 }
         });
 
-        return conditions.concat(additions);
+        return rets;
 }
 
 module.exports = {

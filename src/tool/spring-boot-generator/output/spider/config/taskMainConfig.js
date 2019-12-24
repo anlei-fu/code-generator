@@ -48,7 +48,7 @@ exports.taskMainConfigConfig = {
                                 .build(),
 
                         // updateById
-                        // scriptVersion : validate --- @Ip
+
                         new builder()
                                 .type("update")
                                 .id("updateTaskMainConfigById")
@@ -72,7 +72,7 @@ exports.taskMainConfigConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("scriptVersion","@Ip")
+
                                 })
                                 .build(),
 
@@ -101,7 +101,7 @@ exports.taskMainConfigConfig = {
                                 .build(),
 
                         // getList
-                        // scriptVersion : validates --- @Ip
+
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -119,7 +119,7 @@ exports.taskMainConfigConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("scriptVersion","@Ip")
+
                                 })
                                 .build()
                 ]

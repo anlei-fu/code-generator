@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateTaskMainConfigByIdReq  {
+public class UpdateTaskMainConfigByIdReq extends PageReq {
 
     @ApiModelProperty("浏览器代理")
     private String agent;

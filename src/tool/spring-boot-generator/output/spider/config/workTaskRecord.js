@@ -113,7 +113,7 @@ exports.workTaskRecordConfig = {
                                 .build(),
 
                         // getList
-
+                        // pageDownloaded : expression --- range
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -122,7 +122,7 @@ exports.workTaskRecordConfig = {
                                 .conditions(collection=>{
                                         collection.includes(workTaskRecord.columnsArray)
                                                   .excludes("id")
-
+                                                  .expression("pageDownloaded","range")
                                 })
                                 .id("getWorkTaskRecordList")
                                 .controller(controller => {

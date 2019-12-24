@@ -182,7 +182,7 @@ function makeOraginalRegexPattern(pattern) {
  * @param {String?} suffix 
  * @returns {[String]}
  */
-function arrayToString(array, prefix="", suffix="") {
+function arrayToString(array=[], prefix="", suffix="") {
         let result="";
         for (const item of array)
                 result += `${prefix}${item}${suffix}`;

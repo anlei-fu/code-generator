@@ -1,5 +1,6 @@
 package com.spider.pojo.req;
 
+import com.spider.validate.annotation.Ip;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -10,9 +11,10 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetWorkerInfoListReq  {
+public class GetWorkerInfoListReq extends PageReq {
 
     @ApiModelProperty("ip")
+    @Ip
     private String ip;
 
     @ApiModelProperty("加入时间")

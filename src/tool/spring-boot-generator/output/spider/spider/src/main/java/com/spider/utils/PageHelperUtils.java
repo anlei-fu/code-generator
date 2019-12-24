@@ -1,8 +1,8 @@
-package com.@project.util;
+package com.spider.util;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.@project.pojo.req.PageReq;
+import com.spider.pojo.req.PageReq;
 
 import java.util.function.Supplier;
 

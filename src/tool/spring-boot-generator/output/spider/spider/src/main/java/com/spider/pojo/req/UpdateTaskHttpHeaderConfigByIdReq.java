@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateTaskHttpHeaderConfigByIdReq  {
+public class UpdateTaskHttpHeaderConfigByIdReq extends PageReq {
 
     @ApiModelProperty("创建时间")
     private Integer createTime;

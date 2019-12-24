@@ -103,7 +103,7 @@ exports.userWalletConfig = {
                                 .build(),
 
                         // getList
-
+                        // total : expression --- range
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -112,7 +112,7 @@ exports.userWalletConfig = {
                                 .conditions(collection=>{
                                         collection.includes(userWallet.columnsArray)
                                                   .excludes("id")
-
+                                                  .expression("total","range")
                                 })
                                 .id("getUserWalletList")
                                 .controller(controller => {

@@ -8,6 +8,7 @@ exports.domainInfoConfig = {
                 items: [
 
                         // add
+                        // domain : validate --- @Url  
                         // domainId : validate --- @NotNull  
                         // id : validate --- @NotNull  
                         // maxSpeed : validate --- @NotNull  
@@ -26,6 +27,7 @@ exports.domainInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("domain","@Url")
                                            .validate("domainId","@NotNull")
                                            .validate("id","@NotNull")
                                            .validate("maxSpeed","@NotNull")

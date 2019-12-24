@@ -74,7 +74,7 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`./output/${project}/${project}/src/main`);
         DIR.create(`./output/${project}/${project}/src/main/java`);
         DIR.create(`./output/${project}/${project}/src/main/java/com`);
-        
+
         let root = `./output/${project}/${project}/src/main/java/com/${project}`;
         DIR.create(root);
         DIR.create(`${root}/service`);
@@ -88,6 +88,8 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`${root}/pojo/param`);
         DIR.create(`${root}/config`);
         DIR.create(`${root}/utils`);
+        DIR.create(`${root}/validate`);
+        DIR.create(`${root}/validate/annotation`);
         DIR.create(`${root}/exception`);
 
         // resource items
@@ -107,14 +109,21 @@ function makeAllFolders(project, dbConfig) {
         FILE.copy("./templates/SwaggerConfig.java", `${root}/config/SwaggerConfig.java`);
         FILE.copy("./templates/ValidatorConfig.java", `${root}/config/ValidatorConfig.java`);
         FILE.copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resource/logback.xml`);
-        FILE.copy("./templates/PageReq.java",`${root}/pojo/req/PageReq.java`)
-        FILE.copy("./templates/PageHelperUtils.java",`${root}/utils/PageHelperUtils.java`)
+
+        // page req
+        let pageReq = FILE.read("./templates/PageReq.java");
+        FILE.write(`${root}/pojo/req/PageReq.java`, pageReq.replace(/@project/g, project));
+
+        // page helper util
+        let pageHelperUtils = FILE.read("./templates/PageHelperUtils.java");
+        FILE.write(`${root}/utils/PageHelperUtils.java`, pageHelperUtils.replace(/@project/g, project));
 
         // pom.xml
         let pom = FILE.read("./templates/pom.xml")
                 .replace(/@project/g, project);
         FILE.write(`./output/${project}/${project}/pom.xml`, pom);
 
+        copyAnnotaion("./templates/annotation",`${root}/validate/annotation`);
         // application.properties
         let patterns = {
                 "@dbHost": dbConfig.host,
@@ -125,6 +134,19 @@ function makeAllFolders(project, dbConfig) {
         };
         let config = FILE.read("./templates/application.properties");
         FILE.write(`./output/${project}/${project}/src/main/resource/application.properties`, STR.replace(config, patterns));
+}
+
+/**
+ * 
+ * @param {String} sourceFolder 
+ * @param {String} targetFolder 
+ * @param {String} project 
+ */
+function copyAnnotaion(sourceFolder, targetFolder, project) {
+        DIR.getFiles(sourceFolder).forEach(x => {
+                let file = FILE.read(sourceFolder + "/" + x);
+                FILE.write(targetFolder + "/" + x, file.replace(/@project/g, project));
+        });
 }
 
 /**

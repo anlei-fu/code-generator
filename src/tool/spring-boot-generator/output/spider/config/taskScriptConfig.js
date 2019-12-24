@@ -8,6 +8,7 @@ exports.taskScriptConfigConfig = {
                 items: [
 
                         // add
+                        // file : validate --- @Path  
                         // id : validate --- @NotNull  
                         // taskConfigMainId : validate --- @NotNull  
                         // version : validate --- @NotNull
@@ -25,6 +26,7 @@ exports.taskScriptConfigConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("file","@Path")
                                            .validate("id","@NotNull")
                                            .validate("taskConfigMainId","@NotNull")
                                            .validate("version","@NotNull")

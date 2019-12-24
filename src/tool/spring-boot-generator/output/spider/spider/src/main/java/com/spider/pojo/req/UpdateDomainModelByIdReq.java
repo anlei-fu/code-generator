@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateDomainModelByIdReq  {
+public class UpdateDomainModelByIdReq extends PageReq {
 
     @ApiModelProperty("domainid")
     private Integer domainId;

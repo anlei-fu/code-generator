@@ -10,16 +10,22 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetUserDeductRecordListReq  {
+public class GetUserDeductRecordListReq extends PageReq {
 
-    @ApiModelProperty("数量")
-    private Integer amount;
+    @ApiModelProperty("数量 min")
+    private Integer amountMin;
+
+    @ApiModelProperty("数量 max")
+    private Integer amountMax;
 
     @ApiModelProperty("扣除时间")
     private Integer deductTime;
 
-    @ApiModelProperty("单价")
-    private Float price;
+    @ApiModelProperty("单价 min")
+    private Float priceMin;
+
+    @ApiModelProperty("单价 max")
+    private Float priceMax;
 
     @ApiModelProperty("任务id")
     private Integer taskId;

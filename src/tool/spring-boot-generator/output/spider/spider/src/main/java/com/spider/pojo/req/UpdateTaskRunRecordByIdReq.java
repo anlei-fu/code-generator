@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateTaskRunRecordByIdReq  {
+public class UpdateTaskRunRecordByIdReq extends PageReq {
 
     @ApiModelProperty("结束时间")
     private Integer endTime;

@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetWorkTaskRecordListReq  {
+public class GetWorkTaskRecordListReq extends PageReq {
 
     @ApiModelProperty("")
     private Integer downloadSucess;
@@ -21,8 +21,11 @@ public class GetWorkTaskRecordListReq  {
     @ApiModelProperty("错误码")
     private Integer exitCode;
 
-    @ApiModelProperty("页面笑在数量")
-    private Integer pageDownloaded;
+    @ApiModelProperty("页面笑在数量 min")
+    private Integer pageDownloadedMin;
+
+    @ApiModelProperty("页面笑在数量 max")
+    private Integer pageDownloadedMax;
 
     @ApiModelProperty("开始时间")
     private Integer startTime;

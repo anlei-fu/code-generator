@@ -31,6 +31,61 @@ PACKAGES.set("PageInfo<", {
 
 
 
+PACKAGES.set("PageHelperUtils", {
+        package: "import com.@project.utils.PageHelperUtils;",
+        isSystem: false
+});
+
+PACKAGES.set("@Email", {
+        package: "import com.@project.validate.annotation.Email;",
+        isSystem: false
+});
+
+PACKAGES.set("@Enum", {
+        package: "import com.@project.validate.annotation.Enum;",
+        isSystem: false
+});
+
+PACKAGES.set("@IdCardNo", {
+        package: "import com.@project.validate.annotation.IdCardNo;",
+        isSystem: false
+});
+
+PACKAGES.set("@Ip", {
+        package: "import com.@project.validate.annotation.Ip;",
+        isSystem: false
+});
+
+PACKAGES.set("@Password", {
+        package: "import com.@project.validate.annotation.Password;",
+        isSystem: false
+});
+
+PACKAGES.set("@Path", {
+        package: "import com.@project.validate.annotation.Path;",
+        isSystem: false
+});
+
+PACKAGES.set("@Phone", {
+        package: "import com.@project.validate.annotation.Phone;",
+        isSystem: false
+});
+
+PACKAGES.set("@PostCode", {
+        package: "import com.@project.validate.annotation.PostCode;",
+        isSystem: false
+});
+
+PACKAGES.set("@Telephone", {
+        package: "import com.@project.validate.annotation.Telephone;",
+        isSystem: false
+});
+
+PACKAGES.set("@Url", {
+        package: "import com.@project.validate.annotation.Url;",
+        isSystem: false
+});
+
 
 
 class PackegeRender {

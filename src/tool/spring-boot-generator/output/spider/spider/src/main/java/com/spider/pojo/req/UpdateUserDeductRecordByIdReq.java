@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateUserDeductRecordByIdReq  {
+public class UpdateUserDeductRecordByIdReq extends PageReq {
 
     @ApiModelProperty("数量")
     private Integer amount;

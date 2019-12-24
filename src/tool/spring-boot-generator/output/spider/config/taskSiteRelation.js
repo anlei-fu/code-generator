@@ -8,6 +8,7 @@ exports.taskSiteRelationConfig = {
                 items: [
 
                         // add
+                        // domain : validate --- @Url  
                         // id : validate --- @NotNull  
                         // siteId : validate --- @NotNull  
                         // taskId : validate --- @NotNull  
@@ -26,6 +27,7 @@ exports.taskSiteRelationConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("domain","@Url")
                                            .validate("id","@NotNull")
                                            .validate("siteId","@NotNull")
                                            .validate("taskId","@NotNull")

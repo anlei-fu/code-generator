@@ -7,6 +7,7 @@ import com.spider.pojo.req.GetWorkerInfoListReq;
 import com.spider.pojo.req.UpdateWorkerInfoByIdReq;
 import com.spider.pojo.resp.R;
 import com.spider.service.WorkerInfoService;
+import com.spider.validate.annotation.Path;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -9,7 +9,7 @@ exports.workerInfoConfig = {
 
                         // add
                         // id : validate --- @NotNull  
-                        // ip : validate --- @NotNull
+                        // ip : validate --- @NotNull  @Ip
                         new builder()
                                 .type("insert")
                                 .id("addWorkerInfo")
@@ -26,6 +26,7 @@ exports.workerInfoConfig = {
                                            .excludes("id")
                                            .validate("id","@NotNull")
                                            .validate("ip","@NotNull")
+                                           .validate("ip","@Ip")
                                 })
                                 .build(),
 
@@ -48,7 +49,6 @@ exports.workerInfoConfig = {
                                 .build(),
 
                         // updateById
-                        // description : validate --- @Ip  
                         // ip : validate --- @Ip
                         new builder()
                                 .type("update")
@@ -73,7 +73,6 @@ exports.workerInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("description","@Ip")
                                            .validate("ip","@Ip")
                                 })
                                 .build(),

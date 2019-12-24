@@ -9,6 +9,7 @@ exports.taskScriptConfigRecordConfig = {
 
                         // add
                         // action : validate --- @NotNull  
+                        // file : validate --- @Path  
                         // id : validate --- @NotNull  
                         // version : validate --- @NotNull
                         new builder()
@@ -26,6 +27,7 @@ exports.taskScriptConfigRecordConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("action","@NotNull")
+                                           .validate("file","@Path")
                                            .validate("id","@NotNull")
                                            .validate("version","@NotNull")
                                 })

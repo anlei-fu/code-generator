@@ -7,6 +7,7 @@ import com.spider.pojo.req.GetUserChargeRecordListReq;
 import com.spider.pojo.req.UpdateUserChargeRecordByIdReq;
 import com.spider.pojo.resp.R;
 import com.spider.service.UserChargeRecordService;
+import com.spider.validate.annotation.Path;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

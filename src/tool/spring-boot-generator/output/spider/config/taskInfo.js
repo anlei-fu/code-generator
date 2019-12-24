@@ -9,9 +9,9 @@ exports.taskInfoConfig = {
 
                         // add
                         // id : validate --- @NotNull  
-                        // level : validate --- @NotNull  
+                        // level : validate --- @NotNull  @Enum("level")  
                         // mainConfigId : validate --- @NotNull  
-                        // status : validate --- @NotNull  
+                        // status : validate --- @NotNull  @Enum("status")  
                         // userId : validate --- @NotNull
                         new builder()
                                 .type("insert")
@@ -29,8 +29,10 @@ exports.taskInfoConfig = {
                                            .excludes("id")
                                            .validate("id","@NotNull")
                                            .validate("level","@NotNull")
+                                           .validate("level","@Enum(\"level\")")
                                            .validate("mainConfigId","@NotNull")
                                            .validate("status","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                            .validate("userId","@NotNull")
                                 })
                                 .build(),
@@ -54,9 +56,8 @@ exports.taskInfoConfig = {
                                 .build(),
 
                         // updateById
-                        // description : validate --- @Ip  
-                        // level : validate --- @Enum(level)  
-                        // status : validate --- @Enum(status)
+                        // level : validate --- @Enum("level")  
+                        // status : validate --- @Enum("status")
                         new builder()
                                 .type("update")
                                 .id("updateTaskInfoById")
@@ -80,9 +81,8 @@ exports.taskInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("description","@Ip")
-                                           .validate("level","@Enum(level)")
-                                           .validate("status","@Enum(status)")
+                                           .validate("level","@Enum(\"level\")")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -112,8 +112,8 @@ exports.taskInfoConfig = {
 
                         // getList
                         // description : excluded 
-                        // level : validates --- @Enum(level)  
-                        // status : validates --- @Enum(status)
+                        // level : validates --- @Enum("level")  
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -131,8 +131,8 @@ exports.taskInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("level","@Enum(level)")
-                                           .validate("status","@Enum(status)")
+                                           .validate("level","@Enum(\"level\")")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build()
                 ]

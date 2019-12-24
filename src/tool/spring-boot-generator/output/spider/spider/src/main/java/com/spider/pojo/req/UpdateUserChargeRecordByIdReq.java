@@ -1,5 +1,6 @@
 package com.spider.pojo.req;
 
+import com.spider.validate.annotation.Enum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateUserChargeRecordByIdReq  {
+public class UpdateUserChargeRecordByIdReq extends PageReq {
 
     @ApiModelProperty("数量")
     private Float amount;
@@ -25,6 +26,7 @@ public class UpdateUserChargeRecordByIdReq  {
     private String orderId;
 
     @ApiModelProperty("支付状态")
+    @Enum("status")
     private Integer status;
 
     @ApiModelProperty("用户id")

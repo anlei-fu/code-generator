@@ -10,7 +10,7 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class UpdateWorkTaskRecordByIdReq  {
+public class UpdateWorkTaskRecordByIdReq extends PageReq {
 
     @ApiModelProperty("")
     private Integer downloadSucess;

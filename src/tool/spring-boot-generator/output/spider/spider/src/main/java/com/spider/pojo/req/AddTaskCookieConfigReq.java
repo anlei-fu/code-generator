@@ -5,17 +5,20 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 
 
 @ApiModel("")
 @Getter
 @Setter
-public class AddTaskCookieConfigReq  {
+public class AddTaskCookieConfigReq extends PageReq {
 
     @ApiModelProperty("创建时间")
     private Integer createTime;
 
     @ApiModelProperty("网站id")
+    @NotNull
     private Integer domainId;
 
     @ApiModelProperty("失效时间")
@@ -25,6 +28,7 @@ public class AddTaskCookieConfigReq  {
     private String key;
 
     @ApiModelProperty("主配置id")
+    @NotNull
     private Integer taskConfigMainId;
 
     @ApiModelProperty("value")

@@ -8,7 +8,11 @@ exports.userInfoConfig = {
                 items: [
 
                         // add
-                        // id : validate --- @NotNull
+                        // email : validate --- @Email  
+                        // id : validate --- @NotNull  
+                        // lastLoginIp : validate --- @Ip  
+                        // password : validate --- @Password  
+                        // phoneNo : validate --- @Phone
                         new builder()
                                 .type("insert")
                                 .id("addUserInfo")
@@ -23,7 +27,11 @@ exports.userInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("email","@Email")
                                            .validate("id","@NotNull")
+                                           .validate("lastLoginIp","@Ip")
+                                           .validate("password","@Password")
+                                           .validate("phoneNo","@Phone")
                                 })
                                 .build(),
 

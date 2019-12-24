@@ -367,9 +367,9 @@ class Generator {
                                 req.type = x.type;
                                 req.fields = generateReq(config, x);
                                 req.description = x.description;
-                                req.validates = x.validates;
                                 req.name = x.type;
                                 req.type = "req";
+                                req.extends=config.resp.single?"":"PageReq";
                                 let content = Render.renderEntity(req);
                                 content = this._packageRender.renderPackage(content);
                                 this._writer.writeReq(x.type, content);

@@ -10,13 +10,16 @@ import lombok.Setter;
 @ApiModel("")
 @Getter
 @Setter
-public class GetUserWalletListReq  {
+public class GetUserWalletListReq extends PageReq {
 
     @ApiModelProperty("创建时间")
     private Integer createTime;
 
-    @ApiModelProperty("余额")
-    private Float total;
+    @ApiModelProperty("余额 min")
+    private Float totalMin;
+
+    @ApiModelProperty("余额 max")
+    private Float totalMax;
 
     @ApiModelProperty("用户id")
     private String userId;

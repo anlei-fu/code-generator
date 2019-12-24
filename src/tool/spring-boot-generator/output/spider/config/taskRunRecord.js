@@ -101,7 +101,7 @@ exports.taskRunRecordConfig = {
                                 .build(),
 
                         // getList
-
+                        // pageDownloaded : expression --- range
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -110,7 +110,7 @@ exports.taskRunRecordConfig = {
                                 .conditions(collection=>{
                                         collection.includes(taskRunRecord.columnsArray)
                                                   .excludes("id")
-
+                                                  .expression("pageDownloaded","range")
                                 })
                                 .id("getTaskRunRecordList")
                                 .controller(controller => {

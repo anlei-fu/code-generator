@@ -101,7 +101,7 @@ exports.taskHttpHeaderConfigConfig = {
                                 .build(),
 
                         // getList
-
+                        // key : excluded
                         new builder()
                                 .type("select")
                                 .includes(collection=>{
@@ -110,7 +110,7 @@ exports.taskHttpHeaderConfigConfig = {
                                 .conditions(collection=>{
                                         collection.includes(taskHttpHeaderConfig.columnsArray)
                                                   .excludes("id")
-
+                                                  .excludes(["key"])
                                 })
                                 .id("getTaskHttpHeaderConfigList")
                                 .controller(controller => {

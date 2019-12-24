@@ -96,7 +96,7 @@ class BuilderConfigGenerator {
                 let output = "";
                 items.forEach(x => {
                         x.validates.forEach(y => {
-                                output += `${REQ_IDENT}.validate("${x.key}","${y}")\r\n`;
+                                output += `${REQ_IDENT}.validate("${x.key}","${y.replace(/"/g,"\\\"")}")\r\n`;
                         });
                 })
 
