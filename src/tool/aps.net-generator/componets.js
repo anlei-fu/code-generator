@@ -6,11 +6,11 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-12-02 16:10:40
  */
-const { NamingStrategy } = require("./../../libs/naming-strategy");
-const { FILE } = require("./../../libs/file");
-const { STR } = require("./../../libs/str");
+const { NamingStrategy } = require("../../libs/naming-strategy");
+const { FILE } = require("../../libs/file");
+const { STR } = require("../../libs/str");
 const DEFAULT_OPTION = "------请选择------";
-const { OBJECT } = require("./../../libs/utils");
+const { OBJECT } = require("../../libs/utils");
 
 const root="C:/Users/Administrator/Desktop/code-generator/src/tool/tablePraser/templates";
 

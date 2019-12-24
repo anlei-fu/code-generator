@@ -8,11 +8,11 @@
  */
 
 //imports
-const { FILE } = require("./../../libs/file");
-const { DIR } = require("./../../libs/dir");
-const { STR } = require("./../../libs/str");
-const { NamingStrategy } = require("./../../libs/naming-strategy");
-const { COMPONENTS } = require("./componets.js");
+const { FILE } = require("../../libs/file");
+const { DIR } = require("../../libs/dir");
+const { STR } = require("../../libs/str");
+const { NamingStrategy } = require("../../libs/naming-strategy");
+const { COMPONENTS } = require("./componets.js.js");
 
 const CLASS_IDENT = "    ";
 const PROPERTY_IDENT = "        ";

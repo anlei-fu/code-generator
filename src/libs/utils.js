@@ -229,7 +229,7 @@ function getValue(obj, key) {
  * @returns {String}
  */
 function text(obj, name) {
-        let json = JSON.stringify(obj, null, "  ");
+        let json = JSON.stringify(obj, null, "\t");
         json=doReplace(json);
         return `let ${name} = ${json};\r\n\r\n`;
 }

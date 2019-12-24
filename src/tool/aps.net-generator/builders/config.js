@@ -1,0 +1,33 @@
+let config={
+        name:"",
+        query:{
+           selects:[
+                      {
+                         name:status,
+                         defaultText:"",
+                         service:"",
+                         type:"",
+                         text:"",
+                         value:"",
+                   }
+           ],
+           texts:[
+                   {
+                           name:"",
+                   }
+           ],
+        },
+        add:{
+                selects:[],
+                texts:[],
+                require:[],
+        },
+        columnsMapping:{
+
+        },
+        operation:false,
+        batchOperation:false,
+        delete:false,
+        exportsExcel:false,
+        importsExcel:false,
+}
