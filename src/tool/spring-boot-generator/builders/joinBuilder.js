@@ -83,13 +83,13 @@ exports.joinBuilder = function joinBuilder() {
          */
         this.build = () => {
 
+                if (!this._table || !this._joinCondition)
+                        throw new Error(`unexcepted config`);
+
                 if (this._alias) {
                         this._includes.prefixAll(this._alias);
                         this._conditions.prefixAll(this._alias);
                 }
-
-                if (!this._table || !this._joinCondition)
-                        throw new Error(`unexcepted config`);
 
                 this.table.alias = this._alias;
 

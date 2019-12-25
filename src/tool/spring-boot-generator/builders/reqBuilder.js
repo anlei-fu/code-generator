@@ -7,6 +7,10 @@
  * @LastEditTime : 2019-12-18 11:49:04
  */
 const { TYPE } = require("../../../libs/utils")
+
+/**
+ * Build req config
+ */
 class ReqBuilder {
         constructor() {
 
@@ -39,7 +43,7 @@ class ReqBuilder {
         /**
          * Add '@NotNull' validate
          * 
-         * @param {string|[String]} item 
+         * @param {String|[String]} item 
          */
         requireItem(item) {
                 if (TYPE.isString(item)) {
@@ -54,6 +58,12 @@ class ReqBuilder {
                 return this;
         }
 
+        /**
+         * Add validate
+         * 
+         * @param {String|[String]} item 
+         * @param {String} validate 
+         */
         validate(item,validate){
                 if (TYPE.isString(item)) {
                         this._addValidateCore(item, validate);
@@ -68,11 +78,10 @@ class ReqBuilder {
 
         }
 
-
         /**
          * Add 'NotBlank' validate
          * 
-         * @param {string|[String]} item 
+         * @param {String|[String]} item 
          */
         notBlank(item) {
                 if (TYPE.isString(item)) {
@@ -166,7 +175,6 @@ class ReqBuilder {
          * 
          */
         build() {
-
                 return {
                         doCreate: this._doCreate,
                         from: this._from,

@@ -5,7 +5,7 @@ const DELETE_RENDER = new SimpleRender({}, `${__dirname}/templates/delete.xml`);
 
 
 /**
- * Render delete statement
+ * Render delete sql template
  * 
  * @private
  * @param {Config} config

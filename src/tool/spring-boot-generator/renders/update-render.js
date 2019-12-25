@@ -6,14 +6,14 @@ const { renderIncludes } = require("./includes-render");
 const UPDATE_RENDER = new SimpleRender({}, `${__dirname}/templates/update.xml`);
 
 /**
- * Render update statement
+ * Render update sql template
  * 
  * @private
  * @param {Config} config
  * @returns {String}
  */
 function renderUpdate(config) {
-        
+
         let updateModel = {
                 id: config.id,
                 columns: renderIncludes(config),

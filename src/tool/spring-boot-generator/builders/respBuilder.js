@@ -50,6 +50,9 @@ exports.respBuilder = function respBuilder() {
                 return this;
         }
 
+        /**
+         * 
+         */
         this.build = function build() {
                 return {
                         single: this._single,

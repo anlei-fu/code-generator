@@ -1,7 +1,7 @@
-const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const { getReqParamsWithoutType } = require("./../req-common")
-const { STR } = require("./../../../libs/str")
-const { isSimpleJavaType } = require("./../utils")
+const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
+const { getReqParamsWithoutType } = require("./../req-common");
+const { STR } = require("./../../../libs/str");
+const { isSimpleJavaType } = require("./../utils");
 
 const _controllerItemRender = new SimpleRender({}, `${__dirname}/templates/controller-item.java`);
 const _controllerRender = new SimpleRender({}, `${__dirname}/templates/controller.java`);
@@ -13,6 +13,7 @@ HTTP_MAPPINGS.set("select", "@GetMapping")
         .set("insert", "@PostMapping");
 
 /**
+ * Render controller template
  * 
  * @param {Controller} config 
  * @returns {String}
@@ -20,7 +21,7 @@ HTTP_MAPPINGS.set("select", "@GetMapping")
 function renderController(config) {
         let content = "";
         config.items.forEach(x => {
-                let item=_controllerItemRender.renderTemplate(getControllerItem(x, config.name))
+                let item=_controllerItemRender.renderTemplate(getControllerItemConfig(x, config.name))
                 content +=item;
         });
 
@@ -30,31 +31,31 @@ function renderController(config) {
 }
 
 /**
- * Get controller item
+ * Get controller item config
  * 
  * @param {Config} config 
  * @returns {String}
  */
-function getControllerItem(config, name) {
+function getControllerItemConfig(config, name) {
         return {
                 name: config.id,
-                httpMapping: getHttpMapping(config),
-                controllerReturnType: getControllerReturnType(config, name),
+                httpMapping: getControllerItemHttpMappiAnnotationg(config),
+                controllerReturnType: getControllerItemReturnType(config, name),
                 serviceParams: getReqParamsWithoutType(config),
                 description: config.controller.description || "",
-                controllerParams: getControllerParams(config),
+                controllerParams: getControllerItemParams(config),
                 sname: STR.lowerFirstLetter(name),
         };
 }
 
 /**
- * Get controler params 
+ * Get controler item params text
  * 
  * @private
  * @param {Config} config 
  * @returns {String}
  */
-function getControllerParams(config) {
+function getControllerItemParams(config) {
         let params = "";
         config.reqs.forEach(x => {
                 x.from = x.from || "";
@@ -67,13 +68,13 @@ function getControllerParams(config) {
 }
 
 /**
- * Get http mapping annotation
+ * Get controller ite http mapping annotation text
  * 
  * @private
  * @param {Config} config 
  * @returns {String}
  */
-function getHttpMapping(config) {
+function getControllerItemHttpMappiAnnotationg(config) {
         if (!HTTP_MAPPINGS.has(config.type))
                 throw new Error(`unexceted type(${config.type})`);
 
@@ -83,13 +84,13 @@ function getHttpMapping(config) {
 }
 
 /**
- * Get controller return type
+ * Get controller item return type text
  * 
  * @private
  * @param {Config} config 
  * @returns {String}
  */
-function getControllerReturnType(config, name) {
+function getControllerItemReturnType(config, name) {
         if (config.type != "select")
                 return "R";
 
@@ -104,7 +105,5 @@ function getControllerReturnType(config, name) {
                         : `R<PageInfo<${name}>>`;
         }
 }
-
-
 
 exports.renderController = renderController;

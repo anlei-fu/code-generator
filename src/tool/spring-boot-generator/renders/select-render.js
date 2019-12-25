@@ -7,7 +7,7 @@ const { renderIncludes } = require("./includes-render");
 const SELECT_RENDER = new SimpleRender({}, `${__dirname}/templates/select.xml`);
 
 /**
- * Render select statement
+ * Render select sql template
  * 
  * @private
  * @param {Config} config

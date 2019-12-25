@@ -1,11 +1,12 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const {isSimpleJavaType}=require("./../utils");
-const {STR} =require("./../../../libs/str")
+const { isSimpleJavaType } = require("./../utils");
+const { STR } = require("./../../../libs/str");
 
 const MAPPER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);
 const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`);
 
 /**
+ * Render mapper template
  * 
  * @param {GeneratorConfig} config 
  * @returns {String}
@@ -13,36 +14,36 @@ const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`)
 function renderMapper(config) {
         let content = "";
         config.items.forEach(x => {
-                let item = getMapperItem(x, config.name);
+                let item = getMapperItemRenderConfig(x, config.name);
                 content += MAPPER_ITEM_RENDER.renderTemplate(item);
         });
 
-        content=content.trimRight()+"\r\n";
+        content = content.trimRight() + "\r\n";
 
         return MAPPER_RENDER.renderTemplate({ content });
 }
 
 /**
- * Get mapper interface item
+ * Get mapper item render config
  * 
  * @param {Config} config 
  * @returns {String}
  */
-function getMapperItem(config, name) {
+function getMapperItemRenderConfig(config, name) {
         return {
                 name: config.id,
-                mapperReturnType: getMapperReturnType(config, name),
-                mapperParams: getMapperParams(config)
+                mapperReturnType: getMapperItemReturnType(config, name),
+                mapperParams: getMapperItemParams(config)
         }
 }
 
 /**
+ * Get mapper item params text
  * 
  * @param {Config} config 
  * @returns {String}
  */
-function getMapperParams(config) {
-
+function getMapperItemParams(config) {
         if (config.params.doCreate)
                 return `${STR.upperFirstLetter(config.params.name)} params`;
 
@@ -62,12 +63,13 @@ function getMapperParams(config) {
 }
 
 /**
+ * Get mapper item return type text
  * 
  * @param {Config} config 
  * @param {String} name   table name
  * @returns {String}
  */
-function getMapperReturnType(config, name) {
+function getMapperItemReturnType(config, name) {
 
         if (config.type != "select")
                 return "int";

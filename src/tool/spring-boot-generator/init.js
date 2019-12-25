@@ -123,7 +123,7 @@ function makeAllFolders(project, dbConfig) {
                 .replace(/@project/g, project);
         FILE.write(`./output/${project}/${project}/pom.xml`, pom);
 
-        copyAnnotaion("./templates/annotation",`${root}/validate/annotation`);
+        copyAnnotaion("./templates/annotation", `${root}/validate/annotation`);
         // application.properties
         let patterns = {
                 "@dbHost": dbConfig.host,

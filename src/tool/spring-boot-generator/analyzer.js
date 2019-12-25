@@ -1,6 +1,8 @@
 
-let a = "";
-const createSelectExcludes = () => {
+/**
+ * Create select ecludes
+ */
+const CREATE_SELECT_EXLUCES = () => {
         return {
                 String: {
                         remark: {
@@ -12,13 +14,13 @@ const createSelectExcludes = () => {
                         description: {
 
                         },
-                        memo:{
+                        memo: {
 
                         },
-                        summary:{
+                        summary: {
 
                         },
-                        text:{
+                        text: {
 
                         },
                         msg: {
@@ -93,7 +95,10 @@ const createSelectExcludes = () => {
         }
 }
 
-const createExpression = () => {
+/**
+ * Create expressions
+ */
+const CREATE_EXPRESSIONS = () => {
         return {
                 Integer: {
                         price: {
@@ -164,8 +169,10 @@ const createExpression = () => {
         }
 }
 
-
-const createValidates = () => {
+/**
+ * Create validate
+ */
+const CREATE_VALIDATES = () => {
         return {
                 String: {
                         "phone": {
@@ -214,7 +221,7 @@ const createValidates = () => {
                                 validate: "@Url"
                         },
                         "ip": {
-                                matcher: (x) => x.endsWith("Ip")||x.toLowerCase()=="ip",
+                                matcher: (x) => x.endsWith("Ip") || x.toLowerCase() == "ip",
                                 validate: "@Ip"
                         },
                         "postCode": {
@@ -258,12 +265,16 @@ const UPDATE_DEFAULT_PATTERNS = {
 
 const { getJavaType } = require("./utils")
 
+/**
+ * Analyze candidate
+ */
 class AnalyzerBase {
         constructor() {
-                this.validates = createValidates();
+                this.validates = CREATE_VALIDATES();
         }
 
         /**
+         * Analyze candidate
          * 
          * @abstract
          * @param {String} type 
@@ -349,14 +360,18 @@ class AnalyzerBase {
         }
 }
 
+/**
+ * Analyze select candiates
+ */
 class SelectAnalyzer extends AnalyzerBase {
         constructor() {
                 super();
-                this.excludes = createSelectExcludes();
-                this.expressions = createExpression();
+                this.excludes = CREATE_SELECT_EXLUCES();
+                this.expressions = CREATE_EXPRESSIONS();
         }
 
         /**
+         * Analyze candidate
          * 
          * @override
          * @param {String} name 
@@ -436,7 +451,11 @@ class SelectAnalyzer extends AnalyzerBase {
                 this._disableCore(this.expressions, config);
         }
 }
-const createInsertExcludes = () => {
+
+/**
+ * Create insert excludes
+ */
+const CREATE_INSERT_EXCLUDES = () => {
         return {
                 String: [
                         "updateUser"
@@ -448,14 +467,19 @@ const createInsertExcludes = () => {
         }
 }
 
+/**
+ * Analyze insert candidate
+ */
 class InsertAnalyzer extends AnalyzerBase {
         constructor() {
                 super();
-                this.excludes = createInsertExcludes();
-                this.validates = createValidates();
+                this.excludes = CREATE_INSERT_EXCLUDES();
+                this.validates = CREATE_VALIDATES();
         }
 
         /**
+         * Analyze candidate
+         * 
          * @override
          * @param {*} column 
          */
@@ -480,6 +504,7 @@ class InsertAnalyzer extends AnalyzerBase {
         }
 
         /**
+         * Get validate of field
          * 
          * @override
          * @override
@@ -492,15 +517,18 @@ class InsertAnalyzer extends AnalyzerBase {
                 if (!column.nullable)
                         validates.push("@NotNull");
 
-                let ret= validates.concat(super.getValidates(type, column.name));
+                let ret = validates.concat(super.getValidates(type, column.name));
 
-               
 
-                  return ret;
+
+                return ret;
         }
 }
 
-const createUpdateExcludes = () => {
+/**
+ * Create update excludes
+ */
+const CREATE_UPDATE_EXCLUDES = () => {
         return {
                 Date: [
                         "createTime",
@@ -513,13 +541,18 @@ const createUpdateExcludes = () => {
                 ]
         }
 }
+
+/**
+ * Analyze update candidate
+ */
 class UpdateAnlyzer extends AnalyzerBase {
         constructor() {
                 super();
-                this.excludes = createUpdateExcludes();
+                this.excludes = CREATE_UPDATE_EXCLUDES();
         }
 
         /**
+         * Analyze candiate
          * 
          * @override
          * @param {String} type 

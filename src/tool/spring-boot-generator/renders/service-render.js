@@ -4,6 +4,7 @@ const _serviceItemRender = new SimpleRender({}, `${__dirname}/templates/service-
 const _serviceRender = new SimpleRender({}, `${__dirname}/templates/service.java`);
 
 /**
+ * Render service template
  * 
  * @param {service} config 
  * @returns {String}
@@ -20,7 +21,7 @@ function renderService(config) {
 }
 
 /**
- * Get service interface item
+ * Get service item template
  * 
  * @param {Config} config 
  * @returns {String}
@@ -34,6 +35,7 @@ function getServiceItem(config,name) {
 }
 
 /**
+ * Get service return type text
  * 
  * @param {Config} config 
  * @param {String} name

@@ -8,7 +8,7 @@ const { renderTrim } = require("./trim-render");
 const INSERT_RENDER = new SimpleRender({}, `${__dirname}/templates/insert.xml`);
 
 /**
- * Render insert statement
+ * Render insert sql template
  * 
  * @private
  * @param {Config} model
@@ -24,8 +24,8 @@ function renderInsert(model) {
 
         let insertModel = {
                 id: model.id,
-                columns: renderTrim({ content: columns, suffix:")", prefix:"(" }),
-                properties: renderTrim({ properties: properties, suffix:")", prefix:"(" }),
+                columns: renderTrim({ content: columns, suffix: ")", prefix: "(" }),
+                properties: renderTrim({ properties: properties, suffix: ")", prefix: "(" }),
         }
 
         return INSERT_RENDER.renderTemplate(insertModel);

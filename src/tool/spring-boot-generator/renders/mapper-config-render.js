@@ -1,11 +1,13 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const { renderSelect } = require("./select-render")
-const { renderUpdate } = require("./update-render")
-const { renderDelete } = require("./delete-render")
-const { renderInsert } = require("./insert-render")
+const { renderSelect } = require("./select-render");
+const { renderUpdate } = require("./update-render");
+const { renderDelete } = require("./delete-render");
+const { renderInsert } = require("./insert-render");
+
 const _mapperConfigRender = new SimpleRender({}, `${__dirname}/templates/mapper.xml`);
 
 /**
+ * Render mapper config template
  * 
  * @param {mapperConfig} mapperConfig 
  * @returns {String}
@@ -20,7 +22,7 @@ function renderMapperConfig(config) {
 }
 
 /**
- * Get mapper config item, dispatch by "config.type"
+ * Render mapper config item, dispatch by "config.type"
  * 
  * @param {Config} config 
  * @returns {String}

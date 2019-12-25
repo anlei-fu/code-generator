@@ -1,7 +1,7 @@
 const { renderIf } = require("./if-render");
 
 /**
- * Render if assign expression
+ * Render expression template
  * 
  * @private
  * @param {{ifExpression:String,suffix:String}} model

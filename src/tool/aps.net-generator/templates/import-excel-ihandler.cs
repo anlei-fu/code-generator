@@ -1,1 +1,0 @@
-       IResult ImportExcel(DataTable dt, string user);

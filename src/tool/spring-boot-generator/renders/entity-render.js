@@ -1,18 +1,19 @@
 const { STR } = require("./../../../libs/str")
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
 const { renderValidate } = require("./validate-render")
-const _entityItemRender = new SimpleRender({}, `${__dirname}/templates/entity-item.java`);
-const _entityRender = new SimpleRender({}, `${__dirname}/templates/entity.java`);
+
+const ENTITY_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-item.java`);
+const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity.java`);
 
 /**
+ * Render entity template
  * 
  * @param {Entity} entity 
  * @returns {String}
  */
 function renderEntity(entity) {
+
         let content = ""
-
-
 
         // generate all field items
         entity.fields.forEach(x => {
@@ -21,7 +22,7 @@ function renderEntity(entity) {
                         x.validates.forEach(x => {
                                 validates += renderValidate(x);
                         });
-                        
+
                 let itemPatterns = {
                         name: x.name,
                         type: x.type,
@@ -29,8 +30,7 @@ function renderEntity(entity) {
                         validates
                 };
 
-
-                let field = _entityItemRender.renderTemplate(itemPatterns);
+                let field = ENTITY_ITEM_RENDER.renderTemplate(itemPatterns);
                 content += STR.removeEmptyLine(field) + "\r\n";
         });
 
@@ -43,7 +43,7 @@ function renderEntity(entity) {
                 extends: entity.extends ? `extends ${entity.extends}` : ""
         }
 
-        return _entityRender.renderTemplate(patterns)
+        return ENTITY_RENDER.renderTemplate(patterns)
 }
 
 exports.renderEntity = renderEntity;

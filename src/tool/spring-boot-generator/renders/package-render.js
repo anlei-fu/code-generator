@@ -1,4 +1,6 @@
-const { STR } = require("./../../../libs/str")
+const { STR } = require("./../../../libs/str");
+
+
 const PACKAGES = new Map();
 PACKAGES.set("List<", {
         package: "import java.util.List;",
@@ -28,8 +30,6 @@ PACKAGES.set("PageInfo<", {
         package: "import com.github.pagehelper.PageInfo;",
         isSystem: false
 });
-
-
 
 PACKAGES.set("PageHelperUtils", {
         package: "import com.@project.utils.PageHelperUtils;",
@@ -86,14 +86,16 @@ PACKAGES.set("@Url", {
         isSystem: false
 });
 
-
-
+/**
+ * Manage packages and render package segment
+ */
 class PackegeRender {
         constructor(project) {
                 this._project = project;
         }
 
         /**
+         * Add package
          * 
          * @param {Package} pk 
          */
@@ -103,6 +105,7 @@ class PackegeRender {
         }
 
         /**
+         * Render package segment
          * 
          * @param {String} content 
          * @returns {String}
@@ -121,9 +124,9 @@ class PackegeRender {
                                 .split("\r\n");
 
                 PACKAGES.forEach((value, key) => {
-                        if(value.type){
-                                if(content.indexOf(key+" ")==-1&&content.indexOf("<"+key)==-1)
-                                  return;
+                        if (value.type) {
+                                if (content.indexOf(key + " ") == -1 && content.indexOf("<" + key) == -1)
+                                        return;
                         }
 
                         if (content.indexOf(key) == -1 || packagesPattern.includes(key))

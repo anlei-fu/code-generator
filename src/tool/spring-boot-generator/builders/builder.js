@@ -160,7 +160,6 @@ exports.builder = function builder() {
          * Build a generator config item
          */
         this.build = () => {
-
                 let joins = [];
                 this.joins.forEach(x => {
                         joins.push(x.build());
