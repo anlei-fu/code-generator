@@ -1,19 +1,17 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const BUTTONS_RENDER = new SimpleRender({}, "./templates/buttons.html");
+const { renderAddHtml } = require("./addRender")
+const BUTTONS_RENDER = new SimpleRender({}, `${__dirname}/templates/buttons.html`);
 
 
 function renderButtons(config) {
-        if (config.add) {
-         
-        }
+        let renderConfig = {
+            others:""
+        };
 
-        if (config.exportEcel) {
+        if (config.add)
+                renderConfig.others += renderAddHtml();
 
-        }
-
-        if (config.importExcel) {
-
-        }
+        return BUTTONS_RENDER.renderTemplate(renderConfig);
 }
 
 exports.renderButtons = renderButtons

@@ -1,12 +1,12 @@
 const {SimpleRender} =require("./../../simple-pattern-render/simple-pattern-render");
-const {renderHearders}=require("./headerRender");
+const {renderHeaders}=require("./header-render");
 const {renderBody}=require("./bodyRender")
-const TABLE_RENDER=new SimpleRender({},"./templates/table.html");
+const TABLE_RENDER=new SimpleRender({},`${__dirname}/templates/table.html`);
 
 function renderTable(config){
     let tableConfig={
-            headers:renderHearders(config.headers),
-            body:renderBody(config.body)
+            headers:renderHeaders(config),
+            body:renderBody(config)
     }
 
     return TABLE_RENDER.renderTemplate(tableConfig);

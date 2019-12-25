@@ -180,7 +180,7 @@ function makeOraginalRegexPattern(pattern) {
  * @param {Any[]} array 
  * @param {String?} prefix  
  * @param {String?} suffix 
- * @returns {[String]}
+ * @returns {String}
  */
 function arrayToString(array=[], prefix="", suffix="") {
         let result="";

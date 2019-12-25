@@ -1,6 +1,6 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const EXPORT_EXCEL_JS_RENDER = new SimpleRender({}, "./templates/exportExcel.js");
-const EXPORT_EXCEL_HTML_RENDER = new SimpleRender({}, "./templates/exportExcel.html");
+const EXPORT_EXCEL_JS_RENDER = new SimpleRender({}, `${__dirname}/templates/exportExcel.js`);
+const EXPORT_EXCEL_HTML_RENDER = new SimpleRender({}, `${__dirname}/templates/exportExcel.html`);
 
 
 function renderExportExcelHtml(config){

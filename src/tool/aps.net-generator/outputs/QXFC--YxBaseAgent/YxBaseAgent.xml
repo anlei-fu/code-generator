@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <table name="YX_BASE_AGENT">
+    <fields>
+       <field pname="AgentId" name="AGENT_ID" label="代理人编号" isPk="true"  buildType="0"  valueSql=""/>
+       <field pname="AgentName" name="AGENT_NAME" label="代理人名称"/>
+       <field pname="AgentType" name="AGENT_TYPE" label="代理人类型0"/>
+       <field pname="CertificateNo" name="CERTIFICATE_NO" label="身份证/纳税识别号"/>
+       <field pname="Mobile" name="MOBILE" label="手机号码"/>
+       <field pname="ProvinceNo" name="PROVINCE_NO" label="省份"/>
+       <field pname="CompanyNature" name="COMPANY_NATURE" label="公司性质1"/>
+       <field pname="CompanyId" name="COMPANY_ID" label="公司编号"/>
+       <field pname="TaxpayerSize" name="TAXPAYER_SIZE" label="纳税人规模1"/>
+       <field pname="Balance" name="BALANCE" label="余额"/>
+       <field pname="Status" name="STATUS" label="状态"/>
+       <field pname="CreatedUser" name="CREATED_USER" label="创建人"/>
+       <field pname="CreatedTime" name="CREATED_TIME" label="创建时间"/>
+       <field pname="LastEditUser" name="LAST_EDIT_USER" label="最后更新人"/>
+       <field pname="LastEditTime" name="LAST_EDIT_TIME" label="最后更新时间"/>
+       <field pname="DownChannelNo" name="DOWN_CHANNEL_NO" label="下游渠道"/>
+       <field pname="OutAgentId" name="OUT_AGENT_ID" label="交易系统代理人编号"/>
+       <field pname="GroupAgent" name="GROUP_AGENT" label="0"/>
+       <field pname="GroupCount" name="GROUP_COUNT" label="组合数量"/>
+    </fields>
+  </table>
+  <template>
+    <item name="getList">
+      <sql>
+        <![CDATA[
+          SELECT 
+                t.CERTIFICATE_NO,
+                t.GROUP_AGENT,
+                t.MOBILE,
+                t1.NAME AgentTypeName,
+                t2.NAME ProvinceNoName,
+                t3.NAME CompanyNatureName,
+                t4.NAME CompanyIdName,
+                t5.NAME TaxpayerSizeName,
+                t6.NAME StatusName,
+                t7.NAME DownChannelNoName      
+          FROM 
+            (SELECT RID
+                  FROM (SELECT R.RID, ROWNUM LINENUM
+                          FROM (SELECT t.rowid RID
+                                 FROM  YX_BASE_AGENT t
+                                 WHERE 
+                                      1=1
+                                      @&t.AgentType
+                                      @&t.CertificateNo
+                                      @&t.CompanyId
+                                      @&t.CompanyNature
+                                      @&t.DownChannelNo
+                                      @&t.GroupAgent
+                                      @&t.Mobile
+                                      @&t.ProvinceNo
+                                      @&t.Status
+                                      @&t.TaxpayerSize
+                                      {&@t.CreatedTime < to_date($ET,'YYYY-MM-DD')}
+                                      {&@t.CreatedTime >= to_date($ST,'YYYY-MM-DD')}
+                                   ) R
+                           WHERE ROWNUM <= { :PS} * { :PI})
+                  WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
+           INNER JOIN YX_BASE_AGENT t on tab.rid = t.rowid
+           LEFT JOIN SYSTEM_DICTIONARY t1 ON t.AGENT_TYPE = t1.VALUE AND t1.TYPE = 'AGENTTYPE'
+           LEFT JOIN PROVINCE t2 ON t.PROVINCE_NO = t2.No
+           LEFT JOIN SYSTEM_DICTIONARY t3 ON t.COMPANY_NATURE = t3.VALUE AND t3.TYPE = 'COMPANYNATURE'
+           LEFT JOIN COMPANY t4 ON t.COMPANY_ID = t4.Id
+           LEFT JOIN SYSTEM_DICTIONARY t5 ON t.TAXPAYER_SIZE = t5.VALUE AND t5.TYPE = 'TAXPAYERSIZE'
+           LEFT JOIN SYSTEM_DICTIONARY t6 ON t.STATUS = t6.VALUE AND t6.TYPE = 'STATUS'
+           LEFT JOIN DOWN_CHANNEL t7 ON t.DOWN_CHANNEL_NO = t7.No
+           ORDER BY t.CREATED_TIME DESC 
+        ]]>
+      </sql>
+    </item>
+    <item name="getCount">
+      <sql>
+        <![CDATA[
+            SELECT 
+                  COUNT(1) 
+            FROM YX_BASE_AGENT  t  
+            WHERE 
+                 1=1
+                 @&t.AgentType
+                 @&t.CertificateNo
+                 @&t.CompanyId
+                 @&t.CompanyNature
+                 @&t.DownChannelNo
+                 @&t.GroupAgent
+                 @&t.Mobile
+                 @&t.ProvinceNo
+                 @&t.Status
+                 @&t.TaxpayerSize
+                 {&@t.CreatedTime < to_date($ET,'YYYY-MM-DD')}
+                 {&@t.CreatedTime >= to_date($ST,'YYYY-MM-DD')}                                      
+        ]]>
+      </sql>
+    </item>
+  </template>
+</config>

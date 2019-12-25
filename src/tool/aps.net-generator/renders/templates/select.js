@@ -1,4 +1,4 @@
-<p class="sc_p">
-@nemeText:
-@Html.DropDownList("@name", new SelectList(@serviceName.Instance.GetDataList(@dicType), "@value", "@text"), "@defaultText")
-</p>
+          <p class="sc_p">
+             @lable:
+             @Html.DropDownList("@name", new SelectList(@service.Instance.GetDataList(@dicType), "@value", "@text"), "@defaultText")
+          </p>
