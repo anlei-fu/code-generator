@@ -1,0 +1,16 @@
+<item name="exportExcel">
+        <sql>
+          <![CDATA[
+            SELECT 
+                  t.*,
+                  t1.CHANNEL_NAME DownChannelNoName,
+                  t2.ACCOUNT_NAME DownAccountIdName,
+                  t3.NAME ChangeTypeName      
+            FROM  @name t
+            WHERE 
+  @conditions
+  @joins
+  @orderBy
+          ]]>
+        </sql>
+      </item>

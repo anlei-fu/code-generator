@@ -84,7 +84,7 @@ function init(table, config) {
 function createFolder(project, name) {
         DIR.create("./outputs");
         DIR.create(`./outputs/${project}--${name}`);
-        FILE.copy("./templates/build.js", `./outputs/${project}--${name}/build.js`);
+        FILE.copy("./resource/build.js", `./outputs/${project}--${name}/build.js`);
 }
 
 /**
@@ -151,15 +151,18 @@ function buildSelectConfig(table, config) {
                 if (!selectAnalyzer.shouldBeCandidate(column))
                         return;
 
-                buildControlConfig(selectConfig, column);
+                let analyzeResult = columnAnalyzer.analyzeColumn(column);
+                buildControlConfig(analyzeResult, selectConfig, column);
 
-                selectConfig.getListSql.columns.push(analyzeResult.column);
-                selectConfig.getListSql.conditions.push(`@&t.${column.name}`);
+                if(analyzeResult.column.indexOf("t.")==-1)
+                     selectConfig.getListSql.columns.push(analyzeResult.column);
+
+                selectConfig.getListSql.conditions.push(`{&@t.${column.name}}`);
 
                 if (analyzeResult.join)
                         selectConfig.getListSql.joins.push(analyzeResult.join);
 
-                selectConfig.getCountSql.conditions.push(`@&t.${column.name}`);
+                selectConfig.getCountSql.conditions.push(`{&@t.${column.name}}`);
         });
 
         if (table.columns["createTime"]) {
@@ -192,13 +195,14 @@ function buildSelectConfig(table, config) {
  * @param {AddConfig|SelectConfig} config 
  * @param {Column} column 
  */
-function buildControlConfig(config, column) {
-        let analyzeResult = columnAnalyzer.analyzeColumn(column);
+function buildControlConfig(analyzeResult,config, column) {
+
         if (controlAnlyzer.shouldBeSelect(column)) {
-                analyzeResult.select.lable = value.description;
+                analyzeResult.select.lable = column.description;
+                analyzeResult.select.name=column.name;
                 config.selects.push(analyzeResult.select);
         } else {
-                analyzeResult.text.lable = value.description;
+                analyzeResult.text.lable = column.description;
                 config.texts.push(analyzeResult.text);
         }
 }
@@ -246,7 +250,8 @@ function buildAddConfig(table, config) {
                 if (!addAnalyzer.shouldBeCandidate(column))
                         return;
 
-                buildControlConfig(addConfig, column);
+                let analyzeResult = columnAnalyzer.analyzeColumn(column);
+                buildControlConfig(analyzeResult, addConfig, column);
         });
 
         config.addConfig = addConfig;

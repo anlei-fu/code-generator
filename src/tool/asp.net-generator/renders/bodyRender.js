@@ -3,7 +3,7 @@ const { renderOperationHtml } = require("./operation-render")
 
 const ITEM_RENDER = new SimpleRender({});
 const IDENT = "                        ";
-ITEM_RENDER.setTempalte(`${IDENT}<td>@value<td>\r\n`);
+ITEM_RENDER.setTempalte(`${IDENT}<td>@value</td>\r\n`);
 
 /**
  * Render table body template

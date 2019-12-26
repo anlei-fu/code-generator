@@ -1,4 +1,5 @@
 const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { renderExportExcelService} = require("./export-excel-render");
 
 const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/templates/service.cs`);
 
@@ -9,7 +10,11 @@ const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/templates/service.cs`)
  * @returns {String}
  */
 function renderService(config) {
-        return SERVICE_RENDER.renderTemplate({});
+        let content="";
+        if (config.exportExcel) 
+                content+=renderExportExcelService(config.selectConfig);
+
+        return SERVICE_RENDER.renderTemplate({content});
 }
 
 exports.renderService = renderService;

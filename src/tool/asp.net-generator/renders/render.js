@@ -1,7 +1,7 @@
 // All renders generator needs
 exports.renders = {
         renderIndex: require("./index-render").renderIndex,
-        renderItem: require("./item-render").renderItem,
+       renderItem: require("./item-render").renderItem,
         renderEntity: require("./entity-render").renderEntity,
         renderService: require("./service-render").renderService,
         renderIAccess: require("./iaccess-render").renderIAccess,

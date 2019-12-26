@@ -3,7 +3,7 @@ const { renderBatchSelectHtml } = require("./batch-select-render")
 
 const ITEM_RENDER = new SimpleRender({});
 const IDENT = "                        ";
-ITEM_RENDER.setTempalte(`${IDENT}<th>@name<th>\r\n`)
+ITEM_RENDER.setTempalte(`${IDENT}<th>@name</th>\r\n`)
 
 /**
  * Render table headers template
@@ -17,7 +17,7 @@ function renderHeaders(config) {
                 content += IDENT + "<th>" + renderBatchSelectHtml() + "</th>\r\n";
 
         config.tableConfig.items.forEach(x => {
-                content += ITEM_RENDER.renderTemplate({ name: x.hearder });
+                content += ITEM_RENDER.renderTemplate({ name: x.header });
         });
 
         if (config.operations.length > 0)

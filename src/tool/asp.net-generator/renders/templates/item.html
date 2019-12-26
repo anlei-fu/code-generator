@@ -1,0 +1,55 @@
+@model @project.Model.@nameItemModel
+<script type="text/javascript">
+    $(function () {
+        $('#mainForm').validate({
+            errorClass: "error",
+            focusInvalid: true,
+            submitHandler: function (form) {
+                if (!$(form).valid()) {
+                    return false;
+                }
+                var data = $(form).serialize();
+                $.ajax({
+                    type: "post",
+                    data: data,
+                    url: "/@name/item",
+                    success: function (data) {
+                        data = $.parseJSON(data);
+                        if (data.Status) {
+                            var id = $('input[name=__id]').val();
+                            alert(data.Message);
+                            if (id != '') {
+                                refreshCurrentPage();
+                            }
+                            return true;
+                        } else {
+                            alert(data.Message);
+                        }
+                        return false;
+                    },
+                    error: function () {
+                        alert("请求出错");
+                    }
+                });
+            },
+            rules: {
+@rules
+            },
+            messages: {
+        }
+    });
+    $('select').each(function () {
+        if ($(this).css('display') != "none") {
+            $(this).sSelect();
+        }
+    });
+});
+
+
+</script>
+<form id="mainForm" method="post">
+<input type="hidden" name="__id" value="@Model.Id" />
+<table>
+@content
+</table>
+</form>

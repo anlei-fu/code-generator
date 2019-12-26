@@ -10,7 +10,7 @@ const SELECT_RENDER = new SimpleRender({}, `${__dirname}/templates/select.js`);
  */
 function renderSelect(config) {
      config.service = config.service || "SystemDictionary";
-     config.dicType = config.service == "SystemDictionary" ? "" : "";
+     config.dicType = config.service == "SystemDictionary" ? `"${config.name}"` : "";
      return SELECT_RENDER.renderTemplate(config);
 }
 

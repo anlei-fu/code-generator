@@ -27,7 +27,14 @@ function resolveCsv(csv, reolveConfigs, excludeFirstRow = true) {
 
                 let item = {};
                 row.split(",").forEach((cell, i) => {
-                        item[reolveConfigs[i]].name = reolveConfigs[i].resolver(cell);
+                        if(i>reolveConfigs.length)
+                            return;
+                        try{
+                        item[reolveConfigs[i].name] = reolveConfigs[i].resolver(cell);
+                        }
+                        catch{
+
+                        }
                 })
 
                 output.push(item);

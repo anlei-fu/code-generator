@@ -2,6 +2,7 @@ const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-ren
 const { renderAddJs } = require("./addRender");
 const { renderBatchSelectJs } = require("./batch-select-render");
 const { renderDeleteJs } = require("./delete-render");
+const {renderExportExcelJs} =require("./export-excel-render");
 
 const JS_RENDER = new SimpleRender({}, `${__dirname}/templates/js.js`);
 
@@ -23,9 +24,8 @@ function renderJs(config) {
   if (config.add || config.edit)
     content += renderAddJs(config);
 
-  if (config.exportExcel) {
-
-  }
+  if (config.exportExcel) 
+    content+= renderExportExcelJs();
 
   if (config.importExcel) {
 

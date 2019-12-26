@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <table name="QY_TRADE_DOWN_MANUAL">
+    <fields>
+       <field pname="RecordId" name="RECORD_ID" label="编号"/>
+       <field pname="ChannelNo" name="CHANNEL_NO" label="渠道编号"/>
+       <field pname="AccountId" name="ACCOUNT_ID" label="账户编号"/>
+       <field pname="AdjustId" name="ADJUST_ID" label="红冲编号"/>
+       <field pname="HasAdjust" name="HAS_ADJUST" label="是否红冲过"/>
+       <field pname="AddType" name="ADD_TYPE" label="变动类型"/>
+       <field pname="ChangeAmount" name="CHANGE_AMOUNT" label="变动金额"/>
+       <field pname="RealAmount" name="REAL_AMOUNT" label="交易平账真实金额"/>
+       <field pname="ChangeTime" name="CHANGE_TIME" label="变动时间"/>
+       <field pname="Balance" name="BALANCE" label="余额"/>
+       <field pname="CreateUser" name="CREATE_USER" label="创建人"/>
+       <field pname="BankFundId" name="BANK_FUND_ID" label="银行资金变动编号（红冲是使用）"/>
+       <field pname="Memo" name="MEMO" label="备注"/>
+       <field pname="ExtRecordNo" name="EXT_RECORD_NO" label="外部加款记录编号"/>
+       <field pname="HandlingFeeId" name="HANDLING_FEE_ID" label="收取手续费的记录编号"/>
+    </fields>
+  </table>
+  <template>
+    <item name="getList">
+      <sql>
+        <![CDATA[
+          SELECT 
+                t.*,
+                t.*,
+                t1.NAME ChannelNoName,
+                t2.NAME HasAdjustName,
+                t3.NAME AddTypeName      
+          FROM 
+            (SELECT RID
+                  FROM (SELECT R.RID, ROWNUM LINENUM
+                          FROM (SELECT t.rowid RID
+                                 FROM  QY_TRADE_DOWN_MANUAL t
+                                 WHERE 
+                                      1=1
+                                      {&@t.AddType}
+                                      {&@t.ChannelNo}
+                                      {&@t.ExtRecordNo}
+                                      {&@t.HasAdjust}
+                                   ) R
+                           WHERE ROWNUM <= { :PS} * { :PI})
+                  WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
+           INNER JOIN QY_TRADE_DOWN_MANUAL t on tab.rid = t.rowid
+           LEFT JOIN CHANNEL t1 ON t.CHANNEL_NO = t1.No
+           LEFT JOIN SYSTEM_DICTIONARY t2 ON t.HAS_ADJUST = t2.VALUE AND t2.TYPE = 'HasAdjust'
+           LEFT JOIN SYSTEM_DICTIONARY t3 ON t.ADD_TYPE = t3.VALUE AND t3.TYPE = 'AddType'
+ 
+        ]]>
+      </sql>
+    </item>
+    <item name="getCount">
+      <sql>
+        <![CDATA[
+            SELECT 
+                  COUNT(1) 
+            FROM QY_TRADE_DOWN_MANUAL  t  
+            WHERE 
+                 1=1
+                 {&@t.AddType}
+                 {&@t.ChannelNo}
+                 {&@t.ExtRecordNo}
+                 {&@t.HasAdjust}                                      
+        ]]>
+      </sql>
+    </item>
+<item name="exportExcel">
+        <sql>
+          <![CDATA[
+            SELECT 
+                  t.*,
+                  t1.CHANNEL_NAME DownChannelNoName,
+                  t2.ACCOUNT_NAME DownAccountIdName,
+                  t3.NAME ChangeTypeName      
+            FROM  QY_TRADE_DOWN_MANUAL t
+            WHERE 
+                                        1=1
+                                      {&@t.AddType}
+                                      {&@t.ChannelNo}
+                                      {&@t.ExtRecordNo}
+                                      {&@t.HasAdjust}
+             LEFT JOIN CHANNEL t1 ON t.CHANNEL_NO = t1.No
+           LEFT JOIN SYSTEM_DICTIONARY t2 ON t.HAS_ADJUST = t2.VALUE AND t2.TYPE = 'HasAdjust'
+           LEFT JOIN SYSTEM_DICTIONARY t3 ON t.ADD_TYPE = t3.VALUE AND t3.TYPE = 'AddType'
+  
+          ]]>
+        </sql>
+      </item>
+  </template>
+</config>

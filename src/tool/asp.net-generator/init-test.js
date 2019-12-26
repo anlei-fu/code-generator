@@ -1,14 +1,14 @@
 const { init } = require("./initializer")
 const { FILE } = require("../../libs/file")
-let table = JSON.parse(FILE.read("./resource/table.json"));
+const {tables}=require("./../oracle-table-info-parser/outputs/fd/tables")
 
 function test() {
    let config = {
       delete: true,
       add: true,
-      project: "QXFC",
+      project: "SettleAccount",
    }
-   init(table, config);
+   init(tables.qyTradeDownFund, config);
 }
 
 test();

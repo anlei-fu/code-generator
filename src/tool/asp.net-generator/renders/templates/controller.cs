@@ -118,5 +118,6 @@ namespace @project.UserWeb.Controllers
                 return new Result(false, e.Message).ToString();
             }
         }
+@content
     }
 }

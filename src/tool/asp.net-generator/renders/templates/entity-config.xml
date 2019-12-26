@@ -20,5 +20,6 @@
         ]]>
       </sql>
     </item>
+@content
   </template>
 </config>

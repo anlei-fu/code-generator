@@ -1,4 +1,6 @@
 const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { renderExportExcelController } = require("./export-excel-render")
+
 const CONTROLLER_RENDER = new SimpleRender({}, `${__dirname}/templates/controller.cs`);
 
 /**
@@ -7,7 +9,12 @@ const CONTROLLER_RENDER = new SimpleRender({}, `${__dirname}/templates/controlle
  * @param {GeneratorConfig} config 
  */
 function renderController(config) {
-        return CONTROLLER_RENDER.renderTemplate({});
+        let content = "";
+
+        if (config.exportExcel)
+                content += renderExportExcelController(config);
+
+        return CONTROLLER_RENDER.renderTemplate({ content });
 }
 
 exports.renderController = renderController;

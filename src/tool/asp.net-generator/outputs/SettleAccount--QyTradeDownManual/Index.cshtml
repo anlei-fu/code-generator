@@ -1,0 +1,179 @@
+@using SettleAccount.Utility
+@model SettleAccount.Model.QyTradeDownManualListModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    function MRCenterMsg() {
+        this.bind = function () {
+            $.paging.config.form = "#conditionForm";
+            $.paging.bind();
+            $("#ddlps").val($("#ps").val());
+            $("#ddlps").change(function () {
+                $("#ps").val($(this).val());
+            });
+            $(".list_submit").click(function () {
+                $.paging.submit();
+            });
+        }
+    }
+
+    $(function () {
+        var user = new MRCenterMsg();
+        user.bind();
+    });
+
+    function MRCenterMsg() {
+        this.bind = function () {
+            $.paging.config.form = "#conditionForm";
+            $.paging.bind();
+            $("#ddlps").val($("#ps").val());
+            $("#ddlps").change(function () {
+                $("#ps").val($(this).val());
+            });
+            $(".list_submit").click(function () {
+                $.paging.submit();
+            });
+        }
+    }
+
+    $(function () {
+        var user = new MRCenterMsg();
+        user.bind();
+    });
+
+//删除
+function _delete(id) {
+        if (!confirm("你确认要删除该信息吗?"))
+                return;
+
+        $.ajax({
+                type: "post",
+                data: { id: id },
+                url: '/QyTradeDownManual/Delete',
+                success: function (data) {
+                        data = $.parseJSON(data);
+                        alert(data.message)
+                },
+                error: function () {
+                        alert("调用失败，请重试");
+                }
+        });
+}
+// 添加或编辑
+function add(id,title) {
+        popEditDialog('/QyTradeDownManual/Item', 'id=' + id, title);
+}
+
+
+// ????
+function exportExcel() {
+        conditionForm.action = "/QyTradeDownManual/ExportExcel/";
+        conditionForm.target = "_blank";
+        conditionForm.method = "post";
+        conditionForm.submit();
+        conditionForm.action = "";
+        conditionForm.target = "";
+        conditionForm.method = "get"
+        return false;
+}
+
+</script>
+<div class="channel_list">
+    <form method="get" id="conditionForm">
+    <div class="con_search_box clearfix">
+        <p class="sc_p">
+               绑定时间:
+               <input class="list_input Wdate" type="text" name="st" id="s" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+                   -
+               <input class="list_input Wdate" type="text" name="et" id="e" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'s\')}'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+        </p>
+          <p class="sc_p">
+             渠道编号:
+             @Html.DropDownList("ChannelNo", new SelectList(ChannelService.Instance.GetDataList(), "No", "ChannelName"), "--请选择--")
+          </p>          <p class="sc_p">
+             是否红冲过:
+             @Html.DropDownList("HasAdjust", new SelectList(SystemDictionaryService.Instance.GetDataList("HasAdjust"), "Value", "Name"), "--请选择--")
+          </p>          <p class="sc_p">
+             变动类型:
+             @Html.DropDownList("AddType", new SelectList(SystemDictionaryService.Instance.GetDataList("AddType"), "Value", "Name"), "--请选择--")
+          </p>              <p class="sc_p">
+                   外部加款记录编号: <input class="search_input"  type="text" name="ExtRecordNo" />
+              </p>
+       <p class="sc_p">
+            <input class="list_submit" type="button" />
+            <input type="button" onclick="add('','添加')" class="add_btn hand" /><input type="button" id="btnExport" class="export_btn hand" />
+       </p>
+
+    </div>
+    <input type="hidden" value="0" name="pi" id="pi" />
+    <input type="hidden" value="10" name="ps" id="ps" />
+    <input type="hidden" value="@Model.TotalCount" id="count" />
+    </form>
+    <div>
+    </div>
+    <div class="list_content" id="divshelflist">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+           <table width="100%" border="0" cellpadding="0" cellspacing="0" nodata="*">
+        <thead>
+            <tr>
+                        <th>编号</th>
+                        <th>渠道编号</th>
+                        <th>账户编号</th>
+                        <th>红冲编号</th>
+                        <th>是否红冲过</th>
+                        <th>变动类型</th>
+                        <th>变动金额</th>
+                        <th>交易平账真实金额</th>
+                        <th>变动时间</th>
+                        <th>余额</th>
+                        <th>创建人</th>
+                        <th>银行资金变动编号（红冲是使用）</th>
+                        <th>备注</th>
+                        <th>外部加款记录编号</th>
+                        <th>收取手续费的记录编号</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.List)
+            {
+                <tr>
+                                           <td>@item.RecordId</td>
+                        <td>@item.GetDataValue("ChannelNoName")</td>
+                        <td>@item.AccountId</td>
+                        <td>@item.AdjustId</td>
+                        <td>@item.GetDataValue("HasAdjustName")</td>
+                        <td>@item.GetDataValue("AddTypeName")</td>
+                        <td>@item.ChangeAmount</td>
+                        <td>@item.RealAmount</td>
+                        <td>@item.ChangeTime</td>
+                        <td>@item.Balance</td>
+                        <td>@item.CreateUser</td>
+                        <td>@item.BankFundId</td>
+                        <td>@item.Memo</td>
+                        <td>@item.ExtRecordNo</td>
+                        <td>@item.HandlingFeeId</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+        </table>
+        <div class="list_number">
+            共 @Model.TotalCount 条记录 | 每页显示:
+            <select id="ddlps">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            条
+        </div>
+        <div id="pager" class="list_pager">
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+</div>

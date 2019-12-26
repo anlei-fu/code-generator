@@ -13,7 +13,7 @@ const JOIN_IDENT = "           ";
  * @returns {String}
  */
 function renderGetListSql(config) {
-
+        config.selectConfig.getListSql.columns=["t.*"].concat(config.selectConfig.getListSql.columns);
         let columns = STR.arrayToString(config.selectConfig.getListSql.columns, COLUMN_IDENT, ",\r\n")
                 , conditions = STR.arrayToString(config.selectConfig.getListSql.conditions, CONDITION_IDENT, "\r\n")
                 , joins = STR.arrayToString(config.selectConfig.getListSql.joins, JOIN_IDENT, "\r\n").trimRight()

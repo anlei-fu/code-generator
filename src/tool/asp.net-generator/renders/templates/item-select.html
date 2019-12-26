@@ -1,0 +1,8 @@
+<td width="120" class="textalign_r">
+        <em class="required">*</em>@lable：
+    </td>
+    <td width="300" class="textalign_l">
+        <p class="sc_p">
+            @Html.DropDownList("@name", new SelectList(@serviceService.Instance.GetChannelList(@dicType), "@value", "@text", Model.CurrentModel.@name), "@defaultText")
+        </p>
+    </td>

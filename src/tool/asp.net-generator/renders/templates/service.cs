@@ -102,7 +102,7 @@ namespace @project.UserService
                 model.List = handler.GetDataListByTemplate("getList",entity);
            return model;
        }
-        /// <summary>
+       /// <summary>
        /// 保存实体数据
        /// </summary>
        /// <param name="id">主键编号</param>
@@ -121,5 +121,6 @@ namespace @project.UserService
        {
            return new Result(handler.Delete(id));
        }
+@content
     }
 }

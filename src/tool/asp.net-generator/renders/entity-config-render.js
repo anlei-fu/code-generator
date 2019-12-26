@@ -2,6 +2,7 @@ const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-ren
 const { OBJECT } = require("../../../libs/utils");
 const { renderGetCountSql } = require("./get-count-render");
 const { renderGetListSql } = require("./getList-sql-render");
+const {  renderExportExcelSql} = require("./export-excel-render");
 
 const ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-config-item.xml`);
 const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-config.xml`);
@@ -13,11 +14,16 @@ const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-config
  * @returns {String}
  */
 function renderEntityConfig(config) {
+        let content="";
+        if (config.exportExcel) 
+           content+=renderExportExcelSql(config);
+
         let renderConfig = {
                 name: config.table.rawName,
                 getList: renderGetListSql(config),
                 getCount: renderGetCountSql(config),
-                fields: renderFields(config.table)
+                fields: renderFields(config.table),
+                content
         }
 
         return ENTITY_RENDER.renderTemplate(renderConfig);

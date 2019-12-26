@@ -19,6 +19,10 @@ class Generator {
          * Write all files
          */
         generate() {
+                 
+                if(this._config.add||this._config.edit)
+                  this._generateItem();
+
                 this._generateIndex();
                 this._generateAccess();
                 this._generateIAccess();
@@ -61,6 +65,14 @@ class Generator {
         _generateIndex() {
                 let content = renders.renderIndex(this._config);
                 this._writer.writeIndex(content);
+        }
+
+        /**
+         * Write item file
+         */
+        _generateItem(){
+                let content = renders.renderItem(this._config.addConfig);
+                this._writer.writeItem(content);
         }
 
         /**

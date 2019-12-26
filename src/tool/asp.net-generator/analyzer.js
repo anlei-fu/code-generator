@@ -83,8 +83,22 @@ const CUSTOM_SELECTS = {
                         defaultText: "--请选择--",
                         service: "SystemDictionary",
                 },
-                Id: {
-                        matcher: x => x.endsWith("Id"),
+                Has:{
+                        matcher: x => x.startsWith("Has"),
+                        text: "Name",
+                        value: "Value",
+                        defaultText: "--请选择--",
+                        service: "SystemDictionary",
+                },
+                Is:{
+                        matcher: x => x.startsWith("Has"),
+                        text: "Name",
+                        value: "Value",
+                        defaultText: "--请选择--",
+                        service: "SystemDictionary",
+                },
+                AccountId: {
+                        matcher: x => x.includes("AccountId"),
                         generator: x => {
                                 return {
                                         service: x.replace("Id", ""),
@@ -157,17 +171,6 @@ const CUSTOM_SELECTS = {
                                 }
                         }
                 },
-                Id: {
-                        matcher: x => x.endsWith("Id"),
-                        generator: x => {
-                                return {
-                                        service: x.replace("Id", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("Id", "Name"),
-                                        value: "Id",
-                                }
-                        }
-                }
         }
 }
 
@@ -192,23 +195,46 @@ const STRING_INCLUDES = {
                         matcher: x => x.toLowerCase().includes("idcardno"),
                 }
         },
+        int:{
+
+        },
+
 }
 
-const INT_EXCLUDES = {
-        balance: {
+const SELECT_EXCLUDES = {
+        int: {
+                balance: {
 
+                },
+                count: {
+
+                },
+                amount: {
+
+                },
+                price: {
+
+                },
+                total: {
+
+                }
         },
-        count: {
+        decimal:{
+                balance: {
 
-        },
-        amount: {
+                },
+                count: {
 
-        },
-        price: {
+                },
+                amount: {
 
-        },
-        total: {
+                },
+                price: {
 
+                },
+                total: {
+
+                }
         }
 }
 
@@ -218,7 +244,8 @@ const INT_EXCLUDES = {
 class SelectAnalyzer {
         constructor() {
                 this._stringIncludes = STRING_INCLUDES;
-                this._intExcludes = INT_EXCLUDES;
+                this._intExcludes = SELECT_EXCLUDES;
+                this._controlAnalyzer=new ControlAnlyzer();
         }
 
         /**
@@ -232,18 +259,6 @@ class SelectAnalyzer {
                 // excludes all DateTime field
                 if (column.type == "DateTime")
                         return false;
-
-                // analyze int excludes
-                if (column.type == "int") {
-                        for (const c in this._intExcludes) {
-                                let match = this._intExcludes[c].matcher
-                                        ? this._intExcludes[c].matcher(column.name)
-                                        : DEFAULT_MATCHER(column.name, c);
-
-                                if (match)
-                                        return false;
-                        }
-                }
 
                 // analyze string includes
                 if (column.type == "string") {
@@ -259,7 +274,7 @@ class SelectAnalyzer {
                         return false;
                 }
 
-                return true;
+                return this._controlAnalyzer.shouldBeSelect(column);
         }
 }
 
@@ -366,7 +381,7 @@ class ColumnAnalyzer {
                 if (service == "SystemDictionary") {
                         return `LEFT JOIN ${NamingStrategy.toHungary(service).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.VALUE`
-                                + ` AND t${this.index}.TYPE = '${column.name.toUpperCase()}'`;
+                                + ` AND t${this.index}.TYPE = '${column.name}'`;
                 } else {
                         let suffix = column.name.includes("Id") ? "Id" : "No";
                         return `LEFT JOIN ${NamingStrategy.toHungary(service).toUpperCase()} t${++this.index}`
@@ -392,9 +407,11 @@ class ControlAnlyzer {
          * @returns {boolean}
          */
         shouldBeSelect(column) {
+
                 if (!CUSTOM_SELECTS[column.type])
                         return false;
 
+                      
                 // check by system dictionary
                 for (const c in SystemDictionary) {
                         if (c.indexOf(column.name) != -1)
@@ -494,7 +511,7 @@ const { OBJECT } = require("../../libs/utils")
 /**
  * Analyze default values
  */
-class DefaultValueAnalyzer {
+class  DelfaultValueAnalyzer {
 
         constructor() {
                 this.updateDefaultValues = UPDATE_DEFAULT_VALUES;
@@ -560,5 +577,5 @@ module.exports = {
         SelectAnalyzer,
         ControlAnlyzer,
         ColumnAnalyzer,
-        DefaultValueAnalyzer
+        DelfaultValueAnalyzer
 }
