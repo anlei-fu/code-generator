@@ -196,7 +196,6 @@ function buildSelectConfig(table, config) {
  * @param {Column} column 
  */
 function buildControlConfig(analyzeResult,config, column) {
-
         if (controlAnlyzer.shouldBeSelect(column)) {
                 analyzeResult.select.lable = column.description;
                 analyzeResult.select.name=column.name;

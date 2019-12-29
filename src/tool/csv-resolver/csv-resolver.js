@@ -1,70 +1,95 @@
-const { STR } = require("./../../libs/str")
-class CsvItemResolveConfig {
+const { STR } = require("./../../libs/str");
+const { LoggerFactory } = require("./../logging/logger-factory");
+
+const LOG = LoggerFactory.getLogger("csv-resolver");
+
+class CellResolver {
         constructor() {
-                this.resolver = x => "";
+
+                /**
+                 * Convert string to any
+                 */
+                this.doResolve = x => "";
+
+                /**
+                 * Name of property
+                 */
                 this.name = "";
         }
 }
 
-class CsvItemConverterConfig {
+class CellConverter {
         constructor() {
-                this.converter = x => "";
+                /**
+                 * Convert any to string
+                 */
+                this.doConvert = x => "";
+
+                /**
+                 * Name of csv column
+                 */
                 this.header = "";
         }
 }
 
 /**
+ * Resolve csv string to objects
  * 
  * @param {String} csv 
- * @param {[CsvItemResolveConfig]} reolveConfigs 
+ * @param {[CellResolver]} cellResolvers 
  * @param {boolean} excludeFirstRow 
+ * @returns {[Any]}
  */
-function resolveCsv(csv, reolveConfigs, excludeFirstRow = true) {
-        let output = [];
-        STR.splitToLines(csv).forEach((row, i) => {
-                if (i == 0 && excludeFirstRow)
+function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true,throwError=true) {
+        let outputs = [];
+        STR.splitToLines(csv).forEach((row, rowNumber) => {
+                if (rowNumber == 0 && excludeFirstRow)
                         return;
 
                 let item = {};
-                row.split(",").forEach((cell, i) => {
-                        if(i>reolveConfigs.length)
-                            return;
-                        try{
-                        item[reolveConfigs[i].name] = reolveConfigs[i].resolver(cell);
+                row.split(",").forEach((cell, cellNumber) => {
+                        if (cellNumber > cellResolvers.length) {
+                                LOG.warn(`cell count over resolvers count at row ${rowNumber}`);
+                                return;
                         }
-                        catch{
 
+                        try {
+                                item[cellResolvers[cellNumber].name] = cellResolvers[cellNumber].doResolve(cell);
+                        } catch (ex) {
+                                LOG.error(`resolve { ${row} } failed at row ${rowNumber} , cell ${cellNumber}`, ex);
+                                
+                                if (throwError)
+                                        throw ex;
                         }
                 })
 
-                output.push(item);
+                outputs.push(item);
         })
 
-        return output;
+        return outputs;
 }
 
 /**
  * Convert to csv
  * 
  * @param {[Any]} array 
- * @param {{CsvItemConverterConfig}} convertConfigs 
+ * @param {[CellConverter]} cellConverters 
  * @returns {String}
  */
-function toCsv(array, convertConfigs, makeHeaders = true) {
+function toCsvString(array, cellConverters, makeHeaders = true) {
         let output = "";
 
         if (makeHeaders) {
-                for (const key in convertConfigs) {
-                        output += `${convertConfigs[key].header},`;
-                }
+                for (const key in cellConverters) 
+                        output += `${cellConverters[key].header},`;
 
                 output = STR.removeLastComa(output) + "\r\n";
         }
 
         array.forEach(item => {
-                for (const key in convertConfigs) {
-                        output += `${convertConfigs[key].converter(item[key])},`;
-                }
+                for (const key in cellConverters) 
+                        output += `${cellConverters[key].doConvert(item[key])},`;
+
                 output = STR.removeLastComa(output) + "\r\n";
         });
 
@@ -72,6 +97,6 @@ function toCsv(array, convertConfigs, makeHeaders = true) {
 }
 
 module.exports = {
-        toCsv,
-        resolveCsv
+        toCsvString,
+        resolveFromCsvString
 }

@@ -7,10 +7,11 @@
  * @LastEditTime : 2019-12-19 10:53:59
  */
 
-//imports
-const { requireNotNull} = require("./utils")
+const { requireNotNull } = require("./utils")
+
 /**
- * @description Select  matched sections of input string and remove left,right pattern both;
+ * Get matched sections of input string and remove left,right pattern both
+ * 
  * @param {String} input 
  * @param {String} left  left pattern
  * @param {String} right  right pattern
@@ -18,35 +19,33 @@ const { requireNotNull} = require("./utils")
  * @param {Number?} count  desired count
  * @returns {[String]}
  */
-function select(input, left, right, start=0, count=1) {
-
+function select(input, left, right, start = 0, count = 1) {
         let i = 0,
                 ls = [];
 
         while (true) {
                 i = input.indexOf(left, start);
-
                 if (i == -1)
                         break;
 
-                start = input.indexOf(right, i+left.length);
-
+                start = input.indexOf(right, i + left.length);
                 if (start == -1) {
                         break;
                 } else {
-                        ls.push(input.substr(i, start - i +right.length+1));
+                        ls.push(input.substr(i, start - i + right.length + 1));
                         if (count != -1 && ls.length > count)
                                 break;
                 }
 
-                start +=right.length;
+                start += right.length;
         }
 
         return ls;
 }
 
 /**
- * @description  Select  matched section of string ,keep left and right  pattern both in result
+ * Get matched section of string ,keep left and right pattern both in result
+ * 
  * @param {String} input 
  * @param {String} left  left pattern
  * @param {String} right  right pattern
@@ -68,7 +67,6 @@ function select1(input, left, right, start, count) {
                         break;
 
                 start = input.indexOf(right, i);
-
                 if (start == -1) {
                         break;
                 } else {
@@ -83,7 +81,8 @@ function select1(input, left, right, start, count) {
 }
 
 /**
- * @description Replace input str many times with replace pairs , not think about pairs's order
+ * Replace input str many times with replace pairs ,warn: not think about pairs's order
+ * 
  * @param {String} input 
  * @param {Map<String,String>?} pairs 
  * @returns {String}
@@ -96,21 +95,22 @@ function replace(input, pairs) {
 }
 
 /**
- * @description Remove patterns from string
+ * Remove patterns from string
+ * 
  * @param {String} input 
  * @param {String[]} array  patterns to remove
  * @returns {String}
  */
 function remove(input, array) {
-        array=   typeof array=="string"?[array]:array;
-
+        array = typeof array == "string" ? [array] : array;
         for (const item of array)
-                input = input.replace(new RegExp(makeOraginalRegexPattern(item), 'g'),"");
+                input = input.replace(new RegExp(makeOraginalRegexPattern(item), 'g'), "");
 
         return input;
 }
 
 /**
+ * Remove matched pattern of string
  * 
  * @param {String} input 
  * @param {String} left 
@@ -118,7 +118,6 @@ function remove(input, array) {
  * @returns {String} 
  */
 function removeWithMatch(input, left, right) {
-
         select1(input, left, right).forEach(x => {
                 input = input.replace(new RegExp(makeOraginalRegexPattern(x), "g"), "");
         });
@@ -127,13 +126,13 @@ function removeWithMatch(input, left, right) {
 }
 
 /**
+ * Remove matched pattern of string
  * 
  * @param {String} input 
  * @param {Option} option
  * @returns {String}
  */
 function removeWithMatchMany(input, option) {
-
         for (const item in option)
                 input = removeWithMatch(ite, option[item]);
 
@@ -141,6 +140,7 @@ function removeWithMatchMany(input, option) {
 }
 
 /**
+ * Normalize regex pattern string
  * 
  * @param {String} pattern 
  */
@@ -177,13 +177,14 @@ function makeOraginalRegexPattern(pattern) {
 
 /**
  * Format array to string
+ * 
  * @param {Any[]} array 
  * @param {String?} prefix  
  * @param {String?} suffix 
  * @returns {String}
  */
-function arrayToString(array=[], prefix="", suffix="") {
-        let result="";
+function arrayToString(array = [], prefix = "", suffix = "") {
+        let result = "";
         for (const item of array)
                 result += `${prefix}${item}${suffix}`;
 
@@ -191,7 +192,8 @@ function arrayToString(array=[], prefix="", suffix="") {
 }
 
 /**
- *@description Splite input string into sections by splitor
+ * Split input string into sections by splitor and keep splior in results
+ * 
  * @param {String} input 
  * @param {String} splitor 
  * @param {Number?} start  start position
@@ -207,7 +209,6 @@ function split1(input, splitor, start, count) {
 
         while (true) {
                 i = input.indexOf(splitor, start);
-
                 if (i == -1) {
                         ls.push(start, input.length - start);
                         return ls;
@@ -220,7 +221,8 @@ function split1(input, splitor, start, count) {
 }
 
 /**
- * Repeat a pattern  by times
+ * Repeat a pattern  with times
+ * 
  * @param {String} pattern 
  * @param {Number} times
  * return repeated  string 
@@ -233,7 +235,8 @@ function repeat(pattern, times) {
 }
 
 /**
- * @description Split text into words by blank chars splitors (" ","\r","\n","\t","\f","\b")
+ * Split text into words by blank chars splitors (" ","\r","\n","\t","\f","\b")
+ * 
  * @param {String} input 
  * @returns {[String]}
  */
@@ -279,6 +282,7 @@ function splitToWords(input) {
 }
 
 /**
+ * Upper first letter of string
  * 
  * @param {String} input 
  * @returns {String}
@@ -288,6 +292,7 @@ function upperFirstLetter(input) {
 }
 
 /**
+ * Lower fisrt letter of string
  * 
  * @param {String} input 
  * @returns {String}
@@ -297,6 +302,7 @@ function lowerFirstLetter(input) {
 }
 
 /**
+ * Split string into lines by splitor "\r\n" on windows
  * 
  * @param {String} input 
  * @returns {[String]}
@@ -306,6 +312,7 @@ function splitToLines(input) {
 }
 
 /**
+ * Remove empty line of string
  * 
  * @param {String} input 
  * @returns {String}
@@ -328,6 +335,7 @@ function formatWords(input, option) {
 }
 
 /**
+ * Reverse string
  * 
  * @param {String} input 
  * @returns {String}
@@ -346,12 +354,44 @@ function reverse(input) {
  * @param {String} pattern 
  * @returns {String}
  */
-function removeLastComa(pattern){
+function removeLastComa(pattern) {
         pattern = pattern.trimRight();
         if (pattern[pattern.length - 1] == ",")
                 pattern = pattern.substr(0, pattern.length - 1);
 
         return pattern;
+}
+
+/**
+ * Dose content includes any pattern
+ * 
+ * @param {String} content 
+ * @param {[String]} array 
+ * @returns {boolean}
+ */
+function includesAny(content, array = []) {
+        for (const c of array) {
+                if (content.includes(c))
+                        return true;
+        }
+
+        return false;
+}
+
+/**
+ * Dose content includes all petterns
+ * 
+ * @param {String} content 
+ * @param {[String]} patterns 
+ * @returns {boolean}
+ */
+function includesAll(content, patterns = []) {
+        for (const c of patterns) {
+                if (!content.includes(c))
+                        return false;
+        }
+
+        return true;
 }
 
 exports.STR = {
@@ -370,5 +410,7 @@ exports.STR = {
         splitToLines,
         lowerFirstLetter,
         reverse,
-        removeLastComa
+        removeLastComa,
+        includesAny,
+        includesAll
 }

@@ -32,24 +32,31 @@
 const { DOMParser } = require("xmldom");
 const { OBJECT } = require("./utils");
 
+/**
+ * Resolve string to document
+ * 
+ * @param {String} text 
+ * @returns {Document}
+ */
 function load(text) {
         return new DOMParser().parseFromString(text);
 }
 
 /**
+ * Get matched direct children of current
  * 
  * @param {Node} node 
  * @param {Node=>boolean} predict 
  * @returns {[Node]}
  */
-function selectDirect(node, predict) {
-        predict = predict || function (x) { return true; }
+function selectDirect(node, matcher) {
+        matcher = matcher || function (x) { return true; }
         let ls = [];
         OBJECT.forEach(node.childNodes, (key, value) => {
                 if (key == "length" || key == "item" || key == toString)
                         return;
 
-                if (predict(value))
+                if (matcher(value))
                         ls.push(value);
         });
 
@@ -57,6 +64,7 @@ function selectDirect(node, predict) {
 }
 
 /**
+ * Get matched children of current node
  * 
  * @param {Node} node 
  * @param {(Node)=>boolean} predict 
@@ -81,6 +89,7 @@ function selectAll(node, predict) {
 }
 
 /**
+ * Dose node has attribute "key"
  * 
  * @param {Node} node 
  * @param {String} key 
@@ -90,6 +99,7 @@ function hasAttribute(node, key) {
 }
 
 /**
+ * Get attribute "key" of node
  * 
  * @param {Node} node 
  * @param {String} key 
@@ -108,6 +118,7 @@ function getAttribute(node, key) {
 }
 
 /**
+ * Set attribute "key" of node
  * 
  * @param {Node} node 
  * @param {String} key 

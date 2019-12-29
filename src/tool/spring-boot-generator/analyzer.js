@@ -1,3 +1,4 @@
+const {STR} =require("./../../libs/str")
 
 /**
  * Create select ecludes
@@ -260,7 +261,19 @@ const CREATE_VALIDATES = () => {
 }
 
 const UPDATE_DEFAULT_PATTERNS = {
-        "updateTime": "new Date()",
+        Date: {
+                updateTime: {
+                        matcher: x => {
+                                let lower=x.toLowerCase();
+                                  if(!lower.includes("time"||!lower.includes("date")))
+                                    return false;
+
+                                return STR.includesAny(x,["edit","update","modify"]);
+                        },
+                        
+                        defaultValue: "new Date()"
+                }
+        }
 }
 
 const { getJavaType } = require("./utils")
@@ -360,45 +373,32 @@ class AnalyzerBase {
         }
 }
 
-/**
- * Analyze select candiates
- */
-class SelectAnalyzer extends AnalyzerBase {
-        constructor() {
-                super();
-                this.excludes = CREATE_SELECT_EXLUCES();
-                this.expressions = CREATE_EXPRESSIONS();
+class ReqAnalyzeAnalyzer {
+
+        getSelectReqs() {
+
         }
 
-        /**
-         * Analyze candidate
-         * 
-         * @override
-         * @param {String} name 
-         * @param {String} type 
-         * @returns {boolean}
-         */
-        shouldBeCandidate(type, name) {
-                if (!this.excludes[type])
-                        return true;
-                for (const item in this.excludes[type]) {
-                        let match = this.excludes[type][item].matcher
-                                ? this.excludes[type][item].matcher(name)
-                                : name.toLowerCase().indexOf(item) != -1
+        getInsertReqs() {
 
-                        if (match)
-                                return false;
-                }
-
-                return true;
         }
 
+        getUpdateReqs() {
+
+        }
+
+
+}
+
+
+
+class ExpresssionAnalyzer {
         /**
-         * 
-         * @param {String} name 
-         * @param {String} type 
-         * @returns {String?}
-         */
+               * 
+               * @param {String} name 
+               * @param {String} type 
+               * @returns {String?}
+               */
         getExpression(type, name) {
                 if (!this.expressions[type])
                         return null;
@@ -417,6 +417,62 @@ class SelectAnalyzer extends AnalyzerBase {
         }
 
         /**
+         * 
+         * @param {*} config 
+         */
+        useExpression(config) {
+                this._useCore(this.expressions, config);
+        }
+
+        /**
+         * 
+         * @param {*} config 
+         */
+        disableExpressions(config) {
+                this._disableCore(this.expressions, config);
+        }
+}
+
+class UpdateAnalyzer extends ExpresssionAnalyzer {
+
+}
+
+/**
+ * Analyze select candiates
+ */
+class SelectAnalyzer extends ExpresssionAnalyzer {
+        constructor() {
+                super();
+                this.excludes = CREATE_SELECT_EXLUCES();
+                this.expressions = CREATE_EXPRESSIONS();
+        }
+
+        /**
+         * Analyze candidate
+         * 
+         * @override
+         * @param {String} name 
+         * @param {String} type 
+         * @returns {boolean}
+         */
+        shouldBeCandidate(type, name) {
+                if (!this.excludes[type])
+                        return true;
+
+                for (const item in this.excludes[type]) {
+                        let match = this.excludes[type][item].matcher
+                                ? this.excludes[type][item].matcher(name)
+                                : name.toLowerCase().indexOf(item) != -1
+
+                        if (match)
+                                return false;
+                }
+
+                return true;
+        }
+
+
+        /**
          * Use additional excludes config
          * 
          * @param {any} target 
@@ -433,22 +489,6 @@ class SelectAnalyzer extends AnalyzerBase {
          */
         disableEcludes(config) {
                 this._disableCore(this.excludes, config);
-        }
-
-        /**
-         * 
-         * @param {*} config 
-         */
-        useExpression(config) {
-                this._useCore(this.expressions, config);
-        }
-
-        /**
-         * 
-         * @param {*} config 
-         */
-        disableExpressions(config) {
-                this._disableCore(this.expressions, config);
         }
 }
 
@@ -518,9 +558,6 @@ class InsertAnalyzer extends AnalyzerBase {
                         validates.push("@NotNull");
 
                 let ret = validates.concat(super.getValidates(type, column.name));
-
-
-
                 return ret;
         }
 }

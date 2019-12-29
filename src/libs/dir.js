@@ -7,9 +7,13 @@
  * @LastEditTime : 2019-12-19 14:09:03
  */
 const fs = require("fs");
+const { LoggerFactory } = require("./../tool/logging/logger-factory")
+
+const LOG = LoggerFactory.getLogger("DIR");
 
 /**
- * @description Dose directory exists;
+ * Dose directory exists
+ * 
  * @param {String} path 
  * @returns {boolean}
  */
@@ -19,7 +23,8 @@ function exists(path) {
 }
 
 /**
- * @description Create a new directory
+ * Create folder
+ * 
  * @param {String} path 
  */
 function create(path) {
@@ -28,15 +33,16 @@ function create(path) {
                 return;
 
         fs.mkdirSync(path);
+        LOG.info(`create ${path}`);
 }
 
 /**
- * @description Remove a directory
- * @todo  Want to remove a folder  msut remove sub-folder first,So need a recursive processing;
+ * Remove folder
+ * 
+ * @todo  Want to remove a folder  msut remove sub-folder first,So needs a recursive processing
  * @param {String} path 
  */
 function remove(path) {
-
         if (!exists(path))
                 return;
 
@@ -51,12 +57,12 @@ function remove(path) {
                 })
 
         fs.rmdirSync(path);
-
-        return exports.FILE;
+        LOG.info(`remove ${path}`);
 }
 
 /**
- * @description Get all files in current directory
+ * Get all files in current folder
+ * 
  * @param {String} path 
  * @returns {[String]} File names, relative path of  current folder
  */
@@ -72,7 +78,8 @@ function getFiles(path) {
 }
 
 /**
- * @description Get all sub-folders of current folder
+ * Get all sub-folders of current folder
+ * 
  * @param {String} path 
  * @returns {[String]}  Sub folder names, relative path of current folder
  */
@@ -88,6 +95,8 @@ function getFolders(path) {
 }
 
 /**
+ * Copy directory
+ * 
  * @param {String} target 
  */
 function copy(target, destination) {
@@ -108,11 +117,11 @@ function copy(target, destination) {
 
 }
 
-// Exports
 exports.DIR = {
         getFiles,
         getFolders,
         remove,
         create,
-        exists
+        exists,
+        copy
 }

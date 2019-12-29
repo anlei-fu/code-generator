@@ -10,6 +10,7 @@
 const { STR } = require("./str");
 
 /**
+ * Fommat to pascal naming style
  * 
  * @param {String} input 
  * @returns {String}
@@ -24,6 +25,7 @@ function toPascal(input) {
 }
 
 /**
+ * Format to camel naming style
  * 
  * @param {String} input 
  * @returns {String}
@@ -38,6 +40,7 @@ function toCamel(input) {
 }
 
 /**
+ * Format to hungary naming style
  * 
  * @param {String} input
  * @returns {String} 
@@ -53,6 +56,8 @@ function toHungary(input) {
 }
 
 /**
+ * Split to word segmenets
+ * 
  * @description Split to words, 1. split by '_' if contains any '_' 2. tokenlize 
  * @param {String} input 
  * @returns {[String]}
@@ -65,7 +70,6 @@ function split(input) {
                 throw new Error("input can not be empty!");
 
         let ls = [];
-
         let allUpper = true;
         for (let i = 0; i < input.length; i++) {
                 let c = input.charAt(i);

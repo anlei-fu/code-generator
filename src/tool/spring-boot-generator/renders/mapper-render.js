@@ -1,5 +1,5 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const { isSimpleJavaType } = require("./../utils");
+const { isJavaBaseType: isSimpleJavaType } = require("./../utils");
 const { STR } = require("./../../../libs/str");
 
 const MAPPER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);

@@ -1,3 +1,5 @@
+/*-----------------------------------------------------------------------------------entities-------------------------------------------------------------------------------*/
+
 class Field {
         constructor() {
                 this.name = "";
@@ -105,20 +107,17 @@ class GeneratorConfig {
                 this.project = "";
                 this.entityFolder = "";
                 this.items = [new Config()];
-
         }
 }
 
-/*-------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------main-----------------------------------------------------------------------*/
+
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { Render } = require("./renders/render.js");
 const { generateReq } = require("./req-common");
-const { Writer } = require("./writer");
 const { getJavaType } = require("./utils");
 const { getConditions } = require("./condition-getter")
-const { PackegeRender } = require("./renders/package-render")
-
 
 /**
  *  Genearte web project with spring-boot, mysql, mybatis, vue, ivue and  maven 
@@ -143,7 +142,6 @@ class Generator {
                 this._writer = writer;
         }
 
-
         /**
          * Write all files
          * 
@@ -154,6 +152,7 @@ class Generator {
 
                 // entites
                 this._generateEntity();
+
                 this._config.items.forEach(x => {
                         this._generateReq(x);
                         this._generateResp(x);
@@ -165,11 +164,13 @@ class Generator {
                 this._generateService();
                 this._generateServiceImpl();
                 this._generateController();
-
-
         }
 
-
+        /**
+         * Check config is ok
+         * 
+         * @param {GeneratorConfig} config 
+         */
         _checkConfig(config) {
                 if (!config.name)
                         throw new Error("config name property is required!")
@@ -180,11 +181,16 @@ class Generator {
                 config.items.forEach(item => {
                         item.joins.forEach(join => {
                                 if (!join.joinCondition || !join.table)
-                                        throw new Error("join config incorrect");
+                                        throw new Error("join config incorrect!");
                         });
                 });
         }
 
+        /**
+         * Initialize geneartor config
+         * 
+         * @param {GeneratorConfig} config 
+         */
         _initConfig(config) {
 
                 if (config.alias)
@@ -196,6 +202,7 @@ class Generator {
                 if (config.reqs.length == 0)
                         config.reqs = getDefaultReqs(config);
 
+                // if has req to create
                 config.reqs.forEach(req => {
                         if (req.doCreate)
                                 this._initEntityBasicInfo(config, req, "Req");
@@ -262,6 +269,7 @@ class Generator {
 
                 return id;
         }
+
         /**
          * Init table columns ,convert 'origin type' to 'java type'
          * 
@@ -272,7 +280,6 @@ class Generator {
                         table.columns[key].type = getJavaType(value.type);
                 });
         }
-
 
         /**
          * Set basic infos if absent
@@ -287,7 +294,6 @@ class Generator {
                 entity.description = entity.description || "";
                 entity.name = entity.name || type.toLowerCase();
         }
-
 
         /**
          * Write entity file
@@ -381,7 +387,6 @@ class Generator {
                                 });
                         }
                 })
-
         }
 
         /**
@@ -417,9 +422,6 @@ class Generator {
                         params.type = config.params.type;
                 }
         }
-
-
-
 }
 
 module.exports = {

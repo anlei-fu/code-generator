@@ -4,26 +4,25 @@ const { renderColumn } = require("./column-render");
 const { renderProperty } = require("./property-render");
 const { renderTrim } = require("./trim-render");
 
-
 const INSERT_RENDER = new SimpleRender({}, `${__dirname}/templates/insert.xml`);
 
 /**
  * Render insert sql template
  * 
  * @private
- * @param {Config} model
+ * @param {Config} config
  * @returns {String}
  */
-function renderInsert(model) {
+function renderInsert(config) {
         let columns = "";
         let properties = "";
-        getIncludes(model).forEach(x => {
+        getIncludes(config).forEach(x => {
                 columns += renderColumn(x);
                 properties += renderProperty(x);
         });
 
         let insertModel = {
-                id: model.id,
+                id: config.id,
                 columns: renderTrim({ content: columns, suffix: ")", prefix: "(" }),
                 properties: renderTrim({ properties: properties, suffix: ")", prefix: "(" }),
         }

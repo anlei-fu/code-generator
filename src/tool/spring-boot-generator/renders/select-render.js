@@ -3,7 +3,6 @@ const { renderJoin } = require("./join-render");
 const { renderConditions } = require("./conditions-render");
 const { renderIncludes } = require("./includes-render");
 
-
 const SELECT_RENDER = new SimpleRender({}, `${__dirname}/templates/select.xml`);
 
 /**
@@ -15,8 +14,8 @@ const SELECT_RENDER = new SimpleRender({}, `${__dirname}/templates/select.xml`);
  */
 function renderSelect(config) {
         let joins = "";
-        config.joins.forEach(x => {
-                joins += renderJoin(x);
+        config.joins.forEach(join => {
+                joins += renderJoin(join);
         });
 
         let selectModel = {

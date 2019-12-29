@@ -14,6 +14,7 @@ PROPERTY_RENDER.setTempalte(`${IF_IDENT} #{@property} @suffix\r\n`);
 function renderProperty(model) {
         let content = PROPERTY_RENDER.renderTemplate(model);
         model.content = content;
+        
         return renderIf(model);
 }
 

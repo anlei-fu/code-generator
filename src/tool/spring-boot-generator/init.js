@@ -1,9 +1,12 @@
 const { DIR } = require("./../../libs/dir");
 const { STR } = require("./../../libs/str");
 const { FILE } = require("./../../libs/file");
-const { generate } = require("./../../sqls/model/model-generator")
-const { resolve } = require("./../../sqls/model/resolver")
-const { BuilderConfigGenerator } = require("./config-template-generator")
+const { generate } = require("./../sqls/model/model-generator");
+const { resolve } = require("./../sqls/model/resolver");
+const { BuilderConfigGenerator } = require("./config-template-generator");
+
+const {LoggerFactory} =require("./../logging/logger-factory");
+const LOG=LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
 
 /**
  * Initialize a spring boot CRUD web project 
@@ -16,7 +19,7 @@ async function init(project, dbConfig) {
         // create project required folders
         makeAllFolders(project, dbConfig);
 
-        // generate all items
+        // generate all items config
         let tables = await resolve(dbConfig, dbConfig.db);
         let root = `./output/${project}/config`;
         let tableNames = [];
@@ -51,7 +54,7 @@ async function init(project, dbConfig) {
         // generate all table infos
         await generate(dbConfig, dbConfig.db, `./output/${project}/db`);
 
-        console.log(`project ${project} init finished!`);
+        LOG.info(`project ${project} init finished!`);
 }
 
 /**
@@ -124,6 +127,7 @@ function makeAllFolders(project, dbConfig) {
         FILE.write(`./output/${project}/${project}/pom.xml`, pom);
 
         copyAnnotaion("./templates/annotation", `${root}/validate/annotation`);
+
         // application.properties
         let patterns = {
                 "@dbHost": dbConfig.host,
@@ -137,6 +141,7 @@ function makeAllFolders(project, dbConfig) {
 }
 
 /**
+ * Copy all nnotation files
  * 
  * @param {String} sourceFolder 
  * @param {String} targetFolder 
@@ -163,6 +168,7 @@ function generateConfigItem(configRoot, table, primaryKey) {
                 "@key": STR.upperFirstLetter(primaryKey),
                 "@skey": primaryKey
         };
+        
         templates = STR.replace(templates, patterns);
         FILE.write(`${configRoot}/${table.name}.js`, templates);
 }

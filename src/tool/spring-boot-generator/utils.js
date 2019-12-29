@@ -7,39 +7,36 @@
  * @LastEditTime: 2019-12-17 13:03:35
  */
 
-const BASIC_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String", "Long", "Double"]);
+const JAVA_BASE_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String", "Long", "Double"]);
 
 /**
  *  Convert sql type to java type
  * 
- * 
- * 
- *  @param { {name:String,length:number} } sqlType
+ *  @param {SqlType} sqlType constains name(string) and length(number) properties
  */
 exports.getJavaType = function (sqlType) {
+
+        // aready been converted
         if (typeof sqlType == "string")
                 return sqlType;
 
-        // already been converted
-        if (!sqlType.name)
-                return sqlType;
+        // type is correct
+        if (!sqlType.name && sqlType.length)
+                return new Error(`input(${sqlType}) is not a correct type!`);
 
-        if (sqlType.name.indexOf("char") != -1) {
+        if (sqlType.name.includes("char")) {
                 return "String";
-        } else if (sqlType.name.indexOf("integer") != -1) {
+        } else if (sqlType.name.includes("integer")) {
                 return "Long";
-        } else if (sqlType.name.indexOf("text") != -1) {
+        } else if (sqlType.name.includes("text")) {
                 return "String";
-        }
-        else if (sqlType.name.indexOf("float") != -1) {
+        } else if (sqlType.name.includes("float")) {
                 return "Float";
-        }
-        else if (sqlType.name.indexOf("double") != -1) {
+        } else if (sqlType.name.includes("double")) {
                 return "Double";
-        }
-        else if (sqlType.name.indexOf("small") != -1) {
+        } else if (sqlType.name.includes("small")) {
                 return "Boolean";
-        } else if (sqlType.name.indexOf("time") != -1 || sqlType.name.indexOf("date") != -1) {
+        } else if (sqlType.name.includes("time") || sqlType.name.includes("date")) {
                 return "Date";
         } else {
                 return "Integer";
@@ -47,8 +44,8 @@ exports.getJavaType = function (sqlType) {
 }
 
 /**
- * Check is simple java type
+ * Check is java base type
  */
-exports.isSimpleJavaType = (type) => {
-        return BASIC_TYPES.has(type);
+exports.isJavaBaseType = (type) => {
+        return JAVA_BASE_TYPES.has(type);
 }

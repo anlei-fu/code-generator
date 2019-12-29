@@ -1,7 +1,7 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
 const { getReqParamsWithoutType } = require("./../req-common");
 const { STR } = require("./../../../libs/str");
-const { isSimpleJavaType } = require("./../utils");
+const { isJavaBaseType: isSimpleJavaType } = require("./../utils");
 
 const _controllerItemRender = new SimpleRender({}, `${__dirname}/templates/controller-item.java`);
 const _controllerRender = new SimpleRender({}, `${__dirname}/templates/controller.java`);

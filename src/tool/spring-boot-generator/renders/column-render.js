@@ -8,7 +8,6 @@ _columnsRender.setTempalte(`${IF_IDENT}  @column@alias@suffix\r\n`);
 /**
  * Render column template
  * 
- * @private
  * @param {{ifExpression:String,alias:String,column:String,suffix:String}} model
  * @returns {String}
  */

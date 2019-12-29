@@ -1,5 +1,6 @@
-const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const {getReqParamsWithType}=require("./../req-common")
+const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
+const {getReqParamsWithType}=require("./../req-common");
+
 const _serviceItemRender = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
 const _serviceRender = new SimpleRender({}, `${__dirname}/templates/service.java`);
 
@@ -12,8 +13,8 @@ const _serviceRender = new SimpleRender({}, `${__dirname}/templates/service.java
 function renderService(config) {
         let content = "";
         config.items.forEach(x => {
-                let item = getServiceItem(x,config.name);
-                content += _serviceItemRender.renderTemplate(item);
+                let model = getServiceItemModel(x,config.name);
+                content += _serviceItemRender.renderTemplate(model);
         });
 
         content=content.trimRight()+"\r\n";
@@ -26,7 +27,7 @@ function renderService(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function getServiceItem(config,name) {
+function getServiceItemModel(config,name) {
         return {
                 serviceParams: getReqParamsWithType(config),
                 serviceReturnType: getServiceReturnType(config,name),

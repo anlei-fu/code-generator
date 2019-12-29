@@ -11,6 +11,7 @@ JOIN_RENDER.setTempalte("@type join @table@alias on @joinCondition")
  */
 function renderJoin(model) {
         model.alias = model.alias ? `as ${model.alias}` : "";
+        
         return JOIN_RENDER.renderTemplate(model);
 }
 

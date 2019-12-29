@@ -9,6 +9,7 @@
 const xml2js = require('xml2js');
 
 /**
+ * Convert xml(string) to json
  * 
  * @param {String} xml 
  * @returns {Any}
@@ -18,6 +19,7 @@ async function toJson(xml) {
 }
 
 /**
+ * Convert json(string) to xml(string)
  * 
  * @param {Any} json 
  * @returns {String}

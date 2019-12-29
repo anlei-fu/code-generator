@@ -7,6 +7,8 @@
  * @LastEditTime: 2019-10-21 10:22:51
  */
 const{tokenize}=require("./tokenizer");
+const {LoggerFactory} =require("./../logging/logger-factory")
+let LOG= LoggerFactory.getLogger("test");
 
 function testTokenize(){
   let text=`
@@ -24,7 +26,7 @@ function testTokenize(){
   !=
   `;
   tokenize(text).forEach(x=>{
-          console.log(x);
+          LOG.info(x);
   })
 }
 

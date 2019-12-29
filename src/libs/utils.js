@@ -10,7 +10,7 @@
  * Check target is defined, if target not defiend will throw an error
  * @param {Any} target 
  */
-const { STR} = require("./str");
+const { STR } = require("./str");
 exports.UNDEFINED = "undefined";
 exports.EMPTY = "";
 
@@ -25,6 +25,7 @@ exports.requireNotNull = target => {
 }
 
 /**
+ * Parse value of basic type
  * 
  * @param {String} value
  */
@@ -42,6 +43,7 @@ exports.parseValue = (value) => {
                 return false;
         } else {
                 let reg = /^(-?\d+)(\.\d+)?$/;
+
                 return reg.test(value) ? parseFloat(value) : value;
         }
 }
@@ -49,7 +51,8 @@ exports.parseValue = (value) => {
 /*------------------------------------------------array---------------------------------------------------*/
 
 /**
- * @description Convert @see {Array} to @see {Set} 
+ * Convert @see {Array} to @see {Set} 
+ * 
  * @param {[Any]} array 
  * @returns {Set<Any>}
  */
@@ -65,6 +68,7 @@ function toSet(array) {
 }
 
 /**
+ * Convert @see {Array} to @see {Map}
  * 
  * @param {[Any]} array 
  * @param {(Any)=>String} keySelector 
@@ -76,11 +80,12 @@ function toMap(array, keySelector) {
         array.forEach(x => {
                 map.set(keySelector(x), x);
         })
-        
+
         return map;
 }
 
 /**
+ * Group array
  * 
  * @param {[Any]} array 
  * @param {Any=>String} keySelector 
@@ -91,9 +96,9 @@ function groupBy(array, keySelector) {
 
         array.forEach(x => {
                 let key = keySelector(x);
-                if (!map.has(key)) 
+                if (!map.has(key))
                         map.set(key, []);
-                        
+
                 map.get(key).push(x);
         })
 
@@ -108,10 +113,11 @@ exports.ARRAY = {
 /*-------------------------------------------------------------------object---------------------------------------------------------------------------*/
 
 /**
+ * Extend object
  * 
  * @param {Object} self 
  * @param {Object} other 
- * @param {boolean} override 
+ * @param {boolean} override , if true overlay self property with other's property
  */
 function extend(self, other, override) {
         let keys;
@@ -129,6 +135,7 @@ function extend(self, other, override) {
 }
 
 /**
+ * Deep extend property
  * 
  * @param {Object} self 
  * @param {Object} other 
@@ -146,28 +153,52 @@ function deepExtend(self, other) {
 }
 
 /**
+ * Colone object
  * 
  * @param {Object} target 
  * @returns {Object}
  */
 function clone(target) {
-        return JSON.parse(JSON.stringify(target));
+        return extend(JSON.parse(JSON.stringify(target)), target, false);
 }
 
 /**
+ * Convert obj to array
  * 
  * @param {Any} obj 
+ * @returns {Array}
  */
 function toArray(obj) {
         let ls = []
 
-        for (let k in obj) 
+        if (obj instanceof Map) {
+                obj.forEach(value => {
+                        ls.push(value);
+                });
+
+                return ls;
+        }
+
+        if (obj instanceof Array)
+                return obj;
+
+        if (obj instanceof Set) {
+                obj.forEach(key => {
+                        ls.push(key);
+                });
+
+                return ls;
+        }
+
+
+        for (let k in obj)
                 ls.push(obj[k]);
 
         return ls;
 }
 
 /**
+ * Does object has property "key"
  * 
  * @param {Any} obj 
  * @param {String} key 
@@ -178,6 +209,7 @@ function hasKey(obj, key) {
 }
 
 /**
+ * Iterate object
  * 
  * @param {Any} obj 
  * @param {(key:String,value:Any)=>void} consumer 
@@ -187,11 +219,12 @@ function forEach(obj, consumer) {
         if (!consumer)
                 throw new ReferenceError("consumer can not be null!");
 
-        for (const c in obj) 
+        for (const c in obj)
                 consumer(c, obj[c]);
 }
 
 /**
+ * Delete property "key" of object
  * 
  * @param {Any} obj 
  * @param {String} key 
@@ -204,6 +237,7 @@ function deleteKey(obj, key) {
 }
 
 /**
+ * Get property "key" value of object
  * 
  * @param {any} obj 
  * @param {String} key 
@@ -223,6 +257,7 @@ function getValue(obj, key) {
 }
 
 /**
+ * Textise object with giveing name
  * 
  * @param {any} obj 
  * @param {String} name  let name
@@ -230,7 +265,8 @@ function getValue(obj, key) {
  */
 function text(obj, name) {
         let json = JSON.stringify(obj, null, "\t");
-        json=doReplace(json);
+        json = doReplace(json);
+
         return `let ${name} = ${json};\r\n\r\n`;
 }
 
@@ -240,7 +276,7 @@ function text(obj, name) {
  * @returns {String}
  */
 function doReplace(json) {
-        let str=require("./../libs/str").STR;
+        let str = require("./../libs/str").STR;
         json = str.reverse(json);
         let output = "";
         let isInQuote = false;
@@ -268,7 +304,8 @@ function doReplace(json) {
 }
 
 /**
- * @description To resolve @see Map can not be stringified by JSON method
+ * To resolve @see Map can not be stringified by JSON method
+ * 
  * @param {Map} map 
  */
 function mapToObject(map) {
@@ -276,6 +313,7 @@ function mapToObject(map) {
         map.forEach((v, k) => {
                 obj[k] = v;
         });
+
         return obj;
 }
 
@@ -291,35 +329,61 @@ exports.OBJECT = {
         text
 }
 
-
-
 /*--------------------------------------------------------------------type----------------------------------------------------------------------------*/
 
+/**
+ * Is type array
+ * 
+ * @param {Any} obj 
+ */
 function isArray(obj) {
         return obj instanceof Array
 }
 
+/**
+ * Is type object
+ * 
+ * @param {Any} obj 
+ */
 function isObject(obj) {
         return obj instanceof Object;
 }
 
+/**
+ * Is type string
+ * 
+ * @param {Any} obj 
+ */
 function isString(obj) {
         return obj.constructor == String;
 }
 
+/**
+ * Is type function
+ * 
+ * @param {Any} obj 
+ */
 function isFunction(obj) {
         return obj.constructor == Function;
 }
 
+/**
+ * Is type number
+ * 
+ * @param {Any} obj 
+ */
 function isNumber(obj) {
         return obj.constructor == Number;
 }
 
+/**
+ * Is type boolean
+ * 
+ * @param {any} obj 
+ */
 function isBoolean(obj) {
         return obj.constructor == Boolean;
 }
-
-
 
 exports.TYPE = {
         isArray,

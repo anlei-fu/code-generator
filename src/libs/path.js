@@ -9,7 +9,8 @@
 const path =require("path");
 
 /**
- * @description Get absolute path by relative path
+ * Get absolute path by relative path
+ * 
  * @param {String} from  absolute path
  * @param {String} to   relative
  * @returns {String}  absolute path of to

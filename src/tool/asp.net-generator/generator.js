@@ -19,7 +19,6 @@ class Generator {
          * Write all files
          */
         generate() {
-                 
                 if(this._config.add||this._config.edit)
                   this._generateItem();
 

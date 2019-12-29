@@ -6,15 +6,17 @@
  * @LastEditors  : fuanlei
  * @LastEditTime : 2019-12-19 14:07:46
  */
-const { STR } = require("./../../libs/str")
-const { FILE } = require("./../../libs/file")
-const { OBJECT } = require("./../../libs/utils")
+const { STR } = require("./../../libs/str");
+const { FILE } = require("./../../libs/file");
+const { OBJECT } = require("./../../libs/utils");
 
 exports.SimpleRender = class SimpleRender {
         constructor(basePatterns = {}, templateFile, prefix = "@", suffix = "") {
                 this._basePatterns = {};
                 this._prefix = prefix;
                 this._suffix = suffix;
+
+                // init base patterns
                 OBJECT.forEach(basePatterns, (key, value) => {
                         this._basePatterns[`${this._prefix}${key}${this._suffix}`] = value;
                 });
@@ -73,7 +75,7 @@ exports.SimpleRender = class SimpleRender {
                 if (!this._template)
                         throw new Error("no template set to this render!");
 
-                return this.renderContent(this._template,config,generate);
+                return this.renderContent(this._template, config, generate);
         }
 
         /**
@@ -85,23 +87,25 @@ exports.SimpleRender = class SimpleRender {
          * @returns {String}
          */
         renderContent(content, config = {}, generate = true) {
-                let patterns = !generate ? config : this.generatePattern(config);
+                let patterns = !generate ? config : this.generateModel(config);
+
                 return STR.replace(content, patterns);
         }
 
         /**
-         * Generate replace pattern
+         * Generate render model
          * 
          * @param {Map} config 
          */
-        generatePattern(config = {}) {
+        generateModel(config = {}) {
                 let copy = OBJECT.clone(this._basePatterns);
                 OBJECT.extend(copy, config);
-                let _new={};
+                
+                let _new = {};
                 OBJECT.forEach(copy, (key, value) => {
                         _new[`${this._prefix}${key}${this._suffix}`] = value;
                 });
+
                 return _new;
         }
-
 }

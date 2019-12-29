@@ -9,15 +9,13 @@
 
 // import
 const fs = require("fs");
+const { LoggerFactory } = require("./../tool/logging/logger-factory")
+
+const LOG = LoggerFactory.getLogger("FILE");
 
 /**
- * @description Check encoding by given ,If null return "utf-8" ;
- * @param {String} charset 
- */
-const defaultCharset = (charset) => { encoding: charset || "utf8" };
-
-/**
- * @description Read all lines from file, read all data from file then split into lines;
+ * Read all lines from file, read all data from file then split into lines
+ * 
  * @param {String} path , File to read
  * @param {String?} charset 
  * @param {boolean?} trim ,If true will remove every line' blank chars at start and end;
@@ -46,48 +44,55 @@ function readLines(path, charset, trim, ignoreEmpty) {
 }
 
 /**
- * @description Read data from file
+ * Read data from file
+ * 
  * @param {String} path , File to read
  * @param {String?} charset ,Charset name
  * @returns {String}
  */
-function read(path, charset) {
-        return fs.readFileSync(path, defaultCharset(charset)).toString();
+function read(path, charset="UTF-8") {
+        return fs.readFileSync(path, charset).toString();
 }
 
 /**
- * @description Write data into  file
+ * Write data to file
+ * 
  * @param {String} path , File to write
  * @param {String} data ,Data to write 
  * @param {String?} charset, Charset name 
  */
-function write(path, data, charset) {
-        fs.writeFileSync(path, data, defaultCharset(charset));
+function write(path, data, charset="UTF-8") {
+        fs.writeFileSync(path, data, charset);
+        LOG.info(`write ${path}`);
 }
 
 /**
- * @descrip Append line  at the end of file,data+"\r\n";
+ * Append line  at the end of file,data+"\r\n"
+ * 
  * @param {String} path , File path
  * @param {String} data ,Data to append 
  * @param {String?} charset, Charset name 
  */
-function appendLine(path, data, charset) {
+function appendLine(path, data, charset="UTF-8") {
         append(path, data + "\r\n", charset);
-
+        LOG.info(`append line ${path}`);
 }
 
 /**
- * @description Append data  at the end of file;
+ * Append data  at the end of file
+ * 
  * @param {String} path , File path
  * @param {String} data  to append
  * @param {String?} charset, Charset name 
  */
-function append(path, data, charset) {
-        fs.appendFileSync(path, data, defaultCharset(charset));
+function append(path, data, charset="UTF-8") {
+        fs.appendFileSync(path, data, charset);
+        LOG.info(`append ${path}`);
 }
 
 /**
- * @description Copy file
+ * Copy file
+ * 
  * @param {String} source 
  * @param {String} destination 
  * @param {boolean?} rmSource ,If true , After copying complete , Remove source file
@@ -97,19 +102,25 @@ function copy(source, destination, rmSource) {
 
         if (rmSource)
                 fs.unlinkSync(source);
+
+        LOG.info(`copy ${source} to ${destination}`);
 }
 
 /**
- * @description Remove file 
+ * Remove file 
+ * 
  * @param {String} path 
  */
 function remove(path) {
-        if (exists(path))
+        if (exists(path)) {
                 fs.unlinkSync(path);
+                LOG.info(`remove ${path}`);
+        }
 }
 
 /**
- * @description Check does file exists
+ * Check does file exists
+ * 
  * @param {String} path 
  * @returns {boolean}
  */

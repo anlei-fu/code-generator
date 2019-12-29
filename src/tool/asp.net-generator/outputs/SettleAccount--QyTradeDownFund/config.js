@@ -1,7 +1,6 @@
 exports.config = {
 	delete: true,
 	add: true,
-	exportExcel:true,
 	project: "SettleAccount",
 	table: {
 		name: "qyTradeDownFund",
@@ -206,13 +205,13 @@ exports.config = {
 		],
 		getListSql: {
 			columns: [
-				"t1.CHANNEL_NAME DownChannelNoName",
-				"t2.ACCOUNT_NAME DownAccountIdName",
+				"t1.NAME DownChannelNoName",
+				"t2.NAME DownAccountIdName",
 				"t3.NAME ChangeTypeName"
 			],
 			joins: [
-				"LEFT JOIN QY_BASE_DOWN_CHANNEL t1 ON t.DOWN_CHANNEL_NO = t1.CHANNEL_NO",
-				"LEFT JOIN QY_BASE_DOWN_ACCOUNT t2 ON t.DOWN_ACCOUNT_ID = t2.ACCOUNT_ID",
+				"LEFT JOIN DOWN_CHANNEL t1 ON t.DOWN_CHANNEL_NO = t1.No",
+				"LEFT JOIN DOWN_ACCOUNT t2 ON t.DOWN_ACCOUNT_ID = t2.Id",
 				"LEFT JOIN SYSTEM_DICTIONARY t3 ON t.CHANGE_TYPE = t3.VALUE AND t3.TYPE = 'ChangeType'"
 			],
 			conditions: [
@@ -405,7 +404,7 @@ exports.config = {
 			{
 				lable: "备注",
 				name: "Memo",
-				textArea: true
+				textArea: false
 			}
 		],
 		required: []

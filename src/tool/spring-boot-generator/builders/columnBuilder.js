@@ -8,7 +8,6 @@
  */
 const { TYPE, OBJECT } = require("../../../libs/utils")
 exports.ColumnBuilder = class ColumnBuilder {
-
         constructor() {
                 this._includes = {};
         }
@@ -80,7 +79,6 @@ exports.ColumnBuilder = class ColumnBuilder {
         bigger(item) {
                 return this._setBoolProperty(item, "bigger");
         }
-
 
         /**
          * Set property "biggerEqual" of every column
@@ -249,7 +247,6 @@ exports.ColumnBuilder = class ColumnBuilder {
         _setBoolProperty(item, property) {
                 return this._setProperty(item, property, true);
         }
-
 
         /**
          * Set property

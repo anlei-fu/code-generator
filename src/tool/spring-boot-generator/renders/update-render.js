@@ -13,7 +13,6 @@ const UPDATE_RENDER = new SimpleRender({}, `${__dirname}/templates/update.xml`);
  * @returns {String}
  */
 function renderUpdate(config) {
-
         let updateModel = {
                 id: config.id,
                 columns: renderIncludes(config),

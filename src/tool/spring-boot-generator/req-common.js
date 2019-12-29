@@ -1,6 +1,7 @@
-const { STR } = require("./../../libs/str")
-const { getConditions } = require("./condition-getter")
-const { getIncludes } = require("./includes-getter")
+const { STR } = require("./../../libs/str");
+const { getConditions } = require("./condition-getter");
+const { getIncludes } = require("./includes-getter");
+
 const CACHE = new Map();
 
 /**
