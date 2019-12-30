@@ -158,6 +158,10 @@ class TableRelationAnalyzer {
                 let relations = {};
                 OBJECT.forEach(this._tables, (tableName, table) => {
                         OBJECT.forEach(table.columns, (_, column) => {
+                                   
+                                if(column.isPk)
+                                  return;
+
                                 column.type = getJavaType(column.type);
                                 if (!this._match(column.type, column.name, table.name))
                                         return;

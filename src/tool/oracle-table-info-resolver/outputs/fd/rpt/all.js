@@ -1,0 +1,9 @@
+exports.all={
+        rptMergeInnerChannelMap:require("./rptMergeInnerChannelMap").rptMergeInnerChannelMap,
+        rptMergeReportTradeAdd:require("./rptMergeReportTradeAdd").rptMergeReportTradeAdd,
+        rptMergeReportTradeAddCs:require("./rptMergeReportTradeAddCs").rptMergeReportTradeAddCs,
+        rptUnitChannelMap:require("./rptUnitChannelMap").rptUnitChannelMap,
+        rptUnitReportTrade:require("./rptUnitReportTrade").rptUnitReportTrade,
+        rptUnitReportTradeSplit:require("./rptUnitReportTradeSplit").rptUnitReportTradeSplit,
+        rptTest:require("./rptTest").rptTest,
+}

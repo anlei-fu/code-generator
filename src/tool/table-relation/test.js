@@ -1,10 +1,10 @@
 const { TableRelationAnalyzer } = require("./relation");
-const { tables } = require("./../oracle-table-info-resolver/outputs/fd/tables");
+const { all } = require("./../oracle-table-info-resolver/outputs/fd/qy/all");
 const { FILE } = require("./../../libs/file")
 
 
 function main() {
-        let analyzer = new TableRelationAnalyzer(tables);
+        let analyzer = new TableRelationAnalyzer(all);
         let results = analyzer.analyze();
         FILE.write("test.json", JSON.stringify(results, null, "\t"));
 }

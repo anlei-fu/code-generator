@@ -5,6 +5,8 @@ const { ARRAY } = require("../../libs/utils");
 const { OBJECT } = require("../../libs/utils");
 const { NamingStrategy } = require("../../libs/naming-strategy");
 
+const STRING_RESOLVER = x =>x.replace(/\"/g, "\"");
+
 function parse(db) {
         DIR.create("./outputs");
         DIR.create("./outputs/" + db);
@@ -13,45 +15,46 @@ function parse(db) {
         let resolvers = [
                 {
                         name: "table",
-                        doResolve: x => NamingStrategy.toCamel(x.replace(/"/g, ""))
+                        doResolve: STRING_RESOLVER
                 },
                 {
                         name: "column",
-                        doResolve: x => NamingStrategy.toCamel(x.replace(/"/g, ""))
+                        doResolve: STRING_RESOLVER
                 },
                 {
                         name: "dataType",
-                        doResolve: x => NamingStrategy.toCamel(x.replace(/"/g, ""))
+                        doResolve: STRING_RESOLVER
                 },
                 {
                         name: "dataLength",
-                        doResolve: x => parseInt(x.replace(/"/g, ""))
+                        doResolve: STRING_RESOLVER
                 },
                 {
                         name: "nullable",
-                        doResolve: x => x == x.replace(/"/g, "")
+                        doResolve: STRING_RESOLVER
                 },
                 {
                         name: "isPk",
-                        doResolve: x => x.replace(/"/g, "").includes("PK")
+                        doResolve: x => STRING_RESOLVER(x).includes("PK")
                 },
                 {
                         name: "description",
-                        doResolve: x => x.replace(/"/g, "")
+                        doResolve: STRING_RESOLVER
                 }
         ];
 
-        let items = resolveFromCsvString(content, resolvers,true,false);
+        let items = resolveFromCsvString(content, resolvers, true, false);
         groups = ARRAY.groupBy(items, item => item.table);
 
-        let tables = {};
-        groups.forEach((column, columnName) => {
-                if (!columnName || columnName == "")
+        let tables = [];
+        groups.forEach((column, tableName) => {
+                if (!tableName || tableName == "")
                         return;
+                
 
                 let table = {
-                        name: columnName,
-                        rawName: NamingStrategy.toHungary(columnName).toUpperCase(),
+                        name: NamingStrategy.toCamel(tableName),
+                        rawName:tableName,
                         columns: {}
                 };
 
@@ -59,8 +62,8 @@ function parse(db) {
                         if (!column.column || column.column == "")
                                 return;
 
-                        column.name = column.column;
-                        column.rawName = NamingStrategy.toHungary(column.column).toUpperCase()
+                        column.name = NamingStrategy.toCamel(column.column);
+                        column.rawName = column.column
                         column.type = {
                                 name: column.dataType,
                                 length: column.dataLength
@@ -73,18 +76,31 @@ function parse(db) {
                         delete column.dataLength;
                 });
 
-                tables[columnName] = table
+                tables.push(table);
+        });
+
+        let tableGroups = ARRAY.groupBy(tables, x => x.rawName.split("_")[0].toLowerCase());
+        let groupContent = "";
+        let groupTemplate = FILE.read("./templates/group.js");
+        let subAllTempalte = FILE.read("./templates/sub-all-table.js");
+        let allTemplate = FILE.read("./templates/all.js");
+        tableGroups.forEach((tabs,group) => {
+
+                DIR.create(`./outputs/${db}/${group}`);
+
+                let tableContent = "";
+                tabs.forEach(x => {
+                        let content = OBJECT.text(x, x.name);
+                        content = content.replace("let ", "exports.")
+                        FILE.write(`./outputs/${db}/${group}/${x.name}.js`, content);
+                        tableContent += `        ${x.name}:require("./${x.name}").${x.name},\r\n`;
+                });
+
+                FILE.write(`./outputs/${db}/${group}/all.js`, subAllTempalte.replace("@content", tableContent.trimRight()));
+                groupContent += groupTemplate.replace(/@group/g, group);
         })
 
-        let tableContent = "";
-        OBJECT.forEach(tables, (key, value) => {
-                let content = OBJECT.text(value, key);
-                content = content.replace("let ", "exports.")
-                FILE.write(`./outputs/${db}/${key}.js`, content);
-                tableContent += `        ${key}:require("./${key}").${key},\r\n`;
-        })
-
-        FILE.write(`./outputs/${db}/tables.js`, FILE.read("./templates/main.js").replace("@content", tableContent));
+        FILE.write(`./outputs/${db}/all.js`, allTemplate.replace("@content", groupContent.trimRight()));
 }
 
 parse("fd");
