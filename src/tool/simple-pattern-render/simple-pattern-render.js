@@ -43,7 +43,7 @@ exports.SimpleRender = class SimpleRender {
                 this._suffix = suffix;
         }
 
-        /**
+       /**
         * Set property "_prefix"
         * 
         * @param {String} prefix 

@@ -13,6 +13,9 @@ function renderController(config) {
 
         if (config.exportExcel)
                 content += renderExportExcelController(config);
+        
+        if(config.importExcel)
+           content+="";
 
         return CONTROLLER_RENDER.renderTemplate({ content });
 }
