@@ -159,7 +159,9 @@ function deepExtend(self, other) {
  * @returns {Object}
  */
 function clone(target) {
-        return extend(JSON.parse(JSON.stringify(target)), target, false);
+        let copy=JSON.parse(JSON.stringify(target))
+        extend(copy, target, false);
+        return copy;
 }
 
 /**

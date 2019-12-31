@@ -1,6 +1,5 @@
 const { init } = require("./initializer")
-const { FILE } = require("../../libs/file")
-const {tables}=require("../oracle-table-info-resolver/outputs/fd/tables")
+const {all}=require("../oracle-table-info-resolver/outputs/fd/qy/all")
 
 function test() {
    let config = {
@@ -8,7 +7,7 @@ function test() {
       add: true,
       project: "SettleAccount",
    }
-   init(tables.qyTradeDownFund, config);
+   init(all.qyBaseDownChannel, config);
 }
 
 test();

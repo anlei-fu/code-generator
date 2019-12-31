@@ -14,24 +14,24 @@ using SettleAccount.Utility;
 namespace SettleAccount.UserService
 {
    /// <summary>
-    /// 服务操作: QyTradeDownManual(下游脚本)
+    /// 服务操作: QyBaseDownChannel(下游脚本)
     /// </summary>
-   public class QyTradeDownManualService:Singleton<QyTradeDownManualService>
+   public class QyBaseDownChannelService:Singleton<QyBaseDownChannelService>
     {
-       private IQyTradeDownManualHandler handler;
+       private IQyBaseDownChannelHandler handler;
        private static readonly  string ORDER_BY="";
-       public QyTradeDownManualService()
+       public QyBaseDownChannelService()
        {
-           handler = BusinessLogicFactory.Instance.GetProvider<IQyTradeDownManualHandler>();
+           handler = BusinessLogicFactory.Instance.GetProvider<IQyBaseDownChannelHandler>();
        }
          /// <summary>
        /// 查询单条数据,用于详细页面显示
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public QyTradeDownManualItemModel Query(string id)
+       public QyBaseDownChannelItemModel Query(string id)
        {
-           QyTradeDownManualItemModel model = new QyTradeDownManualItemModel();
+           QyBaseDownChannelItemModel model = new QyBaseDownChannelItemModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -41,9 +41,9 @@ namespace SettleAccount.UserService
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public QyTradeDownManualItemModel QueryItem(string id)
+       public QyBaseDownChannelItemModel QueryItem(string id)
        {
-           QyTradeDownManualItemModel model = new QyTradeDownManualItemModel();
+           QyBaseDownChannelItemModel model = new QyBaseDownChannelItemModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -53,9 +53,9 @@ namespace SettleAccount.UserService
        /// </summary>
        /// <param name="id">主键编号</param>
        /// <returns></returns>
-       public QyTradeDownManualViewModel View(string id)
+       public QyBaseDownChannelViewModel View(string id)
        {
-           QyTradeDownManualViewModel model = new QyTradeDownManualViewModel();
+           QyBaseDownChannelViewModel model = new QyBaseDownChannelViewModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
            return model;
@@ -64,7 +64,7 @@ namespace SettleAccount.UserService
        /// 获取数据列表
        /// </summary>
        /// <returns></returns>
-       public List<MQyTradeDownManual> GetDataList()
+       public List<MQyBaseDownChannel> GetDataList()
        {
            return handler.GetDataList(ORDER_BY);
        }
@@ -73,10 +73,10 @@ namespace SettleAccount.UserService
        /// </summary>
        /// <param name="json">json数据</param>
        /// <returns></returns>
-       public List<MQyTradeDownManual> GetDataList(string json)
+       public List<MQyBaseDownChannel> GetDataList(string json)
        {
-           MQyTradeDownManual data =
-               JsonData.JavaScriptDeserialize<MQyTradeDownManual>(json);
+           MQyBaseDownChannel data =
+               JsonData.JavaScriptDeserialize<MQyBaseDownChannel>(json);
            return handler.GetDataList(data, ORDER_BY, Lib4Net.DB.MatchMode.Exact);
        }
         /// <summary>
@@ -84,10 +84,10 @@ namespace SettleAccount.UserService
        /// </summary>
        /// <param name="nvc">参数集合</param>
        /// <returns></returns>
-       public QyTradeDownManualListModel Query(NameValueCollection nvc)
+       public QyBaseDownChannelListModel Query(NameValueCollection nvc)
        {
-           QyTradeDownManualListModel model = new QyTradeDownManualListModel();
-           MQyTradeDownManual entity = new MQyTradeDownManual();
+           QyBaseDownChannelListModel model = new QyBaseDownChannelListModel();
+           MQyBaseDownChannel entity = new MQyBaseDownChannel();
            model.PageSize = CommFun.ToInt(nvc["ps"],
                SettingHelper.Instance.GetInt("PageSize", 10)).Value;
            model.PageIndex= CommFun.ToInt(nvc["pi"],
@@ -108,7 +108,7 @@ namespace SettleAccount.UserService
        /// <param name="id">主键编号</param>
        /// <param name="entity">实体数据</param>
        /// <returns></returns>
-       public IResult Save(string id,MQyTradeDownManual entity)
+       public IResult Save(string id,MQyBaseDownChannel entity)
        {
            return handler.Save(id,entity);
        }
@@ -126,9 +126,9 @@ namespace SettleAccount.UserService
         /// </summary>
         /// <param name="nvc"></param>
         /// <returns></returns>
-        public QyTradeDownManualListModel ExportExcel(NameValueCollection nvc)
+        public QyBaseDownChannelListModel ExportExcel(NameValueCollection nvc)
         {
-            var entity = new MQyTradeDownManual();
+            var entity = new MQyBaseDownChannel();
             entity.SetData(nvc, false);
             entity.TrimEmptyProperty();
 
@@ -137,7 +137,7 @@ namespace SettleAccount.UserService
             entity.AddData("ST", st);
             entity.AddData("ET", et);
           
-            var model = new QyTradeDownManualListModel();
+            var model = new QyBaseDownChannelListModel();
             model.List = handler.GetDataListByTemplate("exportExcel", entity);
 
             return model;

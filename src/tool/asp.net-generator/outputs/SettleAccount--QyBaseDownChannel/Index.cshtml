@@ -1,5 +1,5 @@
 @using SettleAccount.Utility
-@model SettleAccount.Model.QyTradeDownManualListModel
+@model SettleAccount.Model.QyBaseDownChannelListModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -42,33 +42,16 @@
         user.bind();
     });
 
-//删除
-function _delete(id) {
-        if (!confirm("你确认要删除该信息吗?"))
-                return;
 
-        $.ajax({
-                type: "post",
-                data: { id: id },
-                url: '/QyTradeDownManual/Delete',
-                success: function (data) {
-                        data = $.parseJSON(data);
-                        alert(data.message)
-                },
-                error: function () {
-                        alert("调用失败，请重试");
-                }
-        });
-}
 // 添加或编辑
 function add(id,title) {
-        popEditDialog('/QyTradeDownManual/Item', 'id=' + id, title);
+        popEditDialog('/QyBaseDownChannel/Item', 'id=' + id, title);
 }
 
 
 // ????
 function exportExcel() {
-        conditionForm.action = "/QyTradeDownManual/ExportExcel/";
+        conditionForm.action = "/QyBaseDownChannel/ExportExcel/";
         conditionForm.target = "_blank";
         conditionForm.method = "post";
         conditionForm.submit();
@@ -83,23 +66,18 @@ function exportExcel() {
     <form method="get" id="conditionForm">
     <div class="con_search_box clearfix">
         <p class="sc_p">
-               绑定时间:
+               创建时间:
                <input class="list_input Wdate" type="text" name="st" id="s" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
                    -
                <input class="list_input Wdate" type="text" name="et" id="e" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'s\')}'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
         </p>
           <p class="sc_p">
-             渠道编号:
-             @Html.DropDownList("ChannelNo", new SelectList(ChannelService.Instance.GetDataList(), "No", "ChannelName"), "--请选择--")
+             状态:
+             @Html.DropDownList("Status", new SelectList(SystemDictionaryService.Instance.GetDataList("Status"), "Value", "Description"), "--请选择--")
           </p>          <p class="sc_p">
-             是否红冲过:
-             @Html.DropDownList("HasAdjust", new SelectList(SystemDictionaryService.Instance.GetDataList("HasAdjust"), "Value", "Name"), "--请选择--")
-          </p>          <p class="sc_p">
-             变动类型:
-             @Html.DropDownList("AddType", new SelectList(SystemDictionaryService.Instance.GetDataList("AddType"), "Value", "Name"), "--请选择--")
-          </p>              <p class="sc_p">
-                   外部加款记录编号: <input class="search_input"  type="text" name="ExtRecordNo" />
-              </p>
+             下游支付账户:
+             @Html.DropDownList("AccountId", new SelectList(QyBaseDownAccountService.Instance.GetDataList(), "AccountId", "AccountName"), "--请选择--")
+          </p>
        <p class="sc_p">
             <input class="list_submit" type="button" />
             <input type="button" onclick="add('','添加')" class="add_btn hand" />
@@ -118,21 +96,18 @@ function exportExcel() {
            <table width="100%" border="0" cellpadding="0" cellspacing="0" nodata="*">
         <thead>
             <tr>
-                        <th>编号</th>
                         <th>渠道编号</th>
-                        <th>账户编号</th>
-                        <th>红冲编号</th>
-                        <th>是否红冲过</th>
-                        <th>变动类型</th>
-                        <th>变动金额</th>
-                        <th>交易平账真实金额</th>
-                        <th>变动时间</th>
-                        <th>余额</th>
+                        <th>渠道名称</th>
+                        <th>所属公司</th>
+                        <th>所属系统编号</th>
+                        <th>状态</th>
+                        <th>佣金余额</th>
+                        <th>报警余额</th>
+                        <th>下游账户id</th>
                         <th>创建人</th>
-                        <th>银行资金变动编号（红冲是使用）</th>
-                        <th>备注</th>
-                        <th>外部加款记录编号</th>
-                        <th>收取手续费的记录编号</th>
+                        <th>创建时间</th>
+                        <th>最后更新人</th>
+                        <th>最后更新时间</th>
 
             </tr>
         </thead>
@@ -140,21 +115,18 @@ function exportExcel() {
             @foreach (var item in Model.List)
             {
                 <tr>
-                                           <td>@item.RecordId</td>
-                        <td>@item.GetDataValue("ChannelNoName")</td>
-                        <td>@item.AccountId</td>
-                        <td>@item.AdjustId</td>
-                        <td>@item.GetDataValue("HasAdjustName")</td>
-                        <td>@item.GetDataValue("AddTypeName")</td>
-                        <td>@item.ChangeAmount</td>
-                        <td>@item.RealAmount</td>
-                        <td>@item.ChangeTime</td>
-                        <td>@item.Balance</td>
-                        <td>@item.CreateUser</td>
-                        <td>@item.BankFundId</td>
-                        <td>@item.Memo</td>
-                        <td>@item.ExtRecordNo</td>
-                        <td>@item.HandlingFeeId</td>
+                        <td>@item.ChannelNo</td>
+                        <td>@item.ChannelName</td>
+                        <td>@item.CompanyId</td>
+                        <td>@item.SourceSystemId</td>
+                        <td>@item.GetDataValue("StatusName")</td>
+                        <td>@item.CommiBalance</td>
+                        <td>@item.WarnBalance</td>
+                        <td>@item.GetDataValue("AccountName")</td>
+                        <td>@item.CreatedUser</td>
+                        <td>@item.CreatedTime</td>
+                        <td>@item.LastEditUser</td>
+                        <td>@item.LastEditTime</td>
 
                 </tr>
             }
