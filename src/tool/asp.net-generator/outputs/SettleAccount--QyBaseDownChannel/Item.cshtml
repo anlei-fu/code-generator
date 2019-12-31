@@ -1,0 +1,128 @@
+@model SettleAccount.Model.QyBaseDownChannelItemModel
+<script type="text/javascript">
+    $(function () {
+        $('#mainForm').validate({
+            errorClass: "error",
+            focusInvalid: true,
+            submitHandler: function (form) {
+                if (!$(form).valid()) {
+                    return false;
+                }
+                var data = $(form).serialize();
+                $.ajax({
+                    type: "post",
+                    data: data,
+                    url: "/QyBaseDownChannel/item",
+                    success: function (data) {
+                        data = $.parseJSON(data);
+                        if (data.Status) {
+                            var id = $('input[name=__id]').val();
+                            alert(data.Message);
+                            if (id != '') {
+                                refreshCurrentPage();
+                            }
+                            return true;
+                        } else {
+                            alert(data.Message);
+                        }
+                        return false;
+                    },
+                    error: function () {
+                        alert("请求出错");
+                    }
+                });
+            },
+            rules: {
+                Status: { required: true },
+                AccountId: { required: true },
+                ChannelNo: { required: true },
+                ChannelName: { required: true },
+                CompanyId: { required: true },
+                SourceSystemId: { required: true },
+                CommiBalance: { required: true },
+                WarnBalance: { required: true },
+                CreatedUser: { required: true },
+                CreatedTime: { required: true },
+                LastEditUser: { required: true },
+                LastEditTime: { required: true },
+            },
+            messages: {
+        }
+    });
+    $('select').each(function () {
+        if ($(this).css('display') != "none") {
+            $(this).sSelect();
+        }
+    });
+});
+
+
+</script>
+<form id="mainForm" method="post">
+<input type="hidden" name="__id" value="@Model.Id" />
+<table>
+<tr>
+        <td width="120" class="textalign_r">
+        <em class="required">*</em>下游支付账户：
+    </td>
+    <td width="300" class="textalign_l">
+        <p class="sc_p">
+            @Html.DropDownList("AccountId", new SelectList(QyBaseDownAccountService.Instance.GetChannelList(), "AccountId", "AccountName", Model.CurrentModel.AccountId), "--请选择--")
+        </p>
+    </td><td class="textalign_r">
+        <em class="required">*</em>渠道编号：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="ChannelNo" value="@Model.CurrentModel.ChannelNo"  style="width:300px"/>
+    </td>
+</tr><tr>
+        <td class="textalign_r">
+        <em class="required">*</em>渠道名称：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="ChannelName" value="@Model.CurrentModel.ChannelName"  style="width:300px"/>
+    </td><td class="textalign_r">
+        <em class="required">*</em>所属公司：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="CompanyId" value="@Model.CurrentModel.CompanyId"  style="width:300px"/>
+    </td>
+</tr><tr>
+        <td class="textalign_r">
+        <em class="required">*</em>所属系统编号：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="SourceSystemId" value="@Model.CurrentModel.SourceSystemId"  style="width:300px"/>
+    </td><td class="textalign_r">
+        <em class="required">*</em>佣金余额：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="CommiBalance" value="@Model.CurrentModel.CommiBalance"  style="width:300px"/>
+    </td>
+</tr><tr>
+        <td class="textalign_r">
+        <em class="required">*</em>报警余额：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="WarnBalance" value="@Model.CurrentModel.WarnBalance"  style="width:300px"/>
+    </td><td class="textalign_r">
+        <em class="required">*</em>创建人：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="CreatedUser" value="@Model.CurrentModel.CreatedUser"  style="width:300px"/>
+    </td>
+</tr><tr>
+        <td class="textalign_r">
+        <em class="required">*</em>创建时间：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="CreatedTime" value="@Model.CurrentModel.CreatedTime"  style="width:300px"/>
+    </td><td class="textalign_r">
+        <em class="required">*</em>最后更新人：
+    </td>
+    <td width="300" class="textalign_l">
+        <input class="widthinput" type="text" name="LastEditUser" value="@Model.CurrentModel.LastEditUser"  style="width:300px"/>
+    </td>
+</tr>
+</table>
+</form>

@@ -21,6 +21,13 @@ function renderIHander(){
         
 }
 
-exports.renderImpotExcel = renderImpotExcel;
+module.exports={
+   renderImportExcel,
+   renderImportExcelService,
+   renderImportExcelController,
+   renderImportExcelHandler,
+   renderImportExcelIHander,
+   renderImportExcelService
+}
 
 

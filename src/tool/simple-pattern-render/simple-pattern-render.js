@@ -99,6 +99,8 @@ exports.SimpleRender = class SimpleRender {
          */
         generateModel(config = {}) {
                 let copy = OBJECT.clone(this._basePatterns);
+                console.log(copy);
+                console.log(config)
                 OBJECT.extend(copy, config);
                 
                 let _new = {};

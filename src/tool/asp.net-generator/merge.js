@@ -9,6 +9,9 @@
 var { FILE } = require("../../libs/file");
 var { DIR } = require("../../libs/dir");
 const { XML } = require("../../libs/xml");
+const {LoggerFactory} =require("./../logging/logger-factory");
+
+const LOG=LoggerFactory.getLogger("file merger");     
 
 const OUTPUT = "./outputs";
 // macros need config
@@ -80,86 +83,15 @@ const SERVICE_MOMDEL_PROJECT = `${BASE_PATH}/${SERVICE_MOMDEL_FOLEDER}/${PROJECT
  * Merge all files
  */
 function merge() {
+        LOG.info(`begin merge ${TABLE} files!`);
+
+        LOG.info("merge finished!");
         
-        // entity
-        mergeCsFile(ENTITY_FILE, ENTITY_FOLDER, ENTITY_PROJECT);
-        // idbaccess
-        mergeCsFile(IACCESS_FILE, IDBACCESS_FOLEDER, IDBACCESS_PROJECT);
-        // dbaccess 
-        mergeCsFile(ACCESS_FILE, DBACCESS_FOLEDER, DBACCESS_PROJECT);
-        // ihandler
-        mergeCsFile(IHANDLER_FILE, IHANDLER_FOLEDER, IHANDLER_PROJECT);
-        // handler 
-        mergeCsFile(HANDLER_FILE, HANDLER_FOLEDER, HANDLER_PROJECT);
-        // service
-        mergeCsFile(SERVICE_FILE, SERVICE_FOLEDER, SERVICE_PROJECT);
-        // controller
-        mergeCsFile(CONTROLLER_FILE, CONTROLLER_FOLEDER, CONTROLLER_PROJECT);
-        // item model
-        mergeCsFile(ITEM_MODEL_FILE, SERVICE_MOMDEL_FOLEDER, SERVICE_MOMDEL_PROJECT);
-        // list model
-        mergeCsFile(LIST_MODEL_FILE, SERVICE_MOMDEL_FOLEDER, SERVICE_MOMDEL_PROJECT);
-        // view model
-        mergeCsFile(VIEW_MODEL_FILE, SERVICE_MOMDEL_FOLEDER, SERVICE_MOMDEL_PROJECT);
-
-        mergeEconfig();
-        mergeUrlMapping();
-        mergeView();
 }
 
 
-async function mergeEconfig() {
-        FILE.copy(CONFIG_FILE, DB_CONFIG_FOLEDER);
-        let prj = await XML.toJson(FILE.read(CONTROLLER_PROJECT))
-        prj.ItemGroup[3].Content.push({$:{Include:`Config\\EConfig\\${CONFIG_FILE}`},SubType:["Designer"]});
-        FILE.write(CONTROLLER_PROJECT,XML.toXml(prj));
-}
+/*---------------------------------------------------------------------------------merge---------------------------------------------------------------------------------------*/
+
+merge();
 
 
-async function mergeUrlMapping() {
-        let mapping = await XML.toJson(FILE.read(URL_MAPPING_FILE))
-        let data = { $: { name=`${ENTITY}/index` }, url: [] };
-
-        mapping.UrlMappings.UrlGroup.push(data)
-
-        DIR.getFiles(OUT_VIEW_FOLDER).forEach(x => {
-                data.url.push({ $: { name=`^/${ENTITY}/${x}([\\w/]*)$`, title=`${x}` } });
-        });
-
-        FILE.write(URL_MAPPING_FILE, mapping);
-}
-
-async function mergeView() {
-        DIR.copy(OUT_VIEW_FOLDER, VIEW_FOLEDER);
-        let prj = await XML.toJson(FILE.read(CONTROLLER_PROJECT))
-        DIR.getFiles(OUT_VIEW_FOLDER).forEach(x => {
-                prj.ItemGroup[3].Content.push({ $: { Include: `views\\${ENTITY}\\${x}` } });
-        });
-        FILE.write(project, XML.toXml(CONTROLLER_PROJECT));
-}
-
-
-/**
- * 
- * @param {String} file 
- * @param {String} folder 
- * @param {String} project 
- * @param {String?} prefix 
- */
-async function mergeCsFile(file, folder, project, prefix) {
-        prefix = prefix || "";
-
-        if (file.exists(`${OUTPUT}/${file}`)) {
-                //copy
-                file.copy(`${OUTPUT}/${file}.cs`, `${folder}/${file}`);
-                // tojson
-                let prj = await XML.toJson(FILE.read(project))
-                prj.ItemGroup[2].Compile.push({ $: { Include: `${prefix}${file}` } });
-                FILE.write(project, XML.toXml(prj));
-                console.log(`${OUTPUT}/${ENTITY_NAME}.cs merged!`)
-        } else {
-                console.log(`${OUTPUT}/${ENTITY_NAME}.cs miss!`);
-        }
-}
-// exports
-exports.merge = merge;

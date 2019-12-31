@@ -11,10 +11,19 @@ const CONTROLLER_RENDER = new SimpleRender({}, `${__dirname}/templates/controlle
 function renderController(config) {
         let content = "";
 
+        let itemContent=generateItemContent(config);
+
         if (config.exportExcel)
                 content += renderExportExcelController(config);
+        
+        if(config.importExcel)
+             
 
         return CONTROLLER_RENDER.renderTemplate({ content });
+}
+
+function generateItemContent(config){
+
 }
 
 exports.renderController = renderController;

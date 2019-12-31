@@ -15,9 +15,9 @@ using SettleAccount.Utility;
 namespace SettleAccount.UserWeb.Controllers
 {
     /// <summary>
-    /// Controller：QyTradeDownManual(流程控制)
+    /// Controller：QyBaseDownChannel(流程控制)
     /// </summary>
-    public class QyTradeDownManualController : MainBaseController
+    public class QyBaseDownChannelController : MainBaseController
     {
         /// <summary>
         /// 显示列表页面数据
@@ -25,7 +25,7 @@ namespace SettleAccount.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View(QyTradeDownManualService.Instance.Query(Request.QueryString));
+            return View(QyBaseDownChannelService.Instance.Query(Request.QueryString));
         }
         /// <summary>
         /// 预览详细信息页面
@@ -34,7 +34,7 @@ namespace SettleAccount.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Details(string id)
         {
-            return View(QyTradeDownManualService.Instance.Query(id));
+            return View(QyBaseDownChannelService.Instance.Query(id));
         }
         /// <summary>
         /// 保存或修改页面
@@ -43,7 +43,7 @@ namespace SettleAccount.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Item(string id)
         {
-            return View(QyTradeDownManualService.Instance.QueryItem(id));
+            return View(QyBaseDownChannelService.Instance.QueryItem(id));
         }
         /// <summary>
         /// 克隆页面
@@ -52,7 +52,7 @@ namespace SettleAccount.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult ItemClone(string id)
         {
-            return View(QyTradeDownManualService.Instance.QueryItem(id));
+            return View(QyBaseDownChannelService.Instance.QueryItem(id));
         }
         /// <summary>
         /// 预览页面
@@ -61,13 +61,13 @@ namespace SettleAccount.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult View(string id)
         {
-            return View(QyTradeDownManualService.Instance.View(id));
+            return View(QyBaseDownChannelService.Instance.View(id));
         }
         public string Item()
         {
             try
             {
-                MQyTradeDownManual entity = new MQyTradeDownManual();
+                MQyBaseDownChannel entity = new MQyBaseDownChannel();
                 entity.SetData(Request.Form);
                 entity.TrimEmptyProperty();
 
@@ -101,7 +101,7 @@ namespace SettleAccount.UserWeb.Controllers
         {
             try
             {
-                IResult result = QyTradeDownManualService.Instance.Delete(id);
+                IResult result = QyBaseDownChannelService.Instance.Delete(id);
                 if (result.Status)
                 {
                     result.SetSuccessMessage("删除成功");
@@ -121,26 +121,23 @@ namespace SettleAccount.UserWeb.Controllers
  [HttpPost]
         public void ExportExcel()
         {
-            var data = QyTradeDownManualService.Instance.ExportExcel(Request.Form);
+            var data = QyBaseDownChannelService.Instance.ExportExcel(Request.Form);
 
             var table=new DataTable();
             var columns = new string[]
             {
-                "编号",
                 "渠道编号",
-                "账户编号",
-                "红冲编号",
-                "是否红冲过",
-                "变动类型",
-                "变动金额",
-                "交易平账真实金额",
-                "变动时间",
-                "余额",
+                "渠道名称",
+                "所属公司",
+                "所属系统编号",
+                "状态",
+                "佣金余额",
+                "报警余额",
+                "下游账户id",
                 "创建人",
-                "银行资金变动编号（红冲是使用）",
-                "备注",
-                "外部加款记录编号",
-                "收取手续费的记录编号",
+                "创建时间",
+                "最后更新人",
+                "最后更新时间",
 
             };
 
@@ -150,21 +147,18 @@ namespace SettleAccount.UserWeb.Controllers
             foreach (var item in data.List)
             {
                 var row = table.NewRow();
-                row["编号"] =item.RecordId;
-                row["渠道编号"] =item.GetDataValue("ChannelNoName");
-                row["账户编号"] =item.AccountId;
-                row["红冲编号"] =item.AdjustId;
-                row["是否红冲过"] =item.GetDataValue("HasAdjustName");
-                row["变动类型"] =item.GetDataValue("AddTypeName");
-                row["变动金额"] =item.ChangeAmount;
-                row["交易平账真实金额"] =item.RealAmount;
-                row["变动时间"] =item.ChangeTime;
-                row["余额"] =item.Balance;
-                row["创建人"] =item.CreateUser;
-                row["银行资金变动编号（红冲是使用）"] =item.BankFundId;
-                row["备注"] =item.Memo;
-                row["外部加款记录编号"] =item.ExtRecordNo;
-                row["收取手续费的记录编号"] =item.HandlingFeeId;
+                row["渠道编号"] =item.ChannelNo;
+                row["渠道名称"] =item.ChannelName;
+                row["所属公司"] =item.CompanyId;
+                row["所属系统编号"] =item.SourceSystemId;
+                row["状态"] =item.GetDataValue("StatusName");
+                row["佣金余额"] =item.CommiBalance;
+                row["报警余额"] =item.WarnBalance;
+                row["下游账户id"] =item.GetDataValue("AccountName");
+                row["创建人"] =item.CreatedUser;
+                row["创建时间"] =item.CreatedTime;
+                row["最后更新人"] =item.LastEditUser;
+                row["最后更新时间"] =item.LastEditTime;
 
                 table.Rows.Add(row);
             }

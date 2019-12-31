@@ -15,6 +15,7 @@ function renderItem(addConfig) {
 
         addConfig.selects.forEach(x => {
 
+                console.log(x);
                 items.push(renderItemSelect(x));
                 requires.push(`                ${x.name}: { required: true },\r\n`);
         })
