@@ -27,15 +27,7 @@ namespace @project.UserWeb.Controllers
         {
             return View(@nameService.Instance.Query(Request.QueryString));
         }
-        /// <summary>
-        /// 预览详细信息页面
-        /// </summary>
-        /// <param name="id">主键编号</param>
-        /// <returns></returns>
-        public ActionResult Details(string id)
-        {
-            return View(@nameService.Instance.Query(id));
-        }
+
         /// <summary>
         /// 保存或修改页面
         /// </summary>
@@ -45,24 +37,12 @@ namespace @project.UserWeb.Controllers
         {
             return View(@nameService.Instance.QueryItem(id));
         }
+
         /// <summary>
-        /// 克隆页面
+        /// 添加或编辑
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
-        public ActionResult ItemClone(string id)
-        {
-            return View(@nameService.Instance.QueryItem(id));
-        }
-        /// <summary>
-        /// 预览页面
-        /// </summary>
-        /// <param name="id">主键编号</param>
-        /// <returns></returns>
-        public ActionResult View(string id)
-        {
-            return View(@nameService.Instance.View(id));
-        }
         public string Item()
         {
             try
@@ -72,7 +52,14 @@ namespace @project.UserWeb.Controllers
                 entity.TrimEmptyProperty();
 
                 string id = Request.Form["__id"];
-@handlerAddId
+                if(id!=null&&id.Trim()!="")
+                {
+@addContent
+                }
+                else
+                {
+@updateContent
+                }
 
                 IResult result = FCDownchannelService.Instance.Save(id, entity);
                 if (result.Status)
@@ -91,6 +78,7 @@ namespace @project.UserWeb.Controllers
                 return new Result(false, e.Message).ToString();
             }
         }
+
         /// <summary>
         /// 删除指定编号
         /// </summary>

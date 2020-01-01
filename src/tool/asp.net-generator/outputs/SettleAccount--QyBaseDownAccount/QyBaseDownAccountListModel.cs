@@ -7,45 +7,29 @@ namespace SettleAccount.Model
     /// </summary>
 	public class QyBaseDownAccountListModel
     {
-       private List<MQyBaseDownAccount> _list=new List<MQyBaseDownAccount>();
-       private int _pageSize;
-       private int _pageIndex;
-       private int _totalCount;
-        /// <summary>
+       /// <summary>
        /// 记录列表
        /// </summary>
-       public List<MQyBaseDownAccount> List
-       {
-           get { return _list; }
-           set { _list = value; }
-       }
+       public List<MQyBaseDownAccount> List { get; set; }
+      
        /// <summary>
-        /// 分页数据每页数据条数
-        /// </summary>
-        public int PageSize
-       {
-           get { return _pageSize; }
-           set { _pageSize = value; }
-       }
-        /// <summary>
-        /// 分页数据页索引 从1开始
-        /// </summary>
-       public int PageIndex
-       {
-           get { return _pageIndex; }
-           set { _pageIndex = value; }
-       }
-        /// <summary>
-        /// 总记录条数
-        /// </summary>
-       public int TotalCount
-       {
-           get { return _totalCount; }
-           set { _totalCount = value; }
-       }
+       /// 分页数据每页数据条数
+       /// </summary>
+       public int PageSize { get; set; }
+      
+       /// <summary>
+       /// 分页数据页索引 从1开始
+       /// </summary>
+       public int PageIndex { get; set; }
+       
+       /// <summary>
+       /// 总记录条数
+       /// </summary>
+       public int TotalCount { get; set; }
+      
         /// <summary>
         /// 处理消息
         /// </summary>
-        public string Message{get;set;}
+        public string Message{ get; set; }
     }
 }

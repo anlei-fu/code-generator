@@ -1,5 +1,5 @@
         <p class="sc_p">
-               绑定时间:
+               @lable:
                <input class="list_input Wdate" type="text" name="st" id="s" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
                    -
                <input class="list_input Wdate" type="text" name="et" id="e" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'s\')}'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>

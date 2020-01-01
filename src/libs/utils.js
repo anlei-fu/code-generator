@@ -273,6 +273,21 @@ function text(obj, name) {
 }
 
 /**
+ * Make obj exports string
+ * 
+ * @param {Any} obj 
+ * @param {String} name 
+ * @returns {String}
+ */
+function export_(obj,name){
+        let json = JSON.stringify(obj, null, "\t");
+        json = doReplace(json);
+
+        return `exports.${name} = ${json};\r\n\r\n`;
+}
+
+
+/**
  * 
  * @param {String} json 
  * @returns {String}
@@ -328,7 +343,8 @@ exports.OBJECT = {
         forEach,
         getValue,
         mapToObject,
-        text
+        text,
+        export_
 }
 
 /*--------------------------------------------------------------------type----------------------------------------------------------------------------*/

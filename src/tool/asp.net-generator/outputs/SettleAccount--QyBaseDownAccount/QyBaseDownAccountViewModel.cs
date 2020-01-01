@@ -6,18 +6,14 @@ namespace SettleAccount.Model
     /// </summary>
 	public class QyBaseDownAccountViewModel
     {
-        private @prfixQyBaseDownAccount _currentModel=new @prfixQyBaseDownAccount();
         /// <summary>
         /// 当前实体元素
         /// </summary>
-        public @prfixQyBaseDownAccount CurrentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; }
-        }
+        public MQyBaseDownAccount CurrentModel { get; set; }
+
         /// <summary>
         /// 主键编号
         /// </summary>
-        public string Id{get;set;}
+        public string Id{ get; set; }
     }
 }

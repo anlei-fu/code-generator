@@ -1,4 +1,5 @@
 // 绑定批量选取
-function batchSelect(leaderEle) {
+function mainSelectChanged(leaderEle) {
         $("input[type='checkbox']").attr("checked", leaderEle.checked);
 }
+

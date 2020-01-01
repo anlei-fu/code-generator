@@ -15,6 +15,7 @@ function MRCenterMsg() {
     $(function () {
         var user = new MRCenterMsg();
         user.bind();
+@exportExcel
     });
 
 @content

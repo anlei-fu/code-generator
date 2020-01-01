@@ -6,18 +6,14 @@ namespace @project.Model
     /// </summary>
 	public class @nameViewModel
     {
-        private @prfix@name _currentModel=new @prfix@name();
         /// <summary>
         /// 当前实体元素
         /// </summary>
-        public @prfix@name CurrentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; }
-        }
+        public @prefix@name CurrentModel { get; set; }
+
         /// <summary>
         /// 主键编号
         /// </summary>
-        public string Id{get;set;}
+        public string Id{ get; set; }
     }
 }

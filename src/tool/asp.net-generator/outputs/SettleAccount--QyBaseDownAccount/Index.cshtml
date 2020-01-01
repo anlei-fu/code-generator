@@ -23,7 +23,7 @@
         user.bind();
     });
 
-    function MRCenterMsg() {
+function MRCenterMsg() {
         this.bind = function () {
             $.paging.config.form = "#conditionForm";
             $.paging.bind();
@@ -40,6 +40,7 @@
     $(function () {
         var user = new MRCenterMsg();
         user.bind();
+@exportExcel
     });
 
 //删除
@@ -60,13 +61,14 @@ function _delete(id) {
                 }
         });
 }
+
 // 添加或编辑
 function add(id,title) {
         popEditDialog('/QyBaseDownAccount/Item', 'id=' + id, title);
 }
 
 
-// ????
+// 导出excel
 function exportExcel() {
         conditionForm.action = "/QyBaseDownAccount/ExportExcel/";
         conditionForm.target = "_blank";
@@ -83,7 +85,7 @@ function exportExcel() {
     <form method="get" id="conditionForm">
     <div class="con_search_box clearfix">
         <p class="sc_p">
-               绑定时间:
+               @lable:
                <input class="list_input Wdate" type="text" name="st" id="s" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
                    -
                <input class="list_input Wdate" type="text" name="et" id="e" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'s\')}'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
@@ -91,8 +93,11 @@ function exportExcel() {
 
        <p class="sc_p">
             <input class="list_submit" type="button" />
-            <input type="button" onclick="add('','添加')" class="add_btn hand" /><input type="button" id="btnExport" class="export_btn hand" />
+            <input type="button" onclick="add('','添加')" class="add_btn hand" />
+<input type="button" id="btnExport" class="export_btn hand" />
+
        </p>
+@content
 
     </div>
     <input type="hidden" value="0" name="pi" id="pi" />

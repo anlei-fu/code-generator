@@ -26,7 +26,6 @@ class TableMetaInfo {
                  */
                 this.isMainTable = true;
 
-
                 /**
                  * Raw name
                  */

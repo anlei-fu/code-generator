@@ -18,13 +18,15 @@ namespace SettleAccount.UserService
     /// </summary>
    public class QyBaseDownAccountService:Singleton<QyBaseDownAccountService>
     {
-       private IQyBaseDownAccountHandler handler;
        private static readonly  string ORDER_BY="";
+       private IQyBaseDownAccountHandler handler;
+
        public QyBaseDownAccountService()
        {
            handler = BusinessLogicFactory.Instance.GetProvider<IQyBaseDownAccountHandler>();
        }
-         /// <summary>
+
+       /// <summary>
        /// 查询单条数据,用于详细页面显示
        /// </summary>
        /// <param name="id">主键编号</param>
@@ -36,7 +38,8 @@ namespace SettleAccount.UserService
            model.Id = id;
            return model;
        }
-         /// <summary>
+
+       /// <summary>
        /// 查询单条数据，用于新增编辑
        /// </summary>
        /// <param name="id">主键编号</param>
@@ -46,8 +49,10 @@ namespace SettleAccount.UserService
            QyBaseDownAccountItemModel model = new QyBaseDownAccountItemModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
+
            return model;
        }
+
         /// <summary>
        /// 查询单条数据，用于页面预览
        /// </summary>
@@ -58,9 +63,11 @@ namespace SettleAccount.UserService
            QyBaseDownAccountViewModel model = new QyBaseDownAccountViewModel();
            model.CurrentModel = handler.GetData(id);
            model.Id = id;
+
            return model;
        }
-        /// <summary>
+
+       /// <summary>
        /// 获取数据列表
        /// </summary>
        /// <returns></returns>
@@ -68,18 +75,8 @@ namespace SettleAccount.UserService
        {
            return handler.GetDataList(ORDER_BY);
        }
-        /// <summary>
-       /// 获取数据列表
-       /// </summary>
-       /// <param name="json">json数据</param>
-       /// <returns></returns>
-       public List<MQyBaseDownAccount> GetDataList(string json)
-       {
-           MQyBaseDownAccount data =
-               JsonData.JavaScriptDeserialize<MQyBaseDownAccount>(json);
-           return handler.GetDataList(data, ORDER_BY, Lib4Net.DB.MatchMode.Exact);
-       }
-        /// <summary>
+
+       /// <summary>
        /// 查询列表数据
        /// </summary>
        /// <param name="nvc">参数集合</param>
@@ -87,21 +84,26 @@ namespace SettleAccount.UserService
        public QyBaseDownAccountListModel Query(NameValueCollection nvc)
        {
            QyBaseDownAccountListModel model = new QyBaseDownAccountListModel();
-           MQyBaseDownAccount entity = new MQyBaseDownAccount();
-           model.PageSize = CommFun.ToInt(nvc["ps"],
+            model.PageSize = CommFun.ToInt(nvc["ps"],
                SettingHelper.Instance.GetInt("PageSize", 10)).Value;
            model.PageIndex= CommFun.ToInt(nvc["pi"],
                SettingHelper.Instance.GetInt("PageIndex", 0)).Value+1;
+
+           MQyBaseDownAccount entity = new MQyBaseDownAccount();
            entity.SetData(nvc,false);
            entity.TrimEmptyProperty();   
            entity.AddData(":PS",model.PageSize);
            entity.AddData(":PI",model.PageIndex);
+
+
          
            model.TotalCount = CommFun.ToInt(handler.GetScalarByXmlTemplate("getCount", entity), 0).GetValueOrDefault();
             if(model.TotalCount > 0)
                 model.List = handler.GetDataListByTemplate("getList",entity);
+
            return model;
        }
+
        /// <summary>
        /// 保存实体数据
        /// </summary>
@@ -112,7 +114,8 @@ namespace SettleAccount.UserService
        {
            return handler.Save(id,entity);
        }
-        /// <summary>
+
+       /// <summary>
        /// 删除单条数据
        /// </summary>
        /// <param name="id">主键编号</param>

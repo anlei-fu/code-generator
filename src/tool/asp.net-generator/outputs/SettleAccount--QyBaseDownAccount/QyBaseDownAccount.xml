@@ -29,12 +29,13 @@
                                       1=1
                                       {&@t.CreatedTime < to_date($ET,'YYYY-MM-DD')}
                                       {&@t.CreatedTime >= to_date($ST,'YYYY-MM-DD')}
+                                 ORDER BY t.CREATED_TIME DESC
                                    ) R
                            WHERE ROWNUM <= { :PS} * { :PI})
                   WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
            INNER JOIN QY_BASE_DOWN_ACCOUNT t on tab.rid = t.rowid
            LEFT JOIN ACCOUNT t1 ON t.ACCOUNT_ID = t1.Id
-           ORDER BY t.CREATED_TIME DESC 
+ 
         ]]>
       </sql>
     </item>

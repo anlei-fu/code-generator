@@ -1,0 +1,1 @@
+select distinct type from FC_SYSTEM_DICTIONARY t

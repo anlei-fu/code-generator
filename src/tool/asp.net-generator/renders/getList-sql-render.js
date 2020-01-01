@@ -4,6 +4,7 @@ const { STR } = require("../../../libs/str")
 const LIST_SQL_RENDER = new SimpleRender({}, `${__dirname}/templates/get-list.sql`);
 const COLUMN_IDENT = "                ";
 const CONDITION_IDENT = "                                      ";
+const ORDER_BY_IDENT= "                                 ";
 const JOIN_IDENT = "           ";
 
 /**
@@ -17,7 +18,7 @@ function renderGetListSql(config) {
         let columns = STR.arrayToString(config.selectConfig.getListSql.columns, COLUMN_IDENT, ",\r\n")
                 , conditions = STR.arrayToString(config.selectConfig.getListSql.conditions, CONDITION_IDENT, "\r\n")
                 , joins = STR.arrayToString(config.selectConfig.getListSql.joins, JOIN_IDENT, "\r\n").trimRight()
-                , orderBy = config.selectConfig.getListSql.orderBy ? JOIN_IDENT + config.selectConfig.getListSql.orderBy : "";
+                , orderBy = config.selectConfig.getListSql.orderBy ? ORDER_BY_IDENT + config.selectConfig.getListSql.orderBy : "";
 
         let renderConfig = {
                 name: config.table.rawName,

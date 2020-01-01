@@ -1,4 +1,8 @@
+const {STR} =require("./../../libs/str")
+
 const DEFAULT_MATCHER = (name, pattern) => name.toLowerCase().includes(pattern.toLowerCase());
+const LOWER_INCLUDES_MATCHER= (x,y)=> x.toLowerCase().includes(y.toLowerCase());
+const LOWER_ENDS_WITH_MATCHER=(x,y)=>x.toLowerCase().endsWith(y.toLowerCase());
 
 const INSERT_EXCLUDES = {
         int: {
@@ -21,12 +25,12 @@ const INSERT_EXCLUDES = {
                 time: {
                         matcher: x => {
                                 let low = x.toLowerCase();
-                                if (!low.includes("time"))
+                                if (!low.includes("time")||!low.includes("date"))
                                         return false;
 
                                 return low.indexOf("create") || low.indexOf("update") || low.indexOf("edit");
                         }
-                }
+                },
         }
 }
 
@@ -61,118 +65,7 @@ class AddAnalyzer {
 }
 
 
-const CUSTOM_SELECTS = {
-        int: {
-                Status: {
-                        matcher: x => x.endsWith("Status"),
-                        text: "Name",
-                        value: "Value",
-                        defaultText: "--请选择--",
-                        service: "SystemDictionary",
-                },
-                Type: {
-                        matcher: x => x.endsWith("Type"),
-                        text: "Name",
-                        defaultText: "--请选择--",
-                        service: "SystemDictionary",
-                },
-                State: {
-                        matcher: x => x.endsWith("State"),
-                        text: "Name",
-                        value: "Value",
-                        defaultText: "--请选择--",
-                        service: "SystemDictionary",
-                },
-                Has:{
-                        matcher: x => x.startsWith("Has"),
-                        text: "Name",
-                        value: "Value",
-                        defaultText: "--请选择--",
-                        service: "SystemDictionary",
-                },
-                Is:{
-                        matcher: x => x.startsWith("Has"),
-                        text: "Name",
-                        value: "Value",
-                        defaultText: "--请选择--",
-                        service: "SystemDictionary",
-                },
-                AccountId: {
-                        matcher: x => x.includes("AccountId"),
-                        generator: x => {
-                                return {
-                                        service: x.replace("Id", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("Id", "Name"),
-                                        value: x,
-                                }
-                        }
-                }
-        },
-        string: {
-                CityNo: {
-                        generator: x => {
-                                return {
-                                        service: x.replace("No", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("No", "Name"),
-                                        value: "No",
-                                }
-                        }
-                },
-                ProvinceNo: {
-                        generator: x => {
-                                return {
-                                        service: x.replace("No", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("No", "Name"),
-                                        value: "No",
-                                }
-                        }
-                },
-                ChannelId: {
-                        generator: x => {
-                                return {
-                                        service: x.replace("Id", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("Id", "Name"),
-                                        value: "Id",
-                                }
-                        }
-                },
-                ChannelNo: {
-                        generator: x => {
-                                return {
-                                        service: x.replace("No", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("No", "Name"),
-                                        value: "No",
-                                }
-                        }
-                },
-                ProductId: {
-                        generator: x => {
-                                return {
-                                        service: x.replace("Id", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("Id", "Name"),
-                                        value: "Id",
-                                }
-                        }
-                }
-                ,
-                ProductNo: {
-                        generator: x => {
-                                return {
-                                        service: x.replace("No", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("No", "Name"),
-                                        value: "No",
-                                }
-                        }
-                },
-        }
-}
+
 
 const STRING_INCLUDES = {
         string: {
@@ -278,30 +171,32 @@ class SelectAnalyzer {
         }
 }
 
+
+
 /**
  * Text areas 
  */
 const TEXT_AREAS = {
         remark: {
-                matcher: x => x.toLowerCase().includes("remark"),
+                matcher: x => LOWER_INCLUDES_MATCHER(x,"remark"),
         },
         description: {
-                matcher: x => x.toLowerCase().includes("descrp"),
+                matcher: x => LOWER_INCLUDES_MATCHER(x,"descrp"),
         },
         message: {
-                matcher: x => x.toLowerCase().includes("message"),
+                matcher:  x => LOWER_INCLUDES_MATCHER(x,"message"),
         },
         msg: {
-                matcher: x => x.toLowerCase().includes("msg"),
+                matcher:  x => LOWER_INCLUDES_MATCHER(x,"msg"),
         },
         info: {
-                matcher: x => x.toLowerCase().includes("info"),
+                matcher:  x => LOWER_INCLUDES_MATCHER(x,"info"),
         },
         detail: {
-                matcher: x => x.toLowerCase().includes("detail"),
+                matcher:  x => LOWER_INCLUDES_MATCHER(x,"detail"),
         },
         log: {
-                matcher: x => x.toLowerCase().includes("log"),
+                matcher:  x => LOWER_INCLUDES_MATCHER(x,"log"),
         }
 }
 
@@ -336,7 +231,7 @@ class ColumnAnalyzer {
                 if (this._controlAnalyzer.shouldBeSelect(column)) {
                         output.select = this._controlAnalyzer.getSelectControlConfig(column);
                         output.lable = column.description;
-                        output.join = this.makeJoin(column, output.select.service);
+                        output.join = this.makeJoin(column, output.select);
                         output.gettter = `.GetDataValue("${column.name}Name")`;
                         output.column = `t${this.index}.NAME ${column.name}Name`;
                 } else {
@@ -375,16 +270,16 @@ class ColumnAnalyzer {
          * Make join expression
          * 
          * @param {Column} column 
-         * @param {String} service  name
+         * @param {String} select  name
          */
-        makeJoin(column, service) {
-                if (service == "SystemDictionary") {
-                        return `LEFT JOIN ${NamingStrategy.toHungary(service).toUpperCase()} t${++this.index}`
+        makeJoin(column, select) {
+                if (select.table.toLower().includes("systemdictionary")) {
+                        return `LEFT JOIN ${NamingStrategy.toHungary(select.table).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.VALUE`
-                                + ` AND t${this.index}.TYPE = '${column.name}'`;
+                                + ` AND t${this.index}.${NamingStrategy.toHungary(select.type).toUpperCase()} = '${column.name}'`;
                 } else {
                         let suffix = column.name.includes("Id") ? "Id" : "No";
-                        return `LEFT JOIN ${NamingStrategy.toHungary(service).toUpperCase()} t${++this.index}`
+                        return `LEFT JOIN ${NamingStrategy.toHungary(select.table).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.${suffix}`;
                 }
         }

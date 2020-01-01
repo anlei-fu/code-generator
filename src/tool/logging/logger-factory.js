@@ -9,14 +9,6 @@ if (!global.LOGGERS)
 
         };
 
-// Init write log
-if (!global.WRITE_LOG)
-        global.WRITE_LOG = log => {
-                OBJECT.forEach(global.LOG_WRITERS, (_, writer) => {
-                        writer.doWrite(log);
-                });
-        }
-
 // Init log writers, add default console writer
 if (!global.LOG_WRITERS) {
         global.LOG_WRITERS = {};
@@ -25,7 +17,7 @@ if (!global.LOG_WRITERS) {
                 doWrite: x => {
                         if (x.level == "error") {
                                 console.log(chalk.redBright("[ERROR]") + chalk.magentaBright(`[${x.time}]` + chalk.blueBright(`[${x.name}]: `) + chalk.white(`${x.msg || ""}`)));
-                                
+
                                 if (x.error)
                                         console.log(chalk.white(x.error));
                         } else if (x.level == "info") {
@@ -36,6 +28,14 @@ if (!global.LOG_WRITERS) {
                 }
         };
 }
+
+// Init write log
+if (!global.WRITE_LOG)
+        global.WRITE_LOG = log => {
+                OBJECT.forEach(global.LOG_WRITERS, (_, writer) => {
+                        writer.doWrite(log);
+                });
+        }
 
 /**
  * Logger factory
