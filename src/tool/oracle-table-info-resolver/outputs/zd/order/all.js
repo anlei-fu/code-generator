@@ -1,0 +1,11 @@
+exports.all={
+        orderMain:require("./orderMain").orderMain,
+        orderMainIi:require("./orderMainIi").orderMainIi,
+        orderDelivery:require("./orderDelivery").orderDelivery,
+        orderAccount:require("./orderAccount").orderAccount,
+        orderRefund:require("./orderRefund").orderRefund,
+        orderNotify:require("./orderNotify").orderNotify,
+        orderMainHs:require("./orderMainHs").orderMainHs,
+        orderVcode:require("./orderVcode").orderVcode,
+        orderMainExt:require("./orderMainExt").orderMainExt,
+}

@@ -1,7 +1,3 @@
-const{OBJECT}=require("./../../../../libs/utils");
-const all={};
-let group;
-
+exports.all={
 @content
-
-exports.all=all;
+}

@@ -5,7 +5,7 @@ const { CharSequenceReader } = require("./../tokenization/char-sequence-reader")
 const LOG = LoggerFactory.getLogger("csv-resolver");
 
 class CellResolver {
-        constructor() {
+        constructor () {
 
                 /**
                  * Convert string to any
@@ -20,7 +20,7 @@ class CellResolver {
 }
 
 class CellConverter {
-        constructor() {
+        constructor () {
                 /**
                  * Convert any to string
                  */
@@ -44,9 +44,12 @@ class CellConverter {
 function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true, throwError = true) {
         let outputs = [];
         split(csv).forEach((row, rowNo) => {
+                if (excludeFirstRow && rowNo == 0)
+                        return;
+
                 let item = {};
                 row.forEach((cell, cellNo) => {
-                        if (cellNo> cellResolvers.length) {
+                        if (cellNo > cellResolvers.length) {
                                 LOG.warn(`cell count > resolver count at ${rowNo},${cellNo}`);
                         } else {
                                 item[cellResolvers[cellNo].name] = cellResolvers[cellNo].doResolve(cell);

@@ -50,7 +50,7 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @param {String?} charset ,Charset name
  * @returns {String}
  */
-function read(path, charset="UTF-8") {
+function read(path, charset="utf-8") {
         return fs.readFileSync(path, charset).toString();
 }
 
@@ -61,7 +61,7 @@ function read(path, charset="UTF-8") {
  * @param {String} data ,Data to write 
  * @param {String?} charset, Charset name 
  */
-function write(path, data, charset="UTF-8") {
+function write(path, data, charset="utf-8") {
         fs.writeFileSync(path, data, charset);
         LOG.info(`write ${path}`);
 }
@@ -73,7 +73,7 @@ function write(path, data, charset="UTF-8") {
  * @param {String} data ,Data to append 
  * @param {String?} charset, Charset name 
  */
-function appendLine(path, data, charset="UTF-8") {
+function appendLine(path, data, charset="utf-8") {
         append(path, data + "\r\n", charset);
         LOG.info(`append line ${path}`);
 }

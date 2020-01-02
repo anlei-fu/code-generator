@@ -7,11 +7,11 @@ const { NamingStrategy } = require("../../libs/naming-strategy");
 
 const STRING_RESOLVER = x =>x.replace(/\"/g, "\"");
 
-function parse(db) {
+function resolve(db) {
         DIR.create("./outputs");
         DIR.create("./outputs/" + db);
 
-        let content = FILE.read("./resource/tables.csv");
+        let content = FILE.read(`./resource/${db}.csv`);
         let resolvers = [
                 {
                         name: "table",
@@ -31,7 +31,7 @@ function parse(db) {
                 },
                 {
                         name: "nullable",
-                        doResolve: STRING_RESOLVER
+                        doResolve:x=>x=="Y"
                 },
                 {
                         name: "isPk",
@@ -40,6 +40,10 @@ function parse(db) {
                 {
                         name: "description",
                         doResolve: STRING_RESOLVER
+                },
+                {
+                        name: "tableDescription",
+                        doResolve: STRING_RESOLVER
                 }
         ];
 
@@ -47,21 +51,22 @@ function parse(db) {
         groups = ARRAY.groupBy(items, item => item.table);
 
         let tables = [];
-        groups.forEach((column, tableName) => {
+        groups.forEach((columns, tableName) => {
                 if (!tableName || tableName == "")
                         return;
                 
-
+                 
                 let table = {
                         name: NamingStrategy.toCamel(tableName),
                         rawName:tableName,
-                        columns: {}
+                        columns: {},
                 };
 
-                column.forEach(column => {
+                columns.forEach(column => {
                         if (!column.column || column.column == "")
                                 return;
 
+                        table.description=column.tableDescription;
                         column.name = NamingStrategy.toCamel(column.column);
                         column.rawName = column.column
                         column.type = {
@@ -74,6 +79,7 @@ function parse(db) {
                         delete column.column;
                         delete column.dataType;
                         delete column.dataLength;
+                        delete column.tableDescription
                 });
 
                 tables.push(table);
@@ -81,8 +87,7 @@ function parse(db) {
 
         let tableGroups = ARRAY.groupBy(tables, x => x.rawName.split("_")[0].toLowerCase());
         let groupContent = "";
-        let groupTemplate = FILE.read("./templates/group.js");
-        let subAllTempalte = FILE.read("./templates/sub-all-table.js");
+        let subAllTempalte = FILE.read("./templates/all.js");
         let allTemplate = FILE.read("./templates/all.js");
         tableGroups.forEach((tabs,group) => {
 
@@ -94,13 +99,15 @@ function parse(db) {
                         content = content.replace("let ", "exports.")
                         FILE.write(`./outputs/${db}/${group}/${x.name}.js`, content);
                         tableContent += `        ${x.name}:require("./${x.name}").${x.name},\r\n`;
+                        groupContent+=`        ${x.name}:require("./${group}/${x.name}").${x.name},\r\n`;
                 });
 
                 FILE.write(`./outputs/${db}/${group}/all.js`, subAllTempalte.replace("@content", tableContent.trimRight()));
-                groupContent += groupTemplate.replace(/@group/g, group);
+             
         })
 
         FILE.write(`./outputs/${db}/all.js`, allTemplate.replace("@content", groupContent.trimRight()));
 }
 
-parse("fd");
+/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+resolve("zd");
