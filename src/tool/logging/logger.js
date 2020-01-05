@@ -24,8 +24,8 @@ class Logger {
          * 
          * @param {String} msg 
          */
-        info(msg) {
-                this._doWrite("info", msg);
+        info(msg,obj) {
+                this._doWrite("info", msg,null,obj);
         }
 
         /**
@@ -33,8 +33,8 @@ class Logger {
          * 
          * @param {String} msg 
          */
-        warn(msg) {
-                this._doWrite("warn", msg);
+        warn(msg,obj) {
+                this._doWrite("warn", msg,null,obj);
         }
 
         /**
@@ -43,8 +43,8 @@ class Logger {
          * @param {String} msg 
          * @param {Error} error 
          */
-        error(msg, error) {
-                this._doWrite("error", msg, error);
+        error(msg, error,obj) {
+                this._doWrite("error", msg, error,obj);
         }
 
         /**
@@ -54,12 +54,13 @@ class Logger {
          * @param {String} msg 
          * @param {Error} error 
          */
-        _doWrite(level, msg, error) {
+        _doWrite(level, msg, error,obj) {
                 global.WRITE_LOG({
                         msg: msg,
                         level: level,
                         erro: error,
                         name: this._name,
+                        obj:obj,
                         time: new Date().toLocaleDateString()+" "+new Date().toLocaleTimeString()
                 });
         }

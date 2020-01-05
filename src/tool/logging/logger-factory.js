@@ -20,10 +20,26 @@ if (!global.LOG_WRITERS) {
 
                                 if (x.error)
                                         console.log(chalk.white(x.error));
+                                
+                                if(x.obj){
+                                   console.log("target");
+                                   console.log(chalk.white(x.obj));
+                                }
+                                
                         } else if (x.level == "info") {
                                 console.log(chalk.greenBright("[INFO]") + chalk.magentaBright(`[${x.time}]` + chalk.blueBright(`[${x.name}]: `) + chalk.white(`${x.msg || ""}`)));
+                               
+                                if(x.obj){
+                                        console.log("target");
+                                        console.log(chalk.white(x.obj));
+                                     }
                         } else if (x.level == "warn") {
                                 console.log(chalk.yellowBright("[WARN]") + chalk.magentaBright(`[${x.time}]` + chalk.blueBright(`[${x.name}]: `) + chalk.white(`${x.msg || ""}`)));
+                              
+                                if(x.obj){
+                                        console.log("target");
+                                        console.log(chalk.white(x.obj));
+                                     }
                         }
                 }
         };

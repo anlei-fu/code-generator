@@ -3,7 +3,7 @@ const { STR } = require("./../../libs/str");
 const { FILE } = require("./../../libs/file");
 const { generate } = require("./../sqls/model/model-generator");
 const { resolve } = require("./../sqls/model/resolver");
-const { BuilderConfigGenerator } = require("./config-template-generator");
+const { ConfigBuilderGenerator } = require("./config-template-generator");
 
 const {LoggerFactory} =require("./../logging/logger-factory");
 const LOG=LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
@@ -161,7 +161,7 @@ function copyAnnotaion(sourceFolder, targetFolder, project) {
  * @param {String} tableName 
  */
 function generateConfigItem(configRoot, table, primaryKey) {
-        let templates = new BuilderConfigGenerator().generate(table);
+        let templates = new ConfigBuilderGenerator().generate(table);
         let patterns = {
                 "@name": STR.upperFirstLetter(table.name),
                 "@sname": table.name,

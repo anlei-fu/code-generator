@@ -31,9 +31,9 @@ async function generate(config, schema,outputFolder="./output") {
                 output += OBJECT.text(Object.keys(x.columns), "columnsArray");
 
                 let instance = {};
-                OBJECT.forEach(x.columns, (k, v) => {
-                        instance[k] = SQL_UTILS.getTestValue(v.description, v.type);
-                });
+                // OBJECT.forEach(x.columns, (k, v) => {
+                //         instance[k] = SQL_UTILS.getTestValue(v.description, v.type);
+                // });
 
                 output += FILE.read("./templates/create.js").replace("@data",
                         OBJECT.text(instance, "")

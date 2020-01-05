@@ -1,4 +1,5 @@
-const {STR} =require("./../../libs/str")
+const { STR } = require("./../../libs/str");
+const { Matcher } = require("./../common/matchers")
 
 /**
  * Create select ecludes
@@ -264,13 +265,13 @@ const UPDATE_DEFAULT_PATTERNS = {
         Date: {
                 updateTime: {
                         matcher: x => {
-                                let lower=x.toLowerCase();
-                                  if(!lower.includes("time"||!lower.includes("date")))
-                                    return false;
+                                let lower = x.toLowerCase();
+                                if (!lower.includes("time" || !lower.includes("date")))
+                                        return false;
 
-                                return STR.includesAny(x,["edit","update","modify"]);
+                                return STR.includesAny(x, ["edit", "update", "modify"]);
                         },
-                        
+
                         defaultValue: "new Date()"
                 }
         }
@@ -278,66 +279,11 @@ const UPDATE_DEFAULT_PATTERNS = {
 
 const { getJavaType } = require("./utils")
 
+
 /**
  * Analyze candidate
  */
 class AnalyzerBase {
-        constructor() {
-                this.validates = CREATE_VALIDATES();
-        }
-
-        /**
-         * Analyze candidate
-         * 
-         * @abstract
-         * @param {String} type 
-         * @param {String} name 
-         * @returns {boolean}
-         */
-        shouldBeCandidate(type, name) {
-        }
-
-        /**
-         * 
-         * @param {String} name 
-         * @param {String} type 
-         * @returns {String?}
-         */
-        getValidates(type, name) {
-                let validates = []
-                if (!this.validates[type])
-                        return validates;
-
-                for (const item in this.validates[type]) {
-                        let match = this.validates[type][item].matcher ? this.validates[type][item].matcher(name) : name.toLowerCase().indexOf(item) != -1;
-                        if (!match)
-                                continue;
-
-                        if (this.validates[type][item].generator) {
-                                validates.push(this.validates[type][item].generator(name))
-                        } else {
-                                validates.push(this.validates[type][item].validate);
-                        }
-                }
-
-                return validates;
-        }
-
-        /**
-         * 
-         * @param {{type:String,}} config 
-         */
-        useValidates(config) {
-                this._useCore(this.validates, config);
-        }
-
-        /**
-         * 
-         * @param {*} config 
-         */
-        disableValidates(config) {
-                this._disableCore(this.validates, config);
-        }
 
         /**
         * 
@@ -373,32 +319,92 @@ class AnalyzerBase {
         }
 }
 
-class ReqAnalyzeAnalyzer {
-
-        getSelectReqs() {
-
+class ValidateAnalyzer extends AnalyzerBase {
+        constructor() {
+                super();
+                this.validates = CREATE_VALIDATES();
         }
 
-        getInsertReqs() {
+        /**
+       * 
+       * @param {String} name 
+       * @param {String} type 
+       * @returns {String?}
+       */
+        getValidates(type, name) {
+                let validates = []
+                if (!this.validates[type])
+                        return validates;
 
+                for (const item in this.validates[type]) {
+                        let match = this.validates[type][item].matcher ? this.validates[type][item].matcher(name) : name.toLowerCase().indexOf(item) != -1;
+                        if (!match)
+                                continue;
+
+                        if (this.validates[type][item].generator) {
+                                validates.push(this.validates[type][item].generator(name))
+                        } else {
+                                validates.push(this.validates[type][item].validate);
+                        }
+                }
+
+                return validates;
         }
 
-        getUpdateReqs() {
-
+        /**
+         * 
+         * @param {{type:String,}} config 
+         */
+        useValidates(config) {
+                this._useCore(this.validates, config);
         }
 
-
+        /**
+         * 
+         * @param {*} config 
+         */
+        disableValidates(config) {
+                this._disableCore(this.validates, config);
+        }
 }
 
+class ExcludesAnalyzer extends ValidateAnalyzer {
+        constructor() {
+                super();
+        }
 
-
-class ExpresssionAnalyzer {
         /**
-               * 
-               * @param {String} name 
-               * @param {String} type 
-               * @returns {String?}
-               */
+         * Use additional excludes config
+         * 
+         * @param {any} target 
+         * @param {{type:String,items:[String]}} config
+         */
+        useExcludes(config) {
+                this._useCore(this.excludes, config)
+        }
+
+        /**
+         * Disable excludes config
+         * 
+         * @param {{type:String,items:[String]}} config 
+         */
+        disableEcludes(config) {
+                this._disableCore(this.excludes, config);
+        }
+}
+
+class ExpresssionAnalyzer extends ExcludesAnalyzer {
+        constructor() {
+                super();
+                this.expressions = CREATE_EXPRESSIONS();
+        }
+
+        /**
+         * 
+         * @param {String} name 
+         * @param {String} type 
+         * @returns {String?}
+         */
         getExpression(type, name) {
                 if (!this.expressions[type])
                         return null;
@@ -407,7 +413,7 @@ class ExpresssionAnalyzer {
 
                         let match = this.expressions[type][item].matcher
                                 ? this.expressions[type][item].matcher(name)
-                                : name.toLowerCase().indexOf(item) != -1
+                                : Matcher.lowerIncludes(name, item);
 
                         if (match)
                                 return this.expressions[type][item].expression;
@@ -433,10 +439,6 @@ class ExpresssionAnalyzer {
         }
 }
 
-class UpdateAnalyzer extends ExpresssionAnalyzer {
-
-}
-
 /**
  * Analyze select candiates
  */
@@ -444,7 +446,7 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
         constructor() {
                 super();
                 this.excludes = CREATE_SELECT_EXLUCES();
-                this.expressions = CREATE_EXPRESSIONS();
+
         }
 
         /**
@@ -462,7 +464,7 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
                 for (const item in this.excludes[type]) {
                         let match = this.excludes[type][item].matcher
                                 ? this.excludes[type][item].matcher(name)
-                                : name.toLowerCase().indexOf(item) != -1
+                                : Matcher.lowerIncludes(name, item);
 
                         if (match)
                                 return false;
@@ -470,51 +472,36 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
 
                 return true;
         }
-
-
-        /**
-         * Use additional excludes config
-         * 
-         * @param {any} target 
-         * @param {{type:String,items:[String]}} config
-         */
-        useExcludes(config) {
-                this._useCore(this.excludes, config)
-        }
-
-        /**
-         * Disable excludes config
-         * 
-         * @param {{type:String,items:[String]}} config 
-         */
-        disableEcludes(config) {
-                this._disableCore(this.excludes, config);
-        }
 }
 
 /**
  * Create insert excludes
  */
-const CREATE_INSERT_EXCLUDES = () => {
+const INSERT_INSERT_EXCLUDES = () => {
         return {
-                String: [
-                        "updateUser"
-                ],
-                Date: [
-                        "updateTime",
-                        "createTime"
-                ]
+                String: {
+                        updateUser:{
+                            matcher:x=> Matcher.lowerIncludesAny(x,["update","edit"])&&Matcher.lowerIncludes("user")
+                        }
+                },
+                Date: {
+                        updateTime:{
+                                
+                        },
+                        createTime:{
+
+                        }
+                }
         }
 }
 
 /**
  * Analyze insert candidate
  */
-class InsertAnalyzer extends AnalyzerBase {
+class InsertAnalyzer extends ExcludesAnalyzer {
         constructor() {
                 super();
-                this.excludes = CREATE_INSERT_EXCLUDES();
-                this.validates = CREATE_VALIDATES();
+                this.excludes = INSERT_INSERT_EXCLUDES();
         }
 
         /**
@@ -524,20 +511,22 @@ class InsertAnalyzer extends AnalyzerBase {
          * @param {*} column 
          */
         shouldBeCandidate(column) {
-                if (column.autoInceament || column.defaulValue)
+                if (column.autoInceament || column.defaulValue||column.isPk)
                         return false;
 
                 let type = getJavaType(column.type);
                 if (!this.excludes[type])
                         return true;
+                
 
                 for (const item in this.excludes[type]) {
                         let match = this.excludes[type][item].matcher
                                 ? this.excludes[type][item].matcher(column.name)
-                                : column.name.toLowerCase().indexOf(item) != -1
+                                : Matcher.lowerIncludes(column.name, item);
 
                         if (match)
                                 return false;
+                        
                 }
 
                 return true;
@@ -546,7 +535,6 @@ class InsertAnalyzer extends AnalyzerBase {
         /**
          * Get validate of field
          * 
-         * @override
          * @override
          * @param {} column 
          */
@@ -565,7 +553,7 @@ class InsertAnalyzer extends AnalyzerBase {
 /**
  * Create update excludes
  */
-const CREATE_UPDATE_EXCLUDES = () => {
+const UPDATE_EXCLUDES = () => {
         return {
                 Date: [
                         "createTime",
@@ -582,10 +570,10 @@ const CREATE_UPDATE_EXCLUDES = () => {
 /**
  * Analyze update candidate
  */
-class UpdateAnlyzer extends AnalyzerBase {
+class UpdateAnlyzer extends ExcludesAnalyzer {
         constructor() {
                 super();
-                this.excludes = CREATE_UPDATE_EXCLUDES();
+                this.excludes = UPDATE_EXCLUDES();
         }
 
         /**
@@ -604,7 +592,7 @@ class UpdateAnlyzer extends AnalyzerBase {
                 for (const item in this.excludes[type]) {
                         let match = this.excludes[type][item].matcher
                                 ? this.excludes[type][item].matcher(name)
-                                : name.toLowerCase().indexOf(item) != -1
+                                : Matcher.lowerIncludes(name, item)
 
                         if (match)
                                 return false;
@@ -615,8 +603,65 @@ class UpdateAnlyzer extends AnalyzerBase {
 
 }
 
+const INSERT_REQ_EXCLUDES={
+        String:{
+                "createuser":{
+                        matcher:x=>Matcher.lowerIncludesAny(x,["createuser","creator"])
+                }
+        }
+}
+
+
+class ReqAnalyzer extends ExcludesAnalyzer {
+        constructor() {
+                super();
+        }
+
+        shouldBeCandidate(table,type) {
+                
+                if(type=="insert"){
+
+                }
+
+                let type = getJavaType(column.type);
+                if (!this._excludes[type]) {
+                        return null
+                }
+
+                for (const item in this.excludes[type]) {
+                        let match = this.excludes[type][item].matcher
+                                ? this.excludes[type][item].matcher(name)
+                                : Matcher.lowerIncludes(name, item)
+
+                        if (match)
+                                return this.excludes[type][item].generator();
+                }
+
+                return null;
+        }
+
+        getInsertReqs(table){
+
+        }
+
+        getUpdateReqs(table){
+
+        }
+
+        getSelectReqs(table){
+
+        }
+
+        getDeleteReqs(table){
+
+        }
+
+       
+}
+
 module.exports = {
         SelectAnalyzer,
         UpdateAnlyzer,
         InsertAnalyzer,
+        ReqAnalyzer
 }

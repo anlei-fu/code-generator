@@ -1,9 +1,11 @@
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
-const { getJavaType } = require("./utils")
-const { SimpleRender } = require("../simple-pattern-render/simple-pattern-render")
-const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./analyzer")
+const { getJavaType } = require("./utils");
+const { SimpleRender } = require("../simple-pattern-render/simple-pattern-render");
+const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./analyzer");
+const { LoggerFactory } = require("./../logging/logger-factory");
 
+const LOG = LoggerFactory.getLogger("BuilderConfigGenerator");
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
 const REQ_IDENT = "                                           ";
 const COMMENT_IDENT = "                        ";
@@ -11,7 +13,7 @@ const EXCLUDE_IDENT = "                                                  ";
 /**
  * Analyze and render a config template
  */
-class BuilderConfigGenerator {
+class ConfigBuilderGenerator {
 
         constructor() {
                 this._selectAnalyzer = new SelectAnalyzer();
@@ -96,7 +98,7 @@ class BuilderConfigGenerator {
                 let output = "";
                 items.forEach(x => {
                         x.validates.forEach(y => {
-                                output += `${REQ_IDENT}.validate("${x.key}","${y.replace(/"/g,"\\\"")}")\r\n`;
+                                output += `${REQ_IDENT}.validate("${x.key}","${y.replace(/"/g, "\\\"")}")\r\n`;
                         });
                 })
 
@@ -129,6 +131,7 @@ class BuilderConfigGenerator {
                                         key: key,
                                         validates: validate
                                 });
+
                         }
 
                         let expression = this._selectAnalyzer.getExpression(type, key);
@@ -138,7 +141,12 @@ class BuilderConfigGenerator {
                                         key: key,
                                         expression: expression
                                 });
+
                         }
+
+                        let reqExcludes={};
+
+                        let params={};
 
                 });
 
@@ -159,6 +167,7 @@ class BuilderConfigGenerator {
                 let validates = []
                         , excludes = []
                         , msg = "";
+
                 OBJECT.forEach(table.columns, (key, value) => {
                         let type = getJavaType(value.type);
                         if (!this._updateAnalyzer.shouldBeCandidate(type, key)) {
@@ -174,6 +183,7 @@ class BuilderConfigGenerator {
                                         key: key,
                                         validates: validate
                                 });
+
                         }
                 });
 
@@ -208,6 +218,7 @@ class BuilderConfigGenerator {
                                         validates: validate
                                 });
                         }
+
                 });
 
                 return {
@@ -218,4 +229,4 @@ class BuilderConfigGenerator {
         }
 }
 
-exports.BuilderConfigGenerator = BuilderConfigGenerator
+exports.ConfigBuilderGenerator = ConfigBuilderGenerator
