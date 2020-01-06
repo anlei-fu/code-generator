@@ -3,31 +3,36 @@
 <mapper namespace="com.authority.mapper.RoleSystemUserInfoMapper">
     <insert id="addRoleSystemUserInfo">
           insert  into @tableName
-          <trimprefix="("suffix=")" suffixOverrides=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
 undefinedundefined
           </trim>
           values
-          <trimprefix="("suffix=")" suffixOverrides=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
 @content
           </trim>
-    </insert>    <delete id="deleteRoleSystemUserInfoByAccount">
+    </insert>
+    <delete id="deleteRoleSystemUserInfoByAccount">
           delete from @tableName
 @where
-    </delete>    <update id="updateRoleSystemUserInfoByAccount">
+    </delete>
+    <update id="updateRoleSystemUserInfoByAccount">
         update @tableName
 @set
 @where
-    </update>    <select id="getRoleSystemUserInfoByAccount" resultType="com.authority.pojo.@resultType">
-          select
-undefined
-          form roleSystemUserInfoName
-
-@where
-    </select>    <select id="getRoleSystemUserInfoList" resultType="com.authority.pojo.@resultType">
+    </update>
+    <select id="getRoleSystemUserInfoByAccount" resultType="com.authority.pojo.@resultType">
           select
 undefined
           form roleSystemUserInfoName
 
 @where
     </select>
+    <select id="getRoleSystemUserInfoList" resultType="com.authority.pojo.@resultType">
+          select
+undefined
+          form roleSystemUserInfoName
+
+@where
+    </select>
+
 </mapper>

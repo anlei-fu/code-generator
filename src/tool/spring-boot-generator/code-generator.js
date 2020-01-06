@@ -208,12 +208,6 @@ class Generator {
                                 this._initEntityBasicInfo(config, req, "Req");
                 });
 
-                if (config.resp.doCreate)
-                        this._initEntityBasicInfo(config, config.resp, "Resp");
-
-                if (config.params.doCreate)
-                        this._initEntityBasicInfo(config, config.params, "Params");
-
                 if (!config.noController) {
                         config.controller.path = config.controller.path || `/${STR.lowerFirstLetter(config.name)}/${config.id}`;
                         config.controller.description = config.controller.description || "";

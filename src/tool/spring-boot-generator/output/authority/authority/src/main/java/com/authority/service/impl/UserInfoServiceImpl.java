@@ -41,7 +41,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public PageInfo<UserInfo> getUserInfoList(GetUserInfoListReq req) {
-        return userInfoMapper.getUserInfoList(req);
+        return PageHelperUtils.page(()=> userInfoMapper.getUserInfoList(req));
     }
 
 }

@@ -41,7 +41,7 @@ public class GroupRoleServiceImpl implements GroupRoleService {
 
     @Override
     public PageInfo<GroupRole> getGroupRoleList(GetGroupRoleListReq req) {
-        return groupRoleMapper.getGroupRoleList(req);
+        return PageHelperUtils.page(()=> groupRoleMapper.getGroupRoleList(req));
     }
 
 }

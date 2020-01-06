@@ -15,7 +15,7 @@ const _mapperConfigRender = new SimpleRender({}, `${__dirname}/templates/mapper.
 function renderMapperConfig(config) {
         let content = "";
         config.items.forEach(x => {
-                content += renderMapperConfigItem(x);
+                content += renderMapperConfigItem(x)+"\r\n";
         });
 
         return _mapperConfigRender.renderTemplate({ content });

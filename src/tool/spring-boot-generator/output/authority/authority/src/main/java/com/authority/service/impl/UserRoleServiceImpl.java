@@ -41,7 +41,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     @Override
     public PageInfo<UserRole> getUserRoleList(GetUserRoleListReq req) {
-        return userRoleMapper.getUserRoleList(req);
+        return PageHelperUtils.page(()=> userRoleMapper.getUserRoleList(req));
     }
 
 }

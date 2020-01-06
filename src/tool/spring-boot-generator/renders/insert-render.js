@@ -19,6 +19,7 @@ function renderInsert(config) {
         getIncludes(config).forEach(x => {
                 columns += renderColumn(x);
                 properties += renderProperty(x);
+                console.log(columns);
         });
 
         let insertModel = {

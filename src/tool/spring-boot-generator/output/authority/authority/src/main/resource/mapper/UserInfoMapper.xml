@@ -3,31 +3,36 @@
 <mapper namespace="com.authority.mapper.UserInfoMapper">
     <insert id="addUserInfo">
           insert  into @tableName
-          <trimprefix="("suffix=")" suffixOverrides=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
 undefinedundefinedundefined
           </trim>
           values
-          <trimprefix="("suffix=")" suffixOverrides=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
 @content
           </trim>
-    </insert>    <delete id="deleteUserInfoByAccount">
+    </insert>
+    <delete id="deleteUserInfoByAccount">
           delete from @tableName
 @where
-    </delete>    <update id="updateUserInfoByAccount">
+    </delete>
+    <update id="updateUserInfoByAccount">
         update @tableName
 @set
 @where
-    </update>    <select id="getUserInfoByAccount" resultType="com.authority.pojo.@resultType">
-          select
-undefined
-          form userInfoName
-
-@where
-    </select>    <select id="getUserInfoList" resultType="com.authority.pojo.@resultType">
+    </update>
+    <select id="getUserInfoByAccount" resultType="com.authority.pojo.@resultType">
           select
 undefined
           form userInfoName
 
 @where
     </select>
+    <select id="getUserInfoList" resultType="com.authority.pojo.@resultType">
+          select
+undefined
+          form userInfoName
+
+@where
+    </select>
+
 </mapper>

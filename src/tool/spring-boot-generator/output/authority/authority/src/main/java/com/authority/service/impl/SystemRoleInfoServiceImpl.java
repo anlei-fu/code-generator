@@ -41,7 +41,7 @@ public class SystemRoleInfoServiceImpl implements SystemRoleInfoService {
 
     @Override
     public PageInfo<SystemRoleInfo> getSystemRoleInfoList(GetSystemRoleInfoListReq req) {
-        return systemRoleInfoMapper.getSystemRoleInfoList(req);
+        return PageHelperUtils.page(()=> systemRoleInfoMapper.getSystemRoleInfoList(req));
     }
 
 }

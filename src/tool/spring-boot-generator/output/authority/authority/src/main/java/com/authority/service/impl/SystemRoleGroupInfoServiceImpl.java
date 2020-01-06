@@ -41,7 +41,7 @@ public class SystemRoleGroupInfoServiceImpl implements SystemRoleGroupInfoServic
 
     @Override
     public PageInfo<SystemRoleGroupInfo> getSystemRoleGroupInfoList(GetSystemRoleGroupInfoListReq req) {
-        return systemRoleGroupInfoMapper.getSystemRoleGroupInfoList(req);
+        return PageHelperUtils.page(()=> systemRoleGroupInfoMapper.getSystemRoleGroupInfoList(req));
     }
 
 }

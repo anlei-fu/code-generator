@@ -2,6 +2,7 @@ const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-r
 const { getReqParamsWithType, getReqParamsWithoutType } = require("./../req-common")
 const { STR } = require("./../../../libs/str")
 const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
+const SERVICE_IMPL_PAGE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-page.java`);
 const SERVICE_IMPL_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl.java`);
 
 /**
@@ -14,7 +15,9 @@ function renderServiceImpl(config) {
         let content = "";
         config.items.forEach(x => {
                 let item = getServiceImplItemConfig(x, config.name);
-                content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
+                content += x.type == "select" && !x.resp.single
+                        ? STR.removeEmptyLine(SERVICE_IMPL_PAGE_ITEM_RENDER.renderTemplate(item)) + "\r\n"
+                        : STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
         });
 
         content = content.trimRight() + "\r\n";
@@ -38,7 +41,6 @@ function getServiceImplItemConfig(config, name) {
                 sname: STR.lowerFirstLetter(name)
         };
 }
-
 
 /**
  * Render service impl content  template

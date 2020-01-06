@@ -3,31 +3,36 @@
 <mapper namespace="com.authority.mapper.UserRoleMapper">
     <insert id="addUserRole">
           insert  into @tableName
-          <trimprefix="("suffix=")" suffixOverrides=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
 undefinedundefinedundefined
           </trim>
           values
-          <trimprefix="("suffix=")" suffixOverrides=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
 @content
           </trim>
-    </insert>    <delete id="deleteUserRoleById">
+    </insert>
+    <delete id="deleteUserRoleById">
           delete from @tableName
 @where
-    </delete>    <update id="updateUserRoleById">
+    </delete>
+    <update id="updateUserRoleById">
         update @tableName
 @set
 @where
-    </update>    <select id="getUserRoleById" resultType="com.authority.pojo.@resultType">
-          select
-undefined
-          form userRoleName
-
-@where
-    </select>    <select id="getUserRoleList" resultType="com.authority.pojo.@resultType">
+    </update>
+    <select id="getUserRoleById" resultType="com.authority.pojo.@resultType">
           select
 undefined
           form userRoleName
 
 @where
     </select>
+    <select id="getUserRoleList" resultType="com.authority.pojo.@resultType">
+          select
+undefined
+          form userRoleName
+
+@where
+    </select>
+
 </mapper>

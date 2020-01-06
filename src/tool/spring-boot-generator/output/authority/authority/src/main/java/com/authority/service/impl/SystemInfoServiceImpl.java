@@ -41,7 +41,7 @@ public class SystemInfoServiceImpl implements SystemInfoService {
 
     @Override
     public PageInfo<SystemInfo> getSystemInfoList(GetSystemInfoListReq req) {
-        return systemInfoMapper.getSystemInfoList(req);
+        return PageHelperUtils.page(()=> systemInfoMapper.getSystemInfoList(req));
     }
 
 }

@@ -41,7 +41,7 @@ public class RoleSystemUserInfoServiceImpl implements RoleSystemUserInfoService 
 
     @Override
     public PageInfo<RoleSystemUserInfo> getRoleSystemUserInfoList(GetRoleSystemUserInfoListReq req) {
-        return roleSystemUserInfoMapper.getRoleSystemUserInfoList(req);
+        return PageHelperUtils.page(()=> roleSystemUserInfoMapper.getRoleSystemUserInfoList(req));
     }
 
 }
