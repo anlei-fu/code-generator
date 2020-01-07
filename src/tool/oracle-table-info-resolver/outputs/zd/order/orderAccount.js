@@ -2,7 +2,7 @@ exports.orderAccount = {
 	name: "orderAccount",
 	rawName: "ORDER_ACCOUNT",
 	columns: {
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "渠道编号",
@@ -13,7 +13,7 @@ exports.orderAccount = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NO: {
+		accountNo: {
 			nullable: true,
 			isPk: false,
 			description: "账户名",
@@ -24,7 +24,7 @@ exports.orderAccount = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
+		createdTime: {
 			nullable: true,
 			isPk: false,
 			description: "创建时间",

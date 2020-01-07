@@ -2,7 +2,7 @@ exports.systemLog = {
 	name: "systemLog",
 	rawName: "SYSTEM_LOG",
 	columns: {
-		LOG_ID: {
+		logId: {
 			nullable: false,
 			isPk: true,
 			description: "编号",
@@ -13,7 +13,7 @@ exports.systemLog = {
 				length: "20"
 			}
 		},
-		OBJECT_NAME: {
+		objectName: {
 			nullable: false,
 			isPk: false,
 			description: "对象名称",
@@ -24,7 +24,7 @@ exports.systemLog = {
 				length: ""
 			}
 		},
-		CONTENT: {
+		content: {
 			nullable: false,
 			isPk: false,
 			description: "内容",
@@ -35,7 +35,7 @@ exports.systemLog = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -46,7 +46,7 @@ exports.systemLog = {
 				length: ""
 			}
 		},
-		TRACE_INFO: {
+		traceInfo: {
 			nullable: true,
 			isPk: false,
 			description: "堆栈信息",

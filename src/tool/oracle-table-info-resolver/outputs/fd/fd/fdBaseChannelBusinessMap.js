@@ -2,8 +2,8 @@ exports.fdBaseChannelBusinessMap = {
 	name: "fdBaseChannelBusinessMap",
 	rawName: "FD_BASE_CHANNEL_BUSINESS_MAP",
 	columns: {
-		MAP_ID: {
-			nullable: "N",
+		mapId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "mapId",
@@ -13,8 +13,8 @@ exports.fdBaseChannelBusinessMap = {
 				length: "20"
 			}
 		},
-		BUSINESS_ID: {
-			nullable: "N",
+		businessId: {
+			nullable: false,
 			isPk: false,
 			description: "业务线",
 			name: "businessId",
@@ -24,8 +24,8 @@ exports.fdBaseChannelBusinessMap = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",

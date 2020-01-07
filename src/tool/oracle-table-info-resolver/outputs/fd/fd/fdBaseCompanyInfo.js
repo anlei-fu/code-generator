@@ -2,8 +2,8 @@ exports.fdBaseCompanyInfo = {
 	name: "fdBaseCompanyInfo",
 	rawName: "FD_BASE_COMPANY_INFO",
 	columns: {
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: true,
 			description: "公司编号",
 			name: "companyId",
@@ -13,8 +13,8 @@ exports.fdBaseCompanyInfo = {
 				length: "20"
 			}
 		},
-		COMPANY_NAME: {
-			nullable: "N",
+		companyName: {
+			nullable: false,
 			isPk: false,
 			description: "公司名称",
 			name: "companyName",
@@ -24,8 +24,8 @@ exports.fdBaseCompanyInfo = {
 				length: ""
 			}
 		},
-		INIT_INPUT_AMOUNT: {
-			nullable: "N",
+		initInputAmount: {
+			nullable: false,
 			isPk: false,
 			description: "初始投入资金",
 			name: "initInputAmount",
@@ -35,8 +35,8 @@ exports.fdBaseCompanyInfo = {
 				length: "20"
 			}
 		},
-		SORT_NAME: {
-			nullable: "N",
+		sortName: {
+			nullable: false,
 			isPk: false,
 			description: "简称",
 			name: "sortName",
@@ -46,8 +46,8 @@ exports.fdBaseCompanyInfo = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: ":有效，1无效",
 			name: "status",

@@ -2,8 +2,8 @@ exports.supTradeUpFund = {
 	name: "supTradeUpFund",
 	rawName: "SUP_TRADE_UP_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "资金变动编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		SUP_ORDER_ID: {
-			nullable: "N",
+		supOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "supOrderId",
@@ -24,8 +24,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "sourceSystemId",
@@ -35,8 +35,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -46,8 +46,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		TRADE_DELIVERY_NO: {
-			nullable: "N",
+		tradeDeliveryNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统发货编号",
 			name: "tradeDeliveryNo",
@@ -57,8 +57,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		TRADE_REFUND_NO: {
-			nullable: "N",
+		tradeRefundNo: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统退款编号",
 			name: "tradeRefundNo",
@@ -68,8 +68,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -79,8 +79,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户编号",
 			name: "downAccountId",
@@ -90,8 +90,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游公司编号",
 			name: "downCompanyId",
@@ -101,8 +101,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -112,8 +112,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		UP_ACCOUNT_ID: {
-			nullable: "N",
+		upAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "上游账户编号",
 			name: "upAccountId",
@@ -123,8 +123,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_COMPANY_ID: {
-			nullable: "N",
+		upCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "上游公司编号",
 			name: "upCompanyId",
@@ -134,8 +134,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型（加款、扣款、退款、提款、号卡转移）",
 			name: "changeType",
@@ -145,8 +145,8 @@ exports.supTradeUpFund = {
 				length: "3"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "资金变动时间",
 			name: "changeTime",
@@ -156,8 +156,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		TRADE_ORDER_TIME: {
-			nullable: "N",
+		tradeOrderTime: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统订单时间",
 			name: "tradeOrderTime",
@@ -167,8 +167,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		TRADE_CHANGE_TIME: {
-			nullable: "N",
+		tradeChangeTime: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统资金变动时间",
 			name: "tradeChangeTime",
@@ -178,8 +178,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "前后项信息",
 			name: "billType",
@@ -189,8 +189,8 @@ exports.supTradeUpFund = {
 				length: "3"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -200,8 +200,8 @@ exports.supTradeUpFund = {
 				length: "3"
 			}
 		},
-		CARRIER_NO: {
-			nullable: "N",
+		carrierNo: {
+			nullable: false,
 			isPk: false,
 			description: "运营商",
 			name: "carrierNo",
@@ -211,8 +211,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份",
 			name: "provinceNo",
@@ -222,8 +222,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		CITY_NO: {
-			nullable: "N",
+		cityNo: {
+			nullable: false,
 			isPk: false,
 			description: "城市",
 			name: "cityNo",
@@ -233,8 +233,8 @@ exports.supTradeUpFund = {
 				length: ""
 			}
 		},
-		DOWN_DRAW_COUNT: {
-			nullable: "N",
+		downDrawCount: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款销卡张数",
 			name: "downDrawCount",
@@ -244,8 +244,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_UNIT: {
-			nullable: "N",
+		downDrawUnit: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款规格",
 			name: "downDrawUnit",
@@ -255,8 +255,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_FACE: {
-			nullable: "N",
+		downDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款面值",
 			name: "downDrawFace",
@@ -266,8 +266,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_AMOUNT: {
-			nullable: "N",
+		downDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款金额",
 			name: "downDrawAmount",
@@ -277,8 +277,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_COUNT: {
-			nullable: "N",
+		upDrawCount: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款销卡张数",
 			name: "upDrawCount",
@@ -288,8 +288,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_UNIT: {
-			nullable: "N",
+		upDrawUnit: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款规格",
 			name: "upDrawUnit",
@@ -299,8 +299,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_FACE: {
-			nullable: "N",
+		upDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款面值",
 			name: "upDrawFace",
@@ -310,8 +310,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_AMOUNT: {
-			nullable: "N",
+		upDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款金额",
 			name: "upDrawAmount",
@@ -321,8 +321,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		WAY_CHANGE_COUNT: {
-			nullable: "N",
+		wayChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "在途变动张数",
 			name: "wayChangeCount",
@@ -332,8 +332,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		WAY_CHANGE_FACE: {
-			nullable: "N",
+		wayChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "在途面值",
 			name: "wayChangeFace",
@@ -343,8 +343,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		WAY_CHANGE_AMOUNT: {
-			nullable: "N",
+		wayChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "在途变动金额",
 			name: "wayChangeAmount",
@@ -354,8 +354,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_COUNT: {
-			nullable: "N",
+		physicalChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡张数",
 			name: "physicalChangeCount",
@@ -365,8 +365,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_FACE: {
-			nullable: "N",
+		physicalChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡面值",
 			name: "physicalChangeFace",
@@ -376,8 +376,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_AMOUNT: {
-			nullable: "N",
+		physicalChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡变动金额",
 			name: "physicalChangeAmount",
@@ -387,8 +387,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		WAY_COUNT_BALANCE: {
-			nullable: "N",
+		wayCountBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途卡余额",
 			name: "wayCountBalance",
@@ -398,8 +398,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		WAY_FACE_BALANCE: {
-			nullable: "N",
+		wayFaceBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途面值余额",
 			name: "wayFaceBalance",
@@ -409,8 +409,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		WAY_CARD_BALANCE: {
-			nullable: "N",
+		wayCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途余额",
 			name: "wayCardBalance",
@@ -420,8 +420,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		PHYSICAL_COUNT_BALANCE: {
-			nullable: "N",
+		physicalCountBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡张数余额",
 			name: "physicalCountBalance",
@@ -431,8 +431,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		PHYSICAL_FACE_BALANCE: {
-			nullable: "N",
+		physicalFaceBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡面值余额",
 			name: "physicalFaceBalance",
@@ -442,8 +442,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_BALANCE: {
-			nullable: "N",
+		physicalCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡余额",
 			name: "physicalCardBalance",
@@ -453,8 +453,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_COUNT_BALANCE: {
-			nullable: "N",
+		electronicCountBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密张数余额",
 			name: "electronicCountBalance",
@@ -464,8 +464,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_FACE_BALANCE: {
-			nullable: "N",
+		electronicFaceBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密面值余额",
 			name: "electronicFaceBalance",
@@ -475,8 +475,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_BALANCE: {
-			nullable: "N",
+		electronicCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密余额",
 			name: "electronicCardBalance",
@@ -486,8 +486,8 @@ exports.supTradeUpFund = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",

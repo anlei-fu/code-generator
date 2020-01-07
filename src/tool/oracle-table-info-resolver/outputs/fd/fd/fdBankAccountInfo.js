@@ -2,8 +2,8 @@ exports.fdBankAccountInfo = {
 	name: "fdBankAccountInfo",
 	rawName: "FD_BANK_ACCOUNT_INFO",
 	columns: {
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -13,8 +13,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -24,8 +24,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -35,8 +35,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",
@@ -46,8 +46,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		IS_B2E: {
-			nullable: "N",
+		isB2e: {
+			nullable: false,
 			isPk: false,
 			description: "是否为银企直联账户",
 			name: "isB2e",
@@ -57,8 +57,8 @@ exports.fdBankAccountInfo = {
 				length: "1"
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "账户省份编号",
 			name: "provinceNo",
@@ -68,8 +68,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		CITY_NO: {
-			nullable: "N",
+		cityNo: {
+			nullable: false,
 			isPk: false,
 			description: "账户城市编号",
 			name: "cityNo",
@@ -79,8 +79,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "N",
+		queryBalance: {
+			nullable: false,
 			isPk: false,
 			description: "查询余额",
 			name: "queryBalance",
@@ -90,8 +90,8 @@ exports.fdBankAccountInfo = {
 				length: "20"
 			}
 		},
-		QUERY_TIME: {
-			nullable: "N",
+		queryTime: {
+			nullable: false,
 			isPk: false,
 			description: "余额查询时间",
 			name: "queryTime",
@@ -101,8 +101,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "accountId",
@@ -112,8 +112,8 @@ exports.fdBankAccountInfo = {
 				length: "20"
 			}
 		},
-		TITLE: {
-			nullable: "N",
+		title: {
+			nullable: false,
 			isPk: false,
 			description: "标题",
 			name: "title",
@@ -123,8 +123,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账号名称",
 			name: "accountName",
@@ -134,8 +134,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		CARD_NO: {
-			nullable: "N",
+		cardNo: {
+			nullable: false,
 			isPk: false,
 			description: "账户卡号",
 			name: "cardNo",
@@ -145,8 +145,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19E钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
 			name: "bankType",
@@ -156,8 +156,8 @@ exports.fdBankAccountInfo = {
 				length: "3"
 			}
 		},
-		ASSET_TYPE: {
-			nullable: "N",
+		assetType: {
+			nullable: false,
 			isPk: false,
 			description: "1.银行卡 0. 三方平台",
 			name: "assetType",
@@ -167,8 +167,8 @@ exports.fdBankAccountInfo = {
 				length: "3"
 			}
 		},
-		BANK_ADDRESS: {
-			nullable: "Y",
+		bankAddress: {
+			nullable: true,
 			isPk: false,
 			description: "开户行",
 			name: "bankAddress",
@@ -178,8 +178,8 @@ exports.fdBankAccountInfo = {
 				length: ""
 			}
 		},
-		IS_USE_ADD_AMOUNT: {
-			nullable: "N",
+		isUseAddAmount: {
+			nullable: false,
 			isPk: false,
 			description: "是否用于加款",
 			name: "isUseAddAmount",
@@ -189,8 +189,8 @@ exports.fdBankAccountInfo = {
 				length: "1"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -200,8 +200,8 @@ exports.fdBankAccountInfo = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -211,8 +211,8 @@ exports.fdBankAccountInfo = {
 				length: "20"
 			}
 		},
-		REMARK: {
-			nullable: "Y",
+		remark: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "remark",

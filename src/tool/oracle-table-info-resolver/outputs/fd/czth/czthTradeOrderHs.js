@@ -2,8 +2,8 @@ exports.czthTradeOrderHs = {
 	name: "czthTradeOrderHs",
 	rawName: "CZTH_TRADE_ORDER_HS",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "充值特惠交易订单表",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		FD_ORDER_ID: {
-			nullable: "N",
+		fdOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "订单编号",
 			name: "fdOrderId",
@@ -24,8 +24,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统订单号",
 			name: "tradeOrderNo",
@@ -35,8 +35,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		TRADE_DELIVERY_NO: {
-			nullable: "N",
+		tradeDeliveryNo: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统发货号",
 			name: "tradeDeliveryNo",
@@ -46,8 +46,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "orderSource",
@@ -57,8 +57,8 @@ exports.czthTradeOrderHs = {
 				length: "3"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -68,8 +68,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户编号",
 			name: "downAccountId",
@@ -79,8 +79,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -90,8 +90,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		UP_ACCOUNT_ID: {
-			nullable: "N",
+		upAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "上游账户编号",
 			name: "upAccountId",
@@ -101,8 +101,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "平台公司编号",
 			name: "companyId",
@@ -112,8 +112,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		DRAW_UNIT: {
-			nullable: "N",
+		drawUnit: {
+			nullable: false,
 			isPk: false,
 			description: "扣款规格",
 			name: "drawUnit",
@@ -123,8 +123,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		DRAW_FACE: {
-			nullable: "N",
+		drawFace: {
+			nullable: false,
 			isPk: false,
 			description: "扣款面值",
 			name: "drawFace",
@@ -134,8 +134,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "N",
+		drawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "扣款金额",
 			name: "drawAmount",
@@ -145,8 +145,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		SERVICE_RATE: {
-			nullable: "N",
+		serviceRate: {
+			nullable: false,
 			isPk: false,
 			description: "服务费率（针对上游收取）",
 			name: "serviceRate",
@@ -156,8 +156,8 @@ exports.czthTradeOrderHs = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -167,8 +167,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型",
 			name: "changeType",
@@ -178,8 +178,8 @@ exports.czthTradeOrderHs = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "前后项信息（1-前项，2后项）",
 			name: "billType",
@@ -189,8 +189,8 @@ exports.czthTradeOrderHs = {
 				length: "3"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -200,8 +200,8 @@ exports.czthTradeOrderHs = {
 				length: "3"
 			}
 		},
-		CARRIER_NO: {
-			nullable: "N",
+		carrierNo: {
+			nullable: false,
 			isPk: false,
 			description: "运营商",
 			name: "carrierNo",
@@ -211,8 +211,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份",
 			name: "provinceNo",
@@ -222,8 +222,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注信息",
 			name: "memo",
@@ -233,8 +233,8 @@ exports.czthTradeOrderHs = {
 				length: ""
 			}
 		},
-		SUBSIDY: {
-			nullable: "N",
+		subsidy: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "subsidy",

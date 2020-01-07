@@ -2,8 +2,8 @@ exports.fdSystemHandleLog = {
 	name: "fdSystemHandleLog",
 	rawName: "FD_SYSTEM_HANDLE_LOG",
 	columns: {
-		LOG_ID: {
-			nullable: "N",
+		logId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "logId",
@@ -13,8 +13,8 @@ exports.fdSystemHandleLog = {
 				length: "20"
 			}
 		},
-		HANDLE_MODULE: {
-			nullable: "N",
+		handleModule: {
+			nullable: false,
 			isPk: false,
 			description: "操作功能模块",
 			name: "handleModule",
@@ -24,8 +24,8 @@ exports.fdSystemHandleLog = {
 				length: ""
 			}
 		},
-		HANDLE_USER: {
-			nullable: "N",
+		handleUser: {
+			nullable: false,
 			isPk: false,
 			description: "操作人",
 			name: "handleUser",
@@ -35,8 +35,8 @@ exports.fdSystemHandleLog = {
 				length: ""
 			}
 		},
-		HANDLE_TIME: {
-			nullable: "N",
+		handleTime: {
+			nullable: false,
 			isPk: false,
 			description: "操作时间",
 			name: "handleTime",
@@ -46,8 +46,8 @@ exports.fdSystemHandleLog = {
 				length: ""
 			}
 		},
-		HANDLE_PARAMS: {
-			nullable: "N",
+		handleParams: {
+			nullable: false,
 			isPk: false,
 			description: "参数",
 			name: "handleParams",

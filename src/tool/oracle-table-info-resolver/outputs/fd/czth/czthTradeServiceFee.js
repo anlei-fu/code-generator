@@ -2,8 +2,8 @@ exports.czthTradeServiceFee = {
 	name: "czthTradeServiceFee",
 	rawName: "CZTH_TRADE_SERVICE_FEE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.czthTradeServiceFee = {
 				length: "20"
 			}
 		},
-		MONTH_DATE: {
-			nullable: "N",
+		monthDate: {
+			nullable: false,
 			isPk: false,
 			description: "月份时间",
 			name: "monthDate",
@@ -24,8 +24,8 @@ exports.czthTradeServiceFee = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "手续费",
 			name: "serviceFee",

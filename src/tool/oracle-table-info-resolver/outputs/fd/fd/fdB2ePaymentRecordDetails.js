@@ -2,8 +2,8 @@ exports.fdB2ePaymentRecordDetails = {
 	name: "fdB2ePaymentRecordDetails",
 	rawName: "FD_B2E_PAYMENT_RECORD_DETAILS",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "20"
 			}
 		},
-		MAIN_RECORD_ID: {
-			nullable: "N",
+		mainRecordId: {
+			nullable: false,
 			isPk: false,
 			description: "转账指令",
 			name: "mainRecordId",
@@ -24,8 +24,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -35,8 +35,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		CLIENT_CARD_NO: {
-			nullable: "N",
+		clientCardNo: {
+			nullable: false,
 			isPk: false,
 			description: "客户账户",
 			name: "clientCardNo",
@@ -46,8 +46,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		CLIENT_HOLDER_NAME: {
-			nullable: "N",
+		clientHolderName: {
+			nullable: false,
 			isPk: false,
 			description: "客户姓名",
 			name: "clientHolderName",
@@ -57,8 +57,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		IS_SAME_BANK: {
-			nullable: "N",
+		isSameBank: {
+			nullable: false,
 			isPk: false,
 			description: "是否跨行，0同行,1跨行",
 			name: "isSameBank",
@@ -68,8 +68,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "1"
 			}
 		},
-		TOTAL_AMOUNT: {
-			nullable: "N",
+		totalAmount: {
+			nullable: false,
 			isPk: false,
 			description: "转账金额",
 			name: "totalAmount",
@@ -79,8 +79,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "20"
 			}
 		},
-		TOTAL_SERVICE_FEE: {
-			nullable: "N",
+		totalServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "总手续费",
 			name: "totalServiceFee",
@@ -90,8 +90,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "20"
 			}
 		},
-		CLIENT_CARD_TYPE: {
-			nullable: "N",
+		clientCardType: {
+			nullable: false,
 			isPk: false,
 			description: "收款账户类型：:对公；:对私",
 			name: "clientCardType",
@@ -101,8 +101,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "1"
 			}
 		},
-		CLIENT_BANK_NAME: {
-			nullable: "N",
+		clientBankName: {
+			nullable: false,
 			isPk: false,
 			description: "收款人开户行名称",
 			name: "clientBankName",
@@ -112,8 +112,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		CLIENT_BANK_ADDR: {
-			nullable: "Y",
+		clientBankAddr: {
+			nullable: true,
 			isPk: false,
 			description: "收款人开户行地址",
 			name: "clientBankAddr",
@@ -123,8 +123,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		CLIENT_BANK_CODE: {
-			nullable: "Y",
+		clientBankCode: {
+			nullable: true,
 			isPk: false,
 			description: "开户行行号",
 			name: "clientBankCode",
@@ -134,8 +134,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		CLIENT_AREA_CODE: {
-			nullable: "Y",
+		clientAreaCode: {
+			nullable: true,
 			isPk: false,
 			description: "收款行地区编号",
 			name: "clientAreaCode",
@@ -145,8 +145,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		SUBMIT_AMOUNT: {
-			nullable: "N",
+		submitAmount: {
+			nullable: false,
 			isPk: false,
 			description: "提交金额",
 			name: "submitAmount",
@@ -156,8 +156,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "20"
 			}
 		},
-		ARRIVAL_AMOUNT: {
-			nullable: "N",
+		arrivalAmount: {
+			nullable: false,
 			isPk: false,
 			description: "到账金额",
 			name: "arrivalAmount",
@@ -167,8 +167,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "20"
 			}
 		},
-		SUBMIT_REMARK: {
-			nullable: "Y",
+		submitRemark: {
+			nullable: true,
 			isPk: false,
 			description: "提交摘要",
 			name: "submitRemark",
@@ -178,8 +178,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		SUBMIT_STATUS: {
-			nullable: "N",
+		submitStatus: {
+			nullable: false,
 			isPk: false,
 			description: "加款状态1未开始,2等待执行,3正在执行 4 执行完成,0执行成功",
 			name: "submitStatus",
@@ -189,8 +189,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "1"
 			}
 		},
-		SUBMIT_ERROR_CODE: {
-			nullable: "Y",
+		submitErrorCode: {
+			nullable: true,
 			isPk: false,
 			description: "响应结果码",
 			name: "submitErrorCode",
@@ -200,8 +200,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		SUBMIT_DEAL_CODE: {
-			nullable: "Y",
+		submitDealCode: {
+			nullable: true,
 			isPk: false,
 			description: "本地响应结果码",
 			name: "submitDealCode",
@@ -211,8 +211,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		SUBMIT_ERROR_MSG: {
-			nullable: "Y",
+		submitErrorMsg: {
+			nullable: true,
 			isPk: false,
 			description: "提交返回信息",
 			name: "submitErrorMsg",
@@ -222,8 +222,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		BANK_SERVER_ID: {
-			nullable: "Y",
+		bankServerId: {
+			nullable: true,
 			isPk: false,
 			description: "服务器响应成功返回的交易标识",
 			name: "bankServerId",
@@ -233,8 +233,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		BANK_ACCOUNT_BALANCE: {
-			nullable: "Y",
+		bankAccountBalance: {
+			nullable: true,
 			isPk: false,
 			description: "银行账户余额",
 			name: "bankAccountBalance",
@@ -244,8 +244,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "20"
 			}
 		},
-		QUERY_STATUS: {
-			nullable: "N",
+		queryStatus: {
+			nullable: false,
 			isPk: false,
 			description: "查询状态1未开始,2等待执行,3正在执行,0执行完成",
 			name: "queryStatus",
@@ -255,8 +255,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: "1"
 			}
 		},
-		QUERY_TIME: {
-			nullable: "Y",
+		queryTime: {
+			nullable: true,
 			isPk: false,
 			description: "查询时间",
 			name: "queryTime",
@@ -266,8 +266,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		NEXT_QUERY_TIME: {
-			nullable: "N",
+		nextQueryTime: {
+			nullable: false,
 			isPk: false,
 			description: "下次查询时间",
 			name: "nextQueryTime",
@@ -277,8 +277,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		QUERY_ERROR_CODE: {
-			nullable: "Y",
+		queryErrorCode: {
+			nullable: true,
 			isPk: false,
 			description: "查询状态码",
 			name: "queryErrorCode",
@@ -288,8 +288,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		QUERY_DEAL_CODE: {
-			nullable: "Y",
+		queryDealCode: {
+			nullable: true,
 			isPk: false,
 			description: "本地状态码",
 			name: "queryDealCode",
@@ -299,8 +299,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		QUERY_ERROR_MSG: {
-			nullable: "Y",
+		queryErrorMsg: {
+			nullable: true,
 			isPk: false,
 			description: "查询结果信息",
 			name: "queryErrorMsg",
@@ -310,8 +310,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		MANUAL_MSG: {
-			nullable: "Y",
+		manualMsg: {
+			nullable: true,
 			isPk: false,
 			description: "人工审核消息",
 			name: "manualMsg",
@@ -321,8 +321,8 @@ exports.fdB2ePaymentRecordDetails = {
 				length: ""
 			}
 		},
-		SUBMIT_TIME: {
-			nullable: "Y",
+		submitTime: {
+			nullable: true,
 			isPk: false,
 			description: "提交时间",
 			name: "submitTime",

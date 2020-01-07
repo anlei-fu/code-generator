@@ -2,8 +2,8 @@ exports.fdB2eBankMainCode = {
 	name: "fdB2eBankMainCode",
 	rawName: "FD_B2E_BANK_MAIN_CODE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdB2eBankMainCode = {
 				length: "20"
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型(民生银行，中信银行)",
 			name: "bankType",
@@ -24,8 +24,8 @@ exports.fdB2eBankMainCode = {
 				length: "3"
 			}
 		},
-		INTERFACE_TYPE: {
-			nullable: "N",
+		interfaceType: {
+			nullable: false,
 			isPk: false,
 			description: "接口分类",
 			name: "interfaceType",
@@ -35,8 +35,8 @@ exports.fdB2eBankMainCode = {
 				length: ""
 			}
 		},
-		RECV_BANK_TYPE: {
-			nullable: "N",
+		recvBankType: {
+			nullable: false,
 			isPk: false,
 			description: "收款银行类型",
 			name: "recvBankType",
@@ -46,8 +46,8 @@ exports.fdB2eBankMainCode = {
 				length: "3"
 			}
 		},
-		RECV_BANK_CODE: {
-			nullable: "N",
+		recvBankCode: {
+			nullable: false,
 			isPk: false,
 			description: "收款银行对应主行号",
 			name: "recvBankCode",
@@ -57,8 +57,8 @@ exports.fdB2eBankMainCode = {
 				length: ""
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注信息",
 			name: "memo",

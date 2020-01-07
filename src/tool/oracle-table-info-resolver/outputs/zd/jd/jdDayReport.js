@@ -2,7 +2,7 @@ exports.jdDayReport = {
 	name: "jdDayReport",
 	rawName: "JD_DAY_REPORT",
 	columns: {
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "报表生成时间",
@@ -13,7 +13,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		STATISTICS_TIME: {
+		statisticsTime: {
 			nullable: true,
 			isPk: false,
 			description: "统计日期",
@@ -24,7 +24,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		PAY_TYPE: {
+		payType: {
 			nullable: true,
 			isPk: false,
 			description: "京东支付的子类型",
@@ -35,7 +35,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		PAY_COUNT: {
+		payCount: {
 			nullable: true,
 			isPk: false,
 			description: "支付总笔数",
@@ -46,7 +46,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		PAY_FEE: {
+		payFee: {
 			nullable: true,
 			isPk: false,
 			description: "支付总金额",
@@ -57,7 +57,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
+		serviceFee: {
 			nullable: true,
 			isPk: false,
 			description: "总手续费",
@@ -68,7 +68,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		REFUND_COUNT: {
+		refundCount: {
 			nullable: true,
 			isPk: false,
 			description: "退款笔数",
@@ -79,7 +79,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		COUPON_FEE: {
+		couponFee: {
 			nullable: true,
 			isPk: false,
 			description: "优惠券金额",
@@ -90,7 +90,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		NEW_USER: {
+		newUser: {
 			nullable: true,
 			isPk: false,
 			description: "新用户统计",
@@ -101,7 +101,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		NUSER_REFUND_COUNT: {
+		nuserRefundCount: {
 			nullable: true,
 			isPk: false,
 			description: "新用户退款笔数",
@@ -112,7 +112,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		REFUND_FEE: {
+		refundFee: {
 			nullable: true,
 			isPk: false,
 			description: "退款金额",
@@ -123,7 +123,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		REFUND_SERVICE_FEE: {
+		refundServiceFee: {
 			nullable: true,
 			isPk: false,
 			description: "退款亏损手续费",
@@ -134,7 +134,7 @@ exports.jdDayReport = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL: {
+		downChannel: {
 			nullable: true,
 			isPk: false,
 			description: "",

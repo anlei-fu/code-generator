@@ -2,8 +2,8 @@ exports.yxTradeAgentManual = {
 	name: "yxTradeAgentManual",
 	rawName: "YX_TRADE_AGENT_MANUAL",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.yxTradeAgentManual = {
 				length: "20"
 			}
 		},
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "代理人编号",
 			name: "agentId",
@@ -24,8 +24,8 @@ exports.yxTradeAgentManual = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.yxTradeAgentManual = {
 				length: "30"
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号",
 			name: "adjustId",
@@ -46,8 +46,8 @@ exports.yxTradeAgentManual = {
 				length: "20"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否红冲过",
 			name: "hasAdjust",
@@ -57,8 +57,8 @@ exports.yxTradeAgentManual = {
 				length: "1"
 			}
 		},
-		ADD_TYPE: {
-			nullable: "N",
+		addType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类:1: 加款+;1: 红冲加款-;1: 提款+;1: 红冲提款-;2: 扣款平账加+;2: 扣款平账减-;3: 退款平账加+;3: 退款平账减-;4: 余额平账加+;4: 余额平账减-;5: 手续费加+;5: 手续费红冲+;6: 交易平账;",
 			name: "addType",
@@ -68,8 +68,8 @@ exports.yxTradeAgentManual = {
 				length: "3"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -79,8 +79,8 @@ exports.yxTradeAgentManual = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -90,8 +90,8 @@ exports.yxTradeAgentManual = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -101,8 +101,8 @@ exports.yxTradeAgentManual = {
 				length: "20"
 			}
 		},
-		BANK_FUND_ID: {
-			nullable: "Y",
+		bankFundId: {
+			nullable: true,
 			isPk: false,
 			description: "银行资金变动编号（红冲是使用）",
 			name: "bankFundId",
@@ -112,8 +112,8 @@ exports.yxTradeAgentManual = {
 				length: "20"
 			}
 		},
-		EXT_RECORD_NO: {
-			nullable: "Y",
+		extRecordNo: {
+			nullable: true,
 			isPk: false,
 			description: "外部加款记录编号",
 			name: "extRecordNo",
@@ -123,8 +123,8 @@ exports.yxTradeAgentManual = {
 				length: ""
 			}
 		},
-		HANDLING_FEE_ID: {
-			nullable: "Y",
+		handlingFeeId: {
+			nullable: true,
 			isPk: false,
 			description: "收取手续费的记录编号",
 			name: "handlingFeeId",
@@ -134,8 +134,8 @@ exports.yxTradeAgentManual = {
 				length: "20"
 			}
 		},
-		CREATE_USER: {
-			nullable: "Y",
+		createUser: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createUser",
@@ -145,8 +145,8 @@ exports.yxTradeAgentManual = {
 				length: ""
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",

@@ -2,7 +2,7 @@ exports.sytDownProduct = {
 	name: "sytDownProduct",
 	rawName: "SYT_DOWN_PRODUCT",
 	columns: {
-		CHANNEL_NO: {
+		channelNo: {
 			nullable: false,
 			isPk: false,
 			description: "渠道编号",
@@ -13,7 +13,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		PID: {
+		pid: {
 			nullable: false,
 			isPk: false,
 			description: "产品ID",
@@ -24,7 +24,7 @@ exports.sytDownProduct = {
 				length: "20"
 			}
 		},
-		PRODUCT_NO: {
+		productNo: {
 			nullable: false,
 			isPk: false,
 			description: "产品编码",
@@ -35,7 +35,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_NAME: {
+		productName: {
 			nullable: false,
 			isPk: false,
 			description: "产品名称",
@@ -46,7 +46,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型 ",
@@ -57,7 +57,7 @@ exports.sytDownProduct = {
 				length: "20"
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: false,
 			isPk: false,
 			description: "运营商",
@@ -68,7 +68,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: false,
 			isPk: false,
 			description: "省份;Q:全国",
@@ -79,7 +79,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		CITY_NO: {
+		cityNo: {
 			nullable: false,
 			isPk: false,
 			description: "城市;:全市",
@@ -90,7 +90,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_FACE: {
+		productFace: {
 			nullable: true,
 			isPk: false,
 			description: "产品原价",
@@ -101,7 +101,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		SALE_PRICE: {
+		salePrice: {
 			nullable: true,
 			isPk: false,
 			description: "显示售价",
@@ -112,7 +112,7 @@ exports.sytDownProduct = {
 				length: "20"
 			}
 		},
-		REAL_PRICE: {
+		realPrice: {
 			nullable: true,
 			isPk: false,
 			description: "实际售价",
@@ -123,7 +123,7 @@ exports.sytDownProduct = {
 				length: "20"
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态;:启用;:禁用",
@@ -134,7 +134,7 @@ exports.sytDownProduct = {
 				length: "20"
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -145,7 +145,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		CREATED_USER: {
+		createdUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建者",
@@ -156,7 +156,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
+		createdTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -167,7 +167,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		EDIT_USER: {
+		editUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新人",
@@ -178,7 +178,7 @@ exports.sytDownProduct = {
 				length: ""
 			}
 		},
-		EDIT_TIME: {
+		editTime: {
 			nullable: true,
 			isPk: false,
 			description: "更新时间",

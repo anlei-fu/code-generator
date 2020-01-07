@@ -2,7 +2,7 @@ exports.sysDictionary = {
 	name: "sysDictionary",
 	rawName: "SYS_DICTIONARY",
 	columns: {
-		TYPE: {
+		type: {
 			nullable: false,
 			isPk: false,
 			description: "",
@@ -13,7 +13,7 @@ exports.sysDictionary = {
 				length: ""
 			}
 		},
-		SHORT: {
+		short: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -24,7 +24,7 @@ exports.sysDictionary = {
 				length: "10"
 			}
 		},
-		NAME: {
+		name: {
 			nullable: false,
 			isPk: false,
 			description: "",
@@ -35,7 +35,7 @@ exports.sysDictionary = {
 				length: ""
 			}
 		},
-		VALUE: {
+		value: {
 			nullable: false,
 			isPk: false,
 			description: "",
@@ -46,7 +46,7 @@ exports.sysDictionary = {
 				length: ""
 			}
 		},
-		DICID: {
+		dicid: {
 			nullable: false,
 			isPk: false,
 			description: "",

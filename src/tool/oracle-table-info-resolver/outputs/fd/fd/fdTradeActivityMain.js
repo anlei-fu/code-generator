@@ -2,8 +2,8 @@ exports.fdTradeActivityMain = {
 	name: "fdTradeActivityMain",
 	rawName: "FD_TRADE_ACTIVITY_MAIN",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdTradeActivityMain = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdTradeActivityMain = {
 				length: ""
 			}
 		},
-		CHANNEL_ACCOUNT_ID: {
-			nullable: "N",
+		channelAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道账户编号",
 			name: "channelAccountId",
@@ -35,8 +35,8 @@ exports.fdTradeActivityMain = {
 				length: "20"
 			}
 		},
-		ACTIVITY_NAME: {
-			nullable: "N",
+		activityName: {
+			nullable: false,
 			isPk: false,
 			description: "活动名称",
 			name: "activityName",
@@ -46,8 +46,8 @@ exports.fdTradeActivityMain = {
 				length: ""
 			}
 		},
-		ACTIVITY_CONTENT: {
-			nullable: "N",
+		activityContent: {
+			nullable: false,
 			isPk: false,
 			description: "活动内容",
 			name: "activityContent",
@@ -57,8 +57,8 @@ exports.fdTradeActivityMain = {
 				length: ""
 			}
 		},
-		ACTIVITY_INPUT_AMOUNT: {
-			nullable: "N",
+		activityInputAmount: {
+			nullable: false,
 			isPk: false,
 			description: "活动初始投入金额",
 			name: "activityInputAmount",
@@ -68,8 +68,8 @@ exports.fdTradeActivityMain = {
 				length: "20"
 			}
 		},
-		HAS_CLOSED: {
-			nullable: "N",
+		hasClosed: {
+			nullable: false,
 			isPk: false,
 			description: "活动已近结束，0已经结束，1还未结束",
 			name: "hasClosed",
@@ -79,8 +79,8 @@ exports.fdTradeActivityMain = {
 				length: "1"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "活动创建时间",
 			name: "createTime",
@@ -90,8 +90,8 @@ exports.fdTradeActivityMain = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
-			nullable: "N",
+		createUser: {
+			nullable: false,
 			isPk: false,
 			description: "活动创建人",
 			name: "createUser",
@@ -101,8 +101,8 @@ exports.fdTradeActivityMain = {
 				length: ""
 			}
 		},
-		CLOSE_TIME: {
-			nullable: "Y",
+		closeTime: {
+			nullable: true,
 			isPk: false,
 			description: "活动结束时间",
 			name: "closeTime",
@@ -112,8 +112,8 @@ exports.fdTradeActivityMain = {
 				length: ""
 			}
 		},
-		CLOSE_USER: {
-			nullable: "Y",
+		closeUser: {
+			nullable: true,
 			isPk: false,
 			description: "活动结束人",
 			name: "closeUser",
@@ -123,8 +123,8 @@ exports.fdTradeActivityMain = {
 				length: ""
 			}
 		},
-		ACTIVITY_TYPE: {
-			nullable: "N",
+		activityType: {
+			nullable: false,
 			isPk: false,
 			description: "活动类型，1.预付活动，2.垫付活动",
 			name: "activityType",
@@ -134,8 +134,8 @@ exports.fdTradeActivityMain = {
 				length: "1"
 			}
 		},
-		ACTIVITY_RETURN_AMOUNT: {
-			nullable: "N",
+		activityReturnAmount: {
+			nullable: false,
 			isPk: false,
 			description: "活动回笼资金",
 			name: "activityReturnAmount",

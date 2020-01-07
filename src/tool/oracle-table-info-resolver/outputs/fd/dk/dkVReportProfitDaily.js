@@ -2,8 +2,8 @@ exports.dkVReportProfitDaily = {
 	name: "dkVReportProfitDaily",
 	rawName: "DK_V_REPORT_PROFIT_DAILY",
 	columns: {
-		DOWN_FACE: {
-			nullable: "Y",
+		downFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downFace",
@@ -13,8 +13,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		DOWN_COMMISSION: {
-			nullable: "Y",
+		downCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downCommission",
@@ -24,8 +24,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		PROFIT: {
-			nullable: "Y",
+		profit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "profit",
@@ -35,8 +35,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -46,8 +46,8 @@ exports.dkVReportProfitDaily = {
 				length: "20"
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "Y",
+		statisticsType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "statisticsType",
@@ -57,8 +57,8 @@ exports.dkVReportProfitDaily = {
 				length: "3"
 			}
 		},
-		SYS_COST: {
-			nullable: "Y",
+		sysCost: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "sysCost",
@@ -68,8 +68,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -79,8 +79,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelSourceSystem",
@@ -90,8 +90,8 @@ exports.dkVReportProfitDaily = {
 				length: "20"
 			}
 		},
-		UP_DRAW: {
-			nullable: "Y",
+		upDraw: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upDraw",
@@ -101,8 +101,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		UP_REFUND: {
-			nullable: "Y",
+		upRefund: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upRefund",
@@ -112,8 +112,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		PLAT_SERVICE_FEE: {
-			nullable: "Y",
+		platServiceFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "platServiceFee",
@@ -123,8 +123,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		DOWN_DRAW: {
-			nullable: "Y",
+		downDraw: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downDraw",
@@ -134,8 +134,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		DOWN_REFUND: {
-			nullable: "Y",
+		downRefund: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downRefund",
@@ -145,8 +145,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		LAST_PROFIT: {
-			nullable: "Y",
+		lastProfit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastProfit",
@@ -156,8 +156,8 @@ exports.dkVReportProfitDaily = {
 				length: ""
 			}
 		},
-		UP_COMMISSION: {
-			nullable: "Y",
+		upCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upCommission",

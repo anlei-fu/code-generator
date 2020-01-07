@@ -2,8 +2,8 @@ exports.tblGlobalParam = {
 	name: "tblGlobalParam",
 	rawName: "TBL_GLOBAL_PARAM",
 	columns: {
-		TIME_VAL: {
-			nullable: "Y",
+		timeVal: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "timeVal",
@@ -13,8 +13,8 @@ exports.tblGlobalParam = {
 				length: ""
 			}
 		},
-		NUMBER_VAL: {
-			nullable: "Y",
+		numberVal: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "numberVal",
@@ -24,8 +24,8 @@ exports.tblGlobalParam = {
 				length: "10"
 			}
 		},
-		PARAM_DESC: {
-			nullable: "Y",
+		paramDesc: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "paramDesc",
@@ -35,8 +35,8 @@ exports.tblGlobalParam = {
 				length: ""
 			}
 		},
-		STRING_VAL: {
-			nullable: "Y",
+		stringVal: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "stringVal",
@@ -46,8 +46,8 @@ exports.tblGlobalParam = {
 				length: ""
 			}
 		},
-		PARAM_NAME: {
-			nullable: "N",
+		paramName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "paramName",

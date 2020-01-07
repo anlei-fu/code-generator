@@ -2,7 +2,7 @@ exports.operateLog = {
 	name: "operateLog",
 	rawName: "OPERATE_LOG",
 	columns: {
-		LOG_ID: {
+		logId: {
 			nullable: false,
 			isPk: true,
 			description: "编号",
@@ -13,7 +13,7 @@ exports.operateLog = {
 				length: "20"
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "订单号",
@@ -24,7 +24,7 @@ exports.operateLog = {
 				length: ""
 			}
 		},
-		CONTENT: {
+		content: {
 			nullable: false,
 			isPk: false,
 			description: "备注",
@@ -35,7 +35,7 @@ exports.operateLog = {
 				length: ""
 			}
 		},
-		OPERATOR: {
+		operator: {
 			nullable: false,
 			isPk: false,
 			description: "操作人",
@@ -46,7 +46,7 @@ exports.operateLog = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",

@@ -2,8 +2,8 @@ exports.fdB2eBankZxyjCode = {
 	name: "fdB2eBankZxyjCode",
 	rawName: "FD_B2E_BANK_ZXYJ_CODE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdB2eBankZxyjCode = {
 				length: "20"
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型",
 			name: "bankType",
@@ -24,8 +24,8 @@ exports.fdB2eBankZxyjCode = {
 				length: "20"
 			}
 		},
-		BANK_GRADE: {
-			nullable: "N",
+		bankGrade: {
+			nullable: false,
 			isPk: false,
 			description: "银行等级，0总行，1省分行，2市分行",
 			name: "bankGrade",
@@ -35,8 +35,8 @@ exports.fdB2eBankZxyjCode = {
 				length: "3"
 			}
 		},
-		CANTON_CODE: {
-			nullable: "N",
+		cantonCode: {
+			nullable: false,
 			isPk: false,
 			description: "地区编码",
 			name: "cantonCode",
@@ -46,8 +46,8 @@ exports.fdB2eBankZxyjCode = {
 				length: ""
 			}
 		},
-		BANK_CODE: {
-			nullable: "N",
+		bankCode: {
+			nullable: false,
 			isPk: false,
 			description: "银行编码",
 			name: "bankCode",
@@ -57,8 +57,8 @@ exports.fdB2eBankZxyjCode = {
 				length: ""
 			}
 		},
-		BANK_NAME: {
-			nullable: "N",
+		bankName: {
+			nullable: false,
 			isPk: false,
 			description: "银行名称",
 			name: "bankName",

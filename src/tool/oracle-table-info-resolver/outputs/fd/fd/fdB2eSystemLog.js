@@ -2,8 +2,8 @@ exports.fdB2eSystemLog = {
 	name: "fdB2eSystemLog",
 	rawName: "FD_B2E_SYSTEM_LOG",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdB2eSystemLog = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdB2eSystemLog = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountName",
@@ -35,8 +35,8 @@ exports.fdB2eSystemLog = {
 				length: ""
 			}
 		},
-		LAST_FAIL_TIME: {
-			nullable: "N",
+		lastFailTime: {
+			nullable: false,
 			isPk: false,
 			description: "上次执行失败时间",
 			name: "lastFailTime",
@@ -46,8 +46,8 @@ exports.fdB2eSystemLog = {
 				length: ""
 			}
 		},
-		FAIL_REASON: {
-			nullable: "N",
+		failReason: {
+			nullable: false,
 			isPk: false,
 			description: "失败原因",
 			name: "failReason",

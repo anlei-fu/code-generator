@@ -2,8 +2,8 @@ exports.fdBaseDownUpMap = {
 	name: "fdBaseDownUpMap",
 	rawName: "FD_BASE_DOWN_UP_MAP",
 	columns: {
-		MAP_ID: {
-			nullable: "N",
+		mapId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "mapId",
@@ -13,8 +13,8 @@ exports.fdBaseDownUpMap = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道",
 			name: "downChannelNo",
@@ -24,8 +24,8 @@ exports.fdBaseDownUpMap = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道",
 			name: "upChannelNo",

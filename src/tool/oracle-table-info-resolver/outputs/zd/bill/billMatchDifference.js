@@ -2,7 +2,7 @@ exports.billMatchDifference = {
 	name: "billMatchDifference",
 	rawName: "BILL_MATCH_DIFFERENCE",
 	columns: {
-		ORDER_NO: {
+		orderNo: {
 			nullable: true,
 			isPk: false,
 			description: "订单号",
@@ -13,7 +13,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		DIFF_ID: {
+		diffId: {
 			nullable: true,
 			isPk: false,
 			description: "id",
@@ -24,7 +24,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
+		channelNo: {
 			nullable: true,
 			isPk: false,
 			description: "渠道",
@@ -35,7 +35,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		DIFF_TYPE: {
+		diffType: {
 			nullable: true,
 			isPk: false,
 			description: "差异类型 ",
@@ -46,7 +46,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		PRICE: {
+		price: {
 			nullable: true,
 			isPk: false,
 			description: "订单金额",
@@ -57,7 +57,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		REAL_FEE: {
+		realFee: {
 			nullable: true,
 			isPk: false,
 			description: "实际金额",
@@ -68,7 +68,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		DIFF_MSG: {
+		diffMsg: {
 			nullable: true,
 			isPk: false,
 			description: "差异信息",
@@ -79,7 +79,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "生成时间",
@@ -90,7 +90,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		SYS_PRICE: {
+		sysPrice: {
 			nullable: true,
 			isPk: false,
 			description: "系统金额",
@@ -101,7 +101,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		SYS_REAL_FACE: {
+		sysRealFace: {
 			nullable: true,
 			isPk: false,
 			description: "系统实际金额",
@@ -112,7 +112,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		TASK_ID: {
+		taskId: {
 			nullable: true,
 			isPk: false,
 			description: "任务id",
@@ -123,7 +123,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
+		orderTime: {
 			nullable: true,
 			isPk: false,
 			description: "订单时间",
@@ -134,7 +134,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		PAY_TYPE: {
+		payType: {
 			nullable: true,
 			isPk: false,
 			description: "支付类型",
@@ -145,7 +145,7 @@ exports.billMatchDifference = {
 				length: ""
 			}
 		},
-		BILL_DATE: {
+		billDate: {
 			nullable: true,
 			isPk: false,
 			description: "账单日期 (yyyy-mm-dd)",

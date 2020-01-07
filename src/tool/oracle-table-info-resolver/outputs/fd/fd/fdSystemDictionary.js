@@ -2,8 +2,8 @@ exports.fdSystemDictionary = {
 	name: "fdSystemDictionary",
 	rawName: "FD_SYSTEM_DICTIONARY",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdSystemDictionary = {
 				length: "20"
 			}
 		},
-		VALUE: {
-			nullable: "N",
+		value: {
+			nullable: false,
 			isPk: false,
 			description: "枚举项的值",
 			name: "value",
@@ -24,8 +24,8 @@ exports.fdSystemDictionary = {
 				length: ""
 			}
 		},
-		DESCRIPTION: {
-			nullable: "N",
+		description: {
+			nullable: false,
 			isPk: false,
 			description: "枚举项的描述[即显示信息]",
 			name: "description",
@@ -35,8 +35,8 @@ exports.fdSystemDictionary = {
 				length: ""
 			}
 		},
-		BELONG_ENUM: {
-			nullable: "N",
+		belongEnum: {
+			nullable: false,
 			isPk: false,
 			description: "所属枚举",
 			name: "belongEnum",
@@ -46,8 +46,8 @@ exports.fdSystemDictionary = {
 				length: ""
 			}
 		},
-		SORT_ID: {
-			nullable: "N",
+		sortId: {
+			nullable: false,
 			isPk: false,
 			description: "枚举内的排序",
 			name: "sortId",
@@ -57,8 +57,8 @@ exports.fdSystemDictionary = {
 				length: "2"
 			}
 		},
-		GROUP_ID: {
-			nullable: "N",
+		groupId: {
+			nullable: false,
 			isPk: false,
 			description: "分组",
 			name: "groupId",
@@ -68,8 +68,8 @@ exports.fdSystemDictionary = {
 				length: ""
 			}
 		},
-		BELONG_SYSTEM: {
-			nullable: "N",
+		belongSystem: {
+			nullable: false,
 			isPk: false,
 			description: "所属系统",
 			name: "belongSystem",
@@ -79,8 +79,8 @@ exports.fdSystemDictionary = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态0启用1禁用",
 			name: "status",

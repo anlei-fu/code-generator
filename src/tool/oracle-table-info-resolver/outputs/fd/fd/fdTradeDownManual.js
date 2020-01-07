@@ -2,8 +2,8 @@ exports.fdTradeDownManual = {
 	name: "fdTradeDownManual",
 	rawName: "FD_TRADE_DOWN_MANUAL",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdTradeDownManual = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdTradeDownManual = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.fdTradeDownManual = {
 				length: "20"
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号",
 			name: "adjustId",
@@ -46,8 +46,8 @@ exports.fdTradeDownManual = {
 				length: "20"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否红冲过",
 			name: "hasAdjust",
@@ -57,8 +57,8 @@ exports.fdTradeDownManual = {
 				length: "1"
 			}
 		},
-		ADD_TYPE: {
-			nullable: "N",
+		addType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类:11-加款+ 12-红冲-  21-扣款平帐加+  22-扣款平帐减-  31-退款平帐加+  32-退款平帐减- 41-余额平帐加+ 42-余额平帐减-",
 			name: "addType",
@@ -68,8 +68,8 @@ exports.fdTradeDownManual = {
 				length: "3"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额,只有红冲的时候为负数",
 			name: "changeAmount",
@@ -79,8 +79,8 @@ exports.fdTradeDownManual = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -90,8 +90,8 @@ exports.fdTradeDownManual = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -101,8 +101,8 @@ exports.fdTradeDownManual = {
 				length: "20"
 			}
 		},
-		CREATE_USER: {
-			nullable: "Y",
+		createUser: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createUser",
@@ -112,8 +112,8 @@ exports.fdTradeDownManual = {
 				length: ""
 			}
 		},
-		BANK_FUND_ID: {
-			nullable: "Y",
+		bankFundId: {
+			nullable: true,
 			isPk: false,
 			description: "银行资金变动编号(红冲时用)",
 			name: "bankFundId",
@@ -123,8 +123,8 @@ exports.fdTradeDownManual = {
 				length: "20"
 			}
 		},
-		PARTNER_ACCOUNT: {
-			nullable: "Y",
+		partnerAccount: {
+			nullable: true,
 			isPk: false,
 			description: "合作方银行账户",
 			name: "partnerAccount",
@@ -134,8 +134,8 @@ exports.fdTradeDownManual = {
 				length: ""
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -145,8 +145,8 @@ exports.fdTradeDownManual = {
 				length: ""
 			}
 		},
-		EXT_RECORD_NO: {
-			nullable: "Y",
+		extRecordNo: {
+			nullable: true,
 			isPk: false,
 			description: "外部加款记录编号",
 			name: "extRecordNo",
@@ -156,8 +156,8 @@ exports.fdTradeDownManual = {
 				length: ""
 			}
 		},
-		SERVICE_ID: {
-			nullable: "Y",
+		serviceId: {
+			nullable: true,
 			isPk: false,
 			description: "收取手续费的记录的编号(渠道手续费)",
 			name: "serviceId",
@@ -167,8 +167,8 @@ exports.fdTradeDownManual = {
 				length: "20"
 			}
 		},
-		REAL_AMOUNT: {
-			nullable: "Y",
+		realAmount: {
+			nullable: true,
 			isPk: false,
 			description: "交易平账真实金额",
 			name: "realAmount",

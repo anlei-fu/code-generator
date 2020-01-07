@@ -46,6 +46,9 @@ async function resolve(sqlConfig, schema) {
 
                 if (x.extra == "auto_increment")
                         column.autoIncrement = true;
+                
+                if (x.columnDefault)
+                    column.defaultValue-x.columnComment;
 
                 column.name = NamingStrategy.toCamel(x.columnName);
                 column.nullable = x.isNullable == "YES";

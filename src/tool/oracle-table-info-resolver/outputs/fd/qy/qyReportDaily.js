@@ -2,8 +2,8 @@ exports.qyReportDaily = {
 	name: "qyReportDaily",
 	rawName: "QY_REPORT_DAILY",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		REPORT_TIME: {
-			nullable: "N",
+		reportTime: {
+			nullable: false,
 			isPk: false,
 			description: "报表时间",
 			name: "reportTime",
@@ -24,8 +24,8 @@ exports.qyReportDaily = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -35,8 +35,8 @@ exports.qyReportDaily = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -46,8 +46,8 @@ exports.qyReportDaily = {
 				length: ""
 			}
 		},
-		ORDER_FACE: {
-			nullable: "N",
+		orderFace: {
+			nullable: false,
 			isPk: false,
 			description: "成交面值(权益包价值)",
 			name: "orderFace",
@@ -57,8 +57,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		ORDER_AMOUNT: {
-			nullable: "N",
+		orderAmount: {
+			nullable: false,
 			isPk: false,
 			description: "代收金额(权益包销售额)",
 			name: "orderAmount",
@@ -68,8 +68,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		EXT_ORDER_NO: {
-			nullable: "N",
+		extOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "权益卡号",
 			name: "extOrderNo",
@@ -79,8 +79,8 @@ exports.qyReportDaily = {
 				length: ""
 			}
 		},
-		PRODUCT_NAME: {
-			nullable: "N",
+		productName: {
+			nullable: false,
 			isPk: false,
 			description: "权益包名称",
 			name: "productName",
@@ -90,8 +90,8 @@ exports.qyReportDaily = {
 				length: ""
 			}
 		},
-		DOWN_DRAW_FACE: {
-			nullable: "N",
+		downDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款没面值(领取权益)",
 			name: "downDrawFace",
@@ -101,8 +101,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_AMOUNT: {
-			nullable: "N",
+		downDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款金额(领取权益)",
 			name: "downDrawAmount",
@@ -112,8 +112,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		UP_DRAW_FACE: {
-			nullable: "N",
+		upDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款没面值(领取权益)",
 			name: "upDrawFace",
@@ -123,8 +123,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		UP_DRAW_AMOUNT: {
-			nullable: "N",
+		upDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款金额(领取权益)",
 			name: "upDrawAmount",
@@ -134,8 +134,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		OUT_PUT_TAX: {
-			nullable: "N",
+		outPutTax: {
+			nullable: false,
 			isPk: false,
 			description: "销项税",
 			name: "outPutTax",
@@ -145,8 +145,8 @@ exports.qyReportDaily = {
 				length: "20"
 			}
 		},
-		IN_PUT_TAX: {
-			nullable: "N",
+		inPutTax: {
+			nullable: false,
 			isPk: false,
 			description: "进项税",
 			name: "inPutTax",

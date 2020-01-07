@@ -2,8 +2,8 @@ exports.fdReportDownDaily = {
 	name: "fdReportDownDaily",
 	rawName: "FD_REPORT_DOWN_DAILY",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		REPORT_TIME: {
-			nullable: "N",
+		reportTime: {
+			nullable: false,
 			isPk: false,
 			description: "报表时间",
 			name: "reportTime",
@@ -24,8 +24,8 @@ exports.fdReportDownDaily = {
 				length: ""
 			}
 		},
-		BILL_TYPE: {
-			nullable: "Y",
+		billType: {
+			nullable: true,
 			isPk: false,
 			description: "利润类:1-前向2-后向",
 			name: "billType",
@@ -35,8 +35,8 @@ exports.fdReportDownDaily = {
 				length: "1"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -46,8 +46,8 @@ exports.fdReportDownDaily = {
 				length: "3"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -57,8 +57,8 @@ exports.fdReportDownDaily = {
 				length: ""
 			}
 		},
-		ORDER_COUNT: {
-			nullable: "N",
+		orderCount: {
+			nullable: false,
 			isPk: false,
 			description: "订单数量",
 			name: "orderCount",
@@ -68,8 +68,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		TRADE_FACE: {
-			nullable: "N",
+		tradeFace: {
+			nullable: false,
 			isPk: false,
 			description: "交易面值",
 			name: "tradeFace",
@@ -79,8 +79,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		TRADE_UNIT: {
-			nullable: "N",
+		tradeUnit: {
+			nullable: false,
 			isPk: false,
 			description: "交易数量",
 			name: "tradeUnit",
@@ -90,8 +90,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		COST_FEE: {
-			nullable: "N",
+		costFee: {
+			nullable: false,
 			isPk: false,
 			description: "扣款金额",
 			name: "costFee",
@@ -101,8 +101,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		REAL_FEE: {
-			nullable: "N",
+		realFee: {
+			nullable: false,
 			isPk: false,
 			description: "实际扣款",
 			name: "realFee",
@@ -112,8 +112,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		REFUND_FACE: {
-			nullable: "N",
+		refundFace: {
+			nullable: false,
 			isPk: false,
 			description: "退款面值",
 			name: "refundFace",
@@ -123,8 +123,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		REFUND_UNIT: {
-			nullable: "N",
+		refundUnit: {
+			nullable: false,
 			isPk: false,
 			description: "退款数量(M)",
 			name: "refundUnit",
@@ -134,8 +134,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		REFUND_FEE: {
-			nullable: "N",
+		refundFee: {
+			nullable: false,
 			isPk: false,
 			description: "退款金额",
 			name: "refundFee",
@@ -145,8 +145,8 @@ exports.fdReportDownDaily = {
 				length: "20"
 			}
 		},
-		REFUND_REAL: {
-			nullable: "N",
+		refundReal: {
+			nullable: false,
 			isPk: false,
 			description: "实际退款",
 			name: "refundReal",

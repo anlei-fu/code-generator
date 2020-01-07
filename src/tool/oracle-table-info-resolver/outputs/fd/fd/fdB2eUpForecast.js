@@ -2,8 +2,8 @@ exports.fdB2eUpForecast = {
 	name: "fdB2eUpForecast",
 	rawName: "FD_B2E_UP_FORECAST",
 	columns: {
-		START_TIME: {
-			nullable: "N",
+		startTime: {
+			nullable: false,
 			isPk: false,
 			description: "预测开始时间",
 			name: "startTime",
@@ -13,8 +13,8 @@ exports.fdB2eUpForecast = {
 				length: ""
 			}
 		},
-		END_TIME: {
-			nullable: "N",
+		endTime: {
+			nullable: false,
 			isPk: false,
 			description: "预测结束时间",
 			name: "endTime",
@@ -24,8 +24,8 @@ exports.fdB2eUpForecast = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道",
 			name: "upChannelNo",
@@ -35,8 +35,8 @@ exports.fdB2eUpForecast = {
 				length: ""
 			}
 		},
-		FORECAST_AMOUNT: {
-			nullable: "N",
+		forecastAmount: {
+			nullable: false,
 			isPk: false,
 			description: "预测交易量",
 			name: "forecastAmount",
@@ -46,8 +46,8 @@ exports.fdB2eUpForecast = {
 				length: "20"
 			}
 		},
-		REAL_AMOUNT: {
-			nullable: "N",
+		realAmount: {
+			nullable: false,
 			isPk: false,
 			description: "实际交易量",
 			name: "realAmount",
@@ -57,8 +57,8 @@ exports.fdB2eUpForecast = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "N",
+		memo: {
+			nullable: false,
 			isPk: false,
 			description: "备注",
 			name: "memo",

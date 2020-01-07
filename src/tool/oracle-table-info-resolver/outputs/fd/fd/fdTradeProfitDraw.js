@@ -2,8 +2,8 @@ exports.fdTradeProfitDraw = {
 	name: "fdTradeProfitDraw",
 	rawName: "FD_TRADE_PROFIT_DRAW",
 	columns: {
-		REPORT_ID: {
-			nullable: "N",
+		reportId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "reportId",
@@ -13,8 +13,8 @@ exports.fdTradeProfitDraw = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -24,8 +24,8 @@ exports.fdTradeProfitDraw = {
 				length: "20"
 			}
 		},
-		PROFIT: {
-			nullable: "N",
+		profit: {
+			nullable: false,
 			isPk: false,
 			description: "提取利润",
 			name: "profit",
@@ -35,8 +35,8 @@ exports.fdTradeProfitDraw = {
 				length: "20"
 			}
 		},
-		DRAW_MONTH: {
-			nullable: "N",
+		drawMonth: {
+			nullable: false,
 			isPk: false,
 			description: "利润的月份",
 			name: "drawMonth",
@@ -46,8 +46,8 @@ exports.fdTradeProfitDraw = {
 				length: ""
 			}
 		},
-		DRAW_BILL_TYPE: {
-			nullable: "Y",
+		drawBillType: {
+			nullable: true,
 			isPk: false,
 			description: "利润类:1-前向2-后向",
 			name: "drawBillType",
@@ -57,8 +57,8 @@ exports.fdTradeProfitDraw = {
 				length: "1"
 			}
 		},
-		DRAW_STATUS: {
-			nullable: "N",
+		drawStatus: {
+			nullable: false,
 			isPk: false,
 			description: "提取状态",
 			name: "drawStatus",
@@ -68,8 +68,8 @@ exports.fdTradeProfitDraw = {
 				length: "1"
 			}
 		},
-		DRAW_USER: {
-			nullable: "Y",
+		drawUser: {
+			nullable: true,
 			isPk: false,
 			description: "提取人",
 			name: "drawUser",
@@ -79,8 +79,8 @@ exports.fdTradeProfitDraw = {
 				length: ""
 			}
 		},
-		DRAW_TIME: {
-			nullable: "Y",
+		drawTime: {
+			nullable: true,
 			isPk: false,
 			description: "提取时间",
 			name: "drawTime",
@@ -90,8 +90,8 @@ exports.fdTradeProfitDraw = {
 				length: ""
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否红冲过",
 			name: "hasAdjust",
@@ -101,8 +101,8 @@ exports.fdTradeProfitDraw = {
 				length: "1"
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号",
 			name: "adjustId",
@@ -112,8 +112,8 @@ exports.fdTradeProfitDraw = {
 				length: "20"
 			}
 		},
-		BANK_FUND_ID: {
-			nullable: "Y",
+		bankFundId: {
+			nullable: true,
 			isPk: false,
 			description: "红冲对应实体卡变动记录编号",
 			name: "bankFundId",

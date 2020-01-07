@@ -1,36 +1,22 @@
 const { SimpleFullTextSearcher } = require("./simple-full-text-searcher");
+const { all } = require("./../oracle-table-info-resolver/outputs/fd/fd/all");
+const { OBJECT } = require("./../../libs/utils");
 
 function main() {
         let searcher = new SimpleFullTextSearcher();
-        let documents = [
-                {
-                   content:"falsdsadada",
-                   name:"t1"
-                },
-                {
-                        content:"14545sadsar",
-                        name:"t2"
-                },
-                {
-                        content:"45454s5ad4asr",
-                        name:"t3"
-                },
-                {
-                        content:"dasdfasd4a545496",
-                        name:"t4"
-                },
-                {
-                        content:"sdsad546419649w8q49dsa",
-                        name:"t5"
-                },
+        let docs = [];
+        OBJECT.forEach(all, (tableName, table) => {
+                docs.push({
+                        name: tableName,
+                        content: table.rawName.toLowerCase(),
+                        weight: 1
+                });
+        })
 
-        ]
+        searcher.useCustomerTokenizer(x => x.toLowerCase().split("_"));
+        searcher.addDocuments(docs);
 
-        searcher.addDocuments(documents);
-
-        let result= searcher.search("d5as6",5);
-
-        console.log(result);
+       console.log(searcher.search("up_channel_no",10));
 }
 
 /*---------------------------------------------------------------------main------------------------------------------------------------------------------ */

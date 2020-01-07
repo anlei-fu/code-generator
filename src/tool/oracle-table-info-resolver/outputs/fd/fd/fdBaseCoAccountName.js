@@ -2,8 +2,8 @@ exports.fdBaseCoAccountName = {
 	name: "fdBaseCoAccountName",
 	rawName: "FD_BASE_CO_ACCOUNT_NAME",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "渠道账户编号",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.fdBaseCoAccountName = {
 				length: "20"
 			}
 		},
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -24,8 +24,8 @@ exports.fdBaseCoAccountName = {
 				length: "20"
 			}
 		},
-		CO_ACCOUNT_NAME: {
-			nullable: "N",
+		coAccountName: {
+			nullable: false,
 			isPk: false,
 			description: "收付款账户名称",
 			name: "coAccountName",
@@ -35,8 +35,8 @@ exports.fdBaseCoAccountName = {
 				length: ""
 			}
 		},
-		CO_ACCOUNT_TYPE: {
-			nullable: "N",
+		coAccountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类型：1：上游，2：下游,:公司间结算账户,:押金账户,:手续费账户,:佣金账户,:SUP上游,:sp账户，:收卡业务，10：权益管理",
 			name: "coAccountType",
@@ -46,8 +46,8 @@ exports.fdBaseCoAccountName = {
 				length: "3"
 			}
 		},
-		CREATED_USER: {
-			nullable: "N",
+		createdUser: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdUser",
@@ -57,8 +57,8 @@ exports.fdBaseCoAccountName = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -68,8 +68,8 @@ exports.fdBaseCoAccountName = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -79,8 +79,8 @@ exports.fdBaseCoAccountName = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",

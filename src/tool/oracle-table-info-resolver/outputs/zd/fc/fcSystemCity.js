@@ -2,7 +2,7 @@ exports.fcSystemCity = {
 	name: "fcSystemCity",
 	rawName: "FC_SYSTEM_CITY",
 	columns: {
-		CITY_NO: {
+		cityNo: {
 			nullable: false,
 			isPk: false,
 			description: "市编号",
@@ -13,7 +13,7 @@ exports.fcSystemCity = {
 				length: ""
 			}
 		},
-		CITY_NAME: {
+		cityName: {
 			nullable: true,
 			isPk: false,
 			description: "名称",
@@ -24,7 +24,7 @@ exports.fcSystemCity = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "状态",
@@ -35,7 +35,7 @@ exports.fcSystemCity = {
 				length: "1"
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: true,
 			isPk: false,
 			description: "省id",
@@ -46,7 +46,7 @@ exports.fcSystemCity = {
 				length: ""
 			}
 		},
-		CODE: {
+		code: {
 			nullable: true,
 			isPk: false,
 			description: "",

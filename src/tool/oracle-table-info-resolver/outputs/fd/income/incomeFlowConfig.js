@@ -2,8 +2,8 @@ exports.incomeFlowConfig = {
 	name: "incomeFlowConfig",
 	rawName: "INCOME_FLOW_CONFIG",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "配置编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeFlowConfig = {
 				length: "20"
 			}
 		},
-		FLOW_NAME: {
-			nullable: "N",
+		flowName: {
+			nullable: false,
 			isPk: false,
 			description: "流程名称",
 			name: "flowName",
@@ -24,8 +24,8 @@ exports.incomeFlowConfig = {
 				length: ""
 			}
 		},
-		FLOW_MQ: {
-			nullable: "N",
+		flowMq: {
+			nullable: false,
 			isPk: false,
 			description: "流程mq",
 			name: "flowMq",
@@ -35,8 +35,8 @@ exports.incomeFlowConfig = {
 				length: ""
 			}
 		},
-		FLOW_SORT: {
-			nullable: "N",
+		flowSort: {
+			nullable: false,
 			isPk: false,
 			description: "流程排序",
 			name: "flowSort",
@@ -46,8 +46,8 @@ exports.incomeFlowConfig = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态，0启用，1禁用",
 			name: "status",
@@ -57,8 +57,8 @@ exports.incomeFlowConfig = {
 				length: "3"
 			}
 		},
-		FLOW_PARAMS: {
-			nullable: "Y",
+		flowParams: {
+			nullable: true,
 			isPk: false,
 			description: "流程固定参数，a=1,b=2",
 			name: "flowParams",

@@ -2,8 +2,8 @@ exports.incomeDownUpTrade = {
 	name: "incomeDownUpTrade",
 	rawName: "INCOME_DOWN_UP_TRADE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeDownUpTrade = {
 				length: "20"
 			}
 		},
-		TRADE_DATE: {
-			nullable: "N",
+		tradeDate: {
+			nullable: false,
 			isPk: false,
 			description: "交易日期",
 			name: "tradeDate",
@@ -24,8 +24,8 @@ exports.incomeDownUpTrade = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -35,8 +35,8 @@ exports.incomeDownUpTrade = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -46,8 +46,8 @@ exports.incomeDownUpTrade = {
 				length: ""
 			}
 		},
-		TRADE_AMOUNT: {
-			nullable: "N",
+		tradeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易金额",
 			name: "tradeAmount",
@@ -57,8 +57,8 @@ exports.incomeDownUpTrade = {
 				length: "20"
 			}
 		},
-		TRADE_PROFIT: {
-			nullable: "N",
+		tradeProfit: {
+			nullable: false,
 			isPk: false,
 			description: "交易利润",
 			name: "tradeProfit",

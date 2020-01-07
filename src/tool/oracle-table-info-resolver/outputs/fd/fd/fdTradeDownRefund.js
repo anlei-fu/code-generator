@@ -2,8 +2,8 @@ exports.fdTradeDownRefund = {
 	name: "fdTradeDownRefund",
 	rawName: "FD_TRADE_DOWN_REFUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdTradeDownRefund = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		FD_ORDER_ID: {
-			nullable: "N",
+		fdOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "fdOrderId",
@@ -46,8 +46,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -57,8 +57,8 @@ exports.fdTradeDownRefund = {
 				length: ""
 			}
 		},
-		TRADE_REFUND_NO: {
-			nullable: "N",
+		tradeRefundNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统退款号",
 			name: "tradeRefundNo",
@@ -68,8 +68,8 @@ exports.fdTradeDownRefund = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -79,8 +79,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		REFUND_TIME: {
-			nullable: "N",
+		refundTime: {
+			nullable: false,
 			isPk: false,
 			description: "退款创建时间",
 			name: "refundTime",
@@ -90,8 +90,8 @@ exports.fdTradeDownRefund = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -101,8 +101,8 @@ exports.fdTradeDownRefund = {
 				length: "3"
 			}
 		},
-		CARRIER_NO: {
-			nullable: "N",
+		carrierNo: {
+			nullable: false,
 			isPk: false,
 			description: "运营商",
 			name: "carrierNo",
@@ -112,8 +112,8 @@ exports.fdTradeDownRefund = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份",
 			name: "provinceNo",
@@ -123,8 +123,8 @@ exports.fdTradeDownRefund = {
 				length: ""
 			}
 		},
-		REFUND_UNIT: {
-			nullable: "N",
+		refundUnit: {
+			nullable: false,
 			isPk: false,
 			description: "退款总量",
 			name: "refundUnit",
@@ -134,8 +134,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		REFUND_FACE: {
-			nullable: "N",
+		refundFace: {
+			nullable: false,
 			isPk: false,
 			description: "退款面值",
 			name: "refundFace",
@@ -145,8 +145,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		REFUND_AMOUNT: {
-			nullable: "N",
+		refundAmount: {
+			nullable: false,
 			isPk: false,
 			description: "退款金额",
 			name: "refundAmount",
@@ -156,8 +156,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		REAL_REFUND: {
-			nullable: "N",
+		realRefund: {
+			nullable: false,
 			isPk: false,
 			description: "实际金额",
 			name: "realRefund",
@@ -167,8 +167,8 @@ exports.fdTradeDownRefund = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -178,8 +178,8 @@ exports.fdTradeDownRefund = {
 				length: ""
 			}
 		},
-		HAS_SYN_UP: {
-			nullable: "Y",
+		hasSynUp: {
+			nullable: true,
 			isPk: false,
 			description: "是否同步上游 0.已同步 1.未同步",
 			name: "hasSynUp",

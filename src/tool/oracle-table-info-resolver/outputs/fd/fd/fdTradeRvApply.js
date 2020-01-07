@@ -2,8 +2,8 @@ exports.fdTradeRvApply = {
 	name: "fdTradeRvApply",
 	rawName: "FD_TRADE_RV_APPLY",
 	columns: {
-		APPLY_ID: {
-			nullable: "N",
+		applyId: {
+			nullable: false,
 			isPk: false,
 			description: "申请记录编号",
 			name: "applyId",
@@ -13,8 +13,8 @@ exports.fdTradeRvApply = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型，1上游，2下游",
 			name: "channelType",
@@ -46,8 +46,8 @@ exports.fdTradeRvApply = {
 				length: "3"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -57,8 +57,8 @@ exports.fdTradeRvApply = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "前后项信息",
 			name: "billType",
@@ -68,8 +68,8 @@ exports.fdTradeRvApply = {
 				length: "3"
 			}
 		},
-		DIFFER_AMOUNT: {
-			nullable: "N",
+		differAmount: {
+			nullable: false,
 			isPk: false,
 			description: "差异金额",
 			name: "differAmount",
@@ -79,8 +79,8 @@ exports.fdTradeRvApply = {
 				length: "20"
 			}
 		},
-		DIFFER_REASON: {
-			nullable: "N",
+		differReason: {
+			nullable: false,
 			isPk: false,
 			description: "差异原因",
 			name: "differReason",
@@ -90,8 +90,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		DIFFER_DETAIL: {
-			nullable: "Y",
+		differDetail: {
+			nullable: true,
 			isPk: false,
 			description: "差异详情",
 			name: "differDetail",
@@ -101,8 +101,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		APPLY_TIME: {
-			nullable: "N",
+		applyTime: {
+			nullable: false,
 			isPk: false,
 			description: "申请时间",
 			name: "applyTime",
@@ -112,8 +112,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		APPLY_USER: {
-			nullable: "N",
+		applyUser: {
+			nullable: false,
 			isPk: false,
 			description: "申请人",
 			name: "applyUser",
@@ -123,8 +123,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		APPLY_STATUS: {
-			nullable: "N",
+		applyStatus: {
+			nullable: false,
 			isPk: false,
 			description: "申请所处状态 1提交申请，9作废，0处理完成",
 			name: "applyStatus",
@@ -134,8 +134,8 @@ exports.fdTradeRvApply = {
 				length: "3"
 			}
 		},
-		DEAL_RV_TYPE: {
-			nullable: "Y",
+		dealRvType: {
+			nullable: true,
 			isPk: false,
 			description: "处理平账类型，1交易平账，2余额平账",
 			name: "dealRvType",
@@ -145,8 +145,8 @@ exports.fdTradeRvApply = {
 				length: "3"
 			}
 		},
-		DEAL_BUSINESS_TYPE: {
-			nullable: "Y",
+		dealBusinessType: {
+			nullable: true,
 			isPk: false,
 			description: "处理业务类型",
 			name: "dealBusinessType",
@@ -156,8 +156,8 @@ exports.fdTradeRvApply = {
 				length: "3"
 			}
 		},
-		DEAL_BILL_TYPE: {
-			nullable: "Y",
+		dealBillType: {
+			nullable: true,
 			isPk: false,
 			description: "处理前后项信息",
 			name: "dealBillType",
@@ -167,8 +167,8 @@ exports.fdTradeRvApply = {
 				length: "3"
 			}
 		},
-		DEAL_TRADE_AMOUNT: {
-			nullable: "Y",
+		dealTradeAmount: {
+			nullable: true,
 			isPk: false,
 			description: "处理平账交易金额",
 			name: "dealTradeAmount",
@@ -178,8 +178,8 @@ exports.fdTradeRvApply = {
 				length: "20"
 			}
 		},
-		DEAL_REAL_AMOUNT: {
-			nullable: "Y",
+		dealRealAmount: {
+			nullable: true,
 			isPk: false,
 			description: "处理平账真实金额",
 			name: "dealRealAmount",
@@ -189,8 +189,8 @@ exports.fdTradeRvApply = {
 				length: "20"
 			}
 		},
-		DEAL_TIME: {
-			nullable: "Y",
+		dealTime: {
+			nullable: true,
 			isPk: false,
 			description: "处理时间",
 			name: "dealTime",
@@ -200,8 +200,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		DEAL_USER: {
-			nullable: "Y",
+		dealUser: {
+			nullable: true,
 			isPk: false,
 			description: "处理人",
 			name: "dealUser",
@@ -211,8 +211,8 @@ exports.fdTradeRvApply = {
 				length: ""
 			}
 		},
-		DEAL_FLOW_ID: {
-			nullable: "Y",
+		dealFlowId: {
+			nullable: true,
 			isPk: false,
 			description: "关联平账流水号",
 			name: "dealFlowId",
@@ -222,8 +222,8 @@ exports.fdTradeRvApply = {
 				length: "20"
 			}
 		},
-		DEAL_MEMO: {
-			nullable: "Y",
+		dealMemo: {
+			nullable: true,
 			isPk: false,
 			description: "处理备注",
 			name: "dealMemo",

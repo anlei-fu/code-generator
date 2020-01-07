@@ -2,8 +2,8 @@ exports.qyTradeUpFundDiffer = {
 	name: "qyTradeUpFundDiffer",
 	rawName: "QY_TRADE_UP_FUND_DIFFER",
 	columns: {
-		DIFFER_ID: {
-			nullable: "N",
+		differId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "differId",
@@ -13,8 +13,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "记录生成日期",
 			name: "recordDate",
@@ -24,8 +24,8 @@ exports.qyTradeUpFundDiffer = {
 				length: ""
 			}
 		},
-		QY_ORDER_ID: {
-			nullable: "N",
+		qyOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单编号",
 			name: "qyOrderId",
@@ -35,8 +35,8 @@ exports.qyTradeUpFundDiffer = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.qyTradeUpFundDiffer = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道支付账号编号",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -68,8 +68,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "3"
 			}
 		},
-		DOWN_ADJUST_FACE: {
-			nullable: "N",
+		downAdjustFace: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需要调整的面值（下游退款造成上游面值比下游多时产生，下退）",
 			name: "downAdjustFace",
@@ -79,8 +79,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_ADJUST_UNIT: {
-			nullable: "N",
+		downAdjustUnit: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需要调整的规格",
 			name: "downAdjustUnit",
@@ -90,8 +90,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_ADJUST_AMOUNT: {
-			nullable: "N",
+		downAdjustAmount: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需要调整的金额",
 			name: "downAdjustAmount",
@@ -101,8 +101,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_ADJUST_REAL: {
-			nullable: "N",
+		downAdjustReal: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需要调整的真实扣款",
 			name: "downAdjustReal",
@@ -112,8 +112,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		UP_MANY_FACE: {
-			nullable: "N",
+		upManyFace: {
+			nullable: false,
 			isPk: false,
 			description: "上游多充的面值（上游面值比下游面值多时产生，上扣、下退、上退）",
 			name: "upManyFace",
@@ -123,8 +123,8 @@ exports.qyTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		UP_MANY_AMOUNT: {
-			nullable: "N",
+		upManyAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游多充的金额",
 			name: "upManyAmount",

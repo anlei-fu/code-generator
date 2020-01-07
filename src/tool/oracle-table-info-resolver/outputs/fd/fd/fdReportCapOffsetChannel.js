@@ -2,8 +2,8 @@ exports.fdReportCapOffsetChannel = {
 	name: "fdReportCapOffsetChannel",
 	rawName: "FD_REPORT_CAP_OFFSET_CHANNEL",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "配置编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdReportCapOffsetChannel = {
 				length: "20"
 			}
 		},
-		CHANNEL_SYSTEM_ID: {
-			nullable: "N",
+		channelSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "渠道系统编号",
 			name: "channelSystemId",
@@ -24,8 +24,8 @@ exports.fdReportCapOffsetChannel = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型，1上游渠道，2下游渠道",
 			name: "channelType",
@@ -35,8 +35,8 @@ exports.fdReportCapOffsetChannel = {
 				length: "3"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",

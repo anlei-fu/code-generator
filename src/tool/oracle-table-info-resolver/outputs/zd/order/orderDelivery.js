@@ -2,7 +2,7 @@ exports.orderDelivery = {
 	name: "orderDelivery",
 	rawName: "ORDER_DELIVERY",
 	columns: {
-		DELIVERY_ID: {
+		deliveryId: {
 			nullable: false,
 			isPk: false,
 			description: "发货编号",
@@ -13,7 +13,7 @@ exports.orderDelivery = {
 				length: "20"
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "订单号",
@@ -24,7 +24,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		ROBOT_IP: {
+		robotIp: {
 			nullable: true,
 			isPk: false,
 			description: "发货ip",
@@ -35,7 +35,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		UP_ORDER_NO: {
+		upOrderNo: {
 			nullable: true,
 			isPk: false,
 			description: "上游订单号",
@@ -46,7 +46,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状:20-等待发货30-正在发货90-失败0-成功",
@@ -57,7 +57,7 @@ exports.orderDelivery = {
 				length: "2"
 			}
 		},
-		MANUAL_STATUS: {
+		manualStatus: {
 			nullable: false,
 			isPk: false,
 			description: "人工状:10-无需20-等待人工0-成功",
@@ -68,7 +68,7 @@ exports.orderDelivery = {
 				length: "2"
 			}
 		},
-		RESULT_MSG: {
+		resultMsg: {
 			nullable: true,
 			isPk: false,
 			description: "结果消息",
@@ -79,7 +79,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		QUERY_STATUS: {
+		queryStatus: {
 			nullable: false,
 			isPk: false,
 			description: "查询状态10-无需20-等待查询90-失败0-成功",
@@ -90,7 +90,7 @@ exports.orderDelivery = {
 				length: "2"
 			}
 		},
-		QUERY_MSG: {
+		queryMsg: {
 			nullable: true,
 			isPk: false,
 			description: "查询消息",
@@ -101,7 +101,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		QUERY_IP: {
+		queryIp: {
 			nullable: true,
 			isPk: false,
 			description: "查询机器IP",
@@ -112,7 +112,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -123,7 +123,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		FINISH_TIME: {
+		finishTime: {
 			nullable: true,
 			isPk: false,
 			description: "完成时间",
@@ -134,7 +134,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		QUERY_CREATE_TIME: {
+		queryCreateTime: {
 			nullable: true,
 			isPk: false,
 			description: "查询创建时间",
@@ -145,7 +145,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		NEXT_QUERY_TIME: {
+		nextQueryTime: {
 			nullable: true,
 			isPk: false,
 			description: "下次查询时间",
@@ -156,7 +156,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		QUERY_CNTR: {
+		queryCntr: {
 			nullable: false,
 			isPk: false,
 			description: "查询次数",
@@ -167,7 +167,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -178,7 +178,7 @@ exports.orderDelivery = {
 				length: "20"
 			}
 		},
-		NEXT_DELIVERY_TIME: {
+		nextDeliveryTime: {
 			nullable: true,
 			isPk: false,
 			description: "下次发货时间",
@@ -189,7 +189,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		DELIVERY_COUNT: {
+		deliveryCount: {
 			nullable: true,
 			isPk: false,
 			description: "发货次数",
@@ -200,7 +200,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		ERROR_CODE: {
+		errorCode: {
 			nullable: true,
 			isPk: false,
 			description: "错误码",
@@ -211,7 +211,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		UP_API_UID: {
+		upApiUid: {
 			nullable: true,
 			isPk: false,
 			description: "上游api_uid",
@@ -222,7 +222,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		PROOF: {
+		proof: {
 			nullable: true,
 			isPk: false,
 			description: "凭证",
@@ -233,7 +233,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_ID: {
+		upChannelId: {
 			nullable: true,
 			isPk: false,
 			description: "上游渠道编号",
@@ -244,7 +244,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		DELIVERY_CODE: {
+		deliveryCode: {
 			nullable: true,
 			isPk: false,
 			description: "发货机器人标识",
@@ -255,7 +255,7 @@ exports.orderDelivery = {
 				length: ""
 			}
 		},
-		QUERY_CODE: {
+		queryCode: {
 			nullable: true,
 			isPk: false,
 			description: "查询机器人标识",

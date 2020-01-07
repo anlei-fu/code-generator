@@ -2,8 +2,8 @@ exports.fdVReportProfitCompare = {
 	name: "fdVReportProfitCompare",
 	rawName: "FD_V_REPORT_PROFIT_COMPARE",
 	columns: {
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "sourceSystemId",
@@ -13,8 +13,8 @@ exports.fdVReportProfitCompare = {
 				length: "20"
 			}
 		},
-		RV_AMOUNT: {
-			nullable: "Y",
+		rvAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "rvAmount",
@@ -24,8 +24,8 @@ exports.fdVReportProfitCompare = {
 				length: ""
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -35,8 +35,8 @@ exports.fdVReportProfitCompare = {
 				length: ""
 			}
 		},
-		SYSTEM_NAME: {
-			nullable: "Y",
+		systemName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "systemName",
@@ -46,8 +46,8 @@ exports.fdVReportProfitCompare = {
 				length: ""
 			}
 		},
-		PROFIT_DIFFER: {
-			nullable: "Y",
+		profitDiffer: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "profitDiffer",
@@ -57,8 +57,8 @@ exports.fdVReportProfitCompare = {
 				length: ""
 			}
 		},
-		JZ_PROFIT: {
-			nullable: "Y",
+		jzProfit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "jzProfit",
@@ -68,8 +68,8 @@ exports.fdVReportProfitCompare = {
 				length: ""
 			}
 		},
-		OUT_PROFIT: {
-			nullable: "N",
+		outProfit: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "outProfit",

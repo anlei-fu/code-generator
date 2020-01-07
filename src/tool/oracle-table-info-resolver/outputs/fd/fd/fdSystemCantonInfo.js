@@ -2,8 +2,8 @@ exports.fdSystemCantonInfo = {
 	name: "fdSystemCantonInfo",
 	rawName: "FD_SYSTEM_CANTON_INFO",
 	columns: {
-		CANTON_CODE: {
-			nullable: "N",
+		cantonCode: {
+			nullable: false,
 			isPk: true,
 			description: "区域编号",
 			name: "cantonCode",
@@ -13,8 +13,8 @@ exports.fdSystemCantonInfo = {
 				length: ""
 			}
 		},
-		CHINESE_NAME: {
-			nullable: "N",
+		chineseName: {
+			nullable: false,
 			isPk: false,
 			description: "中文名称",
 			name: "chineseName",
@@ -24,8 +24,8 @@ exports.fdSystemCantonInfo = {
 				length: ""
 			}
 		},
-		SPELL: {
-			nullable: "N",
+		spell: {
+			nullable: false,
 			isPk: false,
 			description: "英文或全拼",
 			name: "spell",
@@ -35,8 +35,8 @@ exports.fdSystemCantonInfo = {
 				length: ""
 			}
 		},
-		GRADE: {
-			nullable: "N",
+		grade: {
+			nullable: false,
 			isPk: false,
 			description: "行政级别",
 			name: "grade",
@@ -46,8 +46,8 @@ exports.fdSystemCantonInfo = {
 				length: "1"
 			}
 		},
-		PARENT: {
-			nullable: "N",
+		parent: {
+			nullable: false,
 			isPk: false,
 			description: "父级",
 			name: "parent",
@@ -57,8 +57,8 @@ exports.fdSystemCantonInfo = {
 				length: ""
 			}
 		},
-		SIMPLE_SPELL: {
-			nullable: "N",
+		simpleSpell: {
+			nullable: false,
 			isPk: false,
 			description: "简拼",
 			name: "simpleSpell",
@@ -68,8 +68,8 @@ exports.fdSystemCantonInfo = {
 				length: ""
 			}
 		},
-		AREA_CODE: {
-			nullable: "N",
+		areaCode: {
+			nullable: false,
 			isPk: false,
 			description: "区号",
 			name: "areaCode",
@@ -79,8 +79,8 @@ exports.fdSystemCantonInfo = {
 				length: ""
 			}
 		},
-		STANDARD_CODE: {
-			nullable: "N",
+		standardCode: {
+			nullable: false,
 			isPk: false,
 			description: "标准行政编码",
 			name: "standardCode",

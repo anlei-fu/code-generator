@@ -2,8 +2,8 @@ exports.fdBaseCompanyAccountImp = {
 	name: "fdBaseCompanyAccountImp",
 	rawName: "FD_BASE_COMPANY_ACCOUNT_IMP",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账号名称",
 			name: "accountName",
@@ -24,8 +24,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司账户",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额(手续费为负债)",
 			name: "balance",
@@ -46,8 +46,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -57,8 +57,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: "1"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -68,8 +68,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -79,8 +79,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -90,8 +90,8 @@ exports.fdBaseCompanyAccountImp = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",

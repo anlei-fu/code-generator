@@ -2,8 +2,8 @@ exports.fdBankZeroBalance = {
 	name: "fdBankZeroBalance",
 	rawName: "FD_BANK_ZERO_BALANCE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdBankZeroBalance = {
 				length: "20"
 			}
 		},
-		REPORT_TIME: {
-			nullable: "N",
+		reportTime: {
+			nullable: false,
 			isPk: false,
 			description: "报表时间",
 			name: "reportTime",
@@ -24,8 +24,8 @@ exports.fdBankZeroBalance = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -35,8 +35,8 @@ exports.fdBankZeroBalance = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡编号",
 			name: "accountId",
@@ -46,8 +46,8 @@ exports.fdBankZeroBalance = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "理论余额",
 			name: "balance",
@@ -57,8 +57,8 @@ exports.fdBankZeroBalance = {
 				length: "20"
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "N",
+		queryBalance: {
+			nullable: false,
 			isPk: false,
 			description: "查询余额",
 			name: "queryBalance",

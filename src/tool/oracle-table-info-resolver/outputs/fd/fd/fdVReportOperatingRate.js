@@ -2,8 +2,8 @@ exports.fdVReportOperatingRate = {
 	name: "fdVReportOperatingRate",
 	rawName: "FD_V_REPORT_OPERATING_RATE",
 	columns: {
-		UP_FEE_PAY: {
-			nullable: "Y",
+		upFeePay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upFeePay",
@@ -13,8 +13,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		DOWN_ALL_PAY: {
-			nullable: "Y",
+		downAllPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downAllPay",
@@ -24,8 +24,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		DRAW_ALL: {
-			nullable: "Y",
+		drawAll: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawAll",
@@ -35,8 +35,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_ALL: {
-			nullable: "Y",
+		upAll: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upAll",
@@ -46,8 +46,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_ALL_PAY: {
-			nullable: "Y",
+		upAllPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upAllPay",
@@ -57,8 +57,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_FEE: {
-			nullable: "Y",
+		upFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upFee",
@@ -68,8 +68,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_FLOW_PAY: {
-			nullable: "Y",
+		upFlowPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upFlowPay",
@@ -79,8 +79,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		RECORD_DATE: {
-			nullable: "Y",
+		recordDate: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -90,8 +90,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_FLOW: {
-			nullable: "Y",
+		upFlow: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upFlow",
@@ -101,8 +101,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		BANK_BALANCE: {
-			nullable: "Y",
+		bankBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "bankBalance",
@@ -112,8 +112,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		DRAW_FEE: {
-			nullable: "Y",
+		drawFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawFee",
@@ -123,8 +123,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		DOWN_ALL_RATE: {
-			nullable: "Y",
+		downAllRate: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downAllRate",
@@ -134,8 +134,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		TODAY_TRADE_RATE: {
-			nullable: "Y",
+		todayTradeRate: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "todayTradeRate",
@@ -145,8 +145,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_DOWN_ALL_PAY: {
-			nullable: "Y",
+		upDownAllPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upDownAllPay",
@@ -156,8 +156,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		OPE_BALANCE: {
-			nullable: "Y",
+		opeBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "opeBalance",
@@ -167,8 +167,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		ADD_ALL: {
-			nullable: "Y",
+		addAll: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAll",
@@ -178,8 +178,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		ADD_FEE: {
-			nullable: "Y",
+		addFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addFee",
@@ -189,8 +189,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_OTHER_PAY: {
-			nullable: "Y",
+		upOtherPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upOtherPay",
@@ -200,8 +200,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		ADD_FLOW: {
-			nullable: "Y",
+		addFlow: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addFlow",
@@ -211,8 +211,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		ADD_OTHER: {
-			nullable: "Y",
+		addOther: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addOther",
@@ -222,8 +222,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		DOWN_ALL: {
-			nullable: "Y",
+		downAll: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downAll",
@@ -233,8 +233,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		TIME: {
-			nullable: "Y",
+		time: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "time",
@@ -244,8 +244,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_FEE_RATE: {
-			nullable: "Y",
+		upFeeRate: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upFeeRate",
@@ -255,8 +255,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		DRAW_FLOW: {
-			nullable: "Y",
+		drawFlow: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawFlow",
@@ -266,8 +266,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_FLOW_RATE: {
-			nullable: "Y",
+		upFlowRate: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upFlowRate",
@@ -277,8 +277,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		COMPANYID: {
-			nullable: "Y",
+		companyid: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "companyid",
@@ -288,8 +288,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_OTHER: {
-			nullable: "Y",
+		upOther: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upOther",
@@ -299,8 +299,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		DRAW_OTHER: {
-			nullable: "Y",
+		drawOther: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawOther",
@@ -310,8 +310,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_OTHER_RATE: {
-			nullable: "Y",
+		upOtherRate: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upOtherRate",
@@ -321,8 +321,8 @@ exports.fdVReportOperatingRate = {
 				length: ""
 			}
 		},
-		UP_DOWN_ALL: {
-			nullable: "Y",
+		upDownAll: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upDownAll",

@@ -11,10 +11,10 @@ const { OBJECT } = require("./../../libs/utils");
 const { STR } = require("./../../libs/str");
 const { SimpleFullTextSearcher } = require("./../full-text-index/simple-full-text-searcher");
 const { getJavaType } = require("./../spring-boot-generator/utils");
-
+const { FILE } = require("./../../libs/file");
 
 class TableMetaInfo {
-        constructor() {
+        constructor () {
 
                 /**
                  * Is count limited
@@ -54,7 +54,7 @@ class TableMetaInfo {
 }
 
 class TableRelation {
-        constructor() {
+        constructor () {
                 /**
                  * Other table
                  */
@@ -115,6 +115,8 @@ const RELATION_MATCHERS = {
         },
 }
 
+const DEFAULT_KEYWORD_CANDIATE = ["up", "down", "order", "base", "fund", "bank", "company"];
+
 const DEFAULT_MAIN_TABLE_MATCHERS = {
         Channel: {
                 matcher: x => x.toLowerCase().includes("channel")
@@ -136,15 +138,21 @@ const DEFAULT_MAIN_TABLE_MATCHERS = {
         },
         User: {
                 matcher: x => x.toLowerCase().includes("user")
-        }
+        },
+        Package: {
+                matcher: x => x.toLowerCase().includes("package")
+        },
+
 }
 
 class TableRelationAnalyzer {
-        constructor(tables) {
+        constructor (tables) {
                 this._matchers = RELATION_MATCHERS;
                 this._searcher = new SimpleFullTextSearcher();
                 this._tables = tables;
                 this._initSearcher();
+                this._customerSearchResultsMatcher;
+                this._customerKeywordsGenerator;
                 this._mainTableMatchers = DEFAULT_MAIN_TABLE_MATCHERS;
         }
 
@@ -157,19 +165,32 @@ class TableRelationAnalyzer {
                 let relations = {};
                 OBJECT.forEach(this._tables, (tableName, table) => {
                         OBJECT.forEach(table.columns, (_, column) => {
-                                   
-                                if(column.isPk)
-                                  return;
+
+                                if (column.isPk)
+                                        return;
 
                                 column.type = getJavaType(column.type);
                                 if (!this._match(column.type, column.name, table.name))
                                         return;
 
-                                this._generateRelation(relations, column,table.rawName);
+                                let columnEnd=this._normolizeColumnName(column.rawName.toLowerCase());
+
+                                if (table.rawName.toLowerCase().endsWith(columnEnd.toLowerCase()))
+                                        return;
+
+                                this._generateRelation(relations, column, table.rawName);
                         })
                 });
 
                 return relations;
+        }
+
+        useKeywordsGenerator(generator) {
+                this._customerKeywordsGenerator = generator;
+        }
+
+        useSearchResultsMatcher(matcher) {
+                this._customerSearchResultsMatcher = matcher;
         }
 
         /**
@@ -177,20 +198,23 @@ class TableRelationAnalyzer {
          */
         _initSearcher() {
                 let docs = [];
-                OBJECT.forEach(this._tables,(tableName,table) => {
+                OBJECT.forEach(this._tables, (tableName, table) => {
                         docs.push({
                                 name: tableName,
-                                content: table.rawName.toLowerCase(),
+                                content: STR.replace(table.rawName.toLowerCase(),{
+                                      "_main":"",
+                                      "_info":"",
+                                }),
                                 weight: 1
                         });
                 })
 
-                this._searcher.useCustomerTokenizer(x=>x.split("_"));
+                this._searcher.useCustomerTokenizer(x => x.toLowerCase().split("_"));
                 this._searcher.addDocuments(docs);
         }
 
         /**
-         * Check column has relation
+         * Check doese column has relation
          * 
          * @private
          * @param {String} type 
@@ -207,7 +231,6 @@ class TableRelationAnalyzer {
                                 ? this._matchers[type].matcher(columnName)
                                 : DEFAULT_MATCHER(columnName, key);
 
-                        console.log(match);
                         if (match)
                                 return true;
                 }
@@ -222,43 +245,75 @@ class TableRelationAnalyzer {
          * @param {Realations} relations 
          * @param {String} selfColumn 
          */
-        _generateRelation(relations, selfColumn,selfTableRawName) {
-                let nomarnlizedColumnName = this._normolizeColumnName(selfColumn.rawName.toLowerCase());
+        _generateRelation(relations, selfColumn, selfTableRawName) {
 
-                let tableNameSegs=selfTableRawName.toLowerCase().split("_");
-                let tablePattern="_";
+                let keywords = this._customerKeywordsGenerator
+                        ? this._customerKeywordsGenerator(selfColumn.rawName, selfTableRawName)
+                        : this._defaultSearchKeyWordsGenerator(selfColumn.rawName, selfTableRawName);
 
-                if(tableNameSegs.length>3){
-                        tablePattern=tableNameSegs[0]+"_"+tableNameSegs[1]+"_"+tableNameSegs[2];
 
-                }else if(tableNameSegs.length>2){
-                   tablePattern=tableNameSegs[0]+"_"+tableNameSegs[1];
-                }else{
-                        tablePattern=tableNameSegs[0];
-                }
-                
-                
+                let candidates = this._searcher.search(keywords, 10);
+                if (candidates.length == 0)
+                        return;
 
-                let tables = this._searcher.search(nomarnlizedColumnName+selfTableRawName.toLowerCase() , 2);
-                console.log(nomarnlizedColumnName);
-                console.log(tables);
+                let table = this._customerSearchResultsMatcher
+                        ? this._customerSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates)
+                        : this._defaultSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates);
 
-                if(tables.length<2)
-                 return;
-
-                if (tables.length == 0)
+                if (!table)
                         return;
 
                 let relation = new TableRelation();
                 relation.selfColumn = selfColumn.name;
-                relation.otherTable = tables[1].name;
-                relation.otherTableColumn=this._getPrimaryKeyColumn(this._tables[tables[1].name]);
-                relation.relationType = this._analyzeRelationType(tables[1].name);
+                relation.otherTable = table.name;
+                relation.otherTableColumn = this._getPrimaryKeyColumn(this._tables[table.name]);
+                relation.relationType = this._analyzeRelationType(table.name);
 
                 if (!relations[selfTableRawName])
                         relations[selfTableRawName] = [];
 
                 relations[selfTableRawName].push(relation);
+        }
+
+        _defaultSearchKeyWordsGenerator(columnRawName, tableRawName) {
+                let keywords = this._normolizeColumnName(columnRawName);
+                let tableSegs = tableRawName.toLowerCase().split("_");
+                let set = new Set(tableSegs);
+
+                DEFAULT_KEYWORD_CANDIATE.forEach(x => {
+                        if (set.has(x)) {
+                                keywords += `_${x}`;
+                        }
+                })
+
+                return `${tableSegs[0]}_${keywords}`;
+        }
+
+        _defaultSearchResultsMatcher(columnRawName, tableRawName, results) {
+                let columnSegs = this._normolizeColumnName(columnRawName.toLowerCase()).split("_");
+                if (columnSegs[columnSegs.length - 1] == "")
+                        columnSegs.pop();
+                let best;
+                for (var x of results) {
+                        if (x.content.toLowerCase() == tableRawName.toLowerCase())
+                                continue;
+
+                        if (!best)
+                                best = x;
+
+                        let tableSegs = x.content.toLowerCase().split("_");
+                         if (STR.includesAny(tableSegs[tableSegs.length-1],["main","info"])) 
+                                 tableSegs.pop();
+
+
+                        if (columnSegs[columnSegs.length - 1] == tableSegs[tableSegs.length - 1])
+                                return x;
+                };
+
+                if (best && !best.name.toLowerCase().includes(columnSegs[columnSegs.length - 1]))
+                        return null;
+
+                return best;
         }
 
         /**
@@ -268,9 +323,13 @@ class TableRelationAnalyzer {
          * @returns {String}
          */
         _normolizeColumnName(columnName) {
+                columnName=columnName.toLowerCase();
                 return STR.replace(columnName, {
-                        Id: "",
-                        No: ""
+                        "_no": "",
+                        "_id": "",
+                        id: "",
+                        no: "",
+                       
                 });
         }
 
@@ -287,8 +346,7 @@ class TableRelationAnalyzer {
                         if (table.columns[columnName].isPk)
                                 return columnName;
                 }
-
-                return primaryColumn;
+                return  primaryColumn;
         }
 
         /**

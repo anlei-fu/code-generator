@@ -2,8 +2,8 @@ exports.fdBaseDownChannel = {
 	name: "fdBaseDownChannel",
 	rawName: "FD_BASE_DOWN_CHANNEL",
 	columns: {
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -13,8 +13,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -24,8 +24,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "手续费率",
 			name: "serviceFee",
@@ -35,8 +35,8 @@ exports.fdBaseDownChannel = {
 				length: "10"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -46,8 +46,8 @@ exports.fdBaseDownChannel = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -57,8 +57,8 @@ exports.fdBaseDownChannel = {
 				length: "1"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -68,8 +68,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -79,8 +79,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -90,8 +90,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",
@@ -101,8 +101,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		COMMI_BALANCE: {
-			nullable: "N",
+		commiBalance: {
+			nullable: false,
 			isPk: false,
 			description: "佣金余额",
 			name: "commiBalance",
@@ -112,8 +112,8 @@ exports.fdBaseDownChannel = {
 				length: "20"
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "N",
+		warnBalance: {
+			nullable: false,
 			isPk: false,
 			description: "报警余额",
 			name: "warnBalance",
@@ -123,8 +123,8 @@ exports.fdBaseDownChannel = {
 				length: "20"
 			}
 		},
-		WARN_TYPE: {
-			nullable: "N",
+		warnType: {
+			nullable: false,
 			isPk: false,
 			description: "报警类:1.单个支付账户不足   2.合计支付账户不足",
 			name: "warnType",
@@ -134,8 +134,8 @@ exports.fdBaseDownChannel = {
 				length: "3"
 			}
 		},
-		COMMI_RULE: {
-			nullable: "Y",
+		commiRule: {
+			nullable: true,
 			isPk: false,
 			description: "佣金规则",
 			name: "commiRule",
@@ -145,8 +145,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		NEED_COMMI: {
-			nullable: "N",
+		needCommi: {
+			nullable: false,
 			isPk: false,
 			description: "是否需要后返佣金0需要，1不需要",
 			name: "needCommi",
@@ -156,8 +156,8 @@ exports.fdBaseDownChannel = {
 				length: "1"
 			}
 		},
-		MANAGE_USER: {
-			nullable: "Y",
+		manageUser: {
+			nullable: true,
 			isPk: false,
 			description: "开发/商务/运营",
 			name: "manageUser",
@@ -167,8 +167,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		CHANNEL_COMPANY: {
-			nullable: "Y",
+		channelCompany: {
+			nullable: true,
 			isPk: false,
 			description: "渠道公司名称",
 			name: "channelCompany",
@@ -178,8 +178,8 @@ exports.fdBaseDownChannel = {
 				length: ""
 			}
 		},
-		AUTO_ADD: {
-			nullable: "Y",
+		autoAdd: {
+			nullable: true,
 			isPk: false,
 			description: "自动加款，0：开启，1：关闭",
 			name: "autoAdd",
@@ -189,8 +189,8 @@ exports.fdBaseDownChannel = {
 				length: "1"
 			}
 		},
-		AUTO_AMOUNT: {
-			nullable: "Y",
+		autoAmount: {
+			nullable: true,
 			isPk: false,
 			description: "自动加款金额",
 			name: "autoAmount",
@@ -200,8 +200,8 @@ exports.fdBaseDownChannel = {
 				length: "20"
 			}
 		},
-		AUTO_ADD_ON_TIME: {
-			nullable: "Y",
+		autoAddOnTime: {
+			nullable: true,
 			isPk: false,
 			description: "自动加款开启时间",
 			name: "autoAddOnTime",

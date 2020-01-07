@@ -2,7 +2,7 @@ exports.downSpecifiedUp = {
 	name: "downSpecifiedUp",
 	rawName: "DOWN_SPECIFIED_UP",
 	columns: {
-		RECORD_ID: {
+		recordId: {
 			nullable: false,
 			isPk: true,
 			description: "编号",
@@ -13,7 +13,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道",
@@ -24,7 +24,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_ID: {
+		upChannelId: {
 			nullable: true,
 			isPk: false,
 			description: "上游渠道",
@@ -35,7 +35,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: true,
 			isPk: false,
 			description: "业务类型",
@@ -46,7 +46,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: true,
 			isPk: false,
 			description: "运营商(*所有)",
@@ -57,7 +57,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: true,
 			isPk: false,
 			description: "省份(QG所有)",
@@ -68,7 +68,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		CITY_NO: {
+		cityNo: {
 			nullable: true,
 			isPk: false,
 			description: "地市(*所有)",
@@ -79,7 +79,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		FACE: {
+		face: {
 			nullable: true,
 			isPk: false,
 			description: "面值(0表示所有)",
@@ -90,7 +90,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		PRIORITY: {
+		priority: {
 			nullable: true,
 			isPk: false,
 			description: "优先级",
@@ -101,7 +101,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "状:0-启用,1-禁用",
@@ -112,7 +112,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -123,7 +123,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		CREATED_USER: {
+		createdUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建人",
@@ -134,7 +134,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
+		createdTime: {
 			nullable: true,
 			isPk: false,
 			description: "创建时间",
@@ -145,7 +145,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		UPDATE_USER: {
+		updateUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新人",
@@ -156,7 +156,7 @@ exports.downSpecifiedUp = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
+		updateTime: {
 			nullable: true,
 			isPk: false,
 			description: "更新时间",

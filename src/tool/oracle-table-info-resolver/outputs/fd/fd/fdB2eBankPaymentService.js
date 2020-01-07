@@ -2,8 +2,8 @@ exports.fdB2eBankPaymentService = {
 	name: "fdB2eBankPaymentService",
 	rawName: "FD_B2E_BANK_PAYMENT_SERVICE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdB2eBankPaymentService = {
 				length: "20"
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型",
 			name: "bankType",
@@ -24,8 +24,8 @@ exports.fdB2eBankPaymentService = {
 				length: "3"
 			}
 		},
-		PAYMENT_TYPE: {
-			nullable: "N",
+		paymentType: {
+			nullable: false,
 			isPk: false,
 			description: "加款方式",
 			name: "paymentType",
@@ -35,8 +35,8 @@ exports.fdB2eBankPaymentService = {
 				length: "3"
 			}
 		},
-		MIN_AMOUNT: {
-			nullable: "N",
+		minAmount: {
+			nullable: false,
 			isPk: false,
 			description: "收取下限金额",
 			name: "minAmount",
@@ -46,8 +46,8 @@ exports.fdB2eBankPaymentService = {
 				length: "20"
 			}
 		},
-		MAX_AMOUNT: {
-			nullable: "N",
+		maxAmount: {
+			nullable: false,
 			isPk: false,
 			description: "收取上限金额",
 			name: "maxAmount",
@@ -57,8 +57,8 @@ exports.fdB2eBankPaymentService = {
 				length: "20"
 			}
 		},
-		SINGLE_AMOUNT: {
-			nullable: "N",
+		singleAmount: {
+			nullable: false,
 			isPk: false,
 			description: "单笔收取手续费金额（和折扣配合使用）",
 			name: "singleAmount",
@@ -68,8 +68,8 @@ exports.fdB2eBankPaymentService = {
 				length: "20"
 			}
 		},
-		DISCOUNT: {
-			nullable: "N",
+		discount: {
+			nullable: false,
 			isPk: false,
 			description: "单笔收取手续费折扣（和金额配合使用）",
 			name: "discount",
@@ -79,8 +79,8 @@ exports.fdB2eBankPaymentService = {
 				length: "20"
 			}
 		},
-		MAX_SERVICE_FEE: {
-			nullable: "N",
+		maxServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "最大手续费(计算的手续费不能超过该值)",
 			name: "maxServiceFee",

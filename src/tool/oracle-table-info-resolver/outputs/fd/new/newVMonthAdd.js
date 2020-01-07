@@ -2,8 +2,8 @@ exports.newVMonthAdd = {
 	name: "newVMonthAdd",
 	rawName: "NEW_V_MONTH_ADD",
 	columns: {
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountType",
@@ -13,8 +13,8 @@ exports.newVMonthAdd = {
 				length: "3"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.newVMonthAdd = {
 				length: "20"
 			}
 		},
-		SUM_ADD_AMOUNT: {
-			nullable: "Y",
+		sumAddAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "sumAddAmount",
@@ -35,8 +35,8 @@ exports.newVMonthAdd = {
 				length: ""
 			}
 		},
-		MINUS_AMOUNT: {
-			nullable: "Y",
+		minusAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "minusAmount",
@@ -46,8 +46,8 @@ exports.newVMonthAdd = {
 				length: ""
 			}
 		},
-		SNAP_MONTH: {
-			nullable: "Y",
+		snapMonth: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "snapMonth",
@@ -57,8 +57,8 @@ exports.newVMonthAdd = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -68,8 +68,8 @@ exports.newVMonthAdd = {
 				length: ""
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",

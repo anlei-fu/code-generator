@@ -2,8 +2,8 @@ exports.fdReportChannelHalfhour = {
 	name: "fdReportChannelHalfhour",
 	rawName: "FD_REPORT_CHANNEL_HALFHOUR",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportChannelHalfhour = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型（1.上游，2下游）",
 			name: "channelType",
@@ -24,8 +24,8 @@ exports.fdReportChannelHalfhour = {
 				length: "1"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.fdReportChannelHalfhour = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "orderSource",
@@ -46,8 +46,8 @@ exports.fdReportChannelHalfhour = {
 				length: "3"
 			}
 		},
-		TRADE_COUNT: {
-			nullable: "N",
+		tradeCount: {
+			nullable: false,
 			isPk: false,
 			description: "交易条数",
 			name: "tradeCount",
@@ -57,8 +57,8 @@ exports.fdReportChannelHalfhour = {
 				length: "20"
 			}
 		},
-		TRADE_AMOUNT: {
-			nullable: "N",
+		tradeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易金额",
 			name: "tradeAmount",
@@ -68,8 +68,8 @@ exports.fdReportChannelHalfhour = {
 				length: "20"
 			}
 		},
-		COLLECT_TIME: {
-			nullable: "N",
+		collectTime: {
+			nullable: false,
 			isPk: false,
 			description: "半小时统计开始时间",
 			name: "collectTime",

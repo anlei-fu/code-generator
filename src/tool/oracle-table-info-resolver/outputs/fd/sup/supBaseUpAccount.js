@@ -2,8 +2,8 @@ exports.supBaseUpAccount = {
 	name: "supBaseUpAccount",
 	rawName: "SUP_BASE_UP_ACCOUNT",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountName",
@@ -24,8 +24,8 @@ exports.supBaseUpAccount = {
 				length: ""
 			}
 		},
-		ON_WAY_COUNT: {
-			nullable: "N",
+		onWayCount: {
+			nullable: false,
 			isPk: false,
 			description: "在途张数",
 			name: "onWayCount",
@@ -35,8 +35,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ON_WAY_FACE: {
-			nullable: "N",
+		onWayFace: {
+			nullable: false,
 			isPk: false,
 			description: "在途面值",
 			name: "onWayFace",
@@ -46,8 +46,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ON_WAY_BALANCE: {
-			nullable: "N",
+		onWayBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途余额",
 			name: "onWayBalance",
@@ -57,8 +57,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_COUNT: {
-			nullable: "N",
+		physicalCardCount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡张数",
 			name: "physicalCardCount",
@@ -68,8 +68,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_FACE: {
-			nullable: "N",
+		physicalCardFace: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡面值",
 			name: "physicalCardFace",
@@ -79,8 +79,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_BALANCE: {
-			nullable: "N",
+		physicalCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡余额",
 			name: "physicalCardBalance",
@@ -90,8 +90,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_COUNT: {
-			nullable: "N",
+		electronicCardCount: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密张数",
 			name: "electronicCardCount",
@@ -101,8 +101,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_FACE: {
-			nullable: "N",
+		electronicCardFace: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密面值",
 			name: "electronicCardFace",
@@ -112,8 +112,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_BALANCE: {
-			nullable: "N",
+		electronicCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密余额",
 			name: "electronicCardBalance",
@@ -123,8 +123,8 @@ exports.supBaseUpAccount = {
 				length: "20"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -134,8 +134,8 @@ exports.supBaseUpAccount = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -145,8 +145,8 @@ exports.supBaseUpAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -156,8 +156,8 @@ exports.supBaseUpAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",

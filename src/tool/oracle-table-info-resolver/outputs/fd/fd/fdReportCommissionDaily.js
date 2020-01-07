@@ -2,8 +2,8 @@ exports.fdReportCommissionDaily = {
 	name: "fdReportCommissionDaily",
 	rawName: "FD_REPORT_COMMISSION_DAILY",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportCommissionDaily = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdReportCommissionDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型1.上游2．下游",
 			name: "channelType",
@@ -35,8 +35,8 @@ exports.fdReportCommissionDaily = {
 				length: "1"
 			}
 		},
-		COMMISSION: {
-			nullable: "N",
+		commission: {
+			nullable: false,
 			isPk: false,
 			description: "佣金",
 			name: "commission",
@@ -46,8 +46,8 @@ exports.fdReportCommissionDaily = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "快照时间",
 			name: "snapTime",

@@ -2,8 +2,8 @@ exports.newVChannelRunDate = {
 	name: "newVChannelRunDate",
 	rawName: "NEW_V_CHANNEL_RUN_DATE",
 	columns: {
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -13,8 +13,8 @@ exports.newVChannelRunDate = {
 				length: ""
 			}
 		},
-		TRADE_RANGE: {
-			nullable: "Y",
+		tradeRange: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "tradeRange",
@@ -24,8 +24,8 @@ exports.newVChannelRunDate = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.newVChannelRunDate = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -46,8 +46,8 @@ exports.newVChannelRunDate = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelType",

@@ -2,8 +2,8 @@ exports.dkReprotChannelSettle = {
 	name: "dkReprotChannelSettle",
 	rawName: "DK_REPROT_CHANNEL_SETTLE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.dkReprotChannelSettle = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.dkReprotChannelSettle = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型，1上游渠道，2下游渠道",
 			name: "channelType",
@@ -35,8 +35,8 @@ exports.dkReprotChannelSettle = {
 				length: "1"
 			}
 		},
-		SETTLE_DATA_TIME: {
-			nullable: "N",
+		settleDataTime: {
+			nullable: false,
 			isPk: false,
 			description: "结算数据日期",
 			name: "settleDataTime",
@@ -46,8 +46,8 @@ exports.dkReprotChannelSettle = {
 				length: ""
 			}
 		},
-		SETTLE_BATCH_ID: {
-			nullable: "N",
+		settleBatchId: {
+			nullable: false,
 			isPk: false,
 			description: "结算批次号",
 			name: "settleBatchId",
@@ -57,8 +57,8 @@ exports.dkReprotChannelSettle = {
 				length: "20"
 			}
 		},
-		SETTLE_AMOUNT: {
-			nullable: "N",
+		settleAmount: {
+			nullable: false,
 			isPk: false,
 			description: "结算金额",
 			name: "settleAmount",
@@ -68,8 +68,8 @@ exports.dkReprotChannelSettle = {
 				length: "20"
 			}
 		},
-		SETTLE_STATUS: {
-			nullable: "N",
+		settleStatus: {
+			nullable: false,
 			isPk: false,
 			description: "结算状态，0完成，1等待，2正在，9无需结算",
 			name: "settleStatus",
@@ -79,8 +79,8 @@ exports.dkReprotChannelSettle = {
 				length: "1"
 			}
 		},
-		SETTLE_DEAL_ID: {
-			nullable: "N",
+		settleDealId: {
+			nullable: false,
 			isPk: false,
 			description: "结算处理编号，红冲用",
 			name: "settleDealId",
@@ -90,8 +90,8 @@ exports.dkReprotChannelSettle = {
 				length: "20"
 			}
 		},
-		SETTLE_USER: {
-			nullable: "Y",
+		settleUser: {
+			nullable: true,
 			isPk: false,
 			description: "结算人",
 			name: "settleUser",
@@ -101,8 +101,8 @@ exports.dkReprotChannelSettle = {
 				length: ""
 			}
 		},
-		SETTLE_TIME: {
-			nullable: "Y",
+		settleTime: {
+			nullable: true,
 			isPk: false,
 			description: "结算时间",
 			name: "settleTime",
@@ -112,8 +112,8 @@ exports.dkReprotChannelSettle = {
 				length: ""
 			}
 		},
-		SETTLE_MEMO: {
-			nullable: "Y",
+		settleMemo: {
+			nullable: true,
 			isPk: false,
 			description: "结算备注",
 			name: "settleMemo",

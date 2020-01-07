@@ -2,8 +2,8 @@ exports.incomeExcludeUp = {
 	name: "incomeExcludeUp",
 	rawName: "INCOME_EXCLUDE_UP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeExcludeUp = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",

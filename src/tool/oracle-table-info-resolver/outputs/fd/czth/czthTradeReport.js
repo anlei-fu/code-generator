@@ -2,8 +2,8 @@ exports.czthTradeReport = {
 	name: "czthTradeReport",
 	rawName: "CZTH_TRADE_REPORT",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "交易报表数据编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "报表数据日期",
 			name: "snapTime",
@@ -24,8 +24,8 @@ exports.czthTradeReport = {
 				length: ""
 			}
 		},
-		SOURCE_SYSTEM: {
-			nullable: "N",
+		sourceSystem: {
+			nullable: false,
 			isPk: false,
 			description: "渠道所属系统编号",
 			name: "sourceSystem",
@@ -35,8 +35,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游公司编号",
 			name: "downCompanyId",
@@ -46,8 +46,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -57,8 +57,8 @@ exports.czthTradeReport = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户编号",
 			name: "downAccountId",
@@ -68,8 +68,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		UP_COMPANY_ID: {
-			nullable: "N",
+		upCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "上游公司编号",
 			name: "upCompanyId",
@@ -79,8 +79,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -90,8 +90,8 @@ exports.czthTradeReport = {
 				length: ""
 			}
 		},
-		UP_ACCOUNT_ID: {
-			nullable: "N",
+		upAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "上游账户编号",
 			name: "upAccountId",
@@ -101,8 +101,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "N",
+		statisticsType: {
+			nullable: false,
 			isPk: false,
 			description: "业务分类",
 			name: "statisticsType",
@@ -112,8 +112,8 @@ exports.czthTradeReport = {
 				length: "3"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -123,8 +123,8 @@ exports.czthTradeReport = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "前后项信息",
 			name: "billType",
@@ -134,8 +134,8 @@ exports.czthTradeReport = {
 				length: "3"
 			}
 		},
-		SERVICE_RATE: {
-			nullable: "N",
+		serviceRate: {
+			nullable: false,
 			isPk: false,
 			description: "服务费率",
 			name: "serviceRate",
@@ -145,8 +145,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		TOTAL_UNIT: {
-			nullable: "N",
+		totalUnit: {
+			nullable: false,
 			isPk: false,
 			description: "扣款总规格",
 			name: "totalUnit",
@@ -156,8 +156,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "N",
+		totalFace: {
+			nullable: false,
 			isPk: false,
 			description: "扣款总面值",
 			name: "totalFace",
@@ -167,8 +167,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		TOTAL_DRAW_AMOUNT: {
-			nullable: "N",
+		totalDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "扣款总金额",
 			name: "totalDrawAmount",
@@ -178,8 +178,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		REFUND_UNIT: {
-			nullable: "N",
+		refundUnit: {
+			nullable: false,
 			isPk: false,
 			description: "退款总规格",
 			name: "refundUnit",
@@ -189,8 +189,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		REFUND_FACE: {
-			nullable: "N",
+		refundFace: {
+			nullable: false,
 			isPk: false,
 			description: "退款面值",
 			name: "refundFace",
@@ -200,8 +200,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		REFUND_DRAW_AMOUNT: {
-			nullable: "N",
+		refundDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "退款金额",
 			name: "refundDrawAmount",
@@ -211,8 +211,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		TOTAL_SUBSIDY: {
-			nullable: "N",
+		totalSubsidy: {
+			nullable: false,
 			isPk: false,
 			description: "总补贴金额",
 			name: "totalSubsidy",
@@ -222,8 +222,8 @@ exports.czthTradeReport = {
 				length: "20"
 			}
 		},
-		REFUND_SUBSIDY: {
-			nullable: "N",
+		refundSubsidy: {
+			nullable: false,
 			isPk: false,
 			description: "总退回补贴金额",
 			name: "refundSubsidy",

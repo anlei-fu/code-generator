@@ -2,7 +2,7 @@ exports.receiptAccountConfig = {
 	name: "receiptAccountConfig",
 	rawName: "RECEIPT_ACCOUNT_CONFIG",
 	columns: {
-		ACCOUNT_ID: {
+		accountId: {
 			nullable: false,
 			isPk: false,
 			description: "账户编号",
@@ -13,7 +13,7 @@ exports.receiptAccountConfig = {
 				length: "20"
 			}
 		},
-		VERSION: {
+		version: {
 			nullable: false,
 			isPk: false,
 			description: "版本 :开发 :测试 :预生产 :生产",
@@ -24,7 +24,7 @@ exports.receiptAccountConfig = {
 				length: ""
 			}
 		},
-		SYNC_NOTIFY_URL: {
+		syncNotifyUrl: {
 			nullable: true,
 			isPk: false,
 			description: "同步通知地址",
@@ -35,7 +35,7 @@ exports.receiptAccountConfig = {
 				length: ""
 			}
 		},
-		NONSYNC_NOTIFY_URL: {
+		nonsyncNotifyUrl: {
 			nullable: true,
 			isPk: false,
 			description: "异步通知地址",
@@ -46,7 +46,7 @@ exports.receiptAccountConfig = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "状态 0有效 1无效",
@@ -57,7 +57,7 @@ exports.receiptAccountConfig = {
 				length: ""
 			}
 		},
-		UPDATED_USER: {
+		updatedUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新用户",
@@ -68,7 +68,7 @@ exports.receiptAccountConfig = {
 				length: ""
 			}
 		},
-		UPDATED_TIME: {
+		updatedTime: {
 			nullable: true,
 			isPk: false,
 			description: "更新时间",
@@ -79,7 +79,7 @@ exports.receiptAccountConfig = {
 				length: ""
 			}
 		},
-		CONFIG_ID: {
+		configId: {
 			nullable: false,
 			isPk: true,
 			description: "配置ID",
@@ -90,7 +90,7 @@ exports.receiptAccountConfig = {
 				length: "20"
 			}
 		},
-		DEVICE_TYPE: {
+		deviceType: {
 			nullable: false,
 			isPk: false,
 			description: "终端 :直充APP :直充H5 :慢充APP :慢充H5",

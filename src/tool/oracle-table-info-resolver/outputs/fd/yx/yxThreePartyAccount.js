@@ -2,8 +2,8 @@ exports.yxThreePartyAccount = {
 	name: "yxThreePartyAccount",
 	rawName: "YX_THREE_PARTY_ACCOUNT",
 	columns: {
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountName",
@@ -13,8 +13,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "三方账户编号",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.yxThreePartyAccount = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "代理商编号",
 			name: "agentId",
@@ -46,8 +46,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型:上游;:下游",
 			name: "channelType",
@@ -57,8 +57,8 @@ exports.yxThreePartyAccount = {
 				length: "3"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -68,8 +68,8 @@ exports.yxThreePartyAccount = {
 				length: "20"
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类:1支出;:收入",
 			name: "accountType",
@@ -79,8 +79,8 @@ exports.yxThreePartyAccount = {
 				length: "3"
 			}
 		},
-		CREDIT_AMOUNT: {
-			nullable: "N",
+		creditAmount: {
+			nullable: false,
 			isPk: false,
 			description: "授信金额",
 			name: "creditAmount",
@@ -90,8 +90,8 @@ exports.yxThreePartyAccount = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态0-启用1-禁用",
 			name: "status",
@@ -101,8 +101,8 @@ exports.yxThreePartyAccount = {
 				length: "2"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -112,8 +112,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
-			nullable: "N",
+		createUser: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createUser",
@@ -123,8 +123,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
-			nullable: "Y",
+		updateTime: {
+			nullable: true,
 			isPk: false,
 			description: "修改时间",
 			name: "updateTime",
@@ -134,8 +134,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		UPDATE_USER: {
-			nullable: "Y",
+		updateUser: {
+			nullable: true,
 			isPk: false,
 			description: "更新人",
 			name: "updateUser",
@@ -145,8 +145,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -156,8 +156,8 @@ exports.yxThreePartyAccount = {
 				length: ""
 			}
 		},
-		SYSTEM_ID: {
-			nullable: "Y",
+		systemId: {
+			nullable: true,
 			isPk: false,
 			description: "系统编号",
 			name: "systemId",

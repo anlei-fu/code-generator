@@ -2,8 +2,8 @@ exports.fdReportCapitalUseRate = {
 	name: "fdReportCapitalUseRate",
 	rawName: "FD_REPORT_CAPITAL_USE_RATE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "记录日期",
 			name: "snapTime",
@@ -24,8 +24,8 @@ exports.fdReportCapitalUseRate = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -35,8 +35,8 @@ exports.fdReportCapitalUseRate = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "渠道所属公司",
 			name: "companyId",
@@ -46,8 +46,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -57,8 +57,8 @@ exports.fdReportCapitalUseRate = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "支付账户",
 			name: "accountId",
@@ -68,8 +68,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -79,8 +79,8 @@ exports.fdReportCapitalUseRate = {
 				length: ""
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountName",
@@ -90,8 +90,8 @@ exports.fdReportCapitalUseRate = {
 				length: ""
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "N",
+		channelStatus: {
+			nullable: false,
 			isPk: false,
 			description: "渠道状态",
 			name: "channelStatus",
@@ -101,8 +101,8 @@ exports.fdReportCapitalUseRate = {
 				length: "1"
 			}
 		},
-		CAPITAL_CLASS: {
-			nullable: "N",
+		capitalClass: {
+			nullable: false,
 			isPk: false,
 			description: "渠道资金分类：1.普通话费、2.普通流量、3.特殊话费、4.特殊流量、0.其他渠道",
 			name: "capitalClass",
@@ -112,8 +112,8 @@ exports.fdReportCapitalUseRate = {
 				length: "3"
 			}
 		},
-		ACCOUNT_BALANCE: {
-			nullable: "N",
+		accountBalance: {
+			nullable: false,
 			isPk: false,
 			description: "统计时账户余额，早上8点统计",
 			name: "accountBalance",
@@ -123,8 +123,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		YESTERDAY_DRAW: {
-			nullable: "N",
+		yesterdayDraw: {
+			nullable: false,
 			isPk: false,
 			description: "昨天交易量",
 			name: "yesterdayDraw",
@@ -134,8 +134,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		BEF_YESTERDAY_DRAW: {
-			nullable: "N",
+		befYesterdayDraw: {
+			nullable: false,
 			isPk: false,
 			description: "前天交易量",
 			name: "befYesterdayDraw",
@@ -145,8 +145,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		THREE_DAYS_AGO_DRAW: {
-			nullable: "N",
+		threeDaysAgoDraw: {
+			nullable: false,
 			isPk: false,
 			description: "大前天交易量",
 			name: "threeDaysAgoDraw",
@@ -156,8 +156,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		AVERAGE_DRAW: {
-			nullable: "N",
+		averageDraw: {
+			nullable: false,
 			isPk: false,
 			description: "最近三天平均交易量",
 			name: "averageDraw",
@@ -167,8 +167,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		NO_DRAW_DAYS: {
-			nullable: "N",
+		noDrawDays: {
+			nullable: false,
 			isPk: false,
 			description: "累计无交易天数（余额小于1000且无交易的清零）",
 			name: "noDrawDays",
@@ -178,8 +178,8 @@ exports.fdReportCapitalUseRate = {
 				length: "20"
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "同步状态，0、同步完成，1等待同步，2正在同步",
 			name: "syncStatus",
@@ -189,8 +189,8 @@ exports.fdReportCapitalUseRate = {
 				length: "1"
 			}
 		},
-		SYNC_BATCH: {
-			nullable: "N",
+		syncBatch: {
+			nullable: false,
 			isPk: false,
 			description: "同步批次号",
 			name: "syncBatch",

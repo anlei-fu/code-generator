@@ -2,8 +2,8 @@ exports.dkBaseDownAccountMap = {
 	name: "dkBaseDownAccountMap",
 	rawName: "DK_BASE_DOWN_ACCOUNT_MAP",
 	columns: {
-		MAP_ID: {
-			nullable: "N",
+		mapId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "mapId",
@@ -13,8 +13,8 @@ exports.dkBaseDownAccountMap = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.dkBaseDownAccountMap = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "结算账号编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.dkBaseDownAccountMap = {
 				length: "20"
 			}
 		},
-		IS_MAIN_CHANNEL: {
-			nullable: "N",
+		isMainChannel: {
+			nullable: false,
 			isPk: false,
 			description: "是否主关系",
 			name: "isMainChannel",

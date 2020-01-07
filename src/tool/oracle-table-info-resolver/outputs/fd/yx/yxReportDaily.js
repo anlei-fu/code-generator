@@ -2,8 +2,8 @@ exports.yxReportDaily = {
 	name: "yxReportDaily",
 	rawName: "YX_REPORT_DAILY",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		REPORT_TIME: {
-			nullable: "N",
+		reportTime: {
+			nullable: false,
 			isPk: false,
 			description: "报表时间",
 			name: "reportTime",
@@ -24,8 +24,8 @@ exports.yxReportDaily = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号（商家）",
 			name: "upChannelNo",
@@ -35,8 +35,8 @@ exports.yxReportDaily = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号（营销渠道）",
 			name: "downChannelNo",
@@ -46,8 +46,8 @@ exports.yxReportDaily = {
 				length: ""
 			}
 		},
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "代理人编号",
 			name: "agentId",
@@ -57,8 +57,8 @@ exports.yxReportDaily = {
 				length: ""
 			}
 		},
-		UP_DRAW_FACE: {
-			nullable: "N",
+		upDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款面值",
 			name: "upDrawFace",
@@ -68,8 +68,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		UP_DRAW_AMOUNT: {
-			nullable: "N",
+		upDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款金额",
 			name: "upDrawAmount",
@@ -79,8 +79,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		ORDER_COUNT: {
-			nullable: "N",
+		orderCount: {
+			nullable: false,
 			isPk: false,
 			description: "订单数量",
 			name: "orderCount",
@@ -90,8 +90,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		SERVIE_FEE: {
-			nullable: "N",
+		servieFee: {
+			nullable: false,
 			isPk: false,
 			description: "应结算商家服务费",
 			name: "servieFee",
@@ -101,8 +101,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		AGENCY_FEE: {
-			nullable: "N",
+		agencyFee: {
+			nullable: false,
 			isPk: false,
 			description: "代理人酬金（代理费）",
 			name: "agencyFee",
@@ -112,8 +112,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		HANDLING_FEE: {
-			nullable: "N",
+		handlingFee: {
+			nullable: false,
 			isPk: false,
 			description: "三方平台手续费",
 			name: "handlingFee",
@@ -123,8 +123,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -134,8 +134,8 @@ exports.yxReportDaily = {
 				length: "3"
 			}
 		},
-		DOWN_DRAW_FACE: {
-			nullable: "N",
+		downDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款面值",
 			name: "downDrawFace",
@@ -145,8 +145,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_AMOUNT: {
-			nullable: "N",
+		downDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款金额",
 			name: "downDrawAmount",
@@ -156,8 +156,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		INCOME_AMOUNT: {
-			nullable: "Y",
+		incomeAmount: {
+			nullable: true,
 			isPk: false,
 			description: "收益金额",
 			name: "incomeAmount",
@@ -167,8 +167,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		DOWN_REAL_AMOUNT: {
-			nullable: "N",
+		downRealAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游实际金额",
 			name: "downRealAmount",
@@ -178,8 +178,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		UP_REAL_AMOUNT: {
-			nullable: "N",
+		upRealAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游实际金额",
 			name: "upRealAmount",
@@ -189,8 +189,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		DOWN_COUPON_AMOUNT: {
-			nullable: "Y",
+		downCouponAmount: {
+			nullable: true,
 			isPk: false,
 			description: "优惠券金额",
 			name: "downCouponAmount",
@@ -200,8 +200,8 @@ exports.yxReportDaily = {
 				length: "20"
 			}
 		},
-		ISSUE: {
-			nullable: "Y",
+		issue: {
+			nullable: true,
 			isPk: false,
 			description: "发行扣款标志：0：普通扣款，1：发行扣款",
 			name: "issue",

@@ -2,8 +2,8 @@ exports.yxTradeAgencyAssigned = {
 	name: "yxTradeAgencyAssigned",
 	rawName: "YX_TRADE_AGENCY_ASSIGNED",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.yxTradeAgencyAssigned = {
 				length: "20"
 			}
 		},
-		YX_ORDER_ID: {
-			nullable: "N",
+		yxOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "yxOrderId",
@@ -24,8 +24,8 @@ exports.yxTradeAgencyAssigned = {
 				length: "20"
 			}
 		},
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "单代理人编号",
 			name: "agentId",
@@ -35,8 +35,8 @@ exports.yxTradeAgencyAssigned = {
 				length: "20"
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -46,8 +46,8 @@ exports.yxTradeAgencyAssigned = {
 				length: "3"
 			}
 		},
-		AGENT_FEE: {
-			nullable: "N",
+		agentFee: {
+			nullable: false,
 			isPk: false,
 			description: "单代理人代理费",
 			name: "agentFee",
@@ -57,8 +57,8 @@ exports.yxTradeAgencyAssigned = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "2：扣款，3：退款",
 			name: "changeType",
@@ -68,8 +68,8 @@ exports.yxTradeAgencyAssigned = {
 				length: "3"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -79,8 +79,8 @@ exports.yxTradeAgencyAssigned = {
 				length: ""
 			}
 		},
-		SETTLE_STATUS: {
-			nullable: "N",
+		settleStatus: {
+			nullable: false,
 			isPk: false,
 			description: "结算状态",
 			name: "settleStatus",
@@ -90,8 +90,8 @@ exports.yxTradeAgencyAssigned = {
 				length: "3"
 			}
 		},
-		MEMO: {
-			nullable: "N",
+		memo: {
+			nullable: false,
 			isPk: false,
 			description: "备注",
 			name: "memo",

@@ -2,8 +2,8 @@ exports.dkBaseDownSystemMap = {
 	name: "dkBaseDownSystemMap",
 	rawName: "DK_BASE_DOWN_SYSTEM_MAP",
 	columns: {
-		MAP_ID: {
-			nullable: "N",
+		mapId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "mapId",
@@ -13,8 +13,8 @@ exports.dkBaseDownSystemMap = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "sourceSystemId",
@@ -24,8 +24,8 @@ exports.dkBaseDownSystemMap = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",

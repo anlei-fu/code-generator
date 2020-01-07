@@ -2,7 +2,7 @@ exports.userMessageConfig = {
 	name: "userMessageConfig",
 	rawName: "USER_MESSAGE_CONFIG",
 	columns: {
-		CONFIG_ID: {
+		configId: {
 			nullable: false,
 			isPk: true,
 			description: "配置编号",
@@ -13,7 +13,7 @@ exports.userMessageConfig = {
 				length: ""
 			}
 		},
-		MSG_TYPE: {
+		msgType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类: 3-短信 6-微信",
@@ -24,7 +24,7 @@ exports.userMessageConfig = {
 				length: ""
 			}
 		},
-		MSG_TITLE: {
+		msgTitle: {
 			nullable: false,
 			isPk: false,
 			description: "消息标题",
@@ -35,7 +35,7 @@ exports.userMessageConfig = {
 				length: ""
 			}
 		},
-		MSG_LEVEL: {
+		msgLevel: {
 			nullable: false,
 			isPk: false,
 			description: "消息级别",
@@ -46,7 +46,7 @@ exports.userMessageConfig = {
 				length: ""
 			}
 		},
-		TEMPLATE: {
+		template: {
 			nullable: false,
 			isPk: false,
 			description: "消息模板",
@@ -57,7 +57,7 @@ exports.userMessageConfig = {
 				length: ""
 			}
 		},
-		MSG_HEADER: {
+		msgHeader: {
 			nullable: true,
 			isPk: false,
 			description: "消息头",

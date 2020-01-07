@@ -2,8 +2,8 @@ exports.fdVReportSummaryMonth = {
 	name: "fdVReportSummaryMonth",
 	rawName: "FD_V_REPORT_SUMMARY_MONTH",
 	columns: {
-		REAL_FACE: {
-			nullable: "Y",
+		realFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realFace",
@@ -13,8 +13,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "Y",
+		channelName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelName",
@@ -24,8 +24,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REFUND_DRAW_AMOUNT: {
-			nullable: "Y",
+		refundDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "refundDrawAmount",
@@ -35,8 +35,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		UP_MANY_AMOUNT: {
-			nullable: "Y",
+		upManyAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upManyAmount",
@@ -46,8 +46,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REFUND_TOTAL_FACE: {
-			nullable: "Y",
+		refundTotalFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "refundTotalFace",
@@ -57,8 +57,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -68,8 +68,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		ONE_WAY_SEAT_PROFITS: {
-			nullable: "Y",
+		oneWaySeatProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "oneWaySeatProfits",
@@ -79,8 +79,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "Y",
+		drawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawAmount",
@@ -90,8 +90,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REAL_DRAW_AMOUNT: {
-			nullable: "Y",
+		realDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realDrawAmount",
@@ -101,8 +101,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		ONE_WAY_PROFITS: {
-			nullable: "Y",
+		oneWayProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "oneWayProfits",
@@ -112,8 +112,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -123,8 +123,8 @@ exports.fdVReportSummaryMonth = {
 				length: "20"
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "Y",
+		totalFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalFace",
@@ -134,8 +134,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REAL_RECHARGE_FACE: {
-			nullable: "Y",
+		realRechargeFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realRechargeFace",
@@ -145,8 +145,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelSourceSystem",
@@ -156,8 +156,8 @@ exports.fdVReportSummaryMonth = {
 				length: "20"
 			}
 		},
-		UP_MANY_FACE: {
-			nullable: "Y",
+		upManyFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upManyFace",
@@ -167,8 +167,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		SNAP_TIME: {
-			nullable: "Y",
+		snapTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -178,8 +178,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "Y",
+		statisticsType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "statisticsType",
@@ -189,8 +189,8 @@ exports.fdVReportSummaryMonth = {
 				length: "3"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelType",
@@ -200,8 +200,8 @@ exports.fdVReportSummaryMonth = {
 				length: "1"
 			}
 		},
-		END_COMMISSION: {
-			nullable: "Y",
+		endCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endCommission",
@@ -211,8 +211,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		TOTAL_UNIT: {
-			nullable: "Y",
+		totalUnit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalUnit",
@@ -222,8 +222,8 @@ exports.fdVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -233,8 +233,8 @@ exports.fdVReportSummaryMonth = {
 				length: "20"
 			}
 		},
-		LAST_SERVICE_FEE: {
-			nullable: "Y",
+		lastServiceFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastServiceFee",

@@ -2,8 +2,8 @@ exports.fdSystemLog = {
 	name: "fdSystemLog",
 	rawName: "FD_SYSTEM_LOG",
 	columns: {
-		LOG_ID: {
-			nullable: "N",
+		logId: {
+			nullable: false,
 			isPk: true,
 			description: "日志流水号",
 			name: "logId",
@@ -13,8 +13,8 @@ exports.fdSystemLog = {
 				length: "20"
 			}
 		},
-		OBJECT_NAME: {
-			nullable: "N",
+		objectName: {
+			nullable: false,
 			isPk: false,
 			description: "对象名称",
 			name: "objectName",
@@ -24,8 +24,8 @@ exports.fdSystemLog = {
 				length: ""
 			}
 		},
-		ERROR_CODE: {
-			nullable: "N",
+		errorCode: {
+			nullable: false,
 			isPk: false,
 			description: "错误码",
 			name: "errorCode",
@@ -35,8 +35,8 @@ exports.fdSystemLog = {
 				length: "3"
 			}
 		},
-		ERROR_DESC: {
-			nullable: "N",
+		errorDesc: {
+			nullable: false,
 			isPk: false,
 			description: "错误信息",
 			name: "errorDesc",
@@ -46,8 +46,8 @@ exports.fdSystemLog = {
 				length: ""
 			}
 		},
-		MANUAL_DESC: {
-			nullable: "Y",
+		manualDesc: {
+			nullable: true,
 			isPk: false,
 			description: "人工描述",
 			name: "manualDesc",
@@ -57,8 +57,8 @@ exports.fdSystemLog = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "发生时间",
 			name: "createdTime",
@@ -68,8 +68,8 @@ exports.fdSystemLog = {
 				length: ""
 			}
 		},
-		TRACE: {
-			nullable: "Y",
+		trace: {
+			nullable: true,
 			isPk: false,
 			description: "异常跟踪",
 			name: "trace",
@@ -79,8 +79,8 @@ exports.fdSystemLog = {
 				length: ""
 			}
 		},
-		ERROR_LEVEL: {
-			nullable: "N",
+		errorLevel: {
+			nullable: false,
 			isPk: false,
 			description: "错误级别",
 			name: "errorLevel",

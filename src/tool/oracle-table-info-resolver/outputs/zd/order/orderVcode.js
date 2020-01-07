@@ -2,7 +2,7 @@ exports.orderVcode = {
 	name: "orderVcode",
 	rawName: "ORDER_VCODE",
 	columns: {
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: true,
 			description: "订单号",
@@ -13,7 +13,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
@@ -24,7 +24,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		DOWN_PRODUCT_ID: {
+		downProductId: {
 			nullable: false,
 			isPk: false,
 			description: "下游产品编号",
@@ -35,7 +35,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型",
@@ -46,7 +46,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: false,
 			isPk: false,
 			description: "运营商编码",
@@ -57,7 +57,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		PHONE_NO: {
+		phoneNo: {
 			nullable: false,
 			isPk: false,
 			description: "手机号",
@@ -68,7 +68,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: false,
 			isPk: false,
 			description: "省份编码",
@@ -79,7 +79,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		CITY_NO: {
+		cityNo: {
 			nullable: false,
 			isPk: false,
 			description: "地市编码",
@@ -90,7 +90,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		SEND_COUNT: {
+		sendCount: {
 			nullable: false,
 			isPk: false,
 			description: "发送次数",
@@ -101,7 +101,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		SEND_STATUS: {
+		sendStatus: {
 			nullable: false,
 			isPk: false,
 			description: "短信状: 0-发送成功 20-等待发送 30-发送中 90-发送失败  99-发送未知",
@@ -112,7 +112,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		NEXT_SEND_TIME: {
+		nextSendTime: {
 			nullable: false,
 			isPk: false,
 			description: "下次发送时间",
@@ -123,7 +123,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		RESULT_MSG: {
+		resultMsg: {
 			nullable: true,
 			isPk: false,
 			description: "发送结果消息",
@@ -134,7 +134,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		USER_IP: {
+		userIp: {
 			nullable: false,
 			isPk: false,
 			description: "用户IP",
@@ -145,7 +145,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		VCODE: {
+		vcode: {
 			nullable: true,
 			isPk: false,
 			description: "用户验证码",
@@ -156,7 +156,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -167,7 +167,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		FINISH_TIME: {
+		finishTime: {
 			nullable: true,
 			isPk: false,
 			description: "完成时间",
@@ -178,7 +178,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_ID: {
+		upChannelId: {
 			nullable: true,
 			isPk: false,
 			description: "上游渠道ID",
@@ -189,7 +189,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		UP_PRODUCT_ID: {
+		upProductId: {
 			nullable: true,
 			isPk: false,
 			description: "上游产品ID",
@@ -200,7 +200,7 @@ exports.orderVcode = {
 				length: ""
 			}
 		},
-		SHARE_UID: {
+		shareUid: {
 			nullable: true,
 			isPk: false,
 			description: "推荐人UID",

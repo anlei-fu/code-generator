@@ -2,7 +2,7 @@ exports.paymentBillMatch = {
 	name: "paymentBillMatch",
 	rawName: "PAYMENT_BILL_MATCH",
 	columns: {
-		ID: {
+		id: {
 			nullable: false,
 			isPk: false,
 			description: "编号",
@@ -13,7 +13,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: true,
 			isPk: false,
 			description: "订单号 (交易与退款)",
@@ -24,7 +24,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		APPID: {
+		appid: {
 			nullable: true,
 			isPk: false,
 			description: "商户账号",
@@ -35,7 +35,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
+		orderTime: {
 			nullable: true,
 			isPk: false,
 			description: "订单时间",
@@ -46,7 +46,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		ORDER_PRICE: {
+		orderPrice: {
 			nullable: true,
 			isPk: false,
 			description: "订单金额",
@@ -57,7 +57,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		RECEIPT: {
+		receipt: {
 			nullable: true,
 			isPk: false,
 			description: "实际收款",
@@ -68,7 +68,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "订单状态",
@@ -79,7 +79,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		SERVER_FEE: {
+		serverFee: {
 			nullable: true,
 			isPk: false,
 			description: "手续费",
@@ -90,7 +90,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		FINISH_TIME: {
+		finishTime: {
 			nullable: true,
 			isPk: false,
 			description: "完成时间",
@@ -101,7 +101,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		TASK_ID: {
+		taskId: {
 			nullable: true,
 			isPk: false,
 			description: "下载任务id",
@@ -112,7 +112,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		BILL_DATE: {
+		billDate: {
 			nullable: true,
 			isPk: false,
 			description: "账单日期",
@@ -123,7 +123,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		PAY_TYPE: {
+		payType: {
 			nullable: true,
 			isPk: false,
 			description: "支付类型",
@@ -134,7 +134,7 @@ exports.paymentBillMatch = {
 				length: ""
 			}
 		},
-		STATUS_LAB: {
+		statusLab: {
 			nullable: true,
 			isPk: false,
 			description: "",

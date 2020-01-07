@@ -2,8 +2,8 @@ exports.fdVReportProfitDaily = {
 	name: "fdVReportProfitDaily",
 	rawName: "FD_V_REPORT_PROFIT_DAILY",
 	columns: {
-		PLAT_SERVICE_FEE: {
-			nullable: "Y",
+		platServiceFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "platServiceFee",
@@ -13,8 +13,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		UP_REFUND: {
-			nullable: "Y",
+		upRefund: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upRefund",
@@ -24,8 +24,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		DOWN_REFUND: {
-			nullable: "Y",
+		downRefund: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downRefund",
@@ -35,8 +35,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		PROFIT: {
-			nullable: "Y",
+		profit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "profit",
@@ -46,8 +46,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		UP_DRAW: {
-			nullable: "Y",
+		upDraw: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upDraw",
@@ -57,8 +57,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -68,8 +68,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "Y",
+		statisticsType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "statisticsType",
@@ -79,8 +79,8 @@ exports.fdVReportProfitDaily = {
 				length: "3"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -90,8 +90,8 @@ exports.fdVReportProfitDaily = {
 				length: "20"
 			}
 		},
-		DOWN_FACE: {
-			nullable: "Y",
+		downFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downFace",
@@ -101,8 +101,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		LAST_PROFIT: {
-			nullable: "Y",
+		lastProfit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastProfit",
@@ -112,8 +112,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		DOWN_COMMISSION: {
-			nullable: "Y",
+		downCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downCommission",
@@ -123,8 +123,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		DOWN_DRAW: {
-			nullable: "Y",
+		downDraw: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downDraw",
@@ -134,8 +134,8 @@ exports.fdVReportProfitDaily = {
 				length: ""
 			}
 		},
-		UP_COMMISSION: {
-			nullable: "Y",
+		upCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upCommission",

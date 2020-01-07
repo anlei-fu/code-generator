@@ -2,7 +2,7 @@ exports.upChannelDayQxstatDiff = {
 	name: "upChannelDayQxstatDiff",
 	rawName: "UP_CHANNEL_DAY_QXSTAT_DIFF",
 	columns: {
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -13,7 +13,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		FACE_SUCC: {
+		faceSucc: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -24,7 +24,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		FACE_TOTAL: {
+		faceTotal: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -35,7 +35,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		COUNT_SUCC: {
+		countSucc: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -46,7 +46,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -57,7 +57,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -68,7 +68,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		COUNT_TOTAL: {
+		countTotal: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -79,7 +79,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -90,7 +90,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		STATIS_DAY: {
+		statisDay: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -101,7 +101,7 @@ exports.upChannelDayQxstatDiff = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "",

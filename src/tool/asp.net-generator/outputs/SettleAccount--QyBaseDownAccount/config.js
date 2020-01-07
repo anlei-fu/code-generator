@@ -2,10 +2,10 @@ exports.config = {
 	delete: true,
 	add: true,
 	exportExcel:true,
-	project: "SettleAccount",
+	project: "ZDSystem",
 	table: {
-		name: "qyBaseDownAccount",
-		rawName: "QY_BASE_DOWN_ACCOUNT",
+		name: "orderDiff",
+		rawName: "Order",
 		columns: {
 			accountId: {
 				nullable: false,

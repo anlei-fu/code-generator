@@ -2,8 +2,8 @@ exports.qyTradeUpFund = {
 	name: "qyTradeUpFund",
 	rawName: "QY_TRADE_UP_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "上游变动编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		QY_ORDER_ID: {
-			nullable: "N",
+		qyOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "qyOrderId",
@@ -24,8 +24,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号(激活编号)",
 			name: "tradeOrderNo",
@@ -35,8 +35,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		TRADE_DELIVERY_NO: {
-			nullable: "N",
+		tradeDeliveryNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统发货号(上游发货编号)",
 			name: "tradeDeliveryNo",
@@ -46,8 +46,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		EXT_DELIVERY_NO: {
-			nullable: "N",
+		extDeliveryNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展发货编号(下游订单号)",
 			name: "extDeliveryNo",
@@ -57,8 +57,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		EXT_ORDER_NO: {
-			nullable: "N",
+		extOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展订单号交易(权益卡号)",
 			name: "extOrderNo",
@@ -68,8 +68,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		EXT_CONTRACT_NO: {
-			nullable: "N",
+		extContractNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展号(合同编号)",
 			name: "extContractNo",
@@ -79,8 +79,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		EXT_USE_NO: {
-			nullable: "N",
+		extUseNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展号(权益卡使用编号)",
 			name: "extUseNo",
@@ -90,8 +90,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		PRODUCT_NAME: {
-			nullable: "N",
+		productName: {
+			nullable: false,
 			isPk: false,
 			description: "权益包名称",
 			name: "productName",
@@ -101,8 +101,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -112,8 +112,8 @@ exports.qyTradeUpFund = {
 				length: "3"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -123,8 +123,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户",
 			name: "downAccountId",
@@ -134,8 +134,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游所属公司",
 			name: "downCompanyId",
@@ -145,8 +145,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -156,8 +156,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		UP_ACCOUNT_ID: {
-			nullable: "N",
+		upAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "上游账户",
 			name: "upAccountId",
@@ -167,8 +167,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_COMPANY_ID: {
-			nullable: "N",
+		upCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "上游所属公司",
 			name: "upCompanyId",
@@ -178,8 +178,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		ORDER_FACE: {
-			nullable: "N",
+		orderFace: {
+			nullable: false,
 			isPk: false,
 			description: "订单面值(权益包价值)",
 			name: "orderFace",
@@ -189,8 +189,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		ORDER_AMOUNT: {
-			nullable: "N",
+		orderAmount: {
+			nullable: false,
 			isPk: false,
 			description: "订单金额(权益包销售金额)",
 			name: "orderAmount",
@@ -200,8 +200,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_UNIT: {
-			nullable: "N",
+		downDrawUnit: {
+			nullable: false,
 			isPk: false,
 			description: "下游充值量（权益扣除价值量）",
 			name: "downDrawUnit",
@@ -211,8 +211,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_FACE: {
-			nullable: "N",
+		downDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款面值（产品面值）",
 			name: "downDrawFace",
@@ -222,8 +222,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_AMOUNT: {
-			nullable: "N",
+		downDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款金额（权益销售金额）,上下游比例相等",
 			name: "downDrawAmount",
@@ -233,8 +233,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_REAL_AMOUNT: {
-			nullable: "N",
+		downRealAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游实际金额（权益销售金额）",
 			name: "downRealAmount",
@@ -244,8 +244,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		OUT_PUT_TAX: {
-			nullable: "N",
+		outPutTax: {
+			nullable: false,
 			isPk: false,
 			description: "销项税",
 			name: "outPutTax",
@@ -255,8 +255,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_UNIT: {
-			nullable: "N",
+		upDrawUnit: {
+			nullable: false,
 			isPk: false,
 			description: "上游充值量",
 			name: "upDrawUnit",
@@ -266,8 +266,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_FACE: {
-			nullable: "N",
+		upDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款面值",
 			name: "upDrawFace",
@@ -277,8 +277,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_AMOUNT: {
-			nullable: "N",
+		upDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款金额",
 			name: "upDrawAmount",
@@ -288,8 +288,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_REAL_AMOUNT: {
-			nullable: "N",
+		upRealAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游实际金额",
 			name: "upRealAmount",
@@ -299,8 +299,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		IN_PUT_TAX: {
-			nullable: "N",
+		inPutTax: {
+			nullable: false,
 			isPk: false,
 			description: "进项税",
 			name: "inPutTax",
@@ -310,8 +310,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -321,8 +321,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变更类型:加款2：交易扣款3：交易退款4：提款",
 			name: "changeType",
@@ -332,8 +332,8 @@ exports.qyTradeUpFund = {
 				length: "3"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -343,8 +343,8 @@ exports.qyTradeUpFund = {
 				length: "3"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -354,8 +354,8 @@ exports.qyTradeUpFund = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "N",
+		memo: {
+			nullable: false,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -365,8 +365,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "N",
+		orderTime: {
+			nullable: false,
 			isPk: false,
 			description: "订单日期(激活时间)",
 			name: "orderTime",
@@ -376,8 +376,8 @@ exports.qyTradeUpFund = {
 				length: ""
 			}
 		},
-		OUT_CHANGE_TIME: {
-			nullable: "N",
+		outChangeTime: {
+			nullable: false,
 			isPk: false,
 			description: "资金变动时间（发货完成时间）",
 			name: "outChangeTime",

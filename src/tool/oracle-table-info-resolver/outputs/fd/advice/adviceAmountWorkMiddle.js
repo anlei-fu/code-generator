@@ -2,8 +2,8 @@ exports.adviceAmountWorkMiddle = {
 	name: "adviceAmountWorkMiddle",
 	rawName: "ADVICE_AMOUNT_WORK_MIDDLE",
 	columns: {
-		TWELVE_AMOUNT: {
-			nullable: "Y",
+		twelveAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twelveAmount",
@@ -13,8 +13,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		TWO_DIFF: {
-			nullable: "Y",
+		twoDiff: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twoDiff",
@@ -24,8 +24,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		TWO_AMOUNT: {
-			nullable: "Y",
+		twoAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twoAmount",
@@ -35,8 +35,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		TWELVE_DIFF: {
-			nullable: "Y",
+		twelveDiff: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twelveDiff",
@@ -46,8 +46,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelName",
@@ -57,8 +57,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -68,8 +68,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		INNER_BALANCE: {
-			nullable: "N",
+		innerBalance: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "innerBalance",
@@ -79,8 +79,8 @@ exports.adviceAmountWorkMiddle = {
 				length: "20"
 			}
 		},
-		ADVICE_TWELVE: {
-			nullable: "Y",
+		adviceTwelve: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "adviceTwelve",
@@ -90,8 +90,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		ADVICE_TWO: {
-			nullable: "Y",
+		adviceTwo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "adviceTwo",
@@ -101,8 +101,8 @@ exports.adviceAmountWorkMiddle = {
 				length: ""
 			}
 		},
-		HALF_AMOUNT: {
-			nullable: "Y",
+		halfAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "halfAmount",

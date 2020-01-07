@@ -2,8 +2,8 @@ exports.fdB2eBankErrorCode = {
 	name: "fdB2eBankErrorCode",
 	rawName: "FD_B2E_BANK_ERROR_CODE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "银行子账户",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdB2eBankErrorCode = {
 				length: "20"
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型",
 			name: "bankType",
@@ -24,8 +24,8 @@ exports.fdB2eBankErrorCode = {
 				length: "3"
 			}
 		},
-		ERR_CODE_TYPE: {
-			nullable: "N",
+		errCodeType: {
+			nullable: false,
 			isPk: false,
 			description: "错误码类型",
 			name: "errCodeType",
@@ -35,8 +35,8 @@ exports.fdB2eBankErrorCode = {
 				length: ""
 			}
 		},
-		ERR_CODE: {
-			nullable: "N",
+		errCode: {
+			nullable: false,
 			isPk: false,
 			description: "错误码",
 			name: "errCode",
@@ -46,8 +46,8 @@ exports.fdB2eBankErrorCode = {
 				length: ""
 			}
 		},
-		DEAL_CODE: {
-			nullable: "N",
+		dealCode: {
+			nullable: false,
 			isPk: false,
 			description: "处理码，success、fail、unkown",
 			name: "dealCode",
@@ -57,8 +57,8 @@ exports.fdB2eBankErrorCode = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态，0启用，1禁用",
 			name: "status",

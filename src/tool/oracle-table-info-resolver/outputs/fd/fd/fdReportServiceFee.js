@@ -2,8 +2,8 @@ exports.fdReportServiceFee = {
 	name: "fdReportServiceFee",
 	rawName: "FD_REPORT_SERVICE_FEE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportServiceFee = {
 				length: "20"
 			}
 		},
-		REPORT_MONTH: {
-			nullable: "N",
+		reportMonth: {
+			nullable: false,
 			isPk: false,
 			description: "手续费月份",
 			name: "reportMonth",
@@ -24,8 +24,8 @@ exports.fdReportServiceFee = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.fdReportServiceFee = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.fdReportServiceFee = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "手续费",
 			name: "serviceFee",
@@ -57,8 +57,8 @@ exports.fdReportServiceFee = {
 				length: "20"
 			}
 		},
-		LAST_MONTH: {
-			nullable: "Y",
+		lastMonth: {
+			nullable: true,
 			isPk: false,
 			description: "补录月份",
 			name: "lastMonth",
@@ -68,8 +68,8 @@ exports.fdReportServiceFee = {
 				length: ""
 			}
 		},
-		LAST_MSG: {
-			nullable: "Y",
+		lastMsg: {
+			nullable: true,
 			isPk: false,
 			description: "补录说明",
 			name: "lastMsg",
@@ -79,8 +79,8 @@ exports.fdReportServiceFee = {
 				length: ""
 			}
 		},
-		LAST_SERVICE_FEE: {
-			nullable: "N",
+		lastServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "补录金额",
 			name: "lastServiceFee",

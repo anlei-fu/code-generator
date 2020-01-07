@@ -2,8 +2,8 @@ exports.incomeDownTrade = {
 	name: "incomeDownTrade",
 	rawName: "INCOME_DOWN_TRADE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeDownTrade = {
 				length: "20"
 			}
 		},
-		TRADE_DATE: {
-			nullable: "N",
+		tradeDate: {
+			nullable: false,
 			isPk: false,
 			description: "交易日期",
 			name: "tradeDate",
@@ -24,8 +24,8 @@ exports.incomeDownTrade = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.incomeDownTrade = {
 				length: ""
 			}
 		},
-		TRADE_TYPE: {
-			nullable: "N",
+		tradeType: {
+			nullable: false,
 			isPk: false,
 			description: "交易分类",
 			name: "tradeType",
@@ -46,8 +46,8 @@ exports.incomeDownTrade = {
 				length: "3"
 			}
 		},
-		TRADE_AMOUNT: {
-			nullable: "N",
+		tradeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易量",
 			name: "tradeAmount",
@@ -57,8 +57,8 @@ exports.incomeDownTrade = {
 				length: "20"
 			}
 		},
-		TRADE_RV_PROFIT: {
-			nullable: "N",
+		tradeRvProfit: {
+			nullable: false,
 			isPk: false,
 			description: "交易平账利润",
 			name: "tradeRvProfit",
@@ -68,8 +68,8 @@ exports.incomeDownTrade = {
 				length: "20"
 			}
 		},
-		TRADE_PROFIT: {
-			nullable: "N",
+		tradeProfit: {
+			nullable: false,
 			isPk: false,
 			description: "利润（包含平账）",
 			name: "tradeProfit",

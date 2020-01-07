@@ -2,7 +2,7 @@ exports.failMessageOrder = {
 	name: "failMessageOrder",
 	rawName: "FAIL_MESSAGE_ORDER",
 	columns: {
-		SEND_ORDER_NO: {
+		sendOrderNo: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -13,7 +13,7 @@ exports.failMessageOrder = {
 				length: ""
 			}
 		},
-		PHONE: {
+		phone: {
 			nullable: false,
 			isPk: false,
 			description: "",
@@ -24,7 +24,7 @@ exports.failMessageOrder = {
 				length: ""
 			}
 		},
-		DEAL_STATUS: {
+		dealStatus: {
 			nullable: false,
 			isPk: false,
 			description: "",
@@ -35,7 +35,7 @@ exports.failMessageOrder = {
 				length: ""
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "",
@@ -46,7 +46,7 @@ exports.failMessageOrder = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "",
@@ -57,7 +57,7 @@ exports.failMessageOrder = {
 				length: ""
 			}
 		},
-		MESSAGE: {
+		message: {
 			nullable: false,
 			isPk: false,
 			description: "",

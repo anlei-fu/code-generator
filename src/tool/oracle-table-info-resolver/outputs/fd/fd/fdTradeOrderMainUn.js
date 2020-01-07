@@ -2,8 +2,8 @@ exports.fdTradeOrderMainUn = {
 	name: "fdTradeOrderMainUn",
 	rawName: "FD_TRADE_ORDER_MAIN_UN",
 	columns: {
-		FD_ORDER_ID: {
-			nullable: "N",
+		fdOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "fdOrderId",
@@ -13,8 +13,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -24,8 +24,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款账号",
 			name: "downAccountId",
@@ -35,8 +35,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游公司编号",
 			name: "downCompanyId",
@@ -46,8 +46,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -57,8 +57,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		EXT_ORDER_NO: {
-			nullable: "N",
+		extOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展订单号交易系统供",
 			name: "extOrderNo",
@@ -68,8 +68,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -79,8 +79,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "订单添加时间",
 			name: "createTime",
@@ -90,8 +90,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "N",
+		orderTime: {
+			nullable: false,
 			isPk: false,
 			description: "订单日期(交易系统下单日期)",
 			name: "orderTime",
@@ -101,8 +101,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -112,8 +112,8 @@ exports.fdTradeOrderMainUn = {
 				length: "3"
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "N",
+		totalFace: {
+			nullable: false,
 			isPk: false,
 			description: "总面值",
 			name: "totalFace",
@@ -123,8 +123,8 @@ exports.fdTradeOrderMainUn = {
 				length: "18"
 			}
 		},
-		DOWN_ORDER_AMOUNT: {
-			nullable: "N",
+		downOrderAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游销售金额",
 			name: "downOrderAmount",
@@ -134,8 +134,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		UP_PHONE_AMOUNT: {
-			nullable: "N",
+		upPhoneAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游手机成本",
 			name: "upPhoneAmount",
@@ -145,8 +145,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		UP_BILL_AMOUNT: {
-			nullable: "N",
+		upBillAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游预存话费成本",
 			name: "upBillAmount",
@@ -156,8 +156,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		DOWN_ORDER_REFUND: {
-			nullable: "N",
+		downOrderRefund: {
+			nullable: false,
 			isPk: false,
 			description: "下游销售退款",
 			name: "downOrderRefund",
@@ -167,8 +167,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		UP_PHONE_REFUND: {
-			nullable: "N",
+		upPhoneRefund: {
+			nullable: false,
 			isPk: false,
 			description: "上游手机成本退款",
 			name: "upPhoneRefund",
@@ -178,8 +178,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		UP_BILL_REFUND: {
-			nullable: "N",
+		upBillRefund: {
+			nullable: false,
 			isPk: false,
 			description: "上游预存话费成本退款",
 			name: "upBillRefund",
@@ -189,8 +189,8 @@ exports.fdTradeOrderMainUn = {
 				length: "20"
 			}
 		},
-		USER_ID: {
-			nullable: "N",
+		userId: {
+			nullable: false,
 			isPk: false,
 			description: "用户id",
 			name: "userId",
@@ -200,8 +200,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		PHONE_NO: {
-			nullable: "N",
+		phoneNo: {
+			nullable: false,
 			isPk: false,
 			description: "合约机号码",
 			name: "phoneNo",
@@ -211,8 +211,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		USER_NAME: {
-			nullable: "N",
+		userName: {
+			nullable: false,
 			isPk: false,
 			description: "用户姓名",
 			name: "userName",
@@ -222,8 +222,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		ID_CARD_NO: {
-			nullable: "N",
+		idCardNo: {
+			nullable: false,
 			isPk: false,
 			description: "用户身份证号",
 			name: "idCardNo",
@@ -233,8 +233,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		REC_ADDRESS: {
-			nullable: "N",
+		recAddress: {
+			nullable: false,
 			isPk: false,
 			description: "用户收货地址",
 			name: "recAddress",
@@ -244,8 +244,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		SALE_USER: {
-			nullable: "N",
+		saleUser: {
+			nullable: false,
 			isPk: false,
 			description: "销售客服",
 			name: "saleUser",
@@ -255,8 +255,8 @@ exports.fdTradeOrderMainUn = {
 				length: ""
 			}
 		},
-		HAS_INVOICE: {
-			nullable: "N",
+		hasInvoice: {
+			nullable: false,
 			isPk: false,
 			description: "是否开票，0.已开，1未开",
 			name: "hasInvoice",

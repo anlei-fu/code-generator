@@ -2,8 +2,8 @@ exports.fdB2eBankReceiveAccount = {
 	name: "fdB2eBankReceiveAccount",
 	rawName: "FD_B2E_BANK_RECEIVE_ACCOUNT",
 	columns: {
-		CARD_NO: {
-			nullable: "N",
+		cardNo: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡号[来:FD_BANK_ACCOUNT_INFO]",
 			name: "cardNo",
@@ -13,8 +13,8 @@ exports.fdB2eBankReceiveAccount = {
 				length: ""
 			}
 		},
-		CARD_NAME: {
-			nullable: "Y",
+		cardName: {
+			nullable: true,
 			isPk: false,
 			description: "账户名称[来:FD_BANK_ACCOUNT_INFO]",
 			name: "cardName",
@@ -24,8 +24,8 @@ exports.fdB2eBankReceiveAccount = {
 				length: ""
 			}
 		},
-		QUERY_INTERVAL_TIME: {
-			nullable: "N",
+		queryIntervalTime: {
+			nullable: false,
 			isPk: false,
 			description: "查询间隔时间",
 			name: "queryIntervalTime",
@@ -35,8 +35,8 @@ exports.fdB2eBankReceiveAccount = {
 				length: "20"
 			}
 		},
-		USE_TYPE: {
-			nullable: "Y",
+		useType: {
+			nullable: true,
 			isPk: false,
 			description: "用途，下游收款 等",
 			name: "useType",
@@ -46,8 +46,8 @@ exports.fdB2eBankReceiveAccount = {
 				length: "3"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "账户状态",
 			name: "status",
@@ -57,8 +57,8 @@ exports.fdB2eBankReceiveAccount = {
 				length: "1"
 			}
 		},
-		LAST_QUERY_TIME: {
-			nullable: "N",
+		lastQueryTime: {
+			nullable: false,
 			isPk: false,
 			description: "最后查询成功时间",
 			name: "lastQueryTime",
@@ -68,8 +68,8 @@ exports.fdB2eBankReceiveAccount = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "银行账户编号[FD_BANK_ACCOUNT_INFO.account_id]",
 			name: "accountId",

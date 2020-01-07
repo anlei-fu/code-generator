@@ -2,8 +2,8 @@ exports.fdB2eUpChannelConfig = {
 	name: "fdB2eUpChannelConfig",
 	rawName: "FD_B2E_UP_CHANNEL_CONFIG",
 	columns: {
-		TYPE_ID: {
-			nullable: "N",
+		typeId: {
+			nullable: false,
 			isPk: false,
 			description: "规则编号",
 			name: "typeId",
@@ -13,8 +13,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "20"
 			}
 		},
-		DATE_RANGE_TYPE: {
-			nullable: "N",
+		dateRangeType: {
+			nullable: false,
 			isPk: false,
 			description: "时间范围类型0.高峰期，1正常时期",
 			name: "dateRangeType",
@@ -24,8 +24,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "1"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道",
 			name: "upChannelNo",
@@ -35,8 +35,8 @@ exports.fdB2eUpChannelConfig = {
 				length: ""
 			}
 		},
-		AMOUNT_CALC_TYPE: {
-			nullable: "N",
+		amountCalcType: {
+			nullable: false,
 			isPk: false,
 			description: "转账计算方法",
 			name: "amountCalcType",
@@ -46,8 +46,8 @@ exports.fdB2eUpChannelConfig = {
 				length: ""
 			}
 		},
-		CALC_TYPE_MEMO: {
-			nullable: "Y",
+		calcTypeMemo: {
+			nullable: true,
 			isPk: false,
 			description: "方法备注",
 			name: "calcTypeMemo",
@@ -57,8 +57,8 @@ exports.fdB2eUpChannelConfig = {
 				length: ""
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "N",
+		warnBalance: {
+			nullable: false,
 			isPk: false,
 			description: "预警余额",
 			name: "warnBalance",
@@ -68,8 +68,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "20"
 			}
 		},
-		MAX_CHANNEL_BALANCE: {
-			nullable: "N",
+		maxChannelBalance: {
+			nullable: false,
 			isPk: false,
 			description: "最大渠道余额(加款后余额不能超过此余额)",
 			name: "maxChannelBalance",
@@ -79,8 +79,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "20"
 			}
 		},
-		MIN_ADD_AMOUNT: {
-			nullable: "N",
+		minAddAmount: {
+			nullable: false,
 			isPk: false,
 			description: "最小加款金额",
 			name: "minAddAmount",
@@ -90,8 +90,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "20"
 			}
 		},
-		MAX_DAY_ADD_AMOUNT: {
-			nullable: "N",
+		maxDayAddAmount: {
+			nullable: false,
 			isPk: false,
 			description: "最大单日加款金额",
 			name: "maxDayAddAmount",
@@ -101,8 +101,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "20"
 			}
 		},
-		ADD_DURATION_HOUR: {
-			nullable: "N",
+		addDurationHour: {
+			nullable: false,
 			isPk: false,
 			description: "加款金额能持续扣款的小时数",
 			name: "addDurationHour",
@@ -112,8 +112,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "20"
 			}
 		},
-		AUDIT_STATUS: {
-			nullable: "N",
+		auditStatus: {
+			nullable: false,
 			isPk: false,
 			description: "审核状态",
 			name: "auditStatus",
@@ -123,8 +123,8 @@ exports.fdB2eUpChannelConfig = {
 				length: "2"
 			}
 		},
-		CHANNEL_ACCOUNT_ID: {
-			nullable: "N",
+		channelAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "渠道账户",
 			name: "channelAccountId",

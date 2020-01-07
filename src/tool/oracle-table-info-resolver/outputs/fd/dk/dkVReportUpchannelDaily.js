@@ -2,8 +2,8 @@ exports.dkVReportUpchannelDaily = {
 	name: "dkVReportUpchannelDaily",
 	rawName: "DK_V_REPORT_UPCHANNEL_DAILY",
 	columns: {
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -13,8 +13,8 @@ exports.dkVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		ALL_AMOUNT: {
-			nullable: "Y",
+		allAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "allAmount",
@@ -24,8 +24,8 @@ exports.dkVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		ALL_UP: {
-			nullable: "Y",
+		allUp: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "allUp",
@@ -35,8 +35,8 @@ exports.dkVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		UP_PAY: {
-			nullable: "Y",
+		upPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upPay",
@@ -46,8 +46,8 @@ exports.dkVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		UP_PAY_AMOUNT: {
-			nullable: "Y",
+		upPayAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upPayAmount",
@@ -57,8 +57,8 @@ exports.dkVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		UP_INCOME: {
-			nullable: "Y",
+		upIncome: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upIncome",
@@ -68,8 +68,8 @@ exports.dkVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_STATUS: {
-			nullable: "N",
+		accountStatus: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountStatus",
@@ -79,8 +79,8 @@ exports.dkVReportUpchannelDaily = {
 				length: "1"
 			}
 		},
-		UP_INCOME_AMOUNT: {
-			nullable: "Y",
+		upIncomeAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upIncomeAmount",

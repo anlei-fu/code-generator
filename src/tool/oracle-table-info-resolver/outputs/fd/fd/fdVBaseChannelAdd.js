@@ -2,8 +2,8 @@ exports.fdVBaseChannelAdd = {
 	name: "fdVBaseChannelAdd",
 	rawName: "FD_V_BASE_CHANNEL_ADD",
 	columns: {
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",
@@ -13,8 +13,8 @@ exports.fdVBaseChannelAdd = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "Y",
+		accountId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdVBaseChannelAdd = {
 				length: "20"
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "Y",
+		accountType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountType",
@@ -35,8 +35,8 @@ exports.fdVBaseChannelAdd = {
 				length: ""
 			}
 		},
-		SNAP_TIME: {
-			nullable: "Y",
+		snapTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -46,8 +46,8 @@ exports.fdVBaseChannelAdd = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "Y",
+		channelNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelNo",

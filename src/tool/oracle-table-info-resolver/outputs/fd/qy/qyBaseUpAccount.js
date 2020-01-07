@@ -2,8 +2,8 @@ exports.qyBaseUpAccount = {
 	name: "qyBaseUpAccount",
 	rawName: "QY_BASE_UP_ACCOUNT",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.qyBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账号名称",
 			name: "accountName",
@@ -24,8 +24,8 @@ exports.qyBaseUpAccount = {
 				length: ""
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "N",
+		queryBalance: {
+			nullable: false,
 			isPk: false,
 			description: "查询余额",
 			name: "queryBalance",
@@ -35,8 +35,8 @@ exports.qyBaseUpAccount = {
 				length: "20"
 			}
 		},
-		INNER_BALANCE: {
-			nullable: "N",
+		innerBalance: {
+			nullable: false,
 			isPk: false,
 			description: "理论余额",
 			name: "innerBalance",
@@ -46,8 +46,8 @@ exports.qyBaseUpAccount = {
 				length: "20"
 			}
 		},
-		CREATED_USER: {
-			nullable: "N",
+		createdUser: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdUser",
@@ -57,8 +57,8 @@ exports.qyBaseUpAccount = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -68,8 +68,8 @@ exports.qyBaseUpAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -79,8 +79,8 @@ exports.qyBaseUpAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",

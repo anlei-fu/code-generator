@@ -15,7 +15,7 @@ class Document {
          * @param {Number} weight 
          * @param {String} name 
          */
-        constructor(content, weight, name) {
+        constructor (content, weight, name) {
                 this.conetnt = content;
                 this.wight = weight;
                 this.name = name;
@@ -37,7 +37,7 @@ const DEFAULT_STOP_WORDS = [
 
 class SimpleFullTextSearcher {
 
-        constructor() {
+        constructor () {
 
                 /**
                  * Document map, "key" document name, "value" @see Document 
@@ -103,6 +103,8 @@ class SimpleFullTextSearcher {
 
                         this._documentsMap.get(document.name).totalTokenCount = tokens.length;
                 });
+
+                console.log(this._tokenDocumentsMap);
         }
 
         /**
@@ -307,7 +309,7 @@ class SimpleFullTextSearcher {
          * @param {Number} documentTotalTokenCount 
          */
         _caculateLengthNormFactor(hittedDocumentTokenCount, documentTotalTokenCount) {
-                return 1.0 / Math.sqrt(documentTotalTokenCount - hittedDocumentTokenCount);
+                return 1.0 / Math.sqrt(documentTotalTokenCount + 1 - hittedDocumentTokenCount);
         }
 
         /**

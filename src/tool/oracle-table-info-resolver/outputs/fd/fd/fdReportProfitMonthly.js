@@ -2,8 +2,8 @@ exports.fdReportProfitMonthly = {
 	name: "fdReportProfitMonthly",
 	rawName: "FD_REPORT_PROFIT_MONTHLY",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -24,8 +24,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "Y",
+		billType: {
+			nullable: true,
 			isPk: false,
 			description: "利润类:1-前向2-后向",
 			name: "billType",
@@ -35,8 +35,8 @@ exports.fdReportProfitMonthly = {
 				length: "1"
 			}
 		},
-		RECHARGE_FEE: {
-			nullable: "N",
+		rechargeFee: {
+			nullable: false,
 			isPk: false,
 			description: "充值金额",
 			name: "rechargeFee",
@@ -46,8 +46,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		DOWN_REFUND_FEE: {
-			nullable: "N",
+		downRefundFee: {
+			nullable: false,
 			isPk: false,
 			description: "下游退款",
 			name: "downRefundFee",
@@ -57,8 +57,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		UP_COST_FEE: {
-			nullable: "N",
+		upCostFee: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款",
 			name: "upCostFee",
@@ -68,8 +68,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		UP_REFUND_FEE: {
-			nullable: "N",
+		upRefundFee: {
+			nullable: false,
 			isPk: false,
 			description: "上游退款",
 			name: "upRefundFee",
@@ -79,8 +79,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "手续费",
 			name: "serviceFee",
@@ -90,8 +90,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		TOTAL_PROFITS: {
-			nullable: "N",
+		totalProfits: {
+			nullable: false,
 			isPk: false,
 			description: "总利润",
 			name: "totalProfits",
@@ -101,8 +101,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		DRAW_PROFITS: {
-			nullable: "N",
+		drawProfits: {
+			nullable: false,
 			isPk: false,
 			description: "已提取利润",
 			name: "drawProfits",
@@ -112,8 +112,8 @@ exports.fdReportProfitMonthly = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "月份",
 			name: "snapTime",

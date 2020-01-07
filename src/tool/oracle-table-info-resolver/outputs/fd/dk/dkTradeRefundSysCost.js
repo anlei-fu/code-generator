@@ -2,8 +2,8 @@ exports.dkTradeRefundSysCost = {
 	name: "dkTradeRefundSysCost",
 	rawName: "DK_TRADE_REFUND_SYS_COST",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.dkTradeRefundSysCost = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "记录创建的日期",
 			name: "recordDate",
@@ -24,8 +24,8 @@ exports.dkTradeRefundSysCost = {
 				length: ""
 			}
 		},
-		DK_ORDER_ID: {
-			nullable: "N",
+		dkOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "dkOrderId",
@@ -35,8 +35,8 @@ exports.dkTradeRefundSysCost = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.dkTradeRefundSysCost = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道支付账户编号",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.dkTradeRefundSysCost = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -68,8 +68,8 @@ exports.dkTradeRefundSysCost = {
 				length: "3"
 			}
 		},
-		SYS_COST: {
-			nullable: "N",
+		sysCost: {
+			nullable: false,
 			isPk: false,
 			description: "垫付金额(元)",
 			name: "sysCost",
@@ -79,8 +79,8 @@ exports.dkTradeRefundSysCost = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "Y",
+		tradeOrderNo: {
+			nullable: true,
 			isPk: false,
 			description: "交易订单号",
 			name: "tradeOrderNo",
@@ -90,8 +90,8 @@ exports.dkTradeRefundSysCost = {
 				length: ""
 			}
 		},
-		TRADE_REFUND_NO: {
-			nullable: "Y",
+		tradeRefundNo: {
+			nullable: true,
 			isPk: false,
 			description: "退款单号",
 			name: "tradeRefundNo",
@@ -101,8 +101,8 @@ exports.dkTradeRefundSysCost = {
 				length: ""
 			}
 		},
-		BILL_TYPE: {
-			nullable: "Y",
+		billType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "billType",

@@ -2,8 +2,8 @@ exports.supReportDailyManual = {
 	name: "supReportDailyManual",
 	rawName: "SUP_REPORT_DAILY_MANUAL",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		REPORT_DATE: {
-			nullable: "N",
+		reportDate: {
+			nullable: false,
 			isPk: false,
 			description: "数据日期",
 			name: "reportDate",
@@ -24,8 +24,8 @@ exports.supReportDailyManual = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.supReportDailyManual = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -46,8 +46,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -57,8 +57,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		SYSTEM_ID: {
-			nullable: "N",
+		systemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "systemId",
@@ -68,8 +68,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型,1：上游渠道，2：下游渠道",
 			name: "channelType",
@@ -79,8 +79,8 @@ exports.supReportDailyManual = {
 				length: "3"
 			}
 		},
-		WAY_CHANGE_COUNT: {
-			nullable: "N",
+		wayChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "在途张数增加数",
 			name: "wayChangeCount",
@@ -90,8 +90,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		WAY_CHANGE_FACE: {
-			nullable: "N",
+		wayChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "在途面值增加数",
 			name: "wayChangeFace",
@@ -101,8 +101,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		WAY_CHANGE_AMOUNT: {
-			nullable: "N",
+		wayChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "在途金额增加数",
 			name: "wayChangeAmount",
@@ -112,8 +112,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_COUNT: {
-			nullable: "N",
+		physicalChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡张数增加数",
 			name: "physicalChangeCount",
@@ -123,8 +123,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_FACE: {
-			nullable: "N",
+		physicalChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡面值增加数",
 			name: "physicalChangeFace",
@@ -134,8 +134,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_AMOUNT: {
-			nullable: "N",
+		physicalChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡金额增加数",
 			name: "physicalChangeAmount",
@@ -145,8 +145,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CHANGE_COUNT: {
-			nullable: "N",
+		electronicChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡张数增加数",
 			name: "electronicChangeCount",
@@ -156,8 +156,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CHANGE_FACE: {
-			nullable: "N",
+		electronicChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡面值增加数",
 			name: "electronicChangeFace",
@@ -167,8 +167,8 @@ exports.supReportDailyManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CHANGE_AMOUNT: {
-			nullable: "N",
+		electronicChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡金额增加数",
 			name: "electronicChangeAmount",

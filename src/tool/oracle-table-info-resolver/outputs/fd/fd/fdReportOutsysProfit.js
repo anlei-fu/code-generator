@@ -2,8 +2,8 @@ exports.fdReportOutsysProfit = {
 	name: "fdReportOutsysProfit",
 	rawName: "FD_REPORT_OUTSYS_PROFIT",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportOutsysProfit = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "外部系统编号",
 			name: "sourceSystemId",
@@ -24,8 +24,8 @@ exports.fdReportOutsysProfit = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "记录时间",
 			name: "recordDate",
@@ -35,8 +35,8 @@ exports.fdReportOutsysProfit = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -46,8 +46,8 @@ exports.fdReportOutsysProfit = {
 				length: ""
 			}
 		},
-		PROFIT: {
-			nullable: "N",
+		profit: {
+			nullable: false,
 			isPk: false,
 			description: "利润数据",
 			name: "profit",

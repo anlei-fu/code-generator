@@ -2,8 +2,8 @@ exports.fdTradeTimeDiffer = {
 	name: "fdTradeTimeDiffer",
 	rawName: "FD_TRADE_TIME_DIFFER",
 	columns: {
-		DOWN_FIRST_FACE: {
-			nullable: "N",
+		downFirstFace: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "downFirstFace",
@@ -13,8 +13,8 @@ exports.fdTradeTimeDiffer = {
 				length: "20"
 			}
 		},
-		FD_ORDER_ID: {
-			nullable: "N",
+		fdOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "fdOrderId",
@@ -24,8 +24,8 @@ exports.fdTradeTimeDiffer = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.fdTradeTimeDiffer = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "businessType",
@@ -46,8 +46,8 @@ exports.fdTradeTimeDiffer = {
 				length: "3"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.fdTradeTimeDiffer = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -68,8 +68,8 @@ exports.fdTradeTimeDiffer = {
 				length: ""
 			}
 		},
-		DIFFER_ID: {
-			nullable: "N",
+		differId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "differId",
@@ -79,8 +79,8 @@ exports.fdTradeTimeDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_FIRST_AMOUNT: {
-			nullable: "N",
+		downFirstAmount: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "downFirstAmount",

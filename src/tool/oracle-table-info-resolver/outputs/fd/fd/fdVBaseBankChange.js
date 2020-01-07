@@ -2,8 +2,8 @@ exports.fdVBaseBankChange = {
 	name: "fdVBaseBankChange",
 	rawName: "FD_V_BASE_BANK_CHANGE",
 	columns: {
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",
@@ -13,8 +13,8 @@ exports.fdVBaseBankChange = {
 				length: ""
 			}
 		},
-		MINUS_AMOUNT: {
-			nullable: "Y",
+		minusAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "minusAmount",
@@ -24,8 +24,8 @@ exports.fdVBaseBankChange = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.fdVBaseBankChange = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -46,8 +46,8 @@ exports.fdVBaseBankChange = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "Y",
+		snapTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "snapTime",

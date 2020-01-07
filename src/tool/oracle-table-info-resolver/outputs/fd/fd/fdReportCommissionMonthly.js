@@ -2,8 +2,8 @@ exports.fdReportCommissionMonthly = {
 	name: "fdReportCommissionMonthly",
 	rawName: "FD_REPORT_COMMISSION_MONTHLY",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportCommissionMonthly = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdReportCommissionMonthly = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型1.上游2．下游",
 			name: "channelType",
@@ -35,8 +35,8 @@ exports.fdReportCommissionMonthly = {
 				length: "1"
 			}
 		},
-		TOTAL_COMMISSION: {
-			nullable: "N",
+		totalCommission: {
+			nullable: false,
 			isPk: false,
 			description: "佣金",
 			name: "totalCommission",
@@ -46,8 +46,8 @@ exports.fdReportCommissionMonthly = {
 				length: "20"
 			}
 		},
-		DRAW_COMMISSION: {
-			nullable: "N",
+		drawCommission: {
+			nullable: false,
 			isPk: false,
 			description: "提取或支付佣金",
 			name: "drawCommission",
@@ -57,8 +57,8 @@ exports.fdReportCommissionMonthly = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "月份",
 			name: "snapTime",

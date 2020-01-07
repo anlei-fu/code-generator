@@ -2,7 +2,7 @@ exports.blackUser = {
 	name: "blackUser",
 	rawName: "BLACK_USER",
 	columns: {
-		ACCOUNT_TYPE: {
+		accountType: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -13,7 +13,7 @@ exports.blackUser = {
 				length: ""
 			}
 		},
-		ZFB_ACCOUNT: {
+		zfbAccount: {
 			nullable: true,
 			isPk: false,
 			description: "",

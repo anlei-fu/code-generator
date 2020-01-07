@@ -2,8 +2,8 @@ exports.incomeDownUpConfig = {
 	name: "incomeDownUpConfig",
 	rawName: "INCOME_DOWN_UP_CONFIG",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeDownUpConfig = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",

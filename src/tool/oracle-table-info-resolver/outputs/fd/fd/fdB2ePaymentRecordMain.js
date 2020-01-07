@@ -2,8 +2,8 @@ exports.fdB2ePaymentRecordMain = {
 	name: "fdB2ePaymentRecordMain",
 	rawName: "FD_B2E_PAYMENT_RECORD_MAIN",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		BANK_ID: {
-			nullable: "N",
+		bankId: {
+			nullable: false,
 			isPk: false,
 			description: "出账银行编号（fd_b2e_bank_payment_account.bank_account_id）",
 			name: "bankId",
@@ -24,8 +24,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		BANK_ADD_TYPE_ID: {
-			nullable: "N",
+		bankAddTypeId: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡转账(fd_b2e_bank_payment_account.id)",
 			name: "bankAddTypeId",
@@ -35,8 +35,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		PAYMENT_TYPE: {
-			nullable: "N",
+		paymentType: {
+			nullable: false,
 			isPk: false,
 			description: "转账类:1.上游渠道加款，2.下游渠道返佣，3.支付押金，4.支付保证金",
 			name: "paymentType",
@@ -46,8 +46,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "3"
 			}
 		},
-		BANK_CARD_NO: {
-			nullable: "N",
+		bankCardNo: {
+			nullable: false,
 			isPk: false,
 			description: "付款银行账户",
 			name: "bankCardNo",
@@ -57,8 +57,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		BANK_CARD_NAME: {
-			nullable: "N",
+		bankCardName: {
+			nullable: false,
 			isPk: false,
 			description: "付款账户名称",
 			name: "bankCardName",
@@ -68,8 +68,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		RECV_TYPE: {
-			nullable: "N",
+		recvType: {
+			nullable: false,
 			isPk: false,
 			description: "收款方类型,1上游、2下游、3其它",
 			name: "recvType",
@@ -79,8 +79,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "1"
 			}
 		},
-		CHANNAL_NO: {
-			nullable: "Y",
+		channalNo: {
+			nullable: true,
 			isPk: false,
 			description: "渠道编号",
 			name: "channalNo",
@@ -90,8 +90,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		CHANNEL_ACCOUNT_ID: {
-			nullable: "Y",
+		channelAccountId: {
+			nullable: true,
 			isPk: false,
 			description: "渠道账户编号",
 			name: "channelAccountId",
@@ -101,8 +101,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -112,8 +112,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		TOTAL_AMOUNT: {
-			nullable: "N",
+		totalAmount: {
+			nullable: false,
 			isPk: false,
 			description: "总付款金额",
 			name: "totalAmount",
@@ -123,8 +123,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		TOTAL_SERVICE_FEE: {
-			nullable: "N",
+		totalServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "总需支付的手续费",
 			name: "totalServiceFee",
@@ -134,8 +134,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		WHITE_LIST_ID: {
-			nullable: "Y",
+		whiteListId: {
+			nullable: true,
 			isPk: false,
 			description: "白名单编号",
 			name: "whiteListId",
@@ -145,8 +145,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		CLIENT_RECEIVE_CARD_NO: {
-			nullable: "N",
+		clientReceiveCardNo: {
+			nullable: false,
 			isPk: false,
 			description: "客户收款银行卡编号",
 			name: "clientReceiveCardNo",
@@ -156,8 +156,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		SUB_RECORD_COUNT: {
-			nullable: "N",
+		subRecordCount: {
+			nullable: false,
 			isPk: false,
 			description: "子记录总条数",
 			name: "subRecordCount",
@@ -167,8 +167,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		INT_SUB_AMOUNT: {
-			nullable: "N",
+		intSubAmount: {
+			nullable: false,
 			isPk: false,
 			description: "前N-1笔转账金额的单笔金额（(SUB_RECORD_COUNT-1)*INT_SUB_AMOUNT+LAST_SUB_AMOUNT）=TOTAL_AMOUNT",
 			name: "intSubAmount",
@@ -178,8 +178,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		LAST_SUB_AMOUNT: {
-			nullable: "N",
+		lastSubAmount: {
+			nullable: false,
 			isPk: false,
 			description: "最后一笔金额（余数）",
 			name: "lastSubAmount",
@@ -189,8 +189,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		INT_SUB_SERVICE_FEE: {
-			nullable: "N",
+		intSubServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "前N-1笔手续费的单笔手续费",
 			name: "intSubServiceFee",
@@ -200,8 +200,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		LAST_SUB_SERVICE_FEE: {
-			nullable: "N",
+		lastSubServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "最后一笔的手续费",
 			name: "lastSubServiceFee",
@@ -211,8 +211,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		SUBMIT_SUCCESS_AMOUNT: {
-			nullable: "N",
+		submitSuccessAmount: {
+			nullable: false,
 			isPk: false,
 			description: "提交成功金额",
 			name: "submitSuccessAmount",
@@ -222,8 +222,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		ARRIVAL_SUCCESS_AMOUNT: {
-			nullable: "N",
+		arrivalSuccessAmount: {
+			nullable: false,
 			isPk: false,
 			description: "成功到账金额",
 			name: "arrivalSuccessAmount",
@@ -233,8 +233,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		ARRIVAL_SERVICE_FEE: {
-			nullable: "N",
+		arrivalServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "成功到账的手续费",
 			name: "arrivalServiceFee",
@@ -244,8 +244,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		EXPIRE_TIME: {
-			nullable: "N",
+		expireTime: {
+			nullable: false,
 			isPk: false,
 			description: "过期时间",
 			name: "expireTime",
@@ -255,8 +255,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		PAYMENT_AUDIT_TYPE: {
-			nullable: "N",
+		paymentAuditType: {
+			nullable: false,
 			isPk: false,
 			description: "转账金额审核类型 :运营审核  2：财务审核",
 			name: "paymentAuditType",
@@ -266,8 +266,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "1"
 			}
 		},
-		PAYMENT_AUDIT_STATUS: {
-			nullable: "N",
+		paymentAuditStatus: {
+			nullable: false,
 			isPk: false,
 			description: "转账金额审核状态，1未开始,2等待执行,3正在执行,0执行完成 9取消",
 			name: "paymentAuditStatus",
@@ -277,8 +277,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "1"
 			}
 		},
-		PAYMENT_AUDIT_USER: {
-			nullable: "Y",
+		paymentAuditUser: {
+			nullable: true,
 			isPk: false,
 			description: "转账金额审核操作人",
 			name: "paymentAuditUser",
@@ -288,8 +288,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		PAYMENT_AUDIT_TIME: {
-			nullable: "Y",
+		paymentAuditTime: {
+			nullable: true,
 			isPk: false,
 			description: "转账金额审核操作时间",
 			name: "paymentAuditTime",
@@ -299,8 +299,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		RECEIVED_AUDIT_STATUS: {
-			nullable: "N",
+		receivedAuditStatus: {
+			nullable: false,
 			isPk: false,
 			description: "到账审核状态1未开始,2等待执行,3正在执行,0执行完成 9无需处理",
 			name: "receivedAuditStatus",
@@ -310,8 +310,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "1"
 			}
 		},
-		RECEIVED_AUDIT_USER: {
-			nullable: "Y",
+		receivedAuditUser: {
+			nullable: true,
 			isPk: false,
 			description: "到账审核人",
 			name: "receivedAuditUser",
@@ -321,8 +321,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		RECEIVED_AUDIT_TIME: {
-			nullable: "Y",
+		receivedAuditTime: {
+			nullable: true,
 			isPk: false,
 			description: "到账审核时间",
 			name: "receivedAuditTime",
@@ -332,8 +332,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		RECEIVED_AUDIT_MEMO: {
-			nullable: "Y",
+		receivedAuditMemo: {
+			nullable: true,
 			isPk: false,
 			description: "到账审核备注",
 			name: "receivedAuditMemo",
@@ -343,8 +343,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: ""
 			}
 		},
-		RECEIVED_SUCCESS_AMOUNT: {
-			nullable: "N",
+		receivedSuccessAmount: {
+			nullable: false,
 			isPk: false,
 			description: "已录入系统的支付金额",
 			name: "receivedSuccessAmount",
@@ -354,8 +354,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		RECEIVED_SUCCESS_SERVICE_FEE: {
-			nullable: "N",
+		receivedSuccessServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "已录入系统的支付手续费",
 			name: "receivedSuccessServiceFee",
@@ -365,8 +365,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "20"
 			}
 		},
-		CREATE_TYPE: {
-			nullable: "N",
+		createType: {
+			nullable: false,
 			isPk: false,
 			description: "1.系统自动创建，2.操作员手工添加",
 			name: "createType",
@@ -376,8 +376,8 @@ exports.fdB2ePaymentRecordMain = {
 				length: "1"
 			}
 		},
-		ADD_MEMO: {
-			nullable: "Y",
+		addMemo: {
+			nullable: true,
 			isPk: false,
 			description: "添加转账记录备注",
 			name: "addMemo",

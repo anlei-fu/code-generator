@@ -2,8 +2,8 @@ exports.fdReportBalanceDiffer = {
 	name: "fdReportBalanceDiffer",
 	rawName: "FD_REPORT_BALANCE_DIFFER",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdReportBalanceDiffer = {
 				length: "20"
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类型：1、上游渠道账户，2、下游渠道账户",
 			name: "accountType",
@@ -24,8 +24,8 @@ exports.fdReportBalanceDiffer = {
 				length: "3"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.fdReportBalanceDiffer = {
 				length: "20"
 			}
 		},
-		BALANCE_DIFFERENCE: {
-			nullable: "N",
+		balanceDifference: {
+			nullable: false,
 			isPk: false,
 			description: "余额差异",
 			name: "balanceDifference",
@@ -46,8 +46,8 @@ exports.fdReportBalanceDiffer = {
 				length: "20"
 			}
 		},
-		NOTE_TIME: {
-			nullable: "N",
+		noteTime: {
+			nullable: false,
 			isPk: false,
 			description: "记录时间",
 			name: "noteTime",
@@ -57,8 +57,8 @@ exports.fdReportBalanceDiffer = {
 				length: ""
 			}
 		},
-		NOTE_USER: {
-			nullable: "N",
+		noteUser: {
+			nullable: false,
 			isPk: false,
 			description: "记录人",
 			name: "noteUser",

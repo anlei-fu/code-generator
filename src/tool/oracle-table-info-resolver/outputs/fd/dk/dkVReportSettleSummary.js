@@ -2,8 +2,8 @@ exports.dkVReportSettleSummary = {
 	name: "dkVReportSettleSummary",
 	rawName: "DK_V_REPORT_SETTLE_SUMMARY",
 	columns: {
-		STATISTICS_TYPE: {
-			nullable: "Y",
+		statisticsType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "statisticsType",
@@ -13,8 +13,8 @@ exports.dkVReportSettleSummary = {
 				length: "3"
 			}
 		},
-		REAL_DRAW_AMOUNT: {
-			nullable: "Y",
+		realDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realDrawAmount",
@@ -24,8 +24,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		REAL_FACE: {
-			nullable: "Y",
+		realFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realFace",
@@ -35,8 +35,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelSourceSystem",
@@ -46,8 +46,8 @@ exports.dkVReportSettleSummary = {
 				length: "20"
 			}
 		},
-		ONE_WAY_SEAT_PROFITS: {
-			nullable: "Y",
+		oneWaySeatProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "oneWaySeatProfits",
@@ -57,8 +57,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		LAST_PROFITS: {
-			nullable: "Y",
+		lastProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastProfits",
@@ -68,8 +68,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		REAL_RECHARGE_FACE: {
-			nullable: "Y",
+		realRechargeFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realRechargeFace",
@@ -79,8 +79,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		ONE_WAY_PROFITS: {
-			nullable: "Y",
+		oneWayProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "oneWayProfits",
@@ -90,8 +90,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		REFUND_DRAW_AMOUNT: {
-			nullable: "Y",
+		refundDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "refundDrawAmount",
@@ -101,8 +101,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -112,8 +112,8 @@ exports.dkVReportSettleSummary = {
 				length: "20"
 			}
 		},
-		REFUND_TOTAL_FACE: {
-			nullable: "Y",
+		refundTotalFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "refundTotalFace",
@@ -123,8 +123,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -134,8 +134,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		END_COMMISSION: {
-			nullable: "Y",
+		endCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endCommission",
@@ -145,8 +145,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		LAST_SERVICE_FEE: {
-			nullable: "Y",
+		lastServiceFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastServiceFee",
@@ -156,8 +156,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		TOTAL_UNIT: {
-			nullable: "Y",
+		totalUnit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalUnit",
@@ -167,8 +167,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "Y",
+		totalFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalFace",
@@ -178,8 +178,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -189,8 +189,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "Y",
+		drawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawAmount",
@@ -200,8 +200,8 @@ exports.dkVReportSettleSummary = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -211,8 +211,8 @@ exports.dkVReportSettleSummary = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelType",

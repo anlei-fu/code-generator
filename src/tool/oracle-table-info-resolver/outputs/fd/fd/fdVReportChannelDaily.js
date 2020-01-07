@@ -2,8 +2,8 @@ exports.fdVReportChannelDaily = {
 	name: "fdVReportChannelDaily",
 	rawName: "FD_V_REPORT_CHANNEL_DAILY",
 	columns: {
-		CHANNEL_STATUS: {
-			nullable: "Y",
+		channelStatus: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelStatus",
@@ -13,8 +13,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		BALANCE_DIFFERENCE: {
-			nullable: "Y",
+		balanceDifference: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "balanceDifference",
@@ -24,8 +24,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "Y",
+		companyId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -46,8 +46,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -57,8 +57,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		BEGIN_BALANCE: {
-			nullable: "Y",
+		beginBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "beginBalance",
@@ -68,8 +68,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "Y",
+		accountName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountName",
@@ -79,8 +79,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "Y",
+		queryBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "queryBalance",
@@ -90,8 +90,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountType",
@@ -101,8 +101,8 @@ exports.fdVReportChannelDaily = {
 				length: "3"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -112,8 +112,8 @@ exports.fdVReportChannelDaily = {
 				length: "20"
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",
@@ -123,8 +123,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "Y",
+		drawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawAmount",
@@ -134,8 +134,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "Y",
+		channelName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelName",
@@ -145,8 +145,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "Y",
+		warnBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "warnBalance",
@@ -156,8 +156,8 @@ exports.fdVReportChannelDaily = {
 				length: ""
 			}
 		},
-		END_BALANCE: {
-			nullable: "Y",
+		endBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endBalance",

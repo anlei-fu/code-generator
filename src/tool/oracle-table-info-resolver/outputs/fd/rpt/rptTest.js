@@ -2,8 +2,8 @@ exports.rptTest = {
 	name: "rptTest",
 	rawName: "RPT_TEST",
 	columns: {
-		PROFIT: {
-			nullable: "Y",
+		profit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "profit",
@@ -13,8 +13,8 @@ exports.rptTest = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "Y",
+		channelNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelNo",

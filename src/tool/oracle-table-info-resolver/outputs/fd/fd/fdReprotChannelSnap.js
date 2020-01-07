@@ -2,8 +2,8 @@ exports.fdReprotChannelSnap = {
 	name: "fdReprotChannelSnap",
 	rawName: "FD_REPROT_CHANNEL_SNAP",
 	columns: {
-		SNAP_ID: {
-			nullable: "N",
+		snapId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "snapId",
@@ -13,8 +13,8 @@ exports.fdReprotChannelSnap = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型",
 			name: "channelType",
@@ -24,8 +24,8 @@ exports.fdReprotChannelSnap = {
 				length: "1"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.fdReprotChannelSnap = {
 				length: ""
 			}
 		},
-		BILL_TYPE: {
-			nullable: "Y",
+		billType: {
+			nullable: true,
 			isPk: false,
 			description: "利润类:1-前向2-后向",
 			name: "billType",
@@ -46,8 +46,8 @@ exports.fdReprotChannelSnap = {
 				length: "1"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -57,8 +57,8 @@ exports.fdReprotChannelSnap = {
 				length: "3"
 			}
 		},
-		REAL_COST_FEE: {
-			nullable: "N",
+		realCostFee: {
+			nullable: false,
 			isPk: false,
 			description: "实际账户扣款",
 			name: "realCostFee",
@@ -68,8 +68,8 @@ exports.fdReprotChannelSnap = {
 				length: "20"
 			}
 		},
-		ORDER_COST_FEE: {
-			nullable: "N",
+		orderCostFee: {
+			nullable: false,
 			isPk: false,
 			description: "下单扣款",
 			name: "orderCostFee",
@@ -79,8 +79,8 @@ exports.fdReprotChannelSnap = {
 				length: "20"
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "N",
+		addAmount: {
+			nullable: false,
 			isPk: false,
 			description: "加款金额",
 			name: "addAmount",
@@ -90,8 +90,8 @@ exports.fdReprotChannelSnap = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "渠道余额",
 			name: "balance",
@@ -101,8 +101,8 @@ exports.fdReprotChannelSnap = {
 				length: "20"
 			}
 		},
-		SNAP_DATE: {
-			nullable: "N",
+		snapDate: {
+			nullable: false,
 			isPk: false,
 			description: "快照日期",
 			name: "snapDate",

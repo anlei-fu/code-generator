@@ -2,8 +2,8 @@ exports.fdVReportSystemCap = {
 	name: "fdVReportSystemCap",
 	rawName: "FD_V_REPORT_SYSTEM_CAP",
 	columns: {
-		BOND: {
-			nullable: "Y",
+		bond: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "bond",
@@ -13,8 +13,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		PROFIT_UNDRAW: {
-			nullable: "Y",
+		profitUndraw: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "profitUndraw",
@@ -24,8 +24,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		UP_COMMISSION: {
-			nullable: "Y",
+		upCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upCommission",
@@ -35,8 +35,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		DOWN_BALANCE: {
-			nullable: "Y",
+		downBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downBalance",
@@ -46,8 +46,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -57,8 +57,8 @@ exports.fdVReportSystemCap = {
 				length: "20"
 			}
 		},
-		RECV_BALANCE: {
-			nullable: "Y",
+		recvBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "recvBalance",
@@ -68,8 +68,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		DEPOSIT: {
-			nullable: "Y",
+		deposit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "deposit",
@@ -79,8 +79,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		BANK_BALANCE: {
-			nullable: "Y",
+		bankBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "bankBalance",
@@ -90,8 +90,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		SHORT_BORROW: {
-			nullable: "Y",
+		shortBorrow: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "shortBorrow",
@@ -101,8 +101,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		UP_BALANCE: {
-			nullable: "Y",
+		upBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upBalance",
@@ -112,8 +112,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		COMPANY_NAME: {
-			nullable: "N",
+		companyName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyName",
@@ -123,8 +123,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		INIT_INPUT_AMOUNT: {
-			nullable: "N",
+		initInputAmount: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "initInputAmount",
@@ -134,8 +134,8 @@ exports.fdVReportSystemCap = {
 				length: "20"
 			}
 		},
-		BORROW: {
-			nullable: "Y",
+		borrow: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "borrow",
@@ -145,8 +145,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		DOWN_COMMISSION: {
-			nullable: "Y",
+		downCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downCommission",
@@ -156,8 +156,8 @@ exports.fdVReportSystemCap = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "Y",
+		serviceFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "serviceFee",

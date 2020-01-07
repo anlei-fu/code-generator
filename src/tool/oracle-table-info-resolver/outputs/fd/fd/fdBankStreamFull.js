@@ -2,8 +2,8 @@ exports.fdBankStreamFull = {
 	name: "fdBankStreamFull",
 	rawName: "FD_BANK_STREAM_FULL",
 	columns: {
-		BANK_ACCOUNT_ID: {
-			nullable: "N",
+		bankAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "银行账户编号",
 			name: "bankAccountId",
@@ -13,8 +13,8 @@ exports.fdBankStreamFull = {
 				length: "20"
 			}
 		},
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "流水编号",
 			name: "id",
@@ -24,8 +24,8 @@ exports.fdBankStreamFull = {
 				length: "20"
 			}
 		},
-		CARD_NO: {
-			nullable: "N",
+		cardNo: {
+			nullable: false,
 			isPk: false,
 			description: "己方银行账户",
 			name: "cardNo",
@@ -35,8 +35,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19E钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
 			name: "bankType",
@@ -46,8 +46,8 @@ exports.fdBankStreamFull = {
 				length: "3"
 			}
 		},
-		TRAN_DATE: {
-			nullable: "N",
+		tranDate: {
+			nullable: false,
 			isPk: false,
 			description: "交易时间",
 			name: "tranDate",
@@ -57,8 +57,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		TRAN_NO: {
-			nullable: "N",
+		tranNo: {
+			nullable: false,
 			isPk: false,
 			description: "柜员交易号",
 			name: "tranNo",
@@ -68,8 +68,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		SUM_TRAN_NO: {
-			nullable: "N",
+		sumTranNo: {
+			nullable: false,
 			isPk: false,
 			description: "总交易流水号",
 			name: "sumTranNo",
@@ -79,8 +79,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		TRAN_AMOUNT: {
-			nullable: "N",
+		tranAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易金额",
 			name: "tranAmount",
@@ -90,8 +90,8 @@ exports.fdBankStreamFull = {
 				length: "20"
 			}
 		},
-		CREDIT_DEBIT_FLAG: {
-			nullable: "N",
+		creditDebitFlag: {
+			nullable: false,
 			isPk: false,
 			description: "借贷标识:借，C：贷",
 			name: "creditDebitFlag",
@@ -101,8 +101,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		OPP_ACCOUNT_NO: {
-			nullable: "N",
+		oppAccountNo: {
+			nullable: false,
 			isPk: false,
 			description: "对方账号",
 			name: "oppAccountNo",
@@ -112,8 +112,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		OPP_ACCOUNT_NAME: {
-			nullable: "N",
+		oppAccountName: {
+			nullable: false,
 			isPk: false,
 			description: "对方账户名称",
 			name: "oppAccountName",
@@ -123,8 +123,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		OPP_OPEN_BANK_NAME: {
-			nullable: "N",
+		oppOpenBankName: {
+			nullable: false,
 			isPk: false,
 			description: "对方开户行名称",
 			name: "oppOpenBankName",
@@ -134,8 +134,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		ABSTRACT: {
-			nullable: "N",
+		abstract: {
+			nullable: false,
 			isPk: false,
 			description: "附言",
 			name: "abstract",
@@ -145,8 +145,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -156,8 +156,8 @@ exports.fdBankStreamFull = {
 				length: "20"
 			}
 		},
-		HOST_TRAN_CODE: {
-			nullable: "N",
+		hostTranCode: {
+			nullable: false,
 			isPk: false,
 			description: "主机交易码",
 			name: "hostTranCode",
@@ -167,8 +167,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -178,8 +178,8 @@ exports.fdBankStreamFull = {
 				length: ""
 			}
 		},
-		CASH_TRANSFER_FLAG: {
-			nullable: "N",
+		cashTransferFlag: {
+			nullable: false,
 			isPk: false,
 			description: "现转标识 0：现金；1：转帐",
 			name: "cashTransferFlag",

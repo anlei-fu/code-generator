@@ -2,7 +2,7 @@ exports.matchBillTask = {
 	name: "matchBillTask",
 	rawName: "MATCH_BILL_TASK",
 	columns: {
-		APPID: {
+		appid: {
 			nullable: true,
 			isPk: false,
 			description: "账户",
@@ -13,7 +13,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		TIMING: {
+		timing: {
 			nullable: true,
 			isPk: false,
 			description: "定时",
@@ -24,7 +24,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
+		channelNo: {
 			nullable: true,
 			isPk: false,
 			description: "渠道",
@@ -35,7 +35,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		RETRY: {
+		retry: {
 			nullable: true,
 			isPk: false,
 			description: "重试",
@@ -46,7 +46,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		BEGIN_TIME: {
+		beginTime: {
 			nullable: true,
 			isPk: false,
 			description: "起始",
@@ -57,7 +57,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
+		accountType: {
 			nullable: true,
 			isPk: false,
 			description: "账户类型",
@@ -68,7 +68,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		TASK_ID: {
+		taskId: {
 			nullable: true,
 			isPk: false,
 			description: "id",
@@ -79,7 +79,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "创建时间",
@@ -90,7 +90,7 @@ exports.matchBillTask = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "状态",

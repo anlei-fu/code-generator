@@ -2,8 +2,8 @@ exports.fdBaseUpAccountSync = {
 	name: "fdBaseUpAccountSync",
 	rawName: "FD_BASE_UP_ACCOUNT_SYNC",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdBaseUpAccountSync = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdBaseUpAccountSync = {
 				length: "20"
 			}
 		},
-		NEED_SYNC_ADD: {
-			nullable: "N",
+		needSyncAdd: {
+			nullable: false,
 			isPk: false,
 			description: "是否需要同步加款、提款到18系统",
 			name: "needSyncAdd",

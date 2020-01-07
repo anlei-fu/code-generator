@@ -2,8 +2,8 @@ exports.fdVReportTradeSummary = {
 	name: "fdVReportTradeSummary",
 	rawName: "FD_V_REPORT_TRADE_SUMMARY",
 	columns: {
-		REFUND_FIST_COMMISSION: {
-			nullable: "Y",
+		refundFistCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "refundFistCommission",
@@ -13,8 +13,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		FACE_AMOUNT: {
-			nullable: "N",
+		faceAmount: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "faceAmount",
@@ -24,8 +24,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		TOTAL_UNIT: {
-			nullable: "Y",
+		totalUnit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalUnit",
@@ -35,8 +35,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		REAL_FACE: {
-			nullable: "Y",
+		realFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realFace",
@@ -46,8 +46,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "N",
+		drawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "drawAmount",
@@ -57,8 +57,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -68,8 +68,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		LAST_DRAW_AMOUNT: {
-			nullable: "Y",
+		lastDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastDrawAmount",
@@ -79,8 +79,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelType",
@@ -90,8 +90,8 @@ exports.fdVReportTradeSummary = {
 				length: "1"
 			}
 		},
-		REFUND_TOTAL_FACE: {
-			nullable: "N",
+		refundTotalFace: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "refundTotalFace",
@@ -101,8 +101,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		REFUND_DRAW_AMOUNT: {
-			nullable: "N",
+		refundDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "refundDrawAmount",
@@ -112,8 +112,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		LAST_PROFITS: {
-			nullable: "Y",
+		lastProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastProfits",
@@ -123,8 +123,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		LAST_FIRST_COMMISSION: {
-			nullable: "Y",
+		lastFirstCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastFirstCommission",
@@ -134,8 +134,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		LAST_FACE_AMOUNT: {
-			nullable: "Y",
+		lastFaceAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastFaceAmount",
@@ -145,8 +145,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		TOTAL_COMMISSION: {
-			nullable: "Y",
+		totalCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalCommission",
@@ -156,8 +156,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		LAST_SERVICE_FEE: {
-			nullable: "Y",
+		lastServiceFee: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "lastServiceFee",
@@ -167,8 +167,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		FIST_COMMISSION: {
-			nullable: "Y",
+		fistCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "fistCommission",
@@ -178,8 +178,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -189,8 +189,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -200,8 +200,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		REFUND_FACE_AMOUNT: {
-			nullable: "N",
+		refundFaceAmount: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "refundFaceAmount",
@@ -211,8 +211,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		END_COMMISSION: {
-			nullable: "Y",
+		endCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endCommission",
@@ -222,8 +222,8 @@ exports.fdVReportTradeSummary = {
 				length: ""
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "Y",
+		statisticsType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "statisticsType",
@@ -233,8 +233,8 @@ exports.fdVReportTradeSummary = {
 				length: "3"
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "N",
+		totalFace: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "totalFace",
@@ -244,8 +244,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -255,8 +255,8 @@ exports.fdVReportTradeSummary = {
 				length: "20"
 			}
 		},
-		UP_MANY_FACE: {
-			nullable: "N",
+		upManyFace: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "upManyFace",

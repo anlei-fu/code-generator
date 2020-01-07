@@ -2,7 +2,7 @@ exports.userMessageRecord = {
 	name: "userMessageRecord",
 	rawName: "USER_MESSAGE_RECORD",
 	columns: {
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型",
@@ -13,7 +13,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		RECORD_ID: {
+		recordId: {
 			nullable: false,
 			isPk: true,
 			description: "记录编号",
@@ -24,7 +24,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "订单号",
@@ -35,7 +35,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		RECEIVER: {
+		receiver: {
 			nullable: false,
 			isPk: false,
 			description: "接收人",
@@ -46,7 +46,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		MSG_TITLE: {
+		msgTitle: {
 			nullable: false,
 			isPk: false,
 			description: "消息标题",
@@ -57,7 +57,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		MSG_LEVEL: {
+		msgLevel: {
 			nullable: false,
 			isPk: false,
 			description: "消息级别",
@@ -68,7 +68,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		CONTENT: {
+		content: {
 			nullable: false,
 			isPk: false,
 			description: "消息内容",
@@ -79,7 +79,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		SYNC_STATUS: {
+		syncStatus: {
 			nullable: false,
 			isPk: false,
 			description: "同步状: 0-成功 20-等待同步 30-正在同步 90-同步失败",
@@ -90,7 +90,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		SYNC_TIME: {
+		syncTime: {
 			nullable: true,
 			isPk: false,
 			description: "同步时间",
@@ -101,7 +101,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		SYNC_MSG: {
+		syncMsg: {
 			nullable: true,
 			isPk: false,
 			description: "同步消息",
@@ -112,7 +112,7 @@ exports.userMessageRecord = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",

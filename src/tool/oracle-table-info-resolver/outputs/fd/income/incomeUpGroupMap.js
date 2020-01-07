@@ -2,8 +2,8 @@ exports.incomeUpGroupMap = {
 	name: "incomeUpGroupMap",
 	rawName: "INCOME_UP_GROUP_MAP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeUpGroupMap = {
 				length: "20"
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份编号",
 			name: "provinceNo",
@@ -24,8 +24,8 @@ exports.incomeUpGroupMap = {
 				length: ""
 			}
 		},
-		UP_GROUP_ID: {
-			nullable: "N",
+		upGroupId: {
+			nullable: false,
 			isPk: false,
 			description: "所属上游收入分组",
 			name: "upGroupId",

@@ -2,8 +2,8 @@ exports.fdBaseCompanySettleNew = {
 	name: "fdBaseCompanySettleNew",
 	rawName: "FD_BASE_COMPANY_SETTLE_NEW",
 	columns: {
-		CONFIG_ID: {
-			nullable: "N",
+		configId: {
+			nullable: false,
 			isPk: false,
 			description: "配置编号",
 			name: "configId",
@@ -13,8 +13,8 @@ exports.fdBaseCompanySettleNew = {
 				length: "20"
 			}
 		},
-		PROFIT_COMPANY_ID: {
-			nullable: "N",
+		profitCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "获取利润公司编号",
 			name: "profitCompanyId",
@@ -24,8 +24,8 @@ exports.fdBaseCompanySettleNew = {
 				length: "20"
 			}
 		},
-		RELATED_COMPANY_ID: {
-			nullable: "N",
+		relatedCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "对应公司编号",
 			name: "relatedCompanyId",
@@ -35,8 +35,8 @@ exports.fdBaseCompanySettleNew = {
 				length: "20"
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "N",
+		statisticsType: {
+			nullable: false,
 			isPk: false,
 			description: "统计类型，1.流量数据包，2前向流量充值，3话费、固话，4.加油卡充值，5.Q币、游戏币",
 			name: "statisticsType",
@@ -46,8 +46,8 @@ exports.fdBaseCompanySettleNew = {
 				length: "3"
 			}
 		},
-		PROFIT_COST: {
-			nullable: "N",
+		profitCost: {
+			nullable: false,
 			isPk: false,
 			description: "利润折扣",
 			name: "profitCost",
@@ -57,8 +57,8 @@ exports.fdBaseCompanySettleNew = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -68,8 +68,8 @@ exports.fdBaseCompanySettleNew = {
 				length: "1"
 			}
 		},
-		LAST_UPDATE_TIME: {
-			nullable: "N",
+		lastUpdateTime: {
+			nullable: false,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastUpdateTime",
@@ -79,8 +79,8 @@ exports.fdBaseCompanySettleNew = {
 				length: ""
 			}
 		},
-		LAST_UPDATE_USER: {
-			nullable: "Y",
+		lastUpdateUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastUpdateUser",

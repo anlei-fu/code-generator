@@ -2,8 +2,8 @@ exports.fdBankReportSnap = {
 	name: "fdBankReportSnap",
 	rawName: "FD_BANK_REPORT_SNAP",
 	columns: {
-		SNAP_ID: {
-			nullable: "N",
+		snapId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "snapId",
@@ -13,8 +13,8 @@ exports.fdBankReportSnap = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡账户",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdBankReportSnap = {
 				length: "20"
 			}
 		},
-		USE_TYPE: {
-			nullable: "N",
+		useType: {
+			nullable: false,
 			isPk: false,
 			description: "用途编号",
 			name: "useType",
@@ -35,8 +35,8 @@ exports.fdBankReportSnap = {
 				length: "20"
 			}
 		},
-		START_BALANCE: {
-			nullable: "N",
+		startBalance: {
+			nullable: false,
 			isPk: false,
 			description: "期初余额",
 			name: "startBalance",
@@ -46,8 +46,8 @@ exports.fdBankReportSnap = {
 				length: "20"
 			}
 		},
-		END_BALANCE: {
-			nullable: "N",
+		endBalance: {
+			nullable: false,
 			isPk: false,
 			description: "期末余额",
 			name: "endBalance",
@@ -57,8 +57,8 @@ exports.fdBankReportSnap = {
 				length: "20"
 			}
 		},
-		COLLECTION_FEE: {
-			nullable: "N",
+		collectionFee: {
+			nullable: false,
 			isPk: false,
 			description: "本日代收",
 			name: "collectionFee",
@@ -68,8 +68,8 @@ exports.fdBankReportSnap = {
 				length: "20"
 			}
 		},
-		PAY_FEE: {
-			nullable: "N",
+		payFee: {
+			nullable: false,
 			isPk: false,
 			description: "本日代付",
 			name: "payFee",
@@ -79,8 +79,8 @@ exports.fdBankReportSnap = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "快照时间",
 			name: "snapTime",

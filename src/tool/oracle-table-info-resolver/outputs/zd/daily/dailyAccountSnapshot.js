@@ -2,7 +2,7 @@ exports.dailyAccountSnapshot = {
 	name: "dailyAccountSnapshot",
 	rawName: "DAILY_ACCOUNT_SNAPSHOT",
 	columns: {
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "快照时间",
@@ -13,7 +13,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
@@ -24,7 +24,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		CARD_TYPE: {
+		cardType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型",
@@ -35,7 +35,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		PAY_TYPE: {
+		payType: {
 			nullable: false,
 			isPk: false,
 			description: "支付方式",
@@ -46,7 +46,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: true,
 			isPk: false,
 			description: "业务类型",
@@ -57,7 +57,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		PRODUCT_FACE: {
+		productFace: {
 			nullable: true,
 			isPk: false,
 			description: "订单面值",
@@ -68,7 +68,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		ALL_PRICE: {
+		allPrice: {
 			nullable: false,
 			isPk: false,
 			description: "订单总金额",
@@ -79,7 +79,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		ALL_ORDER_CNTR: {
+		allOrderCntr: {
 			nullable: false,
 			isPk: false,
 			description: "订单总笔数",
@@ -90,7 +90,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		SUCCESS_MONEY: {
+		successMoney: {
 			nullable: false,
 			isPk: false,
 			description: "成功支付金额",
@@ -101,7 +101,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		SUCCESS_ORDER_CNTR: {
+		successOrderCntr: {
 			nullable: false,
 			isPk: false,
 			description: "成功支付笔数",
@@ -112,7 +112,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		SUCCESS_COUPON: {
+		successCoupon: {
 			nullable: true,
 			isPk: false,
 			description: "成功优惠券金额",
@@ -123,7 +123,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
+		serviceFee: {
 			nullable: false,
 			isPk: false,
 			description: "服务费",
@@ -134,7 +134,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		REFUND_MONEY: {
+		refundMoney: {
 			nullable: false,
 			isPk: false,
 			description: "退款金额",
@@ -145,7 +145,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		REFUND_ORDER_CNTR: {
+		refundOrderCntr: {
 			nullable: false,
 			isPk: false,
 			description: "退款笔数",
@@ -156,7 +156,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		LOSS_SERVICE: {
+		lossService: {
 			nullable: false,
 			isPk: false,
 			description: "退款亏损服务费",
@@ -167,7 +167,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		DEVICE_TYPE: {
+		deviceType: {
 			nullable: true,
 			isPk: false,
 			description: "终端类型",
@@ -178,7 +178,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		ALL_USER_CNT: {
+		allUserCnt: {
 			nullable: true,
 			isPk: false,
 			description: "总用户数",
@@ -189,7 +189,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		NEW_USER_CNT: {
+		newUserCnt: {
 			nullable: true,
 			isPk: false,
 			description: "新用户数",
@@ -200,7 +200,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		OLD_USER_CNT: {
+		oldUserCnt: {
 			nullable: true,
 			isPk: false,
 			description: "老用户数",
@@ -211,7 +211,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: true,
 			isPk: false,
 			description: "运营商",
@@ -222,7 +222,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: true,
 			isPk: false,
 			description: "省份",
@@ -233,7 +233,7 @@ exports.dailyAccountSnapshot = {
 				length: ""
 			}
 		},
-		RECHARGE_MODE: {
+		rechargeMode: {
 			nullable: true,
 			isPk: false,
 			description: "",

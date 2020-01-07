@@ -2,8 +2,8 @@ exports.fdTradeUpManual = {
 	name: "fdTradeUpManual",
 	rawName: "FD_TRADE_UP_MANUAL",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdTradeUpManual = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号(如果add_type为3,该列不允许为空)",
 			name: "adjustId",
@@ -46,8 +46,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		MANUAL_CHANGE_TYPE: {
-			nullable: "N",
+		manualChangeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类:11-加款+ 12-红冲-  21-扣款平帐加+  22-扣款平帐减-   31-退款平帐加+  32-退款平帐减- 41-余额平帐加+  42-余额平帐减-",
 			name: "manualChangeType",
@@ -57,8 +57,8 @@ exports.fdTradeUpManual = {
 				length: "3"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -68,8 +68,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -79,8 +79,8 @@ exports.fdTradeUpManual = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
-			nullable: "Y",
+		createUser: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createUser",
@@ -90,8 +90,8 @@ exports.fdTradeUpManual = {
 				length: ""
 			}
 		},
-		PARTNER_ACCOUNT: {
-			nullable: "Y",
+		partnerAccount: {
+			nullable: true,
 			isPk: false,
 			description: "合作方银行账户",
 			name: "partnerAccount",
@@ -101,8 +101,8 @@ exports.fdTradeUpManual = {
 				length: ""
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否红冲过",
 			name: "hasAdjust",
@@ -112,8 +112,8 @@ exports.fdTradeUpManual = {
 				length: "1"
 			}
 		},
-		BANK_FUND_ID: {
-			nullable: "Y",
+		bankFundId: {
+			nullable: true,
 			isPk: false,
 			description: "实体卡资金变动编号id,方便红冲",
 			name: "bankFundId",
@@ -123,8 +123,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		SERVICE_ID: {
-			nullable: "Y",
+		serviceId: {
+			nullable: true,
 			isPk: false,
 			description: "收取手续费的记录的编号",
 			name: "serviceId",
@@ -134,8 +134,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		EXT_RECORD_NO: {
-			nullable: "Y",
+		extRecordNo: {
+			nullable: true,
 			isPk: false,
 			description: "上游加款外部订单号",
 			name: "extRecordNo",
@@ -145,8 +145,8 @@ exports.fdTradeUpManual = {
 				length: ""
 			}
 		},
-		REAL_AMOUNT: {
-			nullable: "Y",
+		realAmount: {
+			nullable: true,
 			isPk: false,
 			description: "交易平账真实金额",
 			name: "realAmount",
@@ -156,8 +156,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额,只有红冲的时候为负数",
 			name: "changeAmount",
@@ -167,8 +167,8 @@ exports.fdTradeUpManual = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -178,8 +178,8 @@ exports.fdTradeUpManual = {
 				length: ""
 			}
 		},
-		UP_SYNC_ADD_NO: {
-			nullable: "Y",
+		upSyncAddNo: {
+			nullable: true,
 			isPk: false,
 			description: "上游同步加款加款记录编号",
 			name: "upSyncAddNo",

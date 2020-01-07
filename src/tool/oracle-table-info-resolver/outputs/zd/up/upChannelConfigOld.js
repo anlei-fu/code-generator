@@ -2,7 +2,7 @@ exports.upChannelConfigOld = {
 	name: "upChannelConfigOld",
 	rawName: "UP_CHANNEL_CONFIG_OLD",
 	columns: {
-		RECHARGE_URL: {
+		rechargeUrl: {
 			nullable: false,
 			isPk: false,
 			description: "充值地址",
@@ -13,7 +13,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		QUERY_URL: {
+		queryUrl: {
 			nullable: false,
 			isPk: false,
 			description: "查询地址",
@@ -24,7 +24,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		NOTIFY_URL: {
+		notifyUrl: {
 			nullable: false,
 			isPk: false,
 			description: "通知地址",
@@ -35,7 +35,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		RECHARGE_SCRIPT: {
+		rechargeScript: {
 			nullable: false,
 			isPk: false,
 			description: "充值脚本",
@@ -46,7 +46,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		QUERY_SCRIPT: {
+		queryScript: {
 			nullable: false,
 			isPk: false,
 			description: "查询脚本",
@@ -57,7 +57,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		API_UID: {
+		apiUid: {
 			nullable: false,
 			isPk: false,
 			description: "接口id",
@@ -68,7 +68,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		API_KEY: {
+		apiKey: {
 			nullable: false,
 			isPk: false,
 			description: "接口Key",
@@ -79,7 +79,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		PRODUCT_QUERY_URL: {
+		productQueryUrl: {
 			nullable: true,
 			isPk: false,
 			description: "产品查询地址",
@@ -90,7 +90,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		MOBILE_QUERY_URL: {
+		mobileQueryUrl: {
 			nullable: true,
 			isPk: false,
 			description: "号段查询地址",
@@ -101,7 +101,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -112,7 +112,7 @@ exports.upChannelConfigOld = {
 				length: "20"
 			}
 		},
-		ID: {
+		id: {
 			nullable: false,
 			isPk: false,
 			description: "主键编号",
@@ -123,7 +123,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		NOTIFY_SCRIPT: {
+		notifyScript: {
 			nullable: true,
 			isPk: false,
 			description: "通知脚本",
@@ -134,7 +134,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -145,7 +145,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
+		createUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建人",
@@ -156,7 +156,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		DELIVERY_CODE: {
+		deliveryCode: {
 			nullable: true,
 			isPk: false,
 			description: "发货机器人标识",
@@ -167,7 +167,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		QUERY_CODE: {
+		queryCode: {
 			nullable: true,
 			isPk: false,
 			description: "查询机器人标识",
@@ -178,7 +178,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		UPDATE_USER: {
+		updateUser: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -189,7 +189,7 @@ exports.upChannelConfigOld = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
+		updateTime: {
 			nullable: true,
 			isPk: false,
 			description: "",

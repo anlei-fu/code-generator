@@ -3,15 +3,16 @@ const { FILE } = require("../../libs/file");
 const { DIR } = require("../../libs/dir");
 const { ARRAY } = require("../../libs/utils");
 const { OBJECT } = require("../../libs/utils");
+const {writeMarkDown}=require("./mark-down-writer");
 const { NamingStrategy } = require("../../libs/naming-strategy");
 
 const STRING_RESOLVER = x =>x.replace(/\"/g, "\"");
 
-function resolve(db) {
+function resolve(project) {
         DIR.create("./outputs");
-        DIR.create("./outputs/" + db);
+        DIR.create("./outputs/" + project);
 
-        let content = FILE.read(`./resource/${db}.csv`);
+        let content = FILE.read(`./resource/${project}.csv`);
         let resolvers = [
                 {
                         name: "table",
@@ -74,7 +75,7 @@ function resolve(db) {
                                 length: column.dataLength
                         }
 
-                        table.columns[column.column] = column;
+                        table.columns[column.name] = column;
                         delete column.table;
                         delete column.column;
                         delete column.dataType;
@@ -91,23 +92,25 @@ function resolve(db) {
         let allTemplate = FILE.read("./templates/all.js");
         tableGroups.forEach((tabs,group) => {
 
-                DIR.create(`./outputs/${db}/${group}`);
+                DIR.create(`./outputs/${project}/${group}`);
 
                 let tableContent = "";
                 tabs.forEach(x => {
                         let content = OBJECT.text(x, x.name);
                         content = content.replace("let ", "exports.")
-                        FILE.write(`./outputs/${db}/${group}/${x.name}.js`, content);
+                        FILE.write(`./outputs/${project}/${group}/${x.name}.js`, content);
                         tableContent += `        ${x.name}:require("./${x.name}").${x.name},\r\n`;
                         groupContent+=`        ${x.name}:require("./${group}/${x.name}").${x.name},\r\n`;
                 });
 
-                FILE.write(`./outputs/${db}/${group}/all.js`, subAllTempalte.replace("@content", tableContent.trimRight()));
+                FILE.write(`./outputs/${project}/${group}/all.js`, subAllTempalte.replace("@content", tableContent.trimRight()));
              
         })
 
-        FILE.write(`./outputs/${db}/all.js`, allTemplate.replace("@content", groupContent.trimRight()));
+        FILE.write(`./outputs/${project}/all.js`, allTemplate.replace("@content", groupContent.trimRight()));
+
+        writeMarkDown(project);
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
-resolve("zd");
+resolve("fd");

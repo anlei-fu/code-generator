@@ -2,8 +2,8 @@ exports.fdReportZeroBalanceCs = {
 	name: "fdReportZeroBalanceCs",
 	rawName: "FD_REPORT_ZERO_BALANCE_CS",
 	columns: {
-		DOWN_FIRST_FACE: {
-			nullable: "Y",
+		downFirstFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downFirstFace",
@@ -13,8 +13,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "20"
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "syncStatus",
@@ -24,8 +24,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "1"
 			}
 		},
-		SYNC_BATCH: {
-			nullable: "N",
+		syncBatch: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "syncBatch",
@@ -35,8 +35,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -46,8 +46,8 @@ exports.fdReportZeroBalanceCs = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelName",
@@ -57,8 +57,8 @@ exports.fdReportZeroBalanceCs = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountType",
@@ -68,8 +68,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "3"
 			}
 		},
-		DOWN_FIRST_AMOUNT: {
-			nullable: "Y",
+		downFirstAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downFirstAmount",
@@ -79,8 +79,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "20"
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "N",
+		channelStatus: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelStatus",
@@ -90,8 +90,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "1"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountName",
@@ -101,8 +101,8 @@ exports.fdReportZeroBalanceCs = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -112,8 +112,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "20"
 			}
 		},
-		ACCOUNT_STATUS: {
-			nullable: "N",
+		accountStatus: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountStatus",
@@ -123,8 +123,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "1"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -134,8 +134,8 @@ exports.fdReportZeroBalanceCs = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "Y",
+		balance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "balance",
@@ -145,8 +145,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "20"
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "createdTime",
@@ -156,8 +156,8 @@ exports.fdReportZeroBalanceCs = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -167,8 +167,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "20"
 			}
 		},
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordId",
@@ -178,8 +178,8 @@ exports.fdReportZeroBalanceCs = {
 				length: "20"
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "Y",
+		queryBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "queryBalance",

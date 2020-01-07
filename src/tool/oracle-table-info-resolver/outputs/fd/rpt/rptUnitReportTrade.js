@@ -2,8 +2,8 @@ exports.rptUnitReportTrade = {
 	name: "rptUnitReportTrade",
 	rawName: "RPT_UNIT_REPORT_TRADE",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.rptUnitReportTrade = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.rptUnitReportTrade = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -35,8 +35,8 @@ exports.rptUnitReportTrade = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道分类，1、上游渠道，2、下游渠道",
 			name: "channelType",
@@ -46,8 +46,8 @@ exports.rptUnitReportTrade = {
 				length: "1"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -57,8 +57,8 @@ exports.rptUnitReportTrade = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "sourceSystemId",
@@ -68,8 +68,8 @@ exports.rptUnitReportTrade = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -79,8 +79,8 @@ exports.rptUnitReportTrade = {
 				length: "3"
 			}
 		},
-		TRADE_COUNT: {
-			nullable: "N",
+		tradeCount: {
+			nullable: false,
 			isPk: false,
 			description: "交易笔数",
 			name: "tradeCount",
@@ -90,8 +90,8 @@ exports.rptUnitReportTrade = {
 				length: "20"
 			}
 		},
-		TRADE_DEBIT_AMOUNT: {
-			nullable: "N",
+		tradeDebitAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易扣款金额",
 			name: "tradeDebitAmount",
@@ -101,8 +101,8 @@ exports.rptUnitReportTrade = {
 				length: "20"
 			}
 		},
-		TRADE_PROFIT: {
-			nullable: "N",
+		tradeProfit: {
+			nullable: false,
 			isPk: false,
 			description: "交易利润",
 			name: "tradeProfit",
@@ -112,8 +112,8 @@ exports.rptUnitReportTrade = {
 				length: "20"
 			}
 		},
-		RV_AMOUNT: {
-			nullable: "N",
+		rvAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易平账影响利润的金额",
 			name: "rvAmount",
@@ -123,8 +123,8 @@ exports.rptUnitReportTrade = {
 				length: "20"
 			}
 		},
-		SYS_NO: {
-			nullable: "Y",
+		sysNo: {
+			nullable: true,
 			isPk: false,
 			description: "系统编号，fd、直冲，dk、代扣系统",
 			name: "sysNo",
@@ -134,8 +134,8 @@ exports.rptUnitReportTrade = {
 				length: ""
 			}
 		},
-		IS_HISTORY_DATA: {
-			nullable: "N",
+		isHistoryData: {
+			nullable: false,
 			isPk: false,
 			description: "是否为历史库生成的数据（用来加入唯一索引）",
 			name: "isHistoryData",
@@ -145,8 +145,8 @@ exports.rptUnitReportTrade = {
 				length: "1"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "数据快照日期",
 			name: "snapTime",
@@ -156,8 +156,8 @@ exports.rptUnitReportTrade = {
 				length: ""
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "同步状态，0、同步完成，1等待同步，2正在同步",
 			name: "syncStatus",
@@ -167,8 +167,8 @@ exports.rptUnitReportTrade = {
 				length: "1"
 			}
 		},
-		SYNC_BATCH: {
-			nullable: "N",
+		syncBatch: {
+			nullable: false,
 			isPk: false,
 			description: "同步批次号",
 			name: "syncBatch",

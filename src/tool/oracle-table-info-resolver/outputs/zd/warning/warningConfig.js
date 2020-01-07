@@ -2,7 +2,7 @@ exports.warningConfig = {
 	name: "warningConfig",
 	rawName: "WARNING_CONFIG",
 	columns: {
-		PRC_NAME: {
+		prcName: {
 			nullable: false,
 			isPk: false,
 			description: "执行存储过程名称",
@@ -13,7 +13,7 @@ exports.warningConfig = {
 				length: ""
 			}
 		},
-		TITLE: {
+		title: {
 			nullable: true,
 			isPk: false,
 			description: "标题",
@@ -24,7 +24,7 @@ exports.warningConfig = {
 				length: ""
 			}
 		},
-		INTERVAL_SECOND: {
+		intervalSecond: {
 			nullable: true,
 			isPk: false,
 			description: "执行间隔时间(秒)",
@@ -35,7 +35,7 @@ exports.warningConfig = {
 				length: "10"
 			}
 		},
-		LAST_EXEC_TIME: {
+		lastExecTime: {
 			nullable: true,
 			isPk: false,
 			description: "上次执行时间",
@@ -46,7 +46,7 @@ exports.warningConfig = {
 				length: ""
 			}
 		},
-		NEXT_EXEC_TIME: {
+		nextExecTime: {
 			nullable: true,
 			isPk: false,
 			description: "下次执行时间",
@@ -57,7 +57,7 @@ exports.warningConfig = {
 				length: ""
 			}
 		},
-		EXEC_TIME_LONG: {
+		execTimeLong: {
 			nullable: true,
 			isPk: false,
 			description: "总执行时间(秒)",
@@ -68,7 +68,7 @@ exports.warningConfig = {
 				length: "20"
 			}
 		},
-		EXEC_TIME_COUNT: {
+		execTimeCount: {
 			nullable: true,
 			isPk: false,
 			description: "执行总次数",
@@ -79,7 +79,7 @@ exports.warningConfig = {
 				length: "20"
 			}
 		},
-		EXEC_LAST_EXPEND_TIME: {
+		execLastExpendTime: {
 			nullable: true,
 			isPk: false,
 			description: "上次执行消耗时间(秒)",
@@ -90,7 +90,7 @@ exports.warningConfig = {
 				length: "20"
 			}
 		},
-		EXEC_ERROR_COUNT: {
+		execErrorCount: {
 			nullable: true,
 			isPk: false,
 			description: "执行错误次数",
@@ -101,7 +101,7 @@ exports.warningConfig = {
 				length: "20"
 			}
 		},
-		LAST_WARN_TIME: {
+		lastWarnTime: {
 			nullable: true,
 			isPk: false,
 			description: "上一次发生报警时间(如果上一次出现报警,下次执行时,就不再统计已经报警的数据)",
@@ -112,7 +112,7 @@ exports.warningConfig = {
 				length: ""
 			}
 		},
-		KEY_WORDS: {
+		keyWords: {
 			nullable: false,
 			isPk: false,
 			description: "关键字",
@@ -123,7 +123,7 @@ exports.warningConfig = {
 				length: ""
 			}
 		},
-		WARNING_LEVEL: {
+		warningLevel: {
 			nullable: false,
 			isPk: false,
 			description: "告警级别",
@@ -134,7 +134,7 @@ exports.warningConfig = {
 				length: "5"
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "是否可:0-可用,1不可用",
@@ -145,7 +145,7 @@ exports.warningConfig = {
 				length: "1"
 			}
 		},
-		PAUSE_TIME: {
+		pauseTime: {
 			nullable: true,
 			isPk: false,
 			description: "暂停时间",

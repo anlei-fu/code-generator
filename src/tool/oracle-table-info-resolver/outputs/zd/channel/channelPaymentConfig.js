@@ -2,7 +2,7 @@ exports.channelPaymentConfig = {
 	name: "channelPaymentConfig",
 	rawName: "CHANNEL_PAYMENT_CONFIG",
 	columns: {
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
@@ -13,7 +13,7 @@ exports.channelPaymentConfig = {
 				length: "20"
 			}
 		},
-		PAYMENT_TYPE: {
+		paymentType: {
 			nullable: false,
 			isPk: false,
 			description: "支付方式",
@@ -24,7 +24,7 @@ exports.channelPaymentConfig = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态",
@@ -35,7 +35,7 @@ exports.channelPaymentConfig = {
 				length: ""
 			}
 		},
-		VERSION: {
+		version: {
 			nullable: false,
 			isPk: false,
 			description: "",

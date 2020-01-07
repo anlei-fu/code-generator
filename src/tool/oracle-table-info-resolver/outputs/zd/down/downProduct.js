@@ -2,7 +2,7 @@ exports.downProduct = {
 	name: "downProduct",
 	rawName: "DOWN_PRODUCT",
 	columns: {
-		CHANNEL_NO: {
+		channelNo: {
 			nullable: false,
 			isPk: false,
 			description: "渠道编号",
@@ -13,7 +13,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_ID: {
+		productId: {
 			nullable: false,
 			isPk: true,
 			description: "产品编号",
@@ -24,7 +24,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_NO: {
+		productNo: {
 			nullable: true,
 			isPk: false,
 			description: "产品编码",
@@ -35,7 +35,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_NAME: {
+		productName: {
 			nullable: false,
 			isPk: false,
 			description: "产品名称(运营使用)",
@@ -46,7 +46,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_TITLE: {
+		productTitle: {
 			nullable: true,
 			isPk: false,
 			description: "产品标题(可HTML)",
@@ -57,7 +57,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型 ",
@@ -68,7 +68,7 @@ exports.downProduct = {
 				length: "20"
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: false,
 			isPk: false,
 			description: "运营商",
@@ -79,7 +79,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: false,
 			isPk: false,
 			description: "省: QG-全国",
@@ -90,7 +90,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		CITY_NO: {
+		cityNo: {
 			nullable: false,
 			isPk: false,
 			description: "城: *-全省",
@@ -101,7 +101,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		FACE_FEE: {
+		faceFee: {
 			nullable: false,
 			isPk: false,
 			description: "面值",
@@ -112,7 +112,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		NORMAL_PRICE: {
+		normalPrice: {
 			nullable: false,
 			isPk: false,
 			description: "标准价格(话费和面值相当,流量1024=30元)",
@@ -123,7 +123,7 @@ exports.downProduct = {
 				length: "20"
 			}
 		},
-		ACTUAL_PRICE: {
+		actualPrice: {
 			nullable: false,
 			isPk: false,
 			description: "支付价格",
@@ -134,7 +134,7 @@ exports.downProduct = {
 				length: "20"
 			}
 		},
-		NEED_PAY: {
+		needPay: {
 			nullable: false,
 			isPk: false,
 			description: "需要支: 0-需要 1-不需要",
@@ -145,7 +145,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		HAS_ACTIVITY: {
+		hasActivity: {
 			nullable: false,
 			isPk: false,
 			description: "是否有活: 0-是 1-否",
@@ -156,7 +156,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		ACTIVITY_ID: {
+		activityId: {
 			nullable: true,
 			isPk: false,
 			description: "活动ID",
@@ -167,7 +167,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		NEED_VCODE: {
+		needVcode: {
 			nullable: false,
 			isPk: false,
 			description: "需要验证: 0-需要 1-不需要",
@@ -178,7 +178,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		NEED_REPEAT: {
+		needRepeat: {
 			nullable: true,
 			isPk: false,
 			description: "订单不存在是否重复发货",
@@ -189,7 +189,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRIORITY: {
+		priority: {
 			nullable: false,
 			isPk: false,
 			description: "权: 0-不显示(前端显示用, 值越大,优先级越高,显示越靠前)",
@@ -200,7 +200,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状: 0-启用 1-禁用",
@@ -211,7 +211,7 @@ exports.downProduct = {
 				length: "20"
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -222,7 +222,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
+		createUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建人",
@@ -233,7 +233,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -244,7 +244,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		UPDATE_USER: {
+		updateUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新人",
@@ -255,7 +255,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
+		updateTime: {
 			nullable: false,
 			isPk: false,
 			description: "更新时间",
@@ -266,7 +266,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_TYPE: {
+		productType: {
 			nullable: true,
 			isPk: false,
 			description: "业务分: 1-话费 2-流量 3-视频会员 4-加油卡 5-固话(前端显示用,区分Tab)",
@@ -277,7 +277,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_SUMMARY: {
+		productSummary: {
 			nullable: true,
 			isPk: false,
 			description: "产品简要说明(可HTML)",
@@ -288,7 +288,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_DETAIL: {
+		productDetail: {
 			nullable: true,
 			isPk: false,
 			description: "产品详细说明(可HTML)",
@@ -299,7 +299,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_TIP: {
+		productTip: {
 			nullable: true,
 			isPk: false,
 			description: "产品提示",
@@ -310,7 +310,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		FLOW_TYPE: {
+		flowType: {
 			nullable: true,
 			isPk: false,
 			description: "流量类: 1-直充 2-个性",
@@ -321,7 +321,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		RECHARGE_MODE: {
+		rechargeMode: {
 			nullable: true,
 			isPk: false,
 			description: "充值模: 0-快充 1-8点慢充 3-普通慢充",
@@ -332,7 +332,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		NEED_RECHARGE: {
+		needRecharge: {
 			nullable: true,
 			isPk: false,
 			description: "是否需要充值",
@@ -343,7 +343,7 @@ exports.downProduct = {
 				length: ""
 			}
 		},
-		IS_RECOMMEND: {
+		isRecommend: {
 			nullable: true,
 			isPk: false,
 			description: "是否推: 0-是 1-否",

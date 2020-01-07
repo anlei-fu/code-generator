@@ -2,8 +2,8 @@ exports.yxTradeAgentFund = {
 	name: "yxTradeAgentFund",
 	rawName: "YX_TRADE_AGENT_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.yxTradeAgentFund = {
 				length: "20"
 			}
 		},
-		UP_FUND_ID: {
-			nullable: "N",
+		upFundId: {
+			nullable: false,
 			isPk: false,
 			description: "上游资金变动编号，退款时为下游资金变动编号",
 			name: "upFundId",
@@ -24,8 +24,8 @@ exports.yxTradeAgentFund = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -35,8 +35,8 @@ exports.yxTradeAgentFund = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -46,8 +46,8 @@ exports.yxTradeAgentFund = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -57,8 +57,8 @@ exports.yxTradeAgentFund = {
 				length: "3"
 			}
 		},
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "代理人编号",
 			name: "agentId",
@@ -68,8 +68,8 @@ exports.yxTradeAgentFund = {
 				length: ""
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -79,8 +79,8 @@ exports.yxTradeAgentFund = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -90,8 +90,8 @@ exports.yxTradeAgentFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变更类型:加款2：交易扣款3：交易退款4：提款,12：发行扣款，13：发行退款",
 			name: "changeType",
@@ -101,8 +101,8 @@ exports.yxTradeAgentFund = {
 				length: "3"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -112,8 +112,8 @@ exports.yxTradeAgentFund = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "Y",
+		businessType: {
+			nullable: true,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -123,8 +123,8 @@ exports.yxTradeAgentFund = {
 				length: "3"
 			}
 		},
-		YX_TRADE_ORDER_NO: {
-			nullable: "Y",
+		yxTradeOrderNo: {
+			nullable: true,
 			isPk: false,
 			description: "外部系统订单编号",
 			name: "yxTradeOrderNo",
@@ -134,8 +134,8 @@ exports.yxTradeAgentFund = {
 				length: ""
 			}
 		},
-		YX_ORDER_ID: {
-			nullable: "Y",
+		yxOrderId: {
+			nullable: true,
 			isPk: false,
 			description: "订单编号",
 			name: "yxOrderId",

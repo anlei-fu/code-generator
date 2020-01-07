@@ -2,8 +2,8 @@ exports.supTradeUpManual = {
 	name: "supTradeUpManual",
 	rawName: "SUP_TRADE_UP_MANUAL",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -24,8 +24,8 @@ exports.supTradeUpManual = {
 				length: ""
 			}
 		},
-		UP_ACCOUNT_ID: {
-			nullable: "N",
+		upAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道账户",
 			name: "upAccountId",
@@ -35,8 +35,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否已红冲过",
 			name: "hasAdjust",
@@ -46,8 +46,8 @@ exports.supTradeUpManual = {
 				length: "3"
 			}
 		},
-		ADJUST_RECORD_ID: {
-			nullable: "N",
+		adjustRecordId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲的记录编号",
 			name: "adjustRecordId",
@@ -57,8 +57,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型（加款、加款红冲、提款、提款红冲、实体卡收货、电子卡密收货、实体卡转电子卡密、余额平账、交易平账）",
 			name: "changeType",
@@ -68,8 +68,8 @@ exports.supTradeUpManual = {
 				length: "3"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -79,8 +79,8 @@ exports.supTradeUpManual = {
 				length: ""
 			}
 		},
-		WAY_CHANGE_COUNT: {
-			nullable: "N",
+		wayChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "在途变动张数",
 			name: "wayChangeCount",
@@ -90,8 +90,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		WAY_CHANGE_FACE: {
-			nullable: "N",
+		wayChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "在途变动面值",
 			name: "wayChangeFace",
@@ -101,8 +101,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		WAY_CHANGE_AMOUNT: {
-			nullable: "N",
+		wayChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "在途变动金额",
 			name: "wayChangeAmount",
@@ -112,8 +112,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_COUNT: {
-			nullable: "N",
+		physicalChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡变动条数",
 			name: "physicalChangeCount",
@@ -123,8 +123,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_FACE: {
-			nullable: "N",
+		physicalChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡变动面值",
 			name: "physicalChangeFace",
@@ -134,8 +134,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CHANGE_AMOUNT: {
-			nullable: "N",
+		physicalChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡变动金额",
 			name: "physicalChangeAmount",
@@ -145,8 +145,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CHANGE_COUNT: {
-			nullable: "N",
+		electronicChangeCount: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密变动条数",
 			name: "electronicChangeCount",
@@ -156,8 +156,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CHANGE_FACE: {
-			nullable: "N",
+		electronicChangeFace: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密变动面值",
 			name: "electronicChangeFace",
@@ -167,8 +167,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CHANGE_AMOUNT: {
-			nullable: "N",
+		electronicChangeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密变动金额",
 			name: "electronicChangeAmount",
@@ -178,8 +178,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		WAY_COUNT_BALANCE: {
-			nullable: "N",
+		wayCountBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途卡余额",
 			name: "wayCountBalance",
@@ -189,8 +189,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		WAY_FACE_BALANCE: {
-			nullable: "N",
+		wayFaceBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途面值余额",
 			name: "wayFaceBalance",
@@ -200,8 +200,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		WAY_CARD_BALANCE: {
-			nullable: "N",
+		wayCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途账户余额",
 			name: "wayCardBalance",
@@ -211,8 +211,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_COUNT_BALANCE: {
-			nullable: "N",
+		physicalCountBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡张数余额",
 			name: "physicalCountBalance",
@@ -222,8 +222,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_FACE_BALANCE: {
-			nullable: "N",
+		physicalFaceBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡面值余额",
 			name: "physicalFaceBalance",
@@ -233,8 +233,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_BALANCE: {
-			nullable: "N",
+		physicalCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡账户余额",
 			name: "physicalCardBalance",
@@ -244,8 +244,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_COUNT_BALANCE: {
-			nullable: "N",
+		electronicCountBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密张数余额",
 			name: "electronicCountBalance",
@@ -255,8 +255,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_FACE_BALANCE: {
-			nullable: "N",
+		electronicFaceBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密面值余额",
 			name: "electronicFaceBalance",
@@ -266,8 +266,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_BALANCE: {
-			nullable: "N",
+		electronicCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密账户余额",
 			name: "electronicCardBalance",
@@ -277,8 +277,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		TRADE_CHANGE_TIME: {
-			nullable: "Y",
+		tradeChangeTime: {
+			nullable: true,
 			isPk: false,
 			description: "实体卡收货、电子卡密收货、实体卡转电子卡密交易系统时间",
 			name: "tradeChangeTime",
@@ -288,8 +288,8 @@ exports.supTradeUpManual = {
 				length: ""
 			}
 		},
-		BANK_CARD_NO: {
-			nullable: "Y",
+		bankCardNo: {
+			nullable: true,
 			isPk: false,
 			description: "加款/提款对应银行账户",
 			name: "bankCardNo",
@@ -299,8 +299,8 @@ exports.supTradeUpManual = {
 				length: ""
 			}
 		},
-		BANK_RECORD_ID: {
-			nullable: "Y",
+		bankRecordId: {
+			nullable: true,
 			isPk: false,
 			description: "加款/提款银行资金变动编号",
 			name: "bankRecordId",
@@ -310,8 +310,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		BANK_SERVICE_ID: {
-			nullable: "Y",
+		bankServiceId: {
+			nullable: true,
 			isPk: false,
 			description: "加款银行收取手续费编号",
 			name: "bankServiceId",
@@ -321,8 +321,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		BANK_RELATE_ID: {
-			nullable: "Y",
+		bankRelateId: {
+			nullable: true,
 			isPk: false,
 			description: "可红冲记录和银行相关记录关联编号",
 			name: "bankRelateId",
@@ -332,8 +332,8 @@ exports.supTradeUpManual = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -343,8 +343,8 @@ exports.supTradeUpManual = {
 				length: ""
 			}
 		},
-		CREATED_BY: {
-			nullable: "Y",
+		createdBy: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",

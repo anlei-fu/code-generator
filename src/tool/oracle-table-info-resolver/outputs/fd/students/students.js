@@ -2,8 +2,8 @@ exports.students = {
 	name: "students",
 	rawName: "STUDENTS",
 	columns: {
-		SNAME: {
-			nullable: "N",
+		sname: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "sname",
@@ -13,8 +13,8 @@ exports.students = {
 				length: ""
 			}
 		},
-		CLASS: {
-			nullable: "Y",
+		class: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "class",
@@ -24,8 +24,8 @@ exports.students = {
 				length: ""
 			}
 		},
-		SNO: {
-			nullable: "N",
+		sno: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "sno",
@@ -35,8 +35,8 @@ exports.students = {
 				length: ""
 			}
 		},
-		SBIRTHDAY: {
-			nullable: "Y",
+		sbirthday: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "sbirthday",
@@ -46,8 +46,8 @@ exports.students = {
 				length: ""
 			}
 		},
-		SSEX: {
-			nullable: "N",
+		ssex: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "ssex",

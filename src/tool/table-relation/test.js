@@ -1,5 +1,5 @@
 const { TableRelationAnalyzer } = require("./relation");
-const { all } = require("./../oracle-table-info-resolver/outputs/fd/qy/all");
+const { all } = require("./../oracle-table-info-resolver/outputs/fd/all");
 const { FILE } = require("./../../libs/file")
 
 

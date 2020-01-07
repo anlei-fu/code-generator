@@ -2,8 +2,8 @@ exports.fdBaseUpChannel = {
 	name: "fdBaseUpChannel",
 	rawName: "FD_BASE_UP_CHANNEL",
 	columns: {
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: true,
 			description: "渠道编号",
 			name: "channelNo",
@@ -13,8 +13,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -24,8 +24,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -35,8 +35,8 @@ exports.fdBaseUpChannel = {
 				length: "1"
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "手续费率",
 			name: "serviceFee",
@@ -46,8 +46,8 @@ exports.fdBaseUpChannel = {
 				length: "10"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -57,8 +57,8 @@ exports.fdBaseUpChannel = {
 				length: "20"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -68,8 +68,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -79,8 +79,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -90,8 +90,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",
@@ -101,8 +101,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		COMMI_BALANCE: {
-			nullable: "N",
+		commiBalance: {
+			nullable: false,
 			isPk: false,
 			description: "佣金余额",
 			name: "commiBalance",
@@ -112,8 +112,8 @@ exports.fdBaseUpChannel = {
 				length: "20"
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "N",
+		warnBalance: {
+			nullable: false,
 			isPk: false,
 			description: "报警余额",
 			name: "warnBalance",
@@ -123,8 +123,8 @@ exports.fdBaseUpChannel = {
 				length: "20"
 			}
 		},
-		WARN_TYPE: {
-			nullable: "N",
+		warnType: {
+			nullable: false,
 			isPk: false,
 			description: "报警类:1.单个支付账户不足   2.合计支付账户不足",
 			name: "warnType",
@@ -134,8 +134,8 @@ exports.fdBaseUpChannel = {
 				length: "3"
 			}
 		},
-		MAX_ADD: {
-			nullable: "N",
+		maxAdd: {
+			nullable: false,
 			isPk: false,
 			description: "加款上限提示值",
 			name: "maxAdd",
@@ -145,8 +145,8 @@ exports.fdBaseUpChannel = {
 				length: "20"
 			}
 		},
-		MIN_ADD: {
-			nullable: "N",
+		minAdd: {
+			nullable: false,
 			isPk: false,
 			description: "加款下限提示值",
 			name: "minAdd",
@@ -156,8 +156,8 @@ exports.fdBaseUpChannel = {
 				length: "20"
 			}
 		},
-		COMMI_RULE: {
-			nullable: "Y",
+		commiRule: {
+			nullable: true,
 			isPk: false,
 			description: "佣金规则",
 			name: "commiRule",
@@ -167,8 +167,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		NEED_COMMI: {
-			nullable: "N",
+		needCommi: {
+			nullable: false,
 			isPk: false,
 			description: "是否需要后返佣金0需要，1不需要",
 			name: "needCommi",
@@ -178,8 +178,8 @@ exports.fdBaseUpChannel = {
 				length: "1"
 			}
 		},
-		CLASSIFICATION: {
-			nullable: "N",
+		classification: {
+			nullable: false,
 			isPk: false,
 			description: "渠道分类--对应业务类型",
 			name: "classification",
@@ -189,8 +189,8 @@ exports.fdBaseUpChannel = {
 				length: "3"
 			}
 		},
-		CAPITAL_CLASS: {
-			nullable: "N",
+		capitalClass: {
+			nullable: false,
 			isPk: false,
 			description: "渠道资金分类：1.普通话费、2.普通流量、3.特殊话费、4.特殊流量、0.其他渠道",
 			name: "capitalClass",
@@ -200,8 +200,8 @@ exports.fdBaseUpChannel = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "开票类:1前向2-后向",
 			name: "billType",
@@ -211,8 +211,8 @@ exports.fdBaseUpChannel = {
 				length: "1"
 			}
 		},
-		MANAGE_USER: {
-			nullable: "Y",
+		manageUser: {
+			nullable: true,
 			isPk: false,
 			description: "开发/商务/运营",
 			name: "manageUser",
@@ -222,8 +222,8 @@ exports.fdBaseUpChannel = {
 				length: ""
 			}
 		},
-		CAN_ADD: {
-			nullable: "N",
+		canAdd: {
+			nullable: false,
 			isPk: false,
 			description: "允许加款（0允许，1禁止）",
 			name: "canAdd",
@@ -233,8 +233,8 @@ exports.fdBaseUpChannel = {
 				length: "3"
 			}
 		},
-		CHANNEL_COMPANY: {
-			nullable: "Y",
+		channelCompany: {
+			nullable: true,
 			isPk: false,
 			description: "渠道公司名称",
 			name: "channelCompany",

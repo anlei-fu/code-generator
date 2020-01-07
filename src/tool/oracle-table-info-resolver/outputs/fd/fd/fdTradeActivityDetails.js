@@ -2,8 +2,8 @@ exports.fdTradeActivityDetails = {
 	name: "fdTradeActivityDetails",
 	rawName: "FD_TRADE_ACTIVITY_DETAILS",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdTradeActivityDetails = {
 				length: "20"
 			}
 		},
-		ACTIVITY_ID: {
-			nullable: "N",
+		activityId: {
+			nullable: false,
 			isPk: false,
 			description: "活动编号",
 			name: "activityId",
@@ -24,8 +24,8 @@ exports.fdTradeActivityDetails = {
 				length: "20"
 			}
 		},
-		TRADE_RECORD_NO: {
-			nullable: "N",
+		tradeRecordNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统记录编号",
 			name: "tradeRecordNo",
@@ -35,8 +35,8 @@ exports.fdTradeActivityDetails = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统业务类型",
 			name: "businessType",
@@ -46,8 +46,8 @@ exports.fdTradeActivityDetails = {
 				length: "20"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "交易类型，1前向，2后向",
 			name: "billType",
@@ -57,8 +57,8 @@ exports.fdTradeActivityDetails = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "活动变动类型，1预付款，2增加后返利润，3减少后返利润",
 			name: "changeType",
@@ -68,8 +68,8 @@ exports.fdTradeActivityDetails = {
 				length: "3"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -79,8 +79,8 @@ exports.fdTradeActivityDetails = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -90,8 +90,8 @@ exports.fdTradeActivityDetails = {
 				length: ""
 			}
 		},
-		CHANGE_USER: {
-			nullable: "N",
+		changeUser: {
+			nullable: false,
 			isPk: false,
 			description: "变动人",
 			name: "changeUser",
@@ -101,8 +101,8 @@ exports.fdTradeActivityDetails = {
 				length: ""
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注信息",
 			name: "memo",

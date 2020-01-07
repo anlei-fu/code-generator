@@ -2,8 +2,8 @@ exports.dkTradeOrderMainDiffer = {
 	name: "dkTradeOrderMainDiffer",
 	rawName: "DK_TRADE_ORDER_MAIN_DIFFER",
 	columns: {
-		DIFFER_ID: {
-			nullable: "N",
+		differId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "differId",
@@ -13,8 +13,8 @@ exports.dkTradeOrderMainDiffer = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "记录生成日期",
 			name: "recordDate",
@@ -24,8 +24,8 @@ exports.dkTradeOrderMainDiffer = {
 				length: ""
 			}
 		},
-		DK_ORDER_ID: {
-			nullable: "N",
+		dkOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "dkOrderId",
@@ -35,8 +35,8 @@ exports.dkTradeOrderMainDiffer = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.dkTradeOrderMainDiffer = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道支付账户编号",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.dkTradeOrderMainDiffer = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -68,8 +68,8 @@ exports.dkTradeOrderMainDiffer = {
 				length: "3"
 			}
 		},
-		DOWN_FIRST_FACE: {
-			nullable: "N",
+		downFirstFace: {
+			nullable: false,
 			isPk: false,
 			description: "下游与上游扣款的时间差造成的差异面值(上下游扣款有时间差异时造成，下扣、下退、上扣、上退)",
 			name: "downFirstFace",
@@ -79,8 +79,8 @@ exports.dkTradeOrderMainDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_FIRST_AMOUNT: {
-			nullable: "N",
+		downFirstAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游与上游扣款的时间差造成的差异金额",
 			name: "downFirstAmount",

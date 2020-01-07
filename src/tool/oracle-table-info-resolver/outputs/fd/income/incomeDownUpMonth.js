@@ -2,8 +2,8 @@ exports.incomeDownUpMonth = {
 	name: "incomeDownUpMonth",
 	rawName: "INCOME_DOWN_UP_MONTH",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeDownUpMonth = {
 				length: "20"
 			}
 		},
-		TRADE_MONTH: {
-			nullable: "N",
+		tradeMonth: {
+			nullable: false,
 			isPk: false,
 			description: "交易月份",
 			name: "tradeMonth",
@@ -24,8 +24,8 @@ exports.incomeDownUpMonth = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -35,8 +35,8 @@ exports.incomeDownUpMonth = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NAME: {
-			nullable: "N",
+		downChannelName: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道名称",
 			name: "downChannelName",
@@ -46,8 +46,8 @@ exports.incomeDownUpMonth = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -57,8 +57,8 @@ exports.incomeDownUpMonth = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NAME: {
-			nullable: "N",
+		upChannelName: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道名称",
 			name: "upChannelName",
@@ -68,8 +68,8 @@ exports.incomeDownUpMonth = {
 				length: ""
 			}
 		},
-		DOWN_GROUP_ID: {
-			nullable: "N",
+		downGroupId: {
+			nullable: false,
 			isPk: false,
 			description: "下游分组",
 			name: "downGroupId",
@@ -79,8 +79,8 @@ exports.incomeDownUpMonth = {
 				length: "20"
 			}
 		},
-		TRADE_AMOUNT: {
-			nullable: "N",
+		tradeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易金额",
 			name: "tradeAmount",
@@ -90,8 +90,8 @@ exports.incomeDownUpMonth = {
 				length: "20"
 			}
 		},
-		TRADE_PROFIT: {
-			nullable: "N",
+		tradeProfit: {
+			nullable: false,
 			isPk: false,
 			description: "交易利润",
 			name: "tradeProfit",

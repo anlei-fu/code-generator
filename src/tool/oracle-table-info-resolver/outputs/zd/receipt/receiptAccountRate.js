@@ -2,7 +2,7 @@ exports.receiptAccountRate = {
 	name: "receiptAccountRate",
 	rawName: "RECEIPT_ACCOUNT_RATE",
 	columns: {
-		RECORD_ID: {
+		recordId: {
 			nullable: false,
 			isPk: true,
 			description: "记录编号",
@@ -13,7 +13,7 @@ exports.receiptAccountRate = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
+		accountType: {
 			nullable: false,
 			isPk: false,
 			description: "帐户类: :支付宝 :微信 :优惠券 11-京东",
@@ -24,7 +24,7 @@ exports.receiptAccountRate = {
 				length: ""
 			}
 		},
-		SUB_TYPE: {
+		subType: {
 			nullable: true,
 			isPk: false,
 			description: "子类型(京: 01-借记卡 02-信用卡 1-白条 2-余额 5-小金库 8-白条分期)",
@@ -35,7 +35,7 @@ exports.receiptAccountRate = {
 				length: ""
 			}
 		},
-		SERVICE_RATE: {
+		serviceRate: {
 			nullable: false,
 			isPk: false,
 			description: "手续费率",
@@ -46,7 +46,7 @@ exports.receiptAccountRate = {
 				length: "15"
 			}
 		},
-		PAY_NAME: {
+		payName: {
 			nullable: false,
 			isPk: false,
 			description: "支付名称",
@@ -57,7 +57,7 @@ exports.receiptAccountRate = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态",
@@ -68,7 +68,7 @@ exports.receiptAccountRate = {
 				length: ""
 			}
 		},
-		TRUNC_TYPE: {
+		truncType: {
 			nullable: true,
 			isPk: false,
 			description: "小数位保留方:1-trunc,2-round",

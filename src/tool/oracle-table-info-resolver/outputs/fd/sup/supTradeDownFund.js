@@ -2,8 +2,8 @@ exports.supTradeDownFund = {
 	name: "supTradeDownFund",
 	rawName: "SUP_TRADE_DOWN_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "资金变动编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		SUP_ORDER_ID: {
-			nullable: "N",
+		supOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "supOrderId",
@@ -24,8 +24,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -35,8 +35,8 @@ exports.supTradeDownFund = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户编号",
 			name: "downAccountId",
@@ -46,8 +46,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游公司编号",
 			name: "downCompanyId",
@@ -57,8 +57,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "sourceSystemId",
@@ -68,8 +68,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统订单号",
 			name: "tradeOrderNo",
@@ -79,8 +79,8 @@ exports.supTradeDownFund = {
 				length: ""
 			}
 		},
-		TRADE_REFUND_NO: {
-			nullable: "N",
+		tradeRefundNo: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统退款编号",
 			name: "tradeRefundNo",
@@ -90,8 +90,8 @@ exports.supTradeDownFund = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型（加款、扣款、退款、提款）",
 			name: "changeType",
@@ -101,8 +101,8 @@ exports.supTradeDownFund = {
 				length: "3"
 			}
 		},
-		CHANGE_FACE: {
-			nullable: "N",
+		changeFace: {
+			nullable: false,
 			isPk: false,
 			description: "变动面值",
 			name: "changeFace",
@@ -112,8 +112,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -123,8 +123,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "资金变动时间",
 			name: "changeTime",
@@ -134,8 +134,8 @@ exports.supTradeDownFund = {
 				length: ""
 			}
 		},
-		TRADE_ORDER_TIME: {
-			nullable: "N",
+		tradeOrderTime: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统订单时间",
 			name: "tradeOrderTime",
@@ -145,8 +145,8 @@ exports.supTradeDownFund = {
 				length: ""
 			}
 		},
-		TRADE_CHANGE_TIME: {
-			nullable: "N",
+		tradeChangeTime: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统资金变动时间",
 			name: "tradeChangeTime",
@@ -156,8 +156,8 @@ exports.supTradeDownFund = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -167,8 +167,8 @@ exports.supTradeDownFund = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",

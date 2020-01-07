@@ -2,8 +2,8 @@ exports.fdSystemBusinessStatisMap = {
 	name: "fdSystemBusinessStatisMap",
 	rawName: "FD_SYSTEM_BUSINESS_STATIS_MAP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdSystemBusinessStatisMap = {
 				length: "20"
 			}
 		},
-		LOCAL_BUSINESS_TYPE: {
-			nullable: "N",
+		localBusinessType: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统业务类型编号",
 			name: "localBusinessType",
@@ -24,8 +24,8 @@ exports.fdSystemBusinessStatisMap = {
 				length: "20"
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "N",
+		statisticsType: {
+			nullable: false,
 			isPk: false,
 			description: "财务渠道分类",
 			name: "statisticsType",

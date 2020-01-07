@@ -2,8 +2,8 @@ exports.incomeChannelMonthSum = {
 	name: "incomeChannelMonthSum",
 	rawName: "INCOME_CHANNEL_MONTH_SUM",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeChannelMonthSum = {
 				length: "20"
 			}
 		},
-		TRADE_MONTH: {
-			nullable: "N",
+		tradeMonth: {
+			nullable: false,
 			isPk: false,
 			description: "交易日期",
 			name: "tradeMonth",
@@ -24,8 +24,8 @@ exports.incomeChannelMonthSum = {
 				length: ""
 			}
 		},
-		SYSTEM_NO: {
-			nullable: "N",
+		systemNo: {
+			nullable: false,
 			isPk: false,
 			description: "所属系统编号",
 			name: "systemNo",
@@ -35,8 +35,8 @@ exports.incomeChannelMonthSum = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.incomeChannelMonthSum = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -57,8 +57,8 @@ exports.incomeChannelMonthSum = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "所属省份(下游为‘-’)",
 			name: "provinceNo",
@@ -68,8 +68,8 @@ exports.incomeChannelMonthSum = {
 				length: ""
 			}
 		},
-		TRADE_TYPE: {
-			nullable: "N",
+		tradeType: {
+			nullable: false,
 			isPk: false,
 			description: "业务分类",
 			name: "tradeType",
@@ -79,8 +79,8 @@ exports.incomeChannelMonthSum = {
 				length: "3"
 			}
 		},
-		GROUP_ID: {
-			nullable: "N",
+		groupId: {
+			nullable: false,
 			isPk: false,
 			description: "分组",
 			name: "groupId",
@@ -90,8 +90,8 @@ exports.incomeChannelMonthSum = {
 				length: "20"
 			}
 		},
-		GROUP_TYPE: {
-			nullable: "N",
+		groupType: {
+			nullable: false,
 			isPk: false,
 			description: "分组类型",
 			name: "groupType",
@@ -101,8 +101,8 @@ exports.incomeChannelMonthSum = {
 				length: "3"
 			}
 		},
-		TRADE_AMOUNT: {
-			nullable: "N",
+		tradeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易量",
 			name: "tradeAmount",
@@ -112,8 +112,8 @@ exports.incomeChannelMonthSum = {
 				length: "20"
 			}
 		},
-		TRADE_RV_AMOUNT: {
-			nullable: "N",
+		tradeRvAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易平账金额",
 			name: "tradeRvAmount",
@@ -123,8 +123,8 @@ exports.incomeChannelMonthSum = {
 				length: "20"
 			}
 		},
-		TRADE_PROFIT: {
-			nullable: "N",
+		tradeProfit: {
+			nullable: false,
 			isPk: false,
 			description: "利润(包含平账）",
 			name: "tradeProfit",

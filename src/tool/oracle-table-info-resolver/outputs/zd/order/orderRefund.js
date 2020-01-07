@@ -2,7 +2,7 @@ exports.orderRefund = {
 	name: "orderRefund",
 	rawName: "ORDER_REFUND",
 	columns: {
-		RECORD_ID: {
+		recordId: {
 			nullable: false,
 			isPk: true,
 			description: "退款编号",
@@ -13,7 +13,7 @@ exports.orderRefund = {
 				length: "20"
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "订单号",
@@ -24,7 +24,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		REFUND_FEE: {
+		refundFee: {
 			nullable: false,
 			isPk: false,
 			description: "退款金额",
@@ -35,7 +35,7 @@ exports.orderRefund = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -46,7 +46,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
+		createUser: {
 			nullable: false,
 			isPk: false,
 			description: "创建人",
@@ -57,7 +57,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -68,7 +68,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		REFUND_NO: {
+		refundNo: {
 			nullable: true,
 			isPk: false,
 			description: "退款单号",
@@ -79,7 +79,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态20-等待退款30-正在退款90-失败0-成功",
@@ -90,7 +90,7 @@ exports.orderRefund = {
 				length: "2"
 			}
 		},
-		FINISH_TIME: {
+		finishTime: {
 			nullable: true,
 			isPk: false,
 			description: "完成时间",
@@ -101,7 +101,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		REFUND_MSG: {
+		refundMsg: {
 			nullable: true,
 			isPk: false,
 			description: "上游退款消息",
@@ -112,7 +112,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		SEND_TIME: {
+		sendTime: {
 			nullable: true,
 			isPk: false,
 			description: "发送上游退款的时间",
@@ -123,7 +123,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		ROBOT_IP: {
+		robotIp: {
 			nullable: true,
 			isPk: false,
 			description: "退款机器人",
@@ -134,7 +134,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		QUERY_IP: {
+		queryIp: {
 			nullable: true,
 			isPk: false,
 			description: "查询机器ip",
@@ -145,7 +145,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		NEXT_TIME: {
+		nextTime: {
 			nullable: true,
 			isPk: false,
 			description: "下次查询时间",
@@ -156,7 +156,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		NOTIFY_STATE: {
+		notifyState: {
 			nullable: true,
 			isPk: false,
 			description: "回调状态 10-无需20-等待30-正在90-失败0-成功",
@@ -167,7 +167,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		NOTIFY_TIME: {
+		notifyTime: {
 			nullable: true,
 			isPk: false,
 			description: "回调时间",
@@ -178,7 +178,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		REFUND_DESC: {
+		refundDesc: {
 			nullable: true,
 			isPk: false,
 			description: "退款原因",
@@ -189,7 +189,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		NEED_NOTIFY: {
+		needNotify: {
 			nullable: true,
 			isPk: false,
 			description: "是否需要通知  :需要 :不需要",
@@ -200,7 +200,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -211,7 +211,7 @@ exports.orderRefund = {
 				length: "20"
 			}
 		},
-		LOSS_SERVICE_FEE: {
+		lossServiceFee: {
 			nullable: true,
 			isPk: false,
 			description: "亏损手续费",
@@ -222,7 +222,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		START_TIME: {
+		startTime: {
 			nullable: true,
 			isPk: false,
 			description: "退款开始时间",
@@ -233,7 +233,7 @@ exports.orderRefund = {
 				length: ""
 			}
 		},
-		REFUND_CNTR: {
+		refundCntr: {
 			nullable: true,
 			isPk: false,
 			description: "退款次数",

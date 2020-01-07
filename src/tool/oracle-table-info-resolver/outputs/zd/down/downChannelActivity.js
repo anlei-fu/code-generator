@@ -2,7 +2,7 @@ exports.downChannelActivity = {
 	name: "downChannelActivity",
 	rawName: "DOWN_CHANNEL_ACTIVITY",
 	columns: {
-		RECORD_ID: {
+		recordId: {
 			nullable: false,
 			isPk: true,
 			description: "记录编号",
@@ -13,7 +13,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
+		channelNo: {
 			nullable: false,
 			isPk: false,
 			description: "渠道编号",
@@ -24,7 +24,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		ACTIVITY_TOTAL: {
+		activityTotal: {
 			nullable: false,
 			isPk: false,
 			description: "活动总数量",
@@ -35,7 +35,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		ACTIVITY_REST: {
+		activityRest: {
 			nullable: false,
 			isPk: false,
 			description: "活动剩余数量",
@@ -46,7 +46,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		ACTIVITY_START: {
+		activityStart: {
 			nullable: false,
 			isPk: false,
 			description: "活动开始时间",
@@ -57,7 +57,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		ACTIVITY_END: {
+		activityEnd: {
 			nullable: false,
 			isPk: false,
 			description: "活动结束时间",
@@ -68,7 +68,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -79,7 +79,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		DAY_START: {
+		dayStart: {
 			nullable: false,
 			isPk: false,
 			description: "每日开始时间",
@@ -90,7 +90,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		DAY_END: {
+		dayEnd: {
 			nullable: false,
 			isPk: false,
 			description: "每日结束时间",
@@ -101,7 +101,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
+		updateTime: {
 			nullable: true,
 			isPk: false,
 			description: "更新时间",
@@ -112,7 +112,7 @@ exports.downChannelActivity = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态",

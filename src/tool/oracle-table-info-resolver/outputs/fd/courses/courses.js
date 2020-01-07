@@ -2,8 +2,8 @@ exports.courses = {
 	name: "courses",
 	rawName: "COURSES",
 	columns: {
-		CNO: {
-			nullable: "N",
+		cno: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "cno",
@@ -13,8 +13,8 @@ exports.courses = {
 				length: ""
 			}
 		},
-		TNO: {
-			nullable: "N",
+		tno: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "tno",
@@ -24,8 +24,8 @@ exports.courses = {
 				length: ""
 			}
 		},
-		CNAME: {
-			nullable: "N",
+		cname: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "cname",

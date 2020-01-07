@@ -2,8 +2,8 @@ exports.yxTradeOrderMain = {
 	name: "yxTradeOrderMain",
 	rawName: "YX_TRADE_ORDER_MAIN",
 	columns: {
-		YX_ORDER_ID: {
-			nullable: "N",
+		yxOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "yxOrderId",
@@ -13,8 +13,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -24,8 +24,8 @@ exports.yxTradeOrderMain = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款账号",
 			name: "downAccountId",
@@ -35,8 +35,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游公司编号",
 			name: "downCompanyId",
@@ -46,8 +46,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "代理人编号",
 			name: "agentId",
@@ -57,8 +57,8 @@ exports.yxTradeOrderMain = {
 				length: ""
 			}
 		},
-		AGENT_TYPE: {
-			nullable: "N",
+		agentType: {
+			nullable: false,
 			isPk: false,
 			description: "代理人类型",
 			name: "agentType",
@@ -68,8 +68,8 @@ exports.yxTradeOrderMain = {
 				length: "3"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -79,8 +79,8 @@ exports.yxTradeOrderMain = {
 				length: ""
 			}
 		},
-		EXT_ORDER_NO: {
-			nullable: "N",
+		extOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展订单号交易系统供",
 			name: "extOrderNo",
@@ -90,8 +90,8 @@ exports.yxTradeOrderMain = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -101,8 +101,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "订单添加时间",
 			name: "createTime",
@@ -112,8 +112,8 @@ exports.yxTradeOrderMain = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "N",
+		orderTime: {
+			nullable: false,
 			isPk: false,
 			description: "订单日期（交易系统下单日期）",
 			name: "orderTime",
@@ -123,8 +123,8 @@ exports.yxTradeOrderMain = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -134,8 +134,8 @@ exports.yxTradeOrderMain = {
 				length: "3"
 			}
 		},
-		ORDER_FACE: {
-			nullable: "N",
+		orderFace: {
+			nullable: false,
 			isPk: false,
 			description: "成交面值",
 			name: "orderFace",
@@ -145,8 +145,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		ORDER_AMOUNT: {
-			nullable: "N",
+		orderAmount: {
+			nullable: false,
 			isPk: false,
 			description: "代收金额（用户支付金额）",
 			name: "orderAmount",
@@ -156,8 +156,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		AGENCY_FEE: {
-			nullable: "N",
+		agencyFee: {
+			nullable: false,
 			isPk: false,
 			description: "代理人酬金（代理费）",
 			name: "agencyFee",
@@ -167,8 +167,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		HANDLING_FEE: {
-			nullable: "N",
+		handlingFee: {
+			nullable: false,
 			isPk: false,
 			description: "三方平台手续费",
 			name: "handlingFee",
@@ -178,8 +178,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		SUCCESS_FACE: {
-			nullable: "N",
+		successFace: {
+			nullable: false,
 			isPk: false,
 			description: "成功面值",
 			name: "successFace",
@@ -189,8 +189,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后修改时间",
 			name: "lastEditTime",
@@ -200,8 +200,8 @@ exports.yxTradeOrderMain = {
 				length: ""
 			}
 		},
-		INCOME_AMOUNT: {
-			nullable: "Y",
+		incomeAmount: {
+			nullable: true,
 			isPk: false,
 			description: "收益金额",
 			name: "incomeAmount",
@@ -211,8 +211,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		REAL_AMOUNT: {
-			nullable: "Y",
+		realAmount: {
+			nullable: true,
 			isPk: false,
 			description: "实际扣款金额",
 			name: "realAmount",
@@ -222,8 +222,8 @@ exports.yxTradeOrderMain = {
 				length: "20"
 			}
 		},
-		COUPON_AMOUNT: {
-			nullable: "Y",
+		couponAmount: {
+			nullable: true,
 			isPk: false,
 			description: "优惠券金额",
 			name: "couponAmount",

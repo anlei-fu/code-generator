@@ -2,8 +2,8 @@ exports.fdB2eBankTask = {
 	name: "fdB2eBankTask",
 	rawName: "FD_B2E_BANK_TASK",
 	columns: {
-		TASK_ID: {
-			nullable: "N",
+		taskId: {
+			nullable: false,
 			isPk: false,
 			description: "任务编号",
 			name: "taskId",
@@ -13,8 +13,8 @@ exports.fdB2eBankTask = {
 				length: "20"
 			}
 		},
-		TASK_TYPE: {
-			nullable: "N",
+		taskType: {
+			nullable: false,
 			isPk: false,
 			description: "任务类型",
 			name: "taskType",
@@ -24,8 +24,8 @@ exports.fdB2eBankTask = {
 				length: "3"
 			}
 		},
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号（上游加款、上游加款查询）",
 			name: "recordId",
@@ -35,8 +35,8 @@ exports.fdB2eBankTask = {
 				length: "20"
 			}
 		},
-		MQ_NAME: {
-			nullable: "N",
+		mqName: {
+			nullable: false,
 			isPk: false,
 			description: "任务mq标识",
 			name: "mqName",
@@ -46,8 +46,8 @@ exports.fdB2eBankTask = {
 				length: ""
 			}
 		},
-		TASK_STATUS: {
-			nullable: "N",
+		taskStatus: {
+			nullable: false,
 			isPk: false,
 			description: "任务状态",
 			name: "taskStatus",
@@ -57,8 +57,8 @@ exports.fdB2eBankTask = {
 				length: "3"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -68,8 +68,8 @@ exports.fdB2eBankTask = {
 				length: ""
 			}
 		},
-		CONTENT: {
-			nullable: "N",
+		content: {
+			nullable: false,
 			isPk: false,
 			description: "任务参数",
 			name: "content",
@@ -79,8 +79,8 @@ exports.fdB2eBankTask = {
 				length: ""
 			}
 		},
-		BATCH_ID: {
-			nullable: "N",
+		batchId: {
+			nullable: false,
 			isPk: false,
 			description: "批次号",
 			name: "batchId",
@@ -90,8 +90,8 @@ exports.fdB2eBankTask = {
 				length: "20"
 			}
 		},
-		TIMEOUT_TIME: {
-			nullable: "N",
+		timeoutTime: {
+			nullable: false,
 			isPk: false,
 			description: "超时时间",
 			name: "timeoutTime",

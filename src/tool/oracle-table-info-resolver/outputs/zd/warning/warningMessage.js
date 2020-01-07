@@ -2,7 +2,7 @@ exports.warningMessage = {
 	name: "warningMessage",
 	rawName: "WARNING_MESSAGE",
 	columns: {
-		MESSAGE_ID: {
+		messageId: {
 			nullable: false,
 			isPk: false,
 			description: "消息编号",
@@ -13,7 +13,7 @@ exports.warningMessage = {
 				length: "20"
 			}
 		},
-		TITILE: {
+		titile: {
 			nullable: false,
 			isPk: false,
 			description: "标题",
@@ -24,7 +24,7 @@ exports.warningMessage = {
 				length: ""
 			}
 		},
-		KEY_WORDS: {
+		keyWords: {
 			nullable: false,
 			isPk: false,
 			description: "关键字",
@@ -35,7 +35,7 @@ exports.warningMessage = {
 				length: ""
 			}
 		},
-		WARNING_LEVEL: {
+		warningLevel: {
 			nullable: false,
 			isPk: false,
 			description: "告警级别",
@@ -46,7 +46,7 @@ exports.warningMessage = {
 				length: "5"
 			}
 		},
-		CREATED_TIME: {
+		createdTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -57,7 +57,7 @@ exports.warningMessage = {
 				length: ""
 			}
 		},
-		IS_SYNC: {
+		isSync: {
 			nullable: true,
 			isPk: false,
 			description: "是否被同:1-未同步,0-被同步",
@@ -68,7 +68,7 @@ exports.warningMessage = {
 				length: "2"
 			}
 		},
-		CONTENT: {
+		content: {
 			nullable: true,
 			isPk: false,
 			description: "内容",
@@ -79,7 +79,7 @@ exports.warningMessage = {
 				length: ""
 			}
 		},
-		SYNC_STATUS: {
+		syncStatus: {
 			nullable: false,
 			isPk: false,
 			description: "同步状:2:等待同步,3:同步中,:同步完成",

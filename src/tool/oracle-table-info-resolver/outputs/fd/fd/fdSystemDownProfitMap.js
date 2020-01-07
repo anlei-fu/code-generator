@@ -2,8 +2,8 @@ exports.fdSystemDownProfitMap = {
 	name: "fdSystemDownProfitMap",
 	rawName: "FD_SYSTEM_DOWN_PROFIT_MAP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdSystemDownProfitMap = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdSystemDownProfitMap = {
 				length: ""
 			}
 		},
-		PROFIT_RATIO: {
-			nullable: "N",
+		profitRatio: {
+			nullable: false,
 			isPk: false,
 			description: "利润分配给下游的比例",
 			name: "profitRatio",

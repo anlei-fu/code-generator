@@ -2,7 +2,7 @@ exports.paymentConfig = {
 	name: "paymentConfig",
 	rawName: "PAYMENT_CONFIG",
 	columns: {
-		ID: {
+		id: {
 			nullable: false,
 			isPk: false,
 			description: "主键",
@@ -13,7 +13,7 @@ exports.paymentConfig = {
 				length: "20"
 			}
 		},
-		NAME: {
+		name: {
 			nullable: false,
 			isPk: false,
 			description: "名字",
@@ -24,7 +24,7 @@ exports.paymentConfig = {
 				length: ""
 			}
 		},
-		IMG: {
+		img: {
 			nullable: false,
 			isPk: false,
 			description: "图片路径",
@@ -35,7 +35,7 @@ exports.paymentConfig = {
 				length: ""
 			}
 		},
-		SORT_VAL: {
+		sortVal: {
 			nullable: false,
 			isPk: false,
 			description: "排序",
@@ -46,7 +46,7 @@ exports.paymentConfig = {
 				length: ""
 			}
 		},
-		IMG_FONT: {
+		imgFont: {
 			nullable: true,
 			isPk: false,
 			description: "图片字体",

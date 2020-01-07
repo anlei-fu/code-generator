@@ -2,8 +2,8 @@ exports.rptUnitReportTradeSplit = {
 	name: "rptUnitReportTradeSplit",
 	rawName: "RPT_UNIT_REPORT_TRADE_SPLIT",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.rptUnitReportTradeSplit = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -35,8 +35,8 @@ exports.rptUnitReportTradeSplit = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道分类，1、上游渠道，2、下游渠道",
 			name: "channelType",
@@ -46,8 +46,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "1"
 			}
 		},
-		INCOME_UNIT: {
-			nullable: "N",
+		incomeUnit: {
+			nullable: false,
 			isPk: false,
 			description: "收入单元，对应枚举",
 			name: "incomeUnit",
@@ -57,8 +57,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "3"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -68,8 +68,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "sourceSystemId",
@@ -79,8 +79,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -90,8 +90,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "3"
 			}
 		},
-		BILL_SPLIT_TYPE: {
-			nullable: "N",
+		billSplitType: {
+			nullable: false,
 			isPk: false,
 			description: "分账方式，1、不分账，2、比例分账，3、双计分账",
 			name: "billSplitType",
@@ -101,8 +101,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "3"
 			}
 		},
-		BILL_SPLIT_RATIO: {
-			nullable: "N",
+		billSplitRatio: {
+			nullable: false,
 			isPk: false,
 			description: "分账比例",
 			name: "billSplitRatio",
@@ -112,8 +112,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		TRADE_COUNT: {
-			nullable: "N",
+		tradeCount: {
+			nullable: false,
 			isPk: false,
 			description: "交易笔数",
 			name: "tradeCount",
@@ -123,8 +123,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		TRADE_DEBIT_AMOUNT: {
-			nullable: "N",
+		tradeDebitAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易扣款金额",
 			name: "tradeDebitAmount",
@@ -134,8 +134,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		TRADE_PROFIT: {
-			nullable: "N",
+		tradeProfit: {
+			nullable: false,
 			isPk: false,
 			description: "交易利润",
 			name: "tradeProfit",
@@ -145,8 +145,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		RV_AMOUNT: {
-			nullable: "N",
+		rvAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易平账影响利润的金额",
 			name: "rvAmount",
@@ -156,8 +156,8 @@ exports.rptUnitReportTradeSplit = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "数据快照日期",
 			name: "snapTime",

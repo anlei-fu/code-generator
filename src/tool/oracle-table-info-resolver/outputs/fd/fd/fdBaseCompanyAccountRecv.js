@@ -2,8 +2,8 @@ exports.fdBaseCompanyAccountRecv = {
 	name: "fdBaseCompanyAccountRecv",
 	rawName: "FD_BASE_COMPANY_ACCOUNT_RECV",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: true,
 			description: "账户编号",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountName",
@@ -24,8 +24,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: ""
 			}
 		},
-		OWE_COMPANY: {
-			nullable: "N",
+		oweCompany: {
+			nullable: false,
 			isPk: false,
 			description: "欠款公司",
 			name: "oweCompany",
@@ -35,8 +35,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: "20"
 			}
 		},
-		RECV_COMPANY: {
-			nullable: "N",
+		recvCompany: {
+			nullable: false,
 			isPk: false,
 			description: "收款公司",
 			name: "recvCompany",
@@ -46,8 +46,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -57,8 +57,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: "20"
 			}
 		},
-		REMARK: {
-			nullable: "Y",
+		remark: {
+			nullable: true,
 			isPk: false,
 			description: "描述",
 			name: "remark",
@@ -68,8 +68,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态:启用:禁用",
 			name: "status",
@@ -79,8 +79,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: "1"
 			}
 		},
-		LAST_UPDATE_TIME: {
-			nullable: "N",
+		lastUpdateTime: {
+			nullable: false,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastUpdateTime",
@@ -90,8 +90,8 @@ exports.fdBaseCompanyAccountRecv = {
 				length: ""
 			}
 		},
-		LAST_UPDATE_USER: {
-			nullable: "N",
+		lastUpdateUser: {
+			nullable: false,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastUpdateUser",

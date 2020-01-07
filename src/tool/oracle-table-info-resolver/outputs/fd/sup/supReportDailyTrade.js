@@ -2,8 +2,8 @@ exports.supReportDailyTrade = {
 	name: "supReportDailyTrade",
 	rawName: "SUP_REPORT_DAILY_TRADE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.supReportDailyTrade = {
 				length: "20"
 			}
 		},
-		REPORT_DATE: {
-			nullable: "N",
+		reportDate: {
+			nullable: false,
 			isPk: false,
 			description: "数据日期",
 			name: "reportDate",
@@ -24,8 +24,8 @@ exports.supReportDailyTrade = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.supReportDailyTrade = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -46,8 +46,8 @@ exports.supReportDailyTrade = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -57,8 +57,8 @@ exports.supReportDailyTrade = {
 				length: "20"
 			}
 		},
-		SYSTEM_ID: {
-			nullable: "N",
+		systemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "systemId",
@@ -68,8 +68,8 @@ exports.supReportDailyTrade = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型",
 			name: "channelType",
@@ -79,8 +79,8 @@ exports.supReportDailyTrade = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "前后项信息",
 			name: "billType",
@@ -90,8 +90,8 @@ exports.supReportDailyTrade = {
 				length: "3"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -101,8 +101,8 @@ exports.supReportDailyTrade = {
 				length: "3"
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "N",
+		statisticsType: {
+			nullable: false,
 			isPk: false,
 			description: "财务分类",
 			name: "statisticsType",
@@ -112,8 +112,8 @@ exports.supReportDailyTrade = {
 				length: "3"
 			}
 		},
-		TRADE_COUNT: {
-			nullable: "N",
+		tradeCount: {
+			nullable: false,
 			isPk: false,
 			description: "销卡张数",
 			name: "tradeCount",
@@ -123,8 +123,8 @@ exports.supReportDailyTrade = {
 				length: "20"
 			}
 		},
-		TRADE_UNIT: {
-			nullable: "N",
+		tradeUnit: {
+			nullable: false,
 			isPk: false,
 			description: "交易规格",
 			name: "tradeUnit",
@@ -134,8 +134,8 @@ exports.supReportDailyTrade = {
 				length: "20"
 			}
 		},
-		TRADE_FACE: {
-			nullable: "N",
+		tradeFace: {
+			nullable: false,
 			isPk: false,
 			description: "交易面值",
 			name: "tradeFace",
@@ -145,8 +145,8 @@ exports.supReportDailyTrade = {
 				length: "20"
 			}
 		},
-		TRADE_AMOUNT: {
-			nullable: "N",
+		tradeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "交易金额",
 			name: "tradeAmount",

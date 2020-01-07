@@ -2,8 +2,8 @@ exports.zreportUpFundJoinHs = {
 	name: "zreportUpFundJoinHs",
 	rawName: "ZREPORT_UP_FUND_JOIN_HS",
 	columns: {
-		DOWN_DRAW_FACE: {
-			nullable: "Y",
+		downDrawFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downDrawFace",
@@ -13,8 +13,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		UP_DRAW_UNIT: {
-			nullable: "Y",
+		upDrawUnit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upDrawUnit",
@@ -24,8 +24,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "Y",
+		changeType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "changeType",
@@ -35,8 +35,8 @@ exports.zreportUpFundJoinHs = {
 				length: "3"
 			}
 		},
-		SETTLE_STATUS: {
-			nullable: "Y",
+		settleStatus: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "settleStatus",
@@ -46,8 +46,8 @@ exports.zreportUpFundJoinHs = {
 				length: "10"
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "Y",
+		downAccountId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downAccountId",
@@ -57,8 +57,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		FD_ORDER_ID: {
-			nullable: "Y",
+		fdOrderId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "fdOrderId",
@@ -68,8 +68,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "Y",
+		changeTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "changeTime",
@@ -79,8 +79,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "Y",
+		upChannelNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upChannelNo",
@@ -90,8 +90,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		DOWN_REAL_AMOUNT: {
-			nullable: "Y",
+		downRealAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downRealAmount",
@@ -101,8 +101,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_AMOUNT: {
-			nullable: "Y",
+		downDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downDrawAmount",
@@ -112,8 +112,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		UP_COMMISSION: {
-			nullable: "Y",
+		upCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upCommission",
@@ -123,8 +123,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		TRADE_DELIVERY_NO: {
-			nullable: "Y",
+		tradeDeliveryNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "tradeDeliveryNo",
@@ -134,8 +134,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		DOWN_COMMISSION: {
-			nullable: "Y",
+		downCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downCommission",
@@ -145,8 +145,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "Y",
+		orderSource: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "orderSource",
@@ -156,8 +156,8 @@ exports.zreportUpFundJoinHs = {
 				length: "3"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "memo",
@@ -167,8 +167,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		DOWN_DRAW_UNIT: {
-			nullable: "Y",
+		downDrawUnit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downDrawUnit",
@@ -178,8 +178,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "Y",
+		balance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "balance",
@@ -189,8 +189,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "Y",
+		downChannelNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downChannelNo",
@@ -200,8 +200,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "Y",
+		provinceNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "provinceNo",
@@ -211,8 +211,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		CARRIER_NO: {
-			nullable: "Y",
+		carrierNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "carrierNo",
@@ -222,8 +222,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "Y",
+		businessType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "businessType",
@@ -233,8 +233,8 @@ exports.zreportUpFundJoinHs = {
 				length: "3"
 			}
 		},
-		UP_DRAW_FACE: {
-			nullable: "Y",
+		upDrawFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upDrawFace",
@@ -244,8 +244,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "Y",
+		downCompanyId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downCompanyId",
@@ -255,8 +255,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		SETTLE_TIME: {
-			nullable: "Y",
+		settleTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "settleTime",
@@ -266,8 +266,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		PROFITS: {
-			nullable: "Y",
+		profits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "profits",
@@ -277,8 +277,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		UP_ACCOUNT_ID: {
-			nullable: "Y",
+		upAccountId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upAccountId",
@@ -288,8 +288,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		SETTLE_BATCH_ID: {
-			nullable: "Y",
+		settleBatchId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "settleBatchId",
@@ -299,8 +299,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		ORDER_TIME: {
-			nullable: "Y",
+		orderTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "orderTime",
@@ -310,8 +310,8 @@ exports.zreportUpFundJoinHs = {
 				length: ""
 			}
 		},
-		BILL_TYPE: {
-			nullable: "Y",
+		billType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "billType",
@@ -321,8 +321,8 @@ exports.zreportUpFundJoinHs = {
 				length: "1"
 			}
 		},
-		UP_REAL_AMOUNT: {
-			nullable: "Y",
+		upRealAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upRealAmount",
@@ -332,8 +332,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		UP_DRAW_AMOUNT: {
-			nullable: "Y",
+		upDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upDrawAmount",
@@ -343,8 +343,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		RECORD_ID: {
-			nullable: "Y",
+		recordId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "recordId",
@@ -354,8 +354,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		UP_COMPANY_ID: {
-			nullable: "Y",
+		upCompanyId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upCompanyId",
@@ -365,8 +365,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		SETTLE_AMOUNT: {
-			nullable: "Y",
+		settleAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "settleAmount",
@@ -376,8 +376,8 @@ exports.zreportUpFundJoinHs = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "Y",
+		tradeOrderNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "tradeOrderNo",

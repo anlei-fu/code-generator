@@ -2,7 +2,7 @@ exports.bannerList = {
 	name: "bannerList",
 	rawName: "BANNER_LIST",
 	columns: {
-		TIT_ID: {
+		titId: {
 			nullable: false,
 			isPk: false,
 			description: "id",
@@ -13,7 +13,7 @@ exports.bannerList = {
 				length: ""
 			}
 		},
-		TIT_MSG: {
+		titMsg: {
 			nullable: false,
 			isPk: false,
 			description: "banner信息",
@@ -24,7 +24,7 @@ exports.bannerList = {
 				length: ""
 			}
 		},
-		IMG_URL: {
+		imgUrl: {
 			nullable: false,
 			isPk: false,
 			description: "图片地址",
@@ -35,7 +35,7 @@ exports.bannerList = {
 				length: ""
 			}
 		},
-		STATE: {
+		state: {
 			nullable: false,
 			isPk: false,
 			description: "状态",
@@ -46,7 +46,7 @@ exports.bannerList = {
 				length: "1"
 			}
 		},
-		SCR_URL: {
+		scrUrl: {
 			nullable: true,
 			isPk: false,
 			description: "图片链接",
@@ -57,7 +57,7 @@ exports.bannerList = {
 				length: ""
 			}
 		},
-		SORT: {
+		sort: {
 			nullable: false,
 			isPk: false,
 			description: "排序",
@@ -68,7 +68,7 @@ exports.bannerList = {
 				length: ""
 			}
 		},
-		PAGE_NO: {
+		pageNo: {
 			nullable: false,
 			isPk: false,
 			description: "页面编号",

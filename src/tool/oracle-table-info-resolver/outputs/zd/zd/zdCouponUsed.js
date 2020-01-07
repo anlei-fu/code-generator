@@ -2,7 +2,7 @@ exports.zdCouponUsed = {
 	name: "zdCouponUsed",
 	rawName: "ZD_COUPON_USED",
 	columns: {
-		COUPON_ID: {
+		couponId: {
 			nullable: true,
 			isPk: false,
 			description: "优惠券id",
@@ -13,7 +13,7 @@ exports.zdCouponUsed = {
 				length: ""
 			}
 		},
-		COUPON_CHANNEL: {
+		couponChannel: {
 			nullable: true,
 			isPk: false,
 			description: "优惠渠道",
@@ -24,7 +24,7 @@ exports.zdCouponUsed = {
 				length: ""
 			}
 		},
-		COUPON_PRICE: {
+		couponPrice: {
 			nullable: true,
 			isPk: false,
 			description: "优惠金额",
@@ -35,7 +35,7 @@ exports.zdCouponUsed = {
 				length: "20"
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: true,
 			isPk: false,
 			description: "使用订单编号",
@@ -46,7 +46,7 @@ exports.zdCouponUsed = {
 				length: ""
 			}
 		},
-		USE_TIME: {
+		useTime: {
 			nullable: true,
 			isPk: false,
 			description: "使用时间",
@@ -57,7 +57,7 @@ exports.zdCouponUsed = {
 				length: ""
 			}
 		},
-		DOWN_ORDER_NO: {
+		downOrderNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游订单号",

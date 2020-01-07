@@ -2,7 +2,7 @@ exports.orderMainExt = {
 	name: "orderMainExt",
 	rawName: "ORDER_MAIN_EXT",
 	columns: {
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "订单号",
@@ -13,7 +13,7 @@ exports.orderMainExt = {
 				length: ""
 			}
 		},
-		RECORD_ID: {
+		recordId: {
 			nullable: false,
 			isPk: true,
 			description: "记录编号",
@@ -24,7 +24,7 @@ exports.orderMainExt = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
+		accountType: {
 			nullable: false,
 			isPk: false,
 			description: "帐号类型",
@@ -35,7 +35,7 @@ exports.orderMainExt = {
 				length: ""
 			}
 		},
-		PAY_TYPE: {
+		payType: {
 			nullable: true,
 			isPk: false,
 			description: "支付类型",
@@ -46,7 +46,7 @@ exports.orderMainExt = {
 				length: ""
 			}
 		},
-		PAY_MONEY: {
+		payMoney: {
 			nullable: false,
 			isPk: false,
 			description: "支付金额",
@@ -57,7 +57,7 @@ exports.orderMainExt = {
 				length: "15"
 			}
 		},
-		SERVICE_FEE: {
+		serviceFee: {
 			nullable: false,
 			isPk: false,
 			description: "手续费",
@@ -68,7 +68,7 @@ exports.orderMainExt = {
 				length: "15"
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",

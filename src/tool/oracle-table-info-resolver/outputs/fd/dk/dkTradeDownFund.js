@@ -2,8 +2,8 @@ exports.dkTradeDownFund = {
 	name: "dkTradeDownFund",
 	rawName: "DK_TRADE_DOWN_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		DK_ORDER_ID: {
-			nullable: "N",
+		dkOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "dkOrderId",
@@ -24,8 +24,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游支付账号",
 			name: "accountId",
@@ -46,8 +46,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -57,8 +57,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		EXT_ORDER_NO: {
-			nullable: "N",
+		extOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展订单号交易系统供",
 			name: "extOrderNo",
@@ -68,8 +68,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -79,8 +79,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动创建时间",
 			name: "createTime",
@@ -90,8 +90,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "Y",
+		orderTime: {
+			nullable: true,
 			isPk: false,
 			description: "订单日期(交易系统下单日期)",
 			name: "orderTime",
@@ -101,8 +101,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变更类型 1-结算2-交易代扣3-交易撤销（old=> :加款 2：交易扣款 3：交易退款  : 提款)",
 			name: "changeType",
@@ -112,8 +112,8 @@ exports.dkTradeDownFund = {
 				length: "3"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -123,8 +123,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -134,8 +134,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -145,8 +145,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "下游代扣或交易撤销时产生的手续费",
 			name: "serviceFee",
@@ -156,8 +156,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		TRADE_TIME: {
-			nullable: "Y",
+		tradeTime: {
+			nullable: true,
 			isPk: false,
 			description: "交易系统变动时间",
 			name: "tradeTime",
@@ -167,8 +167,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		TRADE_FUND_NO: {
-			nullable: "Y",
+		tradeFundNo: {
+			nullable: true,
 			isPk: false,
 			description: "交易系统资金变动编号（收卡用）",
 			name: "tradeFundNo",
@@ -178,8 +178,8 @@ exports.dkTradeDownFund = {
 				length: ""
 			}
 		},
-		IS_SK_ADJUST: {
-			nullable: "Y",
+		isSkAdjust: {
+			nullable: true,
 			isPk: false,
 			description: "是否为收卡二次结算数据",
 			name: "isSkAdjust",
@@ -189,8 +189,8 @@ exports.dkTradeDownFund = {
 				length: "1"
 			}
 		},
-		CHANNEL_SETTLE_STATUS: {
-			nullable: "Y",
+		channelSettleStatus: {
+			nullable: true,
 			isPk: false,
 			description: "渠道结算状态，0.成功，1.等待，2.正在，99.无需结算",
 			name: "channelSettleStatus",
@@ -200,8 +200,8 @@ exports.dkTradeDownFund = {
 				length: "3"
 			}
 		},
-		CHANNEL_SETTLE_BATCH_ID: {
-			nullable: "Y",
+		channelSettleBatchId: {
+			nullable: true,
 			isPk: false,
 			description: "渠道结算批次号",
 			name: "channelSettleBatchId",
@@ -211,8 +211,8 @@ exports.dkTradeDownFund = {
 				length: "20"
 			}
 		},
-		CHANNEL_SETTLE_TIME: {
-			nullable: "Y",
+		channelSettleTime: {
+			nullable: true,
 			isPk: false,
 			description: "渠道结算时间",
 			name: "channelSettleTime",

@@ -2,8 +2,8 @@ exports.fdVReportBankDaily1 = {
 	name: "fdVReportBankDaily1",
 	rawName: "FD_V_REPORT_BANK_DAILY1",
 	columns: {
-		MINUS_AMOUNT: {
-			nullable: "Y",
+		minusAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "minusAmount",
@@ -13,8 +13,8 @@ exports.fdVReportBankDaily1 = {
 				length: ""
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",
@@ -24,8 +24,8 @@ exports.fdVReportBankDaily1 = {
 				length: ""
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -35,8 +35,8 @@ exports.fdVReportBankDaily1 = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -46,8 +46,8 @@ exports.fdVReportBankDaily1 = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountName",
@@ -57,8 +57,8 @@ exports.fdVReportBankDaily1 = {
 				length: ""
 			}
 		},
-		START_BALANCE: {
-			nullable: "Y",
+		startBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "startBalance",
@@ -68,8 +68,8 @@ exports.fdVReportBankDaily1 = {
 				length: "20"
 			}
 		},
-		END_BALANCE: {
-			nullable: "Y",
+		endBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endBalance",

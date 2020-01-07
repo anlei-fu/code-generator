@@ -2,8 +2,8 @@ exports.newVMonthStartZbalance = {
 	name: "newVMonthStartZbalance",
 	rawName: "NEW_V_MONTH_START_ZBALANCE",
 	columns: {
-		ACCOUNT_TYPE: {
-			nullable: "Y",
+		accountType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountType",
@@ -13,8 +13,8 @@ exports.newVMonthStartZbalance = {
 				length: "3"
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "Y",
+		queryBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "queryBalance",
@@ -24,8 +24,8 @@ exports.newVMonthStartZbalance = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "Y",
+		balance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "balance",
@@ -35,8 +35,8 @@ exports.newVMonthStartZbalance = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "Y",
+		companyId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -46,8 +46,8 @@ exports.newVMonthStartZbalance = {
 				length: "20"
 			}
 		},
-		ACCOUNT_STATUS: {
-			nullable: "Y",
+		accountStatus: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountStatus",
@@ -57,8 +57,8 @@ exports.newVMonthStartZbalance = {
 				length: "1"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "Y",
+		channelNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -68,8 +68,8 @@ exports.newVMonthStartZbalance = {
 				length: ""
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "Y",
+		warnBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "warnBalance",
@@ -79,8 +79,8 @@ exports.newVMonthStartZbalance = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "Y",
+		recordDate: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -90,8 +90,8 @@ exports.newVMonthStartZbalance = {
 				length: ""
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "Y",
+		accountName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountName",
@@ -101,8 +101,8 @@ exports.newVMonthStartZbalance = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "Y",
+		channelName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelName",
@@ -112,8 +112,8 @@ exports.newVMonthStartZbalance = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "Y",
+		accountId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -123,8 +123,8 @@ exports.newVMonthStartZbalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "Y",
+		channelStatus: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelStatus",

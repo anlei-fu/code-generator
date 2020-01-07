@@ -2,8 +2,8 @@ exports.fdTradeBaseJoin = {
 	name: "fdTradeBaseJoin",
 	rawName: "FD_TRADE_BASE_JOIN",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdTradeBaseJoin = {
 				length: "20"
 			}
 		},
-		JOIN_CODE1: {
-			nullable: "N",
+		joinCode1: {
+			nullable: false,
 			isPk: false,
 			description: "关联字段1",
 			name: "joinCode1",
@@ -24,8 +24,8 @@ exports.fdTradeBaseJoin = {
 				length: ""
 			}
 		},
-		JOIN_CODE2: {
-			nullable: "N",
+		joinCode2: {
+			nullable: false,
 			isPk: false,
 			description: "关联字段2",
 			name: "joinCode2",
@@ -35,8 +35,8 @@ exports.fdTradeBaseJoin = {
 				length: ""
 			}
 		},
-		JOIN_MEMO: {
-			nullable: "Y",
+		joinMemo: {
+			nullable: true,
 			isPk: false,
 			description: "关联备注信息",
 			name: "joinMemo",
@@ -46,8 +46,8 @@ exports.fdTradeBaseJoin = {
 				length: ""
 			}
 		},
-		JOIN_TYPE: {
-			nullable: "N",
+		joinType: {
+			nullable: false,
 			isPk: false,
 			description: "关联类型 1.上游佣金关联，2下游佣金关联",
 			name: "joinType",

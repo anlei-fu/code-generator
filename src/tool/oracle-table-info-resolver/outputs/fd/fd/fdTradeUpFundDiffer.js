@@ -2,8 +2,8 @@ exports.fdTradeUpFundDiffer = {
 	name: "fdTradeUpFundDiffer",
 	rawName: "FD_TRADE_UP_FUND_DIFFER",
 	columns: {
-		DIFFER_ID: {
-			nullable: "N",
+		differId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "differId",
@@ -13,8 +13,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "记录创建的日期",
 			name: "recordDate",
@@ -24,8 +24,8 @@ exports.fdTradeUpFundDiffer = {
 				length: ""
 			}
 		},
-		FD_ORDER_ID: {
-			nullable: "N",
+		fdOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "fdOrderId",
@@ -35,8 +35,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.fdTradeUpFundDiffer = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道支付账户编号",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -68,8 +68,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "利润类型，1.前向，2后向",
 			name: "billType",
@@ -79,8 +79,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "1"
 			}
 		},
-		DOWN_ADJUST_FACE: {
-			nullable: "N",
+		downAdjustFace: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需调整的面值(下游退款造成上游面值比下游多时产生，下退)",
 			name: "downAdjustFace",
@@ -90,8 +90,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_ADJUST_UNIT: {
-			nullable: "N",
+		downAdjustUnit: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需调整的规格",
 			name: "downAdjustUnit",
@@ -101,8 +101,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_ADJUST_AMOUNT: {
-			nullable: "N",
+		downAdjustAmount: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需调整的金额",
 			name: "downAdjustAmount",
@@ -112,8 +112,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		DOWN_ADJUST_REAL: {
-			nullable: "N",
+		downAdjustReal: {
+			nullable: false,
 			isPk: false,
 			description: "统计下游扣款需调整的真实扣款",
 			name: "downAdjustReal",
@@ -123,8 +123,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		UP_MANY_FACE: {
-			nullable: "N",
+		upManyFace: {
+			nullable: false,
 			isPk: false,
 			description: "上游多冲的面值(上游面值比下游面值多时产生，上扣、下退、上退)",
 			name: "upManyFace",
@@ -134,8 +134,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		UP_MANY_AMOUNT: {
-			nullable: "N",
+		upManyAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游多冲的金额",
 			name: "upManyAmount",
@@ -145,8 +145,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		TO_FRONT_FACE: {
-			nullable: "N",
+		toFrontFace: {
+			nullable: false,
 			isPk: false,
 			description: "需要由后向转前向的面值(上游退款时，退的多冲数据且与多冲前后向不一致时，后退前为正)",
 			name: "toFrontFace",
@@ -156,8 +156,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		TO_FRONT_UNIT: {
-			nullable: "N",
+		toFrontUnit: {
+			nullable: false,
 			isPk: false,
 			description: "需要由后向转前向的规格",
 			name: "toFrontUnit",
@@ -167,8 +167,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		TO_FRONT_AMOUNT: {
-			nullable: "N",
+		toFrontAmount: {
+			nullable: false,
 			isPk: false,
 			description: "需要由后向转前向的金额",
 			name: "toFrontAmount",
@@ -178,8 +178,8 @@ exports.fdTradeUpFundDiffer = {
 				length: "20"
 			}
 		},
-		TO_FRONT_REAL: {
-			nullable: "N",
+		toFrontReal: {
+			nullable: false,
 			isPk: false,
 			description: "需要由后向转前向的真实扣款",
 			name: "toFrontReal",

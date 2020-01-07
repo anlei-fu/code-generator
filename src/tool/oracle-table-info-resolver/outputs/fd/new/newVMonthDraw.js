@@ -2,8 +2,8 @@ exports.newVMonthDraw = {
 	name: "newVMonthDraw",
 	rawName: "NEW_V_MONTH_DRAW",
 	columns: {
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -13,8 +13,8 @@ exports.newVMonthDraw = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelType",
@@ -24,8 +24,8 @@ exports.newVMonthDraw = {
 				length: "1"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.newVMonthDraw = {
 				length: "20"
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "Y",
+		drawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawAmount",
@@ -46,8 +46,8 @@ exports.newVMonthDraw = {
 				length: ""
 			}
 		},
-		SNAP_MONTH: {
-			nullable: "Y",
+		snapMonth: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "snapMonth",
@@ -57,8 +57,8 @@ exports.newVMonthDraw = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",

@@ -2,8 +2,8 @@ exports.qyTradeUpManual = {
 	name: "qyTradeUpManual",
 	rawName: "QY_TRADE_UP_MANUAL",
 	columns: {
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -13,8 +13,8 @@ exports.qyTradeUpManual = {
 				length: ""
 			}
 		},
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -24,8 +24,8 @@ exports.qyTradeUpManual = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.qyTradeUpManual = {
 				length: "30"
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号",
 			name: "adjustId",
@@ -46,8 +46,8 @@ exports.qyTradeUpManual = {
 				length: "20"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否红冲过",
 			name: "hasAdjust",
@@ -57,8 +57,8 @@ exports.qyTradeUpManual = {
 				length: "1"
 			}
 		},
-		ADD_TYPE: {
-			nullable: "N",
+		addType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类:10-加款11-提款12-红冲21-余额平帐22-交易平帐",
 			name: "addType",
@@ -68,8 +68,8 @@ exports.qyTradeUpManual = {
 				length: "3"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -79,8 +79,8 @@ exports.qyTradeUpManual = {
 				length: "20"
 			}
 		},
-		REAL_AMOUNT: {
-			nullable: "Y",
+		realAmount: {
+			nullable: true,
 			isPk: false,
 			description: "交易平账真实金额",
 			name: "realAmount",
@@ -90,8 +90,8 @@ exports.qyTradeUpManual = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -101,8 +101,8 @@ exports.qyTradeUpManual = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -112,8 +112,8 @@ exports.qyTradeUpManual = {
 				length: "20"
 			}
 		},
-		CREATE_USER: {
-			nullable: "Y",
+		createUser: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createUser",
@@ -123,8 +123,8 @@ exports.qyTradeUpManual = {
 				length: ""
 			}
 		},
-		BANK_FUND_ID: {
-			nullable: "Y",
+		bankFundId: {
+			nullable: true,
 			isPk: false,
 			description: "银行资金变动编号（红冲是使用）",
 			name: "bankFundId",
@@ -134,8 +134,8 @@ exports.qyTradeUpManual = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -145,8 +145,8 @@ exports.qyTradeUpManual = {
 				length: ""
 			}
 		},
-		EXT_RECORD_NO: {
-			nullable: "Y",
+		extRecordNo: {
+			nullable: true,
 			isPk: false,
 			description: "外部加款记录编号",
 			name: "extRecordNo",
@@ -156,8 +156,8 @@ exports.qyTradeUpManual = {
 				length: ""
 			}
 		},
-		HANDLING_FEE_ID: {
-			nullable: "Y",
+		handlingFeeId: {
+			nullable: true,
 			isPk: false,
 			description: "收取手续费的记录编号",
 			name: "handlingFeeId",

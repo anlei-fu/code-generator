@@ -2,8 +2,8 @@ exports.supTradeOrderMainHs = {
 	name: "supTradeOrderMainHs",
 	rawName: "SUP_TRADE_ORDER_MAIN_HS",
 	columns: {
-		SUP_ORDER_ID: {
-			nullable: "N",
+		supOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "supOrderId",
@@ -13,8 +13,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -24,8 +24,8 @@ exports.supTradeOrderMainHs = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户编号",
 			name: "downAccountId",
@@ -35,8 +35,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游公司编号",
 			name: "downCompanyId",
@@ -46,8 +46,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "sourceSystemId",
@@ -57,8 +57,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -68,8 +68,8 @@ exports.supTradeOrderMainHs = {
 				length: ""
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统订单号",
 			name: "tradeOrderNo",
@@ -79,8 +79,8 @@ exports.supTradeOrderMainHs = {
 				length: ""
 			}
 		},
-		TRADE_ORDER_TIME: {
-			nullable: "N",
+		tradeOrderTime: {
+			nullable: false,
 			isPk: false,
 			description: "生产系统订单时间",
 			name: "tradeOrderTime",
@@ -90,8 +90,8 @@ exports.supTradeOrderMainHs = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -101,8 +101,8 @@ exports.supTradeOrderMainHs = {
 				length: "3"
 			}
 		},
-		CARRIER_NO: {
-			nullable: "N",
+		carrierNo: {
+			nullable: false,
 			isPk: false,
 			description: "运营商",
 			name: "carrierNo",
@@ -112,8 +112,8 @@ exports.supTradeOrderMainHs = {
 				length: ""
 			}
 		},
-		PROVICE_NO: {
-			nullable: "N",
+		proviceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份编号",
 			name: "proviceNo",
@@ -123,8 +123,8 @@ exports.supTradeOrderMainHs = {
 				length: ""
 			}
 		},
-		CITY_NO: {
-			nullable: "N",
+		cityNo: {
+			nullable: false,
 			isPk: false,
 			description: "城市编号",
 			name: "cityNo",
@@ -134,8 +134,8 @@ exports.supTradeOrderMainHs = {
 				length: ""
 			}
 		},
-		ORDER_UNIT: {
-			nullable: "N",
+		orderUnit: {
+			nullable: false,
 			isPk: false,
 			description: "订单规格",
 			name: "orderUnit",
@@ -145,8 +145,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		ORDER_FACE: {
-			nullable: "N",
+		orderFace: {
+			nullable: false,
 			isPk: false,
 			description: "订单面值",
 			name: "orderFace",
@@ -156,8 +156,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		ORDER_AMOUNT: {
-			nullable: "N",
+		orderAmount: {
+			nullable: false,
 			isPk: false,
 			description: "订单金额",
 			name: "orderAmount",
@@ -167,8 +167,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		COMPLETE_FACE: {
-			nullable: "N",
+		completeFace: {
+			nullable: false,
 			isPk: false,
 			description: "完成面值",
 			name: "completeFace",
@@ -178,8 +178,8 @@ exports.supTradeOrderMainHs = {
 				length: "20"
 			}
 		},
-		COMPLETE_AMOUNT: {
-			nullable: "N",
+		completeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "完成金额",
 			name: "completeAmount",

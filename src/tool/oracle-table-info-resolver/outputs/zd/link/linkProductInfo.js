@@ -2,7 +2,7 @@ exports.linkProductInfo = {
 	name: "linkProductInfo",
 	rawName: "LINK_PRODUCT_INFO",
 	columns: {
-		LINK_ID: {
+		linkId: {
 			nullable: true,
 			isPk: false,
 			description: "链接编号",
@@ -13,7 +13,7 @@ exports.linkProductInfo = {
 				length: "20"
 			}
 		},
-		NAME: {
+		name: {
 			nullable: true,
 			isPk: false,
 			description: "名称",
@@ -24,7 +24,7 @@ exports.linkProductInfo = {
 				length: ""
 			}
 		},
-		TITLE: {
+		title: {
 			nullable: true,
 			isPk: false,
 			description: "标题",
@@ -35,7 +35,7 @@ exports.linkProductInfo = {
 				length: ""
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -46,7 +46,7 @@ exports.linkProductInfo = {
 				length: ""
 			}
 		},
-		LINK_URL: {
+		linkUrl: {
 			nullable: true,
 			isPk: false,
 			description: "链接路径",
@@ -57,7 +57,7 @@ exports.linkProductInfo = {
 				length: ""
 			}
 		},
-		LINK_TYPE: {
+		linkType: {
 			nullable: true,
 			isPk: false,
 			description: "链接位置 :话费 :流量",
@@ -68,7 +68,7 @@ exports.linkProductInfo = {
 				length: "2"
 			}
 		},
-		CARRIER_NAME: {
+		carrierName: {
 			nullable: true,
 			isPk: false,
 			description: "运营商",
@@ -79,7 +79,7 @@ exports.linkProductInfo = {
 				length: ""
 			}
 		},
-		PROVINCE_NAME: {
+		provinceName: {
 			nullable: true,
 			isPk: false,
 			description: "省份",
@@ -90,7 +90,7 @@ exports.linkProductInfo = {
 				length: ""
 			}
 		},
-		CITY_NAME: {
+		cityName: {
 			nullable: true,
 			isPk: false,
 			description: "城市",
@@ -101,7 +101,7 @@ exports.linkProductInfo = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "状态",

@@ -2,8 +2,8 @@ exports.incomeFlowTask = {
 	name: "incomeFlowTask",
 	rawName: "INCOME_FLOW_TASK",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "任务编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeFlowTask = {
 				length: "20"
 			}
 		},
-		FLOW_NAME: {
-			nullable: "N",
+		flowName: {
+			nullable: false,
 			isPk: false,
 			description: "流程名称",
 			name: "flowName",
@@ -24,8 +24,8 @@ exports.incomeFlowTask = {
 				length: ""
 			}
 		},
-		FLOW_MQ: {
-			nullable: "N",
+		flowMq: {
+			nullable: false,
 			isPk: false,
 			description: "流程mq",
 			name: "flowMq",
@@ -35,8 +35,8 @@ exports.incomeFlowTask = {
 				length: ""
 			}
 		},
-		FLOW_SORT: {
-			nullable: "N",
+		flowSort: {
+			nullable: false,
 			isPk: false,
 			description: "流程排序",
 			name: "flowSort",
@@ -46,8 +46,8 @@ exports.incomeFlowTask = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "任务创建时间",
 			name: "createTime",
@@ -57,8 +57,8 @@ exports.incomeFlowTask = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "任务状态，1未开始，2正在执行，0执行成功，9执行失败",
 			name: "status",
@@ -68,8 +68,8 @@ exports.incomeFlowTask = {
 				length: "3"
 			}
 		},
-		FLOW_LINK: {
-			nullable: "N",
+		flowLink: {
+			nullable: false,
 			isPk: false,
 			description: "流程环节，1中间环节，0终结环节",
 			name: "flowLink",
@@ -79,8 +79,8 @@ exports.incomeFlowTask = {
 				length: "3"
 			}
 		},
-		FLOW_BATCH_ID: {
-			nullable: "N",
+		flowBatchId: {
+			nullable: false,
 			isPk: false,
 			description: "流程批次号",
 			name: "flowBatchId",
@@ -90,8 +90,8 @@ exports.incomeFlowTask = {
 				length: "20"
 			}
 		},
-		COMPLETE_TIME: {
-			nullable: "Y",
+		completeTime: {
+			nullable: true,
 			isPk: false,
 			description: "流程完成时间",
 			name: "completeTime",

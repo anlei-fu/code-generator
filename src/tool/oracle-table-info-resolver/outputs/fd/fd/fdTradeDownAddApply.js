@@ -2,8 +2,8 @@ exports.fdTradeDownAddApply = {
 	name: "fdTradeDownAddApply",
 	rawName: "FD_TRADE_DOWN_ADD_APPLY",
 	columns: {
-		APPLY_ID: {
-			nullable: "N",
+		applyId: {
+			nullable: false,
 			isPk: false,
 			description: "申请编号",
 			name: "applyId",
@@ -13,8 +13,8 @@ exports.fdTradeDownAddApply = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "渠道账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.fdTradeDownAddApply = {
 				length: "20"
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "N",
+		addAmount: {
+			nullable: false,
 			isPk: false,
 			description: "申请加款金额",
 			name: "addAmount",
@@ -46,8 +46,8 @@ exports.fdTradeDownAddApply = {
 				length: "20"
 			}
 		},
-		APPLY_ACCOUNT_NO: {
-			nullable: "N",
+		applyAccountNo: {
+			nullable: false,
 			isPk: false,
 			description: "客户打款账号",
 			name: "applyAccountNo",
@@ -57,8 +57,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型-1.其它0.财付通1.支付宝2.移动钱包3.19E钱包4.银行账户5.北京银行6.建设银行7.京东8.民生银行9.联通迷你10.交通银行11.财付通企业",
 			name: "bankType",
@@ -68,8 +68,8 @@ exports.fdTradeDownAddApply = {
 				length: "3"
 			}
 		},
-		APPLY_ACCOUNT_NAME: {
-			nullable: "N",
+		applyAccountName: {
+			nullable: false,
 			isPk: false,
 			description: "客户账户名称",
 			name: "applyAccountName",
@@ -79,8 +79,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		APPLY_OPEN_BANK_NAME: {
-			nullable: "N",
+		applyOpenBankName: {
+			nullable: false,
 			isPk: false,
 			description: "客户开户行名称",
 			name: "applyOpenBankName",
@@ -90,8 +90,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "处理状态0：处理完成，10：未处理，20：处理中，90：处理失败",
 			name: "status",
@@ -101,8 +101,8 @@ exports.fdTradeDownAddApply = {
 				length: "3"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "申请时间",
 			name: "createTime",
@@ -112,8 +112,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
-			nullable: "N",
+		createUser: {
+			nullable: false,
 			isPk: false,
 			description: "申请人",
 			name: "createUser",
@@ -123,8 +123,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		PAY_TIME: {
-			nullable: "N",
+		payTime: {
+			nullable: false,
 			isPk: false,
 			description: "付款时间",
 			name: "payTime",
@@ -134,8 +134,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		TRAN_NO: {
-			nullable: "Y",
+		tranNo: {
+			nullable: true,
 			isPk: false,
 			description: "柜员交易号（处理成功添加）",
 			name: "tranNo",
@@ -145,8 +145,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		HANDLE_TIME: {
-			nullable: "Y",
+		handleTime: {
+			nullable: true,
 			isPk: false,
 			description: "处理时间（处理后添加）",
 			name: "handleTime",
@@ -156,8 +156,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		ERROR_MSG: {
-			nullable: "Y",
+		errorMsg: {
+			nullable: true,
 			isPk: false,
 			description: "错误消息（处理失败后添加）",
 			name: "errorMsg",
@@ -167,8 +167,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		AUDIT_USER: {
-			nullable: "Y",
+		auditUser: {
+			nullable: true,
 			isPk: false,
 			description: "处理人",
 			name: "auditUser",
@@ -178,8 +178,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		FLOW_STATUS: {
-			nullable: "N",
+		flowStatus: {
+			nullable: false,
 			isPk: false,
 			description: "流水状态修改  0：已修改，10：未修改 ，20：修改中，90：失败",
 			name: "flowStatus",
@@ -189,8 +189,8 @@ exports.fdTradeDownAddApply = {
 				length: "3"
 			}
 		},
-		AUDIT_MEMO: {
-			nullable: "Y",
+		auditMemo: {
+			nullable: true,
 			isPk: false,
 			description: "处理备注",
 			name: "auditMemo",
@@ -200,8 +200,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		BANK_ACCOUNT_ID: {
-			nullable: "N",
+		bankAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "收款银行id",
 			name: "bankAccountId",
@@ -211,8 +211,8 @@ exports.fdTradeDownAddApply = {
 				length: "20"
 			}
 		},
-		RECIVE_TIME: {
-			nullable: "Y",
+		reciveTime: {
+			nullable: true,
 			isPk: false,
 			description: "收款时间",
 			name: "reciveTime",
@@ -222,8 +222,8 @@ exports.fdTradeDownAddApply = {
 				length: ""
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "加款申请备注",
 			name: "memo",

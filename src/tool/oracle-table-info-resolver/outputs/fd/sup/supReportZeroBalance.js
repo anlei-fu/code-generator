@@ -2,8 +2,8 @@ exports.supReportZeroBalance = {
 	name: "supReportZeroBalance",
 	rawName: "SUP_REPORT_ZERO_BALANCE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		ZERO_DATE: {
-			nullable: "N",
+		zeroDate: {
+			nullable: false,
 			isPk: false,
 			description: "零点日期",
 			name: "zeroDate",
@@ -24,8 +24,8 @@ exports.supReportZeroBalance = {
 				length: ""
 			}
 		},
-		CREATE_DATE: {
-			nullable: "N",
+		createDate: {
+			nullable: false,
 			isPk: false,
 			description: "收集时间",
 			name: "createDate",
@@ -35,8 +35,8 @@ exports.supReportZeroBalance = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.supReportZeroBalance = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -68,8 +68,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		SYSTEM_ID: {
-			nullable: "N",
+		systemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统编号",
 			name: "systemId",
@@ -79,8 +79,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型",
 			name: "channelType",
@@ -90,8 +90,8 @@ exports.supReportZeroBalance = {
 				length: "3"
 			}
 		},
-		ON_WAY_COUNT: {
-			nullable: "N",
+		onWayCount: {
+			nullable: false,
 			isPk: false,
 			description: "在途张数",
 			name: "onWayCount",
@@ -101,8 +101,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		ON_WAY_FACE: {
-			nullable: "N",
+		onWayFace: {
+			nullable: false,
 			isPk: false,
 			description: "在途面值",
 			name: "onWayFace",
@@ -112,8 +112,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		ON_WAY_BALANCE: {
-			nullable: "N",
+		onWayBalance: {
+			nullable: false,
 			isPk: false,
 			description: "在途余额",
 			name: "onWayBalance",
@@ -123,8 +123,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_COUNT: {
-			nullable: "N",
+		physicalCardCount: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡张数",
 			name: "physicalCardCount",
@@ -134,8 +134,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_FACE: {
-			nullable: "N",
+		physicalCardFace: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡面值",
 			name: "physicalCardFace",
@@ -145,8 +145,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		PHYSICAL_CARD_BALANCE: {
-			nullable: "N",
+		physicalCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡余额",
 			name: "physicalCardBalance",
@@ -156,8 +156,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_COUNT: {
-			nullable: "N",
+		electronicCardCount: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密张数",
 			name: "electronicCardCount",
@@ -167,8 +167,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_FACE: {
-			nullable: "N",
+		electronicCardFace: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密面值",
 			name: "electronicCardFace",
@@ -178,8 +178,8 @@ exports.supReportZeroBalance = {
 				length: "20"
 			}
 		},
-		ELECTRONIC_CARD_BALANCE: {
-			nullable: "N",
+		electronicCardBalance: {
+			nullable: false,
 			isPk: false,
 			description: "电子卡密余额",
 			name: "electronicCardBalance",

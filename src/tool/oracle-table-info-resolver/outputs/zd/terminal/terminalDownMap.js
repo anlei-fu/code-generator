@@ -2,7 +2,7 @@ exports.terminalDownMap = {
 	name: "terminalDownMap",
 	rawName: "TERMINAL_DOWN_MAP",
 	columns: {
-		MAP_ID: {
+		mapId: {
 			nullable: false,
 			isPk: false,
 			description: "编号",
@@ -13,7 +13,7 @@ exports.terminalDownMap = {
 				length: ""
 			}
 		},
-		TERMINAL_ID: {
+		terminalId: {
 			nullable: false,
 			isPk: false,
 			description: "终端编号",
@@ -24,7 +24,7 @@ exports.terminalDownMap = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",

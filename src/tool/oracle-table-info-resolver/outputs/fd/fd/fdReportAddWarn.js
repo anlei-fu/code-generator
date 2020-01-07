@@ -2,8 +2,8 @@ exports.fdReportAddWarn = {
 	name: "fdReportAddWarn",
 	rawName: "FD_REPORT_ADD_WARN",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdReportAddWarn = {
 				length: "20"
 			}
 		},
-		WARN_DATE: {
-			nullable: "N",
+		warnDate: {
+			nullable: false,
 			isPk: false,
 			description: "报警时间",
 			name: "warnDate",
@@ -24,8 +24,8 @@ exports.fdReportAddWarn = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -35,8 +35,8 @@ exports.fdReportAddWarn = {
 				length: ""
 			}
 		},
-		EIGHT_BALANCE: {
-			nullable: "N",
+		eightBalance: {
+			nullable: false,
 			isPk: false,
 			description: "八点余额",
 			name: "eightBalance",
@@ -46,8 +46,8 @@ exports.fdReportAddWarn = {
 				length: "20"
 			}
 		},
-		YESTERDAY_ADD: {
-			nullable: "N",
+		yesterdayAdd: {
+			nullable: false,
 			isPk: false,
 			description: "昨日加款",
 			name: "yesterdayAdd",
@@ -57,8 +57,8 @@ exports.fdReportAddWarn = {
 				length: "20"
 			}
 		},
-		BALANCE_RATIO: {
-			nullable: "N",
+		balanceRatio: {
+			nullable: false,
 			isPk: false,
 			description: "余额占比",
 			name: "balanceRatio",
@@ -68,8 +68,8 @@ exports.fdReportAddWarn = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",

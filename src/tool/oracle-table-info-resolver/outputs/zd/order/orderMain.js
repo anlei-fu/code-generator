@@ -2,7 +2,7 @@ exports.orderMain = {
 	name: "orderMain",
 	rawName: "ORDER_MAIN",
 	columns: {
-		SFZ_NO: {
+		sfzNo: {
 			nullable: true,
 			isPk: false,
 			description: "身份证编号",
@@ -13,7 +13,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		REAL_NAME: {
+		realName: {
 			nullable: true,
 			isPk: false,
 			description: "姓名",
@@ -24,7 +24,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		CONTACT_PHONE: {
+		contactPhone: {
 			nullable: true,
 			isPk: false,
 			description: "联系电话",
@@ -35,7 +35,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -46,7 +46,7 @@ exports.orderMain = {
 				length: "20"
 			}
 		},
-		RECHARGE_MODE: {
+		rechargeMode: {
 			nullable: true,
 			isPk: false,
 			description: "充值类型 :快充 :普通慢充",
@@ -57,7 +57,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		DEVICE_TYPE: {
+		deviceType: {
 			nullable: true,
 			isPk: false,
 			description: "终端 :直充APP :直充H5 :慢充APP :慢充H5",
@@ -68,7 +68,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		IS_NEW_USER: {
+		isNewUser: {
 			nullable: true,
 			isPk: false,
 			description: "是否新用户 :是 :否",
@@ -79,7 +79,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: true,
 			isPk: false,
 			description: "运营商",
@@ -90,7 +90,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: true,
 			isPk: false,
 			description: "省份",
@@ -101,7 +101,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		CITY_NO: {
+		cityNo: {
 			nullable: true,
 			isPk: false,
 			description: "城市",
@@ -112,7 +112,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		ACTIVITY_ID: {
+		activityId: {
 			nullable: true,
 			isPk: false,
 			description: "活动ID",
@@ -123,7 +123,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		SERVER_IP: {
+		serverIp: {
 			nullable: true,
 			isPk: false,
 			description: "收单IP",
@@ -134,7 +134,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: true,
 			description: "订单号",
@@ -145,7 +145,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PARTNER_ORDER_NO: {
+		partnerOrderNo: {
 			nullable: true,
 			isPk: false,
 			description: "中大订单号",
@@ -156,7 +156,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_TYPE: {
+		payType: {
 			nullable: true,
 			isPk: false,
 			description: "支付类: 0-无需支付 1-支付宝 2-微信 3-龙支付",
@@ -167,7 +167,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PRODUCT_NAME: {
+		productName: {
 			nullable: false,
 			isPk: false,
 			description: "产品名称",
@@ -178,7 +178,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		MOBILE: {
+		mobile: {
 			nullable: false,
 			isPk: false,
 			description: "充值账号",
@@ -189,7 +189,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		ACCOUNT: {
+		account: {
 			nullable: true,
 			isPk: false,
 			description: "中大用户名/建行用户编号+手机类型(1 iphone,2 安卓)",
@@ -200,7 +200,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PRODUCT_ID: {
+		productId: {
 			nullable: true,
 			isPk: false,
 			description: "产品编号",
@@ -211,7 +211,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		FACE: {
+		face: {
 			nullable: false,
 			isPk: false,
 			description: "充值面值",
@@ -222,7 +222,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PRICE: {
+		price: {
 			nullable: false,
 			isPk: false,
 			description: "产品金额(总卖价)",
@@ -233,7 +233,7 @@ exports.orderMain = {
 				length: "20"
 			}
 		},
-		ZD_ORDER_TIME: {
+		zdOrderTime: {
 			nullable: false,
 			isPk: false,
 			description: "中大订单时间",
@@ -244,7 +244,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		CARD_TYPE: {
+		cardType: {
 			nullable: false,
 			isPk: false,
 			description: "充值类型1-话费2-流量3-宽带续费",
@@ -255,7 +255,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		FLOW_TYPE: {
+		flowType: {
 			nullable: true,
 			isPk: false,
 			description: "流量类型",
@@ -266,7 +266,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_STATUS: {
+		payStatus: {
 			nullable: false,
 			isPk: false,
 			description: "支付状: 30-正在支付90-失败0-成功",
@@ -277,7 +277,7 @@ exports.orderMain = {
 				length: "2"
 			}
 		},
-		ORDER_STATUS: {
+		orderStatus: {
 			nullable: false,
 			isPk: false,
 			description: "订单状:10-无需 20-等待充值30-正在充值90-失败0-成功",
@@ -288,7 +288,7 @@ exports.orderMain = {
 				length: "2"
 			}
 		},
-		REFUND_STATE: {
+		refundState: {
 			nullable: false,
 			isPk: false,
 			description: "退款状态10-无需20-等待退款30-正在退款90-失败0-成功",
@@ -299,7 +299,7 @@ exports.orderMain = {
 				length: "2"
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -310,7 +310,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		REFUND_TIME: {
+		refundTime: {
 			nullable: true,
 			isPk: false,
 			description: "退款时间",
@@ -321,7 +321,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_TIME: {
+		payTime: {
 			nullable: true,
 			isPk: false,
 			description: "支付完成时间",
@@ -332,7 +332,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		FINISH_TIME: {
+		finishTime: {
 			nullable: true,
 			isPk: false,
 			description: "订单完成时间",
@@ -343,7 +343,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		SUC_FACE: {
+		sucFace: {
 			nullable: true,
 			isPk: false,
 			description: "成功面值",
@@ -354,7 +354,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型",
@@ -365,7 +365,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		COUPONPRICE: {
+		couponprice: {
 			nullable: true,
 			isPk: false,
 			description: "优惠券金额",
@@ -376,7 +376,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		COUPONID: {
+		couponid: {
 			nullable: true,
 			isPk: false,
 			description: "优惠券ID",
@@ -387,7 +387,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		COUPONCH: {
+		couponch: {
 			nullable: true,
 			isPk: false,
 			description: "优惠券渠道",
@@ -398,7 +398,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		SERVICE_FEE: {
+		serviceFee: {
 			nullable: true,
 			isPk: false,
 			description: "支付手续费",
@@ -409,7 +409,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		USER_PAYED: {
+		userPayed: {
 			nullable: true,
 			isPk: false,
 			description: "用户支付金额",
@@ -420,7 +420,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_NOTIFY_STATE: {
+		payNotifyState: {
 			nullable: true,
 			isPk: false,
 			description: "支付结果回调状态 10-无需20-等待30-正在90-失败0-成功",
@@ -431,7 +431,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		ORDER_NOTIFY_STATE: {
+		orderNotifyState: {
 			nullable: true,
 			isPk: false,
 			description: "订单状态回调状态 10-无需20-等待30-正在90-失败0-成功",
@@ -442,7 +442,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_NOTIFY_TIME: {
+		payNotifyTime: {
 			nullable: true,
 			isPk: false,
 			description: "支付结果回调时间",
@@ -453,7 +453,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		ORDER_NOTIFY_TIME: {
+		orderNotifyTime: {
 			nullable: true,
 			isPk: false,
 			description: "订单结果回调时间",
@@ -464,7 +464,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		RECEIPT_ACCOUNT_ID: {
+		receiptAccountId: {
 			nullable: true,
 			isPk: false,
 			description: "收款账户编号",
@@ -475,7 +475,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		ERROR_MSG: {
+		errorMsg: {
 			nullable: true,
 			isPk: false,
 			description: "错误消息",
@@ -486,7 +486,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		USER_IP: {
+		userIp: {
 			nullable: false,
 			isPk: false,
 			description: "真实ip",
@@ -497,7 +497,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_FLOW_ORDER: {
+		payFlowOrder: {
 			nullable: true,
 			isPk: false,
 			description: "支付方流水号",
@@ -508,7 +508,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_USER_ID: {
+		payUserId: {
 			nullable: true,
 			isPk: false,
 			description: "支付用户编号",
@@ -519,7 +519,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		COST_PRICE: {
+		costPrice: {
 			nullable: true,
 			isPk: false,
 			description: "实际充值成本",
@@ -530,7 +530,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		NEED_RECHARGE: {
+		needRecharge: {
 			nullable: true,
 			isPk: false,
 			description: "是否需要充值话费流量",
@@ -541,7 +541,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		MANUAL_STATUS: {
+		manualStatus: {
 			nullable: false,
 			isPk: false,
 			description: "人工状:10-无需20-等待人工0-成功",
@@ -552,7 +552,7 @@ exports.orderMain = {
 				length: "2"
 			}
 		},
-		ESALES_COST_PRICE: {
+		esalesCostPrice: {
 			nullable: false,
 			isPk: false,
 			description: "18系统成本金额",
@@ -563,7 +563,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		USER_PAY_IP: {
+		userPayIp: {
 			nullable: true,
 			isPk: false,
 			description: "用户支付IP",
@@ -574,7 +574,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		VERSION: {
+		version: {
 			nullable: true,
 			isPk: false,
 			description: "版本号",
@@ -585,7 +585,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		DELIVERY_REPEAT: {
+		deliveryRepeat: {
 			nullable: true,
 			isPk: false,
 			description: "订单不存在是否重复发货",
@@ -596,7 +596,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PROOF: {
+		proof: {
 			nullable: true,
 			isPk: false,
 			description: "凭证",
@@ -607,7 +607,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		NEED_VCODE: {
+		needVcode: {
 			nullable: true,
 			isPk: false,
 			description: "是否需要验证码",
@@ -618,7 +618,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		SHARE_UID: {
+		shareUid: {
 			nullable: true,
 			isPk: false,
 			description: "推荐人UID",
@@ -629,7 +629,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		TRADE_MSG: {
+		tradeMsg: {
 			nullable: true,
 			isPk: false,
 			description: "支付详情",
@@ -640,7 +640,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		BLACK_USER: {
+		blackUser: {
 			nullable: true,
 			isPk: false,
 			description: "是否黑名单用户",
@@ -651,7 +651,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		EXTEND_1: {
+		extend1: {
 			nullable: true,
 			isPk: false,
 			description: "扩展字段1",
@@ -662,7 +662,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		CLOSE_TIME: {
+		closeTime: {
 			nullable: true,
 			isPk: false,
 			description: "超时关闭时间",
@@ -673,7 +673,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		PAY_NEW_USER: {
+		payNewUser: {
 			nullable: true,
 			isPk: false,
 			description: "支付平台新用户：0-yes,1-no",
@@ -684,7 +684,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		SHELF_ID: {
+		shelfId: {
 			nullable: true,
 			isPk: false,
 			description: "下游产品Id",
@@ -695,7 +695,7 @@ exports.orderMain = {
 				length: ""
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "",

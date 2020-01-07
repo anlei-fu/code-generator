@@ -2,8 +2,8 @@ exports.fdTradeCoCapFund = {
 	name: "fdTradeCoCapFund",
 	rawName: "FD_TRADE_CO_CAP_FUND",
 	columns: {
-		CHANGE_ID: {
-			nullable: "N",
+		changeId: {
+			nullable: false,
 			isPk: true,
 			description: "变动编号",
 			name: "changeId",
@@ -13,8 +13,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "公司资产账户编号",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -35,8 +35,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型1加款2减款3红冲（负值）",
 			name: "changeType",
@@ -46,8 +46,8 @@ exports.fdTradeCoCapFund = {
 				length: "3"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -57,8 +57,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -68,8 +68,8 @@ exports.fdTradeCoCapFund = {
 				length: ""
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号",
 			name: "adjustId",
@@ -79,8 +79,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否红冲过",
 			name: "hasAdjust",
@@ -90,8 +90,8 @@ exports.fdTradeCoCapFund = {
 				length: "1"
 			}
 		},
-		BANK_BATCH_ID: {
-			nullable: "Y",
+		bankBatchId: {
+			nullable: true,
 			isPk: false,
 			description: "实体卡变动批次号处理号（记录转账的出账、入账、手续费）",
 			name: "bankBatchId",
@@ -101,8 +101,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -112,8 +112,8 @@ exports.fdTradeCoCapFund = {
 				length: ""
 			}
 		},
-		RECORD_NO: {
-			nullable: "N",
+		recordNo: {
+			nullable: false,
 			isPk: false,
 			description: "预付款同步编号,转账退款18退款编号",
 			name: "recordNo",
@@ -123,8 +123,8 @@ exports.fdTradeCoCapFund = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
-			nullable: "Y",
+		createUser: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createUser",
@@ -134,8 +134,8 @@ exports.fdTradeCoCapFund = {
 				length: ""
 			}
 		},
-		FD_ORDER_ID: {
-			nullable: "Y",
+		fdOrderId: {
+			nullable: true,
 			isPk: false,
 			description: "转账退款订单号",
 			name: "fdOrderId",
@@ -145,8 +145,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		TRANSFER_REFUND_ID: {
-			nullable: "Y",
+		transferRefundId: {
+			nullable: true,
 			isPk: false,
 			description: "转账退款退款编号",
 			name: "transferRefundId",
@@ -156,8 +156,8 @@ exports.fdTradeCoCapFund = {
 				length: "20"
 			}
 		},
-		TRANSFER_DRAW_ID: {
-			nullable: "Y",
+		transferDrawId: {
+			nullable: true,
 			isPk: false,
 			description: "转账退款退款提款编号",
 			name: "transferDrawId",

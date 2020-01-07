@@ -2,8 +2,8 @@ exports.fdBaseCompanySettleConfig = {
 	name: "fdBaseCompanySettleConfig",
 	rawName: "FD_BASE_COMPANY_SETTLE_CONFIG",
 	columns: {
-		CONFIG_ID: {
-			nullable: "N",
+		configId: {
+			nullable: false,
 			isPk: true,
 			description: "配置编号",
 			name: "configId",
@@ -13,8 +13,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: "20"
 			}
 		},
-		OWE_COMPANY: {
-			nullable: "N",
+		oweCompany: {
+			nullable: false,
 			isPk: false,
 			description: "欠款公司",
 			name: "oweCompany",
@@ -24,8 +24,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: "20"
 			}
 		},
-		RECV_COMPANY: {
-			nullable: "N",
+		recvCompany: {
+			nullable: false,
 			isPk: false,
 			description: "收款公司",
 			name: "recvCompany",
@@ -35,8 +35,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -46,8 +46,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -57,8 +57,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -68,8 +68,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: "3"
 			}
 		},
-		CARRIER_NO: {
-			nullable: "N",
+		carrierNo: {
+			nullable: false,
 			isPk: false,
 			description: "运营商",
 			name: "carrierNo",
@@ -79,8 +79,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份",
 			name: "provinceNo",
@@ -90,8 +90,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: ""
 			}
 		},
-		CITY_NO: {
-			nullable: "N",
+		cityNo: {
+			nullable: false,
 			isPk: false,
 			description: "地市",
 			name: "cityNo",
@@ -101,8 +101,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: ""
 			}
 		},
-		SETTLE_COST: {
-			nullable: "N",
+		settleCost: {
+			nullable: false,
 			isPk: false,
 			description: "结算折扣",
 			name: "settleCost",
@@ -112,8 +112,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -123,8 +123,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: "1"
 			}
 		},
-		LAST_UPDATE_TIME: {
-			nullable: "N",
+		lastUpdateTime: {
+			nullable: false,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastUpdateTime",
@@ -134,8 +134,8 @@ exports.fdBaseCompanySettleConfig = {
 				length: ""
 			}
 		},
-		LAST_UPDATE_USER: {
-			nullable: "Y",
+		lastUpdateUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastUpdateUser",

@@ -2,8 +2,8 @@ exports.yxBaseDownChannel = {
 	name: "yxBaseDownChannel",
 	rawName: "YX_BASE_DOWN_CHANNEL",
 	columns: {
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: true,
 			description: "渠道编号",
 			name: "channelNo",
@@ -13,8 +13,8 @@ exports.yxBaseDownChannel = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -24,8 +24,8 @@ exports.yxBaseDownChannel = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.yxBaseDownChannel = {
 				length: "3"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "所属系统编号",
 			name: "sourceSystemId",
@@ -46,8 +46,8 @@ exports.yxBaseDownChannel = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -57,8 +57,8 @@ exports.yxBaseDownChannel = {
 				length: "1"
 			}
 		},
-		CHANNEL_CLASS: {
-			nullable: "N",
+		channelClass: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型1：自有渠道2：银行渠道3：行业渠道",
 			name: "channelClass",
@@ -68,8 +68,8 @@ exports.yxBaseDownChannel = {
 				length: "3"
 			}
 		},
-		COMMI_BALANCE: {
-			nullable: "N",
+		commiBalance: {
+			nullable: false,
 			isPk: false,
 			description: "佣金余额",
 			name: "commiBalance",
@@ -79,8 +79,8 @@ exports.yxBaseDownChannel = {
 				length: "20"
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "N",
+		warnBalance: {
+			nullable: false,
 			isPk: false,
 			description: "报警余额",
 			name: "warnBalance",
@@ -90,8 +90,8 @@ exports.yxBaseDownChannel = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户id",
 			name: "accountId",
@@ -101,8 +101,8 @@ exports.yxBaseDownChannel = {
 				length: "20"
 			}
 		},
-		CREATED_USER: {
-			nullable: "N",
+		createdUser: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdUser",
@@ -112,8 +112,8 @@ exports.yxBaseDownChannel = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -123,8 +123,8 @@ exports.yxBaseDownChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -134,8 +134,8 @@ exports.yxBaseDownChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",
@@ -145,8 +145,8 @@ exports.yxBaseDownChannel = {
 				length: ""
 			}
 		},
-		ISSUE_BALANCE: {
-			nullable: "Y",
+		issueBalance: {
+			nullable: true,
 			isPk: false,
 			description: "发行收入余额",
 			name: "issueBalance",

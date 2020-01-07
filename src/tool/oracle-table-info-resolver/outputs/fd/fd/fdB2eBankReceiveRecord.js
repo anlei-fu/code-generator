@@ -2,8 +2,8 @@ exports.fdB2eBankReceiveRecord = {
 	name: "fdB2eBankReceiveRecord",
 	rawName: "FD_B2E_BANK_RECEIVE_RECORD",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "20"
 			}
 		},
-		BANK_ACCOUNT_ID: {
-			nullable: "N",
+		bankAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "银行账户",
 			name: "bankAccountId",
@@ -24,8 +24,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "20"
 			}
 		},
-		TASK_ID: {
-			nullable: "N",
+		taskId: {
+			nullable: false,
 			isPk: false,
 			description: "任务编号",
 			name: "taskId",
@@ -35,8 +35,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -46,8 +46,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		RECEIVE_TIME: {
-			nullable: "N",
+		receiveTime: {
+			nullable: false,
 			isPk: false,
 			description: "收款时间",
 			name: "receiveTime",
@@ -57,8 +57,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		RECEIVE_NO: {
-			nullable: "N",
+		receiveNo: {
+			nullable: false,
 			isPk: false,
 			description: "银行外部收款编号",
 			name: "receiveNo",
@@ -68,8 +68,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		BANK_SVR_SEQ: {
-			nullable: "N",
+		bankSvrSeq: {
+			nullable: false,
 			isPk: false,
 			description: "银行交易流水号",
 			name: "bankSvrSeq",
@@ -79,8 +79,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		BANK_CERT_NO: {
-			nullable: "N",
+		bankCertNo: {
+			nullable: false,
 			isPk: false,
 			description: "银行凭证号",
 			name: "bankCertNo",
@@ -90,8 +90,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		RECEIVE_AMOUNT: {
-			nullable: "N",
+		receiveAmount: {
+			nullable: false,
 			isPk: false,
 			description: "银行收款金额",
 			name: "receiveAmount",
@@ -101,8 +101,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "20"
 			}
 		},
-		TRADE_TYPE: {
-			nullable: "N",
+		tradeType: {
+			nullable: false,
 			isPk: false,
 			description: "交易类型 :支 2：收",
 			name: "tradeType",
@@ -112,8 +112,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "1"
 			}
 		},
-		CLIENT_CARD_NO: {
-			nullable: "N",
+		clientCardNo: {
+			nullable: false,
 			isPk: false,
 			description: "客户银行账号",
 			name: "clientCardNo",
@@ -123,8 +123,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		CLIENT_COMPANY_NAME: {
-			nullable: "N",
+		clientCompanyName: {
+			nullable: false,
 			isPk: false,
 			description: "客户公司名称",
 			name: "clientCompanyName",
@@ -134,8 +134,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		CLIENT_BANK_NAME: {
-			nullable: "N",
+		clientBankName: {
+			nullable: false,
 			isPk: false,
 			description: "客户开户银行",
 			name: "clientBankName",
@@ -145,8 +145,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		CLIENT_AREA_CODE: {
-			nullable: "N",
+		clientAreaCode: {
+			nullable: false,
 			isPk: false,
 			description: "客户地区编码",
 			name: "clientAreaCode",
@@ -156,8 +156,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		CLIENT_BANK_ADDRESS: {
-			nullable: "N",
+		clientBankAddress: {
+			nullable: false,
 			isPk: false,
 			description: "客户开户银行地址",
 			name: "clientBankAddress",
@@ -167,8 +167,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		MATCH_TYPE: {
-			nullable: "N",
+		matchType: {
+			nullable: false,
 			isPk: false,
 			description: "匹配渠道方式,1系统自动匹配，2人工匹配",
 			name: "matchType",
@@ -178,8 +178,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "3"
 			}
 		},
-		DEAL_STATUS: {
-			nullable: "N",
+		dealStatus: {
+			nullable: false,
 			isPk: false,
 			description: "交易处理状态：0完成，1未开始，2等待，3正在， 9无需处理",
 			name: "dealStatus",
@@ -189,8 +189,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "1"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "Y",
+		channelNo: {
+			nullable: true,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -200,8 +200,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		CHANNEL_ACCOUNT_ID: {
-			nullable: "Y",
+		channelAccountId: {
+			nullable: true,
 			isPk: false,
 			description: "渠道账户编号",
 			name: "channelAccountId",
@@ -211,8 +211,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "20"
 			}
 		},
-		CHANNAL_TYPE: {
-			nullable: "Y",
+		channalType: {
+			nullable: true,
 			isPk: false,
 			description: "渠道类型,1上游渠道、2下游渠道 、9无",
 			name: "channalType",
@@ -222,8 +222,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "1"
 			}
 		},
-		RECEIVE_TYPE: {
-			nullable: "Y",
+		receiveType: {
+			nullable: true,
 			isPk: false,
 			description: "交易处理类:1.下游渠道加款，2.上游渠道返佣，3.收取押金，4.收取保证金，5.收取手续费 99无需处理",
 			name: "receiveType",
@@ -233,8 +233,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "3"
 			}
 		},
-		SYS_FUND_ID: {
-			nullable: "Y",
+		sysFundId: {
+			nullable: true,
 			isPk: false,
 			description: "内部资金变动编号",
 			name: "sysFundId",
@@ -244,8 +244,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: "20"
 			}
 		},
-		BANK_REMARK: {
-			nullable: "Y",
+		bankRemark: {
+			nullable: true,
 			isPk: false,
 			description: "银行摘要",
 			name: "bankRemark",
@@ -255,8 +255,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		DEAL_USER: {
-			nullable: "Y",
+		dealUser: {
+			nullable: true,
 			isPk: false,
 			description: "处理人",
 			name: "dealUser",
@@ -266,8 +266,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		DEAL_TIME: {
-			nullable: "Y",
+		dealTime: {
+			nullable: true,
 			isPk: false,
 			description: "处理时间",
 			name: "dealTime",
@@ -277,8 +277,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		DEAL_MEMO: {
-			nullable: "Y",
+		dealMemo: {
+			nullable: true,
 			isPk: false,
 			description: "处理备注",
 			name: "dealMemo",
@@ -288,8 +288,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		SYS_FLOW_ID: {
-			nullable: "Y",
+		sysFlowId: {
+			nullable: true,
 			isPk: false,
 			description: "系统流水号",
 			name: "sysFlowId",
@@ -299,8 +299,8 @@ exports.fdB2eBankReceiveRecord = {
 				length: ""
 			}
 		},
-		APPLY_ID: {
-			nullable: "Y",
+		applyId: {
+			nullable: true,
 			isPk: false,
 			description: "下游加款申请id编号（处理结束后添加）",
 			name: "applyId",

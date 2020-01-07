@@ -2,8 +2,8 @@ exports.fdBaseSourceSystem = {
 	name: "fdBaseSourceSystem",
 	rawName: "FD_BASE_SOURCE_SYSTEM",
 	columns: {
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "sourceSystemId",
@@ -13,8 +13,8 @@ exports.fdBaseSourceSystem = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_NAME: {
-			nullable: "N",
+		sourceSystemName: {
+			nullable: false,
 			isPk: false,
 			description: "系统名称",
 			name: "sourceSystemName",
@@ -24,8 +24,8 @@ exports.fdBaseSourceSystem = {
 				length: ""
 			}
 		},
-		TEXT: {
-			nullable: "Y",
+		text: {
+			nullable: true,
 			isPk: false,
 			description: "显示名称",
 			name: "text",

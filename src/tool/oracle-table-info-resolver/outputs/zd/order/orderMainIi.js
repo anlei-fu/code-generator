@@ -2,7 +2,7 @@ exports.orderMainIi = {
 	name: "orderMainIi",
 	rawName: "ORDER_MAIN_II",
 	columns: {
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "订单号",
@@ -13,7 +13,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
+		channelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -24,7 +24,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		PRODUCT_ID: {
+		productId: {
 			nullable: true,
 			isPk: false,
 			description: "下游产品编号",
@@ -35,7 +35,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: true,
 			isPk: false,
 			description: "业务类型",
@@ -46,7 +46,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: true,
 			isPk: false,
 			description: "运营商",
@@ -57,7 +57,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: true,
 			isPk: false,
 			description: "省份",
@@ -68,7 +68,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		CITY_NO: {
+		cityNo: {
 			nullable: true,
 			isPk: false,
 			description: "地市",
@@ -79,7 +79,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		PHONE_NO: {
+		phoneNo: {
 			nullable: true,
 			isPk: false,
 			description: "手机号码",
@@ -90,7 +90,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		FACE_FEE: {
+		faceFee: {
 			nullable: true,
 			isPk: false,
 			description: "面值",
@@ -101,7 +101,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		NORMAL_PRICE: {
+		normalPrice: {
 			nullable: true,
 			isPk: false,
 			description: "标准价格",
@@ -112,7 +112,7 @@ exports.orderMainIi = {
 				length: "16"
 			}
 		},
-		DISCOUNT_PRICE: {
+		discountPrice: {
 			nullable: true,
 			isPk: false,
 			description: "折扣价格",
@@ -123,7 +123,7 @@ exports.orderMainIi = {
 				length: "16"
 			}
 		},
-		PRODUCT_NAME: {
+		productName: {
 			nullable: true,
 			isPk: false,
 			description: "产品名称",
@@ -134,7 +134,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		PARTNER_ORDER_NO: {
+		partnerOrderNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游订单号",
@@ -145,7 +145,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		ORDER_STATUS: {
+		orderStatus: {
 			nullable: true,
 			isPk: false,
 			description: "订单状态",
@@ -156,7 +156,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		SUCC_FACE: {
+		succFace: {
 			nullable: true,
 			isPk: false,
 			description: "成功面值",
@@ -167,7 +167,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "创建时间",
@@ -178,7 +178,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		FINISH_TIME: {
+		finishTime: {
 			nullable: true,
 			isPk: false,
 			description: "完成时间",
@@ -189,7 +189,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		NEED_PAY: {
+		needPay: {
 			nullable: false,
 			isPk: false,
 			description: "是否需要支付(订单支付表)",
@@ -200,7 +200,7 @@ exports.orderMainIi = {
 				length: ""
 			}
 		},
-		STATUS_STEP: {
+		statusStep: {
 			nullable: false,
 			isPk: false,
 			description: "状态步: 0-完成 1-等待支付 2-等待支付回调 3-等待发货 4-等待发货结果 5-等待通知下游 ",

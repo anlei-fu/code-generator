@@ -2,7 +2,7 @@ exports.couponUseRule = {
 	name: "couponUseRule",
 	rawName: "COUPON_USE_RULE",
 	columns: {
-		RULE_ID: {
+		ruleId: {
 			nullable: false,
 			isPk: true,
 			description: "规则编号",
@@ -13,7 +13,7 @@ exports.couponUseRule = {
 				length: "20"
 			}
 		},
-		ACTIVITY_ID: {
+		activityId: {
 			nullable: false,
 			isPk: false,
 			description: "活动编号",
@@ -24,7 +24,7 @@ exports.couponUseRule = {
 				length: "20"
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型",
@@ -35,7 +35,7 @@ exports.couponUseRule = {
 				length: "5"
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: true,
 			isPk: false,
 			description: "运营商",
@@ -46,7 +46,7 @@ exports.couponUseRule = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: true,
 			isPk: false,
 			description: "省份",
@@ -57,7 +57,7 @@ exports.couponUseRule = {
 				length: ""
 			}
 		},
-		MIN_FEE: {
+		minFee: {
 			nullable: false,
 			isPk: false,
 			description: "订单最低金额(无用)",
@@ -68,7 +68,7 @@ exports.couponUseRule = {
 				length: "5"
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态",
@@ -79,7 +79,7 @@ exports.couponUseRule = {
 				length: "1"
 			}
 		},
-		CREATED_USER: {
+		createdUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建人",
@@ -90,7 +90,7 @@ exports.couponUseRule = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
+		createdTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -101,7 +101,7 @@ exports.couponUseRule = {
 				length: ""
 			}
 		},
-		UPDATED_USER: {
+		updatedUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新人",
@@ -112,7 +112,7 @@ exports.couponUseRule = {
 				length: ""
 			}
 		},
-		UPDATED_TIME: {
+		updatedTime: {
 			nullable: false,
 			isPk: false,
 			description: "更新时间",
@@ -123,7 +123,7 @@ exports.couponUseRule = {
 				length: ""
 			}
 		},
-		RECHARGE_MODE: {
+		rechargeMode: {
 			nullable: true,
 			isPk: false,
 			description: "充值类型 快慢充",

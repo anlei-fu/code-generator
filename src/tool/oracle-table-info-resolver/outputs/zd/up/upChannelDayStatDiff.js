@@ -2,7 +2,7 @@ exports.upChannelDayStatDiff = {
 	name: "upChannelDayStatDiff",
 	rawName: "UP_CHANNEL_DAY_STAT_DIFF",
 	columns: {
-		UP_CHANNEL_NO: {
+		upChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "上游渠道编号",
@@ -13,7 +13,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		STAT_ID: {
+		statId: {
 			nullable: true,
 			isPk: false,
 			description: "统计编号",
@@ -24,7 +24,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		STATIS_DAY: {
+		statisDay: {
 			nullable: true,
 			isPk: false,
 			description: "统计日期",
@@ -35,7 +35,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		COUNT_TOTAL: {
+		countTotal: {
 			nullable: true,
 			isPk: false,
 			description: "总笔数",
@@ -46,7 +46,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		COUNT_SUCC: {
+		countSucc: {
 			nullable: true,
 			isPk: false,
 			description: "成功笔数",
@@ -57,7 +57,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		COUNT_FAIL: {
+		countFail: {
 			nullable: true,
 			isPk: false,
 			description: "失败笔数",
@@ -68,7 +68,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		COUNT_DEALING: {
+		countDealing: {
 			nullable: true,
 			isPk: false,
 			description: "处理中笔数",
@@ -79,7 +79,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		FACE_TOTAL: {
+		faceTotal: {
 			nullable: true,
 			isPk: false,
 			description: "总面值",
@@ -90,7 +90,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		FACE_SUCC: {
+		faceSucc: {
 			nullable: true,
 			isPk: false,
 			description: "成功面值",
@@ -101,7 +101,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		FACE_FAIL: {
+		faceFail: {
 			nullable: true,
 			isPk: false,
 			description: "失败面值",
@@ -112,7 +112,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		FACE_DEALING: {
+		faceDealing: {
 			nullable: true,
 			isPk: false,
 			description: "处理中面值",
@@ -123,7 +123,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_COUNT_TOTAL: {
+		esCountTotal: {
 			nullable: true,
 			isPk: false,
 			description: "18总笔数",
@@ -134,7 +134,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_COUNT_SUCC: {
+		esCountSucc: {
 			nullable: true,
 			isPk: false,
 			description: "18成功笔数",
@@ -145,7 +145,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_COUNT_FAIL: {
+		esCountFail: {
 			nullable: true,
 			isPk: false,
 			description: "18失败笔数",
@@ -156,7 +156,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_COUNT_DEALING: {
+		esCountDealing: {
 			nullable: true,
 			isPk: false,
 			description: "18处理中笔数",
@@ -167,7 +167,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_FACE_TOTAL: {
+		esFaceTotal: {
 			nullable: true,
 			isPk: false,
 			description: "18总面值",
@@ -178,7 +178,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_FACE_SUCC: {
+		esFaceSucc: {
 			nullable: true,
 			isPk: false,
 			description: "18成功面值",
@@ -189,7 +189,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_FACE_FAIL: {
+		esFaceFail: {
 			nullable: true,
 			isPk: false,
 			description: "18失败面值",
@@ -200,7 +200,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		ES_FACE_DEALING: {
+		esFaceDealing: {
 			nullable: true,
 			isPk: false,
 			description: "18处理中面值",
@@ -211,7 +211,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		DIFF_COUNT_SUCC: {
+		diffCountSucc: {
 			nullable: true,
 			isPk: false,
 			description: "差异成功笔数",
@@ -222,7 +222,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		DIFF_FACE_SUCC: {
+		diffFaceSucc: {
 			nullable: true,
 			isPk: false,
 			description: "差异成功面值",
@@ -233,7 +233,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "创建时间",
@@ -244,7 +244,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: true,
 			isPk: false,
 			description: "业务类型",
@@ -255,7 +255,7 @@ exports.upChannelDayStatDiff = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道",

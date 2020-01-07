@@ -2,8 +2,8 @@ exports.fdB2eDownWhiteList = {
 	name: "fdB2eDownWhiteList",
 	rawName: "FD_B2E_DOWN_WHITE_LIST",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdB2eDownWhiteList = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道",
 			name: "downChannelNo",
@@ -24,8 +24,8 @@ exports.fdB2eDownWhiteList = {
 				length: ""
 			}
 		},
-		CHANNEL_ACCOUNT_ID: {
-			nullable: "N",
+		channelAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "渠道账户编号",
 			name: "channelAccountId",
@@ -35,8 +35,8 @@ exports.fdB2eDownWhiteList = {
 				length: "20"
 			}
 		},
-		BANK_HOLDER_NAME: {
-			nullable: "N",
+		bankHolderName: {
+			nullable: false,
 			isPk: false,
 			description: "持卡人姓名",
 			name: "bankHolderName",
@@ -46,8 +46,8 @@ exports.fdB2eDownWhiteList = {
 				length: ""
 			}
 		},
-		DOWN_HOLDER_CARD_NO: {
-			nullable: "N",
+		downHolderCardNo: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡卡号",
 			name: "downHolderCardNo",
@@ -57,8 +57,8 @@ exports.fdB2eDownWhiteList = {
 				length: ""
 			}
 		},
-		ACCOUNT_BANK_NAME: {
-			nullable: "N",
+		accountBankName: {
+			nullable: false,
 			isPk: false,
 			description: "开户行名称",
 			name: "accountBankName",
@@ -68,8 +68,8 @@ exports.fdB2eDownWhiteList = {
 				length: ""
 			}
 		},
-		ACCOUNT_BANK_ADDRESS: {
-			nullable: "N",
+		accountBankAddress: {
+			nullable: false,
 			isPk: false,
 			description: "开户行地址",
 			name: "accountBankAddress",
@@ -79,8 +79,8 @@ exports.fdB2eDownWhiteList = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -90,8 +90,8 @@ exports.fdB2eDownWhiteList = {
 				length: ""
 			}
 		},
-		AUDIT_STATUS: {
-			nullable: "Y",
+		auditStatus: {
+			nullable: true,
 			isPk: false,
 			description: "审核状态",
 			name: "auditStatus",
@@ -101,8 +101,8 @@ exports.fdB2eDownWhiteList = {
 				length: "3"
 			}
 		},
-		AUDIT_TIME: {
-			nullable: "Y",
+		auditTime: {
+			nullable: true,
 			isPk: false,
 			description: "审核时间",
 			name: "auditTime",
@@ -112,8 +112,8 @@ exports.fdB2eDownWhiteList = {
 				length: ""
 			}
 		},
-		BANK_TYPE: {
-			nullable: "Y",
+		bankType: {
+			nullable: true,
 			isPk: false,
 			description: "银行类型",
 			name: "bankType",

@@ -2,8 +2,8 @@ exports.supBaseDownAccount = {
 	name: "supBaseDownAccount",
 	rawName: "SUP_BASE_DOWN_ACCOUNT",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.supBaseDownAccount = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountName",
@@ -24,8 +24,8 @@ exports.supBaseDownAccount = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -35,8 +35,8 @@ exports.supBaseDownAccount = {
 				length: "20"
 			}
 		},
-		CREDIT_AMOUNT: {
-			nullable: "N",
+		creditAmount: {
+			nullable: false,
 			isPk: false,
 			description: "授信金额",
 			name: "creditAmount",
@@ -46,8 +46,8 @@ exports.supBaseDownAccount = {
 				length: "20"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -57,8 +57,8 @@ exports.supBaseDownAccount = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -68,8 +68,8 @@ exports.supBaseDownAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -79,8 +79,8 @@ exports.supBaseDownAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",

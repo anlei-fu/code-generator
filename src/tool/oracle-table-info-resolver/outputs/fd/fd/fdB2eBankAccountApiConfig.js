@@ -2,8 +2,8 @@ exports.fdB2eBankAccountApiConfig = {
 	name: "fdB2eBankAccountApiConfig",
 	rawName: "FD_B2E_BANK_ACCOUNT_API_CONFIG",
 	columns: {
-		CONFIG_ID: {
-			nullable: "N",
+		configId: {
+			nullable: false,
 			isPk: false,
 			description: "配置编号",
 			name: "configId",
@@ -13,8 +13,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: "20"
 			}
 		},
-		BANK_ACCOUNT_ID: {
-			nullable: "N",
+		bankAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "银行账户编号",
 			name: "bankAccountId",
@@ -24,8 +24,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: "20"
 			}
 		},
-		TOKEN_KEY: {
-			nullable: "N",
+		tokenKey: {
+			nullable: false,
 			isPk: false,
 			description: "签名key",
 			name: "tokenKey",
@@ -35,8 +35,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		RECEIVE_QUERY_MQ: {
-			nullable: "N",
+		receiveQueryMq: {
+			nullable: false,
 			isPk: false,
 			description: "下游收款查询mq",
 			name: "receiveQueryMq",
@@ -46,8 +46,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		ADD_MQ: {
-			nullable: "N",
+		addMq: {
+			nullable: false,
 			isPk: false,
 			description: "上游加款mq",
 			name: "addMq",
@@ -57,8 +57,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		ADD_QUERY_MQ: {
-			nullable: "N",
+		addQueryMq: {
+			nullable: false,
 			isPk: false,
 			description: "上游加款查询mq",
 			name: "addQueryMq",
@@ -68,8 +68,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		BANK_BALANCE_MQ: {
-			nullable: "N",
+		bankBalanceMq: {
+			nullable: false,
 			isPk: false,
 			description: "银行余额查询mq",
 			name: "bankBalanceMq",
@@ -79,8 +79,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		MERCHANT_NO: {
-			nullable: "N",
+		merchantNo: {
+			nullable: false,
 			isPk: false,
 			description: "客户账户编号,对应client_id",
 			name: "merchantNo",
@@ -90,8 +90,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		MERCHANT_PASSWORD: {
-			nullable: "N",
+		merchantPassword: {
+			nullable: false,
 			isPk: false,
 			description: "客户账户密码",
 			name: "merchantPassword",
@@ -101,8 +101,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		USER_NO: {
-			nullable: "N",
+		userNo: {
+			nullable: false,
 			isPk: false,
 			description: "用户登录账户,对应user_id",
 			name: "userNo",
@@ -112,8 +112,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		USER_PASSWORD: {
-			nullable: "N",
+		userPassword: {
+			nullable: false,
 			isPk: false,
 			description: "登录密码,对应user_pswd",
 			name: "userPassword",
@@ -123,8 +123,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		CURRENCY_CODE: {
-			nullable: "N",
+		currencyCode: {
+			nullable: false,
 			isPk: false,
 			description: "交易货币种类",
 			name: "currencyCode",
@@ -134,8 +134,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		LANGUAGE: {
-			nullable: "N",
+		language: {
+			nullable: false,
 			isPk: false,
 			description: "接口编码语言",
 			name: "language",
@@ -145,8 +145,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		APP_ID: {
-			nullable: "N",
+		appId: {
+			nullable: false,
 			isPk: false,
 			description: "应用程序编码",
 			name: "appId",
@@ -156,8 +156,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		APP_VER: {
-			nullable: "N",
+		appVer: {
+			nullable: false,
 			isPk: false,
 			description: "应用程序版本",
 			name: "appVer",
@@ -167,8 +167,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		BANK_ADD_MQ: {
-			nullable: "N",
+		bankAddMq: {
+			nullable: false,
 			isPk: false,
 			description: "上游银企直连加款mq",
 			name: "bankAddMq",
@@ -178,8 +178,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		BANK_ADD_QUERY_MQ: {
-			nullable: "N",
+		bankAddQueryMq: {
+			nullable: false,
 			isPk: false,
 			description: "上游银企直联加款查询mq",
 			name: "bankAddQueryMq",
@@ -189,8 +189,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		PROXY_MERCHANT_NO: {
-			nullable: "Y",
+		proxyMerchantNo: {
+			nullable: true,
 			isPk: false,
 			description: "代付商户编号",
 			name: "proxyMerchantNo",
@@ -200,8 +200,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		PROXY_MERCHANT_PWD: {
-			nullable: "Y",
+		proxyMerchantPwd: {
+			nullable: true,
 			isPk: false,
 			description: "代付商户密码",
 			name: "proxyMerchantPwd",
@@ -211,8 +211,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		PROXY_PRI_MERCHANT_NO: {
-			nullable: "Y",
+		proxyPriMerchantNo: {
+			nullable: true,
 			isPk: false,
 			description: "代付对私商户编号",
 			name: "proxyPriMerchantNo",
@@ -222,8 +222,8 @@ exports.fdB2eBankAccountApiConfig = {
 				length: ""
 			}
 		},
-		PROXY_PRI_MERCHANT_PWD: {
-			nullable: "Y",
+		proxyPriMerchantPwd: {
+			nullable: true,
 			isPk: false,
 			description: "代付对私商户密码",
 			name: "proxyPriMerchantPwd",

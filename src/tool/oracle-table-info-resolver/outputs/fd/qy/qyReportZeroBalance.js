@@ -2,8 +2,8 @@ exports.qyReportZeroBalance = {
 	name: "qyReportZeroBalance",
 	rawName: "QY_REPORT_ZERO_BALANCE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		REPORT_TIME: {
-			nullable: "N",
+		reportTime: {
+			nullable: false,
 			isPk: false,
 			description: "报表时间",
 			name: "reportTime",
@@ -24,8 +24,8 @@ exports.qyReportZeroBalance = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -35,8 +35,8 @@ exports.qyReportZeroBalance = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类型1：上游渠道2：下游渠道3：银行账户4：服务费账户5：代理人账户",
 			name: "accountType",
@@ -46,8 +46,8 @@ exports.qyReportZeroBalance = {
 				length: "3"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道（代理人）编号",
 			name: "channelNo",
@@ -68,8 +68,8 @@ exports.qyReportZeroBalance = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道（代理人）名称",
 			name: "channelName",
@@ -79,8 +79,8 @@ exports.qyReportZeroBalance = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "Y",
+		balance: {
+			nullable: true,
 			isPk: false,
 			description: "理论余额",
 			name: "balance",
@@ -90,8 +90,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "Y",
+		queryBalance: {
+			nullable: true,
 			isPk: false,
 			description: "查询余额",
 			name: "queryBalance",
@@ -101,8 +101,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "N",
+		channelStatus: {
+			nullable: false,
 			isPk: false,
 			description: "渠道状态",
 			name: "channelStatus",
@@ -112,8 +112,8 @@ exports.qyReportZeroBalance = {
 				length: "1"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -123,8 +123,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "渠道所属系统编号",
 			name: "channelSourceSystem",
@@ -134,8 +134,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		DOWN_FIRST_AMOUNT: {
-			nullable: "Y",
+		downFirstAmount: {
+			nullable: true,
 			isPk: false,
 			description: "下游与上游扣款的时间差造成的差异金额（只有下游渠道记录）",
 			name: "downFirstAmount",
@@ -145,8 +145,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "Y",
+		warnBalance: {
+			nullable: true,
 			isPk: false,
 			description: "告警余额",
 			name: "warnBalance",
@@ -156,8 +156,8 @@ exports.qyReportZeroBalance = {
 				length: "20"
 			}
 		},
-		DOWN_FIRST_FACE: {
-			nullable: "Y",
+		downFirstFace: {
+			nullable: true,
 			isPk: false,
 			description: "下游与上游扣款的时间差造成的差异面值（只有下游渠道记录）",
 			name: "downFirstFace",

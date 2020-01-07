@@ -2,8 +2,8 @@ exports.fdBaseUpAccountBank = {
 	name: "fdBaseUpAccountBank",
 	rawName: "FD_BASE_UP_ACCOUNT_BANK",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "主键(对应上游账户主键)",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.fdBaseUpAccountBank = {
 				length: "20"
 			}
 		},
-		TITLE: {
-			nullable: "N",
+		title: {
+			nullable: false,
 			isPk: false,
 			description: "标题(区分银行卡用途)",
 			name: "title",
@@ -24,8 +24,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		CARD_NO: {
-			nullable: "N",
+		cardNo: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡卡号",
 			name: "cardNo",
@@ -35,8 +35,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		CARD_PWD: {
-			nullable: "N",
+		cardPwd: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡密码",
 			name: "cardPwd",
@@ -46,8 +46,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		CARD_HOLDER: {
-			nullable: "N",
+		cardHolder: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡持有人",
 			name: "cardHolder",
@@ -57,8 +57,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型",
 			name: "bankType",
@@ -68,8 +68,8 @@ exports.fdBaseUpAccountBank = {
 				length: "3"
 			}
 		},
-		BANK_NAME: {
-			nullable: "N",
+		bankName: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡所属银行",
 			name: "bankName",
@@ -79,8 +79,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		BANK_ADDRESS: {
-			nullable: "Y",
+		bankAddress: {
+			nullable: true,
 			isPk: false,
 			description: "开户行",
 			name: "bankAddress",
@@ -90,8 +90,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		REMARK: {
-			nullable: "Y",
+		remark: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "remark",
@@ -101,8 +101,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createTime",
@@ -112,8 +112,8 @@ exports.fdBaseUpAccountBank = {
 				length: ""
 			}
 		},
-		CREATE_BY: {
-			nullable: "N",
+		createBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createBy",

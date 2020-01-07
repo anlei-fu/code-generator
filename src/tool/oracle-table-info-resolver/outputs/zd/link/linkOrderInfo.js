@@ -2,7 +2,7 @@ exports.linkOrderInfo = {
 	name: "linkOrderInfo",
 	rawName: "LINK_ORDER_INFO",
 	columns: {
-		REQUEST_ID: {
+		requestId: {
 			nullable: true,
 			isPk: false,
 			description: "请求编号",
@@ -13,7 +13,7 @@ exports.linkOrderInfo = {
 				length: "20"
 			}
 		},
-		LINK_ID: {
+		linkId: {
 			nullable: true,
 			isPk: false,
 			description: "链接ID",
@@ -24,7 +24,7 @@ exports.linkOrderInfo = {
 				length: "20"
 			}
 		},
-		PHONE_NO: {
+		phoneNo: {
 			nullable: true,
 			isPk: false,
 			description: "手机号码",
@@ -35,7 +35,7 @@ exports.linkOrderInfo = {
 				length: ""
 			}
 		},
-		REQUEST_TIME: {
+		requestTime: {
 			nullable: true,
 			isPk: false,
 			description: "请求时间",

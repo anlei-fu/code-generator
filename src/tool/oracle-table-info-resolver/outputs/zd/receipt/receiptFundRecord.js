@@ -2,7 +2,7 @@ exports.receiptFundRecord = {
 	name: "receiptFundRecord",
 	rawName: "RECEIPT_FUND_RECORD",
 	columns: {
-		RECORD_ID: {
+		recordId: {
 			nullable: false,
 			isPk: true,
 			description: "记录编号",
@@ -13,7 +13,7 @@ exports.receiptFundRecord = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
+		accountId: {
 			nullable: true,
 			isPk: false,
 			description: "账户编号",
@@ -24,7 +24,7 @@ exports.receiptFundRecord = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
+		changeType: {
 			nullable: true,
 			isPk: false,
 			description: "变动类型 :支付 :退款 :提现",
@@ -35,7 +35,7 @@ exports.receiptFundRecord = {
 				length: "2"
 			}
 		},
-		CHANGE_AMOUNT: {
+		changeAmount: {
 			nullable: true,
 			isPk: false,
 			description: "变动金额",
@@ -46,7 +46,7 @@ exports.receiptFundRecord = {
 				length: ""
 			}
 		},
-		BALANCE: {
+		balance: {
 			nullable: true,
 			isPk: false,
 			description: "当前余额",
@@ -57,7 +57,7 @@ exports.receiptFundRecord = {
 				length: ""
 			}
 		},
-		CHANGE_TIME: {
+		changeTime: {
 			nullable: true,
 			isPk: false,
 			description: "变动时间",
@@ -68,7 +68,7 @@ exports.receiptFundRecord = {
 				length: ""
 			}
 		},
-		OPERATOR: {
+		operator: {
 			nullable: true,
 			isPk: false,
 			description: "操作人",
@@ -79,7 +79,7 @@ exports.receiptFundRecord = {
 				length: ""
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -90,7 +90,7 @@ exports.receiptFundRecord = {
 				length: ""
 			}
 		},
-		PRODUCT_TYPE: {
+		productType: {
 			nullable: true,
 			isPk: false,
 			description: "产品类型 :话费 :流量",
@@ -101,7 +101,7 @@ exports.receiptFundRecord = {
 				length: ""
 			}
 		},
-		SERVICE_LOSS: {
+		serviceLoss: {
 			nullable: true,
 			isPk: false,
 			description: "亏损的手续费",
@@ -112,7 +112,7 @@ exports.receiptFundRecord = {
 				length: ""
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: true,
 			isPk: false,
 			description: "订单号",

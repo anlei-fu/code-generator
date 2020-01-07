@@ -2,7 +2,7 @@ exports.receiptAccountInfo = {
 	name: "receiptAccountInfo",
 	rawName: "RECEIPT_ACCOUNT_INFO",
 	columns: {
-		ACCOUNT_ID: {
+		accountId: {
 			nullable: false,
 			isPk: true,
 			description: "账户编号",
@@ -13,7 +13,7 @@ exports.receiptAccountInfo = {
 				length: "20"
 			}
 		},
-		ACCOUNT_TYPE: {
+		accountType: {
 			nullable: true,
 			isPk: false,
 			description: "账户类型 :支付宝 :微信 :优惠券 :微信扫码 :优途 1:微信公众号 1:京东支付 1:中行支付",
@@ -24,7 +24,7 @@ exports.receiptAccountInfo = {
 				length: "2"
 			}
 		},
-		APPID: {
+		appid: {
 			nullable: true,
 			isPk: false,
 			description: "收款账号ID",
@@ -35,7 +35,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		MCH_ID: {
+		mchId: {
 			nullable: true,
 			isPk: false,
 			description: "商户号",
@@ -46,7 +46,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		PUB_KEY: {
+		pubKey: {
 			nullable: true,
 			isPk: false,
 			description: "支付宝公钥,微信秘钥",
@@ -57,7 +57,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		PRI_KEY: {
+		priKey: {
 			nullable: true,
 			isPk: false,
 			description: "私钥",
@@ -68,7 +68,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		CERTIFICATE_PATH: {
+		certificatePath: {
 			nullable: true,
 			isPk: false,
 			description: "证书路径",
@@ -79,7 +79,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		BALANCE: {
+		balance: {
 			nullable: false,
 			isPk: false,
 			description: "余额",
@@ -90,7 +90,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		SERVICE_RADIO: {
+		serviceRadio: {
 			nullable: true,
 			isPk: false,
 			description: "手续费率",
@@ -101,7 +101,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		EXT_1: {
+		ext1: {
 			nullable: true,
 			isPk: false,
 			description: "扩展1",
@@ -112,7 +112,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		EXT_2: {
+		ext2: {
 			nullable: true,
 			isPk: false,
 			description: "扩展2(公众号支付:为appsecret)",
@@ -123,7 +123,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		EXT_3: {
+		ext3: {
 			nullable: true,
 			isPk: false,
 			description: "扩展3",
@@ -134,7 +134,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		EXT_4: {
+		ext4: {
 			nullable: true,
 			isPk: false,
 			description: "扩展4",
@@ -145,7 +145,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		EXT_5: {
+		ext5: {
 			nullable: true,
 			isPk: false,
 			description: "扩展5",
@@ -156,7 +156,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -167,7 +167,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "状态 0有效 1无效",
@@ -178,7 +178,7 @@ exports.receiptAccountInfo = {
 				length: "2"
 			}
 		},
-		SYNC_NOTIFY_URL: {
+		syncNotifyUrl: {
 			nullable: true,
 			isPk: false,
 			description: "同步通知地址",
@@ -189,7 +189,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		NONSYNC_NOTIFY_URL: {
+		nonsyncNotifyUrl: {
 			nullable: true,
 			isPk: false,
 			description: "异步通知地址",
@@ -200,7 +200,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		REFUND_SCRIPT_PATH: {
+		refundScriptPath: {
 			nullable: true,
 			isPk: false,
 			description: "退款lua脚本名称",
@@ -211,7 +211,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -222,7 +222,7 @@ exports.receiptAccountInfo = {
 				length: "20"
 			}
 		},
-		SERVICE_LOSS: {
+		serviceLoss: {
 			nullable: true,
 			isPk: false,
 			description: "退款亏损",
@@ -233,7 +233,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		SERVICE_FEE_MODE: {
+		serviceFeeMode: {
 			nullable: false,
 			isPk: false,
 			description: "手续费模: 0-无 1-支付前 2-支付后",
@@ -244,7 +244,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		SERVICE_FEE_REFUND: {
+		serviceFeeRefund: {
 			nullable: true,
 			isPk: false,
 			description: "退款是否退手续: 0-是 1-否",
@@ -255,7 +255,7 @@ exports.receiptAccountInfo = {
 				length: ""
 			}
 		},
-		VERSION: {
+		version: {
 			nullable: true,
 			isPk: false,
 			description: "版: 1-开发 2-测试 3-预生产 4-生产",

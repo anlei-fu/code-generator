@@ -2,7 +2,7 @@ exports.fcSystemProvince = {
 	name: "fcSystemProvince",
 	rawName: "FC_SYSTEM_PROVINCE",
 	columns: {
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: false,
 			isPk: false,
 			description: "省编号",
@@ -13,7 +13,7 @@ exports.fcSystemProvince = {
 				length: ""
 			}
 		},
-		PROVINCE_NAME: {
+		provinceName: {
 			nullable: false,
 			isPk: false,
 			description: "名称",
@@ -24,7 +24,7 @@ exports.fcSystemProvince = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态",
@@ -35,7 +35,7 @@ exports.fcSystemProvince = {
 				length: "1"
 			}
 		},
-		SHORT: {
+		short: {
 			nullable: true,
 			isPk: false,
 			description: "排序",

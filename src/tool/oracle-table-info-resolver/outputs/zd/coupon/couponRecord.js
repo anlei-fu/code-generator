@@ -2,7 +2,7 @@ exports.couponRecord = {
 	name: "couponRecord",
 	rawName: "COUPON_RECORD",
 	columns: {
-		COUPON_ID: {
+		couponId: {
 			nullable: false,
 			isPk: true,
 			description: "券编号",
@@ -13,7 +13,7 @@ exports.couponRecord = {
 				length: "20"
 			}
 		},
-		ACTIVITY_ID: {
+		activityId: {
 			nullable: false,
 			isPk: false,
 			description: "活动编号",
@@ -24,7 +24,7 @@ exports.couponRecord = {
 				length: "20"
 			}
 		},
-		COUPON_FEE: {
+		couponFee: {
 			nullable: false,
 			isPk: false,
 			description: "券金额",
@@ -35,7 +35,7 @@ exports.couponRecord = {
 				length: "20"
 			}
 		},
-		EFFECTIVE_TIME: {
+		effectiveTime: {
 			nullable: false,
 			isPk: false,
 			description: "生效时间",
@@ -46,7 +46,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		EXPIRE_TIME: {
+		expireTime: {
 			nullable: false,
 			isPk: false,
 			description: "过期时间",
@@ -57,7 +57,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		USED_TIME: {
+		usedTime: {
 			nullable: true,
 			isPk: false,
 			description: "使用时间",
@@ -68,7 +68,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		USED_ORDER_NO: {
+		usedOrderNo: {
 			nullable: true,
 			isPk: false,
 			description: "使用订单号",
@@ -79,7 +79,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		ORDER_FEE: {
+		orderFee: {
 			nullable: true,
 			isPk: false,
 			description: "订单金额",
@@ -90,7 +90,7 @@ exports.couponRecord = {
 				length: "20"
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -101,7 +101,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		COUPON_STATE: {
+		couponState: {
 			nullable: false,
 			isPk: false,
 			description: "状态:未使用:已使用 :已过期",
@@ -112,7 +112,7 @@ exports.couponRecord = {
 				length: "1"
 			}
 		},
-		GETED_TIME: {
+		getedTime: {
 			nullable: false,
 			isPk: false,
 			description: "领取时间",
@@ -123,7 +123,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		USER_NAME: {
+		userName: {
 			nullable: true,
 			isPk: false,
 			description: "用户名",
@@ -134,7 +134,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		COUPON_TYPE: {
+		couponType: {
 			nullable: false,
 			isPk: false,
 			description: "券类型:流量券:话费券",
@@ -145,7 +145,7 @@ exports.couponRecord = {
 				length: "2"
 			}
 		},
-		GET_TYPE: {
+		getType: {
 			nullable: false,
 			isPk: false,
 			description: "领取方式:领券:充送",
@@ -156,7 +156,7 @@ exports.couponRecord = {
 				length: "2"
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -167,7 +167,7 @@ exports.couponRecord = {
 				length: ""
 			}
 		},
-		GET_ORDER_NO: {
+		getOrderNo: {
 			nullable: true,
 			isPk: false,
 			description: "获取订单号(领取方式的为空)",

@@ -2,8 +2,8 @@ exports.yxBaseAgent = {
 	name: "yxBaseAgent",
 	rawName: "YX_BASE_AGENT",
 	columns: {
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "代理人编号",
 			name: "agentId",
@@ -13,8 +13,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		AGENT_NAME: {
-			nullable: "N",
+		agentName: {
+			nullable: false,
 			isPk: false,
 			description: "代理人名称",
 			name: "agentName",
@@ -24,8 +24,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		AGENT_TYPE: {
-			nullable: "N",
+		agentType: {
+			nullable: false,
 			isPk: false,
 			description: "代理人类型:个人代理人,:企业代理人",
 			name: "agentType",
@@ -35,8 +35,8 @@ exports.yxBaseAgent = {
 				length: "2"
 			}
 		},
-		CERTIFICATE_NO: {
-			nullable: "N",
+		certificateNo: {
+			nullable: false,
 			isPk: false,
 			description: "身份证/纳税识别号",
 			name: "certificateNo",
@@ -46,8 +46,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		MOBILE: {
-			nullable: "N",
+		mobile: {
+			nullable: false,
 			isPk: false,
 			description: "手机号码",
 			name: "mobile",
@@ -57,8 +57,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份",
 			name: "provinceNo",
@@ -68,8 +68,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		COMPANY_NATURE: {
-			nullable: "N",
+		companyNature: {
+			nullable: false,
 			isPk: false,
 			description: "公司性质:有限责任公司,:股份有限公司,:个体商户,:合伙企业",
 			name: "companyNature",
@@ -79,8 +79,8 @@ exports.yxBaseAgent = {
 				length: "10"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -90,8 +90,8 @@ exports.yxBaseAgent = {
 				length: "3"
 			}
 		},
-		TAXPAYER_SIZE: {
-			nullable: "N",
+		taxpayerSize: {
+			nullable: false,
 			isPk: false,
 			description: "纳税人规模:一般纳税人,2小规模纳税人",
 			name: "taxpayerSize",
@@ -101,8 +101,8 @@ exports.yxBaseAgent = {
 				length: "2"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -112,8 +112,8 @@ exports.yxBaseAgent = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -123,8 +123,8 @@ exports.yxBaseAgent = {
 				length: "1"
 			}
 		},
-		CREATED_USER: {
-			nullable: "N",
+		createdUser: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdUser",
@@ -134,8 +134,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -145,8 +145,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -156,8 +156,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",
@@ -167,8 +167,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道",
 			name: "downChannelNo",
@@ -178,8 +178,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		OUT_AGENT_ID: {
-			nullable: "N",
+		outAgentId: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统代理人编号",
 			name: "outAgentId",
@@ -189,8 +189,8 @@ exports.yxBaseAgent = {
 				length: ""
 			}
 		},
-		GROUP_AGENT: {
-			nullable: "Y",
+		groupAgent: {
+			nullable: true,
 			isPk: false,
 			description: ":是组合代理人，1：普通代理人",
 			name: "groupAgent",
@@ -200,8 +200,8 @@ exports.yxBaseAgent = {
 				length: "3"
 			}
 		},
-		GROUP_COUNT: {
-			nullable: "Y",
+		groupCount: {
+			nullable: true,
 			isPk: false,
 			description: "组合数量",
 			name: "groupCount",

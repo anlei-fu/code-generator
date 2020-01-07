@@ -2,7 +2,7 @@ exports.tempOrder = {
 	name: "tempOrder",
 	rawName: "TEMP_ORDER",
 	columns: {
-		TYPE: {
+		type: {
 			nullable: false,
 			isPk: false,
 			description: ": 输入订单, :差异订单",
@@ -13,7 +13,7 @@ exports.tempOrder = {
 				length: ""
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: true,
 			isPk: false,
 			description: "",

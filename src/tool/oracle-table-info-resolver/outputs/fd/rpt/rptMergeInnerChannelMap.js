@@ -2,8 +2,8 @@ exports.rptMergeInnerChannelMap = {
 	name: "rptMergeInnerChannelMap",
 	rawName: "RPT_MERGE_INNER_CHANNEL_MAP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.rptMergeInnerChannelMap = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.rptMergeInnerChannelMap = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -35,8 +35,8 @@ exports.rptMergeInnerChannelMap = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型",
 			name: "channelType",
@@ -46,8 +46,8 @@ exports.rptMergeInnerChannelMap = {
 				length: "1"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -57,8 +57,8 @@ exports.rptMergeInnerChannelMap = {
 				length: "20"
 			}
 		},
-		ADD_USER: {
-			nullable: "N",
+		addUser: {
+			nullable: false,
 			isPk: false,
 			description: "添加人",
 			name: "addUser",
@@ -68,8 +68,8 @@ exports.rptMergeInnerChannelMap = {
 				length: ""
 			}
 		},
-		ADD_TIME: {
-			nullable: "N",
+		addTime: {
+			nullable: false,
 			isPk: false,
 			description: "添加时间",
 			name: "addTime",

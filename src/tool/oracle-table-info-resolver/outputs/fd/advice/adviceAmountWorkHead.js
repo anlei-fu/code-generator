@@ -2,8 +2,8 @@ exports.adviceAmountWorkHead = {
 	name: "adviceAmountWorkHead",
 	rawName: "ADVICE_AMOUNT_WORK_HEAD",
 	columns: {
-		TWELVE_DIFF: {
-			nullable: "Y",
+		twelveDiff: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twelveDiff",
@@ -13,8 +13,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		HALF_AMOUNT: {
-			nullable: "Y",
+		halfAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "halfAmount",
@@ -24,8 +24,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -35,8 +35,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		ADVICE_TWO: {
-			nullable: "Y",
+		adviceTwo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "adviceTwo",
@@ -46,8 +46,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		TWO_DIFF: {
-			nullable: "Y",
+		twoDiff: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twoDiff",
@@ -57,8 +57,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelName",
@@ -68,8 +68,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		TWO_AMOUNT: {
-			nullable: "Y",
+		twoAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twoAmount",
@@ -79,8 +79,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		INNER_BALANCE: {
-			nullable: "N",
+		innerBalance: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "innerBalance",
@@ -90,8 +90,8 @@ exports.adviceAmountWorkHead = {
 				length: "20"
 			}
 		},
-		TWELVE_AMOUNT: {
-			nullable: "Y",
+		twelveAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "twelveAmount",
@@ -101,8 +101,8 @@ exports.adviceAmountWorkHead = {
 				length: ""
 			}
 		},
-		ADVICE_TWELVE: {
-			nullable: "Y",
+		adviceTwelve: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "adviceTwelve",

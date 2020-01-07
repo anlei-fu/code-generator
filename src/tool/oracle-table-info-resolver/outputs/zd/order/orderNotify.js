@@ -2,7 +2,7 @@ exports.orderNotify = {
 	name: "orderNotify",
 	rawName: "ORDER_NOTIFY",
 	columns: {
-		NOTIFY_ID: {
+		notifyId: {
 			nullable: false,
 			isPk: false,
 			description: "通知编号",
@@ -13,7 +13,7 @@ exports.orderNotify = {
 				length: "20"
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: false,
 			isPk: false,
 			description: "订单号",
@@ -24,7 +24,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "回调状态1:无需处理2:等待处理3:正在处理:处理成功9:处理失败",
@@ -35,7 +35,7 @@ exports.orderNotify = {
 				length: "2"
 			}
 		},
-		NOTIFY_URL: {
+		notifyUrl: {
 			nullable: true,
 			isPk: false,
 			description: "通知地址",
@@ -46,7 +46,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		LIMIT_NOTIFY: {
+		limitNotify: {
 			nullable: false,
 			isPk: false,
 			description: "限制回调次数",
@@ -57,7 +57,7 @@ exports.orderNotify = {
 				length: "1"
 			}
 		},
-		ROBOT_IP: {
+		robotIp: {
 			nullable: true,
 			isPk: false,
 			description: "机器IP",
@@ -68,7 +68,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		NOTIFY_CNTR: {
+		notifyCntr: {
 			nullable: false,
 			isPk: false,
 			description: "回调次数",
@@ -79,7 +79,7 @@ exports.orderNotify = {
 				length: "1"
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -90,7 +90,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		NEXT_TIME: {
+		nextTime: {
 			nullable: true,
 			isPk: false,
 			description: "下次通知时间",
@@ -101,7 +101,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		FINISH_TIME: {
+		finishTime: {
 			nullable: true,
 			isPk: false,
 			description: "完成时间",
@@ -112,7 +112,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		NOTIFY_TYPE: {
+		notifyType: {
 			nullable: true,
 			isPk: false,
 			description: "通知类:1.支付,2.退款,3.充值",
@@ -123,7 +123,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		RESULT_MSG: {
+		resultMsg: {
 			nullable: true,
 			isPk: false,
 			description: "结果消息",
@@ -134,7 +134,7 @@ exports.orderNotify = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",

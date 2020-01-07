@@ -2,7 +2,7 @@ exports.tempOrder2 = {
 	name: "tempOrder2",
 	rawName: "TEMP_ORDER2",
 	columns: {
-		ORDER_NO: {
+		orderNo: {
 			nullable: true,
 			isPk: false,
 			description: "",

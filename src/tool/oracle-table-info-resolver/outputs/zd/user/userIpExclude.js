@@ -2,7 +2,7 @@ exports.userIpExclude = {
 	name: "userIpExclude",
 	rawName: "USER_IP_EXCLUDE",
 	columns: {
-		TYPE: {
+		type: {
 			nullable: true,
 			isPk: false,
 			description: ":黑名单 :白名单",
@@ -13,7 +13,7 @@ exports.userIpExclude = {
 				length: ""
 			}
 		},
-		IP_ADDRESS: {
+		ipAddress: {
 			nullable: true,
 			isPk: false,
 			description: "",

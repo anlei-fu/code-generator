@@ -2,8 +2,8 @@ exports.dkVReportChannelDaily = {
 	name: "dkVReportChannelDaily",
 	rawName: "DK_V_REPORT_CHANNEL_DAILY",
 	columns: {
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountType",
@@ -13,8 +13,8 @@ exports.dkVReportChannelDaily = {
 				length: "3"
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "Y",
+		queryBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "queryBalance",
@@ -24,8 +24,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		END_BALANCE: {
-			nullable: "Y",
+		endBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endBalance",
@@ -35,8 +35,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -57,8 +57,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "Y",
+		accountName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountName",
@@ -68,8 +68,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",
@@ -79,8 +79,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		BALANCE_DIFFERENCE: {
-			nullable: "Y",
+		balanceDifference: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "balanceDifference",
@@ -90,8 +90,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "Y",
+		channelStatus: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelStatus",
@@ -101,8 +101,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelSourceSystem",
@@ -112,8 +112,8 @@ exports.dkVReportChannelDaily = {
 				length: "20"
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "Y",
+		channelName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelName",
@@ -123,8 +123,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		BEGIN_BALANCE: {
-			nullable: "Y",
+		beginBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "beginBalance",
@@ -134,8 +134,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "Y",
+		drawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawAmount",
@@ -145,8 +145,8 @@ exports.dkVReportChannelDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",

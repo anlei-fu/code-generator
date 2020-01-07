@@ -2,8 +2,8 @@ exports.dkVReportBankDaily = {
 	name: "dkVReportBankDaily",
 	rawName: "DK_V_REPORT_BANK_DAILY",
 	columns: {
-		MINUS_AMOUNT: {
-			nullable: "Y",
+		minusAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "minusAmount",
@@ -13,8 +13,8 @@ exports.dkVReportBankDaily = {
 				length: ""
 			}
 		},
-		START_BALANCE: {
-			nullable: "Y",
+		startBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "startBalance",
@@ -24,8 +24,8 @@ exports.dkVReportBankDaily = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountName",
@@ -35,8 +35,8 @@ exports.dkVReportBankDaily = {
 				length: ""
 			}
 		},
-		END_BALANCE: {
-			nullable: "Y",
+		endBalance: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endBalance",
@@ -46,8 +46,8 @@ exports.dkVReportBankDaily = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -57,8 +57,8 @@ exports.dkVReportBankDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -68,8 +68,8 @@ exports.dkVReportBankDaily = {
 				length: "20"
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",

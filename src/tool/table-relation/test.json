@@ -1,50 +1,4346 @@
 {
-	"QY_TRADE_UP_MANUAL": [
+	"FD_TRADE_ORDER_MAIN_DIFFER": [
 		{
-			"otherTable": "qyBaseUpChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_BANK_RECEIVE_RECORD": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "bankAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2eBankTask",
+			"otherTableColumn": "taskId",
+			"selfColumn": "taskId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankReceiveAccount",
+			"otherTableColumn": "cardNo",
+			"selfColumn": "receiveNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "channelAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankCashFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "sysFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeRvApply",
+			"otherTableColumn": "applyId",
+			"selfColumn": "applyId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_B2E_PAYMENT_RECORD_MAIN": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "bankId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "channelAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2eDownWhiteList",
+			"otherTableColumn": "id",
+			"selfColumn": "whiteListId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_B2E_BANK_PAYMENT_ACCOUNT": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "bankAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_CHANNEL_HALFHOUR": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_UP_FORECAST": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_DOWN_WHITE_LIST": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "channelAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_CAPITAL_USE_RATE": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "channelNo",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeDownManual",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_BANK_WORK_DATE": [
+		{
+			"otherTable": "fdB2eBankAccountApiConfig",
+			"otherTableColumn": "configId",
+			"selfColumn": "configId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_BANK_ACCOUNT_API_CONFIG": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "bankAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_BANK_QUERY_RECORD": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "bankAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_ORDER_MAIN_UN": [
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeDownRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "downOrderRefund",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_DOWN_FUND_HS": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_ORDER_MAIN_HS": [
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "rechargeAccountNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_UP_FUND_HS": [
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_COMPANY_ACCOUNT_IMP": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_DOWN_IMP_MAP": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_CO_IMP_FUND": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_SERVICE_FEE": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_UP_ACCOUNT_SYNC": [
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_COMPANY_SETTLE_NEW": [
+		{
+			"otherTable": "fdBaseCompanySettleConfig",
+			"otherTableColumn": "configId",
+			"selfColumn": "configId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "profitCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "relatedCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BANK_ACCOUNT_INFO": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BANK_CASH_FUND": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2eBankPaymentService",
+			"otherTableColumn": "id",
+			"selfColumn": "serviceId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankQueryRecord",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_BANK_REPORT_SNAP": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BANK_ZERO_BALANCE": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_CHANNEL_BUSINESS_MAP": [
+		{
+			"otherTable": "fdSystemBusinessInfo",
+			"otherTableColumn": "businessType",
+			"selfColumn": "businessId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_DOWN_ACCOUNT_MAP": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_DOWN_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_DOWN_SYSTEM_MAP": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_UP_ACCOUNT_MAP": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_UP_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_UP_SYSTEM_MAP": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_DOWN_DAILY": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_UP_DAILY": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPROT_CHANNEL_SNAP": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_CO_RECV_FUND": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_DOWN_FUND": [
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_DOWN_REFUND": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeDownRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_ORDER_MAIN": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "rechargeAccountNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_UP_REFUND": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeUpRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_UP_MANUAL": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankCashFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankPaymentService",
+			"otherTableColumn": "id",
+			"selfColumn": "serviceId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_SYSTEM_DICTIONARY": [
+		{
+			"otherTable": "incomeDownGroupMap",
+			"otherTableColumn": "id",
+			"selfColumn": "groupId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_BASE_COMPANY_SETTLE_CONFIG": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_UP_FUND": [
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_DOWN_MANUAL": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankCashFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankPaymentService",
+			"otherTableColumn": "id",
+			"selfColumn": "serviceId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_BASE_UP_ACCOUNT_BANK": [
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_COMPANY_ACCOUNT_SELF": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_CO_SELF_FUND": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_COMPANY_ACCOUNT_CAP": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_CO_CAP_FUND": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeDownRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "transferRefundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeProfitDraw",
+			"otherTableColumn": "reportId",
+			"selfColumn": "transferDrawId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_REPORT_COMMISSION_DAILY": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_COMMISSION_MONTHLY": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_PROFIT_DAILY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_PROFIT_MONTHLY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_PROFIT_DRAW": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankCashFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_COMMISSION_SETTLE": [
+		{
+			"otherTable": "fdBankReportSnap",
+			"otherTableColumn": "snapId",
+			"selfColumn": "reportId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_PROFIT_FUND": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_BANK_DAILY": [
+		{
+			"otherTable": "fdB2eBankReceiveRecord",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_BASE_JOIN": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_REPORT_COMMI_PROFIT_DAILY": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_DIFFER_SUMMARY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_UP_FUND_DIFFER": [
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_SYSTEM_DOWN_PROFIT_MAP": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_CAP_OFFSET_CHANNEL": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "channelSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_REPORT_ADD_WARN": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_DOWN_MANUAL_YC": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankCashFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankPaymentService",
+			"otherTableColumn": "id",
+			"selfColumn": "serviceId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_SYSTEM_WARN": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "systemNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_REPORT_ZERO_BALANCE": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BASE_DOWN_UP_MAP": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_BANK_TASK": [
+		{
+			"otherTable": "fdB2eBankReceiveRecord",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_REPORT_COMMI_PROFIT_REDO": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_PAYMENT_RECORD_DETAILS": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "mainRecordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_B2E_UP_WHITE_LIST": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "channelAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_RV_APPLY": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "incomeFlowConfig",
+			"otherTableColumn": "id",
+			"selfColumn": "dealFlowId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_B2E_UP_CHANNEL_CONFIG": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "channelAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_B2E_SYSTEM_LOG": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_SYSTEM_BUSINESS_MAP": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_ACTIVITY_MAIN": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "channelAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_ACTIVITY_DETAILS": [
+		{
+			"otherTable": "fdTradeActivityMain",
+			"otherTableColumn": "id",
+			"selfColumn": "activityId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_REPORT_BALANCE_DIFFER": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeTimeDiffer",
+			"otherTableColumn": "downFirstFace",
+			"selfColumn": "noteTime",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_TRADE_CO_CAP_FUND_JFB": [
+		{
+			"otherTable": "fdVBaseBankChange",
+			"otherTableColumn": "addAmount",
+			"selfColumn": "changeId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_OUTSYS_PROFIT": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_BASE_CO_ACCOUNT_NAME": [
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_BANK_STREAM_FULL": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "bankAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "oppAccountNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_DOWN_ADD_APPLY": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "applyAccountNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "bankAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_SUMMARY_MONTH": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_DOWNCHANNEL_DAILY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_UPCHANNEL_DAILY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_PROFIT_DAILY2": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_PROFIT_DAILY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_SETTLE_SUMMARY": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_BASE_BANK_CHANGE": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_PROFIT_MONTH": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_TRADE_SUMMARY": [
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_OPERATING_RATE": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyid",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_BANK_DAILY1": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_CHANNEL_DAILY1": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_TRADE_TIME_DIFFER": [
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_BANK_DAILY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_PROFIT_COMPARE": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_V_REPORT_CHANNEL_DAILY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_V_REPORT_SYSTEM_CAP": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"FD_REPORT_ZERO_BALANCE_CS": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"FD_V_BASE_CHANNEL_ADD": [
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_REPORT_COMMI_PROFIT_DAILY": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_ORDER_MAIN_HS": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "rechargeAccountNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_DOWN_FUND_HS": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"DK_TRADE_UP_FUND_HS": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_BASE_DOWN_SYSTEM_MAP": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_BASE_UP_SYSTEM_MAP": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_ORDER_MAIN_DIFFER": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_UP_FUND_DIFFER": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_REFUND_SYS_COST": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeDownRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"DK_BASE_DOWN_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_BASE_UP_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_DOWN_FUND": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeUpFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeFundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"DK_TRADE_UP_FUND": [
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_BASE_DOWN_ACCOUNT_MAP": [
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_BASE_UP_ACCOUNT_MAP": [
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_DOWN_REFUND": [
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeUpRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"DK_TRADE_UP_REFUND": [
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "dkOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeDownRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"DK_TRADE_DOWN_SETTLE": [
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeDownFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"DK_TRADE_UP_SETTLE": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeUpFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"DK_TRADE_ORDER_MAIN": [
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeOrderMain",
+			"otherTableColumn": "dkOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "rechargeAccountNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_REPORT_ZERO_BALANCE": [
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_REPROT_CHANNEL_SETTLE": [
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_TRADE_COMMISSION_SETTLE": [
+		{
+			"otherTable": "dkReportZeroBalance",
+			"otherTableColumn": "recordId",
+			"selfColumn": "reportId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_V_REPORT_CHANNEL_DAILY": [
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_V_REPORT_PROFIT_DAILY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_V_REPORT_SETTLE_SUMMARY": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_V_REPORT_SUMMARY_MONTH": [
+		{
+			"otherTable": "dkBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_V_REPORT_BANK_DAILY": [
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_V_REPORT_PROFIT_MONTH": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"DK_V_BASE_CHANNEL_ADD": [
+		{
+			"otherTable": "dkBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"CZTH_TRADE_ORDER": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "qyBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"CZTH_TRADE_ORDER_HS": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "czthTradeOrder",
+			"otherTableColumn": "recordId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "czthTradeOrder",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "qyBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"CZTH_TRADE_REPORT": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "upCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "qyBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"SUP_BASE_DOWN_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"SUP_TRADE_ORDER_MAIN": [
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "supOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_TRADE_DOWN_FUND": [
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "supOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeDownRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_BASE_RELATE_ADD_MAP": [
+		{
+			"otherTable": "supBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "supUpChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "supDownChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "proUpChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"SUP_TRADE_DOWN_FUND_HS": [
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "supOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeDownRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_TRADE_UP_MANUAL": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "adjustRecordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankQueryRecord",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankRecordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankPaymentService",
+			"otherTableColumn": "id",
+			"selfColumn": "bankServiceId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseRelateAddMap",
+			"otherTableColumn": "mapId",
+			"selfColumn": "bankRelateId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_TRADE_DOWN_MANUAL": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "adjustRecordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankQueryRecord",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankRecordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2eBankPaymentService",
+			"otherTableColumn": "id",
+			"selfColumn": "bankServiceId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseRelateAddMap",
+			"otherTableColumn": "mapId",
+			"selfColumn": "bankRelateId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_REPORT_DAILY_MANUAL": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "systemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_REPORT_DAILY_TRADE": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "systemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_REPORT_ZERO_BALANCE": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "systemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_TRADE_ORDER_MAIN_HS": [
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "supOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"SUP_BASE_UP_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"SUP_TRADE_UP_FUND_HS": [
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "supOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeUpRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"SUP_TRADE_UP_FUND": [
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "supOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supTradeOrderMain",
+			"otherTableColumn": "supOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdTradeUpRefund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "tradeRefundNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "supBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"SUP_BASE_PRO_UP_SCOPE": [
+		{
+			"otherTable": "supBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "proUpChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"SUP_ZORE_BALANCE_DIFFER": [
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"RPT_MERGE_INNER_CHANNEL_MAP": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"RPT_MERGE_REPORT_TRADE_ADD": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"RPT_MERGE_REPORT_TRADE_ADD_CS": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"RPT_UNIT_CHANNEL_MAP": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "dkTradeRefundSysCost",
+			"otherTableColumn": "id",
+			"selfColumn": "sysNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"RPT_UNIT_REPORT_TRADE": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "dkTradeRefundSysCost",
+			"otherTableColumn": "id",
+			"selfColumn": "sysNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"RPT_UNIT_REPORT_TRADE_SPLIT": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"RPT_TEST": [
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"INCOME_CHANNEL_MONTH_TRADE": [
+		{
+			"otherTable": "incomeChannelMonthSum",
+			"otherTableColumn": "id",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "incomeDownGroupMap",
+			"otherTableColumn": "id",
+			"selfColumn": "groupId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"INCOME_CHANNEL_MONTH_SUM": [
+		{
+			"otherTable": "incomeChannelMonthTrade",
+			"otherTableColumn": "id",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "incomeDownGroupMap",
+			"otherTableColumn": "id",
+			"selfColumn": "groupId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"INCOME_DOWN_UP_CONFIG": [
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"INCOME_DOWN_UP_MONTH": [
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "incomeDownGroupMap",
+			"otherTableColumn": "id",
+			"selfColumn": "downGroupId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"INCOME_DOWN_UP_TRADE": [
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"INCOME_DOWN_TRADE": [
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"INCOME_UP_TRADE": [
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"INCOME_EXCLUDE_UP": [
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"INCOME_DOWN_GROUP_MAP": [
+		{
+			"otherTable": "supBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_BASE_BUSINESS_MAP": [
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "outerSystemNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_BASE_AGENT": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxTradeAgentFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "outAgentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_EXPENSE": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_TRADE_AGENT_FUND": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeUpFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "upFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxTradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_UP_MANUAL": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxTradeUpFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdReportServiceFee",
+			"otherTableColumn": "recordId",
+			"selfColumn": "handlingFeeId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_UP_FUND": [
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "refundOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_ORDER_MAIN": [
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "downCompanyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_DOWN_MANUAL": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxTradeDownFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "czthTradeServiceFee",
+			"otherTableColumn": "id",
+			"selfColumn": "handlingFeeId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_DOWN_FUND": [
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "tradeOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "extOrderNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "refundOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_AGENT_MANUAL": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxTradeUpFund",
+			"otherTableColumn": "recordId",
+			"selfColumn": "bankFundId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "extRecordNo",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "czthTradeServiceFee",
+			"otherTableColumn": "id",
+			"selfColumn": "handlingFeeId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_REPORT_ZERO_BALANCE": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_REPORT_DAILY": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_BASE_UP_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_BASE_DOWN_CHANNEL": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_REPORT_FUND_DAILY": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_TRADE_UP_FUND_DIFFER": [
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_TRADE_ORDER_MAIN_DIFFER": [
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"YX_THREE_PARTY_ACCOUNT": [
+		{
+			"otherTable": "yxBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "systemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"YX_TRADE_AGENCY_ASSIGNED": [
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
+			"selfColumn": "recordId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxTradeOrderMain",
+			"otherTableColumn": "yxOrderId",
+			"selfColumn": "yxOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "yxBaseAgent",
+			"otherTableColumn": "agentId",
+			"selfColumn": "agentId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		}
+	],
+	"QY_TRADE_UP_MANUAL": [
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
 			"selfColumn": "recordId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
 			"otherTable": "qyBaseUpAccount",
-			"otherTableColumn": "ACCOUNT_ID",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeDownManual",
-			"otherTableColumn": "RECORD_ID",
-			"selfColumn": "adjustId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
 			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTableColumn": "recordId",
 			"selfColumn": "bankFundId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeDownManual",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
 			"selfColumn": "extRecordNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeDownManual",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "fdReportServiceFee",
+			"otherTableColumn": "recordId",
 			"selfColumn": "handlingFeeId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
@@ -52,261 +4348,184 @@
 	],
 	"QY_TRADE_UP_FUND_DIFFER": [
 		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
-			"selfColumn": "differId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyTradeOrderMain",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "qyOrderId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "channelNo",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "qyBaseUpAccount",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		}
 	],
 	"QY_TRADE_UP_FUND": [
 		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
-			"selfColumn": "recordId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyTradeOrderMain",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "qyOrderId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyTradeOrderMain",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "tradeOrderNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
-			"selfColumn": "tradeDeliveryNo",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
-			"selfColumn": "extDeliveryNo",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyTradeOrderMain",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "extOrderNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
-			"selfColumn": "extContractNo",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
-			"selfColumn": "extUseNo",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "qyBaseDownChannel",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "downChannelNo",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "qyBaseDownAccount",
+			"otherTableColumn": "accountId",
 			"selfColumn": "downAccountId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
-			"selfColumn": "downCompanyId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "upChannelNo",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyBaseUpAccount",
+			"otherTableColumn": "accountId",
 			"selfColumn": "upAccountId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeUpFundDiffer",
-			"otherTableColumn": "DIFFER_ID",
-			"selfColumn": "upCompanyId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		}
 	],
 	"QY_TRADE_ORDER_MAIN_DIFFER": [
 		{
 			"otherTable": "qyTradeOrderMain",
-			"otherTableColumn": "QY_ORDER_ID",
-			"selfColumn": "differId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeDownFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "qyOrderId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeOrderMain",
-			"otherTableColumn": "QY_ORDER_ID",
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "channelNo",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeOrderMain",
-			"otherTableColumn": "QY_ORDER_ID",
+			"otherTable": "qyBaseUpAccount",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		}
 	],
 	"QY_TRADE_ORDER_MAIN": [
 		{
-			"otherTable": "qyTradeDownFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "qyTradeOrderMain",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "qyOrderId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeOrderMainDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyBaseDownChannel",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "downChannelNo",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeOrderMainDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyBaseDownAccount",
+			"otherTableColumn": "accountId",
 			"selfColumn": "downAccountId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeOrderMainDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
 			"selfColumn": "downCompanyId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeUpManual",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "qyTradeOrderMain",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "tradeOrderNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeOrderMainDiffer",
-			"otherTableColumn": "DIFFER_ID",
+			"otherTable": "qyTradeOrderMain",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "extOrderNo",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
-			"otherTable": "qyTradeOrderMainDiffer",
-			"otherTableColumn": "DIFFER_ID",
-			"selfColumn": "extContractNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		}
 	],
 	"QY_TRADE_DOWN_MANUAL": [
 		{
-			"otherTable": "qyTradeUpManual",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
 			"selfColumn": "recordId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
 			"otherTable": "qyBaseDownChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "channelNo",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
 			"otherTable": "qyBaseDownAccount",
-			"otherTableColumn": "ACCOUNT_ID",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyTradeUpManual",
-			"otherTableColumn": "CHANNEL_NO",
-			"selfColumn": "adjustId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
 			"otherTable": "qyTradeDownFund",
-			"otherTableColumn": "RECORD_ID",
+			"otherTableColumn": "recordId",
 			"selfColumn": "bankFundId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeUpManual",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
 			"selfColumn": "extRecordNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeUpManual",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdReportServiceFee",
+			"otherTableColumn": "recordId",
 			"selfColumn": "handlingFeeId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
@@ -314,50 +4533,36 @@
 	],
 	"QY_TRADE_DOWN_FUND": [
 		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
-			"selfColumn": "recordId",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
 			"otherTable": "qyTradeOrderMain",
-			"otherTableColumn": "QY_ORDER_ID",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "qyOrderId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
 			"otherTable": "qyTradeOrderMain",
-			"otherTableColumn": "QY_ORDER_ID",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "tradeOrderNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
 			"otherTable": "qyTradeOrderMain",
-			"otherTableColumn": "QY_ORDER_ID",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "extOrderNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyTradeUpFund",
-			"otherTableColumn": "RECORD_ID",
-			"selfColumn": "extContractNo",
-			"additionalCondition": "",
-			"relationType": "oneToMany"
-		},
-		{
 			"otherTable": "qyBaseDownChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "downChannelNo",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
 			"otherTable": "qyBaseDownAccount",
-			"otherTableColumn": "ACCOUNT_ID",
+			"otherTableColumn": "accountId",
 			"selfColumn": "downAccountId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
@@ -365,59 +4570,59 @@
 	],
 	"QY_REPORT_ZERO_BALANCE": [
 		{
-			"otherTable": "qyReportDaily",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
 			"selfColumn": "recordId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyReportDaily",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "qyBaseUpAccount",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyReportDaily",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "channelNo",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyReportDaily",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
 			"selfColumn": "companyId",
 			"additionalCondition": "",
-			"relationType": "oneToMany"
+			"relationType": "manyToOne"
 		}
 	],
 	"QY_REPORT_DAILY": [
 		{
-			"otherTable": "qyReportZeroBalance",
-			"otherTableColumn": "RECORD_ID",
+			"otherTable": "fdB2ePaymentRecordMain",
+			"otherTableColumn": "recordId",
 			"selfColumn": "recordId",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
 		},
 		{
 			"otherTable": "qyBaseUpChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "upChannelNo",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
 			"otherTable": "qyBaseDownChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTableColumn": "channelNo",
 			"selfColumn": "downChannelNo",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
 			"otherTable": "qyTradeOrderMain",
-			"otherTableColumn": "QY_ORDER_ID",
+			"otherTableColumn": "qyOrderId",
 			"selfColumn": "extOrderNo",
 			"additionalCondition": "",
 			"relationType": "oneToMany"
@@ -425,38 +4630,22 @@
 	],
 	"QY_BASE_UP_CHANNEL": [
 		{
-			"otherTable": "qyBaseDownChannel",
-			"otherTableColumn": "CHANNEL_NO",
-			"selfColumn": "channelNo",
-			"additionalCondition": "",
-			"relationType": "manyToOne"
-		},
-		{
-			"otherTable": "qyBaseDownChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
 			"selfColumn": "companyId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyBaseDownChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
 			"selfColumn": "sourceSystemId",
 			"additionalCondition": "",
-			"relationType": "manyToOne"
+			"relationType": "oneToMany"
 		},
 		{
-			"otherTable": "qyBaseUpChannel",
-			"otherTableColumn": "CHANNEL_NO",
-			"selfColumn": "accountId",
-			"additionalCondition": "",
-			"relationType": "manyToOne"
-		}
-	],
-	"QY_BASE_UP_ACCOUNT": [
-		{
-			"otherTable": "qyBaseDownAccount",
-			"otherTableColumn": "ACCOUNT_ID",
+			"otherTable": "qyBaseUpAccount",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
@@ -464,39 +4653,172 @@
 	],
 	"QY_BASE_DOWN_CHANNEL": [
 		{
-			"otherTable": "qyBaseUpChannel",
-			"otherTableColumn": "CHANNEL_NO",
-			"selfColumn": "channelNo",
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyBaseUpChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdBaseSourceSystem",
+			"otherTableColumn": "sourceSystemId",
+			"selfColumn": "sourceSystemId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "qyBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"NEW_V_MONTH_START_ZBALANCE": [
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
 			"selfColumn": "companyId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
 			"otherTable": "qyBaseUpChannel",
-			"otherTableColumn": "CHANNEL_NO",
-			"selfColumn": "sourceSystemId",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		},
 		{
-			"otherTable": "qyBaseDownChannel",
-			"otherTableColumn": "CHANNEL_NO",
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		}
 	],
-	"QY_BASE_DOWN_ACCOUNT": [
+	"NEW_V_MONTH_ADD": [
 		{
-			"otherTable": "qyBaseUpAccount",
-			"otherTableColumn": "ACCOUNT_ID",
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
 			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"NEW_V_MONTH_DRAW": [
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"NEW_V_CHANNEL_RUN_DATE": [
+		{
+			"otherTable": "qyBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseCompanyInfo",
+			"otherTableColumn": "companyId",
+			"selfColumn": "companyId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBankAccountInfo",
+			"otherTableColumn": "accountId",
+			"selfColumn": "accountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"ZREPORT_UP_FUND_JOIN_HS": [
+		{
+			"otherTable": "supBaseDownAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "downAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdTradeOrderMain",
+			"otherTableColumn": "fdOrderId",
+			"selfColumn": "fdOrderId",
+			"additionalCondition": "",
+			"relationType": "oneToMany"
+		},
+		{
+			"otherTable": "fdBaseUpChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "upChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "fdBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "downChannelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		},
+		{
+			"otherTable": "yxBaseUpAccount",
+			"otherTableColumn": "accountId",
+			"selfColumn": "upAccountId",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"ADVICE_AMOUNT_WORK_END": [
+		{
+			"otherTable": "qyBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"ADVICE_AMOUNT_WORK_MIDDLE": [
+		{
+			"otherTable": "qyBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
+			"additionalCondition": "",
+			"relationType": "manyToOne"
+		}
+	],
+	"ADVICE_AMOUNT_WORK_HEAD": [
+		{
+			"otherTable": "qyBaseDownChannel",
+			"otherTableColumn": "channelNo",
+			"selfColumn": "channelNo",
 			"additionalCondition": "",
 			"relationType": "manyToOne"
 		}

@@ -2,8 +2,8 @@ exports.dkVReportSummaryMonth = {
 	name: "dkVReportSummaryMonth",
 	rawName: "DK_V_REPORT_SUMMARY_MONTH",
 	columns: {
-		SNAP_TIME: {
-			nullable: "Y",
+		snapTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -13,8 +13,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REAL_DRAW_AMOUNT: {
-			nullable: "Y",
+		realDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realDrawAmount",
@@ -24,8 +24,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REAL_RECHARGE_FACE: {
-			nullable: "Y",
+		realRechargeFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realRechargeFace",
@@ -35,8 +35,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -46,8 +46,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "Y",
+		totalFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalFace",
@@ -57,8 +57,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelType",
@@ -68,8 +68,8 @@ exports.dkVReportSummaryMonth = {
 				length: "1"
 			}
 		},
-		END_COMMISSION: {
-			nullable: "Y",
+		endCommission: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "endCommission",
@@ -79,8 +79,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REFUND_TOTAL_FACE: {
-			nullable: "Y",
+		refundTotalFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "refundTotalFace",
@@ -90,8 +90,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "accountId",
@@ -101,8 +101,8 @@ exports.dkVReportSummaryMonth = {
 				length: "20"
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "Y",
+		statisticsType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "statisticsType",
@@ -112,8 +112,8 @@ exports.dkVReportSummaryMonth = {
 				length: "3"
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "Y",
+		drawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "drawAmount",
@@ -123,8 +123,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		ONE_WAY_PROFITS: {
-			nullable: "Y",
+		oneWayProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "oneWayProfits",
@@ -134,8 +134,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REAL_FACE: {
-			nullable: "Y",
+		realFace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "realFace",
@@ -145,8 +145,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		REFUND_DRAW_AMOUNT: {
-			nullable: "Y",
+		refundDrawAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "refundDrawAmount",
@@ -156,8 +156,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelSourceSystem",
@@ -167,8 +167,8 @@ exports.dkVReportSummaryMonth = {
 				length: "20"
 			}
 		},
-		ONE_WAY_SEAT_PROFITS: {
-			nullable: "Y",
+		oneWaySeatProfits: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "oneWaySeatProfits",
@@ -178,8 +178,8 @@ exports.dkVReportSummaryMonth = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -189,8 +189,8 @@ exports.dkVReportSummaryMonth = {
 				length: "20"
 			}
 		},
-		TOTAL_UNIT: {
-			nullable: "Y",
+		totalUnit: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "totalUnit",

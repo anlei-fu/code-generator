@@ -2,8 +2,8 @@ exports.fdVReportUpchannelDaily = {
 	name: "fdVReportUpchannelDaily",
 	rawName: "FD_V_REPORT_UPCHANNEL_DAILY",
 	columns: {
-		CHANNEL_CLASSIF: {
-			nullable: "Y",
+		channelClassif: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelClassif",
@@ -13,8 +13,8 @@ exports.fdVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -24,8 +24,8 @@ exports.fdVReportUpchannelDaily = {
 				length: "20"
 			}
 		},
-		ALL_UP: {
-			nullable: "Y",
+		allUp: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "allUp",
@@ -35,8 +35,8 @@ exports.fdVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		UP_INCOME_AMOUNT: {
-			nullable: "Y",
+		upIncomeAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upIncomeAmount",
@@ -46,8 +46,8 @@ exports.fdVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		UP_PAY: {
-			nullable: "Y",
+		upPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upPay",
@@ -57,8 +57,8 @@ exports.fdVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		ALL_AMOUNT: {
-			nullable: "Y",
+		allAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "allAmount",
@@ -68,8 +68,8 @@ exports.fdVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		UP_PAY_AMOUNT: {
-			nullable: "Y",
+		upPayAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upPayAmount",
@@ -79,8 +79,8 @@ exports.fdVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "N",
+		channelStatus: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelStatus",
@@ -90,8 +90,8 @@ exports.fdVReportUpchannelDaily = {
 				length: "1"
 			}
 		},
-		UP_INCOME: {
-			nullable: "Y",
+		upIncome: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "upIncome",
@@ -101,8 +101,8 @@ exports.fdVReportUpchannelDaily = {
 				length: ""
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",

@@ -2,8 +2,8 @@ exports.fdReportBankDaily = {
 	name: "fdReportBankDaily",
 	rawName: "FD_REPORT_BANK_DAILY",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdReportBankDaily = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "实体卡账号编号",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdReportBankDaily = {
 				length: "20"
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "N",
+		addAmount: {
+			nullable: false,
 			isPk: false,
 			description: "加款金额",
 			name: "addAmount",
@@ -35,8 +35,8 @@ exports.fdReportBankDaily = {
 				length: "20"
 			}
 		},
-		MINUS_AMOUNT: {
-			nullable: "N",
+		minusAmount: {
+			nullable: false,
 			isPk: false,
 			description: "减款金额",
 			name: "minusAmount",
@@ -46,8 +46,8 @@ exports.fdReportBankDaily = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -57,8 +57,8 @@ exports.fdReportBankDaily = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "日期",
 			name: "snapTime",

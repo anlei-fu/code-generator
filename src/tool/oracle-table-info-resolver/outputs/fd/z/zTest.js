@@ -2,8 +2,8 @@ exports.zTest = {
 	name: "zTest",
 	rawName: "Z_TEST",
 	columns: {
-		A10: {
-			nullable: "Y",
+		a10: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a10",
@@ -13,8 +13,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A7: {
-			nullable: "Y",
+		a7: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a7",
@@ -24,8 +24,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A8: {
-			nullable: "Y",
+		a8: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a8",
@@ -35,8 +35,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A2: {
-			nullable: "Y",
+		a2: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a2",
@@ -46,8 +46,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A11: {
-			nullable: "Y",
+		a11: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a11",
@@ -57,8 +57,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A14: {
-			nullable: "Y",
+		a14: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a14",
@@ -68,8 +68,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A5: {
-			nullable: "Y",
+		a5: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a5",
@@ -79,8 +79,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A15: {
-			nullable: "Y",
+		a15: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a15",
@@ -90,8 +90,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A4: {
-			nullable: "Y",
+		a4: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a4",
@@ -101,8 +101,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A6: {
-			nullable: "Y",
+		a6: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a6",
@@ -112,8 +112,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A1: {
-			nullable: "Y",
+		a1: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a1",
@@ -123,8 +123,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A12: {
-			nullable: "Y",
+		a12: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a12",
@@ -134,8 +134,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A9: {
-			nullable: "Y",
+		a9: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a9",
@@ -145,8 +145,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A3: {
-			nullable: "Y",
+		a3: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a3",
@@ -156,8 +156,8 @@ exports.zTest = {
 				length: ""
 			}
 		},
-		A13: {
-			nullable: "Y",
+		a13: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "a13",

@@ -2,8 +2,8 @@ exports.fdB2eBankWorkDate = {
 	name: "fdB2eBankWorkDate",
 	rawName: "FD_B2E_BANK_WORK_DATE",
 	columns: {
-		CONFIG_ID: {
-			nullable: "N",
+		configId: {
+			nullable: false,
 			isPk: false,
 			description: "配置编号",
 			name: "configId",
@@ -13,8 +13,8 @@ exports.fdB2eBankWorkDate = {
 				length: "20"
 			}
 		},
-		WORK_DAY_TYPE: {
-			nullable: "N",
+		workDayType: {
+			nullable: false,
 			isPk: false,
 			description: "时间类型",
 			name: "workDayType",
@@ -24,8 +24,8 @@ exports.fdB2eBankWorkDate = {
 				length: "3"
 			}
 		},
-		CONFIG_DATE: {
-			nullable: "N",
+		configDate: {
+			nullable: false,
 			isPk: false,
 			description: "配置日期",
 			name: "configDate",

@@ -2,8 +2,8 @@ exports.dkBaseUpAccount = {
 	name: "dkBaseUpAccount",
 	rawName: "DK_BASE_UP_ACCOUNT",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.dkBaseUpAccount = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账号名称",
 			name: "accountName",
@@ -24,8 +24,8 @@ exports.dkBaseUpAccount = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类型（1.收款账户）",
 			name: "accountType",
@@ -35,8 +35,8 @@ exports.dkBaseUpAccount = {
 				length: "3"
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "N",
+		queryBalance: {
+			nullable: false,
 			isPk: false,
 			description: "查询余额",
 			name: "queryBalance",
@@ -46,8 +46,8 @@ exports.dkBaseUpAccount = {
 				length: "20"
 			}
 		},
-		INNER_BALANCE: {
-			nullable: "N",
+		innerBalance: {
+			nullable: false,
 			isPk: false,
 			description: "理论余额",
 			name: "innerBalance",
@@ -57,8 +57,8 @@ exports.dkBaseUpAccount = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -68,8 +68,8 @@ exports.dkBaseUpAccount = {
 				length: "1"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -79,8 +79,8 @@ exports.dkBaseUpAccount = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -90,8 +90,8 @@ exports.dkBaseUpAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -101,8 +101,8 @@ exports.dkBaseUpAccount = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",

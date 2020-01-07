@@ -2,7 +2,7 @@ exports.terminalInfo = {
 	name: "terminalInfo",
 	rawName: "TERMINAL_INFO",
 	columns: {
-		TERM_NAME: {
+		termName: {
 			nullable: false,
 			isPk: false,
 			description: "终端名称",
@@ -13,7 +13,7 @@ exports.terminalInfo = {
 				length: ""
 			}
 		},
-		TERM_ID: {
+		termId: {
 			nullable: false,
 			isPk: false,
 			description: "终端编号",
@@ -24,7 +24,7 @@ exports.terminalInfo = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: true,
 			isPk: false,
 			description: "状: 0-启用 1-禁用",
@@ -35,7 +35,7 @@ exports.terminalInfo = {
 				length: ""
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "终端说明",
@@ -46,7 +46,7 @@ exports.terminalInfo = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -57,7 +57,7 @@ exports.terminalInfo = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
+		createUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建人",
@@ -68,7 +68,7 @@ exports.terminalInfo = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
+		updateTime: {
 			nullable: false,
 			isPk: false,
 			description: "更新时间",
@@ -79,7 +79,7 @@ exports.terminalInfo = {
 				length: ""
 			}
 		},
-		UPDATE_USER: {
+		updateUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新人",

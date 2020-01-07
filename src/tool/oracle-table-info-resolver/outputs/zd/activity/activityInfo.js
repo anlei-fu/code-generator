@@ -2,7 +2,7 @@ exports.activityInfo = {
 	name: "activityInfo",
 	rawName: "ACTIVITY_INFO",
 	columns: {
-		ACTIVITY_ID: {
+		activityId: {
 			nullable: false,
 			isPk: true,
 			description: "活动编号",
@@ -13,7 +13,7 @@ exports.activityInfo = {
 				length: "20"
 			}
 		},
-		ACTIVITY_NAME: {
+		activityName: {
 			nullable: false,
 			isPk: false,
 			description: "活动名称",
@@ -24,7 +24,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		COUPON_TYPE: {
+		couponType: {
 			nullable: false,
 			isPk: false,
 			description: "券类型:流量券:话费券",
@@ -35,7 +35,7 @@ exports.activityInfo = {
 				length: "2"
 			}
 		},
-		GET_TYPE: {
+		getType: {
 			nullable: false,
 			isPk: false,
 			description: "领取方式:领券:充送",
@@ -46,7 +46,7 @@ exports.activityInfo = {
 				length: "2"
 			}
 		},
-		VALID_PERIOD: {
+		validPeriod: {
 			nullable: false,
 			isPk: false,
 			description: "有效天数",
@@ -57,7 +57,7 @@ exports.activityInfo = {
 				length: "5"
 			}
 		},
-		MIN_FEE: {
+		minFee: {
 			nullable: false,
 			isPk: false,
 			description: "最小金额",
@@ -68,7 +68,7 @@ exports.activityInfo = {
 				length: "5"
 			}
 		},
-		MAX_FEE: {
+		maxFee: {
 			nullable: false,
 			isPk: false,
 			description: "最大金额",
@@ -79,7 +79,7 @@ exports.activityInfo = {
 				length: "5"
 			}
 		},
-		START_TIME: {
+		startTime: {
 			nullable: false,
 			isPk: false,
 			description: "开始时间",
@@ -90,7 +90,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		END_TIME: {
+		endTime: {
 			nullable: false,
 			isPk: false,
 			description: "结束时间",
@@ -101,7 +101,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		PROMOTE_TITLE: {
+		promoteTitle: {
 			nullable: false,
 			isPk: false,
 			description: "推荐标题",
@@ -112,7 +112,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		GET_REMARK: {
+		getRemark: {
 			nullable: true,
 			isPk: false,
 			description: "领取说明",
@@ -123,7 +123,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		USE_REMARK: {
+		useRemark: {
 			nullable: true,
 			isPk: false,
 			description: "使用说明",
@@ -134,7 +134,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		GETED_CNTR: {
+		getedCntr: {
 			nullable: false,
 			isPk: false,
 			description: "已领取数量",
@@ -145,7 +145,7 @@ exports.activityInfo = {
 				length: "20"
 			}
 		},
-		USED_CNTR: {
+		usedCntr: {
 			nullable: false,
 			isPk: false,
 			description: "已使用数量",
@@ -156,7 +156,7 @@ exports.activityInfo = {
 				length: "20"
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态",
@@ -167,7 +167,7 @@ exports.activityInfo = {
 				length: "1"
 			}
 		},
-		CREATED_USER: {
+		createdUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建人",
@@ -178,7 +178,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
+		createdTime: {
 			nullable: false,
 			isPk: false,
 			description: "创建时间",
@@ -189,7 +189,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		UPDATED_USER: {
+		updatedUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新人",
@@ -200,7 +200,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		UPDATED_TIME: {
+		updatedTime: {
 			nullable: false,
 			isPk: false,
 			description: "更新时间",
@@ -211,7 +211,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: true,
 			isPk: false,
 			description: "下游渠道编号",
@@ -222,7 +222,7 @@ exports.activityInfo = {
 				length: ""
 			}
 		},
-		PAY_MIN_FEE: {
+		payMinFee: {
 			nullable: false,
 			isPk: false,
 			description: "最小支付金额(基本限定)",

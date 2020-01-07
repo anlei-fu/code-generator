@@ -2,8 +2,8 @@ exports.dkBaseUpChannel = {
 	name: "dkBaseUpChannel",
 	rawName: "DK_BASE_UP_CHANNEL",
 	columns: {
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: true,
 			description: "渠道编号",
 			name: "channelNo",
@@ -13,8 +13,8 @@ exports.dkBaseUpChannel = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -24,8 +24,8 @@ exports.dkBaseUpChannel = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -35,8 +35,8 @@ exports.dkBaseUpChannel = {
 				length: "1"
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "手续费率",
 			name: "serviceFee",
@@ -46,8 +46,8 @@ exports.dkBaseUpChannel = {
 				length: "10"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -57,8 +57,8 @@ exports.dkBaseUpChannel = {
 				length: "20"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -68,8 +68,8 @@ exports.dkBaseUpChannel = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -79,8 +79,8 @@ exports.dkBaseUpChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -90,8 +90,8 @@ exports.dkBaseUpChannel = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",
@@ -101,8 +101,8 @@ exports.dkBaseUpChannel = {
 				length: ""
 			}
 		},
-		COMMI_BALANCE: {
-			nullable: "N",
+		commiBalance: {
+			nullable: false,
 			isPk: false,
 			description: "佣金余额",
 			name: "commiBalance",
@@ -112,8 +112,8 @@ exports.dkBaseUpChannel = {
 				length: "20"
 			}
 		},
-		MAX_ADD: {
-			nullable: "N",
+		maxAdd: {
+			nullable: false,
 			isPk: false,
 			description: "结算上限提示值",
 			name: "maxAdd",
@@ -123,8 +123,8 @@ exports.dkBaseUpChannel = {
 				length: "20"
 			}
 		},
-		MIN_ADD: {
-			nullable: "N",
+		minAdd: {
+			nullable: false,
 			isPk: false,
 			description: "结算下限提示值",
 			name: "minAdd",
@@ -134,8 +134,8 @@ exports.dkBaseUpChannel = {
 				length: "20"
 			}
 		},
-		COMMI_RULE: {
-			nullable: "Y",
+		commiRule: {
+			nullable: true,
 			isPk: false,
 			description: "佣金规则",
 			name: "commiRule",
@@ -145,8 +145,8 @@ exports.dkBaseUpChannel = {
 				length: ""
 			}
 		},
-		NEED_COMMI: {
-			nullable: "N",
+		needCommi: {
+			nullable: false,
 			isPk: false,
 			description: "是否需要后返佣金0需要，1不需要",
 			name: "needCommi",
@@ -156,8 +156,8 @@ exports.dkBaseUpChannel = {
 				length: "1"
 			}
 		},
-		CLASSIFICATION: {
-			nullable: "N",
+		classification: {
+			nullable: false,
 			isPk: false,
 			description: "渠道分类--对应业务类型,1.sp代扣系统，2.sup收卡系统",
 			name: "classification",
@@ -167,8 +167,8 @@ exports.dkBaseUpChannel = {
 				length: "3"
 			}
 		},
-		PAYMENT_TYPE: {
-			nullable: "N",
+		paymentType: {
+			nullable: false,
 			isPk: false,
 			description: "支付分类--1.预付，2.后付",
 			name: "paymentType",
@@ -178,8 +178,8 @@ exports.dkBaseUpChannel = {
 				length: "1"
 			}
 		},
-		WARN_BALANCE: {
-			nullable: "N",
+		warnBalance: {
+			nullable: false,
 			isPk: false,
 			description: "报警余额",
 			name: "warnBalance",
@@ -189,8 +189,8 @@ exports.dkBaseUpChannel = {
 				length: "20"
 			}
 		},
-		WARN_TYPE: {
-			nullable: "N",
+		warnType: {
+			nullable: false,
 			isPk: false,
 			description: "报警类:1.单个支付账户不足   2.合计支付账户不足",
 			name: "warnType",

@@ -2,8 +2,8 @@ exports.fdTradeUpFund = {
 	name: "fdTradeUpFund",
 	rawName: "FD_TRADE_UP_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		FD_ORDER_ID: {
-			nullable: "N",
+		fdOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "fdOrderId",
@@ -24,8 +24,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -35,8 +35,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -46,8 +46,8 @@ exports.fdTradeUpFund = {
 				length: "3"
 			}
 		},
-		TRADE_DELIVERY_NO: {
-			nullable: "N",
+		tradeDeliveryNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统发货号",
 			name: "tradeDeliveryNo",
@@ -57,8 +57,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -68,8 +68,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户",
 			name: "downAccountId",
@@ -79,8 +79,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游所属公司",
 			name: "downCompanyId",
@@ -90,8 +90,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道编号",
 			name: "upChannelNo",
@@ -101,8 +101,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		UP_ACCOUNT_ID: {
-			nullable: "N",
+		upAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "上游账户",
 			name: "upAccountId",
@@ -112,8 +112,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_COMPANY_ID: {
-			nullable: "N",
+		upCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "上游所属公司",
 			name: "upCompanyId",
@@ -123,8 +123,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_UNIT: {
-			nullable: "N",
+		downDrawUnit: {
+			nullable: false,
 			isPk: false,
 			description: "下游充值量",
 			name: "downDrawUnit",
@@ -134,8 +134,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_FACE: {
-			nullable: "N",
+		downDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款面值",
 			name: "downDrawFace",
@@ -145,8 +145,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_DRAW_AMOUNT: {
-			nullable: "N",
+		downDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游扣款金额",
 			name: "downDrawAmount",
@@ -156,8 +156,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_REAL_AMOUNT: {
-			nullable: "N",
+		downRealAmount: {
+			nullable: false,
 			isPk: false,
 			description: "下游实际金额",
 			name: "downRealAmount",
@@ -167,8 +167,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_UNIT: {
-			nullable: "N",
+		upDrawUnit: {
+			nullable: false,
 			isPk: false,
 			description: "上游充值量",
 			name: "upDrawUnit",
@@ -178,8 +178,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_FACE: {
-			nullable: "N",
+		upDrawFace: {
+			nullable: false,
 			isPk: false,
 			description: "上游成功面值",
 			name: "upDrawFace",
@@ -189,8 +189,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_DRAW_AMOUNT: {
-			nullable: "N",
+		upDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游扣款金额",
 			name: "upDrawAmount",
@@ -200,8 +200,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_REAL_AMOUNT: {
-			nullable: "N",
+		upRealAmount: {
+			nullable: false,
 			isPk: false,
 			description: "上游实际金额",
 			name: "upRealAmount",
@@ -211,8 +211,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -222,8 +222,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变更类型 :加款 2：交易扣款 3：交易退款",
 			name: "changeType",
@@ -233,8 +233,8 @@ exports.fdTradeUpFund = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "利润类:前向2-后向",
 			name: "billType",
@@ -244,8 +244,8 @@ exports.fdTradeUpFund = {
 				length: "1"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -255,8 +255,8 @@ exports.fdTradeUpFund = {
 				length: "3"
 			}
 		},
-		CARRIER_NO: {
-			nullable: "N",
+		carrierNo: {
+			nullable: false,
 			isPk: false,
 			description: "运营商",
 			name: "carrierNo",
@@ -266,8 +266,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份",
 			name: "provinceNo",
@@ -277,8 +277,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -288,8 +288,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		PROFITS: {
-			nullable: "N",
+		profits: {
+			nullable: false,
 			isPk: false,
 			description: "利润",
 			name: "profits",
@@ -299,8 +299,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		DOWN_COMMISSION: {
-			nullable: "N",
+		downCommission: {
+			nullable: false,
 			isPk: false,
 			description: "下游后返佣金",
 			name: "downCommission",
@@ -310,8 +310,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		UP_COMMISSION: {
-			nullable: "N",
+		upCommission: {
+			nullable: false,
 			isPk: false,
 			description: "上游后返佣金",
 			name: "upCommission",
@@ -321,8 +321,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		SETTLE_AMOUNT: {
-			nullable: "Y",
+		settleAmount: {
+			nullable: true,
 			isPk: false,
 			description: "结算金额",
 			name: "settleAmount",
@@ -332,8 +332,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		SETTLE_BATCH_ID: {
-			nullable: "N",
+		settleBatchId: {
+			nullable: false,
 			isPk: false,
 			description: "结算批次号",
 			name: "settleBatchId",
@@ -343,8 +343,8 @@ exports.fdTradeUpFund = {
 				length: "20"
 			}
 		},
-		SETTLE_STATUS: {
-			nullable: "N",
+		settleStatus: {
+			nullable: false,
 			isPk: false,
 			description: "结算状:20-等待结算,0-结算成功,10-无需结算,90-结算失败",
 			name: "settleStatus",
@@ -354,8 +354,8 @@ exports.fdTradeUpFund = {
 				length: "10"
 			}
 		},
-		SETTLE_TIME: {
-			nullable: "Y",
+		settleTime: {
+			nullable: true,
 			isPk: false,
 			description: "结算时间",
 			name: "settleTime",
@@ -365,8 +365,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -376,8 +376,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "Y",
+		orderTime: {
+			nullable: true,
 			isPk: false,
 			description: "订单日期(交易系统下单日期)",
 			name: "orderTime",
@@ -387,8 +387,8 @@ exports.fdTradeUpFund = {
 				length: ""
 			}
 		},
-		SPLIT_PROFIT_STATUS: {
-			nullable: "Y",
+		splitProfitStatus: {
+			nullable: true,
 			isPk: false,
 			description: "是否分配利润，0已分配,1正在分配",
 			name: "splitProfitStatus",
@@ -398,8 +398,8 @@ exports.fdTradeUpFund = {
 				length: "3"
 			}
 		},
-		OUT_CHANGE_TIME: {
-			nullable: "Y",
+		outChangeTime: {
+			nullable: true,
 			isPk: false,
 			description: "外部系统资金变动时间",
 			name: "outChangeTime",

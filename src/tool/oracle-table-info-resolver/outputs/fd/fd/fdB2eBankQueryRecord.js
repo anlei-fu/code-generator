@@ -2,8 +2,8 @@ exports.fdB2eBankQueryRecord = {
 	name: "fdB2eBankQueryRecord",
 	rawName: "FD_B2E_BANK_QUERY_RECORD",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdB2eBankQueryRecord = {
 				length: "20"
 			}
 		},
-		BANK_ACCOUNT_ID: {
-			nullable: "N",
+		bankAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "银行账户编号",
 			name: "bankAccountId",
@@ -24,8 +24,8 @@ exports.fdB2eBankQueryRecord = {
 				length: "20"
 			}
 		},
-		CARD_NO: {
-			nullable: "N",
+		cardNo: {
+			nullable: false,
 			isPk: false,
 			description: "银行卡号",
 			name: "cardNo",
@@ -35,8 +35,8 @@ exports.fdB2eBankQueryRecord = {
 				length: ""
 			}
 		},
-		BANK_ACC_NAME: {
-			nullable: "N",
+		bankAccName: {
+			nullable: false,
 			isPk: false,
 			description: "银行账户名称",
 			name: "bankAccName",
@@ -46,8 +46,8 @@ exports.fdB2eBankQueryRecord = {
 				length: ""
 			}
 		},
-		BANK_TYPE: {
-			nullable: "N",
+		bankType: {
+			nullable: false,
 			isPk: false,
 			description: "银行类型",
 			name: "bankType",
@@ -57,8 +57,8 @@ exports.fdB2eBankQueryRecord = {
 				length: "3"
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "N",
+		queryBalance: {
+			nullable: false,
 			isPk: false,
 			description: "查询余额",
 			name: "queryBalance",
@@ -68,8 +68,8 @@ exports.fdB2eBankQueryRecord = {
 				length: "20"
 			}
 		},
-		QUERY_TIME: {
-			nullable: "N",
+		queryTime: {
+			nullable: false,
 			isPk: false,
 			description: "查询时间",
 			name: "queryTime",

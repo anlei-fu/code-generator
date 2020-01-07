@@ -2,8 +2,8 @@ exports.fdBankCashFund = {
 	name: "fdBankCashFund",
 	rawName: "FD_BANK_CASH_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.fdBankCashFund = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账号编号",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdBankCashFund = {
 				length: "20"
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号",
 			name: "adjustId",
@@ -35,8 +35,8 @@ exports.fdBankCashFund = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -46,8 +46,8 @@ exports.fdBankCashFund = {
 				length: "20"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -57,8 +57,8 @@ exports.fdBankCashFund = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -68,8 +68,8 @@ exports.fdBankCashFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "时间",
 			name: "changeTime",
@@ -79,8 +79,8 @@ exports.fdBankCashFund = {
 				length: ""
 			}
 		},
-		CREATED_USER: {
-			nullable: "N",
+		createdUser: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdUser",
@@ -90,8 +90,8 @@ exports.fdBankCashFund = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "1-加款,2-减款,3-红冲",
 			name: "changeType",
@@ -101,8 +101,8 @@ exports.fdBankCashFund = {
 				length: "3"
 			}
 		},
-		USE_TYPE: {
-			nullable: "N",
+		useType: {
+			nullable: false,
 			isPk: false,
 			description: "用途1.上游加款2.下游加款3.转账4.上游佣金结算5.下游佣金结算6.利润提取7.收卡结算,8-手续费,9运营投入,10押金,11保证金,12短期借债99.其他",
 			name: "useType",
@@ -112,8 +112,8 @@ exports.fdBankCashFund = {
 				length: "3"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否冲正过",
 			name: "hasAdjust",
@@ -123,8 +123,8 @@ exports.fdBankCashFund = {
 				length: "1"
 			}
 		},
-		LINK_CHANNEL_NAME: {
-			nullable: "Y",
+		linkChannelName: {
+			nullable: true,
 			isPk: false,
 			description: "关联渠道",
 			name: "linkChannelName",
@@ -134,8 +134,8 @@ exports.fdBankCashFund = {
 				length: ""
 			}
 		},
-		LINK_ACCOUNT_NAME: {
-			nullable: "Y",
+		linkAccountName: {
+			nullable: true,
 			isPk: false,
 			description: "关联账号",
 			name: "linkAccountName",
@@ -145,8 +145,8 @@ exports.fdBankCashFund = {
 				length: ""
 			}
 		},
-		REMARK: {
-			nullable: "Y",
+		remark: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "remark",
@@ -156,8 +156,8 @@ exports.fdBankCashFund = {
 				length: ""
 			}
 		},
-		SERVICE_ID: {
-			nullable: "Y",
+		serviceId: {
+			nullable: true,
 			isPk: false,
 			description: "流水号记录编号(标记同一操作的几条数据)",
 			name: "serviceId",
@@ -167,8 +167,8 @@ exports.fdBankCashFund = {
 				length: "20"
 			}
 		},
-		RECORD_NO: {
-			nullable: "Y",
+		recordNo: {
+			nullable: true,
 			isPk: false,
 			description: "外部记录编号，同步时避免重复",
 			name: "recordNo",
@@ -178,8 +178,8 @@ exports.fdBankCashFund = {
 				length: ""
 			}
 		},
-		REMARK_NAME: {
-			nullable: "Y",
+		remarkName: {
+			nullable: true,
 			isPk: false,
 			description: "收（付）款账户名称",
 			name: "remarkName",

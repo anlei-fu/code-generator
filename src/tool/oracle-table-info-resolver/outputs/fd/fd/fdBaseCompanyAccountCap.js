@@ -2,8 +2,8 @@ exports.fdBaseCompanyAccountCap = {
 	name: "fdBaseCompanyAccountCap",
 	rawName: "FD_BASE_COMPANY_ACCOUNT_CAP",
 	columns: {
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "accountId",
@@ -13,8 +13,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账号名称",
 			name: "accountName",
@@ -24,8 +24,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司账户",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: "20"
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类:1.运营投入,2.押金账户,3.保证金账户4.预付费5.短期借贷6.个人借支7毛利账户8.转账退款账户,9.活动专用账户10.手工退款账户12.费用账户",
 			name: "accountType",
@@ -46,8 +46,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: "2"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额(手续费为负债)",
 			name: "balance",
@@ -57,8 +57,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: "20"
 			}
 		},
-		STATUS: {
-			nullable: "N",
+		status: {
+			nullable: false,
 			isPk: false,
 			description: "状态",
 			name: "status",
@@ -68,8 +68,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: "1"
 			}
 		},
-		CREATED_BY: {
-			nullable: "N",
+		createdBy: {
+			nullable: false,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",
@@ -79,8 +79,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -90,8 +90,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: ""
 			}
 		},
-		LAST_EDIT_USER: {
-			nullable: "Y",
+		lastEditUser: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新人",
 			name: "lastEditUser",
@@ -101,8 +101,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: ""
 			}
 		},
-		LAST_EDIT_TIME: {
-			nullable: "Y",
+		lastEditTime: {
+			nullable: true,
 			isPk: false,
 			description: "最后更新时间",
 			name: "lastEditTime",
@@ -112,8 +112,8 @@ exports.fdBaseCompanyAccountCap = {
 				length: ""
 			}
 		},
-		USE_TYPE: {
-			nullable: "N",
+		useType: {
+			nullable: false,
 			isPk: false,
 			description: "使用类型：1.投入账户（借支、短期为减），2.运营账户",
 			name: "useType",

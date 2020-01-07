@@ -2,8 +2,8 @@ exports.fdSystemWarn = {
 	name: "fdSystemWarn",
 	rawName: "FD_SYSTEM_WARN",
 	columns: {
-		WARN_ID: {
-			nullable: "N",
+		warnId: {
+			nullable: false,
 			isPk: true,
 			description: "报警编号",
 			name: "warnId",
@@ -13,8 +13,8 @@ exports.fdSystemWarn = {
 				length: "20"
 			}
 		},
-		UNIQ_ID: {
-			nullable: "N",
+		uniqId: {
+			nullable: false,
 			isPk: false,
 			description: "唯一标识",
 			name: "uniqId",
@@ -24,8 +24,8 @@ exports.fdSystemWarn = {
 				length: ""
 			}
 		},
-		WARN_LEVEL: {
-			nullable: "N",
+		warnLevel: {
+			nullable: false,
 			isPk: false,
 			description: "等级",
 			name: "warnLevel",
@@ -35,8 +35,8 @@ exports.fdSystemWarn = {
 				length: "2"
 			}
 		},
-		WARN_TYPE: {
-			nullable: "N",
+		warnType: {
+			nullable: false,
 			isPk: false,
 			description: "类型",
 			name: "warnType",
@@ -46,8 +46,8 @@ exports.fdSystemWarn = {
 				length: "2"
 			}
 		},
-		TITLE: {
-			nullable: "N",
+		title: {
+			nullable: false,
 			isPk: false,
 			description: "标题",
 			name: "title",
@@ -57,8 +57,8 @@ exports.fdSystemWarn = {
 				length: ""
 			}
 		},
-		WARN_DATE: {
-			nullable: "N",
+		warnDate: {
+			nullable: false,
 			isPk: false,
 			description: "报警时间",
 			name: "warnDate",
@@ -68,8 +68,8 @@ exports.fdSystemWarn = {
 				length: ""
 			}
 		},
-		CONTENT: {
-			nullable: "N",
+		content: {
+			nullable: false,
 			isPk: false,
 			description: "报警内容",
 			name: "content",
@@ -79,8 +79,8 @@ exports.fdSystemWarn = {
 				length: ""
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "同步状态 0同步完成  1未同步 2正在同步",
 			name: "syncStatus",
@@ -90,8 +90,8 @@ exports.fdSystemWarn = {
 				length: "3"
 			}
 		},
-		KEY_WORD: {
-			nullable: "N",
+		keyWord: {
+			nullable: false,
 			isPk: false,
 			description: "关键字",
 			name: "keyWord",
@@ -101,8 +101,8 @@ exports.fdSystemWarn = {
 				length: ""
 			}
 		},
-		SYNC_BATCH_ID: {
-			nullable: "Y",
+		syncBatchId: {
+			nullable: true,
 			isPk: false,
 			description: "批次号",
 			name: "syncBatchId",
@@ -112,8 +112,8 @@ exports.fdSystemWarn = {
 				length: "20"
 			}
 		},
-		SYSTEM_NO: {
-			nullable: "Y",
+		systemNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "systemNo",

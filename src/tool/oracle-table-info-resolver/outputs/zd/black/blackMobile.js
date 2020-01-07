@@ -2,7 +2,7 @@ exports.blackMobile = {
 	name: "blackMobile",
 	rawName: "BLACK_MOBILE",
 	columns: {
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -13,7 +13,7 @@ exports.blackMobile = {
 				length: ""
 			}
 		},
-		MOBILE: {
+		mobile: {
 			nullable: false,
 			isPk: false,
 			description: "",

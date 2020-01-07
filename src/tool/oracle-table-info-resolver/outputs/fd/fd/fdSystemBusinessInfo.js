@@ -2,8 +2,8 @@ exports.fdSystemBusinessInfo = {
 	name: "fdSystemBusinessInfo",
 	rawName: "FD_SYSTEM_BUSINESS_INFO",
 	columns: {
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型编码",
 			name: "businessType",
@@ -13,8 +13,8 @@ exports.fdSystemBusinessInfo = {
 				length: "3"
 			}
 		},
-		BUSINESS_TYPE_NAME: {
-			nullable: "N",
+		businessTypeName: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型名称",
 			name: "businessTypeName",

@@ -2,7 +2,7 @@ exports.downChannel = {
 	name: "downChannel",
 	rawName: "DOWN_CHANNEL",
 	columns: {
-		DOWN_CHANNEL_NO: {
+		downChannelNo: {
 			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
@@ -13,7 +13,7 @@ exports.downChannel = {
 				length: "20"
 			}
 		},
-		CHANNEL_NAME: {
+		channelName: {
 			nullable: false,
 			isPk: false,
 			description: "渠道名称",
@@ -24,7 +24,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状态 0-启用 1-禁用",
@@ -35,7 +35,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		NOTIFY_SCRIPT: {
+		notifyScript: {
 			nullable: true,
 			isPk: false,
 			description: "通知脚本",
@@ -46,7 +46,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		NOTIFY_URL: {
+		notifyUrl: {
 			nullable: true,
 			isPk: false,
 			description: "通知地址",
@@ -57,7 +57,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		CP_NAME: {
+		cpName: {
 			nullable: true,
 			isPk: false,
 			description: "cp名称",
@@ -68,7 +68,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		PRODUCT_LINE: {
+		productLine: {
 			nullable: true,
 			isPk: false,
 			description: "产品线",
@@ -79,7 +79,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		DEAIL_URL: {
+		deailUrl: {
 			nullable: true,
 			isPk: false,
 			description: "订单详情页面",
@@ -90,7 +90,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		NEED_RECHARGE_TEL: {
+		needRechargeTel: {
 			nullable: true,
 			isPk: false,
 			description: "是否需要充值话费  0-需要 1-不需要(其他业务类型)",
@@ -101,7 +101,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		NEED_RECHAGRE_FLOW: {
+		needRechagreFlow: {
 			nullable: true,
 			isPk: false,
 			description: "是否需要充值流量  0-需要 1-不需要",
@@ -112,7 +112,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		NEED_NOTITY: {
+		needNotity: {
 			nullable: true,
 			isPk: false,
 			description: "是否需要通知  0-需要 1-不需要",
@@ -123,7 +123,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		NEED_DETAIL_FILE: {
+		needDetailFile: {
 			nullable: true,
 			isPk: false,
 			description: "生成对账文件  0-需要 1-不需要",
@@ -134,7 +134,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		SUPPORT_COUPON: {
+		supportCoupon: {
 			nullable: true,
 			isPk: false,
 			description: "支持优惠: 0-是 1-否",
@@ -145,7 +145,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		SUPPORT_ACTIVITY: {
+		supportActivity: {
 			nullable: true,
 			isPk: false,
 			description: "支持活: 0-是 1-否",
@@ -156,7 +156,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		CLOSE_EXPIRE: {
+		closeExpire: {
 			nullable: true,
 			isPk: false,
 			description: "关闭超时(分钟)",
@@ -167,7 +167,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
+		createUser: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -178,7 +178,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
+		updateTime: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -189,7 +189,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		UPDATE_USER: {
+		updateUser: {
 			nullable: true,
 			isPk: false,
 			description: "",
@@ -200,7 +200,7 @@ exports.downChannel = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: false,
 			isPk: false,
 			description: "",

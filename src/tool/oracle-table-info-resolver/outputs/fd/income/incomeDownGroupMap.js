@@ -2,8 +2,8 @@ exports.incomeDownGroupMap = {
 	name: "incomeDownGroupMap",
 	rawName: "INCOME_DOWN_GROUP_MAP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.incomeDownGroupMap = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.incomeDownGroupMap = {
 				length: ""
 			}
 		},
-		DOWN_GROUP_ID: {
-			nullable: "N",
+		downGroupId: {
+			nullable: false,
 			isPk: false,
 			description: "所属下游收入分组",
 			name: "downGroupId",
@@ -35,8 +35,8 @@ exports.incomeDownGroupMap = {
 				length: "20"
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "同步状态，0已同步，1未同步",
 			name: "syncStatus",
@@ -46,8 +46,8 @@ exports.incomeDownGroupMap = {
 				length: "3"
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",

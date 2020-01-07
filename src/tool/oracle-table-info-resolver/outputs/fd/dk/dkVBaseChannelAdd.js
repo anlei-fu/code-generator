@@ -2,8 +2,8 @@ exports.dkVBaseChannelAdd = {
 	name: "dkVBaseChannelAdd",
 	rawName: "DK_V_BASE_CHANNEL_ADD",
 	columns: {
-		ACCOUNT_TYPE: {
-			nullable: "Y",
+		accountType: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountType",
@@ -13,8 +13,8 @@ exports.dkVBaseChannelAdd = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "Y",
+		channelNo: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.dkVBaseChannelAdd = {
 				length: ""
 			}
 		},
-		SNAP_TIME: {
-			nullable: "Y",
+		snapTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "snapTime",
@@ -35,8 +35,8 @@ exports.dkVBaseChannelAdd = {
 				length: ""
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "Y",
+		addAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "addAmount",
@@ -46,8 +46,8 @@ exports.dkVBaseChannelAdd = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "Y",
+		accountId: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "accountId",

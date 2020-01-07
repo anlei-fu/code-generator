@@ -2,8 +2,8 @@ exports.dkReportCommiProfitDaily = {
 	name: "dkReportCommiProfitDaily",
 	rawName: "DK_REPORT_COMMI_PROFIT_DAILY",
 	columns: {
-		REFUND_TOTAL_UNIT: {
-			nullable: "N",
+		refundTotalUnit: {
+			nullable: false,
 			isPk: false,
 			description: "退款规格",
 			name: "refundTotalUnit",
@@ -13,8 +13,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		REFUND_TOTAL_FACE: {
-			nullable: "N",
+		refundTotalFace: {
+			nullable: false,
 			isPk: false,
 			description: "退款面值",
 			name: "refundTotalFace",
@@ -24,8 +24,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		REFUND_DRAW_AMOUNT: {
-			nullable: "N",
+		refundDrawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "退款金额",
 			name: "refundDrawAmount",
@@ -35,8 +35,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		REFUND_REAL_AMOUNT: {
-			nullable: "N",
+		refundRealAmount: {
+			nullable: false,
 			isPk: false,
 			description: "实际退款金额",
 			name: "refundRealAmount",
@@ -46,8 +46,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		PROFITS: {
-			nullable: "N",
+		profits: {
+			nullable: false,
 			isPk: false,
 			description: "利润",
 			name: "profits",
@@ -57,8 +57,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		SERVICE_FEE: {
-			nullable: "N",
+		serviceFee: {
+			nullable: false,
 			isPk: false,
 			description: "实时扣除佣金(手续费)",
 			name: "serviceFee",
@@ -68,8 +68,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		REFUND_COMMISSION: {
-			nullable: "N",
+		refundCommission: {
+			nullable: false,
 			isPk: false,
 			description: "退回佣金",
 			name: "refundCommission",
@@ -79,8 +79,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		REFUND_PROFITS: {
-			nullable: "N",
+		refundProfits: {
+			nullable: false,
 			isPk: false,
 			description: "退回利润",
 			name: "refundProfits",
@@ -90,8 +90,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		REFUND_SERVICE_FEE: {
-			nullable: "N",
+		refundServiceFee: {
+			nullable: false,
 			isPk: false,
 			description: "退回实时扣除佣金（手续费）",
 			name: "refundServiceFee",
@@ -101,8 +101,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "快照时间(交易数据日期)",
 			name: "snapTime",
@@ -112,8 +112,8 @@ exports.dkReportCommiProfitDaily = {
 				length: ""
 			}
 		},
-		ADD_STATUS: {
-			nullable: "N",
+		addStatus: {
+			nullable: false,
 			isPk: false,
 			description: "账户加款状态 1.未开始，2.正在加款，0.加款完成，9.加款失败",
 			name: "addStatus",
@@ -123,8 +123,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "3"
 			}
 		},
-		STATISTICS_TYPE: {
-			nullable: "Y",
+		statisticsType: {
+			nullable: true,
 			isPk: false,
 			description: "统计类型，7.代扣业务",
 			name: "statisticsType",
@@ -134,8 +134,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "3"
 			}
 		},
-		SYS_COST: {
-			nullable: "Y",
+		sysCost: {
+			nullable: true,
 			isPk: false,
 			description: "系统垫付金额(垫付部分是作为系统成本计入的)",
 			name: "sysCost",
@@ -145,8 +145,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "同步财务报表状态，0同步完成，1未进行同步，2正在同步，9同步失败",
 			name: "syncStatus",
@@ -156,8 +156,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "1"
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "Y",
+		channelName: {
+			nullable: true,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -167,8 +167,8 @@ exports.dkReportCommiProfitDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "Y",
+		accountName: {
+			nullable: true,
 			isPk: false,
 			description: "支付账户名称",
 			name: "accountName",
@@ -178,8 +178,8 @@ exports.dkReportCommiProfitDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "渠道所属系统编号",
 			name: "channelSourceSystem",
@@ -189,8 +189,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -200,8 +200,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -211,8 +211,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -222,8 +222,8 @@ exports.dkReportCommiProfitDaily = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "支付账户编号",
 			name: "accountId",
@@ -233,8 +233,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		CHANNEL_TYPE: {
-			nullable: "N",
+		channelType: {
+			nullable: false,
 			isPk: false,
 			description: "渠道类型1.上游2．下游",
 			name: "channelType",
@@ -244,8 +244,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "1"
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -255,8 +255,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "3"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "N",
+		billType: {
+			nullable: false,
 			isPk: false,
 			description: "利润类型，1.前向，2后向",
 			name: "billType",
@@ -266,8 +266,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "1"
 			}
 		},
-		TOTAL_UNIT: {
-			nullable: "N",
+		totalUnit: {
+			nullable: false,
 			isPk: false,
 			description: "代扣规格",
 			name: "totalUnit",
@@ -277,8 +277,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "N",
+		totalFace: {
+			nullable: false,
 			isPk: false,
 			description: "代扣面值",
 			name: "totalFace",
@@ -288,8 +288,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		DRAW_AMOUNT: {
-			nullable: "N",
+		drawAmount: {
+			nullable: false,
 			isPk: false,
 			description: "结算金额 负：千行欠下游/上游欠千行 金额",
 			name: "drawAmount",
@@ -299,8 +299,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		REAL_AMOUNT: {
-			nullable: "N",
+		realAmount: {
+			nullable: false,
 			isPk: false,
 			description: "实际结算的金额 负：欠下游金额",
 			name: "realAmount",
@@ -310,8 +310,8 @@ exports.dkReportCommiProfitDaily = {
 				length: "20"
 			}
 		},
-		COMMISSION: {
-			nullable: "N",
+		commission: {
+			nullable: false,
 			isPk: false,
 			description: "佣金",
 			name: "commission",

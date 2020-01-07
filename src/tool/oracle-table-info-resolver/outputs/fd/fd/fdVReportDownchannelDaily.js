@@ -2,8 +2,8 @@ exports.fdVReportDownchannelDaily = {
 	name: "fdVReportDownchannelDaily",
 	rawName: "FD_V_REPORT_DOWNCHANNEL_DAILY",
 	columns: {
-		ALL_AMOUNT: {
-			nullable: "Y",
+		allAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "allAmount",
@@ -13,8 +13,8 @@ exports.fdVReportDownchannelDaily = {
 				length: ""
 			}
 		},
-		DOWN_PAY: {
-			nullable: "Y",
+		downPay: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downPay",
@@ -24,8 +24,8 @@ exports.fdVReportDownchannelDaily = {
 				length: ""
 			}
 		},
-		DOWN_INCOME_AMOUNT: {
-			nullable: "Y",
+		downIncomeAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downIncomeAmount",
@@ -35,8 +35,8 @@ exports.fdVReportDownchannelDaily = {
 				length: ""
 			}
 		},
-		ALL_DOWN: {
-			nullable: "Y",
+		allDown: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "allDown",
@@ -46,8 +46,8 @@ exports.fdVReportDownchannelDaily = {
 				length: ""
 			}
 		},
-		DOWN_PAY_AMOUNT: {
-			nullable: "Y",
+		downPayAmount: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downPayAmount",
@@ -57,8 +57,8 @@ exports.fdVReportDownchannelDaily = {
 				length: ""
 			}
 		},
-		DOWN_INCOME: {
-			nullable: "Y",
+		downIncome: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "downIncome",
@@ -68,8 +68,8 @@ exports.fdVReportDownchannelDaily = {
 				length: ""
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "companyId",
@@ -79,8 +79,8 @@ exports.fdVReportDownchannelDaily = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "recordDate",
@@ -90,8 +90,8 @@ exports.fdVReportDownchannelDaily = {
 				length: ""
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "N",
+		channelStatus: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "channelStatus",

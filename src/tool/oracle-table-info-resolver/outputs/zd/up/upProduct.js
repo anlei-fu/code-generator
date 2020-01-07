@@ -2,7 +2,7 @@ exports.upProduct = {
 	name: "upProduct",
 	rawName: "UP_PRODUCT",
 	columns: {
-		PRODUCT_ID: {
+		productId: {
 			nullable: false,
 			isPk: false,
 			description: "产品编号",
@@ -13,7 +13,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_ID: {
+		upChannelId: {
 			nullable: false,
 			isPk: false,
 			description: "渠道ID",
@@ -24,7 +24,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		PRODUCT_NO: {
+		productNo: {
 			nullable: true,
 			isPk: false,
 			description: "产品编码",
@@ -35,7 +35,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
+		businessType: {
 			nullable: false,
 			isPk: false,
 			description: "业务类型 ",
@@ -46,7 +46,7 @@ exports.upProduct = {
 				length: "20"
 			}
 		},
-		CARRIER_NO: {
+		carrierNo: {
 			nullable: false,
 			isPk: false,
 			description: "运营商",
@@ -57,7 +57,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
+		provinceNo: {
 			nullable: false,
 			isPk: false,
 			description: "省: QG-全国",
@@ -68,7 +68,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		CITY_NO: {
+		cityNo: {
 			nullable: false,
 			isPk: false,
 			description: "城: *-全省",
@@ -79,7 +79,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		FACE_FEE: {
+		faceFee: {
 			nullable: false,
 			isPk: false,
 			description: "面值",
@@ -90,7 +90,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		DEDUCT_PRICE: {
+		deductPrice: {
 			nullable: false,
 			isPk: false,
 			description: "扣款价格",
@@ -101,7 +101,7 @@ exports.upProduct = {
 				length: "20"
 			}
 		},
-		STATUS: {
+		status: {
 			nullable: false,
 			isPk: false,
 			description: "状: 0-启用 1-禁用",
@@ -112,7 +112,7 @@ exports.upProduct = {
 				length: "20"
 			}
 		},
-		REMARK: {
+		remark: {
 			nullable: true,
 			isPk: false,
 			description: "备注",
@@ -123,7 +123,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
+		createUser: {
 			nullable: true,
 			isPk: false,
 			description: "创建人",
@@ -134,7 +134,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "创建时间",
@@ -145,7 +145,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		UPDATE_USER: {
+		updateUser: {
 			nullable: true,
 			isPk: false,
 			description: "更新人",
@@ -156,7 +156,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		UPDATE_TIME: {
+		updateTime: {
 			nullable: true,
 			isPk: false,
 			description: "更新时间",
@@ -167,7 +167,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		REAL_PRICE: {
+		realPrice: {
 			nullable: true,
 			isPk: false,
 			description: "实际价格",
@@ -178,7 +178,7 @@ exports.upProduct = {
 				length: ""
 			}
 		},
-		NORMAL_PRICE: {
+		normalPrice: {
 			nullable: false,
 			isPk: false,
 			description: "标准价格",

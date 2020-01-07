@@ -2,8 +2,8 @@ exports.fdTradeCoImpFund = {
 	name: "fdTradeCoImpFund",
 	rawName: "FD_TRADE_CO_IMP_FUND",
 	columns: {
-		CHANGE_ID: {
-			nullable: "N",
+		changeId: {
+			nullable: false,
 			isPk: true,
 			description: "变动编号",
 			name: "changeId",
@@ -13,8 +13,8 @@ exports.fdTradeCoImpFund = {
 				length: "20"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "公司资产账户编号",
 			name: "accountId",
@@ -24,8 +24,8 @@ exports.fdTradeCoImpFund = {
 				length: "20"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -35,8 +35,8 @@ exports.fdTradeCoImpFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型1加款2减款3红冲（负值）",
 			name: "changeType",
@@ -46,8 +46,8 @@ exports.fdTradeCoImpFund = {
 				length: "3"
 			}
 		},
-		USE_TYPE: {
-			nullable: "N",
+		useType: {
+			nullable: false,
 			isPk: false,
 			description: "使用类型1.下游加款2.支付宝倒款3.财富通倒款99其他",
 			name: "useType",
@@ -57,8 +57,8 @@ exports.fdTradeCoImpFund = {
 				length: "3"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -68,8 +68,8 @@ exports.fdTradeCoImpFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -79,8 +79,8 @@ exports.fdTradeCoImpFund = {
 				length: ""
 			}
 		},
-		ADJUST_ID: {
-			nullable: "N",
+		adjustId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲编号",
 			name: "adjustId",
@@ -90,8 +90,8 @@ exports.fdTradeCoImpFund = {
 				length: "20"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否红冲过",
 			name: "hasAdjust",
@@ -101,8 +101,8 @@ exports.fdTradeCoImpFund = {
 				length: "1"
 			}
 		},
-		BANK_BATCH_ID: {
-			nullable: "Y",
+		bankBatchId: {
+			nullable: true,
 			isPk: false,
 			description: "实体卡变动批次号处理号（记录转账的出账、入账、手续费）",
 			name: "bankBatchId",
@@ -112,8 +112,8 @@ exports.fdTradeCoImpFund = {
 				length: "20"
 			}
 		},
-		PARTNER_ACCOUNT: {
-			nullable: "Y",
+		partnerAccount: {
+			nullable: true,
 			isPk: false,
 			description: "倒款的来源账号或加款的渠道编号",
 			name: "partnerAccount",
@@ -123,8 +123,8 @@ exports.fdTradeCoImpFund = {
 				length: ""
 			}
 		},
-		CREATE_USER: {
-			nullable: "Y",
+		createUser: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createUser",
@@ -134,8 +134,8 @@ exports.fdTradeCoImpFund = {
 				length: ""
 			}
 		},
-		REMARK: {
-			nullable: "Y",
+		remark: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "remark",

@@ -2,8 +2,8 @@ exports.yxTradeDownFund = {
 	name: "yxTradeDownFund",
 	rawName: "YX_TRADE_DOWN_FUND",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "下游变动编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		YX_ORDER_ID: {
-			nullable: "N",
+		yxOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "yxOrderId",
@@ -24,8 +24,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -35,8 +35,8 @@ exports.yxTradeDownFund = {
 				length: ""
 			}
 		},
-		EXT_ORDER_NO: {
-			nullable: "N",
+		extOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展订单号交易系统供",
 			name: "extOrderNo",
@@ -46,8 +46,8 @@ exports.yxTradeDownFund = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -57,8 +57,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -68,8 +68,8 @@ exports.yxTradeDownFund = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游支付账号",
 			name: "downAccountId",
@@ -79,8 +79,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动创建时间",
 			name: "changeTime",
@@ -90,8 +90,8 @@ exports.yxTradeDownFund = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "Y",
+		orderTime: {
+			nullable: true,
 			isPk: false,
 			description: "订单日期(交易系统下单日期)",
 			name: "orderTime",
@@ -101,8 +101,8 @@ exports.yxTradeDownFund = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变更类型:加款2：交易扣款3：交易退款:提款,11：发行加款，12：发行扣款，13：发行退款",
 			name: "changeType",
@@ -112,8 +112,8 @@ exports.yxTradeDownFund = {
 				length: "3"
 			}
 		},
-		PAY_AMOUNT: {
-			nullable: "N",
+		payAmount: {
+			nullable: false,
 			isPk: false,
 			description: "用户支付金额",
 			name: "payAmount",
@@ -123,8 +123,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -134,8 +134,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -145,8 +145,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		HANDLING_FEE: {
-			nullable: "N",
+		handlingFee: {
+			nullable: false,
 			isPk: false,
 			description: "手续费（handling_fee=pay_Amount-Change_amount-INCOME_AMOUNT）",
 			name: "handlingFee",
@@ -156,8 +156,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -167,8 +167,8 @@ exports.yxTradeDownFund = {
 				length: ""
 			}
 		},
-		CHANGE_FACE: {
-			nullable: "N",
+		changeFace: {
+			nullable: false,
 			isPk: false,
 			description: "变动面值",
 			name: "changeFace",
@@ -178,8 +178,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		ORDER_FACE: {
-			nullable: "N",
+		orderFace: {
+			nullable: false,
 			isPk: false,
 			description: "订单面值",
 			name: "orderFace",
@@ -189,8 +189,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		REFUND_ORDER_ID: {
-			nullable: "Y",
+		refundOrderId: {
+			nullable: true,
 			isPk: false,
 			description: "退款编号",
 			name: "refundOrderId",
@@ -200,8 +200,8 @@ exports.yxTradeDownFund = {
 				length: ""
 			}
 		},
-		INCOME_AMOUNT: {
-			nullable: "N",
+		incomeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "收益金额",
 			name: "incomeAmount",
@@ -211,8 +211,8 @@ exports.yxTradeDownFund = {
 				length: "20"
 			}
 		},
-		COUPON_AMOUNT: {
-			nullable: "Y",
+		couponAmount: {
+			nullable: true,
 			isPk: false,
 			description: "优惠券金额",
 			name: "couponAmount",

@@ -2,8 +2,8 @@ exports.supTradeDownManual = {
 	name: "supTradeDownManual",
 	rawName: "SUP_TRADE_DOWN_MANUAL",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "记录编号",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -24,8 +24,8 @@ exports.supTradeDownManual = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游账户编号",
 			name: "downAccountId",
@@ -35,8 +35,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		HAS_ADJUST: {
-			nullable: "N",
+		hasAdjust: {
+			nullable: false,
 			isPk: false,
 			description: "是否已红冲过",
 			name: "hasAdjust",
@@ -46,8 +46,8 @@ exports.supTradeDownManual = {
 				length: "3"
 			}
 		},
-		ADJUST_RECORD_ID: {
-			nullable: "N",
+		adjustRecordId: {
+			nullable: false,
 			isPk: false,
 			description: "红冲的记录编号",
 			name: "adjustRecordId",
@@ -57,8 +57,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型（加款、加款红冲、提款、提款红冲，余额平账、交易平账）",
 			name: "changeType",
@@ -68,8 +68,8 @@ exports.supTradeDownManual = {
 				length: "3"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -79,8 +79,8 @@ exports.supTradeDownManual = {
 				length: ""
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "变动金额",
 			name: "changeAmount",
@@ -90,8 +90,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "账户余额",
 			name: "balance",
@@ -101,8 +101,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		BANK_CARD_NO: {
-			nullable: "Y",
+		bankCardNo: {
+			nullable: true,
 			isPk: false,
 			description: "加款/提款对应银行账户",
 			name: "bankCardNo",
@@ -112,8 +112,8 @@ exports.supTradeDownManual = {
 				length: ""
 			}
 		},
-		BANK_RECORD_ID: {
-			nullable: "Y",
+		bankRecordId: {
+			nullable: true,
 			isPk: false,
 			description: "加款/提款银行资金变动编号",
 			name: "bankRecordId",
@@ -123,8 +123,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		BANK_SERVICE_ID: {
-			nullable: "Y",
+		bankServiceId: {
+			nullable: true,
 			isPk: false,
 			description: "提款银行收取手续费编号",
 			name: "bankServiceId",
@@ -134,8 +134,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		BANK_RELATE_ID: {
-			nullable: "Y",
+		bankRelateId: {
+			nullable: true,
 			isPk: false,
 			description: "可红冲记录和银行相关记录关联编号",
 			name: "bankRelateId",
@@ -145,8 +145,8 @@ exports.supTradeDownManual = {
 				length: "20"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",
@@ -156,8 +156,8 @@ exports.supTradeDownManual = {
 				length: ""
 			}
 		},
-		CREATED_BY: {
-			nullable: "Y",
+		createdBy: {
+			nullable: true,
 			isPk: false,
 			description: "创建人",
 			name: "createdBy",

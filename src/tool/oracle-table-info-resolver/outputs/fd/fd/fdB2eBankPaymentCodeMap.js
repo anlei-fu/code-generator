@@ -2,8 +2,8 @@ exports.fdB2eBankPaymentCodeMap = {
 	name: "fdB2eBankPaymentCodeMap",
 	rawName: "FD_B2E_BANK_PAYMENT_CODE_MAP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdB2eBankPaymentCodeMap = {
 				length: "20"
 			}
 		},
-		BANK_PAYMENT_TYPE: {
-			nullable: "N",
+		bankPaymentType: {
+			nullable: false,
 			isPk: false,
 			description: "银行支付方式",
 			name: "bankPaymentType",
@@ -24,8 +24,8 @@ exports.fdB2eBankPaymentCodeMap = {
 				length: "3"
 			}
 		},
-		CODE_TYPE: {
-			nullable: "N",
+		codeType: {
+			nullable: false,
 			isPk: false,
 			description: "编码类型1.付款类，2付款结果查询",
 			name: "codeType",
@@ -35,8 +35,8 @@ exports.fdB2eBankPaymentCodeMap = {
 				length: "3"
 			}
 		},
-		CODE: {
-			nullable: "N",
+		code: {
+			nullable: false,
 			isPk: false,
 			description: "银行接口编码",
 			name: "code",
@@ -46,8 +46,8 @@ exports.fdB2eBankPaymentCodeMap = {
 				length: ""
 			}
 		},
-		REMARK: {
-			nullable: "Y",
+		remark: {
+			nullable: true,
 			isPk: false,
 			description: "备注说明",
 			name: "remark",

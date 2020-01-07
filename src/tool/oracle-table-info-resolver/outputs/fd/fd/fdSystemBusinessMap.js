@@ -2,8 +2,8 @@ exports.fdSystemBusinessMap = {
 	name: "fdSystemBusinessMap",
 	rawName: "FD_SYSTEM_BUSINESS_MAP",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "id",
@@ -13,8 +13,8 @@ exports.fdSystemBusinessMap = {
 				length: "20"
 			}
 		},
-		SOURCE_SYSTEM_ID: {
-			nullable: "N",
+		sourceSystemId: {
+			nullable: false,
 			isPk: false,
 			description: "系统id",
 			name: "sourceSystemId",
@@ -24,8 +24,8 @@ exports.fdSystemBusinessMap = {
 				length: "20"
 			}
 		},
-		OUTER_BUSINESS_TYPE: {
-			nullable: "N",
+		outerBusinessType: {
+			nullable: false,
 			isPk: false,
 			description: "外部系统业务类型编号",
 			name: "outerBusinessType",
@@ -35,8 +35,8 @@ exports.fdSystemBusinessMap = {
 				length: "20"
 			}
 		},
-		LOCAL_BUSINESS_TYPE: {
-			nullable: "N",
+		localBusinessType: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统业务类型编号",
 			name: "localBusinessType",

@@ -2,8 +2,8 @@ exports.tblProcLog = {
 	name: "tblProcLog",
 	rawName: "TBL_PROC_LOG",
 	columns: {
-		ERR_CODE: {
-			nullable: "Y",
+		errCode: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "errCode",
@@ -13,8 +13,8 @@ exports.tblProcLog = {
 				length: ""
 			}
 		},
-		ERR_TRACE: {
-			nullable: "Y",
+		errTrace: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "errTrace",
@@ -24,8 +24,8 @@ exports.tblProcLog = {
 				length: ""
 			}
 		},
-		STATUS: {
-			nullable: "Y",
+		status: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "status",
@@ -35,8 +35,8 @@ exports.tblProcLog = {
 				length: ""
 			}
 		},
-		START_TIME: {
-			nullable: "Y",
+		startTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "startTime",
@@ -46,8 +46,8 @@ exports.tblProcLog = {
 				length: ""
 			}
 		},
-		PROC_NAME: {
-			nullable: "Y",
+		procName: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "procName",
@@ -57,8 +57,8 @@ exports.tblProcLog = {
 				length: ""
 			}
 		},
-		LOG_TIME: {
-			nullable: "Y",
+		logTime: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "logTime",
@@ -68,8 +68,8 @@ exports.tblProcLog = {
 				length: ""
 			}
 		},
-		USER_MARK: {
-			nullable: "Y",
+		userMark: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "userMark",
@@ -79,8 +79,8 @@ exports.tblProcLog = {
 				length: ""
 			}
 		},
-		ERR_DESC: {
-			nullable: "Y",
+		errDesc: {
+			nullable: true,
 			isPk: false,
 			description: "",
 			name: "errDesc",

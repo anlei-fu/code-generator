@@ -2,8 +2,8 @@ exports.dkReportZeroBalance = {
 	name: "dkReportZeroBalance",
 	rawName: "DK_REPORT_ZERO_BALANCE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		RECORD_DATE: {
-			nullable: "N",
+		recordDate: {
+			nullable: false,
 			isPk: false,
 			description: "报表时间",
 			name: "recordDate",
@@ -24,8 +24,8 @@ exports.dkReportZeroBalance = {
 				length: ""
 			}
 		},
-		CREATED_TIME: {
-			nullable: "N",
+		createdTime: {
+			nullable: false,
 			isPk: false,
 			description: "创建时间",
 			name: "createdTime",
@@ -35,8 +35,8 @@ exports.dkReportZeroBalance = {
 				length: ""
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类型:上游渠道:下游渠道:银行账户:收款账户:资产账户:非资产账户:倒款账户",
 			name: "accountType",
@@ -46,8 +46,8 @@ exports.dkReportZeroBalance = {
 				length: "3"
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -57,8 +57,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -68,8 +68,8 @@ exports.dkReportZeroBalance = {
 				length: ""
 			}
 		},
-		BALANCE: {
-			nullable: "Y",
+		balance: {
+			nullable: true,
 			isPk: false,
 			description: "理论余额",
 			name: "balance",
@@ -79,8 +79,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		ACCOUNT_NAME: {
-			nullable: "N",
+		accountName: {
+			nullable: false,
 			isPk: false,
 			description: "账户名称",
 			name: "accountName",
@@ -90,8 +90,8 @@ exports.dkReportZeroBalance = {
 				length: ""
 			}
 		},
-		CHANNEL_NAME: {
-			nullable: "N",
+		channelName: {
+			nullable: false,
 			isPk: false,
 			description: "渠道名称",
 			name: "channelName",
@@ -101,8 +101,8 @@ exports.dkReportZeroBalance = {
 				length: ""
 			}
 		},
-		QUERY_BALANCE: {
-			nullable: "Y",
+		queryBalance: {
+			nullable: true,
 			isPk: false,
 			description: "查询余额",
 			name: "queryBalance",
@@ -112,8 +112,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_STATUS: {
-			nullable: "N",
+		channelStatus: {
+			nullable: false,
 			isPk: false,
 			description: "渠道状态",
 			name: "channelStatus",
@@ -123,8 +123,8 @@ exports.dkReportZeroBalance = {
 				length: "1"
 			}
 		},
-		ACCOUNT_STATUS: {
-			nullable: "N",
+		accountStatus: {
+			nullable: false,
 			isPk: false,
 			description: "账户状态",
 			name: "accountStatus",
@@ -134,8 +134,8 @@ exports.dkReportZeroBalance = {
 				length: "1"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "所属公司",
 			name: "companyId",
@@ -145,8 +145,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		DOWN_FIRST_FACE: {
-			nullable: "Y",
+		downFirstFace: {
+			nullable: true,
 			isPk: false,
 			description: "下游与上游代扣的时间差造成的差异面值（只有下游渠道记录）",
 			name: "downFirstFace",
@@ -156,8 +156,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		DOWN_FIRST_AMOUNT: {
-			nullable: "Y",
+		downFirstAmount: {
+			nullable: true,
 			isPk: false,
 			description: "下游与上游代扣的时间差造成的差异金额（只有下游渠道记录）",
 			name: "downFirstAmount",
@@ -167,8 +167,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "同步财务报表状态，0同步完成，1未进行同步，2正在同步，9同步失败",
 			name: "syncStatus",
@@ -178,8 +178,8 @@ exports.dkReportZeroBalance = {
 				length: "1"
 			}
 		},
-		CHANNEL_SOURCE_SYSTEM: {
-			nullable: "Y",
+		channelSourceSystem: {
+			nullable: true,
 			isPk: false,
 			description: "渠道所属系统编号",
 			name: "channelSourceSystem",
@@ -189,8 +189,8 @@ exports.dkReportZeroBalance = {
 				length: "20"
 			}
 		},
-		CHANNEL_CLASSIF: {
-			nullable: "Y",
+		channelClassif: {
+			nullable: true,
 			isPk: false,
 			description: "渠道分类（主要用于上游渠道）",
 			name: "channelClassif",

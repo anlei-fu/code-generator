@@ -2,8 +2,8 @@ exports.rptMergeReportTradeAdd = {
 	name: "rptMergeReportTradeAdd",
 	rawName: "RPT_MERGE_REPORT_TRADE_ADD",
 	columns: {
-		ID: {
-			nullable: "N",
+		id: {
+			nullable: false,
 			isPk: false,
 			description: "编号",
 			name: "id",
@@ -13,8 +13,8 @@ exports.rptMergeReportTradeAdd = {
 				length: "20"
 			}
 		},
-		CHANNEL_NO: {
-			nullable: "N",
+		channelNo: {
+			nullable: false,
 			isPk: false,
 			description: "渠道编号",
 			name: "channelNo",
@@ -24,8 +24,8 @@ exports.rptMergeReportTradeAdd = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "账户编号",
 			name: "accountId",
@@ -35,8 +35,8 @@ exports.rptMergeReportTradeAdd = {
 				length: "20"
 			}
 		},
-		ACCOUNT_TYPE: {
-			nullable: "N",
+		accountType: {
+			nullable: false,
 			isPk: false,
 			description: "账户类型:上游渠道:下游渠道:银行账户",
 			name: "accountType",
@@ -46,8 +46,8 @@ exports.rptMergeReportTradeAdd = {
 				length: "3"
 			}
 		},
-		ADD_SYS_NO: {
-			nullable: "N",
+		addSysNo: {
+			nullable: false,
 			isPk: false,
 			description: "加款数据所属系统，存储过程中写死",
 			name: "addSysNo",
@@ -57,8 +57,8 @@ exports.rptMergeReportTradeAdd = {
 				length: ""
 			}
 		},
-		ADD_AMOUNT: {
-			nullable: "N",
+		addAmount: {
+			nullable: false,
 			isPk: false,
 			description: "加款金额",
 			name: "addAmount",
@@ -68,8 +68,8 @@ exports.rptMergeReportTradeAdd = {
 				length: "20"
 			}
 		},
-		MINUS_AMOUNT: {
-			nullable: "N",
+		minusAmount: {
+			nullable: false,
 			isPk: false,
 			description: "加款金额",
 			name: "minusAmount",
@@ -79,8 +79,8 @@ exports.rptMergeReportTradeAdd = {
 				length: "20"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "加款统计时间",
 			name: "snapTime",
@@ -90,8 +90,8 @@ exports.rptMergeReportTradeAdd = {
 				length: ""
 			}
 		},
-		SYNC_STATUS: {
-			nullable: "N",
+		syncStatus: {
+			nullable: false,
 			isPk: false,
 			description: "同步状态，0、同步完成，1等待同步，2正在同步",
 			name: "syncStatus",
@@ -101,8 +101,8 @@ exports.rptMergeReportTradeAdd = {
 				length: "1"
 			}
 		},
-		SYNC_BATCH: {
-			nullable: "N",
+		syncBatch: {
+			nullable: false,
 			isPk: false,
 			description: "同步批次号",
 			name: "syncBatch",

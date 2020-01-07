@@ -1,73 +1,246 @@
-const{OBJECT}=require("./../../../../libs/utils");
-const all={};
-let group;
-
-// table tables
-group=require("./table/all.js").all;
-OBJECT.extends(all,group);
-
-// fd tables
-group=require("./fd/all.js").all;
-OBJECT.extends(all,group);
-
-// dk tables
-group=require("./dk/all.js").all;
-OBJECT.extends(all,group);
-
-// czth tables
-group=require("./czth/all.js").all;
-OBJECT.extends(all,group);
-
-// sup tables
-group=require("./sup/all.js").all;
-OBJECT.extends(all,group);
-
-// rpt tables
-group=require("./rpt/all.js").all;
-OBJECT.extends(all,group);
-
-// income tables
-group=require("./income/all.js").all;
-OBJECT.extends(all,group);
-
-// yx tables
-group=require("./yx/all.js").all;
-OBJECT.extends(all,group);
-
-// qy tables
-group=require("./qy/all.js").all;
-OBJECT.extends(all,group);
-
-// new tables
-group=require("./new/all.js").all;
-OBJECT.extends(all,group);
-
-// zreport tables
-group=require("./zreport/all.js").all;
-OBJECT.extends(all,group);
-
-// advice tables
-group=require("./advice/all.js").all;
-OBJECT.extends(all,group);
-
-// tbl tables
-group=require("./tbl/all.js").all;
-OBJECT.extends(all,group);
-
-// courses tables
-group=require("./courses/all.js").all;
-OBJECT.extends(all,group);
-
-// students tables
-group=require("./students/all.js").all;
-OBJECT.extends(all,group);
-
-// scores tables
-group=require("./scores/all.js").all;
-OBJECT.extends(all,group);
-
-// z tables
-group=require("./z/all.js").all;
-OBJECT.extends(all,group);
-
-exports.all=all;
+exports.all={
+        fdTradeOrderMainDiffer:require("./fd/fdTradeOrderMainDiffer").fdTradeOrderMainDiffer,
+        fdB2eBankReceiveAccount:require("./fd/fdB2eBankReceiveAccount").fdB2eBankReceiveAccount,
+        fdB2eBankReceiveRecord:require("./fd/fdB2eBankReceiveRecord").fdB2eBankReceiveRecord,
+        fdB2ePaymentRecordMain:require("./fd/fdB2ePaymentRecordMain").fdB2ePaymentRecordMain,
+        fdB2eBankPaymentAccount:require("./fd/fdB2eBankPaymentAccount").fdB2eBankPaymentAccount,
+        fdReportChannelHalfhour:require("./fd/fdReportChannelHalfhour").fdReportChannelHalfhour,
+        fdB2eUpForecast:require("./fd/fdB2eUpForecast").fdB2eUpForecast,
+        fdB2eDownWhiteList:require("./fd/fdB2eDownWhiteList").fdB2eDownWhiteList,
+        fdReportCapitalUseRate:require("./fd/fdReportCapitalUseRate").fdReportCapitalUseRate,
+        fdB2eBankErrorCode:require("./fd/fdB2eBankErrorCode").fdB2eBankErrorCode,
+        fdB2eBankPaymentService:require("./fd/fdB2eBankPaymentService").fdB2eBankPaymentService,
+        fdB2eBankWorkDate:require("./fd/fdB2eBankWorkDate").fdB2eBankWorkDate,
+        fdB2eBankAccountApiConfig:require("./fd/fdB2eBankAccountApiConfig").fdB2eBankAccountApiConfig,
+        fdB2eBankQueryRecord:require("./fd/fdB2eBankQueryRecord").fdB2eBankQueryRecord,
+        fdTradeOrderMainUn:require("./fd/fdTradeOrderMainUn").fdTradeOrderMainUn,
+        fdTradeDownFundHs:require("./fd/fdTradeDownFundHs").fdTradeDownFundHs,
+        fdTradeOrderMainHs:require("./fd/fdTradeOrderMainHs").fdTradeOrderMainHs,
+        fdTradeUpFundHs:require("./fd/fdTradeUpFundHs").fdTradeUpFundHs,
+        fdBaseCompanyAccountImp:require("./fd/fdBaseCompanyAccountImp").fdBaseCompanyAccountImp,
+        fdBaseDownImpMap:require("./fd/fdBaseDownImpMap").fdBaseDownImpMap,
+        fdTradeCoImpFund:require("./fd/fdTradeCoImpFund").fdTradeCoImpFund,
+        fdReportServiceFee:require("./fd/fdReportServiceFee").fdReportServiceFee,
+        fdBaseUpAccountSync:require("./fd/fdBaseUpAccountSync").fdBaseUpAccountSync,
+        fdBaseCompanySettleNew:require("./fd/fdBaseCompanySettleNew").fdBaseCompanySettleNew,
+        fdBankAccountInfo:require("./fd/fdBankAccountInfo").fdBankAccountInfo,
+        fdBankCashFund:require("./fd/fdBankCashFund").fdBankCashFund,
+        fdBankReportSnap:require("./fd/fdBankReportSnap").fdBankReportSnap,
+        fdBankZeroBalance:require("./fd/fdBankZeroBalance").fdBankZeroBalance,
+        fdBaseBusinessLine:require("./fd/fdBaseBusinessLine").fdBaseBusinessLine,
+        fdBaseChannelBusinessMap:require("./fd/fdBaseChannelBusinessMap").fdBaseChannelBusinessMap,
+        fdBaseCompanyAccountRecv:require("./fd/fdBaseCompanyAccountRecv").fdBaseCompanyAccountRecv,
+        fdBaseCompanyInfo:require("./fd/fdBaseCompanyInfo").fdBaseCompanyInfo,
+        fdBaseDownAccountMap:require("./fd/fdBaseDownAccountMap").fdBaseDownAccountMap,
+        fdBaseDownChannel:require("./fd/fdBaseDownChannel").fdBaseDownChannel,
+        fdBaseDownSystemMap:require("./fd/fdBaseDownSystemMap").fdBaseDownSystemMap,
+        fdBaseSourceSystem:require("./fd/fdBaseSourceSystem").fdBaseSourceSystem,
+        fdBaseUpAccount:require("./fd/fdBaseUpAccount").fdBaseUpAccount,
+        fdBaseUpAccountMap:require("./fd/fdBaseUpAccountMap").fdBaseUpAccountMap,
+        fdBaseUpChannel:require("./fd/fdBaseUpChannel").fdBaseUpChannel,
+        fdBaseUpSystemMap:require("./fd/fdBaseUpSystemMap").fdBaseUpSystemMap,
+        fdReportDownDaily:require("./fd/fdReportDownDaily").fdReportDownDaily,
+        fdReportUpDaily:require("./fd/fdReportUpDaily").fdReportUpDaily,
+        fdReprotChannelSnap:require("./fd/fdReprotChannelSnap").fdReprotChannelSnap,
+        fdTradeCoRecvFund:require("./fd/fdTradeCoRecvFund").fdTradeCoRecvFund,
+        fdTradeDownFund:require("./fd/fdTradeDownFund").fdTradeDownFund,
+        fdTradeDownRefund:require("./fd/fdTradeDownRefund").fdTradeDownRefund,
+        fdTradeOrderMain:require("./fd/fdTradeOrderMain").fdTradeOrderMain,
+        fdTradeUpRefund:require("./fd/fdTradeUpRefund").fdTradeUpRefund,
+        fdTradeUpManual:require("./fd/fdTradeUpManual").fdTradeUpManual,
+        fdSystemLog:require("./fd/fdSystemLog").fdSystemLog,
+        fdSystemDictionary:require("./fd/fdSystemDictionary").fdSystemDictionary,
+        fdSystemCantonInfo:require("./fd/fdSystemCantonInfo").fdSystemCantonInfo,
+        fdBaseDownAccount:require("./fd/fdBaseDownAccount").fdBaseDownAccount,
+        fdBaseCompanySettleConfig:require("./fd/fdBaseCompanySettleConfig").fdBaseCompanySettleConfig,
+        fdTradeUpFund:require("./fd/fdTradeUpFund").fdTradeUpFund,
+        fdTradeDownManual:require("./fd/fdTradeDownManual").fdTradeDownManual,
+        fdBaseUpAccountBank:require("./fd/fdBaseUpAccountBank").fdBaseUpAccountBank,
+        fdBaseCompanyAccountSelf:require("./fd/fdBaseCompanyAccountSelf").fdBaseCompanyAccountSelf,
+        fdTradeCoSelfFund:require("./fd/fdTradeCoSelfFund").fdTradeCoSelfFund,
+        fdBaseCompanyAccountCap:require("./fd/fdBaseCompanyAccountCap").fdBaseCompanyAccountCap,
+        fdTradeCoCapFund:require("./fd/fdTradeCoCapFund").fdTradeCoCapFund,
+        fdReportCommissionDaily:require("./fd/fdReportCommissionDaily").fdReportCommissionDaily,
+        fdReportCommissionMonthly:require("./fd/fdReportCommissionMonthly").fdReportCommissionMonthly,
+        fdReportProfitDaily:require("./fd/fdReportProfitDaily").fdReportProfitDaily,
+        fdReportProfitMonthly:require("./fd/fdReportProfitMonthly").fdReportProfitMonthly,
+        fdTradeProfitDraw:require("./fd/fdTradeProfitDraw").fdTradeProfitDraw,
+        fdTradeCommissionSettle:require("./fd/fdTradeCommissionSettle").fdTradeCommissionSettle,
+        fdTradeProfitFund:require("./fd/fdTradeProfitFund").fdTradeProfitFund,
+        fdReportBankDaily:require("./fd/fdReportBankDaily").fdReportBankDaily,
+        fdSystemHandleLog:require("./fd/fdSystemHandleLog").fdSystemHandleLog,
+        fdTradeBaseJoin:require("./fd/fdTradeBaseJoin").fdTradeBaseJoin,
+        fdReportCommiProfitDaily:require("./fd/fdReportCommiProfitDaily").fdReportCommiProfitDaily,
+        fdTradeDifferSummary:require("./fd/fdTradeDifferSummary").fdTradeDifferSummary,
+        fdTradeUpFundDiffer:require("./fd/fdTradeUpFundDiffer").fdTradeUpFundDiffer,
+        fdB2eBankMainCode:require("./fd/fdB2eBankMainCode").fdB2eBankMainCode,
+        fdSystemDownProfitMap:require("./fd/fdSystemDownProfitMap").fdSystemDownProfitMap,
+        fdReportCapOffsetChannel:require("./fd/fdReportCapOffsetChannel").fdReportCapOffsetChannel,
+        fdB2eBankZxyjCode:require("./fd/fdB2eBankZxyjCode").fdB2eBankZxyjCode,
+        fdReportAddWarn:require("./fd/fdReportAddWarn").fdReportAddWarn,
+        fdTradeDownManualYc:require("./fd/fdTradeDownManualYc").fdTradeDownManualYc,
+        fdSystemBusinessStatisMap:require("./fd/fdSystemBusinessStatisMap").fdSystemBusinessStatisMap,
+        fdSystemWarn:require("./fd/fdSystemWarn").fdSystemWarn,
+        fdSystemBusinessInfo:require("./fd/fdSystemBusinessInfo").fdSystemBusinessInfo,
+        fdReportZeroBalance:require("./fd/fdReportZeroBalance").fdReportZeroBalance,
+        fdBaseDownUpMap:require("./fd/fdBaseDownUpMap").fdBaseDownUpMap,
+        fdB2eBankTask:require("./fd/fdB2eBankTask").fdB2eBankTask,
+        fdB2eBankPaymentCodeMap:require("./fd/fdB2eBankPaymentCodeMap").fdB2eBankPaymentCodeMap,
+        fdReportCommiProfitRedo:require("./fd/fdReportCommiProfitRedo").fdReportCommiProfitRedo,
+        fdB2ePaymentRecordDetails:require("./fd/fdB2ePaymentRecordDetails").fdB2ePaymentRecordDetails,
+        fdB2eUpWhiteList:require("./fd/fdB2eUpWhiteList").fdB2eUpWhiteList,
+        fdTradeRvApply:require("./fd/fdTradeRvApply").fdTradeRvApply,
+        fdB2eUpChannelConfig:require("./fd/fdB2eUpChannelConfig").fdB2eUpChannelConfig,
+        fdB2eSystemLog:require("./fd/fdB2eSystemLog").fdB2eSystemLog,
+        fdSystemBusinessMap:require("./fd/fdSystemBusinessMap").fdSystemBusinessMap,
+        fdTradeActivityMain:require("./fd/fdTradeActivityMain").fdTradeActivityMain,
+        fdTradeActivityDetails:require("./fd/fdTradeActivityDetails").fdTradeActivityDetails,
+        fdReportBalanceDiffer:require("./fd/fdReportBalanceDiffer").fdReportBalanceDiffer,
+        fdTradeCoCapFundJfb:require("./fd/fdTradeCoCapFundJfb").fdTradeCoCapFundJfb,
+        fdReportOutsysProfit:require("./fd/fdReportOutsysProfit").fdReportOutsysProfit,
+        fdBaseCoAccountName:require("./fd/fdBaseCoAccountName").fdBaseCoAccountName,
+        fdBankStreamFull:require("./fd/fdBankStreamFull").fdBankStreamFull,
+        fdTradeDownAddApply:require("./fd/fdTradeDownAddApply").fdTradeDownAddApply,
+        fdVReportSummaryMonth:require("./fd/fdVReportSummaryMonth").fdVReportSummaryMonth,
+        fdVReportDownchannelDaily:require("./fd/fdVReportDownchannelDaily").fdVReportDownchannelDaily,
+        fdVReportUpchannelDaily:require("./fd/fdVReportUpchannelDaily").fdVReportUpchannelDaily,
+        fdVReportProfitDaily2:require("./fd/fdVReportProfitDaily2").fdVReportProfitDaily2,
+        fdVReportProfitDaily:require("./fd/fdVReportProfitDaily").fdVReportProfitDaily,
+        fdVReportSettleSummary:require("./fd/fdVReportSettleSummary").fdVReportSettleSummary,
+        fdVBaseBankChange:require("./fd/fdVBaseBankChange").fdVBaseBankChange,
+        fdVReportProfitMonth:require("./fd/fdVReportProfitMonth").fdVReportProfitMonth,
+        fdVReportTradeSummary:require("./fd/fdVReportTradeSummary").fdVReportTradeSummary,
+        fdVReportOperatingRate:require("./fd/fdVReportOperatingRate").fdVReportOperatingRate,
+        fdVReportBankDaily1:require("./fd/fdVReportBankDaily1").fdVReportBankDaily1,
+        fdVReportChannelDaily1:require("./fd/fdVReportChannelDaily1").fdVReportChannelDaily1,
+        fdTradeTimeDiffer:require("./fd/fdTradeTimeDiffer").fdTradeTimeDiffer,
+        fdVReportBankDaily:require("./fd/fdVReportBankDaily").fdVReportBankDaily,
+        fdVReportProfitCompare:require("./fd/fdVReportProfitCompare").fdVReportProfitCompare,
+        fdVReportChannelDaily:require("./fd/fdVReportChannelDaily").fdVReportChannelDaily,
+        fdVReportSystemCap:require("./fd/fdVReportSystemCap").fdVReportSystemCap,
+        fdReportZeroBalanceCs:require("./fd/fdReportZeroBalanceCs").fdReportZeroBalanceCs,
+        fdVBaseChannelAdd:require("./fd/fdVBaseChannelAdd").fdVBaseChannelAdd,
+        dkReportCommiProfitDaily:require("./dk/dkReportCommiProfitDaily").dkReportCommiProfitDaily,
+        dkTradeOrderMainHs:require("./dk/dkTradeOrderMainHs").dkTradeOrderMainHs,
+        dkTradeDownFundHs:require("./dk/dkTradeDownFundHs").dkTradeDownFundHs,
+        dkTradeUpFundHs:require("./dk/dkTradeUpFundHs").dkTradeUpFundHs,
+        dkBaseDownSystemMap:require("./dk/dkBaseDownSystemMap").dkBaseDownSystemMap,
+        dkBaseUpSystemMap:require("./dk/dkBaseUpSystemMap").dkBaseUpSystemMap,
+        dkTradeOrderMainDiffer:require("./dk/dkTradeOrderMainDiffer").dkTradeOrderMainDiffer,
+        dkTradeUpFundDiffer:require("./dk/dkTradeUpFundDiffer").dkTradeUpFundDiffer,
+        dkTradeRefundSysCost:require("./dk/dkTradeRefundSysCost").dkTradeRefundSysCost,
+        dkBaseDownChannel:require("./dk/dkBaseDownChannel").dkBaseDownChannel,
+        dkBaseUpChannel:require("./dk/dkBaseUpChannel").dkBaseUpChannel,
+        dkTradeDownFund:require("./dk/dkTradeDownFund").dkTradeDownFund,
+        dkTradeUpFund:require("./dk/dkTradeUpFund").dkTradeUpFund,
+        dkBaseDownAccount:require("./dk/dkBaseDownAccount").dkBaseDownAccount,
+        dkBaseUpAccount:require("./dk/dkBaseUpAccount").dkBaseUpAccount,
+        dkBaseDownAccountMap:require("./dk/dkBaseDownAccountMap").dkBaseDownAccountMap,
+        dkBaseUpAccountMap:require("./dk/dkBaseUpAccountMap").dkBaseUpAccountMap,
+        dkTradeDownRefund:require("./dk/dkTradeDownRefund").dkTradeDownRefund,
+        dkTradeUpRefund:require("./dk/dkTradeUpRefund").dkTradeUpRefund,
+        dkTradeDownSettle:require("./dk/dkTradeDownSettle").dkTradeDownSettle,
+        dkTradeUpSettle:require("./dk/dkTradeUpSettle").dkTradeUpSettle,
+        dkTradeOrderMain:require("./dk/dkTradeOrderMain").dkTradeOrderMain,
+        dkReportZeroBalance:require("./dk/dkReportZeroBalance").dkReportZeroBalance,
+        dkReprotChannelSettle:require("./dk/dkReprotChannelSettle").dkReprotChannelSettle,
+        dkTradeCommissionSettle:require("./dk/dkTradeCommissionSettle").dkTradeCommissionSettle,
+        dkVReportChannelDaily:require("./dk/dkVReportChannelDaily").dkVReportChannelDaily,
+        dkVReportProfitDaily:require("./dk/dkVReportProfitDaily").dkVReportProfitDaily,
+        dkVReportSettleSummary:require("./dk/dkVReportSettleSummary").dkVReportSettleSummary,
+        dkVReportSummaryMonth:require("./dk/dkVReportSummaryMonth").dkVReportSummaryMonth,
+        dkVReportBankDaily:require("./dk/dkVReportBankDaily").dkVReportBankDaily,
+        dkVReportProfitMonth:require("./dk/dkVReportProfitMonth").dkVReportProfitMonth,
+        dkVReportDownchannelDaily:require("./dk/dkVReportDownchannelDaily").dkVReportDownchannelDaily,
+        dkVReportUpchannelDaily:require("./dk/dkVReportUpchannelDaily").dkVReportUpchannelDaily,
+        dkVBaseChannelAdd:require("./dk/dkVBaseChannelAdd").dkVBaseChannelAdd,
+        czthTradeOrder:require("./czth/czthTradeOrder").czthTradeOrder,
+        czthTradeOrderHs:require("./czth/czthTradeOrderHs").czthTradeOrderHs,
+        czthTradeReport:require("./czth/czthTradeReport").czthTradeReport,
+        czthTradeServiceFee:require("./czth/czthTradeServiceFee").czthTradeServiceFee,
+        supBaseDownChannel:require("./sup/supBaseDownChannel").supBaseDownChannel,
+        supBaseDownAccount:require("./sup/supBaseDownAccount").supBaseDownAccount,
+        supTradeOrderMain:require("./sup/supTradeOrderMain").supTradeOrderMain,
+        supTradeDownFund:require("./sup/supTradeDownFund").supTradeDownFund,
+        supBaseRelateAddMap:require("./sup/supBaseRelateAddMap").supBaseRelateAddMap,
+        supTradeDownFundHs:require("./sup/supTradeDownFundHs").supTradeDownFundHs,
+        supTradeUpManual:require("./sup/supTradeUpManual").supTradeUpManual,
+        supTradeDownManual:require("./sup/supTradeDownManual").supTradeDownManual,
+        supReportDailyManual:require("./sup/supReportDailyManual").supReportDailyManual,
+        supReportDailyTrade:require("./sup/supReportDailyTrade").supReportDailyTrade,
+        supReportZeroBalance:require("./sup/supReportZeroBalance").supReportZeroBalance,
+        supTradeOrderMainHs:require("./sup/supTradeOrderMainHs").supTradeOrderMainHs,
+        supBaseUpChannel:require("./sup/supBaseUpChannel").supBaseUpChannel,
+        supBaseUpAccount:require("./sup/supBaseUpAccount").supBaseUpAccount,
+        supTradeUpFundHs:require("./sup/supTradeUpFundHs").supTradeUpFundHs,
+        supTradeUpFund:require("./sup/supTradeUpFund").supTradeUpFund,
+        supBaseProUpScope:require("./sup/supBaseProUpScope").supBaseProUpScope,
+        supZoreBalanceDiffer:require("./sup/supZoreBalanceDiffer").supZoreBalanceDiffer,
+        rptMergeInnerChannelMap:require("./rpt/rptMergeInnerChannelMap").rptMergeInnerChannelMap,
+        rptMergeReportTradeAdd:require("./rpt/rptMergeReportTradeAdd").rptMergeReportTradeAdd,
+        rptMergeReportTradeAddCs:require("./rpt/rptMergeReportTradeAddCs").rptMergeReportTradeAddCs,
+        rptUnitChannelMap:require("./rpt/rptUnitChannelMap").rptUnitChannelMap,
+        rptUnitReportTrade:require("./rpt/rptUnitReportTrade").rptUnitReportTrade,
+        rptUnitReportTradeSplit:require("./rpt/rptUnitReportTradeSplit").rptUnitReportTradeSplit,
+        rptTest:require("./rpt/rptTest").rptTest,
+        incomeChannelMonthTrade:require("./income/incomeChannelMonthTrade").incomeChannelMonthTrade,
+        incomeChannelMonthSum:require("./income/incomeChannelMonthSum").incomeChannelMonthSum,
+        incomeDownUpConfig:require("./income/incomeDownUpConfig").incomeDownUpConfig,
+        incomeDownUpMonth:require("./income/incomeDownUpMonth").incomeDownUpMonth,
+        incomeDownUpTrade:require("./income/incomeDownUpTrade").incomeDownUpTrade,
+        incomeDownTrade:require("./income/incomeDownTrade").incomeDownTrade,
+        incomeUpTrade:require("./income/incomeUpTrade").incomeUpTrade,
+        incomeUpGroupMap:require("./income/incomeUpGroupMap").incomeUpGroupMap,
+        incomeFlowTask:require("./income/incomeFlowTask").incomeFlowTask,
+        incomeFlowConfig:require("./income/incomeFlowConfig").incomeFlowConfig,
+        incomeExcludeUp:require("./income/incomeExcludeUp").incomeExcludeUp,
+        incomeDownGroupMap:require("./income/incomeDownGroupMap").incomeDownGroupMap,
+        yxBaseBusinessMap:require("./yx/yxBaseBusinessMap").yxBaseBusinessMap,
+        yxBaseAgent:require("./yx/yxBaseAgent").yxBaseAgent,
+        yxTradeExpense:require("./yx/yxTradeExpense").yxTradeExpense,
+        yxTradeAgentFund:require("./yx/yxTradeAgentFund").yxTradeAgentFund,
+        yxTradeUpManual:require("./yx/yxTradeUpManual").yxTradeUpManual,
+        yxTradeUpFund:require("./yx/yxTradeUpFund").yxTradeUpFund,
+        yxTradeOrderMain:require("./yx/yxTradeOrderMain").yxTradeOrderMain,
+        yxTradeDownManual:require("./yx/yxTradeDownManual").yxTradeDownManual,
+        yxTradeDownFund:require("./yx/yxTradeDownFund").yxTradeDownFund,
+        yxTradeAgentManual:require("./yx/yxTradeAgentManual").yxTradeAgentManual,
+        yxReportZeroBalance:require("./yx/yxReportZeroBalance").yxReportZeroBalance,
+        yxReportDaily:require("./yx/yxReportDaily").yxReportDaily,
+        yxBaseUpChannel:require("./yx/yxBaseUpChannel").yxBaseUpChannel,
+        yxBaseUpAccount:require("./yx/yxBaseUpAccount").yxBaseUpAccount,
+        yxBaseDownChannel:require("./yx/yxBaseDownChannel").yxBaseDownChannel,
+        yxBaseDownAccount:require("./yx/yxBaseDownAccount").yxBaseDownAccount,
+        yxReportFundDaily:require("./yx/yxReportFundDaily").yxReportFundDaily,
+        yxTradeUpFundDiffer:require("./yx/yxTradeUpFundDiffer").yxTradeUpFundDiffer,
+        yxTradeOrderMainDiffer:require("./yx/yxTradeOrderMainDiffer").yxTradeOrderMainDiffer,
+        yxThreePartyAccount:require("./yx/yxThreePartyAccount").yxThreePartyAccount,
+        yxTradeAgencyAssigned:require("./yx/yxTradeAgencyAssigned").yxTradeAgencyAssigned,
+        qyTradeUpManual:require("./qy/qyTradeUpManual").qyTradeUpManual,
+        qyTradeUpFundDiffer:require("./qy/qyTradeUpFundDiffer").qyTradeUpFundDiffer,
+        qyTradeUpFund:require("./qy/qyTradeUpFund").qyTradeUpFund,
+        qyTradeOrderMainDiffer:require("./qy/qyTradeOrderMainDiffer").qyTradeOrderMainDiffer,
+        qyTradeOrderMain:require("./qy/qyTradeOrderMain").qyTradeOrderMain,
+        qyTradeDownManual:require("./qy/qyTradeDownManual").qyTradeDownManual,
+        qyTradeDownFund:require("./qy/qyTradeDownFund").qyTradeDownFund,
+        qyReportZeroBalance:require("./qy/qyReportZeroBalance").qyReportZeroBalance,
+        qyReportDaily:require("./qy/qyReportDaily").qyReportDaily,
+        qyBaseUpChannel:require("./qy/qyBaseUpChannel").qyBaseUpChannel,
+        qyBaseUpAccount:require("./qy/qyBaseUpAccount").qyBaseUpAccount,
+        qyBaseDownChannel:require("./qy/qyBaseDownChannel").qyBaseDownChannel,
+        qyBaseDownAccount:require("./qy/qyBaseDownAccount").qyBaseDownAccount,
+        newVMonthStartZbalance:require("./new/newVMonthStartZbalance").newVMonthStartZbalance,
+        newVMonthAdd:require("./new/newVMonthAdd").newVMonthAdd,
+        newVMonthDraw:require("./new/newVMonthDraw").newVMonthDraw,
+        newVChannelRunDate:require("./new/newVChannelRunDate").newVChannelRunDate,
+        zreportUpFundJoinHs:require("./zreport/zreportUpFundJoinHs").zreportUpFundJoinHs,
+        adviceAmountWorkEnd:require("./advice/adviceAmountWorkEnd").adviceAmountWorkEnd,
+        adviceAmountWorkMiddle:require("./advice/adviceAmountWorkMiddle").adviceAmountWorkMiddle,
+        adviceAmountWorkHead:require("./advice/adviceAmountWorkHead").adviceAmountWorkHead,
+        tblGlobalParam:require("./tbl/tblGlobalParam").tblGlobalParam,
+        tblProcLog:require("./tbl/tblProcLog").tblProcLog,
+        courses:require("./courses/courses").courses,
+        students:require("./students/students").students,
+        scores:require("./scores/scores").scores,
+        zTest:require("./z/zTest").zTest,
+}

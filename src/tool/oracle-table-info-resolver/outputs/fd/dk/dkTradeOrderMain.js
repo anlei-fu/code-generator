@@ -2,8 +2,8 @@ exports.dkTradeOrderMain = {
 	name: "dkTradeOrderMain",
 	rawName: "DK_TRADE_ORDER_MAIN",
 	columns: {
-		DK_ORDER_ID: {
-			nullable: "N",
+		dkOrderId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "dkOrderId",
@@ -13,8 +13,8 @@ exports.dkTradeOrderMain = {
 				length: "20"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道编号",
 			name: "downChannelNo",
@@ -24,8 +24,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		DOWN_ACCOUNT_ID: {
-			nullable: "N",
+		downAccountId: {
+			nullable: false,
 			isPk: false,
 			description: "下游结算账号",
 			name: "downAccountId",
@@ -35,8 +35,8 @@ exports.dkTradeOrderMain = {
 				length: "20"
 			}
 		},
-		DOWN_COMPANY_ID: {
-			nullable: "N",
+		downCompanyId: {
+			nullable: false,
 			isPk: false,
 			description: "下游公司编号",
 			name: "downCompanyId",
@@ -46,8 +46,8 @@ exports.dkTradeOrderMain = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -57,8 +57,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		EXT_ORDER_NO: {
-			nullable: "N",
+		extOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "扩展订单号交易系统供",
 			name: "extOrderNo",
@@ -68,8 +68,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -79,8 +79,8 @@ exports.dkTradeOrderMain = {
 				length: "20"
 			}
 		},
-		CREATE_TIME: {
-			nullable: "N",
+		createTime: {
+			nullable: false,
 			isPk: false,
 			description: "订单添加时间",
 			name: "createTime",
@@ -90,8 +90,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "N",
+		orderTime: {
+			nullable: false,
 			isPk: false,
 			description: "订单日期(交易系统下单日期)",
 			name: "orderTime",
@@ -101,8 +101,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -112,8 +112,8 @@ exports.dkTradeOrderMain = {
 				length: "3"
 			}
 		},
-		CARRIER_NO: {
-			nullable: "N",
+		carrierNo: {
+			nullable: false,
 			isPk: false,
 			description: "运营商",
 			name: "carrierNo",
@@ -123,8 +123,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		PROVINCE_NO: {
-			nullable: "N",
+		provinceNo: {
+			nullable: false,
 			isPk: false,
 			description: "省份",
 			name: "provinceNo",
@@ -134,8 +134,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		CITY_NO: {
-			nullable: "N",
+		cityNo: {
+			nullable: false,
 			isPk: false,
 			description: "城市",
 			name: "cityNo",
@@ -145,8 +145,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		TOTAL_FACE: {
-			nullable: "N",
+		totalFace: {
+			nullable: false,
 			isPk: false,
 			description: "代扣总面值",
 			name: "totalFace",
@@ -156,8 +156,8 @@ exports.dkTradeOrderMain = {
 				length: "18"
 			}
 		},
-		RECHARGE_UNIT: {
-			nullable: "N",
+		rechargeUnit: {
+			nullable: false,
 			isPk: false,
 			description: "代扣总量",
 			name: "rechargeUnit",
@@ -167,8 +167,8 @@ exports.dkTradeOrderMain = {
 				length: "18"
 			}
 		},
-		RECHARGE_ACCOUNT_NO: {
-			nullable: "N",
+		rechargeAccountNo: {
+			nullable: false,
 			isPk: false,
 			description: "代扣号码",
 			name: "rechargeAccountNo",
@@ -178,8 +178,8 @@ exports.dkTradeOrderMain = {
 				length: ""
 			}
 		},
-		HAS_UP_TRADE: {
-			nullable: "Y",
+		hasUpTrade: {
+			nullable: true,
 			isPk: false,
 			description: "是否已产生上游结算 0.已产生 1.未产生",
 			name: "hasUpTrade",
@@ -189,8 +189,8 @@ exports.dkTradeOrderMain = {
 				length: "1"
 			}
 		},
-		DOWN_ORDER_AMOUNT: {
-			nullable: "Y",
+		downOrderAmount: {
+			nullable: true,
 			isPk: false,
 			description: "下游结算金额",
 			name: "downOrderAmount",
@@ -200,8 +200,8 @@ exports.dkTradeOrderMain = {
 				length: "20"
 			}
 		},
-		RECHARGE_TIMES: {
-			nullable: "Y",
+		rechargeTimes: {
+			nullable: true,
 			isPk: false,
 			description: "代扣次数",
 			name: "rechargeTimes",

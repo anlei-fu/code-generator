@@ -2,7 +2,7 @@ exports.upChannelStatDiffDetail = {
 	name: "upChannelStatDiffDetail",
 	rawName: "UP_CHANNEL_STAT_DIFF_DETAIL",
 	columns: {
-		STAT_ID: {
+		statId: {
 			nullable: false,
 			isPk: false,
 			description: "直接对账统计主键",
@@ -13,7 +13,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		ORDER_NO: {
+		orderNo: {
 			nullable: true,
 			isPk: false,
 			description: "订单号",
@@ -24,7 +24,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		CHANNEL_NO: {
+		channelNo: {
 			nullable: true,
 			isPk: false,
 			description: "渠道",
@@ -35,7 +35,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		DIFF_TYPE: {
+		diffType: {
 			nullable: true,
 			isPk: false,
 			description: "差异类型 ",
@@ -46,7 +46,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		PRICE: {
+		price: {
 			nullable: true,
 			isPk: false,
 			description: "18订单金额",
@@ -57,7 +57,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		REAL_FEE: {
+		realFee: {
 			nullable: true,
 			isPk: false,
 			description: "18实际金额",
@@ -68,7 +68,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		DIFF_MSG: {
+		diffMsg: {
 			nullable: true,
 			isPk: false,
 			description: "差异信息",
@@ -79,7 +79,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		CREATE_TIME: {
+		createTime: {
 			nullable: true,
 			isPk: false,
 			description: "生成时间",
@@ -90,7 +90,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		SYS_PRICE: {
+		sysPrice: {
 			nullable: true,
 			isPk: false,
 			description: "收银台金额",
@@ -101,7 +101,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		SYS_REAL_FACE: {
+		sysRealFace: {
 			nullable: true,
 			isPk: false,
 			description: "收银台实际金额",
@@ -112,7 +112,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
+		orderTime: {
 			nullable: true,
 			isPk: false,
 			description: "订单时间",
@@ -123,7 +123,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		PAY_TYPE: {
+		payType: {
 			nullable: true,
 			isPk: false,
 			description: "支付类型",
@@ -134,7 +134,7 @@ exports.upChannelStatDiffDetail = {
 				length: ""
 			}
 		},
-		STATIS_DATE: {
+		statisDate: {
 			nullable: true,
 			isPk: false,
 			description: "统计日期",

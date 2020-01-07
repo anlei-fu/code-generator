@@ -2,8 +2,8 @@ exports.scores = {
 	name: "scores",
 	rawName: "SCORES",
 	columns: {
-		DEGREE: {
-			nullable: "N",
+		degree: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "degree",
@@ -13,8 +13,8 @@ exports.scores = {
 				length: "10"
 			}
 		},
-		CNO: {
-			nullable: "N",
+		cno: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "cno",
@@ -24,8 +24,8 @@ exports.scores = {
 				length: ""
 			}
 		},
-		SNO: {
-			nullable: "N",
+		sno: {
+			nullable: false,
 			isPk: false,
 			description: "",
 			name: "sno",

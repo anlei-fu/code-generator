@@ -2,8 +2,8 @@ exports.fdTradeProfitFund = {
 	name: "fdTradeProfitFund",
 	rawName: "FD_TRADE_PROFIT_FUND",
 	columns: {
-		FUND_ID: {
-			nullable: "N",
+		fundId: {
+			nullable: false,
 			isPk: false,
 			description: "主键（利润任务相同）",
 			name: "fundId",
@@ -13,8 +13,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "月报表编号",
 			name: "recordId",
@@ -24,8 +24,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		COMPANY_ID: {
-			nullable: "N",
+		companyId: {
+			nullable: false,
 			isPk: false,
 			description: "公司编号",
 			name: "companyId",
@@ -35,8 +35,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		BILL_TYPE: {
-			nullable: "Y",
+		billType: {
+			nullable: true,
 			isPk: false,
 			description: "利润类:1-前向2-后向",
 			name: "billType",
@@ -46,8 +46,8 @@ exports.fdTradeProfitFund = {
 				length: "1"
 			}
 		},
-		SNAP_TIME: {
-			nullable: "N",
+		snapTime: {
+			nullable: false,
 			isPk: false,
 			description: "月份",
 			name: "snapTime",
@@ -57,8 +57,8 @@ exports.fdTradeProfitFund = {
 				length: ""
 			}
 		},
-		CHANGE_TYPE: {
-			nullable: "N",
+		changeType: {
+			nullable: false,
 			isPk: false,
 			description: "变动类型（11总利润加款12总利润平账加款13总利润平账减款21提取利润加款22提取利润红冲）",
 			name: "changeType",
@@ -68,8 +68,8 @@ exports.fdTradeProfitFund = {
 				length: "2"
 			}
 		},
-		DEAL_COUNT: {
-			nullable: "N",
+		dealCount: {
+			nullable: false,
 			isPk: false,
 			description: "总利润加款统计条数",
 			name: "dealCount",
@@ -79,8 +79,8 @@ exports.fdTradeProfitFund = {
 				length: "10"
 			}
 		},
-		TOTAL_PROFITS_FUND: {
-			nullable: "N",
+		totalProfitsFund: {
+			nullable: false,
 			isPk: false,
 			description: "总利润变动金额",
 			name: "totalProfitsFund",
@@ -90,8 +90,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		DRAW_PROFITS_FUND: {
-			nullable: "N",
+		drawProfitsFund: {
+			nullable: false,
 			isPk: false,
 			description: "已提取利润变动金额",
 			name: "drawProfitsFund",
@@ -101,8 +101,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		TOTAL_PROFITS_BALANCE: {
-			nullable: "N",
+		totalProfitsBalance: {
+			nullable: false,
 			isPk: false,
 			description: "总利润余额",
 			name: "totalProfitsBalance",
@@ -112,8 +112,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		DRAW_PROFITS_BALANCE: {
-			nullable: "N",
+		drawProfitsBalance: {
+			nullable: false,
 			isPk: false,
 			description: "已提取利润余额",
 			name: "drawProfitsBalance",
@@ -123,8 +123,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		CO_PROFITS_BALANCE: {
-			nullable: "N",
+		coProfitsBalance: {
+			nullable: false,
 			isPk: false,
 			description: "公司利润余额",
 			name: "coProfitsBalance",
@@ -134,8 +134,8 @@ exports.fdTradeProfitFund = {
 				length: "20"
 			}
 		},
-		CHANGE_DATE: {
-			nullable: "N",
+		changeDate: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeDate",

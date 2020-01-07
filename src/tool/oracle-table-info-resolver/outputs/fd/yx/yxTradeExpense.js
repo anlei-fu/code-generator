@@ -2,8 +2,8 @@ exports.yxTradeExpense = {
 	name: "yxTradeExpense",
 	rawName: "YX_TRADE_EXPENSE",
 	columns: {
-		RECORD_ID: {
-			nullable: "N",
+		recordId: {
+			nullable: false,
 			isPk: false,
 			description: "主键",
 			name: "recordId",
@@ -13,8 +13,8 @@ exports.yxTradeExpense = {
 				length: "20"
 			}
 		},
-		YX_ORDER_ID: {
-			nullable: "N",
+		yxOrderId: {
+			nullable: false,
 			isPk: false,
 			description: "记账系统订单号",
 			name: "yxOrderId",
@@ -24,8 +24,8 @@ exports.yxTradeExpense = {
 				length: "20"
 			}
 		},
-		TRADE_ORDER_NO: {
-			nullable: "N",
+		tradeOrderNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单号",
 			name: "tradeOrderNo",
@@ -35,8 +35,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		TRADE_EXPENSE_NO: {
-			nullable: "N",
+		tradeExpenseNo: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统费用编号",
 			name: "tradeExpenseNo",
@@ -46,8 +46,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		ORDER_SOURCE: {
-			nullable: "N",
+		orderSource: {
+			nullable: false,
 			isPk: false,
 			description: "订单来源（系统编号）",
 			name: "orderSource",
@@ -57,8 +57,8 @@ exports.yxTradeExpense = {
 				length: "3"
 			}
 		},
-		EXPENSE_TYPE: {
-			nullable: "N",
+		expenseType: {
+			nullable: false,
 			isPk: false,
 			description: "费用类型1：快递费，21：销券收益",
 			name: "expenseType",
@@ -68,8 +68,8 @@ exports.yxTradeExpense = {
 				length: "3"
 			}
 		},
-		DOWN_CHANNEL_NO: {
-			nullable: "N",
+		downChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "下游渠道",
 			name: "downChannelNo",
@@ -79,8 +79,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		UP_CHANNEL_NO: {
-			nullable: "N",
+		upChannelNo: {
+			nullable: false,
 			isPk: false,
 			description: "上游渠道",
 			name: "upChannelNo",
@@ -90,8 +90,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		AGENT_ID: {
-			nullable: "N",
+		agentId: {
+			nullable: false,
 			isPk: false,
 			description: "代理人编号",
 			name: "agentId",
@@ -101,8 +101,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		BUSINESS_TYPE: {
-			nullable: "N",
+		businessType: {
+			nullable: false,
 			isPk: false,
 			description: "业务类型",
 			name: "businessType",
@@ -112,8 +112,8 @@ exports.yxTradeExpense = {
 				length: "3"
 			}
 		},
-		CHANGE_AMOUNT: {
-			nullable: "N",
+		changeAmount: {
+			nullable: false,
 			isPk: false,
 			description: "费用金额",
 			name: "changeAmount",
@@ -123,8 +123,8 @@ exports.yxTradeExpense = {
 				length: "20"
 			}
 		},
-		BALANCE: {
-			nullable: "N",
+		balance: {
+			nullable: false,
 			isPk: false,
 			description: "余额",
 			name: "balance",
@@ -134,8 +134,8 @@ exports.yxTradeExpense = {
 				length: "20"
 			}
 		},
-		CHANGE_TIME: {
-			nullable: "N",
+		changeTime: {
+			nullable: false,
 			isPk: false,
 			description: "变动时间",
 			name: "changeTime",
@@ -145,8 +145,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		ORDER_TIME: {
-			nullable: "N",
+		orderTime: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统订单时间",
 			name: "orderTime",
@@ -156,8 +156,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		OUT_CHANGE_TIME: {
-			nullable: "N",
+		outChangeTime: {
+			nullable: false,
 			isPk: false,
 			description: "交易系统变动时间",
 			name: "outChangeTime",
@@ -167,8 +167,8 @@ exports.yxTradeExpense = {
 				length: ""
 			}
 		},
-		ACCOUNT_ID: {
-			nullable: "N",
+		accountId: {
+			nullable: false,
 			isPk: false,
 			description: "费用账号id",
 			name: "accountId",
@@ -178,8 +178,8 @@ exports.yxTradeExpense = {
 				length: "20"
 			}
 		},
-		ORDER_AMOUNT: {
-			nullable: "N",
+		orderAmount: {
+			nullable: false,
 			isPk: false,
 			description: "订单金额",
 			name: "orderAmount",
@@ -189,8 +189,8 @@ exports.yxTradeExpense = {
 				length: "20"
 			}
 		},
-		INCOME_TYPE: {
-			nullable: "N",
+		incomeType: {
+			nullable: false,
 			isPk: false,
 			description: "收入类型：1：支出，2：收入",
 			name: "incomeType",
@@ -200,8 +200,8 @@ exports.yxTradeExpense = {
 				length: "3"
 			}
 		},
-		MEMO: {
-			nullable: "Y",
+		memo: {
+			nullable: true,
 			isPk: false,
 			description: "备注",
 			name: "memo",

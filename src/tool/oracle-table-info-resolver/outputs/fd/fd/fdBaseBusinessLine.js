@@ -2,8 +2,8 @@ exports.fdBaseBusinessLine = {
 	name: "fdBaseBusinessLine",
 	rawName: "FD_BASE_BUSINESS_LINE",
 	columns: {
-		BUSINESS_ID: {
-			nullable: "N",
+		businessId: {
+			nullable: false,
 			isPk: true,
 			description: "主键",
 			name: "businessId",
@@ -13,8 +13,8 @@ exports.fdBaseBusinessLine = {
 				length: "20"
 			}
 		},
-		BUSINESS_NAME: {
-			nullable: "N",
+		businessName: {
+			nullable: false,
 			isPk: false,
 			description: "业务线名称",
 			name: "businessName",
