@@ -2,21 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.authority.mapper.SystemInfoMapper">
     <insert id="addSystemInfo">
-          insert  into @tableName
+          insert  into system_info
           <trim prefix="(" suffix=")" suffixOverrides=",">
-undefinedundefinedundefined
+ system_info.create_user,
+ system_info.description,
+ system_info.name,
+
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
-@content
+ #{createUser} ,
+ #{description} ,
+ #{name} ,
+
           </trim>
     </insert>
     <delete id="deleteSystemInfoById">
-          delete from @tableName
+          delete from system_info
 @where
     </delete>
     <update id="updateSystemInfoById">
-        update @tableName
+        update system_info
 @set
 @where
     </update>

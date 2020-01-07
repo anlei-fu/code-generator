@@ -12,6 +12,7 @@ PROPERTY_RENDER.setTempalte(`${IF_IDENT} #{@property} @suffix\r\n`);
  * @param {{ifExpression:String,property:String,suffix:String}} model
  */
 function renderProperty(model) {
+        model.property=model.name;
         let content = PROPERTY_RENDER.renderTemplate(model);
         model.content = content;
         

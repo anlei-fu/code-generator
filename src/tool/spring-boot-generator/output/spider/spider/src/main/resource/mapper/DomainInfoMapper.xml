@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.DomainInfoMapper">
+    <insert id="addDomainInfo">
+          insert  into domain_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ domain_info.domain_id,
+ domain_info.domain,
+ domain_info.max_speed,
+ domain_info.need_cookie,
+ domain_info.remark,
+ domain_info.encoding,
+ domain_info.http_protocal,
+ domain_info.type,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{domainId} ,
+ #{domain} ,
+ #{maxSpeed} ,
+ #{needCookie} ,
+ #{remark} ,
+ #{encoding} ,
+ #{httpProtocal} ,
+ #{type} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteDomainInfoById">
+          delete from domain_info
+@where
+    </delete>
+    <update id="updateDomainInfoById">
+        update domain_info
+@set
+@where
+    </update>
+    <select id="getDomainInfoById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form domainInfoName
+
+@where
+    </select>
+    <select id="getDomainInfoList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form domainInfoName
+
+@where
+    </select>
+
+</mapper>

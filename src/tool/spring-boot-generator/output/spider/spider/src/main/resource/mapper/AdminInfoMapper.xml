@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.AdminInfoMapper">
+    <insert id="addAdminInfo">
+          insert  into admin_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ admin_info.account,
+ admin_info.password,
+ admin_info.level,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{account} ,
+ #{password} ,
+ #{level} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteAdminInfoById">
+          delete from admin_info
+@where
+    </delete>
+    <update id="updateAdminInfoById">
+        update admin_info
+@set
+@where
+    </update>
+    <select id="getAdminInfoById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form adminInfoName
+
+@where
+    </select>
+    <select id="getAdminInfoList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form adminInfoName
+
+@where
+    </select>
+
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.WorkerRunRecordMapper">
+    <insert id="addWorkerRunRecord">
+          insert  into worker_run_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ worker_run_record.start_time,
+ worker_run_record.end_time,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{startTime} ,
+ #{endTime} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteWorkerRunRecordById">
+          delete from worker_run_record
+@where
+    </delete>
+    <update id="updateWorkerRunRecordById">
+        update worker_run_record
+@set
+@where
+    </update>
+    <select id="getWorkerRunRecordById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form workerRunRecordName
+
+@where
+    </select>
+    <select id="getWorkerRunRecordList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form workerRunRecordName
+
+@where
+    </select>
+
+</mapper>

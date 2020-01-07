@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.TaskMainConfigMapper">
+    <insert id="addTaskMainConfig">
+          insert  into task_main_config
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ task_main_config.task_id,
+ task_main_config.pattern,
+ task_main_config.encoding,
+ task_main_config.agent,
+ task_main_config.timeout,
+ task_main_config.script_version,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{taskId} ,
+ #{pattern} ,
+ #{encoding} ,
+ #{agent} ,
+ #{timeout} ,
+ #{scriptVersion} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteTaskMainConfigById">
+          delete from task_main_config
+@where
+    </delete>
+    <update id="updateTaskMainConfigById">
+        update task_main_config
+@set
+@where
+    </update>
+    <select id="getTaskMainConfigById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskMainConfigName
+
+@where
+    </select>
+    <select id="getTaskMainConfigList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskMainConfigName
+
+@where
+    </select>
+
+</mapper>

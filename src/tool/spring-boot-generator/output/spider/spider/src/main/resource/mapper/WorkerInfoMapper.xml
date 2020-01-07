@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.WorkerInfoMapper">
+    <insert id="addWorkerInfo">
+          insert  into worker_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ worker_info.ip,
+ worker_info.description,
+ worker_info.join_time,
+ worker_info.last_run_time,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{ip} ,
+ #{description} ,
+ #{joinTime} ,
+ #{lastRunTime} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteWorkerInfoById">
+          delete from worker_info
+@where
+    </delete>
+    <update id="updateWorkerInfoById">
+        update worker_info
+@set
+@where
+    </update>
+    <select id="getWorkerInfoById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form workerInfoName
+
+@where
+    </select>
+    <select id="getWorkerInfoList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form workerInfoName
+
+@where
+    </select>
+
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.WorkTaskRecordMapper">
+    <insert id="addWorkTaskRecord">
+          insert  into work_task_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ work_task_record.task_id,
+ work_task_record.worker_id,
+ work_task_record.task_main_config_id,
+ work_task_record.page_downloaded,
+ work_task_record.download_sucess,
+ work_task_record.success,
+ work_task_record.exit_code,
+ work_task_record.start_time,
+ work_task_record.end_time,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{taskId} ,
+ #{workerId} ,
+ #{taskMainConfigId} ,
+ #{pageDownloaded} ,
+ #{downloadSucess} ,
+ #{success} ,
+ #{exitCode} ,
+ #{startTime} ,
+ #{endTime} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteWorkTaskRecordById">
+          delete from work_task_record
+@where
+    </delete>
+    <update id="updateWorkTaskRecordById">
+        update work_task_record
+@set
+@where
+    </update>
+    <select id="getWorkTaskRecordById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form workTaskRecordName
+
+@where
+    </select>
+    <select id="getWorkTaskRecordList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form workTaskRecordName
+
+@where
+    </select>
+
+</mapper>

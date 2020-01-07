@@ -2,21 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.authority.mapper.SystemRoleInfoMapper">
     <insert id="addSystemRoleInfo">
-          insert  into @tableName
+          insert  into system_role_info
           <trim prefix="(" suffix=")" suffixOverrides=",">
-undefinedundefinedundefinedundefined
+ system_role_info.create_user,
+ system_role_info.description,
+ system_role_info.role,
+ system_role_info.system_id,
+
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
-@content
+ #{createUser} ,
+ #{description} ,
+ #{role} ,
+ #{systemId} ,
+
           </trim>
     </insert>
     <delete id="deleteSystemRoleInfoById">
-          delete from @tableName
+          delete from system_role_info
 @where
     </delete>
     <update id="updateSystemRoleInfoById">
-        update @tableName
+        update system_role_info
 @set
 @where
     </update>

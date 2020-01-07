@@ -2,21 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.authority.mapper.GroupRoleMapper">
     <insert id="addGroupRole">
-          insert  into @tableName
+          insert  into group_role
           <trim prefix="(" suffix=")" suffixOverrides=",">
-undefinedundefinedundefinedundefined
+ group_role.create_user,
+ group_role.role,
+ group_role.system_id,
+ group_role.user_account,
+
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
-@content
+ #{createUser} ,
+ #{role} ,
+ #{systemId} ,
+ #{userAccount} ,
+
           </trim>
     </insert>
     <delete id="deleteGroupRoleById">
-          delete from @tableName
+          delete from group_role
 @where
     </delete>
     <update id="updateGroupRoleById">
-        update @tableName
+        update group_role
 @set
 @where
     </update>

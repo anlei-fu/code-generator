@@ -2,21 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.authority.mapper.UserRoleMapper">
     <insert id="addUserRole">
-          insert  into @tableName
+          insert  into user_role
           <trim prefix="(" suffix=")" suffixOverrides=",">
-undefinedundefinedundefined
+ user_role.create_user,
+ user_role.system_id,
+ user_role.user_account,
+
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
-@content
+ #{createUser} ,
+ #{systemId} ,
+ #{userAccount} ,
+
           </trim>
     </insert>
     <delete id="deleteUserRoleById">
-          delete from @tableName
+          delete from user_role
 @where
     </delete>
     <update id="updateUserRoleById">
-        update @tableName
+        update user_role
 @set
 @where
     </update>

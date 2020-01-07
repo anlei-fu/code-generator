@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.TaskScriptConfigRecordMapper">
+    <insert id="addTaskScriptConfigRecord">
+          insert  into task_script_config_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ task_script_config_record.file,
+ task_script_config_record.version,
+ task_script_config_record.action,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{file} ,
+ #{version} ,
+ #{action} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteTaskScriptConfigRecordById">
+          delete from task_script_config_record
+@where
+    </delete>
+    <update id="updateTaskScriptConfigRecordById">
+        update task_script_config_record
+@set
+@where
+    </update>
+    <select id="getTaskScriptConfigRecordById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskScriptConfigRecordName
+
+@where
+    </select>
+    <select id="getTaskScriptConfigRecordList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskScriptConfigRecordName
+
+@where
+    </select>
+
+</mapper>

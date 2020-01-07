@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.DomainBlockRecordMapper">
+    <insert id="addDomainBlockRecord">
+          insert  into domain_block_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ domain_block_record.domain_id,
+ domain_block_record.worker_id,
+ domain_block_record.task_id,
+ domain_block_record.user_id,
+ domain_block_record.remark,
+ domain_block_record.block_time,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{domainId} ,
+ #{workerId} ,
+ #{taskId} ,
+ #{userId} ,
+ #{remark} ,
+ #{blockTime} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteDomainBlockRecordById">
+          delete from domain_block_record
+@where
+    </delete>
+    <update id="updateDomainBlockRecordById">
+        update domain_block_record
+@set
+@where
+    </update>
+    <select id="getDomainBlockRecordById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form domainBlockRecordName
+
+@where
+    </select>
+    <select id="getDomainBlockRecordList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form domainBlockRecordName
+
+@where
+    </select>
+
+</mapper>

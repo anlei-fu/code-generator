@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.DomainModelMapper">
+    <insert id="addDomainModel">
+          insert  into domain_model
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ domain_model.task_id,
+ domain_model.domain_id,
+ domain_model.model,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{taskId} ,
+ #{domainId} ,
+ #{model} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteDomainModelById">
+          delete from domain_model
+@where
+    </delete>
+    <update id="updateDomainModelById">
+        update domain_model
+@set
+@where
+    </update>
+    <select id="getDomainModelById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form domainModelName
+
+@where
+    </select>
+    <select id="getDomainModelList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form domainModelName
+
+@where
+    </select>
+
+</mapper>

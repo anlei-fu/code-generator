@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.TaskRunRecordMapper">
+    <insert id="addTaskRunRecord">
+          insert  into task_run_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ task_run_record.task_id,
+ task_run_record.page_downloaded,
+ task_run_record.success,
+ task_run_record.worker_joined,
+ task_run_record.start_time,
+ task_run_record.end_time,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{taskId} ,
+ #{pageDownloaded} ,
+ #{success} ,
+ #{workerJoined} ,
+ #{startTime} ,
+ #{endTime} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteTaskRunRecordById">
+          delete from task_run_record
+@where
+    </delete>
+    <update id="updateTaskRunRecordById">
+        update task_run_record
+@set
+@where
+    </update>
+    <select id="getTaskRunRecordById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskRunRecordName
+
+@where
+    </select>
+    <select id="getTaskRunRecordList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskRunRecordName
+
+@where
+    </select>
+
+</mapper>

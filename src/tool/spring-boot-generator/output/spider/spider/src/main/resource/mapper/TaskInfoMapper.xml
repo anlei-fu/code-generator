@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.TaskInfoMapper">
+    <insert id="addTaskInfo">
+          insert  into task_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ task_info.user_id,
+ task_info.main_config_id,
+ task_info.description,
+ task_info.level,
+ task_info.status,
+ task_info.queue_id,
+ task_info.topic_id,
+ task_info.create_time,
+ task_info.end_time,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{userId} ,
+ #{mainConfigId} ,
+ #{description} ,
+ #{level} ,
+ #{status} ,
+ #{queueId} ,
+ #{topicId} ,
+ #{createTime} ,
+ #{endTime} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteTaskInfoById">
+          delete from task_info
+@where
+    </delete>
+    <update id="updateTaskInfoById">
+        update task_info
+@set
+@where
+    </update>
+    <select id="getTaskInfoById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskInfoName
+
+@where
+    </select>
+    <select id="getTaskInfoList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form taskInfoName
+
+@where
+    </select>
+
+</mapper>

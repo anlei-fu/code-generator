@@ -17,15 +17,13 @@ exports.roleSystemUserInfoConfig = {
                                 .id("addRoleSystemUserInfo")
                                 .includes(collection => {
                                         collection.includes(roleSystemUserInfo.columnsArray)
-                                                  .excludes("account")
-                                                  .excludes(["account","createTime"])
+                                                  .excludes(["createTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/roleSystemUserInfo");
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("account")
                                            .validate("password","@NotNull")
                                            .validate("password","@Password")
                                            .validate("role","@NotNull")

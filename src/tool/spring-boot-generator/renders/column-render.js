@@ -3,7 +3,7 @@ const { renderIf } = require("./if-render");
 
 const IF_IDENT = "";
 const _columnsRender = new SimpleRender();
-_columnsRender.setTempalte(`${IF_IDENT}  @column@alias@suffix\r\n`);
+_columnsRender.setTempalte(`${IF_IDENT} @column@alias@suffix\r\n`);
 
 /**
  * Render column template

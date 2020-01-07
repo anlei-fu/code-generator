@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.mapper.UserChargeRecordMapper">
+    <insert id="addUserChargeRecord">
+          insert  into user_charge_record
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ user_charge_record.user_id,
+ user_charge_record.way,
+ user_charge_record.charge_account,
+ user_charge_record.order_id,
+ user_charge_record.amount,
+ user_charge_record.status,
+ user_charge_record.charge_time,
+
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+ #{userId} ,
+ #{way} ,
+ #{chargeAccount} ,
+ #{orderId} ,
+ #{amount} ,
+ #{status} ,
+ #{chargeTime} ,
+
+          </trim>
+    </insert>
+    <delete id="deleteUserChargeRecordById">
+          delete from user_charge_record
+@where
+    </delete>
+    <update id="updateUserChargeRecordById">
+        update user_charge_record
+@set
+@where
+    </update>
+    <select id="getUserChargeRecordById" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form userChargeRecordName
+
+@where
+    </select>
+    <select id="getUserChargeRecordList" resultType="com.spider.pojo.@resultType">
+          select
+undefined
+          form userChargeRecordName
+
+@where
+    </select>
+
+</mapper>

@@ -12,10 +12,8 @@ IF_RENDER.setTempalte(`${IF_IDENT}<if test="@expression">\r\n${IF_IDENT}@prefix@
  */
 function renderIf(model) {
         model.prefix = model.prefix || "";
-        let ret= model.ifExpression !=undefined ? IF_RENDER.renderTemplate(model) : model.cotent;
-        console.log("if");
-        console.log(ret);
-        return ret;
+        return model.ifExpression !=undefined ? IF_RENDER.renderTemplate(model) : model.content;
+       
 }
 
 exports.renderIf = renderIf;

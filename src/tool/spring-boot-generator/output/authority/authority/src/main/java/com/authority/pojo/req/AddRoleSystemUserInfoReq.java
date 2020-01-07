@@ -15,6 +15,9 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class AddRoleSystemUserInfoReq extends PageReq {
 
+    @ApiModelProperty("account")
+    private String account;
+
     @ApiModelProperty("password")
     @NotNull
     @Password
