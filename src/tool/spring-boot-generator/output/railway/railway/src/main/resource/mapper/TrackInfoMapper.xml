@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.TrackInfoMapper">
+    <insert id="addTrackInfo" parameterType="com.railway.pojo.req.AddTrackInfoReq">
+          insert  into track_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+             track_info.is_delete,
+            <if test="operator != null">
+                  track_info.operator,
+            </if>
+             track_info.track_code,
+             track_info.track_division_id,
+            <if test="trackType != null">
+                  track_info.track_type,
+            </if>
+             track_info.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+             #{isDelete},
+            <if test="operator != null">
+                  #{operator},
+            </if>
+             #{trackCode},
+             #{trackDivisionId},
+            <if test="trackType != null">
+                  #{trackType},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteTrackInfoById">
+          delete from track_info
+          <where>
+            <if test="id != null">
+                  track_info.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateTrackInfoById" parameterType="com.railway.pojo.param.UpdateTrackInfoByIdParams">
+        update track_info
+        <set>
+            <if test="isDelete != null">
+                  track_info.is_delete = #{IsDelete},
+            </if>
+            <if test="operator != null">
+                  track_info.operator = #{Operator},
+            </if>
+            <if test="trackCode != null">
+                  track_info.track_code = #{TrackCode},
+            </if>
+            <if test="trackDivisionId != null">
+                  track_info.track_division_id = #{TrackDivisionId},
+            </if>
+            <if test="trackType != null">
+                  track_info.track_type = #{TrackType}
+            </if>
+            track_info.update_time= current_timestamp
+        </set>
+          <where>
+            <if test="id != null">
+                  track_info.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getTrackInfoById" resultType="com.railway.pojo.entity.TrackInfo">
+          select
+             track_info.create_time,
+             track_info.id,
+             track_info.is_delete,
+             track_info.operator,
+             track_info.track_code,
+             track_info.track_division_id,
+             track_info.track_type,
+             track_info.update_time
+          form track_info
+          <where>
+            <if test="id != null">
+                  track_info.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getTrackInfoList" resultType="com.railway.pojo.entity.TrackInfo" parameterType="com.railway.pojo.req.GetTrackInfoListReq">
+          select
+             track_info.create_time,
+             track_info.id,
+             track_info.is_delete,
+             track_info.operator,
+             track_info.track_code,
+             track_info.track_division_id,
+             track_info.track_type,
+             track_info.update_time
+          form track_info
+          <where>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  track_info.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="isDelete != null">
+                  and track_info.is_delete = #{isDelete}
+            </if>
+            <if test="operator != null">
+                  and track_info.operator = #{operator}
+            </if>
+            <if test="trackCode != null">
+                  and track_info.track_code = #{trackCode}
+            </if>
+            <if test="trackDivisionId != null">
+                  and track_info.track_division_id = #{trackDivisionId}
+            </if>
+            <if test="trackType != null">
+                  and track_info.track_type = #{trackType}
+            </if>
+            <if test="updateTimeStart !=null and  updateTimeEnd != null">
+                  and track_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+            </if>
+          </where>
+    </select>
+</mapper>

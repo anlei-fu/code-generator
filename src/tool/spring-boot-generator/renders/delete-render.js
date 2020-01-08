@@ -14,7 +14,7 @@ const DELETE_RENDER = new SimpleRender({}, `${__dirname}/templates/delete.xml`);
 function renderDelete(config) {
         let deleteModel = {
                 id: config.id,
-                conditions: renderConditions(config)
+                where: renderConditions(config)
         }
 
         return DELETE_RENDER.renderTemplate(deleteModel);

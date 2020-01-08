@@ -31,7 +31,8 @@ public class WorkTaskRecordServiceImpl implements WorkTaskRecordService {
 
     @Override
     public boolean updateWorkTaskRecordById(Integer id, UpdateWorkTaskRecordByIdReq req) {
-        return workTaskRecordMapper.updateWorkTaskRecordById(id, req) > 0;
+        params params = new UpdateWorkTaskRecordByIdParams(id, req)
+        return workTaskRecordMapper.updateWorkTaskRecordById(params) > 0;
     }
 
     @Override

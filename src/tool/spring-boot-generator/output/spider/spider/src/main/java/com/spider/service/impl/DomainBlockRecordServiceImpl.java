@@ -31,7 +31,8 @@ public class DomainBlockRecordServiceImpl implements DomainBlockRecordService {
 
     @Override
     public boolean updateDomainBlockRecordById(Integer id, UpdateDomainBlockRecordByIdReq req) {
-        return domainBlockRecordMapper.updateDomainBlockRecordById(id, req) > 0;
+        params params = new UpdateDomainBlockRecordByIdParams(id, req)
+        return domainBlockRecordMapper.updateDomainBlockRecordById(params) > 0;
     }
 
     @Override

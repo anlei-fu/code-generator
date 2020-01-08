@@ -31,7 +31,8 @@ public class WorkerInfoServiceImpl implements WorkerInfoService {
 
     @Override
     public boolean updateWorkerInfoById(Integer id, UpdateWorkerInfoByIdReq req) {
-        return workerInfoMapper.updateWorkerInfoById(id, req) > 0;
+        params params = new UpdateWorkerInfoByIdParams(id, req)
+        return workerInfoMapper.updateWorkerInfoById(params) > 0;
     }
 
     @Override

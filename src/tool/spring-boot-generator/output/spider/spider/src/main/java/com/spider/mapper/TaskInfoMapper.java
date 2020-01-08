@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.TaskInfo;
+import com.spider.pojo.params.UpdateTaskInfoByIdParams;
 import com.spider.pojo.req.AddTaskInfoReq;
 import com.spider.pojo.req.GetTaskInfoListReq;
-import com.spider.pojo.req.UpdateTaskInfoByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface TaskInfoMapper {
     
         int deleteTaskInfoById(@Params("id") Integer id);
     
-        int updateTaskInfoById(@Params("id") Integer id, @Params("req") UpdateTaskInfoByIdReq req);
+        int updateTaskInfoById(UpdateTaskInfoByIdParams params);
     
         TaskInfo getTaskInfoById(@Params("id") Integer id);
     

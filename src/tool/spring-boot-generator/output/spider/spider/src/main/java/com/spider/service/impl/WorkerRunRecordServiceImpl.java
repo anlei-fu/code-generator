@@ -31,7 +31,8 @@ public class WorkerRunRecordServiceImpl implements WorkerRunRecordService {
 
     @Override
     public boolean updateWorkerRunRecordById(Integer id, UpdateWorkerRunRecordByIdReq req) {
-        return workerRunRecordMapper.updateWorkerRunRecordById(id, req) > 0;
+        params params = new UpdateWorkerRunRecordByIdParams(id, req)
+        return workerRunRecordMapper.updateWorkerRunRecordById(params) > 0;
     }
 
     @Override

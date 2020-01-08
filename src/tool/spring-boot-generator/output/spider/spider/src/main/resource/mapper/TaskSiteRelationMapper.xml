@@ -1,46 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spider.mapper.TaskSiteRelationMapper">
-    <insert id="addTaskSiteRelation">
+    <insert id="addTaskSiteRelation" parameterType="com.spider.pojo.req.AddTaskSiteRelationReq">
           insert  into task_site_relation
           <trim prefix="(" suffix=")" suffixOverrides=",">
- task_site_relation.site_id,
- task_site_relation.task_id,
- task_site_relation.user_id,
- task_site_relation.domain,
-
+             task_site_relation.site_id,
+             task_site_relation.task_id,
+             task_site_relation.user_id,
+            <if test="domain != null">
+                  task_site_relation.domain
+            </if>
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{siteId} ,
- #{taskId} ,
- #{userId} ,
- #{domain} ,
-
+             #{siteId},
+             #{taskId},
+             #{userId},
+            <if test="domain != null">
+                  #{domain}
+            </if>
           </trim>
     </insert>
     <delete id="deleteTaskSiteRelationById">
           delete from task_site_relation
-@where
+          <where>
+            <if test="id != null">
+                  task_site_relation.id = #{id}
+            </if>
+          </where>
     </delete>
-    <update id="updateTaskSiteRelationById">
+    <update id="updateTaskSiteRelationById" parameterType="com.spider.pojo.param.UpdateTaskSiteRelationByIdParams">
         update task_site_relation
-@set
-@where
+        <set>
+            <if test="siteId != null">
+                  task_site_relation.site_id = #{SiteId},
+            </if>
+            <if test="taskId != null">
+                  task_site_relation.task_id = #{TaskId},
+            </if>
+            <if test="userId != null">
+                  task_site_relation.user_id = #{UserId},
+            </if>
+            <if test="domain != null">
+                  task_site_relation.domain = #{Domain}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  task_site_relation.id = #{id}
+            </if>
+          </where>
     </update>
-    <select id="getTaskSiteRelationById" resultType="com.spider.pojo.@resultType">
+    <select id="getTaskSiteRelationById" resultType="com.spider.pojo.entity.TaskSiteRelation">
           select
-undefined
-          form taskSiteRelationName
-
-@where
+             task_site_relation.id,
+             task_site_relation.site_id,
+             task_site_relation.task_id,
+             task_site_relation.user_id,
+             task_site_relation.domain
+          form task_site_relation
+          <where>
+            <if test="id != null">
+                  task_site_relation.id = #{id}
+            </if>
+          </where>
     </select>
-    <select id="getTaskSiteRelationList" resultType="com.spider.pojo.@resultType">
+    <select id="getTaskSiteRelationList" resultType="com.spider.pojo.entity.TaskSiteRelation" parameterType="com.spider.pojo.req.GetTaskSiteRelationListReq">
           select
-undefined
-          form taskSiteRelationName
-
-@where
+             task_site_relation.id,
+             task_site_relation.site_id,
+             task_site_relation.task_id,
+             task_site_relation.user_id,
+             task_site_relation.domain
+          form task_site_relation
+          <where>
+            <if test="siteId != null">
+                  task_site_relation.site_id = #{siteId}
+            </if>
+            <if test="taskId != null">
+                  and task_site_relation.task_id = #{taskId}
+            </if>
+            <if test="userId != null">
+                  and task_site_relation.user_id = #{userId}
+            </if>
+            <if test="domain != null and domain != ''">
+                  and task_site_relation.domain = #{domain}
+            </if>
+          </where>
     </select>
-
 </mapper>

@@ -1,4 +1,4 @@
-    <update id="@id">
+    <update id="@id"@parameterType>
         update @tableName
 @set
 @where

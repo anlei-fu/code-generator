@@ -31,7 +31,8 @@ public class UserChargeRecordServiceImpl implements UserChargeRecordService {
 
     @Override
     public boolean updateUserChargeRecordById(Integer id, UpdateUserChargeRecordByIdReq req) {
-        return userChargeRecordMapper.updateUserChargeRecordById(id, req) > 0;
+        params params = new UpdateUserChargeRecordByIdParams(id, req)
+        return userChargeRecordMapper.updateUserChargeRecordById(params) > 0;
     }
 
     @Override

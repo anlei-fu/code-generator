@@ -31,7 +31,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public boolean updateUserInfoById(Integer id, UpdateUserInfoByIdReq req) {
-        return userInfoMapper.updateUserInfoById(id, req) > 0;
+        params params = new UpdateUserInfoByIdParams(id, req)
+        return userInfoMapper.updateUserInfoById(params) > 0;
     }
 
     @Override

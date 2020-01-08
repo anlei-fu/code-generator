@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.UserChargeRecord;
+import com.spider.pojo.params.UpdateUserChargeRecordByIdParams;
 import com.spider.pojo.req.AddUserChargeRecordReq;
 import com.spider.pojo.req.GetUserChargeRecordListReq;
-import com.spider.pojo.req.UpdateUserChargeRecordByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface UserChargeRecordMapper {
     
         int deleteUserChargeRecordById(@Params("id") Integer id);
     
-        int updateUserChargeRecordById(@Params("id") Integer id, @Params("req") UpdateUserChargeRecordByIdReq req);
+        int updateUserChargeRecordById(UpdateUserChargeRecordByIdParams params);
     
         UserChargeRecord getUserChargeRecordById(@Params("id") Integer id);
     

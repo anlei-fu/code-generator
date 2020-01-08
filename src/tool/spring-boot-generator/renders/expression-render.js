@@ -8,7 +8,7 @@ const { renderIf } = require("./if-render");
  * @returns {String} 
  */
 function renderExpression(model) {
-        let content = model.expression;
+        let content = model.expression.replace("@prefix",model.prefix);
         model.content = content;
         return renderIf(model);
 }

@@ -31,7 +31,8 @@ public class TaskMainConfigServiceImpl implements TaskMainConfigService {
 
     @Override
     public boolean updateTaskMainConfigById(Integer id, UpdateTaskMainConfigByIdReq req) {
-        return taskMainConfigMapper.updateTaskMainConfigById(id, req) > 0;
+        params params = new UpdateTaskMainConfigByIdParams(id, req)
+        return taskMainConfigMapper.updateTaskMainConfigById(params) > 0;
     }
 
     @Override

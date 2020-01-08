@@ -31,7 +31,8 @@ public class UserDeductRecordServiceImpl implements UserDeductRecordService {
 
     @Override
     public boolean updateUserDeductRecordById(Integer id, UpdateUserDeductRecordByIdReq req) {
-        return userDeductRecordMapper.updateUserDeductRecordById(id, req) > 0;
+        params params = new UpdateUserDeductRecordByIdParams(id, req)
+        return userDeductRecordMapper.updateUserDeductRecordById(params) > 0;
     }
 
     @Override

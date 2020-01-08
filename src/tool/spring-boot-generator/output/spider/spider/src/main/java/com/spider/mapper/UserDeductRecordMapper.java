@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.UserDeductRecord;
+import com.spider.pojo.params.UpdateUserDeductRecordByIdParams;
 import com.spider.pojo.req.AddUserDeductRecordReq;
 import com.spider.pojo.req.GetUserDeductRecordListReq;
-import com.spider.pojo.req.UpdateUserDeductRecordByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface UserDeductRecordMapper {
     
         int deleteUserDeductRecordById(@Params("id") Integer id);
     
-        int updateUserDeductRecordById(@Params("id") Integer id, @Params("req") UpdateUserDeductRecordByIdReq req);
+        int updateUserDeductRecordById(UpdateUserDeductRecordByIdParams params);
     
         UserDeductRecord getUserDeductRecordById(@Params("id") Integer id);
     

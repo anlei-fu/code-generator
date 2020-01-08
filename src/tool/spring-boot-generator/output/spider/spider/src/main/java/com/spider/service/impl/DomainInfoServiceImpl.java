@@ -31,7 +31,8 @@ public class DomainInfoServiceImpl implements DomainInfoService {
 
     @Override
     public boolean updateDomainInfoById(Integer id, UpdateDomainInfoByIdReq req) {
-        return domainInfoMapper.updateDomainInfoById(id, req) > 0;
+        params params = new UpdateDomainInfoByIdParams(id, req)
+        return domainInfoMapper.updateDomainInfoById(params) > 0;
     }
 
     @Override

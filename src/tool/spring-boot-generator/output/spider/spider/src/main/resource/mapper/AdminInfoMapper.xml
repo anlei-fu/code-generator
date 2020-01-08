@@ -1,44 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spider.mapper.AdminInfoMapper">
-    <insert id="addAdminInfo">
+    <insert id="addAdminInfo" parameterType="com.spider.pojo.req.AddAdminInfoReq">
           insert  into admin_info
           <trim prefix="(" suffix=")" suffixOverrides=",">
- admin_info.account,
- admin_info.password,
- admin_info.level,
-
+             admin_info.account,
+             admin_info.password,
+            <if test="level != null">
+                  admin_info.level
+            </if>
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{account} ,
- #{password} ,
- #{level} ,
-
+             #{account},
+             #{password},
+            <if test="level != null">
+                  #{level}
+            </if>
           </trim>
     </insert>
     <delete id="deleteAdminInfoById">
           delete from admin_info
-@where
+          <where>
+            <if test="id != null">
+                  admin_info.id = #{id}
+            </if>
+          </where>
     </delete>
-    <update id="updateAdminInfoById">
+    <update id="updateAdminInfoById" parameterType="com.spider.pojo.param.UpdateAdminInfoByIdParams">
         update admin_info
-@set
-@where
+        <set>
+            <if test="account != null">
+                  admin_info.account = #{Account},
+            </if>
+            <if test="password != null">
+                  admin_info.password = #{Password},
+            </if>
+            <if test="level != null">
+                  admin_info.level = #{Level}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  admin_info.id = #{id}
+            </if>
+          </where>
     </update>
-    <select id="getAdminInfoById" resultType="com.spider.pojo.@resultType">
+    <select id="getAdminInfoById" resultType="com.spider.pojo.entity.AdminInfo">
           select
-undefined
-          form adminInfoName
-
-@where
+             admin_info.id,
+             admin_info.account,
+             admin_info.password,
+             admin_info.level
+          form admin_info
+          <where>
+            <if test="id != null">
+                  admin_info.id = #{id}
+            </if>
+          </where>
     </select>
-    <select id="getAdminInfoList" resultType="com.spider.pojo.@resultType">
+    <select id="getAdminInfoList" resultType="com.spider.pojo.entity.AdminInfo" parameterType="com.spider.pojo.req.GetAdminInfoListReq">
           select
-undefined
-          form adminInfoName
-
-@where
+             admin_info.id,
+             admin_info.account,
+             admin_info.password,
+             admin_info.level
+          form admin_info
+          <where>
+            <if test="account != null">
+                  admin_info.account = #{account}
+            </if>
+            <if test="level != null">
+                  and admin_info.level = #{level}
+            </if>
+          </where>
     </select>
-
 </mapper>

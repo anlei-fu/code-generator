@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.AdminInfo;
+import com.spider.pojo.params.UpdateAdminInfoByIdParams;
 import com.spider.pojo.req.AddAdminInfoReq;
 import com.spider.pojo.req.GetAdminInfoListReq;
-import com.spider.pojo.req.UpdateAdminInfoByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface AdminInfoMapper {
     
         int deleteAdminInfoById(@Params("id") Integer id);
     
-        int updateAdminInfoById(@Params("id") Integer id, @Params("req") UpdateAdminInfoByIdReq req);
+        int updateAdminInfoById(UpdateAdminInfoByIdParams params);
     
         AdminInfo getAdminInfoById(@Params("id") Integer id);
     

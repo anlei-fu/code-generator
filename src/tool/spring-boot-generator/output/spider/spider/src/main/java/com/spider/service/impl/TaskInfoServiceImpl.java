@@ -31,7 +31,8 @@ public class TaskInfoServiceImpl implements TaskInfoService {
 
     @Override
     public boolean updateTaskInfoById(Integer id, UpdateTaskInfoByIdReq req) {
-        return taskInfoMapper.updateTaskInfoById(id, req) > 0;
+        params params = new UpdateTaskInfoByIdParams(id, req)
+        return taskInfoMapper.updateTaskInfoById(params) > 0;
     }
 
     @Override

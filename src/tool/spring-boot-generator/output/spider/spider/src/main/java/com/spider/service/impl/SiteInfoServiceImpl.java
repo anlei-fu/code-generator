@@ -31,7 +31,8 @@ public class SiteInfoServiceImpl implements SiteInfoService {
 
     @Override
     public boolean updateSiteInfoById(Integer id, UpdateSiteInfoByIdReq req) {
-        return siteInfoMapper.updateSiteInfoById(id, req) > 0;
+        params params = new UpdateSiteInfoByIdParams(id, req)
+        return siteInfoMapper.updateSiteInfoById(params) > 0;
     }
 
     @Override

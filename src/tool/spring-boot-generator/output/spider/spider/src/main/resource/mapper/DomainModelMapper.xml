@@ -1,44 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spider.mapper.DomainModelMapper">
-    <insert id="addDomainModel">
+    <insert id="addDomainModel" parameterType="com.spider.pojo.req.AddDomainModelReq">
           insert  into domain_model
           <trim prefix="(" suffix=")" suffixOverrides=",">
- domain_model.task_id,
- domain_model.domain_id,
- domain_model.model,
-
+             domain_model.task_id,
+             domain_model.domain_id,
+            <if test="model != null">
+                  domain_model.model
+            </if>
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{taskId} ,
- #{domainId} ,
- #{model} ,
-
+             #{taskId},
+             #{domainId},
+            <if test="model != null">
+                  #{model}
+            </if>
           </trim>
     </insert>
     <delete id="deleteDomainModelById">
           delete from domain_model
-@where
+          <where>
+            <if test="id != null">
+                  domain_model.id = #{id}
+            </if>
+          </where>
     </delete>
-    <update id="updateDomainModelById">
+    <update id="updateDomainModelById" parameterType="com.spider.pojo.param.UpdateDomainModelByIdParams">
         update domain_model
-@set
-@where
+        <set>
+            <if test="taskId != null">
+                  domain_model.task_id = #{TaskId},
+            </if>
+            <if test="domainId != null">
+                  domain_model.domain_id = #{DomainId},
+            </if>
+            <if test="model != null">
+                  domain_model.model = #{Model}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  domain_model.id = #{id}
+            </if>
+          </where>
     </update>
-    <select id="getDomainModelById" resultType="com.spider.pojo.@resultType">
+    <select id="getDomainModelById" resultType="com.spider.pojo.entity.DomainModel">
           select
-undefined
-          form domainModelName
-
-@where
+             domain_model.id,
+             domain_model.task_id,
+             domain_model.domain_id,
+             domain_model.model
+          form domain_model
+          <where>
+            <if test="id != null">
+                  domain_model.id = #{id}
+            </if>
+          </where>
     </select>
-    <select id="getDomainModelList" resultType="com.spider.pojo.@resultType">
+    <select id="getDomainModelList" resultType="com.spider.pojo.entity.DomainModel" parameterType="com.spider.pojo.req.GetDomainModelListReq">
           select
-undefined
-          form domainModelName
-
-@where
+             domain_model.id,
+             domain_model.task_id,
+             domain_model.domain_id,
+             domain_model.model
+          form domain_model
+          <where>
+            <if test="taskId != null">
+                  domain_model.task_id = #{taskId}
+            </if>
+            <if test="domainId != null">
+                  and domain_model.domain_id = #{domainId}
+            </if>
+            <if test="model != null and model != ''">
+                  and domain_model.model = #{model}
+            </if>
+          </where>
     </select>
-
 </mapper>

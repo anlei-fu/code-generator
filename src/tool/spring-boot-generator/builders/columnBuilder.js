@@ -52,11 +52,11 @@ exports.ColumnBuilder = class ColumnBuilder {
          * Set expression
          * 
          * @param {String|[String]|{name:String}|[{name:String}]} item 
-         * @param {String} expression 
+         * @param {String} exp 
          * @returns {ColumnBuilder}
          */
-         expression(item,expression){
-                 return this._setProperty(item,"expression",expression);
+         exp(item,exp){
+                 return this._setProperty(item,"exp",exp);
          } 
 
         /**

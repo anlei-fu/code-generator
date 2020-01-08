@@ -83,7 +83,7 @@ class ConfigBuilderGenerator {
         _renderExpression(items) {
                 let output = "";
                 items.forEach(x => {
-                        output += EXCLUDE_IDENT + `.expression("${x.key}","${x.expression}")\r\n`;
+                        output += EXCLUDE_IDENT + `.exp("${x.key}","${x.expression}")\r\n`;
                 })
 
                 return output;

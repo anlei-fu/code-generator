@@ -1,4 +1,4 @@
-const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
+const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
 const { renderSelect } = require("./select-render");
 const { renderUpdate } = require("./update-render");
 const { renderDelete } = require("./delete-render");

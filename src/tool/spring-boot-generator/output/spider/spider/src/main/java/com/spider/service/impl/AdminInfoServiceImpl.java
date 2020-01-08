@@ -31,7 +31,8 @@ public class AdminInfoServiceImpl implements AdminInfoService {
 
     @Override
     public boolean updateAdminInfoById(Integer id, UpdateAdminInfoByIdReq req) {
-        return adminInfoMapper.updateAdminInfoById(id, req) > 0;
+        params params = new UpdateAdminInfoByIdParams(id, req)
+        return adminInfoMapper.updateAdminInfoById(params) > 0;
     }
 
     @Override

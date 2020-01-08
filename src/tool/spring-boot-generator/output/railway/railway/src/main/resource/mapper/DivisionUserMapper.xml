@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.DivisionUserMapper">
+    <insert id="addDivisionUser" parameterType="com.railway.pojo.req.AddDivisionUserReq">
+          insert  into division_user
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="divisionId != null">
+                  division_user.division_id,
+            </if>
+            <if test="isDelete != null">
+                  division_user.is_delete,
+            </if>
+            <if test="operator != null">
+                  division_user.operator,
+            </if>
+            <if test="userId != null">
+                  division_user.user_id,
+            </if>
+             division_user.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="divisionId != null">
+                  #{divisionId},
+            </if>
+            <if test="isDelete != null">
+                  #{isDelete},
+            </if>
+            <if test="operator != null">
+                  #{operator},
+            </if>
+            <if test="userId != null">
+                  #{userId},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteDivisionUserById">
+          delete from division_user
+          <where>
+            <if test="id != null">
+                  division_user.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateDivisionUserById" parameterType="com.railway.pojo.param.UpdateDivisionUserByIdParams">
+        update division_user
+        <set>
+            <if test="divisionId != null">
+                  division_user.division_id = #{DivisionId},
+            </if>
+            <if test="isDelete != null">
+                  division_user.is_delete = #{IsDelete},
+            </if>
+            <if test="operator != null">
+                  division_user.operator = #{Operator},
+            </if>
+            <if test="userId != null">
+                  division_user.user_id = #{UserId}
+            </if>
+            division_user.update_time= current_timestamp
+        </set>
+          <where>
+            <if test="id != null">
+                  division_user.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getDivisionUserById" resultType="com.railway.pojo.entity.DivisionUser">
+          select
+             division_user.create_time,
+             division_user.division_id,
+             division_user.id,
+             division_user.is_delete,
+             division_user.operator,
+             division_user.update_time,
+             division_user.user_id
+          form division_user
+          <where>
+            <if test="id != null">
+                  division_user.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getDivisionUserList" resultType="com.railway.pojo.entity.DivisionUser" parameterType="com.railway.pojo.req.GetDivisionUserListReq">
+          select
+             division_user.create_time,
+             division_user.division_id,
+             division_user.id,
+             division_user.is_delete,
+             division_user.operator,
+             division_user.update_time,
+             division_user.user_id
+          form division_user
+          <where>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  division_user.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="divisionId != null">
+                  and division_user.division_id = #{divisionId}
+            </if>
+            <if test="isDelete != null">
+                  and division_user.is_delete = #{isDelete}
+            </if>
+            <if test="operator != null">
+                  and division_user.operator = #{operator}
+            </if>
+            <if test="updateTimeStart !=null and  updateTimeEnd != null">
+                  and division_user.update_time between #{updateTimeStart} and #{updateTimeEnd}
+            </if>
+            <if test="userId != null">
+                  and division_user.user_id = #{userId}
+            </if>
+          </where>
+    </select>
+</mapper>

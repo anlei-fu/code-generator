@@ -57,6 +57,11 @@ function getReqParams(config, withType) {
  * @param {ReqConfig} req 
  */
 function generateReq(config, req) {
+        config.reqs.forEach(x=>{
+             if(!x.doCreate)
+                 req.excludes.add(x.name);
+        });
+
         let conditions;
         if (config.type == "select" || config.type == "delete") {
                 conditions = getConditions(config);
@@ -73,11 +78,14 @@ function generateReq(config, req) {
                 if (req.validates.has(x.name))
                         x.validates = req.validates.get(x.name);
 
-                let expression = x.expression;
-                if (expression == "range") {
+                if(x.expression){
+                        console.log(x.expression);
+                }
+                let exp = x.exp;
+                if (exp == "range") {
                         rets.push({ name: `${x.name}Min`, type: x.type, validates: x.validates, description: `${x.description} min` });
                         rets.push({ name: `${x.name}Max`, type: x.type, validates: x.validates, description: `${x.description} max` });
-                } else if (expression == "timeRange") {
+                } else if (exp == "timeRange") {
                         rets.push({ name: `${x.name}Start`, type: x.type, validates: x.validates, description: `${x.description} start time` });
                         rets.push({ name: `${x.name}End`, type: x.type, validates: x.validates, description: `${x.description} end time` });
                 } else {

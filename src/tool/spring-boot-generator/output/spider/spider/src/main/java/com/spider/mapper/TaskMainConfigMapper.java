@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.TaskMainConfig;
+import com.spider.pojo.params.UpdateTaskMainConfigByIdParams;
 import com.spider.pojo.req.AddTaskMainConfigReq;
 import com.spider.pojo.req.GetTaskMainConfigListReq;
-import com.spider.pojo.req.UpdateTaskMainConfigByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface TaskMainConfigMapper {
     
         int deleteTaskMainConfigById(@Params("id") Integer id);
     
-        int updateTaskMainConfigById(@Params("id") Integer id, @Params("req") UpdateTaskMainConfigByIdReq req);
+        int updateTaskMainConfigById(UpdateTaskMainConfigByIdParams params);
     
         TaskMainConfig getTaskMainConfigById(@Params("id") Integer id);
     

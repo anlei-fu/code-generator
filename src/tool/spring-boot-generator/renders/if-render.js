@@ -1,8 +1,8 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
 
-const IF_IDENT="";
+const IF_IDENT = "            ";
 const IF_RENDER = new SimpleRender({});
-IF_RENDER.setTempalte(`${IF_IDENT}<if test="@expression">\r\n${IF_IDENT}@prefix@content${IF_IDENT}</if>\r\n`);
+IF_RENDER.setTempalte(`${IF_IDENT}<if test="@ifExpression">\r\n${IF_IDENT}      @content${IF_IDENT}</if>\r\n`);
 
 /**
  * Render if template
@@ -11,9 +11,11 @@ IF_RENDER.setTempalte(`${IF_IDENT}<if test="@expression">\r\n${IF_IDENT}@prefix@
  * @returns {String}
  */
 function renderIf(model) {
-        model.prefix = model.prefix || "";
-        return model.ifExpression !=undefined ? IF_RENDER.renderTemplate(model) : model.content;
-       
+        if (!model.ifExpression)
+                return model.content;
+
+        model.content = model.content.trimLeft();
+        return IF_RENDER.renderTemplate(model);
 }
 
 exports.renderIf = renderIf;

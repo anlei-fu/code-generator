@@ -31,7 +31,8 @@ public class TaskCookieConfigServiceImpl implements TaskCookieConfigService {
 
     @Override
     public boolean updateTaskCookieConfigById(Integer id, UpdateTaskCookieConfigByIdReq req) {
-        return taskCookieConfigMapper.updateTaskCookieConfigById(id, req) > 0;
+        params params = new UpdateTaskCookieConfigByIdParams(id, req)
+        return taskCookieConfigMapper.updateTaskCookieConfigById(params) > 0;
     }
 
     @Override

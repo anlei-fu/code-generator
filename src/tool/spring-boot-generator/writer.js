@@ -5,7 +5,7 @@ const { STR } = require("./../../libs/str")
  * Use to write all files
  */
 class Writer {
-        constructor(project) {
+        constructor (project) {
                 this._project = project || "";
                 let _root = `./${project}/src/main/java/com/${project}`;
                 this._mapperFolder = `${_root}/mapper`;
@@ -76,6 +76,7 @@ class Writer {
          * @param {String} content 
          */
         writeMapperConfig(name, content) {
+                content = STR.removeEmptyLine(content);
                 this._writeCore(`${this._mapperConfigFolder}/${name}Mapper.xml`, content, name);
         }
 

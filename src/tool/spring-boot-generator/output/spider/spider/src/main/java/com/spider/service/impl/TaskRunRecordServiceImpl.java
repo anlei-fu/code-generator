@@ -31,7 +31,8 @@ public class TaskRunRecordServiceImpl implements TaskRunRecordService {
 
     @Override
     public boolean updateTaskRunRecordById(Integer id, UpdateTaskRunRecordByIdReq req) {
-        return taskRunRecordMapper.updateTaskRunRecordById(id, req) > 0;
+        params params = new UpdateTaskRunRecordByIdParams(id, req)
+        return taskRunRecordMapper.updateTaskRunRecordById(params) > 0;
     }
 
     @Override

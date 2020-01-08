@@ -51,7 +51,7 @@ function getServiceImplItemConfig(config, name) {
  * @returns {String}
  */
 function renderServiceImplContent(config) {
-        let content = `${config.params.name} params = new ${config.params.name}(@params)`;
+        let content = `${config.params.name} params = new ${config.params.type}(@params)`;
         content = content.replace("@params", getReqParamsWithoutType(config));
 
         // if has default values, generate set expression

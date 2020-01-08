@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.TaskSiteRelation;
+import com.spider.pojo.params.UpdateTaskSiteRelationByIdParams;
 import com.spider.pojo.req.AddTaskSiteRelationReq;
 import com.spider.pojo.req.GetTaskSiteRelationListReq;
-import com.spider.pojo.req.UpdateTaskSiteRelationByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface TaskSiteRelationMapper {
     
         int deleteTaskSiteRelationById(@Params("id") Integer id);
     
-        int updateTaskSiteRelationById(@Params("id") Integer id, @Params("req") UpdateTaskSiteRelationByIdReq req);
+        int updateTaskSiteRelationById(UpdateTaskSiteRelationByIdParams params);
     
         TaskSiteRelation getTaskSiteRelationById(@Params("id") Integer id);
     

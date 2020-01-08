@@ -2,9 +2,9 @@ package com.spider.mapper;
 
 import com.spider.pojo.entity.TaskScriptConfig;
 import com.spider.pojo.entity.TaskScriptConfigRecord;
+import com.spider.pojo.params.UpdateTaskScriptConfigRecordByIdParams;
 import com.spider.pojo.req.AddTaskScriptConfigRecordReq;
 import com.spider.pojo.req.GetTaskScriptConfigRecordListReq;
-import com.spider.pojo.req.UpdateTaskScriptConfigRecordByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -18,7 +18,7 @@ public interface TaskScriptConfigRecordMapper {
     
         int deleteTaskScriptConfigRecordById(@Params("id") Integer id);
     
-        int updateTaskScriptConfigRecordById(@Params("id") Integer id, @Params("req") UpdateTaskScriptConfigRecordByIdReq req);
+        int updateTaskScriptConfigRecordById(UpdateTaskScriptConfigRecordByIdParams params);
     
         TaskScriptConfigRecord getTaskScriptConfigRecordById(@Params("id") Integer id);
     

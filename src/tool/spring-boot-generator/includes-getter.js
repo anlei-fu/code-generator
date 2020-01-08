@@ -1,4 +1,5 @@
-const { getColumn } = require("./column-getter")
+const { getColumn } = require("./column-getter");
+const { generateUpdateExpression } = require("./expression-generator")
 const CACHE = new Map();
 
 /**
@@ -22,6 +23,16 @@ function getIncludes(config) {
                         includes.push(getColumn(x.table, y));
                 });
         });
+
+        if (config.type == "insert") {
+                includes.forEach(x => {
+                        if (x.nullable)
+                                x.ifExpression = `${x.name} != null`;
+                });
+        }
+
+        if (config.type == "update")
+                generateUpdateExpression(includes);
 
         CACHE.set(config.id, includes);
         return includes;

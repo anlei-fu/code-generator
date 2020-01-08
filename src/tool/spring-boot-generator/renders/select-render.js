@@ -1,7 +1,9 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
 const { renderJoin } = require("./join-render");
 const { renderConditions } = require("./conditions-render");
-const { renderIncludes } = require("./includes-render");
+const { getIncludes } = require("./../includes-getter");
+const { renderColumn } = require("./column-render");
+const { STR } = require("./../../../libs/str");
 
 const SELECT_RENDER = new SimpleRender({}, `${__dirname}/templates/select.xml`);
 
@@ -18,12 +20,26 @@ function renderSelect(config) {
                 joins += renderJoin(join);
         });
 
+        let columns = "";
+        getIncludes(config).forEach((x, i, array) => {
+                x.suffix = i == array.length - 1 ? "" : ",";
+                columns += renderColumn(x);
+        });
+
+        let parameterType;
+        if (config.params.doCreate) {
+                parameterType = ` parameterType="com.@project.pojo.param.${config.params.type}"`;
+        } else if (config.reqs.length == 1 && config.reqs[0].doCreate) {
+                parameterType = ` parameterType="com.@project.pojo.req.${config.reqs[0].type}"`;
+        }
+
         let selectModel = {
-                table: config.table.name,
-                columns: renderIncludes(config),
-                conditions: renderConditions(config),
+                columns,
+                resultType: config.resp.doCreate ? `resp.${config.resp.type}` : `entity.${STR.upperFirstLetter(config.table.name)}`,
+                where: renderConditions(config),
                 joins: joins,
-                id: config.id
+                id: config.id,
+                parameterType: parameterType || ""
         };
 
         return SELECT_RENDER.renderTemplate(selectModel);

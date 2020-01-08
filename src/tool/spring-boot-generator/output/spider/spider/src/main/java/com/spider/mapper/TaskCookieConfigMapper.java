@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.TaskCookieConfig;
+import com.spider.pojo.params.UpdateTaskCookieConfigByIdParams;
 import com.spider.pojo.req.AddTaskCookieConfigReq;
 import com.spider.pojo.req.GetTaskCookieConfigListReq;
-import com.spider.pojo.req.UpdateTaskCookieConfigByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface TaskCookieConfigMapper {
     
         int deleteTaskCookieConfigById(@Params("id") Integer id);
     
-        int updateTaskCookieConfigById(@Params("id") Integer id, @Params("req") UpdateTaskCookieConfigByIdReq req);
+        int updateTaskCookieConfigById(UpdateTaskCookieConfigByIdParams params);
     
         TaskCookieConfig getTaskCookieConfigById(@Params("id") Integer id);
     

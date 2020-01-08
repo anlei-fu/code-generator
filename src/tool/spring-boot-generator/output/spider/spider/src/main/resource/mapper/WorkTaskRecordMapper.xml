@@ -1,56 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spider.mapper.WorkTaskRecordMapper">
-    <insert id="addWorkTaskRecord">
+    <insert id="addWorkTaskRecord" parameterType="com.spider.pojo.req.AddWorkTaskRecordReq">
           insert  into work_task_record
           <trim prefix="(" suffix=")" suffixOverrides=",">
- work_task_record.task_id,
- work_task_record.worker_id,
- work_task_record.task_main_config_id,
- work_task_record.page_downloaded,
- work_task_record.download_sucess,
- work_task_record.success,
- work_task_record.exit_code,
- work_task_record.start_time,
- work_task_record.end_time,
-
+             work_task_record.task_id,
+             work_task_record.worker_id,
+             work_task_record.task_main_config_id,
+             work_task_record.page_downloaded,
+             work_task_record.download_sucess,
+             work_task_record.success,
+             work_task_record.exit_code,
+            <if test="startTime != null">
+                  work_task_record.start_time,
+            </if>
+            <if test="endTime != null">
+                  work_task_record.end_time
+            </if>
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{taskId} ,
- #{workerId} ,
- #{taskMainConfigId} ,
- #{pageDownloaded} ,
- #{downloadSucess} ,
- #{success} ,
- #{exitCode} ,
- #{startTime} ,
- #{endTime} ,
-
+             #{taskId},
+             #{workerId},
+             #{taskMainConfigId},
+             #{pageDownloaded},
+             #{downloadSucess},
+             #{success},
+             #{exitCode},
+            <if test="startTime != null">
+                  #{startTime},
+            </if>
+            <if test="endTime != null">
+                  #{endTime}
+            </if>
           </trim>
     </insert>
     <delete id="deleteWorkTaskRecordById">
           delete from work_task_record
-@where
+          <where>
+            <if test="id != null">
+                  work_task_record.id = #{id}
+            </if>
+          </where>
     </delete>
-    <update id="updateWorkTaskRecordById">
+    <update id="updateWorkTaskRecordById" parameterType="com.spider.pojo.param.UpdateWorkTaskRecordByIdParams">
         update work_task_record
-@set
-@where
+        <set>
+            <if test="taskId != null">
+                  work_task_record.task_id = #{TaskId},
+            </if>
+            <if test="workerId != null">
+                  work_task_record.worker_id = #{WorkerId},
+            </if>
+            <if test="taskMainConfigId != null">
+                  work_task_record.task_main_config_id = #{TaskMainConfigId},
+            </if>
+            <if test="pageDownloaded != null">
+                  work_task_record.page_downloaded = #{PageDownloaded},
+            </if>
+            <if test="downloadSucess != null">
+                  work_task_record.download_sucess = #{DownloadSucess},
+            </if>
+            <if test="success != null">
+                  work_task_record.success = #{Success},
+            </if>
+            <if test="exitCode != null">
+                  work_task_record.exit_code = #{ExitCode},
+            </if>
+            <if test="startTime != null">
+                  work_task_record.start_time = #{StartTime},
+            </if>
+            <if test="endTime != null">
+                  work_task_record.end_time = #{EndTime}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  work_task_record.id = #{id}
+            </if>
+          </where>
     </update>
-    <select id="getWorkTaskRecordById" resultType="com.spider.pojo.@resultType">
+    <select id="getWorkTaskRecordById" resultType="com.spider.pojo.entity.WorkTaskRecord">
           select
-undefined
-          form workTaskRecordName
-
-@where
+             work_task_record.id,
+             work_task_record.task_id,
+             work_task_record.worker_id,
+             work_task_record.task_main_config_id,
+             work_task_record.page_downloaded,
+             work_task_record.download_sucess,
+             work_task_record.success,
+             work_task_record.exit_code,
+             work_task_record.start_time,
+             work_task_record.end_time
+          form work_task_record
+          <where>
+            <if test="id != null">
+                  work_task_record.id = #{id}
+            </if>
+          </where>
     </select>
-    <select id="getWorkTaskRecordList" resultType="com.spider.pojo.@resultType">
+    <select id="getWorkTaskRecordList" resultType="com.spider.pojo.entity.WorkTaskRecord" parameterType="com.spider.pojo.req.GetWorkTaskRecordListReq">
           select
-undefined
-          form workTaskRecordName
-
-@where
+             work_task_record.id,
+             work_task_record.task_id,
+             work_task_record.worker_id,
+             work_task_record.task_main_config_id,
+             work_task_record.page_downloaded,
+             work_task_record.download_sucess,
+             work_task_record.success,
+             work_task_record.exit_code,
+             work_task_record.start_time,
+             work_task_record.end_time
+          form work_task_record
+          <where>
+            <if test="taskId != null">
+                  work_task_record.task_id = #{taskId}
+            </if>
+            <if test="workerId != null">
+                  and work_task_record.worker_id = #{workerId}
+            </if>
+            <if test="taskMainConfigId != null">
+                  and work_task_record.task_main_config_id = #{taskMainConfigId}
+            </if>
+            <if test="pageDownloaded != null">
+                  range            </if>
+            <if test="downloadSucess != null">
+                  and work_task_record.download_sucess = #{downloadSucess}
+            </if>
+            <if test="success != null">
+                  and work_task_record.success = #{success}
+            </if>
+            <if test="exitCode != null">
+                  and work_task_record.exit_code = #{exitCode}
+            </if>
+            <if test="startTime != null">
+                  and work_task_record.start_time = #{startTime}
+            </if>
+            <if test="endTime != null">
+                  and work_task_record.end_time = #{endTime}
+            </if>
+          </where>
     </select>
-
 </mapper>

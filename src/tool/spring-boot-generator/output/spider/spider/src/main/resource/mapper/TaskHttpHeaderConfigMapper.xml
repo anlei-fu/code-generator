@@ -1,46 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spider.mapper.TaskHttpHeaderConfigMapper">
-    <insert id="addTaskHttpHeaderConfig">
+    <insert id="addTaskHttpHeaderConfig" parameterType="com.spider.pojo.req.AddTaskHttpHeaderConfigReq">
           insert  into task_http_header_config
           <trim prefix="(" suffix=")" suffixOverrides=",">
- task_http_header_config.task_config_main_id,
- task_http_header_config.key,
- task_http_header_config.value,
- task_http_header_config.create_time,
-
+             task_http_header_config.task_config_main_id,
+            <if test="key != null">
+                  task_http_header_config.key,
+            </if>
+            <if test="value != null">
+                  task_http_header_config.value,
+            </if>
+            <if test="createTime != null">
+                  task_http_header_config.create_time
+            </if>
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{taskConfigMainId} ,
- #{key} ,
- #{value} ,
- #{createTime} ,
-
+             #{taskConfigMainId},
+            <if test="key != null">
+                  #{key},
+            </if>
+            <if test="value != null">
+                  #{value},
+            </if>
+            <if test="createTime != null">
+                  #{createTime}
+            </if>
           </trim>
     </insert>
     <delete id="deleteTaskHttpHeaderConfigById">
           delete from task_http_header_config
-@where
+          <where>
+            <if test="id != null">
+                  task_http_header_config.id = #{id}
+            </if>
+          </where>
     </delete>
-    <update id="updateTaskHttpHeaderConfigById">
+    <update id="updateTaskHttpHeaderConfigById" parameterType="com.spider.pojo.param.UpdateTaskHttpHeaderConfigByIdParams">
         update task_http_header_config
-@set
-@where
+        <set>
+            <if test="taskConfigMainId != null">
+                  task_http_header_config.task_config_main_id = #{TaskConfigMainId},
+            </if>
+            <if test="key != null">
+                  task_http_header_config.key = #{Key},
+            </if>
+            <if test="value != null">
+                  task_http_header_config.value = #{Value},
+            </if>
+            <if test="createTime != null">
+                  task_http_header_config.create_time = #{CreateTime}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  task_http_header_config.id = #{id}
+            </if>
+          </where>
     </update>
-    <select id="getTaskHttpHeaderConfigById" resultType="com.spider.pojo.@resultType">
+    <select id="getTaskHttpHeaderConfigById" resultType="com.spider.pojo.entity.TaskHttpHeaderConfig">
           select
-undefined
-          form taskHttpHeaderConfigName
-
-@where
+             task_http_header_config.id,
+             task_http_header_config.task_config_main_id,
+             task_http_header_config.key,
+             task_http_header_config.value,
+             task_http_header_config.create_time
+          form task_http_header_config
+          <where>
+            <if test="id != null">
+                  task_http_header_config.id = #{id}
+            </if>
+          </where>
     </select>
-    <select id="getTaskHttpHeaderConfigList" resultType="com.spider.pojo.@resultType">
+    <select id="getTaskHttpHeaderConfigList" resultType="com.spider.pojo.entity.TaskHttpHeaderConfig" parameterType="com.spider.pojo.req.GetTaskHttpHeaderConfigListReq">
           select
-undefined
-          form taskHttpHeaderConfigName
-
-@where
+             task_http_header_config.id,
+             task_http_header_config.task_config_main_id,
+             task_http_header_config.key,
+             task_http_header_config.value,
+             task_http_header_config.create_time
+          form task_http_header_config
+          <where>
+            <if test="taskConfigMainId != null">
+                  task_http_header_config.task_config_main_id = #{taskConfigMainId}
+            </if>
+            <if test="value != null and value != ''">
+                  and task_http_header_config.value = #{value}
+            </if>
+            <if test="createTime != null">
+                  and task_http_header_config.create_time = #{createTime}
+            </if>
+          </where>
     </select>
-
 </mapper>

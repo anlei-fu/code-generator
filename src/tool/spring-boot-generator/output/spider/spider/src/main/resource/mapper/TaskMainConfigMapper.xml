@@ -1,50 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spider.mapper.TaskMainConfigMapper">
-    <insert id="addTaskMainConfig">
+    <insert id="addTaskMainConfig" parameterType="com.spider.pojo.req.AddTaskMainConfigReq">
           insert  into task_main_config
           <trim prefix="(" suffix=")" suffixOverrides=",">
- task_main_config.task_id,
- task_main_config.pattern,
- task_main_config.encoding,
- task_main_config.agent,
- task_main_config.timeout,
- task_main_config.script_version,
-
+             task_main_config.task_id,
+            <if test="pattern != null">
+                  task_main_config.pattern,
+            </if>
+            <if test="encoding != null">
+                  task_main_config.encoding,
+            </if>
+            <if test="agent != null">
+                  task_main_config.agent,
+            </if>
+            <if test="timeout != null">
+                  task_main_config.timeout,
+            </if>
+            <if test="scriptVersion != null">
+                  task_main_config.script_version
+            </if>
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{taskId} ,
- #{pattern} ,
- #{encoding} ,
- #{agent} ,
- #{timeout} ,
- #{scriptVersion} ,
-
+             #{taskId},
+            <if test="pattern != null">
+                  #{pattern},
+            </if>
+            <if test="encoding != null">
+                  #{encoding},
+            </if>
+            <if test="agent != null">
+                  #{agent},
+            </if>
+            <if test="timeout != null">
+                  #{timeout},
+            </if>
+            <if test="scriptVersion != null">
+                  #{scriptVersion}
+            </if>
           </trim>
     </insert>
     <delete id="deleteTaskMainConfigById">
           delete from task_main_config
-@where
+          <where>
+            <if test="id != null">
+                  task_main_config.id = #{id}
+            </if>
+          </where>
     </delete>
-    <update id="updateTaskMainConfigById">
+    <update id="updateTaskMainConfigById" parameterType="com.spider.pojo.param.UpdateTaskMainConfigByIdParams">
         update task_main_config
-@set
-@where
+        <set>
+            <if test="taskId != null">
+                  task_main_config.task_id = #{TaskId},
+            </if>
+            <if test="pattern != null">
+                  task_main_config.pattern = #{Pattern},
+            </if>
+            <if test="encoding != null">
+                  task_main_config.encoding = #{Encoding},
+            </if>
+            <if test="agent != null">
+                  task_main_config.agent = #{Agent},
+            </if>
+            <if test="timeout != null">
+                  task_main_config.timeout = #{Timeout},
+            </if>
+            <if test="scriptVersion != null">
+                  task_main_config.script_version = #{ScriptVersion}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  task_main_config.id = #{id}
+            </if>
+          </where>
     </update>
-    <select id="getTaskMainConfigById" resultType="com.spider.pojo.@resultType">
+    <select id="getTaskMainConfigById" resultType="com.spider.pojo.entity.TaskMainConfig">
           select
-undefined
-          form taskMainConfigName
-
-@where
+             task_main_config.id,
+             task_main_config.task_id,
+             task_main_config.pattern,
+             task_main_config.encoding,
+             task_main_config.agent,
+             task_main_config.timeout,
+             task_main_config.script_version
+          form task_main_config
+          <where>
+            <if test="id != null">
+                  task_main_config.id = #{id}
+            </if>
+          </where>
     </select>
-    <select id="getTaskMainConfigList" resultType="com.spider.pojo.@resultType">
+    <select id="getTaskMainConfigList" resultType="com.spider.pojo.entity.TaskMainConfig" parameterType="com.spider.pojo.req.GetTaskMainConfigListReq">
           select
-undefined
-          form taskMainConfigName
-
-@where
+             task_main_config.id,
+             task_main_config.task_id,
+             task_main_config.pattern,
+             task_main_config.encoding,
+             task_main_config.agent,
+             task_main_config.timeout,
+             task_main_config.script_version
+          form task_main_config
+          <where>
+            <if test="taskId != null">
+                  task_main_config.task_id = #{taskId}
+            </if>
+            <if test="pattern != null and pattern != ''">
+                  and task_main_config.pattern = #{pattern}
+            </if>
+            <if test="encoding != null and encoding != ''">
+                  and task_main_config.encoding = #{encoding}
+            </if>
+            <if test="agent != null and agent != ''">
+                  and task_main_config.agent = #{agent}
+            </if>
+            <if test="timeout != null">
+                  and task_main_config.timeout = #{timeout}
+            </if>
+            <if test="scriptVersion != null and scriptVersion != ''">
+                  and task_main_config.script_version = #{scriptVersion}
+            </if>
+          </where>
     </select>
-
 </mapper>

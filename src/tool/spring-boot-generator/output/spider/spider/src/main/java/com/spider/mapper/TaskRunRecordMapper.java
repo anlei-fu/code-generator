@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.TaskRunRecord;
+import com.spider.pojo.params.UpdateTaskRunRecordByIdParams;
 import com.spider.pojo.req.AddTaskRunRecordReq;
 import com.spider.pojo.req.GetTaskRunRecordListReq;
-import com.spider.pojo.req.UpdateTaskRunRecordByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface TaskRunRecordMapper {
     
         int deleteTaskRunRecordById(@Params("id") Integer id);
     
-        int updateTaskRunRecordById(@Params("id") Integer id, @Params("req") UpdateTaskRunRecordByIdReq req);
+        int updateTaskRunRecordById(UpdateTaskRunRecordByIdParams params);
     
         TaskRunRecord getTaskRunRecordById(@Params("id") Integer id);
     

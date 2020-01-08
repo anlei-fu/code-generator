@@ -31,7 +31,8 @@ public class TaskSiteRelationServiceImpl implements TaskSiteRelationService {
 
     @Override
     public boolean updateTaskSiteRelationById(Integer id, UpdateTaskSiteRelationByIdReq req) {
-        return taskSiteRelationMapper.updateTaskSiteRelationById(id, req) > 0;
+        params params = new UpdateTaskSiteRelationByIdParams(id, req)
+        return taskSiteRelationMapper.updateTaskSiteRelationById(params) > 0;
     }
 
     @Override

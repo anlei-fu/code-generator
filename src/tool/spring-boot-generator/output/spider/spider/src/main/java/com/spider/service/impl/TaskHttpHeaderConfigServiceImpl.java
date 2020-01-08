@@ -31,7 +31,8 @@ public class TaskHttpHeaderConfigServiceImpl implements TaskHttpHeaderConfigServ
 
     @Override
     public boolean updateTaskHttpHeaderConfigById(Integer id, UpdateTaskHttpHeaderConfigByIdReq req) {
-        return taskHttpHeaderConfigMapper.updateTaskHttpHeaderConfigById(id, req) > 0;
+        params params = new UpdateTaskHttpHeaderConfigByIdParams(id, req)
+        return taskHttpHeaderConfigMapper.updateTaskHttpHeaderConfigById(params) > 0;
     }
 
     @Override

@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------entities-------------------------------------------------------------------------------*/
 
 class Field {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.type = "";
                 this.description = "";
@@ -13,7 +13,7 @@ class Field {
  * Join properties
  */
 class Join {
-        constructor() {
+        constructor () {
                 this.table = {}
                 this.includes = [];
                 this.conditions = [];
@@ -26,7 +26,7 @@ class Join {
  * Req properties
  */
 class Req {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.description = "";
                 this.exlcludes = new Set();
@@ -40,7 +40,7 @@ class Req {
  * Params properties
  */
 class Params {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.description = "";
                 this.req = new Req();
@@ -53,7 +53,7 @@ class Params {
  * Resp properties
  */
 class Resp {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.description = "";
                 this.doCreate = false;
@@ -65,7 +65,7 @@ class Resp {
  * Controller properties
  */
 class Controller {
-        constructor() {
+        constructor () {
                 this.path = "";
                 this.description = "";
         }
@@ -75,7 +75,7 @@ class Controller {
  * Config properties
  */
 class Config {
-        constructor() {
+        constructor () {
                 this.id = "";
                 this.type = "";
                 this.table = {};
@@ -95,7 +95,7 @@ class Config {
  * GeneratorConfig properties
  */
 class GeneratorConfig {
-        constructor() {
+        constructor () {
                 this.controlerFolder = "";
                 this.mapperFolder = "";
                 this.mapperConfigFolder = "";
@@ -117,7 +117,8 @@ const { STR } = require("../../libs/str");
 const { Render } = require("./renders/render.js");
 const { generateReq } = require("./req-common");
 const { getJavaType } = require("./utils");
-const { getConditions } = require("./condition-getter")
+const { getConditions } = require("./condition-getter");
+const { getIncludes } = require("./includes-getter");
 
 /**
  *  Genearte web project with spring-boot, mysql, mybatis, vue, ivue and  maven 
@@ -128,7 +129,7 @@ class Generator {
          * 
          * @param {GeneratorConfig} config 
          */
-        constructor(config, writer, packageRebder) {
+        constructor (config, writer, packageRebder) {
                 this._checkConfig(config);
                 this._config = config;
 
@@ -199,19 +200,25 @@ class Generator {
                 config.type = config.type || "select";
                 config.id = config.id || this._getDefaultId(config);
 
-                if (config.reqs.length == 0)
-                        config.reqs = getDefaultReqs(config);
-
+                let hasDocreateReq = false;
                 // if has req to create
                 config.reqs.forEach(req => {
-                        if (req.doCreate)
+                        if (req.doCreate) {
                                 this._initEntityBasicInfo(config, req, "Req");
+                                hasDocreateReq = true;
+                        }
                 });
+
+                if ((hasDocreateReq && config.reqs.length > 1) || config.reqs.length > 3) {
+                        config.params.doCreate = true;
+                        this._initEntityBasicInfo(config, config.params, "Params");
+                }
 
                 if (!config.noController) {
                         config.controller.path = config.controller.path || `/${STR.lowerFirstLetter(config.name)}/${config.id}`;
                         config.controller.description = config.controller.description || "";
                 }
+
 
                 // set default join type
                 if (config.joins) {
@@ -220,6 +227,12 @@ class Generator {
                                 this._initTable(x.table);
                         });
                 }
+
+                if (config.joins.length > 0 && config.type == "select") {
+                        config.resp.doCreate = true;
+                        this._initEntityBasicInfo(config, config.resp, "Resp");
+                }
+
         }
 
         /**
@@ -369,7 +382,7 @@ class Generator {
                                 req.description = x.description;
                                 req.name = x.type;
                                 req.type = "req";
-                                req.extends=config.resp.single?"":"PageReq";
+                                req.extends = config.resp.single ? "" : "PageReq";
                                 let content = Render.renderEntity(req);
                                 content = this._packageRender.renderPackage(content);
                                 this._writer.writeReq(x.type, content);
@@ -391,15 +404,18 @@ class Generator {
          */
         _generateResp(config) {
                 if (config.resp.doCreate) {
-                        // let resp = {};
-                        // resp.type = config.resp.type;
-                        // resp.fields = getRespFields(config);
-                        // resp.description = config.resp.description;
-                        // this._writer.writeResp(config);
 
+                        let includes = getIncludes(config);
+                        let entity = {};
+                        entity.type = config.resp.type;
+                        entity.description = config.resp.description;
+                        let content = Render.renderEntity(entity);
+                        content = this._packageRender.renderPackage(content);
+                        this._writer.writeResp(x.type, content);
                         this._packageRender.addPackage({
-                                name: STR.config.resp.type,
-                                isSystem: false
+                                name: config.resp.type,
+                                isSystem: false,
+                                type: "resp"
                         });
                 }
         }
@@ -411,10 +427,54 @@ class Generator {
          * @returns {String}
          */
         _generateParams(config) {
-                if (config.params.doCreate) {
-                        let params = {};
-                        params.type = config.params.type;
+                if (!config.params.doCreate)
+                        return;
+
+                let map = new Map();
+
+                getConditions(config).forEach(x => {
+                        map.set(x.name, x);
+                });
+
+                if (config.type == "update") {
+                        getIncludes(config).forEach(x => {
+                                map.set(x.name, x);
+                        });
                 }
+
+                let req;
+                config.reqs.forEach(x => {
+                        if (!x.doCreate && map.has(x.name)) {
+                                map.get(x.name)["source"] = "constructor";
+
+                        } else if (x.doCreate) {
+                                req=x;
+                                generateReq(config,x).forEach(y => {
+                                        if (map.has(y.name)) {
+                                                map.get(y.name)["source"] = "req";
+                                        } else {
+                                                map.set(y.name, y);
+                                                y.source = "req";
+                                        }
+                                });
+                        } else {
+                                console.log("error");
+                        }
+                });
+
+                let configs = [];
+                map.forEach(value => {
+                        configs.push(value);
+                });
+
+                let content = Render.renderParams(configs,req.type);
+                content = this._packageRender.renderPackage(content);
+                this._writer.writeParams(config.params.type, content);
+                this._packageRender.addPackage({
+                        name: config.params.type,
+                        isSystem: false,
+                        type: "params"
+                });
         }
 }
 

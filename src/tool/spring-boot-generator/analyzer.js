@@ -320,7 +320,7 @@ class AnalyzerBase {
 }
 
 class ValidateAnalyzer extends AnalyzerBase {
-        constructor() {
+        constructor () {
                 super();
                 this.validates = CREATE_VALIDATES();
         }
@@ -369,7 +369,7 @@ class ValidateAnalyzer extends AnalyzerBase {
 }
 
 class ExcludesAnalyzer extends ValidateAnalyzer {
-        constructor() {
+        constructor () {
                 super();
         }
 
@@ -394,7 +394,7 @@ class ExcludesAnalyzer extends ValidateAnalyzer {
 }
 
 class ExpresssionAnalyzer extends ExcludesAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.expressions = CREATE_EXPRESSIONS();
         }
@@ -443,7 +443,7 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
  * Analyze select candiates
  */
 class SelectAnalyzer extends ExpresssionAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.excludes = CREATE_SELECT_EXLUCES();
 
@@ -480,15 +480,15 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
 const INSERT_INSERT_EXCLUDES = () => {
         return {
                 String: {
-                        updateUser:{
-                            matcher:x=> Matcher.lowerIncludesAny(x,["update","edit"])&&Matcher.lowerIncludes("user")
+                        updateUser: {
+                                matcher: x => Matcher.lowerIncludesAny(x, ["update", "edit"]) && Matcher.lowerIncludes("user")
                         }
                 },
                 Date: {
-                        updateTime:{
-                                
+                        updateTime: {
+
                         },
-                        createTime:{
+                        createTime: {
 
                         }
                 }
@@ -499,7 +499,7 @@ const INSERT_INSERT_EXCLUDES = () => {
  * Analyze insert candidate
  */
 class InsertAnalyzer extends ExcludesAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.excludes = INSERT_INSERT_EXCLUDES();
         }
@@ -511,13 +511,13 @@ class InsertAnalyzer extends ExcludesAnalyzer {
          * @param {*} column 
          */
         shouldBeCandidate(column) {
-                if (column.autoInceament || column.defaulValue||column.isPk)
+                if (column.autoInceament || column.defaulValue || column.isPk)
                         return false;
 
                 let type = getJavaType(column.type);
                 if (!this.excludes[type])
                         return true;
-                
+
 
                 for (const item in this.excludes[type]) {
                         let match = this.excludes[type][item].matcher
@@ -526,7 +526,7 @@ class InsertAnalyzer extends ExcludesAnalyzer {
 
                         if (match)
                                 return false;
-                        
+
                 }
 
                 return true;
@@ -555,15 +555,29 @@ class InsertAnalyzer extends ExcludesAnalyzer {
  */
 const UPDATE_EXCLUDES = () => {
         return {
-                Date: [
-                        "createTime",
-                ],
-                String: [
-                        "createUser",
-                ],
-                Integer: [
+                Date: {
+                        update: {
+                                matcher: x => Matcher.lowerIncludesAny(x, [
+                                        "updatetime",
+                                        "updatedate",
+                                        "createtime",
+                                        "createdate",
+                                        "editdate",
+                                        "editetime",
+                                        "modifydate",
+                                        "modifytime"])
+                        }
+                },
+                String: {
+                        createUser: {
+                                matcher: x => Matcher.lowerIncludesAny(x, [
+                                        "createuser",
+                                        "creator",
+                                ])
+                        }
+                }
 
-                ]
+
         }
 }
 
@@ -571,7 +585,7 @@ const UPDATE_EXCLUDES = () => {
  * Analyze update candidate
  */
 class UpdateAnlyzer extends ExcludesAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.excludes = UPDATE_EXCLUDES();
         }
@@ -588,7 +602,6 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
                 if (!this.excludes[type])
                         return true;
 
-
                 for (const item in this.excludes[type]) {
                         let match = this.excludes[type][item].matcher
                                 ? this.excludes[type][item].matcher(name)
@@ -603,23 +616,23 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
 
 }
 
-const INSERT_REQ_EXCLUDES={
-        String:{
-                "createuser":{
-                        matcher:x=>Matcher.lowerIncludesAny(x,["createuser","creator"])
+const INSERT_REQ_EXCLUDES = {
+        String: {
+                "createuser": {
+                        matcher: x => Matcher.lowerIncludesAny(x, ["createuser", "creator"])
                 }
         }
 }
 
 
 class ReqAnalyzer extends ExcludesAnalyzer {
-        constructor() {
+        constructor () {
                 super();
         }
 
-        shouldBeCandidate(table,type) {
-                
-                if(type=="insert"){
+        shouldBeCandidate(table, type) {
+
+                if (type == "insert") {
 
                 }
 
@@ -640,23 +653,23 @@ class ReqAnalyzer extends ExcludesAnalyzer {
                 return null;
         }
 
-        getInsertReqs(table){
+        getInsertReqs(table) {
 
         }
 
-        getUpdateReqs(table){
+        getUpdateReqs(table) {
 
         }
 
-        getSelectReqs(table){
+        getSelectReqs(table) {
 
         }
 
-        getDeleteReqs(table){
+        getDeleteReqs(table) {
 
         }
 
-       
+
 }
 
 module.exports = {

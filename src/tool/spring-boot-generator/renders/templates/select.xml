@@ -1,4 +1,4 @@
-    <select id="@id" resultType="com.@project.pojo.@resultType">
+    <select id="@id" resultType="com.@project.pojo.@resultType"@parameterType>
           select
 @columns
           form @tableName

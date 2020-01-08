@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.DetectStaffInfoMapper">
+    <insert id="addDetectStaffInfo" parameterType="com.railway.pojo.req.AddDetectStaffInfoReq">
+          insert  into detect_staff_info
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="birthday != null">
+                  detect_staff_info.birthday,
+            </if>
+            <if test="contact != null">
+                  detect_staff_info.contact,
+            </if>
+            <if test="eduDegree != null">
+                  detect_staff_info.edu_degree,
+            </if>
+            <if test="gender != null">
+                  detect_staff_info.gender,
+            </if>
+            <if test="gradeGainDate != null">
+                  detect_staff_info.grade_gain_date,
+            </if>
+            <if test="gradeId != null">
+                  detect_staff_info.grade_id,
+            </if>
+            <if test="idCardNo != null">
+                  detect_staff_info.id_card_no,
+            </if>
+             detect_staff_info.is_delete,
+            <if test="name != null">
+                  detect_staff_info.name,
+            </if>
+            <if test="operator != null">
+                  detect_staff_info.operator,
+            </if>
+            <if test="positionId != null">
+                  detect_staff_info.position_id,
+            </if>
+            <if test="qualificationAuditDate != null">
+                  detect_staff_info.qualification_audit_date,
+            </if>
+            <if test="qualificationGainDate != null">
+                  detect_staff_info.qualification_gain_date,
+            </if>
+            <if test="qualificationGrade != null">
+                  detect_staff_info.qualification_grade,
+            </if>
+            <if test="qualificationInvalidDate != null">
+                  detect_staff_info.qualification_invalid_date,
+            </if>
+            <if test="qualificationValidTime != null">
+                  detect_staff_info.qualification_valid_time,
+            </if>
+            <if test="remark != null">
+                  detect_staff_info.remark,
+            </if>
+            <if test="status != null">
+                  detect_staff_info.status,
+            </if>
+            <if test="tecCategory != null">
+                  detect_staff_info.tec_category,
+            </if>
+            <if test="workareaId != null">
+                  detect_staff_info.workarea_id,
+            </if>
+             detect_staff_info.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="birthday != null">
+                  #{birthday},
+            </if>
+            <if test="contact != null">
+                  #{contact},
+            </if>
+            <if test="eduDegree != null">
+                  #{eduDegree},
+            </if>
+            <if test="gender != null">
+                  #{gender},
+            </if>
+            <if test="gradeGainDate != null">
+                  #{gradeGainDate},
+            </if>
+            <if test="gradeId != null">
+                  #{gradeId},
+            </if>
+            <if test="idCardNo != null">
+                  #{idCardNo},
+            </if>
+             #{isDelete},
+            <if test="name != null">
+                  #{name},
+            </if>
+            <if test="operator != null">
+                  #{operator},
+            </if>
+            <if test="positionId != null">
+                  #{positionId},
+            </if>
+            <if test="qualificationAuditDate != null">
+                  #{qualificationAuditDate},
+            </if>
+            <if test="qualificationGainDate != null">
+                  #{qualificationGainDate},
+            </if>
+            <if test="qualificationGrade != null">
+                  #{qualificationGrade},
+            </if>
+            <if test="qualificationInvalidDate != null">
+                  #{qualificationInvalidDate},
+            </if>
+            <if test="qualificationValidTime != null">
+                  #{qualificationValidTime},
+            </if>
+            <if test="remark != null">
+                  #{remark},
+            </if>
+            <if test="status != null">
+                  #{status},
+            </if>
+            <if test="tecCategory != null">
+                  #{tecCategory},
+            </if>
+            <if test="workareaId != null">
+                  #{workareaId},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteDetectStaffInfoById">
+          delete from detect_staff_info
+          <where>
+            <if test="id != null">
+                  detect_staff_info.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateDetectStaffInfoById" parameterType="com.railway.pojo.param.UpdateDetectStaffInfoByIdParams">
+        update detect_staff_info
+        <set>
+            <if test="birthday != null">
+                  detect_staff_info.birthday = #{Birthday},
+            </if>
+            <if test="contact != null">
+                  detect_staff_info.contact = #{Contact},
+            </if>
+            <if test="eduDegree != null">
+                  detect_staff_info.edu_degree = #{EduDegree},
+            </if>
+            <if test="gender != null">
+                  detect_staff_info.gender = #{Gender},
+            </if>
+            <if test="gradeGainDate != null">
+                  detect_staff_info.grade_gain_date = #{GradeGainDate},
+            </if>
+            <if test="gradeId != null">
+                  detect_staff_info.grade_id = #{GradeId},
+            </if>
+            <if test="idCardNo != null">
+                  detect_staff_info.id_card_no = #{IdCardNo},
+            </if>
+            <if test="isDelete != null">
+                  detect_staff_info.is_delete = #{IsDelete},
+            </if>
+            <if test="name != null">
+                  detect_staff_info.name = #{Name},
+            </if>
+            <if test="operator != null">
+                  detect_staff_info.operator = #{Operator},
+            </if>
+            <if test="positionId != null">
+                  detect_staff_info.position_id = #{PositionId},
+            </if>
+            <if test="qualificationAuditDate != null">
+                  detect_staff_info.qualification_audit_date = #{QualificationAuditDate},
+            </if>
+            <if test="qualificationGainDate != null">
+                  detect_staff_info.qualification_gain_date = #{QualificationGainDate},
+            </if>
+            <if test="qualificationGrade != null">
+                  detect_staff_info.qualification_grade = #{QualificationGrade},
+            </if>
+            <if test="qualificationInvalidDate != null">
+                  detect_staff_info.qualification_invalid_date = #{QualificationInvalidDate},
+            </if>
+            <if test="qualificationValidTime != null">
+                  detect_staff_info.qualification_valid_time = #{QualificationValidTime},
+            </if>
+            <if test="remark != null">
+                  detect_staff_info.remark = #{Remark},
+            </if>
+            <if test="status != null">
+                  detect_staff_info.status = #{Status},
+            </if>
+            <if test="tecCategory != null">
+                  detect_staff_info.tec_category = #{TecCategory},
+            </if>
+            <if test="workareaId != null">
+                  detect_staff_info.workarea_id = #{WorkareaId}
+            </if>
+            detect_staff_info.update_time= current_timestamp
+        </set>
+          <where>
+            <if test="id != null">
+                  detect_staff_info.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getDetectStaffInfoById" resultType="com.railway.pojo.entity.DetectStaffInfo">
+          select
+             detect_staff_info.birthday,
+             detect_staff_info.contact,
+             detect_staff_info.create_time,
+             detect_staff_info.edu_degree,
+             detect_staff_info.gender,
+             detect_staff_info.grade_gain_date,
+             detect_staff_info.grade_id,
+             detect_staff_info.id,
+             detect_staff_info.id_card_no,
+             detect_staff_info.is_delete,
+             detect_staff_info.name,
+             detect_staff_info.operator,
+             detect_staff_info.position_id,
+             detect_staff_info.qualification_audit_date,
+             detect_staff_info.qualification_gain_date,
+             detect_staff_info.qualification_grade,
+             detect_staff_info.qualification_invalid_date,
+             detect_staff_info.qualification_valid_time,
+             detect_staff_info.remark,
+             detect_staff_info.status,
+             detect_staff_info.tec_category,
+             detect_staff_info.update_time,
+             detect_staff_info.workarea_id
+          form detect_staff_info
+          <where>
+            <if test="id != null">
+                  detect_staff_info.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getDetectStaffInfoList" resultType="com.railway.pojo.entity.DetectStaffInfo" parameterType="com.railway.pojo.req.GetDetectStaffInfoListReq">
+          select
+             detect_staff_info.birthday,
+             detect_staff_info.contact,
+             detect_staff_info.create_time,
+             detect_staff_info.edu_degree,
+             detect_staff_info.gender,
+             detect_staff_info.grade_gain_date,
+             detect_staff_info.grade_id,
+             detect_staff_info.id,
+             detect_staff_info.id_card_no,
+             detect_staff_info.is_delete,
+             detect_staff_info.name,
+             detect_staff_info.operator,
+             detect_staff_info.position_id,
+             detect_staff_info.qualification_audit_date,
+             detect_staff_info.qualification_gain_date,
+             detect_staff_info.qualification_grade,
+             detect_staff_info.qualification_invalid_date,
+             detect_staff_info.qualification_valid_time,
+             detect_staff_info.remark,
+             detect_staff_info.status,
+             detect_staff_info.tec_category,
+             detect_staff_info.update_time,
+             detect_staff_info.workarea_id
+          form detect_staff_info
+          <where>
+            <if test="birthdayStart !=null and  birthdayEnd != null">
+                  detect_staff_info.birthday between #{birthdayStart} and #{birthdayEnd}
+            </if>
+            <if test="contact != null and contact != ''">
+                  and detect_staff_info.contact = #{contact}
+            </if>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  and detect_staff_info.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="eduDegree != null">
+                  and detect_staff_info.edu_degree = #{eduDegree}
+            </if>
+            <if test="gender != null">
+                  and detect_staff_info.gender = #{gender}
+            </if>
+            <if test="gradeGainDateStart !=null and  gradeGainDateEnd != null">
+                  and detect_staff_info.grade_gain_date between #{gradeGainDateStart} and #{gradeGainDateEnd}
+            </if>
+            <if test="gradeId != null">
+                  and detect_staff_info.grade_id = #{gradeId}
+            </if>
+            <if test="idCardNo != null and idCardNo != ''">
+                  and detect_staff_info.id_card_no = #{idCardNo}
+            </if>
+            <if test="isDelete != null">
+                  and detect_staff_info.is_delete = #{isDelete}
+            </if>
+            <if test="operator != null">
+                  and detect_staff_info.operator = #{operator}
+            </if>
+            <if test="positionId != null">
+                  and detect_staff_info.position_id = #{positionId}
+            </if>
+            <if test="qualificationAuditDateStart !=null and  qualificationAuditDateEnd != null">
+                  and detect_staff_info.qualification_audit_date between #{qualificationAuditDateStart} and #{qualificationAuditDateEnd}
+            </if>
+            <if test="qualificationGainDateStart !=null and  qualificationGainDateEnd != null">
+                  and detect_staff_info.qualification_gain_date between #{qualificationGainDateStart} and #{qualificationGainDateEnd}
+            </if>
+            <if test="qualificationGrade != null">
+                  and detect_staff_info.qualification_grade = #{qualificationGrade}
+            </if>
+            <if test="qualificationInvalidDateStart !=null and  qualificationInvalidDateEnd != null">
+                  and detect_staff_info.qualification_invalid_date between #{qualificationInvalidDateStart} and #{qualificationInvalidDateEnd}
+            </if>
+            <if test="qualificationValidTime != null">
+                  and detect_staff_info.qualification_valid_time = #{qualificationValidTime}
+            </if>
+            <if test="status != null">
+                  and detect_staff_info.status = #{status}
+            </if>
+            <if test="tecCategory != null">
+                  and detect_staff_info.tec_category = #{tecCategory}
+            </if>
+            <if test="updateTimeStart !=null and  updateTimeEnd != null">
+                  and detect_staff_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+            </if>
+            <if test="workareaId != null">
+                  and detect_staff_info.workarea_id = #{workareaId}
+            </if>
+          </where>
+    </select>
+</mapper>

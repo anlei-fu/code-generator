@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.TaskScriptConfig;
+import com.spider.pojo.params.UpdateTaskScriptConfigByIdParams;
 import com.spider.pojo.req.AddTaskScriptConfigReq;
 import com.spider.pojo.req.GetTaskScriptConfigListReq;
-import com.spider.pojo.req.UpdateTaskScriptConfigByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface TaskScriptConfigMapper {
     
         int deleteTaskScriptConfigById(@Params("id") Integer id);
     
-        int updateTaskScriptConfigById(@Params("id") Integer id, @Params("req") UpdateTaskScriptConfigByIdReq req);
+        int updateTaskScriptConfigById(UpdateTaskScriptConfigByIdParams params);
     
         TaskScriptConfig getTaskScriptConfigById(@Params("id") Integer id);
     

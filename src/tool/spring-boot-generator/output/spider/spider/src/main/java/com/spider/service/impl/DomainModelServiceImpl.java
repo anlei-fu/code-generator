@@ -31,7 +31,8 @@ public class DomainModelServiceImpl implements DomainModelService {
 
     @Override
     public boolean updateDomainModelById(Integer id, UpdateDomainModelByIdReq req) {
-        return domainModelMapper.updateDomainModelById(id, req) > 0;
+        params params = new UpdateDomainModelByIdParams(id, req)
+        return domainModelMapper.updateDomainModelById(params) > 0;
     }
 
     @Override

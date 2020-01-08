@@ -32,7 +32,8 @@ public class TaskScriptConfigRecordServiceImpl implements TaskScriptConfigRecord
 
     @Override
     public boolean updateTaskScriptConfigRecordById(Integer id, UpdateTaskScriptConfigRecordByIdReq req) {
-        return taskScriptConfigRecordMapper.updateTaskScriptConfigRecordById(id, req) > 0;
+        params params = new UpdateTaskScriptConfigRecordByIdParams(id, req)
+        return taskScriptConfigRecordMapper.updateTaskScriptConfigRecordById(params) > 0;
     }
 
     @Override

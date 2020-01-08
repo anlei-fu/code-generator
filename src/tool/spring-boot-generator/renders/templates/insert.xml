@@ -1,4 +1,4 @@
-    <insert id="@id">
+    <insert id="@id"@parameterType>
           insert  into @tableName
 @columns
           values

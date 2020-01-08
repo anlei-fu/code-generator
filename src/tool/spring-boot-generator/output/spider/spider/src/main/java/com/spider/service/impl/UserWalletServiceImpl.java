@@ -31,7 +31,8 @@ public class UserWalletServiceImpl implements UserWalletService {
 
     @Override
     public boolean updateUserWalletById(Integer id, UpdateUserWalletByIdReq req) {
-        return userWalletMapper.updateUserWalletById(id, req) > 0;
+        params params = new UpdateUserWalletByIdParams(id, req)
+        return userWalletMapper.updateUserWalletById(params) > 0;
     }
 
     @Override

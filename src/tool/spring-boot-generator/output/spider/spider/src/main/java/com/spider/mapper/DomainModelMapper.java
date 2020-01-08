@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.DomainModel;
+import com.spider.pojo.params.UpdateDomainModelByIdParams;
 import com.spider.pojo.req.AddDomainModelReq;
 import com.spider.pojo.req.GetDomainModelListReq;
-import com.spider.pojo.req.UpdateDomainModelByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface DomainModelMapper {
     
         int deleteDomainModelById(@Params("id") Integer id);
     
-        int updateDomainModelById(@Params("id") Integer id, @Params("req") UpdateDomainModelByIdReq req);
+        int updateDomainModelById(UpdateDomainModelByIdParams params);
     
         DomainModel getDomainModelById(@Params("id") Integer id);
     

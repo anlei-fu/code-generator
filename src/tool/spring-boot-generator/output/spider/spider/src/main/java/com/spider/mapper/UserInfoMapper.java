@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.UserInfo;
+import com.spider.pojo.params.UpdateUserInfoByIdParams;
 import com.spider.pojo.req.AddUserInfoReq;
 import com.spider.pojo.req.GetUserInfoListReq;
-import com.spider.pojo.req.UpdateUserInfoByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface UserInfoMapper {
     
         int deleteUserInfoById(@Params("id") Integer id);
     
-        int updateUserInfoById(@Params("id") Integer id, @Params("req") UpdateUserInfoByIdReq req);
+        int updateUserInfoById(UpdateUserInfoByIdParams params);
     
         UserInfo getUserInfoById(@Params("id") Integer id);
     

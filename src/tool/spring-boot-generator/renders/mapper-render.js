@@ -45,7 +45,7 @@ function getMapperItemRenderConfig(config, name) {
  */
 function getMapperItemParams(config) {
         if (config.params.doCreate)
-                return `${STR.upperFirstLetter(config.params.name)} params`;
+                return `${config.params.type} params`;
 
         let mapperParams = "";
         if (config.reqs.length > 1) {

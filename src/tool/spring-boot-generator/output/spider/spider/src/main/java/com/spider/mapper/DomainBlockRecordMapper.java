@@ -1,9 +1,9 @@
 package com.spider.mapper;
 
 import com.spider.pojo.entity.DomainBlockRecord;
+import com.spider.pojo.params.UpdateDomainBlockRecordByIdParams;
 import com.spider.pojo.req.AddDomainBlockRecordReq;
 import com.spider.pojo.req.GetDomainBlockRecordListReq;
-import com.spider.pojo.req.UpdateDomainBlockRecordByIdReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -17,7 +17,7 @@ public interface DomainBlockRecordMapper {
     
         int deleteDomainBlockRecordById(@Params("id") Integer id);
     
-        int updateDomainBlockRecordById(@Params("id") Integer id, @Params("req") UpdateDomainBlockRecordByIdReq req);
+        int updateDomainBlockRecordById(UpdateDomainBlockRecordByIdParams params);
     
         DomainBlockRecord getDomainBlockRecordById(@Params("id") Integer id);
     

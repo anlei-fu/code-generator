@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.railway.mapper.DamageTypeMapper">
+    <insert id="addDamageType" parameterType="com.railway.pojo.req.AddDamageTypeReq">
+          insert  into damage_type
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="damageDesc != null">
+                  damage_type.damage_desc,
+            </if>
+            <if test="damageNo != null">
+                  damage_type.damage_no,
+            </if>
+            <if test="damageType != null">
+                  damage_type.damage_type,
+            </if>
+             damage_type.is_delete,
+            <if test="operator != null">
+                  damage_type.operator,
+            </if>
+            <if test="sortNum != null">
+                  damage_type.sort_num,
+            </if>
+            <if test="status != null">
+                  damage_type.status,
+            </if>
+             damage_type.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="damageDesc != null">
+                  #{damageDesc},
+            </if>
+            <if test="damageNo != null">
+                  #{damageNo},
+            </if>
+            <if test="damageType != null">
+                  #{damageType},
+            </if>
+             #{isDelete},
+            <if test="operator != null">
+                  #{operator},
+            </if>
+            <if test="sortNum != null">
+                  #{sortNum},
+            </if>
+            <if test="status != null">
+                  #{status},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteDamageTypeById">
+          delete from damage_type
+          <where>
+            <if test="id != null">
+                  damage_type.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateDamageTypeById" parameterType="com.railway.pojo.param.UpdateDamageTypeByIdParams">
+        update damage_type
+        <set>
+            <if test="damageDesc != null">
+                  damage_type.damage_desc = #{DamageDesc},
+            </if>
+            <if test="damageNo != null">
+                  damage_type.damage_no = #{DamageNo},
+            </if>
+            <if test="damageType != null">
+                  damage_type.damage_type = #{DamageType},
+            </if>
+            <if test="isDelete != null">
+                  damage_type.is_delete = #{IsDelete},
+            </if>
+            <if test="operator != null">
+                  damage_type.operator = #{Operator},
+            </if>
+            <if test="sortNum != null">
+                  damage_type.sort_num = #{SortNum},
+            </if>
+            <if test="status != null">
+                  damage_type.status = #{Status}
+            </if>
+            damage_type.update_time= current_timestamp
+        </set>
+          <where>
+            <if test="id != null">
+                  damage_type.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getDamageTypeById" resultType="com.railway.pojo.entity.DamageType">
+          select
+             damage_type.create_time,
+             damage_type.damage_desc,
+             damage_type.damage_no,
+             damage_type.damage_type,
+             damage_type.id,
+             damage_type.is_delete,
+             damage_type.operator,
+             damage_type.sort_num,
+             damage_type.status,
+             damage_type.update_time
+          form damage_type
+          <where>
+            <if test="id != null">
+                  damage_type.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getDamageTypeList" resultType="com.railway.pojo.entity.DamageType" parameterType="com.railway.pojo.req.GetDamageTypeListReq">
+          select
+             damage_type.create_time,
+             damage_type.damage_desc,
+             damage_type.damage_no,
+             damage_type.damage_type,
+             damage_type.id,
+             damage_type.is_delete,
+             damage_type.operator,
+             damage_type.sort_num,
+             damage_type.status,
+             damage_type.update_time
+          form damage_type
+          <where>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  damage_type.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="damageDesc != null and damageDesc != ''">
+                  and damage_type.damage_desc = #{damageDesc}
+            </if>
+            <if test="damageNo != null and damageNo != ''">
+                  and damage_type.damage_no = #{damageNo}
+            </if>
+            <if test="damageType != null">
+                  and damage_type.damage_type = #{damageType}
+            </if>
+            <if test="isDelete != null">
+                  and damage_type.is_delete = #{isDelete}
+            </if>
+            <if test="operator != null">
+                  and damage_type.operator = #{operator}
+            </if>
+            <if test="sortNum != null and sortNum != ''">
+                  and damage_type.sort_num = #{sortNum}
+            </if>
+            <if test="status != null">
+                  and damage_type.status = #{status}
+            </if>
+            <if test="updateTimeStart !=null and  updateTimeEnd != null">
+                  and damage_type.update_time between #{updateTimeStart} and #{updateTimeEnd}
+            </if>
+          </where>
+    </select>
+</mapper>
