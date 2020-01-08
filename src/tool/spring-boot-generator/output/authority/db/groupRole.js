@@ -2,24 +2,6 @@ let groupRole = {
 	name: "groupRole",
 	description: "",
 	columns: {
-		createTime: {
-			name: "createTime",
-			description: "",
-			nullable: false,
-			type: {
-				name: "timestamp",
-				length: null
-			}
-		},
-		createUser: {
-			name: "createUser",
-			description: "",
-			nullable: false,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
 		id: {
 			name: "id",
 			description: "",
@@ -31,8 +13,8 @@ let groupRole = {
 				length: null
 			}
 		},
-		role: {
-			name: "role",
+		userAccount: {
+			name: "userAccount",
 			description: "",
 			nullable: false,
 			type: {
@@ -49,12 +31,30 @@ let groupRole = {
 				length: null
 			}
 		},
-		userAccount: {
-			name: "userAccount",
+		role: {
+			name: "role",
 			description: "",
 			nullable: false,
 			type: {
 				name: "varchar",
+				length: null
+			}
+		},
+		createUser: {
+			name: "createUser",
+			description: "",
+			nullable: false,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
+		createTime: {
+			name: "createTime",
+			description: "",
+			nullable: false,
+			type: {
+				name: "timestamp",
 				length: null
 			}
 		}
@@ -62,12 +62,12 @@ let groupRole = {
 };
 
 let columnsArray = [
-	"createTime",
-	"createUser",
 	"id",
-	"role",
+	"userAccount",
 	"systemId",
-	"userAccount"
+	"role",
+	"createUser",
+	"createTime"
 ];
 
 function create() {

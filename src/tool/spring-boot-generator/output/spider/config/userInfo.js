@@ -16,6 +16,7 @@ exports.userInfoConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addUserInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userInfo.columnsArray)
                                                   .excludes("id")
@@ -38,6 +39,7 @@ exports.userInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteUserInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,7 +53,7 @@ exports.userInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // phoneNo : validate --- @Phone  
                         // email : validate --- @Email  
@@ -60,6 +62,7 @@ exports.userInfoConfig = {
                         new builder()
                                 .type("update")
                                 .id("updateUserInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userInfo.columnsArray)
                                                   .excludes("id")
@@ -91,6 +94,7 @@ exports.userInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getUserInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userInfo.columnsArray)
                                 })
@@ -118,6 +122,8 @@ exports.userInfoConfig = {
                         // lastLoginIp : excluded
                         new builder()
                                 .type("select")
+                                .id("getUserInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userInfo.columnsArray)
                                 })
@@ -126,7 +132,6 @@ exports.userInfoConfig = {
                                                   .excludes("id")
                                                   .excludes(["password","lastLoginIp"])
                                 })
-                                .id("getUserInfoList")
                                 .controller(controller => {
                                         controller.path("/userInfo");
                                 })

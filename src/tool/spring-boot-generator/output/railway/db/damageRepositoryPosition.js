@@ -2,54 +2,11 @@ let damageRepositoryPosition = {
 	name: "damageRepositoryPosition",
 	description: "伤损归档-受伤位置扩展",
 	columns: {
-		bridgeTunnel: {
-			name: "bridgeTunnel",
-			description: "桥隧道口",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
-		damagePosition: {
-			name: "damagePosition",
-			description: "损伤位置",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		direction: {
-			name: "direction",
-			description: "行别",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		holePosition: {
-			name: "holePosition",
-			description: "孔裂位置",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		lineCategory: {
-			name: "lineCategory",
-			description: "线别",
-			nullable: true,
+		orderDetailId: {
+			name: "orderDetailId",
+			description: "记录编号",
+			isPk: true,
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
@@ -73,19 +30,19 @@ let damageRepositoryPosition = {
 				length: null
 			}
 		},
-		miles: {
-			name: "miles",
-			description: "里程",
+		lineCategory: {
+			name: "lineCategory",
+			description: "线别",
 			nullable: true,
 			type: {
-				name: "float"
+				name: "int",
+				length: null
 			}
 		},
-		orderDetailId: {
-			name: "orderDetailId",
-			description: "记录编号",
-			isPk: true,
-			nullable: false,
+		direction: {
+			name: "direction",
+			description: "行别",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
@@ -94,6 +51,23 @@ let damageRepositoryPosition = {
 		stationId: {
 			name: "stationId",
 			description: "车站编号",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		miles: {
+			name: "miles",
+			description: "里程",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		thighTrackId: {
+			name: "thighTrackId",
+			description: "股道号",
 			nullable: true,
 			type: {
 				name: "int",
@@ -109,13 +83,39 @@ let damageRepositoryPosition = {
 				length: null
 			}
 		},
-		thighTrackId: {
-			name: "thighTrackId",
-			description: "股道号",
+		damagePosition: {
+			name: "damagePosition",
+			description: "损伤位置",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
+			}
+		},
+		holePosition: {
+			name: "holePosition",
+			description: "孔裂位置",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		bridgeTunnel: {
+			name: "bridgeTunnel",
+			description: "桥隧道口",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
 			}
 		},
 		updateTime: {
@@ -130,19 +130,19 @@ let damageRepositoryPosition = {
 };
 
 let columnsArray = [
-	"bridgeTunnel",
-	"createTime",
-	"damagePosition",
-	"direction",
-	"holePosition",
-	"lineCategory",
+	"orderDetailId",
 	"lineId",
 	"lineName",
-	"miles",
-	"orderDetailId",
+	"lineCategory",
+	"direction",
 	"stationId",
-	"stockExchange",
+	"miles",
 	"thighTrackId",
+	"stockExchange",
+	"damagePosition",
+	"holePosition",
+	"bridgeTunnel",
+	"createTime",
 	"updateTime"
 ];
 

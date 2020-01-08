@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.authority.mapper.SystemInfoMapper">
-    <insert id="addSystemInfo">
-          insert  into system_info
+    <insert id="addSystemInfo" parameterType="com.authority.pojo.param.AddSystemInfoParams">
+          insert  into system_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
- system_info.create_user,
- system_info.description,
- system_info.name,
-
+             t.name,
+            <if test="description != null">
+                  t.description,
+            </if>
+             t.create_user,
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{createUser} ,
- #{description} ,
- #{name} ,
-
+             #{Name},
+            <if test="description != null">
+                  #{Description},
+            </if>
+             #{CreateUser},
+             current_timestamp
           </trim>
     </insert>
-    <delete id="deleteSystemInfoById">
-          delete from system_info
-@where
+    <delete id="deleteSystemInfoByUserAndUserAndUserAndUserAndId">
+          delete from system_info t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
     </delete>
-    <update id="updateSystemInfoById">
-        update system_info
-@set
-@where
+    <update id="updateSystemInfoByUserAndUserAndUserAndUserAndId" parameterType="com.authority.pojo.param.UpdateSystemInfoByUserAndUserAndUserAndUserAndIdParams">
+        update system_info t
+        <set>
+            <if test="name != null">
+                  t.name = #{Name},
+            </if>
+            <if test="description != null">
+                  t.description = #{Description}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
     </update>
-    <select id="getSystemInfoById" resultType="com.authority.pojo.@resultType">
+    <select id="getSystemInfoByUserAndUserAndUserAndUserAndId" resultType="com.authority.pojo.entity.SystemInfo">
           select
-undefined
-          form systemInfoName
-
-@where
+             t.id,
+             t.name,
+             t.description,
+             t.create_time,
+             t.create_user
+          form system_info t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
     </select>
-    <select id="getSystemInfoList" resultType="com.authority.pojo.@resultType">
+    <select id="getSystemInfoList" resultType="com.authority.pojo.entity.SystemInfo" parameterType="com.authority.pojo.req.GetSystemInfoListReq">
           select
-undefined
-          form systemInfoName
-
-@where
+             t.id,
+             t.name,
+             t.description,
+             t.create_time,
+             t.create_user
+          form system_info t
+          <where>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="createUser != null">
+                  and t.create_user = #{createUser}
+            </if>
+          </where>
     </select>
-
 </mapper>

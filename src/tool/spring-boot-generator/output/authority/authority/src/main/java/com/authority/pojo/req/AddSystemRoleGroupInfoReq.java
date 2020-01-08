@@ -14,19 +14,19 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class AddSystemRoleGroupInfoReq extends PageReq {
 
-    @ApiModelProperty("create user")
+    @ApiModelProperty("related system")
     @NotNull
-    private String createUser;
-
-    @ApiModelProperty("desccription")
-    private String description;
+    private Integer systemId;
 
     @ApiModelProperty("role")
     @NotNull
     private String role;
 
-    @ApiModelProperty("related system")
+    @ApiModelProperty("desccription")
+    private String description;
+
+    @ApiModelProperty("create user")
     @NotNull
-    private Integer systemId;
+    private String createUser;
 
 }

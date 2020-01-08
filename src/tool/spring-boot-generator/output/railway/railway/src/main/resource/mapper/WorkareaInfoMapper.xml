@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.WorkareaInfoMapper">
     <insert id="addWorkareaInfo" parameterType="com.railway.pojo.req.AddWorkareaInfoReq">
-          insert  into workarea_info
+          insert  into workarea_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
              workarea_info.full_name,
             <if test="inputCode != null">
@@ -32,7 +32,7 @@
           </trim>
     </insert>
     <delete id="deleteWorkareaInfoById">
-          delete from workarea_info
+          delete from workarea_info 
           <where>
             <if test="id != null">
                   workarea_info.id = #{id}
@@ -40,7 +40,7 @@
           </where>
     </delete>
     <update id="updateWorkareaInfoById" parameterType="com.railway.pojo.param.UpdateWorkareaInfoByIdParams">
-        update workarea_info
+        update workarea_info 
         <set>
             <if test="fullName != null">
                   workarea_info.full_name = #{FullName},
@@ -79,7 +79,7 @@
              workarea_info.short_name,
              workarea_info.update_time,
              workarea_info.workshop_id
-          form workarea_info
+          form workarea_info 
           <where>
             <if test="id != null">
                   workarea_info.id = #{id}
@@ -97,7 +97,7 @@
              workarea_info.short_name,
              workarea_info.update_time,
              workarea_info.workshop_id
-          form workarea_info
+          form workarea_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   workarea_info.create_time between #{createTimeStart} and #{createTimeEnd}

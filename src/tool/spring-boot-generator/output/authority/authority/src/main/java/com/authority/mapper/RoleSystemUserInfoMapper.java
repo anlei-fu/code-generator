@@ -1,9 +1,9 @@
 package com.authority.mapper;
 
 import com.authority.pojo.entity.RoleSystemUserInfo;
-import com.authority.pojo.req.AddRoleSystemUserInfoReq;
+import com.authority.pojo.params.AddRoleSystemUserInfoParams;
+import com.authority.pojo.params.UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountParams;
 import com.authority.pojo.req.GetRoleSystemUserInfoListReq;
-import com.authority.pojo.req.UpdateRoleSystemUserInfoByAccountReq;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
 
@@ -13,13 +13,13 @@ import java.util.List;
 @Mapper
 public interface RoleSystemUserInfoMapper {
         
-    int addRoleSystemUserInfo(AddRoleSystemUserInfoReq req);
+    int addRoleSystemUserInfo(AddRoleSystemUserInfoParams params);
     
-        int deleteRoleSystemUserInfoByAccount(@Params("account") Integer account);
+        int deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(@Params("account") String account);
     
-        int updateRoleSystemUserInfoByAccount(@Params("account") Integer account, @Params("req") UpdateRoleSystemUserInfoByAccountReq req);
+        int updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountParams params);
     
-        RoleSystemUserInfo getRoleSystemUserInfoByAccount(@Params("account") Integer account);
+        RoleSystemUserInfo getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(@Params("account") String account);
     
         List<RoleSystemUserInfo> getRoleSystemUserInfoList(GetRoleSystemUserInfoListReq req);
    

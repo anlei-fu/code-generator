@@ -7,8 +7,6 @@
  * @LastEditTime : 2019-12-19 10:53:59
  */
 
-const { requireNotNull } = require("./utils")
-
 /**
  * Get matched sections of input string and remove left,right pattern both
  * 

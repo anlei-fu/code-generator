@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.BureauInfoMapper">
     <insert id="addBureauInfo" parameterType="com.railway.pojo.req.AddBureauInfoReq">
-          insert  into bureau_info
+          insert  into bureau_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
              bureau_info.bureau_code,
              bureau_info.bureau_name,
@@ -30,7 +30,7 @@
           </trim>
     </insert>
     <delete id="deleteBureauInfoById">
-          delete from bureau_info
+          delete from bureau_info 
           <where>
             <if test="id != null">
                   bureau_info.id = #{id}
@@ -38,7 +38,7 @@
           </where>
     </delete>
     <update id="updateBureauInfoById" parameterType="com.railway.pojo.param.UpdateBureauInfoByIdParams">
-        update bureau_info
+        update bureau_info 
         <set>
             <if test="bureauCode != null">
                   bureau_info.bureau_code = #{BureauCode},
@@ -73,7 +73,7 @@
              bureau_info.is_delete,
              bureau_info.operator,
              bureau_info.update_time
-          form bureau_info
+          form bureau_info 
           <where>
             <if test="id != null">
                   bureau_info.id = #{id}
@@ -90,7 +90,7 @@
              bureau_info.is_delete,
              bureau_info.operator,
              bureau_info.update_time
-          form bureau_info
+          form bureau_info 
           <where>
             <if test="bureauCode != null">
                   bureau_info.bureau_code = #{bureauCode}

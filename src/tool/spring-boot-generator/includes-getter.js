@@ -15,12 +15,12 @@ function getIncludes(config) {
 
         let includes = [];
         config.includes.forEach(x => {
-                includes.push(getColumn(config.table, x));
+                includes.push(getColumn(config.table, x,config.alias));
         });
 
         config.joins.forEach(x => {
                 x.includes.forEach(y => {
-                        includes.push(getColumn(x.table, y));
+                        includes.push(getColumn(x.table, y.alias));
                 });
         });
 

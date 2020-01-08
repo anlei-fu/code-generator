@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectStaffInfoMapper">
     <insert id="addDetectStaffInfo" parameterType="com.railway.pojo.req.AddDetectStaffInfoReq">
-          insert  into detect_staff_info
+          insert  into detect_staff_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="birthday != null">
                   detect_staff_info.birthday,
@@ -128,7 +128,7 @@
           </trim>
     </insert>
     <delete id="deleteDetectStaffInfoById">
-          delete from detect_staff_info
+          delete from detect_staff_info 
           <where>
             <if test="id != null">
                   detect_staff_info.id = #{id}
@@ -136,7 +136,7 @@
           </where>
     </delete>
     <update id="updateDetectStaffInfoById" parameterType="com.railway.pojo.param.UpdateDetectStaffInfoByIdParams">
-        update detect_staff_info
+        update detect_staff_info 
         <set>
             <if test="birthday != null">
                   detect_staff_info.birthday = #{Birthday},
@@ -231,7 +231,7 @@
              detect_staff_info.tec_category,
              detect_staff_info.update_time,
              detect_staff_info.workarea_id
-          form detect_staff_info
+          form detect_staff_info 
           <where>
             <if test="id != null">
                   detect_staff_info.id = #{id}
@@ -263,7 +263,7 @@
              detect_staff_info.tec_category,
              detect_staff_info.update_time,
              detect_staff_info.workarea_id
-          form detect_staff_info
+          form detect_staff_info 
           <where>
             <if test="birthdayStart !=null and  birthdayEnd != null">
                   detect_staff_info.birthday between #{birthdayStart} and #{birthdayEnd}

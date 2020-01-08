@@ -8,16 +8,17 @@ exports.bureauLineOrderConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // updateTime excluded
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addBureauLineOrder")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(bureauLineOrder.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/bureauLineOrder");
@@ -33,6 +34,7 @@ exports.bureauLineOrderConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteBureauLineOrderById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -46,13 +48,14 @@ exports.bureauLineOrderConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateBureauLineOrderById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(bureauLineOrder.columnsArray)
                                                   .excludes("id")
@@ -82,6 +85,7 @@ exports.bureauLineOrderConfig = {
                         new builder()
                                 .type("select")
                                 .id("getBureauLineOrderById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(bureauLineOrder.columnsArray)
                                 })
@@ -103,9 +107,11 @@ exports.bureauLineOrderConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getBureauLineOrderList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(bureauLineOrder.columnsArray)
                                 })
@@ -114,7 +120,6 @@ exports.bureauLineOrderConfig = {
                                                   .excludes("id")
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getBureauLineOrderList")
                                 .controller(controller => {
                                         controller.path("/bureauLineOrder");
                                 })

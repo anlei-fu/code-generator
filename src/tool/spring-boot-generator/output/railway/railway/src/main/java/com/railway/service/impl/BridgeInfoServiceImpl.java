@@ -31,7 +31,7 @@ public class BridgeInfoServiceImpl implements BridgeInfoService {
 
     @Override
     public boolean updateBridgeInfoById(Integer id, UpdateBridgeInfoByIdReq req) {
-        params params = new UpdateBridgeInfoByIdParams(id, req)
+        params params = new UpdateBridgeInfoByIdParams(id, req);
         return bridgeInfoMapper.updateBridgeInfoById(params) > 0;
     }
 

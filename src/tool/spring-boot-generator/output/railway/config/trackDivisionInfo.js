@@ -8,18 +8,19 @@ exports.trackDivisionInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // fullName : validate --- @NotNull  
                         // id excluded 
+                        // fullName : validate --- @NotNull  
                         // isDelete : validate --- @NotNull  
-                        // updateTime excluded
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addTrackDivisionInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(trackDivisionInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/trackDivisionInfo");
@@ -36,6 +37,7 @@ exports.trackDivisionInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTrackDivisionInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -49,13 +51,14 @@ exports.trackDivisionInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateTrackDivisionInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(trackDivisionInfo.columnsArray)
                                                   .excludes("id")
@@ -85,6 +88,7 @@ exports.trackDivisionInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTrackDivisionInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(trackDivisionInfo.columnsArray)
                                 })
@@ -106,11 +110,13 @@ exports.trackDivisionInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // fullName : excluded 
-                        // shortName : excluded
+                        // shortName : excluded 
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getTrackDivisionInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(trackDivisionInfo.columnsArray)
                                 })
@@ -120,7 +126,6 @@ exports.trackDivisionInfoConfig = {
                                                   .excludes(["fullName","shortName"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getTrackDivisionInfoList")
                                 .controller(controller => {
                                         controller.path("/trackDivisionInfo");
                                 })

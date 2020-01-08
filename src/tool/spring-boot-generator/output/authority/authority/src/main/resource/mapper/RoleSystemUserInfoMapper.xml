@@ -1,44 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.authority.mapper.RoleSystemUserInfoMapper">
-    <insert id="addRoleSystemUserInfo">
-          insert  into role_system_user_info
+    <insert id="addRoleSystemUserInfo" parameterType="com.authority.pojo.param.AddRoleSystemUserInfoParams">
+          insert  into role_system_user_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
- role_system_user_info.account,
- role_system_user_info.password,
- role_system_user_info.role,
-
+             t.password,
+             t.role,
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
- #{account} ,
- #{password} ,
- #{role} ,
-
+             #{Password},
+             #{Role},
+             current_timestamp
           </trim>
     </insert>
-    <delete id="deleteRoleSystemUserInfoByAccount">
-          delete from role_system_user_info
-@where
+    <delete id="deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount">
+          delete from role_system_user_info t
+          <where>
+            <if test="account != null">
+                  t.account = #{account}
+            </if>
+          </where>
     </delete>
-    <update id="updateRoleSystemUserInfoByAccount">
-        update role_system_user_info
-@set
-@where
+    <update id="updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount" parameterType="com.authority.pojo.param.UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountParams">
+        update role_system_user_info t
+        <set>
+            <if test="password != null">
+                  t.password = #{Password},
+            </if>
+            <if test="role != null">
+                  t.role = #{Role}
+            </if>
+        </set>
+          <where>
+            <if test="account != null">
+                  t.account = #{account}
+            </if>
+          </where>
     </update>
-    <select id="getRoleSystemUserInfoByAccount" resultType="com.authority.pojo.@resultType">
+    <select id="getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount" resultType="com.authority.pojo.entity.RoleSystemUserInfo">
           select
-undefined
-          form roleSystemUserInfoName
-
-@where
+             t.account,
+             t.password,
+             t.create_time,
+             t.role
+          form role_system_user_info t
+          <where>
+            <if test="account != null">
+                  t.account = #{account}
+            </if>
+          </where>
     </select>
-    <select id="getRoleSystemUserInfoList" resultType="com.authority.pojo.@resultType">
+    <select id="getRoleSystemUserInfoList" resultType="com.authority.pojo.entity.RoleSystemUserInfo" parameterType="com.authority.pojo.req.GetRoleSystemUserInfoListReq">
           select
-undefined
-          form roleSystemUserInfoName
-
-@where
+             t.account,
+             t.password,
+             t.create_time,
+             t.role
+          form role_system_user_info t
+          <where>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="role != null">
+                  and t.role = #{role}
+            </if>
+          </where>
     </select>
-
 </mapper>

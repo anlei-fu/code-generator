@@ -19,6 +19,7 @@ exports.workTaskRecordConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addWorkTaskRecord")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workTaskRecord.columnsArray)
                                                   .excludes("id")
@@ -44,6 +45,7 @@ exports.workTaskRecordConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteWorkTaskRecordById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -57,12 +59,12 @@ exports.workTaskRecordConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateWorkTaskRecordById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workTaskRecord.columnsArray)
                                                   .excludes("id")
@@ -91,6 +93,7 @@ exports.workTaskRecordConfig = {
                         new builder()
                                 .type("select")
                                 .id("getWorkTaskRecordById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workTaskRecord.columnsArray)
                                 })
@@ -115,15 +118,16 @@ exports.workTaskRecordConfig = {
                         // pageDownloaded : expression --- range
                         new builder()
                                 .type("select")
+                                .id("getWorkTaskRecordList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workTaskRecord.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(workTaskRecord.columnsArray)
                                                   .excludes("id")
-                                                  .expression("pageDownloaded","range")
+                                                  .exp("pageDownloaded","range")
                                 })
-                                .id("getWorkTaskRecordList")
                                 .controller(controller => {
                                         controller.path("/workTaskRecord");
                                 })

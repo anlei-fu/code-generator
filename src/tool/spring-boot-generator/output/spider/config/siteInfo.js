@@ -13,6 +13,7 @@ exports.siteInfoConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addSiteInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(siteInfo.columnsArray)
                                                   .excludes("id")
@@ -32,6 +33,7 @@ exports.siteInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteSiteInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -45,12 +47,13 @@ exports.siteInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // mainDomain : validate --- @Url
                         new builder()
                                 .type("update")
                                 .id("updateSiteInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(siteInfo.columnsArray)
                                                   .excludes("id")
@@ -79,6 +82,7 @@ exports.siteInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getSiteInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(siteInfo.columnsArray)
                                 })
@@ -104,6 +108,8 @@ exports.siteInfoConfig = {
                         // description : excluded
                         new builder()
                                 .type("select")
+                                .id("getSiteInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(siteInfo.columnsArray)
                                 })
@@ -112,7 +118,6 @@ exports.siteInfoConfig = {
                                                   .excludes("id")
                                                   .excludes(["description"])
                                 })
-                                .id("getSiteInfoList")
                                 .controller(controller => {
                                         controller.path("/siteInfo");
                                 })

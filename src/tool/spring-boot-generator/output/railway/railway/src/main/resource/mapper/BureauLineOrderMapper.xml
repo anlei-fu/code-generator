@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.BureauLineOrderMapper">
     <insert id="addBureauLineOrder" parameterType="com.railway.pojo.req.AddBureauLineOrderReq">
-          insert  into bureau_line_order
+          insert  into bureau_line_order 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bureauId != null">
                   bureau_line_order.bureau_id,
@@ -36,7 +36,7 @@
           </trim>
     </insert>
     <delete id="deleteBureauLineOrderById">
-          delete from bureau_line_order
+          delete from bureau_line_order 
           <where>
             <if test="id != null">
                   bureau_line_order.id = #{id}
@@ -44,7 +44,7 @@
           </where>
     </delete>
     <update id="updateBureauLineOrderById" parameterType="com.railway.pojo.param.UpdateBureauLineOrderByIdParams">
-        update bureau_line_order
+        update bureau_line_order 
         <set>
             <if test="bureauId != null">
                   bureau_line_order.bureau_id = #{BureauId},
@@ -75,7 +75,7 @@
              bureau_line_order.operator,
              bureau_line_order.sort_num,
              bureau_line_order.update_time
-          form bureau_line_order
+          form bureau_line_order 
           <where>
             <if test="id != null">
                   bureau_line_order.id = #{id}
@@ -91,7 +91,7 @@
              bureau_line_order.operator,
              bureau_line_order.sort_num,
              bureau_line_order.update_time
-          form bureau_line_order
+          form bureau_line_order 
           <where>
             <if test="bureauId != null">
                   bureau_line_order.bureau_id = #{bureauId}

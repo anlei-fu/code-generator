@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectGoupUserMapper">
     <insert id="addDetectGoupUser" parameterType="com.railway.pojo.req.AddDetectGoupUserReq">
-          insert  into detect_goup_user
+          insert  into detect_goup_user 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="groupId != null">
                   detect_goup_user.group_id,
@@ -38,7 +38,7 @@
           </trim>
     </insert>
     <delete id="deleteDetectGoupUserById">
-          delete from detect_goup_user
+          delete from detect_goup_user 
           <where>
             <if test="id != null">
                   detect_goup_user.id = #{id}
@@ -46,7 +46,7 @@
           </where>
     </delete>
     <update id="updateDetectGoupUserById" parameterType="com.railway.pojo.param.UpdateDetectGoupUserByIdParams">
-        update detect_goup_user
+        update detect_goup_user 
         <set>
             <if test="groupId != null">
                   detect_goup_user.group_id = #{GroupId},
@@ -81,7 +81,7 @@
              detect_goup_user.operator,
              detect_goup_user.status,
              detect_goup_user.update_time
-          form detect_goup_user
+          form detect_goup_user 
           <where>
             <if test="id != null">
                   detect_goup_user.id = #{id}
@@ -98,7 +98,7 @@
              detect_goup_user.operator,
              detect_goup_user.status,
              detect_goup_user.update_time
-          form detect_goup_user
+          form detect_goup_user 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   detect_goup_user.create_time between #{createTimeStart} and #{createTimeEnd}

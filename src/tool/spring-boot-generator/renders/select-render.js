@@ -34,6 +34,7 @@ function renderSelect(config) {
         }
 
         let selectModel = {
+                alias:config.alias||"",
                 columns,
                 resultType: config.resp.doCreate ? `resp.${config.resp.type}` : `entity.${STR.upperFirstLetter(config.table.name)}`,
                 where: renderConditions(config),

@@ -16,7 +16,7 @@ class Generator {
         }
 
         /**
-         * Write all files
+         * Generate all files
          */
         generate() {
                 if(this._config.add||this._config.edit)
@@ -37,7 +37,7 @@ class Generator {
         }
 
         /**
-         * Write entity file
+         * Generate entity file
          * 
          * @private
          */
@@ -47,7 +47,7 @@ class Generator {
         }
 
         /**
-         * Write entity config file
+         * Generate entity config file
          * 
          * @private
          */
@@ -57,7 +57,7 @@ class Generator {
         }
 
         /**
-         * Write index file
+         * Generate index file
          * 
          * @private
          */
@@ -67,7 +67,7 @@ class Generator {
         }
 
         /**
-         * Write item file
+         * Generate item file
          */
         _generateItem(){
                 let content = renders.renderItem(this._config.addConfig);
@@ -75,7 +75,7 @@ class Generator {
         }
 
         /**
-         * Write item file
+         * Generate item file
          * 
          * @private
          */
@@ -85,7 +85,7 @@ class Generator {
         }
 
         /**
-         * Write IAccess file
+         * Generate IAccess file
          * 
          * @private
          */
@@ -95,7 +95,7 @@ class Generator {
         }
 
         /**
-         * Write Accss file
+         * Generate Accss file
          * 
          * @private
          */
@@ -105,7 +105,7 @@ class Generator {
         }
 
         /**
-         * Write IHandler file
+         * Generate IHandler file
          * 
          * @private
          */
@@ -115,7 +115,7 @@ class Generator {
         }
 
         /**
-         * Write handler file
+         * Generate handler file
          * 
          * @private
          */
@@ -125,7 +125,7 @@ class Generator {
         }
 
         /**
-         * Write list model file
+         *Generate list model file
          * 
          * @private
          */
@@ -135,7 +135,7 @@ class Generator {
         }
 
         /**
-         * Write item model file
+         * Generate item model file
          * 
          * @private
          */
@@ -145,7 +145,7 @@ class Generator {
         }
 
         /**
-         * Write view model file
+         * Generate view model file
          * 
          * @private
          */
@@ -155,7 +155,7 @@ class Generator {
         }
 
         /**
-         * Write service file
+         * Generate service file
          * 
          * @private
          */
@@ -165,7 +165,7 @@ class Generator {
         }
 
         /**
-         * Write controller file
+         * Generate controller file
          * 
          * @private
          */

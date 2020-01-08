@@ -13,6 +13,7 @@ exports.taskHttpHeaderConfigConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addTaskHttpHeaderConfig")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskHttpHeaderConfig.columnsArray)
                                                   .excludes("id")
@@ -32,6 +33,7 @@ exports.taskHttpHeaderConfigConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTaskHttpHeaderConfigById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -45,12 +47,12 @@ exports.taskHttpHeaderConfigConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateTaskHttpHeaderConfigById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskHttpHeaderConfig.columnsArray)
                                                   .excludes("id")
@@ -79,6 +81,7 @@ exports.taskHttpHeaderConfigConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTaskHttpHeaderConfigById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskHttpHeaderConfig.columnsArray)
                                 })
@@ -103,6 +106,8 @@ exports.taskHttpHeaderConfigConfig = {
                         // key : excluded
                         new builder()
                                 .type("select")
+                                .id("getTaskHttpHeaderConfigList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskHttpHeaderConfig.columnsArray)
                                 })
@@ -111,7 +116,6 @@ exports.taskHttpHeaderConfigConfig = {
                                                   .excludes("id")
                                                   .excludes(["key"])
                                 })
-                                .id("getTaskHttpHeaderConfigList")
                                 .controller(controller => {
                                         controller.path("/taskHttpHeaderConfig");
                                 })

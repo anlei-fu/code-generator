@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.TrackInfoMapper">
     <insert id="addTrackInfo" parameterType="com.railway.pojo.req.AddTrackInfoReq">
-          insert  into track_info
+          insert  into track_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
              track_info.is_delete,
             <if test="operator != null">
@@ -30,7 +30,7 @@
           </trim>
     </insert>
     <delete id="deleteTrackInfoById">
-          delete from track_info
+          delete from track_info 
           <where>
             <if test="id != null">
                   track_info.id = #{id}
@@ -38,7 +38,7 @@
           </where>
     </delete>
     <update id="updateTrackInfoById" parameterType="com.railway.pojo.param.UpdateTrackInfoByIdParams">
-        update track_info
+        update track_info 
         <set>
             <if test="isDelete != null">
                   track_info.is_delete = #{IsDelete},
@@ -73,7 +73,7 @@
              track_info.track_division_id,
              track_info.track_type,
              track_info.update_time
-          form track_info
+          form track_info 
           <where>
             <if test="id != null">
                   track_info.id = #{id}
@@ -90,7 +90,7 @@
              track_info.track_division_id,
              track_info.track_type,
              track_info.update_time
-          form track_info
+          form track_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   track_info.create_time between #{createTimeStart} and #{createTimeEnd}

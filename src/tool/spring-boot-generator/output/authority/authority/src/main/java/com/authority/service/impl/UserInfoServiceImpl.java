@@ -5,7 +5,7 @@ import com.authority.pojo.entity.UserInfo;
 import com.authority.pojo.entity.UserInfo;
 import com.authority.pojo.req.AddUserInfoReq;
 import com.authority.pojo.req.GetUserInfoListReq;
-import com.authority.pojo.req.UpdateUserInfoByAccountReq;
+import com.authority.pojo.req.UpdateUserInfoByUserAndUserAndUserAndUserAndAccountReq;
 import com.authority.service.UserInfoService;
 import com.authority.utils.PageHelperUtils;
 import com.github.pagehelper.PageInfo;
@@ -20,23 +20,25 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public boolean addUserInfo(AddUserInfoReq req) {
-        return userInfoMapper.addUserInfo(req) > 0;
+    public boolean addUserInfo(AddUserInfoReq req, String user) {
+        params params = new AddUserInfoParams(req, user)
+        return userInfoMapper.addUserInfo(params) > 0;
     }
 
     @Override
-    public boolean deleteUserInfoByAccount(Integer account) {
-        return userInfoMapper.deleteUserInfoByAccount(account) > 0;
+    public boolean deleteUserInfoByUserAndUserAndUserAndUserAndAccount(String account) {
+        return userInfoMapper.deleteUserInfoByUserAndUserAndUserAndUserAndAccount(account) > 0;
     }
 
     @Override
-    public boolean updateUserInfoByAccount(Integer account, UpdateUserInfoByAccountReq req) {
-        return userInfoMapper.updateUserInfoByAccount(account, req) > 0;
+    public boolean updateUserInfoByUserAndUserAndUserAndUserAndAccount(String account, UpdateUserInfoByUserAndUserAndUserAndUserAndAccountReq req) {
+        params params = new UpdateUserInfoByUserAndUserAndUserAndUserAndAccountParams(account, req)
+        return userInfoMapper.updateUserInfoByUserAndUserAndUserAndUserAndAccount(params) > 0;
     }
 
     @Override
-    public UserInfo getUserInfoByAccount(Integer account) {
-        return userInfoMapper.getUserInfoByAccount(account);
+    public UserInfo getUserInfoByUserAndUserAndUserAndUserAndAccount(String account) {
+        return userInfoMapper.getUserInfoByUserAndUserAndUserAndUserAndAccount(account);
     }
 
     @Override

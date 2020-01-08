@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.StationLineMapper">
     <insert id="addStationLine" parameterType="com.railway.pojo.req.AddStationLineReq">
-          insert  into station_line
+          insert  into station_line 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="centDistance != null">
                   station_line.cent_distance,
@@ -60,7 +60,7 @@
           </trim>
     </insert>
     <delete id="deleteStationLineById">
-          delete from station_line
+          delete from station_line 
           <where>
             <if test="id != null">
                   station_line.id = #{id}
@@ -68,7 +68,7 @@
           </where>
     </delete>
     <update id="updateStationLineById" parameterType="com.railway.pojo.param.UpdateStationLineByIdParams">
-        update station_line
+        update station_line 
         <set>
             <if test="centDistance != null">
                   station_line.cent_distance = #{CentDistance},
@@ -123,7 +123,7 @@
              station_line.station_id,
              station_line.status,
              station_line.update_time
-          form station_line
+          form station_line 
           <where>
             <if test="id != null">
                   station_line.id = #{id}
@@ -145,7 +145,7 @@
              station_line.station_id,
              station_line.status,
              station_line.update_time
-          form station_line
+          form station_line 
           <where>
             <if test="centDistance != null">
                   station_line.cent_distance = #{centDistance}

@@ -2,14 +2,6 @@ let loginUser = {
 	name: "loginUser",
 	description: "",
 	columns: {
-		createTime: {
-			name: "createTime",
-			description: "",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
 		id: {
 			name: "id",
 			description: "",
@@ -23,7 +15,7 @@ let loginUser = {
 		},
 		name: {
 			name: "name",
-			description: "名字",
+			description: "用户名",
 			nullable: true,
 			type: {
 				name: "varchar",
@@ -32,16 +24,7 @@ let loginUser = {
 		},
 		password: {
 			name: "password",
-			description: "密码3",
-			nullable: true,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		state: {
-			name: "state",
-			description: "",
+			description: "密码",
 			nullable: true,
 			type: {
 				name: "varchar",
@@ -57,6 +40,23 @@ let loginUser = {
 				length: null
 			}
 		},
+		state: {
+			name: "state",
+			description: "",
+			nullable: true,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
+		createTime: {
+			name: "createTime",
+			description: "",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
 		updateTime: {
 			name: "updateTime",
 			description: "",
@@ -69,12 +69,12 @@ let loginUser = {
 };
 
 let columnsArray = [
-	"createTime",
 	"id",
 	"name",
 	"password",
-	"state",
 	"type",
+	"state",
+	"createTime",
 	"updateTime"
 ];
 

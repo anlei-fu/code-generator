@@ -13,6 +13,7 @@ exports.workerInfoConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addWorkerInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workerInfo.columnsArray)
                                                   .excludes("id")
@@ -33,6 +34,7 @@ exports.workerInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteWorkerInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -46,12 +48,13 @@ exports.workerInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // ip : validate --- @Ip
                         new builder()
                                 .type("update")
                                 .id("updateWorkerInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workerInfo.columnsArray)
                                                   .excludes("id")
@@ -80,6 +83,7 @@ exports.workerInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getWorkerInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workerInfo.columnsArray)
                                 })
@@ -105,6 +109,8 @@ exports.workerInfoConfig = {
                         // description : excluded
                         new builder()
                                 .type("select")
+                                .id("getWorkerInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workerInfo.columnsArray)
                                 })
@@ -113,7 +119,6 @@ exports.workerInfoConfig = {
                                                   .excludes("id")
                                                   .excludes(["description"])
                                 })
-                                .id("getWorkerInfoList")
                                 .controller(controller => {
                                         controller.path("/workerInfo");
                                 })

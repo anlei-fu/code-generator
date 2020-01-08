@@ -8,18 +8,19 @@ exports.damageRepositoryDeviceConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // deviceType : validate --- @Enum("deviceType")  
                         // orderDetailId excluded 
+                        // deviceType : validate --- @Enum("deviceType")  
                         // railType : validate --- @Enum("railType")  
-                        // updateTime excluded
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addDamageRepositoryDevice")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(damageRepositoryDevice.columnsArray)
                                                   .excludes("orderDetailId")
-                                                  .excludes(["createTime","orderDetailId","updateTime"])
+                                                  .excludes(["orderDetailId","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepositoryDevice");
@@ -30,12 +31,18 @@ exports.damageRepositoryDeviceConfig = {
                                            .validate("deviceType","@Enum(\"deviceType\")")
                                            .validate("railType","@Enum(\"railType\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteDamageRepositoryDeviceByOrderDetailId")
+                                .id("deleteDamageRepositoryDeviceByUserAndOrderDetailId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("orderDetailId")
                                                   .require("orderDetailId")
@@ -48,16 +55,22 @@ exports.damageRepositoryDeviceConfig = {
                                            .type("Integer")
                                            .from("@PathVariable");
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
                         // deviceType : validate --- @Enum("deviceType")  
                         // railType : validate --- @Enum("railType")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
-                                .id("updateDamageRepositoryDeviceByOrderDetailId")
+                                .id("updateDamageRepositoryDeviceByUserAndOrderDetailId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(damageRepositoryDevice.columnsArray)
                                                   .excludes("orderDetailId")
@@ -82,12 +95,18 @@ exports.damageRepositoryDeviceConfig = {
                                            .validate("deviceType","@Enum(\"deviceType\")")
                                            .validate("railType","@Enum(\"railType\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
 
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getDamageRepositoryDeviceByOrderDetailId")
+                                .id("getDamageRepositoryDeviceByUserAndOrderDetailId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(damageRepositoryDevice.columnsArray)
                                 })
@@ -106,17 +125,24 @@ exports.damageRepositoryDeviceConfig = {
                                 .resp(resp => {
                                         resp.single();
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // deviceName : excluded 
                         // deviceType : validates --- @Enum("deviceType")  
-                        // railType : validates --- @Enum("railType")  
                         // totalWeight : expression --- range
-                        // userDate : excluded
+                        // userDate : excluded 
+                        // railType : validates --- @Enum("railType")  
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getDamageRepositoryDeviceList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(damageRepositoryDevice.columnsArray)
                                 })
@@ -124,10 +150,9 @@ exports.damageRepositoryDeviceConfig = {
                                         collection.includes(damageRepositoryDevice.columnsArray)
                                                   .excludes("orderDetailId")
                                                   .excludes(["deviceName","userDate"])
-                                                  .exp("createTime","timeRange")
                                                   .exp("totalWeight","range")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getDamageRepositoryDeviceList")
                                 .controller(controller => {
                                         controller.path("/damageRepositoryDevice");
                                 })

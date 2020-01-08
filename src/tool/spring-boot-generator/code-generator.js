@@ -457,9 +457,7 @@ class Generator {
                                                 y.source = "req";
                                         }
                                 });
-                        } else {
-                                console.log("error");
-                        }
+                        } 
                 });
 
                 let configs = [];

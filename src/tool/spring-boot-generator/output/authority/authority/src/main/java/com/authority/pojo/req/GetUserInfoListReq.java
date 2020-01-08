@@ -14,13 +14,13 @@ import java.util.Date;
 @Setter
 public class GetUserInfoListReq extends PageReq {
 
-    @ApiModelProperty("create time")
-    private Date createTime;
+    @ApiModelProperty("create time start time")
+    private Date createTimeStart;
+
+    @ApiModelProperty("create time end time")
+    private Date createTimeEnd;
 
     @ApiModelProperty("create user")
     private String createUser;
-
-    @ApiModelProperty("user role")
-    private Integer userRole;
 
 }

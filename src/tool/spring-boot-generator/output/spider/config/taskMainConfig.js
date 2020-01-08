@@ -13,6 +13,7 @@ exports.taskMainConfigConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addTaskMainConfig")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskMainConfig.columnsArray)
                                                   .excludes("id")
@@ -32,6 +33,7 @@ exports.taskMainConfigConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTaskMainConfigById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -45,12 +47,12 @@ exports.taskMainConfigConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateTaskMainConfigById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskMainConfig.columnsArray)
                                                   .excludes("id")
@@ -79,6 +81,7 @@ exports.taskMainConfigConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTaskMainConfigById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskMainConfig.columnsArray)
                                 })
@@ -100,9 +103,10 @@ exports.taskMainConfigConfig = {
                                 .build(),
 
                         // getList
-
                         new builder()
                                 .type("select")
+                                .id("getTaskMainConfigList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskMainConfig.columnsArray)
                                 })
@@ -111,7 +115,6 @@ exports.taskMainConfigConfig = {
                                                   .excludes("id")
 
                                 })
-                                .id("getTaskMainConfigList")
                                 .controller(controller => {
                                         controller.path("/taskMainConfig");
                                 })

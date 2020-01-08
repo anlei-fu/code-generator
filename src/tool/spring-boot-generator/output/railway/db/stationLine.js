@@ -2,39 +2,6 @@ let stationLine = {
 	name: "stationLine",
 	description: "车站线路",
 	columns: {
-		centDistance: {
-			name: "centDistance",
-			description: "中心点距离",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
-		direction: {
-			name: "direction",
-			description: "行别",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		endDistance: {
-			name: "endDistance",
-			description: "终端距离",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
 		id: {
 			name: "id",
 			description: "编号",
@@ -46,9 +13,9 @@ let stationLine = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
+		stationId: {
+			name: "stationId",
+			description: "车站编号",
 			nullable: false,
 			type: {
 				name: "int",
@@ -64,9 +31,42 @@ let stationLine = {
 				length: null
 			}
 		},
-		operator: {
-			name: "operator",
-			description: "操作人",
+		direction: {
+			name: "direction",
+			description: "行别",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		centDistance: {
+			name: "centDistance",
+			description: "中心点距离",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		startDistance: {
+			name: "startDistance",
+			description: "开始距离",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		endDistance: {
+			name: "endDistance",
+			description: "终端距离",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		status: {
+			name: "status",
+			description: "状态",
 			nullable: true,
 			type: {
 				name: "int",
@@ -82,30 +82,21 @@ let stationLine = {
 				length: null
 			}
 		},
-		startDistance: {
-			name: "startDistance",
-			description: "开始距离",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		stationId: {
-			name: "stationId",
-			description: "车站编号",
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
 			nullable: false,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		status: {
-			name: "status",
-			description: "状态",
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
 			nullable: true,
 			type: {
-				name: "int",
-				length: null
+				name: "datetime"
 			}
 		},
 		updateTime: {
@@ -115,24 +106,33 @@ let stationLine = {
 			type: {
 				name: "datetime"
 			}
+		},
+		operator: {
+			name: "operator",
+			description: "操作人",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
 		}
 	}
 };
 
 let columnsArray = [
-	"centDistance",
-	"createTime",
-	"direction",
-	"endDistance",
 	"id",
-	"isDelete",
-	"lineId",
-	"operator",
-	"sortNum",
-	"startDistance",
 	"stationId",
+	"lineId",
+	"direction",
+	"centDistance",
+	"startDistance",
+	"endDistance",
 	"status",
-	"updateTime"
+	"sortNum",
+	"isDelete",
+	"createTime",
+	"updateTime",
+	"operator"
 ];
 
 function create() {

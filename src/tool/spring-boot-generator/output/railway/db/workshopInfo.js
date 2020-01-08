@@ -2,12 +2,15 @@ let workshopInfo = {
 	name: "workshopInfo",
 	description: "线路车间信息",
 	columns: {
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
+		id: {
+			name: "id",
+			description: "车间编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
 			type: {
-				name: "datetime"
+				name: "int",
+				length: null
 			}
 		},
 		fullName: {
@@ -19,14 +22,12 @@ let workshopInfo = {
 				length: null
 			}
 		},
-		id: {
-			name: "id",
-			description: "车间编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
+		shortName: {
+			name: "shortName",
+			description: "车间简称",
+			nullable: true,
 			type: {
-				name: "int",
+				name: "varchar",
 				length: null
 			}
 		},
@@ -39,10 +40,19 @@ let workshopInfo = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
+		workshopType: {
+			name: "workshopType",
+			description: "车间类型",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		trackDivisionId: {
+			name: "trackDivisionId",
+			description: "工务段编号",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
@@ -57,31 +67,21 @@ let workshopInfo = {
 				length: null
 			}
 		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		shortName: {
-			name: "shortName",
-			description: "车间简称",
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
 			nullable: true,
 			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		trackDivisionId: {
-			name: "trackDivisionId",
-			description: "工务段编号",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
+				name: "datetime"
 			}
 		},
 		updateTime: {
@@ -92,9 +92,9 @@ let workshopInfo = {
 				name: "datetime"
 			}
 		},
-		workshopType: {
-			name: "workshopType",
-			description: "车间类型",
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
 				name: "int",
@@ -105,17 +105,17 @@ let workshopInfo = {
 };
 
 let columnsArray = [
-	"createTime",
-	"fullName",
 	"id",
-	"inputCode",
-	"isDelete",
-	"lineId",
-	"operator",
+	"fullName",
 	"shortName",
+	"inputCode",
+	"workshopType",
 	"trackDivisionId",
+	"lineId",
+	"isDelete",
+	"createTime",
 	"updateTime",
-	"workshopType"
+	"operator"
 ];
 
 function create() {

@@ -8,22 +8,22 @@ exports.damageRepositoryConfig = {
                 items: [
 
                         // add
-                        // auditStatus : validate --- @Enum("auditStatus")  
-                        // createTime excluded 
-                        // damageLevel : validate --- @Enum("damageLevel")  
+                        // orderDetailId excluded 
                         // damageType : validate --- @Enum("damageType")  
                         // dealStatus : validate --- @Enum("dealStatus")  
                         // importStatus : validate --- @Enum("importStatus")  
                         // isDelete : validate --- @NotNull  
-                        // orderDetailId excluded 
-                        // updateTime excluded
+                        // createTime excluded 
+                        // updateTime excluded 
+                        // auditStatus : validate --- @Enum("auditStatus")@@
                         new builder()
                                 .type("insert")
                                 .id("addDamageRepository")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(damageRepository.columnsArray)
                                                   .excludes("orderDetailId")
-                                                  .excludes(["createTime","orderDetailId","updateTime"])
+                                                  .excludes(["orderDetailId","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepository");
@@ -31,19 +31,24 @@ exports.damageRepositoryConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("orderDetailId")
-                                           .validate("auditStatus","@Enum(\"auditStatus\")")
-                                           .validate("damageLevel","@Enum(\"damageLevel\")")
                                            .validate("damageType","@Enum(\"damageType\")")
                                            .validate("dealStatus","@Enum(\"dealStatus\")")
                                            .validate("importStatus","@Enum(\"importStatus\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("auditStatus","@Enum(\"auditStatus\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteDamageRepositoryByOrderDetailId")
+                                .id("deleteDamageRepositoryByUserAndOrderDetailId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("orderDetailId")
                                                   .require("orderDetailId")
@@ -56,19 +61,24 @@ exports.damageRepositoryConfig = {
                                            .type("Integer")
                                            .from("@PathVariable");
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
-
+                                
                         // updateById
-                        // auditStatus : validate --- @Enum("auditStatus")  
-                        // createTime : excluded 
-                        // damageLevel : validate --- @Enum("damageLevel")  
                         // damageType : validate --- @Enum("damageType")  
                         // dealStatus : validate --- @Enum("dealStatus")  
                         // importStatus : validate --- @Enum("importStatus")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded 
+                        // auditStatus : validate --- @Enum("auditStatus")@@
                         new builder()
                                 .type("update")
-                                .id("updateDamageRepositoryByOrderDetailId")
+                                .id("updateDamageRepositoryByUserAndOrderDetailId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(damageRepository.columnsArray)
                                                   .excludes("orderDetailId")
@@ -90,18 +100,23 @@ exports.damageRepositoryConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("orderDetailId")
-                                           .validate("auditStatus","@Enum(\"auditStatus\")")
-                                           .validate("damageLevel","@Enum(\"damageLevel\")")
                                            .validate("damageType","@Enum(\"damageType\")")
                                            .validate("dealStatus","@Enum(\"dealStatus\")")
                                            .validate("importStatus","@Enum(\"importStatus\")")
+                                           .validate("auditStatus","@Enum(\"auditStatus\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
 
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getDamageRepositoryByOrderDetailId")
+                                .id("getDamageRepositoryByUserAndOrderDetailId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(damageRepository.columnsArray)
                                 })
@@ -120,25 +135,30 @@ exports.damageRepositoryConfig = {
                                 .resp(resp => {
                                         resp.single();
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })@@
                                 .build(),
 
                         // getList
-                        // auditStatus : validates --- @Enum("auditStatus")  
-                        // createTime : expression --- timeRange
-                        // damageDetail : excluded 
-                        // damageLevel : validates --- @Enum("damageLevel")  
-                        // damageLevel : expression --- range
-                        // damageOld : expression --- range
-                        // damageOldId : expression --- range
+                        // detectTime : expression --- timeRange
                         // damageType : validates --- @Enum("damageType")  
                         // damageType : expression --- range
+                        // damageLeve : expression --- range
+                        // damageDetail : excluded 
+                        // damageOld : expression --- range
+                        // damageOldId : expression --- range
+                        // remark : excluded 
                         // dealStatus : validates --- @Enum("dealStatus")  
-                        // detectTime : expression --- timeRange
                         // importStatus : validates --- @Enum("importStatus")  
-                        // lastDetectTime : expression --- timeRange
-                        // remark : excluded
+                        // createTime : expression --- timeRange
+                        // auditStatus : validates --- @Enum("auditStatus")@@
                         new builder()
                                 .type("select")
+                                .id("getDamageRepositoryList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(damageRepository.columnsArray)
                                 })
@@ -146,26 +166,23 @@ exports.damageRepositoryConfig = {
                                         collection.includes(damageRepository.columnsArray)
                                                   .excludes("orderDetailId")
                                                   .excludes(["damageDetail","remark"])
-                                                  .exp("createTime","timeRange")
-                                                  .exp("damageLevel","range")
+                                                  .exp("detectTime","timeRange")
+                                                  .exp("damageType","range")
+                                                  .exp("damageLeve","range")
                                                   .exp("damageOld","range")
                                                   .exp("damageOldId","range")
-                                                  .exp("damageType","range")
-                                                  .exp("detectTime","timeRange")
-                                                  .exp("lastDetectTime","timeRange")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getDamageRepositoryList")
                                 .controller(controller => {
                                         controller.path("/damageRepository");
                                 })
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("orderDetailId")
-                                           .validate("auditStatus","@Enum(\"auditStatus\")")
-                                           .validate("damageLevel","@Enum(\"damageLevel\")")
                                            .validate("damageType","@Enum(\"damageType\")")
                                            .validate("dealStatus","@Enum(\"dealStatus\")")
                                            .validate("importStatus","@Enum(\"importStatus\")")
+                                           .validate("auditStatus","@Enum(\"auditStatus\")")
                                 })
                                 .build()
                 ]

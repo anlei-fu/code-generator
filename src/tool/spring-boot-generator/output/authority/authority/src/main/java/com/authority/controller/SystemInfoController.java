@@ -3,7 +3,7 @@ package com.test.controller;
 import com.authority.pojo.entity.SystemInfo;
 import com.authority.pojo.req.AddSystemInfoReq;
 import com.authority.pojo.req.GetSystemInfoListReq;
-import com.authority.pojo.req.UpdateSystemInfoByIdReq;
+import com.authority.pojo.req.UpdateSystemInfoByUserAndUserAndUserAndUserAndIdReq;
 import com.authority.pojo.resp.R;
 import com.authority.service.SystemInfoService;
 import com.authority.validate.annotation.Path;
@@ -24,26 +24,26 @@ public class SystemInfoController {
 
     @ApiOperation("")
     @PostMapping(path = "/systemInfo")
-    public R addSystemInfo(@Validated @ModelAttribute AddSystemInfoReq req) {
-        return R.doResponse(systemInfoService.addSystemInfo(req));
+    public R addSystemInfo(@Validated @ModelAttribute AddSystemInfoReq req, @Session String user) {
+        return R.doResponse(systemInfoService.addSystemInfo(req, user));
     }
 
     @ApiOperation("")
     @DeleteMapping(path = "/systemInfo/{id}")
-    public R deleteSystemInfoById(@PathVariable Integer id) {
-        return R.doResponse(systemInfoService.deleteSystemInfoById(id));
+    public R deleteSystemInfoByUserAndUserAndUserAndUserAndId(@PathVariable Integer id) {
+        return R.doResponse(systemInfoService.deleteSystemInfoByUserAndUserAndUserAndUserAndId(id));
     }
 
     @ApiOperation("")
     @PutMapping(path = "/systemInfo/{id}")
-    public R updateSystemInfoById(@PathVariable Integer id, @Validated @ModelAttribute UpdateSystemInfoByIdReq req) {
-        return R.doResponse(systemInfoService.updateSystemInfoById(id, req));
+    public R updateSystemInfoByUserAndUserAndUserAndUserAndId(@PathVariable Integer id, @Validated @ModelAttribute UpdateSystemInfoByUserAndUserAndUserAndUserAndIdReq req) {
+        return R.doResponse(systemInfoService.updateSystemInfoByUserAndUserAndUserAndUserAndId(id, req));
     }
 
     @ApiOperation("")
     @GetMapping(path = "/systemInfo/{id}")
-    public R<SystemInfo> getSystemInfoById(@PathVariable Integer id) {
-        return R.doResponse(systemInfoService.getSystemInfoById(id));
+    public R<SystemInfo> getSystemInfoByUserAndUserAndUserAndUserAndId(@PathVariable Integer id) {
+        return R.doResponse(systemInfoService.getSystemInfoByUserAndUserAndUserAndUserAndId(id));
     }
 
     @ApiOperation("")

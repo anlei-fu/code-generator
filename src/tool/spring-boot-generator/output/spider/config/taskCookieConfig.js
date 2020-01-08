@@ -14,6 +14,7 @@ exports.taskCookieConfigConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addTaskCookieConfig")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskCookieConfig.columnsArray)
                                                   .excludes("id")
@@ -34,6 +35,7 @@ exports.taskCookieConfigConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTaskCookieConfigById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -47,12 +49,12 @@ exports.taskCookieConfigConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateTaskCookieConfigById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskCookieConfig.columnsArray)
                                                   .excludes("id")
@@ -81,6 +83,7 @@ exports.taskCookieConfigConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTaskCookieConfigById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskCookieConfig.columnsArray)
                                 })
@@ -105,6 +108,8 @@ exports.taskCookieConfigConfig = {
                         // key : excluded
                         new builder()
                                 .type("select")
+                                .id("getTaskCookieConfigList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskCookieConfig.columnsArray)
                                 })
@@ -113,7 +118,6 @@ exports.taskCookieConfigConfig = {
                                                   .excludes("id")
                                                   .excludes(["key"])
                                 })
-                                .id("getTaskCookieConfigList")
                                 .controller(controller => {
                                         controller.path("/taskCookieConfig");
                                 })

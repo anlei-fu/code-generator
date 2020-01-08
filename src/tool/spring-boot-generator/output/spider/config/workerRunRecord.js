@@ -12,6 +12,7 @@ exports.workerRunRecordConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addWorkerRunRecord")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workerRunRecord.columnsArray)
                                                   .excludes("id")
@@ -31,6 +32,7 @@ exports.workerRunRecordConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteWorkerRunRecordById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -44,12 +46,12 @@ exports.workerRunRecordConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateWorkerRunRecordById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workerRunRecord.columnsArray)
                                                   .excludes("id")
@@ -78,6 +80,7 @@ exports.workerRunRecordConfig = {
                         new builder()
                                 .type("select")
                                 .id("getWorkerRunRecordById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workerRunRecord.columnsArray)
                                 })
@@ -99,9 +102,10 @@ exports.workerRunRecordConfig = {
                                 .build(),
 
                         // getList
-
                         new builder()
                                 .type("select")
+                                .id("getWorkerRunRecordList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workerRunRecord.columnsArray)
                                 })
@@ -110,7 +114,6 @@ exports.workerRunRecordConfig = {
                                                   .excludes("id")
 
                                 })
-                                .id("getWorkerRunRecordList")
                                 .controller(controller => {
                                         controller.path("/workerRunRecord");
                                 })

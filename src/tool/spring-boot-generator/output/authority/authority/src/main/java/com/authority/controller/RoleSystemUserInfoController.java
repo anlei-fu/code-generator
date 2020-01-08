@@ -3,7 +3,7 @@ package com.test.controller;
 import com.authority.pojo.entity.RoleSystemUserInfo;
 import com.authority.pojo.req.AddRoleSystemUserInfoReq;
 import com.authority.pojo.req.GetRoleSystemUserInfoListReq;
-import com.authority.pojo.req.UpdateRoleSystemUserInfoByAccountReq;
+import com.authority.pojo.req.UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountReq;
 import com.authority.pojo.resp.R;
 import com.authority.service.RoleSystemUserInfoService;
 import com.authority.validate.annotation.Path;
@@ -24,26 +24,26 @@ public class RoleSystemUserInfoController {
 
     @ApiOperation("")
     @PostMapping(path = "/roleSystemUserInfo")
-    public R addRoleSystemUserInfo(@Validated @ModelAttribute AddRoleSystemUserInfoReq req) {
-        return R.doResponse(roleSystemUserInfoService.addRoleSystemUserInfo(req));
+    public R addRoleSystemUserInfo(@Validated @ModelAttribute AddRoleSystemUserInfoReq req, @Session String user) {
+        return R.doResponse(roleSystemUserInfoService.addRoleSystemUserInfo(req, user));
     }
 
     @ApiOperation("")
     @DeleteMapping(path = "/roleSystemUserInfo/{account}")
-    public R deleteRoleSystemUserInfoByAccount(@PathVariable Integer account) {
-        return R.doResponse(roleSystemUserInfoService.deleteRoleSystemUserInfoByAccount(account));
+    public R deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(@PathVariable String account) {
+        return R.doResponse(roleSystemUserInfoService.deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(account));
     }
 
     @ApiOperation("")
     @PutMapping(path = "/roleSystemUserInfo/{account}")
-    public R updateRoleSystemUserInfoByAccount(@PathVariable Integer account, @Validated @ModelAttribute UpdateRoleSystemUserInfoByAccountReq req) {
-        return R.doResponse(roleSystemUserInfoService.updateRoleSystemUserInfoByAccount(account, req));
+    public R updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(@PathVariable String account, @Validated @ModelAttribute UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountReq req) {
+        return R.doResponse(roleSystemUserInfoService.updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(account, req));
     }
 
     @ApiOperation("")
     @GetMapping(path = "/roleSystemUserInfo/{account}")
-    public R<RoleSystemUserInfo> getRoleSystemUserInfoByAccount(@PathVariable Integer account) {
-        return R.doResponse(roleSystemUserInfoService.getRoleSystemUserInfoByAccount(account));
+    public R<RoleSystemUserInfo> getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(@PathVariable String account) {
+        return R.doResponse(roleSystemUserInfoService.getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(account));
     }
 
     @ApiOperation("")

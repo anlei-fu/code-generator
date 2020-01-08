@@ -8,20 +8,21 @@ exports.workareaInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // fullName : validate --- @NotNull  
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
+                        // fullName : validate --- @NotNull  
                         // shortName : validate --- @NotNull  
-                        // updateTime excluded 
-                        // workshopId : validate --- @NotNull
+                        // workshopId : validate --- @NotNull  
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addWorkareaInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workareaInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/workareaInfo");
@@ -30,9 +31,9 @@ exports.workareaInfoConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("fullName","@NotNull")
-                                           .validate("isDelete","@NotNull")
                                            .validate("shortName","@NotNull")
                                            .validate("workshopId","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -40,6 +41,7 @@ exports.workareaInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteWorkareaInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -53,13 +55,14 @@ exports.workareaInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateWorkareaInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workareaInfo.columnsArray)
                                                   .excludes("id")
@@ -89,6 +92,7 @@ exports.workareaInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getWorkareaInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workareaInfo.columnsArray)
                                 })
@@ -110,11 +114,13 @@ exports.workareaInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // fullName : excluded 
-                        // shortName : excluded
+                        // shortName : excluded 
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getWorkareaInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workareaInfo.columnsArray)
                                 })
@@ -124,7 +130,6 @@ exports.workareaInfoConfig = {
                                                   .excludes(["fullName","shortName"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getWorkareaInfoList")
                                 .controller(controller => {
                                         controller.path("/workareaInfo");
                                 })

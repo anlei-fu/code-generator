@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.WorkshopInfoMapper">
     <insert id="addWorkshopInfo" parameterType="com.railway.pojo.req.AddWorkshopInfoReq">
-          insert  into workshop_info
+          insert  into workshop_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
              workshop_info.full_name,
             <if test="inputCode != null">
@@ -52,7 +52,7 @@
           </trim>
     </insert>
     <delete id="deleteWorkshopInfoById">
-          delete from workshop_info
+          delete from workshop_info 
           <where>
             <if test="id != null">
                   workshop_info.id = #{id}
@@ -60,7 +60,7 @@
           </where>
     </delete>
     <update id="updateWorkshopInfoById" parameterType="com.railway.pojo.param.UpdateWorkshopInfoByIdParams">
-        update workshop_info
+        update workshop_info 
         <set>
             <if test="fullName != null">
                   workshop_info.full_name = #{FullName},
@@ -107,7 +107,7 @@
              workshop_info.track_division_id,
              workshop_info.update_time,
              workshop_info.workshop_type
-          form workshop_info
+          form workshop_info 
           <where>
             <if test="id != null">
                   workshop_info.id = #{id}
@@ -127,7 +127,7 @@
              workshop_info.track_division_id,
              workshop_info.update_time,
              workshop_info.workshop_type
-          form workshop_info
+          form workshop_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   workshop_info.create_time between #{createTimeStart} and #{createTimeEnd}

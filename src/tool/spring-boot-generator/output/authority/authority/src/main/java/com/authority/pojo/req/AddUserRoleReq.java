@@ -14,16 +14,16 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class AddUserRoleReq extends PageReq {
 
-    @ApiModelProperty("create user")
+    @ApiModelProperty("related user ")
     @NotNull
-    private String createUser;
+    private String userAccount;
 
     @ApiModelProperty("system id")
     @NotNull
     private Integer systemId;
 
-    @ApiModelProperty("related user ")
+    @ApiModelProperty("create user")
     @NotNull
-    private String userAccount;
+    private String createUser;
 
 }

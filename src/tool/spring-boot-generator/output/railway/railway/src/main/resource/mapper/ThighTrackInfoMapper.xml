@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.ThighTrackInfoMapper">
     <insert id="addThighTrackInfo" parameterType="com.railway.pojo.req.AddThighTrackInfoReq">
-          insert  into thigh_track_info
+          insert  into thigh_track_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="curveRadius != null">
                   thigh_track_info.curve_radius,
@@ -98,7 +98,7 @@
           </trim>
     </insert>
     <delete id="deleteThighTrackInfoById">
-          delete from thigh_track_info
+          delete from thigh_track_info 
           <where>
             <if test="id != null">
                   thigh_track_info.id = #{id}
@@ -106,7 +106,7 @@
           </where>
     </delete>
     <update id="updateThighTrackInfoById" parameterType="com.railway.pojo.param.UpdateThighTrackInfoByIdParams">
-        update thigh_track_info
+        update thigh_track_info 
         <set>
             <if test="curveRadius != null">
                   thigh_track_info.curve_radius = #{CurveRadius},
@@ -181,7 +181,7 @@
              thigh_track_info.tie_category,
              thigh_track_info.update_time,
              thigh_track_info.workarea_id
-          form thigh_track_info
+          form thigh_track_info 
           <where>
             <if test="id != null">
                   thigh_track_info.id = #{id}
@@ -208,7 +208,7 @@
              thigh_track_info.tie_category,
              thigh_track_info.update_time,
              thigh_track_info.workarea_id
-          form thigh_track_info
+          form thigh_track_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   thigh_track_info.create_time between #{createTimeStart} and #{createTimeEnd}

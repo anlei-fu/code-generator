@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DevicePositionMapper">
     <insert id="addDevicePosition" parameterType="com.railway.pojo.req.AddDevicePositionReq">
-          insert  into device_position
+          insert  into device_position 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="deviceCode != null">
                   device_position.device_code,
@@ -78,7 +78,7 @@
           </trim>
     </insert>
     <delete id="deleteDevicePositionById">
-          delete from device_position
+          delete from device_position 
           <where>
             <if test="id != null">
                   device_position.id = #{id}
@@ -86,7 +86,7 @@
           </where>
     </delete>
     <update id="updateDevicePositionById" parameterType="com.railway.pojo.param.UpdateDevicePositionByIdParams">
-        update device_position
+        update device_position 
         <set>
             <if test="deviceCode != null">
                   device_position.device_code = #{DeviceCode},
@@ -145,7 +145,7 @@
              device_position.thigh_track_id,
              device_position.track_id,
              device_position.update_time
-          form device_position
+          form device_position 
           <where>
             <if test="id != null">
                   device_position.id = #{id}
@@ -168,7 +168,7 @@
              device_position.thigh_track_id,
              device_position.track_id,
              device_position.update_time
-          form device_position
+          form device_position 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   device_position.create_time between #{createTimeStart} and #{createTimeEnd}

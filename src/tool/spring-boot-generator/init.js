@@ -28,10 +28,10 @@ async function init(project, dbConfig) {
 
                 let pk;
                 for (const c in x.columns) {
-                        pk = pk || c;
+                        pk = pk || x.columns[c];
 
                         if (x.columns[c].isPk) {
-                                pk = x.columns[c].name;
+                                pk = x.columns[c];
                                 break;
                         }
                 }
@@ -160,13 +160,11 @@ function copyAnnotaion(sourceFolder, targetFolder, project) {
  * @param {String} configRoot 
  * @param {String} tableName 
  */
-function generateConfigItem(configRoot, table, primaryKey) {
-        let templates = new ConfigBuilderGenerator().generate(table);
+function generateConfigItem(configRoot, table, pk) {
+        let templates = new ConfigBuilderGenerator().generate(table,pk);
         let patterns = {
                 "@name": STR.upperFirstLetter(table.name),
                 "@sname": table.name,
-                "@key": STR.upperFirstLetter(primaryKey),
-                "@skey": primaryKey
         };
         
         templates = STR.replace(templates, patterns);

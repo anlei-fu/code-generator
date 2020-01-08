@@ -76,8 +76,8 @@ function main() {
         // wait all task finish and write file
         let timer = setInterval(() => {
                 if (finished == total) {
-                        write(recordsGroup);
                         clearInterval(timer);
+                        write(recordsGroup);
                 }
         }, 150);
 }

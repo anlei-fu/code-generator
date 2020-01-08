@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageOrderMapper">
     <insert id="addDamageOrder" parameterType="com.railway.pojo.req.AddDamageOrderReq">
-          insert  into damage_order
+          insert  into damage_order 
           <trim prefix="(" suffix=")" suffixOverrides=",">
              damage_order.is_delete,
             <if test="submitStaff != null">
@@ -32,7 +32,7 @@
           </trim>
     </insert>
     <delete id="deleteDamageOrderByOrderNo">
-          delete from damage_order
+          delete from damage_order 
           <where>
             <if test="orderNo != null">
                   damage_order.order_no = #{orderNo}
@@ -40,7 +40,7 @@
           </where>
     </delete>
     <update id="updateDamageOrderByOrderNo" parameterType="com.railway.pojo.param.UpdateDamageOrderByOrderNoParams">
-        update damage_order
+        update damage_order 
         <set>
             <if test="isDelete != null">
                   damage_order.is_delete = #{IsDelete},
@@ -71,7 +71,7 @@
              damage_order.submit_time,
              damage_order.update_time,
              damage_order.workarea_id
-          form damage_order
+          form damage_order 
           <where>
             <if test="orderNo != null">
                   damage_order.order_no = #{orderNo}
@@ -87,7 +87,7 @@
              damage_order.submit_time,
              damage_order.update_time,
              damage_order.workarea_id
-          form damage_order
+          form damage_order 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   damage_order.create_time between #{createTimeStart} and #{createTimeEnd}

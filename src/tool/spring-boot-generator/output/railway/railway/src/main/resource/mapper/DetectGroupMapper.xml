@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectGroupMapper">
     <insert id="addDetectGroup" parameterType="com.railway.pojo.req.AddDetectGroupReq">
-          insert  into detect_group
+          insert  into detect_group 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="groupName != null">
                   detect_group.group_name,
@@ -38,7 +38,7 @@
           </trim>
     </insert>
     <delete id="deleteDetectGroupById">
-          delete from detect_group
+          delete from detect_group 
           <where>
             <if test="id != null">
                   detect_group.id = #{id}
@@ -46,7 +46,7 @@
           </where>
     </delete>
     <update id="updateDetectGroupById" parameterType="com.railway.pojo.param.UpdateDetectGroupByIdParams">
-        update detect_group
+        update detect_group 
         <set>
             <if test="groupName != null">
                   detect_group.group_name = #{GroupName},
@@ -81,7 +81,7 @@
              detect_group.operator,
              detect_group.status,
              detect_group.update_time
-          form detect_group
+          form detect_group 
           <where>
             <if test="id != null">
                   detect_group.id = #{id}
@@ -98,7 +98,7 @@
              detect_group.operator,
              detect_group.status,
              detect_group.update_time
-          form detect_group
+          form detect_group 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   detect_group.create_time between #{createTimeStart} and #{createTimeEnd}

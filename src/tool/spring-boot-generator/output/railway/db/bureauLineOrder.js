@@ -2,23 +2,6 @@ let bureauLineOrder = {
 	name: "bureauLineOrder",
 	description: "铁路局线路",
 	columns: {
-		bureauId: {
-			name: "bureauId",
-			description: "铁路局编号",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
 		id: {
 			name: "id",
 			description: "编号",
@@ -30,18 +13,18 @@ let bureauLineOrder = {
 				length: null
 			}
 		},
-		lineId: {
-			name: "lineId",
-			description: "线路编号",
+		bureauId: {
+			name: "bureauId",
+			description: "铁路局编号",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		operator: {
-			name: "operator",
-			description: "操作人",
+		lineId: {
+			name: "lineId",
+			description: "线路编号",
 			nullable: true,
 			type: {
 				name: "int",
@@ -57,6 +40,14 @@ let bureauLineOrder = {
 				length: null
 			}
 		},
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
 		updateTime: {
 			name: "updateTime",
 			description: "更新时间",
@@ -64,18 +55,27 @@ let bureauLineOrder = {
 			type: {
 				name: "datetime"
 			}
+		},
+		operator: {
+			name: "operator",
+			description: "操作人",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
 		}
 	}
 };
 
 let columnsArray = [
-	"bureauId",
-	"createTime",
 	"id",
+	"bureauId",
 	"lineId",
-	"operator",
 	"sortNum",
-	"updateTime"
+	"createTime",
+	"updateTime",
+	"operator"
 ];
 
 function create() {

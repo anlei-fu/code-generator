@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.WeldingInfoMapper">
     <insert id="addWeldingInfo" parameterType="com.railway.pojo.req.AddWeldingInfoReq">
-          insert  into welding_info
+          insert  into welding_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="direction != null">
                   welding_info.direction,
@@ -176,7 +176,7 @@
           </trim>
     </insert>
     <delete id="deleteWeldingInfoById">
-          delete from welding_info
+          delete from welding_info 
           <where>
             <if test="id != null">
                   welding_info.id = #{id}
@@ -184,7 +184,7 @@
           </where>
     </delete>
     <update id="updateWeldingInfoById" parameterType="com.railway.pojo.param.UpdateWeldingInfoByIdParams">
-        update welding_info
+        update welding_info 
         <set>
             <if test="direction != null">
                   welding_info.direction = #{Direction},
@@ -311,7 +311,7 @@
              welding_info.welding_type,
              welding_info.welding_way,
              welding_info.workarea_id
-          form welding_info
+          form welding_info 
           <where>
             <if test="id != null">
                   welding_info.id = #{id}
@@ -351,7 +351,7 @@
              welding_info.welding_type,
              welding_info.welding_way,
              welding_info.workarea_id
-          form welding_info
+          form welding_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   welding_info.create_time between #{createTimeStart} and #{createTimeEnd}

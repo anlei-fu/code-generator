@@ -3,19 +3,19 @@ package com.authority.service;
 import com.authority.pojo.entity.RoleSystemUserInfo;
 import com.authority.pojo.req.AddRoleSystemUserInfoReq;
 import com.authority.pojo.req.GetRoleSystemUserInfoListReq;
-import com.authority.pojo.req.UpdateRoleSystemUserInfoByAccountReq;
+import com.authority.pojo.req.UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountReq;
 import com.github.pagehelper.PageInfo;
 
 
 public interface RoleSystemUserInfoService {
 
-    boolean addRoleSystemUserInfo(AddRoleSystemUserInfoReq req);
+    boolean addRoleSystemUserInfo(AddRoleSystemUserInfoReq req, String user);
     
-    boolean deleteRoleSystemUserInfoByAccount(Integer account);
+    boolean deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(String account);
     
-    boolean updateRoleSystemUserInfoByAccount(Integer account, UpdateRoleSystemUserInfoByAccountReq req);
+    boolean updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(String account, UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountReq req);
     
-    RoleSystemUserInfo getRoleSystemUserInfoByAccount(Integer account);
+    RoleSystemUserInfo getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(String account);
     
     PageInfo<RoleSystemUserInfo> getRoleSystemUserInfoList(GetRoleSystemUserInfoListReq req);
 

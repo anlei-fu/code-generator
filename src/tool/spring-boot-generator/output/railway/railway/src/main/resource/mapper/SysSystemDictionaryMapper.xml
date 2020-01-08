@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.SysSystemDictionaryMapper">
     <insert id="addSysSystemDictionary" parameterType="com.railway.pojo.req.AddSysSystemDictionaryReq">
-          insert  into sys_system_dictionary
+          insert  into sys_system_dictionary 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="enumName != null">
                   sys_system_dictionary.enum_name,
@@ -32,7 +32,7 @@
           </trim>
     </insert>
     <delete id="deleteSysSystemDictionaryByDicid">
-          delete from sys_system_dictionary
+          delete from sys_system_dictionary 
           <where>
             <if test="dicid != null">
                   sys_system_dictionary.dicid = #{dicid}
@@ -40,7 +40,7 @@
           </where>
     </delete>
     <update id="updateSysSystemDictionaryByDicid" parameterType="com.railway.pojo.param.UpdateSysSystemDictionaryByDicidParams">
-        update sys_system_dictionary
+        update sys_system_dictionary 
         <set>
             <if test="enumName != null">
                   sys_system_dictionary.enum_name = #{EnumName},
@@ -80,7 +80,7 @@
              sys_system_dictionary.system_id,
              sys_system_dictionary.text,
              sys_system_dictionary.value
-          form sys_system_dictionary
+          form sys_system_dictionary 
           <where>
             <if test="dicid != null">
                   sys_system_dictionary.dicid = #{dicid}
@@ -97,7 +97,7 @@
              sys_system_dictionary.system_id,
              sys_system_dictionary.text,
              sys_system_dictionary.value
-          form sys_system_dictionary
+          form sys_system_dictionary 
           <where>
             <if test="enumType != null">
                   sys_system_dictionary.enum_type = #{enumType}

@@ -8,19 +8,20 @@ exports.curveInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // curveId excluded 
-                        // isDelete : validate --- @NotNull  
-                        // status : validate --- @Enum("status")  
                         // trackDisType : validate --- @Enum("trackDisType")  
-                        // updateTime excluded
+                        // status : validate --- @Enum("status")  
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addCurveInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(curveInfo.columnsArray)
                                                   .excludes("curveId")
-                                                  .excludes(["createTime","curveId","updateTime"])
+                                                  .excludes(["curveId","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/curveInfo");
@@ -28,9 +29,9 @@ exports.curveInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("curveId")
-                                           .validate("isDelete","@NotNull")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("trackDisType","@Enum(\"trackDisType\")")
+                                           .validate("status","@Enum(\"status\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -38,6 +39,7 @@ exports.curveInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteCurveInfoByCurveId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("curveId")
                                                   .require("curveId")
@@ -51,15 +53,16 @@ exports.curveInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
-                        // status : validate --- @Enum("status")  
                         // trackDisType : validate --- @Enum("trackDisType")  
-                        // updateTime : excluded
+                        // status : validate --- @Enum("status")  
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateCurveInfoByCurveId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(curveInfo.columnsArray)
                                                   .excludes("curveId")
@@ -81,8 +84,8 @@ exports.curveInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("curveId")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("trackDisType","@Enum(\"trackDisType\")")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -90,6 +93,7 @@ exports.curveInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getCurveInfoByCurveId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(curveInfo.columnsArray)
                                 })
@@ -111,13 +115,15 @@ exports.curveInfoConfig = {
                                 .build(),
 
                         // getList
+                        // trackDisType : validates --- @Enum("trackDisType")  
                         // averageSpeed : expression --- range
-                        // createTime : expression --- timeRange
                         // remark : excluded 
                         // status : validates --- @Enum("status")  
-                        // trackDisType : validates --- @Enum("trackDisType")
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getCurveInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(curveInfo.columnsArray)
                                 })
@@ -128,15 +134,14 @@ exports.curveInfoConfig = {
                                                   .exp("averageSpeed","range")
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getCurveInfoList")
                                 .controller(controller => {
                                         controller.path("/curveInfo");
                                 })
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("curveId")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("trackDisType","@Enum(\"trackDisType\")")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build()
                 ]

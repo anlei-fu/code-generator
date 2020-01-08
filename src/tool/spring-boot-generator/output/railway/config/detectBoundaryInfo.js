@@ -8,20 +8,21 @@ exports.detectBoundaryInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
+                        // trackType : validate --- @Enum("trackType")  
                         // operateStatus : validate --- @Enum("operateStatus")  
                         // status : validate --- @Enum("status")  
-                        // trackType : validate --- @Enum("trackType")  
-                        // updateTime excluded
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addDetectBoundaryInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectBoundaryInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectBoundaryInfo");
@@ -29,10 +30,10 @@ exports.detectBoundaryInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
+                                           .validate("trackType","@Enum(\"trackType\")")
                                            .validate("operateStatus","@Enum(\"operateStatus\")")
                                            .validate("status","@Enum(\"status\")")
-                                           .validate("trackType","@Enum(\"trackType\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -40,6 +41,7 @@ exports.detectBoundaryInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDetectBoundaryInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -53,16 +55,17 @@ exports.detectBoundaryInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
+                        // trackType : validate --- @Enum("trackType")  
                         // operateStatus : validate --- @Enum("operateStatus")  
                         // status : validate --- @Enum("status")  
-                        // trackType : validate --- @Enum("trackType")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateDetectBoundaryInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectBoundaryInfo.columnsArray)
                                                   .excludes("id")
@@ -84,9 +87,9 @@ exports.detectBoundaryInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("trackType","@Enum(\"trackType\")")
                                            .validate("operateStatus","@Enum(\"operateStatus\")")
                                            .validate("status","@Enum(\"status\")")
-                                           .validate("trackType","@Enum(\"trackType\")")
                                 })
                                 .build(),
 
@@ -94,6 +97,7 @@ exports.detectBoundaryInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDetectBoundaryInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectBoundaryInfo.columnsArray)
                                 })
@@ -115,13 +119,15 @@ exports.detectBoundaryInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
+                        // trackType : validates --- @Enum("trackType")  
                         // operateStatus : validates --- @Enum("operateStatus")  
                         // remark : excluded 
                         // status : validates --- @Enum("status")  
-                        // trackType : validates --- @Enum("trackType")
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getDetectBoundaryInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectBoundaryInfo.columnsArray)
                                 })
@@ -131,16 +137,15 @@ exports.detectBoundaryInfoConfig = {
                                                   .excludes(["remark"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getDetectBoundaryInfoList")
                                 .controller(controller => {
                                         controller.path("/detectBoundaryInfo");
                                 })
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("trackType","@Enum(\"trackType\")")
                                            .validate("operateStatus","@Enum(\"operateStatus\")")
                                            .validate("status","@Enum(\"status\")")
-                                           .validate("trackType","@Enum(\"trackType\")")
                                 })
                                 .build()
                 ]

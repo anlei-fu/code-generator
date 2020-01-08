@@ -17,12 +17,12 @@ function getConditions(config) {
 
         let conditions = [];
         config.conditions.forEach(x => {
-                conditions.push(getColumn(config.table, x));
+                conditions.push(getColumn(config.table, x,config.alias));
         });
 
         config.joins.forEach(x=>{
               x.conditions.forEach(y=>{
-                conditions.push(getColumn(x.table, y));
+                conditions.push(getColumn(x.table, y,x.alias));
               });
         });
 

@@ -8,19 +8,20 @@ exports.detectDeviceInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
+                        // useStatus : validate --- @Enum("useStatus")  
                         // status : validate --- @Enum("status")  
-                        // updateTime excluded 
-                        // useStatus : validate --- @Enum("useStatus")
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addDetectDeviceInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectDeviceInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectDeviceInfo");
@@ -28,9 +29,9 @@ exports.detectDeviceInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("useStatus","@Enum(\"useStatus\")")
+                                           .validate("status","@Enum(\"status\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -38,6 +39,7 @@ exports.detectDeviceInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDetectDeviceInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,15 +53,16 @@ exports.detectDeviceInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
+                        // useStatus : validate --- @Enum("useStatus")  
                         // status : validate --- @Enum("status")  
-                        // updateTime : excluded 
-                        // useStatus : validate --- @Enum("useStatus")
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateDetectDeviceInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectDeviceInfo.columnsArray)
                                                   .excludes("id")
@@ -81,8 +84,8 @@ exports.detectDeviceInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("useStatus","@Enum(\"useStatus\")")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -90,6 +93,7 @@ exports.detectDeviceInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDetectDeviceInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectDeviceInfo.columnsArray)
                                 })
@@ -111,15 +115,17 @@ exports.detectDeviceInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // deviceName : excluded 
                         // fixedAssetsPrice : expression --- range
                         // purchasePrice : expression --- range
+                        // useStatus : validates --- @Enum("useStatus")  
                         // remark : excluded 
                         // status : validates --- @Enum("status")  
-                        // useStatus : validates --- @Enum("useStatus")
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getDetectDeviceInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectDeviceInfo.columnsArray)
                                 })
@@ -127,19 +133,18 @@ exports.detectDeviceInfoConfig = {
                                         collection.includes(detectDeviceInfo.columnsArray)
                                                   .excludes("id")
                                                   .excludes(["deviceName","remark"])
-                                                  .exp("createTime","timeRange")
                                                   .exp("fixedAssetsPrice","range")
                                                   .exp("purchasePrice","range")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getDetectDeviceInfoList")
                                 .controller(controller => {
                                         controller.path("/detectDeviceInfo");
                                 })
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("useStatus","@Enum(\"useStatus\")")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build()
                 ]

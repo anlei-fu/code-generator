@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.TurnoutInfoMapper">
     <insert id="addTurnoutInfo" parameterType="com.railway.pojo.req.AddTurnoutInfoReq">
-          insert  into turnout_info
+          insert  into turnout_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="commissioningDate != null">
                   turnout_info.commissioning_date,
@@ -134,7 +134,7 @@
           </trim>
     </insert>
     <delete id="deleteTurnoutInfoById">
-          delete from turnout_info
+          delete from turnout_info 
           <where>
             <if test="id != null">
                   turnout_info.id = #{id}
@@ -142,7 +142,7 @@
           </where>
     </delete>
     <update id="updateTurnoutInfoById" parameterType="com.railway.pojo.param.UpdateTurnoutInfoByIdParams">
-        update turnout_info
+        update turnout_info 
         <set>
             <if test="commissioningDate != null">
                   turnout_info.commissioning_date = #{CommissioningDate},
@@ -249,7 +249,7 @@
              turnout_info.turnout_type,
              turnout_info.update_time,
              turnout_info.workarea_id
-          form turnout_info
+          form turnout_info 
           <where>
             <if test="id != null">
                   turnout_info.id = #{id}
@@ -284,7 +284,7 @@
              turnout_info.turnout_type,
              turnout_info.update_time,
              turnout_info.workarea_id
-          form turnout_info
+          form turnout_info 
           <where>
             <if test="commissioningDateStart !=null and  commissioningDateEnd != null">
                   turnout_info.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}

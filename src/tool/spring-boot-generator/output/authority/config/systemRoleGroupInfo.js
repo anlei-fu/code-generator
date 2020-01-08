@@ -8,18 +8,19 @@ exports.systemRoleGroupInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // createUser : validate --- @NotNull  
                         // id excluded 
+                        // systemId : validate --- @NotNull  
                         // role : validate --- @NotNull  
-                        // systemId : validate --- @NotNull
+                        // createUser : validate --- @NotNull  
+                        // createTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addSystemRoleGroupInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(systemRoleGroupInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id"])
+                                                  .excludes(["id","createTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/systemRoleGroupInfo");
@@ -27,16 +28,22 @@ exports.systemRoleGroupInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("createUser","@NotNull")
-                                           .validate("role","@NotNull")
                                            .validate("systemId","@NotNull")
+                                           .validate("role","@NotNull")
+                                           .validate("createUser","@NotNull")
+                                })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
                                 })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteSystemRoleGroupInfoById")
+                                .id("deleteSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -50,15 +57,18 @@ exports.systemRoleGroupInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
+                        // createUser : excluded 
+                        // createTime : excluded
                         new builder()
                                 .type("update")
-                                .id("updateSystemRoleGroupInfoById")
+                                .id("updateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(systemRoleGroupInfo.columnsArray)
                                                   .excludes("id")
+                                                  .excludes(["createUser","createTime"])
 
                                 })
                                 .conditions(collection => {
@@ -83,7 +93,8 @@ exports.systemRoleGroupInfoConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getSystemRoleGroupInfoById")
+                                .id("getSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(systemRoleGroupInfo.columnsArray)
                                 })
@@ -105,10 +116,12 @@ exports.systemRoleGroupInfoConfig = {
                                 .build(),
 
                         // getList
+                        // description : excluded 
                         // createTime : expression --- timeRange
-                        // description : excluded
                         new builder()
                                 .type("select")
+                                .id("getSystemRoleGroupInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(systemRoleGroupInfo.columnsArray)
                                 })
@@ -116,9 +129,8 @@ exports.systemRoleGroupInfoConfig = {
                                         collection.includes(systemRoleGroupInfo.columnsArray)
                                                   .excludes("id")
                                                   .excludes(["description"])
-                                                  .expression("createTime","timeRange")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getSystemRoleGroupInfoList")
                                 .controller(controller => {
                                         controller.path("/systemRoleGroupInfo");
                                 })
@@ -127,6 +139,7 @@ exports.systemRoleGroupInfoConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

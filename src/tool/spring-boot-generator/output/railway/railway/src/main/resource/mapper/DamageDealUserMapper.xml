@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageDealUserMapper">
     <insert id="addDamageDealUser" parameterType="com.railway.pojo.req.AddDamageDealUserReq">
-          insert  into damage_deal_user
+          insert  into damage_deal_user 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="birthday != null">
                   damage_deal_user.birthday,
@@ -134,7 +134,7 @@
           </trim>
     </insert>
     <delete id="deleteDamageDealUserById">
-          delete from damage_deal_user
+          delete from damage_deal_user 
           <where>
             <if test="id != null">
                   damage_deal_user.id = #{id}
@@ -142,7 +142,7 @@
           </where>
     </delete>
     <update id="updateDamageDealUserById" parameterType="com.railway.pojo.param.UpdateDamageDealUserByIdParams">
-        update damage_deal_user
+        update damage_deal_user 
         <set>
             <if test="birthday != null">
                   damage_deal_user.birthday = #{Birthday},
@@ -241,7 +241,7 @@
              damage_deal_user.tec_category,
              damage_deal_user.update_time,
              damage_deal_user.workarea_id
-          form damage_deal_user
+          form damage_deal_user 
           <where>
             <if test="id != null">
                   damage_deal_user.id = #{id}
@@ -274,7 +274,7 @@
              damage_deal_user.tec_category,
              damage_deal_user.update_time,
              damage_deal_user.workarea_id
-          form damage_deal_user
+          form damage_deal_user 
           <where>
             <if test="birthdayStart !=null and  birthdayEnd != null">
                   damage_deal_user.birthday between #{birthdayStart} and #{birthdayEnd}

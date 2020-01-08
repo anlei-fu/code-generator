@@ -16,6 +16,7 @@ exports.taskInfoConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addTaskInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskInfo.columnsArray)
                                                   .excludes("id")
@@ -40,6 +41,7 @@ exports.taskInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTaskInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -53,13 +55,14 @@ exports.taskInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // level : validate --- @Enum("level")  
                         // status : validate --- @Enum("status")
                         new builder()
                                 .type("update")
                                 .id("updateTaskInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskInfo.columnsArray)
                                                   .excludes("id")
@@ -89,6 +92,7 @@ exports.taskInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTaskInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskInfo.columnsArray)
                                 })
@@ -115,6 +119,8 @@ exports.taskInfoConfig = {
                         // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
+                                .id("getTaskInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskInfo.columnsArray)
                                 })
@@ -123,7 +129,6 @@ exports.taskInfoConfig = {
                                                   .excludes("id")
                                                   .excludes(["description"])
                                 })
-                                .id("getTaskInfoList")
                                 .controller(controller => {
                                         controller.path("/taskInfo");
                                 })

@@ -8,17 +8,18 @@ exports.loginUserConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
                         // password : validate --- @Password  
-                        // updateTime excluded
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addLoginUser")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(loginUser.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/loginUser");
@@ -34,6 +35,7 @@ exports.loginUserConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteLoginUserById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -47,14 +49,15 @@ exports.loginUserConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
                         // password : validate --- @Password  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateLoginUserById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(loginUser.columnsArray)
                                                   .excludes("id")
@@ -84,6 +87,7 @@ exports.loginUserConfig = {
                         new builder()
                                 .type("select")
                                 .id("getLoginUserById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(loginUser.columnsArray)
                                 })
@@ -105,11 +109,13 @@ exports.loginUserConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // name : excluded 
-                        // password : excluded
+                        // password : excluded 
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getLoginUserList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(loginUser.columnsArray)
                                 })
@@ -119,7 +125,6 @@ exports.loginUserConfig = {
                                                   .excludes(["name","password"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getLoginUserList")
                                 .controller(controller => {
                                         controller.path("/loginUser");
                                 })

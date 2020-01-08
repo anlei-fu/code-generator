@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.TrackDivisionInfoMapper">
     <insert id="addTrackDivisionInfo" parameterType="com.railway.pojo.req.AddTrackDivisionInfoReq">
-          insert  into track_division_info
+          insert  into track_division_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bureauId != null">
                   track_division_info.bureau_id,
@@ -40,7 +40,7 @@
           </trim>
     </insert>
     <delete id="deleteTrackDivisionInfoById">
-          delete from track_division_info
+          delete from track_division_info 
           <where>
             <if test="id != null">
                   track_division_info.id = #{id}
@@ -48,7 +48,7 @@
           </where>
     </delete>
     <update id="updateTrackDivisionInfoById" parameterType="com.railway.pojo.param.UpdateTrackDivisionInfoByIdParams">
-        update track_division_info
+        update track_division_info 
         <set>
             <if test="bureauId != null">
                   track_division_info.bureau_id = #{BureauId},
@@ -87,7 +87,7 @@
              track_division_info.operator,
              track_division_info.short_name,
              track_division_info.update_time
-          form track_division_info
+          form track_division_info 
           <where>
             <if test="id != null">
                   track_division_info.id = #{id}
@@ -105,7 +105,7 @@
              track_division_info.operator,
              track_division_info.short_name,
              track_division_info.update_time
-          form track_division_info
+          form track_division_info 
           <where>
             <if test="bureauId != null">
                   track_division_info.bureau_id = #{bureauId}

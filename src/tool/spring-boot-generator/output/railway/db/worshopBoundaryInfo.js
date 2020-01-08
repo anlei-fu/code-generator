@@ -2,31 +2,6 @@ let worshopBoundaryInfo = {
 	name: "worshopBoundaryInfo",
 	description: "线路车间管界",
 	columns: {
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
-		direction: {
-			name: "direction",
-			description: "行别",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		endMiles: {
-			name: "endMiles",
-			description: "终点里程",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
 		id: {
 			name: "id",
 			description: "车间管界编号",
@@ -38,10 +13,10 @@ let worshopBoundaryInfo = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
+		workshopId: {
+			name: "workshopId",
+			description: "工区编号",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
@@ -56,39 +31,12 @@ let worshopBoundaryInfo = {
 				length: null
 			}
 		},
-		longChain: {
-			name: "longChain",
-			description: "长链标记",
+		direction: {
+			name: "direction",
+			description: "行别",
 			nullable: true,
 			type: {
 				name: "int",
-				length: null
-			}
-		},
-		operateStatus: {
-			name: "operateStatus",
-			description: "运营状态",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		remark: {
-			name: "remark",
-			description: "备注",
-			nullable: true,
-			type: {
-				name: "varchar",
 				length: null
 			}
 		},
@@ -100,13 +48,12 @@ let worshopBoundaryInfo = {
 				name: "float"
 			}
 		},
-		status: {
-			name: "status",
-			description: "状态",
+		endMiles: {
+			name: "endMiles",
+			description: "终点里程",
 			nullable: true,
 			type: {
-				name: "int",
-				length: null
+				name: "float"
 			}
 		},
 		trackCategory: {
@@ -127,6 +74,59 @@ let worshopBoundaryInfo = {
 				length: null
 			}
 		},
+		operateStatus: {
+			name: "operateStatus",
+			description: "运营状态",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		longChain: {
+			name: "longChain",
+			description: "长链标记",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		remark: {
+			name: "remark",
+			description: "备注",
+			nullable: true,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
+		status: {
+			name: "status",
+			description: "状态",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
 		updateTime: {
 			name: "updateTime",
 			description: "更新时间",
@@ -135,9 +135,9 @@ let worshopBoundaryInfo = {
 				name: "datetime"
 			}
 		},
-		workareaId: {
-			name: "workareaId",
-			description: "工区编号",
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
 				name: "int",
@@ -148,22 +148,22 @@ let worshopBoundaryInfo = {
 };
 
 let columnsArray = [
-	"createTime",
-	"direction",
-	"endMiles",
 	"id",
-	"isDelete",
+	"workshopId",
 	"lineId",
-	"longChain",
-	"operateStatus",
-	"operator",
-	"remark",
+	"direction",
 	"startMiles",
-	"status",
+	"endMiles",
 	"trackCategory",
 	"trackType",
+	"operateStatus",
+	"longChain",
+	"remark",
+	"status",
+	"isDelete",
+	"createTime",
 	"updateTime",
-	"workareaId"
+	"operator"
 ];
 
 function create() {

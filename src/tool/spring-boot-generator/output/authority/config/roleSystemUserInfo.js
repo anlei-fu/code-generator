@@ -9,31 +9,40 @@ exports.roleSystemUserInfoConfig = {
 
                         // add
                         // account excluded 
-                        // createTime excluded 
                         // password : validate --- @NotNull  @Password  
+                        // createTime excluded 
                         // role : validate --- @NotNull
                         new builder()
                                 .type("insert")
                                 .id("addRoleSystemUserInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(roleSystemUserInfo.columnsArray)
-                                                  .excludes(["createTime"])
+                                                  .excludes("account")
+                                                  .excludes(["account","createTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/roleSystemUserInfo");
                                 })
                                 .req(req => {
                                         req.doCreate()
+                                           .excludes("account")
                                            .validate("password","@NotNull")
                                            .validate("password","@Password")
                                            .validate("role","@NotNull")
+                                })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
                                 })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteRoleSystemUserInfoByAccount")
+                                .id("deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("account")
                                                   .require("account")
@@ -43,19 +52,22 @@ exports.roleSystemUserInfoConfig = {
                                 })
                                 .req(req => {
                                         req.name("account")
-                                           .type("Integer")
+                                           .type("String")
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // password : validate --- @Password
+                        // password : validate --- @Password  
+                        // createTime : excluded
                         new builder()
                                 .type("update")
-                                .id("updateRoleSystemUserInfoByAccount")
+                                .id("updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(roleSystemUserInfo.columnsArray)
                                                   .excludes("account")
+                                                  .excludes(["createTime"])
 
                                 })
                                 .conditions(collection => {
@@ -67,7 +79,7 @@ exports.roleSystemUserInfoConfig = {
                                 })
                                 .req(req => {
                                         req.name("account")
-                                           .type("Integer")
+                                           .type("String")
                                            .from("@PathVariable");
                                 })
                                 .req(req => {
@@ -80,7 +92,8 @@ exports.roleSystemUserInfoConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getRoleSystemUserInfoByAccount")
+                                .id("getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(roleSystemUserInfo.columnsArray)
                                 })
@@ -93,7 +106,7 @@ exports.roleSystemUserInfoConfig = {
                                 })
                                 .req(req => {
                                         req.name("account")
-                                           .type("Integer")
+                                           .type("String")
                                            .from("@PathVariable");
                                 })
                                 .resp(resp => {
@@ -102,10 +115,12 @@ exports.roleSystemUserInfoConfig = {
                                 .build(),
 
                         // getList
+                        // password : excluded 
                         // createTime : expression --- timeRange
-                        // password : excluded
                         new builder()
                                 .type("select")
+                                .id("getRoleSystemUserInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(roleSystemUserInfo.columnsArray)
                                 })
@@ -113,9 +128,8 @@ exports.roleSystemUserInfoConfig = {
                                         collection.includes(roleSystemUserInfo.columnsArray)
                                                   .excludes("account")
                                                   .excludes(["password"])
-                                                  .expression("createTime","timeRange")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getRoleSystemUserInfoList")
                                 .controller(controller => {
                                         controller.path("/roleSystemUserInfo");
                                 })
@@ -124,6 +138,7 @@ exports.roleSystemUserInfoConfig = {
                                            .excludes("account")
 
                                 })
+
                                 .build()
                 ]
 }

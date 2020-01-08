@@ -8,18 +8,19 @@ exports.detectGoupUserConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
                         // status : validate --- @Enum("status")  
-                        // updateTime excluded
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addDetectGoupUser")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectGoupUser.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGoupUser");
@@ -27,8 +28,8 @@ exports.detectGoupUserConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -36,6 +37,7 @@ exports.detectGoupUserConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDetectGoupUserById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -49,14 +51,15 @@ exports.detectGoupUserConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
                         // status : validate --- @Enum("status")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateDetectGoupUserById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectGoupUser.columnsArray)
                                                   .excludes("id")
@@ -86,6 +89,7 @@ exports.detectGoupUserConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDetectGoupUserById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectGoupUser.columnsArray)
                                 })
@@ -107,10 +111,12 @@ exports.detectGoupUserConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
-                        // status : validates --- @Enum("status")
+                        // status : validates --- @Enum("status")  
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getDetectGoupUserList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectGoupUser.columnsArray)
                                 })
@@ -119,7 +125,6 @@ exports.detectGoupUserConfig = {
                                                   .excludes("id")
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getDetectGoupUserList")
                                 .controller(controller => {
                                         controller.path("/detectGoupUser");
                                 })

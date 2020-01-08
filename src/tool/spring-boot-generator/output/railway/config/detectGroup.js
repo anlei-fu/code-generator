@@ -8,18 +8,19 @@ exports.detectGroupConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
                         // status : validate --- @Enum("status")  
-                        // updateTime excluded
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addDetectGroup")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectGroup.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGroup");
@@ -27,8 +28,8 @@ exports.detectGroupConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -36,6 +37,7 @@ exports.detectGroupConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDetectGroupById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -49,14 +51,15 @@ exports.detectGroupConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
                         // status : validate --- @Enum("status")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateDetectGroupById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(detectGroup.columnsArray)
                                                   .excludes("id")
@@ -86,6 +89,7 @@ exports.detectGroupConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDetectGroupById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectGroup.columnsArray)
                                 })
@@ -107,11 +111,13 @@ exports.detectGroupConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // groupName : excluded 
-                        // status : validates --- @Enum("status")
+                        // status : validates --- @Enum("status")  
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getDetectGroupList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(detectGroup.columnsArray)
                                 })
@@ -121,7 +127,6 @@ exports.detectGroupConfig = {
                                                   .excludes(["groupName"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getDetectGroupList")
                                 .controller(controller => {
                                         controller.path("/detectGroup");
                                 })

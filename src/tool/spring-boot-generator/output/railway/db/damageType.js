@@ -2,20 +2,14 @@ let damageType = {
 	name: "damageType",
 	description: "伤损类型",
 	columns: {
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
+		id: {
+			name: "id",
+			description: "伤损类型编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
 			type: {
-				name: "datetime"
-			}
-		},
-		damageDesc: {
-			name: "damageDesc",
-			description: "伤损类型描述",
-			nullable: true,
-			type: {
-				name: "varchar",
+				name: "int",
 				length: null
 			}
 		},
@@ -37,32 +31,12 @@ let damageType = {
 				length: null
 			}
 		},
-		id: {
-			name: "id",
-			description: "伤损类型编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
+		damageDesc: {
+			name: "damageDesc",
+			description: "伤损类型描述",
 			nullable: true,
 			type: {
-				name: "int",
+				name: "varchar",
 				length: null
 			}
 		},
@@ -84,6 +58,23 @@ let damageType = {
 				length: null
 			}
 		},
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
 		updateTime: {
 			name: "updateTime",
 			description: "更新时间",
@@ -91,21 +82,30 @@ let damageType = {
 			type: {
 				name: "datetime"
 			}
+		},
+		operator: {
+			name: "operator",
+			description: "操作人",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
 		}
 	}
 };
 
 let columnsArray = [
-	"createTime",
-	"damageDesc",
+	"id",
 	"damageNo",
 	"damageType",
-	"id",
-	"isDelete",
-	"operator",
+	"damageDesc",
 	"sortNum",
 	"status",
-	"updateTime"
+	"isDelete",
+	"createTime",
+	"updateTime",
+	"operator"
 ];
 
 function create() {

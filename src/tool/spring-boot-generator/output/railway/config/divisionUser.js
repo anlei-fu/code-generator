@@ -8,16 +8,17 @@ exports.divisionUserConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // updateTime excluded
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addDivisionUser")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(divisionUser.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/divisionUser");
@@ -33,6 +34,7 @@ exports.divisionUserConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDivisionUserById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -46,13 +48,14 @@ exports.divisionUserConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateDivisionUserById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(divisionUser.columnsArray)
                                                   .excludes("id")
@@ -82,6 +85,7 @@ exports.divisionUserConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDivisionUserById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(divisionUser.columnsArray)
                                 })
@@ -103,9 +107,11 @@ exports.divisionUserConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getDivisionUserList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(divisionUser.columnsArray)
                                 })
@@ -114,7 +120,6 @@ exports.divisionUserConfig = {
                                                   .excludes("id")
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getDivisionUserList")
                                 .controller(controller => {
                                         controller.path("/divisionUser");
                                 })

@@ -14,22 +14,22 @@ import java.util.Date;
 @Setter
 public class SystemRoleGroupInfo  {
 
-    @ApiModelProperty("create time")
-    private Date createTime;
-
-    @ApiModelProperty("create user")
-    private String createUser;
-
-    @ApiModelProperty("desccription")
-    private String description;
-
     @ApiModelProperty("")
     private Integer id;
+
+    @ApiModelProperty("related system")
+    private Integer systemId;
 
     @ApiModelProperty("role")
     private String role;
 
-    @ApiModelProperty("related system")
-    private Integer systemId;
+    @ApiModelProperty("desccription")
+    private String description;
+
+    @ApiModelProperty("create user")
+    private String createUser;
+
+    @ApiModelProperty("create time")
+    private Date createTime;
 
 }

@@ -14,19 +14,19 @@ import java.util.Date;
 @Setter
 public class UserRole  {
 
-    @ApiModelProperty("create time")
-    private Date createTime;
-
-    @ApiModelProperty("create user")
-    private String createUser;
-
     @ApiModelProperty("")
     private Integer id;
+
+    @ApiModelProperty("related user ")
+    private String userAccount;
 
     @ApiModelProperty("system id")
     private Integer systemId;
 
-    @ApiModelProperty("related user ")
-    private String userAccount;
+    @ApiModelProperty("create user")
+    private String createUser;
+
+    @ApiModelProperty("create time")
+    private Date createTime;
 
 }

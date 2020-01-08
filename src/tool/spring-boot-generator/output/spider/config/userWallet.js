@@ -14,6 +14,7 @@ exports.userWalletConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addUserWallet")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userWallet.columnsArray)
                                                   .excludes("id")
@@ -28,12 +29,18 @@ exports.userWalletConfig = {
                                            .validate("userId","@NotNull")
                                            .validate("total","@NotNull")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteUserWalletById")
+                                .id("deleteUserWalletByUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -46,13 +53,18 @@ exports.userWalletConfig = {
                                            .type("Integer")
                                            .from("@PathVariable");
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
-                                .id("updateUserWalletById")
+                                .id("updateUserWalletByUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userWallet.columnsArray)
                                                   .excludes("id")
@@ -75,12 +87,18 @@ exports.userWalletConfig = {
                                            .excludes("id")
 
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getUserWalletById")
+                                .id("getUserWalletByUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userWallet.columnsArray)
                                 })
@@ -99,21 +117,27 @@ exports.userWalletConfig = {
                                 .resp(resp => {
                                         resp.single();
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // getList
                         // total : expression --- range
                         new builder()
                                 .type("select")
+                                .id("getUserWalletList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userWallet.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(userWallet.columnsArray)
                                                   .excludes("id")
-                                                  .expression("total","range")
+                                                  .exp("total","range")
                                 })
-                                .id("getUserWalletList")
                                 .controller(controller => {
                                         controller.path("/userWallet");
                                 })

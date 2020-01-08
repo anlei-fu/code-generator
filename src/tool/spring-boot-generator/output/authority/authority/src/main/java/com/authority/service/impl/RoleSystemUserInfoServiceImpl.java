@@ -5,7 +5,7 @@ import com.authority.pojo.entity.RoleSystemUserInfo;
 import com.authority.pojo.entity.RoleSystemUserInfo;
 import com.authority.pojo.req.AddRoleSystemUserInfoReq;
 import com.authority.pojo.req.GetRoleSystemUserInfoListReq;
-import com.authority.pojo.req.UpdateRoleSystemUserInfoByAccountReq;
+import com.authority.pojo.req.UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountReq;
 import com.authority.service.RoleSystemUserInfoService;
 import com.authority.utils.PageHelperUtils;
 import com.github.pagehelper.PageInfo;
@@ -20,23 +20,25 @@ public class RoleSystemUserInfoServiceImpl implements RoleSystemUserInfoService 
     private RoleSystemUserInfoMapper roleSystemUserInfoMapper;
 
     @Override
-    public boolean addRoleSystemUserInfo(AddRoleSystemUserInfoReq req) {
-        return roleSystemUserInfoMapper.addRoleSystemUserInfo(req) > 0;
+    public boolean addRoleSystemUserInfo(AddRoleSystemUserInfoReq req, String user) {
+        params params = new AddRoleSystemUserInfoParams(req, user)
+        return roleSystemUserInfoMapper.addRoleSystemUserInfo(params) > 0;
     }
 
     @Override
-    public boolean deleteRoleSystemUserInfoByAccount(Integer account) {
-        return roleSystemUserInfoMapper.deleteRoleSystemUserInfoByAccount(account) > 0;
+    public boolean deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(String account) {
+        return roleSystemUserInfoMapper.deleteRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(account) > 0;
     }
 
     @Override
-    public boolean updateRoleSystemUserInfoByAccount(Integer account, UpdateRoleSystemUserInfoByAccountReq req) {
-        return roleSystemUserInfoMapper.updateRoleSystemUserInfoByAccount(account, req) > 0;
+    public boolean updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(String account, UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountReq req) {
+        params params = new UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountParams(account, req)
+        return roleSystemUserInfoMapper.updateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(params) > 0;
     }
 
     @Override
-    public RoleSystemUserInfo getRoleSystemUserInfoByAccount(Integer account) {
-        return roleSystemUserInfoMapper.getRoleSystemUserInfoByAccount(account);
+    public RoleSystemUserInfo getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(String account) {
+        return roleSystemUserInfoMapper.getRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccount(account);
     }
 
     @Override

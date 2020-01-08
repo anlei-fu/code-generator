@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageTypeMapper">
     <insert id="addDamageType" parameterType="com.railway.pojo.req.AddDamageTypeReq">
-          insert  into damage_type
+          insert  into damage_type 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="damageDesc != null">
                   damage_type.damage_desc,
@@ -50,7 +50,7 @@
           </trim>
     </insert>
     <delete id="deleteDamageTypeById">
-          delete from damage_type
+          delete from damage_type 
           <where>
             <if test="id != null">
                   damage_type.id = #{id}
@@ -58,7 +58,7 @@
           </where>
     </delete>
     <update id="updateDamageTypeById" parameterType="com.railway.pojo.param.UpdateDamageTypeByIdParams">
-        update damage_type
+        update damage_type 
         <set>
             <if test="damageDesc != null">
                   damage_type.damage_desc = #{DamageDesc},
@@ -101,7 +101,7 @@
              damage_type.sort_num,
              damage_type.status,
              damage_type.update_time
-          form damage_type
+          form damage_type 
           <where>
             <if test="id != null">
                   damage_type.id = #{id}
@@ -120,7 +120,7 @@
              damage_type.sort_num,
              damage_type.status,
              damage_type.update_time
-          form damage_type
+          form damage_type 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   damage_type.create_time between #{createTimeStart} and #{createTimeEnd}

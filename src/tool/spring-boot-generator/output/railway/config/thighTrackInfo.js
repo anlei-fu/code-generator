@@ -8,19 +8,20 @@ exports.thighTrackInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
+                        // thignTrackType : validate --- @Enum("thignTrackType")  
                         // status : validate --- @Enum("status")  
-                        // thighTrackType : validate --- @Enum("thighTrackType")  
-                        // updateTime excluded
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addThighTrackInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(thighTrackInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/thighTrackInfo");
@@ -28,9 +29,9 @@ exports.thighTrackInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
+                                           .validate("thignTrackType","@Enum(\"thignTrackType\")")
                                            .validate("status","@Enum(\"status\")")
-                                           .validate("thighTrackType","@Enum(\"thighTrackType\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -38,6 +39,7 @@ exports.thighTrackInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteThighTrackInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,15 +53,16 @@ exports.thighTrackInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
+                        // thignTrackType : validate --- @Enum("thignTrackType")  
                         // status : validate --- @Enum("status")  
-                        // thighTrackType : validate --- @Enum("thighTrackType")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateThighTrackInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(thighTrackInfo.columnsArray)
                                                   .excludes("id")
@@ -81,8 +84,8 @@ exports.thighTrackInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("thignTrackType","@Enum(\"thignTrackType\")")
                                            .validate("status","@Enum(\"status\")")
-                                           .validate("thighTrackType","@Enum(\"thighTrackType\")")
                                 })
                                 .build(),
 
@@ -90,6 +93,7 @@ exports.thighTrackInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getThighTrackInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(thighTrackInfo.columnsArray)
                                 })
@@ -111,11 +115,13 @@ exports.thighTrackInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
+                        // thignTrackType : validates --- @Enum("thignTrackType")  
                         // status : validates --- @Enum("status")  
-                        // thighTrackType : validates --- @Enum("thighTrackType")
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getThighTrackInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(thighTrackInfo.columnsArray)
                                 })
@@ -124,15 +130,14 @@ exports.thighTrackInfoConfig = {
                                                   .excludes("id")
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getThighTrackInfoList")
                                 .controller(controller => {
                                         controller.path("/thighTrackInfo");
                                 })
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("thignTrackType","@Enum(\"thignTrackType\")")
                                            .validate("status","@Enum(\"status\")")
-                                           .validate("thighTrackType","@Enum(\"thighTrackType\")")
                                 })
                                 .build()
                 ]

@@ -15,6 +15,7 @@ exports.taskScriptConfigConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addTaskScriptConfig")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskScriptConfig.columnsArray)
                                                   .excludes("id")
@@ -36,6 +37,7 @@ exports.taskScriptConfigConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTaskScriptConfigById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -49,12 +51,13 @@ exports.taskScriptConfigConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // file : validate --- @Path
                         new builder()
                                 .type("update")
                                 .id("updateTaskScriptConfigById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskScriptConfig.columnsArray)
                                                   .excludes("id")
@@ -83,6 +86,7 @@ exports.taskScriptConfigConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTaskScriptConfigById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskScriptConfig.columnsArray)
                                 })
@@ -107,6 +111,8 @@ exports.taskScriptConfigConfig = {
                         // file : excluded
                         new builder()
                                 .type("select")
+                                .id("getTaskScriptConfigList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskScriptConfig.columnsArray)
                                 })
@@ -115,7 +121,6 @@ exports.taskScriptConfigConfig = {
                                                   .excludes("id")
                                                   .excludes(["file"])
                                 })
-                                .id("getTaskScriptConfigList")
                                 .controller(controller => {
                                         controller.path("/taskScriptConfig");
                                 })

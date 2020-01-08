@@ -14,16 +14,19 @@ import java.util.Date;
 @Setter
 public class GetSystemRoleGroupInfoListReq extends PageReq {
 
-    @ApiModelProperty("create time")
-    private Date createTime;
-
-    @ApiModelProperty("create user")
-    private String createUser;
+    @ApiModelProperty("related system")
+    private Integer systemId;
 
     @ApiModelProperty("role")
     private String role;
 
-    @ApiModelProperty("related system")
-    private Integer systemId;
+    @ApiModelProperty("create user")
+    private String createUser;
+
+    @ApiModelProperty("create time start time")
+    private Date createTimeStart;
+
+    @ApiModelProperty("create time end time")
+    private Date createTimeEnd;
 
 }

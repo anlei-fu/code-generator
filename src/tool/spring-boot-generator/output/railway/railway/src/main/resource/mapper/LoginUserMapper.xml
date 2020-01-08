@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.LoginUserMapper">
     <insert id="addLoginUser" parameterType="com.railway.pojo.req.AddLoginUserReq">
-          insert  into login_user
+          insert  into login_user 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="name != null">
                   login_user.name,
@@ -36,7 +36,7 @@
           </trim>
     </insert>
     <delete id="deleteLoginUserById">
-          delete from login_user
+          delete from login_user 
           <where>
             <if test="id != null">
                   login_user.id = #{id}
@@ -44,7 +44,7 @@
           </where>
     </delete>
     <update id="updateLoginUserById" parameterType="com.railway.pojo.param.UpdateLoginUserByIdParams">
-        update login_user
+        update login_user 
         <set>
             <if test="name != null">
                   login_user.name = #{Name},
@@ -75,7 +75,7 @@
              login_user.state,
              login_user.type,
              login_user.update_time
-          form login_user
+          form login_user 
           <where>
             <if test="id != null">
                   login_user.id = #{id}
@@ -91,7 +91,7 @@
              login_user.state,
              login_user.type,
              login_user.update_time
-          form login_user
+          form login_user 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   login_user.create_time between #{createTimeStart} and #{createTimeEnd}

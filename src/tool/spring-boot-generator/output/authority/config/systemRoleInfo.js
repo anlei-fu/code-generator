@@ -8,18 +8,19 @@ exports.systemRoleInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // createUser : validate --- @NotNull  
                         // id excluded 
+                        // systemId : validate --- @NotNull  
                         // role : validate --- @NotNull  
-                        // systemId : validate --- @NotNull
+                        // createUser : validate --- @NotNull  
+                        // createTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addSystemRoleInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(systemRoleInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id"])
+                                                  .excludes(["id","createTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/systemRoleInfo");
@@ -27,16 +28,22 @@ exports.systemRoleInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("createUser","@NotNull")
-                                           .validate("role","@NotNull")
                                            .validate("systemId","@NotNull")
+                                           .validate("role","@NotNull")
+                                           .validate("createUser","@NotNull")
+                                })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
                                 })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteSystemRoleInfoById")
+                                .id("deleteSystemRoleInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -50,15 +57,18 @@ exports.systemRoleInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
+                        // createUser : excluded 
+                        // createTime : excluded
                         new builder()
                                 .type("update")
-                                .id("updateSystemRoleInfoById")
+                                .id("updateSystemRoleInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(systemRoleInfo.columnsArray)
                                                   .excludes("id")
+                                                  .excludes(["createUser","createTime"])
 
                                 })
                                 .conditions(collection => {
@@ -83,7 +93,8 @@ exports.systemRoleInfoConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getSystemRoleInfoById")
+                                .id("getSystemRoleInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(systemRoleInfo.columnsArray)
                                 })
@@ -105,10 +116,12 @@ exports.systemRoleInfoConfig = {
                                 .build(),
 
                         // getList
+                        // description : excluded 
                         // createTime : expression --- timeRange
-                        // description : excluded
                         new builder()
                                 .type("select")
+                                .id("getSystemRoleInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(systemRoleInfo.columnsArray)
                                 })
@@ -116,9 +129,8 @@ exports.systemRoleInfoConfig = {
                                         collection.includes(systemRoleInfo.columnsArray)
                                                   .excludes("id")
                                                   .excludes(["description"])
-                                                  .expression("createTime","timeRange")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getSystemRoleInfoList")
                                 .controller(controller => {
                                         controller.path("/systemRoleInfo");
                                 })
@@ -127,6 +139,7 @@ exports.systemRoleInfoConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

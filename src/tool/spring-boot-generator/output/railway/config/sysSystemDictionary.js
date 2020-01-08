@@ -10,13 +10,14 @@ exports.sysSystemDictionaryConfig = {
                         // add
                         // dicid excluded 
                         // enumType : validate --- @NotNull  
-                        // sortId : validate --- @NotNull  
-                        // status : validate --- @NotNull  @Enum("status")  
                         // text : validate --- @NotNull  
-                        // value : validate --- @NotNull
+                        // value : validate --- @NotNull  
+                        // sortId : validate --- @NotNull  
+                        // status : validate --- @NotNull  @Enum("status")@@
                         new builder()
                                 .type("insert")
                                 .id("addSysSystemDictionary")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(sysSystemDictionary.columnsArray)
                                                   .excludes("dicid")
@@ -29,11 +30,11 @@ exports.sysSystemDictionaryConfig = {
                                         req.doCreate()
                                            .excludes("dicid")
                                            .validate("enumType","@NotNull")
+                                           .validate("text","@NotNull")
+                                           .validate("value","@NotNull")
                                            .validate("sortId","@NotNull")
                                            .validate("status","@NotNull")
                                            .validate("status","@Enum(\"status\")")
-                                           .validate("text","@NotNull")
-                                           .validate("value","@NotNull")
                                 })
                                 .build(),
 
@@ -41,6 +42,7 @@ exports.sysSystemDictionaryConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteSysSystemDictionaryByDicid")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("dicid")
                                                   .require("dicid")
@@ -54,12 +56,13 @@ exports.sysSystemDictionaryConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // status : validate --- @Enum("status")
+                        // status : validate --- @Enum("status")@@
                         new builder()
                                 .type("update")
                                 .id("updateSysSystemDictionaryByDicid")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(sysSystemDictionary.columnsArray)
                                                   .excludes("dicid")
@@ -88,6 +91,7 @@ exports.sysSystemDictionaryConfig = {
                         new builder()
                                 .type("select")
                                 .id("getSysSystemDictionaryByDicid")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(sysSystemDictionary.columnsArray)
                                 })
@@ -110,10 +114,12 @@ exports.sysSystemDictionaryConfig = {
 
                         // getList
                         // enumName : excluded 
-                        // status : validates --- @Enum("status")  
-                        // text : excluded
+                        // text : excluded 
+                        // status : validates --- @Enum("status")@@
                         new builder()
                                 .type("select")
+                                .id("getSysSystemDictionaryList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(sysSystemDictionary.columnsArray)
                                 })
@@ -122,7 +128,6 @@ exports.sysSystemDictionaryConfig = {
                                                   .excludes("dicid")
                                                   .excludes(["enumName","text"])
                                 })
-                                .id("getSysSystemDictionaryList")
                                 .controller(controller => {
                                         controller.path("/sysSystemDictionary");
                                 })

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.WorshopBoundaryInfoMapper">
     <insert id="addWorshopBoundaryInfo" parameterType="com.railway.pojo.req.AddWorshopBoundaryInfoReq">
-          insert  into worshop_boundary_info
+          insert  into worshop_boundary_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="direction != null">
                   worshop_boundary_info.direction,
@@ -86,7 +86,7 @@
           </trim>
     </insert>
     <delete id="deleteWorshopBoundaryInfoById">
-          delete from worshop_boundary_info
+          delete from worshop_boundary_info 
           <where>
             <if test="id != null">
                   worshop_boundary_info.id = #{id}
@@ -94,7 +94,7 @@
           </where>
     </delete>
     <update id="updateWorshopBoundaryInfoById" parameterType="com.railway.pojo.param.UpdateWorshopBoundaryInfoByIdParams">
-        update worshop_boundary_info
+        update worshop_boundary_info 
         <set>
             <if test="direction != null">
                   worshop_boundary_info.direction = #{Direction},
@@ -161,7 +161,7 @@
              worshop_boundary_info.track_type,
              worshop_boundary_info.update_time,
              worshop_boundary_info.workarea_id
-          form worshop_boundary_info
+          form worshop_boundary_info 
           <where>
             <if test="id != null">
                   worshop_boundary_info.id = #{id}
@@ -186,7 +186,7 @@
              worshop_boundary_info.track_type,
              worshop_boundary_info.update_time,
              worshop_boundary_info.workarea_id
-          form worshop_boundary_info
+          form worshop_boundary_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   worshop_boundary_info.create_time between #{createTimeStart} and #{createTimeEnd}

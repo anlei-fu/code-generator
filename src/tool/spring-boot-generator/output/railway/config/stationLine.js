@@ -8,20 +8,21 @@ exports.stationLineConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
-                        // lineId : validate --- @NotNull  
                         // stationId : validate --- @NotNull  
+                        // lineId : validate --- @NotNull  
                         // status : validate --- @Enum("status")  
-                        // updateTime excluded
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addStationLine")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(stationLine.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/stationLine");
@@ -29,10 +30,10 @@ exports.stationLineConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
-                                           .validate("lineId","@NotNull")
                                            .validate("stationId","@NotNull")
+                                           .validate("lineId","@NotNull")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -40,6 +41,7 @@ exports.stationLineConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteStationLineById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -53,14 +55,15 @@ exports.stationLineConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
                         // status : validate --- @Enum("status")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateStationLineById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(stationLine.columnsArray)
                                                   .excludes("id")
@@ -90,6 +93,7 @@ exports.stationLineConfig = {
                         new builder()
                                 .type("select")
                                 .id("getStationLineById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(stationLine.columnsArray)
                                 })
@@ -111,10 +115,12 @@ exports.stationLineConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
-                        // status : validates --- @Enum("status")
+                        // status : validates --- @Enum("status")  
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getStationLineList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(stationLine.columnsArray)
                                 })
@@ -123,7 +129,6 @@ exports.stationLineConfig = {
                                                   .excludes("id")
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getStationLineList")
                                 .controller(controller => {
                                         controller.path("/stationLine");
                                 })

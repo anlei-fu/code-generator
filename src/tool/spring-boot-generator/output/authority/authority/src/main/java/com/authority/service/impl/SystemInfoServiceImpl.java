@@ -5,7 +5,7 @@ import com.authority.pojo.entity.SystemInfo;
 import com.authority.pojo.entity.SystemInfo;
 import com.authority.pojo.req.AddSystemInfoReq;
 import com.authority.pojo.req.GetSystemInfoListReq;
-import com.authority.pojo.req.UpdateSystemInfoByIdReq;
+import com.authority.pojo.req.UpdateSystemInfoByUserAndUserAndUserAndUserAndIdReq;
 import com.authority.service.SystemInfoService;
 import com.authority.utils.PageHelperUtils;
 import com.github.pagehelper.PageInfo;
@@ -20,23 +20,25 @@ public class SystemInfoServiceImpl implements SystemInfoService {
     private SystemInfoMapper systemInfoMapper;
 
     @Override
-    public boolean addSystemInfo(AddSystemInfoReq req) {
-        return systemInfoMapper.addSystemInfo(req) > 0;
+    public boolean addSystemInfo(AddSystemInfoReq req, String user) {
+        params params = new AddSystemInfoParams(req, user)
+        return systemInfoMapper.addSystemInfo(params) > 0;
     }
 
     @Override
-    public boolean deleteSystemInfoById(Integer id) {
-        return systemInfoMapper.deleteSystemInfoById(id) > 0;
+    public boolean deleteSystemInfoByUserAndUserAndUserAndUserAndId(Integer id) {
+        return systemInfoMapper.deleteSystemInfoByUserAndUserAndUserAndUserAndId(id) > 0;
     }
 
     @Override
-    public boolean updateSystemInfoById(Integer id, UpdateSystemInfoByIdReq req) {
-        return systemInfoMapper.updateSystemInfoById(id, req) > 0;
+    public boolean updateSystemInfoByUserAndUserAndUserAndUserAndId(Integer id, UpdateSystemInfoByUserAndUserAndUserAndUserAndIdReq req) {
+        params params = new UpdateSystemInfoByUserAndUserAndUserAndUserAndIdParams(id, req)
+        return systemInfoMapper.updateSystemInfoByUserAndUserAndUserAndUserAndId(params) > 0;
     }
 
     @Override
-    public SystemInfo getSystemInfoById(Integer id) {
-        return systemInfoMapper.getSystemInfoById(id);
+    public SystemInfo getSystemInfoByUserAndUserAndUserAndUserAndId(Integer id) {
+        return systemInfoMapper.getSystemInfoByUserAndUserAndUserAndUserAndId(id);
     }
 
     @Override

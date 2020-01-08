@@ -8,19 +8,20 @@ exports.damageTypeConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // damageType : validate --- @Enum("damageType")  
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
+                        // damageType : validate --- @Enum("damageType")  
                         // status : validate --- @Enum("status")  
-                        // updateTime excluded
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addDamageType")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(damageType.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/damageType");
@@ -29,8 +30,8 @@ exports.damageTypeConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("damageType","@Enum(\"damageType\")")
-                                           .validate("isDelete","@NotNull")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -38,6 +39,7 @@ exports.damageTypeConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDamageTypeById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,15 +53,16 @@ exports.damageTypeConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
                         // damageType : validate --- @Enum("damageType")  
                         // status : validate --- @Enum("status")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateDamageTypeById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(damageType.columnsArray)
                                                   .excludes("id")
@@ -90,6 +93,7 @@ exports.damageTypeConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDamageTypeById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(damageType.columnsArray)
                                 })
@@ -111,22 +115,23 @@ exports.damageTypeConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // damageType : validates --- @Enum("damageType")  
                         // damageType : expression --- range
-                        // status : validates --- @Enum("status")
+                        // status : validates --- @Enum("status")  
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getDamageTypeList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(damageType.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(damageType.columnsArray)
                                                   .excludes("id")
-                                                  .exp("createTime","timeRange")
                                                   .exp("damageType","range")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getDamageTypeList")
                                 .controller(controller => {
                                         controller.path("/damageType");
                                 })

@@ -12,21 +12,21 @@ let roleSystemUserInfo = {
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "create time",
-			nullable: false,
-			type: {
-				name: "timestamp",
-				length: null
-			}
-		},
 		password: {
 			name: "password",
 			description: "password",
 			nullable: false,
 			type: {
 				name: "varchar",
+				length: null
+			}
+		},
+		createTime: {
+			name: "createTime",
+			description: "create time",
+			nullable: false,
+			type: {
+				name: "timestamp",
 				length: null
 			}
 		},
@@ -44,8 +44,8 @@ let roleSystemUserInfo = {
 
 let columnsArray = [
 	"account",
-	"createTime",
 	"password",
+	"createTime",
 	"role"
 ];
 

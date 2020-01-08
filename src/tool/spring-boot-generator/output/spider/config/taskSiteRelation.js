@@ -16,6 +16,7 @@ exports.taskSiteRelationConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addTaskSiteRelation")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskSiteRelation.columnsArray)
                                                   .excludes("id")
@@ -38,6 +39,7 @@ exports.taskSiteRelationConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTaskSiteRelationById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,12 +53,13 @@ exports.taskSiteRelationConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // domain : validate --- @Url
                         new builder()
                                 .type("update")
                                 .id("updateTaskSiteRelationById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskSiteRelation.columnsArray)
                                                   .excludes("id")
@@ -85,6 +88,7 @@ exports.taskSiteRelationConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTaskSiteRelationById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskSiteRelation.columnsArray)
                                 })
@@ -109,6 +113,8 @@ exports.taskSiteRelationConfig = {
                         // domain : validates --- @Url
                         new builder()
                                 .type("select")
+                                .id("getTaskSiteRelationList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskSiteRelation.columnsArray)
                                 })
@@ -117,7 +123,6 @@ exports.taskSiteRelationConfig = {
                                                   .excludes("id")
 
                                 })
-                                .id("getTaskSiteRelationList")
                                 .controller(controller => {
                                         controller.path("/taskSiteRelation");
                                 })

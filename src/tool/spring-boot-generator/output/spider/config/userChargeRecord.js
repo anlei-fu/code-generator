@@ -18,6 +18,7 @@ exports.userChargeRecordConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addUserChargeRecord")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userChargeRecord.columnsArray)
                                                   .excludes("id")
@@ -37,12 +38,18 @@ exports.userChargeRecordConfig = {
                                            .validate("status","@NotNull")
                                            .validate("status","@Enum(\"status\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteUserChargeRecordById")
+                                .id("deleteUserChargeRecordByUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -55,13 +62,19 @@ exports.userChargeRecordConfig = {
                                            .type("Integer")
                                            .from("@PathVariable");
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
-
+                                
                         // updateById
                         // status : validate --- @Enum("status")
                         new builder()
                                 .type("update")
-                                .id("updateUserChargeRecordById")
+                                .id("updateUserChargeRecordByUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userChargeRecord.columnsArray)
                                                   .excludes("id")
@@ -84,12 +97,18 @@ exports.userChargeRecordConfig = {
                                            .excludes("id")
                                            .validate("status","@Enum(\"status\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getUserChargeRecordById")
+                                .id("getUserChargeRecordByUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userChargeRecord.columnsArray)
                                 })
@@ -108,6 +127,11 @@ exports.userChargeRecordConfig = {
                                 .resp(resp => {
                                         resp.single();
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // getList
@@ -115,15 +139,16 @@ exports.userChargeRecordConfig = {
                         // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
+                                .id("getUserChargeRecordList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userChargeRecord.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(userChargeRecord.columnsArray)
                                                   .excludes("id")
-                                                  .expression("amount","range")
+                                                  .exp("amount","range")
                                 })
-                                .id("getUserChargeRecordList")
                                 .controller(controller => {
                                         controller.path("/userChargeRecord");
                                 })

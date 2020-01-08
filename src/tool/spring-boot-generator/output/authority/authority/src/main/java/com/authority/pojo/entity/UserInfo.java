@@ -17,16 +17,13 @@ public class UserInfo  {
     @ApiModelProperty("account")
     private String account;
 
+    @ApiModelProperty("password")
+    private String password;
+
     @ApiModelProperty("create time")
     private Date createTime;
 
     @ApiModelProperty("create user")
     private String createUser;
-
-    @ApiModelProperty("password")
-    private String password;
-
-    @ApiModelProperty("user role")
-    private Integer userRole;
 
 }

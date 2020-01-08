@@ -13,6 +13,7 @@ exports.taskRunRecordConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addTaskRunRecord")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskRunRecord.columnsArray)
                                                   .excludes("id")
@@ -32,6 +33,7 @@ exports.taskRunRecordConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTaskRunRecordById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -45,12 +47,12 @@ exports.taskRunRecordConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateTaskRunRecordById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(taskRunRecord.columnsArray)
                                                   .excludes("id")
@@ -79,6 +81,7 @@ exports.taskRunRecordConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTaskRunRecordById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskRunRecord.columnsArray)
                                 })
@@ -103,15 +106,16 @@ exports.taskRunRecordConfig = {
                         // pageDownloaded : expression --- range
                         new builder()
                                 .type("select")
+                                .id("getTaskRunRecordList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(taskRunRecord.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(taskRunRecord.columnsArray)
                                                   .excludes("id")
-                                                  .expression("pageDownloaded","range")
+                                                  .exp("pageDownloaded","range")
                                 })
-                                .id("getTaskRunRecordList")
                                 .controller(controller => {
                                         controller.path("/taskRunRecord");
                                 })

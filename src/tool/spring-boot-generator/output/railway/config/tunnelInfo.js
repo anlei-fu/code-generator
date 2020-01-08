@@ -8,18 +8,19 @@ exports.tunnelInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
                         // id excluded 
-                        // isDelete : validate --- @NotNull  
                         // status : validate --- @Enum("status")  
-                        // updateTime excluded
+                        // isDelete : validate --- @NotNull  
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addTunnelInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(tunnelInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/tunnelInfo");
@@ -27,8 +28,8 @@ exports.tunnelInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -36,6 +37,7 @@ exports.tunnelInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteTunnelInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -49,14 +51,15 @@ exports.tunnelInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // createTime : excluded 
                         // status : validate --- @Enum("status")  
-                        // updateTime : excluded
+                        // createTime : excluded 
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateTunnelInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(tunnelInfo.columnsArray)
                                                   .excludes("id")
@@ -86,6 +89,7 @@ exports.tunnelInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getTunnelInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(tunnelInfo.columnsArray)
                                 })
@@ -107,22 +111,23 @@ exports.tunnelInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
+                        // tunneName : excluded 
                         // remark : excluded 
                         // status : validates --- @Enum("status")  
-                        // tunneName : excluded
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getTunnelInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(tunnelInfo.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(tunnelInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["remark","tunneName"])
+                                                  .excludes(["tunneName","remark"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getTunnelInfoList")
                                 .controller(controller => {
                                         controller.path("/tunnelInfo");
                                 })

@@ -12,6 +12,15 @@ let userInfo = {
 				length: null
 			}
 		},
+		password: {
+			name: "password",
+			description: "password",
+			nullable: false,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
 		createTime: {
 			name: "createTime",
 			description: "create time",
@@ -29,34 +38,15 @@ let userInfo = {
 				name: "varchar",
 				length: null
 			}
-		},
-		password: {
-			name: "password",
-			description: "password",
-			nullable: false,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		userRole: {
-			name: "userRole",
-			description: "user role",
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
 		}
 	}
 };
 
 let columnsArray = [
 	"account",
-	"createTime",
-	"createUser",
 	"password",
-	"userRole"
+	"createTime",
+	"createUser"
 ];
 
 function create() {

@@ -4,12 +4,46 @@ const { getJavaType } = require("./utils");
 const { SimpleRender } = require("../simple-pattern-render/simple-pattern-render");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./analyzer");
 const { LoggerFactory } = require("./../logging/logger-factory");
+const { renderUserReq } = require("./renders/user-req-render");
 
 const LOG = LoggerFactory.getLogger("BuilderConfigGenerator");
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
 const REQ_IDENT = "                                           ";
 const COMMENT_IDENT = "                        ";
 const EXCLUDE_IDENT = "                                                  ";
+const USER_MATCHERS = {
+        insert: {
+                matcher: x => STR.includesAny(x.toLowerCase(), [
+                        "account",
+                        "user",
+                        "admin",
+                        "createuser"
+
+                ])
+        },
+        delete:{
+                matcher: x => STR.includesAny(x.toLowerCase(), [
+                        "account",
+                        "user",
+                ])
+        },
+        update:{
+                matcher: x => STR.includesAny(x.toLowerCase(), [
+                        "account",
+                        "user",
+                        "updateuser",
+                        "edituser",
+                        "modifyuser"
+                ])
+        },
+        select:{
+                matcher: x => STR.includesAny(x.toLowerCase(), [
+                        "account",
+                        "user",
+                ])
+        }
+};
+
 /**
  * Analyze and render a config template
  */
@@ -27,10 +61,41 @@ class ConfigBuilderGenerator {
          * @param {Table} table 
          * @returns {String}
          */
-        generate(table) {
+        generate(table,pk) {
                 let select = this._generateSelect(table);
                 let insert = this._generateInsert(table);
                 let update = this._generateUpdate(table);
+
+                let key=STR.upperFirstLetter(pk.name);
+                let skey=pk.name;
+                let methodName=key;
+                let keyType=getJavaType(pk.type);
+
+                let insertUserReq = "";
+                if (this._hasUser(table,"insert")){
+                        insertUserReq = renderUserReq();
+                        methodName="UserAnd"+methodName;
+                }
+
+                let deleteUserReq = "";
+                if (this._hasUser(table,"delete")){
+                        insertUserReq = renderUserReq();
+                        methodName="UserAnd"+methodName;
+                }
+
+                let updateUserReq = "";
+                if (this._hasUser(table,"update")){
+                        insertUserReq = renderUserReq();
+                        methodName="UserAnd"+methodName;
+                }
+
+                let selectUserReq = "";
+                if (this._hasUser(table,"select")){
+                        insertUserReq = renderUserReq();
+                        methodName="UserAnd"+methodName;
+                }
+
+
 
                 let selete_text = this._renderExcludes(select.excludes)
                 if (select.expressions.length != 0)
@@ -40,6 +105,14 @@ class ConfigBuilderGenerator {
                 let update_text = this._renderExcludes(update.excludes)
 
                 let config = {
+                        keyType,
+                        key,
+                        skey,
+                        methodName,
+                        insertUserReq,
+                        deleteUserReq,
+                        updateUserReq,
+                        selectUserReq,
                         tableInfo: "",
                         insertExcludes: insert_text.trimRight(),
                         insertReq: this._renderReq(insert.validates).trimRight(),
@@ -54,7 +127,16 @@ class ConfigBuilderGenerator {
                         selectMsg: select.msg.trimRight()
                 }
 
-                return CONFIG_ITEM_RENDER.renderTemplate(config);
+                let content = CONFIG_ITEM_RENDER.renderTemplate(config);
+                let output = "";
+                STR.splitToLines(content).forEach(x => {
+                        if (x.trim() == "@@")
+                                return;
+
+                        output += x+"\r\n";
+                });
+
+                return output.replace(/@@/g,"");
         }
 
         /**
@@ -143,11 +225,6 @@ class ConfigBuilderGenerator {
                                 });
 
                         }
-
-                        let reqExcludes={};
-
-                        let params={};
-
                 });
 
                 return {
@@ -226,6 +303,17 @@ class ConfigBuilderGenerator {
                         validates,
                         msg
                 };
+        }
+
+        _hasUser(table,type) {
+                for (const c in table.columns) {
+                        let javaType = getJavaType(table.columns[c].type);
+                        if (javaType == "String" && USER_MATCHERS[type].matcher(c))
+                                return true;
+
+                };
+
+                return false;
         }
 }
 

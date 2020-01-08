@@ -3,7 +3,7 @@ package com.test.controller;
 import com.authority.pojo.entity.GroupRole;
 import com.authority.pojo.req.AddGroupRoleReq;
 import com.authority.pojo.req.GetGroupRoleListReq;
-import com.authority.pojo.req.UpdateGroupRoleByIdReq;
+import com.authority.pojo.req.UpdateGroupRoleByUserAndUserAndUserAndUserAndIdReq;
 import com.authority.pojo.resp.R;
 import com.authority.service.GroupRoleService;
 import com.authority.validate.annotation.Path;
@@ -24,26 +24,26 @@ public class GroupRoleController {
 
     @ApiOperation("")
     @PostMapping(path = "/groupRole")
-    public R addGroupRole(@Validated @ModelAttribute AddGroupRoleReq req) {
-        return R.doResponse(groupRoleService.addGroupRole(req));
+    public R addGroupRole(@Validated @ModelAttribute AddGroupRoleReq req, @Session String user) {
+        return R.doResponse(groupRoleService.addGroupRole(req, user));
     }
 
     @ApiOperation("")
     @DeleteMapping(path = "/groupRole/{id}")
-    public R deleteGroupRoleById(@PathVariable Integer id) {
-        return R.doResponse(groupRoleService.deleteGroupRoleById(id));
+    public R deleteGroupRoleByUserAndUserAndUserAndUserAndId(@PathVariable Integer id) {
+        return R.doResponse(groupRoleService.deleteGroupRoleByUserAndUserAndUserAndUserAndId(id));
     }
 
     @ApiOperation("")
     @PutMapping(path = "/groupRole/{id}")
-    public R updateGroupRoleById(@PathVariable Integer id, @Validated @ModelAttribute UpdateGroupRoleByIdReq req) {
-        return R.doResponse(groupRoleService.updateGroupRoleById(id, req));
+    public R updateGroupRoleByUserAndUserAndUserAndUserAndId(@PathVariable Integer id, @Validated @ModelAttribute UpdateGroupRoleByUserAndUserAndUserAndUserAndIdReq req) {
+        return R.doResponse(groupRoleService.updateGroupRoleByUserAndUserAndUserAndUserAndId(id, req));
     }
 
     @ApiOperation("")
     @GetMapping(path = "/groupRole/{id}")
-    public R<GroupRole> getGroupRoleById(@PathVariable Integer id) {
-        return R.doResponse(groupRoleService.getGroupRoleById(id));
+    public R<GroupRole> getGroupRoleByUserAndUserAndUserAndUserAndId(@PathVariable Integer id) {
+        return R.doResponse(groupRoleService.getGroupRoleByUserAndUserAndUserAndUserAndId(id));
     }
 
     @ApiOperation("")

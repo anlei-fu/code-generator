@@ -8,18 +8,19 @@ exports.userRoleConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // createUser : validate --- @NotNull  
                         // id excluded 
+                        // userAccount : validate --- @NotNull  
                         // systemId : validate --- @NotNull  
-                        // userAccount : validate --- @NotNull
+                        // createUser : validate --- @NotNull  
+                        // createTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addUserRole")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userRole.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id"])
+                                                  .excludes(["id","createTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/userRole");
@@ -27,16 +28,22 @@ exports.userRoleConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("createUser","@NotNull")
-                                           .validate("systemId","@NotNull")
                                            .validate("userAccount","@NotNull")
+                                           .validate("systemId","@NotNull")
+                                           .validate("createUser","@NotNull")
+                                })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
                                 })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteUserRoleById")
+                                .id("deleteUserRoleByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -50,15 +57,18 @@ exports.userRoleConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
+                        // createUser : excluded 
+                        // createTime : excluded
                         new builder()
                                 .type("update")
-                                .id("updateUserRoleById")
+                                .id("updateUserRoleByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userRole.columnsArray)
                                                   .excludes("id")
+                                                  .excludes(["createUser","createTime"])
 
                                 })
                                 .conditions(collection => {
@@ -83,7 +93,8 @@ exports.userRoleConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getUserRoleById")
+                                .id("getUserRoleByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userRole.columnsArray)
                                 })
@@ -108,15 +119,16 @@ exports.userRoleConfig = {
                         // createTime : expression --- timeRange
                         new builder()
                                 .type("select")
+                                .id("getUserRoleList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userRole.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(userRole.columnsArray)
                                                   .excludes("id")
-                                                  .expression("createTime","timeRange")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getUserRoleList")
                                 .controller(controller => {
                                         controller.path("/userRole");
                                 })
@@ -125,6 +137,7 @@ exports.userRoleConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

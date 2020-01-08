@@ -8,19 +8,20 @@ exports.groupRoleConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // createUser : validate --- @NotNull  
                         // id excluded 
-                        // role : validate --- @NotNull  
+                        // userAccount : validate --- @NotNull  
                         // systemId : validate --- @NotNull  
-                        // userAccount : validate --- @NotNull
+                        // role : validate --- @NotNull  
+                        // createUser : validate --- @NotNull  
+                        // createTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addGroupRole")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(groupRole.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id"])
+                                                  .excludes(["id","createTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/groupRole");
@@ -28,17 +29,23 @@ exports.groupRoleConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("createUser","@NotNull")
-                                           .validate("role","@NotNull")
-                                           .validate("systemId","@NotNull")
                                            .validate("userAccount","@NotNull")
+                                           .validate("systemId","@NotNull")
+                                           .validate("role","@NotNull")
+                                           .validate("createUser","@NotNull")
+                                })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
                                 })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteGroupRoleById")
+                                .id("deleteGroupRoleByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -52,15 +59,18 @@ exports.groupRoleConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
+                        // createUser : excluded 
+                        // createTime : excluded
                         new builder()
                                 .type("update")
-                                .id("updateGroupRoleById")
+                                .id("updateGroupRoleByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(groupRole.columnsArray)
                                                   .excludes("id")
+                                                  .excludes(["createUser","createTime"])
 
                                 })
                                 .conditions(collection => {
@@ -85,7 +95,8 @@ exports.groupRoleConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getGroupRoleById")
+                                .id("getGroupRoleByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(groupRole.columnsArray)
                                 })
@@ -110,15 +121,16 @@ exports.groupRoleConfig = {
                         // createTime : expression --- timeRange
                         new builder()
                                 .type("select")
+                                .id("getGroupRoleList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(groupRole.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(groupRole.columnsArray)
                                                   .excludes("id")
-                                                  .expression("createTime","timeRange")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getGroupRoleList")
                                 .controller(controller => {
                                         controller.path("/groupRole");
                                 })
@@ -127,6 +139,7 @@ exports.groupRoleConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

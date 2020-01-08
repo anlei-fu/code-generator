@@ -36,7 +36,7 @@ function renderUpdate(config) {
                 x.suffix = i == array.length - 1 ? "" : ",";
                 columns += renderAsign(x);
         });
-        columns+=renderUpdateTime(config.table);
+        columns+=renderUpdateTime(config.table,config.alias);
 
         let parameterType;
         if (config.params.doCreate) {
@@ -46,6 +46,7 @@ function renderUpdate(config) {
         }
 
         let updateModel = {
+                alias:config.alias||"",
                 id: config.id,
                 set: renderSet({ content: columns }),
                 where: renderConditions(config),
@@ -55,11 +56,11 @@ function renderUpdate(config) {
         return UPDATE_RENDER.renderTemplate(updateModel);
 }
 
-function renderUpdateTime(table) {
+function renderUpdateTime(table,alias) {
         let content="";
   OBJECT.forEach(table.columns,(columnName,column)=>{
       if(getJavaType(column.type)=="Date"&&UPDATE_TIME_MATCHERS(columnName))
-         content=`${SET_ITEM_IDENT}${NamingStrategy.toHungary(table.name).toLowerCase()}`
+         content=`${SET_ITEM_IDENT}${alias||NamingStrategy.toHungary(table.name).toLowerCase()}`
               +`.${NamingStrategy.toHungary(column.name).toLowerCase()}= current_timestamp,\r\n`;
   });
 

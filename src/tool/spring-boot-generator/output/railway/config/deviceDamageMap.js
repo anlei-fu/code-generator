@@ -8,11 +8,12 @@ exports.deviceDamageMapConfig = {
                 items: [
 
                         // add
-                        // deviceType : validate --- @Enum("deviceType")  
-                        // id excluded
+                        // id excluded 
+                        // deviceType : validate --- @Enum("deviceType")@@
                         new builder()
                                 .type("insert")
                                 .id("addDeviceDamageMap")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(deviceDamageMap.columnsArray)
                                                   .excludes("id")
@@ -32,6 +33,7 @@ exports.deviceDamageMapConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDeviceDamageMapById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -45,12 +47,13 @@ exports.deviceDamageMapConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // deviceType : validate --- @Enum("deviceType")
+                        // deviceType : validate --- @Enum("deviceType")@@
                         new builder()
                                 .type("update")
                                 .id("updateDeviceDamageMapById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(deviceDamageMap.columnsArray)
                                                   .excludes("id")
@@ -79,6 +82,7 @@ exports.deviceDamageMapConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDeviceDamageMapById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(deviceDamageMap.columnsArray)
                                 })
@@ -100,10 +104,12 @@ exports.deviceDamageMapConfig = {
                                 .build(),
 
                         // getList
-                        // damageId : expression --- range
-                        // deviceType : validates --- @Enum("deviceType")
+                        // deviceType : validates --- @Enum("deviceType")  
+                        // damageId : expression --- range@@
                         new builder()
                                 .type("select")
+                                .id("getDeviceDamageMapList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(deviceDamageMap.columnsArray)
                                 })
@@ -112,7 +118,6 @@ exports.deviceDamageMapConfig = {
                                                   .excludes("id")
                                                   .exp("damageId","range")
                                 })
-                                .id("getDeviceDamageMapList")
                                 .controller(controller => {
                                         controller.path("/deviceDamageMap");
                                 })

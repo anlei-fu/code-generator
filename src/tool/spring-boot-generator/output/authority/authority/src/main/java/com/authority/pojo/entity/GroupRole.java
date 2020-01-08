@@ -15,21 +15,21 @@ import java.util.Date;
 public class GroupRole  {
 
     @ApiModelProperty("")
-    private Date createTime;
-
-    @ApiModelProperty("")
-    private String createUser;
-
-    @ApiModelProperty("")
     private Integer id;
 
     @ApiModelProperty("")
-    private String role;
+    private String userAccount;
 
     @ApiModelProperty("")
     private String systemId;
 
     @ApiModelProperty("")
-    private String userAccount;
+    private String role;
+
+    @ApiModelProperty("")
+    private String createUser;
+
+    @ApiModelProperty("")
+    private Date createTime;
 
 }

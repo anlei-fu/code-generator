@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectDeviceInfoMapper">
     <insert id="addDetectDeviceInfo" parameterType="com.railway.pojo.req.AddDetectDeviceInfoReq">
-          insert  into detect_device_info
+          insert  into detect_device_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="commissioningDate != null">
                   detect_device_info.commissioning_date,
@@ -128,7 +128,7 @@
           </trim>
     </insert>
     <delete id="deleteDetectDeviceInfoById">
-          delete from detect_device_info
+          delete from detect_device_info 
           <where>
             <if test="id != null">
                   detect_device_info.id = #{id}
@@ -136,7 +136,7 @@
           </where>
     </delete>
     <update id="updateDetectDeviceInfoById" parameterType="com.railway.pojo.param.UpdateDetectDeviceInfoByIdParams">
-        update detect_device_info
+        update detect_device_info 
         <set>
             <if test="commissioningDate != null">
                   detect_device_info.commissioning_date = #{CommissioningDate},
@@ -231,7 +231,7 @@
              detect_device_info.weight,
              detect_device_info.width,
              detect_device_info.workarea_id
-          form detect_device_info
+          form detect_device_info 
           <where>
             <if test="id != null">
                   detect_device_info.id = #{id}
@@ -263,7 +263,7 @@
              detect_device_info.weight,
              detect_device_info.width,
              detect_device_info.workarea_id
-          form detect_device_info
+          form detect_device_info 
           <where>
             <if test="commissioningDateStart !=null and  commissioningDateEnd != null">
                   detect_device_info.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}

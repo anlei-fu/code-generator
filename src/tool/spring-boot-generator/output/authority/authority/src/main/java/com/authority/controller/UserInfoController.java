@@ -3,7 +3,7 @@ package com.test.controller;
 import com.authority.pojo.entity.UserInfo;
 import com.authority.pojo.req.AddUserInfoReq;
 import com.authority.pojo.req.GetUserInfoListReq;
-import com.authority.pojo.req.UpdateUserInfoByAccountReq;
+import com.authority.pojo.req.UpdateUserInfoByUserAndUserAndUserAndUserAndAccountReq;
 import com.authority.pojo.resp.R;
 import com.authority.service.UserInfoService;
 import com.authority.validate.annotation.Path;
@@ -24,26 +24,26 @@ public class UserInfoController {
 
     @ApiOperation("")
     @PostMapping(path = "/userInfo")
-    public R addUserInfo(@Validated @ModelAttribute AddUserInfoReq req) {
-        return R.doResponse(userInfoService.addUserInfo(req));
+    public R addUserInfo(@Validated @ModelAttribute AddUserInfoReq req, @Session String user) {
+        return R.doResponse(userInfoService.addUserInfo(req, user));
     }
 
     @ApiOperation("")
     @DeleteMapping(path = "/userInfo/{account}")
-    public R deleteUserInfoByAccount(@PathVariable Integer account) {
-        return R.doResponse(userInfoService.deleteUserInfoByAccount(account));
+    public R deleteUserInfoByUserAndUserAndUserAndUserAndAccount(@PathVariable String account) {
+        return R.doResponse(userInfoService.deleteUserInfoByUserAndUserAndUserAndUserAndAccount(account));
     }
 
     @ApiOperation("")
     @PutMapping(path = "/userInfo/{account}")
-    public R updateUserInfoByAccount(@PathVariable Integer account, @Validated @ModelAttribute UpdateUserInfoByAccountReq req) {
-        return R.doResponse(userInfoService.updateUserInfoByAccount(account, req));
+    public R updateUserInfoByUserAndUserAndUserAndUserAndAccount(@PathVariable String account, @Validated @ModelAttribute UpdateUserInfoByUserAndUserAndUserAndUserAndAccountReq req) {
+        return R.doResponse(userInfoService.updateUserInfoByUserAndUserAndUserAndUserAndAccount(account, req));
     }
 
     @ApiOperation("")
     @GetMapping(path = "/userInfo/{account}")
-    public R<UserInfo> getUserInfoByAccount(@PathVariable Integer account) {
-        return R.doResponse(userInfoService.getUserInfoByAccount(account));
+    public R<UserInfo> getUserInfoByUserAndUserAndUserAndUserAndAccount(@PathVariable String account) {
+        return R.doResponse(userInfoService.getUserInfoByUserAndUserAndUserAndUserAndAccount(account));
     }
 
     @ApiOperation("")

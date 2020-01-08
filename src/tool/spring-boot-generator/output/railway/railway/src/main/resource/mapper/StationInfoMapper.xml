@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.StationInfoMapper">
     <insert id="addStationInfo" parameterType="com.railway.pojo.req.AddStationInfoReq">
-          insert  into station_info
+          insert  into station_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="fullName != null">
                   station_info.full_name,
@@ -86,7 +86,7 @@
           </trim>
     </insert>
     <delete id="deleteStationInfoById">
-          delete from station_info
+          delete from station_info 
           <where>
             <if test="id != null">
                   station_info.id = #{id}
@@ -94,7 +94,7 @@
           </where>
     </delete>
     <update id="updateStationInfoById" parameterType="com.railway.pojo.param.UpdateStationInfoByIdParams">
-        update station_info
+        update station_info 
         <set>
             <if test="fullName != null">
                   station_info.full_name = #{FullName},
@@ -161,7 +161,7 @@
              station_info.thigh_track_num,
              station_info.track_division_id,
              station_info.update_time
-          form station_info
+          form station_info 
           <where>
             <if test="id != null">
                   station_info.id = #{id}
@@ -186,7 +186,7 @@
              station_info.thigh_track_num,
              station_info.track_division_id,
              station_info.update_time
-          form station_info
+          form station_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   station_info.create_time between #{createTimeStart} and #{createTimeEnd}

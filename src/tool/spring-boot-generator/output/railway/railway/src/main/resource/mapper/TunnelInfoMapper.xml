@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.TunnelInfoMapper">
     <insert id="addTunnelInfo" parameterType="com.railway.pojo.req.AddTunnelInfoReq">
-          insert  into tunnel_info
+          insert  into tunnel_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="direction != null">
                   tunnel_info.direction,
@@ -110,7 +110,7 @@
           </trim>
     </insert>
     <delete id="deleteTunnelInfoById">
-          delete from tunnel_info
+          delete from tunnel_info 
           <where>
             <if test="id != null">
                   tunnel_info.id = #{id}
@@ -118,7 +118,7 @@
           </where>
     </delete>
     <update id="updateTunnelInfoById" parameterType="com.railway.pojo.param.UpdateTunnelInfoByIdParams">
-        update tunnel_info
+        update tunnel_info 
         <set>
             <if test="direction != null">
                   tunnel_info.direction = #{Direction},
@@ -201,7 +201,7 @@
              tunnel_info.tunne_name,
              tunnel_info.tunne_no,
              tunnel_info.update_time
-          form tunnel_info
+          form tunnel_info 
           <where>
             <if test="id != null">
                   tunnel_info.id = #{id}
@@ -230,7 +230,7 @@
              tunnel_info.tunne_name,
              tunnel_info.tunne_no,
              tunnel_info.update_time
-          form tunnel_info
+          form tunnel_info 
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
                   tunnel_info.create_time between #{createTimeStart} and #{createTimeEnd}

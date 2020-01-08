@@ -19,12 +19,17 @@ function renderParams(config, reqType) {
                                 x.name=STR.upperFirstLetter(x.name);
                                 reqGetter += renderParamsReqGetterItem(x);
                         });
-                } else {
+                } else if(key=="constructor") {
                         value.forEach(x => {
                                 getSet += renderParamsGetterSetterItem(x);
                                 constructorContent += `        this.${x.name} = ${x.name};\r\n`
                                 constructorParams += `${x.type} ${x.name}, `;
                         });
+                }else{
+                        console.log(x);
+                        getSet += renderParamsGetterSetterItem(x);
+                        constructorContent += `        this.${x.name} = user;\r\n`
+                        constructorParams += `${x.type} user, `;
                 }
         });
 

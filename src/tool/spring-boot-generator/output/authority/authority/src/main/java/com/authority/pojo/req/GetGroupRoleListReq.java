@@ -15,18 +15,21 @@ import java.util.Date;
 public class GetGroupRoleListReq extends PageReq {
 
     @ApiModelProperty("")
-    private Date createTime;
-
-    @ApiModelProperty("")
-    private String createUser;
-
-    @ApiModelProperty("")
-    private String role;
+    private String userAccount;
 
     @ApiModelProperty("")
     private String systemId;
 
     @ApiModelProperty("")
-    private String userAccount;
+    private String role;
+
+    @ApiModelProperty("")
+    private String createUser;
+
+    @ApiModelProperty(" start time")
+    private Date createTimeStart;
+
+    @ApiModelProperty(" end time")
+    private Date createTimeEnd;
 
 }

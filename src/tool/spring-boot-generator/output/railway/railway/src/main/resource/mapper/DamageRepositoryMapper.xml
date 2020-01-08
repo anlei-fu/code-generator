@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageRepositoryMapper">
     <insert id="addDamageRepository" parameterType="com.railway.pojo.req.AddDamageRepositoryReq">
-          insert  into damage_repository
+          insert  into damage_repository 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="analysisResult != null">
                   damage_repository.analysis_result,
@@ -146,7 +146,7 @@
           </trim>
     </insert>
     <delete id="deleteDamageRepositoryByOrderDetailId">
-          delete from damage_repository
+          delete from damage_repository 
           <where>
             <if test="orderDetailId != null">
                   damage_repository.order_detail_id = #{orderDetailId}
@@ -154,7 +154,7 @@
           </where>
     </delete>
     <update id="updateDamageRepositoryByOrderDetailId" parameterType="com.railway.pojo.param.UpdateDamageRepositoryByOrderDetailIdParams">
-        update damage_repository
+        update damage_repository 
         <set>
             <if test="analysisResult != null">
                   damage_repository.analysis_result = #{AnalysisResult},
@@ -261,7 +261,7 @@
              damage_repository.receiving_workarea_info,
              damage_repository.remark,
              damage_repository.update_time
-          form damage_repository
+          form damage_repository 
           <where>
             <if test="orderDetailId != null">
                   damage_repository.order_detail_id = #{orderDetailId}
@@ -296,7 +296,7 @@
              damage_repository.receiving_workarea_info,
              damage_repository.remark,
              damage_repository.update_time
-          form damage_repository
+          form damage_repository 
           <where>
             <if test="analysisResult != null">
                   damage_repository.analysis_result = #{analysisResult}

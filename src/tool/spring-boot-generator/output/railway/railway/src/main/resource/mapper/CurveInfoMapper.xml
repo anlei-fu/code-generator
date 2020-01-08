@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.CurveInfoMapper">
     <insert id="addCurveInfo" parameterType="com.railway.pojo.req.AddCurveInfoReq">
-          insert  into curve_info
+          insert  into curve_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="averageSpeed != null">
                   curve_info.average_speed,
@@ -152,7 +152,7 @@
           </trim>
     </insert>
     <delete id="deleteCurveInfoByCurveId">
-          delete from curve_info
+          delete from curve_info 
           <where>
             <if test="curveId != null">
                   curve_info.curve_id = #{curveId}
@@ -160,7 +160,7 @@
           </where>
     </delete>
     <update id="updateCurveInfoByCurveId" parameterType="com.railway.pojo.param.UpdateCurveInfoByCurveIdParams">
-        update curve_info
+        update curve_info 
         <set>
             <if test="averageSpeed != null">
                   curve_info.average_speed = #{AverageSpeed},
@@ -271,7 +271,7 @@
              curve_info.track_dis_wide,
              curve_info.track_division_id,
              curve_info.update_time
-          form curve_info
+          form curve_info 
           <where>
             <if test="curveId != null">
                   curve_info.curve_id = #{curveId}
@@ -307,7 +307,7 @@
              curve_info.track_dis_wide,
              curve_info.track_division_id,
              curve_info.update_time
-          form curve_info
+          form curve_info 
           <where>
             <if test="averageSpeed != null">
                   curve_info.average_speed = #{averageSpeed}

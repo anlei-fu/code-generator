@@ -3,7 +3,7 @@ package com.test.controller;
 import com.authority.pojo.entity.UserRole;
 import com.authority.pojo.req.AddUserRoleReq;
 import com.authority.pojo.req.GetUserRoleListReq;
-import com.authority.pojo.req.UpdateUserRoleByIdReq;
+import com.authority.pojo.req.UpdateUserRoleByUserAndUserAndUserAndUserAndIdReq;
 import com.authority.pojo.resp.R;
 import com.authority.service.UserRoleService;
 import com.authority.validate.annotation.Path;
@@ -24,26 +24,26 @@ public class UserRoleController {
 
     @ApiOperation("")
     @PostMapping(path = "/userRole")
-    public R addUserRole(@Validated @ModelAttribute AddUserRoleReq req) {
-        return R.doResponse(userRoleService.addUserRole(req));
+    public R addUserRole(@Validated @ModelAttribute AddUserRoleReq req, @Session String user) {
+        return R.doResponse(userRoleService.addUserRole(req, user));
     }
 
     @ApiOperation("")
     @DeleteMapping(path = "/userRole/{id}")
-    public R deleteUserRoleById(@PathVariable Integer id) {
-        return R.doResponse(userRoleService.deleteUserRoleById(id));
+    public R deleteUserRoleByUserAndUserAndUserAndUserAndId(@PathVariable Integer id) {
+        return R.doResponse(userRoleService.deleteUserRoleByUserAndUserAndUserAndUserAndId(id));
     }
 
     @ApiOperation("")
     @PutMapping(path = "/userRole/{id}")
-    public R updateUserRoleById(@PathVariable Integer id, @Validated @ModelAttribute UpdateUserRoleByIdReq req) {
-        return R.doResponse(userRoleService.updateUserRoleById(id, req));
+    public R updateUserRoleByUserAndUserAndUserAndUserAndId(@PathVariable Integer id, @Validated @ModelAttribute UpdateUserRoleByUserAndUserAndUserAndUserAndIdReq req) {
+        return R.doResponse(userRoleService.updateUserRoleByUserAndUserAndUserAndUserAndId(id, req));
     }
 
     @ApiOperation("")
     @GetMapping(path = "/userRole/{id}")
-    public R<UserRole> getUserRoleById(@PathVariable Integer id) {
-        return R.doResponse(userRoleService.getUserRoleById(id));
+    public R<UserRole> getUserRoleByUserAndUserAndUserAndUserAndId(@PathVariable Integer id) {
+        return R.doResponse(userRoleService.getUserRoleByUserAndUserAndUserAndUserAndId(id));
     }
 
     @ApiOperation("")

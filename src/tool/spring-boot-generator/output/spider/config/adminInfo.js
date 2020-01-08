@@ -15,6 +15,7 @@ exports.adminInfoConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addAdminInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(adminInfo.columnsArray)
                                                   .excludes("id")
@@ -31,12 +32,18 @@ exports.adminInfoConfig = {
                                            .validate("password","@Password")
                                            .validate("level","@Enum(\"level\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteAdminInfoById")
+                                .id("deleteAdminInfoByUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -49,14 +56,20 @@ exports.adminInfoConfig = {
                                            .type("Integer")
                                            .from("@PathVariable");
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
-
+                                
                         // updateById
                         // password : validate --- @Password  
                         // level : validate --- @Enum("level")
                         new builder()
                                 .type("update")
-                                .id("updateAdminInfoById")
+                                .id("updateAdminInfoByUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(adminInfo.columnsArray)
                                                   .excludes("id")
@@ -80,12 +93,18 @@ exports.adminInfoConfig = {
                                            .validate("password","@Password")
                                            .validate("level","@Enum(\"level\")")
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getAdminInfoById")
+                                .id("getAdminInfoByUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(adminInfo.columnsArray)
                                 })
@@ -104,6 +123,11 @@ exports.adminInfoConfig = {
                                 .resp(resp => {
                                         resp.single();
                                 })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
+                                })
                                 .build(),
 
                         // getList
@@ -111,6 +135,8 @@ exports.adminInfoConfig = {
                         // level : validates --- @Enum("level")
                         new builder()
                                 .type("select")
+                                .id("getAdminInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(adminInfo.columnsArray)
                                 })
@@ -119,7 +145,6 @@ exports.adminInfoConfig = {
                                                   .excludes("id")
                                                   .excludes(["password"])
                                 })
-                                .id("getAdminInfoList")
                                 .controller(controller => {
                                         controller.path("/adminInfo");
                                 })

@@ -9,13 +9,13 @@ exports.userInfoConfig = {
 
                         // add
                         // account excluded 
-                        // createTime excluded 
-                        // createUser : validate --- @NotNull  
                         // password : validate --- @NotNull  @Password  
-                        // userRole : validate --- @NotNull
+                        // createTime excluded 
+                        // createUser : validate --- @NotNull
                         new builder()
                                 .type("insert")
                                 .id("addUserInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userInfo.columnsArray)
                                                   .excludes("account")
@@ -27,17 +27,22 @@ exports.userInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("account")
-                                           .validate("createUser","@NotNull")
                                            .validate("password","@NotNull")
                                            .validate("password","@Password")
-                                           .validate("userRole","@NotNull")
+                                           .validate("createUser","@NotNull")
+                                })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
                                 })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteUserInfoByAccount")
+                                .id("deleteUserInfoByUserAndUserAndUserAndUserAndAccount")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("account")
                                                   .require("account")
@@ -47,19 +52,23 @@ exports.userInfoConfig = {
                                 })
                                 .req(req => {
                                         req.name("account")
-                                           .type("Integer")
+                                           .type("String")
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-                        // password : validate --- @Password
+                        // password : validate --- @Password  
+                        // createTime : excluded 
+                        // createUser : excluded
                         new builder()
                                 .type("update")
-                                .id("updateUserInfoByAccount")
+                                .id("updateUserInfoByUserAndUserAndUserAndUserAndAccount")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userInfo.columnsArray)
                                                   .excludes("account")
+                                                  .excludes(["createTime","createUser"])
 
                                 })
                                 .conditions(collection => {
@@ -71,7 +80,7 @@ exports.userInfoConfig = {
                                 })
                                 .req(req => {
                                         req.name("account")
-                                           .type("Integer")
+                                           .type("String")
                                            .from("@PathVariable");
                                 })
                                 .req(req => {
@@ -84,7 +93,8 @@ exports.userInfoConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getUserInfoByAccount")
+                                .id("getUserInfoByUserAndUserAndUserAndUserAndAccount")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userInfo.columnsArray)
                                 })
@@ -97,7 +107,7 @@ exports.userInfoConfig = {
                                 })
                                 .req(req => {
                                         req.name("account")
-                                           .type("Integer")
+                                           .type("String")
                                            .from("@PathVariable");
                                 })
                                 .resp(resp => {
@@ -106,10 +116,12 @@ exports.userInfoConfig = {
                                 .build(),
 
                         // getList
+                        // password : excluded 
                         // createTime : expression --- timeRange
-                        // password : excluded
                         new builder()
                                 .type("select")
+                                .id("getUserInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userInfo.columnsArray)
                                 })
@@ -117,9 +129,8 @@ exports.userInfoConfig = {
                                         collection.includes(userInfo.columnsArray)
                                                   .excludes("account")
                                                   .excludes(["password"])
-                                                  .expression("createTime","timeRange")
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getUserInfoList")
                                 .controller(controller => {
                                         controller.path("/userInfo");
                                 })
@@ -128,6 +139,7 @@ exports.userInfoConfig = {
                                            .excludes("account")
 
                                 })
+
                                 .build()
                 ]
 }

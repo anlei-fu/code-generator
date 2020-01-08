@@ -16,6 +16,7 @@ exports.domainInfoConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addDomainInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(domainInfo.columnsArray)
                                                   .excludes("id")
@@ -38,6 +39,7 @@ exports.domainInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDomainInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,12 +53,13 @@ exports.domainInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // domain : validate --- @Url
                         new builder()
                                 .type("update")
                                 .id("updateDomainInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(domainInfo.columnsArray)
                                                   .excludes("id")
@@ -85,6 +88,7 @@ exports.domainInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDomainInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(domainInfo.columnsArray)
                                 })
@@ -110,6 +114,8 @@ exports.domainInfoConfig = {
                         // remark : excluded
                         new builder()
                                 .type("select")
+                                .id("getDomainInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(domainInfo.columnsArray)
                                 })
@@ -118,7 +124,6 @@ exports.domainInfoConfig = {
                                                   .excludes("id")
                                                   .excludes(["remark"])
                                 })
-                                .id("getDomainInfoList")
                                 .controller(controller => {
                                         controller.path("/domainInfo");
                                 })

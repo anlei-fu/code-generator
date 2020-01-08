@@ -8,19 +8,20 @@ exports.workshopInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // fullName : validate --- @NotNull  
                         // id excluded 
+                        // fullName : validate --- @NotNull  
+                        // workshopType : validate --- @Enum("workshopType")  
                         // isDelete : validate --- @NotNull  
-                        // updateTime excluded 
-                        // workshopType : validate --- @Enum("workshopType")
+                        // createTime excluded 
+                        // updateTime excluded@@
                         new builder()
                                 .type("insert")
                                 .id("addWorkshopInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workshopInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id","updateTime"])
+                                                  .excludes(["id","createTime","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/workshopInfo");
@@ -29,8 +30,8 @@ exports.workshopInfoConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("fullName","@NotNull")
-                                           .validate("isDelete","@NotNull")
                                            .validate("workshopType","@Enum(\"workshopType\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -38,6 +39,7 @@ exports.workshopInfoConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteWorkshopInfoById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,14 +53,15 @@ exports.workshopInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
+                        // workshopType : validate --- @Enum("workshopType")  
                         // createTime : excluded 
-                        // updateTime : excluded 
-                        // workshopType : validate --- @Enum("workshopType")
+                        // updateTime : excluded@@
                         new builder()
                                 .type("update")
                                 .id("updateWorkshopInfoById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(workshopInfo.columnsArray)
                                                   .excludes("id")
@@ -88,6 +91,7 @@ exports.workshopInfoConfig = {
                         new builder()
                                 .type("select")
                                 .id("getWorkshopInfoById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workshopInfo.columnsArray)
                                 })
@@ -109,12 +113,14 @@ exports.workshopInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
                         // fullName : excluded 
                         // shortName : excluded 
-                        // workshopType : validates --- @Enum("workshopType")
+                        // workshopType : validates --- @Enum("workshopType")  
+                        // createTime : expression --- timeRange@@
                         new builder()
                                 .type("select")
+                                .id("getWorkshopInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(workshopInfo.columnsArray)
                                 })
@@ -124,7 +130,6 @@ exports.workshopInfoConfig = {
                                                   .excludes(["fullName","shortName"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getWorkshopInfoList")
                                 .controller(controller => {
                                         controller.path("/workshopInfo");
                                 })

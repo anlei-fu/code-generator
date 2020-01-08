@@ -15,6 +15,7 @@ exports.userDeductRecordConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addUserDeductRecord")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userDeductRecord.columnsArray)
                                                   .excludes("id")
@@ -36,6 +37,7 @@ exports.userDeductRecordConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteUserDeductRecordById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -49,12 +51,12 @@ exports.userDeductRecordConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateUserDeductRecordById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(userDeductRecord.columnsArray)
                                                   .excludes("id")
@@ -83,6 +85,7 @@ exports.userDeductRecordConfig = {
                         new builder()
                                 .type("select")
                                 .id("getUserDeductRecordById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userDeductRecord.columnsArray)
                                 })
@@ -108,16 +111,17 @@ exports.userDeductRecordConfig = {
                         // amount : expression --- range
                         new builder()
                                 .type("select")
+                                .id("getUserDeductRecordList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(userDeductRecord.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(userDeductRecord.columnsArray)
                                                   .excludes("id")
-                                                  .expression("price","range")
-                                                  .expression("amount","range")
+                                                  .exp("price","range")
+                                                  .exp("amount","range")
                                 })
-                                .id("getUserDeductRecordList")
                                 .controller(controller => {
                                         controller.path("/userDeductRecord");
                                 })

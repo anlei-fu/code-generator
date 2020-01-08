@@ -14,22 +14,22 @@ import java.util.Date;
 @Setter
 public class SystemRoleInfo  {
 
-    @ApiModelProperty("")
-    private Date createTime;
-
-    @ApiModelProperty("")
-    private String createUser;
-
-    @ApiModelProperty("description")
-    private String description;
-
     @ApiModelProperty("id")
     private Integer id;
+
+    @ApiModelProperty("related system")
+    private Integer systemId;
 
     @ApiModelProperty("role")
     private String role;
 
-    @ApiModelProperty("related system")
-    private Integer systemId;
+    @ApiModelProperty("description")
+    private String description;
+
+    @ApiModelProperty("")
+    private String createUser;
+
+    @ApiModelProperty("")
+    private Date createTime;
 
 }

@@ -16,11 +16,7 @@ public class AddGroupRoleReq extends PageReq {
 
     @ApiModelProperty("")
     @NotNull
-    private String createUser;
-
-    @ApiModelProperty("")
-    @NotNull
-    private String role;
+    private String userAccount;
 
     @ApiModelProperty("")
     @NotNull
@@ -28,6 +24,10 @@ public class AddGroupRoleReq extends PageReq {
 
     @ApiModelProperty("")
     @NotNull
-    private String userAccount;
+    private String role;
+
+    @ApiModelProperty("")
+    @NotNull
+    private String createUser;
 
 }

@@ -14,6 +14,7 @@ exports.domainModelConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addDomainModel")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(domainModel.columnsArray)
                                                   .excludes("id")
@@ -34,6 +35,7 @@ exports.domainModelConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDomainModelById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -47,12 +49,12 @@ exports.domainModelConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateDomainModelById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(domainModel.columnsArray)
                                                   .excludes("id")
@@ -81,6 +83,7 @@ exports.domainModelConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDomainModelById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(domainModel.columnsArray)
                                 })
@@ -102,9 +105,10 @@ exports.domainModelConfig = {
                                 .build(),
 
                         // getList
-
                         new builder()
                                 .type("select")
+                                .id("getDomainModelList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(domainModel.columnsArray)
                                 })
@@ -113,7 +117,6 @@ exports.domainModelConfig = {
                                                   .excludes("id")
 
                                 })
-                                .id("getDomainModelList")
                                 .controller(controller => {
                                         controller.path("/domainModel");
                                 })

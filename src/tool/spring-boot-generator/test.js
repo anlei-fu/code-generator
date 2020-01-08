@@ -14,4 +14,4 @@ async function main(project, dbConfig) {
 }
 
 /*-------------------------------------------------main--------------------------------------------------*/
-main("railway", { host: "localhost", port: "3306", db: "test", user: "root", password: "2011801243" });
+main("authority", { host: "localhost", port: "3306", db: "authority", user: "root", password: "2011801243" });

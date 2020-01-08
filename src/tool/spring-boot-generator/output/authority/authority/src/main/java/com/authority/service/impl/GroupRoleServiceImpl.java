@@ -5,7 +5,7 @@ import com.authority.pojo.entity.GroupRole;
 import com.authority.pojo.entity.GroupRole;
 import com.authority.pojo.req.AddGroupRoleReq;
 import com.authority.pojo.req.GetGroupRoleListReq;
-import com.authority.pojo.req.UpdateGroupRoleByIdReq;
+import com.authority.pojo.req.UpdateGroupRoleByUserAndUserAndUserAndUserAndIdReq;
 import com.authority.service.GroupRoleService;
 import com.authority.utils.PageHelperUtils;
 import com.github.pagehelper.PageInfo;
@@ -20,23 +20,25 @@ public class GroupRoleServiceImpl implements GroupRoleService {
     private GroupRoleMapper groupRoleMapper;
 
     @Override
-    public boolean addGroupRole(AddGroupRoleReq req) {
-        return groupRoleMapper.addGroupRole(req) > 0;
+    public boolean addGroupRole(AddGroupRoleReq req, String user) {
+        params params = new AddGroupRoleParams(req, user)
+        return groupRoleMapper.addGroupRole(params) > 0;
     }
 
     @Override
-    public boolean deleteGroupRoleById(Integer id) {
-        return groupRoleMapper.deleteGroupRoleById(id) > 0;
+    public boolean deleteGroupRoleByUserAndUserAndUserAndUserAndId(Integer id) {
+        return groupRoleMapper.deleteGroupRoleByUserAndUserAndUserAndUserAndId(id) > 0;
     }
 
     @Override
-    public boolean updateGroupRoleById(Integer id, UpdateGroupRoleByIdReq req) {
-        return groupRoleMapper.updateGroupRoleById(id, req) > 0;
+    public boolean updateGroupRoleByUserAndUserAndUserAndUserAndId(Integer id, UpdateGroupRoleByUserAndUserAndUserAndUserAndIdReq req) {
+        params params = new UpdateGroupRoleByUserAndUserAndUserAndUserAndIdParams(id, req)
+        return groupRoleMapper.updateGroupRoleByUserAndUserAndUserAndUserAndId(params) > 0;
     }
 
     @Override
-    public GroupRole getGroupRoleById(Integer id) {
-        return groupRoleMapper.getGroupRoleById(id);
+    public GroupRole getGroupRoleByUserAndUserAndUserAndUserAndId(Integer id) {
+        return groupRoleMapper.getGroupRoleByUserAndUserAndUserAndUserAndId(id);
     }
 
     @Override

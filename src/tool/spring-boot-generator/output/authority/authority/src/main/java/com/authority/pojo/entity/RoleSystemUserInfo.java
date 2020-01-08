@@ -17,11 +17,11 @@ public class RoleSystemUserInfo  {
     @ApiModelProperty("account")
     private String account;
 
-    @ApiModelProperty("create time")
-    private Date createTime;
-
     @ApiModelProperty("password")
     private String password;
+
+    @ApiModelProperty("create time")
+    private Date createTime;
 
     @ApiModelProperty("")
     private String role;

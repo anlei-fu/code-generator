@@ -16,6 +16,7 @@ exports.domainBlockRecordConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addDomainBlockRecord")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(domainBlockRecord.columnsArray)
                                                   .excludes("id")
@@ -38,6 +39,7 @@ exports.domainBlockRecordConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDomainBlockRecordById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -51,12 +53,12 @@ exports.domainBlockRecordConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
                         new builder()
                                 .type("update")
                                 .id("updateDomainBlockRecordById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(domainBlockRecord.columnsArray)
                                                   .excludes("id")
@@ -85,6 +87,7 @@ exports.domainBlockRecordConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDomainBlockRecordById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(domainBlockRecord.columnsArray)
                                 })
@@ -109,6 +112,8 @@ exports.domainBlockRecordConfig = {
                         // remark : excluded
                         new builder()
                                 .type("select")
+                                .id("getDomainBlockRecordList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(domainBlockRecord.columnsArray)
                                 })
@@ -117,7 +122,6 @@ exports.domainBlockRecordConfig = {
                                                   .excludes("id")
                                                   .excludes(["remark"])
                                 })
-                                .id("getDomainBlockRecordList")
                                 .controller(controller => {
                                         controller.path("/domainBlockRecord");
                                 })

@@ -8,10 +8,11 @@ exports.@snameConfig = {
                 items: [
 
                         // add
-@insertMsg
+@insertMsg@@
                         new builder()
                                 .type("insert")
                                 .id("add@name")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(@sname.columnsArray)
                                                   .excludes("@skey")
@@ -25,12 +26,14 @@ exports.@snameConfig = {
                                            .excludes("@skey")
 @insertReq
                                 })
+@insertUserReq@@
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("delete@nameBy@key")
+                                .id("delete@nameBy@methodName")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("@skey")
                                                   .require("@skey")
@@ -40,16 +43,18 @@ exports.@snameConfig = {
                                 })
                                 .req(req => {
                                         req.name("@skey")
-                                           .type("Integer")
+                                           .type("@keyType")
                                            .from("@PathVariable");
                                 })
+@deleteUserReq@@
                                 .build(),
-
+                                
                         // updateById
-@updateMsg
+@updateMsg@@
                         new builder()
                                 .type("update")
-                                .id("update@nameBy@key")
+                                .id("update@nameBy@methodName")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(@sname.columnsArray)
                                                   .excludes("@skey")
@@ -64,7 +69,7 @@ exports.@snameConfig = {
                                 })
                                 .req(req => {
                                         req.name("@skey")
-                                           .type("Integer")
+                                           .type("@keyType")
                                            .from("@PathVariable");
                                 })
                                 .req(req => {
@@ -72,12 +77,14 @@ exports.@snameConfig = {
                                            .excludes("@skey")
 @updateReq
                                 })
+@updateUserReq@@
                                 .build(),
 
                         // getById
                         new builder()
                                 .type("select")
-                                .id("get@nameBy@key")
+                                .id("get@nameBy@methodName")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(@sname.columnsArray)
                                 })
@@ -90,18 +97,21 @@ exports.@snameConfig = {
                                 })
                                 .req(req => {
                                         req.name("@skey")
-                                           .type("Integer")
+                                           .type("@keyType")
                                            .from("@PathVariable");
                                 })
                                 .resp(resp => {
                                         resp.single();
                                 })
+@selectUserReq@@
                                 .build(),
 
                         // getList
-@selectMsg
+@selectMsg@@
                         new builder()
                                 .type("select")
+                                .id("get@nameList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(@sname.columnsArray)
                                 })
@@ -110,7 +120,6 @@ exports.@snameConfig = {
                                                   .excludes("@skey")
 @selectExcludes
                                 })
-                                .id("get@nameList")
                                 .controller(controller => {
                                         controller.path("/@sname");
                                 })
@@ -119,6 +128,7 @@ exports.@snameConfig = {
                                            .excludes("@skey")
 @selectReq
                                 })
+@selectUserReq
                                 .build()
                 ]
 }

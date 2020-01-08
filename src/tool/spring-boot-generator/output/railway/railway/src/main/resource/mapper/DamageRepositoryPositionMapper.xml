@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageRepositoryPositionMapper">
     <insert id="addDamageRepositoryPosition" parameterType="com.railway.pojo.req.AddDamageRepositoryPositionReq">
-          insert  into damage_repository_position
+          insert  into damage_repository_position 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bridgeTunnel != null">
                   damage_repository_position.bridge_tunnel,
@@ -78,7 +78,7 @@
           </trim>
     </insert>
     <delete id="deleteDamageRepositoryPositionByOrderDetailId">
-          delete from damage_repository_position
+          delete from damage_repository_position 
           <where>
             <if test="orderDetailId != null">
                   damage_repository_position.order_detail_id = #{orderDetailId}
@@ -86,7 +86,7 @@
           </where>
     </delete>
     <update id="updateDamageRepositoryPositionByOrderDetailId" parameterType="com.railway.pojo.param.UpdateDamageRepositoryPositionByOrderDetailIdParams">
-        update damage_repository_position
+        update damage_repository_position 
         <set>
             <if test="bridgeTunnel != null">
                   damage_repository_position.bridge_tunnel = #{BridgeTunnel},
@@ -145,7 +145,7 @@
              damage_repository_position.stock_exchange,
              damage_repository_position.thigh_track_id,
              damage_repository_position.update_time
-          form damage_repository_position
+          form damage_repository_position 
           <where>
             <if test="orderDetailId != null">
                   damage_repository_position.order_detail_id = #{orderDetailId}
@@ -168,7 +168,7 @@
              damage_repository_position.stock_exchange,
              damage_repository_position.thigh_track_id,
              damage_repository_position.update_time
-          form damage_repository_position
+          form damage_repository_position 
           <where>
             <if test="bridgeTunnel != null">
                   damage_repository_position.bridge_tunnel = #{bridgeTunnel}

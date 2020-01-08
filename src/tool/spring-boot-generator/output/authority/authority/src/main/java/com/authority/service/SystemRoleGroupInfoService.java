@@ -3,19 +3,19 @@ package com.authority.service;
 import com.authority.pojo.entity.SystemRoleGroupInfo;
 import com.authority.pojo.req.AddSystemRoleGroupInfoReq;
 import com.authority.pojo.req.GetSystemRoleGroupInfoListReq;
-import com.authority.pojo.req.UpdateSystemRoleGroupInfoByIdReq;
+import com.authority.pojo.req.UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdReq;
 import com.github.pagehelper.PageInfo;
 
 
 public interface SystemRoleGroupInfoService {
 
-    boolean addSystemRoleGroupInfo(AddSystemRoleGroupInfoReq req);
+    boolean addSystemRoleGroupInfo(AddSystemRoleGroupInfoReq req, String user);
     
-    boolean deleteSystemRoleGroupInfoById(Integer id);
+    boolean deleteSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(Integer id);
     
-    boolean updateSystemRoleGroupInfoById(Integer id, UpdateSystemRoleGroupInfoByIdReq req);
+    boolean updateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(Integer id, UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdReq req);
     
-    SystemRoleGroupInfo getSystemRoleGroupInfoById(Integer id);
+    SystemRoleGroupInfo getSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(Integer id);
     
     PageInfo<SystemRoleGroupInfo> getSystemRoleGroupInfoList(GetSystemRoleGroupInfoListReq req);
 

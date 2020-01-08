@@ -5,7 +5,7 @@ import com.authority.pojo.entity.UserRole;
 import com.authority.pojo.entity.UserRole;
 import com.authority.pojo.req.AddUserRoleReq;
 import com.authority.pojo.req.GetUserRoleListReq;
-import com.authority.pojo.req.UpdateUserRoleByIdReq;
+import com.authority.pojo.req.UpdateUserRoleByUserAndUserAndUserAndUserAndIdReq;
 import com.authority.service.UserRoleService;
 import com.authority.utils.PageHelperUtils;
 import com.github.pagehelper.PageInfo;
@@ -20,23 +20,25 @@ public class UserRoleServiceImpl implements UserRoleService {
     private UserRoleMapper userRoleMapper;
 
     @Override
-    public boolean addUserRole(AddUserRoleReq req) {
-        return userRoleMapper.addUserRole(req) > 0;
+    public boolean addUserRole(AddUserRoleReq req, String user) {
+        params params = new AddUserRoleParams(req, user)
+        return userRoleMapper.addUserRole(params) > 0;
     }
 
     @Override
-    public boolean deleteUserRoleById(Integer id) {
-        return userRoleMapper.deleteUserRoleById(id) > 0;
+    public boolean deleteUserRoleByUserAndUserAndUserAndUserAndId(Integer id) {
+        return userRoleMapper.deleteUserRoleByUserAndUserAndUserAndUserAndId(id) > 0;
     }
 
     @Override
-    public boolean updateUserRoleById(Integer id, UpdateUserRoleByIdReq req) {
-        return userRoleMapper.updateUserRoleById(id, req) > 0;
+    public boolean updateUserRoleByUserAndUserAndUserAndUserAndId(Integer id, UpdateUserRoleByUserAndUserAndUserAndUserAndIdReq req) {
+        params params = new UpdateUserRoleByUserAndUserAndUserAndUserAndIdParams(id, req)
+        return userRoleMapper.updateUserRoleByUserAndUserAndUserAndUserAndId(params) > 0;
     }
 
     @Override
-    public UserRole getUserRoleById(Integer id) {
-        return userRoleMapper.getUserRoleById(id);
+    public UserRole getUserRoleByUserAndUserAndUserAndUserAndId(Integer id) {
+        return userRoleMapper.getUserRoleByUserAndUserAndUserAndUserAndId(id);
     }
 
     @Override

@@ -1,7 +1,7 @@
 const { OBJECT } = require("../../libs/utils");
 const { LoggerFactory } = require("./../logging/logger-factory");
 
-const LOG = LoggerFactory.getLogger("simple-fuul-text-searcher");
+const LOG = LoggerFactory.getLogger("simple-full-text-searcher");
 
 
 /**
@@ -165,7 +165,7 @@ class SimpleFullTextSearcher {
                 // caculate reverse score 
                 let documentScores = new Map();
                 matchedTokenCollection.forEach(item => {
-                        let idf = this._caculateInverdDocumentFrequencyFactor(this._documentsMap.size, item.documents.size);
+                        let idf = this._caculateInversedDocumentFrequencyFactor(this._documentsMap.size, item.documents.size);
                         item.documents.forEach((tf, documentName) => {
                                 if (!documentScores.has(documentName))
                                         documentScores.set(documentName, 0);
@@ -241,7 +241,7 @@ class SimpleFullTextSearcher {
         }
 
         /**
-         * Score token iten
+         * Score token item
          * 
          * @private
          * @param {String} token 
@@ -298,7 +298,7 @@ class SimpleFullTextSearcher {
          * @param {Number} documentTotalCount 
          * @param {Number} hittedDocumentCount 
          */
-        _caculateInverdDocumentFrequencyFactor(documentTotalCount, hittedDocumentCount) {
+        _caculateInversedDocumentFrequencyFactor(documentTotalCount, hittedDocumentCount) {
                 return Math.log((documentTotalCount + 1.0) / (hittedDocumentCount + 1.0)) + 1.0;
         }
 

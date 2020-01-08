@@ -8,14 +8,14 @@ const {getJavaType}=require("./utils")
  * @param {Table} table 
  * @param {column} columnMetaInfo 
  */
-function getColumn(table, columnMetaInfo) {
+function getColumn(table, columnMetaInfo,prefix) {
         if (!table.columns[columnMetaInfo.name])
                 throw new Error(`column(${columnMetaInfo.name}) can not be found in table(${table.name})`);
 
         let meta = OBJECT.clone(table.columns[columnMetaInfo.name]);
         meta.type=getJavaType(meta.type);
         OBJECT.extend(columnMetaInfo, meta);
-        columnMetaInfo.prefix=columnMetaInfo.prefix||NamingStrategy.toHungary(table.name);
+        columnMetaInfo.prefix=prefix||NamingStrategy.toHungary(table.name);
         columnMetaInfo.column=`${columnMetaInfo.prefix}.${NamingStrategy.toHungary(columnMetaInfo.name)}`;
         return columnMetaInfo;
 }

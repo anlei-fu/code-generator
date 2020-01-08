@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.LineInfoMapper">
     <insert id="addLineInfo" parameterType="com.railway.pojo.req.AddLineInfoReq">
-          insert  into line_info
+          insert  into line_info 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="ballastType != null">
                   line_info.ballast_type,
@@ -118,7 +118,7 @@
           </trim>
     </insert>
     <delete id="deleteLineInfoById">
-          delete from line_info
+          delete from line_info 
           <where>
             <if test="id != null">
                   line_info.id = #{id}
@@ -126,7 +126,7 @@
           </where>
     </delete>
     <update id="updateLineInfoById" parameterType="com.railway.pojo.param.UpdateLineInfoByIdParams">
-        update line_info
+        update line_info 
         <set>
             <if test="ballastType != null">
                   line_info.ballast_type = #{BallastType},
@@ -225,7 +225,7 @@
              line_info.traction_type,
              line_info.update_time,
              line_info.year_volume
-          form line_info
+          form line_info 
           <where>
             <if test="id != null">
                   line_info.id = #{id}
@@ -258,7 +258,7 @@
              line_info.traction_type,
              line_info.update_time,
              line_info.year_volume
-          form line_info
+          form line_info 
           <where>
             <if test="ballastType != null">
                   line_info.ballast_type = #{ballastType}

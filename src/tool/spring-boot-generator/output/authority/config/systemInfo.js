@@ -8,17 +8,18 @@ exports.systemInfoConfig = {
                 items: [
 
                         // add
-                        // createTime excluded 
-                        // createUser : validate --- @NotNull  
                         // id excluded 
-                        // name : validate --- @NotNull
+                        // name : validate --- @NotNull  
+                        // createTime excluded 
+                        // createUser : validate --- @NotNull
                         new builder()
                                 .type("insert")
                                 .id("addSystemInfo")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(systemInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["createTime","id"])
+                                                  .excludes(["id","createTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/systemInfo");
@@ -26,15 +27,21 @@ exports.systemInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("createUser","@NotNull")
                                            .validate("name","@NotNull")
+                                           .validate("createUser","@NotNull")
+                                })
+                                .req(req=>{
+                                        req.name("user")
+                                           .type("String")
+                                           .from("@Session")
                                 })
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("deleteSystemInfoById")
+                                .id("deleteSystemInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -48,15 +55,18 @@ exports.systemInfoConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
-
+                        // createTime : excluded 
+                        // createUser : excluded
                         new builder()
                                 .type("update")
-                                .id("updateSystemInfoById")
+                                .id("updateSystemInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(systemInfo.columnsArray)
                                                   .excludes("id")
+                                                  .excludes(["createTime","createUser"])
 
                                 })
                                 .conditions(collection => {
@@ -81,7 +91,8 @@ exports.systemInfoConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("getSystemInfoById")
+                                .id("getSystemInfoByUserAndUserAndUserAndUserAndId")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(systemInfo.columnsArray)
                                 })
@@ -103,21 +114,22 @@ exports.systemInfoConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange
+                        // name : excluded 
                         // description : excluded 
-                        // name : excluded
+                        // createTime : expression --- timeRange
                         new builder()
                                 .type("select")
+                                .id("getSystemInfoList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(systemInfo.columnsArray)
                                 })
                                 .conditions(collection=>{
                                         collection.includes(systemInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["description","name"])
-                                                  .expression("createTime","timeRange")
+                                                  .excludes(["name","description"])
+                                                  .exp("createTime","timeRange")
                                 })
-                                .id("getSystemInfoList")
                                 .controller(controller => {
                                         controller.path("/systemInfo");
                                 })
@@ -126,6 +138,7 @@ exports.systemInfoConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

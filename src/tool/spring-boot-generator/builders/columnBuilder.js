@@ -264,7 +264,7 @@ exports.ColumnBuilder = class ColumnBuilder {
                         });
                 } else if (TYPE.isObject(item)) {
                         OBJECT.forEach(item, (key, value) => {
-                                this._setPropertyCore(x, property, value);
+                                this._setPropertyCore(value, property, value);
                         });
                 }
                 else {

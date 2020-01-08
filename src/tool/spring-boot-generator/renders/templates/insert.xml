@@ -1,5 +1,5 @@
     <insert id="@id"@parameterType>
-          insert  into @tableName
+          insert  into @tableName @alias
 @columns
           values
 @properties

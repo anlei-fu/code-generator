@@ -5,7 +5,7 @@ import com.authority.pojo.entity.SystemRoleGroupInfo;
 import com.authority.pojo.entity.SystemRoleGroupInfo;
 import com.authority.pojo.req.AddSystemRoleGroupInfoReq;
 import com.authority.pojo.req.GetSystemRoleGroupInfoListReq;
-import com.authority.pojo.req.UpdateSystemRoleGroupInfoByIdReq;
+import com.authority.pojo.req.UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdReq;
 import com.authority.service.SystemRoleGroupInfoService;
 import com.authority.utils.PageHelperUtils;
 import com.github.pagehelper.PageInfo;
@@ -20,23 +20,25 @@ public class SystemRoleGroupInfoServiceImpl implements SystemRoleGroupInfoServic
     private SystemRoleGroupInfoMapper systemRoleGroupInfoMapper;
 
     @Override
-    public boolean addSystemRoleGroupInfo(AddSystemRoleGroupInfoReq req) {
-        return systemRoleGroupInfoMapper.addSystemRoleGroupInfo(req) > 0;
+    public boolean addSystemRoleGroupInfo(AddSystemRoleGroupInfoReq req, String user) {
+        params params = new AddSystemRoleGroupInfoParams(req, user)
+        return systemRoleGroupInfoMapper.addSystemRoleGroupInfo(params) > 0;
     }
 
     @Override
-    public boolean deleteSystemRoleGroupInfoById(Integer id) {
-        return systemRoleGroupInfoMapper.deleteSystemRoleGroupInfoById(id) > 0;
+    public boolean deleteSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(Integer id) {
+        return systemRoleGroupInfoMapper.deleteSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(id) > 0;
     }
 
     @Override
-    public boolean updateSystemRoleGroupInfoById(Integer id, UpdateSystemRoleGroupInfoByIdReq req) {
-        return systemRoleGroupInfoMapper.updateSystemRoleGroupInfoById(id, req) > 0;
+    public boolean updateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(Integer id, UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdReq req) {
+        params params = new UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdParams(id, req)
+        return systemRoleGroupInfoMapper.updateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(params) > 0;
     }
 
     @Override
-    public SystemRoleGroupInfo getSystemRoleGroupInfoById(Integer id) {
-        return systemRoleGroupInfoMapper.getSystemRoleGroupInfoById(id);
+    public SystemRoleGroupInfo getSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(Integer id) {
+        return systemRoleGroupInfoMapper.getSystemRoleGroupInfoByUserAndUserAndUserAndUserAndId(id);
     }
 
     @Override

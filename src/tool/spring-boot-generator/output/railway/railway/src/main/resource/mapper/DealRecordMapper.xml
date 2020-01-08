@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DealRecordMapper">
     <insert id="addDealRecord" parameterType="com.railway.pojo.req.AddDealRecordReq">
-          insert  into deal_record
+          insert  into deal_record 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="cmdNo != null">
                   deal_record.cmd_no,
@@ -74,7 +74,7 @@
           </trim>
     </insert>
     <delete id="deleteDealRecordById">
-          delete from deal_record
+          delete from deal_record 
           <where>
             <if test="id != null">
                   deal_record.id = #{id}
@@ -82,7 +82,7 @@
           </where>
     </delete>
     <update id="updateDealRecordById" parameterType="com.railway.pojo.param.UpdateDealRecordByIdParams">
-        update deal_record
+        update deal_record 
         <set>
             <if test="cmdNo != null">
                   deal_record.cmd_no = #{CmdNo},
@@ -141,7 +141,7 @@
              deal_record.update_time,
              deal_record.workarea_id,
              deal_record.workshop_info_id
-          form deal_record
+          form deal_record 
           <where>
             <if test="id != null">
                   deal_record.id = #{id}
@@ -164,7 +164,7 @@
              deal_record.update_time,
              deal_record.workarea_id,
              deal_record.workshop_info_id
-          form deal_record
+          form deal_record 
           <where>
             <if test="cmdNo != null and cmdNo != ''">
                   deal_record.cmd_no = #{cmdNo}

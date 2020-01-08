@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DeviceDamageMapMapper">
     <insert id="addDeviceDamageMap" parameterType="com.railway.pojo.req.AddDeviceDamageMapReq">
-          insert  into device_damage_map
+          insert  into device_damage_map 
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="damageId != null">
                   device_damage_map.damage_id,
@@ -28,7 +28,7 @@
           </trim>
     </insert>
     <delete id="deleteDeviceDamageMapById">
-          delete from device_damage_map
+          delete from device_damage_map 
           <where>
             <if test="id != null">
                   device_damage_map.id = #{id}
@@ -36,7 +36,7 @@
           </where>
     </delete>
     <update id="updateDeviceDamageMapById" parameterType="com.railway.pojo.param.UpdateDeviceDamageMapByIdParams">
-        update device_damage_map
+        update device_damage_map 
         <set>
             <if test="damageId != null">
                   device_damage_map.damage_id = #{DamageId},
@@ -60,7 +60,7 @@
              device_damage_map.deivce_id,
              device_damage_map.device_type,
              device_damage_map.id
-          form device_damage_map
+          form device_damage_map 
           <where>
             <if test="id != null">
                   device_damage_map.id = #{id}
@@ -73,7 +73,7 @@
              device_damage_map.deivce_id,
              device_damage_map.device_type,
              device_damage_map.id
-          form device_damage_map
+          form device_damage_map 
           <where>
             <if test="damageId != null">
                   device_damage_map.damage_id = #{damageId}
