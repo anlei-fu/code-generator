@@ -2,7 +2,7 @@ public class UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdParams {
 
     @Getter
     @Setter
-    private [object Object]ype id;
+    private Integer id;
 
     private UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdReq req;
 
@@ -11,15 +11,15 @@ public class UpdateSystemRoleGroupInfoByUserAndUserAndUserAndUserAndIdParams {
         this.req = req;
     }
 
-    public [object Object]ype getSystemId() {
+    public Integer getSystemId() {
         return req.getSystemId();
     }
 
-    public [object Object]ype getRole() {
+    public String getRole() {
         return req.getRole();
     }
 
-    public [object Object]ype getDescription() {
+    public String getDescription() {
         return req.getDescription();
     }
 

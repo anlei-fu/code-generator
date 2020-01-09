@@ -2,33 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.StationLineMapper">
     <insert id="addStationLine" parameterType="com.railway.pojo.req.AddStationLineReq">
-          insert  into station_line 
+          insert  into station_line t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="centDistance != null">
-                  station_line.cent_distance,
+                  t.cent_distance,
             </if>
             <if test="direction != null">
-                  station_line.direction,
+                  t.direction,
             </if>
             <if test="endDistance != null">
-                  station_line.end_distance,
+                  t.end_distance,
             </if>
-             station_line.is_delete,
-             station_line.line_id,
+             t.is_delete,
+             t.line_id,
             <if test="operator != null">
-                  station_line.operator,
+                  t.operator,
             </if>
             <if test="sortNum != null">
-                  station_line.sort_num,
+                  t.sort_num,
             </if>
             <if test="startDistance != null">
-                  station_line.start_distance,
+                  t.start_distance,
             </if>
-             station_line.station_id,
+             t.station_id,
             <if test="status != null">
-                  station_line.status,
+                  t.status,
             </if>
-             station_line.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -60,128 +60,128 @@
           </trim>
     </insert>
     <delete id="deleteStationLineById">
-          delete from station_line 
+          delete from station_line t
           <where>
             <if test="id != null">
-                  station_line.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateStationLineById" parameterType="com.railway.pojo.param.UpdateStationLineByIdParams">
-        update station_line 
+        update station_line t
         <set>
             <if test="centDistance != null">
-                  station_line.cent_distance = #{CentDistance},
+                  t.cent_distance = #{CentDistance},
             </if>
             <if test="direction != null">
-                  station_line.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="endDistance != null">
-                  station_line.end_distance = #{EndDistance},
+                  t.end_distance = #{EndDistance},
             </if>
             <if test="isDelete != null">
-                  station_line.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  station_line.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="operator != null">
-                  station_line.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="sortNum != null">
-                  station_line.sort_num = #{SortNum},
+                  t.sort_num = #{SortNum},
             </if>
             <if test="startDistance != null">
-                  station_line.start_distance = #{StartDistance},
+                  t.start_distance = #{StartDistance},
             </if>
             <if test="stationId != null">
-                  station_line.station_id = #{StationId},
+                  t.station_id = #{StationId},
             </if>
             <if test="status != null">
-                  station_line.status = #{Status}
+                  t.status = #{Status}
             </if>
-            station_line.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  station_line.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getStationLineById" resultType="com.railway.pojo.entity.StationLine">
           select
-             station_line.cent_distance,
-             station_line.create_time,
-             station_line.direction,
-             station_line.end_distance,
-             station_line.id,
-             station_line.is_delete,
-             station_line.line_id,
-             station_line.operator,
-             station_line.sort_num,
-             station_line.start_distance,
-             station_line.station_id,
-             station_line.status,
-             station_line.update_time
-          form station_line 
+             t.cent_distance,
+             t.create_time,
+             t.direction,
+             t.end_distance,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.operator,
+             t.sort_num,
+             t.start_distance,
+             t.station_id,
+             t.status,
+             t.update_time
+          form station_line t
           <where>
             <if test="id != null">
-                  station_line.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getStationLineList" resultType="com.railway.pojo.entity.StationLine" parameterType="com.railway.pojo.req.GetStationLineListReq">
           select
-             station_line.cent_distance,
-             station_line.create_time,
-             station_line.direction,
-             station_line.end_distance,
-             station_line.id,
-             station_line.is_delete,
-             station_line.line_id,
-             station_line.operator,
-             station_line.sort_num,
-             station_line.start_distance,
-             station_line.station_id,
-             station_line.status,
-             station_line.update_time
-          form station_line 
+             t.cent_distance,
+             t.create_time,
+             t.direction,
+             t.end_distance,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.operator,
+             t.sort_num,
+             t.start_distance,
+             t.station_id,
+             t.status,
+             t.update_time
+          form station_line t
           <where>
             <if test="centDistance != null">
-                  station_line.cent_distance = #{centDistance}
+                  t.cent_distance = #{centDistance}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and station_line.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="direction != null">
-                  and station_line.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="endDistance != null">
-                  and station_line.end_distance = #{endDistance}
+                  and t.end_distance = #{endDistance}
             </if>
             <if test="isDelete != null">
-                  and station_line.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and station_line.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="operator != null">
-                  and station_line.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="sortNum != null and sortNum != ''">
-                  and station_line.sort_num = #{sortNum}
+                  and t.sort_num = #{sortNum}
             </if>
             <if test="startDistance != null">
-                  and station_line.start_distance = #{startDistance}
+                  and t.start_distance = #{startDistance}
             </if>
             <if test="stationId != null">
-                  and station_line.station_id = #{stationId}
+                  and t.station_id = #{stationId}
             </if>
             <if test="status != null">
-                  and station_line.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and station_line.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

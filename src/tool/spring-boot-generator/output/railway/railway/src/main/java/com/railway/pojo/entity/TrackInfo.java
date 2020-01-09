@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import java.util.Date;
 
-
-
 @ApiModel("钢轨信息")
 @Getter
 @Setter

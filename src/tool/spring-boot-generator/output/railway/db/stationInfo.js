@@ -2,6 +2,23 @@ let stationInfo = {
 	name: "stationInfo",
 	description: "车站信息",
 	columns: {
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
+		fullName: {
+			name: "fullName",
+			description: "车站全称",
+			nullable: true,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
 		id: {
 			name: "id",
 			description: "车站编号",
@@ -13,21 +30,39 @@ let stationInfo = {
 				length: null
 			}
 		},
-		trackDivisionId: {
-			name: "trackDivisionId",
-			description: "公务段编号",
-			nullable: false,
+		inputCode: {
+			name: "inputCode",
+			description: "输入代码",
+			nullable: true,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		fullName: {
-			name: "fullName",
-			description: "车站全称",
+		jobType: {
+			name: "jobType",
+			description: "技术作业别",
 			nullable: true,
 			type: {
-				name: "varchar",
+				name: "int",
+				length: null
+			}
+		},
+		operator: {
+			name: "operator",
+			description: "操作人",
+			nullable: true,
+			type: {
+				name: "int",
 				length: null
 			}
 		},
@@ -49,24 +84,6 @@ let stationInfo = {
 				length: null
 			}
 		},
-		inputCode: {
-			name: "inputCode",
-			description: "输入代码",
-			nullable: true,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		stationType: {
-			name: "stationType",
-			description: "车站类型",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
 		stationGrade: {
 			name: "stationGrade",
 			description: "车站等级",
@@ -76,27 +93,9 @@ let stationInfo = {
 				length: null
 			}
 		},
-		jobType: {
-			name: "jobType",
-			description: "技术作业别",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		thighTrackNum: {
-			name: "thighTrackNum",
-			description: "股道数量",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		ternoutNum: {
-			name: "ternoutNum",
-			description: "岔道数量",
+		stationType: {
+			name: "stationType",
+			description: "车站类型",
 			nullable: true,
 			type: {
 				name: "int",
@@ -112,21 +111,31 @@ let stationInfo = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
+		ternoutNum: {
+			name: "ternoutNum",
+			description: "岔道数量",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		thighTrackNum: {
+			name: "thighTrackNum",
+			description: "股道数量",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "int",
+				length: null
+			}
+		},
+		trackDivisionId: {
+			name: "trackDivisionId",
+			description: "公务段编号",
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
 			}
 		},
 		updateTime: {
@@ -136,36 +145,27 @@ let stationInfo = {
 			type: {
 				name: "datetime"
 			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
 		}
 	}
 };
 
 let columnsArray = [
-	"id",
-	"trackDivisionId",
+	"createTime",
 	"fullName",
+	"id",
+	"inputCode",
+	"isDelete",
+	"jobType",
+	"operator",
 	"shortName",
 	"stationCode",
-	"inputCode",
-	"stationType",
 	"stationGrade",
-	"jobType",
-	"thighTrackNum",
-	"ternoutNum",
+	"stationType",
 	"status",
-	"isDelete",
-	"createTime",
-	"updateTime",
-	"operator"
+	"ternoutNum",
+	"thighTrackNum",
+	"trackDivisionId",
+	"updateTime"
 ];
 
 function create() {

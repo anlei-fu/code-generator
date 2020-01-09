@@ -8,13 +8,13 @@ exports.stationInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // trackDivisionId : validate --- @NotNull  
-                        // stationType : validate --- @Enum("stationType")  
-                        // jobType : validate --- @Enum("jobType")  
-                        // status : validate --- @Enum("status")  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // jobType : validate --- @Enum("jobType")  
+                        // stationType : validate --- @Enum("stationType")  
+                        // status : validate --- @Enum("status")  
+                        // trackDivisionId : validate --- @NotNull  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addStationInfo")
@@ -22,7 +22,7 @@ exports.stationInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(stationInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/stationInfo");
@@ -30,10 +30,10 @@ exports.stationInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("trackDivisionId","@NotNull")
-                                           .validate("stationType","@Enum(\"stationType\")")
                                            .validate("jobType","@Enum(\"jobType\")")
+                                           .validate("stationType","@Enum(\"stationType\")")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("trackDivisionId","@NotNull")
                                 })
                                 .build(),
 
@@ -57,11 +57,11 @@ exports.stationInfoConfig = {
                                 .build(),
                                 
                         // updateById
-                        // stationType : validate --- @Enum("stationType")  
-                        // jobType : validate --- @Enum("jobType")  
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // jobType : validate --- @Enum("jobType")  
+                        // stationType : validate --- @Enum("stationType")  
+                        // status : validate --- @Enum("status")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateStationInfoById")
@@ -87,8 +87,8 @@ exports.stationInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("stationType","@Enum(\"stationType\")")
                                            .validate("jobType","@Enum(\"jobType\")")
+                                           .validate("stationType","@Enum(\"stationType\")")
                                            .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
@@ -119,12 +119,12 @@ exports.stationInfoConfig = {
                                 .build(),
 
                         // getList
+                        // createTime : expression --- timeRange
                         // fullName : excluded 
+                        // jobType : validates --- @Enum("jobType")  
                         // shortName : excluded 
                         // stationType : validates --- @Enum("stationType")  
-                        // jobType : validates --- @Enum("jobType")  
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getStationInfoList")
@@ -144,10 +144,11 @@ exports.stationInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("stationType","@Enum(\"stationType\")")
                                            .validate("jobType","@Enum(\"jobType\")")
+                                           .validate("stationType","@Enum(\"stationType\")")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

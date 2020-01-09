@@ -2,15 +2,12 @@ let workshopInfo = {
 	name: "workshopInfo",
 	description: "线路车间信息",
 	columns: {
-		id: {
-			name: "id",
-			description: "车间编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
 			type: {
-				name: "int",
-				length: null
+				name: "datetime"
 			}
 		},
 		fullName: {
@@ -22,12 +19,14 @@ let workshopInfo = {
 				length: null
 			}
 		},
-		shortName: {
-			name: "shortName",
-			description: "车间简称",
-			nullable: true,
+		id: {
+			name: "id",
+			description: "车间编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
 			type: {
-				name: "varchar",
+				name: "int",
 				length: null
 			}
 		},
@@ -40,19 +39,10 @@ let workshopInfo = {
 				length: null
 			}
 		},
-		workshopType: {
-			name: "workshopType",
-			description: "车间类型",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		trackDivisionId: {
-			name: "trackDivisionId",
-			description: "工务段编号",
-			nullable: true,
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
@@ -67,21 +57,31 @@ let workshopInfo = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
+		operator: {
+			name: "operator",
+			description: "操作人",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		shortName: {
+			name: "shortName",
+			description: "车间简称",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "varchar",
+				length: null
+			}
+		},
+		trackDivisionId: {
+			name: "trackDivisionId",
+			description: "工务段编号",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
 			}
 		},
 		updateTime: {
@@ -92,9 +92,9 @@ let workshopInfo = {
 				name: "datetime"
 			}
 		},
-		operator: {
-			name: "operator",
-			description: "操作人",
+		workshopType: {
+			name: "workshopType",
+			description: "车间类型",
 			nullable: true,
 			type: {
 				name: "int",
@@ -105,17 +105,17 @@ let workshopInfo = {
 };
 
 let columnsArray = [
-	"id",
-	"fullName",
-	"shortName",
-	"inputCode",
-	"workshopType",
-	"trackDivisionId",
-	"lineId",
-	"isDelete",
 	"createTime",
+	"fullName",
+	"id",
+	"inputCode",
+	"isDelete",
+	"lineId",
+	"operator",
+	"shortName",
+	"trackDivisionId",
 	"updateTime",
-	"operator"
+	"workshopType"
 ];
 
 function create() {

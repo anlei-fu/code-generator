@@ -7,6 +7,8 @@
  * @LastEditTime: 2019-12-17 13:03:35
  */
 
+const { STR } = require("./../../libs/str");
+
 const JAVA_BASE_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String", "Long", "Double"]);
 
 /**
@@ -48,4 +50,24 @@ exports.getJavaType = function (sqlType) {
  */
 exports.isJavaBaseType = (type) => {
         return JAVA_BASE_TYPES.has(type);
+}
+
+exports.formatJavaFile = (content) => {
+        let empty = false;
+        let output = "";
+        STR.splitToLines(content).forEach(x => {
+                if (x.trim() == "") {
+                        if (empty) {
+                                return;
+                        } else {
+                                output += "\r\n";
+                                empty = true;
+                        }
+                } else {
+                        output += x + "\r\n";
+                        empty = false;
+                }
+        });
+
+        return output;
 }

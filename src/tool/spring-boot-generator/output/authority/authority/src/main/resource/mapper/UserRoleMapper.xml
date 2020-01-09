@@ -13,7 +13,7 @@
           <trim prefix="(" suffix=")" suffixOverrides=",">
              #{UserAccount},
              #{SystemId},
-             #{CreateUser},
+             #{createUser},
              current_timestamp
           </trim>
     </insert>

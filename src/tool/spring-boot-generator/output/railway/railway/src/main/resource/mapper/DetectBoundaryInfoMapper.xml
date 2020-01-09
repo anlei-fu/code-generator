@@ -2,46 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectBoundaryInfoMapper">
     <insert id="addDetectBoundaryInfo" parameterType="com.railway.pojo.req.AddDetectBoundaryInfoReq">
-          insert  into detect_boundary_info 
+          insert  into detect_boundary_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="direction != null">
-                  detect_boundary_info.direction,
+                  t.direction,
             </if>
             <if test="endMiles != null">
-                  detect_boundary_info.end_miles,
+                  t.end_miles,
             </if>
-             detect_boundary_info.is_delete,
+             t.is_delete,
             <if test="lineId != null">
-                  detect_boundary_info.line_id,
+                  t.line_id,
             </if>
             <if test="longChain != null">
-                  detect_boundary_info.long_chain,
+                  t.long_chain,
             </if>
             <if test="operateStatus != null">
-                  detect_boundary_info.operate_status,
+                  t.operate_status,
             </if>
             <if test="operator != null">
-                  detect_boundary_info.operator,
+                  t.operator,
             </if>
             <if test="remark != null">
-                  detect_boundary_info.remark,
+                  t.remark,
             </if>
             <if test="startMiles != null">
-                  detect_boundary_info.start_miles,
+                  t.start_miles,
             </if>
             <if test="status != null">
-                  detect_boundary_info.status,
+                  t.status,
             </if>
             <if test="trackDisCategory != null">
-                  detect_boundary_info.track_dis_category,
+                  t.track_dis_category,
             </if>
             <if test="trackType != null">
-                  detect_boundary_info.track_type,
+                  t.track_type,
             </if>
             <if test="workshopId != null">
-                  detect_boundary_info.workshop_id,
+                  t.workshop_id,
             </if>
-             detect_boundary_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -86,149 +86,149 @@
           </trim>
     </insert>
     <delete id="deleteDetectBoundaryInfoById">
-          delete from detect_boundary_info 
+          delete from detect_boundary_info t
           <where>
             <if test="id != null">
-                  detect_boundary_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateDetectBoundaryInfoById" parameterType="com.railway.pojo.param.UpdateDetectBoundaryInfoByIdParams">
-        update detect_boundary_info 
+        update detect_boundary_info t
         <set>
             <if test="direction != null">
-                  detect_boundary_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="endMiles != null">
-                  detect_boundary_info.end_miles = #{EndMiles},
+                  t.end_miles = #{EndMiles},
             </if>
             <if test="isDelete != null">
-                  detect_boundary_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  detect_boundary_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="longChain != null">
-                  detect_boundary_info.long_chain = #{LongChain},
+                  t.long_chain = #{LongChain},
             </if>
             <if test="operateStatus != null">
-                  detect_boundary_info.operate_status = #{OperateStatus},
+                  t.operate_status = #{OperateStatus},
             </if>
             <if test="operator != null">
-                  detect_boundary_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="remark != null">
-                  detect_boundary_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="startMiles != null">
-                  detect_boundary_info.start_miles = #{StartMiles},
+                  t.start_miles = #{StartMiles},
             </if>
             <if test="status != null">
-                  detect_boundary_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="trackDisCategory != null">
-                  detect_boundary_info.track_dis_category = #{TrackDisCategory},
+                  t.track_dis_category = #{TrackDisCategory},
             </if>
             <if test="trackType != null">
-                  detect_boundary_info.track_type = #{TrackType},
+                  t.track_type = #{TrackType},
             </if>
             <if test="workshopId != null">
-                  detect_boundary_info.workshop_id = #{WorkshopId}
+                  t.workshop_id = #{WorkshopId}
             </if>
-            detect_boundary_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  detect_boundary_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getDetectBoundaryInfoById" resultType="com.railway.pojo.entity.DetectBoundaryInfo">
           select
-             detect_boundary_info.create_time,
-             detect_boundary_info.direction,
-             detect_boundary_info.end_miles,
-             detect_boundary_info.id,
-             detect_boundary_info.is_delete,
-             detect_boundary_info.line_id,
-             detect_boundary_info.long_chain,
-             detect_boundary_info.operate_status,
-             detect_boundary_info.operator,
-             detect_boundary_info.remark,
-             detect_boundary_info.start_miles,
-             detect_boundary_info.status,
-             detect_boundary_info.track_dis_category,
-             detect_boundary_info.track_type,
-             detect_boundary_info.update_time,
-             detect_boundary_info.workshop_id
-          form detect_boundary_info 
+             t.create_time,
+             t.direction,
+             t.end_miles,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.operate_status,
+             t.operator,
+             t.remark,
+             t.start_miles,
+             t.status,
+             t.track_dis_category,
+             t.track_type,
+             t.update_time,
+             t.workshop_id
+          form detect_boundary_info t
           <where>
             <if test="id != null">
-                  detect_boundary_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getDetectBoundaryInfoList" resultType="com.railway.pojo.entity.DetectBoundaryInfo" parameterType="com.railway.pojo.req.GetDetectBoundaryInfoListReq">
           select
-             detect_boundary_info.create_time,
-             detect_boundary_info.direction,
-             detect_boundary_info.end_miles,
-             detect_boundary_info.id,
-             detect_boundary_info.is_delete,
-             detect_boundary_info.line_id,
-             detect_boundary_info.long_chain,
-             detect_boundary_info.operate_status,
-             detect_boundary_info.operator,
-             detect_boundary_info.remark,
-             detect_boundary_info.start_miles,
-             detect_boundary_info.status,
-             detect_boundary_info.track_dis_category,
-             detect_boundary_info.track_type,
-             detect_boundary_info.update_time,
-             detect_boundary_info.workshop_id
-          form detect_boundary_info 
+             t.create_time,
+             t.direction,
+             t.end_miles,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.operate_status,
+             t.operator,
+             t.remark,
+             t.start_miles,
+             t.status,
+             t.track_dis_category,
+             t.track_type,
+             t.update_time,
+             t.workshop_id
+          form detect_boundary_info t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  detect_boundary_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="direction != null">
-                  and detect_boundary_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="endMiles != null">
-                  and detect_boundary_info.end_miles = #{endMiles}
+                  and t.end_miles = #{endMiles}
             </if>
             <if test="isDelete != null">
-                  and detect_boundary_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and detect_boundary_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="longChain != null">
-                  and detect_boundary_info.long_chain = #{longChain}
+                  and t.long_chain = #{longChain}
             </if>
             <if test="operateStatus != null">
-                  and detect_boundary_info.operate_status = #{operateStatus}
+                  and t.operate_status = #{operateStatus}
             </if>
             <if test="operator != null">
-                  and detect_boundary_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="startMiles != null">
-                  and detect_boundary_info.start_miles = #{startMiles}
+                  and t.start_miles = #{startMiles}
             </if>
             <if test="status != null">
-                  and detect_boundary_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="trackDisCategory != null">
-                  and detect_boundary_info.track_dis_category = #{trackDisCategory}
+                  and t.track_dis_category = #{trackDisCategory}
             </if>
             <if test="trackType != null">
-                  and detect_boundary_info.track_type = #{trackType}
+                  and t.track_type = #{trackType}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and detect_boundary_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="workshopId != null">
-                  and detect_boundary_info.workshop_id = #{workshopId}
+                  and t.workshop_id = #{workshopId}
             </if>
           </where>
     </select>

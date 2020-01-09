@@ -8,12 +8,12 @@ exports.detectStaffInfoCopyConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // gender : validate --- @Enum("gender")  
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // gender : validate --- @Enum("gender")  
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDetectStaffInfoCopy")
@@ -21,7 +21,7 @@ exports.detectStaffInfoCopyConfig = {
                                 .includes(collection => {
                                         collection.includes(detectStaffInfoCopy.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectStaffInfoCopy");
@@ -30,8 +30,8 @@ exports.detectStaffInfoCopyConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("gender","@Enum(\"gender\")")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -55,10 +55,10 @@ exports.detectStaffInfoCopyConfig = {
                                 .build(),
                                 
                         // updateById
+                        // createTime : excluded 
                         // gender : validate --- @Enum("gender")  
                         // status : validate --- @Enum("status")  
-                        // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDetectStaffInfoCopyById")
@@ -115,11 +115,11 @@ exports.detectStaffInfoCopyConfig = {
                                 .build(),
 
                         // getList
-                        // name : excluded 
+                        // createTime : expression --- timeRange
                         // gender : validates --- @Enum("gender")  
+                        // name : excluded 
                         // remark : excluded 
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getDetectStaffInfoCopyList")
@@ -142,6 +142,7 @@ exports.detectStaffInfoCopyConfig = {
                                            .validate("gender","@Enum(\"gender\")")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

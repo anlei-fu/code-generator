@@ -8,13 +8,13 @@ exports.stationLineConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // stationId : validate --- @NotNull  
-                        // lineId : validate --- @NotNull  
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // lineId : validate --- @NotNull  
+                        // stationId : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addStationLine")
@@ -22,7 +22,7 @@ exports.stationLineConfig = {
                                 .includes(collection => {
                                         collection.includes(stationLine.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/stationLine");
@@ -30,10 +30,10 @@ exports.stationLineConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("stationId","@NotNull")
-                                           .validate("lineId","@NotNull")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("lineId","@NotNull")
+                                           .validate("stationId","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -57,9 +57,9 @@ exports.stationLineConfig = {
                                 .build(),
                                 
                         // updateById
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // status : validate --- @Enum("status")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateStationLineById")
@@ -115,8 +115,8 @@ exports.stationLineConfig = {
                                 .build(),
 
                         // getList
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // createTime : expression --- timeRange
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getStationLineList")
@@ -137,6 +137,7 @@ exports.stationLineConfig = {
                                            .excludes("id")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

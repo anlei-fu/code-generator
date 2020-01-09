@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import java.util.Date;
 
-
-
 @ApiModel("工务段用户关系表")
 @Getter
 @Setter

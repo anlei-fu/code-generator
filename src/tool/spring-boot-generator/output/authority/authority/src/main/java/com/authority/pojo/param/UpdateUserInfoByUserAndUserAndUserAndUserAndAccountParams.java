@@ -2,7 +2,7 @@ public class UpdateUserInfoByUserAndUserAndUserAndUserAndAccountParams {
 
     @Getter
     @Setter
-    private [object Object]ype account;
+    private String account;
 
     private UpdateUserInfoByUserAndUserAndUserAndUserAndAccountReq req;
 
@@ -11,7 +11,7 @@ public class UpdateUserInfoByUserAndUserAndUserAndUserAndAccountParams {
         this.req = req;
     }
 
-    public [object Object]ype getPassword() {
+    public String getPassword() {
         return req.getPassword();
     }
 

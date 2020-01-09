@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import java.util.Date;
 
-
-
 @ApiModel("铁路局线路")
 @Getter
 @Setter

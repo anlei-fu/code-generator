@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contract.mapper.ContractSignRecordMapper">
+    <insert id="addContractSignRecord" parameterType="com.contract.pojo.req.AddContractSignRecordReq">
+          insert  into contract_sign_record t
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contractId != null">
+                  t.contract_id,
+            </if>
+            <if test="signAfterFile != null">
+                  t.sign_after_file,
+            </if>
+            <if test="signAfterHash != null">
+                  t.sign_after_hash,
+            </if>
+            <if test="signBeforeFile != null">
+                  t.sign_before_file,
+            </if>
+            <if test="signBeforeHash != null">
+                  t.sign_before_hash,
+            </if>
+            <if test="signId != null">
+                  t.sign_id,
+            </if>
+            <if test="signPerson != null">
+                  t.sign_person,
+            </if>
+             t.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contractId != null">
+                  #{contractId},
+            </if>
+            <if test="signAfterFile != null">
+                  #{signAfterFile},
+            </if>
+            <if test="signAfterHash != null">
+                  #{signAfterHash},
+            </if>
+            <if test="signBeforeFile != null">
+                  #{signBeforeFile},
+            </if>
+            <if test="signBeforeHash != null">
+                  #{signBeforeHash},
+            </if>
+            <if test="signId != null">
+                  #{signId},
+            </if>
+            <if test="signPerson != null">
+                  #{signPerson},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteContractSignRecordById">
+          delete from contract_sign_record t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateContractSignRecordById" parameterType="com.contract.pojo.param.UpdateContractSignRecordByIdParams">
+        update contract_sign_record t
+        <set>
+            <if test="contractId != null">
+                  t.contract_id = #{ContractId},
+            </if>
+            <if test="signAfterFile != null">
+                  t.sign_after_file = #{SignAfterFile},
+            </if>
+            <if test="signAfterHash != null">
+                  t.sign_after_hash = #{SignAfterHash},
+            </if>
+            <if test="signBeforeFile != null">
+                  t.sign_before_file = #{SignBeforeFile},
+            </if>
+            <if test="signBeforeHash != null">
+                  t.sign_before_hash = #{SignBeforeHash},
+            </if>
+            <if test="signId != null">
+                  t.sign_id = #{SignId},
+            </if>
+            <if test="signPerson != null">
+                  t.sign_person = #{SignPerson}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getContractSignRecordById" resultType="com.contract.pojo.entity.ContractSignRecord">
+          select
+             t.contract_id,
+             t.create_time,
+             t.id,
+             t.sign_after_file,
+             t.sign_after_hash,
+             t.sign_before_file,
+             t.sign_before_hash,
+             t.sign_id,
+             t.sign_person
+          form contract_sign_record t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getContractSignRecordList" resultType="com.contract.pojo.entity.ContractSignRecord" parameterType="com.contract.pojo.req.GetContractSignRecordListReq">
+          select
+             t.contract_id,
+             t.create_time,
+             t.id,
+             t.sign_after_file,
+             t.sign_after_hash,
+             t.sign_before_file,
+             t.sign_before_hash,
+             t.sign_id,
+             t.sign_person
+          form contract_sign_record t
+          <where>
+            <if test="contractId != null">
+                  t.contract_id = #{contractId}
+            </if>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="signId != null">
+                  and t.sign_id = #{signId}
+            </if>
+          </where>
+    </select>
+</mapper>

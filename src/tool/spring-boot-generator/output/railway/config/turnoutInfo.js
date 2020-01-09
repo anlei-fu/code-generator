@@ -8,17 +8,17 @@ exports.turnoutInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // turnoutNo : validate --- @NotNull  
-                        // stationId : validate --- @NotNull  
-                        // lineId : validate --- @NotNull  
-                        // workshopId : validate --- @NotNull  
-                        // turnoutType : validate --- @Enum("turnoutType")  
-                        // trackType : validate --- @Enum("trackType")  
-                        // switchRailType : validate --- @Enum("switchRailType")  
-                        // status : validate --- @Enum("status")  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // lineId : validate --- @NotNull  
+                        // stationId : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // switchRailType : validate --- @Enum("switchRailType")  
+                        // trackType : validate --- @Enum("trackType")  
+                        // turnoutNo : validate --- @NotNull  
+                        // turnoutType : validate --- @Enum("turnoutType")  
+                        // updateTime excluded 
+                        // workareaId : validate --- @NotNull
                         new builder()
                                 .type("insert")
                                 .id("addTurnoutInfo")
@@ -26,7 +26,7 @@ exports.turnoutInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(turnoutInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/turnoutInfo");
@@ -34,14 +34,14 @@ exports.turnoutInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("turnoutNo","@NotNull")
-                                           .validate("stationId","@NotNull")
                                            .validate("lineId","@NotNull")
-                                           .validate("workshopId","@NotNull")
-                                           .validate("turnoutType","@Enum(\"turnoutType\")")
-                                           .validate("trackType","@Enum(\"trackType\")")
-                                           .validate("switchRailType","@Enum(\"switchRailType\")")
+                                           .validate("stationId","@NotNull")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("switchRailType","@Enum(\"switchRailType\")")
+                                           .validate("trackType","@Enum(\"trackType\")")
+                                           .validate("turnoutNo","@NotNull")
+                                           .validate("turnoutType","@Enum(\"turnoutType\")")
+                                           .validate("workareaId","@NotNull")
                                 })
                                 .build(),
 
@@ -65,12 +65,12 @@ exports.turnoutInfoConfig = {
                                 .build(),
                                 
                         // updateById
-                        // turnoutType : validate --- @Enum("turnoutType")  
-                        // trackType : validate --- @Enum("trackType")  
-                        // switchRailType : validate --- @Enum("switchRailType")  
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // status : validate --- @Enum("status")  
+                        // switchRailType : validate --- @Enum("switchRailType")  
+                        // trackType : validate --- @Enum("trackType")  
+                        // turnoutType : validate --- @Enum("turnoutType")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateTurnoutInfoById")
@@ -96,10 +96,10 @@ exports.turnoutInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("turnoutType","@Enum(\"turnoutType\")")
-                                           .validate("trackType","@Enum(\"trackType\")")
-                                           .validate("switchRailType","@Enum(\"switchRailType\")")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("switchRailType","@Enum(\"switchRailType\")")
+                                           .validate("trackType","@Enum(\"trackType\")")
+                                           .validate("turnoutType","@Enum(\"turnoutType\")")
                                 })
                                 .build(),
 
@@ -129,12 +129,12 @@ exports.turnoutInfoConfig = {
                                 .build(),
 
                         // getList
-                        // turnoutType : validates --- @Enum("turnoutType")  
-                        // trackType : validates --- @Enum("trackType")  
-                        // switchRailType : validates --- @Enum("switchRailType")  
-                        // status : validates --- @Enum("status")  
+                        // createTime : expression --- timeRange
                         // remark : excluded 
-                        // createTime : expression --- timeRange@@
+                        // status : validates --- @Enum("status")  
+                        // switchRailType : validates --- @Enum("switchRailType")  
+                        // trackType : validates --- @Enum("trackType")  
+                        // turnoutType : validates --- @Enum("turnoutType")
                         new builder()
                                 .type("select")
                                 .id("getTurnoutInfoList")
@@ -154,11 +154,12 @@ exports.turnoutInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("turnoutType","@Enum(\"turnoutType\")")
-                                           .validate("trackType","@Enum(\"trackType\")")
-                                           .validate("switchRailType","@Enum(\"switchRailType\")")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("switchRailType","@Enum(\"switchRailType\")")
+                                           .validate("trackType","@Enum(\"trackType\")")
+                                           .validate("turnoutType","@Enum(\"turnoutType\")")
                                 })
+
                                 .build()
                 ]
 }

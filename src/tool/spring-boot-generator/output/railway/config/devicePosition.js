@@ -14,6 +14,7 @@ exports.devicePositionConfig = {
                         new builder()
                                 .type("insert")
                                 .id("addDevicePosition")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(devicePosition.columnsArray)
                                                   .excludes("id")
@@ -33,6 +34,7 @@ exports.devicePositionConfig = {
                         new builder()
                                 .type("delete")
                                 .id("deleteDevicePositionById")
+                                .alias("t")
                                 .conditions(collection => {
                                         collection.includes("id")
                                                   .require("id")
@@ -46,13 +48,14 @@ exports.devicePositionConfig = {
                                            .from("@PathVariable");
                                 })
                                 .build(),
-
+                                
                         // updateById
                         // createTime : excluded 
                         // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDevicePositionById")
+                                .alias("t")
                                 .includes(collection => {
                                         collection.includes(devicePosition.columnsArray)
                                                   .excludes("id")
@@ -82,6 +85,7 @@ exports.devicePositionConfig = {
                         new builder()
                                 .type("select")
                                 .id("getDevicePositionById")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(devicePosition.columnsArray)
                                 })
@@ -107,6 +111,8 @@ exports.devicePositionConfig = {
                         // lineName : excluded
                         new builder()
                                 .type("select")
+                                .id("getDevicePositionList")
+                                .alias("t")
                                 .includes(collection=>{
                                         collection.includes(devicePosition.columnsArray)
                                 })
@@ -116,7 +122,6 @@ exports.devicePositionConfig = {
                                                   .excludes(["lineName"])
                                                   .exp("createTime","timeRange")
                                 })
-                                .id("getDevicePositionList")
                                 .controller(controller => {
                                         controller.path("/devicePosition");
                                 })
@@ -125,6 +130,7 @@ exports.devicePositionConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

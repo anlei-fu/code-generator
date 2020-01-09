@@ -1,3 +1,9 @@
+package com.railway.pojo.param;
+
+import com.railway.pojo.req.UpdateBureauLineOrderByIdReq;
+import lombok.Getter;
+import lombok.Setter;
+
 public class UpdateBureauLineOrderByIdParams {
 
     @Getter

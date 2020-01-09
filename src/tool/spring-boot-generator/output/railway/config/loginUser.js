@@ -8,10 +8,10 @@ exports.loginUserConfig = {
                 items: [
 
                         // add
+                        // createTime excluded 
                         // id excluded 
                         // password : validate --- @Password  
-                        // createTime excluded 
-                        // updateTime excluded@@
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addLoginUser")
@@ -19,7 +19,7 @@ exports.loginUserConfig = {
                                 .includes(collection => {
                                         collection.includes(loginUser.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/loginUser");
@@ -51,9 +51,9 @@ exports.loginUserConfig = {
                                 .build(),
                                 
                         // updateById
-                        // password : validate --- @Password  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // password : validate --- @Password  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateLoginUserById")
@@ -109,9 +109,9 @@ exports.loginUserConfig = {
                                 .build(),
 
                         // getList
+                        // createTime : expression --- timeRange
                         // name : excluded 
-                        // password : excluded 
-                        // createTime : expression --- timeRange@@
+                        // password : excluded
                         new builder()
                                 .type("select")
                                 .id("getLoginUserList")
@@ -133,6 +133,7 @@ exports.loginUserConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

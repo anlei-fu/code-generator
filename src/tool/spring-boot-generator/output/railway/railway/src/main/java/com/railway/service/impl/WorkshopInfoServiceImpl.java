@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.WorkshopInfoMapper;
 import com.railway.pojo.entity.WorkshopInfo;
 import com.railway.pojo.entity.WorkshopInfo;
+import com.railway.pojo.param.UpdateWorkshopInfoByIdParams;
 import com.railway.pojo.req.AddWorkshopInfoReq;
 import com.railway.pojo.req.GetWorkshopInfoListReq;
 import com.railway.pojo.req.UpdateWorkshopInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.WorkshopInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class WorkshopInfoServiceImpl implements WorkshopInfoService {
@@ -31,7 +31,7 @@ public class WorkshopInfoServiceImpl implements WorkshopInfoService {
 
     @Override
     public boolean updateWorkshopInfoById(Integer id, UpdateWorkshopInfoByIdReq req) {
-        params params = new UpdateWorkshopInfoByIdParams(id, req)
+        UpdateWorkshopInfoByIdParams params = new UpdateWorkshopInfoByIdParams(id, req);
         return workshopInfoMapper.updateWorkshopInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class WorkshopInfoServiceImpl implements WorkshopInfoService {
 
     @Override
     public PageInfo<WorkshopInfo> getWorkshopInfoList(GetWorkshopInfoListReq req) {
-        return PageHelperUtils.page(()=> workshopInfoMapper.getWorkshopInfoList(req));
+        return PageHelperUtils.paging(req, () -> workshopInfoMapper.getWorkshopInfoList(req));
     }
 
 }
+

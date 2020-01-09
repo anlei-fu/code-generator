@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.DetectDeviceInfoMapper;
 import com.railway.pojo.entity.DetectDeviceInfo;
 import com.railway.pojo.entity.DetectDeviceInfo;
+import com.railway.pojo.param.UpdateDetectDeviceInfoByIdParams;
 import com.railway.pojo.req.AddDetectDeviceInfoReq;
 import com.railway.pojo.req.GetDetectDeviceInfoListReq;
 import com.railway.pojo.req.UpdateDetectDeviceInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.DetectDeviceInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DetectDeviceInfoServiceImpl implements DetectDeviceInfoService {
@@ -31,7 +31,7 @@ public class DetectDeviceInfoServiceImpl implements DetectDeviceInfoService {
 
     @Override
     public boolean updateDetectDeviceInfoById(Integer id, UpdateDetectDeviceInfoByIdReq req) {
-        params params = new UpdateDetectDeviceInfoByIdParams(id, req)
+        UpdateDetectDeviceInfoByIdParams params = new UpdateDetectDeviceInfoByIdParams(id, req);
         return detectDeviceInfoMapper.updateDetectDeviceInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class DetectDeviceInfoServiceImpl implements DetectDeviceInfoService {
 
     @Override
     public PageInfo<DetectDeviceInfo> getDetectDeviceInfoList(GetDetectDeviceInfoListReq req) {
-        return PageHelperUtils.page(()=> detectDeviceInfoMapper.getDetectDeviceInfoList(req));
+        return PageHelperUtils.paging(req, () -> detectDeviceInfoMapper.getDetectDeviceInfoList(req));
     }
 
 }
+

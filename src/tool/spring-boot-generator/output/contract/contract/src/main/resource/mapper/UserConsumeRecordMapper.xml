@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contract.mapper.UserConsumeRecordMapper">
+    <insert id="addUserConsumeRecord" parameterType="com.contract.pojo.req.AddUserConsumeRecordReq">
+          insert  into user_consume_record t
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="accountId != null">
+                  t.account_id,
+            </if>
+            <if test="consumeAfter != null">
+                  t.consume_after,
+            </if>
+            <if test="consumeAmount != null">
+                  t.consume_amount,
+            </if>
+            <if test="consumeBefore != null">
+                  t.consume_before,
+            </if>
+            <if test="consumeType != null">
+                  t.consume_type,
+            </if>
+            <if test="contractId != null">
+                  t.contract_id,
+            </if>
+            <if test="remark != null">
+                  t.remark,
+            </if>
+             t.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="accountId != null">
+                  #{accountId},
+            </if>
+            <if test="consumeAfter != null">
+                  #{consumeAfter},
+            </if>
+            <if test="consumeAmount != null">
+                  #{consumeAmount},
+            </if>
+            <if test="consumeBefore != null">
+                  #{consumeBefore},
+            </if>
+            <if test="consumeType != null">
+                  #{consumeType},
+            </if>
+            <if test="contractId != null">
+                  #{contractId},
+            </if>
+            <if test="remark != null">
+                  #{remark},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteUserConsumeRecordById">
+          delete from user_consume_record t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateUserConsumeRecordById" parameterType="com.contract.pojo.param.UpdateUserConsumeRecordByIdParams">
+        update user_consume_record t
+        <set>
+            <if test="accountId != null">
+                  t.account_id = #{AccountId},
+            </if>
+            <if test="consumeAfter != null">
+                  t.consume_after = #{ConsumeAfter},
+            </if>
+            <if test="consumeAmount != null">
+                  t.consume_amount = #{ConsumeAmount},
+            </if>
+            <if test="consumeBefore != null">
+                  t.consume_before = #{ConsumeBefore},
+            </if>
+            <if test="consumeType != null">
+                  t.consume_type = #{ConsumeType},
+            </if>
+            <if test="contractId != null">
+                  t.contract_id = #{ContractId},
+            </if>
+            <if test="remark != null">
+                  t.remark = #{Remark}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getUserConsumeRecordById" resultType="com.contract.pojo.entity.UserConsumeRecord">
+          select
+             t.account_id,
+             t.consume_after,
+             t.consume_amount,
+             t.consume_before,
+             t.consume_type,
+             t.contract_id,
+             t.create_time,
+             t.id,
+             t.remark
+          form user_consume_record t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getUserConsumeRecordList" resultType="com.contract.pojo.entity.UserConsumeRecord" parameterType="com.contract.pojo.req.GetUserConsumeRecordListReq">
+          select
+             t.account_id,
+             t.consume_after,
+             t.consume_amount,
+             t.consume_before,
+             t.consume_type,
+             t.contract_id,
+             t.create_time,
+             t.id,
+             t.remark
+          form user_consume_record t
+          <where>
+            <if test="accountId != null">
+                  t.account_id = #{accountId}
+            </if>
+            <if test="consumeAfter != null">
+                  and t.consume_after = #{consumeAfter}
+            </if>
+            <if test="consumeAmount != null">
+                  and t.consume_amount = #{consumeAmount}
+            </if>
+            <if test="consumeBefore != null">
+                  and t.consume_before = #{consumeBefore}
+            </if>
+            <if test="consumeType != null">
+                  and t.consume_type = #{consumeType}
+            </if>
+            <if test="contractId != null">
+                  and t.contract_id = #{contractId}
+            </if>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+          </where>
+    </select>
+</mapper>

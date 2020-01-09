@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.DivisionUserMapper;
 import com.railway.pojo.entity.DivisionUser;
 import com.railway.pojo.entity.DivisionUser;
+import com.railway.pojo.param.UpdateDivisionUserByIdParams;
 import com.railway.pojo.req.AddDivisionUserReq;
 import com.railway.pojo.req.GetDivisionUserListReq;
 import com.railway.pojo.req.UpdateDivisionUserByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.DivisionUserService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DivisionUserServiceImpl implements DivisionUserService {
@@ -31,7 +31,7 @@ public class DivisionUserServiceImpl implements DivisionUserService {
 
     @Override
     public boolean updateDivisionUserById(Integer id, UpdateDivisionUserByIdReq req) {
-        params params = new UpdateDivisionUserByIdParams(id, req)
+        UpdateDivisionUserByIdParams params = new UpdateDivisionUserByIdParams(id, req);
         return divisionUserMapper.updateDivisionUserById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class DivisionUserServiceImpl implements DivisionUserService {
 
     @Override
     public PageInfo<DivisionUser> getDivisionUserList(GetDivisionUserListReq req) {
-        return PageHelperUtils.page(()=> divisionUserMapper.getDivisionUserList(req));
+        return PageHelperUtils.paging(req, () -> divisionUserMapper.getDivisionUserList(req));
     }
 
 }
+

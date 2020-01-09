@@ -2,62 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.LineInfoMapper">
     <insert id="addLineInfo" parameterType="com.railway.pojo.req.AddLineInfoReq">
-          insert  into line_info 
+          insert  into line_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="ballastType != null">
-                  line_info.ballast_type,
+                  t.ballast_type,
             </if>
             <if test="commissioningDate != null">
-                  line_info.commissioning_date,
+                  t.commissioning_date,
             </if>
             <if test="distance != null">
-                  line_info.distance,
+                  t.distance,
             </if>
-             line_info.full_name,
+             t.full_name,
             <if test="gaugeType != null">
-                  line_info.gauge_type,
+                  t.gauge_type,
             </if>
             <if test="grade != null">
-                  line_info.grade,
+                  t.grade,
             </if>
-             line_info.input_code,
-             line_info.is_delete,
+             t.input_code,
+             t.is_delete,
             <if test="limitGrad != null">
-                  line_info.limit_grad,
+                  t.limit_grad,
             </if>
             <if test="lineBranches != null">
-                  line_info.line_branches,
+                  t.line_branches,
             </if>
-             line_info.line_code,
+             t.line_code,
             <if test="lineNum != null">
-                  line_info.line_num,
+                  t.line_num,
             </if>
             <if test="minRadiusCurve != null">
-                  line_info.min_radius_curve,
+                  t.min_radius_curve,
             </if>
             <if test="nature != null">
-                  line_info.nature,
+                  t.nature,
             </if>
             <if test="operateType != null">
-                  line_info.operate_type,
+                  t.operate_type,
             </if>
             <if test="operator != null">
-                  line_info.operator,
+                  t.operator,
             </if>
-             line_info.short_name,
+             t.short_name,
             <if test="status != null">
-                  line_info.status,
+                  t.status,
             </if>
             <if test="trackType != null">
-                  line_info.track_type,
+                  t.track_type,
             </if>
             <if test="tractionType != null">
-                  line_info.traction_type,
+                  t.traction_type,
             </if>
             <if test="yearVolume != null">
-                  line_info.year_volume,
+                  t.year_volume,
             </if>
-             line_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -118,210 +118,210 @@
           </trim>
     </insert>
     <delete id="deleteLineInfoById">
-          delete from line_info 
+          delete from line_info t
           <where>
             <if test="id != null">
-                  line_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateLineInfoById" parameterType="com.railway.pojo.param.UpdateLineInfoByIdParams">
-        update line_info 
+        update line_info t
         <set>
             <if test="ballastType != null">
-                  line_info.ballast_type = #{BallastType},
+                  t.ballast_type = #{BallastType},
             </if>
             <if test="commissioningDate != null">
-                  line_info.commissioning_date = #{CommissioningDate},
+                  t.commissioning_date = #{CommissioningDate},
             </if>
             <if test="distance != null">
-                  line_info.distance = #{Distance},
+                  t.distance = #{Distance},
             </if>
             <if test="fullName != null">
-                  line_info.full_name = #{FullName},
+                  t.full_name = #{FullName},
             </if>
             <if test="gaugeType != null">
-                  line_info.gauge_type = #{GaugeType},
+                  t.gauge_type = #{GaugeType},
             </if>
             <if test="grade != null">
-                  line_info.grade = #{Grade},
+                  t.grade = #{Grade},
             </if>
             <if test="inputCode != null">
-                  line_info.input_code = #{InputCode},
+                  t.input_code = #{InputCode},
             </if>
             <if test="isDelete != null">
-                  line_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="limitGrad != null">
-                  line_info.limit_grad = #{LimitGrad},
+                  t.limit_grad = #{LimitGrad},
             </if>
             <if test="lineBranches != null">
-                  line_info.line_branches = #{LineBranches},
+                  t.line_branches = #{LineBranches},
             </if>
             <if test="lineCode != null">
-                  line_info.line_code = #{LineCode},
+                  t.line_code = #{LineCode},
             </if>
             <if test="lineNum != null">
-                  line_info.line_num = #{LineNum},
+                  t.line_num = #{LineNum},
             </if>
             <if test="minRadiusCurve != null">
-                  line_info.min_radius_curve = #{MinRadiusCurve},
+                  t.min_radius_curve = #{MinRadiusCurve},
             </if>
             <if test="nature != null">
-                  line_info.nature = #{Nature},
+                  t.nature = #{Nature},
             </if>
             <if test="operateType != null">
-                  line_info.operate_type = #{OperateType},
+                  t.operate_type = #{OperateType},
             </if>
             <if test="operator != null">
-                  line_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="shortName != null">
-                  line_info.short_name = #{ShortName},
+                  t.short_name = #{ShortName},
             </if>
             <if test="status != null">
-                  line_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="trackType != null">
-                  line_info.track_type = #{TrackType},
+                  t.track_type = #{TrackType},
             </if>
             <if test="tractionType != null">
-                  line_info.traction_type = #{TractionType},
+                  t.traction_type = #{TractionType},
             </if>
             <if test="yearVolume != null">
-                  line_info.year_volume = #{YearVolume}
+                  t.year_volume = #{YearVolume}
             </if>
-            line_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  line_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getLineInfoById" resultType="com.railway.pojo.entity.LineInfo">
           select
-             line_info.ballast_type,
-             line_info.commissioning_date,
-             line_info.create_time,
-             line_info.distance,
-             line_info.full_name,
-             line_info.gauge_type,
-             line_info.grade,
-             line_info.id,
-             line_info.input_code,
-             line_info.is_delete,
-             line_info.limit_grad,
-             line_info.line_branches,
-             line_info.line_code,
-             line_info.line_num,
-             line_info.min_radius_curve,
-             line_info.nature,
-             line_info.operate_type,
-             line_info.operator,
-             line_info.short_name,
-             line_info.status,
-             line_info.track_type,
-             line_info.traction_type,
-             line_info.update_time,
-             line_info.year_volume
-          form line_info 
+             t.ballast_type,
+             t.commissioning_date,
+             t.create_time,
+             t.distance,
+             t.full_name,
+             t.gauge_type,
+             t.grade,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.limit_grad,
+             t.line_branches,
+             t.line_code,
+             t.line_num,
+             t.min_radius_curve,
+             t.nature,
+             t.operate_type,
+             t.operator,
+             t.short_name,
+             t.status,
+             t.track_type,
+             t.traction_type,
+             t.update_time,
+             t.year_volume
+          form line_info t
           <where>
             <if test="id != null">
-                  line_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getLineInfoList" resultType="com.railway.pojo.entity.LineInfo" parameterType="com.railway.pojo.req.GetLineInfoListReq">
           select
-             line_info.ballast_type,
-             line_info.commissioning_date,
-             line_info.create_time,
-             line_info.distance,
-             line_info.full_name,
-             line_info.gauge_type,
-             line_info.grade,
-             line_info.id,
-             line_info.input_code,
-             line_info.is_delete,
-             line_info.limit_grad,
-             line_info.line_branches,
-             line_info.line_code,
-             line_info.line_num,
-             line_info.min_radius_curve,
-             line_info.nature,
-             line_info.operate_type,
-             line_info.operator,
-             line_info.short_name,
-             line_info.status,
-             line_info.track_type,
-             line_info.traction_type,
-             line_info.update_time,
-             line_info.year_volume
-          form line_info 
+             t.ballast_type,
+             t.commissioning_date,
+             t.create_time,
+             t.distance,
+             t.full_name,
+             t.gauge_type,
+             t.grade,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.limit_grad,
+             t.line_branches,
+             t.line_code,
+             t.line_num,
+             t.min_radius_curve,
+             t.nature,
+             t.operate_type,
+             t.operator,
+             t.short_name,
+             t.status,
+             t.track_type,
+             t.traction_type,
+             t.update_time,
+             t.year_volume
+          form line_info t
           <where>
             <if test="ballastType != null">
-                  line_info.ballast_type = #{ballastType}
+                  t.ballast_type = #{ballastType}
             </if>
             <if test="commissioningDateStart !=null and  commissioningDateEnd != null">
-                  and line_info.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}
+                  and t.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and line_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="distance != null">
-                  and line_info.distance = #{distance}
+                  and t.distance = #{distance}
             </if>
             <if test="gaugeType != null">
-                  and line_info.gauge_type = #{gaugeType}
+                  and t.gauge_type = #{gaugeType}
             </if>
             <if test="grade != null">
-                  and line_info.grade = #{grade}
+                  and t.grade = #{grade}
             </if>
             <if test="inputCode != null">
-                  and line_info.input_code = #{inputCode}
+                  and t.input_code = #{inputCode}
             </if>
             <if test="isDelete != null">
-                  and line_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="limitGrad != null">
-                  and line_info.limit_grad = #{limitGrad}
+                  and t.limit_grad = #{limitGrad}
             </if>
             <if test="lineBranches != null">
-                  and line_info.line_branches = #{lineBranches}
+                  and t.line_branches = #{lineBranches}
             </if>
             <if test="lineCode != null">
-                  and line_info.line_code = #{lineCode}
+                  and t.line_code = #{lineCode}
             </if>
             <if test="lineNum != null">
-                  and line_info.line_num = #{lineNum}
+                  and t.line_num = #{lineNum}
             </if>
             <if test="minRadiusCurve != null">
-                  and line_info.min_radius_curve = #{minRadiusCurve}
+                  and t.min_radius_curve = #{minRadiusCurve}
             </if>
             <if test="nature != null">
-                  and line_info.nature = #{nature}
+                  and t.nature = #{nature}
             </if>
             <if test="operateType != null">
-                  and line_info.operate_type = #{operateType}
+                  and t.operate_type = #{operateType}
             </if>
             <if test="operator != null">
-                  and line_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="status != null">
-                  and line_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="trackType != null">
-                  and line_info.track_type = #{trackType}
+                  and t.track_type = #{trackType}
             </if>
             <if test="tractionType != null">
-                  and line_info.traction_type = #{tractionType}
+                  and t.traction_type = #{tractionType}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and line_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="yearVolume != null">
-                  and line_info.year_volume = #{yearVolume}
+                  and t.year_volume = #{yearVolume}
             </if>
           </where>
     </select>

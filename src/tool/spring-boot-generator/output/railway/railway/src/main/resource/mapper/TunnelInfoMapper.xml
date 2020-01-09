@@ -2,58 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.TunnelInfoMapper">
     <insert id="addTunnelInfo" parameterType="com.railway.pojo.req.AddTunnelInfoReq">
-          insert  into tunnel_info 
+          insert  into tunnel_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="direction != null">
-                  tunnel_info.direction,
+                  t.direction,
             </if>
             <if test="endMiles != null">
-                  tunnel_info.end_miles,
+                  t.end_miles,
             </if>
             <if test="inputCode != null">
-                  tunnel_info.input_code,
+                  t.input_code,
             </if>
-             tunnel_info.is_delete,
+             t.is_delete,
             <if test="length != null">
-                  tunnel_info.length,
+                  t.length,
             </if>
             <if test="lineId != null">
-                  tunnel_info.line_id,
+                  t.line_id,
             </if>
             <if test="longChain != null">
-                  tunnel_info.long_chain,
+                  t.long_chain,
             </if>
             <if test="middleMiles != null">
-                  tunnel_info.middle_miles,
+                  t.middle_miles,
             </if>
             <if test="operator != null">
-                  tunnel_info.operator,
+                  t.operator,
             </if>
             <if test="remark != null">
-                  tunnel_info.remark,
+                  t.remark,
             </if>
             <if test="side != null">
-                  tunnel_info.side,
+                  t.side,
             </if>
             <if test="startMiles != null">
-                  tunnel_info.start_miles,
+                  t.start_miles,
             </if>
             <if test="status != null">
-                  tunnel_info.status,
+                  t.status,
             </if>
             <if test="trackDistance != null">
-                  tunnel_info.track_distance,
+                  t.track_distance,
             </if>
             <if test="trackDivisionId != null">
-                  tunnel_info.track_division_id,
+                  t.track_division_id,
             </if>
             <if test="tunneName != null">
-                  tunnel_info.tunne_name,
+                  t.tunne_name,
             </if>
             <if test="tunneNo != null">
-                  tunnel_info.tunne_no,
+                  t.tunne_no,
             </if>
-             tunnel_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -110,178 +110,178 @@
           </trim>
     </insert>
     <delete id="deleteTunnelInfoById">
-          delete from tunnel_info 
+          delete from tunnel_info t
           <where>
             <if test="id != null">
-                  tunnel_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateTunnelInfoById" parameterType="com.railway.pojo.param.UpdateTunnelInfoByIdParams">
-        update tunnel_info 
+        update tunnel_info t
         <set>
             <if test="direction != null">
-                  tunnel_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="endMiles != null">
-                  tunnel_info.end_miles = #{EndMiles},
+                  t.end_miles = #{EndMiles},
             </if>
             <if test="inputCode != null">
-                  tunnel_info.input_code = #{InputCode},
+                  t.input_code = #{InputCode},
             </if>
             <if test="isDelete != null">
-                  tunnel_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="length != null">
-                  tunnel_info.length = #{Length},
+                  t.length = #{Length},
             </if>
             <if test="lineId != null">
-                  tunnel_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="longChain != null">
-                  tunnel_info.long_chain = #{LongChain},
+                  t.long_chain = #{LongChain},
             </if>
             <if test="middleMiles != null">
-                  tunnel_info.middle_miles = #{MiddleMiles},
+                  t.middle_miles = #{MiddleMiles},
             </if>
             <if test="operator != null">
-                  tunnel_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="remark != null">
-                  tunnel_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="side != null">
-                  tunnel_info.side = #{Side},
+                  t.side = #{Side},
             </if>
             <if test="startMiles != null">
-                  tunnel_info.start_miles = #{StartMiles},
+                  t.start_miles = #{StartMiles},
             </if>
             <if test="status != null">
-                  tunnel_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="trackDistance != null">
-                  tunnel_info.track_distance = #{TrackDistance},
+                  t.track_distance = #{TrackDistance},
             </if>
             <if test="trackDivisionId != null">
-                  tunnel_info.track_division_id = #{TrackDivisionId},
+                  t.track_division_id = #{TrackDivisionId},
             </if>
             <if test="tunneName != null">
-                  tunnel_info.tunne_name = #{TunneName},
+                  t.tunne_name = #{TunneName},
             </if>
             <if test="tunneNo != null">
-                  tunnel_info.tunne_no = #{TunneNo}
+                  t.tunne_no = #{TunneNo}
             </if>
-            tunnel_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  tunnel_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getTunnelInfoById" resultType="com.railway.pojo.entity.TunnelInfo">
           select
-             tunnel_info.create_time,
-             tunnel_info.direction,
-             tunnel_info.end_miles,
-             tunnel_info.id,
-             tunnel_info.input_code,
-             tunnel_info.is_delete,
-             tunnel_info.length,
-             tunnel_info.line_id,
-             tunnel_info.long_chain,
-             tunnel_info.middle_miles,
-             tunnel_info.operator,
-             tunnel_info.remark,
-             tunnel_info.side,
-             tunnel_info.start_miles,
-             tunnel_info.status,
-             tunnel_info.track_distance,
-             tunnel_info.track_division_id,
-             tunnel_info.tunne_name,
-             tunnel_info.tunne_no,
-             tunnel_info.update_time
-          form tunnel_info 
+             t.create_time,
+             t.direction,
+             t.end_miles,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.length,
+             t.line_id,
+             t.long_chain,
+             t.middle_miles,
+             t.operator,
+             t.remark,
+             t.side,
+             t.start_miles,
+             t.status,
+             t.track_distance,
+             t.track_division_id,
+             t.tunne_name,
+             t.tunne_no,
+             t.update_time
+          form tunnel_info t
           <where>
             <if test="id != null">
-                  tunnel_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getTunnelInfoList" resultType="com.railway.pojo.entity.TunnelInfo" parameterType="com.railway.pojo.req.GetTunnelInfoListReq">
           select
-             tunnel_info.create_time,
-             tunnel_info.direction,
-             tunnel_info.end_miles,
-             tunnel_info.id,
-             tunnel_info.input_code,
-             tunnel_info.is_delete,
-             tunnel_info.length,
-             tunnel_info.line_id,
-             tunnel_info.long_chain,
-             tunnel_info.middle_miles,
-             tunnel_info.operator,
-             tunnel_info.remark,
-             tunnel_info.side,
-             tunnel_info.start_miles,
-             tunnel_info.status,
-             tunnel_info.track_distance,
-             tunnel_info.track_division_id,
-             tunnel_info.tunne_name,
-             tunnel_info.tunne_no,
-             tunnel_info.update_time
-          form tunnel_info 
+             t.create_time,
+             t.direction,
+             t.end_miles,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.length,
+             t.line_id,
+             t.long_chain,
+             t.middle_miles,
+             t.operator,
+             t.remark,
+             t.side,
+             t.start_miles,
+             t.status,
+             t.track_distance,
+             t.track_division_id,
+             t.tunne_name,
+             t.tunne_no,
+             t.update_time
+          form tunnel_info t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  tunnel_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="direction != null">
-                  and tunnel_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="endMiles != null">
-                  and tunnel_info.end_miles = #{endMiles}
+                  and t.end_miles = #{endMiles}
             </if>
             <if test="inputCode != null and inputCode != ''">
-                  and tunnel_info.input_code = #{inputCode}
+                  and t.input_code = #{inputCode}
             </if>
             <if test="isDelete != null">
-                  and tunnel_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="length != null">
-                  and tunnel_info.length = #{length}
+                  and t.length = #{length}
             </if>
             <if test="lineId != null">
-                  and tunnel_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="longChain != null">
-                  and tunnel_info.long_chain = #{longChain}
+                  and t.long_chain = #{longChain}
             </if>
             <if test="middleMiles != null">
-                  and tunnel_info.middle_miles = #{middleMiles}
+                  and t.middle_miles = #{middleMiles}
             </if>
             <if test="operator != null">
-                  and tunnel_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="side != null">
-                  and tunnel_info.side = #{side}
+                  and t.side = #{side}
             </if>
             <if test="startMiles != null">
-                  and tunnel_info.start_miles = #{startMiles}
+                  and t.start_miles = #{startMiles}
             </if>
             <if test="status != null">
-                  and tunnel_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="trackDistance != null">
-                  and tunnel_info.track_distance = #{trackDistance}
+                  and t.track_distance = #{trackDistance}
             </if>
             <if test="trackDivisionId != null">
-                  and tunnel_info.track_division_id = #{trackDivisionId}
+                  and t.track_division_id = #{trackDivisionId}
             </if>
             <if test="tunneNo != null and tunneNo != ''">
-                  and tunnel_info.tunne_no = #{tunneNo}
+                  and t.tunne_no = #{tunneNo}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and tunnel_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

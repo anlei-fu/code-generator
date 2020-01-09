@@ -1,6 +1,9 @@
 const { STR } = require("./../../libs/str");
 const { getConditions } = require("./condition-getter");
 const { getIncludes } = require("./includes-getter");
+const {UserAnalyzer} =require("./analyzer");
+
+const USER_ANALYZER=new UserAnalyzer();
 
 const CACHE = new Map();
 
@@ -57,10 +60,16 @@ function getReqParams(config, withType) {
  * @param {ReqConfig} req 
  */
 function generateReq(config, req) {
+
         config.reqs.forEach(x=>{
              if(!x.doCreate)
                  req.excludes.add(x.name);
         });
+
+        let userColumn=USER_ANALYZER.findUserColumn(config);
+        if(userColumn)
+           req.excludes.add(userColumn);
+
 
         let conditions;
         if (config.type == "select" || config.type == "delete") {

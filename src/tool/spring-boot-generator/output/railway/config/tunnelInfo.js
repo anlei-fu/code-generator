@@ -8,11 +8,11 @@ exports.tunnelInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addTunnelInfo")
@@ -20,7 +20,7 @@ exports.tunnelInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(tunnelInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/tunnelInfo");
@@ -28,8 +28,8 @@ exports.tunnelInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -53,9 +53,9 @@ exports.tunnelInfoConfig = {
                                 .build(),
                                 
                         // updateById
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // status : validate --- @Enum("status")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateTunnelInfoById")
@@ -111,10 +111,10 @@ exports.tunnelInfoConfig = {
                                 .build(),
 
                         // getList
-                        // tunneName : excluded 
+                        // createTime : expression --- timeRange
                         // remark : excluded 
                         // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // tunneName : excluded
                         new builder()
                                 .type("select")
                                 .id("getTunnelInfoList")
@@ -125,7 +125,7 @@ exports.tunnelInfoConfig = {
                                 .conditions(collection=>{
                                         collection.includes(tunnelInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["tunneName","remark"])
+                                                  .excludes(["remark","tunneName"])
                                                   .exp("createTime","timeRange")
                                 })
                                 .controller(controller => {
@@ -136,6 +136,7 @@ exports.tunnelInfoConfig = {
                                            .excludes("id")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

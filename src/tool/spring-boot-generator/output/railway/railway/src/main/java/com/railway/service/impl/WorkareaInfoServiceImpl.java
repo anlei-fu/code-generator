@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.WorkareaInfoMapper;
 import com.railway.pojo.entity.WorkareaInfo;
 import com.railway.pojo.entity.WorkareaInfo;
+import com.railway.pojo.param.UpdateWorkareaInfoByIdParams;
 import com.railway.pojo.req.AddWorkareaInfoReq;
 import com.railway.pojo.req.GetWorkareaInfoListReq;
 import com.railway.pojo.req.UpdateWorkareaInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.WorkareaInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class WorkareaInfoServiceImpl implements WorkareaInfoService {
@@ -31,7 +31,7 @@ public class WorkareaInfoServiceImpl implements WorkareaInfoService {
 
     @Override
     public boolean updateWorkareaInfoById(Integer id, UpdateWorkareaInfoByIdReq req) {
-        params params = new UpdateWorkareaInfoByIdParams(id, req)
+        UpdateWorkareaInfoByIdParams params = new UpdateWorkareaInfoByIdParams(id, req);
         return workareaInfoMapper.updateWorkareaInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class WorkareaInfoServiceImpl implements WorkareaInfoService {
 
     @Override
     public PageInfo<WorkareaInfo> getWorkareaInfoList(GetWorkareaInfoListReq req) {
-        return PageHelperUtils.page(()=> workareaInfoMapper.getWorkareaInfoList(req));
+        return PageHelperUtils.paging(req, () -> workareaInfoMapper.getWorkareaInfoList(req));
     }
 
 }
+

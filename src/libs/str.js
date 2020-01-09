@@ -326,13 +326,6 @@ function removeEmptyLine(input) {
 }
 
 /**
- * 
- */
-function formatWords(input, option) {
-
-}
-
-/**
  * Reverse string
  * 
  * @param {String} input 
@@ -349,27 +342,27 @@ function reverse(input) {
 /**
  * Trim right and remove last coma of pattern
  * 
- * @param {String} pattern 
+ * @param {String} target 
  * @returns {String}
  */
-function removeLastComa(pattern) {
-        pattern = pattern.trimRight();
-        if (pattern[pattern.length - 1] == ",")
-                pattern = pattern.substr(0, pattern.length - 1);
+function removeLastComa(target) {
+        target = target.trimRight();
+        if (target[target.length - 1] == ",")
+                target = target.substr(0, target.length - 1);
 
-        return pattern;
+        return target;
 }
 
 /**
  * Dose content includes any pattern
  * 
- * @param {String} content 
- * @param {[String]} array 
+ * @param {String} target 
+ * @param {[String]} matches 
  * @returns {boolean}
  */
-function includesAny(content, array = []) {
-        for (const c of array) {
-                if (content.includes(c))
+function includesAny(target, matches = []) {
+        for (const c of matches) {
+                if (target.includes(c))
                         return true;
         }
 
@@ -379,18 +372,36 @@ function includesAny(content, array = []) {
 /**
  * Dose content includes all petterns
  * 
- * @param {String} content 
- * @param {[String]} patterns 
+ * @param {String} target' 
+ * @param {[String]} matches 
  * @returns {boolean}
  */
-function includesAll(content, patterns = []) {
-        for (const c of patterns) {
-                if (!content.includes(c))
+function includesAll(target, matches = []) {
+        for (const c of matches) {
+                if (!target.includes(c))
                         return false;
         }
 
         return true;
 }
+
+/**
+ * Target is any of matches
+ * 
+ * @param {String} target 
+ * @param {[String]} matches 
+ * @returns {boolean}
+ */
+function equalAny(target, matches = []) {
+        for (const c of matches) {
+                if (target == c)
+                        return true;
+        }
+
+        return false;
+}
+
+
 
 exports.STR = {
         select,
@@ -410,5 +421,6 @@ exports.STR = {
         reverse,
         removeLastComa,
         includesAny,
-        includesAll
+        includesAll,
+        equalAny
 }

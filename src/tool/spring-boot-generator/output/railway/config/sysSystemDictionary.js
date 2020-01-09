@@ -10,10 +10,10 @@ exports.sysSystemDictionaryConfig = {
                         // add
                         // dicid excluded 
                         // enumType : validate --- @NotNull  
-                        // text : validate --- @NotNull  
-                        // value : validate --- @NotNull  
                         // sortId : validate --- @NotNull  
-                        // status : validate --- @NotNull  @Enum("status")@@
+                        // status : validate --- @NotNull  @Enum("status")  
+                        // text : validate --- @NotNull  
+                        // value : validate --- @NotNull
                         new builder()
                                 .type("insert")
                                 .id("addSysSystemDictionary")
@@ -30,11 +30,11 @@ exports.sysSystemDictionaryConfig = {
                                         req.doCreate()
                                            .excludes("dicid")
                                            .validate("enumType","@NotNull")
-                                           .validate("text","@NotNull")
-                                           .validate("value","@NotNull")
                                            .validate("sortId","@NotNull")
                                            .validate("status","@NotNull")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("text","@NotNull")
+                                           .validate("value","@NotNull")
                                 })
                                 .build(),
 
@@ -58,7 +58,7 @@ exports.sysSystemDictionaryConfig = {
                                 .build(),
                                 
                         // updateById
-                        // status : validate --- @Enum("status")@@
+                        // status : validate --- @Enum("status")
                         new builder()
                                 .type("update")
                                 .id("updateSysSystemDictionaryByDicid")
@@ -114,8 +114,8 @@ exports.sysSystemDictionaryConfig = {
 
                         // getList
                         // enumName : excluded 
-                        // text : excluded 
-                        // status : validates --- @Enum("status")@@
+                        // status : validates --- @Enum("status")  
+                        // text : excluded
                         new builder()
                                 .type("select")
                                 .id("getSysSystemDictionaryList")
@@ -136,6 +136,7 @@ exports.sysSystemDictionaryConfig = {
                                            .excludes("dicid")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

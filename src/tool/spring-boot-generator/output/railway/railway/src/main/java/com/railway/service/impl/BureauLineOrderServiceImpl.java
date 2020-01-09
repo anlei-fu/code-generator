@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.BureauLineOrderMapper;
 import com.railway.pojo.entity.BureauLineOrder;
 import com.railway.pojo.entity.BureauLineOrder;
+import com.railway.pojo.param.UpdateBureauLineOrderByIdParams;
 import com.railway.pojo.req.AddBureauLineOrderReq;
 import com.railway.pojo.req.GetBureauLineOrderListReq;
 import com.railway.pojo.req.UpdateBureauLineOrderByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.BureauLineOrderService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class BureauLineOrderServiceImpl implements BureauLineOrderService {
@@ -31,7 +31,7 @@ public class BureauLineOrderServiceImpl implements BureauLineOrderService {
 
     @Override
     public boolean updateBureauLineOrderById(Integer id, UpdateBureauLineOrderByIdReq req) {
-        params params = new UpdateBureauLineOrderByIdParams(id, req)
+        UpdateBureauLineOrderByIdParams params = new UpdateBureauLineOrderByIdParams(id, req);
         return bureauLineOrderMapper.updateBureauLineOrderById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class BureauLineOrderServiceImpl implements BureauLineOrderService {
 
     @Override
     public PageInfo<BureauLineOrder> getBureauLineOrderList(GetBureauLineOrderListReq req) {
-        return PageHelperUtils.page(()=> bureauLineOrderMapper.getBureauLineOrderList(req));
+        return PageHelperUtils.paging(req, () -> bureauLineOrderMapper.getBureauLineOrderList(req));
     }
 
 }
+

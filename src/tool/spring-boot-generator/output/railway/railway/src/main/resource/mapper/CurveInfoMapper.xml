@@ -2,79 +2,79 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.CurveInfoMapper">
     <insert id="addCurveInfo" parameterType="com.railway.pojo.req.AddCurveInfoReq">
-          insert  into curve_info 
+          insert  into curve_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="averageSpeed != null">
-                  curve_info.average_speed,
+                  t.average_speed,
             </if>
             <if test="curveDirection != null">
-                  curve_info.curve_direction,
+                  t.curve_direction,
             </if>
             <if test="curveLength != null">
-                  curve_info.curve_length,
+                  t.curve_length,
             </if>
             <if test="curveReadius != null">
-                  curve_info.curve_readius,
+                  t.curve_readius,
             </if>
             <if test="direction != null">
-                  curve_info.direction,
+                  t.direction,
             </if>
             <if test="endMiles != null">
-                  curve_info.end_miles,
+                  t.end_miles,
             </if>
             <if test="endSlowLength != null">
-                  curve_info.end_slow_length,
+                  t.end_slow_length,
             </if>
             <if test="endTangentLength != null">
-                  curve_info.end_tangent_length,
+                  t.end_tangent_length,
             </if>
-             curve_info.is_delete,
+             t.is_delete,
             <if test="lineId != null">
-                  curve_info.line_id,
+                  t.line_id,
             </if>
             <if test="longChain != null">
-                  curve_info.long_chain,
+                  t.long_chain,
             </if>
             <if test="operator != null">
-                  curve_info.operator,
+                  t.operator,
             </if>
             <if test="overHeight != null">
-                  curve_info.over_height,
+                  t.over_height,
             </if>
             <if test="remark != null">
-                  curve_info.remark,
+                  t.remark,
             </if>
             <if test="side != null">
-                  curve_info.side,
+                  t.side,
             </if>
             <if test="slopeRate != null">
-                  curve_info.slope_rate,
+                  t.slope_rate,
             </if>
             <if test="startMiles != null">
-                  curve_info.start_miles,
+                  t.start_miles,
             </if>
             <if test="startSlowLength != null">
-                  curve_info.start_slow_length,
+                  t.start_slow_length,
             </if>
             <if test="startTangentLength != null">
-                  curve_info.start_tangent_length,
+                  t.start_tangent_length,
             </if>
             <if test="status != null">
-                  curve_info.status,
+                  t.status,
             </if>
             <if test="steeringAngle != null">
-                  curve_info.steering_angle,
+                  t.steering_angle,
             </if>
             <if test="trackDisType != null">
-                  curve_info.track_dis_type,
+                  t.track_dis_type,
             </if>
             <if test="trackDisWide != null">
-                  curve_info.track_dis_wide,
+                  t.track_dis_wide,
             </if>
             <if test="trackDivisionId != null">
-                  curve_info.track_division_id,
+                  t.track_division_id,
             </if>
-             curve_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -152,237 +152,237 @@
           </trim>
     </insert>
     <delete id="deleteCurveInfoByCurveId">
-          delete from curve_info 
+          delete from curve_info t
           <where>
             <if test="curveId != null">
-                  curve_info.curve_id = #{curveId}
+                  t.curve_id = #{curveId}
             </if>
           </where>
     </delete>
     <update id="updateCurveInfoByCurveId" parameterType="com.railway.pojo.param.UpdateCurveInfoByCurveIdParams">
-        update curve_info 
+        update curve_info t
         <set>
             <if test="averageSpeed != null">
-                  curve_info.average_speed = #{AverageSpeed},
+                  t.average_speed = #{AverageSpeed},
             </if>
             <if test="curveDirection != null">
-                  curve_info.curve_direction = #{CurveDirection},
+                  t.curve_direction = #{CurveDirection},
             </if>
             <if test="curveLength != null">
-                  curve_info.curve_length = #{CurveLength},
+                  t.curve_length = #{CurveLength},
             </if>
             <if test="curveReadius != null">
-                  curve_info.curve_readius = #{CurveReadius},
+                  t.curve_readius = #{CurveReadius},
             </if>
             <if test="direction != null">
-                  curve_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="endMiles != null">
-                  curve_info.end_miles = #{EndMiles},
+                  t.end_miles = #{EndMiles},
             </if>
             <if test="endSlowLength != null">
-                  curve_info.end_slow_length = #{EndSlowLength},
+                  t.end_slow_length = #{EndSlowLength},
             </if>
             <if test="endTangentLength != null">
-                  curve_info.end_tangent_length = #{EndTangentLength},
+                  t.end_tangent_length = #{EndTangentLength},
             </if>
             <if test="isDelete != null">
-                  curve_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  curve_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="longChain != null">
-                  curve_info.long_chain = #{LongChain},
+                  t.long_chain = #{LongChain},
             </if>
             <if test="operator != null">
-                  curve_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="overHeight != null">
-                  curve_info.over_height = #{OverHeight},
+                  t.over_height = #{OverHeight},
             </if>
             <if test="remark != null">
-                  curve_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="side != null">
-                  curve_info.side = #{Side},
+                  t.side = #{Side},
             </if>
             <if test="slopeRate != null">
-                  curve_info.slope_rate = #{SlopeRate},
+                  t.slope_rate = #{SlopeRate},
             </if>
             <if test="startMiles != null">
-                  curve_info.start_miles = #{StartMiles},
+                  t.start_miles = #{StartMiles},
             </if>
             <if test="startSlowLength != null">
-                  curve_info.start_slow_length = #{StartSlowLength},
+                  t.start_slow_length = #{StartSlowLength},
             </if>
             <if test="startTangentLength != null">
-                  curve_info.start_tangent_length = #{StartTangentLength},
+                  t.start_tangent_length = #{StartTangentLength},
             </if>
             <if test="status != null">
-                  curve_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="steeringAngle != null">
-                  curve_info.steering_angle = #{SteeringAngle},
+                  t.steering_angle = #{SteeringAngle},
             </if>
             <if test="trackDisType != null">
-                  curve_info.track_dis_type = #{TrackDisType},
+                  t.track_dis_type = #{TrackDisType},
             </if>
             <if test="trackDisWide != null">
-                  curve_info.track_dis_wide = #{TrackDisWide},
+                  t.track_dis_wide = #{TrackDisWide},
             </if>
             <if test="trackDivisionId != null">
-                  curve_info.track_division_id = #{TrackDivisionId}
+                  t.track_division_id = #{TrackDivisionId}
             </if>
-            curve_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="curveId != null">
-                  curve_info.curve_id = #{curveId}
+                  t.curve_id = #{curveId}
             </if>
           </where>
     </update>
     <select id="getCurveInfoByCurveId" resultType="com.railway.pojo.entity.CurveInfo">
           select
-             curve_info.average_speed,
-             curve_info.create_time,
-             curve_info.curve_direction,
-             curve_info.curve_id,
-             curve_info.curve_length,
-             curve_info.curve_readius,
-             curve_info.direction,
-             curve_info.end_miles,
-             curve_info.end_slow_length,
-             curve_info.end_tangent_length,
-             curve_info.is_delete,
-             curve_info.line_id,
-             curve_info.long_chain,
-             curve_info.operator,
-             curve_info.over_height,
-             curve_info.remark,
-             curve_info.side,
-             curve_info.slope_rate,
-             curve_info.start_miles,
-             curve_info.start_slow_length,
-             curve_info.start_tangent_length,
-             curve_info.status,
-             curve_info.steering_angle,
-             curve_info.track_dis_type,
-             curve_info.track_dis_wide,
-             curve_info.track_division_id,
-             curve_info.update_time
-          form curve_info 
+             t.average_speed,
+             t.create_time,
+             t.curve_direction,
+             t.curve_id,
+             t.curve_length,
+             t.curve_readius,
+             t.direction,
+             t.end_miles,
+             t.end_slow_length,
+             t.end_tangent_length,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.operator,
+             t.over_height,
+             t.remark,
+             t.side,
+             t.slope_rate,
+             t.start_miles,
+             t.start_slow_length,
+             t.start_tangent_length,
+             t.status,
+             t.steering_angle,
+             t.track_dis_type,
+             t.track_dis_wide,
+             t.track_division_id,
+             t.update_time
+          form curve_info t
           <where>
             <if test="curveId != null">
-                  curve_info.curve_id = #{curveId}
+                  t.curve_id = #{curveId}
             </if>
           </where>
     </select>
     <select id="getCurveInfoList" resultType="com.railway.pojo.entity.CurveInfo" parameterType="com.railway.pojo.req.GetCurveInfoListReq">
           select
-             curve_info.average_speed,
-             curve_info.create_time,
-             curve_info.curve_direction,
-             curve_info.curve_id,
-             curve_info.curve_length,
-             curve_info.curve_readius,
-             curve_info.direction,
-             curve_info.end_miles,
-             curve_info.end_slow_length,
-             curve_info.end_tangent_length,
-             curve_info.is_delete,
-             curve_info.line_id,
-             curve_info.long_chain,
-             curve_info.operator,
-             curve_info.over_height,
-             curve_info.remark,
-             curve_info.side,
-             curve_info.slope_rate,
-             curve_info.start_miles,
-             curve_info.start_slow_length,
-             curve_info.start_tangent_length,
-             curve_info.status,
-             curve_info.steering_angle,
-             curve_info.track_dis_type,
-             curve_info.track_dis_wide,
-             curve_info.track_division_id,
-             curve_info.update_time
-          form curve_info 
+             t.average_speed,
+             t.create_time,
+             t.curve_direction,
+             t.curve_id,
+             t.curve_length,
+             t.curve_readius,
+             t.direction,
+             t.end_miles,
+             t.end_slow_length,
+             t.end_tangent_length,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.operator,
+             t.over_height,
+             t.remark,
+             t.side,
+             t.slope_rate,
+             t.start_miles,
+             t.start_slow_length,
+             t.start_tangent_length,
+             t.status,
+             t.steering_angle,
+             t.track_dis_type,
+             t.track_dis_wide,
+             t.track_division_id,
+             t.update_time
+          form curve_info t
           <where>
             <if test="averageSpeed != null">
-                  curve_info.average_speed = #{averageSpeed}
+                  t.average_speed = #{averageSpeed}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and curve_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="curveDirection != null">
-                  and curve_info.curve_direction = #{curveDirection}
+                  and t.curve_direction = #{curveDirection}
             </if>
             <if test="curveLength != null">
-                  and curve_info.curve_length = #{curveLength}
+                  and t.curve_length = #{curveLength}
             </if>
             <if test="curveReadius != null">
-                  and curve_info.curve_readius = #{curveReadius}
+                  and t.curve_readius = #{curveReadius}
             </if>
             <if test="direction != null">
-                  and curve_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="endMiles != null">
-                  and curve_info.end_miles = #{endMiles}
+                  and t.end_miles = #{endMiles}
             </if>
             <if test="endSlowLength != null">
-                  and curve_info.end_slow_length = #{endSlowLength}
+                  and t.end_slow_length = #{endSlowLength}
             </if>
             <if test="endTangentLength != null">
-                  and curve_info.end_tangent_length = #{endTangentLength}
+                  and t.end_tangent_length = #{endTangentLength}
             </if>
             <if test="isDelete != null">
-                  and curve_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and curve_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="longChain != null">
-                  and curve_info.long_chain = #{longChain}
+                  and t.long_chain = #{longChain}
             </if>
             <if test="operator != null">
-                  and curve_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="overHeight != null">
-                  and curve_info.over_height = #{overHeight}
+                  and t.over_height = #{overHeight}
             </if>
             <if test="side != null">
-                  and curve_info.side = #{side}
+                  and t.side = #{side}
             </if>
             <if test="slopeRate != null">
-                  and curve_info.slope_rate = #{slopeRate}
+                  and t.slope_rate = #{slopeRate}
             </if>
             <if test="startMiles != null">
-                  and curve_info.start_miles = #{startMiles}
+                  and t.start_miles = #{startMiles}
             </if>
             <if test="startSlowLength != null">
-                  and curve_info.start_slow_length = #{startSlowLength}
+                  and t.start_slow_length = #{startSlowLength}
             </if>
             <if test="startTangentLength != null">
-                  and curve_info.start_tangent_length = #{startTangentLength}
+                  and t.start_tangent_length = #{startTangentLength}
             </if>
             <if test="status != null">
-                  and curve_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="steeringAngle != null">
-                  and curve_info.steering_angle = #{steeringAngle}
+                  and t.steering_angle = #{steeringAngle}
             </if>
             <if test="trackDisType != null">
-                  and curve_info.track_dis_type = #{trackDisType}
+                  and t.track_dis_type = #{trackDisType}
             </if>
             <if test="trackDisWide != null">
-                  and curve_info.track_dis_wide = #{trackDisWide}
+                  and t.track_dis_wide = #{trackDisWide}
             </if>
             <if test="trackDivisionId != null">
-                  and curve_info.track_division_id = #{trackDivisionId}
+                  and t.track_division_id = #{trackDivisionId}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and curve_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

@@ -2,16 +2,16 @@ const { STR } = require("./../../../libs/str");
 
 
 const PACKAGES = new Map();
-PACKAGES.set("List<", {
+PACKAGES.set("List", {
         package: "import java.util.List;",
         isSystem: true,
 });
-PACKAGES.set("Date ", {
+PACKAGES.set("Date", {
         package: "import java.util.Date;",
         isSystem: true,
 });
 
-PACKAGES.set("@Params", {
+PACKAGES.set("@Param", {
         isSystem: false,
         package: "import org.apache.ibatis.annotations.Param;",
 });
@@ -26,7 +26,7 @@ PACKAGES.set("@NotNull", {
         isSystem: true
 });
 
-PACKAGES.set("PageInfo<", {
+PACKAGES.set("PageInfo", {
         package: "import com.github.pagehelper.PageInfo;",
         isSystem: false
 });
@@ -90,7 +90,7 @@ PACKAGES.set("@Url", {
  * Manage packages and render package segment
  */
 class PackegeRender {
-        constructor(project) {
+        constructor (project) {
                 this._project = project;
         }
 
@@ -124,12 +124,15 @@ class PackegeRender {
                                 .split("\r\n");
 
                 PACKAGES.forEach((value, key) => {
-                        if (value.type) {
-                                if (content.indexOf(key + " ") == -1 && content.indexOf("<" + key) == -1)
-                                        return;
-                        }
 
-                        if (content.indexOf(key) == -1 || packagesPattern.includes(key))
+                        if (key == "List" && !content.includes("List<"))
+                                return;
+
+                        if (!STR.includesAny(content, [`${key} `,
+                        `${key}\n`,
+                        `${key}>`,
+                        `${key}(`,
+                        `${key}<`]) || packagesPattern.includes(key))
                                 return;
 
                         if (value.isSystem) {
@@ -159,7 +162,7 @@ class PackegeRender {
                         pcontent += "\r\n" + scontent;
                 }
 
-                return content.replace(packagesPattern, pcontent);
+                return content.replace(packagesPattern, pcontent.trimRight() + "\r\n");
         }
 }
 

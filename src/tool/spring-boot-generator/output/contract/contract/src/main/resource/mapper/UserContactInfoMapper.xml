@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contract.mapper.UserContactInfoMapper">
+    <insert id="addUserContactInfo" parameterType="com.contract.pojo.req.AddUserContactInfoReq">
+          insert  into user_contact_info t
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contractEmail != null">
+                  t.contract_email,
+            </if>
+            <if test="contractName != null">
+                  t.contract_name,
+            </if>
+            <if test="contractPhone != null">
+                  t.contract_phone,
+            </if>
+            <if test="userId != null">
+                  t.user_id
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contractEmail != null">
+                  #{contractEmail},
+            </if>
+            <if test="contractName != null">
+                  #{contractName},
+            </if>
+            <if test="contractPhone != null">
+                  #{contractPhone},
+            </if>
+            <if test="userId != null">
+                  #{userId}
+            </if>
+          </trim>
+    </insert>
+    <delete id="deleteUserContactInfoById">
+          delete from user_contact_info t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateUserContactInfoById" parameterType="com.contract.pojo.param.UpdateUserContactInfoByIdParams">
+        update user_contact_info t
+        <set>
+            <if test="contractEmail != null">
+                  t.contract_email = #{ContractEmail},
+            </if>
+            <if test="contractName != null">
+                  t.contract_name = #{ContractName},
+            </if>
+            <if test="contractPhone != null">
+                  t.contract_phone = #{ContractPhone},
+            </if>
+            <if test="userId != null">
+                  t.user_id = #{UserId}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getUserContactInfoById" resultType="com.contract.pojo.entity.UserContactInfo">
+          select
+             t.contract_email,
+             t.contract_name,
+             t.contract_phone,
+             t.id,
+             t.user_id
+          form user_contact_info t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getUserContactInfoList" resultType="com.contract.pojo.entity.UserContactInfo" parameterType="com.contract.pojo.req.GetUserContactInfoListReq">
+          select
+             t.contract_email,
+             t.contract_name,
+             t.contract_phone,
+             t.id,
+             t.user_id
+          form user_contact_info t
+          <where>
+            <if test="contractEmail != null and contractEmail != ''">
+                  t.contract_email = #{contractEmail}
+            </if>
+            <if test="contractPhone != null and contractPhone != ''">
+                  and t.contract_phone = #{contractPhone}
+            </if>
+            <if test="userId != null">
+                  and t.user_id = #{userId}
+            </if>
+          </where>
+    </select>
+</mapper>

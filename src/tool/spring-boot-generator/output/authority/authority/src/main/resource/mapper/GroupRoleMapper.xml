@@ -15,7 +15,7 @@
              #{UserAccount},
              #{SystemId},
              #{Role},
-             #{CreateUser},
+             #{createUser},
              current_timestamp
           </trim>
     </insert>

@@ -8,19 +8,20 @@ exports.lineInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
+                        // ballastType : validate --- @Enum("ballastType")  
+                        // createTime excluded 
                         // fullName : validate --- @NotNull  
-                        // shortName : validate --- @NotNull  
-                        // lineCode : validate --- @NotNull  
+                        // gaugeType : validate --- @Enum("gaugeType")  
+                        // id excluded 
                         // inputCode : validate --- @NotNull  
+                        // isDelete : validate --- @NotNull  
+                        // lineCode : validate --- @NotNull  
+                        // operateType : validate --- @Enum("operateType")  
+                        // shortName : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
                         // trackType : validate --- @Enum("trackType")  
                         // tractionType : validate --- @Enum("tractionType")  
-                        // ballastType : validate --- @Enum("ballastType")  
-                        // operateType : validate --- @Enum("operateType")  
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
-                        // createTime excluded 
-                        // updateTime excluded@@
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addLineInfo")
@@ -28,7 +29,7 @@ exports.lineInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(lineInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/lineInfo");
@@ -36,16 +37,17 @@ exports.lineInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
+                                           .validate("ballastType","@Enum(\"ballastType\")")
                                            .validate("fullName","@NotNull")
-                                           .validate("shortName","@NotNull")
-                                           .validate("lineCode","@NotNull")
+                                           .validate("gaugeType","@Enum(\"gaugeType\")")
                                            .validate("inputCode","@NotNull")
+                                           .validate("isDelete","@NotNull")
+                                           .validate("lineCode","@NotNull")
+                                           .validate("operateType","@Enum(\"operateType\")")
+                                           .validate("shortName","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                            .validate("trackType","@Enum(\"trackType\")")
                                            .validate("tractionType","@Enum(\"tractionType\")")
-                                           .validate("ballastType","@Enum(\"ballastType\")")
-                                           .validate("operateType","@Enum(\"operateType\")")
-                                           .validate("status","@Enum(\"status\")")
-                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -69,13 +71,14 @@ exports.lineInfoConfig = {
                                 .build(),
                                 
                         // updateById
-                        // trackType : validate --- @Enum("trackType")  
-                        // tractionType : validate --- @Enum("tractionType")  
                         // ballastType : validate --- @Enum("ballastType")  
+                        // createTime : excluded 
+                        // gaugeType : validate --- @Enum("gaugeType")  
                         // operateType : validate --- @Enum("operateType")  
                         // status : validate --- @Enum("status")  
-                        // createTime : excluded 
-                        // updateTime : excluded@@
+                        // trackType : validate --- @Enum("trackType")  
+                        // tractionType : validate --- @Enum("tractionType")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateLineInfoById")
@@ -101,11 +104,12 @@ exports.lineInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("trackType","@Enum(\"trackType\")")
-                                           .validate("tractionType","@Enum(\"tractionType\")")
                                            .validate("ballastType","@Enum(\"ballastType\")")
+                                           .validate("gaugeType","@Enum(\"gaugeType\")")
                                            .validate("operateType","@Enum(\"operateType\")")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("trackType","@Enum(\"trackType\")")
+                                           .validate("tractionType","@Enum(\"tractionType\")")
                                 })
                                 .build(),
 
@@ -135,14 +139,15 @@ exports.lineInfoConfig = {
                                 .build(),
 
                         // getList
-                        // fullName : excluded 
-                        // shortName : excluded 
-                        // trackType : validates --- @Enum("trackType")  
-                        // tractionType : validates --- @Enum("tractionType")  
                         // ballastType : validates --- @Enum("ballastType")  
+                        // createTime : expression --- timeRange
+                        // fullName : excluded 
+                        // gaugeType : validates --- @Enum("gaugeType")  
                         // operateType : validates --- @Enum("operateType")  
+                        // shortName : excluded 
                         // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // trackType : validates --- @Enum("trackType")  
+                        // tractionType : validates --- @Enum("tractionType")
                         new builder()
                                 .type("select")
                                 .id("getLineInfoList")
@@ -162,12 +167,14 @@ exports.lineInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("trackType","@Enum(\"trackType\")")
-                                           .validate("tractionType","@Enum(\"tractionType\")")
                                            .validate("ballastType","@Enum(\"ballastType\")")
+                                           .validate("gaugeType","@Enum(\"gaugeType\")")
                                            .validate("operateType","@Enum(\"operateType\")")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("trackType","@Enum(\"trackType\")")
+                                           .validate("tractionType","@Enum(\"tractionType\")")
                                 })
+
                                 .build()
                 ]
 }

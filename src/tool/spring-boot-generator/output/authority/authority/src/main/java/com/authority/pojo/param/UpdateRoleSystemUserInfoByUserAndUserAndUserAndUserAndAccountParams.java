@@ -2,7 +2,7 @@ public class UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountParams
 
     @Getter
     @Setter
-    private [object Object]ype account;
+    private String account;
 
     private UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountReq req;
 
@@ -11,11 +11,11 @@ public class UpdateRoleSystemUserInfoByUserAndUserAndUserAndUserAndAccountParams
         this.req = req;
     }
 
-    public [object Object]ype getPassword() {
+    public String getPassword() {
         return req.getPassword();
     }
 
-    public [object Object]ype getRole() {
+    public String getRole() {
         return req.getRole();
     }
 

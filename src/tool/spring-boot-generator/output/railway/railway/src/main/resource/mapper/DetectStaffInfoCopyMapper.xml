@@ -2,67 +2,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectStaffInfoCopyMapper">
     <insert id="addDetectStaffInfoCopy" parameterType="com.railway.pojo.req.AddDetectStaffInfoCopyReq">
-          insert  into detect_staff_info_copy 
+          insert  into detect_staff_info_copy t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="birthday != null">
-                  detect_staff_info_copy.birthday,
+                  t.birthday,
             </if>
             <if test="contact != null">
-                  detect_staff_info_copy.contact,
+                  t.contact,
             </if>
             <if test="eduDegree != null">
-                  detect_staff_info_copy.edu_degree,
+                  t.edu_degree,
             </if>
             <if test="gender != null">
-                  detect_staff_info_copy.gender,
+                  t.gender,
             </if>
             <if test="gradeGainDate != null">
-                  detect_staff_info_copy.grade_gain_date,
+                  t.grade_gain_date,
             </if>
             <if test="gradeId != null">
-                  detect_staff_info_copy.grade_id,
+                  t.grade_id,
             </if>
             <if test="idCardNo != null">
-                  detect_staff_info_copy.id_card_no,
+                  t.id_card_no,
             </if>
-             detect_staff_info_copy.is_delete,
+             t.is_delete,
             <if test="name != null">
-                  detect_staff_info_copy.name,
+                  t.name,
             </if>
             <if test="operator != null">
-                  detect_staff_info_copy.operator,
+                  t.operator,
             </if>
             <if test="positionId != null">
-                  detect_staff_info_copy.position_id,
+                  t.position_id,
             </if>
             <if test="qualificationAuditDate != null">
-                  detect_staff_info_copy.qualification_audit_date,
+                  t.qualification_audit_date,
             </if>
             <if test="qualificationGainDate != null">
-                  detect_staff_info_copy.qualification_gain_date,
+                  t.qualification_gain_date,
             </if>
             <if test="qualificationGrade != null">
-                  detect_staff_info_copy.qualification_grade,
+                  t.qualification_grade,
             </if>
             <if test="qualificationInvalidDate != null">
-                  detect_staff_info_copy.qualification_invalid_date,
+                  t.qualification_invalid_date,
             </if>
             <if test="qualificationValidTime != null">
-                  detect_staff_info_copy.qualification_valid_time,
+                  t.qualification_valid_time,
             </if>
             <if test="remark != null">
-                  detect_staff_info_copy.remark,
+                  t.remark,
             </if>
             <if test="status != null">
-                  detect_staff_info_copy.status,
+                  t.status,
             </if>
             <if test="tecCategory != null">
-                  detect_staff_info_copy.tec_category,
+                  t.tec_category,
             </if>
             <if test="workareaId != null">
-                  detect_staff_info_copy.workarea_id,
+                  t.workarea_id,
             </if>
-             detect_staff_info_copy.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -128,202 +128,202 @@
           </trim>
     </insert>
     <delete id="deleteDetectStaffInfoCopyById">
-          delete from detect_staff_info_copy 
+          delete from detect_staff_info_copy t
           <where>
             <if test="id != null">
-                  detect_staff_info_copy.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateDetectStaffInfoCopyById" parameterType="com.railway.pojo.param.UpdateDetectStaffInfoCopyByIdParams">
-        update detect_staff_info_copy 
+        update detect_staff_info_copy t
         <set>
             <if test="birthday != null">
-                  detect_staff_info_copy.birthday = #{Birthday},
+                  t.birthday = #{Birthday},
             </if>
             <if test="contact != null">
-                  detect_staff_info_copy.contact = #{Contact},
+                  t.contact = #{Contact},
             </if>
             <if test="eduDegree != null">
-                  detect_staff_info_copy.edu_degree = #{EduDegree},
+                  t.edu_degree = #{EduDegree},
             </if>
             <if test="gender != null">
-                  detect_staff_info_copy.gender = #{Gender},
+                  t.gender = #{Gender},
             </if>
             <if test="gradeGainDate != null">
-                  detect_staff_info_copy.grade_gain_date = #{GradeGainDate},
+                  t.grade_gain_date = #{GradeGainDate},
             </if>
             <if test="gradeId != null">
-                  detect_staff_info_copy.grade_id = #{GradeId},
+                  t.grade_id = #{GradeId},
             </if>
             <if test="idCardNo != null">
-                  detect_staff_info_copy.id_card_no = #{IdCardNo},
+                  t.id_card_no = #{IdCardNo},
             </if>
             <if test="isDelete != null">
-                  detect_staff_info_copy.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="name != null">
-                  detect_staff_info_copy.name = #{Name},
+                  t.name = #{Name},
             </if>
             <if test="operator != null">
-                  detect_staff_info_copy.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="positionId != null">
-                  detect_staff_info_copy.position_id = #{PositionId},
+                  t.position_id = #{PositionId},
             </if>
             <if test="qualificationAuditDate != null">
-                  detect_staff_info_copy.qualification_audit_date = #{QualificationAuditDate},
+                  t.qualification_audit_date = #{QualificationAuditDate},
             </if>
             <if test="qualificationGainDate != null">
-                  detect_staff_info_copy.qualification_gain_date = #{QualificationGainDate},
+                  t.qualification_gain_date = #{QualificationGainDate},
             </if>
             <if test="qualificationGrade != null">
-                  detect_staff_info_copy.qualification_grade = #{QualificationGrade},
+                  t.qualification_grade = #{QualificationGrade},
             </if>
             <if test="qualificationInvalidDate != null">
-                  detect_staff_info_copy.qualification_invalid_date = #{QualificationInvalidDate},
+                  t.qualification_invalid_date = #{QualificationInvalidDate},
             </if>
             <if test="qualificationValidTime != null">
-                  detect_staff_info_copy.qualification_valid_time = #{QualificationValidTime},
+                  t.qualification_valid_time = #{QualificationValidTime},
             </if>
             <if test="remark != null">
-                  detect_staff_info_copy.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="status != null">
-                  detect_staff_info_copy.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="tecCategory != null">
-                  detect_staff_info_copy.tec_category = #{TecCategory},
+                  t.tec_category = #{TecCategory},
             </if>
             <if test="workareaId != null">
-                  detect_staff_info_copy.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            detect_staff_info_copy.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  detect_staff_info_copy.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getDetectStaffInfoCopyById" resultType="com.railway.pojo.entity.DetectStaffInfoCopy">
           select
-             detect_staff_info_copy.birthday,
-             detect_staff_info_copy.contact,
-             detect_staff_info_copy.create_time,
-             detect_staff_info_copy.edu_degree,
-             detect_staff_info_copy.gender,
-             detect_staff_info_copy.grade_gain_date,
-             detect_staff_info_copy.grade_id,
-             detect_staff_info_copy.id,
-             detect_staff_info_copy.id_card_no,
-             detect_staff_info_copy.is_delete,
-             detect_staff_info_copy.name,
-             detect_staff_info_copy.operator,
-             detect_staff_info_copy.position_id,
-             detect_staff_info_copy.qualification_audit_date,
-             detect_staff_info_copy.qualification_gain_date,
-             detect_staff_info_copy.qualification_grade,
-             detect_staff_info_copy.qualification_invalid_date,
-             detect_staff_info_copy.qualification_valid_time,
-             detect_staff_info_copy.remark,
-             detect_staff_info_copy.status,
-             detect_staff_info_copy.tec_category,
-             detect_staff_info_copy.update_time,
-             detect_staff_info_copy.workarea_id
-          form detect_staff_info_copy 
+             t.birthday,
+             t.contact,
+             t.create_time,
+             t.edu_degree,
+             t.gender,
+             t.grade_gain_date,
+             t.grade_id,
+             t.id,
+             t.id_card_no,
+             t.is_delete,
+             t.name,
+             t.operator,
+             t.position_id,
+             t.qualification_audit_date,
+             t.qualification_gain_date,
+             t.qualification_grade,
+             t.qualification_invalid_date,
+             t.qualification_valid_time,
+             t.remark,
+             t.status,
+             t.tec_category,
+             t.update_time,
+             t.workarea_id
+          form detect_staff_info_copy t
           <where>
             <if test="id != null">
-                  detect_staff_info_copy.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getDetectStaffInfoCopyList" resultType="com.railway.pojo.entity.DetectStaffInfoCopy" parameterType="com.railway.pojo.req.GetDetectStaffInfoCopyListReq">
           select
-             detect_staff_info_copy.birthday,
-             detect_staff_info_copy.contact,
-             detect_staff_info_copy.create_time,
-             detect_staff_info_copy.edu_degree,
-             detect_staff_info_copy.gender,
-             detect_staff_info_copy.grade_gain_date,
-             detect_staff_info_copy.grade_id,
-             detect_staff_info_copy.id,
-             detect_staff_info_copy.id_card_no,
-             detect_staff_info_copy.is_delete,
-             detect_staff_info_copy.name,
-             detect_staff_info_copy.operator,
-             detect_staff_info_copy.position_id,
-             detect_staff_info_copy.qualification_audit_date,
-             detect_staff_info_copy.qualification_gain_date,
-             detect_staff_info_copy.qualification_grade,
-             detect_staff_info_copy.qualification_invalid_date,
-             detect_staff_info_copy.qualification_valid_time,
-             detect_staff_info_copy.remark,
-             detect_staff_info_copy.status,
-             detect_staff_info_copy.tec_category,
-             detect_staff_info_copy.update_time,
-             detect_staff_info_copy.workarea_id
-          form detect_staff_info_copy 
+             t.birthday,
+             t.contact,
+             t.create_time,
+             t.edu_degree,
+             t.gender,
+             t.grade_gain_date,
+             t.grade_id,
+             t.id,
+             t.id_card_no,
+             t.is_delete,
+             t.name,
+             t.operator,
+             t.position_id,
+             t.qualification_audit_date,
+             t.qualification_gain_date,
+             t.qualification_grade,
+             t.qualification_invalid_date,
+             t.qualification_valid_time,
+             t.remark,
+             t.status,
+             t.tec_category,
+             t.update_time,
+             t.workarea_id
+          form detect_staff_info_copy t
           <where>
             <if test="birthdayStart !=null and  birthdayEnd != null">
-                  detect_staff_info_copy.birthday between #{birthdayStart} and #{birthdayEnd}
+                  t.birthday between #{birthdayStart} and #{birthdayEnd}
             </if>
             <if test="contact != null and contact != ''">
-                  and detect_staff_info_copy.contact = #{contact}
+                  and t.contact = #{contact}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and detect_staff_info_copy.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="eduDegree != null">
-                  and detect_staff_info_copy.edu_degree = #{eduDegree}
+                  and t.edu_degree = #{eduDegree}
             </if>
             <if test="gender != null">
-                  and detect_staff_info_copy.gender = #{gender}
+                  and t.gender = #{gender}
             </if>
             <if test="gradeGainDateStart !=null and  gradeGainDateEnd != null">
-                  and detect_staff_info_copy.grade_gain_date between #{gradeGainDateStart} and #{gradeGainDateEnd}
+                  and t.grade_gain_date between #{gradeGainDateStart} and #{gradeGainDateEnd}
             </if>
             <if test="gradeId != null">
-                  and detect_staff_info_copy.grade_id = #{gradeId}
+                  and t.grade_id = #{gradeId}
             </if>
             <if test="idCardNo != null and idCardNo != ''">
-                  and detect_staff_info_copy.id_card_no = #{idCardNo}
+                  and t.id_card_no = #{idCardNo}
             </if>
             <if test="isDelete != null">
-                  and detect_staff_info_copy.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="operator != null">
-                  and detect_staff_info_copy.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="positionId != null">
-                  and detect_staff_info_copy.position_id = #{positionId}
+                  and t.position_id = #{positionId}
             </if>
             <if test="qualificationAuditDateStart !=null and  qualificationAuditDateEnd != null">
-                  and detect_staff_info_copy.qualification_audit_date between #{qualificationAuditDateStart} and #{qualificationAuditDateEnd}
+                  and t.qualification_audit_date between #{qualificationAuditDateStart} and #{qualificationAuditDateEnd}
             </if>
             <if test="qualificationGainDateStart !=null and  qualificationGainDateEnd != null">
-                  and detect_staff_info_copy.qualification_gain_date between #{qualificationGainDateStart} and #{qualificationGainDateEnd}
+                  and t.qualification_gain_date between #{qualificationGainDateStart} and #{qualificationGainDateEnd}
             </if>
             <if test="qualificationGrade != null">
-                  and detect_staff_info_copy.qualification_grade = #{qualificationGrade}
+                  and t.qualification_grade = #{qualificationGrade}
             </if>
             <if test="qualificationInvalidDateStart !=null and  qualificationInvalidDateEnd != null">
-                  and detect_staff_info_copy.qualification_invalid_date between #{qualificationInvalidDateStart} and #{qualificationInvalidDateEnd}
+                  and t.qualification_invalid_date between #{qualificationInvalidDateStart} and #{qualificationInvalidDateEnd}
             </if>
             <if test="qualificationValidTime != null">
-                  and detect_staff_info_copy.qualification_valid_time = #{qualificationValidTime}
+                  and t.qualification_valid_time = #{qualificationValidTime}
             </if>
             <if test="status != null">
-                  and detect_staff_info_copy.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="tecCategory != null">
-                  and detect_staff_info_copy.tec_category = #{tecCategory}
+                  and t.tec_category = #{tecCategory}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and detect_staff_info_copy.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="workareaId != null">
-                  and detect_staff_info_copy.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>

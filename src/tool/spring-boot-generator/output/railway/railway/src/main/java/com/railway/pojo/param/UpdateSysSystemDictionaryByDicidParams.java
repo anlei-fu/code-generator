@@ -1,3 +1,9 @@
+package com.railway.pojo.param;
+
+import com.railway.pojo.req.UpdateSysSystemDictionaryByDicidReq;
+import lombok.Getter;
+import lombok.Setter;
+
 public class UpdateSysSystemDictionaryByDicidParams {
 
     @Getter

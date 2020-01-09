@@ -122,194 +122,194 @@
           </trim>
     </insert>
     <delete id="deleteBridgeInfoById">
-          delete from bridge_info 
+          delete from bridge_info t
           <where>
             <if test="id != null">
-                  bridge_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateBridgeInfoById" parameterType="com.railway.pojo.param.UpdateBridgeInfoByIdParams">
-        update bridge_info 
+        update bridge_info t
         <set>
             <if test="bridgeLength != null">
-                  bridge_info.bridge_length = #{BridgeLength},
+                  t.bridge_length = #{BridgeLength},
             </if>
             <if test="bridgeName != null">
-                  bridge_info.bridge_name = #{BridgeName},
+                  t.bridge_name = #{BridgeName},
             </if>
             <if test="bridgeNo != null">
-                  bridge_info.bridge_no = #{BridgeNo},
+                  t.bridge_no = #{BridgeNo},
             </if>
             <if test="crossHoleStyle != null">
-                  bridge_info.cross_hole_style = #{CrossHoleStyle},
+                  t.cross_hole_style = #{CrossHoleStyle},
             </if>
             <if test="direction != null">
-                  bridge_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="endMiles != null">
-                  bridge_info.end_miles = #{EndMiles},
+                  t.end_miles = #{EndMiles},
             </if>
             <if test="flyoverCategory != null">
-                  bridge_info.flyover_category = #{FlyoverCategory},
+                  t.flyover_category = #{FlyoverCategory},
             </if>
             <if test="holeLength != null">
-                  bridge_info.hole_length = #{HoleLength},
+                  t.hole_length = #{HoleLength},
             </if>
             <if test="isDelete != null">
-                  bridge_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  bridge_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="longChain != null">
-                  bridge_info.long_chain = #{LongChain},
+                  t.long_chain = #{LongChain},
             </if>
             <if test="middleMiles != null">
-                  bridge_info.middle_miles = #{MiddleMiles},
+                  t.middle_miles = #{MiddleMiles},
             </if>
             <if test="operator != null">
-                  bridge_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="remark != null">
-                  bridge_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="side != null">
-                  bridge_info.side = #{Side},
+                  t.side = #{Side},
             </if>
             <if test="startMiles != null">
-                  bridge_info.start_miles = #{StartMiles},
+                  t.start_miles = #{StartMiles},
             </if>
             <if test="status != null">
-                  bridge_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="trackDivisionId != null">
-                  bridge_info.track_division_id = #{TrackDivisionId},
+                  t.track_division_id = #{TrackDivisionId},
             </if>
             <if test="trackWeigth != null">
-                  bridge_info.track_weigth = #{TrackWeigth}
+                  t.track_weigth = #{TrackWeigth}
             </if>
-            bridge_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  bridge_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getBridgeInfoById" resultType="com.railway.pojo.entity.BridgeInfo">
           select
-             bridge_info.bridge_length,
-             bridge_info.bridge_name,
-             bridge_info.bridge_no,
-             bridge_info.create_time,
-             bridge_info.cross_hole_style,
-             bridge_info.direction,
-             bridge_info.end_miles,
-             bridge_info.flyover_category,
-             bridge_info.hole_length,
-             bridge_info.id,
-             bridge_info.is_delete,
-             bridge_info.line_id,
-             bridge_info.long_chain,
-             bridge_info.middle_miles,
-             bridge_info.operator,
-             bridge_info.remark,
-             bridge_info.side,
-             bridge_info.start_miles,
-             bridge_info.status,
-             bridge_info.track_division_id,
-             bridge_info.track_weigth,
-             bridge_info.update_time
-          form bridge_info 
+             t.bridge_length,
+             t.bridge_name,
+             t.bridge_no,
+             t.create_time,
+             t.cross_hole_style,
+             t.direction,
+             t.end_miles,
+             t.flyover_category,
+             t.hole_length,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.middle_miles,
+             t.operator,
+             t.remark,
+             t.side,
+             t.start_miles,
+             t.status,
+             t.track_division_id,
+             t.track_weigth,
+             t.update_time
+          form bridge_info t
           <where>
             <if test="id != null">
-                  bridge_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getBridgeInfoList" resultType="com.railway.pojo.entity.BridgeInfo" parameterType="com.railway.pojo.req.GetBridgeInfoListReq">
           select
-             bridge_info.bridge_length,
-             bridge_info.bridge_name,
-             bridge_info.bridge_no,
-             bridge_info.create_time,
-             bridge_info.cross_hole_style,
-             bridge_info.direction,
-             bridge_info.end_miles,
-             bridge_info.flyover_category,
-             bridge_info.hole_length,
-             bridge_info.id,
-             bridge_info.is_delete,
-             bridge_info.line_id,
-             bridge_info.long_chain,
-             bridge_info.middle_miles,
-             bridge_info.operator,
-             bridge_info.remark,
-             bridge_info.side,
-             bridge_info.start_miles,
-             bridge_info.status,
-             bridge_info.track_division_id,
-             bridge_info.track_weigth,
-             bridge_info.update_time
-          form bridge_info 
+             t.bridge_length,
+             t.bridge_name,
+             t.bridge_no,
+             t.create_time,
+             t.cross_hole_style,
+             t.direction,
+             t.end_miles,
+             t.flyover_category,
+             t.hole_length,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.middle_miles,
+             t.operator,
+             t.remark,
+             t.side,
+             t.start_miles,
+             t.status,
+             t.track_division_id,
+             t.track_weigth,
+             t.update_time
+          form bridge_info t
           <where>
             <if test="bridgeLength != null">
-                  bridge_info.bridge_length = #{bridgeLength}
+                  t.bridge_length = #{bridgeLength}
             </if>
             <if test="bridgeNo != null and bridgeNo != ''">
-                  and bridge_info.bridge_no = #{bridgeNo}
+                  and t.bridge_no = #{bridgeNo}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and bridge_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="crossHoleStyle != null and crossHoleStyle != ''">
-                  and bridge_info.cross_hole_style = #{crossHoleStyle}
+                  and t.cross_hole_style = #{crossHoleStyle}
             </if>
             <if test="direction != null">
-                  and bridge_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="endMiles != null">
-                  and bridge_info.end_miles = #{endMiles}
+                  and t.end_miles = #{endMiles}
             </if>
             <if test="flyoverCategory != null and flyoverCategory != ''">
-                  and bridge_info.flyover_category = #{flyoverCategory}
+                  and t.flyover_category = #{flyoverCategory}
             </if>
             <if test="holeLength != null">
-                  and bridge_info.hole_length = #{holeLength}
+                  and t.hole_length = #{holeLength}
             </if>
             <if test="isDelete != null">
-                  and bridge_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and bridge_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="longChain != null">
-                  and bridge_info.long_chain = #{longChain}
+                  and t.long_chain = #{longChain}
             </if>
             <if test="middleMiles != null">
-                  and bridge_info.middle_miles = #{middleMiles}
+                  and t.middle_miles = #{middleMiles}
             </if>
             <if test="operator != null">
-                  and bridge_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="side != null">
-                  and bridge_info.side = #{side}
+                  and t.side = #{side}
             </if>
             <if test="startMiles != null">
-                  and bridge_info.start_miles = #{startMiles}
+                  and t.start_miles = #{startMiles}
             </if>
             <if test="status != null">
-                  and bridge_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="trackDivisionId != null">
-                  and bridge_info.track_division_id = #{trackDivisionId}
+                  and t.track_division_id = #{trackDivisionId}
             </if>
             <if test="trackWeigth != null">
-                  and bridge_info.track_weigth = #{trackWeigth}
+                  and t.track_weigth = #{trackWeigth}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and bridge_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

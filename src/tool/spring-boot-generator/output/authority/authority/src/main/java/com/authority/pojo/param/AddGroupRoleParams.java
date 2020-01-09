@@ -1,25 +1,26 @@
 public class AddGroupRoleParams {
 
+    @Getter
+    @Setter
+    private String createUser;
+
     private AddGroupRoleReq req;
 
-    public AddGroupRoleParams(AddGroupRoleReq req) {
+    public AddGroupRoleParams(String user, AddGroupRoleReq req) {
+        this.createUser = user;
         this.req = req;
     }
 
-    public [object Object]ype getUserAccount() {
+    public String getUserAccount() {
         return req.getUserAccount();
     }
 
-    public [object Object]ype getSystemId() {
+    public String getSystemId() {
         return req.getSystemId();
     }
 
-    public [object Object]ype getRole() {
+    public String getRole() {
         return req.getRole();
-    }
-
-    public [object Object]ype getCreateUser() {
-        return req.getCreateUser();
     }
 
 }

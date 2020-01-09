@@ -1,21 +1,22 @@
 public class AddUserRoleParams {
 
+    @Getter
+    @Setter
+    private String createUser;
+
     private AddUserRoleReq req;
 
-    public AddUserRoleParams(AddUserRoleReq req) {
+    public AddUserRoleParams(String user, AddUserRoleReq req) {
+        this.createUser = user;
         this.req = req;
     }
 
-    public [object Object]ype getUserAccount() {
+    public String getUserAccount() {
         return req.getUserAccount();
     }
 
-    public [object Object]ype getSystemId() {
+    public Integer getSystemId() {
         return req.getSystemId();
-    }
-
-    public [object Object]ype getCreateUser() {
-        return req.getCreateUser();
     }
 
 }

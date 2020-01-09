@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.BureauLineOrderMapper">
     <insert id="addBureauLineOrder" parameterType="com.railway.pojo.req.AddBureauLineOrderReq">
-          insert  into bureau_line_order 
+          insert  into bureau_line_order t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bureauId != null">
-                  bureau_line_order.bureau_id,
+                  t.bureau_id,
             </if>
             <if test="lineId != null">
-                  bureau_line_order.line_id,
+                  t.line_id,
             </if>
             <if test="operator != null">
-                  bureau_line_order.operator,
+                  t.operator,
             </if>
             <if test="sortNum != null">
-                  bureau_line_order.sort_num,
+                  t.sort_num,
             </if>
-             bureau_line_order.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -36,80 +36,80 @@
           </trim>
     </insert>
     <delete id="deleteBureauLineOrderById">
-          delete from bureau_line_order 
+          delete from bureau_line_order t
           <where>
             <if test="id != null">
-                  bureau_line_order.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateBureauLineOrderById" parameterType="com.railway.pojo.param.UpdateBureauLineOrderByIdParams">
-        update bureau_line_order 
+        update bureau_line_order t
         <set>
             <if test="bureauId != null">
-                  bureau_line_order.bureau_id = #{BureauId},
+                  t.bureau_id = #{BureauId},
             </if>
             <if test="lineId != null">
-                  bureau_line_order.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="operator != null">
-                  bureau_line_order.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="sortNum != null">
-                  bureau_line_order.sort_num = #{SortNum}
+                  t.sort_num = #{SortNum}
             </if>
-            bureau_line_order.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  bureau_line_order.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getBureauLineOrderById" resultType="com.railway.pojo.entity.BureauLineOrder">
           select
-             bureau_line_order.bureau_id,
-             bureau_line_order.create_time,
-             bureau_line_order.id,
-             bureau_line_order.line_id,
-             bureau_line_order.operator,
-             bureau_line_order.sort_num,
-             bureau_line_order.update_time
-          form bureau_line_order 
+             t.bureau_id,
+             t.create_time,
+             t.id,
+             t.line_id,
+             t.operator,
+             t.sort_num,
+             t.update_time
+          form bureau_line_order t
           <where>
             <if test="id != null">
-                  bureau_line_order.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getBureauLineOrderList" resultType="com.railway.pojo.entity.BureauLineOrder" parameterType="com.railway.pojo.req.GetBureauLineOrderListReq">
           select
-             bureau_line_order.bureau_id,
-             bureau_line_order.create_time,
-             bureau_line_order.id,
-             bureau_line_order.line_id,
-             bureau_line_order.operator,
-             bureau_line_order.sort_num,
-             bureau_line_order.update_time
-          form bureau_line_order 
+             t.bureau_id,
+             t.create_time,
+             t.id,
+             t.line_id,
+             t.operator,
+             t.sort_num,
+             t.update_time
+          form bureau_line_order t
           <where>
             <if test="bureauId != null">
-                  bureau_line_order.bureau_id = #{bureauId}
+                  t.bureau_id = #{bureauId}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and bureau_line_order.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="lineId != null">
-                  and bureau_line_order.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="operator != null">
-                  and bureau_line_order.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="sortNum != null and sortNum != ''">
-                  and bureau_line_order.sort_num = #{sortNum}
+                  and t.sort_num = #{sortNum}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and bureau_line_order.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

@@ -2,14 +2,12 @@ let bureauInfo = {
 	name: "bureauInfo",
 	description: "铁路局信息",
 	columns: {
-		id: {
-			name: "id",
-			description: "铁路局编号",
-			isPk: true,
-			autoIncrement: true,
+		bureauCode: {
+			name: "bureauCode",
+			description: "铁路局编码",
 			nullable: false,
 			type: {
-				name: "int",
+				name: "varchar",
 				length: null
 			}
 		},
@@ -22,12 +20,22 @@ let bureauInfo = {
 				length: null
 			}
 		},
-		bureauCode: {
-			name: "bureauCode",
-			description: "铁路局编码",
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
+		id: {
+			name: "id",
+			description: "铁路局编号",
+			isPk: true,
+			autoIncrement: true,
 			nullable: false,
 			type: {
-				name: "varchar",
+				name: "int",
 				length: null
 			}
 		},
@@ -49,12 +57,13 @@ let bureauInfo = {
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "int",
+				length: null
 			}
 		},
 		updateTime: {
@@ -64,28 +73,19 @@ let bureauInfo = {
 			type: {
 				name: "datetime"
 			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
 		}
 	}
 };
 
 let columnsArray = [
-	"id",
-	"bureauName",
 	"bureauCode",
+	"bureauName",
+	"createTime",
+	"id",
 	"inputCode",
 	"isDelete",
-	"createTime",
-	"updateTime",
-	"operator"
+	"operator",
+	"updateTime"
 ];
 
 function create() {

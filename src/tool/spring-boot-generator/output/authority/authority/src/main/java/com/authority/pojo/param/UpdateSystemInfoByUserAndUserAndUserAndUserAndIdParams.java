@@ -2,7 +2,7 @@ public class UpdateSystemInfoByUserAndUserAndUserAndUserAndIdParams {
 
     @Getter
     @Setter
-    private [object Object]ype id;
+    private Integer id;
 
     private UpdateSystemInfoByUserAndUserAndUserAndUserAndIdReq req;
 
@@ -11,11 +11,11 @@ public class UpdateSystemInfoByUserAndUserAndUserAndUserAndIdParams {
         this.req = req;
     }
 
-    public [object Object]ype getName() {
+    public String getName() {
         return req.getName();
     }
 
-    public [object Object]ype getDescription() {
+    public String getDescription() {
         return req.getDescription();
     }
 

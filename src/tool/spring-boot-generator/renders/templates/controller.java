@@ -1,4 +1,4 @@
-package com.test.controller;
+package com.@project.controller;
 
 @packages
 import com.@project.pojo.resp.R;

@@ -1,5 +1,6 @@
-const { FILE } = require("./../../libs/file")
-const { STR } = require("./../../libs/str")
+const { FILE } = require("./../../libs/file");
+const { STR } = require("./../../libs/str");
+const { formatJavaFile } = require("./utils");
 
 /**
  * Use to write all files
@@ -118,7 +119,11 @@ class Writer {
          * @param {String} content 
          */
         _writeCore(path, content, name) {
-                FILE.write(path, STR.replace(content, { "@project": this._project, "@name": name }));
+                content = STR.replace(content, { "@project": this._project, "@name": name });
+                if (path.endsWith(".java"))
+                        content = formatJavaFile(content);
+
+                FILE.write(path, content);
         }
 }
 

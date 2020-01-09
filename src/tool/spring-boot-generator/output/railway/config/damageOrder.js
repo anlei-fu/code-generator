@@ -8,10 +8,10 @@ exports.damageOrderConfig = {
                 items: [
 
                         // add
-                        // orderNo excluded 
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // isDelete : validate --- @NotNull  
+                        // orderNo excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDamageOrder")
@@ -19,7 +19,7 @@ exports.damageOrderConfig = {
                                 .includes(collection => {
                                         collection.includes(damageOrder.columnsArray)
                                                   .excludes("orderNo")
-                                                  .excludes(["orderNo","createTime","updateTime"])
+                                                  .excludes(["createTime","orderNo","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/damageOrder");
@@ -52,7 +52,7 @@ exports.damageOrderConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDamageOrderByOrderNo")
@@ -108,7 +108,7 @@ exports.damageOrderConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange@@
+                        // createTime : expression --- timeRange
                         new builder()
                                 .type("select")
                                 .id("getDamageOrderList")
@@ -129,6 +129,7 @@ exports.damageOrderConfig = {
                                            .excludes("orderNo")
 
                                 })
+
                                 .build()
                 ]
 }

@@ -1,5 +1,5 @@
-package com.undefined.validate.annotation;
+package com.railway.validate.annotation;
 
 public @interface Enum {
-        String name();
+        String value() ;
 }

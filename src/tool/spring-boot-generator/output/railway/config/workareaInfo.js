@@ -8,13 +8,13 @@ exports.workareaInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // fullName : validate --- @NotNull  
-                        // shortName : validate --- @NotNull  
-                        // workshopId : validate --- @NotNull  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // fullName : validate --- @NotNull  
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // shortName : validate --- @NotNull  
+                        // updateTime excluded 
+                        // workshopId : validate --- @NotNull
                         new builder()
                                 .type("insert")
                                 .id("addWorkareaInfo")
@@ -22,7 +22,7 @@ exports.workareaInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(workareaInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/workareaInfo");
@@ -31,9 +31,9 @@ exports.workareaInfoConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("fullName","@NotNull")
+                                           .validate("isDelete","@NotNull")
                                            .validate("shortName","@NotNull")
                                            .validate("workshopId","@NotNull")
-                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -58,7 +58,7 @@ exports.workareaInfoConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateWorkareaInfoById")
@@ -114,9 +114,9 @@ exports.workareaInfoConfig = {
                                 .build(),
 
                         // getList
+                        // createTime : expression --- timeRange
                         // fullName : excluded 
-                        // shortName : excluded 
-                        // createTime : expression --- timeRange@@
+                        // shortName : excluded
                         new builder()
                                 .type("select")
                                 .id("getWorkareaInfoList")
@@ -138,6 +138,7 @@ exports.workareaInfoConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

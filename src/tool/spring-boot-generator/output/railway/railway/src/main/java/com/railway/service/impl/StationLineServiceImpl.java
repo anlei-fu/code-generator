@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.StationLineMapper;
 import com.railway.pojo.entity.StationLine;
 import com.railway.pojo.entity.StationLine;
+import com.railway.pojo.param.UpdateStationLineByIdParams;
 import com.railway.pojo.req.AddStationLineReq;
 import com.railway.pojo.req.GetStationLineListReq;
 import com.railway.pojo.req.UpdateStationLineByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.StationLineService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class StationLineServiceImpl implements StationLineService {
@@ -31,7 +31,7 @@ public class StationLineServiceImpl implements StationLineService {
 
     @Override
     public boolean updateStationLineById(Integer id, UpdateStationLineByIdReq req) {
-        params params = new UpdateStationLineByIdParams(id, req)
+        UpdateStationLineByIdParams params = new UpdateStationLineByIdParams(id, req);
         return stationLineMapper.updateStationLineById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class StationLineServiceImpl implements StationLineService {
 
     @Override
     public PageInfo<StationLine> getStationLineList(GetStationLineListReq req) {
-        return PageHelperUtils.page(()=> stationLineMapper.getStationLineList(req));
+        return PageHelperUtils.paging(req, () -> stationLineMapper.getStationLineList(req));
     }
 
 }
+

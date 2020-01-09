@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.ThighTrackInfoMapper;
 import com.railway.pojo.entity.ThighTrackInfo;
 import com.railway.pojo.entity.ThighTrackInfo;
+import com.railway.pojo.param.UpdateThighTrackInfoByIdParams;
 import com.railway.pojo.req.AddThighTrackInfoReq;
 import com.railway.pojo.req.GetThighTrackInfoListReq;
 import com.railway.pojo.req.UpdateThighTrackInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.ThighTrackInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class ThighTrackInfoServiceImpl implements ThighTrackInfoService {
@@ -31,7 +31,7 @@ public class ThighTrackInfoServiceImpl implements ThighTrackInfoService {
 
     @Override
     public boolean updateThighTrackInfoById(Integer id, UpdateThighTrackInfoByIdReq req) {
-        params params = new UpdateThighTrackInfoByIdParams(id, req)
+        UpdateThighTrackInfoByIdParams params = new UpdateThighTrackInfoByIdParams(id, req);
         return thighTrackInfoMapper.updateThighTrackInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class ThighTrackInfoServiceImpl implements ThighTrackInfoService {
 
     @Override
     public PageInfo<ThighTrackInfo> getThighTrackInfoList(GetThighTrackInfoListReq req) {
-        return PageHelperUtils.page(()=> thighTrackInfoMapper.getThighTrackInfoList(req));
+        return PageHelperUtils.paging(req, () -> thighTrackInfoMapper.getThighTrackInfoList(req));
     }
 
 }
+

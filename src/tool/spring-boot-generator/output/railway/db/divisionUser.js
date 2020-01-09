@@ -2,30 +2,29 @@ let divisionUser = {
 	name: "divisionUser",
 	description: "工务段用户关系表",
 	columns: {
-		id: {
-			name: "id",
-			description: "编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		userId: {
-			name: "userId",
-			description: "用户id",
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
 			nullable: true,
 			type: {
-				name: "int",
-				length: null
+				name: "datetime"
 			}
 		},
 		divisionId: {
 			name: "divisionId",
 			description: "工务段id",
 			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		id: {
+			name: "id",
+			description: "编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
@@ -40,12 +39,13 @@ let divisionUser = {
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "int",
+				length: null
 			}
 		},
 		updateTime: {
@@ -56,9 +56,9 @@ let divisionUser = {
 				name: "datetime"
 			}
 		},
-		operator: {
-			name: "operator",
-			description: "操作人",
+		userId: {
+			name: "userId",
+			description: "用户id",
 			nullable: true,
 			type: {
 				name: "int",
@@ -69,13 +69,13 @@ let divisionUser = {
 };
 
 let columnsArray = [
-	"id",
-	"userId",
-	"divisionId",
-	"isDelete",
 	"createTime",
+	"divisionId",
+	"id",
+	"isDelete",
+	"operator",
 	"updateTime",
-	"operator"
+	"userId"
 ];
 
 function create() {

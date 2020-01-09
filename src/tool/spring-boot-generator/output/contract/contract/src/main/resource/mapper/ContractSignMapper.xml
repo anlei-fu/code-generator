@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contract.mapper.ContractSignMapper">
+    <insert id="addContractSign" parameterType="com.contract.pojo.req.AddContractSignReq">
+          insert  into contract_sign t
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="needPay != null">
+                  t.need_pay,
+            </if>
+            <if test="notifyCount != null">
+                  t.notify_count,
+            </if>
+            <if test="notifyEmail != null">
+                  t.notify_email,
+            </if>
+            <if test="notifyPhone != null">
+                  t.notify_phone,
+            </if>
+            <if test="shortMsg != null">
+                  t.short_msg,
+            </if>
+            <if test="signIp != null">
+                  t.sign_ip,
+            </if>
+            <if test="signPerson != null">
+                  t.sign_person,
+            </if>
+            <if test="signSort != null">
+                  t.sign_sort,
+            </if>
+            <if test="signStatus != null">
+                  t.sign_status,
+            </if>
+            <if test="signSubject != null">
+                  t.sign_subject,
+            </if>
+            <if test="signTime != null">
+                  t.sign_time,
+            </if>
+            <if test="signUrl != null">
+                  t.sign_url,
+            </if>
+            <if test="subjectType != null">
+                  t.subject_type,
+            </if>
+            <if test="userId != null">
+                  t.user_id,
+            </if>
+             t.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="needPay != null">
+                  #{needPay},
+            </if>
+            <if test="notifyCount != null">
+                  #{notifyCount},
+            </if>
+            <if test="notifyEmail != null">
+                  #{notifyEmail},
+            </if>
+            <if test="notifyPhone != null">
+                  #{notifyPhone},
+            </if>
+            <if test="shortMsg != null">
+                  #{shortMsg},
+            </if>
+            <if test="signIp != null">
+                  #{signIp},
+            </if>
+            <if test="signPerson != null">
+                  #{signPerson},
+            </if>
+            <if test="signSort != null">
+                  #{signSort},
+            </if>
+            <if test="signStatus != null">
+                  #{signStatus},
+            </if>
+            <if test="signSubject != null">
+                  #{signSubject},
+            </if>
+            <if test="signTime != null">
+                  #{signTime},
+            </if>
+            <if test="signUrl != null">
+                  #{signUrl},
+            </if>
+            <if test="subjectType != null">
+                  #{subjectType},
+            </if>
+            <if test="userId != null">
+                  #{userId},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteContractSignById">
+          delete from contract_sign t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateContractSignById" parameterType="com.contract.pojo.param.UpdateContractSignByIdParams">
+        update contract_sign t
+        <set>
+            <if test="needPay != null">
+                  t.need_pay = #{NeedPay},
+            </if>
+            <if test="notifyCount != null">
+                  t.notify_count = #{NotifyCount},
+            </if>
+            <if test="notifyEmail != null">
+                  t.notify_email = #{NotifyEmail},
+            </if>
+            <if test="notifyPhone != null">
+                  t.notify_phone = #{NotifyPhone},
+            </if>
+            <if test="shortMsg != null">
+                  t.short_msg = #{ShortMsg},
+            </if>
+            <if test="signIp != null">
+                  t.sign_ip = #{SignIp},
+            </if>
+            <if test="signPerson != null">
+                  t.sign_person = #{SignPerson},
+            </if>
+            <if test="signSort != null">
+                  t.sign_sort = #{SignSort},
+            </if>
+            <if test="signStatus != null">
+                  t.sign_status = #{SignStatus},
+            </if>
+            <if test="signSubject != null">
+                  t.sign_subject = #{SignSubject},
+            </if>
+            <if test="signTime != null">
+                  t.sign_time = #{SignTime},
+            </if>
+            <if test="signUrl != null">
+                  t.sign_url = #{SignUrl},
+            </if>
+            <if test="subjectType != null">
+                  t.subject_type = #{SubjectType},
+            </if>
+            <if test="userId != null">
+                  t.user_id = #{UserId}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getContractSignById" resultType="com.contract.pojo.entity.ContractSign">
+          select
+             t.create_time,
+             t.id,
+             t.need_pay,
+             t.notify_count,
+             t.notify_email,
+             t.notify_phone,
+             t.short_msg,
+             t.sign_ip,
+             t.sign_person,
+             t.sign_sort,
+             t.sign_status,
+             t.sign_subject,
+             t.sign_time,
+             t.sign_url,
+             t.subject_type,
+             t.user_id
+          form contract_sign t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getContractSignList" resultType="com.contract.pojo.entity.ContractSign" parameterType="com.contract.pojo.req.GetContractSignListReq">
+          select
+             t.create_time,
+             t.id,
+             t.need_pay,
+             t.notify_count,
+             t.notify_email,
+             t.notify_phone,
+             t.short_msg,
+             t.sign_ip,
+             t.sign_person,
+             t.sign_sort,
+             t.sign_status,
+             t.sign_subject,
+             t.sign_time,
+             t.sign_url,
+             t.subject_type,
+             t.user_id
+          form contract_sign t
+          <where>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="needPay != null">
+                  and t.need_pay = #{needPay}
+            </if>
+            <if test="notifyCount != null">
+                  and t.notify_count = #{notifyCount}
+            </if>
+            <if test="notifyEmail != null and notifyEmail != ''">
+                  and t.notify_email = #{notifyEmail}
+            </if>
+            <if test="notifyPhone != null and notifyPhone != ''">
+                  and t.notify_phone = #{notifyPhone}
+            </if>
+            <if test="signSort != null">
+                  and t.sign_sort = #{signSort}
+            </if>
+            <if test="signStatus != null">
+                  and t.sign_status = #{signStatus}
+            </if>
+            <if test="signTimeStart !=null and  signTimeEnd != null">
+                  and t.sign_time between #{signTimeStart} and #{signTimeEnd}
+            </if>
+            <if test="subjectType != null">
+                  and t.subject_type = #{subjectType}
+            </if>
+            <if test="userId != null">
+                  and t.user_id = #{userId}
+            </if>
+          </where>
+    </select>
+</mapper>

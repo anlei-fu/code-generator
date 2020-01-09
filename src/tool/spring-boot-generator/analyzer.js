@@ -616,65 +616,57 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
 
 }
 
-const INSERT_REQ_EXCLUDES = {
-        String: {
-                "createuser": {
-                        matcher: x => Matcher.lowerIncludesAny(x, ["createuser", "creator"])
-                }
+
+const USER_MATCHERS = {
+        insert: {
+                matcher: x => STR.includesAny(x.toLowerCase(), [
+                        "createuser"])
+                        || STR.equalAny(x.toLowerCase(), ["account",
+                                "user",
+                                "admin",])
+        },
+        delete: {
+                matcher: x => STR.equalAny(x.toLowerCase(), [
+                        "account",
+                        "user",
+                        "admin"
+                ])
+        },
+        update: {
+                matcher: x => STR.includesAny(x.toLowerCase(), [
+                        "updateuser",
+                        "edituser",
+                        "modifyuser"
+                ]) || STR.equalAny(x.toLowerCase(), ["user", "admin", "account"])
+        },
+        select: {
+                matcher: x => STR.equalAny(x.toLowerCase(), [
+                        "account",
+                        "user",
+                        "admin"
+                ])
         }
-}
+};
+class UserAnalyzer {
+        findUserColumn(config) {
+                let table = config.table;
+                let type = config.type;
+                for (const c in table.columns) {
+                        let javaType = getJavaType(table.columns[c].type);
+                        if (javaType == "String" && USER_MATCHERS[type].matcher(c))
+                                return table.columns[c].name;
 
-
-class ReqAnalyzer extends ExcludesAnalyzer {
-        constructor () {
-                super();
-        }
-
-        shouldBeCandidate(table, type) {
-
-                if (type == "insert") {
-
-                }
-
-                let type = getJavaType(column.type);
-                if (!this._excludes[type]) {
-                        return null
-                }
-
-                for (const item in this.excludes[type]) {
-                        let match = this.excludes[type][item].matcher
-                                ? this.excludes[type][item].matcher(name)
-                                : Matcher.lowerIncludes(name, item)
-
-                        if (match)
-                                return this.excludes[type][item].generator();
-                }
+                };
 
                 return null;
         }
-
-        getInsertReqs(table) {
-
-        }
-
-        getUpdateReqs(table) {
-
-        }
-
-        getSelectReqs(table) {
-
-        }
-
-        getDeleteReqs(table) {
-
-        }
-
-
 }
+
+
 
 module.exports = {
         SelectAnalyzer,
         UpdateAnlyzer,
         InsertAnalyzer,
-        ReqAnalyzer
+        UserAnalyzer
 }

@@ -2,14 +2,20 @@ let bridgeInfo = {
 	name: "bridgeInfo",
 	description: "桥梁信息",
 	columns: {
-		id: {
-			name: "id",
-			description: "桥梁编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
+		bridgeLength: {
+			name: "bridgeLength",
+			description: "桥全长",
+			nullable: true,
 			type: {
-				name: "int",
+				name: "float"
+			}
+		},
+		bridgeName: {
+			name: "bridgeName",
+			description: "桥名",
+			nullable: true,
+			type: {
+				name: "varchar",
 				length: null
 			}
 		},
@@ -22,19 +28,72 @@ let bridgeInfo = {
 				length: null
 			}
 		},
-		bridgeName: {
-			name: "bridgeName",
-			description: "桥名",
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
+		crossHoleStyle: {
+			name: "crossHoleStyle",
+			description: "孔跨样式",
 			nullable: true,
 			type: {
 				name: "varchar",
 				length: null
 			}
 		},
-		trackDivisionId: {
-			name: "trackDivisionId",
-			description: "工务段编号",
+		direction: {
+			name: "direction",
+			description: "行别",
 			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		endMiles: {
+			name: "endMiles",
+			description: "终点里程",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		flyoverCategory: {
+			name: "flyoverCategory",
+			description: "立交类别",
+			nullable: true,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
+		holeLength: {
+			name: "holeLength",
+			description: "桥孔总长",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		id: {
+			name: "id",
+			description: "桥梁编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
@@ -49,54 +108,13 @@ let bridgeInfo = {
 				length: null
 			}
 		},
-		side: {
-			name: "side",
-			description: "线别",
+		longChain: {
+			name: "longChain",
+			description: "长链标记",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
-			}
-		},
-		direction: {
-			name: "direction",
-			description: "行别",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		trackWeigth: {
-			name: "trackWeigth",
-			description: "轨距",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		bridgeLength: {
-			name: "bridgeLength",
-			description: "桥全长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		startMiles: {
-			name: "startMiles",
-			description: "起点里程",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		endMiles: {
-			name: "endMiles",
-			description: "终点里程",
-			nullable: true,
-			type: {
-				name: "float"
 			}
 		},
 		middleMiles: {
@@ -107,35 +125,9 @@ let bridgeInfo = {
 				name: "float"
 			}
 		},
-		holeLength: {
-			name: "holeLength",
-			description: "桥孔总长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		crossHoleStyle: {
-			name: "crossHoleStyle",
-			description: "孔跨样式",
-			nullable: true,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		flyoverCategory: {
-			name: "flyoverCategory",
-			description: "立交类别",
-			nullable: true,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		longChain: {
-			name: "longChain",
-			description: "长链标记",
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
 				name: "int",
@@ -151,6 +143,23 @@ let bridgeInfo = {
 				length: null
 			}
 		},
+		side: {
+			name: "side",
+			description: "线别",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		startMiles: {
+			name: "startMiles",
+			description: "起点里程",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
 		status: {
 			name: "status",
 			description: "状态",
@@ -160,21 +169,21 @@ let bridgeInfo = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
+		trackDivisionId: {
+			name: "trackDivisionId",
+			description: "工务段编号",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		trackWeigth: {
+			name: "trackWeigth",
+			description: "轨距",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "float"
 			}
 		},
 		updateTime: {
@@ -184,42 +193,33 @@ let bridgeInfo = {
 			type: {
 				name: "datetime"
 			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
 		}
 	}
 };
 
 let columnsArray = [
-	"id",
-	"bridgeNo",
-	"bridgeName",
-	"trackDivisionId",
-	"lineId",
-	"side",
-	"direction",
-	"trackWeigth",
 	"bridgeLength",
-	"startMiles",
-	"endMiles",
-	"middleMiles",
-	"holeLength",
-	"crossHoleStyle",
-	"flyoverCategory",
-	"longChain",
-	"remark",
-	"status",
-	"isDelete",
+	"bridgeName",
+	"bridgeNo",
 	"createTime",
-	"updateTime",
-	"operator"
+	"crossHoleStyle",
+	"direction",
+	"endMiles",
+	"flyoverCategory",
+	"holeLength",
+	"id",
+	"isDelete",
+	"lineId",
+	"longChain",
+	"middleMiles",
+	"operator",
+	"remark",
+	"side",
+	"startMiles",
+	"status",
+	"trackDivisionId",
+	"trackWeigth",
+	"updateTime"
 ];
 
 function create() {

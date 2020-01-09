@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.TunnelInfoMapper;
 import com.railway.pojo.entity.TunnelInfo;
 import com.railway.pojo.entity.TunnelInfo;
+import com.railway.pojo.param.UpdateTunnelInfoByIdParams;
 import com.railway.pojo.req.AddTunnelInfoReq;
 import com.railway.pojo.req.GetTunnelInfoListReq;
 import com.railway.pojo.req.UpdateTunnelInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.TunnelInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class TunnelInfoServiceImpl implements TunnelInfoService {
@@ -31,7 +31,7 @@ public class TunnelInfoServiceImpl implements TunnelInfoService {
 
     @Override
     public boolean updateTunnelInfoById(Integer id, UpdateTunnelInfoByIdReq req) {
-        params params = new UpdateTunnelInfoByIdParams(id, req)
+        UpdateTunnelInfoByIdParams params = new UpdateTunnelInfoByIdParams(id, req);
         return tunnelInfoMapper.updateTunnelInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class TunnelInfoServiceImpl implements TunnelInfoService {
 
     @Override
     public PageInfo<TunnelInfo> getTunnelInfoList(GetTunnelInfoListReq req) {
-        return PageHelperUtils.page(()=> tunnelInfoMapper.getTunnelInfoList(req));
+        return PageHelperUtils.paging(req, () -> tunnelInfoMapper.getTunnelInfoList(req));
     }
 
 }
+

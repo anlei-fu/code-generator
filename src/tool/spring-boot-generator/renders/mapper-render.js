@@ -17,9 +17,7 @@ function renderMapper(config) {
                 let item = getMapperItemRenderConfig(x, config.name);
                 content += MAPPER_ITEM_RENDER.renderTemplate(item);
         });
-
-        content = content.trimRight() + "\r\n";
-
+        
         return MAPPER_RENDER.renderTemplate({ content });
 }
 
@@ -50,13 +48,13 @@ function getMapperItemParams(config) {
         let mapperParams = "";
         if (config.reqs.length > 1) {
                 config.reqs.forEach(x => {
-                        mapperParams += `@Params("${x.name}") ${x.type} ${x.name}, `;
+                        mapperParams += `@Param("${x.name}") ${x.type} ${x.name}, `;
                 });
                 mapperParams = STR.removeLastComa(mapperParams);
         } else {
                 mapperParams = !isSimpleJavaType(config.reqs[0].type)
                         ? `${config.reqs[0].type} ${config.reqs[0].name}`
-                        : `@Params("${config.reqs[0].name}") ${config.reqs[0].type} ${config.reqs[0].name}`;
+                        : `@Param("${config.reqs[0].name}") ${config.reqs[0].type} ${config.reqs[0].name}`;
         }
 
         return mapperParams;

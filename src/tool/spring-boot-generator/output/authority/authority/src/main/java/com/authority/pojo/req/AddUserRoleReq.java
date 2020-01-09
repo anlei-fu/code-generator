@@ -22,8 +22,4 @@ public class AddUserRoleReq extends PageReq {
     @NotNull
     private Integer systemId;
 
-    @ApiModelProperty("create user")
-    @NotNull
-    private String createUser;
-
 }

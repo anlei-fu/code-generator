@@ -8,13 +8,13 @@ exports.trackInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // trackCode : validate --- @NotNull  
-                        // trackType : validate --- @Enum("trackType")  
-                        // trackDivisionId : validate --- @NotNull  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // trackCode : validate --- @NotNull  
+                        // trackDivisionId : validate --- @NotNull  
+                        // trackType : validate --- @Enum("trackType")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addTrackInfo")
@@ -22,7 +22,7 @@ exports.trackInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(trackInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/trackInfo");
@@ -30,10 +30,10 @@ exports.trackInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("trackCode","@NotNull")
-                                           .validate("trackType","@Enum(\"trackType\")")
-                                           .validate("trackDivisionId","@NotNull")
                                            .validate("isDelete","@NotNull")
+                                           .validate("trackCode","@NotNull")
+                                           .validate("trackDivisionId","@NotNull")
+                                           .validate("trackType","@Enum(\"trackType\")")
                                 })
                                 .build(),
 
@@ -57,9 +57,9 @@ exports.trackInfoConfig = {
                                 .build(),
                                 
                         // updateById
-                        // trackType : validate --- @Enum("trackType")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // trackType : validate --- @Enum("trackType")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateTrackInfoById")
@@ -115,8 +115,8 @@ exports.trackInfoConfig = {
                                 .build(),
 
                         // getList
-                        // trackType : validates --- @Enum("trackType")  
-                        // createTime : expression --- timeRange@@
+                        // createTime : expression --- timeRange
+                        // trackType : validates --- @Enum("trackType")
                         new builder()
                                 .type("select")
                                 .id("getTrackInfoList")
@@ -137,6 +137,7 @@ exports.trackInfoConfig = {
                                            .excludes("id")
                                            .validate("trackType","@Enum(\"trackType\")")
                                 })
+
                                 .build()
                 ]
 }

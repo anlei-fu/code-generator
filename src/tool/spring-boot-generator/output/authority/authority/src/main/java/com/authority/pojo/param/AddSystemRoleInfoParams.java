@@ -1,25 +1,26 @@
 public class AddSystemRoleInfoParams {
 
+    @Getter
+    @Setter
+    private String createUser;
+
     private AddSystemRoleInfoReq req;
 
-    public AddSystemRoleInfoParams(AddSystemRoleInfoReq req) {
+    public AddSystemRoleInfoParams(String user, AddSystemRoleInfoReq req) {
+        this.createUser = user;
         this.req = req;
     }
 
-    public [object Object]ype getSystemId() {
+    public Integer getSystemId() {
         return req.getSystemId();
     }
 
-    public [object Object]ype getRole() {
+    public String getRole() {
         return req.getRole();
     }
 
-    public [object Object]ype getDescription() {
+    public String getDescription() {
         return req.getDescription();
-    }
-
-    public [object Object]ype getCreateUser() {
-        return req.getCreateUser();
     }
 
 }

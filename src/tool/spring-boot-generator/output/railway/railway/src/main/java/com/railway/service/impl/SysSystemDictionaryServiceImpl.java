@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.SysSystemDictionaryMapper;
 import com.railway.pojo.entity.SysSystemDictionary;
 import com.railway.pojo.entity.SysSystemDictionary;
+import com.railway.pojo.param.UpdateSysSystemDictionaryByDicidParams;
 import com.railway.pojo.req.AddSysSystemDictionaryReq;
 import com.railway.pojo.req.GetSysSystemDictionaryListReq;
 import com.railway.pojo.req.UpdateSysSystemDictionaryByDicidReq;
@@ -11,7 +12,6 @@ import com.railway.service.SysSystemDictionaryService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class SysSystemDictionaryServiceImpl implements SysSystemDictionaryService {
@@ -31,7 +31,7 @@ public class SysSystemDictionaryServiceImpl implements SysSystemDictionaryServic
 
     @Override
     public boolean updateSysSystemDictionaryByDicid(Integer dicid, UpdateSysSystemDictionaryByDicidReq req) {
-        params params = new UpdateSysSystemDictionaryByDicidParams(dicid, req)
+        UpdateSysSystemDictionaryByDicidParams params = new UpdateSysSystemDictionaryByDicidParams(dicid, req);
         return sysSystemDictionaryMapper.updateSysSystemDictionaryByDicid(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class SysSystemDictionaryServiceImpl implements SysSystemDictionaryServic
 
     @Override
     public PageInfo<SysSystemDictionary> getSysSystemDictionaryList(GetSysSystemDictionaryListReq req) {
-        return PageHelperUtils.page(()=> sysSystemDictionaryMapper.getSysSystemDictionaryList(req));
+        return PageHelperUtils.paging(req, () -> sysSystemDictionaryMapper.getSysSystemDictionaryList(req));
     }
 
 }
+

@@ -1,3 +1,11 @@
+package com.railway.pojo.param;
+
+import com.railway.pojo.req.UpdateDealRecordByIdReq;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Date;
+
 public class UpdateDealRecordByIdParams {
 
     @Getter

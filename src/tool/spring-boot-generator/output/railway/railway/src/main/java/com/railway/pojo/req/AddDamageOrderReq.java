@@ -8,8 +8,6 @@ import lombok.Setter;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 
-
-
 @ApiModel("")
 @Getter
 @Setter

@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.SysSystemDictionaryMapper">
     <insert id="addSysSystemDictionary" parameterType="com.railway.pojo.req.AddSysSystemDictionaryReq">
-          insert  into sys_system_dictionary 
+          insert  into sys_system_dictionary t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="enumName != null">
-                  sys_system_dictionary.enum_name,
+                  t.enum_name,
             </if>
-             sys_system_dictionary.enum_type,
-             sys_system_dictionary.sort_id,
-             sys_system_dictionary.status,
+             t.enum_type,
+             t.sort_id,
+             t.status,
             <if test="systemId != null">
-                  sys_system_dictionary.system_id,
+                  t.system_id,
             </if>
-             sys_system_dictionary.text,
-             sys_system_dictionary.value
+             t.text,
+             t.value
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -32,87 +32,87 @@
           </trim>
     </insert>
     <delete id="deleteSysSystemDictionaryByDicid">
-          delete from sys_system_dictionary 
+          delete from sys_system_dictionary t
           <where>
             <if test="dicid != null">
-                  sys_system_dictionary.dicid = #{dicid}
+                  t.dicid = #{dicid}
             </if>
           </where>
     </delete>
     <update id="updateSysSystemDictionaryByDicid" parameterType="com.railway.pojo.param.UpdateSysSystemDictionaryByDicidParams">
-        update sys_system_dictionary 
+        update sys_system_dictionary t
         <set>
             <if test="enumName != null">
-                  sys_system_dictionary.enum_name = #{EnumName},
+                  t.enum_name = #{EnumName},
             </if>
             <if test="enumType != null">
-                  sys_system_dictionary.enum_type = #{EnumType},
+                  t.enum_type = #{EnumType},
             </if>
             <if test="sortId != null">
-                  sys_system_dictionary.sort_id = #{SortId},
+                  t.sort_id = #{SortId},
             </if>
             <if test="status != null">
-                  sys_system_dictionary.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="systemId != null">
-                  sys_system_dictionary.system_id = #{SystemId},
+                  t.system_id = #{SystemId},
             </if>
             <if test="text != null">
-                  sys_system_dictionary.text = #{Text},
+                  t.text = #{Text},
             </if>
             <if test="value != null">
-                  sys_system_dictionary.value = #{Value}
+                  t.value = #{Value}
             </if>
         </set>
           <where>
             <if test="dicid != null">
-                  sys_system_dictionary.dicid = #{dicid}
+                  t.dicid = #{dicid}
             </if>
           </where>
     </update>
     <select id="getSysSystemDictionaryByDicid" resultType="com.railway.pojo.entity.SysSystemDictionary">
           select
-             sys_system_dictionary.dicid,
-             sys_system_dictionary.enum_name,
-             sys_system_dictionary.enum_type,
-             sys_system_dictionary.sort_id,
-             sys_system_dictionary.status,
-             sys_system_dictionary.system_id,
-             sys_system_dictionary.text,
-             sys_system_dictionary.value
-          form sys_system_dictionary 
+             t.dicid,
+             t.enum_name,
+             t.enum_type,
+             t.sort_id,
+             t.status,
+             t.system_id,
+             t.text,
+             t.value
+          form sys_system_dictionary t
           <where>
             <if test="dicid != null">
-                  sys_system_dictionary.dicid = #{dicid}
+                  t.dicid = #{dicid}
             </if>
           </where>
     </select>
     <select id="getSysSystemDictionaryList" resultType="com.railway.pojo.entity.SysSystemDictionary" parameterType="com.railway.pojo.req.GetSysSystemDictionaryListReq">
           select
-             sys_system_dictionary.dicid,
-             sys_system_dictionary.enum_name,
-             sys_system_dictionary.enum_type,
-             sys_system_dictionary.sort_id,
-             sys_system_dictionary.status,
-             sys_system_dictionary.system_id,
-             sys_system_dictionary.text,
-             sys_system_dictionary.value
-          form sys_system_dictionary 
+             t.dicid,
+             t.enum_name,
+             t.enum_type,
+             t.sort_id,
+             t.status,
+             t.system_id,
+             t.text,
+             t.value
+          form sys_system_dictionary t
           <where>
             <if test="enumType != null">
-                  sys_system_dictionary.enum_type = #{enumType}
+                  t.enum_type = #{enumType}
             </if>
             <if test="sortId != null">
-                  and sys_system_dictionary.sort_id = #{sortId}
+                  and t.sort_id = #{sortId}
             </if>
             <if test="status != null">
-                  and sys_system_dictionary.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="systemId != null">
-                  and sys_system_dictionary.system_id = #{systemId}
+                  and t.system_id = #{systemId}
             </if>
             <if test="value != null">
-                  and sys_system_dictionary.value = #{value}
+                  and t.value = #{value}
             </if>
           </where>
     </select>

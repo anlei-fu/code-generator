@@ -2,46 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.WorshopBoundaryInfoMapper">
     <insert id="addWorshopBoundaryInfo" parameterType="com.railway.pojo.req.AddWorshopBoundaryInfoReq">
-          insert  into worshop_boundary_info 
+          insert  into worshop_boundary_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="direction != null">
-                  worshop_boundary_info.direction,
+                  t.direction,
             </if>
             <if test="endMiles != null">
-                  worshop_boundary_info.end_miles,
+                  t.end_miles,
             </if>
-             worshop_boundary_info.is_delete,
+             t.is_delete,
             <if test="lineId != null">
-                  worshop_boundary_info.line_id,
+                  t.line_id,
             </if>
             <if test="longChain != null">
-                  worshop_boundary_info.long_chain,
+                  t.long_chain,
             </if>
             <if test="operateStatus != null">
-                  worshop_boundary_info.operate_status,
+                  t.operate_status,
             </if>
             <if test="operator != null">
-                  worshop_boundary_info.operator,
+                  t.operator,
             </if>
             <if test="remark != null">
-                  worshop_boundary_info.remark,
+                  t.remark,
             </if>
             <if test="startMiles != null">
-                  worshop_boundary_info.start_miles,
+                  t.start_miles,
             </if>
             <if test="status != null">
-                  worshop_boundary_info.status,
+                  t.status,
             </if>
             <if test="trackCategory != null">
-                  worshop_boundary_info.track_category,
+                  t.track_category,
             </if>
             <if test="trackType != null">
-                  worshop_boundary_info.track_type,
+                  t.track_type,
             </if>
             <if test="workareaId != null">
-                  worshop_boundary_info.workarea_id,
+                  t.workarea_id,
             </if>
-             worshop_boundary_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -86,149 +86,149 @@
           </trim>
     </insert>
     <delete id="deleteWorshopBoundaryInfoById">
-          delete from worshop_boundary_info 
+          delete from worshop_boundary_info t
           <where>
             <if test="id != null">
-                  worshop_boundary_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateWorshopBoundaryInfoById" parameterType="com.railway.pojo.param.UpdateWorshopBoundaryInfoByIdParams">
-        update worshop_boundary_info 
+        update worshop_boundary_info t
         <set>
             <if test="direction != null">
-                  worshop_boundary_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="endMiles != null">
-                  worshop_boundary_info.end_miles = #{EndMiles},
+                  t.end_miles = #{EndMiles},
             </if>
             <if test="isDelete != null">
-                  worshop_boundary_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  worshop_boundary_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="longChain != null">
-                  worshop_boundary_info.long_chain = #{LongChain},
+                  t.long_chain = #{LongChain},
             </if>
             <if test="operateStatus != null">
-                  worshop_boundary_info.operate_status = #{OperateStatus},
+                  t.operate_status = #{OperateStatus},
             </if>
             <if test="operator != null">
-                  worshop_boundary_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="remark != null">
-                  worshop_boundary_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="startMiles != null">
-                  worshop_boundary_info.start_miles = #{StartMiles},
+                  t.start_miles = #{StartMiles},
             </if>
             <if test="status != null">
-                  worshop_boundary_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="trackCategory != null">
-                  worshop_boundary_info.track_category = #{TrackCategory},
+                  t.track_category = #{TrackCategory},
             </if>
             <if test="trackType != null">
-                  worshop_boundary_info.track_type = #{TrackType},
+                  t.track_type = #{TrackType},
             </if>
             <if test="workareaId != null">
-                  worshop_boundary_info.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            worshop_boundary_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  worshop_boundary_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getWorshopBoundaryInfoById" resultType="com.railway.pojo.entity.WorshopBoundaryInfo">
           select
-             worshop_boundary_info.create_time,
-             worshop_boundary_info.direction,
-             worshop_boundary_info.end_miles,
-             worshop_boundary_info.id,
-             worshop_boundary_info.is_delete,
-             worshop_boundary_info.line_id,
-             worshop_boundary_info.long_chain,
-             worshop_boundary_info.operate_status,
-             worshop_boundary_info.operator,
-             worshop_boundary_info.remark,
-             worshop_boundary_info.start_miles,
-             worshop_boundary_info.status,
-             worshop_boundary_info.track_category,
-             worshop_boundary_info.track_type,
-             worshop_boundary_info.update_time,
-             worshop_boundary_info.workarea_id
-          form worshop_boundary_info 
+             t.create_time,
+             t.direction,
+             t.end_miles,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.operate_status,
+             t.operator,
+             t.remark,
+             t.start_miles,
+             t.status,
+             t.track_category,
+             t.track_type,
+             t.update_time,
+             t.workarea_id
+          form worshop_boundary_info t
           <where>
             <if test="id != null">
-                  worshop_boundary_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getWorshopBoundaryInfoList" resultType="com.railway.pojo.entity.WorshopBoundaryInfo" parameterType="com.railway.pojo.req.GetWorshopBoundaryInfoListReq">
           select
-             worshop_boundary_info.create_time,
-             worshop_boundary_info.direction,
-             worshop_boundary_info.end_miles,
-             worshop_boundary_info.id,
-             worshop_boundary_info.is_delete,
-             worshop_boundary_info.line_id,
-             worshop_boundary_info.long_chain,
-             worshop_boundary_info.operate_status,
-             worshop_boundary_info.operator,
-             worshop_boundary_info.remark,
-             worshop_boundary_info.start_miles,
-             worshop_boundary_info.status,
-             worshop_boundary_info.track_category,
-             worshop_boundary_info.track_type,
-             worshop_boundary_info.update_time,
-             worshop_boundary_info.workarea_id
-          form worshop_boundary_info 
+             t.create_time,
+             t.direction,
+             t.end_miles,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.long_chain,
+             t.operate_status,
+             t.operator,
+             t.remark,
+             t.start_miles,
+             t.status,
+             t.track_category,
+             t.track_type,
+             t.update_time,
+             t.workarea_id
+          form worshop_boundary_info t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  worshop_boundary_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="direction != null">
-                  and worshop_boundary_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="endMiles != null">
-                  and worshop_boundary_info.end_miles = #{endMiles}
+                  and t.end_miles = #{endMiles}
             </if>
             <if test="isDelete != null">
-                  and worshop_boundary_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and worshop_boundary_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="longChain != null">
-                  and worshop_boundary_info.long_chain = #{longChain}
+                  and t.long_chain = #{longChain}
             </if>
             <if test="operateStatus != null">
-                  and worshop_boundary_info.operate_status = #{operateStatus}
+                  and t.operate_status = #{operateStatus}
             </if>
             <if test="operator != null">
-                  and worshop_boundary_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="startMiles != null">
-                  and worshop_boundary_info.start_miles = #{startMiles}
+                  and t.start_miles = #{startMiles}
             </if>
             <if test="status != null">
-                  and worshop_boundary_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="trackCategory != null">
-                  and worshop_boundary_info.track_category = #{trackCategory}
+                  and t.track_category = #{trackCategory}
             </if>
             <if test="trackType != null">
-                  and worshop_boundary_info.track_type = #{trackType}
+                  and t.track_type = #{trackType}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and worshop_boundary_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="workareaId != null">
-                  and worshop_boundary_info.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>

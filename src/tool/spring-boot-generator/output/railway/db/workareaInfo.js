@@ -2,15 +2,12 @@ let workareaInfo = {
 	name: "workareaInfo",
 	description: "线路工区",
 	columns: {
-		id: {
-			name: "id",
-			description: "工区编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
 			type: {
-				name: "int",
-				length: null
+				name: "datetime"
 			}
 		},
 		fullName: {
@@ -22,12 +19,14 @@ let workareaInfo = {
 				length: null
 			}
 		},
-		shortName: {
-			name: "shortName",
-			description: "工区简称",
+		id: {
+			name: "id",
+			description: "工区编号",
+			isPk: true,
+			autoIncrement: true,
 			nullable: false,
 			type: {
-				name: "varchar",
+				name: "int",
 				length: null
 			}
 		},
@@ -40,15 +39,6 @@ let workareaInfo = {
 				length: null
 			}
 		},
-		workshopId: {
-			name: "workshopId",
-			description: "线路车间编号",
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
 		isDelete: {
 			name: "isDelete",
 			description: "删除标记",
@@ -56,22 +46,6 @@ let workareaInfo = {
 			type: {
 				name: "int",
 				length: null
-			}
-		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
-		updateTime: {
-			name: "updateTime",
-			description: "更新时间",
-			nullable: true,
-			type: {
-				name: "datetime"
 			}
 		},
 		operator: {
@@ -82,20 +56,46 @@ let workareaInfo = {
 				name: "int",
 				length: null
 			}
+		},
+		shortName: {
+			name: "shortName",
+			description: "工区简称",
+			nullable: false,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
+		updateTime: {
+			name: "updateTime",
+			description: "更新时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
+		workshopId: {
+			name: "workshopId",
+			description: "线路车间编号",
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
+			}
 		}
 	}
 };
 
 let columnsArray = [
-	"id",
-	"fullName",
-	"shortName",
-	"inputCode",
-	"workshopId",
-	"isDelete",
 	"createTime",
+	"fullName",
+	"id",
+	"inputCode",
+	"isDelete",
+	"operator",
+	"shortName",
 	"updateTime",
-	"operator"
+	"workshopId"
 ];
 
 function create() {

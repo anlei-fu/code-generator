@@ -2,38 +2,35 @@ let dealRecord = {
 	name: "dealRecord",
 	description: "探伤处置记录",
 	columns: {
-		id: {
-			name: "id",
-			description: "处置记录编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		orderDetailId: {
-			name: "orderDetailId",
-			description: "记录编号",
+		cmdNo: {
+			name: "cmdNo",
+			description: "施工命令行",
 			nullable: true,
 			type: {
-				name: "int",
+				name: "varchar",
 				length: null
 			}
 		},
-		workshopInfoId: {
-			name: "workshopInfoId",
-			description: "处置车间",
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
 			nullable: true,
 			type: {
-				name: "int",
+				name: "datetime"
+			}
+		},
+		dealRemark: {
+			name: "dealRemark",
+			description: "处置说明",
+			nullable: true,
+			type: {
+				name: "varchar",
 				length: null
 			}
 		},
-		workareaId: {
-			name: "workareaId",
-			description: "处置人",
+		dealResult: {
+			name: "dealResult",
+			description: "处置结果",
 			nullable: true,
 			type: {
 				name: "int",
@@ -48,30 +45,31 @@ let dealRecord = {
 				name: "datetime"
 			}
 		},
-		dealResult: {
-			name: "dealResult",
-			description: "处置结果",
+		deleteAuditStatus: {
+			name: "deleteAuditStatus",
+			description: "删除审计状:-1审计成功,1待审计",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		dealRemark: {
-			name: "dealRemark",
-			description: "处置说明",
+		deleteTime: {
+			name: "deleteTime",
+			description: "删除时间",
 			nullable: true,
 			type: {
-				name: "varchar",
-				length: null
+				name: "datetime"
 			}
 		},
-		cmdNo: {
-			name: "cmdNo",
-			description: "施工命令行",
-			nullable: true,
+		id: {
+			name: "id",
+			description: "处置记录编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
 			type: {
-				name: "varchar",
+				name: "int",
 				length: null
 			}
 		},
@@ -84,12 +82,22 @@ let dealRecord = {
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "int",
+				length: null
+			}
+		},
+		orderDetailId: {
+			name: "orderDetailId",
+			description: "记录编号",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
 			}
 		},
 		updateTime: {
@@ -100,18 +108,18 @@ let dealRecord = {
 				name: "datetime"
 			}
 		},
-		operator: {
-			name: "operator",
-			description: "操作人",
+		workareaId: {
+			name: "workareaId",
+			description: "处置人",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		deleteAuditStatus: {
-			name: "deleteAuditStatus",
-			description: "删除审计状态",
+		workshopInfoId: {
+			name: "workshopInfoId",
+			description: "处置车间",
 			nullable: true,
 			type: {
 				name: "int",
@@ -122,19 +130,20 @@ let dealRecord = {
 };
 
 let columnsArray = [
-	"id",
-	"orderDetailId",
-	"workshopInfoId",
-	"workareaId",
-	"dealTime",
-	"dealResult",
-	"dealRemark",
 	"cmdNo",
-	"isDelete",
 	"createTime",
-	"updateTime",
+	"dealRemark",
+	"dealResult",
+	"dealTime",
+	"deleteAuditStatus",
+	"deleteTime",
+	"id",
+	"isDelete",
 	"operator",
-	"deleteAuditStatus"
+	"orderDetailId",
+	"updateTime",
+	"workareaId",
+	"workshopInfoId"
 ];
 
 function create() {

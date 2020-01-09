@@ -1,21 +1,22 @@
 public class AddSystemInfoParams {
 
+    @Getter
+    @Setter
+    private String createUser;
+
     private AddSystemInfoReq req;
 
-    public AddSystemInfoParams(AddSystemInfoReq req) {
+    public AddSystemInfoParams(String user, AddSystemInfoReq req) {
+        this.createUser = user;
         this.req = req;
     }
 
-    public [object Object]ype getName() {
+    public String getName() {
         return req.getName();
     }
 
-    public [object Object]ype getDescription() {
+    public String getDescription() {
         return req.getDescription();
-    }
-
-    public [object Object]ype getCreateUser() {
-        return req.getCreateUser();
     }
 
 }

@@ -5,6 +5,7 @@ import com.railway.mapper.DetectStaffInfoCopyMapper;
 import com.railway.pojo.entity.DetectStaffInfoCopy;
 import com.railway.pojo.entity.DetectStaffInfo;
 import com.railway.pojo.entity.DetectStaffInfoCopy;
+import com.railway.pojo.param.UpdateDetectStaffInfoCopyByIdParams;
 import com.railway.pojo.req.AddDetectStaffInfoCopyReq;
 import com.railway.pojo.req.GetDetectStaffInfoCopyListReq;
 import com.railway.pojo.req.UpdateDetectStaffInfoCopyByIdReq;
@@ -12,7 +13,6 @@ import com.railway.service.DetectStaffInfoCopyService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DetectStaffInfoCopyServiceImpl implements DetectStaffInfoCopyService {
@@ -32,7 +32,7 @@ public class DetectStaffInfoCopyServiceImpl implements DetectStaffInfoCopyServic
 
     @Override
     public boolean updateDetectStaffInfoCopyById(Integer id, UpdateDetectStaffInfoCopyByIdReq req) {
-        params params = new UpdateDetectStaffInfoCopyByIdParams(id, req)
+        UpdateDetectStaffInfoCopyByIdParams params = new UpdateDetectStaffInfoCopyByIdParams(id, req);
         return detectStaffInfoCopyMapper.updateDetectStaffInfoCopyById(params) > 0;
     }
 
@@ -43,7 +43,8 @@ public class DetectStaffInfoCopyServiceImpl implements DetectStaffInfoCopyServic
 
     @Override
     public PageInfo<DetectStaffInfoCopy> getDetectStaffInfoCopyList(GetDetectStaffInfoCopyListReq req) {
-        return PageHelperUtils.page(()=> detectStaffInfoCopyMapper.getDetectStaffInfoCopyList(req));
+        return PageHelperUtils.paging(req, () -> detectStaffInfoCopyMapper.getDetectStaffInfoCopyList(req));
     }
 
 }
+

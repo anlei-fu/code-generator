@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contract.mapper.NotaryChannelMapper">
+    <insert id="addNotaryChannel" parameterType="com.contract.pojo.req.AddNotaryChannelReq">
+          insert  into notary_channel t
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="apiKey != null">
+                  t.api_key,
+            </if>
+            <if test="apiUrl != null">
+                  t.api_url,
+            </if>
+            <if test="channelName != null">
+                  t.channel_name,
+            </if>
+            <if test="remark != null">
+                  t.remark,
+            </if>
+            <if test="status != null">
+                  t.status,
+            </if>
+             t.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="apiKey != null">
+                  #{apiKey},
+            </if>
+            <if test="apiUrl != null">
+                  #{apiUrl},
+            </if>
+            <if test="channelName != null">
+                  #{channelName},
+            </if>
+            <if test="remark != null">
+                  #{remark},
+            </if>
+            <if test="status != null">
+                  #{status},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteNotaryChannelById">
+          delete from notary_channel t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateNotaryChannelById" parameterType="com.contract.pojo.param.UpdateNotaryChannelByIdParams">
+        update notary_channel t
+        <set>
+            <if test="apiKey != null">
+                  t.api_key = #{ApiKey},
+            </if>
+            <if test="apiUrl != null">
+                  t.api_url = #{ApiUrl},
+            </if>
+            <if test="channelName != null">
+                  t.channel_name = #{ChannelName},
+            </if>
+            <if test="remark != null">
+                  t.remark = #{Remark},
+            </if>
+            <if test="status != null">
+                  t.status = #{Status}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getNotaryChannelById" resultType="com.contract.pojo.entity.NotaryChannel">
+          select
+             t.api_key,
+             t.api_url,
+             t.channel_name,
+             t.create_time,
+             t.id,
+             t.remark,
+             t.status
+          form notary_channel t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getNotaryChannelList" resultType="com.contract.pojo.entity.NotaryChannel" parameterType="com.contract.pojo.req.GetNotaryChannelListReq">
+          select
+             t.api_key,
+             t.api_url,
+             t.channel_name,
+             t.create_time,
+             t.id,
+             t.remark,
+             t.status
+          form notary_channel t
+          <where>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="status != null">
+                  and t.status = #{status}
+            </if>
+          </where>
+    </select>
+</mapper>

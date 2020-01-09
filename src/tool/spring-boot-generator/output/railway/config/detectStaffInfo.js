@@ -8,12 +8,12 @@ exports.detectStaffInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // gender : validate --- @Enum("gender")  
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // gender : validate --- @Enum("gender")  
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDetectStaffInfo")
@@ -21,7 +21,7 @@ exports.detectStaffInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(detectStaffInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectStaffInfo");
@@ -30,8 +30,8 @@ exports.detectStaffInfoConfig = {
                                         req.doCreate()
                                            .excludes("id")
                                            .validate("gender","@Enum(\"gender\")")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -55,10 +55,10 @@ exports.detectStaffInfoConfig = {
                                 .build(),
                                 
                         // updateById
+                        // createTime : excluded 
                         // gender : validate --- @Enum("gender")  
                         // status : validate --- @Enum("status")  
-                        // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDetectStaffInfoById")
@@ -115,11 +115,11 @@ exports.detectStaffInfoConfig = {
                                 .build(),
 
                         // getList
-                        // name : excluded 
+                        // createTime : expression --- timeRange
                         // gender : validates --- @Enum("gender")  
+                        // name : excluded 
                         // remark : excluded 
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getDetectStaffInfoList")
@@ -142,6 +142,7 @@ exports.detectStaffInfoConfig = {
                                            .validate("gender","@Enum(\"gender\")")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

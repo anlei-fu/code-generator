@@ -31,24 +31,6 @@ let sysSystemDictionary = {
 				length: null
 			}
 		},
-		text: {
-			name: "text",
-			description: "鏋氫妇椤瑰叿浣撳悕瀛?",
-			nullable: false,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		value: {
-			name: "value",
-			description: "鏋氫妇value",
-			nullable: false,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
 		sortId: {
 			name: "sortId",
 			description: "鎺掑簭",
@@ -75,6 +57,24 @@ let sysSystemDictionary = {
 				name: "int",
 				length: null
 			}
+		},
+		text: {
+			name: "text",
+			description: "鏋氫妇椤瑰叿浣撳悕瀛?",
+			nullable: false,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
+		value: {
+			name: "value",
+			description: "鏋氫妇value",
+			nullable: false,
+			type: {
+				name: "varchar",
+				length: null
+			}
 		}
 	}
 };
@@ -83,11 +83,11 @@ let columnsArray = [
 	"dicid",
 	"enumName",
 	"enumType",
-	"text",
-	"value",
 	"sortId",
 	"status",
-	"systemId"
+	"systemId",
+	"text",
+	"value"
 ];
 
 function create() {

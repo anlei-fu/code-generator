@@ -21,8 +21,4 @@ public class AddSystemInfoReq extends PageReq {
     @ApiModelProperty("description")
     private String description;
 
-    @ApiModelProperty("crceate user")
-    @NotNull
-    private String createUser;
-
 }

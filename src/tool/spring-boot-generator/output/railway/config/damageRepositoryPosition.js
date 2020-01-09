@@ -8,9 +8,9 @@ exports.damageRepositoryPositionConfig = {
                 items: [
 
                         // add
-                        // orderDetailId excluded 
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // orderDetailId excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDamageRepositoryPosition")
@@ -18,7 +18,7 @@ exports.damageRepositoryPositionConfig = {
                                 .includes(collection => {
                                         collection.includes(damageRepositoryPosition.columnsArray)
                                                   .excludes("orderDetailId")
-                                                  .excludes(["orderDetailId","createTime","updateTime"])
+                                                  .excludes(["createTime","orderDetailId","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepositoryPosition");
@@ -51,7 +51,7 @@ exports.damageRepositoryPositionConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDamageRepositoryPositionByOrderDetailId")
@@ -107,9 +107,9 @@ exports.damageRepositoryPositionConfig = {
                                 .build(),
 
                         // getList
-                        // lineName : excluded 
+                        // createTime : expression --- timeRange
                         // damagePosition : expression --- range
-                        // createTime : expression --- timeRange@@
+                        // lineName : excluded
                         new builder()
                                 .type("select")
                                 .id("getDamageRepositoryPositionList")
@@ -121,8 +121,8 @@ exports.damageRepositoryPositionConfig = {
                                         collection.includes(damageRepositoryPosition.columnsArray)
                                                   .excludes("orderDetailId")
                                                   .excludes(["lineName"])
-                                                  .exp("damagePosition","range")
                                                   .exp("createTime","timeRange")
+                                                  .exp("damagePosition","range")
                                 })
                                 .controller(controller => {
                                         controller.path("/damageRepositoryPosition");
@@ -132,6 +132,7 @@ exports.damageRepositoryPositionConfig = {
                                            .excludes("orderDetailId")
 
                                 })
+
                                 .build()
                 ]
 }

@@ -2,6 +2,31 @@ let curveInfo = {
 	name: "curveInfo",
 	description: "曲线信息",
 	columns: {
+		averageSpeed: {
+			name: "averageSpeed",
+			description: "平均速度",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
+		curveDirection: {
+			name: "curveDirection",
+			description: "鏇茬嚎鏂瑰悜",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
 		curveId: {
 			name: "curveId",
 			description: "曲线编号",
@@ -13,10 +38,60 @@ let curveInfo = {
 				length: null
 			}
 		},
-		trackDivision: {
-			name: "trackDivision",
-			description: "工务段编号",
+		curveLength: {
+			name: "curveLength",
+			description: "鏇茬嚎闀?",
 			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		curveReadius: {
+			name: "curveReadius",
+			description: "鏇茬嚎鍗婂緞",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		direction: {
+			name: "direction",
+			description: "行别",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		endMiles: {
+			name: "endMiles",
+			description: "缁堢偣閲岀▼",
+			nullable: true,
+			type: {
+				name: "float",
+				length: null
+			}
+		},
+		endSlowLength: {
+			name: "endSlowLength",
+			description: "终缓和线长",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		endTangentLength: {
+			name: "endTangentLength",
+			description: "终点切线长",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
@@ -31,6 +106,41 @@ let curveInfo = {
 				length: null
 			}
 		},
+		longChain: {
+			name: "longChain",
+			description: "长链标记",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		operator: {
+			name: "operator",
+			description: "操作人",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		overHeight: {
+			name: "overHeight",
+			description: "超高",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		remark: {
+			name: "remark",
+			description: "备注",
+			nullable: true,
+			type: {
+				name: "varchar",
+				length: null
+			}
+		},
 		side: {
 			name: "side",
 			description: "线别",
@@ -40,13 +150,12 @@ let curveInfo = {
 				length: null
 			}
 		},
-		direction: {
-			name: "direction",
-			description: "行别",
+		slopeRate: {
+			name: "slopeRate",
+			description: "顺坡率",
 			nullable: true,
 			type: {
-				name: "int",
-				length: null
+				name: "float"
 			}
 		},
 		startMiles: {
@@ -57,30 +166,29 @@ let curveInfo = {
 				name: "float"
 			}
 		},
-		endMiles: {
-			name: "endMiles",
-			description: "缁堢偣閲岀▼",
+		startSlowLength: {
+			name: "startSlowLength",
+			description: "起缓和线长",
 			nullable: true,
 			type: {
-				name: "float",
-				length: null
+				name: "float"
 			}
 		},
-		cuvreDirection: {
-			name: "cuvreDirection",
-			description: "曲线方向",
+		startTangentLength: {
+			name: "startTangentLength",
+			description: "起点切线长",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		status: {
+			name: "status",
+			description: "状态",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
-			}
-		},
-		cuvreReadius: {
-			name: "cuvreReadius",
-			description: "曲线半径",
-			nullable: true,
-			type: {
-				name: "float"
 			}
 		},
 		steeringAngle: {
@@ -108,112 +216,13 @@ let curveInfo = {
 				name: "float"
 			}
 		},
-		overHeight: {
-			name: "overHeight",
-			description: "超高",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		slopeRate: {
-			name: "slopeRate",
-			description: "顺坡率",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		startTangentLength: {
-			name: "startTangentLength",
-			description: "起点切线长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		endTangentLength: {
-			name: "endTangentLength",
-			description: "终点切线长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		startSlowLength: {
-			name: "startSlowLength",
-			description: "起缓和线长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		endSlowLength: {
-			name: "endSlowLength",
-			description: "终缓和线长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		cuvreLength: {
-			name: "cuvreLength",
-			description: "曲线长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		averageSpeed: {
-			name: "averageSpeed",
-			description: "平均速度",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		longChain: {
-			name: "longChain",
-			description: "长链标记",
+		trackDivisionId: {
+			name: "trackDivisionId",
+			description: "宸ュ姟娈电紪鍙?",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
-			}
-		},
-		remark: {
-			name: "remark",
-			description: "备注",
-			nullable: true,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		status: {
-			name: "status",
-			description: "状态",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
 			}
 		},
 		updateTime: {
@@ -223,47 +232,38 @@ let curveInfo = {
 			type: {
 				name: "datetime"
 			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
 		}
 	}
 };
 
 let columnsArray = [
+	"averageSpeed",
+	"createTime",
+	"curveDirection",
 	"curveId",
-	"trackDivision",
-	"lineId",
-	"side",
+	"curveLength",
+	"curveReadius",
 	"direction",
-	"startMiles",
 	"endMiles",
-	"cuvreDirection",
-	"cuvreReadius",
+	"endSlowLength",
+	"endTangentLength",
+	"isDelete",
+	"lineId",
+	"longChain",
+	"operator",
+	"overHeight",
+	"remark",
+	"side",
+	"slopeRate",
+	"startMiles",
+	"startSlowLength",
+	"startTangentLength",
+	"status",
 	"steeringAngle",
 	"trackDisType",
 	"trackDisWide",
-	"overHeight",
-	"slopeRate",
-	"startTangentLength",
-	"endTangentLength",
-	"startSlowLength",
-	"endSlowLength",
-	"cuvreLength",
-	"averageSpeed",
-	"longChain",
-	"remark",
-	"status",
-	"isDelete",
-	"createTime",
-	"updateTime",
-	"operator"
+	"trackDivisionId",
+	"updateTime"
 ];
 
 function create() {

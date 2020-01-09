@@ -5,6 +5,7 @@ import com.railway.mapper.DamageRepositoryDeviceMapper;
 import com.railway.pojo.entity.DamageRepositoryDevice;
 import com.railway.pojo.entity.DamageRepository;
 import com.railway.pojo.entity.DamageRepositoryDevice;
+import com.railway.pojo.param.UpdateDamageRepositoryDeviceByOrderDetailIdParams;
 import com.railway.pojo.req.AddDamageRepositoryDeviceReq;
 import com.railway.pojo.req.GetDamageRepositoryDeviceListReq;
 import com.railway.pojo.req.UpdateDamageRepositoryDeviceByOrderDetailIdReq;
@@ -12,7 +13,6 @@ import com.railway.service.DamageRepositoryDeviceService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DamageRepositoryDeviceServiceImpl implements DamageRepositoryDeviceService {
@@ -32,7 +32,7 @@ public class DamageRepositoryDeviceServiceImpl implements DamageRepositoryDevice
 
     @Override
     public boolean updateDamageRepositoryDeviceByOrderDetailId(Integer orderDetailId, UpdateDamageRepositoryDeviceByOrderDetailIdReq req) {
-        params params = new UpdateDamageRepositoryDeviceByOrderDetailIdParams(orderDetailId, req)
+        UpdateDamageRepositoryDeviceByOrderDetailIdParams params = new UpdateDamageRepositoryDeviceByOrderDetailIdParams(orderDetailId, req);
         return damageRepositoryDeviceMapper.updateDamageRepositoryDeviceByOrderDetailId(params) > 0;
     }
 
@@ -43,7 +43,8 @@ public class DamageRepositoryDeviceServiceImpl implements DamageRepositoryDevice
 
     @Override
     public PageInfo<DamageRepositoryDevice> getDamageRepositoryDeviceList(GetDamageRepositoryDeviceListReq req) {
-        return PageHelperUtils.page(()=> damageRepositoryDeviceMapper.getDamageRepositoryDeviceList(req));
+        return PageHelperUtils.paging(req, () -> damageRepositoryDeviceMapper.getDamageRepositoryDeviceList(req));
     }
 
 }
+

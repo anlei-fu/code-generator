@@ -1,4 +1,4 @@
-package com.test.controller;
+package com.railway.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.railway.pojo.entity.WeldingInfo;
@@ -7,13 +7,11 @@ import com.railway.pojo.req.GetWeldingInfoListReq;
 import com.railway.pojo.req.UpdateWeldingInfoByIdReq;
 import com.railway.pojo.resp.R;
 import com.railway.service.WeldingInfoService;
-import com.railway.validate.annotation.Path;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 
 @Api(tags = "@description")
 @RestController
@@ -53,3 +51,4 @@ public class WeldingInfoController {
     }
 
 }
+

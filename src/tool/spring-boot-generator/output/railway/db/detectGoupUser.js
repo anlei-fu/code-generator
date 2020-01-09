@@ -2,15 +2,12 @@ let detectGoupUser = {
 	name: "detectGoupUser",
 	description: "探伤班组人员",
 	columns: {
-		id: {
-			name: "id",
-			description: "组员编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
 			type: {
-				name: "int",
-				length: null
+				name: "datetime"
 			}
 		},
 		groupId: {
@@ -22,9 +19,38 @@ let detectGoupUser = {
 				length: null
 			}
 		},
+		id: {
+			name: "id",
+			description: "组员编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
 		memberId: {
 			name: "memberId",
 			description: "成员编号",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
 				name: "int",
@@ -40,23 +66,6 @@ let detectGoupUser = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
 		updateTime: {
 			name: "updateTime",
 			description: "更新时间",
@@ -64,28 +73,19 @@ let detectGoupUser = {
 			type: {
 				name: "datetime"
 			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
 		}
 	}
 };
 
 let columnsArray = [
-	"id",
-	"groupId",
-	"memberId",
-	"status",
-	"isDelete",
 	"createTime",
-	"updateTime",
-	"operator"
+	"groupId",
+	"id",
+	"isDelete",
+	"memberId",
+	"operator",
+	"status",
+	"updateTime"
 ];
 
 function create() {

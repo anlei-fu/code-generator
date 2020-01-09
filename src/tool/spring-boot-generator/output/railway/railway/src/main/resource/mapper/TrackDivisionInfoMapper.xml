@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.TrackDivisionInfoMapper">
     <insert id="addTrackDivisionInfo" parameterType="com.railway.pojo.req.AddTrackDivisionInfoReq">
-          insert  into track_division_info 
+          insert  into track_division_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bureauId != null">
-                  track_division_info.bureau_id,
+                  t.bureau_id,
             </if>
-             track_division_info.full_name,
+             t.full_name,
             <if test="inputCode != null">
-                  track_division_info.input_code,
+                  t.input_code,
             </if>
-             track_division_info.is_delete,
+             t.is_delete,
             <if test="operator != null">
-                  track_division_info.operator,
+                  t.operator,
             </if>
             <if test="shortName != null">
-                  track_division_info.short_name,
+                  t.short_name,
             </if>
-             track_division_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -40,90 +40,90 @@
           </trim>
     </insert>
     <delete id="deleteTrackDivisionInfoById">
-          delete from track_division_info 
+          delete from track_division_info t
           <where>
             <if test="id != null">
-                  track_division_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateTrackDivisionInfoById" parameterType="com.railway.pojo.param.UpdateTrackDivisionInfoByIdParams">
-        update track_division_info 
+        update track_division_info t
         <set>
             <if test="bureauId != null">
-                  track_division_info.bureau_id = #{BureauId},
+                  t.bureau_id = #{BureauId},
             </if>
             <if test="fullName != null">
-                  track_division_info.full_name = #{FullName},
+                  t.full_name = #{FullName},
             </if>
             <if test="inputCode != null">
-                  track_division_info.input_code = #{InputCode},
+                  t.input_code = #{InputCode},
             </if>
             <if test="isDelete != null">
-                  track_division_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="operator != null">
-                  track_division_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="shortName != null">
-                  track_division_info.short_name = #{ShortName}
+                  t.short_name = #{ShortName}
             </if>
-            track_division_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  track_division_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getTrackDivisionInfoById" resultType="com.railway.pojo.entity.TrackDivisionInfo">
           select
-             track_division_info.bureau_id,
-             track_division_info.create_time,
-             track_division_info.full_name,
-             track_division_info.id,
-             track_division_info.input_code,
-             track_division_info.is_delete,
-             track_division_info.operator,
-             track_division_info.short_name,
-             track_division_info.update_time
-          form track_division_info 
+             t.bureau_id,
+             t.create_time,
+             t.full_name,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.operator,
+             t.short_name,
+             t.update_time
+          form track_division_info t
           <where>
             <if test="id != null">
-                  track_division_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getTrackDivisionInfoList" resultType="com.railway.pojo.entity.TrackDivisionInfo" parameterType="com.railway.pojo.req.GetTrackDivisionInfoListReq">
           select
-             track_division_info.bureau_id,
-             track_division_info.create_time,
-             track_division_info.full_name,
-             track_division_info.id,
-             track_division_info.input_code,
-             track_division_info.is_delete,
-             track_division_info.operator,
-             track_division_info.short_name,
-             track_division_info.update_time
-          form track_division_info 
+             t.bureau_id,
+             t.create_time,
+             t.full_name,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.operator,
+             t.short_name,
+             t.update_time
+          form track_division_info t
           <where>
             <if test="bureauId != null">
-                  track_division_info.bureau_id = #{bureauId}
+                  t.bureau_id = #{bureauId}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and track_division_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="inputCode != null and inputCode != ''">
-                  and track_division_info.input_code = #{inputCode}
+                  and t.input_code = #{inputCode}
             </if>
             <if test="isDelete != null">
-                  and track_division_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="operator != null">
-                  and track_division_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and track_division_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

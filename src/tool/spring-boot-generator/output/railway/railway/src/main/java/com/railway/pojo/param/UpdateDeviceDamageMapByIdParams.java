@@ -1,3 +1,9 @@
+package com.railway.pojo.param;
+
+import com.railway.pojo.req.UpdateDeviceDamageMapByIdReq;
+import lombok.Getter;
+import lombok.Setter;
+
 public class UpdateDeviceDamageMapByIdParams {
 
     @Getter

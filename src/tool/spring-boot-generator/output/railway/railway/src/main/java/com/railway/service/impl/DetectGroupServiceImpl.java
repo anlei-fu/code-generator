@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.DetectGroupMapper;
 import com.railway.pojo.entity.DetectGroup;
 import com.railway.pojo.entity.DetectGroup;
+import com.railway.pojo.param.UpdateDetectGroupByIdParams;
 import com.railway.pojo.req.AddDetectGroupReq;
 import com.railway.pojo.req.GetDetectGroupListReq;
 import com.railway.pojo.req.UpdateDetectGroupByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.DetectGroupService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DetectGroupServiceImpl implements DetectGroupService {
@@ -31,7 +31,7 @@ public class DetectGroupServiceImpl implements DetectGroupService {
 
     @Override
     public boolean updateDetectGroupById(Integer id, UpdateDetectGroupByIdReq req) {
-        params params = new UpdateDetectGroupByIdParams(id, req)
+        UpdateDetectGroupByIdParams params = new UpdateDetectGroupByIdParams(id, req);
         return detectGroupMapper.updateDetectGroupById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class DetectGroupServiceImpl implements DetectGroupService {
 
     @Override
     public PageInfo<DetectGroup> getDetectGroupList(GetDetectGroupListReq req) {
-        return PageHelperUtils.page(()=> detectGroupMapper.getDetectGroupList(req));
+        return PageHelperUtils.paging(req, () -> detectGroupMapper.getDetectGroupList(req));
     }
 
 }
+

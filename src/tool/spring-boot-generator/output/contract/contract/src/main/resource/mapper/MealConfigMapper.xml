@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contract.mapper.MealConfigMapper">
+    <insert id="addMealConfig" parameterType="com.contract.pojo.req.AddMealConfigReq">
+          insert  into meal_config t
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contracts != null">
+                  t.contracts,
+            </if>
+            <if test="discount != null">
+                  t.discount,
+            </if>
+            <if test="mealName != null">
+                  t.meal_name,
+            </if>
+            <if test="mealType != null">
+                  t.meal_type,
+            </if>
+            <if test="price != null">
+                  t.price,
+            </if>
+            <if test="remark != null">
+                  t.remark,
+            </if>
+            <if test="status != null">
+                  t.status,
+            </if>
+             t.create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contracts != null">
+                  #{contracts},
+            </if>
+            <if test="discount != null">
+                  #{discount},
+            </if>
+            <if test="mealName != null">
+                  #{mealName},
+            </if>
+            <if test="mealType != null">
+                  #{mealType},
+            </if>
+            <if test="price != null">
+                  #{price},
+            </if>
+            <if test="remark != null">
+                  #{remark},
+            </if>
+            <if test="status != null">
+                  #{status},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteMealConfigById">
+          delete from meal_config t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </delete>
+    <update id="updateMealConfigById" parameterType="com.contract.pojo.param.UpdateMealConfigByIdParams">
+        update meal_config t
+        <set>
+            <if test="contracts != null">
+                  t.contracts = #{Contracts},
+            </if>
+            <if test="discount != null">
+                  t.discount = #{Discount},
+            </if>
+            <if test="mealName != null">
+                  t.meal_name = #{MealName},
+            </if>
+            <if test="mealType != null">
+                  t.meal_type = #{MealType},
+            </if>
+            <if test="price != null">
+                  t.price = #{Price},
+            </if>
+            <if test="remark != null">
+                  t.remark = #{Remark},
+            </if>
+            <if test="status != null">
+                  t.status = #{Status}
+            </if>
+        </set>
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </update>
+    <select id="getMealConfigById" resultType="com.contract.pojo.entity.MealConfig">
+          select
+             t.contracts,
+             t.create_time,
+             t.discount,
+             t.id,
+             t.meal_name,
+             t.meal_type,
+             t.price,
+             t.remark,
+             t.status
+          form meal_config t
+          <where>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </where>
+    </select>
+    <select id="getMealConfigList" resultType="com.contract.pojo.entity.MealConfig" parameterType="com.contract.pojo.req.GetMealConfigListReq">
+          select
+             t.contracts,
+             t.create_time,
+             t.discount,
+             t.id,
+             t.meal_name,
+             t.meal_type,
+             t.price,
+             t.remark,
+             t.status
+          form meal_config t
+          <where>
+            <if test="contracts != null">
+                  t.contracts = #{contracts}
+            </if>
+            <if test="createTimeStart !=null and  createTimeEnd != null">
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="discount != null">
+                  and t.discount = #{discount}
+            </if>
+            <if test="mealType != null">
+                  and t.meal_type = #{mealType}
+            </if>
+            <if test="price != null">
+                  and t.price = #{price}
+            </if>
+            <if test="status != null">
+                  and t.status = #{status}
+            </if>
+          </where>
+    </select>
+</mapper>

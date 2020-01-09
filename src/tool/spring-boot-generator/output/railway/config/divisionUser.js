@@ -8,9 +8,9 @@ exports.divisionUserConfig = {
                 items: [
 
                         // add
-                        // id excluded 
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDivisionUser")
@@ -18,7 +18,7 @@ exports.divisionUserConfig = {
                                 .includes(collection => {
                                         collection.includes(divisionUser.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/divisionUser");
@@ -51,7 +51,7 @@ exports.divisionUserConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDivisionUserById")
@@ -107,7 +107,7 @@ exports.divisionUserConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange@@
+                        // createTime : expression --- timeRange
                         new builder()
                                 .type("select")
                                 .id("getDivisionUserList")
@@ -128,6 +128,7 @@ exports.divisionUserConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

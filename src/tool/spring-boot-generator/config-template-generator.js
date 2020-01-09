@@ -14,32 +14,30 @@ const EXCLUDE_IDENT = "                                                  ";
 const USER_MATCHERS = {
         insert: {
                 matcher: x => STR.includesAny(x.toLowerCase(), [
+                        "createuser"])
+                        || STR.equalAny(x.toLowerCase(), ["account",
+                                "user",
+                                "admin",])
+        },
+        delete: {
+                matcher: x => STR.equalAny(x.toLowerCase(), [
                         "account",
                         "user",
-                        "admin",
-                        "createuser"
-
+                        "admin"
                 ])
         },
-        delete:{
+        update: {
                 matcher: x => STR.includesAny(x.toLowerCase(), [
-                        "account",
-                        "user",
-                ])
-        },
-        update:{
-                matcher: x => STR.includesAny(x.toLowerCase(), [
-                        "account",
-                        "user",
                         "updateuser",
                         "edituser",
                         "modifyuser"
-                ])
+                ]) || STR.equalAny(x.toLowerCase(), ["user", "admin", "account"])
         },
-        select:{
-                matcher: x => STR.includesAny(x.toLowerCase(), [
+        select: {
+                matcher: x => STR.equalAny(x.toLowerCase(), [
                         "account",
                         "user",
+                        "admin"
                 ])
         }
 };
@@ -68,31 +66,32 @@ class ConfigBuilderGenerator {
 
                 let key=STR.upperFirstLetter(pk.name);
                 let skey=pk.name;
-                let methodName=key;
+                let deleteMethodName=key;
+                let updateMethodName=key;
+                let selectMethodName=key;
                 let keyType=getJavaType(pk.type);
 
                 let insertUserReq = "";
                 if (this._hasUser(table,"insert")){
                         insertUserReq = renderUserReq();
-                        methodName="UserAnd"+methodName;
                 }
 
                 let deleteUserReq = "";
                 if (this._hasUser(table,"delete")){
                         insertUserReq = renderUserReq();
-                        methodName="UserAnd"+methodName;
+                        deleteMethodName="UserAnd"+deleteMethodName;
                 }
 
                 let updateUserReq = "";
                 if (this._hasUser(table,"update")){
                         insertUserReq = renderUserReq();
-                        methodName="UserAnd"+methodName;
+                        updateMethodName="UserAnd"+updateMethodName;
                 }
 
                 let selectUserReq = "";
                 if (this._hasUser(table,"select")){
                         insertUserReq = renderUserReq();
-                        methodName="UserAnd"+methodName;
+                        selectMethodName="UserAnd"+selectMethodName;
                 }
 
 
@@ -108,7 +107,9 @@ class ConfigBuilderGenerator {
                         keyType,
                         key,
                         skey,
-                        methodName,
+                        deleteMethodName,
+                        updateMethodName,
+                        selectMethodName,
                         insertUserReq,
                         deleteUserReq,
                         updateUserReq,

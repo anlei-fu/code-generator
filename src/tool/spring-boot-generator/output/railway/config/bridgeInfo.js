@@ -8,11 +8,11 @@ exports.bridgeInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addBridgeInfo")
@@ -20,7 +20,7 @@ exports.bridgeInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(bridgeInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/bridgeInfo");
@@ -28,8 +28,8 @@ exports.bridgeInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -53,9 +53,9 @@ exports.bridgeInfoConfig = {
                                 .build(),
                                 
                         // updateById
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // status : validate --- @Enum("status")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateBridgeInfoById")
@@ -112,9 +112,9 @@ exports.bridgeInfoConfig = {
 
                         // getList
                         // bridgeName : excluded 
+                        // createTime : expression --- timeRange
                         // remark : excluded 
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getBridgeInfoList")
@@ -136,6 +136,7 @@ exports.bridgeInfoConfig = {
                                            .excludes("id")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

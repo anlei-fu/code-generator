@@ -1,10 +1,8 @@
-package com.spider.pojo.resp;
+package com.@project.pojo.resp;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
-
-import java.util.function.Supplier;
 
 @Getter
 @ApiModel("Response wrapper")

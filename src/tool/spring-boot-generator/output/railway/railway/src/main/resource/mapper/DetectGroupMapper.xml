@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectGroupMapper">
     <insert id="addDetectGroup" parameterType="com.railway.pojo.req.AddDetectGroupReq">
-          insert  into detect_group 
+          insert  into detect_group t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="groupName != null">
-                  detect_group.group_name,
+                  t.group_name,
             </if>
-             detect_group.is_delete,
+             t.is_delete,
             <if test="leaderId != null">
-                  detect_group.leader_id,
+                  t.leader_id,
             </if>
             <if test="operator != null">
-                  detect_group.operator,
+                  t.operator,
             </if>
             <if test="status != null">
-                  detect_group.status,
+                  t.status,
             </if>
-             detect_group.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -38,85 +38,85 @@
           </trim>
     </insert>
     <delete id="deleteDetectGroupById">
-          delete from detect_group 
+          delete from detect_group t
           <where>
             <if test="id != null">
-                  detect_group.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateDetectGroupById" parameterType="com.railway.pojo.param.UpdateDetectGroupByIdParams">
-        update detect_group 
+        update detect_group t
         <set>
             <if test="groupName != null">
-                  detect_group.group_name = #{GroupName},
+                  t.group_name = #{GroupName},
             </if>
             <if test="isDelete != null">
-                  detect_group.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="leaderId != null">
-                  detect_group.leader_id = #{LeaderId},
+                  t.leader_id = #{LeaderId},
             </if>
             <if test="operator != null">
-                  detect_group.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="status != null">
-                  detect_group.status = #{Status}
+                  t.status = #{Status}
             </if>
-            detect_group.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  detect_group.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getDetectGroupById" resultType="com.railway.pojo.entity.DetectGroup">
           select
-             detect_group.create_time,
-             detect_group.group_name,
-             detect_group.id,
-             detect_group.is_delete,
-             detect_group.leader_id,
-             detect_group.operator,
-             detect_group.status,
-             detect_group.update_time
-          form detect_group 
+             t.create_time,
+             t.group_name,
+             t.id,
+             t.is_delete,
+             t.leader_id,
+             t.operator,
+             t.status,
+             t.update_time
+          form detect_group t
           <where>
             <if test="id != null">
-                  detect_group.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getDetectGroupList" resultType="com.railway.pojo.entity.DetectGroup" parameterType="com.railway.pojo.req.GetDetectGroupListReq">
           select
-             detect_group.create_time,
-             detect_group.group_name,
-             detect_group.id,
-             detect_group.is_delete,
-             detect_group.leader_id,
-             detect_group.operator,
-             detect_group.status,
-             detect_group.update_time
-          form detect_group 
+             t.create_time,
+             t.group_name,
+             t.id,
+             t.is_delete,
+             t.leader_id,
+             t.operator,
+             t.status,
+             t.update_time
+          form detect_group t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  detect_group.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="isDelete != null">
-                  and detect_group.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="leaderId != null">
-                  and detect_group.leader_id = #{leaderId}
+                  and t.leader_id = #{leaderId}
             </if>
             <if test="operator != null">
-                  and detect_group.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="status != null">
-                  and detect_group.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and detect_group.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

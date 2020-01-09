@@ -8,13 +8,13 @@ exports.damageDealUserConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // gender : validate --- @Enum("gender")  
-                        // dealType : validate --- @Enum("dealType")  
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // dealType : validate --- @Enum("dealType")  
+                        // gender : validate --- @Enum("gender")  
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDamageDealUser")
@@ -22,7 +22,7 @@ exports.damageDealUserConfig = {
                                 .includes(collection => {
                                         collection.includes(damageDealUser.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/damageDealUser");
@@ -30,10 +30,10 @@ exports.damageDealUserConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("gender","@Enum(\"gender\")")
                                            .validate("dealType","@Enum(\"dealType\")")
-                                           .validate("status","@Enum(\"status\")")
+                                           .validate("gender","@Enum(\"gender\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -57,11 +57,11 @@ exports.damageDealUserConfig = {
                                 .build(),
                                 
                         // updateById
-                        // gender : validate --- @Enum("gender")  
-                        // dealType : validate --- @Enum("dealType")  
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // dealType : validate --- @Enum("dealType")  
+                        // gender : validate --- @Enum("gender")  
+                        // status : validate --- @Enum("status")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDamageDealUserById")
@@ -87,8 +87,8 @@ exports.damageDealUserConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("gender","@Enum(\"gender\")")
                                            .validate("dealType","@Enum(\"dealType\")")
+                                           .validate("gender","@Enum(\"gender\")")
                                            .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
@@ -119,12 +119,12 @@ exports.damageDealUserConfig = {
                                 .build(),
 
                         // getList
-                        // name : excluded 
-                        // gender : validates --- @Enum("gender")  
+                        // createTime : expression --- timeRange
                         // dealType : validates --- @Enum("dealType")  
+                        // gender : validates --- @Enum("gender")  
+                        // name : excluded 
                         // remark : excluded 
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getDamageDealUserList")
@@ -144,10 +144,11 @@ exports.damageDealUserConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("gender","@Enum(\"gender\")")
                                            .validate("dealType","@Enum(\"dealType\")")
+                                           .validate("gender","@Enum(\"gender\")")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

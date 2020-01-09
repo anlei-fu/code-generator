@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.TrackDivisionInfoMapper;
 import com.railway.pojo.entity.TrackDivisionInfo;
 import com.railway.pojo.entity.TrackDivisionInfo;
+import com.railway.pojo.param.UpdateTrackDivisionInfoByIdParams;
 import com.railway.pojo.req.AddTrackDivisionInfoReq;
 import com.railway.pojo.req.GetTrackDivisionInfoListReq;
 import com.railway.pojo.req.UpdateTrackDivisionInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.TrackDivisionInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class TrackDivisionInfoServiceImpl implements TrackDivisionInfoService {
@@ -31,7 +31,7 @@ public class TrackDivisionInfoServiceImpl implements TrackDivisionInfoService {
 
     @Override
     public boolean updateTrackDivisionInfoById(Integer id, UpdateTrackDivisionInfoByIdReq req) {
-        params params = new UpdateTrackDivisionInfoByIdParams(id, req)
+        UpdateTrackDivisionInfoByIdParams params = new UpdateTrackDivisionInfoByIdParams(id, req);
         return trackDivisionInfoMapper.updateTrackDivisionInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class TrackDivisionInfoServiceImpl implements TrackDivisionInfoService {
 
     @Override
     public PageInfo<TrackDivisionInfo> getTrackDivisionInfoList(GetTrackDivisionInfoListReq req) {
-        return PageHelperUtils.page(()=> trackDivisionInfoMapper.getTrackDivisionInfoList(req));
+        return PageHelperUtils.paging(req, () -> trackDivisionInfoMapper.getTrackDivisionInfoList(req));
     }
 
 }
+

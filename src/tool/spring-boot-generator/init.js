@@ -5,8 +5,8 @@ const { generate } = require("./../sqls/model/model-generator");
 const { resolve } = require("./../sqls/model/resolver");
 const { ConfigBuilderGenerator } = require("./config-template-generator");
 
-const {LoggerFactory} =require("./../logging/logger-factory");
-const LOG=LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
+const { LoggerFactory } = require("./../logging/logger-factory");
+const LOG = LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
 
 /**
  * Initialize a spring boot CRUD web project 
@@ -107,26 +107,24 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`./output/${project}/${project}/src/test/java/com/${project}`);
 
         // all default files
-        FILE.copy("./templates/R.java", `${root}/pojo/resp/R.java`);
-        FILE.copy("./templates/WebConfig.java", `${root}/config/WebConfig.java`);
-        FILE.copy("./templates/SwaggerConfig.java", `${root}/config/SwaggerConfig.java`);
-        FILE.copy("./templates/ValidatorConfig.java", `${root}/config/ValidatorConfig.java`);
-        FILE.copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resource/logback.xml`);
+        copy("./templates/R.java", `${root}/pojo/resp/R.java`, project);
+        copy("./templates/WebConfig.java", `${root}/config/WebConfig.java`, project);
+        copy("./templates/SwaggerConfig.java", `${root}/config/SwaggerConfig.java`, project);
+        copy("./templates/ValidatorConfig.java", `${root}/config/ValidatorConfig.java`, project);
+        copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resource/logback.xml`, project);
 
         // page req
-        let pageReq = FILE.read("./templates/PageReq.java");
-        FILE.write(`${root}/pojo/req/PageReq.java`, pageReq.replace(/@project/g, project));
+        copy("./templates/PageReq.java", `${root}/pojo/req/PageReq.java`, project);
 
         // page helper util
-        let pageHelperUtils = FILE.read("./templates/PageHelperUtils.java");
-        FILE.write(`${root}/utils/PageHelperUtils.java`, pageHelperUtils.replace(/@project/g, project));
+        copy("./templates/PageHelperUtils.java", `${root}/utils/PageHelperUtils.java`, project);
 
-        // pom.xml
-        let pom = FILE.read("./templates/pom.xml")
-                .replace(/@project/g, project);
-        FILE.write(`./output/${project}/${project}/pom.xml`, pom);
+        // build.gradle
+        copy("./templates/build.gradle", `./output/${project}/${project}/build.gradle`, project);
 
-        copyAnnotaion("./templates/annotation", `${root}/validate/annotation`);
+        copy("./templates/Application.java", `./output/${project}/${project}/src/main/java/com/${project}/Application.java`, project);
+
+        copyAnnotaion("./templates/annotation", `${root}/validate/annotation`, project);
 
         // application.properties
         let patterns = {
@@ -134,7 +132,8 @@ function makeAllFolders(project, dbConfig) {
                 "@dbPort": dbConfig.port,
                 "@dbName": dbConfig.db,
                 "@dbUser": dbConfig.user,
-                "@dbPassword": dbConfig.password
+                "@dbPassword": dbConfig.password,
+                "@project": project
         };
         let config = FILE.read("./templates/application.properties");
         FILE.write(`./output/${project}/${project}/src/main/resource/application.properties`, STR.replace(config, patterns));
@@ -149,8 +148,7 @@ function makeAllFolders(project, dbConfig) {
  */
 function copyAnnotaion(sourceFolder, targetFolder, project) {
         DIR.getFiles(sourceFolder).forEach(x => {
-                let file = FILE.read(sourceFolder + "/" + x);
-                FILE.write(targetFolder + "/" + x, file.replace(/@project/g, project));
+                copy(sourceFolder + "/" + x, targetFolder + "/" + x, project);
         });
 }
 
@@ -161,14 +159,18 @@ function copyAnnotaion(sourceFolder, targetFolder, project) {
  * @param {String} tableName 
  */
 function generateConfigItem(configRoot, table, pk) {
-        let templates = new ConfigBuilderGenerator().generate(table,pk);
+        let templates = new ConfigBuilderGenerator().generate(table, pk);
         let patterns = {
                 "@name": STR.upperFirstLetter(table.name),
                 "@sname": table.name,
         };
-        
+
         templates = STR.replace(templates, patterns);
         FILE.write(`${configRoot}/${table.name}.js`, templates);
+}
+
+function copy(source, target, project) {
+        FILE.write(target, FILE.read(source).replace(/@project/g, project));
 }
 
 exports.init = init;

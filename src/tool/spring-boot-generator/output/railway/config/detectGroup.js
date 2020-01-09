@@ -8,11 +8,11 @@ exports.detectGroupConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDetectGroup")
@@ -20,7 +20,7 @@ exports.detectGroupConfig = {
                                 .includes(collection => {
                                         collection.includes(detectGroup.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGroup");
@@ -28,8 +28,8 @@ exports.detectGroupConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -53,9 +53,9 @@ exports.detectGroupConfig = {
                                 .build(),
                                 
                         // updateById
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // status : validate --- @Enum("status")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDetectGroupById")
@@ -111,9 +111,9 @@ exports.detectGroupConfig = {
                                 .build(),
 
                         // getList
+                        // createTime : expression --- timeRange
                         // groupName : excluded 
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getDetectGroupList")
@@ -135,6 +135,7 @@ exports.detectGroupConfig = {
                                            .excludes("id")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

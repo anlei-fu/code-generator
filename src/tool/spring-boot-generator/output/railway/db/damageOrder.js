@@ -2,6 +2,23 @@ let damageOrder = {
 	name: "damageOrder",
 	description: "伤损单",
 	columns: {
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
 		orderNo: {
 			name: "orderNo",
 			description: "伤损单号",
@@ -9,15 +26,6 @@ let damageOrder = {
 			nullable: false,
 			type: {
 				name: "varchar",
-				length: null
-			}
-		},
-		workareaId: {
-			name: "workareaId",
-			description: "探伤工区",
-			nullable: true,
-			type: {
-				name: "int",
 				length: null
 			}
 		},
@@ -38,23 +46,6 @@ let damageOrder = {
 				name: "datetime"
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
-			nullable: true,
-			type: {
-				name: "datetime"
-			}
-		},
 		updateTime: {
 			name: "updateTime",
 			description: "更新时间",
@@ -62,18 +53,27 @@ let damageOrder = {
 			type: {
 				name: "datetime"
 			}
+		},
+		workareaId: {
+			name: "workareaId",
+			description: "探伤工区",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
 		}
 	}
 };
 
 let columnsArray = [
+	"createTime",
+	"isDelete",
 	"orderNo",
-	"workareaId",
 	"submitStaff",
 	"submitTime",
-	"isDelete",
-	"createTime",
-	"updateTime"
+	"updateTime",
+	"workareaId"
 ];
 
 function create() {

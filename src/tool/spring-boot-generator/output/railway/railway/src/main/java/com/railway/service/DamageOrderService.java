@@ -6,17 +6,16 @@ import com.railway.pojo.req.AddDamageOrderReq;
 import com.railway.pojo.req.GetDamageOrderListReq;
 import com.railway.pojo.req.UpdateDamageOrderByOrderNoReq;
 
-
 public interface DamageOrderService {
 
     boolean addDamageOrder(AddDamageOrderReq req);
-    
-    boolean deleteDamageOrderByOrderNo(Integer orderNo);
-    
-    boolean updateDamageOrderByOrderNo(Integer orderNo, UpdateDamageOrderByOrderNoReq req);
-    
-    DamageOrder getDamageOrderByOrderNo(Integer orderNo);
-    
+
+    boolean deleteDamageOrderByOrderNo(String orderNo);
+
+    boolean updateDamageOrderByOrderNo(String orderNo, UpdateDamageOrderByOrderNoReq req);
+
+    DamageOrder getDamageOrderByOrderNo(String orderNo);
+
     PageInfo<DamageOrder> getDamageOrderList(GetDamageOrderListReq req);
 
 }

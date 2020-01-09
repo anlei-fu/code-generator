@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.BridgeInfoMapper;
 import com.railway.pojo.entity.BridgeInfo;
 import com.railway.pojo.entity.BridgeInfo;
+import com.railway.pojo.param.UpdateBridgeInfoByIdParams;
 import com.railway.pojo.req.AddBridgeInfoReq;
 import com.railway.pojo.req.GetBridgeInfoListReq;
 import com.railway.pojo.req.UpdateBridgeInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.BridgeInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class BridgeInfoServiceImpl implements BridgeInfoService {
@@ -31,7 +31,7 @@ public class BridgeInfoServiceImpl implements BridgeInfoService {
 
     @Override
     public boolean updateBridgeInfoById(Integer id, UpdateBridgeInfoByIdReq req) {
-        params params = new UpdateBridgeInfoByIdParams(id, req);
+        UpdateBridgeInfoByIdParams params = new UpdateBridgeInfoByIdParams(id, req);
         return bridgeInfoMapper.updateBridgeInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class BridgeInfoServiceImpl implements BridgeInfoService {
 
     @Override
     public PageInfo<BridgeInfo> getBridgeInfoList(GetBridgeInfoListReq req) {
-        return PageHelperUtils.page(()=> bridgeInfoMapper.getBridgeInfoList(req));
+        return PageHelperUtils.paging(req, () -> bridgeInfoMapper.getBridgeInfoList(req));
     }
 
 }
+

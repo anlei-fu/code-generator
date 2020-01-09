@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.DamageTypeMapper;
 import com.railway.pojo.entity.DamageType;
 import com.railway.pojo.entity.DamageType;
+import com.railway.pojo.param.UpdateDamageTypeByIdParams;
 import com.railway.pojo.req.AddDamageTypeReq;
 import com.railway.pojo.req.GetDamageTypeListReq;
 import com.railway.pojo.req.UpdateDamageTypeByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.DamageTypeService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DamageTypeServiceImpl implements DamageTypeService {
@@ -31,7 +31,7 @@ public class DamageTypeServiceImpl implements DamageTypeService {
 
     @Override
     public boolean updateDamageTypeById(Integer id, UpdateDamageTypeByIdReq req) {
-        params params = new UpdateDamageTypeByIdParams(id, req)
+        UpdateDamageTypeByIdParams params = new UpdateDamageTypeByIdParams(id, req);
         return damageTypeMapper.updateDamageTypeById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class DamageTypeServiceImpl implements DamageTypeService {
 
     @Override
     public PageInfo<DamageType> getDamageTypeList(GetDamageTypeListReq req) {
-        return PageHelperUtils.page(()=> damageTypeMapper.getDamageTypeList(req));
+        return PageHelperUtils.paging(req, () -> damageTypeMapper.getDamageTypeList(req));
     }
 
 }
+

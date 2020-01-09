@@ -2,52 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.ThighTrackInfoMapper">
     <insert id="addThighTrackInfo" parameterType="com.railway.pojo.req.AddThighTrackInfoReq">
-          insert  into thigh_track_info 
+          insert  into thigh_track_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="curveRadius != null">
-                  thigh_track_info.curve_radius,
+                  t.curve_radius,
             </if>
             <if test="direction != null">
-                  thigh_track_info.direction,
+                  t.direction,
             </if>
             <if test="gradeSectionLength != null">
-                  thigh_track_info.grade_section_length,
+                  t.grade_section_length,
             </if>
-             thigh_track_info.is_delete,
+             t.is_delete,
             <if test="lineId != null">
-                  thigh_track_info.line_id,
+                  t.line_id,
             </if>
             <if test="maxGradient != null">
-                  thigh_track_info.max_gradient,
+                  t.max_gradient,
             </if>
             <if test="operator != null">
-                  thigh_track_info.operator,
+                  t.operator,
             </if>
             <if test="sortNum != null">
-                  thigh_track_info.sort_num,
+                  t.sort_num,
             </if>
             <if test="stationId != null">
-                  thigh_track_info.station_id,
+                  t.station_id,
             </if>
             <if test="status != null">
-                  thigh_track_info.status,
+                  t.status,
             </if>
             <if test="thighTrackLength != null">
-                  thigh_track_info.thigh_track_length,
+                  t.thigh_track_length,
             </if>
             <if test="thighTrackNo != null">
-                  thigh_track_info.thigh_track_no,
+                  t.thigh_track_no,
             </if>
             <if test="thighTrackType != null">
-                  thigh_track_info.thigh_track_type,
+                  t.thigh_track_type,
             </if>
             <if test="tieCategory != null">
-                  thigh_track_info.tie_category,
+                  t.tie_category,
             </if>
             <if test="workareaId != null">
-                  thigh_track_info.workarea_id,
+                  t.workarea_id,
             </if>
-             thigh_track_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -98,168 +98,168 @@
           </trim>
     </insert>
     <delete id="deleteThighTrackInfoById">
-          delete from thigh_track_info 
+          delete from thigh_track_info t
           <where>
             <if test="id != null">
-                  thigh_track_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateThighTrackInfoById" parameterType="com.railway.pojo.param.UpdateThighTrackInfoByIdParams">
-        update thigh_track_info 
+        update thigh_track_info t
         <set>
             <if test="curveRadius != null">
-                  thigh_track_info.curve_radius = #{CurveRadius},
+                  t.curve_radius = #{CurveRadius},
             </if>
             <if test="direction != null">
-                  thigh_track_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="gradeSectionLength != null">
-                  thigh_track_info.grade_section_length = #{GradeSectionLength},
+                  t.grade_section_length = #{GradeSectionLength},
             </if>
             <if test="isDelete != null">
-                  thigh_track_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  thigh_track_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="maxGradient != null">
-                  thigh_track_info.max_gradient = #{MaxGradient},
+                  t.max_gradient = #{MaxGradient},
             </if>
             <if test="operator != null">
-                  thigh_track_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="sortNum != null">
-                  thigh_track_info.sort_num = #{SortNum},
+                  t.sort_num = #{SortNum},
             </if>
             <if test="stationId != null">
-                  thigh_track_info.station_id = #{StationId},
+                  t.station_id = #{StationId},
             </if>
             <if test="status != null">
-                  thigh_track_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="thighTrackLength != null">
-                  thigh_track_info.thigh_track_length = #{ThighTrackLength},
+                  t.thigh_track_length = #{ThighTrackLength},
             </if>
             <if test="thighTrackNo != null">
-                  thigh_track_info.thigh_track_no = #{ThighTrackNo},
+                  t.thigh_track_no = #{ThighTrackNo},
             </if>
             <if test="thighTrackType != null">
-                  thigh_track_info.thigh_track_type = #{ThighTrackType},
+                  t.thigh_track_type = #{ThighTrackType},
             </if>
             <if test="tieCategory != null">
-                  thigh_track_info.tie_category = #{TieCategory},
+                  t.tie_category = #{TieCategory},
             </if>
             <if test="workareaId != null">
-                  thigh_track_info.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            thigh_track_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  thigh_track_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getThighTrackInfoById" resultType="com.railway.pojo.entity.ThighTrackInfo">
           select
-             thigh_track_info.create_time,
-             thigh_track_info.curve_radius,
-             thigh_track_info.direction,
-             thigh_track_info.grade_section_length,
-             thigh_track_info.id,
-             thigh_track_info.is_delete,
-             thigh_track_info.line_id,
-             thigh_track_info.max_gradient,
-             thigh_track_info.operator,
-             thigh_track_info.sort_num,
-             thigh_track_info.station_id,
-             thigh_track_info.status,
-             thigh_track_info.thigh_track_length,
-             thigh_track_info.thigh_track_no,
-             thigh_track_info.thigh_track_type,
-             thigh_track_info.tie_category,
-             thigh_track_info.update_time,
-             thigh_track_info.workarea_id
-          form thigh_track_info 
+             t.create_time,
+             t.curve_radius,
+             t.direction,
+             t.grade_section_length,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.max_gradient,
+             t.operator,
+             t.sort_num,
+             t.station_id,
+             t.status,
+             t.thigh_track_length,
+             t.thigh_track_no,
+             t.thigh_track_type,
+             t.tie_category,
+             t.update_time,
+             t.workarea_id
+          form thigh_track_info t
           <where>
             <if test="id != null">
-                  thigh_track_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getThighTrackInfoList" resultType="com.railway.pojo.entity.ThighTrackInfo" parameterType="com.railway.pojo.req.GetThighTrackInfoListReq">
           select
-             thigh_track_info.create_time,
-             thigh_track_info.curve_radius,
-             thigh_track_info.direction,
-             thigh_track_info.grade_section_length,
-             thigh_track_info.id,
-             thigh_track_info.is_delete,
-             thigh_track_info.line_id,
-             thigh_track_info.max_gradient,
-             thigh_track_info.operator,
-             thigh_track_info.sort_num,
-             thigh_track_info.station_id,
-             thigh_track_info.status,
-             thigh_track_info.thigh_track_length,
-             thigh_track_info.thigh_track_no,
-             thigh_track_info.thigh_track_type,
-             thigh_track_info.tie_category,
-             thigh_track_info.update_time,
-             thigh_track_info.workarea_id
-          form thigh_track_info 
+             t.create_time,
+             t.curve_radius,
+             t.direction,
+             t.grade_section_length,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.max_gradient,
+             t.operator,
+             t.sort_num,
+             t.station_id,
+             t.status,
+             t.thigh_track_length,
+             t.thigh_track_no,
+             t.thigh_track_type,
+             t.tie_category,
+             t.update_time,
+             t.workarea_id
+          form thigh_track_info t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  thigh_track_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="curveRadius != null">
-                  and thigh_track_info.curve_radius = #{curveRadius}
+                  and t.curve_radius = #{curveRadius}
             </if>
             <if test="direction != null">
-                  and thigh_track_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="gradeSectionLength != null">
-                  and thigh_track_info.grade_section_length = #{gradeSectionLength}
+                  and t.grade_section_length = #{gradeSectionLength}
             </if>
             <if test="isDelete != null">
-                  and thigh_track_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and thigh_track_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="maxGradient != null">
-                  and thigh_track_info.max_gradient = #{maxGradient}
+                  and t.max_gradient = #{maxGradient}
             </if>
             <if test="operator != null">
-                  and thigh_track_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="sortNum != null and sortNum != ''">
-                  and thigh_track_info.sort_num = #{sortNum}
+                  and t.sort_num = #{sortNum}
             </if>
             <if test="stationId != null">
-                  and thigh_track_info.station_id = #{stationId}
+                  and t.station_id = #{stationId}
             </if>
             <if test="status != null">
-                  and thigh_track_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="thighTrackLength != null">
-                  and thigh_track_info.thigh_track_length = #{thighTrackLength}
+                  and t.thigh_track_length = #{thighTrackLength}
             </if>
             <if test="thighTrackNo != null and thighTrackNo != ''">
-                  and thigh_track_info.thigh_track_no = #{thighTrackNo}
+                  and t.thigh_track_no = #{thighTrackNo}
             </if>
             <if test="thighTrackType != null">
-                  and thigh_track_info.thigh_track_type = #{thighTrackType}
+                  and t.thigh_track_type = #{thighTrackType}
             </if>
             <if test="tieCategory != null">
-                  and thigh_track_info.tie_category = #{tieCategory}
+                  and t.tie_category = #{tieCategory}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and thigh_track_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="workareaId != null">
-                  and thigh_track_info.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>

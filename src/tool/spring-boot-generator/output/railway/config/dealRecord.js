@@ -8,11 +8,11 @@ exports.dealRecordConfig = {
                 items: [
 
                         // add
+                        // createTime excluded 
+                        // deleteAuditStatus : validate --- @Enum("deleteAuditStatus")  
                         // id excluded 
                         // isDelete : validate --- @NotNull  
-                        // createTime excluded 
-                        // updateTime excluded 
-                        // deleteAuditStatus : validate --- @Enum("deleteAuditStatus")@@
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDealRecord")
@@ -20,7 +20,7 @@ exports.dealRecordConfig = {
                                 .includes(collection => {
                                         collection.includes(dealRecord.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/dealRecord");
@@ -28,8 +28,8 @@ exports.dealRecordConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("isDelete","@NotNull")
                                            .validate("deleteAuditStatus","@Enum(\"deleteAuditStatus\")")
+                                           .validate("isDelete","@NotNull")
                                 })
                                 .build(),
 
@@ -54,8 +54,8 @@ exports.dealRecordConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded 
-                        // deleteAuditStatus : validate --- @Enum("deleteAuditStatus")@@
+                        // deleteAuditStatus : validate --- @Enum("deleteAuditStatus")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDealRecordById")
@@ -111,9 +111,9 @@ exports.dealRecordConfig = {
                                 .build(),
 
                         // getList
-                        // dealRemark : excluded 
                         // createTime : expression --- timeRange
-                        // deleteAuditStatus : validates --- @Enum("deleteAuditStatus")@@
+                        // dealRemark : excluded 
+                        // deleteAuditStatus : validates --- @Enum("deleteAuditStatus")
                         new builder()
                                 .type("select")
                                 .id("getDealRecordList")
@@ -135,6 +135,7 @@ exports.dealRecordConfig = {
                                            .excludes("id")
                                            .validate("deleteAuditStatus","@Enum(\"deleteAuditStatus\")")
                                 })
+
                                 .build()
                 ]
 }

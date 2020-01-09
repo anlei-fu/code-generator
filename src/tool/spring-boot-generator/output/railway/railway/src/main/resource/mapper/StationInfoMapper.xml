@@ -2,46 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.StationInfoMapper">
     <insert id="addStationInfo" parameterType="com.railway.pojo.req.AddStationInfoReq">
-          insert  into station_info 
+          insert  into station_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="fullName != null">
-                  station_info.full_name,
+                  t.full_name,
             </if>
             <if test="inputCode != null">
-                  station_info.input_code,
+                  t.input_code,
             </if>
             <if test="isDelete != null">
-                  station_info.is_delete,
+                  t.is_delete,
             </if>
             <if test="jobType != null">
-                  station_info.job_type,
+                  t.job_type,
             </if>
             <if test="operator != null">
-                  station_info.operator,
+                  t.operator,
             </if>
             <if test="shortName != null">
-                  station_info.short_name,
+                  t.short_name,
             </if>
             <if test="stationCode != null">
-                  station_info.station_code,
+                  t.station_code,
             </if>
             <if test="stationGrade != null">
-                  station_info.station_grade,
+                  t.station_grade,
             </if>
             <if test="stationType != null">
-                  station_info.station_type,
+                  t.station_type,
             </if>
             <if test="status != null">
-                  station_info.status,
+                  t.status,
             </if>
             <if test="ternoutNum != null">
-                  station_info.ternout_num,
+                  t.ternout_num,
             </if>
             <if test="thighTrackNum != null">
-                  station_info.thigh_track_num,
+                  t.thigh_track_num,
             </if>
-             station_info.track_division_id,
-             station_info.create_time
+             t.track_division_id,
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -86,146 +86,146 @@
           </trim>
     </insert>
     <delete id="deleteStationInfoById">
-          delete from station_info 
+          delete from station_info t
           <where>
             <if test="id != null">
-                  station_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateStationInfoById" parameterType="com.railway.pojo.param.UpdateStationInfoByIdParams">
-        update station_info 
+        update station_info t
         <set>
             <if test="fullName != null">
-                  station_info.full_name = #{FullName},
+                  t.full_name = #{FullName},
             </if>
             <if test="inputCode != null">
-                  station_info.input_code = #{InputCode},
+                  t.input_code = #{InputCode},
             </if>
             <if test="isDelete != null">
-                  station_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="jobType != null">
-                  station_info.job_type = #{JobType},
+                  t.job_type = #{JobType},
             </if>
             <if test="operator != null">
-                  station_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="shortName != null">
-                  station_info.short_name = #{ShortName},
+                  t.short_name = #{ShortName},
             </if>
             <if test="stationCode != null">
-                  station_info.station_code = #{StationCode},
+                  t.station_code = #{StationCode},
             </if>
             <if test="stationGrade != null">
-                  station_info.station_grade = #{StationGrade},
+                  t.station_grade = #{StationGrade},
             </if>
             <if test="stationType != null">
-                  station_info.station_type = #{StationType},
+                  t.station_type = #{StationType},
             </if>
             <if test="status != null">
-                  station_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="ternoutNum != null">
-                  station_info.ternout_num = #{TernoutNum},
+                  t.ternout_num = #{TernoutNum},
             </if>
             <if test="thighTrackNum != null">
-                  station_info.thigh_track_num = #{ThighTrackNum},
+                  t.thigh_track_num = #{ThighTrackNum},
             </if>
             <if test="trackDivisionId != null">
-                  station_info.track_division_id = #{TrackDivisionId}
+                  t.track_division_id = #{TrackDivisionId}
             </if>
-            station_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  station_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getStationInfoById" resultType="com.railway.pojo.entity.StationInfo">
           select
-             station_info.create_time,
-             station_info.full_name,
-             station_info.id,
-             station_info.input_code,
-             station_info.is_delete,
-             station_info.job_type,
-             station_info.operator,
-             station_info.short_name,
-             station_info.station_code,
-             station_info.station_grade,
-             station_info.station_type,
-             station_info.status,
-             station_info.ternout_num,
-             station_info.thigh_track_num,
-             station_info.track_division_id,
-             station_info.update_time
-          form station_info 
+             t.create_time,
+             t.full_name,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.job_type,
+             t.operator,
+             t.short_name,
+             t.station_code,
+             t.station_grade,
+             t.station_type,
+             t.status,
+             t.ternout_num,
+             t.thigh_track_num,
+             t.track_division_id,
+             t.update_time
+          form station_info t
           <where>
             <if test="id != null">
-                  station_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getStationInfoList" resultType="com.railway.pojo.entity.StationInfo" parameterType="com.railway.pojo.req.GetStationInfoListReq">
           select
-             station_info.create_time,
-             station_info.full_name,
-             station_info.id,
-             station_info.input_code,
-             station_info.is_delete,
-             station_info.job_type,
-             station_info.operator,
-             station_info.short_name,
-             station_info.station_code,
-             station_info.station_grade,
-             station_info.station_type,
-             station_info.status,
-             station_info.ternout_num,
-             station_info.thigh_track_num,
-             station_info.track_division_id,
-             station_info.update_time
-          form station_info 
+             t.create_time,
+             t.full_name,
+             t.id,
+             t.input_code,
+             t.is_delete,
+             t.job_type,
+             t.operator,
+             t.short_name,
+             t.station_code,
+             t.station_grade,
+             t.station_type,
+             t.status,
+             t.ternout_num,
+             t.thigh_track_num,
+             t.track_division_id,
+             t.update_time
+          form station_info t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  station_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="inputCode != null and inputCode != ''">
-                  and station_info.input_code = #{inputCode}
+                  and t.input_code = #{inputCode}
             </if>
             <if test="isDelete != null">
-                  and station_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="jobType != null">
-                  and station_info.job_type = #{jobType}
+                  and t.job_type = #{jobType}
             </if>
             <if test="operator != null">
-                  and station_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="stationCode != null and stationCode != ''">
-                  and station_info.station_code = #{stationCode}
+                  and t.station_code = #{stationCode}
             </if>
             <if test="stationGrade != null">
-                  and station_info.station_grade = #{stationGrade}
+                  and t.station_grade = #{stationGrade}
             </if>
             <if test="stationType != null">
-                  and station_info.station_type = #{stationType}
+                  and t.station_type = #{stationType}
             </if>
             <if test="status != null">
-                  and station_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="ternoutNum != null">
-                  and station_info.ternout_num = #{ternoutNum}
+                  and t.ternout_num = #{ternoutNum}
             </if>
             <if test="thighTrackNum != null">
-                  and station_info.thigh_track_num = #{thighTrackNum}
+                  and t.thigh_track_num = #{thighTrackNum}
             </if>
             <if test="trackDivisionId != null">
-                  and station_info.track_division_id = #{trackDivisionId}
+                  and t.track_division_id = #{trackDivisionId}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and station_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

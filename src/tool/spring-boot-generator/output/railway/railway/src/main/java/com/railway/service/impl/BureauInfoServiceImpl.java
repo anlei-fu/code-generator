@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.BureauInfoMapper;
 import com.railway.pojo.entity.BureauInfo;
 import com.railway.pojo.entity.BureauInfo;
+import com.railway.pojo.param.UpdateBureauInfoByIdParams;
 import com.railway.pojo.req.AddBureauInfoReq;
 import com.railway.pojo.req.GetBureauInfoListReq;
 import com.railway.pojo.req.UpdateBureauInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.BureauInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class BureauInfoServiceImpl implements BureauInfoService {
@@ -31,7 +31,7 @@ public class BureauInfoServiceImpl implements BureauInfoService {
 
     @Override
     public boolean updateBureauInfoById(Integer id, UpdateBureauInfoByIdReq req) {
-        params params = new UpdateBureauInfoByIdParams(id, req)
+        UpdateBureauInfoByIdParams params = new UpdateBureauInfoByIdParams(id, req);
         return bureauInfoMapper.updateBureauInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class BureauInfoServiceImpl implements BureauInfoService {
 
     @Override
     public PageInfo<BureauInfo> getBureauInfoList(GetBureauInfoListReq req) {
-        return PageHelperUtils.page(()=> bureauInfoMapper.getBureauInfoList(req));
+        return PageHelperUtils.paging(req, () -> bureauInfoMapper.getBureauInfoList(req));
     }
 
 }
+

@@ -2,91 +2,91 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.WeldingInfoMapper">
     <insert id="addWeldingInfo" parameterType="com.railway.pojo.req.AddWeldingInfoReq">
-          insert  into welding_info 
+          insert  into welding_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="direction != null">
-                  welding_info.direction,
+                  t.direction,
             </if>
             <if test="holeNum != null">
-                  welding_info.hole_num,
+                  t.hole_num,
             </if>
             <if test="innerGlancingFlatness != null">
-                  welding_info.inner_glancing_flatness,
+                  t.inner_glancing_flatness,
             </if>
-             welding_info.is_delete,
+             t.is_delete,
             <if test="lineId != null">
-                  welding_info.line_id,
+                  t.line_id,
             </if>
             <if test="miles != null">
-                  welding_info.miles,
+                  t.miles,
             </if>
             <if test="operator != null">
-                  welding_info.operator,
+                  t.operator,
             </if>
             <if test="position != null">
-                  welding_info.position,
+                  t.position,
             </if>
             <if test="positionCategory != null">
-                  welding_info.position_category,
+                  t.position_category,
             </if>
             <if test="reinforceWelding != null">
-                  welding_info.reinforce_welding,
+                  t.reinforce_welding,
             </if>
             <if test="remark != null">
-                  welding_info.remark,
+                  t.remark,
             </if>
             <if test="side != null">
-                  welding_info.side,
+                  t.side,
             </if>
             <if test="stationId != null">
-                  welding_info.station_id,
+                  t.station_id,
             </if>
             <if test="status != null">
-                  welding_info.status,
+                  t.status,
             </if>
             <if test="thighTrackId != null">
-                  welding_info.thigh_track_id,
+                  t.thigh_track_id,
             </if>
             <if test="thignTrackCategory != null">
-                  welding_info.thign_track_category,
+                  t.thign_track_category,
             </if>
             <if test="trackGlancingFlatness != null">
-                  welding_info.track_glancing_flatness,
+                  t.track_glancing_flatness,
             </if>
             <if test="trackId != null">
-                  welding_info.track_id,
+                  t.track_id,
             </if>
             <if test="turnoutId != null">
-                  welding_info.turnout_id,
+                  t.turnout_id,
             </if>
             <if test="turnoutThignCategory != null">
-                  welding_info.turnout_thign_category,
+                  t.turnout_thign_category,
             </if>
             <if test="weldDate != null">
-                  welding_info.weld_date,
+                  t.weld_date,
             </if>
             <if test="weldTrackTemperature != null">
-                  welding_info.weld_track_temperature,
+                  t.weld_track_temperature,
             </if>
             <if test="weldUser != null">
-                  welding_info.weld_user,
+                  t.weld_user,
             </if>
             <if test="welderUnit != null">
-                  welding_info.welder_unit,
+                  t.welder_unit,
             </if>
             <if test="weldingNo != null">
-                  welding_info.welding_no,
+                  t.welding_no,
             </if>
             <if test="weldingType != null">
-                  welding_info.welding_type,
+                  t.welding_type,
             </if>
             <if test="weldingWay != null">
-                  welding_info.welding_way,
+                  t.welding_way,
             </if>
             <if test="workareaId != null">
-                  welding_info.workarea_id,
+                  t.workarea_id,
             </if>
-             welding_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -176,269 +176,269 @@
           </trim>
     </insert>
     <delete id="deleteWeldingInfoById">
-          delete from welding_info 
+          delete from welding_info t
           <where>
             <if test="id != null">
-                  welding_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateWeldingInfoById" parameterType="com.railway.pojo.param.UpdateWeldingInfoByIdParams">
-        update welding_info 
+        update welding_info t
         <set>
             <if test="direction != null">
-                  welding_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="holeNum != null">
-                  welding_info.hole_num = #{HoleNum},
+                  t.hole_num = #{HoleNum},
             </if>
             <if test="innerGlancingFlatness != null">
-                  welding_info.inner_glancing_flatness = #{InnerGlancingFlatness},
+                  t.inner_glancing_flatness = #{InnerGlancingFlatness},
             </if>
             <if test="isDelete != null">
-                  welding_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  welding_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="miles != null">
-                  welding_info.miles = #{Miles},
+                  t.miles = #{Miles},
             </if>
             <if test="operator != null">
-                  welding_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="position != null">
-                  welding_info.position = #{Position},
+                  t.position = #{Position},
             </if>
             <if test="positionCategory != null">
-                  welding_info.position_category = #{PositionCategory},
+                  t.position_category = #{PositionCategory},
             </if>
             <if test="reinforceWelding != null">
-                  welding_info.reinforce_welding = #{ReinforceWelding},
+                  t.reinforce_welding = #{ReinforceWelding},
             </if>
             <if test="remark != null">
-                  welding_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="side != null">
-                  welding_info.side = #{Side},
+                  t.side = #{Side},
             </if>
             <if test="stationId != null">
-                  welding_info.station_id = #{StationId},
+                  t.station_id = #{StationId},
             </if>
             <if test="status != null">
-                  welding_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="thighTrackId != null">
-                  welding_info.thigh_track_id = #{ThighTrackId},
+                  t.thigh_track_id = #{ThighTrackId},
             </if>
             <if test="thignTrackCategory != null">
-                  welding_info.thign_track_category = #{ThignTrackCategory},
+                  t.thign_track_category = #{ThignTrackCategory},
             </if>
             <if test="trackGlancingFlatness != null">
-                  welding_info.track_glancing_flatness = #{TrackGlancingFlatness},
+                  t.track_glancing_flatness = #{TrackGlancingFlatness},
             </if>
             <if test="trackId != null">
-                  welding_info.track_id = #{TrackId},
+                  t.track_id = #{TrackId},
             </if>
             <if test="turnoutId != null">
-                  welding_info.turnout_id = #{TurnoutId},
+                  t.turnout_id = #{TurnoutId},
             </if>
             <if test="turnoutThignCategory != null">
-                  welding_info.turnout_thign_category = #{TurnoutThignCategory},
+                  t.turnout_thign_category = #{TurnoutThignCategory},
             </if>
             <if test="weldDate != null">
-                  welding_info.weld_date = #{WeldDate},
+                  t.weld_date = #{WeldDate},
             </if>
             <if test="weldTrackTemperature != null">
-                  welding_info.weld_track_temperature = #{WeldTrackTemperature},
+                  t.weld_track_temperature = #{WeldTrackTemperature},
             </if>
             <if test="weldUser != null">
-                  welding_info.weld_user = #{WeldUser},
+                  t.weld_user = #{WeldUser},
             </if>
             <if test="welderUnit != null">
-                  welding_info.welder_unit = #{WelderUnit},
+                  t.welder_unit = #{WelderUnit},
             </if>
             <if test="weldingNo != null">
-                  welding_info.welding_no = #{WeldingNo},
+                  t.welding_no = #{WeldingNo},
             </if>
             <if test="weldingType != null">
-                  welding_info.welding_type = #{WeldingType},
+                  t.welding_type = #{WeldingType},
             </if>
             <if test="weldingWay != null">
-                  welding_info.welding_way = #{WeldingWay},
+                  t.welding_way = #{WeldingWay},
             </if>
             <if test="workareaId != null">
-                  welding_info.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            welding_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  welding_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getWeldingInfoById" resultType="com.railway.pojo.entity.WeldingInfo">
           select
-             welding_info.create_time,
-             welding_info.direction,
-             welding_info.hole_num,
-             welding_info.id,
-             welding_info.inner_glancing_flatness,
-             welding_info.is_delete,
-             welding_info.line_id,
-             welding_info.miles,
-             welding_info.operator,
-             welding_info.position,
-             welding_info.position_category,
-             welding_info.reinforce_welding,
-             welding_info.remark,
-             welding_info.side,
-             welding_info.station_id,
-             welding_info.status,
-             welding_info.thigh_track_id,
-             welding_info.thign_track_category,
-             welding_info.track_glancing_flatness,
-             welding_info.track_id,
-             welding_info.turnout_id,
-             welding_info.turnout_thign_category,
-             welding_info.update_time,
-             welding_info.weld_date,
-             welding_info.weld_track_temperature,
-             welding_info.weld_user,
-             welding_info.welder_unit,
-             welding_info.welding_no,
-             welding_info.welding_type,
-             welding_info.welding_way,
-             welding_info.workarea_id
-          form welding_info 
+             t.create_time,
+             t.direction,
+             t.hole_num,
+             t.id,
+             t.inner_glancing_flatness,
+             t.is_delete,
+             t.line_id,
+             t.miles,
+             t.operator,
+             t.position,
+             t.position_category,
+             t.reinforce_welding,
+             t.remark,
+             t.side,
+             t.station_id,
+             t.status,
+             t.thigh_track_id,
+             t.thign_track_category,
+             t.track_glancing_flatness,
+             t.track_id,
+             t.turnout_id,
+             t.turnout_thign_category,
+             t.update_time,
+             t.weld_date,
+             t.weld_track_temperature,
+             t.weld_user,
+             t.welder_unit,
+             t.welding_no,
+             t.welding_type,
+             t.welding_way,
+             t.workarea_id
+          form welding_info t
           <where>
             <if test="id != null">
-                  welding_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getWeldingInfoList" resultType="com.railway.pojo.entity.WeldingInfo" parameterType="com.railway.pojo.req.GetWeldingInfoListReq">
           select
-             welding_info.create_time,
-             welding_info.direction,
-             welding_info.hole_num,
-             welding_info.id,
-             welding_info.inner_glancing_flatness,
-             welding_info.is_delete,
-             welding_info.line_id,
-             welding_info.miles,
-             welding_info.operator,
-             welding_info.position,
-             welding_info.position_category,
-             welding_info.reinforce_welding,
-             welding_info.remark,
-             welding_info.side,
-             welding_info.station_id,
-             welding_info.status,
-             welding_info.thigh_track_id,
-             welding_info.thign_track_category,
-             welding_info.track_glancing_flatness,
-             welding_info.track_id,
-             welding_info.turnout_id,
-             welding_info.turnout_thign_category,
-             welding_info.update_time,
-             welding_info.weld_date,
-             welding_info.weld_track_temperature,
-             welding_info.weld_user,
-             welding_info.welder_unit,
-             welding_info.welding_no,
-             welding_info.welding_type,
-             welding_info.welding_way,
-             welding_info.workarea_id
-          form welding_info 
+             t.create_time,
+             t.direction,
+             t.hole_num,
+             t.id,
+             t.inner_glancing_flatness,
+             t.is_delete,
+             t.line_id,
+             t.miles,
+             t.operator,
+             t.position,
+             t.position_category,
+             t.reinforce_welding,
+             t.remark,
+             t.side,
+             t.station_id,
+             t.status,
+             t.thigh_track_id,
+             t.thign_track_category,
+             t.track_glancing_flatness,
+             t.track_id,
+             t.turnout_id,
+             t.turnout_thign_category,
+             t.update_time,
+             t.weld_date,
+             t.weld_track_temperature,
+             t.weld_user,
+             t.welder_unit,
+             t.welding_no,
+             t.welding_type,
+             t.welding_way,
+             t.workarea_id
+          form welding_info t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  welding_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="direction != null">
-                  and welding_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="holeNum != null">
-                  and welding_info.hole_num = #{holeNum}
+                  and t.hole_num = #{holeNum}
             </if>
             <if test="innerGlancingFlatness != null">
-                  and welding_info.inner_glancing_flatness = #{innerGlancingFlatness}
+                  and t.inner_glancing_flatness = #{innerGlancingFlatness}
             </if>
             <if test="isDelete != null">
-                  and welding_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and welding_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="miles != null">
-                  and welding_info.miles = #{miles}
+                  and t.miles = #{miles}
             </if>
             <if test="operator != null">
-                  and welding_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="position != null">
-                  and welding_info.position = #{position}
+                  and t.position = #{position}
             </if>
             <if test="positionCategory != null">
-                  and welding_info.position_category = #{positionCategory}
+                  and t.position_category = #{positionCategory}
             </if>
             <if test="reinforceWelding != null">
-                  and welding_info.reinforce_welding = #{reinforceWelding}
+                  and t.reinforce_welding = #{reinforceWelding}
             </if>
             <if test="side != null">
-                  and welding_info.side = #{side}
+                  and t.side = #{side}
             </if>
             <if test="stationId != null">
-                  and welding_info.station_id = #{stationId}
+                  and t.station_id = #{stationId}
             </if>
             <if test="status != null">
-                  and welding_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="thighTrackId != null">
-                  and welding_info.thigh_track_id = #{thighTrackId}
+                  and t.thigh_track_id = #{thighTrackId}
             </if>
             <if test="thignTrackCategory != null">
-                  and welding_info.thign_track_category = #{thignTrackCategory}
+                  and t.thign_track_category = #{thignTrackCategory}
             </if>
             <if test="trackGlancingFlatness != null">
-                  and welding_info.track_glancing_flatness = #{trackGlancingFlatness}
+                  and t.track_glancing_flatness = #{trackGlancingFlatness}
             </if>
             <if test="trackId != null">
-                  and welding_info.track_id = #{trackId}
+                  and t.track_id = #{trackId}
             </if>
             <if test="turnoutId != null">
-                  and welding_info.turnout_id = #{turnoutId}
+                  and t.turnout_id = #{turnoutId}
             </if>
             <if test="turnoutThignCategory != null">
-                  and welding_info.turnout_thign_category = #{turnoutThignCategory}
+                  and t.turnout_thign_category = #{turnoutThignCategory}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and welding_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="weldDateStart !=null and  weldDateEnd != null">
-                  and welding_info.weld_date between #{weldDateStart} and #{weldDateEnd}
+                  and t.weld_date between #{weldDateStart} and #{weldDateEnd}
             </if>
             <if test="weldTrackTemperature != null">
-                  and welding_info.weld_track_temperature = #{weldTrackTemperature}
+                  and t.weld_track_temperature = #{weldTrackTemperature}
             </if>
             <if test="weldUser != null and weldUser != ''">
-                  and welding_info.weld_user = #{weldUser}
+                  and t.weld_user = #{weldUser}
             </if>
             <if test="welderUnit != null and welderUnit != ''">
-                  and welding_info.welder_unit = #{welderUnit}
+                  and t.welder_unit = #{welderUnit}
             </if>
             <if test="weldingNo != null and weldingNo != ''">
-                  and welding_info.welding_no = #{weldingNo}
+                  and t.welding_no = #{weldingNo}
             </if>
             <if test="weldingType != null">
-                  and welding_info.welding_type = #{weldingType}
+                  and t.welding_type = #{weldingType}
             </if>
             <if test="weldingWay != null">
-                  and welding_info.welding_way = #{weldingWay}
+                  and t.welding_way = #{weldingWay}
             </if>
             <if test="workareaId != null">
-                  and welding_info.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>

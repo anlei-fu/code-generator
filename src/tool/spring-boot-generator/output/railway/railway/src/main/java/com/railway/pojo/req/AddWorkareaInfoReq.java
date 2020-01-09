@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 
-
-
 @ApiModel("")
 @Getter
 @Setter

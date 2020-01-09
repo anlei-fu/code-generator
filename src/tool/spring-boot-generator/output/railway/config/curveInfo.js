@@ -8,12 +8,12 @@ exports.curveInfoConfig = {
                 items: [
 
                         // add
-                        // curveId excluded 
-                        // trackDisType : validate --- @Enum("trackDisType")  
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // curveId excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // trackDisType : validate --- @Enum("trackDisType")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addCurveInfo")
@@ -21,7 +21,7 @@ exports.curveInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(curveInfo.columnsArray)
                                                   .excludes("curveId")
-                                                  .excludes(["curveId","createTime","updateTime"])
+                                                  .excludes(["createTime","curveId","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/curveInfo");
@@ -29,9 +29,9 @@ exports.curveInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("curveId")
-                                           .validate("trackDisType","@Enum(\"trackDisType\")")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
+                                           .validate("trackDisType","@Enum(\"trackDisType\")")
                                 })
                                 .build(),
 
@@ -55,10 +55,10 @@ exports.curveInfoConfig = {
                                 .build(),
                                 
                         // updateById
-                        // trackDisType : validate --- @Enum("trackDisType")  
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // status : validate --- @Enum("status")  
+                        // trackDisType : validate --- @Enum("trackDisType")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateCurveInfoByCurveId")
@@ -84,8 +84,8 @@ exports.curveInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("curveId")
-                                           .validate("trackDisType","@Enum(\"trackDisType\")")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("trackDisType","@Enum(\"trackDisType\")")
                                 })
                                 .build(),
 
@@ -115,11 +115,11 @@ exports.curveInfoConfig = {
                                 .build(),
 
                         // getList
-                        // trackDisType : validates --- @Enum("trackDisType")  
                         // averageSpeed : expression --- range
+                        // createTime : expression --- timeRange
                         // remark : excluded 
                         // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // trackDisType : validates --- @Enum("trackDisType")
                         new builder()
                                 .type("select")
                                 .id("getCurveInfoList")
@@ -140,9 +140,10 @@ exports.curveInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("curveId")
-                                           .validate("trackDisType","@Enum(\"trackDisType\")")
                                            .validate("status","@Enum(\"status\")")
+                                           .validate("trackDisType","@Enum(\"trackDisType\")")
                                 })
+
                                 .build()
                 ]
 }

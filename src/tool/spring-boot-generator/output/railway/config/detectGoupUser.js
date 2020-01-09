@@ -8,11 +8,11 @@ exports.detectGoupUserConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // status : validate --- @Enum("status")  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // status : validate --- @Enum("status")  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addDetectGoupUser")
@@ -20,7 +20,7 @@ exports.detectGoupUserConfig = {
                                 .includes(collection => {
                                         collection.includes(detectGoupUser.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/detectGoupUser");
@@ -28,8 +28,8 @@ exports.detectGoupUserConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("status","@Enum(\"status\")")
                                            .validate("isDelete","@NotNull")
+                                           .validate("status","@Enum(\"status\")")
                                 })
                                 .build(),
 
@@ -53,9 +53,9 @@ exports.detectGoupUserConfig = {
                                 .build(),
                                 
                         // updateById
-                        // status : validate --- @Enum("status")  
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // status : validate --- @Enum("status")  
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateDetectGoupUserById")
@@ -111,8 +111,8 @@ exports.detectGoupUserConfig = {
                                 .build(),
 
                         // getList
-                        // status : validates --- @Enum("status")  
-                        // createTime : expression --- timeRange@@
+                        // createTime : expression --- timeRange
+                        // status : validates --- @Enum("status")
                         new builder()
                                 .type("select")
                                 .id("getDetectGoupUserList")
@@ -133,6 +133,7 @@ exports.detectGoupUserConfig = {
                                            .excludes("id")
                                            .validate("status","@Enum(\"status\")")
                                 })
+
                                 .build()
                 ]
 }

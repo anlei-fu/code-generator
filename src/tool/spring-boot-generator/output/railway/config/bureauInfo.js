@@ -8,12 +8,12 @@ exports.bureauInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // bureauName : validate --- @NotNull  
                         // bureauCode : validate --- @NotNull  
-                        // isDelete : validate --- @NotNull  
+                        // bureauName : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addBureauInfo")
@@ -21,7 +21,7 @@ exports.bureauInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(bureauInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/bureauInfo");
@@ -29,8 +29,8 @@ exports.bureauInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("bureauName","@NotNull")
                                            .validate("bureauCode","@NotNull")
+                                           .validate("bureauName","@NotNull")
                                            .validate("isDelete","@NotNull")
                                 })
                                 .build(),
@@ -56,7 +56,7 @@ exports.bureauInfoConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateBureauInfoById")
@@ -113,7 +113,7 @@ exports.bureauInfoConfig = {
 
                         // getList
                         // bureauName : excluded 
-                        // createTime : expression --- timeRange@@
+                        // createTime : expression --- timeRange
                         new builder()
                                 .type("select")
                                 .id("getBureauInfoList")
@@ -135,6 +135,7 @@ exports.bureauInfoConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

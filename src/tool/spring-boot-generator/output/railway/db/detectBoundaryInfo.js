@@ -2,33 +2,12 @@ let detectBoundaryInfo = {
 	name: "detectBoundaryInfo",
 	description: "探伤管界",
 	columns: {
-		id: {
-			name: "id",
-			description: "探伤管界编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		workshopId: {
-			name: "workshopId",
-			description: "工区编号",
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
 			nullable: true,
 			type: {
-				name: "int",
-				length: null
-			}
-		},
-		lineId: {
-			name: "lineId",
-			description: "线路编号",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
+				name: "datetime"
 			}
 		},
 		direction: {
@@ -40,14 +19,6 @@ let detectBoundaryInfo = {
 				length: null
 			}
 		},
-		startMiles: {
-			name: "startMiles",
-			description: "起点里程",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
 		endMiles: {
 			name: "endMiles",
 			description: "终点里程",
@@ -56,27 +27,29 @@ let detectBoundaryInfo = {
 				name: "float"
 			}
 		},
-		trackType: {
-			name: "trackType",
-			description: "轨道类型",
-			nullable: true,
+		id: {
+			name: "id",
+			description: "探伤管界编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		trackDisCategory: {
-			name: "trackDisCategory",
-			description: "轨距类型",
-			nullable: true,
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		operateStatus: {
-			name: "operateStatus",
-			description: "运营状态",
+		lineId: {
+			name: "lineId",
+			description: "线路编号",
 			nullable: true,
 			type: {
 				name: "int",
@@ -92,6 +65,24 @@ let detectBoundaryInfo = {
 				length: null
 			}
 		},
+		operateStatus: {
+			name: "operateStatus",
+			description: "运营状态",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		operator: {
+			name: "operator",
+			description: "操作人",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
 		remark: {
 			name: "remark",
 			description: "备注",
@@ -99,6 +90,14 @@ let detectBoundaryInfo = {
 			type: {
 				name: "varchar",
 				length: null
+			}
+		},
+		startMiles: {
+			name: "startMiles",
+			description: "起点里程",
+			nullable: true,
+			type: {
+				name: "float"
 			}
 		},
 		status: {
@@ -110,21 +109,22 @@ let detectBoundaryInfo = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
+		trackDisCategory: {
+			name: "trackDisCategory",
+			description: "轨距类型",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		trackType: {
+			name: "trackType",
+			description: "轨道类型",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "int",
+				length: null
 			}
 		},
 		updateTime: {
@@ -135,9 +135,9 @@ let detectBoundaryInfo = {
 				name: "datetime"
 			}
 		},
-		operator: {
-			name: "operator",
-			description: "操作人",
+		workshopId: {
+			name: "workshopId",
+			description: "工区编号",
 			nullable: true,
 			type: {
 				name: "int",
@@ -148,22 +148,22 @@ let detectBoundaryInfo = {
 };
 
 let columnsArray = [
-	"id",
-	"workshopId",
-	"lineId",
-	"direction",
-	"startMiles",
-	"endMiles",
-	"trackType",
-	"trackDisCategory",
-	"operateStatus",
-	"longChain",
-	"remark",
-	"status",
-	"isDelete",
 	"createTime",
+	"direction",
+	"endMiles",
+	"id",
+	"isDelete",
+	"lineId",
+	"longChain",
+	"operateStatus",
+	"operator",
+	"remark",
+	"startMiles",
+	"status",
+	"trackDisCategory",
+	"trackType",
 	"updateTime",
-	"operator"
+	"workshopId"
 ];
 
 function create() {

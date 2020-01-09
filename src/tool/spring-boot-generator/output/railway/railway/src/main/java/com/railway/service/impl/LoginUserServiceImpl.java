@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.LoginUserMapper;
 import com.railway.pojo.entity.LoginUser;
 import com.railway.pojo.entity.LoginUser;
+import com.railway.pojo.param.UpdateLoginUserByIdParams;
 import com.railway.pojo.req.AddLoginUserReq;
 import com.railway.pojo.req.GetLoginUserListReq;
 import com.railway.pojo.req.UpdateLoginUserByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.LoginUserService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class LoginUserServiceImpl implements LoginUserService {
@@ -31,7 +31,7 @@ public class LoginUserServiceImpl implements LoginUserService {
 
     @Override
     public boolean updateLoginUserById(Integer id, UpdateLoginUserByIdReq req) {
-        params params = new UpdateLoginUserByIdParams(id, req)
+        UpdateLoginUserByIdParams params = new UpdateLoginUserByIdParams(id, req);
         return loginUserMapper.updateLoginUserById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class LoginUserServiceImpl implements LoginUserService {
 
     @Override
     public PageInfo<LoginUser> getLoginUserList(GetLoginUserListReq req) {
-        return PageHelperUtils.page(()=> loginUserMapper.getLoginUserList(req));
+        return PageHelperUtils.paging(req, () -> loginUserMapper.getLoginUserList(req));
     }
 
 }
+

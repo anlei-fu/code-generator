@@ -5,8 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
 @ApiModel("设备伤损关系")
 @Getter
 @Setter

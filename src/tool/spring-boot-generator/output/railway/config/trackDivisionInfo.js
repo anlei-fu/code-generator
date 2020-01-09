@@ -8,11 +8,11 @@ exports.trackDivisionInfoConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // fullName : validate --- @NotNull  
-                        // isDelete : validate --- @NotNull  
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // fullName : validate --- @NotNull  
+                        // id excluded 
+                        // isDelete : validate --- @NotNull  
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addTrackDivisionInfo")
@@ -20,7 +20,7 @@ exports.trackDivisionInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(trackDivisionInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/trackDivisionInfo");
@@ -54,7 +54,7 @@ exports.trackDivisionInfoConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateTrackDivisionInfoById")
@@ -110,9 +110,9 @@ exports.trackDivisionInfoConfig = {
                                 .build(),
 
                         // getList
+                        // createTime : expression --- timeRange
                         // fullName : excluded 
-                        // shortName : excluded 
-                        // createTime : expression --- timeRange@@
+                        // shortName : excluded
                         new builder()
                                 .type("select")
                                 .id("getTrackDivisionInfoList")
@@ -134,6 +134,7 @@ exports.trackDivisionInfoConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

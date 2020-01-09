@@ -6,11 +6,11 @@ public class AddUserInfoParams {
         this.req = req;
     }
 
-    public [object Object]ype getPassword() {
+    public String getPassword() {
         return req.getPassword();
     }
 
-    public [object Object]ype getCreateUser() {
+    public String getCreateUser() {
         return req.getCreateUser();
     }
 

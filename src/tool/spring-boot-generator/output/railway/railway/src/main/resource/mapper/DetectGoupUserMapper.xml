@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectGoupUserMapper">
     <insert id="addDetectGoupUser" parameterType="com.railway.pojo.req.AddDetectGoupUserReq">
-          insert  into detect_goup_user 
+          insert  into detect_goup_user t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="groupId != null">
-                  detect_goup_user.group_id,
+                  t.group_id,
             </if>
-             detect_goup_user.is_delete,
+             t.is_delete,
             <if test="memberId != null">
-                  detect_goup_user.member_id,
+                  t.member_id,
             </if>
             <if test="operator != null">
-                  detect_goup_user.operator,
+                  t.operator,
             </if>
             <if test="status != null">
-                  detect_goup_user.status,
+                  t.status,
             </if>
-             detect_goup_user.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -38,88 +38,88 @@
           </trim>
     </insert>
     <delete id="deleteDetectGoupUserById">
-          delete from detect_goup_user 
+          delete from detect_goup_user t
           <where>
             <if test="id != null">
-                  detect_goup_user.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateDetectGoupUserById" parameterType="com.railway.pojo.param.UpdateDetectGoupUserByIdParams">
-        update detect_goup_user 
+        update detect_goup_user t
         <set>
             <if test="groupId != null">
-                  detect_goup_user.group_id = #{GroupId},
+                  t.group_id = #{GroupId},
             </if>
             <if test="isDelete != null">
-                  detect_goup_user.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="memberId != null">
-                  detect_goup_user.member_id = #{MemberId},
+                  t.member_id = #{MemberId},
             </if>
             <if test="operator != null">
-                  detect_goup_user.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="status != null">
-                  detect_goup_user.status = #{Status}
+                  t.status = #{Status}
             </if>
-            detect_goup_user.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  detect_goup_user.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getDetectGoupUserById" resultType="com.railway.pojo.entity.DetectGoupUser">
           select
-             detect_goup_user.create_time,
-             detect_goup_user.group_id,
-             detect_goup_user.id,
-             detect_goup_user.is_delete,
-             detect_goup_user.member_id,
-             detect_goup_user.operator,
-             detect_goup_user.status,
-             detect_goup_user.update_time
-          form detect_goup_user 
+             t.create_time,
+             t.group_id,
+             t.id,
+             t.is_delete,
+             t.member_id,
+             t.operator,
+             t.status,
+             t.update_time
+          form detect_goup_user t
           <where>
             <if test="id != null">
-                  detect_goup_user.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getDetectGoupUserList" resultType="com.railway.pojo.entity.DetectGoupUser" parameterType="com.railway.pojo.req.GetDetectGoupUserListReq">
           select
-             detect_goup_user.create_time,
-             detect_goup_user.group_id,
-             detect_goup_user.id,
-             detect_goup_user.is_delete,
-             detect_goup_user.member_id,
-             detect_goup_user.operator,
-             detect_goup_user.status,
-             detect_goup_user.update_time
-          form detect_goup_user 
+             t.create_time,
+             t.group_id,
+             t.id,
+             t.is_delete,
+             t.member_id,
+             t.operator,
+             t.status,
+             t.update_time
+          form detect_goup_user t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  detect_goup_user.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="groupId != null">
-                  and detect_goup_user.group_id = #{groupId}
+                  and t.group_id = #{groupId}
             </if>
             <if test="isDelete != null">
-                  and detect_goup_user.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="memberId != null">
-                  and detect_goup_user.member_id = #{memberId}
+                  and t.member_id = #{memberId}
             </if>
             <if test="operator != null">
-                  and detect_goup_user.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="status != null">
-                  and detect_goup_user.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and detect_goup_user.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

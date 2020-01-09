@@ -6,11 +6,11 @@ public class AddRoleSystemUserInfoParams {
         this.req = req;
     }
 
-    public [object Object]ype getPassword() {
+    public String getPassword() {
         return req.getPassword();
     }
 
-    public [object Object]ype getRole() {
+    public String getRole() {
         return req.getRole();
     }
 

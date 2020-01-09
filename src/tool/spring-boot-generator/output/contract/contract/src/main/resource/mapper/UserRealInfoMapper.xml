@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.contract.mapper.UserRealInfoMapper">
+    <insert id="addUserRealInfo" parameterType="com.contract.pojo.req.AddUserRealInfoReq">
+          insert  into user_real_info t
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idCardNo != null">
+                  t.id_card_no,
+            </if>
+            <if test="idCardPicBack != null">
+                  t.id_card_pic_back,
+            </if>
+            <if test="idCardPicFront != null">
+                  t.id_card_pic_front,
+            </if>
+            <if test="idCardPicHand != null">
+                  t.id_card_pic_hand,
+            </if>
+            <if test="realName != null">
+                  t.real_name,
+            </if>
+            <if test="verifyEndTime != null">
+                  t.verify_end_time,
+            </if>
+            <if test="verifyStartTime != null">
+                  t.verify_start_time
+            </if>
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idCardNo != null">
+                  #{idCardNo},
+            </if>
+            <if test="idCardPicBack != null">
+                  #{idCardPicBack},
+            </if>
+            <if test="idCardPicFront != null">
+                  #{idCardPicFront},
+            </if>
+            <if test="idCardPicHand != null">
+                  #{idCardPicHand},
+            </if>
+            <if test="realName != null">
+                  #{realName},
+            </if>
+            <if test="verifyEndTime != null">
+                  #{verifyEndTime},
+            </if>
+            <if test="verifyStartTime != null">
+                  #{verifyStartTime}
+            </if>
+          </trim>
+    </insert>
+    <delete id="deleteUserRealInfoByUserId">
+          delete from user_real_info t
+          <where>
+            <if test="userId != null">
+                  t.user_id = #{userId}
+            </if>
+          </where>
+    </delete>
+    <update id="updateUserRealInfoByUserId" parameterType="com.contract.pojo.param.UpdateUserRealInfoByUserIdParams">
+        update user_real_info t
+        <set>
+            <if test="idCardNo != null">
+                  t.id_card_no = #{IdCardNo},
+            </if>
+            <if test="idCardPicBack != null">
+                  t.id_card_pic_back = #{IdCardPicBack},
+            </if>
+            <if test="idCardPicFront != null">
+                  t.id_card_pic_front = #{IdCardPicFront},
+            </if>
+            <if test="idCardPicHand != null">
+                  t.id_card_pic_hand = #{IdCardPicHand},
+            </if>
+            <if test="realName != null">
+                  t.real_name = #{RealName},
+            </if>
+            <if test="verifyEndTime != null">
+                  t.verify_end_time = #{VerifyEndTime},
+            </if>
+            <if test="verifyStartTime != null">
+                  t.verify_start_time = #{VerifyStartTime}
+            </if>
+        </set>
+          <where>
+            <if test="userId != null">
+                  t.user_id = #{userId}
+            </if>
+          </where>
+    </update>
+    <select id="getUserRealInfoByUserId" resultType="com.contract.pojo.entity.UserRealInfo">
+          select
+             t.id_card_no,
+             t.id_card_pic_back,
+             t.id_card_pic_front,
+             t.id_card_pic_hand,
+             t.real_name,
+             t.user_id,
+             t.verify_end_time,
+             t.verify_start_time
+          form user_real_info t
+          <where>
+            <if test="userId != null">
+                  t.user_id = #{userId}
+            </if>
+          </where>
+    </select>
+    <select id="getUserRealInfoList" resultType="com.contract.pojo.entity.UserRealInfo" parameterType="com.contract.pojo.req.GetUserRealInfoListReq">
+          select
+             t.id_card_no,
+             t.id_card_pic_back,
+             t.id_card_pic_front,
+             t.id_card_pic_hand,
+             t.real_name,
+             t.user_id,
+             t.verify_end_time,
+             t.verify_start_time
+          form user_real_info t
+          <where>
+            <if test="idCardNo != null and idCardNo != ''">
+                  t.id_card_no = #{idCardNo}
+            </if>
+            <if test="verifyEndTimeStart !=null and  verifyEndTimeEnd != null">
+                  and t.verify_end_time between #{verifyEndTimeStart} and #{verifyEndTimeEnd}
+            </if>
+            <if test="verifyStartTimeStart !=null and  verifyStartTimeEnd != null">
+                  and t.verify_start_time between #{verifyStartTimeStart} and #{verifyStartTimeEnd}
+            </if>
+          </where>
+    </select>
+</mapper>

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.DamageDealUserMapper;
 import com.railway.pojo.entity.DamageDealUser;
 import com.railway.pojo.entity.DamageDealUser;
+import com.railway.pojo.param.UpdateDamageDealUserByIdParams;
 import com.railway.pojo.req.AddDamageDealUserReq;
 import com.railway.pojo.req.GetDamageDealUserListReq;
 import com.railway.pojo.req.UpdateDamageDealUserByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.DamageDealUserService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DamageDealUserServiceImpl implements DamageDealUserService {
@@ -31,7 +31,7 @@ public class DamageDealUserServiceImpl implements DamageDealUserService {
 
     @Override
     public boolean updateDamageDealUserById(Integer id, UpdateDamageDealUserByIdReq req) {
-        params params = new UpdateDamageDealUserByIdParams(id, req)
+        UpdateDamageDealUserByIdParams params = new UpdateDamageDealUserByIdParams(id, req);
         return damageDealUserMapper.updateDamageDealUserById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class DamageDealUserServiceImpl implements DamageDealUserService {
 
     @Override
     public PageInfo<DamageDealUser> getDamageDealUserList(GetDamageDealUserListReq req) {
-        return PageHelperUtils.page(()=> damageDealUserMapper.getDamageDealUserList(req));
+        return PageHelperUtils.paging(req, () -> damageDealUserMapper.getDamageDealUserList(req));
     }
 
 }
+

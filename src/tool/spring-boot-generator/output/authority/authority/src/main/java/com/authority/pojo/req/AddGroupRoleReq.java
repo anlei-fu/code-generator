@@ -26,8 +26,4 @@ public class AddGroupRoleReq extends PageReq {
     @NotNull
     private String role;
 
-    @ApiModelProperty("")
-    @NotNull
-    private String createUser;
-
 }

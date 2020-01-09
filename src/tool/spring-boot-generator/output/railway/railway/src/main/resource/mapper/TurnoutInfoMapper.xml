@@ -2,70 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.TurnoutInfoMapper">
     <insert id="addTurnoutInfo" parameterType="com.railway.pojo.req.AddTurnoutInfoReq">
-          insert  into turnout_info 
+          insert  into turnout_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="commissioningDate != null">
-                  turnout_info.commissioning_date,
+                  t.commissioning_date,
             </if>
             <if test="direction != null">
-                  turnout_info.direction,
+                  t.direction,
             </if>
             <if test="frogNo != null">
-                  turnout_info.frog_no,
+                  t.frog_no,
             </if>
             <if test="frogStructure != null">
-                  turnout_info.frog_structure,
+                  t.frog_structure,
             </if>
             <if test="hasMovablePointFrog != null">
-                  turnout_info.has_movable_point_frog,
+                  t.has_movable_point_frog,
             </if>
             <if test="hasSwitchRail != null">
-                  turnout_info.has_switch_rail,
+                  t.has_switch_rail,
             </if>
             <if test="isDelete != null">
-                  turnout_info.is_delete,
+                  t.is_delete,
             </if>
-             turnout_info.line_id,
+             t.line_id,
             <if test="miles != null">
-                  turnout_info.miles,
+                  t.miles,
             </if>
             <if test="operator != null">
-                  turnout_info.operator,
+                  t.operator,
             </if>
             <if test="position != null">
-                  turnout_info.position,
+                  t.position,
             </if>
             <if test="remark != null">
-                  turnout_info.remark,
+                  t.remark,
             </if>
             <if test="sortNum != null">
-                  turnout_info.sort_num,
+                  t.sort_num,
             </if>
-             turnout_info.station_id,
+             t.station_id,
             <if test="status != null">
-                  turnout_info.status,
+                  t.status,
             </if>
             <if test="switchRailType != null">
-                  turnout_info.switch_rail_type,
+                  t.switch_rail_type,
             </if>
             <if test="thighTrackId != null">
-                  turnout_info.thigh_track_id,
+                  t.thigh_track_id,
             </if>
             <if test="trackType != null">
-                  turnout_info.track_type,
+                  t.track_type,
             </if>
             <if test="turnoutKind != null">
-                  turnout_info.turnout_kind,
+                  t.turnout_kind,
             </if>
             <if test="turnoutLength != null">
-                  turnout_info.turnout_length,
+                  t.turnout_length,
             </if>
-             turnout_info.turnout_no,
+             t.turnout_no,
             <if test="turnoutType != null">
-                  turnout_info.turnout_type,
+                  t.turnout_type,
             </if>
-             turnout_info.workarea_id,
-             turnout_info.create_time
+             t.workarea_id,
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -134,229 +134,229 @@
           </trim>
     </insert>
     <delete id="deleteTurnoutInfoById">
-          delete from turnout_info 
+          delete from turnout_info t
           <where>
             <if test="id != null">
-                  turnout_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateTurnoutInfoById" parameterType="com.railway.pojo.param.UpdateTurnoutInfoByIdParams">
-        update turnout_info 
+        update turnout_info t
         <set>
             <if test="commissioningDate != null">
-                  turnout_info.commissioning_date = #{CommissioningDate},
+                  t.commissioning_date = #{CommissioningDate},
             </if>
             <if test="direction != null">
-                  turnout_info.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="frogNo != null">
-                  turnout_info.frog_no = #{FrogNo},
+                  t.frog_no = #{FrogNo},
             </if>
             <if test="frogStructure != null">
-                  turnout_info.frog_structure = #{FrogStructure},
+                  t.frog_structure = #{FrogStructure},
             </if>
             <if test="hasMovablePointFrog != null">
-                  turnout_info.has_movable_point_frog = #{HasMovablePointFrog},
+                  t.has_movable_point_frog = #{HasMovablePointFrog},
             </if>
             <if test="hasSwitchRail != null">
-                  turnout_info.has_switch_rail = #{HasSwitchRail},
+                  t.has_switch_rail = #{HasSwitchRail},
             </if>
             <if test="isDelete != null">
-                  turnout_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="lineId != null">
-                  turnout_info.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="miles != null">
-                  turnout_info.miles = #{Miles},
+                  t.miles = #{Miles},
             </if>
             <if test="operator != null">
-                  turnout_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="position != null">
-                  turnout_info.position = #{Position},
+                  t.position = #{Position},
             </if>
             <if test="remark != null">
-                  turnout_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="sortNum != null">
-                  turnout_info.sort_num = #{SortNum},
+                  t.sort_num = #{SortNum},
             </if>
             <if test="stationId != null">
-                  turnout_info.station_id = #{StationId},
+                  t.station_id = #{StationId},
             </if>
             <if test="status != null">
-                  turnout_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="switchRailType != null">
-                  turnout_info.switch_rail_type = #{SwitchRailType},
+                  t.switch_rail_type = #{SwitchRailType},
             </if>
             <if test="thighTrackId != null">
-                  turnout_info.thigh_track_id = #{ThighTrackId},
+                  t.thigh_track_id = #{ThighTrackId},
             </if>
             <if test="trackType != null">
-                  turnout_info.track_type = #{TrackType},
+                  t.track_type = #{TrackType},
             </if>
             <if test="turnoutKind != null">
-                  turnout_info.turnout_kind = #{TurnoutKind},
+                  t.turnout_kind = #{TurnoutKind},
             </if>
             <if test="turnoutLength != null">
-                  turnout_info.turnout_length = #{TurnoutLength},
+                  t.turnout_length = #{TurnoutLength},
             </if>
             <if test="turnoutNo != null">
-                  turnout_info.turnout_no = #{TurnoutNo},
+                  t.turnout_no = #{TurnoutNo},
             </if>
             <if test="turnoutType != null">
-                  turnout_info.turnout_type = #{TurnoutType},
+                  t.turnout_type = #{TurnoutType},
             </if>
             <if test="workareaId != null">
-                  turnout_info.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            turnout_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  turnout_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getTurnoutInfoById" resultType="com.railway.pojo.entity.TurnoutInfo">
           select
-             turnout_info.commissioning_date,
-             turnout_info.create_time,
-             turnout_info.direction,
-             turnout_info.frog_no,
-             turnout_info.frog_structure,
-             turnout_info.has_movable_point_frog,
-             turnout_info.has_switch_rail,
-             turnout_info.id,
-             turnout_info.is_delete,
-             turnout_info.line_id,
-             turnout_info.miles,
-             turnout_info.operator,
-             turnout_info.position,
-             turnout_info.remark,
-             turnout_info.sort_num,
-             turnout_info.station_id,
-             turnout_info.status,
-             turnout_info.switch_rail_type,
-             turnout_info.thigh_track_id,
-             turnout_info.track_type,
-             turnout_info.turnout_kind,
-             turnout_info.turnout_length,
-             turnout_info.turnout_no,
-             turnout_info.turnout_type,
-             turnout_info.update_time,
-             turnout_info.workarea_id
-          form turnout_info 
+             t.commissioning_date,
+             t.create_time,
+             t.direction,
+             t.frog_no,
+             t.frog_structure,
+             t.has_movable_point_frog,
+             t.has_switch_rail,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.miles,
+             t.operator,
+             t.position,
+             t.remark,
+             t.sort_num,
+             t.station_id,
+             t.status,
+             t.switch_rail_type,
+             t.thigh_track_id,
+             t.track_type,
+             t.turnout_kind,
+             t.turnout_length,
+             t.turnout_no,
+             t.turnout_type,
+             t.update_time,
+             t.workarea_id
+          form turnout_info t
           <where>
             <if test="id != null">
-                  turnout_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getTurnoutInfoList" resultType="com.railway.pojo.entity.TurnoutInfo" parameterType="com.railway.pojo.req.GetTurnoutInfoListReq">
           select
-             turnout_info.commissioning_date,
-             turnout_info.create_time,
-             turnout_info.direction,
-             turnout_info.frog_no,
-             turnout_info.frog_structure,
-             turnout_info.has_movable_point_frog,
-             turnout_info.has_switch_rail,
-             turnout_info.id,
-             turnout_info.is_delete,
-             turnout_info.line_id,
-             turnout_info.miles,
-             turnout_info.operator,
-             turnout_info.position,
-             turnout_info.remark,
-             turnout_info.sort_num,
-             turnout_info.station_id,
-             turnout_info.status,
-             turnout_info.switch_rail_type,
-             turnout_info.thigh_track_id,
-             turnout_info.track_type,
-             turnout_info.turnout_kind,
-             turnout_info.turnout_length,
-             turnout_info.turnout_no,
-             turnout_info.turnout_type,
-             turnout_info.update_time,
-             turnout_info.workarea_id
-          form turnout_info 
+             t.commissioning_date,
+             t.create_time,
+             t.direction,
+             t.frog_no,
+             t.frog_structure,
+             t.has_movable_point_frog,
+             t.has_switch_rail,
+             t.id,
+             t.is_delete,
+             t.line_id,
+             t.miles,
+             t.operator,
+             t.position,
+             t.remark,
+             t.sort_num,
+             t.station_id,
+             t.status,
+             t.switch_rail_type,
+             t.thigh_track_id,
+             t.track_type,
+             t.turnout_kind,
+             t.turnout_length,
+             t.turnout_no,
+             t.turnout_type,
+             t.update_time,
+             t.workarea_id
+          form turnout_info t
           <where>
             <if test="commissioningDateStart !=null and  commissioningDateEnd != null">
-                  turnout_info.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}
+                  t.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and turnout_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="direction != null">
-                  and turnout_info.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="frogNo != null and frogNo != ''">
-                  and turnout_info.frog_no = #{frogNo}
+                  and t.frog_no = #{frogNo}
             </if>
             <if test="frogStructure != null">
-                  and turnout_info.frog_structure = #{frogStructure}
+                  and t.frog_structure = #{frogStructure}
             </if>
             <if test="hasMovablePointFrog != null">
-                  and turnout_info.has_movable_point_frog = #{hasMovablePointFrog}
+                  and t.has_movable_point_frog = #{hasMovablePointFrog}
             </if>
             <if test="hasSwitchRail != null">
-                  and turnout_info.has_switch_rail = #{hasSwitchRail}
+                  and t.has_switch_rail = #{hasSwitchRail}
             </if>
             <if test="isDelete != null">
-                  and turnout_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="lineId != null">
-                  and turnout_info.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="miles != null">
-                  and turnout_info.miles = #{miles}
+                  and t.miles = #{miles}
             </if>
             <if test="operator != null">
-                  and turnout_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="position != null">
-                  and turnout_info.position = #{position}
+                  and t.position = #{position}
             </if>
             <if test="sortNum != null and sortNum != ''">
-                  and turnout_info.sort_num = #{sortNum}
+                  and t.sort_num = #{sortNum}
             </if>
             <if test="stationId != null">
-                  and turnout_info.station_id = #{stationId}
+                  and t.station_id = #{stationId}
             </if>
             <if test="status != null">
-                  and turnout_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="switchRailType != null">
-                  and turnout_info.switch_rail_type = #{switchRailType}
+                  and t.switch_rail_type = #{switchRailType}
             </if>
             <if test="thighTrackId != null">
-                  and turnout_info.thigh_track_id = #{thighTrackId}
+                  and t.thigh_track_id = #{thighTrackId}
             </if>
             <if test="trackType != null">
-                  and turnout_info.track_type = #{trackType}
+                  and t.track_type = #{trackType}
             </if>
             <if test="turnoutKind != null">
-                  and turnout_info.turnout_kind = #{turnoutKind}
+                  and t.turnout_kind = #{turnoutKind}
             </if>
             <if test="turnoutLength != null">
-                  and turnout_info.turnout_length = #{turnoutLength}
+                  and t.turnout_length = #{turnoutLength}
             </if>
             <if test="turnoutNo != null">
-                  and turnout_info.turnout_no = #{turnoutNo}
+                  and t.turnout_no = #{turnoutNo}
             </if>
             <if test="turnoutType != null">
-                  and turnout_info.turnout_type = #{turnoutType}
+                  and t.turnout_type = #{turnoutType}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and turnout_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="workareaId != null">
-                  and turnout_info.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>

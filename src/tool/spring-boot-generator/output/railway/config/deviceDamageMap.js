@@ -8,8 +8,8 @@ exports.deviceDamageMapConfig = {
                 items: [
 
                         // add
-                        // id excluded 
-                        // deviceType : validate --- @Enum("deviceType")@@
+                        // deviceType : validate --- @Enum("deviceType")  
+                        // id excluded
                         new builder()
                                 .type("insert")
                                 .id("addDeviceDamageMap")
@@ -49,7 +49,7 @@ exports.deviceDamageMapConfig = {
                                 .build(),
                                 
                         // updateById
-                        // deviceType : validate --- @Enum("deviceType")@@
+                        // deviceType : validate --- @Enum("deviceType")
                         new builder()
                                 .type("update")
                                 .id("updateDeviceDamageMapById")
@@ -104,8 +104,8 @@ exports.deviceDamageMapConfig = {
                                 .build(),
 
                         // getList
-                        // deviceType : validates --- @Enum("deviceType")  
-                        // damageId : expression --- range@@
+                        // damageId : expression --- range
+                        // deviceType : validates --- @Enum("deviceType")
                         new builder()
                                 .type("select")
                                 .id("getDeviceDamageMapList")
@@ -126,6 +126,7 @@ exports.deviceDamageMapConfig = {
                                            .excludes("id")
                                            .validate("deviceType","@Enum(\"deviceType\")")
                                 })
+
                                 .build()
                 ]
 }

@@ -2,7 +2,7 @@ public class UpdateUserRoleByUserAndUserAndUserAndUserAndIdParams {
 
     @Getter
     @Setter
-    private [object Object]ype id;
+    private Integer id;
 
     private UpdateUserRoleByUserAndUserAndUserAndUserAndIdReq req;
 
@@ -11,11 +11,11 @@ public class UpdateUserRoleByUserAndUserAndUserAndUserAndIdParams {
         this.req = req;
     }
 
-    public [object Object]ype getUserAccount() {
+    public String getUserAccount() {
         return req.getUserAccount();
     }
 
-    public [object Object]ype getSystemId() {
+    public Integer getSystemId() {
         return req.getSystemId();
     }
 

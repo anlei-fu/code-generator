@@ -2,20 +2,9 @@ let deviceDamageMap = {
 	name: "deviceDamageMap",
 	description: "设备伤损关系",
 	columns: {
-		id: {
-			name: "id",
-			description: "关系编号",
-			isPk: true,
-			autoIncrement: true,
-			nullable: false,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		deviceType: {
-			name: "deviceType",
-			description: "设备类型",
+		damageId: {
+			name: "damageId",
+			description: "伤损编号",
 			nullable: true,
 			type: {
 				name: "int",
@@ -31,10 +20,21 @@ let deviceDamageMap = {
 				length: null
 			}
 		},
-		damageId: {
-			name: "damageId",
-			description: "伤损编号",
+		deviceType: {
+			name: "deviceType",
+			description: "设备类型",
 			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		id: {
+			name: "id",
+			description: "关系编号",
+			isPk: true,
+			autoIncrement: true,
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
@@ -44,10 +44,10 @@ let deviceDamageMap = {
 };
 
 let columnsArray = [
-	"id",
-	"deviceType",
+	"damageId",
 	"deivceId",
-	"damageId"
+	"deviceType",
+	"id"
 ];
 
 function create() {

@@ -2,6 +2,31 @@ let tunnelInfo = {
 	name: "tunnelInfo",
 	description: "隧道信息",
 	columns: {
+		createTime: {
+			name: "createTime",
+			description: "创建时间",
+			nullable: true,
+			type: {
+				name: "datetime"
+			}
+		},
+		direction: {
+			name: "direction",
+			description: "行别",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		endMiles: {
+			name: "endMiles",
+			description: "终点里程",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
 		id: {
 			name: "id",
 			description: "隧道编号",
@@ -10,24 +35,6 @@ let tunnelInfo = {
 			nullable: false,
 			type: {
 				name: "int",
-				length: null
-			}
-		},
-		tunneNo: {
-			name: "tunneNo",
-			description: "隧道号",
-			nullable: true,
-			type: {
-				name: "varchar",
-				length: null
-			}
-		},
-		tunneName: {
-			name: "tunneName",
-			description: "隧道名",
-			nullable: true,
-			type: {
-				name: "varchar",
 				length: null
 			}
 		},
@@ -40,13 +47,21 @@ let tunnelInfo = {
 				length: null
 			}
 		},
-		trackDivisionId: {
-			name: "trackDivisionId",
-			description: "工务段编号",
-			nullable: true,
+		isDelete: {
+			name: "isDelete",
+			description: "删除标记",
+			nullable: false,
 			type: {
 				name: "int",
 				length: null
+			}
+		},
+		length: {
+			name: "length",
+			description: "全长",
+			nullable: true,
+			type: {
+				name: "float"
 			}
 		},
 		lineId: {
@@ -58,46 +73,13 @@ let tunnelInfo = {
 				length: null
 			}
 		},
-		side: {
-			name: "side",
-			description: "线别",
+		longChain: {
+			name: "longChain",
+			description: "长链标记",
 			nullable: true,
 			type: {
 				name: "int",
 				length: null
-			}
-		},
-		direction: {
-			name: "direction",
-			description: "行别",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
-		},
-		trackDistance: {
-			name: "trackDistance",
-			description: "轨距",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		startMiles: {
-			name: "startMiles",
-			description: "起点里程",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		endMiles: {
-			name: "endMiles",
-			description: "终点里程",
-			nullable: true,
-			type: {
-				name: "float"
 			}
 		},
 		middleMiles: {
@@ -108,17 +90,9 @@ let tunnelInfo = {
 				name: "float"
 			}
 		},
-		length: {
-			name: "length",
-			description: "全长",
-			nullable: true,
-			type: {
-				name: "float"
-			}
-		},
-		longChain: {
-			name: "longChain",
-			description: "长链标记",
+		operator: {
+			name: "operator",
+			description: "操作人",
 			nullable: true,
 			type: {
 				name: "int",
@@ -134,6 +108,23 @@ let tunnelInfo = {
 				length: null
 			}
 		},
+		side: {
+			name: "side",
+			description: "线别",
+			nullable: true,
+			type: {
+				name: "int",
+				length: null
+			}
+		},
+		startMiles: {
+			name: "startMiles",
+			description: "起点里程",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
 		status: {
 			name: "status",
 			description: "状态",
@@ -143,21 +134,39 @@ let tunnelInfo = {
 				length: null
 			}
 		},
-		isDelete: {
-			name: "isDelete",
-			description: "删除标记",
-			nullable: false,
+		trackDistance: {
+			name: "trackDistance",
+			description: "轨距",
+			nullable: true,
+			type: {
+				name: "float"
+			}
+		},
+		trackDivisionId: {
+			name: "trackDivisionId",
+			description: "工务段编号",
+			nullable: true,
 			type: {
 				name: "int",
 				length: null
 			}
 		},
-		createTime: {
-			name: "createTime",
-			description: "创建时间",
+		tunneName: {
+			name: "tunneName",
+			description: "隧道名",
 			nullable: true,
 			type: {
-				name: "datetime"
+				name: "varchar",
+				length: null
+			}
+		},
+		tunneNo: {
+			name: "tunneNo",
+			description: "隧道号",
+			nullable: true,
+			type: {
+				name: "varchar",
+				length: null
 			}
 		},
 		updateTime: {
@@ -167,40 +176,31 @@ let tunnelInfo = {
 			type: {
 				name: "datetime"
 			}
-		},
-		operator: {
-			name: "operator",
-			description: "操作人",
-			nullable: true,
-			type: {
-				name: "int",
-				length: null
-			}
 		}
 	}
 };
 
 let columnsArray = [
-	"id",
-	"tunneNo",
-	"tunneName",
-	"inputCode",
-	"trackDivisionId",
-	"lineId",
-	"side",
-	"direction",
-	"trackDistance",
-	"startMiles",
-	"endMiles",
-	"middleMiles",
-	"length",
-	"longChain",
-	"remark",
-	"status",
-	"isDelete",
 	"createTime",
-	"updateTime",
-	"operator"
+	"direction",
+	"endMiles",
+	"id",
+	"inputCode",
+	"isDelete",
+	"length",
+	"lineId",
+	"longChain",
+	"middleMiles",
+	"operator",
+	"remark",
+	"side",
+	"startMiles",
+	"status",
+	"trackDistance",
+	"trackDivisionId",
+	"tunneName",
+	"tunneNo",
+	"updateTime"
 ];
 
 function create() {

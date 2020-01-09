@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.DetectBoundaryInfoMapper;
 import com.railway.pojo.entity.DetectBoundaryInfo;
 import com.railway.pojo.entity.DetectBoundaryInfo;
+import com.railway.pojo.param.UpdateDetectBoundaryInfoByIdParams;
 import com.railway.pojo.req.AddDetectBoundaryInfoReq;
 import com.railway.pojo.req.GetDetectBoundaryInfoListReq;
 import com.railway.pojo.req.UpdateDetectBoundaryInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.DetectBoundaryInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DetectBoundaryInfoServiceImpl implements DetectBoundaryInfoService {
@@ -31,7 +31,7 @@ public class DetectBoundaryInfoServiceImpl implements DetectBoundaryInfoService 
 
     @Override
     public boolean updateDetectBoundaryInfoById(Integer id, UpdateDetectBoundaryInfoByIdReq req) {
-        params params = new UpdateDetectBoundaryInfoByIdParams(id, req)
+        UpdateDetectBoundaryInfoByIdParams params = new UpdateDetectBoundaryInfoByIdParams(id, req);
         return detectBoundaryInfoMapper.updateDetectBoundaryInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class DetectBoundaryInfoServiceImpl implements DetectBoundaryInfoService 
 
     @Override
     public PageInfo<DetectBoundaryInfo> getDetectBoundaryInfoList(GetDetectBoundaryInfoListReq req) {
-        return PageHelperUtils.page(()=> detectBoundaryInfoMapper.getDetectBoundaryInfoList(req));
+        return PageHelperUtils.paging(req, () -> detectBoundaryInfoMapper.getDetectBoundaryInfoList(req));
     }
 
 }
+

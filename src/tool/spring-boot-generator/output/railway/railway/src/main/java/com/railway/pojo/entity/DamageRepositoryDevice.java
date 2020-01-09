@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import java.util.Date;
 
-
-
 @ApiModel("伤损归档-设备扩展")
 @Getter
 @Setter

@@ -19,7 +19,7 @@
             <if test="description != null">
                   #{Description},
             </if>
-             #{CreateUser},
+             #{createUser},
              current_timestamp
           </trim>
     </insert>

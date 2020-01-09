@@ -2,70 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageDealUserMapper">
     <insert id="addDamageDealUser" parameterType="com.railway.pojo.req.AddDamageDealUserReq">
-          insert  into damage_deal_user 
+          insert  into damage_deal_user t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="birthday != null">
-                  damage_deal_user.birthday,
+                  t.birthday,
             </if>
             <if test="contact != null">
-                  damage_deal_user.contact,
+                  t.contact,
             </if>
             <if test="dealType != null">
-                  damage_deal_user.deal_type,
+                  t.deal_type,
             </if>
             <if test="eduDegree != null">
-                  damage_deal_user.edu_degree,
+                  t.edu_degree,
             </if>
             <if test="gender != null">
-                  damage_deal_user.gender,
+                  t.gender,
             </if>
             <if test="gradeGainDate != null">
-                  damage_deal_user.grade_gain_date,
+                  t.grade_gain_date,
             </if>
             <if test="gradeId != null">
-                  damage_deal_user.grade_id,
+                  t.grade_id,
             </if>
             <if test="idCardNo != null">
-                  damage_deal_user.id_card_no,
+                  t.id_card_no,
             </if>
-             damage_deal_user.is_delete,
+             t.is_delete,
             <if test="name != null">
-                  damage_deal_user.name,
+                  t.name,
             </if>
             <if test="operator != null">
-                  damage_deal_user.operator,
+                  t.operator,
             </if>
             <if test="positionId != null">
-                  damage_deal_user.position_id,
+                  t.position_id,
             </if>
             <if test="qualificationAuditDate != null">
-                  damage_deal_user.qualification_audit_date,
+                  t.qualification_audit_date,
             </if>
             <if test="qualificationGainDate != null">
-                  damage_deal_user.qualification_gain_date,
+                  t.qualification_gain_date,
             </if>
             <if test="qualificationGrade != null">
-                  damage_deal_user.qualification_grade,
+                  t.qualification_grade,
             </if>
             <if test="qualificationInvalidDate != null">
-                  damage_deal_user.qualification_invalid_date,
+                  t.qualification_invalid_date,
             </if>
             <if test="qualificationValidTime != null">
-                  damage_deal_user.qualification_valid_time,
+                  t.qualification_valid_time,
             </if>
             <if test="remark != null">
-                  damage_deal_user.remark,
+                  t.remark,
             </if>
             <if test="status != null">
-                  damage_deal_user.status,
+                  t.status,
             </if>
             <if test="tecCategory != null">
-                  damage_deal_user.tec_category,
+                  t.tec_category,
             </if>
             <if test="workareaId != null">
-                  damage_deal_user.workarea_id,
+                  t.workarea_id,
             </if>
-             damage_deal_user.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -134,210 +134,210 @@
           </trim>
     </insert>
     <delete id="deleteDamageDealUserById">
-          delete from damage_deal_user 
+          delete from damage_deal_user t
           <where>
             <if test="id != null">
-                  damage_deal_user.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateDamageDealUserById" parameterType="com.railway.pojo.param.UpdateDamageDealUserByIdParams">
-        update damage_deal_user 
+        update damage_deal_user t
         <set>
             <if test="birthday != null">
-                  damage_deal_user.birthday = #{Birthday},
+                  t.birthday = #{Birthday},
             </if>
             <if test="contact != null">
-                  damage_deal_user.contact = #{Contact},
+                  t.contact = #{Contact},
             </if>
             <if test="dealType != null">
-                  damage_deal_user.deal_type = #{DealType},
+                  t.deal_type = #{DealType},
             </if>
             <if test="eduDegree != null">
-                  damage_deal_user.edu_degree = #{EduDegree},
+                  t.edu_degree = #{EduDegree},
             </if>
             <if test="gender != null">
-                  damage_deal_user.gender = #{Gender},
+                  t.gender = #{Gender},
             </if>
             <if test="gradeGainDate != null">
-                  damage_deal_user.grade_gain_date = #{GradeGainDate},
+                  t.grade_gain_date = #{GradeGainDate},
             </if>
             <if test="gradeId != null">
-                  damage_deal_user.grade_id = #{GradeId},
+                  t.grade_id = #{GradeId},
             </if>
             <if test="idCardNo != null">
-                  damage_deal_user.id_card_no = #{IdCardNo},
+                  t.id_card_no = #{IdCardNo},
             </if>
             <if test="isDelete != null">
-                  damage_deal_user.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="name != null">
-                  damage_deal_user.name = #{Name},
+                  t.name = #{Name},
             </if>
             <if test="operator != null">
-                  damage_deal_user.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="positionId != null">
-                  damage_deal_user.position_id = #{PositionId},
+                  t.position_id = #{PositionId},
             </if>
             <if test="qualificationAuditDate != null">
-                  damage_deal_user.qualification_audit_date = #{QualificationAuditDate},
+                  t.qualification_audit_date = #{QualificationAuditDate},
             </if>
             <if test="qualificationGainDate != null">
-                  damage_deal_user.qualification_gain_date = #{QualificationGainDate},
+                  t.qualification_gain_date = #{QualificationGainDate},
             </if>
             <if test="qualificationGrade != null">
-                  damage_deal_user.qualification_grade = #{QualificationGrade},
+                  t.qualification_grade = #{QualificationGrade},
             </if>
             <if test="qualificationInvalidDate != null">
-                  damage_deal_user.qualification_invalid_date = #{QualificationInvalidDate},
+                  t.qualification_invalid_date = #{QualificationInvalidDate},
             </if>
             <if test="qualificationValidTime != null">
-                  damage_deal_user.qualification_valid_time = #{QualificationValidTime},
+                  t.qualification_valid_time = #{QualificationValidTime},
             </if>
             <if test="remark != null">
-                  damage_deal_user.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="status != null">
-                  damage_deal_user.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="tecCategory != null">
-                  damage_deal_user.tec_category = #{TecCategory},
+                  t.tec_category = #{TecCategory},
             </if>
             <if test="workareaId != null">
-                  damage_deal_user.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            damage_deal_user.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  damage_deal_user.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getDamageDealUserById" resultType="com.railway.pojo.entity.DamageDealUser">
           select
-             damage_deal_user.birthday,
-             damage_deal_user.contact,
-             damage_deal_user.create_time,
-             damage_deal_user.deal_type,
-             damage_deal_user.edu_degree,
-             damage_deal_user.gender,
-             damage_deal_user.grade_gain_date,
-             damage_deal_user.grade_id,
-             damage_deal_user.id,
-             damage_deal_user.id_card_no,
-             damage_deal_user.is_delete,
-             damage_deal_user.name,
-             damage_deal_user.operator,
-             damage_deal_user.position_id,
-             damage_deal_user.qualification_audit_date,
-             damage_deal_user.qualification_gain_date,
-             damage_deal_user.qualification_grade,
-             damage_deal_user.qualification_invalid_date,
-             damage_deal_user.qualification_valid_time,
-             damage_deal_user.remark,
-             damage_deal_user.status,
-             damage_deal_user.tec_category,
-             damage_deal_user.update_time,
-             damage_deal_user.workarea_id
-          form damage_deal_user 
+             t.birthday,
+             t.contact,
+             t.create_time,
+             t.deal_type,
+             t.edu_degree,
+             t.gender,
+             t.grade_gain_date,
+             t.grade_id,
+             t.id,
+             t.id_card_no,
+             t.is_delete,
+             t.name,
+             t.operator,
+             t.position_id,
+             t.qualification_audit_date,
+             t.qualification_gain_date,
+             t.qualification_grade,
+             t.qualification_invalid_date,
+             t.qualification_valid_time,
+             t.remark,
+             t.status,
+             t.tec_category,
+             t.update_time,
+             t.workarea_id
+          form damage_deal_user t
           <where>
             <if test="id != null">
-                  damage_deal_user.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getDamageDealUserList" resultType="com.railway.pojo.entity.DamageDealUser" parameterType="com.railway.pojo.req.GetDamageDealUserListReq">
           select
-             damage_deal_user.birthday,
-             damage_deal_user.contact,
-             damage_deal_user.create_time,
-             damage_deal_user.deal_type,
-             damage_deal_user.edu_degree,
-             damage_deal_user.gender,
-             damage_deal_user.grade_gain_date,
-             damage_deal_user.grade_id,
-             damage_deal_user.id,
-             damage_deal_user.id_card_no,
-             damage_deal_user.is_delete,
-             damage_deal_user.name,
-             damage_deal_user.operator,
-             damage_deal_user.position_id,
-             damage_deal_user.qualification_audit_date,
-             damage_deal_user.qualification_gain_date,
-             damage_deal_user.qualification_grade,
-             damage_deal_user.qualification_invalid_date,
-             damage_deal_user.qualification_valid_time,
-             damage_deal_user.remark,
-             damage_deal_user.status,
-             damage_deal_user.tec_category,
-             damage_deal_user.update_time,
-             damage_deal_user.workarea_id
-          form damage_deal_user 
+             t.birthday,
+             t.contact,
+             t.create_time,
+             t.deal_type,
+             t.edu_degree,
+             t.gender,
+             t.grade_gain_date,
+             t.grade_id,
+             t.id,
+             t.id_card_no,
+             t.is_delete,
+             t.name,
+             t.operator,
+             t.position_id,
+             t.qualification_audit_date,
+             t.qualification_gain_date,
+             t.qualification_grade,
+             t.qualification_invalid_date,
+             t.qualification_valid_time,
+             t.remark,
+             t.status,
+             t.tec_category,
+             t.update_time,
+             t.workarea_id
+          form damage_deal_user t
           <where>
             <if test="birthdayStart !=null and  birthdayEnd != null">
-                  damage_deal_user.birthday between #{birthdayStart} and #{birthdayEnd}
+                  t.birthday between #{birthdayStart} and #{birthdayEnd}
             </if>
             <if test="contact != null and contact != ''">
-                  and damage_deal_user.contact = #{contact}
+                  and t.contact = #{contact}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and damage_deal_user.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="dealType != null">
-                  and damage_deal_user.deal_type = #{dealType}
+                  and t.deal_type = #{dealType}
             </if>
             <if test="eduDegree != null">
-                  and damage_deal_user.edu_degree = #{eduDegree}
+                  and t.edu_degree = #{eduDegree}
             </if>
             <if test="gender != null">
-                  and damage_deal_user.gender = #{gender}
+                  and t.gender = #{gender}
             </if>
             <if test="gradeGainDateStart !=null and  gradeGainDateEnd != null">
-                  and damage_deal_user.grade_gain_date between #{gradeGainDateStart} and #{gradeGainDateEnd}
+                  and t.grade_gain_date between #{gradeGainDateStart} and #{gradeGainDateEnd}
             </if>
             <if test="gradeId != null and gradeId != ''">
-                  and damage_deal_user.grade_id = #{gradeId}
+                  and t.grade_id = #{gradeId}
             </if>
             <if test="idCardNo != null and idCardNo != ''">
-                  and damage_deal_user.id_card_no = #{idCardNo}
+                  and t.id_card_no = #{idCardNo}
             </if>
             <if test="isDelete != null">
-                  and damage_deal_user.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="operator != null">
-                  and damage_deal_user.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="positionId != null">
-                  and damage_deal_user.position_id = #{positionId}
+                  and t.position_id = #{positionId}
             </if>
             <if test="qualificationAuditDateStart !=null and  qualificationAuditDateEnd != null">
-                  and damage_deal_user.qualification_audit_date between #{qualificationAuditDateStart} and #{qualificationAuditDateEnd}
+                  and t.qualification_audit_date between #{qualificationAuditDateStart} and #{qualificationAuditDateEnd}
             </if>
             <if test="qualificationGainDateStart !=null and  qualificationGainDateEnd != null">
-                  and damage_deal_user.qualification_gain_date between #{qualificationGainDateStart} and #{qualificationGainDateEnd}
+                  and t.qualification_gain_date between #{qualificationGainDateStart} and #{qualificationGainDateEnd}
             </if>
             <if test="qualificationGrade != null">
-                  and damage_deal_user.qualification_grade = #{qualificationGrade}
+                  and t.qualification_grade = #{qualificationGrade}
             </if>
             <if test="qualificationInvalidDateStart !=null and  qualificationInvalidDateEnd != null">
-                  and damage_deal_user.qualification_invalid_date between #{qualificationInvalidDateStart} and #{qualificationInvalidDateEnd}
+                  and t.qualification_invalid_date between #{qualificationInvalidDateStart} and #{qualificationInvalidDateEnd}
             </if>
             <if test="qualificationValidTime != null">
-                  and damage_deal_user.qualification_valid_time = #{qualificationValidTime}
+                  and t.qualification_valid_time = #{qualificationValidTime}
             </if>
             <if test="status != null">
-                  and damage_deal_user.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="tecCategory != null">
-                  and damage_deal_user.tec_category = #{tecCategory}
+                  and t.tec_category = #{tecCategory}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and damage_deal_user.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="workareaId != null">
-                  and damage_deal_user.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>

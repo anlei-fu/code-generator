@@ -8,9 +8,9 @@ exports.bureauLineOrderConfig = {
                 items: [
 
                         // add
-                        // id excluded 
                         // createTime excluded 
-                        // updateTime excluded@@
+                        // id excluded 
+                        // updateTime excluded
                         new builder()
                                 .type("insert")
                                 .id("addBureauLineOrder")
@@ -18,7 +18,7 @@ exports.bureauLineOrderConfig = {
                                 .includes(collection => {
                                         collection.includes(bureauLineOrder.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id","createTime","updateTime"])
+                                                  .excludes(["createTime","id","updateTime"])
                                 })
                                 .controller(controller => {
                                         controller.path("/bureauLineOrder");
@@ -51,7 +51,7 @@ exports.bureauLineOrderConfig = {
                                 
                         // updateById
                         // createTime : excluded 
-                        // updateTime : excluded@@
+                        // updateTime : excluded
                         new builder()
                                 .type("update")
                                 .id("updateBureauLineOrderById")
@@ -107,7 +107,7 @@ exports.bureauLineOrderConfig = {
                                 .build(),
 
                         // getList
-                        // createTime : expression --- timeRange@@
+                        // createTime : expression --- timeRange
                         new builder()
                                 .type("select")
                                 .id("getBureauLineOrderList")
@@ -128,6 +128,7 @@ exports.bureauLineOrderConfig = {
                                            .excludes("id")
 
                                 })
+
                                 .build()
                 ]
 }

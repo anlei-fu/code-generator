@@ -1,3 +1,11 @@
+package com.railway.pojo.param;
+
+import com.railway.pojo.req.UpdateWeldingInfoByIdReq;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Date;
+
 public class UpdateWeldingInfoByIdParams {
 
     @Getter

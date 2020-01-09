@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DeviceDamageMapMapper">
     <insert id="addDeviceDamageMap" parameterType="com.railway.pojo.req.AddDeviceDamageMapReq">
-          insert  into device_damage_map 
+          insert  into device_damage_map t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="damageId != null">
-                  device_damage_map.damage_id,
+                  t.damage_id,
             </if>
             <if test="deivceId != null">
-                  device_damage_map.deivce_id,
+                  t.deivce_id,
             </if>
             <if test="deviceType != null">
-                  device_damage_map.device_type
+                  t.device_type
             </if>
           </trim>
           values
@@ -28,61 +28,61 @@
           </trim>
     </insert>
     <delete id="deleteDeviceDamageMapById">
-          delete from device_damage_map 
+          delete from device_damage_map t
           <where>
             <if test="id != null">
-                  device_damage_map.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateDeviceDamageMapById" parameterType="com.railway.pojo.param.UpdateDeviceDamageMapByIdParams">
-        update device_damage_map 
+        update device_damage_map t
         <set>
             <if test="damageId != null">
-                  device_damage_map.damage_id = #{DamageId},
+                  t.damage_id = #{DamageId},
             </if>
             <if test="deivceId != null">
-                  device_damage_map.deivce_id = #{DeivceId},
+                  t.deivce_id = #{DeivceId},
             </if>
             <if test="deviceType != null">
-                  device_damage_map.device_type = #{DeviceType}
+                  t.device_type = #{DeviceType}
             </if>
         </set>
           <where>
             <if test="id != null">
-                  device_damage_map.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getDeviceDamageMapById" resultType="com.railway.pojo.entity.DeviceDamageMap">
           select
-             device_damage_map.damage_id,
-             device_damage_map.deivce_id,
-             device_damage_map.device_type,
-             device_damage_map.id
-          form device_damage_map 
+             t.damage_id,
+             t.deivce_id,
+             t.device_type,
+             t.id
+          form device_damage_map t
           <where>
             <if test="id != null">
-                  device_damage_map.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getDeviceDamageMapList" resultType="com.railway.pojo.entity.DeviceDamageMap" parameterType="com.railway.pojo.req.GetDeviceDamageMapListReq">
           select
-             device_damage_map.damage_id,
-             device_damage_map.deivce_id,
-             device_damage_map.device_type,
-             device_damage_map.id
-          form device_damage_map 
+             t.damage_id,
+             t.deivce_id,
+             t.device_type,
+             t.id
+          form device_damage_map t
           <where>
             <if test="damageId != null">
-                  device_damage_map.damage_id = #{damageId}
+                  t.damage_id = #{damageId}
             </if>
             <if test="deivceId != null">
-                  and device_damage_map.deivce_id = #{deivceId}
+                  and t.deivce_id = #{deivceId}
             </if>
             <if test="deviceType != null">
-                  and device_damage_map.device_type = #{deviceType}
+                  and t.device_type = #{deviceType}
             </if>
           </where>
     </select>

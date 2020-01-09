@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.DevicePositionMapper;
 import com.railway.pojo.entity.DevicePosition;
 import com.railway.pojo.entity.DevicePosition;
+import com.railway.pojo.param.UpdateDevicePositionByIdParams;
 import com.railway.pojo.req.AddDevicePositionReq;
 import com.railway.pojo.req.GetDevicePositionListReq;
 import com.railway.pojo.req.UpdateDevicePositionByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.DevicePositionService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class DevicePositionServiceImpl implements DevicePositionService {
@@ -31,7 +31,7 @@ public class DevicePositionServiceImpl implements DevicePositionService {
 
     @Override
     public boolean updateDevicePositionById(Integer id, UpdateDevicePositionByIdReq req) {
-        params params = new UpdateDevicePositionByIdParams(id, req)
+        UpdateDevicePositionByIdParams params = new UpdateDevicePositionByIdParams(id, req);
         return devicePositionMapper.updateDevicePositionById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class DevicePositionServiceImpl implements DevicePositionService {
 
     @Override
     public PageInfo<DevicePosition> getDevicePositionList(GetDevicePositionListReq req) {
-        return PageHelperUtils.page(()=> devicePositionMapper.getDevicePositionList(req));
+        return PageHelperUtils.paging(req, () -> devicePositionMapper.getDevicePositionList(req));
     }
 
 }
+

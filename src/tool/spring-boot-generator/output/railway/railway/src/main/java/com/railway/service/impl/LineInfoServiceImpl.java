@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.railway.mapper.LineInfoMapper;
 import com.railway.pojo.entity.LineInfo;
 import com.railway.pojo.entity.LineInfo;
+import com.railway.pojo.param.UpdateLineInfoByIdParams;
 import com.railway.pojo.req.AddLineInfoReq;
 import com.railway.pojo.req.GetLineInfoListReq;
 import com.railway.pojo.req.UpdateLineInfoByIdReq;
@@ -11,7 +12,6 @@ import com.railway.service.LineInfoService;
 import com.railway.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class LineInfoServiceImpl implements LineInfoService {
@@ -31,7 +31,7 @@ public class LineInfoServiceImpl implements LineInfoService {
 
     @Override
     public boolean updateLineInfoById(Integer id, UpdateLineInfoByIdReq req) {
-        params params = new UpdateLineInfoByIdParams(id, req)
+        UpdateLineInfoByIdParams params = new UpdateLineInfoByIdParams(id, req);
         return lineInfoMapper.updateLineInfoById(params) > 0;
     }
 
@@ -42,7 +42,8 @@ public class LineInfoServiceImpl implements LineInfoService {
 
     @Override
     public PageInfo<LineInfo> getLineInfoList(GetLineInfoListReq req) {
-        return PageHelperUtils.page(()=> lineInfoMapper.getLineInfoList(req));
+        return PageHelperUtils.paging(req, () -> lineInfoMapper.getLineInfoList(req));
     }
 
 }
+

@@ -1,3 +1,9 @@
+package com.railway.pojo.param;
+
+import com.railway.pojo.req.UpdateDetectGoupUserByIdReq;
+import lombok.Getter;
+import lombok.Setter;
+
 public class UpdateDetectGoupUserByIdParams {
 
     @Getter

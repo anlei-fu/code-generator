@@ -32,7 +32,7 @@ exports.@snameConfig = {
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("delete@nameBy@methodName")
+                                .id("delete@nameBy@deleteMethodName")
                                 .alias("t")
                                 .conditions(collection => {
                                         collection.includes("@skey")
@@ -53,7 +53,7 @@ exports.@snameConfig = {
 @updateMsg@@
                         new builder()
                                 .type("update")
-                                .id("update@nameBy@methodName")
+                                .id("update@nameBy@updateMethodName")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(@sname.columnsArray)
@@ -83,7 +83,7 @@ exports.@snameConfig = {
                         // getById
                         new builder()
                                 .type("select")
-                                .id("get@nameBy@methodName")
+                                .id("get@nameBy@selectMethodName")
                                 .alias("t")
                                 .includes(collection=>{
                                         collection.includes(@sname.columnsArray)

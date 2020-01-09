@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageOrderMapper">
     <insert id="addDamageOrder" parameterType="com.railway.pojo.req.AddDamageOrderReq">
-          insert  into damage_order 
+          insert  into damage_order t
           <trim prefix="(" suffix=")" suffixOverrides=",">
-             damage_order.is_delete,
+             t.is_delete,
             <if test="submitStaff != null">
-                  damage_order.submit_staff,
+                  t.submit_staff,
             </if>
             <if test="submitTime != null">
-                  damage_order.submit_time,
+                  t.submit_time,
             </if>
             <if test="workareaId != null">
-                  damage_order.workarea_id,
+                  t.workarea_id,
             </if>
-             damage_order.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -32,80 +32,80 @@
           </trim>
     </insert>
     <delete id="deleteDamageOrderByOrderNo">
-          delete from damage_order 
+          delete from damage_order t
           <where>
             <if test="orderNo != null">
-                  damage_order.order_no = #{orderNo}
+                  t.order_no = #{orderNo}
             </if>
           </where>
     </delete>
     <update id="updateDamageOrderByOrderNo" parameterType="com.railway.pojo.param.UpdateDamageOrderByOrderNoParams">
-        update damage_order 
+        update damage_order t
         <set>
             <if test="isDelete != null">
-                  damage_order.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="submitStaff != null">
-                  damage_order.submit_staff = #{SubmitStaff},
+                  t.submit_staff = #{SubmitStaff},
             </if>
             <if test="submitTime != null">
-                  damage_order.submit_time = #{SubmitTime},
+                  t.submit_time = #{SubmitTime},
             </if>
             <if test="workareaId != null">
-                  damage_order.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            damage_order.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="orderNo != null">
-                  damage_order.order_no = #{orderNo}
+                  t.order_no = #{orderNo}
             </if>
           </where>
     </update>
     <select id="getDamageOrderByOrderNo" resultType="com.railway.pojo.entity.DamageOrder">
           select
-             damage_order.create_time,
-             damage_order.is_delete,
-             damage_order.order_no,
-             damage_order.submit_staff,
-             damage_order.submit_time,
-             damage_order.update_time,
-             damage_order.workarea_id
-          form damage_order 
+             t.create_time,
+             t.is_delete,
+             t.order_no,
+             t.submit_staff,
+             t.submit_time,
+             t.update_time,
+             t.workarea_id
+          form damage_order t
           <where>
             <if test="orderNo != null">
-                  damage_order.order_no = #{orderNo}
+                  t.order_no = #{orderNo}
             </if>
           </where>
     </select>
     <select id="getDamageOrderList" resultType="com.railway.pojo.entity.DamageOrder" parameterType="com.railway.pojo.req.GetDamageOrderListReq">
           select
-             damage_order.create_time,
-             damage_order.is_delete,
-             damage_order.order_no,
-             damage_order.submit_staff,
-             damage_order.submit_time,
-             damage_order.update_time,
-             damage_order.workarea_id
-          form damage_order 
+             t.create_time,
+             t.is_delete,
+             t.order_no,
+             t.submit_staff,
+             t.submit_time,
+             t.update_time,
+             t.workarea_id
+          form damage_order t
           <where>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  damage_order.create_time between #{createTimeStart} and #{createTimeEnd}
+                  t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="isDelete != null">
-                  and damage_order.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="submitStaff != null">
-                  and damage_order.submit_staff = #{submitStaff}
+                  and t.submit_staff = #{submitStaff}
             </if>
             <if test="submitTimeStart !=null and  submitTimeEnd != null">
-                  and damage_order.submit_time between #{submitTimeStart} and #{submitTimeEnd}
+                  and t.submit_time between #{submitTimeStart} and #{submitTimeEnd}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and damage_order.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="workareaId != null">
-                  and damage_order.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>

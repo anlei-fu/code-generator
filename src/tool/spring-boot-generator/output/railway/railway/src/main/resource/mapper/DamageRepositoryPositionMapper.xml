@@ -2,42 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DamageRepositoryPositionMapper">
     <insert id="addDamageRepositoryPosition" parameterType="com.railway.pojo.req.AddDamageRepositoryPositionReq">
-          insert  into damage_repository_position 
+          insert  into damage_repository_position t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bridgeTunnel != null">
-                  damage_repository_position.bridge_tunnel,
+                  t.bridge_tunnel,
             </if>
             <if test="damagePosition != null">
-                  damage_repository_position.damage_position,
+                  t.damage_position,
             </if>
             <if test="direction != null">
-                  damage_repository_position.direction,
+                  t.direction,
             </if>
             <if test="holePosition != null">
-                  damage_repository_position.hole_position,
+                  t.hole_position,
             </if>
             <if test="lineCategory != null">
-                  damage_repository_position.line_category,
+                  t.line_category,
             </if>
             <if test="lineId != null">
-                  damage_repository_position.line_id,
+                  t.line_id,
             </if>
             <if test="lineName != null">
-                  damage_repository_position.line_name,
+                  t.line_name,
             </if>
             <if test="miles != null">
-                  damage_repository_position.miles,
+                  t.miles,
             </if>
             <if test="stationId != null">
-                  damage_repository_position.station_id,
+                  t.station_id,
             </if>
             <if test="stockExchange != null">
-                  damage_repository_position.stock_exchange,
+                  t.stock_exchange,
             </if>
             <if test="thighTrackId != null">
-                  damage_repository_position.thigh_track_id,
+                  t.thigh_track_id,
             </if>
-             damage_repository_position.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -78,133 +78,133 @@
           </trim>
     </insert>
     <delete id="deleteDamageRepositoryPositionByOrderDetailId">
-          delete from damage_repository_position 
+          delete from damage_repository_position t
           <where>
             <if test="orderDetailId != null">
-                  damage_repository_position.order_detail_id = #{orderDetailId}
+                  t.order_detail_id = #{orderDetailId}
             </if>
           </where>
     </delete>
     <update id="updateDamageRepositoryPositionByOrderDetailId" parameterType="com.railway.pojo.param.UpdateDamageRepositoryPositionByOrderDetailIdParams">
-        update damage_repository_position 
+        update damage_repository_position t
         <set>
             <if test="bridgeTunnel != null">
-                  damage_repository_position.bridge_tunnel = #{BridgeTunnel},
+                  t.bridge_tunnel = #{BridgeTunnel},
             </if>
             <if test="damagePosition != null">
-                  damage_repository_position.damage_position = #{DamagePosition},
+                  t.damage_position = #{DamagePosition},
             </if>
             <if test="direction != null">
-                  damage_repository_position.direction = #{Direction},
+                  t.direction = #{Direction},
             </if>
             <if test="holePosition != null">
-                  damage_repository_position.hole_position = #{HolePosition},
+                  t.hole_position = #{HolePosition},
             </if>
             <if test="lineCategory != null">
-                  damage_repository_position.line_category = #{LineCategory},
+                  t.line_category = #{LineCategory},
             </if>
             <if test="lineId != null">
-                  damage_repository_position.line_id = #{LineId},
+                  t.line_id = #{LineId},
             </if>
             <if test="lineName != null">
-                  damage_repository_position.line_name = #{LineName},
+                  t.line_name = #{LineName},
             </if>
             <if test="miles != null">
-                  damage_repository_position.miles = #{Miles},
+                  t.miles = #{Miles},
             </if>
             <if test="stationId != null">
-                  damage_repository_position.station_id = #{StationId},
+                  t.station_id = #{StationId},
             </if>
             <if test="stockExchange != null">
-                  damage_repository_position.stock_exchange = #{StockExchange},
+                  t.stock_exchange = #{StockExchange},
             </if>
             <if test="thighTrackId != null">
-                  damage_repository_position.thigh_track_id = #{ThighTrackId}
+                  t.thigh_track_id = #{ThighTrackId}
             </if>
-            damage_repository_position.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="orderDetailId != null">
-                  damage_repository_position.order_detail_id = #{orderDetailId}
+                  t.order_detail_id = #{orderDetailId}
             </if>
           </where>
     </update>
     <select id="getDamageRepositoryPositionByOrderDetailId" resultType="com.railway.pojo.entity.DamageRepositoryPosition">
           select
-             damage_repository_position.bridge_tunnel,
-             damage_repository_position.create_time,
-             damage_repository_position.damage_position,
-             damage_repository_position.direction,
-             damage_repository_position.hole_position,
-             damage_repository_position.line_category,
-             damage_repository_position.line_id,
-             damage_repository_position.line_name,
-             damage_repository_position.miles,
-             damage_repository_position.order_detail_id,
-             damage_repository_position.station_id,
-             damage_repository_position.stock_exchange,
-             damage_repository_position.thigh_track_id,
-             damage_repository_position.update_time
-          form damage_repository_position 
+             t.bridge_tunnel,
+             t.create_time,
+             t.damage_position,
+             t.direction,
+             t.hole_position,
+             t.line_category,
+             t.line_id,
+             t.line_name,
+             t.miles,
+             t.order_detail_id,
+             t.station_id,
+             t.stock_exchange,
+             t.thigh_track_id,
+             t.update_time
+          form damage_repository_position t
           <where>
             <if test="orderDetailId != null">
-                  damage_repository_position.order_detail_id = #{orderDetailId}
+                  t.order_detail_id = #{orderDetailId}
             </if>
           </where>
     </select>
     <select id="getDamageRepositoryPositionList" resultType="com.railway.pojo.entity.DamageRepositoryPosition" parameterType="com.railway.pojo.req.GetDamageRepositoryPositionListReq">
           select
-             damage_repository_position.bridge_tunnel,
-             damage_repository_position.create_time,
-             damage_repository_position.damage_position,
-             damage_repository_position.direction,
-             damage_repository_position.hole_position,
-             damage_repository_position.line_category,
-             damage_repository_position.line_id,
-             damage_repository_position.line_name,
-             damage_repository_position.miles,
-             damage_repository_position.order_detail_id,
-             damage_repository_position.station_id,
-             damage_repository_position.stock_exchange,
-             damage_repository_position.thigh_track_id,
-             damage_repository_position.update_time
-          form damage_repository_position 
+             t.bridge_tunnel,
+             t.create_time,
+             t.damage_position,
+             t.direction,
+             t.hole_position,
+             t.line_category,
+             t.line_id,
+             t.line_name,
+             t.miles,
+             t.order_detail_id,
+             t.station_id,
+             t.stock_exchange,
+             t.thigh_track_id,
+             t.update_time
+          form damage_repository_position t
           <where>
             <if test="bridgeTunnel != null">
-                  damage_repository_position.bridge_tunnel = #{bridgeTunnel}
+                  t.bridge_tunnel = #{bridgeTunnel}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and damage_repository_position.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="damagePosition != null">
-                  and damage_repository_position.damage_position = #{damagePosition}
+                  and t.damage_position = #{damagePosition}
             </if>
             <if test="direction != null">
-                  and damage_repository_position.direction = #{direction}
+                  and t.direction = #{direction}
             </if>
             <if test="holePosition != null">
-                  and damage_repository_position.hole_position = #{holePosition}
+                  and t.hole_position = #{holePosition}
             </if>
             <if test="lineCategory != null">
-                  and damage_repository_position.line_category = #{lineCategory}
+                  and t.line_category = #{lineCategory}
             </if>
             <if test="lineId != null">
-                  and damage_repository_position.line_id = #{lineId}
+                  and t.line_id = #{lineId}
             </if>
             <if test="miles != null">
-                  and damage_repository_position.miles = #{miles}
+                  and t.miles = #{miles}
             </if>
             <if test="stationId != null">
-                  and damage_repository_position.station_id = #{stationId}
+                  and t.station_id = #{stationId}
             </if>
             <if test="stockExchange != null">
-                  and damage_repository_position.stock_exchange = #{stockExchange}
+                  and t.stock_exchange = #{stockExchange}
             </if>
             <if test="thighTrackId != null">
-                  and damage_repository_position.thigh_track_id = #{thighTrackId}
+                  and t.thigh_track_id = #{thighTrackId}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and damage_repository_position.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
           </where>
     </select>

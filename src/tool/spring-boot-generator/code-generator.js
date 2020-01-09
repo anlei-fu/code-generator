@@ -432,11 +432,18 @@ class Generator {
 
                 let map = new Map();
 
-                getConditions(config).forEach(x => {
-                        map.set(x.name, x);
-                });
-
-                if (config.type == "update") {
+                if (config.type == "select" || config.type == "delete")
+                        getConditions(config).forEach(x => {
+                                map.set(x.name, x);
+                        });
+               else if (config.type == "update") {
+                        getIncludes(config).forEach(x => {
+                                map.set(x.name, x);
+                        });
+                        getConditions(config).forEach(x => {
+                                map.set(x.name, x);
+                        });
+                }else{
                         getIncludes(config).forEach(x => {
                                 map.set(x.name, x);
                         });
@@ -457,21 +464,24 @@ class Generator {
                                                 y.source = "req";
                                         }
                                 });
-                        } 
+                        } else{
+                        }
                 });
 
                 let configs = [];
                 map.forEach(value => {
+                        value.source=value.source||"user";
                         configs.push(value);
                 });
 
                 let content = Render.renderParams(configs,req.type);
                 content = this._packageRender.renderPackage(content);
+                content=content.replace("@type","param");
                 this._writer.writeParams(config.params.type, content);
                 this._packageRender.addPackage({
                         name: config.params.type,
                         isSystem: false,
-                        type: "params"
+                        type: "param"
                 });
         }
 }

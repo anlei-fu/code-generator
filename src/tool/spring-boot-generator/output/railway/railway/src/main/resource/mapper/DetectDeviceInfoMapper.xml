@@ -2,67 +2,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.railway.mapper.DetectDeviceInfoMapper">
     <insert id="addDetectDeviceInfo" parameterType="com.railway.pojo.req.AddDetectDeviceInfoReq">
-          insert  into detect_device_info 
+          insert  into detect_device_info t
           <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="commissioningDate != null">
-                  detect_device_info.commissioning_date,
+                  t.commissioning_date,
             </if>
             <if test="deivceNo != null">
-                  detect_device_info.deivce_no,
+                  t.deivce_no,
             </if>
             <if test="deviceMode != null">
-                  detect_device_info.device_mode,
+                  t.device_mode,
             </if>
             <if test="deviceName != null">
-                  detect_device_info.device_name,
+                  t.device_name,
             </if>
             <if test="durableYears != null">
-                  detect_device_info.durable_years,
+                  t.durable_years,
             </if>
             <if test="exFactoryDate != null">
-                  detect_device_info.ex_factory_date,
+                  t.ex_factory_date,
             </if>
             <if test="fixedAssetsNo != null">
-                  detect_device_info.fixed_assets_no,
+                  t.fixed_assets_no,
             </if>
             <if test="fixedAssetsPrice != null">
-                  detect_device_info.fixed_assets_price,
+                  t.fixed_assets_price,
             </if>
-             detect_device_info.is_delete,
+             t.is_delete,
             <if test="length != null">
-                  detect_device_info.length,
+                  t.length,
             </if>
             <if test="manufacturer != null">
-                  detect_device_info.manufacturer,
+                  t.manufacturer,
             </if>
             <if test="operator != null">
-                  detect_device_info.operator,
+                  t.operator,
             </if>
             <if test="purchasePrice != null">
-                  detect_device_info.purchase_price,
+                  t.purchase_price,
             </if>
             <if test="remark != null">
-                  detect_device_info.remark,
+                  t.remark,
             </if>
             <if test="scrapDate != null">
-                  detect_device_info.scrap_date,
+                  t.scrap_date,
             </if>
             <if test="status != null">
-                  detect_device_info.status,
+                  t.status,
             </if>
             <if test="useStatus != null">
-                  detect_device_info.use_status,
+                  t.use_status,
             </if>
             <if test="weight != null">
-                  detect_device_info.weight,
+                  t.weight,
             </if>
             <if test="width != null">
-                  detect_device_info.width,
+                  t.width,
             </if>
             <if test="workareaId != null">
-                  detect_device_info.workarea_id,
+                  t.workarea_id,
             </if>
-             detect_device_info.create_time
+             t.create_time
           </trim>
           values
           <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -128,202 +128,202 @@
           </trim>
     </insert>
     <delete id="deleteDetectDeviceInfoById">
-          delete from detect_device_info 
+          delete from detect_device_info t
           <where>
             <if test="id != null">
-                  detect_device_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </delete>
     <update id="updateDetectDeviceInfoById" parameterType="com.railway.pojo.param.UpdateDetectDeviceInfoByIdParams">
-        update detect_device_info 
+        update detect_device_info t
         <set>
             <if test="commissioningDate != null">
-                  detect_device_info.commissioning_date = #{CommissioningDate},
+                  t.commissioning_date = #{CommissioningDate},
             </if>
             <if test="deivceNo != null">
-                  detect_device_info.deivce_no = #{DeivceNo},
+                  t.deivce_no = #{DeivceNo},
             </if>
             <if test="deviceMode != null">
-                  detect_device_info.device_mode = #{DeviceMode},
+                  t.device_mode = #{DeviceMode},
             </if>
             <if test="deviceName != null">
-                  detect_device_info.device_name = #{DeviceName},
+                  t.device_name = #{DeviceName},
             </if>
             <if test="durableYears != null">
-                  detect_device_info.durable_years = #{DurableYears},
+                  t.durable_years = #{DurableYears},
             </if>
             <if test="exFactoryDate != null">
-                  detect_device_info.ex_factory_date = #{ExFactoryDate},
+                  t.ex_factory_date = #{ExFactoryDate},
             </if>
             <if test="fixedAssetsNo != null">
-                  detect_device_info.fixed_assets_no = #{FixedAssetsNo},
+                  t.fixed_assets_no = #{FixedAssetsNo},
             </if>
             <if test="fixedAssetsPrice != null">
-                  detect_device_info.fixed_assets_price = #{FixedAssetsPrice},
+                  t.fixed_assets_price = #{FixedAssetsPrice},
             </if>
             <if test="isDelete != null">
-                  detect_device_info.is_delete = #{IsDelete},
+                  t.is_delete = #{IsDelete},
             </if>
             <if test="length != null">
-                  detect_device_info.length = #{Length},
+                  t.length = #{Length},
             </if>
             <if test="manufacturer != null">
-                  detect_device_info.manufacturer = #{Manufacturer},
+                  t.manufacturer = #{Manufacturer},
             </if>
             <if test="operator != null">
-                  detect_device_info.operator = #{Operator},
+                  t.operator = #{Operator},
             </if>
             <if test="purchasePrice != null">
-                  detect_device_info.purchase_price = #{PurchasePrice},
+                  t.purchase_price = #{PurchasePrice},
             </if>
             <if test="remark != null">
-                  detect_device_info.remark = #{Remark},
+                  t.remark = #{Remark},
             </if>
             <if test="scrapDate != null">
-                  detect_device_info.scrap_date = #{ScrapDate},
+                  t.scrap_date = #{ScrapDate},
             </if>
             <if test="status != null">
-                  detect_device_info.status = #{Status},
+                  t.status = #{Status},
             </if>
             <if test="useStatus != null">
-                  detect_device_info.use_status = #{UseStatus},
+                  t.use_status = #{UseStatus},
             </if>
             <if test="weight != null">
-                  detect_device_info.weight = #{Weight},
+                  t.weight = #{Weight},
             </if>
             <if test="width != null">
-                  detect_device_info.width = #{Width},
+                  t.width = #{Width},
             </if>
             <if test="workareaId != null">
-                  detect_device_info.workarea_id = #{WorkareaId}
+                  t.workarea_id = #{WorkareaId}
             </if>
-            detect_device_info.update_time= current_timestamp
+            t.update_time= current_timestamp
         </set>
           <where>
             <if test="id != null">
-                  detect_device_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </update>
     <select id="getDetectDeviceInfoById" resultType="com.railway.pojo.entity.DetectDeviceInfo">
           select
-             detect_device_info.commissioning_date,
-             detect_device_info.create_time,
-             detect_device_info.deivce_no,
-             detect_device_info.device_mode,
-             detect_device_info.device_name,
-             detect_device_info.durable_years,
-             detect_device_info.ex_factory_date,
-             detect_device_info.fixed_assets_no,
-             detect_device_info.fixed_assets_price,
-             detect_device_info.id,
-             detect_device_info.is_delete,
-             detect_device_info.length,
-             detect_device_info.manufacturer,
-             detect_device_info.operator,
-             detect_device_info.purchase_price,
-             detect_device_info.remark,
-             detect_device_info.scrap_date,
-             detect_device_info.status,
-             detect_device_info.update_time,
-             detect_device_info.use_status,
-             detect_device_info.weight,
-             detect_device_info.width,
-             detect_device_info.workarea_id
-          form detect_device_info 
+             t.commissioning_date,
+             t.create_time,
+             t.deivce_no,
+             t.device_mode,
+             t.device_name,
+             t.durable_years,
+             t.ex_factory_date,
+             t.fixed_assets_no,
+             t.fixed_assets_price,
+             t.id,
+             t.is_delete,
+             t.length,
+             t.manufacturer,
+             t.operator,
+             t.purchase_price,
+             t.remark,
+             t.scrap_date,
+             t.status,
+             t.update_time,
+             t.use_status,
+             t.weight,
+             t.width,
+             t.workarea_id
+          form detect_device_info t
           <where>
             <if test="id != null">
-                  detect_device_info.id = #{id}
+                  t.id = #{id}
             </if>
           </where>
     </select>
     <select id="getDetectDeviceInfoList" resultType="com.railway.pojo.entity.DetectDeviceInfo" parameterType="com.railway.pojo.req.GetDetectDeviceInfoListReq">
           select
-             detect_device_info.commissioning_date,
-             detect_device_info.create_time,
-             detect_device_info.deivce_no,
-             detect_device_info.device_mode,
-             detect_device_info.device_name,
-             detect_device_info.durable_years,
-             detect_device_info.ex_factory_date,
-             detect_device_info.fixed_assets_no,
-             detect_device_info.fixed_assets_price,
-             detect_device_info.id,
-             detect_device_info.is_delete,
-             detect_device_info.length,
-             detect_device_info.manufacturer,
-             detect_device_info.operator,
-             detect_device_info.purchase_price,
-             detect_device_info.remark,
-             detect_device_info.scrap_date,
-             detect_device_info.status,
-             detect_device_info.update_time,
-             detect_device_info.use_status,
-             detect_device_info.weight,
-             detect_device_info.width,
-             detect_device_info.workarea_id
-          form detect_device_info 
+             t.commissioning_date,
+             t.create_time,
+             t.deivce_no,
+             t.device_mode,
+             t.device_name,
+             t.durable_years,
+             t.ex_factory_date,
+             t.fixed_assets_no,
+             t.fixed_assets_price,
+             t.id,
+             t.is_delete,
+             t.length,
+             t.manufacturer,
+             t.operator,
+             t.purchase_price,
+             t.remark,
+             t.scrap_date,
+             t.status,
+             t.update_time,
+             t.use_status,
+             t.weight,
+             t.width,
+             t.workarea_id
+          form detect_device_info t
           <where>
             <if test="commissioningDateStart !=null and  commissioningDateEnd != null">
-                  detect_device_info.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}
+                  t.commissioning_date between #{commissioningDateStart} and #{commissioningDateEnd}
             </if>
             <if test="createTimeStart !=null and  createTimeEnd != null">
-                  and detect_device_info.create_time between #{createTimeStart} and #{createTimeEnd}
+                  and t.create_time between #{createTimeStart} and #{createTimeEnd}
             </if>
             <if test="deivceNo != null and deivceNo != ''">
-                  and detect_device_info.deivce_no = #{deivceNo}
+                  and t.deivce_no = #{deivceNo}
             </if>
             <if test="deviceMode != null and deviceMode != ''">
-                  and detect_device_info.device_mode = #{deviceMode}
+                  and t.device_mode = #{deviceMode}
             </if>
             <if test="durableYears != null">
-                  and detect_device_info.durable_years = #{durableYears}
+                  and t.durable_years = #{durableYears}
             </if>
             <if test="exFactoryDateStart !=null and  exFactoryDateEnd != null">
-                  and detect_device_info.ex_factory_date between #{exFactoryDateStart} and #{exFactoryDateEnd}
+                  and t.ex_factory_date between #{exFactoryDateStart} and #{exFactoryDateEnd}
             </if>
             <if test="fixedAssetsNo != null and fixedAssetsNo != ''">
-                  and detect_device_info.fixed_assets_no = #{fixedAssetsNo}
+                  and t.fixed_assets_no = #{fixedAssetsNo}
             </if>
             <if test="fixedAssetsPrice != null">
-                  and detect_device_info.fixed_assets_price = #{fixedAssetsPrice}
+                  and t.fixed_assets_price = #{fixedAssetsPrice}
             </if>
             <if test="isDelete != null">
-                  and detect_device_info.is_delete = #{isDelete}
+                  and t.is_delete = #{isDelete}
             </if>
             <if test="length != null">
-                  and detect_device_info.length = #{length}
+                  and t.length = #{length}
             </if>
             <if test="manufacturer != null and manufacturer != ''">
-                  and detect_device_info.manufacturer = #{manufacturer}
+                  and t.manufacturer = #{manufacturer}
             </if>
             <if test="operator != null">
-                  and detect_device_info.operator = #{operator}
+                  and t.operator = #{operator}
             </if>
             <if test="purchasePrice != null">
-                  and detect_device_info.purchase_price = #{purchasePrice}
+                  and t.purchase_price = #{purchasePrice}
             </if>
             <if test="scrapDateStart !=null and  scrapDateEnd != null">
-                  and detect_device_info.scrap_date between #{scrapDateStart} and #{scrapDateEnd}
+                  and t.scrap_date between #{scrapDateStart} and #{scrapDateEnd}
             </if>
             <if test="status != null">
-                  and detect_device_info.status = #{status}
+                  and t.status = #{status}
             </if>
             <if test="updateTimeStart !=null and  updateTimeEnd != null">
-                  and detect_device_info.update_time between #{updateTimeStart} and #{updateTimeEnd}
+                  and t.update_time between #{updateTimeStart} and #{updateTimeEnd}
             </if>
             <if test="useStatus != null">
-                  and detect_device_info.use_status = #{useStatus}
+                  and t.use_status = #{useStatus}
             </if>
             <if test="weight != null">
-                  and detect_device_info.weight = #{weight}
+                  and t.weight = #{weight}
             </if>
             <if test="width != null">
-                  and detect_device_info.width = #{width}
+                  and t.width = #{width}
             </if>
             <if test="workareaId != null">
-                  and detect_device_info.workarea_id = #{workareaId}
+                  and t.workarea_id = #{workareaId}
             </if>
           </where>
     </select>
