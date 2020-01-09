@@ -1,9 +1,0 @@
-exports.all=[
-        require("./groupRole.js").groupRoleConfig,
-        require("./roleSystemUserInfo.js").roleSystemUserInfoConfig,
-        require("./systemInfo.js").systemInfoConfig,
-        require("./systemRoleGroupInfo.js").systemRoleGroupInfoConfig,
-        require("./systemRoleInfo.js").systemRoleInfoConfig,
-        require("./userInfo.js").userInfoConfig,
-        require("./userRole.js").userRoleConfig,
-]
