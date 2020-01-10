@@ -32,14 +32,16 @@ function renderInsert(config) {
         let includes = getIncludes(config);
         let createTime = getInsertTime(config.table);
         if (createTime) {
-                createTime.column = (config.alias || NamingStrategy.toHungary(config.table.name).toLowerCase()) + "."
-                        + NamingStrategy.toHungary(createTime.name).toLowerCase();
+                createTime.column = "1."+NamingStrategy.toHungary(createTime.name).toLowerCase();
                 includes.push(createTime);
         }
 
         includes.forEach((x, i, array) => {
                 x.suffix = i == array.length - 1 ? "" : ",";
+                var sourceColumn=x.column;
+                x.column=x.column.split(".")[1];
                 columns += renderColumn(x);
+                x.column=sourceColumn;
                 properties += renderProperty(x);
         });
 

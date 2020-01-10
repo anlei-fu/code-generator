@@ -25,7 +25,7 @@ function renderEntity(entity) {
                 let itemPatterns = {
                         name: x.name,
                         type: x.type,
-                        description: x.description,
+                        description: x.description.replace(/\r\n/g,""),
                         validates
                 };
 
@@ -35,7 +35,7 @@ function renderEntity(entity) {
 
         content = content.trimRight() + "\r\n";
         let entityModel = {
-                description: entity.description,
+                description: entity.description.replace(/\r\n/g,""),
                 name: entity.name,
                 content,
                 type: entity.type,

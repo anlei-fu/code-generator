@@ -1,3 +1,9 @@
+/*----------------------------------------------------------------------------
+ * Jasmine code generator, a tool to build web crud application,with spring-
+ * boot, mybatis, mysql,swagger,spring-security.
+ * Generated at 2020-1-10 5:35:37 PM 
+ * All rights reserved by fuanlei(email:767550758@qq.com) since 2019
+ *---------------------------------------------------------------------------*/
 /*
  * @Descripttion: 
  * @version: 
@@ -20,13 +26,13 @@ const { Generator } = require("./../../code-generator")
 
 function build() {
         
-        let packageRender=new PackegeRender("@project");
-        let writer =new Writer("@project");
+        let packageRender=new PackegeRender("delivery");
+        let writer =new Writer("delivery");
         all.forEach(x => {
                 // set output folders
-                let root = "./@project/src/main/java/com/@project";
+                let root = "./delivery/src/main/java/com/delivery";
                 x.mapperFolder = `${root}/mapper`;
-                x.mapperConfigFolder = `./@project/src/main/resource/mapper`;
+                x.mapperConfigFolder = `./delivery/src/main/resource/mapper`;
                 x.controllerFolder = `${root}/controller`;
                 x.serviceFolder = `${root}/service`;
                 x.serviceImplFolder = `${root}/service/impl`;
@@ -34,7 +40,7 @@ function build() {
                 x.reqFolder = `${root}/pojo/req`;
                 x.respFolder = `${root}/pojo/resp`;
                 x.paramsFolder = `${root}/pojo/param`;
-                x.project="@project";
+                x.project="delivery";
 
                 let generator = new Generator(x,writer,packageRender);
                 generator.generate();

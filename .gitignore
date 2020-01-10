@@ -1,10 +1,11 @@
 dbconfig.json
 *.log
 *.db
-node_modules
-output
-outputs
-bin
+node_modules/
+output/
+outputs/
+bin/
+build/
 /src/tool/asp.net-generator/outputs
 /src/tool/logging/node_modules
 /src/tool/oracle-table-info-resolver/outputs

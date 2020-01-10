@@ -7,11 +7,17 @@ const { Matcher } = require("./../common/matchers")
 const CREATE_SELECT_EXLUCES = () => {
         return {
                 String: {
+                        title: {
+
+                        },
                         remark: {
 
                         },
                         message: {
                                 matcher: x => x.toLowerCase().includes("message"),
+                        },
+                        secret: {
+                                matcher: x => x.toLowerCase().endsWith("secret"),
                         },
                         description: {
 
@@ -23,6 +29,9 @@ const CREATE_SELECT_EXLUCES = () => {
 
                         },
                         text: {
+
+                        },
+                        content: {
 
                         },
                         msg: {
@@ -64,9 +73,6 @@ const CREATE_SELECT_EXLUCES = () => {
                         password: {
                                 matcher: x => x.toLowerCase().includes("password"),
                         },
-                        secret: {
-                                matcher: x => x.toLowerCase().includes("secrate"),
-                        },
                         hash: {
                                 matcher: x => x.toLowerCase().includes("hash"),
                         },
@@ -93,7 +99,13 @@ const CREATE_SELECT_EXLUCES = () => {
                         Date: [
 
                         ]
+                },
+                Integer: {
+                        value: {
+                                matcher: x => x.toLowerCase().endsWith("value")
+                        }
                 }
+
         }
 }
 
@@ -126,10 +138,23 @@ const CREATE_EXPRESSIONS = () => {
                                 matcher: x => x.toLowerCase() == "sum",
                                 expression: "range",
                         },
+                        balance: {
+                                matcher: x => x.toLowerCase().endsWith("balance"),
+                                expression: "range",
+                        },
                         amount: {
                                 matcher: x => x.toLowerCase().endsWith("amount"),
                                 expression: "range",
                         },
+                        timeout:{
+                                matcher: x => x.toLowerCase().endsWith("timeout"),
+                                expression: "range",
+                        },
+                        grade:{
+                                matcher: x => x.toLowerCase().endsWith("grade"),
+                                expression: "range",
+                        }
+
                 },
                 Float: {
                         price: {
@@ -159,6 +184,10 @@ const CREATE_EXPRESSIONS = () => {
                                 matcher: x => x.toLowerCase().endsWith("amount"),
                                 expression: "range",
                         },
+                        balance: {
+                                matcher: x => x.toLowerCase().endsWith("balance"),
+                                expression: "range",
+                        },
                 },
                 Date: {
                         createTime: {
@@ -166,6 +195,13 @@ const CREATE_EXPRESSIONS = () => {
                         },
                         detectTime: {
                                 expression: "timeRange"
+                        },
+                        updateTime:{
+                                expression: "timeRange"
+                        },
+                        all:{
+                                matcher:x=>true,
+                                expression:"timeRange"
                         }
                 }
         }
@@ -228,6 +264,18 @@ const CREATE_VALIDATES = () => {
                         },
                         "postCode": {
                                 validate: "@PostCode"
+                        },
+                        "addr":{
+                                matcher: (x) => x.toLowerCase().endsWith("addr"),
+                        },
+                        "address":{
+                                matcher: (x) => x.toLowerCase().endsWith("address"),
+                        },
+                        "updateuser":{
+                                matcher: (x) => x.toLowerCase().endsWith("updateuser"),
+                        },
+                        "createuser":{
+                                matcher: (x) => x.toLowerCase().endsWith("createuser"),
                         },
                 },
 

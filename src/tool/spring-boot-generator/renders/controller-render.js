@@ -39,12 +39,14 @@ function renderController(config) {
  * @returns {String}
  */
 function getControllerItemConfig(config, name) {
+        let description = config.controller.description || ""
+        description = description.replace(/\r\n/g, "");
         return {
                 name: config.id,
                 httpMapping: getControllerItemHttpMappiAnnotationg(config),
                 controllerReturnType: getControllerItemReturnType(config, name),
                 serviceParams: getReqParamsWithoutType(config),
-                description: config.controller.description || "",
+                description,
                 controllerParams: getControllerItemParams(config),
                 sname: STR.lowerFirstLetter(name),
         };

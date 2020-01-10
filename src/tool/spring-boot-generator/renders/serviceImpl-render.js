@@ -21,7 +21,7 @@ function renderServiceImpl(config) {
         });
 
         content = content.trimRight() + "\r\n";
-        return SERVICE_IMPL_RENDER.renderTemplate({ content, sname: STR.lowerFirstLetter(config.name) });
+        return SERVICE_IMPL_RENDER.renderTemplate({name:config.name,  content, sname: STR.lowerFirstLetter(config.name) });
 }
 
 /**

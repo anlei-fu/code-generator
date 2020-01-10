@@ -1,4 +1,5 @@
 const { STR } = require("./../../../libs/str");
+const {ARRAY} =require("./../../../libs/utils");
 
 
 const PACKAGES = new Map();
@@ -121,7 +122,7 @@ class PackegeRender {
                         , systems = []
                         , others = STR.remove(packagesPattern, "@packages")
                                 .replace(/@project/g, this._project)
-                                .split("\r\n");
+                                .split("\n");
 
                 PACKAGES.forEach((value, key) => {
 
@@ -145,6 +146,8 @@ class PackegeRender {
                 others.forEach((x, i) => {
                         others[i] = x.replace(/@project/g, this._project);
                 });
+
+                others =ARRAY.distinct(others,x=> x.trim());
 
                 systems.forEach((x, i) => {
                         systems[i] = x.replace(/@project/g, this._project);

@@ -1,6 +1,8 @@
 const { FILE } = require("./../../libs/file");
 const { STR } = require("./../../libs/str");
 const { formatJavaFile } = require("./utils");
+const COMPYRIGHT = FILE.read(`${__dirname}/templates/copyright.java`).replace("@date", new Date().toLocaleString());
+const COMPYRIGHT_XML = FILE.read(`${__dirname}/templates/copyright.xml`).replace("@date", new Date().toLocaleString());
 
 /**
  * Use to write all files
@@ -121,7 +123,10 @@ class Writer {
         _writeCore(path, content, name) {
                 content = STR.replace(content, { "@project": this._project, "@name": name });
                 if (path.endsWith(".java"))
-                        content = formatJavaFile(content);
+                        content = COMPYRIGHT + formatJavaFile(content);
+
+                if (path.endsWith(".xml"))
+                        content = COMPYRIGHT_XML + content;
 
                 FILE.write(path, content);
         }

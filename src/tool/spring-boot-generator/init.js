@@ -7,6 +7,7 @@ const { ConfigBuilderGenerator } = require("./config-template-generator");
 
 const { LoggerFactory } = require("./../logging/logger-factory");
 const LOG = LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
+const COMPYRIGHT=FILE.read("./templates/copyright.java").replace("@date",new Date().toLocaleString());
 
 /**
  * Initialize a spring boot CRUD web project 
@@ -44,12 +45,12 @@ async function init(project, dbConfig) {
         tableNames.forEach(x => {
                 content += `        require("./${x}.js").${x}Config,\r\n`;
         });
-        FILE.write(`${root}/all.js`, FILE.read("./templates/config-all.js").replace("@content", content.trimRight()));
+        FILE.write(`${root}/all.js`,COMPYRIGHT+FILE.read("./templates/config-all.js").replace("@content", content.trimRight()));
 
         // create index.js
-        FILE.write(`./output/${project}/index.js`, FILE.read("./templates/generator.js").replace(/@project/g, project));
+        copy(`./output/${project}/index.js`, "./templates/generator.js", project);
 
-        FILE.copy('./templates/packages.js', `./output/${project}/packages.js`);
+        copy('./templates/packages.js', `./output/${project}/packages.js`,project);
 
         // generate all table infos
         await generate(dbConfig, dbConfig.db, `./output/${project}/db`);
@@ -93,12 +94,12 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`${root}/utils`);
         DIR.create(`${root}/validate`);
         DIR.create(`${root}/validate/annotation`);
+        DIR.create(`${root}/validate/validator`);
         DIR.create(`${root}/exception`);
 
         // resource items
         DIR.create(`./output/${project}/${project}/src/main/resources`)
         DIR.create(`./output/${project}/${project}/src/main/resources/mapper`)
-        FILE.write(`./output/${project}/${project}/src/main/resources/application.properties`, "");
 
         // test items
         DIR.create(`./output/${project}/${project}/src/test`);
@@ -124,7 +125,11 @@ function makeAllFolders(project, dbConfig) {
 
         copy("./templates/Application.java", `./output/${project}/${project}/src/main/java/com/${project}/Application.java`, project);
 
-        copyAnnotaion("./templates/annotation", `${root}/validate/annotation`, project);
+        // annotation
+        copyFolder("./templates/annotation", `${root}/validate/annotation`, project);
+
+        // validator
+        copyFolder("./templates/validator", `${root}/validate/validator`, project);
 
         // application.properties
         let patterns = {
@@ -133,7 +138,8 @@ function makeAllFolders(project, dbConfig) {
                 "@dbName": dbConfig.db,
                 "@dbUser": dbConfig.user,
                 "@dbPassword": dbConfig.password,
-                "@project": project
+                "@project": project,
+                "@date":new Date().toLocaleString()
         };
         let config = FILE.read("./templates/application.properties");
         FILE.write(`./output/${project}/${project}/src/main/resources/application.properties`, STR.replace(config, patterns));
@@ -146,7 +152,7 @@ function makeAllFolders(project, dbConfig) {
  * @param {String} targetFolder 
  * @param {String} project 
  */
-function copyAnnotaion(sourceFolder, targetFolder, project) {
+function copyFolder(sourceFolder, targetFolder, project) {
         DIR.getFiles(sourceFolder).forEach(x => {
                 copy(sourceFolder + "/" + x, targetFolder + "/" + x, project);
         });
@@ -166,11 +172,16 @@ function generateConfigItem(configRoot, table, pk) {
         };
 
         templates = STR.replace(templates, patterns);
-        FILE.write(`${configRoot}/${table.name}.js`, templates);
+        FILE.write(`${configRoot}/${table.name}.js`,COMPYRIGHT+templates);
 }
 
 function copy(source, target, project) {
-        FILE.write(target, FILE.read(source).replace(/@project/g, project));
+        let content=FILE.read(source).replace(/@project/g, project);
+    
+        if(source.endsWith(".js")||source.endsWith(".java"))
+           content=COMPYRIGHT+content;
+
+        FILE.write(target,content);
 }
 
 exports.init = init;

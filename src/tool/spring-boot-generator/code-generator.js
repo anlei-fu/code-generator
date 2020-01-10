@@ -382,7 +382,7 @@ class Generator {
                                 req.description = x.description;
                                 req.name = x.type;
                                 req.type = "req";
-                                req.extends = config.resp.single ? "" : "PageReq";
+                                req.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
                                 let content = Render.renderEntity(req);
                                 content = this._packageRender.renderPackage(content);
                                 this._writer.writeReq(x.type, content);
@@ -436,14 +436,14 @@ class Generator {
                         getConditions(config).forEach(x => {
                                 map.set(x.name, x);
                         });
-               else if (config.type == "update") {
+                else if (config.type == "update") {
                         getIncludes(config).forEach(x => {
                                 map.set(x.name, x);
                         });
                         getConditions(config).forEach(x => {
                                 map.set(x.name, x);
                         });
-                }else{
+                } else {
                         getIncludes(config).forEach(x => {
                                 map.set(x.name, x);
                         });
@@ -455,8 +455,8 @@ class Generator {
                                 map.get(x.name)["source"] = "constructor";
 
                         } else if (x.doCreate) {
-                                req=x;
-                                generateReq(config,x).forEach(y => {
+                                req = x;
+                                generateReq(config, x).forEach(y => {
                                         if (map.has(y.name)) {
                                                 map.get(y.name)["source"] = "req";
                                         } else {
@@ -464,19 +464,19 @@ class Generator {
                                                 y.source = "req";
                                         }
                                 });
-                        } else{
+                        } else {
                         }
                 });
 
                 let configs = [];
                 map.forEach(value => {
-                        value.source=value.source||"user";
+                        value.source = value.source || "user";
                         configs.push(value);
                 });
 
-                let content = Render.renderParams(configs,req.type);
+                let content = Render.renderParams(configs, req.type);
                 content = this._packageRender.renderPackage(content);
-                content=content.replace("@type","param");
+                content = content.replace("@type", "param");
                 this._writer.writeParams(config.params.type, content);
                 this._packageRender.addPackage({
                         name: config.params.type,

@@ -18,8 +18,13 @@ public class R<T> {
     private T data;
 
     public R(int code, String msg) {
+        this(code, msg, null);
+    }
+
+    public R(int code, String msg, T data) {
         this.code = code;
         this.message = msg;
+        this.data = data;
     }
 
     public static R success() {
@@ -47,7 +52,7 @@ public class R<T> {
     }
 
     public static <T> R<T> doResponse(T result, String failedMsg) {
-        return result == null ? success() : create(RConstant.FAILED_CODE, failedMsg);
+        return result != null ? new R(RConstant.SUCCESSED_CODE, "Success", result) : create(RConstant.FAILED_CODE, failedMsg);
     }
 
     public static class RConstant {

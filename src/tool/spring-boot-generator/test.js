@@ -14,4 +14,4 @@ async function main(project, dbConfig) {
 }
 
 /*-------------------------------------------------main--------------------------------------------------*/
-main("contract", { host: "localhost", port: "3306", db: "contract_sign", user: "root", password: "2011801243" });
+main("delivery", { host: "192.168.0.36", port: "3306", db: "ds_delivery", user: "root", password: "rTo0CesHi2018Qx" });

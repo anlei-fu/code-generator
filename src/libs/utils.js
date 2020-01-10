@@ -105,10 +105,31 @@ function groupBy(array, keySelector) {
         return map;
 }
 
+/**
+ * Remove repeated element
+ * 
+ * @param {[Any]} array 
+ * @param {Any=>String} keySelector 
+ */
+function distinct(array, keySelector = x => x) {
+        let set = new Set();
+        let output = [];
+        array.forEach(x => {
+                let key = keySelector(x);
+                if (!set.has(key)) {
+                        set.add(key);
+                        output.push(x);
+                }
+        });
+
+        return output;
+}
+
 exports.ARRAY = {
         toSet,
         toMap,
-        groupBy
+        groupBy,
+        distinct
 }
 /*-------------------------------------------------------------------object---------------------------------------------------------------------------*/
 
@@ -159,7 +180,7 @@ function deepExtend(self, other) {
  * @returns {Object}
  */
 function clone(target) {
-        let copy=JSON.parse(JSON.stringify(target))
+        let copy = JSON.parse(JSON.stringify(target))
         extend(copy, target, false);
         return copy;
 }
@@ -279,7 +300,7 @@ function text(obj, name) {
  * @param {String} name 
  * @returns {String}
  */
-function export_(obj,name){
+function export_(obj, name) {
         let json = JSON.stringify(obj, null, "\t");
         json = doReplace(json);
 

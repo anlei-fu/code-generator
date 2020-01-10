@@ -47,7 +47,7 @@ const USER_MATCHERS = {
  */
 class ConfigBuilderGenerator {
 
-        constructor() {
+        constructor () {
                 this._selectAnalyzer = new SelectAnalyzer();
                 this._insertAnalyzer = new InsertAnalyzer();
                 this._updateAnalyzer = new UpdateAnlyzer();
@@ -59,39 +59,39 @@ class ConfigBuilderGenerator {
          * @param {Table} table 
          * @returns {String}
          */
-        generate(table,pk) {
+        generate(table, pk) {
                 let select = this._generateSelect(table);
                 let insert = this._generateInsert(table);
                 let update = this._generateUpdate(table);
 
-                let key=STR.upperFirstLetter(pk.name);
-                let skey=pk.name;
-                let deleteMethodName=key;
-                let updateMethodName=key;
-                let selectMethodName=key;
-                let keyType=getJavaType(pk.type);
+                let key = STR.upperFirstLetter(pk.name);
+                let skey = pk.name;
+                let deleteMethodName = key;
+                let updateMethodName = key;
+                let selectMethodName = key;
+                let keyType = getJavaType(pk.type);
 
                 let insertUserReq = "";
-                if (this._hasUser(table,"insert")){
+                if (this._hasUser(table, "insert")) {
                         insertUserReq = renderUserReq();
                 }
 
                 let deleteUserReq = "";
-                if (this._hasUser(table,"delete")){
+                if (this._hasUser(table, "delete")) {
                         insertUserReq = renderUserReq();
-                        deleteMethodName="UserAnd"+deleteMethodName;
+                        deleteMethodName = "UserAnd" + deleteMethodName;
                 }
 
                 let updateUserReq = "";
-                if (this._hasUser(table,"update")){
+                if (this._hasUser(table, "update")) {
                         insertUserReq = renderUserReq();
-                        updateMethodName="UserAnd"+updateMethodName;
+                        updateMethodName = "UserAnd" + updateMethodName;
                 }
 
                 let selectUserReq = "";
-                if (this._hasUser(table,"select")){
+                if (this._hasUser(table, "select")) {
                         insertUserReq = renderUserReq();
-                        selectMethodName="UserAnd"+selectMethodName;
+                        selectMethodName = "UserAnd" + selectMethodName;
                 }
 
 
@@ -134,10 +134,10 @@ class ConfigBuilderGenerator {
                         if (x.trim() == "@@")
                                 return;
 
-                        output += x+"\r\n";
+                        output += x + "\r\n";
                 });
 
-                return output.replace(/@@/g,"");
+                return output.replace(/@@/g, "");
         }
 
         /**
@@ -181,7 +181,8 @@ class ConfigBuilderGenerator {
                 let output = "";
                 items.forEach(x => {
                         x.validates.forEach(y => {
-                                output += `${REQ_IDENT}.validate("${x.key}","${y.replace(/"/g, "\\\"")}")\r\n`;
+                                if (y)
+                                        output += `${REQ_IDENT}.validate("${x.key}","${y.replace(/"/g, "\\\"")}")\r\n`;
                         });
                 })
 
@@ -306,7 +307,7 @@ class ConfigBuilderGenerator {
                 };
         }
 
-        _hasUser(table,type) {
+        _hasUser(table, type) {
                 for (const c in table.columns) {
                         let javaType = getJavaType(table.columns[c].type);
                         if (javaType == "String" && USER_MATCHERS[type].matcher(c))
