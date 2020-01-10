@@ -18,8 +18,6 @@ function renderParams(config, reqType) {
                         value.forEach(x => {
                                 x.name=STR.upperFirstLetter(x.name);
                                 delete x.t;
-                                console.log("x is");
-                                console.log(x);
                                 reqGetter += renderParamsReqGetterItem(x);
                         });
                 } else if(key=="constructor") {

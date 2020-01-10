@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -12,9 +14,12 @@ public class PageReq {
 
     @ApiModelProperty("index of page")
     @NotNull
+    @Min(1)
     private Integer pageIndex;
 
     @ApiModelProperty("size of page")
     @NotNull
+    @Min(5)
+    @Max(200)
     private Integer pageSize;
 }

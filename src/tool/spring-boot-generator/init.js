@@ -96,9 +96,9 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`${root}/exception`);
 
         // resource items
-        DIR.create(`./output/${project}/${project}/src/main/resource`)
-        DIR.create(`./output/${project}/${project}/src/main/resource/mapper`)
-        FILE.write(`./output/${project}/${project}/src/main/resource/application.properties`, "");
+        DIR.create(`./output/${project}/${project}/src/main/resources`)
+        DIR.create(`./output/${project}/${project}/src/main/resources/mapper`)
+        FILE.write(`./output/${project}/${project}/src/main/resources/application.properties`, "");
 
         // test items
         DIR.create(`./output/${project}/${project}/src/test`);
@@ -111,7 +111,7 @@ function makeAllFolders(project, dbConfig) {
         copy("./templates/WebConfig.java", `${root}/config/WebConfig.java`, project);
         copy("./templates/SwaggerConfig.java", `${root}/config/SwaggerConfig.java`, project);
         copy("./templates/ValidatorConfig.java", `${root}/config/ValidatorConfig.java`, project);
-        copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resource/logback.xml`, project);
+        copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resources/logback.xml`, project);
 
         // page req
         copy("./templates/PageReq.java", `${root}/pojo/req/PageReq.java`, project);
@@ -136,7 +136,7 @@ function makeAllFolders(project, dbConfig) {
                 "@project": project
         };
         let config = FILE.read("./templates/application.properties");
-        FILE.write(`./output/${project}/${project}/src/main/resource/application.properties`, STR.replace(config, patterns));
+        FILE.write(`./output/${project}/${project}/src/main/resources/application.properties`, STR.replace(config, patterns));
 }
 
 /**

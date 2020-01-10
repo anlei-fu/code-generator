@@ -87,9 +87,6 @@ function generateReq(config, req) {
                 if (req.validates.has(x.name))
                         x.validates = req.validates.get(x.name);
 
-                if(x.expression){
-                        console.log(x.expression);
-                }
                 let exp = x.exp;
                 if (exp == "range") {
                         rets.push({ name: `${x.name}Min`, type: x.type, validates: x.validates, description: `${x.description} min` });

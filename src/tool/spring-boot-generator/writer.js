@@ -10,7 +10,7 @@ class Writer {
                 this._project = project || "";
                 let _root = `./${project}/src/main/java/com/${project}`;
                 this._mapperFolder = `${_root}/mapper`;
-                this._mapperConfigFolder = `./${project}/src/main/resource/mapper`;
+                this._mapperConfigFolder = `./${project}/src/main/resources/mapper`;
                 this._controllerFolder = `${_root}/controller`;
                 this._serviceFolder = `${_root}/service`;
                 this._serviceImplFolder = `${_root}/service/impl`;

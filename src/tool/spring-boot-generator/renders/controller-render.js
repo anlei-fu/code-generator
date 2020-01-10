@@ -21,13 +21,15 @@ HTTP_MAPPINGS.set("select", "@GetMapping")
 function renderController(config) {
         let content = "";
         config.items.forEach(x => {
-                let item=_controllerItemRender.renderTemplate(getControllerItemConfig(x, config.name))
-                content +=item;
+                let item = _controllerItemRender.renderTemplate(getControllerItemConfig(x, config.name))
+                content += item;
+
         });
 
-        content=content.trimRight()+"\r\n";
+        content = content.trimRight() + "\r\n";
 
-        return _controllerRender.renderTemplate({ content,sname:STR.lowerFirstLetter(config.name) });
+        let description = `${config.table.description || config.name}`;
+        return _controllerRender.renderTemplate({ description, content, sname: STR.lowerFirstLetter(config.name) });
 }
 
 /**
