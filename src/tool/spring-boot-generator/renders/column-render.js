@@ -12,7 +12,7 @@ _columnsRender.setTempalte(`${IF_IDENT} @column@alias@suffix\r\n`);
  * @returns {String}
  */
 function renderColumn(model) {
-        model.alias = model.alias ? `as ${model.alias}` : "";
+        model.alias = model.alias ? `AS ${model.alias}` : "";
         let content = _columnsRender.renderTemplate(model);
         model.content = content;
         return renderIf(model);

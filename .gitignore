@@ -17,3 +17,4 @@ build/
 /src/web-clinet/output
 /src/web-clinet/node_modules
 /src/markdown-writer/node_modules
+/resources

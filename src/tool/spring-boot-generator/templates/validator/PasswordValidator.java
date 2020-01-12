@@ -10,10 +10,15 @@ import java.util.regex.Pattern;
 public class PasswordValidator implements ConstraintValidator<Password, String> {
 
     private static final Pattern VALIDATOR = Pattern.compile("");
+
     private static final Pattern NUMBER_VALIDATOR = Pattern.compile("");
+
     private static final Pattern ALPHA_VALIDATOR = Pattern.compile("");
+
     private static final Pattern SYMBOL_VALIDATOR = Pattern.compile("");
+
     private static final Pattern UPPER_VALIDATOR = Pattern.compile("");
+
     private static final Pattern LOWER_VALIDATOR = Pattern.compile("");
 
     private boolean required;
@@ -36,7 +41,7 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 
         // 2 number alpha
         // 3 number alpha symbol
-        // 4 number upper and lower alpha
+        // 4 number symbol upper and lower alpha
         if (this.level == 2) {
             if (!(NUMBER_VALIDATOR.matcher(value).matches() && ALPHA_VALIDATOR.matcher(value).matches())) {
                 context.buildConstraintViolationWithTemplate("");

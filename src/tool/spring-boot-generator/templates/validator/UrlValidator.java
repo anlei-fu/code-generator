@@ -7,12 +7,6 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 
-/**
- * @Copyright (C) 四川千行你我科技有限公司
- * @Author: fuanlei
- * @Date:
- * @Description:
- */
 public class UrlValidator implements ConstraintValidator<Url, String> {
 
     private static final Pattern VALIDATOR = Pattern.compile("[a-zA-z]+://[^\\s]*");

@@ -1,7 +1,7 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
 
 const JOIN_RENDER = new SimpleRender({});
-JOIN_RENDER.setTempalte("@type join @table@alias on @joinCondition")
+JOIN_RENDER.setTempalte("@type JOIN @table@alias ON @joinCondition")
 
 /**
  * Render join template

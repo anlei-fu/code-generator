@@ -26,13 +26,13 @@ const { Generator } = require("./../../code-generator")
 
 function build() {
         
-        let packageRender=new PackegeRender("delivery");
-        let writer =new Writer("delivery");
+        let packageRender=new PackegeRender("@project");
+        let writer =new Writer("@project");
         all.forEach(x => {
                 // set output folders
-                let root = "./delivery/src/main/java/com/delivery";
+                let root = "./@project/src/main/java/com/@project";
                 x.mapperFolder = `${root}/mapper`;
-                x.mapperConfigFolder = `./delivery/src/main/resource/mapper`;
+                x.mapperConfigFolder = `./@project/src/main/resource/mapper`;
                 x.controllerFolder = `${root}/controller`;
                 x.serviceFolder = `${root}/service`;
                 x.serviceImplFolder = `${root}/service/impl`;
@@ -40,7 +40,7 @@ function build() {
                 x.reqFolder = `${root}/pojo/req`;
                 x.respFolder = `${root}/pojo/resp`;
                 x.paramsFolder = `${root}/pojo/param`;
-                x.project="delivery";
+                x.project="@project";
 
                 let generator = new Generator(x,writer,packageRender);
                 generator.generate();

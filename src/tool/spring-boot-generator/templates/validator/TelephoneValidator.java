@@ -7,12 +7,6 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 
-/**
- * @Copyright (C) 四川千行你我科技有限公司
- * @Author: fuanlei
- * @Date:
- * @Description:
- */
 public class TelephoneValidator implements ConstraintValidator<Telephone, String> {
 
     private static final Pattern VALIDATOR = Pattern.compile("\\d{3}-\\d{8}|\\d{4}-\\d{7}");

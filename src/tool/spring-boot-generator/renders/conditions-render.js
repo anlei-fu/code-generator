@@ -8,7 +8,7 @@ const {renderWhere}=require("./where-render");
 function renderConditions(config) {
      let conditions="";
      getConditions(config).forEach((x,i)=>{
-             x.prefix=i==0?"":"and ";
+             x.prefix=i==0?"":"AND ";
              conditions+=x.expression?renderExpression(x):renderAsign(x);
            
      });

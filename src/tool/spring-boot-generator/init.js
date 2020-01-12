@@ -48,7 +48,7 @@ async function init(project, dbConfig) {
         FILE.write(`${root}/all.js`,COMPYRIGHT+FILE.read("./templates/config-all.js").replace("@content", content.trimRight()));
 
         // create index.js
-        copy(`./output/${project}/index.js`, "./templates/generator.js", project);
+        copy("./templates/generator.js",`./output/${project}/index.js` , project);
 
         copy('./templates/packages.js', `./output/${project}/packages.js`,project);
 
