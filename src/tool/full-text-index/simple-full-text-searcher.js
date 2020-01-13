@@ -104,7 +104,6 @@ class SimpleFullTextSearcher {
                         this._documentsMap.get(document.name).totalTokenCount = tokens.length;
                 });
 
-                console.log(this._tokenDocumentsMap);
         }
 
         /**

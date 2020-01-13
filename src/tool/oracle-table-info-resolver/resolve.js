@@ -1,14 +1,25 @@
 const { resolveFromCsvString } = require("../csv-resolver/csv-resolver");
 const { FILE } = require("../../libs/file");
 const { DIR } = require("../../libs/dir");
+const { STR } = require("../../libs/str");
 const { ARRAY } = require("../../libs/utils");
 const { OBJECT } = require("../../libs/utils");
-const {writeMarkDown}=require("./mark-down-writer");
+const { writeMarkDown } = require("./mark-down-writer");
 const { NamingStrategy } = require("../../libs/naming-strategy");
 
-const STRING_RESOLVER = x =>x.replace(/\"/g, "\"");
+const STRING_RESOLVER = x => x.replace(/\"/g, "\"");
 
-function resolve(project) {
+/**
+ * Resolve csv to table infos
+ * 
+ * @param {String} project  project name
+ * @param {(String)=>Boolean} validateTable , check table is valid by table name
+ */
+function resolve(project, validateTable = x => !STR.includesAny(x.toLowerCase(), [
+        "tmp",
+        "test",
+        "temp"
+])) {
         DIR.create("./outputs");
         DIR.create("./outputs/" + project);
 
@@ -32,7 +43,7 @@ function resolve(project) {
                 },
                 {
                         name: "nullable",
-                        doResolve:x=>x=="Y"
+                        doResolve: x => x == "Y"
                 },
                 {
                         name: "isPk",
@@ -48,18 +59,17 @@ function resolve(project) {
                 }
         ];
 
-        let items = resolveFromCsvString(content, resolvers, true, false);
-        groups = ARRAY.groupBy(items, item => item.table);
+        let allColumnsMetaInfos = resolveFromCsvString(content, resolvers, true, false);
+        groups = ARRAY.groupBy(allColumnsMetaInfos, item => item.table);
 
         let tables = [];
         groups.forEach((columns, tableName) => {
                 if (!tableName || tableName == "")
                         return;
-                
-                 
+
                 let table = {
                         name: NamingStrategy.toCamel(tableName),
-                        rawName:tableName,
+                        rawName: tableName,
                         columns: {},
                 };
 
@@ -67,7 +77,7 @@ function resolve(project) {
                         if (!column.column || column.column == "")
                                 return;
 
-                        table.description=column.tableDescription;
+                        table.description = column.tableDescription;
                         column.name = NamingStrategy.toCamel(column.column);
                         column.rawName = column.column
                         column.type = {
@@ -76,6 +86,8 @@ function resolve(project) {
                         }
 
                         table.columns[column.name] = column;
+
+                        // remove useless properties
                         delete column.table;
                         delete column.column;
                         delete column.dataType;
@@ -83,15 +95,16 @@ function resolve(project) {
                         delete column.tableDescription
                 });
 
-                tables.push(table);
+                if (validateTable(table.name))
+                        tables.push(table);
         });
 
+        // big data base, group by table project prefix
         let tableGroups = ARRAY.groupBy(tables, x => x.rawName.split("_")[0].toLowerCase());
         let groupContent = "";
         let subAllTempalte = FILE.read("./templates/all.js");
         let allTemplate = FILE.read("./templates/all.js");
-        tableGroups.forEach((tabs,group) => {
-
+        tableGroups.forEach((tabs, group) => {
                 DIR.create(`./outputs/${project}/${group}`);
 
                 let tableContent = "";
@@ -100,11 +113,11 @@ function resolve(project) {
                         content = content.replace("let ", "exports.")
                         FILE.write(`./outputs/${project}/${group}/${x.name}.js`, content);
                         tableContent += `        ${x.name}:require("./${x.name}").${x.name},\r\n`;
-                        groupContent+=`        ${x.name}:require("./${group}/${x.name}").${x.name},\r\n`;
+                        groupContent += `        ${x.name}:require("./${group}/${x.name}").${x.name},\r\n`;
                 });
 
                 FILE.write(`./outputs/${project}/${group}/all.js`, subAllTempalte.replace("@content", tableContent.trimRight()));
-             
+
         })
 
         FILE.write(`./outputs/${project}/all.js`, allTemplate.replace("@content", groupContent.trimRight()));
@@ -113,4 +126,4 @@ function resolve(project) {
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
-resolve("fd");
+resolve("18");

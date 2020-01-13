@@ -164,9 +164,10 @@ function extend(self, other, override) {
 function deepExtend(self, other) {
         let keys = toSet(Object.keys(self));
 
-        for (const p of other) {
+        for (const p in other) {
                 if (keys.has(p)) {
-                        deepExtend(self[p], other[p]);
+                        if (typeof other[p] == "object" && typeof self[p] == "object")
+                                deepExtend(self[p], other[p]);
                 } else {
                         self[p] = other[p];
                 }

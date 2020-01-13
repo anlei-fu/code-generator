@@ -5,14 +5,14 @@ const { FILE } = require("../../libs/file");
 const { getCSharpType } = require("./utils");
 const {
         SelectAnalyzer,
-        AddAnalyzer,
+        InsertAnalyzer,
         ControlAnlyzer,
         ColumnAnalyzer,
         DelfaultValueAnalyzer
 } = require("./analyzer");
 
 const selectAnalyzer = new SelectAnalyzer();
-const addAnalyzer = new AddAnalyzer();
+const insertAnalyzer = new InsertAnalyzer();
 const controlAnlyzer = new ControlAnlyzer();
 const columnAnalyzer = new ColumnAnalyzer();
 const defaultValueAnalyzer = new DelfaultValueAnalyzer();
@@ -246,7 +246,7 @@ function buildAddConfig(table, config) {
         };
 
         OBJECT.forEach(table.columns, (key, column) => {
-                if (!addAnalyzer.shouldBeCandidate(column))
+                if (!insertAnalyzer.shouldBeCandidate(column))
                         return;
 
                 let analyzeResult = columnAnalyzer.analyzeColumn(column);

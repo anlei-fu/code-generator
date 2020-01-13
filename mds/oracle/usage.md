@@ -21,3 +21,27 @@ select * from all_jobs;
 select * fromu ser_jobs;
 select * from dba_jobs_running;
 ```
+
+3. grammer
+
+```sql
+   bulk collect into
+   is table of
+   
+--在select into语句中使用bulk collect
+ 
+DECLARE
+TYPE SalList IS TABLE OF emp.sal%TYPE;
+sals SalList;
+BEGIN
+-- Limit the number of rows to 100.
+SELECT sal BULK COLLECT INTO sals FROM emp
+WHERE ROWNUM <= 100;
+-- Retrieve 10% (approximately) of the rows in the table.
+SELECT sal BULK COLLECT INTO sals FROM emp SAMPLE 10;
+ 
+END;
+
+ for i in 1 .. v_out_getted_count
+
+```

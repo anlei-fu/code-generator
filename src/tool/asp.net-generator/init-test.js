@@ -1,13 +1,13 @@
 const { init } = require("./initializer")
-const {all}=require("../oracle-table-info-resolver/outputs/fd/qy/all")
+const {all}=require("../oracle-table-info-resolver/outputs/zd/all")
 
 function test() {
    let config = {
       delete: true,
       add: true,
-      project: "SettleAccount",
+      project: "zd",
    }
-   init(all.qyBaseDownChannel, config);
+   init(all.upChannelDayStatDiff, config);
 }
 
 test();

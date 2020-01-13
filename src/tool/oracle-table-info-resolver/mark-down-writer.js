@@ -6,6 +6,11 @@ const { SimpleRender } = require("./../simple-pattern-render/simple-pattern-rend
 const TABLE_RENDER = new SimpleRender({}, `${__dirname}/templates/table.md`);
 const ROW_RENDER = new SimpleRender({}, `${__dirname}/templates/row.md`);
 
+/**
+ * Write table infos  with markdown by table metainfos
+ * 
+ * @param {String} project 
+ */
 function writeMarkDown(project) {
        const { all } = require(`./outputs/${project}/all.js`);
        let output = "";
@@ -22,10 +27,10 @@ function writeMarkDown(project) {
                             isPk: column.isPk + "",
                             nullable: column.nullable,
                             type,
-                            description:column.description
+                            description: column.description
                      });
               });
-              console.log(columnStr);
+
               output += TABLE_RENDER.renderTemplate({
                      name: table.name,
                      description: table.description,
@@ -36,5 +41,4 @@ function writeMarkDown(project) {
        FILE.write(`${__dirname}/outputs/${project}/all.md`, output);
 }
 
-
-exports.writeMarkDown=writeMarkDown;
+exports.writeMarkDown = writeMarkDown;

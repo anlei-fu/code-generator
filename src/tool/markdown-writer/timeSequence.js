@@ -1,4 +1,4 @@
-const { OBJECT } = require("../libs/utils")
+const { OBJECT } = require("../../libs/utils")
 
 /**
  * @description Build time sequnce graph

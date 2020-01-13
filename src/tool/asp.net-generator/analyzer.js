@@ -1,8 +1,8 @@
-const {STR} =require("./../../libs/str")
 
 const DEFAULT_MATCHER = (name, pattern) => name.toLowerCase().includes(pattern.toLowerCase());
 const LOWER_INCLUDES_MATCHER= (x,y)=> x.toLowerCase().includes(y.toLowerCase());
-const LOWER_ENDS_WITH_MATCHER=(x,y)=>x.toLowerCase().endsWith(y.toLowerCase());
+const {OBJECT} =require("./../../libs/utils");
+const {STR} =require("./../../libs/str");
 
 const INSERT_EXCLUDES = {
         int: {
@@ -35,9 +35,9 @@ const INSERT_EXCLUDES = {
 }
 
 /**
- * Analyze Insert excludes
+ * Analyze Insert candidate
  */
-class AddAnalyzer {
+class InsertAnalyzer {
         constructor() {
                 this._insertExcludes = INSERT_EXCLUDES;
         }
@@ -62,12 +62,21 @@ class AddAnalyzer {
 
                 return true;
         }
+
+        /**
+         * Config insert excludes
+         * 
+         * @param {MatcherConfig} config 
+         */
+        useInsertExclude(config){
+           OBJECT.deepExtend(this._insertExcludes,config);
+        }
 }
 
 
 
 
-const STRING_INCLUDES = {
+const SELECT_INCLUDES = {
         string: {
                 no: {
                         matcher: x => x.toLowerCase().endsWith("no"),
@@ -89,9 +98,8 @@ const STRING_INCLUDES = {
                 }
         },
         int:{
-
+            
         },
-
 }
 
 const SELECT_EXCLUDES = {
@@ -128,7 +136,7 @@ const SELECT_EXCLUDES = {
                 total: {
 
                 }
-        }
+        },
 }
 
 /**
@@ -136,7 +144,7 @@ const SELECT_EXCLUDES = {
  */
 class SelectAnalyzer {
         constructor() {
-                this._stringIncludes = STRING_INCLUDES;
+                this._stringIncludes = SELECT_INCLUDES;
                 this._intExcludes = SELECT_EXCLUDES;
                 this._controlAnalyzer=new ControlAnlyzer();
         }
@@ -273,7 +281,7 @@ class ColumnAnalyzer {
          * @param {String} select  name
          */
         makeJoin(column, select) {
-                if (select.table.toLower().includes("systemdictionary")) {
+                if (select.table.toLower().endsWith("systemdictionary")) {
                         return `LEFT JOIN ${NamingStrategy.toHungary(select.table).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.VALUE`
                                 + ` AND t${this.index}.${NamingStrategy.toHungary(select.type).toUpperCase()} = '${column.name}'`;
@@ -286,6 +294,84 @@ class ColumnAnalyzer {
 }
 
 const { SystemDictionary } = require("./resource/select")
+
+const CUSTOM_SELECTS = {
+        int: {
+                enum: {
+                        matcher: x => {
+                                x = x.toLowerCase();
+                                return STR.endsWithAny(x, [
+                                        "type",
+                                        "status",
+                                        "state",
+                                        "level",
+                                        "way",
+                                        "mode",
+                                        "rule",
+                                ]) || STR.startsWithAny(x, ["is"])
+                                        || STR.includesAny(x, "need");
+                              
+                        },
+                        generator:(column,table)=>{
+                                        
+                        }
+                },
+
+                infoTables: {
+                        matcher: x => {
+                                x = x.toLowerCase();
+
+                                return STR.endsWithAny(x, [
+                                        "productno",
+                                        "productid",
+                                        "channelid",
+                                        "channelno",
+                                        "province",
+                                        "provinceid",
+                                        "provinceno",
+                                        "city",
+                                        "cityid",
+                                        "cityno",
+                                        "package",
+                                        "packageid",
+                                        "packageno",
+                                        "account",
+                                        "accountid",
+                                        "company",
+                                        "companyid"
+                                ])
+                        },
+                        generator:(column,table)=>{
+                                        
+                        }
+                },
+                string: {
+                        infoTables: {
+                                matcher: x => {
+                                        x = x.toLowerCase();
+
+                                        return STR.endsWithAny(x, [
+                                                "productno",
+                                                "product",
+                                                "channel",
+                                                "channelno",
+                                                "province",
+                                                "provinceno",
+                                                "city",
+                                                "cityno",
+                                                "package",
+                                                "packageno",
+                                                "accountNo",
+                                                "companyno"
+                                        ])
+                                },
+                                generator:(column,table)=>{
+                                        
+                                }
+                        }
+                }
+        }
+}
 
 /**
  * Analyze control of field , text or select
@@ -303,7 +389,7 @@ class ControlAnlyzer {
          */
         shouldBeSelect(column) {
 
-                if (!CUSTOM_SELECTS[column.type])
+                if (!this.selects[column.type])
                         return false;
 
                       
@@ -401,7 +487,6 @@ const UPDATE_DEFAULT_VALUES = {
         }
 }
 
-const { OBJECT } = require("../../libs/utils")
 
 /**
  * Analyze default values
@@ -468,7 +553,7 @@ class  DelfaultValueAnalyzer {
 }
 
 module.exports = {
-        AddAnalyzer,
+        InsertAnalyzer,
         SelectAnalyzer,
         ControlAnlyzer,
         ColumnAnalyzer,

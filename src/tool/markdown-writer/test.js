@@ -1,5 +1,5 @@
 const { TimeSequenceBuilder } = require("./timeSequence");
-const { FILE } = require("../libs/file")
+const { FILE } = require("../../libs/file")
 
 function test() {
         let builder = new TimeSequenceBuilder();

@@ -7,11 +7,13 @@
  * @LastEditTime: 2019-12-12 15:48:58
  */
 
-const { OBJECT } = require("./../../libs/utils");
-const { STR } = require("./../../libs/str");
-const { SimpleFullTextSearcher } = require("./../full-text-index/simple-full-text-searcher");
-const { getJavaType } = require("./../spring-boot-generator/utils");
-const { FILE } = require("./../../libs/file");
+const { OBJECT } = require("../../libs/utils");
+const { STR } = require("../../libs/str");
+const { SimpleFullTextSearcher } = require("../full-text-index/simple-full-text-searcher");
+const { getJavaType } = require("../spring-boot-generator/utils");
+const { LoggerFactory } = require("../logging/logger-factory")
+
+const LOG = LoggerFactory.getLogger("Table relation resolver");
 
 class TableMetaInfo {
         constructor () {
@@ -85,7 +87,7 @@ class TableRelation {
 const DEFAULT_MATCHER = (name, pattern) =>
         name.toLowerCase().includes(pattern.toLowerCase())
 
-const RELATION_MATCHERS = {
+const RELATION_CANDIDATES_MATCHERS = {
         String: {
                 Id: {
                         matcher: (column, table) => column.endsWith("Id")
@@ -97,8 +99,6 @@ const RELATION_MATCHERS = {
                                 && column != "No"
                                 && !column.replace("No", "") == table
                                 && !STR.includesAny(column.toLowerCase(), ["phone", "post", "card", "id", "tel"])
-
-
                 }
         },
         Integer: {
@@ -115,45 +115,37 @@ const RELATION_MATCHERS = {
         },
 }
 
-const DEFAULT_KEYWORD_CANDIATE = ["up", "down", "order", "base", "fund", "bank", "company"];
+const DEFAULT_KEYWORD_CANDIATE = ["up", "down", "order", "base", "fund", "bank", "company", "diff", "package"];
 
 const DEFAULT_MAIN_TABLE_MATCHERS = {
-        Channel: {
-                matcher: x => x.toLowerCase().includes("channel")
+        Default: {
+                matcher: x => STR.endsWithAny(x.toLowerCase(), [
+                        "channel",
+                        "product",
+                        "province",
+                        "city",
+                        "config",
+                        "flow",
+                        "package",
+                        "account",
+                        "info",
+                        "bank",
+                        "company",
+                ])
         },
-        Account: {
-                matcher: x => x.toLowerCase().includes("account")
-        },
-        Product: {
-                matcher: x => x.toLowerCase().includes("product")
-        },
-        Province: {
-                matcher: x => x.toLowerCase().includes("province")
-        },
-        City: {
-                matcher: x => x.toLowerCase().includes("city")
-        },
-        Info: {
-                matcher: x => x.toLowerCase().includes("info")
-        },
-        User: {
-                matcher: x => x.toLowerCase().includes("user")
-        },
-        Package: {
-                matcher: x => x.toLowerCase().includes("package")
-        },
-
 }
 
 class TableRelationAnalyzer {
         constructor (tables) {
-                this._matchers = RELATION_MATCHERS;
+                this._candiadtesMatchers = RELATION_CANDIDATES_MATCHERS;
                 this._searcher = new SimpleFullTextSearcher();
                 this._tables = tables;
-                this._initSearcher();
+                this._customerOtherTableColumnSelector;
+                this._uselessSuffix = new Set(["info", "main"]);
                 this._customerSearchResultsMatcher;
                 this._customerKeywordsGenerator;
                 this._mainTableMatchers = DEFAULT_MAIN_TABLE_MATCHERS;
+                this._initSearcher();
         }
 
         /**
@@ -170,11 +162,12 @@ class TableRelationAnalyzer {
                                         return;
 
                                 column.type = getJavaType(column.type);
-                                if (!this._match(column.type, column.name, table.name))
+                                if (!this._shouldBeCandidate(column.type, column.name, table.name))
                                         return;
 
-                                let columnEnd=this._normolizeColumnName(column.rawName.toLowerCase());
+                                let columnEnd = this._normolizeColumnName(column.rawName.toLowerCase());
 
+                                // pk check
                                 if (table.rawName.toLowerCase().endsWith(columnEnd.toLowerCase()))
                                         return;
 
@@ -182,15 +175,58 @@ class TableRelationAnalyzer {
                         })
                 });
 
+                LOG.info("finish resolve");
+
                 return relations;
         }
 
+        /**
+         * Match possible relation column
+         * 
+         * @param {{Type:{Item:{matcher}}}} matchers 
+         */
+        useRelationColumnMatcher(matchers) {
+                OBJECT.deepExtend(this._candiadtesMatchers, matchers);
+        }
+
+        /**
+         * Generate search keywords
+         * 
+         * @param {(String,String)=>String} generator  
+         * (column raw name,table raw name) =>search keywords
+         */
         useKeywordsGenerator(generator) {
                 this._customerKeywordsGenerator = generator;
         }
 
+        /**
+         * Find best result
+         * 
+         * @param {(String,String,[Any]) =>Any} matcher 
+         * (column raw name,table raw name, searcher results)=> best result
+         */
         useSearchResultsMatcher(matcher) {
                 this._customerSearchResultsMatcher = matcher;
+        }
+
+        /**
+         * Try useless  suffix
+         * 
+         * @param {[String]} suffixes
+         */
+        useSuffixTrimmer(suffixes) {
+                suffixes.forEach(x => {
+                        this._uselessSuffix.add(x);
+                });
+        }
+
+        /**
+         * Find relation column from other table
+         * 
+         * @param {(String,Table)=>Column} getter 
+         */
+        useOtherTableColumnGetter(getter) {
+                this._customerOtherTableColumnSelector = getter;
         }
 
         /**
@@ -201,9 +237,9 @@ class TableRelationAnalyzer {
                 OBJECT.forEach(this._tables, (tableName, table) => {
                         docs.push({
                                 name: tableName,
-                                content: STR.replace(table.rawName.toLowerCase(),{
-                                      "_main":"",
-                                      "_info":"",
+                                content: STR.replace(table.rawName.toLowerCase(), {
+                                        "_main": "",
+                                        "_info": "",
                                 }),
                                 weight: 1
                         });
@@ -222,13 +258,13 @@ class TableRelationAnalyzer {
          * @param {String} tableName
          * @returns {boolean} 
          */
-        _match(type, columnName) {
-                if (!this._matchers[type])
+        _shouldBeCandidate(type, columnName) {
+                if (!this._candiadtesMatchers[type])
                         return false;
 
-                for (const key in this._matchers[type]) {
-                        let match = this._matchers[type].matcher
-                                ? this._matchers[type].matcher(columnName)
+                for (const key in this._candiadtesMatchers[type]) {
+                        let match = this._candiadtesMatchers[type].matcher
+                                ? this._candiadtesMatchers[type].matcher(columnName)
                                 : DEFAULT_MATCHER(columnName, key);
 
                         if (match)
@@ -251,23 +287,27 @@ class TableRelationAnalyzer {
                         ? this._customerKeywordsGenerator(selfColumn.rawName, selfTableRawName)
                         : this._defaultSearchKeyWordsGenerator(selfColumn.rawName, selfTableRawName);
 
-
                 let candidates = this._searcher.search(keywords, 10);
                 if (candidates.length == 0)
                         return;
 
-                let table = this._customerSearchResultsMatcher
+                let bestCandidate = this._customerSearchResultsMatcher
                         ? this._customerSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates)
                         : this._defaultSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates);
 
-                if (!table)
+                if (!bestCandidate)
                         return;
 
                 let relation = new TableRelation();
                 relation.selfColumn = selfColumn.name;
-                relation.otherTable = table.name;
-                relation.otherTableColumn = this._getPrimaryKeyColumn(this._tables[table.name]);
-                relation.relationType = this._analyzeRelationType(table.name);
+                relation.otherTable = bestCandidate.name;
+
+                // pick most possible relation column from other table
+                relation.otherTableColumn = this._customerOtherTableColumnSelector
+                        ? this._customerOtherTableColumnSelector(selfColumn.rawName, this._tables[bestCandidate.name])
+                        : this._defaultOtherTableRelationColumnSelector(selfColumn.rawName, this._tables[bestCandidate.name]);
+
+                relation.relationType = this._analyzeRelationType(bestCandidate.name);
 
                 if (!relations[selfTableRawName])
                         relations[selfTableRawName] = [];
@@ -280,6 +320,7 @@ class TableRelationAnalyzer {
                 let tableSegs = tableRawName.toLowerCase().split("_");
                 let set = new Set(tableSegs);
 
+                // pick keyword from table name
                 DEFAULT_KEYWORD_CANDIATE.forEach(x => {
                         if (set.has(x)) {
                                 keywords += `_${x}`;
@@ -293,19 +334,25 @@ class TableRelationAnalyzer {
                 let columnSegs = this._normolizeColumnName(columnRawName.toLowerCase()).split("_");
                 if (columnSegs[columnSegs.length - 1] == "")
                         columnSegs.pop();
+
                 let best;
                 for (var x of results) {
+
+                        // self table
                         if (x.content.toLowerCase() == tableRawName.toLowerCase())
                                 continue;
 
+                        // set default return if not set yet      
                         if (!best)
                                 best = x;
 
                         let tableSegs = x.content.toLowerCase().split("_");
-                         if (STR.includesAny(tableSegs[tableSegs.length-1],["main","info"])) 
-                                 tableSegs.pop();
 
+                        // remove useless suffix
+                        if (this._uselessSuffix.has(tableSegs[tableSegs.length - 1]));
+                        tableSegs.pop();
 
+                        // same end seg
                         if (columnSegs[columnSegs.length - 1] == tableSegs[tableSegs.length - 1])
                                 return x;
                 };
@@ -323,14 +370,23 @@ class TableRelationAnalyzer {
          * @returns {String}
          */
         _normolizeColumnName(columnName) {
-                columnName=columnName.toLowerCase();
+                columnName = columnName.toLowerCase();
                 return STR.replace(columnName, {
                         "_no": "",
                         "_id": "",
                         id: "",
                         no: "",
-                       
                 });
+        }
+
+        /**
+         * Get relation column from other table
+         * 
+         * @param {String} selfColumn  raw name
+         * @param {Table} otherTable 
+         */
+        _defaultOtherTableRelationColumnSelector(selfColumn, otherTable) {
+                return this._getPrimaryKeyColumn(otherTable);
         }
 
         /**
@@ -346,7 +402,8 @@ class TableRelationAnalyzer {
                         if (table.columns[columnName].isPk)
                                 return columnName;
                 }
-                return  primaryColumn;
+
+                return primaryColumn;
         }
 
         /**

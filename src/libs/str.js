@@ -12,8 +12,8 @@
  * 
  * @param {String} input 
  * @param {String} left  left pattern
- * @param {String} right  right pattern
  * @param {Number?} start  start position
+ * @param {String} right  right pattern
  * @param {Number?} count  desired count
  * @returns {[String]}
  */
@@ -30,8 +30,8 @@ function select(input, left, right, start = 0, count = 1) {
                 if (start == -1) {
                         break;
                 } else {
-                        ls.push(input.substr(i, start - i + right.length + 1));
-                        if (count != -1 && ls.length > count)
+                        ls.push(input.substr(i+left.length, start - i -left.length));
+                        if (count != -1 && ls.length >= count)
                                 break;
                 }
 
@@ -401,6 +401,53 @@ function equalAny(target, matches = []) {
         return false;
 }
 
+/**
+ * Target is ends with any of matches
+ * 
+ * @param {String} target 
+ * @param {String} matches 
+ * @return {boolean}
+ */
+function endsWithAny(target,matches=[]){
+        for (const c of matches) {
+                target.endsWith(c)
+                        return true;
+        }
+
+        return false;
+}
+
+/**
+ * Target is starts with any of matches
+ * 
+ * @param {String} target 
+ * @param {String} matches 
+ * @return {boolean}
+ */
+function startsWithAny(targte,matches=[]){
+        for (const c of matches) {
+                target.startsWith(c)
+                        return true;
+        }
+
+        return false;
+}
+
+/**
+ * Target starts and ends with any pair of matches
+ * 
+ * @param {String} target 
+ * @param {Pairs} matches 
+ * @returns {boolean}
+ */
+function startsAndendsWithAny(target,matches={}){
+    for(const  c in matches){
+            if(target.startsWith(c)&&endsWith(matches[c]))
+               return true;
+    }
+
+    return false;
+}
 
 
 exports.STR = {
@@ -422,5 +469,8 @@ exports.STR = {
         removeLastComa,
         includesAny,
         includesAll,
-        equalAny
+        equalAny,
+        startsWithAny,
+        endsWithAny,
+        startsAndendsWithAny
 }

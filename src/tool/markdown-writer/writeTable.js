@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-12-01 17:35:42
  */
 const axios = require('axios');
-const { FILE } = require('./../libs/file');
+const { FILE } = require('../../libs/file');
 const cheerio = require('cheerio');
 const cheerioTableparser = require('cheerio-tableparser');
 var iconv = require('iconv-lite');
