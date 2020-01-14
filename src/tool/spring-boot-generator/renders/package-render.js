@@ -114,7 +114,7 @@ class PackegeRender {
         renderPackage(content) {
 
                 // find @package segment
-                let ls = STR.select(content, "@packages", "@packages");
+                let ls = STR.select1(content, "@packages", "@packages");
                 if (ls.length == 0)
                         return content;
 
@@ -164,6 +164,8 @@ class PackegeRender {
                         scontent = STR.removeEmptyLine(scontent);
                         pcontent += "\r\n" + scontent;
                 }
+                console.log(packagesPattern);
+                console.log(pcontent);
 
                 return content.replace(packagesPattern, pcontent.trimRight() + "\r\n");
         }

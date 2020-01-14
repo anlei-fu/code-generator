@@ -13,29 +13,29 @@ class GraphBuilder {
          * @param {String} type  TB or LR
          */
         constructor(type) {
-                this._output = `\`\`\`mermaid\r\n Graph ${type}\r\n`;
+                this._output = `\`\`\`mermaid\r\n graph ${type};\r\n`;
         }
 
         /**
          * 
          * @param {[String]} items 
          */
-        items(items) {
+        line(items) {
                 let result = "";
                 items.forEach((x, i, array) => {
-                        if (i == 0) {
-                                result += x + "-->|";
-                        } else if (i == array.length - 1) {
-                                result += x + "|";
+                        if (i == array.length - 1) {
+                               result+=x.name;
                         } else {
-                                result += x + ";\r\n";
+                                result += `${x.name}--${x.text}-->`;
                         }
                 })
 
-                this._output += result;
+                this._output += result+";\r\n";
         }
 
         build() {
                 return this._output + "```\r\n";
         }
 }
+
+exports.GraphBuilder=GraphBuilder

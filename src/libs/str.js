@@ -52,27 +52,25 @@ function select(input, left, right, start = 0, count = 1) {
  * @returns {[String]}
  */
 function select1(input, left, right, start, count) {
-        start = start || 0;
-        count = count || -1;
-
         let i = 0,
                 ls = [];
 
         while (true) {
                 i = input.indexOf(left, start);
-
                 if (i == -1)
                         break;
 
-                start = input.indexOf(right, i);
+                start = input.indexOf(right, i + left.length);
                 if (start == -1) {
                         break;
                 } else {
-                        ls.push(input.substr(i, start - i + 1));
-
-                        if (count != -1 && ls.length > count)
+                        ls.push(input.substr(i, start - i +right.length));
+                        if (count != -1 && ls.length >= count)
                                 break;
+                        start+=right.length;
                 }
+
+                start += right.length;
         }
 
         return ls;

@@ -90,22 +90,19 @@ const DEFAULT_MATCHER = (name, pattern) =>
 const RELATION_CANDIDATES_MATCHERS = {
         String: {
                 Id: {
-                        matcher: (column, table) => column.endsWith("Id")
+                        matcher: (column) => column.endsWith("Id")
                                 && column != "Id"
-                                && column.replace("Id", "") == table
                 },
                 No: {
-                        matcher: (column, table) => column.endsWith("No")
+                        matcher: (column) => column.endsWith("No")
                                 && column != "No"
-                                && !column.replace("No", "") == table
                                 && !STR.includesAny(column.toLowerCase(), ["phone", "post", "card", "id", "tel"])
                 }
         },
         Integer: {
                 Id: {
-                        matcher: (column, table) => column.endsWith("Id")
+                        matcher: (column) => column.endsWith("Id")
                                 && column != "Id"
-                                && column.replace("Id", "") == table
                 },
                 No: {
                         matcher: x => x.endsWith("No")
@@ -171,7 +168,7 @@ class TableRelationAnalyzer {
                                 if (table.rawName.toLowerCase().endsWith(columnEnd.toLowerCase()))
                                         return;
 
-                                this._generateRelation(relations, column, table.rawName);
+                                this._generateRelation(relations, column, table.rawName, table.name);
                         })
                 });
 
@@ -261,10 +258,13 @@ class TableRelationAnalyzer {
         _shouldBeCandidate(type, columnName) {
                 if (!this._candiadtesMatchers[type])
                         return false;
+                if(columnName.includes("phone")){
+                        let t=0;
+                }
 
                 for (const key in this._candiadtesMatchers[type]) {
-                        let match = this._candiadtesMatchers[type].matcher
-                                ? this._candiadtesMatchers[type].matcher(columnName)
+                        let match = this._candiadtesMatchers[type][key].matcher
+                                ? this._candiadtesMatchers[type][key].matcher(columnName)
                                 : DEFAULT_MATCHER(columnName, key);
 
                         if (match)
@@ -281,7 +281,7 @@ class TableRelationAnalyzer {
          * @param {Realations} relations 
          * @param {String} selfColumn 
          */
-        _generateRelation(relations, selfColumn, selfTableRawName) {
+        _generateRelation(relations, selfColumn, selfTableRawName, table) {
 
                 let keywords = this._customerKeywordsGenerator
                         ? this._customerKeywordsGenerator(selfColumn.rawName, selfTableRawName)
@@ -309,10 +309,10 @@ class TableRelationAnalyzer {
 
                 relation.relationType = this._analyzeRelationType(bestCandidate.name);
 
-                if (!relations[selfTableRawName])
-                        relations[selfTableRawName] = [];
+                if (!relations[table])
+                        relations[table] = [];
 
-                relations[selfTableRawName].push(relation);
+                relations[table].push(relation);
         }
 
         _defaultSearchKeyWordsGenerator(columnRawName, tableRawName) {
@@ -349,8 +349,8 @@ class TableRelationAnalyzer {
                         let tableSegs = x.content.toLowerCase().split("_");
 
                         // remove useless suffix
-                        if (this._uselessSuffix.has(tableSegs[tableSegs.length - 1]));
-                        tableSegs.pop();
+                        if (this._uselessSuffix.has(tableSegs[tableSegs.length - 1]))
+                                tableSegs.pop();
 
                         // same end seg
                         if (columnSegs[columnSegs.length - 1] == tableSegs[tableSegs.length - 1])
