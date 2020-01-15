@@ -9,17 +9,21 @@ const { NamingStrategy } = require("../../libs/naming-strategy");
 
 const STRING_RESOLVER = x => x.replace(/\"/g, "\"");
 
+const NAME_FIELD_MATCHER = x => {
+        return STR.endsWithAny(x.toLowerCase(), [
+                "name",
+                "company",
+                "account",
+        ])
+}
+
 /**
  * Resolve csv to table infos
  * 
  * @param {String} project  project name
  * @param {(String)=>Boolean} validateTable , check table is valid by table name
  */
-function resolve(project, validateTable = x => !STR.includesAny(x.toLowerCase(), [
-        "tmp",
-        "test",
-        "temp"
-])) {
+function resolve(project, validateTable = defaultValidate) {
         DIR.create("./outputs");
         DIR.create("./outputs/" + project);
 
@@ -62,6 +66,7 @@ function resolve(project, validateTable = x => !STR.includesAny(x.toLowerCase(),
         let allColumnsMetaInfos = resolveFromCsvString(content, resolvers, true, false);
         groups = ARRAY.groupBy(allColumnsMetaInfos, item => item.table);
 
+        // merge columns into table
         let tables = [];
         groups.forEach((columns, tableName) => {
                 if (!tableName || tableName == "")
@@ -72,6 +77,9 @@ function resolve(project, validateTable = x => !STR.includesAny(x.toLowerCase(),
                         rawName: tableName,
                         columns: {},
                 };
+
+                if (!validateTable(table.name))
+                        return;
 
                 columns.forEach(column => {
                         if (!column.column || column.column == "")
@@ -87,6 +95,12 @@ function resolve(project, validateTable = x => !STR.includesAny(x.toLowerCase(),
 
                         table.columns[column.name] = column;
 
+                        if (!table.nameColumn && NAME_FIELD_MATCHER(column.name))
+                                table.nameColumn = column.name;
+
+                        if (column.isPk)
+                                table.primaryColumn = column.name;
+
                         // remove useless properties
                         delete column.table;
                         delete column.column;
@@ -95,8 +109,10 @@ function resolve(project, validateTable = x => !STR.includesAny(x.toLowerCase(),
                         delete column.tableDescription
                 });
 
-                if (validateTable(table.name))
-                        tables.push(table);
+                if (!table.primaryColumn)
+                        analyzePrimaryColumn(table);
+
+                tables.push(table);
         });
 
         // big data base, group by table project prefix
@@ -125,5 +141,42 @@ function resolve(project, validateTable = x => !STR.includesAny(x.toLowerCase(),
         writeMarkDown(project);
 }
 
+/**
+ * Check is table valid
+ * 
+ * @param {String} name of table
+ * @returns {boolean} 
+ */
+function defaultValidate(name) {
+        return !STR.includesAny(name.toLowerCase(), [
+                "tmp",
+                "test",
+                "temp"
+        ]);
+}
+
+/**
+ * Try set primary column if absent
+ * 
+ * @param {Table} table 
+ */
+function analyzePrimaryColumn(table) {
+       for(const key of Object.keys(table.columns)){
+               if(STR.equalAny(key.toLowerCase(),["no","id"])){
+                    table.columns[key].isPk=true;
+                    table.primaryColumn=key;
+                    return;
+               }
+
+               if(STR.endsWithAny(key.toLowerCase(),["no","id"])
+                   &&table.name.toLowerCase().includes(STR.replace(key.toLowerCase(),{"no":"","id":""}))){
+                        table.columns[key].isPk=true;
+                        table.primaryColumn=key;
+                        return;
+                   }
+       }
+                 
+}
+
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
-resolve("fc");
+resolve("zd");

@@ -37,10 +37,10 @@ function renderUpdateConfig(config) {
         OBJECT.forEach(config.table.columns, (columnName, _) => {
 
                 if (STR.includesAny(columnName.toLocaleLowerCase(), ["edituser", "updateuser"]))
-                        content += `entity.${STR.upperFirstLetter(columnName)}= LoginStatus.UserName;\r\n`;
+                        content += `                    entity.${STR.upperFirstLetter(columnName)}= LoginStatus.UserName;\r\n`;
 
                 if (STR.includesAny(columnName.toLocaleLowerCase(), ["edittime", "updatetime", "editdate", "updatedate"]))
-                        content += `entity.${STR.upperFirstLetter(columnName)}= DateTime.Now;\r\n`;
+                        content += `                    entity.${STR.upperFirstLetter(columnName)}= DateTime.Now;\r\n`;
         });
 
         return content;
@@ -56,10 +56,10 @@ function renderInsertConfig(config) {
         OBJECT.forEach(config.table.columns, (columnName, _) => {
 
                 if (STR.includesAny(columnName.toLocaleLowerCase(), ["createuser"]))
-                        content += `entity.${STR.upperFirstLetter(columnName)}= LoginStatus.UserName;\r\n`;
+                        content += `                    entity.${STR.upperFirstLetter(columnName)}= LoginStatus.UserName;\r\n`;
 
                 if (STR.includesAny(columnName.toLocaleLowerCase(), ["createtime", "createdate"]))
-                        content += `entity.${STR.upperFirstLetter(columnName)}= DateTime.Now;\r\n`;
+                        content += `                    entity.${STR.upperFirstLetter(columnName)}= DateTime.Now;\r\n`;
         });
 
         return content;

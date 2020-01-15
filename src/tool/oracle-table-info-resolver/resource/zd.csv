@@ -149,7 +149,7 @@
 "RECEIPT_ACCOUNT_INFO","BALANCE","NUMBER","","N","SYS_C00127211","余额","收款账户信息表"
 "RECEIPT_ACCOUNT_INFO","SERVICE_RADIO","NUMBER","","Y","","手续费率","收款账户信息表"
 "RECEIPT_ACCOUNT_INFO","EXT_1","VARCHAR2","","Y","","扩展1","收款账户信息表"
-"RECEIPT_ACCOUNT_INFO","EXT_2","VARCHAR2","","Y","","扩展2(公众号支付时:为appsecret)","收款账户信息表"
+"RECEIPT_ACCOUNT_INFO","EXT_2","VARCHAR2","","Y","","扩展2(公众号支付时:为appsecret,京东支付:为deskey)","收款账户信息表"
 "RECEIPT_ACCOUNT_INFO","EXT_3","VARCHAR2","","Y","","扩展3","收款账户信息表"
 "RECEIPT_ACCOUNT_INFO","EXT_4","VARCHAR2","","Y","","扩展4","收款账户信息表"
 "RECEIPT_ACCOUNT_INFO","EXT_5","VARCHAR2","","Y","","扩展5","收款账户信息表"

@@ -11,7 +11,7 @@ function main(project) {
         DIR.create(`./outputs/${project}`);
         let analyzer = new TableRelationAnalyzer(all);
         let results = analyzer.analyze();
-        let writer =new MarkdownWriter(results);
+        let writer =new MarkdownWriter(results,10);
         FILE.write(`./outputs/${project}.js`, OBJECT.export_(results,"relations"));
        writer.generateMarkdown().forEach(x=>{
         FILE.write(`./outputs/${project}/${x.name}.md`, x.content );
@@ -20,4 +20,4 @@ function main(project) {
 }
 
 /*----------------------------------------------------------------main-------------------------------------------------------------------------------------------*/
-main("fc");
+main("zd");

@@ -406,9 +406,9 @@ function equalAny(target, matches = []) {
  * @param {String} matches 
  * @return {boolean}
  */
-function endsWithAny(target,matches=[]){
+function endsWithAny(target, matches = []) {
         for (const c of matches) {
-                target.endsWith(c)
+                if (target.endsWith(c))
                         return true;
         }
 

@@ -61,7 +61,7 @@ namespace @project.UserWeb.Controllers
 @updateContent
                 }
 
-                IResult result = FCDownchannelService.Instance.Save(id, entity);
+                IResult result = @nameService.Instance.Save(id, entity);
                 if (result.Status)
                 {
                     result.SetSuccessMessage("保存成功");

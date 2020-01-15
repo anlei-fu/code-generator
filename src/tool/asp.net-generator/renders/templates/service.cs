@@ -95,9 +95,12 @@ namespace @project.UserService
            entity.AddData(":PS",model.PageSize);
            entity.AddData(":PI",model.PageIndex);
 
-
+           string st = CommFun.ToDateTime(nvc["st"], DateTime.Now).Value.ToString("yyyy-MM-dd");
+           string et = CommFun.ToDateTime(nvc["et"], DateTime.Now).Value.AddDays(1).ToString("yyyy-MM-dd");
+           entity.AddData("ST", st);
+           entity.AddData("ET", et);
          
-           model.TotalCount = CommFun.ToInt(handler.GetScalarByXmlTemplate("getCount", entity), 0).GetValueOrDefault();
+           model.TotalCount = CommFun.ToInt(handler.GetDataListByTemplate("getCount", entity), 0).GetValueOrDefault();
             if(model.TotalCount > 0)
                 model.List = handler.GetDataListByTemplate("getList",entity);
 

@@ -5,10 +5,10 @@
  * @param {SqlType} sqlType 
  */
 function getCSharpType(sqlType) {
-        if (sqlType.name.indexOf("char") != -1)
+        if (sqlType.name.toLowerCase().includes("char"))
                 return "string";
 
-        if (sqlType.name == "date")
+        if (sqlType.name.toLowerCase().includes("date"))
                 return "DateTime";
 
         return sqlType.length > 20 ? "decimal" : "int";

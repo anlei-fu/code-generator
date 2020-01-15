@@ -1,34 +1,33 @@
 
-const DEFAULT_MATCHER = (name, pattern) => name.toLowerCase().includes(pattern.toLowerCase());
-const LOWER_INCLUDES_MATCHER= (x,y)=> x.toLowerCase().includes(y.toLowerCase());
-const {OBJECT} =require("./../../libs/utils");
-const {STR} =require("./../../libs/str");
+const { DEFAULT_MATCHER_COLLECTION_METHOD, DEFAULT_MATCHER_METHOD } = require("./matchers");
+const { OBJECT } = require("./../../libs/utils");
+const { STR } = require("./../../libs/str");
 
-const INSERT_EXCLUDES = {
+const INSERT_EXCLUDES_MATCHERS = {
         int: {
                 id: {
-                        matcher: x => x == "Id",
+                        match: x => x == "Id"||x=="No",
                 }
         },
         string: {
                 user: {
-                        matcher: x => {
-                                let low = x.toLowerCase();
-                                if (!low.includes("user"))
+                        match: x => {
+                                let lower = x.toLowerCase();
+                                if (!lower.includes("user"))
                                         return false;
 
-                                return low.indexOf("create") || low.indexOf("update") || low.indexOf("edit");
+                                return lower.includes("create") || lower.includes("update") || lower.includes("edit");
                         }
                 },
         },
         DateTime: {
                 time: {
-                        matcher: x => {
-                                let low = x.toLowerCase();
-                                if (!low.includes("time")||!low.includes("date"))
+                        match: x => {
+                                let lower = x.toLowerCase();
+                                if (!lower.includes("time") && !lower.includes("date"))
                                         return false;
 
-                                return low.indexOf("create") || low.indexOf("update") || low.indexOf("edit");
+                                return lower.includes("create") || lower.includes("update") || lower.includes("edit");
                         }
                 },
         }
@@ -38,8 +37,8 @@ const INSERT_EXCLUDES = {
  * Analyze Insert candidate
  */
 class InsertAnalyzer {
-        constructor() {
-                this._insertExcludes = INSERT_EXCLUDES;
+        constructor () {
+                this._insertExcludes = INSERT_EXCLUDES_MATCHERS;
         }
 
         /**
@@ -48,19 +47,10 @@ class InsertAnalyzer {
          * @param {Column} column 
          */
         shouldBeCandidate(column) {
-                if (!this._insertExcludes[column.type])
-                        return true;
+                if(column.isPk)
+                    return false;
 
-                for (const c in this._insertExcludes[column.type]) {
-                        let match = this._insertExcludes[column.type][c].matcher
-                                ? this._insertExcludes[column.type][c].matcher(column.name)
-                                : DEFAULT_MATCHER(column.name, c);
-
-                        if (match)
-                                return false;
-                }
-
-                return true;
+                return !DEFAULT_MATCHER_COLLECTION_METHOD(column.name, column.type, this._insertExcludes)
         }
 
         /**
@@ -68,74 +58,51 @@ class InsertAnalyzer {
          * 
          * @param {MatcherConfig} config 
          */
-        useInsertExclude(config){
-           OBJECT.deepExtend(this._insertExcludes,config);
+        useInsertExclude(config) {
+                OBJECT.deepExtend(this._insertExcludes, config);
         }
 }
 
 
-
-
-const SELECT_INCLUDES = {
+const SELECT_INCLUDES_MATCHERS = {
         string: {
-                no: {
-                        matcher: x => x.toLowerCase().endsWith("no"),
+                all: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "no",
+                                "email",
+                                "phone",
+                                "mobile",
+                                "order",
+                                "idcardno"
+                        ])
                 },
-                email: {
-                        matcher: x => x.toLowerCase().includes("email"),
-                },
-                phone: {
-                        matcher: x => x.toLowerCase().includes("phone"),
-                },
-                mobile: {
-                        matcher: x => x.toLowerCase().includes("mobile"),
-                },
-                order: {
-                        matcher: x => x.toLowerCase().includes("order"),
-                },
-                idcardno: {
-                        matcher: x => x.toLowerCase().includes("idcardno"),
-                }
-        },
-        int:{
-            
         },
 }
 
-const SELECT_EXCLUDES = {
+const SELECT_EXCLUDES_MATCHERS = {
         int: {
-                balance: {
-
+                all: {
+                        match: x => !STR.endsWithAny(x.toLowerCase(), [
+                                "balance",
+                                "count",
+                                "amount",
+                                "price",
+                                "order",
+                                "total"
+                        ])
                 },
-                count: {
-
-                },
-                amount: {
-
-                },
-                price: {
-
-                },
-                total: {
-
-                }
         },
-        decimal:{
-                balance: {
-
+        decimal: {
+                all: {
+                        match: x => !STR.endsWithAny(x.toLowerCase(), [
+                                "balance",
+                                "count",
+                                "amount",
+                                "price",
+                                "order",
+                                "total"
+                        ])
                 },
-                count: {
-
-                },
-                amount: {
-
-                },
-                price: {
-
-                },
-                total: {
-
-                }
         },
 }
 
@@ -143,10 +110,10 @@ const SELECT_EXCLUDES = {
  * Analyze select candidates fields
  */
 class SelectAnalyzer {
-        constructor() {
-                this._stringIncludes = SELECT_INCLUDES;
-                this._intExcludes = SELECT_EXCLUDES;
-                this._controlAnalyzer=new ControlAnlyzer();
+        constructor () {
+                this._stringIncludesMatchers = SELECT_INCLUDES_MATCHERS;
+                this._intExcludesMatchers = SELECT_EXCLUDES_MATCHERS;
+                this.controlAnalyzer;
         }
 
         /**
@@ -162,20 +129,10 @@ class SelectAnalyzer {
                         return false;
 
                 // analyze string includes
-                if (column.type == "string") {
-                        for (const c in this._stringIncludes["string"]) {
-                                let match = this._stringIncludes["string"][c].matcher
-                                        ? this._stringIncludes["string"][c].matcher(column.name)
-                                        : DEFAULT_MATCHER(column.name, c);
+                if (column.type == "string")
+                        return DEFAULT_MATCHER_COLLECTION_METHOD(column.name, "string", this._stringIncludesMatchers);
 
-                                if (match)
-                                        return true;
-                        }
-
-                        return false;
-                }
-
-                return this._controlAnalyzer.shouldBeSelect(column);
+                return this.controlAnalyzer.shouldBeSelect(column);
         }
 }
 
@@ -185,26 +142,16 @@ class SelectAnalyzer {
  * Text areas 
  */
 const TEXT_AREAS = {
-        remark: {
-                matcher: x => LOWER_INCLUDES_MATCHER(x,"remark"),
-        },
-        description: {
-                matcher: x => LOWER_INCLUDES_MATCHER(x,"descrp"),
-        },
-        message: {
-                matcher:  x => LOWER_INCLUDES_MATCHER(x,"message"),
-        },
-        msg: {
-                matcher:  x => LOWER_INCLUDES_MATCHER(x,"msg"),
-        },
-        info: {
-                matcher:  x => LOWER_INCLUDES_MATCHER(x,"info"),
-        },
-        detail: {
-                matcher:  x => LOWER_INCLUDES_MATCHER(x,"detail"),
-        },
-        log: {
-                matcher:  x => LOWER_INCLUDES_MATCHER(x,"log"),
+        all: {
+                match: x => STR.endsWithAny(x.toLowerCase(), [
+                        "remark",
+                        "descrp",
+                        "message",
+                        "msg",
+                        "info",
+                        "detail",
+                        "log",
+                ])
         }
 }
 
@@ -220,8 +167,8 @@ const { NamingStrategy } = require("../../libs/naming-strategy");
  */
 class ColumnAnalyzer {
 
-        constructor() {
-                this._controlAnalyzer = new ControlAnlyzer();
+        constructor () {
+                this.controlAnalyzer;
                 this.index = 0;
                 this._textArea = TEXT_AREAS;
         }
@@ -236,8 +183,8 @@ class ColumnAnalyzer {
                 let output = {
 
                 }
-                if (this._controlAnalyzer.shouldBeSelect(column)) {
-                        output.select = this._controlAnalyzer.getSelectControlConfig(column);
+                if (this.controlAnalyzer.shouldBeSelect(column)) {
+                        output.select = this.controlAnalyzer.getSelectControlConfig(column);
                         output.lable = column.description;
                         output.join = this.makeJoin(column, output.select);
                         output.gettter = `.GetDataValue("${column.name}Name")`;
@@ -263,9 +210,9 @@ class ColumnAnalyzer {
          */
         isTextArea(name) {
                 for (const c in this._textArea) {
-                        let match = this._textArea[c].matcher ?
-                                this._textArea[c].matcher(name) :
-                                DEFAULT_MATCHER(name, c);
+                        let match = this._textArea[c].match ?
+                                this._textArea[c].match(name) :
+                                name.toLowerCase().includes(c.toLowerCase());
 
                         if (match)
                                 return true;
@@ -281,7 +228,7 @@ class ColumnAnalyzer {
          * @param {String} select  name
          */
         makeJoin(column, select) {
-                if (select.table.toLower().endsWith("systemdictionary")) {
+                if (select.table.toLowerCase().endsWith("dictionary")) {
                         return `LEFT JOIN ${NamingStrategy.toHungary(select.table).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.VALUE`
                                 + ` AND t${this.index}.${NamingStrategy.toHungary(select.type).toUpperCase()} = '${column.name}'`;
@@ -293,92 +240,18 @@ class ColumnAnalyzer {
         }
 }
 
-const { SystemDictionary } = require("./resource/select")
 
-const CUSTOM_SELECTS = {
-        int: {
-                enum: {
-                        matcher: x => {
-                                x = x.toLowerCase();
-                                return STR.endsWithAny(x, [
-                                        "type",
-                                        "status",
-                                        "state",
-                                        "level",
-                                        "way",
-                                        "mode",
-                                        "rule",
-                                ]) || STR.startsWithAny(x, ["is"])
-                                        || STR.includesAny(x, "need");
-                              
-                        },
-                        generator:(column,table)=>{
-                                        
-                        }
-                },
 
-                infoTables: {
-                        matcher: x => {
-                                x = x.toLowerCase();
 
-                                return STR.endsWithAny(x, [
-                                        "productno",
-                                        "productid",
-                                        "channelid",
-                                        "channelno",
-                                        "province",
-                                        "provinceid",
-                                        "provinceno",
-                                        "city",
-                                        "cityid",
-                                        "cityno",
-                                        "package",
-                                        "packageid",
-                                        "packageno",
-                                        "account",
-                                        "accountid",
-                                        "company",
-                                        "companyid"
-                                ])
-                        },
-                        generator:(column,table)=>{
-                                        
-                        }
-                },
-                string: {
-                        infoTables: {
-                                matcher: x => {
-                                        x = x.toLowerCase();
-
-                                        return STR.endsWithAny(x, [
-                                                "productno",
-                                                "product",
-                                                "channel",
-                                                "channelno",
-                                                "province",
-                                                "provinceno",
-                                                "city",
-                                                "cityno",
-                                                "package",
-                                                "packageno",
-                                                "accountNo",
-                                                "companyno"
-                                        ])
-                                },
-                                generator:(column,table)=>{
-                                        
-                                }
-                        }
-                }
-        }
-}
 
 /**
  * Analyze control of field , text or select
  */
 class ControlAnlyzer {
-        constructor() {
-                this.selects = CUSTOM_SELECTS;
+        constructor (dic, relations = {}, customer = {}) {
+                this._dictionaryMatchers = dic;
+                this._relationMatchers = relations;
+                this._customerSelectMatchers = customer;
         }
 
         /**
@@ -388,28 +261,23 @@ class ControlAnlyzer {
          * @returns {boolean}
          */
         shouldBeSelect(column) {
-
-                if (!this.selects[column.type])
+               
+                if (!this._customerSelectMatchers[column.type])
                         return false;
 
-                      
+
                 // check by system dictionary
-                for (const c in SystemDictionary) {
-                        if (c.indexOf(column.name) != -1)
+                for (const c in this._dictionaryMatchers) {
+                        if (c.includes(column.name))
                                 return true;
                 }
 
-                // check by customs
-                for (const item in this.selects[column.type]) {
-                        let match = this.selects[column.type][item].matcher
-                                ? this.selects[column.type][item].matcher(column.name) :
-                                DEFAULT_MATCHER(column.name, item);
-
-                        if (match)
-                                return true;
+                for(const c in this._relationMatchers){
+                        if(c==column.name)
+                          return true;
                 }
 
-                return false;
+                return DEFAULT_MATCHER_COLLECTION_METHOD(column.name, column.type, this._customerSelectMatchers);
         }
 
         /**
@@ -421,23 +289,37 @@ class ControlAnlyzer {
         getSelectControlConfig(column) {
 
                 // get from system dictionary
-                for (const c in SystemDictionary) {
-                        if (c.indexOf(column.name) != -1)
-                                return SystemDictionary[c];
+                for (const c in this._dictionaryMatchers) {
+                        if (c.includes(column.name))
+                                return this._dictionaryMatchers[c];
+                }
+
+                for (const c in this._relationMatchers) {
+                        if(c==column.name)
+                          return this._relationMatchers[c];
                 }
 
                 // get from customs
-                for (const item in this.selects[column.type]) {
-
-                        let match = this.selects[column.type][item].matcher
-                                ? this.selects[column.type][item].matcher(column.name) :
-                                DEFAULT_MATCHER(column.name, item);
-
-                        if (match)
-                                return this.selects[column.type][item].generator ?
-                                        this.selects[column.type][item].generator(column.name) :
-                                        this.selects[column.type][item];
+                for (const item in this._customerSelectMatchers[column.type]) {
+                        let match = DEFAULT_MATCH_METHOD(column.name, column.type, item, this._customerSelectMatchers);
+                        if (match) {
+                                return this._customerSelectMatchers[column.type][item].generator ?
+                                        this._customerSelectMatchers[column.type][item].generator(column.name) :
+                                        this._customerSelectMatchers[column.type][item];
+                        }
                 }
+        }
+
+        useDictionaryMatchers(dic) {
+                this._dictionaryMatchers = dic;
+        }
+
+        useRelation(relations) {
+                this._relationMatchers = relations;
+        }
+
+        useCustomerMatchers(customer) {
+                this._customerSelectMatchers = customer;
         }
 }
 
@@ -447,13 +329,13 @@ class ControlAnlyzer {
 const CREATE_DEFAULT_VALUES = {
         string: {
                 user: {
-                        matcher: x => x.toLowerCase().includes("user") && x.toLowerCase().includes("create"),
+                        match: x => x.toLowerCase().includes("user") && x.toLowerCase().includes("create"),
                         generator: x => `entity.${x} = LoginStatus.UserName`
                 }
         },
         DateTime: {
                 time: {
-                        matcher: x => x.toLowerCase().includes("time") && x.toLowerCase().includes("create"),
+                        match: x => (x.toLowerCase().includes("time") || x.toLowerCase().includes("date")) && x.toLowerCase().includes("create"),
                         generator: x => `entity.${x} = DateTime.Now()`
                 }
         }
@@ -465,24 +347,28 @@ const CREATE_DEFAULT_VALUES = {
 const UPDATE_DEFAULT_VALUES = {
         string: {
                 user: {
-                        matcher: x => {
-                                if (!x.toLowerCase().includes("user"))
-                                        return false;
-
-                                return x.toLowerCase().includes("update") || x.toLowerCase().includes("edit");
+                        match: field => {
+                                let lower = field.toLowerCase();
+                                return lower.includes("user")
+                                        && (lower.includes("update")
+                                                || lower.includes("edit")
+                                        );
                         },
-                        generator: x => `entity.${x} = LoginStatus.UserName`
+                        generator: field => `entity.${field} = LoginStatus.UserName`
                 }
         },
         DateTime: {
                 time: {
-                        matcher: x => {
-                                if (!x.toLowerCase().includes("time"))
-                                        return false;
-
-                                return x.toLowerCase().includes("update") || x.toLowerCase().includes("edit");
+                        match: field => {
+                                let lower = field.toLowerCase();
+                                return (lower.includes("time")
+                                        || lower.includes("date")
+                                )
+                                        && (lower.includes("update")
+                                                || lower.includes("edit")
+                                        );
                         },
-                        generator: x => `entity.${x} = DateTime.Now()`
+                        generator: field => `entity.${field} = DateTime.Now()`
                 }
         }
 }
@@ -491,10 +377,10 @@ const UPDATE_DEFAULT_VALUES = {
 /**
  * Analyze default values
  */
-class  DelfaultValueAnalyzer {
+class DelfaultValueAnalyzer {
 
-        constructor() {
-                this.updateDefaultValues = UPDATE_DEFAULT_VALUES;
+        constructor () {
+                this._updateDefaultValuesMatchers = UPDATE_DEFAULT_VALUES;
                 this.createDefaultValues = CREATE_DEFAULT_VALUES;
         }
 
@@ -512,15 +398,19 @@ class  DelfaultValueAnalyzer {
 
                 // analyze insert
                 OBJECT.forEach(table.columns, (_, column) => {
-                        for (const c in this.createDefaultValues) {
-                                let match = this.createDefaultValues[c].matcher
-                                        ? this.createDefaultValues[c].matcher(column.name)
-                                        : DEFAULT_MATCHER(column.name, c);
 
+                        if (!this.createDefaultValues[column.type]
+                                || !this._updateDefaultValuesMatchers[column.type])
+                                return;
+
+                        let type = column.type;
+
+                        for (const key in this.createDefaultValues[type]) {
+                                let match = DEFAULT_MATCHER_METHOD(column.name, column.type, key, this.createDefaultValues);
                                 if (match) {
                                         let item = {
                                                 name: column.name,
-                                                expression: this.createDefaultValues[c].generator(column.name),
+                                                expression: this.createDefaultValues[type][key].generator(column.name),
                                         }
 
                                         ret.creates.push(item);
@@ -530,15 +420,12 @@ class  DelfaultValueAnalyzer {
                         }
 
                         // analyze update
-                        for (const c in this.updateDefaultValues) {
-                                let match = this.updateDefaultValues[c].matcher
-                                        ? this.updateDefaultValues[c].matcher(column.name)
-                                        : DEFAULT_MATCHER(column.name, c);
-
+                        for (const key in this._updateDefaultValuesMatchers[type]) {
+                                let match = DEFAULT_MATCHER_METHOD(column.name, column.type, key, this._updateDefaultValuesMatchers);
                                 if (match) {
                                         let item = {
                                                 name: column.name,
-                                                expression: this.updateDefaultValues[c].generator(column.name),
+                                                expression: this._updateDefaultValuesMatchers[type][key].generator(column.name),
                                         }
 
                                         ret.updates.push(item);

@@ -1,5 +1,5 @@
 const { SimpleFullTextSearcher } = require("./simple-full-text-searcher");
-const { all } = require("./../oracle-table-info-resolver/outputs/fc/all");
+const { all } = require("./../oracle-table-info-resolver/outputs/18/all");
 const { OBJECT } = require("./../../libs/utils");
 
 function main() {
@@ -16,7 +16,7 @@ function main() {
         searcher.useCustomerTokenizer(x => x.toLowerCase().split("_"));
         searcher.addDocuments(docs);
 
-       console.log(searcher.search("down_product_no",10));
+       console.log(searcher.search("mr_carrier_no",10));
 }
 
 /*---------------------------------------------------------------------main------------------------------------------------------------------------------ */

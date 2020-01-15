@@ -1,4 +1,4 @@
-exports.cutomerDics = {
+exports.customerMatchers = {
         int: {
                 pid: {
 
@@ -13,14 +13,14 @@ exports.cutomerDics = {
                         value: "Value",
                         defaultText: "--请选择--",
                         type: "Type",
-                        service: "SystemDictionary",
+                        table: "SysDictionary",
                 },
                 Type: {
                         matcher: x => x.endsWith("Type"),
                         text: "Name",
                         defaultText: "--请选择--",
                         type: "Type",
-                        service: "SystemDictionary",
+                        table: "SysDictionary",
                 },
                 State: {
                         matcher: x => x.endsWith("State"),
@@ -28,7 +28,7 @@ exports.cutomerDics = {
                         value: "Value",
                         type: "Type",
                         defaultText: "--请选择--",
-                        service: "SystemDictionary",
+                        table: "SysDictionary",
                 },
                 Has: {
                         matcher: x => x.startsWith("Has"),
@@ -36,7 +36,7 @@ exports.cutomerDics = {
                         value: "Value",
                         type: "Type",
                         defaultText: "--请选择--",
-                        service: "SystemDictionary",
+                        table: "SysDictionary",
                 },
                 Is: {
                         matcher: x => x.startsWith("Has"),
@@ -44,26 +44,14 @@ exports.cutomerDics = {
                         value: "Value",
                         type: "Type",
                         defaultText: "--请选择--",
-                        service: "SystemDictionary",
+                        table: "SysDictionary",
                 },
-                AccountId: {
-                        matcher: x => STR.includesAny(x, ["AccountId", "CompanyId", "FlowId", "StepId", "ProductId"]),
-                        generator: x => {
-                                return {
-                                        service: x.replace("Id", ""),
-                                        table: x.replace("Id", ""),
-                                        defaultText: "--请选择--",
-                                        text: x.replace("Id", "Name"),
-                                        value: x,
-                                }
-                        }
-                }
         },
         string: {
                 CityNo: {
                         generator: x => {
                                 return {
-                                        service: x.replace("No", ""),
+                                        table: x.replace("No", ""),
                                         defaultText: "--请选择--",
                                         text: x.replace("No", "Name"),
                                         value: "No",
@@ -73,7 +61,7 @@ exports.cutomerDics = {
                 ProvinceNo: {
                         generator: x => {
                                 return {
-                                        service: x.replace("No", ""),
+                                        table: x.replace("No", ""),
                                         defaultText: "--请选择--",
                                         text: x.replace("No", "Name"),
                                         value: "No",
@@ -84,7 +72,7 @@ exports.cutomerDics = {
                 ChannelNo: {
                         generator: x => {
                                 return {
-                                        service: x.replace("No", ""),
+                                        table: x.replace("No", ""),
                                         defaultText: "--请选择--",
                                         text: x.replace("No", "Name"),
                                         value: "No",
@@ -94,7 +82,7 @@ exports.cutomerDics = {
                 ProductNo: {
                         generator: x => {
                                 return {
-                                        service: x.replace("No", ""),
+                                        table: x.replace("No", ""),
                                         defaultText: "--请选择--",
                                         text: x.replace("No", "Name"),
                                         value: "No",

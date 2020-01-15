@@ -136,6 +136,5 @@ namespace @project.Logic
         {
             return dbAccess.GetDataSetByTemplate(xmlTemplateName, vo);
         }
-@content
     }
 }

@@ -19,8 +19,11 @@ function resolve(project) {
         DIR.create(`./resource/${project}`);
         let content = FILE.read(`./resource/${project}-dic.csv`);
         let result = resolveFromCsvString(content, DEFAULT_RESOLVERS);
+
+        let prefix=project == "fd"?"fdSystem":project=="zd"?"sys":"System";
+
         let model = {
-                table: project == "fd" ? "fdSystemdictionary" : "systemDictionary",
+                table: `${prefix}Dictionary`,
                 text: project == "fd" ? "Description" : "Name",
                 type: project == "fd" ? "BelongEnum" : "Type",
                 value: "Value",
@@ -33,11 +36,11 @@ function resolve(project) {
                 output[x.name] = x;
         });
 
-        content = OBJECT.export_(output, "dics");
+        content = OBJECT.export_(output, "dictionaryMatchers");
 
-        FILE.write(`./resource/${project}/dics.js`, content);
+        FILE.write(`./resource/${project}/dictionaryMatchers.js`, content);
         LOG.info("finish resolve!");
 }
 
 /*-------------------------------------------------------------------resolve---------------------------------------------------------------------------*/
-resolve("fd");
+resolve("zd");

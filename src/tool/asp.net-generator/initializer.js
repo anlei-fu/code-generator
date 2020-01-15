@@ -13,7 +13,7 @@ const {
 
 const selectAnalyzer = new SelectAnalyzer();
 const insertAnalyzer = new InsertAnalyzer();
-const controlAnlyzer = new ControlAnlyzer();
+const controlAnalyzer = new ControlAnlyzer();
 const columnAnalyzer = new ColumnAnalyzer();
 const defaultValueAnalyzer = new DelfaultValueAnalyzer();
 
@@ -26,7 +26,14 @@ const defaultValueAnalyzer = new DelfaultValueAnalyzer();
 function init(table, config) {
 
         // create project structure
-        createFolder(config.project, STR.upperFirstLetter(table.name));
+        createFolder(config.project, STR.upperFirstLetter(table.name),config.root);
+
+        // init controller analyzer
+        controlAnalyzer.useDictionaryMatchers(require(`./resource/${config.abbrOfProject}/dictionaryMatchers.js`).dictionaryMatchers);
+        controlAnalyzer.useCustomerMatchers(require(`./resource/${config.abbrOfProject}/customerMatchers.js`).customerMatchers);
+        controlAnalyzer.useRelation(generateRelationMatchers(config.abbrOfProject, table.name));
+        columnAnalyzer.controlAnalyzer = controlAnalyzer;
+        selectAnalyzer.controlAnalyzer = controlAnalyzer;
 
         config.table = table;
         config.name = STR.upperFirstLetter(table.name);
@@ -81,10 +88,43 @@ function init(table, config) {
  * @param {String} project  name
  * @param {String} name of table upper case 
  */
-function createFolder(project, name) {
+function createFolder(project, name, root) {
         DIR.create("./outputs");
         DIR.create(`./outputs/${project}--${name}`);
         FILE.copy("./resource/build.js", `./outputs/${project}--${name}/build.js`);
+        let pattern = {
+                "@project": project,
+                "@name": name,
+                "@root": root
+        }
+        let merge=FILE.read("./resource/merge.js");
+        merge=STR.replace(merge,pattern);
+
+        FILE.write(`./outputs/${project}--${name}/merge.js`,merge);
+}
+
+function generateRelationMatchers(project, tableName) {
+        let relations = require(`./../table-relation/outputs/${project}.js`).relations[tableName];
+        if (!relations)
+                return {};
+
+        let tables = require(`./../oracle-table-info-resolver/outputs/${project}/all.js`).all;
+        let matchers = {};
+        relations.forEach(x => {
+                if (tables[x.otherTable].nameColumn && tables[x.otherTable].primaryColumn) {
+                        matchers[x.selfColumn] = {
+                                match: columnName => columnName == x.selfColumn,
+                                lable: tables[x.otherTable].description,
+                                service: x.otherTable,
+                                name: x.selfColumn,
+                                text: tables[x.otherTable].nameColumn,
+                                value: tables[x.otherTable].primaryColumn,
+                                defaultText: "--???--"
+                        };
+                }
+        });
+
+        return matchers;
 }
 
 /**
@@ -114,7 +154,7 @@ function buildImportExcel(config) {
                         type: column.type
                 }
 
-                item.content = controlAnlyzer.shouldBeSelect(column)
+                item.content = controlAnalyzer.shouldBeSelect(column)
                         ? `@item.GetDataValue("${key}Name")`
                         : `@item.${key}`;
 
@@ -154,8 +194,8 @@ function buildSelectConfig(table, config) {
                 let analyzeResult = columnAnalyzer.analyzeColumn(column);
                 buildControlConfig(analyzeResult, selectConfig, column);
 
-                if(analyzeResult.column.indexOf("t.")==-1)
-                     selectConfig.getListSql.columns.push(analyzeResult.column);
+                if (analyzeResult.column.indexOf("t.") == -1)
+                        selectConfig.getListSql.columns.push(analyzeResult.column);
 
                 selectConfig.getListSql.conditions.push(`{&@t.${column.name}}`);
 
@@ -195,10 +235,10 @@ function buildSelectConfig(table, config) {
  * @param {AddConfig|SelectConfig} config 
  * @param {Column} column 
  */
-function buildControlConfig(analyzeResult,config, column) {
-        if (controlAnlyzer.shouldBeSelect(column)) {
+function buildControlConfig(analyzeResult, config, column) {
+        if (controlAnalyzer.shouldBeSelect(column)) {
                 analyzeResult.select.lable = column.description;
-                analyzeResult.select.name=column.name;
+                analyzeResult.select.name = column.name;
                 config.selects.push(analyzeResult.select);
         } else {
                 analyzeResult.text.lable = column.description;
@@ -223,7 +263,7 @@ function buildTableConfig(table, config) {
                         content: "",
                 }
 
-                item.content = controlAnlyzer.shouldBeSelect(value)
+                item.content = controlAnalyzer.shouldBeSelect(value)
                         ? `@item.GetDataValue("${value.name}Name")`
                         : `@item.${value.name}`
 
