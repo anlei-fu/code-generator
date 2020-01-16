@@ -26,7 +26,7 @@ const defaultValueAnalyzer = new DelfaultValueAnalyzer();
 function init(table, config) {
 
         // create project structure
-        createFolder(config.project, STR.upperFirstLetter(table.name),config.root);
+     //   createFolder(config.project, STR.upperFirstLetter(table.name),config.root);
 
         // init controller analyzer
         controlAnalyzer.useDictionaryMatchers(require(`./resource/${config.abbrOfProject}/dictionaryMatchers.js`).dictionaryMatchers);
@@ -115,7 +115,7 @@ function generateRelationMatchers(project, tableName) {
                         matchers[x.selfColumn] = {
                                 match: columnName => columnName == x.selfColumn,
                                 lable: tables[x.otherTable].description,
-                                service: x.otherTable,
+                                table: x.otherTable,
                                 name: x.selfColumn,
                                 text: tables[x.otherTable].nameColumn,
                                 value: tables[x.otherTable].primaryColumn,

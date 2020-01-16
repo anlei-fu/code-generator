@@ -25,7 +25,7 @@ function copy(source,target) {
 }
 
 
-copy(`./${name}.cs`,`${entityFolder}/${name}.cs`);
+copy(`./M${name}.cs`,`${entityFolder}/M${name}.cs`);
 copy(`./I${name}Access.cs`,`${iaccessFolder}/I${name}Access.cs`);
 copy(`./${name}Access.cs`,`${accessFolder}/${name}.Access.cs`);
 copy(`./I${name}Handler.cs`,`${ihandler}/I${name}Handler.cs`);

@@ -273,7 +273,7 @@ class ControlAnlyzer {
                 }
 
                 for(const c in this._relationMatchers){
-                        if(c==column.name)
+                        if(c.toLowerCase()==column.name.toLowerCase())
                           return true;
                 }
 
@@ -295,13 +295,13 @@ class ControlAnlyzer {
                 }
 
                 for (const c in this._relationMatchers) {
-                        if(c==column.name)
+                        if(c.toLowerCase()==column.name.toLowerCase())
                           return this._relationMatchers[c];
                 }
 
                 // get from customs
                 for (const item in this._customerSelectMatchers[column.type]) {
-                        let match = DEFAULT_MATCH_METHOD(column.name, column.type, item, this._customerSelectMatchers);
+                        let match =DEFAULT_MATCHER_METHOD(column.name, column.type, item, this._customerSelectMatchers);
                         if (match) {
                                 return this._customerSelectMatchers[column.type][item].generator ?
                                         this._customerSelectMatchers[column.type][item].generator(column.name) :

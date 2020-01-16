@@ -1,12 +1,5 @@
 exports.customerMatchers = {
         int: {
-                pid: {
-
-                },
-
-                fid: {
-
-                },
                 Status: {
                         matcher: x => x.endsWith("Status"),
                         text: "Name",

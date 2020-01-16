@@ -26,7 +26,7 @@ function test() {
       root:ZD.root,
       abbrOfProject:ZD.abbrOfProject
    }
-   init(all.terminalInfo, config);
+   init(all.terminalDownMap, config);
 }
 
 test();

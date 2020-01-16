@@ -24,10 +24,10 @@ const NAME_FIELD_MATCHER = x => {
  * @param {(String)=>Boolean} validateTable , check table is valid by table name
  */
 function resolve(project, validateTable = defaultValidate) {
-        DIR.create("./outputs");
-        DIR.create("./outputs/" + project);
+        DIR.create(`${__dirname}/outputs`);
+        DIR.create(`${__dirname}/outputs/` + project);
 
-        let content = FILE.read(`./resource/${project}.csv`);
+        let content = FILE.read(`${__dirname}/resource/${project}.csv`);
         let resolvers = [
                 {
                         name: "table",
@@ -85,8 +85,14 @@ function resolve(project, validateTable = defaultValidate) {
                         if (!column.column || column.column == "")
                                 return;
 
-                        table.description = column.tableDescription;
                         column.name = NamingStrategy.toCamel(column.column);
+                        if (table.columns[column.name] && table.columns[column.name].isPk) {
+                                console.log("found : " + column.name);
+                                return;
+                        }
+
+                        table.description = column.tableDescription;
+
                         column.rawName = column.column
                         column.type = {
                                 name: column.dataType,
@@ -161,21 +167,21 @@ function defaultValidate(name) {
  * @param {Table} table 
  */
 function analyzePrimaryColumn(table) {
-       for(const key of Object.keys(table.columns)){
-               if(STR.equalAny(key.toLowerCase(),["no","id"])){
-                    table.columns[key].isPk=true;
-                    table.primaryColumn=key;
-                    return;
-               }
-
-               if(STR.endsWithAny(key.toLowerCase(),["no","id"])
-                   &&table.name.toLowerCase().includes(STR.replace(key.toLowerCase(),{"no":"","id":""}))){
-                        table.columns[key].isPk=true;
-                        table.primaryColumn=key;
+        for (const key of Object.keys(table.columns)) {
+                if (STR.equalAny(key.toLowerCase(), ["no", "id"])) {
+                        table.columns[key].isPk = true;
+                        table.primaryColumn = key;
                         return;
-                   }
-       }
-                 
+                }
+
+                if (STR.endsWithAny(key.toLowerCase(), ["no", "id"])
+                        && table.name.toLowerCase().includes(STR.replace(key.toLowerCase(), { "no": "", "id": "" }))) {
+                        table.columns[key].isPk = true;
+                        table.primaryColumn = key;
+                        return;
+                }
+        }
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/

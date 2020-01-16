@@ -136,5 +136,16 @@ namespace @project.Logic
         {
             return dbAccess.GetDataSetByTemplate(xmlTemplateName, vo);
         }
+
+        /// <summary>
+        /// 根据模板名称获取第一行一列的值
+        /// </summary>
+        /// <param name="xmlTemplateName">模板名称</param>
+        /// <param name="vo">实体</param>
+        /// <returns></returns>
+        public object GetScalarByXmlTemplate(string xmlTemplateName, @prefix@name vo)
+        {
+            return dbAccess.GetScalarByTemplate(xmlTemplateName, vo);
+        }
     }
 }

@@ -100,7 +100,7 @@ namespace @project.UserService
            entity.AddData("ST", st);
            entity.AddData("ET", et);
          
-           model.TotalCount = CommFun.ToInt(handler.GetDataListByTemplate("getCount", entity), 0).GetValueOrDefault();
+           model.TotalCount = CommFun.ToInt(handler.GetScalarByXmlTemplate("getCount", entity), 0).GetValueOrDefault();
             if(model.TotalCount > 0)
                 model.List = handler.GetDataListByTemplate("getList",entity);
 
