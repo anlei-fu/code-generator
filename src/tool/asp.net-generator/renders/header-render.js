@@ -21,9 +21,9 @@ function renderHeaders(config) {
         });
 
         if (config.operations.length > 0)
-                content += `${IDENT}<th>??</th>\r\n`;
+                content += `${IDENT}<th>操作</th>\r\n`;
 
-        return content;
+        return content.trimRight();
 }
 
 exports.renderHeaders = renderHeaders;

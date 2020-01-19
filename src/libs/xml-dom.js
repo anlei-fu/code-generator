@@ -29,7 +29,7 @@
  *  element -> hasChildNodes
  */
 
-const { DOMParser } = require("xmldom");
+const { DOMParser,XMLSerializer } = require("xmldom");
 const { OBJECT } = require("./utils");
 
 /**
@@ -64,6 +64,16 @@ function selectDirect(node, matcher) {
 }
 
 /**
+ * 
+ * @param {Document} doc 
+ * @returns {String}
+ */
+function serialize(doc) {
+        let serizlizer =new XMLSerializer();
+        return serizlizer.serializeToString(doc);
+}
+
+/**
  * Get matched children of current node
  * 
  * @param {Node} node 
@@ -81,8 +91,11 @@ function selectAll(node, predict) {
                         ls.push(value);
 
                 // do recursurve 
-                if (value.childNodes)
-                        ls.push(selectAll(value, predict));
+                if (value.childNodes){
+                        selectAll(value, predict).forEach(x=>{
+                                ls.push(x);
+                        })
+                }
         });
 
         return ls;
@@ -139,5 +152,6 @@ exports.XML_DOM = {
         selectDirect,
         getAttribute,
         containsAttr: hasAttribute,
-        setAttr: setAttribute
+        setAttr: setAttribute,
+        serialize
 }

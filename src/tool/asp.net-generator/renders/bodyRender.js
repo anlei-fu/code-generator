@@ -29,7 +29,7 @@ function renderBody(config) {
                 row += `${IDENT}</td>\r\n`;
         }
 
-        return row;
+        return row.trimRight();
 }
 
 exports.renderBody = renderBody;

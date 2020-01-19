@@ -24,9 +24,11 @@ function test() {
       add: true,
       project: ZD.project,
       root:ZD.root,
-      abbrOfProject:ZD.abbrOfProject
+      abbrOfProject:ZD.abbrOfProject,
+      _delete:true,
+      edit:true,
    }
-   init(all.terminalDownMap, config);
+   init(all.upChannelDayQxstatDiff, config);
 }
 
 test();

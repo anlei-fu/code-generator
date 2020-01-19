@@ -171,6 +171,7 @@ class ColumnAnalyzer {
                 this.controlAnalyzer;
                 this.index = 0;
                 this._textArea = TEXT_AREAS;
+                this._tables;
         }
 
         /**
@@ -237,6 +238,10 @@ class ColumnAnalyzer {
                         return `LEFT JOIN ${NamingStrategy.toHungary(select.table).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.${suffix}`;
                 }
+        }
+
+        useTables(tables){
+           this._tables=tables;
         }
 }
 

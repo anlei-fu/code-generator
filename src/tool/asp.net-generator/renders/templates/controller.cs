@@ -52,15 +52,7 @@ namespace @project.UserWeb.Controllers
                 entity.TrimEmptyProperty();
 
                 string id = Request.Form["__id"];
-                if(id!=null&&id.Trim()!="")
-                {
-@addContent
-                }
-                else
-                {
-@updateContent
-                }
-
+@defaultValue
                 IResult result = @nameService.Instance.Save(id, entity);
                 if (result.Status)
                 {

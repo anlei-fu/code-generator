@@ -1,4 +1,4 @@
-const { OBJECT } = require("../../libs/utils");
+const { OBJECT,ARRAY } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { DIR } = require("../../libs/dir");
 const { FILE } = require("../../libs/file");
@@ -26,7 +26,7 @@ const defaultValueAnalyzer = new DelfaultValueAnalyzer();
 function init(table, config) {
 
         // create project structure
-     //   createFolder(config.project, STR.upperFirstLetter(table.name),config.root);
+        createFolder(config.project, STR.upperFirstLetter(table.name),config.root);
 
         // init controller analyzer
         controlAnalyzer.useDictionaryMatchers(require(`./resource/${config.abbrOfProject}/dictionaryMatchers.js`).dictionaryMatchers);
@@ -58,14 +58,16 @@ function init(table, config) {
         if (config.edit) {
                 config.operations.push({
                         condition: "",
-                        function: "add(@item.Id,'编辑')"
+                        function: "add(@item.Id,'编辑')",
+                        lable:"编辑"
                 });
         }
 
         if (config._delete) {
                 config.operations.push({
                         condition: "",
-                        function: "_delete(@item.Id)"
+                        function: "_delete(@item.Id)",
+                        lable:"删除"
                 });
         }
 
@@ -119,7 +121,7 @@ function generateRelationMatchers(project, tableName) {
                                 name: x.selfColumn,
                                 text: tables[x.otherTable].nameColumn,
                                 value: tables[x.otherTable].primaryColumn,
-                                defaultText: "--???--"
+                                defaultText: "--请选择--"
                         };
                 }
         });
@@ -173,6 +175,7 @@ function buildSelectConfig(table, config) {
         let selectConfig = {
                 selects: [],
                 texts: [],
+                timeFilter:false,
                 getListSql: {
                         columns: [],
                         joins: [],
@@ -211,6 +214,7 @@ function buildSelectConfig(table, config) {
                 selectConfig.getCountSql.conditions.push("{&@t.CreateTime >= to_date($ST,'YYYY-MM-DD')}");
                 selectConfig.getCountSql.conditions.push("{&@t.CreateTime < to_date($ET,'YYYY-MM-DD')}");
                 selectConfig.getListSql.orderBy = "ORDER BY t.CREATE_TIME DESC";
+                selectConfig.timeFilter=true;
         }
 
         if (table.columns["createdTime"]) {
@@ -219,6 +223,7 @@ function buildSelectConfig(table, config) {
                 selectConfig.getCountSql.conditions.push("{&@t.CreatedTime >= to_date($ST,'YYYY-MM-DD')}");
                 selectConfig.getCountSql.conditions.push("{&@t.CreatedTime < to_date($ET,'YYYY-MM-DD')}");
                 selectConfig.getListSql.orderBy = "ORDER BY t.CREATED_TIME DESC";
+                selectConfig.timeFilter=true;
         }
 
         // sort items
@@ -237,7 +242,7 @@ function buildSelectConfig(table, config) {
  */
 function buildControlConfig(analyzeResult, config, column) {
         if (controlAnalyzer.shouldBeSelect(column)) {
-                analyzeResult.select.lable = column.description;
+                analyzeResult.select.lable =normalizeLable(column.description);
                 analyzeResult.select.name = column.name;
                 config.selects.push(analyzeResult.select);
         } else {
@@ -257,15 +262,19 @@ function buildTableConfig(table, config) {
                 items: []
         };
 
-        OBJECT.forEach(table.columns, (key, value) => {
+        let columns = OBJECT.toArray(table.columns);
+        columns = columns.sort((x, y) => y.name - x.name);
+        columns = columns.sort((x, y) => getScore(y) - getScore(x));
+
+        columns.forEach(column => {
                 let item = {
-                        header: value.description,
+                        header: normalizeLable(column.description),
                         content: "",
                 }
 
-                item.content = controlAnalyzer.shouldBeSelect(value)
-                        ? `@item.GetDataValue("${value.name}Name")`
-                        : `@item.${value.name}`
+                item.content = controlAnalyzer.shouldBeSelect(column)
+                        ? `@item.GetDataValue("${column.name}Name")`
+                        : `@item.${column.name}`
 
                 tableConfig.items.push(item);
         });
@@ -294,6 +303,79 @@ function buildAddConfig(table, config) {
         });
 
         config.addConfig = addConfig;
+}
+
+/**
+ * 
+ * @param {String} lable
+ * @returns {String} 
+ */
+function normalizeLable(lable) {
+        if (lable.length > 2) {
+                if (STR.includesAny(lable, ["渠道", "账户", "产品", "套餐", "公司", "流程","终端"])){
+                        console.log("into here");
+                        return lable.replace("编号", "名称");
+                }
+        }
+        return lable;
+}
+
+const SCORERS={
+        primaryKey:{
+                match:x=>x.isPk,
+                weight:10
+        },
+        createUser:{
+                match:x=>{
+                        let lower=x.name.toLowerCase();
+                        return lower.includes("user")&&STR.includesAny(lower,["create","created"]);
+                },
+                weight:-4
+        },
+        createTime:{
+                match: x=>{
+                         let lower=x.name.toLowerCase();
+                         return STR.includesAny(lower,["time","date"])&&STR.includesAny(lower,["create","created"]);
+                 },
+                 weight:-3
+         },
+        updateUser:{
+                match:x=>{
+                        let lower=x.name.toLowerCase();
+                        return STR.includesAny(lower,["user"])&&STR.includesAny(lower,["update","edit"]);
+                },
+                weight:-2
+        },
+        updateTime:{
+                match: x=>{
+                        let lower=x.name.toLowerCase();
+                        return STR.includesAny(lower,["time","date"])&&STR.includesAny(lower,["update","edit"]);
+                },
+                weight:-1,
+        },
+        remark:{
+                match: x=>{
+                        let lower=x.name.toLowerCase();
+                        return STR.includesAny(lower,["remark","msg","message","description","log"]);
+                },
+                weight:0,
+        },
+        other:{
+                match:x=>true,
+                weight:2
+        }
+}
+
+/**
+ * 
+ * @param {Column} column 
+ * @returns {Number}
+ */
+function getScore(column) {
+        for(const c in SCORERS){
+                if(SCORERS[c].match(column))
+                   return SCORERS[c].weight;
+        }
 }
 
 exports.init = init
