@@ -128,7 +128,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs"/>
-  </ItemGroup>
+  <Compile Include="Controllers\123456.cs"/></ItemGroup>
   <ItemGroup>
     <Content Include="Config\BusinessLogic.xml"/>
     <Content Include="Config\CacheConfig.xml"/>
@@ -454,7 +454,7 @@
     <Content Include="Scripts\jquery-1.4.4.min.js"/>
     <Content Include="Views\Web.config"/>
     <Content Include="Views\Shared\Error.cshtml"/>
-  <Compile Content="1233"/></ItemGroup>
+  <Content Include="Config\EConfig\123456.xml"/></ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\ArtDialog\skins\black\"/>
     <Folder Include="Scripts\ArtDialog\skins\blue\"/>
@@ -530,7 +530,7 @@
     <Content Include="Views\TerminalInfo\Index.cshtml"/>
     <Content Include="Views\TerminalInfo\Item.cshtml"/>
     <Content Include="Views\TerminalInfo\AttachChannel.cshtml"/>
-  </ItemGroup>
+  <Content Include="Views\Shared\123456.cshtml"/></ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common Layer\ZDSystem.Entity\ZDSystem.Entity.csproj">
       <Project>{BF4BE8ED-1502-464D-8341-F260356A7324}</Project>

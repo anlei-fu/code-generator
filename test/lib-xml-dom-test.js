@@ -6,9 +6,17 @@ function  test(params) {
     let items= XML_DOM.selectAll(root,x=>x.tagName=="ItemGroup");
 
     let el= root.createElement("Compile");
-    el.setAttribute("Content","1233");
+    el.setAttribute("Include","Controllers\\123456.cs");
+    items[1].appendChild(el);
 
+    el =root.createElement("Content");
+    el.setAttribute("Include","Config\\EConfig\\123456.xml");
     items[2].appendChild(el);
+
+    el =root.createElement("Content");
+    el.setAttribute("Include","Views\\Shared\\123456.cshtml");
+    items[4].appendChild(el);
+
 
     FILE.write("1.xml",XML_DOM.serialize(root));
    

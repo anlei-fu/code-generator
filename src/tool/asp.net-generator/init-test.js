@@ -13,7 +13,7 @@ const FC={
 
 const ZD={
    project:"ZDSystem",
-   root:"F:/业务开发项目_研发一/千行收银台/syt_system_web",
+   root:"C:/Users/Administrator/Desktop/Projects/业务开发项目_研发一/千行收银台/syt_system_web",
    abbrOfProject:"zd"
 }
 
@@ -28,7 +28,7 @@ function test() {
       _delete:true,
       edit:true,
    }
-   init(all.upChannelDayQxstatDiff, config);
+   init(all.userMessageRecord, config);
 }
 
 test();
