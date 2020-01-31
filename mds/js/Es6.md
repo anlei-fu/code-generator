@@ -166,3 +166,30 @@ const arr = [ ...oldArr ]
 - js function can override  not surport polymorphic
 - var can overlay ,let can not overlay
 - without var ,it also surpports
+
+### isFrozen
+Object.isFrozen()方法判断一个对象是否被冻结
+1.一个对象被冻结 必须满足两个条件：
+
+该对象 的所有属性值 不可 被修改 ----Object.defineProperty(object,attr,{writable:false});
+该对象 不可被 配置 ----- Object.defineProperty(object,attr,{configurable:false});
+2.该方法返回 一个布尔值：
+Object.isFrozen(object) ----- true or false
+
+
+沙滩海风
+ECMAScript5新特性之Object.isExtensible、Object.preventExtensions
+阻止对象扩展后:
+
+ 
+
+1 不能添加属性。
+
+
+2 可以修改属性的值。
+
+
+3 可以删除属性。
+
+
+4 可以修改属性描述符。

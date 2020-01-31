@@ -41,7 +41,7 @@ class CellConverter {
  * @param {boolean} excludeFirstRow 
  * @returns {[Any]}
  */
-function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true, throwError = true) {
+function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true) {
         let outputs = [];
         split(csv).forEach((row, rowNo) => {
                 if (excludeFirstRow && rowNo == 0)
@@ -59,11 +59,12 @@ function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true, throwE
                 outputs.push(item);
         })
 
+        LOG.info("finish resolve!");
         return outputs;
 }
 
 /**
- * split
+ * Split csv string to cells, quotation required
  * 
  * @param {String} content
  * @returns {[[String]]} 
@@ -152,8 +153,8 @@ function toCsvString(array, cellConverters, makeHeaders = true) {
         }
 
         array.forEach(item => {
-                for (const key in cellConverters)
-                        output += `${normalizeString(cellConverters[key].doConvert(item[key]))},`;
+                for (const convertor in cellConverters)
+                        output += `${normalizeString(cellConverters[convertor].doConvert(item[convertor]))},`;
 
                 output = STR.removeLastComa(output) + "\r\n";
         });
@@ -162,6 +163,7 @@ function toCsvString(array, cellConverters, makeHeaders = true) {
 }
 
 /**
+ * Escape '"' char
  * 
  * @param {String} str 
  * @returns {String}

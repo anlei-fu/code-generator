@@ -9,7 +9,7 @@ if (!global.LOGGERS)
 
         };
 
-// Init log writers, add default console writer
+// Init log writers, add enable default console writer
 if (!global.LOG_WRITERS) {
         global.LOG_WRITERS = {};
         global.LOG_WRITERS["console"] = {

@@ -18,11 +18,11 @@ class GraphBuilder {
 
         /**
          * 
-         * @param {[String]} items 
+         * @param {[String]} edges 
          */
-        line(items) {
+        path(edges) {
                 let result = "";
-                items.forEach((x, i, array) => {
+                edges.forEach((x, i, array) => {
                         if (i == array.length - 1) {
                                result+=x.name;
                         } else {

@@ -8,74 +8,92 @@
  */
 const { RANDOM } = require("./../libs/random")
 
-class MockGeneratorFieldConfig {
-        constructor(name, candidates) {
-                this.name = name;
-                this.candidates = candidates;
+const DEFAULT_CANDIDATES={
+        String:{
+                company:{
+
+                        match:x=>true,
+                        cadidates:["microsoft","oracle","google","tencent","github","ebay"]
+                },
+                image:{
+                        match:x=>true,
+                        cadidates:["123.png","456.jpg","google.bmp","tencent.gif","github.png","ebay.jpg"]
+                },
+                file:{
+                        match:x=>true,
+                        cadidates:["c://123.png","f://456.jpg","g://google.bmp","p://tencent.gif","k://github.png","ftp://ebay.jpg"]
+                },
+                name:{
+                        match:x=>true,
+                        cadidates:["li shi yu","wang wei","liu ming","li hua","deep","newman"]
+                },
+                phone:{
+                        match:x=>true,
+                        cadidates:["13882475922","18009049263","15878956321","18102345622","15922236556","18455624611"]
+                },
+                email:{
+                        match:x=>true,
+                        cadidates:["13882475922@163.com","18009049263@gmial.com","15878956321@qq.com","18102345622@ms.com","15922236556@182.com","18455624611@10001.com"]
+                },
+                telephone:{
+                        match:x=>true,
+                        cadidates:["0831-3447882","0851-3437852","021-3447842","027-84457882","0531-5657882","023-18102666"]
+                },
+                postcode:{
+                      
+                },
+                url:{
+                        match:x=>true,
+                        cadidates:["http://www.google.com","http://www.bbc.co.uk","http://www.qq.com","https://www.baidu.com","http://www.163.com","http://www.msdn.com"]
+                },
+                idNumber:{
+
+                }
+        },
+        Integer:{
+                count:{
+                        match:x=>true,
+                        cadidates:[12,0,1984,899,56589,6142]
+                },
+                amount:{
+                        match:x=>true,
+                        cadidates:[12,0,1984,899,56589,6142]
+                },
+
+        },
+        Date:{
+                createTime:{
+
+                },
+                updateTime:{
+
+                }
+        },
+        Float:{
+           price:{
+
+           },
+
+        },
+
+
+}
+
+class MockGenerate{
+        constructor(){
+                this._candidates=DEFAULT_CANDIDATES;
+        }
+
+        useCandidates(config){
+
+        }
+
+        disableCandidates(config){
+
+        }
+
+        getMockData(name,type){
+
         }
 }
 
-
-const dedaultCandidates={
-        "userName":[],
-        "componyName":[],
-        "status":[],
-        "type":[],
-        "remark":[],
-        "description":[],
-        "state":[],
-        "email":[],
-        "phone":[],
-        "addr":[],
-        "createTime":[],
-        "editTime":[],
-        "user":[],
-        "operator":[],
-        "file":[],
-        "url":[],
-        "idNo":[],
-        "idCardNo":[],
-        "type":[],
-        "amount":[],
-        "price":[],
-        "time":[],
-        "hash":[],
-        "key":[],
-        "value":[],
-        "path":[],
-        "summay":[],
-        "content":[],
-        "ip":[],
-        "size":[],
-        "length":[],
-        "memo":[]
-}
-
-/**
- * 
- * @param {[MockGeneratorFieldConfig]} configs 
- * @param {number} count 
- * @returns {[data]}
- */
-function generate(configs, count = 1) {
-        let ls = [];
-
-        let t = 0;
-        while (t++ < count) {
-                let data = {};
-                configs.forEach(x => {
-                        data[x.name] = x.candidates[RANDOM.nextVal(0, x.candidates.length - 1)];
-                });
-                ls.push(data);
-        }
-
-        return ls;
-}
-
-function insertToTable(){
-
-}
-
-function createJavaCode(){
-        
-}

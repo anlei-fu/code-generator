@@ -11,7 +11,7 @@
 |name|description|
 |---|---|
 |@Api|controller|
-|@ApiModel||
+|@ApiModel|req|
 |@ApiModelProperty|value:String,required:boolean|
 |@NotNull||
 |@NotBlank||

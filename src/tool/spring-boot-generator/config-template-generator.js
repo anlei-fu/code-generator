@@ -3,38 +3,36 @@ const { STR } = require("../../libs/str");
 const { getJavaType } = require("./utils");
 const { SimpleRender } = require("../simple-pattern-render/simple-pattern-render");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./analyzer");
-const { LoggerFactory } = require("./../logging/logger-factory");
 const { renderUserReq } = require("./renders/user-req-render");
 
-const LOG = LoggerFactory.getLogger("BuilderConfigGenerator");
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
 const REQ_IDENT = "                                           ";
 const COMMENT_IDENT = "                        ";
 const EXCLUDE_IDENT = "                                                  ";
 const USER_MATCHERS = {
         insert: {
-                matcher: x => STR.includesAny(x.toLowerCase(), [
+                matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
                         "createuser"])
-                        || STR.equalAny(x.toLowerCase(), ["account",
+                        || STR.equalAny(columnName.toLowerCase(), ["account",
                                 "user",
                                 "admin",])
         },
         delete: {
-                matcher: x => STR.equalAny(x.toLowerCase(), [
+                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
                         "account",
                         "user",
                         "admin"
                 ])
         },
         update: {
-                matcher: x => STR.includesAny(x.toLowerCase(), [
+                matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
                         "updateuser",
                         "edituser",
                         "modifyuser"
-                ]) || STR.equalAny(x.toLowerCase(), ["user", "admin", "account"])
+                ]) || STR.equalAny(columnName.toLowerCase(), ["user", "admin", "account"])
         },
         select: {
-                matcher: x => STR.equalAny(x.toLowerCase(), [
+                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
                         "account",
                         "user",
                         "admin"
@@ -47,7 +45,7 @@ const USER_MATCHERS = {
  */
 class ConfigBuilderGenerator {
 
-        constructor () {
+        constructor() {
                 this._selectAnalyzer = new SelectAnalyzer();
                 this._insertAnalyzer = new InsertAnalyzer();
                 this._updateAnalyzer = new UpdateAnlyzer();
@@ -103,7 +101,7 @@ class ConfigBuilderGenerator {
                 let insert_text = this._renderExcludes(insert.excludes)
                 let update_text = this._renderExcludes(update.excludes)
 
-                let config = {
+                let model = {
                         keyType,
                         key,
                         skey,
@@ -128,7 +126,7 @@ class ConfigBuilderGenerator {
                         selectMsg: select.msg.trimRight()
                 }
 
-                let content = CONFIG_ITEM_RENDER.renderTemplate(config);
+                let content = CONFIG_ITEM_RENDER.renderTemplate(model);
                 let output = "";
                 STR.splitToLines(content).forEach(x => {
                         if (x.trim() == "@@")
@@ -141,6 +139,7 @@ class ConfigBuilderGenerator {
         }
 
         /**
+         * Render excludes
          * 
          * @param {[String]} items 
          * @returns {String}
@@ -159,6 +158,7 @@ class ConfigBuilderGenerator {
         }
 
         /**
+         * Render exxpression
          * 
          * @param {[{key:String,expression:String}]} items 
          * @returns {String}
@@ -173,6 +173,7 @@ class ConfigBuilderGenerator {
         }
 
         /**
+         * Render req
          * 
          * @param {{key:String,validates:[String]}} items 
          * @returns {String}
@@ -190,6 +191,7 @@ class ConfigBuilderGenerator {
         }
 
         /**
+         * Generate select config
          * 
          * @param {Table} table 
          * @returns {{msg:String excludes:[String],validates:{key:String,validates:[String]},expressions:{key:String,expression:String}}}
@@ -208,6 +210,7 @@ class ConfigBuilderGenerator {
                                 return;
                         }
 
+                        // generate validate
                         let validate = this._selectAnalyzer.getValidates(type, key);
                         if (validate.length > 0) {
                                 msg += `${COMMENT_IDENT}// ${key} : validates --- ${STR.arrayToString(validate, "", "  ")}\r\n`;
@@ -218,6 +221,7 @@ class ConfigBuilderGenerator {
 
                         }
 
+                        // generate expression
                         let expression = this._selectAnalyzer.getExpression(type, key);
                         if (expression) {
                                 msg += `${COMMENT_IDENT}// ${key} : expression --- ${expression}\r\n`;
@@ -238,6 +242,7 @@ class ConfigBuilderGenerator {
         }
 
         /**
+         * Generate update config
          * 
          * @param {Table} table 
          * @returns {{msg:String excludes:[String],validates:{key:String,validates:[String]}}}
@@ -255,6 +260,7 @@ class ConfigBuilderGenerator {
                                 return;
                         }
 
+                        // generate validate
                         let validate = this._updateAnalyzer.getValidates(type, key);
                         if (validate.length > 0) {
                                 msg += `${COMMENT_IDENT}// ${key} : validate --- ${STR.arrayToString(validate, "", "  ")}\r\n`;
@@ -274,6 +280,7 @@ class ConfigBuilderGenerator {
         }
 
         /**
+         * Generate Insert config
          * 
          * @param {Table} table 
          * @returns {{msg:String excludes:[String],validates:{key:String,validates:[String]}}}
@@ -289,6 +296,7 @@ class ConfigBuilderGenerator {
                                 return;
                         }
 
+                        // generate validate
                         let validate = this._insertAnalyzer.getValidates(value);
                         if (validate.length > 0) {
                                 msg += `${COMMENT_IDENT}// ${key} : validate --- ${STR.arrayToString(validate, "", "  ")}\r\n`;
@@ -307,12 +315,17 @@ class ConfigBuilderGenerator {
                 };
         }
 
+        /**
+         * Check if has user column
+         * 
+         * @param {Table} table 
+         * @param {String} type 
+         */
         _hasUser(table, type) {
                 for (const c in table.columns) {
                         let javaType = getJavaType(table.columns[c].type);
                         if (javaType == "String" && USER_MATCHERS[type].matcher(c))
                                 return true;
-
                 };
 
                 return false;

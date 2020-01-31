@@ -114,7 +114,7 @@ class Writer {
         }
 
         /**
-         *Do replace and write file
+         * Do replace and write file
          * 
          * @private
          * @param {String} name 
@@ -122,9 +122,12 @@ class Writer {
          */
         _writeCore(path, content, name) {
                 content = STR.replace(content, { "@project": this._project, "@name": name });
+
+                // insert java file copyright 
                 if (path.endsWith(".java"))
                         content = COMPYRIGHT + formatJavaFile(content);
 
+                // insert xml file copyright
                 if (path.endsWith(".xml"))
                         content = COMPYRIGHT_XML + content;
 

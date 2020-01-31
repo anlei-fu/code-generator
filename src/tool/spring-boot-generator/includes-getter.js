@@ -14,20 +14,20 @@ function getIncludes(config) {
                 return CACHE.get(config.id);
 
         let includes = [];
-        config.includes.forEach(x => {
-                includes.push(getColumn(config.table, x,config.alias));
+        config.includes.forEach(include => {
+                includes.push(getColumn(config.table, include,config.alias));
         });
 
-        config.joins.forEach(x => {
-                x.includes.forEach(y => {
-                        includes.push(getColumn(x.table, y.alias));
+        config.joins.forEach(join => {
+                join.includes.forEach(include => {
+                        includes.push(getColumn(join.table, include.alias));
                 });
         });
 
         if (config.type == "insert") {
-                includes.forEach(x => {
-                        if (x.nullable)
-                                x.ifExpression = `${x.name} != null`;
+                includes.forEach(include => {
+                        if (include.nullable)
+                                include.ifExpression = `${include.name} != null`;
                 });
         }
 

@@ -4,7 +4,6 @@ const CACHE = new Map();
 /**
  * Get all codition columns
  * 
- * @private
  * @returns {[Column]}
  */
 function getConditions(config) {
@@ -26,6 +25,7 @@ function getConditions(config) {
               });
         });
 
+        // add expression property if should
         generateExpression(conditions);
 
         CACHE.set(config.id, conditions);

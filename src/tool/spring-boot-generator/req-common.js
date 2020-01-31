@@ -8,7 +8,7 @@ const USER_ANALYZER=new UserAnalyzer();
 const CACHE = new Map();
 
 /**
- * Get req params with type field
+ * Get req params with type 
  * 
  * @private
  * @param {Config} config 
@@ -30,7 +30,7 @@ function getReqParamsWithoutType(config) {
 }
 
 /**
- * Get req params core
+ * Get req params 
  * 
  * @param {Config} config 
  * @param {boolean} withType 
@@ -51,8 +51,6 @@ function getReqParams(config, withType) {
         return params;
 }
 
-
-
 /**
  * Generate Req entity
  * 
@@ -61,16 +59,18 @@ function getReqParams(config, withType) {
  */
 function generateReq(config, req) {
 
+        // excludes other reqs
         config.reqs.forEach(x=>{
              if(!x.doCreate)
                  req.excludes.add(x.name);
         });
 
+        // excludes user column
         let userColumn=USER_ANALYZER.findUserColumn(config);
         if(userColumn)
            req.excludes.add(userColumn);
 
-
+        // get req by conditions
         let conditions;
         if (config.type == "select" || config.type == "delete") {
                 conditions = getConditions(config);
@@ -82,6 +82,7 @@ function generateReq(config, req) {
         conditions = conditions.filter(x => !req.excludes.has(x.name));
         let rets = [];
 
+        // generate validates and expression reqs
         conditions.forEach(x => {
 
                 if (req.validates.has(x.name))

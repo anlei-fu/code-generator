@@ -4,10 +4,9 @@ const { FILE } = require("./../../libs/file");
 const { generate } = require("./../sqls/model/model-generator");
 const { resolve } = require("./../sqls/model/resolver");
 const { ConfigBuilderGenerator } = require("./config-template-generator");
-
 const { LoggerFactory } = require("./../logging/logger-factory");
 const LOG = LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
-const COMPYRIGHT=FILE.read("./templates/copyright.java").replace("@date",new Date().toLocaleString());
+const COMPYRIGHT = FILE.read("./templates/copyright.java").replace("@date", new Date().toLocaleString());
 
 /**
  * Initialize a spring boot CRUD web project 
@@ -24,33 +23,33 @@ async function init(project, dbConfig) {
         let tables = await resolve(dbConfig, dbConfig.db);
         let root = `./output/${project}/config`;
         let tableNames = [];
-        tables.forEach(x => {
-                tableNames.push(x.name);
+        tables.forEach(table => {
+                tableNames.push(table.name);
 
                 let pk;
-                for (const c in x.columns) {
-                        pk = pk || x.columns[c];
+                for (const c in table.columns) {
+                        pk = pk || table.columns[c];
 
-                        if (x.columns[c].isPk) {
-                                pk = x.columns[c];
+                        if (table.columns[c].isPk) {
+                                pk = table.columns[c];
                                 break;
                         }
                 }
-                pk = pk || x.columns[key].name;
-                generateConfigItem(root, x, pk);
+                pk = pk || table.columns[key].name;
+                generateConfigItem(root, table, pk);
         });
 
         // create all.js
-        let content = "";
+        let allContent = "";
         tableNames.forEach(x => {
-                content += `        require("./${x}.js").${x}Config,\r\n`;
+                allContent += `        require("./${x}.js").${x}Config,\r\n`;
         });
-        FILE.write(`${root}/all.js`,COMPYRIGHT+FILE.read("./templates/config-all.js").replace("@content", content.trimRight()));
+        FILE.write(`${root}/all.js`, COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
 
         // create index.js
-        copy("./templates/generator.js",`./output/${project}/index.js` , project);
+        copy("./templates/generator.js", `./output/${project}/index.js`, project);
 
-        copy('./templates/packages.js', `./output/${project}/packages.js`,project);
+        copy('./templates/packages.js', `./output/${project}/packages.js`, project);
 
         // generate all table infos
         await generate(dbConfig, dbConfig.db, `./output/${project}/db`);
@@ -72,7 +71,7 @@ function makeAllFolders(project, dbConfig) {
         DIR.create(`./output/${project}/config`);
         DIR.create(`./output/${project}/${project}`);
 
-        // maven project folders
+        // project folders
         DIR.create(`./output/${project}/${project}/src`);
         DIR.create(`./output/${project}/${project}/src`);
         DIR.create(`./output/${project}/${project}/src/main`);
@@ -139,14 +138,14 @@ function makeAllFolders(project, dbConfig) {
                 "@dbUser": dbConfig.user,
                 "@dbPassword": dbConfig.password,
                 "@project": project,
-                "@date":new Date().toLocaleString()
+                "@date": new Date().toLocaleString()
         };
         let config = FILE.read("./templates/application.properties");
         FILE.write(`./output/${project}/${project}/src/main/resources/application.properties`, STR.replace(config, patterns));
 }
 
 /**
- * Copy all nnotation files
+ * Copy all annotation files
  * 
  * @param {String} sourceFolder 
  * @param {String} targetFolder 
@@ -159,7 +158,7 @@ function copyFolder(sourceFolder, targetFolder, project) {
 }
 
 /**
- * Generate confi item
+ * Generate config item
  * 
  * @param {String} configRoot 
  * @param {String} tableName 
@@ -172,16 +171,23 @@ function generateConfigItem(configRoot, table, pk) {
         };
 
         templates = STR.replace(templates, patterns);
-        FILE.write(`${configRoot}/${table.name}.js`,COMPYRIGHT+templates);
+        FILE.write(`${configRoot}/${table.name}.js`, COMPYRIGHT + templates);
 }
 
+/**
+ * Copy file and replace '@project' pattern
+ * 
+ * @param {String} source 
+ * @param {String} target 
+ * @param {String} project 
+ */
 function copy(source, target, project) {
-        let content=FILE.read(source).replace(/@project/g, project);
-    
-        if(source.endsWith(".js")||source.endsWith(".java"))
-           content=COMPYRIGHT+content;
+        let content = FILE.read(source).replace(/@project/g, project);
 
-        FILE.write(target,content);
+        if (source.endsWith(".js") || source.endsWith(".java"))
+                content = COMPYRIGHT + content;
+
+        FILE.write(target, content);
 }
 
 exports.init = init;

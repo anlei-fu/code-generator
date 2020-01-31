@@ -8,7 +8,7 @@
  */
 const { FILE } = require("./../../libs/file");
 
-function installJava(javaHome) {
+function setJavaEnviriments(javaHome) {
         return FILE.read("./templates/install-java.bat").replace("@home", javaHome);
 }
 
@@ -16,6 +16,10 @@ function gitPull(dirver, path) {
         return FILE.read("./templates/git-pull.bat")
                 .replace("@path", path)
                 .replace("@driver", dirver);
+}
+
+function gitPush(){
+
 }
 
 function buildSolution(version, sln, clean, rebuild, release) {
@@ -30,6 +34,34 @@ function buildSolution(version, sln, clean, rebuild, release) {
         return output;
 }
 
+
+function runDevServer(){
+
+}
+
+function killDevServer(){
+
+}
+
+function installZookeeper(){
+
+}
+
+function installMySql(){
+
+}
+
+function installRedis(){
+
+}
+
+function installNgix(){
+
+}
+
+function installMongoDb(){
+
+}
 
 function publish(version, sln, pubDir, release) {
         let output = FILE.read("./templates/publish.bat")

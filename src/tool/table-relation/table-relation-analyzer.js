@@ -1,12 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: fuanlei
- * @Date: 2019-12-12 15:42:53
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-12-12 15:48:58
- */
-
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { SimpleFullTextSearcher } = require("../full-text-index/simple-full-text-searcher");
@@ -16,7 +7,7 @@ const { LoggerFactory } = require("../logging/logger-factory")
 const LOG = LoggerFactory.getLogger("Table relation resolver");
 
 class TableMetaInfo {
-        constructor () {
+        constructor() {
 
                 /**
                  * Is count limited
@@ -56,7 +47,7 @@ class TableMetaInfo {
 }
 
 class TableRelation {
-        constructor () {
+        constructor() {
                 /**
                  * Other table
                  */
@@ -90,24 +81,24 @@ const DEFAULT_MATCHER = (name, pattern) =>
 const RELATION_CANDIDATES_MATCHERS = {
         String: {
                 Id: {
-                        matcher: (column) => column.endsWith("Id")
-                                && column != "Id"
+                        matcher: (columnName) => columnName.endsWith("Id")
+                                && columnName != "Id"
                 },
                 No: {
-                        matcher: (column) => column.endsWith("No")
-                                && column != "No"
-                                && !STR.includesAny(column.toLowerCase(), ["phone", "post", "card", "id", "tel"])
+                        matcher: (columnName) => columnName.endsWith("No")
+                                && columnName != "No"
+                                && !STR.includesAny(columnName.toLowerCase(), ["phone", "post", "card", "id", "tel"])
                 }
         },
         Integer: {
                 Id: {
-                        matcher: (column) => column.endsWith("Id")
-                                && column != "Id"
+                        matcher: (columnName) => columnName.endsWith("Id")
+                                && columnName != "Id"
                 },
                 No: {
-                        matcher: x => x.endsWith("No")
-                                && !STR.includesAny(x.toLowerCase(), ["phone", "post", "card", "id", "tel"])
-                                && x != "No"
+                        matcher: columnName => columnName.endsWith("No")
+                                && !STR.includesAny(columnName.toLowerCase(), ["phone", "post", "card", "id", "tel"])
+                                && columnName != "No"
                 },
         },
 }
@@ -116,7 +107,7 @@ const DEFAULT_KEYWORD_CANDIATE = ["up", "down", "order", "base", "fund", "bank",
 
 const DEFAULT_MAIN_TABLE_MATCHERS = {
         Default: {
-                matcher: x => STR.endsWithAny(x.toLowerCase(), [
+                matcher: columnName => STR.endsWithAny(columnName.toLowerCase(), [
                         "channel",
                         "product",
                         "province",
@@ -133,7 +124,7 @@ const DEFAULT_MAIN_TABLE_MATCHERS = {
 }
 
 class TableRelationAnalyzer {
-        constructor (tables) {
+        constructor(tables) {
                 this._candiadtesMatchers = RELATION_CANDIDATES_MATCHERS;
                 this._searcher = new SimpleFullTextSearcher();
                 this._tables = tables;
@@ -152,7 +143,7 @@ class TableRelationAnalyzer {
          */
         analyze() {
                 let relations = {};
-                OBJECT.forEach(this._tables, (tableName, table) => {
+                OBJECT.forEach(this._tables, (__, table) => {
                         OBJECT.forEach(table.columns, (_, column) => {
 
                                 if (column.isPk)
@@ -242,6 +233,7 @@ class TableRelationAnalyzer {
                         });
                 })
 
+                // tokenizer ,split by '_'
                 this._searcher.useCustomerTokenizer(x => x.toLowerCase().split("_"));
                 this._searcher.addDocuments(docs);
         }
@@ -258,8 +250,8 @@ class TableRelationAnalyzer {
         _shouldBeCandidate(type, columnName) {
                 if (!this._candiadtesMatchers[type])
                         return false;
-                if(columnName.includes("phone")){
-                        let t=0;
+                if (columnName.includes("phone")) {
+                        let t = 0;
                 }
 
                 for (const key in this._candiadtesMatchers[type]) {
@@ -293,7 +285,7 @@ class TableRelationAnalyzer {
 
                 let bestCandidate = this._customerSearchResultsMatcher
                         ? this._customerSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates)
-                        : this._defaultSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates);
+                        : this._defaultBestResultsMatcher(selfColumn.rawName, selfTableRawName, candidates);
 
                 if (!bestCandidate)
                         return;
@@ -315,46 +307,62 @@ class TableRelationAnalyzer {
                 relations[table].push(relation);
         }
 
+        /**
+         * Default keyword generator
+         * 
+         * @param {String} columnRawName 
+         * @param {String} tableRawName 
+         * @returns {String}
+         */
         _defaultSearchKeyWordsGenerator(columnRawName, tableRawName) {
                 let keywords = this._normolizeColumnName(columnRawName);
                 let tableSegs = tableRawName.toLowerCase().split("_");
                 let set = new Set(tableSegs);
 
                 // pick keyword from table name
-                DEFAULT_KEYWORD_CANDIATE.forEach(x => {
-                        if (set.has(x)) {
-                                keywords += `_${x}`;
+                DEFAULT_KEYWORD_CANDIATE.forEach(candidate => {
+                        if (set.has(candidate)) {
+                                keywords += `_${candidate}`;
                         }
                 })
 
                 return `${tableSegs[0]}_${keywords}`;
         }
 
-        _defaultSearchResultsMatcher(columnRawName, tableRawName, results) {
+        /**
+         * Default best resutl matcher
+         * 
+         * @param {String} columnRawName 
+         * @param {String} tableRawName 
+         * @param {[SearcherResult]} results 
+         */
+        _defaultBestResultsMatcher(columnRawName, tableRawName, results) {
+
+                // normalize 
                 let columnSegs = this._normolizeColumnName(columnRawName.toLowerCase()).split("_");
                 if (columnSegs[columnSegs.length - 1] == "")
                         columnSegs.pop();
 
                 let best;
-                for (var x of results) {
+                for (const result of results) {
 
-                        // self table
-                        if (x.content.toLowerCase() == tableRawName.toLowerCase())
+                        // self table skip
+                        if (result.content.toLowerCase() == tableRawName.toLowerCase())
                                 continue;
 
-                        // set default return if not set yet      
+                        // set default highest score best if has not set yet    
                         if (!best)
-                                best = x;
+                                best = result;
 
-                        let tableSegs = x.content.toLowerCase().split("_");
+                        let tableSegs = result.content.toLowerCase().split("_");
 
                         // remove useless suffix
                         if (this._uselessSuffix.has(tableSegs[tableSegs.length - 1]))
                                 tableSegs.pop();
 
-                        // same end seg
+                        // same end seg ,return
                         if (columnSegs[columnSegs.length - 1] == tableSegs[tableSegs.length - 1])
-                                return x;
+                                return result;
                 };
 
                 if (best && !best.name.toLowerCase().includes(columnSegs[columnSegs.length - 1]))

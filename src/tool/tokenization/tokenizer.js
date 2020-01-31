@@ -13,6 +13,7 @@ const { OPERATORS } = require("./constants");
 
 
 class Tokenizer {
+        
         /**
          * 
          * @param {CharSequenceReader} reader 
@@ -21,6 +22,7 @@ class Tokenizer {
                 this._reader = reader;
                 this._output = [];
         }
+
         /**
          * @returns {[Token]}
          */
@@ -89,6 +91,7 @@ class Tokenizer {
                 }
                 return this._output;
         }
+
         /**
          * 
          * @param {String} current 
@@ -112,6 +115,7 @@ class Tokenizer {
                         this._output.push(new Token(current, TOKEN_TYPE.operator));
                 }
         }
+
         parseSingleLineComment() {
                 let temp = "--";
                 while (this._reader.hasNext()) {
@@ -124,6 +128,8 @@ class Tokenizer {
 
                 this._output.push(new Token(temp, TOKEN_TYPE.comment));
         }
+
+
         parseMutipleLineComment() {
                 let temp = "/*";
                 while (this._reader.hasNext()) {
@@ -143,6 +149,7 @@ class Tokenizer {
 
                 this._output.push(new Token(temp, TOKEN_TYPE.comment));
         }
+
         /**
          * 
          * @param {String} current 
@@ -160,6 +167,7 @@ class Tokenizer {
                         this._output.push(new Token(current, TOKEN_TYPE.symbol));
                 }
         }
+
         /**
          * 
          * @param {String} current 
@@ -178,6 +186,7 @@ class Tokenizer {
 
                 this._output.push(new Token(temp, TOKEN_TYPE.string));
         }
+
         /**
          * 
          * @param {String} current 
@@ -200,9 +209,11 @@ class Tokenizer {
                                 break;
                         }
                 }
+
                 //should check again
                 this._output.push(new Token(temp, TOKEN_TYPE.number));
         }
+
         /**
          * 
          * @param {String} current 
@@ -232,6 +243,7 @@ class Tokenizer {
 
                 this._output.push(new Token(temp, TOKEN_TYPE.blank));
         }
+
         /**
          * 
          * @param {String} current 

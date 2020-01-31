@@ -156,7 +156,7 @@ function extend(self, other, override) {
 }
 
 /**
- * Deep extend property
+ * Deep extend object property
  * 
  * @param {Object} self 
  * @param {Object} other 
@@ -301,9 +301,10 @@ function text(obj, name) {
  * @param {String} name 
  * @returns {String}
  */
-function export_(obj, name) {
+function export_(obj, name, doReplace = true) {
         let json = JSON.stringify(obj, null, "\t");
-        json = doReplace(json);
+        if (doReplace)
+                json = doReplace(json);
 
         return `exports.${name} = ${json};\r\n\r\n`;
 }

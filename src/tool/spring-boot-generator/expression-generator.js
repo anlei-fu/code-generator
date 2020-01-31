@@ -5,6 +5,7 @@ function generateExpression(conditions) {
 
 }
 
+// For  generating req validate not for sql
 function generateUpdateExpression(includes) {
         includes.forEach(x => {
                 generateUpdateExpressionCore(x);
@@ -31,7 +32,7 @@ function generateExpressionCore(condition) {
                         condition.expression = `@prefix${condition.column} like '%\${${condition.like}}'\r\n`;
                 }
 
-        } else if (condition.type == "Integer" || condition.type == "Float") {
+        } else if (condition.type == "Integer" || condition.type == "Float"||condition.type == "Double") {
                 if (condition.bigger) {
                         condition.expression = `@prefix${condition.column} &gt; ${condition.name}\r\n`;
                 } else if (condition.biggerEqual) {

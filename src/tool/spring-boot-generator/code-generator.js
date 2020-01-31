@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------entities-------------------------------------------------------------------------------*/
 
 class Field {
-        constructor () {
+        constructor() {
                 this.name = "";
                 this.type = "";
                 this.description = "";
@@ -13,7 +13,7 @@ class Field {
  * Join properties
  */
 class Join {
-        constructor () {
+        constructor() {
                 this.table = {}
                 this.includes = [];
                 this.conditions = [];
@@ -26,7 +26,7 @@ class Join {
  * Req properties
  */
 class Req {
-        constructor () {
+        constructor() {
                 this.name = "";
                 this.description = "";
                 this.exlcludes = new Set();
@@ -40,7 +40,7 @@ class Req {
  * Params properties
  */
 class Params {
-        constructor () {
+        constructor() {
                 this.name = "";
                 this.description = "";
                 this.req = new Req();
@@ -53,7 +53,7 @@ class Params {
  * Resp properties
  */
 class Resp {
-        constructor () {
+        constructor() {
                 this.name = "";
                 this.description = "";
                 this.doCreate = false;
@@ -65,7 +65,7 @@ class Resp {
  * Controller properties
  */
 class Controller {
-        constructor () {
+        constructor() {
                 this.path = "";
                 this.description = "";
         }
@@ -75,12 +75,32 @@ class Controller {
  * Config properties
  */
 class Config {
-        constructor () {
+        constructor() {
                 this.id = "";
+
+                /**
+                 * String 'entity'|'req'|'resp'|'param'
+                 */
                 this.type = "";
+
+                /**
+                 * Table
+                 */
                 this.table = {};
+
+                /**
+                 * [ColumnMetaInfo]
+                 */
                 this.includes = [];
+
+                /**
+                 * [ColumnMetaInfo]
+                 */
                 this.conditions = [];
+
+                /**
+                 * [Join]
+                 */
                 this.joins = [new Join()];
                 this.noController = false;
                 this.noService = false;
@@ -95,7 +115,7 @@ class Config {
  * GeneratorConfig properties
  */
 class GeneratorConfig {
-        constructor () {
+        constructor() {
                 this.controlerFolder = "";
                 this.mapperFolder = "";
                 this.mapperConfigFolder = "";
@@ -129,8 +149,9 @@ class Generator {
          * 
          * @param {GeneratorConfig} config 
          */
-        constructor (config, writer, packageRebder) {
+        constructor(config, writer, packageRender) {
                 this._checkConfig(config);
+
                 this._config = config;
 
                 this._initTable(config.table);
@@ -139,19 +160,20 @@ class Generator {
                         this._initConfig(x);
                 });
 
-                this._packageRender = packageRebder;
+                this._packageRender = packageRender;
                 this._writer = writer;
         }
 
         /**
-         * Write all files
+         * Generate all files
          * 
+         * @private
          * @param {Config} config 
          * @returns {String}
          */
         generate() {
 
-                // entites
+                // entity
                 this._generateEntity();
 
                 this._config.items.forEach(x => {
@@ -170,6 +192,7 @@ class Generator {
         /**
          * Check config is ok
          * 
+         * @private
          * @param {GeneratorConfig} config 
          */
         _checkConfig(config) {
@@ -190,6 +213,7 @@ class Generator {
         /**
          * Initialize geneartor config
          * 
+         * @private
          * @param {GeneratorConfig} config 
          */
         _initConfig(config) {
@@ -197,9 +221,11 @@ class Generator {
                 if (config.alias)
                         this._config.table.alias = config.alias;
 
+                // if absent set default 'select'
                 config.type = config.type || "select";
                 config.id = config.id || this._getDefaultId(config);
 
+                // flag
                 let hasDocreateReq = false;
                 // if has req to create
                 config.reqs.forEach(req => {
@@ -209,16 +235,17 @@ class Generator {
                         }
                 });
 
+                // determine if generate params on has create req and params's length >1
                 if ((hasDocreateReq && config.reqs.length > 1) || config.reqs.length > 3) {
                         config.params.doCreate = true;
                         this._initEntityBasicInfo(config, config.params, "Params");
                 }
 
+                // generate controller path and description
                 if (!config.noController) {
                         config.controller.path = config.controller.path || `/${STR.lowerFirstLetter(config.name)}/${config.id}`;
                         config.controller.description = config.controller.description || "";
                 }
-
 
                 // set default join type
                 if (config.joins) {
@@ -228,6 +255,7 @@ class Generator {
                         });
                 }
 
+                // determine if generate resp on joins' length >0 and type is select
                 if (config.joins.length > 0 && config.type == "select") {
                         config.resp.doCreate = true;
                         this._initEntityBasicInfo(config, config.resp, "Resp");
@@ -237,9 +265,10 @@ class Generator {
 
         /**
          * Analyze and generate default id
-         * 
          *  {get|delete|update|add}{entity}ByxxyyAndzz
          * 
+         * 
+         * @private
          * @param {Config} config 
          */
         _getDefaultId(config) {
@@ -278,20 +307,21 @@ class Generator {
         }
 
         /**
-         * Init table columns ,convert 'origin type' to 'java type'
+         * Init table columns ,convert 'sql type' to 'java type'
          * 
+         * @private
          * @param {Table} table 
          */
         _initTable(table) {
-                OBJECT.forEach(table.columns, (key, value) => {
-                        table.columns[key].type = getJavaType(value.type);
+                OBJECT.forEach(table.columns, (_, Column) => {
+                        Column.type = getJavaType(Column.type);
                 });
         }
 
         /**
          * Set basic infos if absent
          * 
-         * 
+         * @private
          * @param {Config} config 
          * @param {Entity} entity 
          * @param {String} type 
@@ -303,7 +333,9 @@ class Generator {
         }
 
         /**
-         * Write entity file
+         * Generate entity file
+         * 
+         * @private
          */
         _generateEntity() {
                 var entity = {};
@@ -312,18 +344,13 @@ class Generator {
                 entity.description = this._config.table.description;
                 entity.fields = OBJECT.toArray(this._config.table.columns);
                 let content = Render.renderEntity(entity);
-                content = this._packageRender.renderPackage(content);
-                this._writer.writeEntity(this._config.name, content);
-
-                this._packageRender.addPackage({
-                        name: STR.upperFirstLetter(entity.name),
-                        type: "entity",
-                        isSystem: false
-                });
+                this._generateEntityCore(content, "entity", this._config.name);
         }
 
         /**
-         * Write mapper file
+         * Generate mapper file
+         * 
+         * @private
          */
         _generateMapper() {
                 let mapper = Render.renderMapper(this._config);
@@ -332,7 +359,9 @@ class Generator {
         }
 
         /**
-         * Write mapper config file
+         * Generate mapper config file
+         * 
+         * @private
          */
         _generateMapperConfig() {
                 let mapperConfig = Render.renderMapperConfig(this._config);
@@ -340,7 +369,9 @@ class Generator {
         }
 
         /**
-         * Write service file
+         * Generate service file
+         * 
+         * @private
          */
         _generateService() {
                 let service = Render.renderService(this._config);
@@ -349,7 +380,9 @@ class Generator {
         }
 
         /**
-         * Write service impl file
+         * Genearate service impl file
+         * 
+         * @private
          */
         _generateServiceImpl() {
                 let serviceImpl = Render.renderServiceImpl(this._config);
@@ -358,7 +391,9 @@ class Generator {
         }
 
         /**
-         * Write controller file
+         * Generate controller file
+         * 
+         * @private
          */
         _generateController() {
                 let controller = Render.renderController(this._config);
@@ -367,9 +402,9 @@ class Generator {
         }
 
         /**
-         * Write req file
+         * Generate req file
          * 
-         * 
+         * @private
          * @param {Config} config 
          * @returns {String}
          */
@@ -384,45 +419,34 @@ class Generator {
                                 req.type = "req";
                                 req.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
                                 let content = Render.renderEntity(req);
-                                content = this._packageRender.renderPackage(content);
-                                this._writer.writeReq(x.type, content);
 
-                                this._packageRender.addPackage({
-                                        name: x.type,
-                                        type: "req",
-                                        isSystem: false
-                                });
+                                this._generateEntityCore(content, "req", x.type);
                         }
                 })
         }
 
         /**
-         * Write resp file
+         * Generate resp file
          * 
+         * @private
          * @param {Config} config 
          * @returns {String}
          */
         _generateResp(config) {
                 if (config.resp.doCreate) {
-
-                        let includes = getIncludes(config);
                         let entity = {};
                         entity.type = config.resp.type;
                         entity.description = config.resp.description;
                         let content = Render.renderEntity(entity);
-                        content = this._packageRender.renderPackage(content);
-                        this._writer.writeResp(x.type, content);
-                        this._packageRender.addPackage({
-                                name: config.resp.type,
-                                isSystem: false,
-                                type: "resp"
-                        });
+
+                        this._generateEntityCore(content, "resp", config.resp.type);
                 }
         }
 
         /**
-         * Write param file
+         * Generate param file
          * 
+         * @private
          * @param {Config} config 
          * @returns {String}
          */
@@ -475,13 +499,34 @@ class Generator {
                 });
 
                 let content = Render.renderParams(configs, req.type);
-                content = this._packageRender.renderPackage(content);
                 content = content.replace("@type", "param");
-                this._writer.writeParams(config.params.type, content);
+
+                this._generateEntityCore(content, "param", config.params.type)
+        }
+
+        /**
+         * 
+         * @param {String} content  rendered without package
+         * @param {String} type 'entity'|'req'|'resp'|'param' 
+         * @param {String} entityType  
+         */
+        _generateEntityCore(content, type, entityType) {
+                content = this._packageRender.renderPackage(content);
+
+                if (type == "entity") {
+                        this._writer.writeEntity(this._config.name, content);
+                } else if (type == "req") {
+                        this._writer.writeReq(x.type, content);
+                } else if (type == "resp") {
+                        this._writer.writeResp(x.type, content);
+                } else {
+                        this._writer.writeParams(config.params.type, content);
+                }
+
                 this._packageRender.addPackage({
-                        name: config.params.type,
-                        isSystem: false,
-                        type: "param"
+                        name: STR.upperFirstLetter(entityType),
+                        type,
+                        isSystem: false
                 });
         }
 }

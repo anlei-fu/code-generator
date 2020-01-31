@@ -4,9 +4,9 @@ const { GraphBuilder } = require("../markdown-writer/graph");
 
 class MarkdownWriter {
 
-        constructor (relations,level=1) {
+        constructor (relations,maxDepth=1) {
                 this._relations = relations;
-                this._level=level;
+                this._maxDepth=maxDepth;
         }
 
         /**
@@ -17,18 +17,18 @@ class MarkdownWriter {
         generateMarkdown() {
                 let output = [];
                 let items = this._generate();
-                OBJECT.forEach(items, (key, value) => {
+                OBJECT.forEach(items, (key, path) => {
                         let content = "";
                         content += `### ${key}\r\n ---- \r\n`;
                         let builder = new GraphBuilder("TD");
-                        value.forEach(x => {
-                                builder.line(x);
+                        path.forEach(edge => {
+                                builder.path(edge);
                         });
 
                         content += builder.build() + "---\r\n";
                         let item="";
-                        ARRAY.distinct(STR.splitToLines(content)).forEach(x=>{
-                           item+=x+"\r\n";
+                        ARRAY.distinct(STR.splitToLines(content)).forEach(line=>{
+                           item+=line+"\r\n";
                         });
 
                         output.push({
@@ -46,13 +46,13 @@ class MarkdownWriter {
          * @returns {Lines}
          */
         _generate() {
-                let output = {};
+                let pathes = {};
                 Object.keys(this._relations).forEach(table => {
-                        output[table] = this._generateCore(table, new Set(), []);
-                        output[table] = this._rewrite(output[table]);
+                        pathes[table] = this._generateCore(table, new Set(), []);
+                        pathes[table] = this._rewrite(pathes[table]);
                 });
 
-                return output;
+                return pathes;
         }
 
         /***
@@ -61,25 +61,25 @@ class MarkdownWriter {
          * @param {String} tableName 
          * 
          */
-        _generateCore(tableName, set, line) {
+        _generateCore(tableName, set, path) {
                 let ls = [];
 
-                if (!this._relations[tableName] || line.length > this._level) {
-                        line.push({
+                if (!this._relations[tableName] || path.length > this._maxDepth) {
+                        path.push({
                                 name: tableName,
                         })
 
-                        ls.push(line);
+                        ls.push(path);
 
                         return ls;
                 }
 
                 this._relations[tableName].forEach(relation => {
-                        let _newLine = this._copyArray(line);
+                        let _newPath = this._copyArray(path);
                         let _newSet = this._copySet(set);
                         let joinType = relation.joinType == "oneToMany" ? "1:N" : "N:1";
                         let joinCondition = `${joinType} on ${relation.selfColumn} = ${relation.otherTableColumn}`;
-                        _newLine.push({
+                        _newPath.push({
                                 text: joinCondition,
                                 name: tableName,
                         });
@@ -87,13 +87,13 @@ class MarkdownWriter {
 
                         // path is not end
                         if (!_newSet.has(relation.otherTable)) {
-                                let result = this._generateCore(relation.otherTable, _newSet, _newLine);
+                                let results = this._generateCore(relation.otherTable, _newSet, _newPath);
                                 // console.log(result);
-                                result.forEach(x => {
-                                        ls.push(x);
+                                results.forEach(item => {
+                                        ls.push(item);
                                 })
                         } else {
-                                ls.push(_newLine);
+                                ls.push(_newPath);
                         }
                 });
 
@@ -101,20 +101,20 @@ class MarkdownWriter {
         }
 
         _rewrite(lines) {
-                let _newLines = [];
+                let _newPathes = [];
                 lines.forEach(x => {
 
                         for (let i = 0; i < x.length - 1; i++) {
-                                _newLines.push([x[i], x[i + 1]]);
+                                _newPathes.push([x[i], x[i + 1]]);
                         }
                 });
 
                 let set = new Set();
 
-                _newLines = _newLines.filter(line => {
+                _newPathes = _newPathes.filter(path => {
                         let content = "";
-                        line.forEach(cell => {
-                                content += cell.name + cell.text;
+                        path.forEach(edge => {
+                                content += edge.name + edge.text;
                         });
 
                         if (set.has(content)) {
@@ -125,7 +125,7 @@ class MarkdownWriter {
                         }
                 });
 
-                return _newLines;
+                return _newPathes;
         }
 
         /**
