@@ -15,9 +15,11 @@ class FileSnapShot {
      * 
      * @param {String} project 
      */
-    constructor(project) {
-        this._snapshot = FILE.exists(`output/${project}.js`)
-            ? require(`output/${project}.js`).snapShot || {}
+    constructor(project,ignores=[]) {
+      this._ignores=ignores;
+        this.project=project;
+        this._snapshot = FILE.exists(`./output/${project}.js`)
+            ? require(`./output/${project}.js`).snapshot || {}
             : {};
         this._project = project;
     }
@@ -27,9 +29,9 @@ class FileSnapShot {
      * 
      * @param {String} folder  of target (absolute path)
      */
-    makeSnapshot(folder, ignores = []) {
-        this._snapshot[folder] = this._makeSnapshotCore(folder, ignores);
-        this._snapshot[folder].createTime = new Date().toLocaleString();
+    makeSnapshot(folder) {
+        this._snapshot= this._makeSnapshotCore(folder);
+        this._snapshot.createTime = new Date().toLocaleString();
         LOG.info("finish snapshot");
         this._writeSnapShot();
 
@@ -44,15 +46,15 @@ class FileSnapShot {
     extractChangeFiles(folder, outputFolder) {
         let current = this._makeSnapshotCore(folder);
         let records;
-        if (!this._snapshot[folder]) {
-            records = this._makeSnapshotCore(outputFolder);
-            this._snapshot[folder] = records;
+        if (!this._snapshot) {
+            records = current;
+            this._snapshot= records;
         } else {
-            records = this._extractAndMerge(this._snapshot[folder], current);
+            records = this._extractAndMerge(this._snapshot, current);
         }
 
-        this._copy(records, outputFolder);
-        this._snapshot[folder].modifyTime = new Date().toLocaleString();
+        this._copy(records, outputFolder,folder);
+        this._snapshot.modifyTime = new Date().toLocaleString();
         this._writeSnapShot();
         LOG.info("finish extract!");
     }
@@ -62,7 +64,7 @@ class FileSnapShot {
      * @param {String} folder  of target folder (absolute path)
      * @returns {{path:String,folders:{},files:{}}}
      */
-    _makeSnapshotCore(folder, ignores = []) {
+    _makeSnapshotCore(folder) {
         let records = {};
         records.path = folder;
 
@@ -76,7 +78,7 @@ class FileSnapShot {
         DIR.getFiles(folder).forEach(file => {
 
             // filts ignored file
-            for (const matcher of ignores) {
+            for (const matcher of this._ignores) {
                 if (matcher(file)) {
                     LOG.info(`excluded file:${folder}/${file}`);
                     return;
@@ -110,7 +112,7 @@ class FileSnapShot {
 
             // new or modified
             if (!old.files[file]
-                || old.files[file].lastModify == _new.files[file].lastModify) {
+                || old.files[file].lastModify != _new.files[file].lastModify) {
                 records.files[file] = _new.files[file];
                 LOG.info(`add snapshot file:${_new.path}/${file}`);
             }
@@ -132,7 +134,7 @@ class FileSnapShot {
             // new
             if (!old.folders[folder]) {
                 records.folders[folder] = _new.folders[folder];
-                old.folders = _new.folders[folder];
+                old.folders[folder] = _new.folders[folder];
                 LOG.info(`add snapshot folder:${old.path}/${folder}`);
             } else {
 
@@ -162,15 +164,18 @@ class FileSnapShot {
      * @param {Snapshot} records 
      * @param {String} outputFolder 
      */
-    _copy(records, outputFolder) {
-        if (Object.keys(records.files).length == 0
-            || Object.keys(records.folders).length == 0)
-            return;
+    _copy(records, outputFolder,targetFolder) {
+        DIR.remove(outputFolder);
 
-        DIR.create(`${outputFolder / records.path}`);
+        if (Object.keys(records.files).length == 0
+            && Object.keys(records.folders).length == 0)
+            return;
+        
+        let folder=this._relative(outputFolder,targetFolder,records.path);
+        DIR.create(folder);
 
         Object.keys(records.files).forEach(file => {
-            FILE.copy(`${records.path}/${file}`, `${outputFolder}/${records.path}/${file}`);
+            FILE.copy(`${records.path}/${file}`, `${this._relative(outputFolder,targetFolder,records.path+"/"+ file)}`);
         });
 
         Object.keys(records.folders).forEach(folder => {
@@ -178,11 +183,15 @@ class FileSnapShot {
         });
     }
 
+    _relative(outputFolder,targetFolder,targetPath){
+         return outputFolder+targetPath.replace(targetFolder,"");
+    }
+
     /**
      * Write snapshot to file
      */
     _writeSnapShot() {
-        FILE.write(`./output/${this.projet}.js`, OBJECT.export_(this._snapshot, "snapshot", false))
+        FILE.write(`./output/${this.project}.js`, OBJECT.export_(this._snapshot, "snapshot", false))
     }
 }
 
