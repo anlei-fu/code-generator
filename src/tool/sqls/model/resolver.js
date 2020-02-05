@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-11-15 15:43:24
  */
 const { MysqlExcutor } = require("./../mysql-excutor/mysql-excutor");
-const { Table, Column, SqlType } = require("./../../../resolvers/db-info");
+const { Table, Column, SqlType } = require("./../model");
 const { NamingStrategy } = require("./../../../libs/naming-strategy")
 const { ARRAY } = require("./../../../libs/utils")
 const {LoggerFactory} =require("./../../logging/logger-factory");
