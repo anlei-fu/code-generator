@@ -254,6 +254,7 @@ class JavaTokenizer {
                                 break;
                 }
 
+                
                 this._output.push(new Token(temp, TOKEN_TYPE.blank));
         }
 
