@@ -8,24 +8,21 @@ const CACHE = new Map();
  */
 function getConditions(config) {
 
-        // if (config.type == "insert")
-        //         throw new Error("insert has no conditions");
-
         if (CACHE.has(config.id))
                 return CACHE.get(config.id);
 
         let conditions = [];
-        config.conditions.forEach(x => {
-                conditions.push(getColumn(config.table, x,config.alias));
+        config.conditions.forEach(condition => {
+                conditions.push(getColumn(config.table, condition,config.alias));
         });
 
-        config.joins.forEach(x=>{
-              x.conditions.forEach(y=>{
-                conditions.push(getColumn(x.table, y,x.alias));
+        config.joins.forEach(join=>{
+              join.conditions.forEach(condition=>{
+                conditions.push(getColumn(join.table, condition,join.alias));
               });
         });
 
-        // add expression property if should
+        // add expression properties if should
         generateExpression(conditions);
 
         CACHE.set(config.id, conditions);

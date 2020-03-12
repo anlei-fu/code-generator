@@ -59,13 +59,13 @@ function getReqParams(config, withType) {
  */
 function generateReq(config, req) {
 
-        // excludes other reqs
+        // excludes other reqs fields
         config.reqs.forEach(x=>{
              if(!x.doCreate)
                  req.excludes.add(x.name);
         });
 
-        // excludes user column
+        // excludes user column fields
         let userColumn=USER_ANALYZER.findUserColumn(config);
         if(userColumn)
            req.excludes.add(userColumn);
@@ -83,20 +83,22 @@ function generateReq(config, req) {
         let rets = [];
 
         // generate validates and expression reqs
-        conditions.forEach(x => {
+        conditions.forEach(condition => {
 
-                if (req.validates.has(x.name))
-                        x.validates = req.validates.get(x.name);
+                // set validate if name match and absent
+                if (req.validates.has(condition.name))
+                        condition.validates = req.validates.get(condition.name);
 
-                let exp = x.exp;
+                // generate additional req fields by expression
+                let exp = condition.exp;
                 if (exp == "range") {
-                        rets.push({ name: `${x.name}Min`, type: x.type, validates: x.validates, description: `${x.description} min` });
-                        rets.push({ name: `${x.name}Max`, type: x.type, validates: x.validates, description: `${x.description} max` });
+                        rets.push({ name: `${condition.name}Min`, type: condition.type, validates: condition.validates, description: `${condition.description} min` });
+                        rets.push({ name: `${condition.name}Max`, type: condition.type, validates: condition.validates, description: `${condition.description} max` });
                 } else if (exp == "timeRange") {
-                        rets.push({ name: `${x.name}Start`, type: x.type, validates: x.validates, description: `${x.description} start time` });
-                        rets.push({ name: `${x.name}End`, type: x.type, validates: x.validates, description: `${x.description} end time` });
+                        rets.push({ name: `${condition.name}Start`, type: condition.type, validates: condition.validates, description: `${condition.description} start time` });
+                        rets.push({ name: `${condition.name}End`, type: condition.type, validates: condition.validates, description: `${condition.description} end time` });
                 } else {
-                        rets.push(x);
+                        rets.push(condition);
                 }
         });
 

@@ -32,7 +32,15 @@ function create(path) {
         if (exists(path))
                 return;
 
-        fs.mkdirSync(path);
+        let segs =path.split("/");
+        let tempPath="";
+        for(const item of segs){
+                tempPath+=item+"/";
+                if(!exists(tempPath)){
+                        fs.mkdirSync(tempPath);
+                }
+        }
+
         LOG.info(`create ${path}`);
 }
 

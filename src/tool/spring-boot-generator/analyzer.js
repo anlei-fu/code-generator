@@ -446,7 +446,7 @@ const SELECT_EXLUCES = {
         },
         Integer: {
                 value: {
-                        matcher: columnName => Matcher.lowerEndsWith("value")
+                        matcher: columnName => Matcher.lowerEndsWith(columnName,"value")
                 }
         }
 }
@@ -457,7 +457,7 @@ const SELECT_EXLUCES = {
 class SelectAnalyzer extends ExpresssionAnalyzer {
         constructor() {
                 super();
-                this.excludes = SELECT_EXLUCES();
+                this.excludes = SELECT_EXLUCES;
 
         }
 

@@ -6,8 +6,8 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-11-15 10:06:19
  */
-const { UNDEFINED, requireNotNull } = require("./../libs/utils");
-const { STR } = require("./../libs/str");
+const { UNDEFINED} = require("./../../libs/utils");
+const { STR } = require("./../../libs/str");
 
 /**
  * Sql base class

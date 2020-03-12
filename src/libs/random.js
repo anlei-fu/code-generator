@@ -15,7 +15,8 @@
  * @returns {number} 
  */
 function nextVal(min, max) {
-        return Math.floor(Math.random() * max + min);
+        let result= Math.floor(Math.random() * max + min);
+        return result;
 }
 
 exports.RANDOM={

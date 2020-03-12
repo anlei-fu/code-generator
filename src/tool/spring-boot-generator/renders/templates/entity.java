@@ -1,4 +1,4 @@
-package com.@project.pojo.@type;
+package com.@project.pojo.@entityType;
 
 @packages
 import io.swagger.annotations.ApiModel;

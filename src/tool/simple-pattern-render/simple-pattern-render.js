@@ -88,7 +88,6 @@ exports.SimpleRender = class SimpleRender {
          */
         renderContent(content, config = {}, generate = true) {
                 let patterns = !generate ? config : this.generateModel(config);
-
                 return STR.replace(content, patterns);
         }
 

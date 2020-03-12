@@ -116,17 +116,24 @@ class Config {
  */
 class GeneratorConfig {
         constructor() {
-                this.controlerFolder = "";
-                this.mapperFolder = "";
-                this.mapperConfigFolder = "";
-                this.reqFolder = "";
-                this.respFolder = "";
-                this.serviceFolder = "";
-                this.serviceImplFolder = "";
-                this.name = "";
-                this.project = "";
-                this.entityFolder = "";
+               
+                // items y
                 this.items = [new Config()];
+
+                // with require exist
+                this.exists=false;
+
+                // with batch delete operation
+                this.bacthDelete=false;
+
+                // with batch update operation
+                this.batchUpdate=false;
+
+                // auto join other table
+                this.detail=false;
+
+                // auto join other table list
+                this.detailList=false;
         }
 }
 
@@ -227,6 +234,7 @@ class Generator {
 
                 // flag
                 let hasDocreateReq = false;
+                
                 // if has req to create
                 config.reqs.forEach(req => {
                         if (req.doCreate) {
@@ -250,7 +258,7 @@ class Generator {
                 // set default join type
                 if (config.joins) {
                         config.joins.forEach(x => {
-                                x.type = x.type || "left";
+                                x.type = x.type || "LEFT";
                                 this._initTable(x.table);
                         });
                 }
@@ -324,12 +332,12 @@ class Generator {
          * @private
          * @param {Config} config 
          * @param {Entity} entity 
-         * @param {String} type 
+         * @param {String} entityType "entity|req|resp|param"
          */
-        _initEntityBasicInfo(config, entity, type) {
-                entity.type = entity.type || STR.upperFirstLetter(config.id) + type;
+        _initEntityBasicInfo(config, entity, entityType) {
+                entity.type = entity.type || STR.upperFirstLetter(config.id) + entityType;
                 entity.description = entity.description || "";
-                entity.name = entity.name || type.toLowerCase();
+                entity.name = entity.name || entityType.toLowerCase();
         }
 
         /**
@@ -353,9 +361,9 @@ class Generator {
          * @private
          */
         _generateMapper() {
-                let mapper = Render.renderMapper(this._config);
-                mapper = this._packageRender.renderPackage(mapper);
-                this._writer.writeMapper(this._config.name, mapper);
+                let content = Render.renderMapper(this._config);
+                content = this._packageRender.renderPackage(content);
+                this._writer.writeMapper(this._config.name, content);
         }
 
         /**
@@ -364,8 +372,8 @@ class Generator {
          * @private
          */
         _generateMapperConfig() {
-                let mapperConfig = Render.renderMapperConfig(this._config);
-                this._writer.writeMapperConfig(this._config.name, mapperConfig);
+                let content = Render.renderMapperConfig(this._config);
+                this._writer.writeMapperConfig(this._config.name, content);
         }
 
         /**
@@ -374,9 +382,9 @@ class Generator {
          * @private
          */
         _generateService() {
-                let service = Render.renderService(this._config);
-                service = this._packageRender.renderPackage(service);
-                this._writer.writeService(this._config.name, service);
+                let content = Render.renderService(this._config);
+                content = this._packageRender.renderPackage(content);
+                this._writer.writeService(this._config.name, content);
         }
 
         /**
@@ -385,9 +393,9 @@ class Generator {
          * @private
          */
         _generateServiceImpl() {
-                let serviceImpl = Render.renderServiceImpl(this._config);
-                serviceImpl = this._packageRender.renderPackage(serviceImpl);
-                this._writer.writeServiceImpl(this._config.name, serviceImpl);
+                let content = Render.renderServiceImpl(this._config);
+                content = this._packageRender.renderPackage(content);
+                this._writer.writeServiceImpl(this._config.name, content);
         }
 
         /**
@@ -396,9 +404,9 @@ class Generator {
          * @private
          */
         _generateController() {
-                let controller = Render.renderController(this._config);
-                controller = this._packageRender.renderPackage(controller);
-                this._writer.writeController(this._config.name, controller);
+                let content = Render.renderController(this._config);
+                content = this._packageRender.renderPackage(content);
+                this._writer.writeController(this._config.name, content);
         }
 
         /**
@@ -411,14 +419,13 @@ class Generator {
         _generateReq(config) {
                 config.reqs.forEach(x => {
                         if (x.doCreate) {
-                                let req = {};
-                                req.type = x.type;
-                                req.fields = generateReq(config, x);
-                                req.description = x.description;
-                                req.name = x.type;
-                                req.type = "req";
-                                req.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
-                                let content = Render.renderEntity(req);
+                                let entity = {};
+                                entity.fields = generateReq(config, x);
+                                entity.description = x.description;
+                                entity.name = x.type;
+                                entity.type = "req";
+                                entity.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
+                                let content = Render.renderEntity(entity);
 
                                 this._generateEntityCore(content, "req", x.type);
                         }
@@ -435,10 +442,11 @@ class Generator {
         _generateResp(config) {
                 if (config.resp.doCreate) {
                         let entity = {};
-                        entity.type = config.resp.type;
+                        entity.type = "resp";
                         entity.description = config.resp.description;
+                        entity.fields=getIncludes(config);
+                        entity.name=config.resp.type;
                         let content = Render.renderEntity(entity);
-
                         this._generateEntityCore(content, "resp", config.resp.type);
                 }
         }
@@ -507,25 +515,25 @@ class Generator {
         /**
          * 
          * @param {String} content  rendered without package
-         * @param {String} type 'entity'|'req'|'resp'|'param' 
-         * @param {String} entityType  
+         * @param {String} entityType 'entity'|'req'|'resp'|'param' 
+         * @param {String} entityName  
          */
-        _generateEntityCore(content, type, entityType) {
+        _generateEntityCore(content, entityType, entityName) {
                 content = this._packageRender.renderPackage(content);
 
-                if (type == "entity") {
+                if (entityType == "entity") {
                         this._writer.writeEntity(this._config.name, content);
-                } else if (type == "req") {
-                        this._writer.writeReq(x.type, content);
-                } else if (type == "resp") {
-                        this._writer.writeResp(x.type, content);
+                } else if (entityType == "req") {
+                        this._writer.writeReq(entityName, content);
+                } else if (entityType == "resp") {
+                        this._writer.writeResp(entityName, content);
                 } else {
-                        this._writer.writeParams(config.params.type, content);
+                        this._writer.writeParams(entityName, content);
                 }
 
                 this._packageRender.addPackage({
-                        name: STR.upperFirstLetter(entityType),
-                        type,
+                        name: STR.upperFirstLetter(entityName),
+                        type: entityType,
                         isSystem: false
                 });
         }

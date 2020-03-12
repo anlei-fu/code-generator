@@ -1,4 +1,4 @@
-function renderProject(config) {
+function renderProject(project,content) {
 
 }
 

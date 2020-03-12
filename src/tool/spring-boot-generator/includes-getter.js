@@ -20,7 +20,7 @@ function getIncludes(config) {
 
         config.joins.forEach(join => {
                 join.includes.forEach(include => {
-                        includes.push(getColumn(join.table, include.alias));
+                        includes.push(getColumn(join.table,include ,join.table.alias));
                 });
         });
 

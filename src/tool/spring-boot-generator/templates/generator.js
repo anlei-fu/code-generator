@@ -26,11 +26,11 @@ const { Generator } = require("./../../code-generator")
 
 function build() {
         
-        let packageRender=new PackegeRender("@project");
-        let writer =new Writer("@project");
+        let packageRender=new PackegeRender("@project","@company");
+        let writer =new Writer("@project","@company");
         all.forEach(x => {
                 // set output folders
-                let root = "./@project/src/main/java/com/@project";
+                let root = "./@project/src/main/java/com/@company/@project";
                 x.mapperFolder = `${root}/mapper`;
                 x.mapperConfigFolder = `./@project/src/main/resource/mapper`;
                 x.controllerFolder = `${root}/controller`;

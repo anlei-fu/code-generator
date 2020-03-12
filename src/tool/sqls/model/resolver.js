@@ -51,6 +51,7 @@ async function resolve(sqlConfig, schema) {
                     column.defaultValue-x.columnComment;
 
                 column.name = NamingStrategy.toCamel(x.columnName);
+                column.rawName=x.columnName;
                 column.nullable = x.isNullable == "YES";
                 column.description = x.columnComment;
                 column.type = SqlType.parse(x.columnType);
@@ -59,6 +60,7 @@ async function resolve(sqlConfig, schema) {
 
         let ls = [];
         output.forEach(x => {
+                x.rawName=NamingStrategy.toHungary(x.name);
                 ls.push(x);
         })
 

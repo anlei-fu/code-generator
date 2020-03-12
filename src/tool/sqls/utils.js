@@ -7,93 +7,111 @@
  * @LastEditTime: 2019-11-15 15:25:53
  */
 
-const { RANDOM } = require("./../libs/random");
-const { DATE } = require("./../libs/date");
-
-const dates = [DATE.now(), DATE.lastMonth(), DATE.yesterday(), DATE.lastWeek(), DATE.nextMonth(), DATE.nextYear()]
+const { SimpleFullTextSearcher } = require("./../full-text-index/simple-full-text-searcher")
 
 /**
+ * To get primary column if exists ,or pick best matched one to instead
  * 
- * @param {any} obj 
+ * @param {Table} table 
  * @returns {String}
  */
-function getSqlString(obj) {
-        if (obj instanceof String) {
-                let ret = "";
-                for (const c of obj)
-                        ret += c == "'" ? "''" : c;
-                        
-                return ret;
+function findPrimaryColumn(table) {
+        let primaryColumn;
+        for (const columnName in table.columns) {
+                primaryColumn = primaryColumn || columnName;
+                if (table.columns[columnName].isPk)
+                        return columnName;
         }
 
-        return `${obj}`;
+        return primaryColumn;
 }
 
-
 /**
+ * To find name column
  * 
- * @param {String} name 
- * @param {SqlType} type 
- */
-function getTestValues(name, type, count = 20) {
-        let ls = [];
-        for (let i = 0; i < count; i++)
-                ls.push(getTestValue(name, type));
-        return ls;
-}
-
-/**
- * 
- * @param {String} name 
- * @param {SqlType} type 
- * @returns {Any}
- */
-function getTestValue(name, type) {
-
-        if (type.name.indexOf("char") != -1) {
-                return name + RANDOM.nextVal(0, 1000);
-        } else if (type.name.indexOf("date") != -1) {
-                let date = dates[RANDOM.nextVal(0, dates.length - 1)];
-                return DATE.toyyyy_MM_dd_hh_mm_ss(date);
-        } else {
-                return RANDOM.nextVal(0, 1000);
-        }
-}
-
-
-/**
- * @param {SqlType} type 
+ * @param {Table} table
  * @returns {String}
  */
-function sqlTypeToJavaType(type) {
-        if (type.name.indexOf("char") != -1) {
+function findNameColumn(table) {
+        let searcher = new SimpleFullTextSearcher();
+        searcher.useCustomerTokenizer(x => x.split("_"));
+        let docs = [];
+
+        for (const columnName in table.columns) {
+                docs.push({
+                        content: table.columns[columnName].rawName,
+                        weight: 1,
+                        name: columnName
+                });
+        }
+        searcher.addDocuments(docs);
+
+        let results = searcher.search(table.rawName + "_name", 10);
+        let best;
+        for (const item of results) {
+                best = best || item;
+                if (item.name.toLowerCase().endsWith("name"))
+                        return item
+        }
+        return best;
+}
+
+/***
+ * Convert to c# data type
+ * 
+ * @param {SqlType} sqlType
+ * 
+ * @return {String}
+ */
+function toCsharpType(sqlType) {
+        if (sqlType.name.toLowerCase().includes("char"))
+                return "string";
+
+        if (sqlType.name.toLowerCase().includes("date"))
+                return "DateTime";
+
+        return sqlType.length > 20 ? "decimal" : "int";
+}
+
+/**
+ * Convert to java data type
+ * 
+ * @param {SqlType} sqlType
+ * 
+ * @returns {String}
+ */
+function toJavaType(sqlType) {
+        // aready been converted
+        if (typeof sqlType == "string")
+                return sqlType;
+
+        // type is correct
+        if (!sqlType.name && sqlType.length)
+                return new Error(`input(${sqlType}) is not a correct type!`);
+        sqlType.name = sqlType.name.toLowerCase();
+
+        if (sqlType.name.includes("char")) {
                 return "String";
-        } else if (type.name.indexOf("date") != -1) {
-                return "Date";
-        } else if (type.name.indexOf("float") != -1) {
-                return "Float";
-        } else if (type.name.indexOf("decimal") != -1) {
-                return "Double";
-        } else if (type.name.indexOf("bigint")) {
+        } else if (sqlType.name.includes("integer")) {
                 return "Long";
-        } else if (type.name.indexOf("boolean")) {
+        } else if (sqlType.name.includes("text")) {
+                return "String";
+        } else if (sqlType.name.includes("float")) {
+                return "Float";
+        } else if (sqlType.name.includes("double")) {
+                return "Double";
+        } else if (sqlType.name.includes("small")) {
                 return "Boolean";
-        }
-        else {
+        } else if (sqlType.name.includes("time") || sqlType.name.includes("date")) {
+                return "Date";
+        } else {
                 return "Integer";
         }
 }
 
-/**
- * 
- */
-function sqlTypeToCsharpType() {
-
-}
-
-exports.SQL_UTILS = {
-        getSqlString,
-        getTestValue,
-        getTestValues,
-        sqlTypeToJavaType
+module.exports={
+        findPrimaryColumn,
+        findNameColumn,
+        toCsharpType,
+        toJavaType
 }

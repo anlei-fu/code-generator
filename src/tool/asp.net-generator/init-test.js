@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const {all}=require("../oracle-table-info-resolver/outputs/zd/all")
+const {all}=require("../oracle-table-info-resolver/outputs/order_compare/all")
 
 const SETTLE={
    project:"",
@@ -17,18 +17,23 @@ const ZD={
    abbrOfProject:"zd"
 }
 
+const ORDER_COMPARE={
+   project:"CompareManage",
+   root:"F:/业务开发项目_研发一/web/CompareManage",
+   abbrOfProject:"order_compare"
+}
+
 
 function test() {
    let config = {
       delete: true,
       add: true,
-      project: ZD.project,
-      root:ZD.root,
-      abbrOfProject:ZD.abbrOfProject,
-      _delete:true,
+      project: ORDER_COMPARE.project,
+      root:ORDER_COMPARE.root,
+      abbrOfProject:ORDER_COMPARE.abbrOfProject,
       edit:true,
    }
-   init(all.userMessageRecord, config);
+   init(all.dzAutoDealConfig, config);
 }
 
 test();

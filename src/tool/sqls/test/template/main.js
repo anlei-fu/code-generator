@@ -1,1 +1,0 @@
-exports.@name=require("./@name");

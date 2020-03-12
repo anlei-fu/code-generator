@@ -301,10 +301,10 @@ function text(obj, name) {
  * @param {String} name 
  * @returns {String}
  */
-function export_(obj, name, doReplace = true) {
+function export_(obj, name, relpace = true) {
         let json = JSON.stringify(obj, null, "\t");
-        if (doReplace)
-                json = doReplace(json);
+        if (relpace)
+               json=doReplace(json);
 
         return `exports.${name} = ${json};\r\n\r\n`;
 }

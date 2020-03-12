@@ -41,9 +41,10 @@ class CellConverter {
  * @param {boolean} excludeFirstRow 
  * @returns {[Any]}
  */
-function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true) {
+function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true,quotation=true) {
         let outputs = [];
-        split(csv).forEach((row, rowNo) => {
+        let rows=quotation?split(csv):defaultSplit(csv);
+        rows.forEach((row, rowNo) => {
                 if (excludeFirstRow && rowNo == 0)
                         return;
 
@@ -61,6 +62,16 @@ function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true) {
 
         LOG.info("finish resolve!");
         return outputs;
+}
+
+function defaultSplit(content){
+   let rows=[];
+   STR.splitToLines(STR.removeEmptyLine(content)).forEach(line=>{
+       let cells=line.split(",");
+       rows.push(cells);
+   });
+
+   return rows;
 }
 
 /**

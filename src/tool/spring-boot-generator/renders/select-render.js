@@ -17,9 +17,9 @@ const SELECT_RENDER = new SimpleRender({}, `${__dirname}/templates/select.xml`);
 function renderSelect(config) {
         let joins = "";
         config.joins.forEach(join => {
-                joins += renderJoin(join);
+                joins += renderJoin(join)+"\r\n";
         });
-
+        
         let columns = "";
         getIncludes(config).forEach((x, i, array) => {
                 x.suffix = i == array.length - 1 ? "" : ",";

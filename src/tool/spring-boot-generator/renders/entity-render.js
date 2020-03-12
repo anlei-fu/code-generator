@@ -38,7 +38,7 @@ function renderEntity(entity) {
                 description: entity.description.replace(/\r\n/g,""),
                 name: entity.name,
                 content,
-                type: entity.type,
+                entityType: entity.type,
                 extends: entity.extends ? `extends ${entity.extends}` : ""
         }
 

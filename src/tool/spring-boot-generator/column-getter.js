@@ -6,18 +6,19 @@ const {getJavaType}=require("./utils");
  * Get column from table and do initialize
  * 
  * @param {Table} table 
- * @param {ColumnMetaInfo} columnMetaInfo 
+ * @param {ColumnConfig} columnConfig 
  */
-function getColumn(table, columnMetaInfo,alias) {
-        if (!table.columns[columnMetaInfo.name])
-                throw new Error(`column(${columnMetaInfo.name}) can not be found in table(${table.name})`);
+function getColumn(table, columnConfig,alias) {
+        if (!table.columns[columnConfig.name])
+                throw new Error(`column(${columnConfig.name}) can not be found in table(${table.name})`);
+     
 
-        let meta = OBJECT.clone(table.columns[columnMetaInfo.name]);
-        meta.type=getJavaType(meta.type);
-        OBJECT.extend(columnMetaInfo, meta);
-        columnMetaInfo.prefix=alias||NamingStrategy.toHungary(table.name);
-        columnMetaInfo.column=`${columnMetaInfo.prefix}.${NamingStrategy.toHungary(columnMetaInfo.name)}`;
-        return columnMetaInfo;
+        let copy = OBJECT.clone(table.columns[columnConfig.name]);
+        copy.type=getJavaType(copy.type);
+        OBJECT.extend(columnConfig, copy);
+        columnConfig.prefix=alias||NamingStrategy.toHungary(table.name);
+        columnConfig.column=`${columnConfig.prefix}.${NamingStrategy.toHungary(columnConfig.name)}`;
+        return columnConfig;
 }
 
 exports.getColumn = getColumn;

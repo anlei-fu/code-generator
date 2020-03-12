@@ -4,6 +4,7 @@ const { getJavaType } = require("./utils");
 const { SimpleRender } = require("../simple-pattern-render/simple-pattern-render");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
+const  joinHelper =require("./join-analyzer")
 
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
 const REQ_IDENT = "                                           ";
@@ -40,6 +41,8 @@ const USER_MATCHERS = {
         }
 };
 
+
+
 /**
  * Analyze and render a config template
  */
@@ -57,7 +60,13 @@ class ConfigBuilderGenerator {
          * @param {Table} table 
          * @returns {String}
          */
-        generate(table, pk) {
+        generate(table, pk,tables,relations) {
+                
+                let joins="";
+                joinHelper.analyze(relations,table,tables).forEach((item,i)=>{
+                    joins+=joinHelper.renderJoinConfig(item,`t${i+1}`);
+                });
+
                 let select = this._generateSelect(table);
                 let insert = this._generateInsert(table);
                 let update = this._generateUpdate(table);
@@ -112,6 +121,7 @@ class ConfigBuilderGenerator {
                         deleteUserReq,
                         updateUserReq,
                         selectUserReq,
+                        joins,
                         tableInfo: "",
                         insertExcludes: insert_text.trimRight(),
                         insertReq: this._renderReq(insert.validates).trimRight(),
@@ -124,6 +134,7 @@ class ConfigBuilderGenerator {
                         selectExcludes: selete_text.trimRight(),
                         selectReq: this._renderReq(select.validates).trimRight(),
                         selectMsg: select.msg.trimRight()
+                        
                 }
 
                 let content = CONFIG_ITEM_RENDER.renderTemplate(model);

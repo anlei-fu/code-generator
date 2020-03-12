@@ -115,3 +115,33 @@ password encrypting
 7. range：范围扫描通常出现在 in(), between ,> ,<, >= 等操作中。
 8. index：和ALL一样，不同就是mysql只需扫描索引树，这通常比ALL快一些。
 9. ALL：即全表扫描，意味着mysql需要从头到尾去查找所需要的行。通常情况下这需要增加索引来进行优化了
+
+Using index 
+1. 查询的列被索引覆盖，并且where筛选条件是索引的是前导列，Extra中为Using index
+2. 查询的列被索引覆盖，并且where筛选条件是索引列前导列的一个范围，同样意味着无法直接通过索引查找查询到符合条件的数据
+3. NULL（既没有Using index，也没有Using where Using index，也没有using where）
+
+ Using index condition
+
+1. 查询的列不全在索引中，where条件中是一个前导列的范围
+
+1,Extra中的为Using index的情况
+　　　　where筛选列是索引的前导列 &&查询列被索引覆盖 && where筛选条件是一个基于索引前导列的查询，意味着通过索引超找就能直接找到符合条件的数据，并且无须回表
+
+　　2,Extra中的为空的情况
+　　　　查询列存在未被索引覆盖&&where筛选列是索引的前导列，意味着通过索引超找并且通过“回表”来找到未被索引覆盖的字段，
+
+3,Extra中的为Using where Using index： 
+　　出现Using where Using index意味着是通过索引扫描（或者表扫描）来实现sql语句执行的，即便是索引前导列的索引范围查找也有一点范围扫描的动作，不管是前非索引前导列引起的，还是非索引列查询引起的。
+
+  1. join_buffer_size变量决定buffer大小。
+
+  2. 只有在join类型为all, index, range的时候才可以使用join buffer。
+
+  3. 能够被buffer的每一个join都会分配一个buffer, 也就是说一个query最终可能会使用多个join buffer。
+
+  4. 第一个nonconst table不会分配join buffer, 即便其扫描类型是all或者index。
+
+  5. 在join之前就会分配join buffer, 在query执行完毕即释放。
+
+  6. join buffer中只会保存参与join的列, 并非整个数据行。

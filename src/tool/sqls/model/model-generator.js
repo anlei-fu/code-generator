@@ -8,7 +8,7 @@
  */
 const { resolve } = require("./resolver");
 const { OBJECT } = require("./../../../libs/utils");
-const { SQL_UTILS } = require("./../../../libs/utils");
+const sqlUtils = require("./../utils");
 const { FILE } = require("./../../../libs/file");
 const { DIR } = require("./../../../libs/dir");
 const {LoggerFactory} =require("./../../logging/logger-factory");
@@ -23,29 +23,30 @@ const LOG=LoggerFactory.getLogger("sql-model-generator");
 async function generate(config, schema,outputFolder="./output") {
         let tables = await resolve(config, schema);
         DIR.create(outputFolder);
-        let main = "";
+        let main =  FILE.read(`${__dirname}/templates/main.js`);
+        let allItem= FILE.read(`${__dirname}/templates/all-item.js`);
+        let content="";
         tables.forEach(x => {
                 let output = "";
-                main += FILE.read("./templates/main.js").replace(/@name/g, x.name);
+                x.primaryColumn=sqlUtils.findPrimaryColumn(x);
+                x.nameColumn=sqlUtils.findNameColumn(x);
+                content +=allItem.replace(/@name/g, x.name);
                 output = OBJECT.text(x, x.name);
                 output += OBJECT.text(Object.keys(x.columns), "columnsArray");
 
                 let instance = {};
-                // OBJECT.forEach(x.columns, (k, v) => {
-                //         instance[k] = SQL_UTILS.getTestValue(v.description, v.type);
-                // });
 
-                output += FILE.read("./templates/create.js").replace("@data",
+                output += FILE.read(`${__dirname}/templates/create.js`).replace("@data",
                         OBJECT.text(instance, "")
                                 .replace("let", "")
                                 .replace("=", "")
                                 .trim());
-                output += FILE.read("./templates/extend.js").replace(/@x/g, x.name);
+                output += FILE.read(`${__dirname}/templates/extend.js`).replace(/@x/g, x.name);
 
                 FILE.write(`${outputFolder}/${x.name}.js`, output);
         });
 
-        FILE.write(`${outputFolder}/main.js`, `\r\n// All Tables \r\n` + main);
+        FILE.write(`${outputFolder}/all.js`, `\r\n// All Tables \r\n` + main.replace("@content",content.trimRight()));
         LOG.info("finish generate!");
 }
 

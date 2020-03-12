@@ -6,21 +6,23 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-12-17 14:34:14
  */
-const { columnBuilder } = require("./columnBuilder");
-exports.joinBuilder = function joinBuilder() {
-        this._includes = new columnBuilder();
-        this._conditions = new columnBuilder();
-        this._table;
-        this._type;
-        this._joinCondition;
+const { ColumnBuilder } = require("./columnBuilder");
+exports.joinBuilder = class joinBuilder {
+        constructor () {
+                this._includes = new ColumnBuilder();
+                this._conditions = new ColumnBuilder();
+                this._table;
+                this._type;
+                this._joinCondition;
+        }
 
         /**
          * Config includes
          * 
-         * @param {columnBuilder => void} configer to build a includes conllection
+         * @param {ColumnBuilder => void} configer to build a includes conllection
          * @returns {joinBuilder}
          */
-        this.includes = (configer) => {
+        includes(configer) {
                 configer(this._includes);
                 return this;
         }
@@ -28,10 +30,10 @@ exports.joinBuilder = function joinBuilder() {
         /**
          * Config conditions
          * 
-         * @param {columnBuilder => void} configer to build a conditions collection
+         * @param {ColumnBuilder => void} configer to build a conditions collection
          * @returns {joinBuilder}
          */
-        this.conditions = (configer) => {
+        conditions(configer) {
                 configer(this._conditions);
                 return this;
         }
@@ -41,7 +43,7 @@ exports.joinBuilder = function joinBuilder() {
          * 
          * @returns {joinBuilder}
          */
-        this.alias = (alias) => {
+        alias(alias) {
                 this._alias = alias;
                 this._includes.prefixAll(alias);
                 this._conditions.prefixAll(alias);
@@ -53,7 +55,7 @@ exports.joinBuilder = function joinBuilder() {
          * 
          * @returns {joinBuilder}
          */
-        this.type = (type) => {
+        type(type) {
                 this._type = type;
                 return this;
         }
@@ -63,7 +65,7 @@ exports.joinBuilder = function joinBuilder() {
          * 
          * @returns {joinBuilder}
          */
-        this.table = (table) => {
+        table(table) {
                 this._table = table;
                 return this;
         }
@@ -73,7 +75,7 @@ exports.joinBuilder = function joinBuilder() {
          * 
          * @returns {joinBuilder}
          */
-        this.joinCondition = (joinCondition) => {
+        joinCondition(joinCondition) {
                 this._joinCondition = joinCondition;
                 return this;
         }
@@ -81,17 +83,14 @@ exports.joinBuilder = function joinBuilder() {
         /**
          * @return {joinBuilder}
          */
-        this.build = () => {
+        build() {
 
                 if (!this._table || !this._joinCondition)
                         throw new Error(`unexcepted config`);
 
-                if (this._alias) {
-                        this._includes.prefixAll(this._alias);
-                        this._conditions.prefixAll(this._alias);
-                }
+                console.log(this._includes.build());
 
-                this.table.alias = this._alias;
+                this._table.alias = this._alias;
 
                 return {
                         includes: this._includes.build(),

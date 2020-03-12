@@ -1,9 +1,9 @@
-const { @sname } = require("./../db/main")
+const { all } = require("./../db/all")
 const { builder } = require("./../../../builders/builder")
 
 @tableInfo
 exports.@snameConfig = {
-        table: @sname,
+        table: all.@sname,
         name: "@name",
                 items: [
 
@@ -14,7 +14,7 @@ exports.@snameConfig = {
                                 .id("add@name")
                                 .alias("t")
                                 .includes(collection => {
-                                        collection.includes(@sname.columnsArray)
+                                        collection.includes(all.@sname.columnsArray)
                                                   .excludes("@skey")
 @insertExcludes
                                 })
@@ -56,7 +56,7 @@ exports.@snameConfig = {
                                 .id("update@nameBy@updateMethodName")
                                 .alias("t")
                                 .includes(collection => {
-                                        collection.includes(@sname.columnsArray)
+                                        collection.includes(all.@sname.columnsArray)
                                                   .excludes("@skey")
 @updateExcludes
                                 })
@@ -86,7 +86,7 @@ exports.@snameConfig = {
                                 .id("get@nameBy@selectMethodName")
                                 .alias("t")
                                 .includes(collection=>{
-                                        collection.includes(@sname.columnsArray)
+                                        collection.includes(all.@sname.columnsArray)
                                 })
                                 .conditions(collection =>{
                                         collection.includes("@skey")
@@ -113,15 +113,15 @@ exports.@snameConfig = {
                                 .id("get@nameList")
                                 .alias("t")
                                 .includes(collection=>{
-                                        collection.includes(@sname.columnsArray)
+                                        collection.includes(all.@sname.columnsArray)
                                 })
                                 .conditions(collection=>{
-                                        collection.includes(@sname.columnsArray)
+                                        collection.includes(all.@sname.columnsArray)
                                                   .excludes("@skey")
 @selectExcludes
                                 })
                                 .controller(controller => {
-                                        controller.path("/@sname");
+                                        controller.path("/@sname/list");
                                 })
                                 .req(req => {
                                         req.doCreate()
@@ -129,6 +129,58 @@ exports.@snameConfig = {
 @selectReq
                                 })
 @selectUserReq
-                                .build()
+                                .build(),
+
+                        // get detail item
+                        new builder()
+                                .type("select")
+                                .id("get@nameDetailBy@selectMethodName")
+                                .alias("t")
+                                .includes(collection=>{
+                                        collection.includes(all.@sname.columnsArray)
+                                })
+                                .conditions(collection =>{
+                                        collection.includes("@skey")
+                                                  .require("@skey")
+                                })
+@joins
+                                .controller(controller => {
+                                        controller.path("/@sname/detail/{@skey}");
+                                })
+                                .req(req => {
+                                        req.name("@skey")
+                                           .type("@keyType")
+                                           .from("@PathVariable");
+                                 })
+                                .resp(resp => {
+                                        resp.single();
+                                })
+@selectUserReq@@                        
+                        .build(),
+
+                         // get detail list
+                        new builder()
+                                .type("select")
+                                .id("get@nameDetailList")
+                                .alias("t")
+                                .includes(collection=>{
+                                        collection.includes(all.@sname.columnsArray)
+                                })
+                                .conditions(collection=>{
+                                         collection.includes(all.@sname.columnsArray)
+                                                   .excludes("@skey")
+@selectExcludes
+                                 })
+@joins                                
+                                .controller(controller => {
+                                                controller.path("/@sname/detail/list");
+                               })
+                                .req(req => {
+                                         req.doCreate()
+                                        .excludes("@skey")
+@selectReq
+                                })
+@selectUserReq
+                                .build(),
                 ]
 }

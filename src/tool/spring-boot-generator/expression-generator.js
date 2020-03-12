@@ -18,6 +18,11 @@ function generateUpdateExpressionCore(include) {
 
 function generateExpressionCore(condition) {
 
+        // skip when required
+        if(condition.required)
+            return null;
+
+        // set default if expression
         condition.ifExpression = `${condition.name} != null`;
 
         if (condition.type == "String") {

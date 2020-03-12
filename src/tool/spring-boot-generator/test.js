@@ -10,8 +10,8 @@
 const { init } = require("./init")
 
 async function main(project, dbConfig) {
-        await init(project, dbConfig);
+        await init(project,"jasmine", dbConfig);
 }
 
 /*-------------------------------------------------main--------------------------------------------------*/
-main("convoy", { host: "192.168.0.36", port: "3306", db: "convoy", user: "root", password: "rTo0CesHi2018Qx" });
+main("test", { host: "localhost", port: "3306", db: "test", user: "root", password: "2011801243" });

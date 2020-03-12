@@ -17,20 +17,7 @@ const LOG=LoggerFactory.getLogger("mysql-excutor");
 class MysqlExcutor {
         /**
          * 
-         * @param {{host?: string;
-                     port?: number;
-
-                 timezone?: string;
-connectTimeout?: number;
-insecureAuth?: boolean;
-supportBigNumbers?: boolean;
-bigNumberStrings?: boolean;
-dateStrings?: boolean | Array<'TIMESTAMP' | 'DATETIME' | 'DATE'>;
-ssl?: string | (tls.SecureContextOptions & { rejectUnauthorized?: boolean });
-acquireTimeout?: number;
-waitForConnections?: boolean;
-connectionLimit?: number;
-queueLimit?: number;}} config 
+         * @param {DbConfig} config 
          */
         constructor(config) {
                 this.pool = mysql.createPool(config);

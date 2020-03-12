@@ -91,8 +91,8 @@ PACKAGES.set("@Url", {
  * Manage packages and render package segment
  */
 class PackegeRender {
-        constructor (project) {
-                this._project = project;
+        constructor (project,company) {
+                this._project = `${company}.${project}`;
         }
 
         /**
@@ -164,8 +164,6 @@ class PackegeRender {
                         scontent = STR.removeEmptyLine(scontent);
                         pcontent += "\r\n" + scontent;
                 }
-                console.log(packagesPattern);
-                console.log(pcontent);
 
                 return content.replace(packagesPattern, pcontent.trimRight() + "\r\n");
         }

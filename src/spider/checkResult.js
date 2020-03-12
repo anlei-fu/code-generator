@@ -1,1 +1,0 @@
-const checkResult = new Set(["success", "blocked", "cookieInvalid", "notMatch"]);
