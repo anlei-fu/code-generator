@@ -76,6 +76,7 @@ exports.@snameConfig = {
                                         req.doCreate()
                                            .excludes("@skey")
 @updateReq
+                                           .name("Update@tnameReq")                                                
                                 })
 @updateUserReq@@
                                 .build(),
@@ -127,8 +128,9 @@ exports.@snameConfig = {
                                         req.doCreate()
                                            .excludes("@skey")
 @selectReq
+                                           .name("Get@tnameListReq")
                                 })
-@selectUserReq
+@selectUserReq                   
                                 .build(),
 
                         // get detail item
@@ -153,10 +155,14 @@ exports.@snameConfig = {
                                            .from("@PathVariable");
                                  })
                                 .resp(resp => {
-                                        resp.single();
+                                        resp.doCreate()
+                                        .name("@tnameDetailResp")
+                                        .single()
+                                        .build()
                                 })
-@selectUserReq@@                        
-                        .build(),
+@selectUserReq@@         
+                                           
+                                .build(),
 
                          // get detail list
                         new builder()
@@ -179,8 +185,14 @@ exports.@snameConfig = {
                                          req.doCreate()
                                         .excludes("@skey")
 @selectReq
+                                        .name("Get@tnameListReq")
                                 })
-@selectUserReq
+@selectUserReq                   
+                                .resp(resp=>{
+                                        resp.doCreate()
+                                            .name("@tnameDetailResp")
+                                            .build()
+                                })
                                 .build(),
                 ]
 }

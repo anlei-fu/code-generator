@@ -1,4 +1,4 @@
-const { OBJECT,ARRAY } = require("../../libs/utils");
+const { OBJECT, ARRAY } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { DIR } = require("../../libs/dir");
 const { FILE } = require("../../libs/file");
@@ -26,7 +26,7 @@ const defaultValueAnalyzer = new DelfaultValueAnalyzer();
 function init(table, config) {
 
         // create project structure
-        createFolder(config.project, STR.upperFirstLetter(table.name),config.root);
+        createFolder(config.project, STR.upperFirstLetter(table.name), config.root);
 
         // init controller analyzer
         controlAnalyzer.useDictionaryMatchers(require(`./resource/${config.abbrOfProject}/dictionaryMatchers.js`).dictionaryMatchers);
@@ -59,7 +59,7 @@ function init(table, config) {
                 config.operations.push({
                         condition: "",
                         function: "add(@item.Id,'编辑')",
-                        lable:"编辑"
+                        lable: "编辑"
                 });
         }
 
@@ -67,7 +67,7 @@ function init(table, config) {
                 config.operations.push({
                         condition: "",
                         function: "_delete(@item.Id)",
-                        lable:"删除"
+                        lable: "删除"
                 });
         }
 
@@ -99,10 +99,10 @@ function createFolder(project, name, root) {
                 "@name": name,
                 "@root": root
         }
-        let merge=FILE.read("./resource/merge.js");
-        merge=STR.replace(merge,pattern);
+        let merge = FILE.read("./resource/merge.js");
+        merge = STR.replace(merge, pattern);
 
-        FILE.write(`./outputs/${project}--${name}/merge.js`,merge);
+        FILE.write(`./outputs/${project}--${name}/merge.js`, merge);
 }
 
 function generateRelationMatchers(project, tableName) {
@@ -175,7 +175,7 @@ function buildSelectConfig(table, config) {
         let selectConfig = {
                 selects: [],
                 texts: [],
-                timeFilter:false,
+                timeFilter: false,
                 getListSql: {
                         columns: [],
                         joins: [],
@@ -214,7 +214,7 @@ function buildSelectConfig(table, config) {
                 selectConfig.getCountSql.conditions.push("{&@t.CreateTime >= to_date($ST,'YYYY-MM-DD')}");
                 selectConfig.getCountSql.conditions.push("{&@t.CreateTime < to_date($ET,'YYYY-MM-DD')}");
                 selectConfig.getListSql.orderBy = "ORDER BY t.CREATE_TIME DESC";
-                selectConfig.timeFilter=true;
+                selectConfig.timeFilter = true;
         }
 
         if (table.columns["createdTime"]) {
@@ -223,8 +223,18 @@ function buildSelectConfig(table, config) {
                 selectConfig.getCountSql.conditions.push("{&@t.CreatedTime >= to_date($ST,'YYYY-MM-DD')}");
                 selectConfig.getCountSql.conditions.push("{&@t.CreatedTime < to_date($ET,'YYYY-MM-DD')}");
                 selectConfig.getListSql.orderBy = "ORDER BY t.CREATED_TIME DESC";
-                selectConfig.timeFilter=true;
+                selectConfig.timeFilter = true;
         }
+
+        // remove repeat items
+        let keys = new Set();
+        selectConfig.selects = selectConfig.selects.filter(x => {
+                if (keys.has(x.name))
+                        return false;
+
+                keys.add(x.name);
+                return true;
+        });
 
         // sort items
         selectConfig.getListSql.columns = selectConfig.getListSql.columns.sort();
@@ -242,7 +252,7 @@ function buildSelectConfig(table, config) {
  */
 function buildControlConfig(analyzeResult, config, column) {
         if (controlAnalyzer.shouldBeSelect(column)) {
-                analyzeResult.select.lable =normalizeLable(column.description);
+                analyzeResult.select.lable = normalizeLable(column.description);
                 analyzeResult.select.name = column.name;
                 config.selects.push(analyzeResult.select);
         } else {
@@ -312,57 +322,73 @@ function buildAddConfig(table, config) {
  */
 function normalizeLable(lable) {
         if (lable.length > 2) {
-                if (STR.includesAny(lable, ["渠道", "账户", "产品", "套餐", "公司", "流程","终端"])){
-                        console.log("into here");
-                        return lable.replace("编号", "名称");
-                }
+                if (STR.includesAny(lable, ["渠道", "账户", "产品", "套餐", "公司", "流程", "终端"]))
+                        lable = lable.replace("编号", "名称");
+
+                lable = lable.trim();
+
+                if (lable.indexOf("：") != -1)
+                        return lable.split("：")[0];
+
+                if (lable.indexOf(":") != -1)
+                        return lable.split(":")[0];
+
+                if (lable.indexOf(" ") != -1)
+                        return lable.split(" ")[0];
+
+                if (lable.indexOf("，") != -1)
+                        return lable.split("，")[0];
+
+                if (lable.indexOf(",") != -1)
+                        return lable.split(",")[0];
+
         }
         return lable;
 }
 
-const SCORERS={
-        primaryKey:{
-                match:x=>x.isPk,
-                weight:10
+const SCORERS = {
+        primaryKey: {
+                match: x => x.isPk,
+                weight: 10
         },
-        createUser:{
-                match:x=>{
-                        let lower=x.name.toLowerCase();
-                        return lower.includes("user")&&STR.includesAny(lower,["create","created"]);
+        createUser: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return lower.includes("user") && STR.includesAny(lower, ["create", "created"]);
                 },
-                weight:-4
+                weight: -4
         },
-        createTime:{
-                match: x=>{
-                         let lower=x.name.toLowerCase();
-                         return STR.includesAny(lower,["time","date"])&&STR.includesAny(lower,["create","created"]);
-                 },
-                 weight:-3
-         },
-        updateUser:{
-                match:x=>{
-                        let lower=x.name.toLowerCase();
-                        return STR.includesAny(lower,["user"])&&STR.includesAny(lower,["update","edit"]);
+        createTime: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["time", "date"]) && STR.includesAny(lower, ["create", "created"]);
                 },
-                weight:-2
+                weight: -3
         },
-        updateTime:{
-                match: x=>{
-                        let lower=x.name.toLowerCase();
-                        return STR.includesAny(lower,["time","date"])&&STR.includesAny(lower,["update","edit"]);
+        updateUser: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["user"]) && STR.includesAny(lower, ["update", "edit"]);
                 },
-                weight:-1,
+                weight: -2
         },
-        remark:{
-                match: x=>{
-                        let lower=x.name.toLowerCase();
-                        return STR.includesAny(lower,["remark","msg","message","description","log"]);
+        updateTime: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["time", "date"]) && STR.includesAny(lower, ["update", "edit"]);
                 },
-                weight:0,
+                weight: -1,
         },
-        other:{
-                match:x=>true,
-                weight:2
+        remark: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["remark", "msg", "message", "description", "log"]);
+                },
+                weight: 0,
+        },
+        other: {
+                match: x => true,
+                weight: 2
         }
 }
 
@@ -372,9 +398,9 @@ const SCORERS={
  * @returns {Number}
  */
 function getScore(column) {
-        for(const c in SCORERS){
-                if(SCORERS[c].match(column))
-                   return SCORERS[c].weight;
+        for (const c in SCORERS) {
+                if (SCORERS[c].match(column))
+                        return SCORERS[c].weight;
         }
 }
 

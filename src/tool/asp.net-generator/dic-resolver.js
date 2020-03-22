@@ -50,4 +50,4 @@ function resolve(project,table,text="Name",type="Type") {
 }
 
 /*-------------------------------------------------------------------resolve---------------------------------------------------------------------------*/
-resolve("order_compare","DzSystemDictionary");
+resolve("18","DzSystemDictionary");

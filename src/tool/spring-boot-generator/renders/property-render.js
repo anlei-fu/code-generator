@@ -5,17 +5,22 @@ const IF_IDENT = "            ";
 const PROPERTY_RENDER = new SimpleRender();
 PROPERTY_RENDER.setTempalte(`${IF_IDENT} #{@property}@suffix\r\n`);
 
+class PropertyModel {
+        constructor () {
+                this.property = "";
+                this.suffix = "";
+        }
+}
+
 /**
  * Render property template
  * 
  * @private
- * @param {{ifExpression:String,property:String,suffix:String}} model
+ * @param {PropertyModel} model
  */
 function renderProperty(model) {
-        model.property=model.name;
-        let content = PROPERTY_RENDER.renderTemplate(model);
-        model.content = content;
-        
+        model.property = model.name;
+        model.content = PROPERTY_RENDER.renderTemplate(model);
         return renderIf(model);
 }
 

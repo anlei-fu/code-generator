@@ -8,8 +8,20 @@
  */
 const { TYPE, OBJECT } = require("../../../libs/utils")
 exports.ColumnBuilder = class ColumnBuilder {
-        constructor() {
+        constructor () {
                 this._includes = {};
+                this._addtional = [];
+        }
+
+        /**
+         * Add additional column
+         * 
+         * @param {String} expression 
+         * @param {String} alias 
+         */
+        additional(expression, alias) {
+                this._addtional.push({ expression, alias });
+                return this;
         }
 
         /**
@@ -55,9 +67,9 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @param {String} exp 
          * @returns {ColumnBuilder}
          */
-         exp(item,exp){
-                 return this._setProperty(item,"exp",exp);
-         } 
+        exp(item, exp) {
+                return this._setProperty(item, "exp", exp);
+        }
 
         /**
          * Set property "alias"
@@ -282,7 +294,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @param {String} key 
          * @param {Any} value 
          */
-        _setPropertyCore(item, key, value){
+        _setPropertyCore(item, key, value) {
                 item = this._addIfAbsent(item);
                 item[key] = value;
         }
@@ -294,7 +306,7 @@ exports.ColumnBuilder = class ColumnBuilder {
         * @param {String|{name:String}} item
         * @returns {ColumnBuilder}
         */
-        _addIfAbsent(item){
+        _addIfAbsent(item) {
 
                 if (!(TYPE.isString(item) || TYPE.isObject(item)))
                         throw new TypeError(`required type is 'String' or 'Object', but input is ${typeof item}`);
@@ -315,7 +327,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * Internal call, normalize includes
          * 
          */
-        build(){
+        build() {
                 return OBJECT.toArray(this._includes);
         }
 }

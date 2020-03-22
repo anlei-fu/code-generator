@@ -1,9 +1,9 @@
 const { STR } = require("./../../libs/str");
 const { getConditions } = require("./condition-getter");
 const { getIncludes } = require("./includes-getter");
-const {UserAnalyzer} =require("./analyzer");
+const { UserAnalyzer } = require("./analyzer");
 
-const USER_ANALYZER=new UserAnalyzer();
+const USER_ANALYZER = new UserAnalyzer();
 
 const CACHE = new Map();
 
@@ -60,15 +60,15 @@ function getReqParams(config, withType) {
 function generateReq(config, req) {
 
         // excludes other reqs fields
-        config.reqs.forEach(x=>{
-             if(!x.doCreate)
-                 req.excludes.add(x.name);
+        config.reqs.forEach(x => {
+                if (!x.doCreate)
+                        req.excludes.add(x.name);
         });
 
         // excludes user column fields
-        let userColumn=USER_ANALYZER.findUserColumn(config);
-        if(userColumn)
-           req.excludes.add(userColumn);
+        let userColumn = USER_ANALYZER.findUserColumn(config);
+        if (userColumn)
+                req.excludes.add(userColumn);
 
         // get req by conditions
         let conditions;
@@ -79,28 +79,29 @@ function generateReq(config, req) {
         } else {
                 conditions = getIncludes(config).concat(getConditions(config));
         }
-        conditions = conditions.filter(x => !req.excludes.has(x.name));
+
         let rets = [];
 
         // generate validates and expression reqs
-        conditions.forEach(condition => {
+        conditions.filter(x => !req.excludes.has(x.name))
+                .forEach(condition => {
 
-                // set validate if name match and absent
-                if (req.validates.has(condition.name))
-                        condition.validates = req.validates.get(condition.name);
+                        // set validate if name match and absent
+                        if (req.validates.has(condition.name))
+                                condition.validates = req.validates.get(condition.name);
 
-                // generate additional req fields by expression
-                let exp = condition.exp;
-                if (exp == "range") {
-                        rets.push({ name: `${condition.name}Min`, type: condition.type, validates: condition.validates, description: `${condition.description} min` });
-                        rets.push({ name: `${condition.name}Max`, type: condition.type, validates: condition.validates, description: `${condition.description} max` });
-                } else if (exp == "timeRange") {
-                        rets.push({ name: `${condition.name}Start`, type: condition.type, validates: condition.validates, description: `${condition.description} start time` });
-                        rets.push({ name: `${condition.name}End`, type: condition.type, validates: condition.validates, description: `${condition.description} end time` });
-                } else {
-                        rets.push(condition);
-                }
-        });
+                        // generate additional req fields by expression
+                        let exp = condition.exp;
+                        if (exp == "range") {
+                                rets.push({ name: `${condition.name}Min`, type: condition.type, validates: condition.validates, description: `${condition.description} min` });
+                                rets.push({ name: `${condition.name}Max`, type: condition.type, validates: condition.validates, description: `${condition.description} max` });
+                        } else if (exp == "timeRange") {
+                                rets.push({ name: `${condition.name}Start`, type: condition.type, validates: condition.validates, description: `${condition.description} start time` });
+                                rets.push({ name: `${condition.name}End`, type: condition.type, validates: condition.validates, description: `${condition.description} end time` });
+                        } else {
+                                rets.push(condition);
+                        }
+                });
 
         return rets;
 }

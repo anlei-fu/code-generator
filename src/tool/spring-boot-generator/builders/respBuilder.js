@@ -56,7 +56,7 @@ exports.respBuilder = function respBuilder() {
         this.build = function build() {
                 return {
                         single: this._single,
-                        description: this._description,
+                        description: this._description||"",
                         name: this._name,
                         doCreate: this._doCreate
                 };

@@ -63,7 +63,7 @@ function read(path, charset="utf-8") {
  */
 function write(path, data, charset="utf-8") {
         fs.writeFileSync(path, data, charset);
-        LOG.info(`write ${path}`);
+        // LOG.info(`write ${path}`);
 }
 
 /**

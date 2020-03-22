@@ -1,9 +1,9 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const {getReqParamsWithType}=require("./../req-common");
-const {STR} =require("./../../../libs/str");
+const { getReqParamsWithType } = require("./../req-common");
+const { STR } = require("./../../../libs/str");
 
-const _serviceItemRender = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
-const _serviceRender = new SimpleRender({}, `${__dirname}/templates/service.java`);
+const SERVICE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
+const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/templates/service.java`);
 
 /**
  * Render service template
@@ -12,14 +12,11 @@ const _serviceRender = new SimpleRender({}, `${__dirname}/templates/service.java
  * @returns {String}
  */
 function renderService(config) {
-        let content = "";
-        config.items.forEach(x => {
-                let model = getServiceItemModel(x,config.name);
-                content += _serviceItemRender.renderTemplate(model);
-        });
+        let content = STR.arrayToString1(config.items, "", "",
+                x => SERVICE_ITEM_RENDER.renderTemplate(getServiceItemModel(x, config.name)));
 
-        content=content.trimRight()+"\r\n";
-        return _serviceRender.renderTemplate({ content });
+        content = content.trimRight() + "\r\n";
+        return SERVICE_RENDER.renderTemplate({ content });
 }
 
 /**
@@ -28,10 +25,10 @@ function renderService(config) {
  * @param {Config} config 
  * @returns {String}
  */
-function getServiceItemModel(config,name) {
+function getServiceItemModel(config, name) {
         return {
                 serviceParams: getReqParamsWithType(config),
-                serviceReturnType: getServiceReturnType(config,name),
+                serviceReturnType: getServiceReturnType(config, name),
                 name: config.id
         };
 }
@@ -43,7 +40,7 @@ function getServiceItemModel(config,name) {
  * @param {String} name
  * @returns {String} 
  */
-function getServiceReturnType(config,name) {
+function getServiceReturnType(config, name) {
         if (config.type != "select")
                 return "boolean";
 

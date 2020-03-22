@@ -56,6 +56,22 @@ exports.builder = function builder() {
         }
 
         /**
+         * Set property batch
+         */
+        this.batch = () => {
+                this._batch = true;
+                return this;
+        }
+
+        /**
+         *  Set exist property
+         */
+        this.exists = () => {
+                this._exists = true;
+                return this;
+        }
+
+        /**
          * Add req item
          * 
          * @param {(reqBuilder) => void} configer to config new req item

@@ -13,17 +13,20 @@ function getIncludes(config) {
         if (CACHE.has(config.id))
                 return CACHE.get(config.id);
 
+        // merge with column meta info
         let includes = [];
         config.includes.forEach(include => {
-                includes.push(getColumn(config.table, include,config.alias));
+                includes.push(getColumn(config.table, include, config.alias));
         });
 
+        // concat joins includes
         config.joins.forEach(join => {
                 join.includes.forEach(include => {
-                        includes.push(getColumn(join.table,include ,join.table.alias));
+                        includes.push(getColumn(join.table, include, join.table.alias));
                 });
         });
 
+        // set insert not null expression
         if (config.type == "insert") {
                 includes.forEach(include => {
                         if (include.nullable)
@@ -31,6 +34,7 @@ function getIncludes(config) {
                 });
         }
 
+        // generate update mapper if expression
         if (config.type == "update")
                 generateUpdateExpression(includes);
 

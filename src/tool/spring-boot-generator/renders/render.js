@@ -5,5 +5,5 @@ exports.Render = {
         renderService: require("./service-render").renderService,
         renderServiceImpl: require("./serviceImpl-render").renderServiceImpl,
         renderController: require("./controller-render").renderController,
-        renderParams:require("./params-render").renderParams
+        renderParams: require("./params-render").renderParams
 }

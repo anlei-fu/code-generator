@@ -13,7 +13,7 @@ const DELETE_RENDER = new SimpleRender({}, `${__dirname}/templates/delete.xml`);
  */
 function renderDelete(config) {
         let deleteModel = {
-                alias:config.alias||"",
+                alias: config.alias || "",
                 id: config.id,
                 where: renderConditions(config)
         }

@@ -1,5 +1,5 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const { isJavaBaseType: isSimpleJavaType } = require("./../utils");
+const { isJavaBaseType } = require("./../utils");
 const { STR } = require("./../../../libs/str");
 
 const MAPPER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);
@@ -12,12 +12,9 @@ const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`)
  * @returns {String}
  */
 function renderMapper(config) {
-        let content = "";
-        config.items.forEach(x => {
-                let item = getMapperItemRenderConfig(x, config.name);
-                content += MAPPER_ITEM_RENDER.renderTemplate(item);
-        });
-        
+        let content = STR.arrayToString1(config.items, "", "",
+                x => MAPPER_ITEM_RENDER.renderTemplate(getMapperItemRenderConfig(x, config.name)));
+
         return MAPPER_RENDER.renderTemplate({ content });
 }
 
@@ -42,17 +39,18 @@ function getMapperItemRenderConfig(config, name) {
  * @returns {String}
  */
 function getMapperItemParams(config) {
+
+        // param generated
         if (config.params.doCreate)
                 return `${config.params.type} params`;
 
         let mapperParams = "";
         if (config.reqs.length > 1) {
-                config.reqs.forEach(x => {
-                        mapperParams += `@Param("${x.name}") ${x.type} ${x.name}, `;
-                });
-                mapperParams = STR.removeLastComa(mapperParams);
+                mapperParams = STR.arrayToString1(config.reqs, "", "",
+                        x => `@Param("${x.name}") ${x.type} ${x.name}, `)
+                        .removeLastComa(mapperParams);
         } else {
-                mapperParams = !isSimpleJavaType(config.reqs[0].type)
+                mapperParams = !isJavaBaseType(config.reqs[0].type)
                         ? `${config.reqs[0].type} ${config.reqs[0].name}`
                         : `@Param("${config.reqs[0].name}") ${config.reqs[0].type} ${config.reqs[0].name}`;
         }

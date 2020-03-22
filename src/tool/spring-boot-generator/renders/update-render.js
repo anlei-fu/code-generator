@@ -4,12 +4,12 @@ const { renderAsign } = require("./assign-render");
 const { renderSet } = require("./set-render");
 const { getIncludes } = require("./../includes-getter");
 const { LOWER_INCLUDES_ANY_MATCHER } = require("./../matchers");
-const {OBJECT} =require("./../../../libs/utils");
-const {STR} =require("./../../../libs/str");
-const {NamingStrategy} =require("./../../../libs/naming-strategy");
-const {getJavaType}  =require("./../utils");
+const { OBJECT } = require("./../../../libs/utils");
+const { STR } = require("./../../../libs/str");
+const { NamingStrategy } = require("./../../../libs/naming-strategy");
+const { getJavaType } = require("./../utils");
 
-const SET_ITEM_IDENT="            ";
+const SET_ITEM_IDENT = "            ";
 const UPDATE_RENDER = new SimpleRender({}, `${__dirname}/templates/update.xml`);
 
 const UPDATE_TIME_MATCHERS = x => LOWER_INCLUDES_ANY_MATCHER(x, [
@@ -36,7 +36,7 @@ function renderUpdate(config) {
                 x.suffix = i == array.length - 1 ? "" : ",";
                 columns += renderAsign(x);
         });
-        columns+=renderUpdateTime(config.table,config.alias);
+        columns += renderUpdateTime(config.table, config.alias);
 
         let parameterType;
         if (config.params.doCreate) {
@@ -46,25 +46,25 @@ function renderUpdate(config) {
         }
 
         let updateModel = {
-                alias:config.alias||"",
+                alias: config.alias || "",
                 id: config.id,
                 set: renderSet({ content: columns }),
                 where: renderConditions(config),
-                parameterType:parameterType||""
+                parameterType: parameterType || ""
         }
 
         return UPDATE_RENDER.renderTemplate(updateModel);
 }
 
-function renderUpdateTime(table,alias) {
-        let content="";
-  OBJECT.forEach(table.columns,(columnName,column)=>{
-      if(getJavaType(column.type)=="Date"&&UPDATE_TIME_MATCHERS(columnName))
-         content=`${SET_ITEM_IDENT}${alias||NamingStrategy.toHungary(table.name).toLowerCase()}`
-              +`.${NamingStrategy.toHungary(column.name).toLowerCase()}= current_timestamp,\r\n`;
-  });
+function renderUpdateTime(table, alias) {
+        let content = "";
+        OBJECT.forEach(table.columns, (columnName, column) => {
+                if (getJavaType(column.type) == "Date" && UPDATE_TIME_MATCHERS(columnName))
+                        content = `${SET_ITEM_IDENT}${alias || NamingStrategy.toHungary(table.name).toLowerCase()}`
+                                + `.${NamingStrategy.toHungary(column.name).toLowerCase()}= current_timestamp,\r\n`;
+        });
 
-   return STR.removeLastComa(content);
+        return STR.removeLastComa(content);
 }
 
 exports.renderUpdate = renderUpdate;

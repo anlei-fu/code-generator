@@ -1,7 +1,7 @@
     <select id="@id" resultType="com.@project.pojo.@resultType"@parameterType>
-          SELECT
+          select
 @columns
-          FROM @tableName @alias
+          from @tableName @alias
 @joins
 @where
     </select>

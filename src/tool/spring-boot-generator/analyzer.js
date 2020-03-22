@@ -130,7 +130,6 @@ const DEFAULT_VALIDATES = {
                 "sex": {
                         validate: "@Enum(\"sex\")"
                 },
-
         }
 }
 
@@ -138,7 +137,7 @@ const DEFAULT_VALIDATES = {
  * To generate column validate
  */
 class ValidateAnalyzer extends AnalyzerBase {
-        constructor() {
+        constructor () {
                 super();
                 this.validates = DEFAULT_VALIDATES;
         }
@@ -191,7 +190,7 @@ class ValidateAnalyzer extends AnalyzerBase {
  * Wrapper class
  */
 class ExcludesAnalyzer extends ValidateAnalyzer {
-        constructor() {
+        constructor () {
                 super();
         }
 
@@ -308,7 +307,7 @@ const DEFAULT_EXPRESSIONS = {
  * To generate column condition expression
  */
 class ExpresssionAnalyzer extends ExcludesAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.expressions = DEFAULT_EXPRESSIONS;
         }
@@ -325,7 +324,6 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
                         return null;
 
                 for (const item in this.expressions[type]) {
-
                         let match = this.expressions[type][item].matcher
                                 ? this.expressions[type][item].matcher(name)
                                 : Matcher.lowerIncludes(name, item);
@@ -446,7 +444,7 @@ const SELECT_EXLUCES = {
         },
         Integer: {
                 value: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName,"value")
+                        matcher: columnName => Matcher.lowerEndsWith(columnName, "value")
                 }
         }
 }
@@ -455,7 +453,7 @@ const SELECT_EXLUCES = {
  * Analyze select candiates
  */
 class SelectAnalyzer extends ExpresssionAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.excludes = SELECT_EXLUCES;
 
@@ -470,7 +468,7 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
          * @returns {boolean}
          */
         shouldBeCandidate(type, name) {
-                
+
                 // unknown type
                 if (!this.excludes[type])
                         return true;
@@ -511,7 +509,7 @@ const DEFAULT_INSERT_EXCLUDES = {
  * Analyze insert candidate
  */
 class InsertAnalyzer extends ExcludesAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.excludes = DEFAULT_INSERT_EXCLUDES;
         }
@@ -523,7 +521,7 @@ class InsertAnalyzer extends ExcludesAnalyzer {
          * @param {Column} column 
          */
         shouldBeCandidate(column) {
-                
+
                 //
                 if (column.autoInceament || column.defaulValue || column.isPk)
                         return false;
@@ -593,7 +591,7 @@ const DEFAULT_UPDATE_EXCLUDES = {
  * Analyze update candidate
  */
 class UpdateAnlyzer extends ExcludesAnalyzer {
-        constructor() {
+        constructor () {
                 super();
                 this.excludes = DEFAULT_UPDATE_EXCLUDES;
         }
@@ -632,13 +630,14 @@ const DEFAULT_USER_MATCHERS = {
                         "createuser"])
                         || STR.equalAny(columnName.toLowerCase(), ["account",
                                 "user",
-                                "admin",])
+                                "admin", "operator"])
         },
         delete: {
                 matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
                         "account",
                         "user",
-                        "admin"
+                        "admin",
+                        "operator"
                 ])
         },
         update: {
@@ -653,7 +652,8 @@ const DEFAULT_USER_MATCHERS = {
                 matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
                         "account",
                         "user",
-                        "admin"
+                        "admin",
+                        "operator"
                 ])
         }
 };

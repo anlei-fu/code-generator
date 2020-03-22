@@ -188,6 +188,27 @@ function arrayToString(array = [], prefix = "", suffix = "") {
 }
 
 /**
+ * Customirized array to string format
+ * 
+ * @param {[Any]} array 
+ * @param {String} prefix 
+ * @param {String} suffix 
+ * @param {(Any,Number,[Any])=>String} converter  accept (item,index,array) and return a string
+ * @returns {String}
+ */
+function arrayToString1(array,prefix = "", suffix = "",converter){
+      if(!converter)
+         throw new Error("converter is required!");
+
+      let output=prefix;
+      array.forEach((item,index,arr)=>{
+         output+=converter(item,index,arr);
+      });
+
+      return output+suffix;
+}
+
+/**
  * Split input string into sections by splitor and keep splior in results
  * 
  * @param {String} input 
@@ -470,5 +491,6 @@ exports.STR = {
         equalAny,
         startsWithAny,
         endsWithAny,
-        startsAndendsWithAny
+        startsAndendsWithAny,
+        arrayToString1
 }

@@ -4,10 +4,16 @@ const IF_IDENT = "            ";
 const IF_RENDER = new SimpleRender({});
 IF_RENDER.setTempalte(`${IF_IDENT}<if test="@ifExpression">\r\n${IF_IDENT}      @content${IF_IDENT}</if>\r\n`);
 
+class IfModel {
+        constructor () {
+                this.ifExpression = "";
+        }
+}
+
 /**
  * Render if template
  * 
- * @param {{ifExpression:String,cotent:String}} model
+ * @param {IfModel} model
  * @returns {String}
  */
 function renderIf(model) {
@@ -19,5 +25,3 @@ function renderIf(model) {
 }
 
 exports.renderIf = renderIf;
-
-

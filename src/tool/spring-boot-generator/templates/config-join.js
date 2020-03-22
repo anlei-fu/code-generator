@@ -5,7 +5,7 @@
                                                                    @outputAlias
                                                 })
                                                 
-                                                .type("LEFT")
+                                                .type("left")
                                                 .joinCondition(@joinCondition)
                                                 .alias(@alias)
                                                 .build()

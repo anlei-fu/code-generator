@@ -1,6 +1,6 @@
     <insert id="@id"@parameterType>
-          INSERT INTO @tableName 
+          insert into @tableName 
 @columns
-          VALUES
+          values
 @properties
     </insert>

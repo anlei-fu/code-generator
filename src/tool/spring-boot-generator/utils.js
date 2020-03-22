@@ -25,8 +25,8 @@ exports.getJavaType = function (sqlType) {
         // type is correct
         if (!sqlType.name && sqlType.length)
                 return new Error(`input(${sqlType}) is not a correct type!`);
-        sqlType.name=sqlType.name.toLowerCase();
 
+        sqlType.name = sqlType.name.toLowerCase();
         if (sqlType.name.includes("char")) {
                 return "String";
         } else if (sqlType.name.includes("integer")) {
@@ -53,6 +53,9 @@ exports.isJavaBaseType = (type) => {
         return JAVA_BASE_TYPES.has(type);
 }
 
+/**
+ * Format java file ,each segment just one line  between
+ */
 exports.formatJavaFile = (content) => {
         let empty = false;
         let output = "";

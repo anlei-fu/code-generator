@@ -1,0 +1,39 @@
+html body {
+        padding: 0;
+        margin: 0;
+}
+
+.wrapper
+{
+    /* font-size: 0.8rem; */
+    height: 100%;
+}
+
+.banner {
+ width: 100%;
+}
+
+.container
+{
+    position:absolute;
+    top:58%;
+    left:0;
+    width: 100%;
+}
+
+.input-box
+{
+    border-style: none;
+    margin: 6px 15px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    padding: 2px;
+    line-height: 1.5;
+}
+
+.contaner-item
+{
+    margin:0 auto;
+    margin-top: 15px;
+    width: 80%;
+}

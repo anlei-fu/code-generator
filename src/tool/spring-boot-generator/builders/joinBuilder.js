@@ -7,6 +7,8 @@
  * @LastEditTime: 2019-12-17 14:34:14
  */
 const { ColumnBuilder } = require("./columnBuilder");
+const {OBJECT} =require("./../../../libs/utils")
+
 exports.joinBuilder = class joinBuilder {
         constructor () {
                 this._includes = new ColumnBuilder();
@@ -66,7 +68,7 @@ exports.joinBuilder = class joinBuilder {
          * @returns {joinBuilder}
          */
         table(table) {
-                this._table = table;
+                this._table = OBJECT.clone(table);
                 return this;
         }
 
@@ -87,8 +89,6 @@ exports.joinBuilder = class joinBuilder {
 
                 if (!this._table || !this._joinCondition)
                         throw new Error(`unexcepted config`);
-
-                console.log(this._includes.build());
 
                 this._table.alias = this._alias;
 

@@ -9,8 +9,8 @@ async function resolve(dbConfig, db, outputFolder) {
         await generate(dbConfig,
                 db,
                 outputFolder);
-                console.log(outputFolder)
         let all = require(`${outputFolder}/all.js`).all;
+        delete all.SystemDictionary;
 
         // generate table relation
         const relationAnalyzer = new TableRelationAnalyzer(all);

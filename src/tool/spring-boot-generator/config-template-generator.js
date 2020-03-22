@@ -4,7 +4,7 @@ const { getJavaType } = require("./utils");
 const { SimpleRender } = require("../simple-pattern-render/simple-pattern-render");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
-const  joinHelper =require("./join-analyzer")
+const JOIN_ANALYZER = require("./join-analyzer")
 
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
 const REQ_IDENT = "                                           ";
@@ -47,8 +47,7 @@ const USER_MATCHERS = {
  * Analyze and render a config template
  */
 class ConfigBuilderGenerator {
-
-        constructor() {
+        constructor () {
                 this._selectAnalyzer = new SelectAnalyzer();
                 this._insertAnalyzer = new InsertAnalyzer();
                 this._updateAnalyzer = new UpdateAnlyzer();
@@ -58,14 +57,16 @@ class ConfigBuilderGenerator {
          * Generate a config file by table
          * 
          * @param {Table} table 
+         * @param {Column} pk
+         * @param {TableRelations} relations
          * @returns {String}
          */
-        generate(table, pk,tables,relations) {
-                
-                let joins="";
-                joinHelper.analyze(relations,table,tables).forEach((item,i)=>{
-                    joins+=joinHelper.renderJoinConfig(item,`t${i+1}`);
-                });
+        generate(table, pk, tables, relations) {
+
+                // auto analyze join
+                let joinItems= JOIN_ANALYZER.analyze(relations, table, tables);
+                let joins =STR.arrayToString1(joinItems,"","",
+                           (join,i)=>JOIN_ANALYZER.renderJoinConfig(join, `t${i + 1}`))
 
                 let select = this._generateSelect(table);
                 let insert = this._generateInsert(table);
@@ -73,6 +74,7 @@ class ConfigBuilderGenerator {
 
                 let key = STR.upperFirstLetter(pk.name);
                 let skey = pk.name;
+                let name = STR.upperFirstLetter(table.name);
                 let deleteMethodName = key;
                 let updateMethodName = key;
                 let selectMethodName = key;
@@ -101,8 +103,6 @@ class ConfigBuilderGenerator {
                         selectMethodName = "UserAnd" + selectMethodName;
                 }
 
-
-
                 let selete_text = this._renderExcludes(select.excludes)
                 if (select.expressions.length != 0)
                         selete_text += this._renderExpression(select.expressions);
@@ -111,6 +111,7 @@ class ConfigBuilderGenerator {
                 let update_text = this._renderExcludes(update.excludes)
 
                 let model = {
+                        tname: name,
                         keyType,
                         key,
                         skey,
@@ -134,17 +135,12 @@ class ConfigBuilderGenerator {
                         selectExcludes: selete_text.trimRight(),
                         selectReq: this._renderReq(select.validates).trimRight(),
                         selectMsg: select.msg.trimRight()
-                        
+
                 }
 
                 let content = CONFIG_ITEM_RENDER.renderTemplate(model);
-                let output = "";
-                STR.splitToLines(content).forEach(x => {
-                        if (x.trim() == "@@")
-                                return;
-
-                        output += x + "\r\n";
-                });
+                let lines= STR.splitToLines(content).filter(x=>x.trim() != "@@");
+                let output = output=STR.arrayToString1(lines,"","",x=>`${x}\r\n`);
 
                 return output.replace(/@@/g, "");
         }
@@ -156,31 +152,20 @@ class ConfigBuilderGenerator {
          * @returns {String}
          */
         _renderExcludes(items) {
-                if (items.length == 0)
-                        return "";
-
-                let output = EXCLUDE_IDENT + ".excludes([";
-                items.forEach(x => {
-                        output += `"${x}",`;
-                })
-
-                output = STR.removeLastComa(output);
-                return output + "])\r\n";
+                return items.length != 0
+                        ? STR.arrayToString1(items, `${EXCLUDE_IDENT}.excludes([`, "])\r\n", x => `"${x}",`)
+                        : "";
         }
 
         /**
          * Render exxpression
          * 
-         * @param {[{key:String,expression:String}]} items 
+         * @param {[Expression]} items 
          * @returns {String}
          */
         _renderExpression(items) {
-                let output = "";
-                items.forEach(x => {
-                        output += EXCLUDE_IDENT + `.exp("${x.key}","${x.expression}")\r\n`;
-                })
-
-                return output;
+                return STR.arrayToString1(items, "", "",
+                        x => `${EXCLUDE_IDENT}.exp("${x.key}","${x.expression}")\r\n`)
         }
 
         /**
@@ -213,34 +198,32 @@ class ConfigBuilderGenerator {
                         , expressions = []
                         , msg = "";
 
-                OBJECT.forEach(table.columns, (key, value) => {
-                        let type = getJavaType(value.type);
-                        if (!this._selectAnalyzer.shouldBeCandidate(type, key)) {
-                                excludes.push(key);
-                                msg += `${COMMENT_IDENT}// ${key} : excluded \r\n`;
+                OBJECT.forEach(table.columns, (columnName, column) => {
+                        let type = getJavaType(column.type);
+                        if (!this._selectAnalyzer.shouldBeCandidate(type, columnName)) {
+                                excludes.push(columnName);
+                                msg += `${COMMENT_IDENT}// ${columnName} : excluded \r\n`;
                                 return;
                         }
 
                         // generate validate
-                        let validate = this._selectAnalyzer.getValidates(type, key);
+                        let validate = this._selectAnalyzer.getValidates(type, columnName);
                         if (validate.length > 0) {
-                                msg += `${COMMENT_IDENT}// ${key} : validates --- ${STR.arrayToString(validate, "", "  ")}\r\n`;
+                                msg += `${COMMENT_IDENT}// ${columnName} : validates --- ${STR.arrayToString(validate, "", "  ")}\r\n`;
                                 validates.push({
-                                        key: key,
+                                        key: columnName,
                                         validates: validate
                                 });
-
                         }
 
                         // generate expression
-                        let expression = this._selectAnalyzer.getExpression(type, key);
+                        let expression = this._selectAnalyzer.getExpression(type, columnName);
                         if (expression) {
-                                msg += `${COMMENT_IDENT}// ${key} : expression --- ${expression}\r\n`;
+                                msg += `${COMMENT_IDENT}// ${columnName} : expression --- ${expression}\r\n`;
                                 expressions.push({
-                                        key: key,
+                                        key: columnName,
                                         expression: expression
                                 });
-
                         }
                 });
 
@@ -300,6 +283,7 @@ class ConfigBuilderGenerator {
                 let validates = []
                         , excludes = []
                         , msg = "";
+
                 OBJECT.forEach(table.columns, (key, value) => {
                         if (!this._insertAnalyzer.shouldBeCandidate(value)) {
                                 excludes.push(key);
@@ -316,7 +300,6 @@ class ConfigBuilderGenerator {
                                         validates: validate
                                 });
                         }
-
                 });
 
                 return {

@@ -5,41 +5,48 @@ const { renderValidate } = require("./validate-render")
 const ENTITY_FIELD_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-item.java`);
 const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity.java`);
 
+class EntityModel {
+        constructor () {
+                this.fields = [];
+                this.description = "";
+                this.type = "";
+                this.extends = "";
+        }
+}
+
 /**
  * Render entity template
  * 
- * @param {Entity} entity 
+ * @param {EntityModel} entityModel 
  * @returns {String}
  */
-function renderEntity(entity) {
+function renderEntity(entityModel) {
         let content = ""
 
         // generate all field items
-        entity.fields.forEach(x => {
-                let validates = "";
-                if (x.validates)
-                        x.validates.forEach(x => {
-                                validates += renderValidate(x);
-                        });
+        entityModel.fields.forEach(x => {
+                let validates = x.validates
+                        ? STR.arrayToString1(x.validates, "", "", x => renderValidate(x))
+                        : "";
 
-                let itemPatterns = {
+                let fieldModel = {
                         name: x.name,
                         type: x.type,
-                        description: x.description.replace(/\r\n/g,""),
+                        description: x.description.replace(/\r\n/g, ""),
                         validates
                 };
 
-                let field = ENTITY_FIELD_RENDER.renderTemplate(itemPatterns);
+                let field = ENTITY_FIELD_RENDER.renderTemplate(fieldModel);
                 content += STR.removeEmptyLine(field) + "\r\n";
         });
 
         content = content.trimRight() + "\r\n";
         let entityModel = {
-                description: entity.description.replace(/\r\n/g,""),
-                name: entity.name,
+                description: entityModel.description.replace(/\r\n/g, ""),
+                name: entityModel.name,
                 content,
-                entityType: entity.type,
-                extends: entity.extends ? `extends ${entity.extends}` : ""
+                entityType: entityModel.type,
+                extends: entityModel.extends ? `extends ${entityModel.extends}` : ""
         }
 
         return ENTITY_RENDER.renderTemplate(entityModel)

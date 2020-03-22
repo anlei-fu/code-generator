@@ -1,26 +1,44 @@
+/**
+ * Dispatch function 
+ * 
+ * @param {[ColumnConfig]} conditions 
+ */
 function generateExpression(conditions) {
         conditions.forEach(x => {
                 generateExpressionCore(x);
         });
-
 }
 
-// For  generating req validate not for sql
+/**
+ * For  generating req validate not for sql
+ * 
+ * @param {[ColumnConfig]} includes
+ * 
+ */
 function generateUpdateExpression(includes) {
-        includes.forEach(x => {
-                generateUpdateExpressionCore(x);
+        includes.forEach(include => {
+                generateUpdateExpressionCore(include);
         });
 }
 
+/**
+ * Set update sql if test expression
+ * 
+ * @param {ColumnConfig} include 
+ */
 function generateUpdateExpressionCore(include) {
         include.ifExpression = `${include.name} != null`;
 }
 
+/**
+ * 
+ * @param {ColumnConfig} condition 
+ */
 function generateExpressionCore(condition) {
 
         // skip when required
-        if(condition.required)
-            return null;
+        if (condition.required)
+                return null;
 
         // set default if expression
         condition.ifExpression = `${condition.name} != null`;
@@ -37,13 +55,12 @@ function generateExpressionCore(condition) {
                         condition.expression = `@prefix${condition.column} like '%\${${condition.like}}'\r\n`;
                 }
 
-        } else if (condition.type == "Integer" || condition.type == "Float"||condition.type == "Double") {
+        } else if (condition.type == "Integer" || condition.type == "Float" || condition.type == "Double") {
                 if (condition.bigger) {
                         condition.expression = `@prefix${condition.column} &gt; ${condition.name}\r\n`;
                 } else if (condition.biggerEqual) {
                         condition.expression = `@prefix${condition.column} &get; ${condition.name}\r\n`;
-                }
-                else if (condition.smaller) {
+                } else if (condition.smaller) {
                         condition.expression = `@prefix${condition.column} &lt; ${condition.name}\r\n`;
                 } else if (condition.smallerEqual) {
                         condition.expression = `@prefix${condition.column} &let; ${condition.name}\r\n`;
@@ -55,7 +72,6 @@ function generateExpressionCore(condition) {
                 condition.ifExpression = `${condition.name}Start !=null and  ${condition.name}End != null`;
                 condition.expression = `@prefix${condition.column} between #{${condition.name}Start} and #{${condition.name}End}\r\n`;
         }
-
 }
 
 module.exports = {

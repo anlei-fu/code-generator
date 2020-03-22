@@ -1,0 +1,225 @@
+@{
+    Layout = null;
+}
+<script type="text/javascript">
+    $(function () {
+        $("#checkbox").show();
+        $("#text").hide();
+        $("#checked1").hide();
+        $("#checked2").hide();
+        $("#label1").hide();
+        $("#label2").hide();
+        $("#SourceType").hide();
+        $("#needinvoice").hide();
+        $("#UpdateMemo").hide();
+        $('#mainForm').validate({
+            errorClass: "error",
+            focusInvalid: true,
+            submitHandler: function (form) {
+                var title = $("#title option:selected").val();
+                var keyword = $("#text").val();
+                if (title == "Split_Face" || title == "Overtime_Timeouts") {
+                    if (keyword == "") {
+                        alert("值不能为空");
+                        return false;
+                    }
+                }
+                if (title == "ka_flow") {
+                    if (keyword == "0" || parseFloat(keyword)) {
+                        if (parseFloat(keyword) < 0 || parseFloat(keyword) > 0.95) {
+                            alert('请输入 0~0.95 之间的数字')
+                            return false;
+                        }
+                    } else {
+                        alert('这不是个有效数字!')
+                        return false;
+                    }
+                }
+                var data = $("#mainForm").serialize();
+                var url = "/StUpChannelManage/AllEditUpProduct";
+                $.ajax({
+                    type: "post",
+                    data: data,
+                    url: url,
+                    success: function (data) {
+                        if (data.toLowerCase() == "true") {
+                            art.dialog.tips("保存成功");
+                            $.paging.submit();
+                            return true;
+                        }
+                        else {
+                            alert(data);
+                        }
+                    },
+                    error: function () {
+                        alert("操作失败，请重试");
+                    }
+                }); ;
+            },
+            rules: {
+            //                text: { required: true }
+        },
+        messages: {
+        //                text: { required: "值不可为空" }
+    }
+});
+});
+function changeTitle(obj) {
+    var title = $("#title option:selected").val();
+    if (title == "Is_Specify_Down" || title == "Permit_Gift" || title == "permit_pause" || title == "Is_Special" || title == "Need_Proof" || title == "Ref_Weight") {
+        $("#checkbox").show();
+        $("#text").hide();
+        $("#checked1").hide();
+        $("#checked2").hide();
+        $("#label1").hide();
+        $("#label2").hide();
+        $("#SourceType").hide();
+        $("#needinvoice").hide();
+        $("#UpdateMemo").hide();
+    }
+    else if (title =="Deal_Time_Thresh" || title == "Base_Deal_Count" || title == "Product_Group" || title == "Pause_Interval_Time" || title == "Deal_Time_Rate" || title == "Sup_Bind_Level" || title == "Failed_Pause_Thresh" || title == "Stuck_Pause_Thresh" || title == "Permit_Unsafe" || title == "Channel_Error_Range" || title == "Phone_Limit_Range" || title == 'latest_price' || title == "ka_flow" || title == 'real_face' || title == 'Bind_Group' || title == 'Arrive_Period' || title == 'Proof_Exp' || title == 'Weight') {
+        $("#checkbox").hide();
+        $("#text").show();
+        $("#checked1").hide();
+        $("#checked2").hide();
+        $("#label1").hide();
+        $("#label2").hide();
+        $("#SourceType").hide();
+        $("#needinvoice").hide();
+        $("#UpdateMemo").hide();
+    }
+    else if (title == "Source_Type") {
+        $("#checkbox").hide();
+        $("#text").hide();
+        $("#checked1").hide();
+        $("#checked2").hide();
+        $("#label1").hide();
+        $("#label2").hide();
+        $("#SourceType").show();
+        $("#needinvoice").hide();
+        $("#UpdateMemo").hide();
+    }
+    else if (title == "need_invoice") {
+        $("#checkbox").hide();
+        $("#text").hide();
+        $("#checked1").hide();
+        $("#checked2").hide();
+        $("#label1").hide();
+        $("#label2").hide();
+        $("#SourceType").hide();
+        $("#needinvoice").show();
+        $("#UpdateMemo").hide();
+    }
+    else if (title == "Update_Memo") {
+        $("#checkbox").hide();
+        $("#text").hide();
+        $("#checked1").hide();
+        $("#checked2").hide();
+        $("#label1").hide();
+        $("#label2").hide();
+        $("#SourceType").hide();
+        $("#needinvoice").hide();
+        $("#UpdateMemo").show();
+    }
+    else if (title == "Update_Memo") {
+        $("#checkbox").hide();
+        $("#text").hide();
+        $("#checked1").hide();
+        $("#checked2").hide();
+        $("#label1").hide();
+        $("#label2").hide();
+        $("#SourceType").hide();
+        $("#needinvoice").hide();
+        $("#UpdateMemo").show();
+    }
+    else {
+        $("#checkbox").hide();
+        $("#text").hide();
+        $("#checked1").show();
+        $("#checked2").show();
+        $("#label1").show();
+        $("#label2").show();
+        $("#SourceType").hide();
+        $("#needinvoice").hide();
+        $("#UpdateMemo").hide();
+    }
+}
+</script>
+<form id="mainForm" method="post">
+<input type="submit" id="btnSubmit" style="display: none" value="" />
+<input type="hidden" name ="__id" value="@ViewBag.ProductId"/>
+<div id="divcontent">
+    <table width="100%">
+        <tr height="40">
+            <td width="120" class="textalign_r">
+                选择更新项：
+            </td>
+            <td class="textalign_l" width="200">
+                <select name="title" id="title" onchange="changeTitle(this)" style="width: 120px">
+                    <option value="Is_Specify_Down">是否指定下游</option>
+                    <option value="permit_pause">是否允许暂停</option>
+                    <option value="Bill_Type">前/后向</option>
+                    <option value="Permit_Unsafe">安全级别</option>
+                    <option value="Permit_Gift">允许流量券</option>
+                    <option value="Sup_Bind_Level">补单绑定优先级</option>
+                    <option value="Failed_Pause_Thresh">连续失败致暂停阈值</option>
+                    <option value="Stuck_Pause_Thresh">卡单致暂停阈值</option>
+                    <option value="Channel_Error_Range">渠道错误时长</option>
+                    <option value="Phone_Limit_Range">号码时长</option>
+                    <option value="latest_price">最低售价折扣(面值折扣)</option>
+                    <option value="ka_flow">设置KA产品分流[0~0.95]</option>
+                    <option value="real_face">金额</option>
+                    <option value="need_invoice">营业厅开发票</option>
+                    <option value="Source_Type">货源类别</option>BindGroup
+                    <option value="Bind_Group">绑定分组</option>
+                    <option value="Is_Special">是否特殊产品</option>
+                    @*
+                    <option value="Hall_Bill_Type">能否营业厅开发票</option>
+                    *@
+                    <option value="Arrive_Period">到账时长</option>
+                    <option value="Update_Memo">备注</option>
+                    <option value="Need_Proof">是否启用凭证</option>
+                    <option value="Proof_Exp">凭证正则</option>
+                    <option value="Ref_Weight">是否参考权重</option>
+                    <option value="Weight">权重值</option>
+                    <option value="Pause_Interval_Time">暂停间隔时长</option>
+                    <option value="Deal_Time_Rate">三分钟到账率阈值</option>
+                    <option value="Product_Group">产品分组</option>
+                    <option value="Base_Deal_Count">到账率统计基数</option>
+                    <option value="Deal_Time_Thresh">处理时长阈值</option>
+                </select>
+            </td>
+        </tr>
+        <tr height="40">
+            <td class="textalign_r">
+                值：
+            </td>
+            <td>
+                <input type="text" name="text" class="widthinput" id="text" />
+                <input type="checkbox" name="checkbox" id="checkbox" value="0" />
+                <input class="frame_middle" id="checked1" type="radio" name="radio" value="1" />
+                <label for="checked1" id="label1">
+                    前向</label>
+                <input class="frame_middle" id="checked2" type="radio" name="radio" value="2" />
+                <label for="checked2" id="label2">
+                    后向</label>
+                <select id="SourceType" name="SourceType" style="width: 80px">
+                    <option value="">--请选择--</option>
+                    <option value="sz" >手支</option>
+                    <option value="kc" >空充</option>
+                    <option value="km" >卡密</option>
+                    <option value="sbosszl" >省boss直连</option>
+                    <option value="wzf" >沃支付</option>
+                    <option value="jfjk" >计费接口</option>
+                    <option value="other" >其他</option>
+                    <option value="ts">特殊</option>
+                    <option value="tf">统付</option>
+                </select>
+                @Html.DropDownList("needinvoice", new SelectList(MatchingRecharge.UserService.DataService.Instance.GetDataList("HallBillType"), "value", "name"), "--请选择--", new { style = "width:80px" })
+                <textarea name="UpdateMemo" id="UpdateMemo" style="font-size: 12px; width: 100%; max-width: 100%; min-height: 5rem;"
+                    maxlength="300"></textarea>
+            </td>
+        </tr>
+    </table>
+</div>
+</form>

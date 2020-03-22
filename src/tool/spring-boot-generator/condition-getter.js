@@ -22,7 +22,7 @@ function getConditions(config) {
               });
         });
 
-        // add expression properties if should
+        // add mapper if test expression if need
         generateExpression(conditions);
 
         CACHE.set(config.id, conditions);

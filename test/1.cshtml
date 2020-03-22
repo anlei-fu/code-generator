@@ -1,0 +1,258 @@
+@{
+    Layout = null;
+}
+<script type="text/javascript">
+    $(function () {
+        $('#mainForm').validate({
+            errorClass: "error",
+            focusInvalid: true,
+            submitHandler: function (form) {
+                if(!validate())
+                   return;
+                var data = $("#mainForm").serialize();
+                var url = "/StUpChannelManage/AllEditUpProduct";
+                $.ajax({
+                    type: "post",
+                    data: data,
+                    url: url,
+                    success: function (data) {
+                        if (data.toLowerCase() == "true") {
+                            art.dialog.tips("保存成功");
+                            $.paging.submit();
+                            return true;
+                        }
+                        else {
+                            alert(data);
+                        }
+                    },
+                    error: function () {
+                        alert("操作失败，请重试");
+                    }
+                }); ;
+            },
+            rules: {
+            //                text: { required: true }
+        },
+        messages: {
+        //                text: { required: "值不可为空" }
+    }
+});
+});
+
+var rules={
+    number:[
+    {},
+
+    ]
+}
+
+function validate(){
+  
+}
+
+function checkAll(checked){
+   $("#checkBoxContainer input[type='checkbox']").attr("checked",checked);
+}
+
+function toggleItem(name){
+    $("#"+name).toggle(200);
+}
+
+function checkBoxChangeHandler(checkBox){
+    checkBox.value=checkBox.checked?0:1;
+}
+
+
+
+</script>
+<form id="mainForm" method="post">
+<input type="submit" id="btnSubmit" style="display: none" value="" />
+<input type="hidden" name ="__id" value="@ViewBag.ProductId"/>
+<div id="divcontent">
+    <table width="100%">
+        <tr height="40">
+            <td width="120" class="textalign_r">
+                选择更新项：
+            </td>
+            <td class="textalign_l" width="200" id="checkBoxContainer">
+                <input type="checkbox" onchange="checkAll(this.checked)"/> 所有
+                <input type="checkbox" onchange="toggleItem('Is_Specify_Down1')" />是否指定下游
+                <input type="checkbox"  onchange="toggleItem('Permit_Pause1')"/>是否允许暂停
+                <input type="checkbox" onchange="toggleItem('Bill_Type1')"/>前/后向
+                <input type="checkbox" onchange="toggleItem('Permit_Unsafe1')"/>安全级别
+                <input type="checkbox" onchange="toggleItem('Permit_Gift1')"/>允许流量券
+                <input type="checkbox" onchange="toggleItem('Sup_Bind_Level1')"/>补单绑定优先级
+                <input type="checkbox" onchange="toggleItem('Failed_Pause_Thresh1')"/>连续失败致暂停阈值
+                <input type="checkbox" onchange="toggleItem('Stuck_Pause_Thresh1')"/>卡单致暂停阈值
+                <input type="checkbox" onchange="toggleItem('Channel_Error_Range1')"/>渠道错误时长
+                <input type="checkbox" onchange="toggleItem('Phone_Limit_Range1')"/>号码时长
+                <input type="checkbox" onchange="toggleItem('latest_price1')"/>最低售价折扣(面值折扣)
+                <input type="checkbox" onchange="toggleItem('ka_flow1')"/>设置KA产品分流[0~0.95]
+                <input type="checkbox" onchange="toggleItem('real_face1')"/>金额
+                <input type="checkbox" onchange="toggleItem('need_invoice1')"/>营业厅开发票
+                <input type="checkbox" onchange="toggleItem('Source_Type1')"/>货源类别
+                <input type="checkbox" onchange="toggleItem('Bind_Group1')"/>绑定分组
+                <input type="checkbox" onchange="toggleItem('Is_Special1')"/>是否特殊产品
+                <input type="checkbox" onchange="toggleItem('Arrive_Period1')"/>到账时长
+                <input type="checkbox" onchange="toggleItem('Update_Memo1')"/>备注
+                <input type="checkbox" onchange="toggleItem('Need_Proof1')"/>是否启用凭证
+                <input type="checkbox" onchange="toggleItem('Proof_Exp1')"/>凭证正则
+                <input type="checkbox" onchange="toggleItem('Ref_Weight1')"/>是否参考权重
+                <input type="checkbox" onchange="toggleItem('Weight1')"/>权重值
+                <input type="checkbox" onchange="toggleItem('Pause_Interval_Time1')"/>暂停间隔时长
+                <input type="checkbox" onchange="toggleItem('Deal_Time_Rate1')"/>三分钟到账率阈值
+                <input type="checkbox" onchange="toggleItem('Product_Group1')"/>产品分组
+                <input type="checkbox" onchange="toggleItem('Base_Deal_Count1')"/>到账率统计基数
+                <input type="checkbox" onchange="toggleItem('Deal_Time_Thresh1')"/>处理时长阈值                
+            </td>
+        </tr>
+        <tr id="Is_Specify_Down1">
+                <td>是否指定下游:</td>
+                <td> <input type="checkbox"  name="Is_Specify_Down" onchange="checkBoxChangeHandler(this)"/></td>
+        </tr>
+        <tr id="Permit_Pause1">
+                <td>是否允许暂停</td>
+               <td> <input type="checkbox"  name="Permit_Pause" onchange="checkBoxChangeHandler(this)"/></td>
+        </tr>
+        <tr id="Bill_Type1">
+                <td>前/后向</td>
+                <td>
+                        <select name="Bill_Type">
+                                <option value="">前向</option>
+                                <option value="">后向</option>
+                        </select>
+                </td>
+        </tr>
+        <tr id="Permit_Unsafe1">
+                <td>安全级别</td>
+                <td><input type="text" name="Permit_Unsafe"/> </td>
+        </tr>
+        <tr id="Permit_Gift1">
+                <td>允许流量券</td>
+              <td> <input type="checkbox"  name="Permit_Gift" onchange="checkBoxChangeHandler(this)"/></td>
+        </tr>
+        <tr id="Sup_Bind_Level1">
+                <td>补单绑定优先级</td>
+                <td><input type="text" name="Sup_Bind_Level"/> </td>
+        </tr>
+        <tr id="Failed_Pause_Thresh1">
+                <td>连续失败致暂停阈值</td>
+                <td><input type="text" name="Failed_Pause_Thresh"/> </td>
+        </tr>
+
+          <tr id="Stuck_Pause_Thresh1">
+                <td>卡单致暂停阈值</td>
+                <td><input type="text" name="Stuck_Pause_Thresh"/> </td>
+        </tr>
+
+        <tr id="Channel_Error_Range1">
+                <td>渠道错误时长</td>
+                <td><input type="text" name="Channel_Error_Range"/> </td>
+        </tr>
+        <tr id="Phone_Limit_Range1">
+                <td>号码时长</td>
+                <td><input type="text" name="Phone_Limit_Range"/> </td>
+        </tr>
+        <tr id="latest_price1">
+                <td>最低售价折扣(面值折扣)</td>
+                <td><input type="text" name="latest_price"/> </td>
+        </tr>
+        <tr id="ka_flow1">
+                <td>设置KA产品分流[0~0.95]</td>
+                <td><input type="text" name="ka_flow"/> </td>
+        </tr>
+        <tr id="real_face1">
+                <td>金额</td>
+                <td><input type="text" name="real_face"/> </td>
+        </tr>
+        <tr id="need_invoice1">
+                <td>营业厅开发票</td>
+              <td> 
+                      @Html.DropDownList("needinvoice", new SelectList(MatchingRecharge.UserService.DataService.Instance.GetDataList("HallBillType"), "value", "name"), "--请选择--", new { style = "width:80px" })
+                </td>
+        </tr>
+        <tr id="Source_Type1">
+                <td>货源类别</td>
+                <td>
+                   <select name="Source_Type">
+                    <option value="">--请选择--</option>
+                    <option value="sz" >手支</option>
+                    <option value="kc" >空充</option>
+                    <option value="km" >卡密</option>
+                    <option value="sbosszl" >省boss直连</option>
+                    <option value="wzf" >沃支付</option>
+                    <option value="jfjk" >计费接口</option>
+                    <option value="other" >其他</option>
+                    <option value="ts">特殊</option>
+                    <option value="tf">统付</option>
+                        </select>
+                </td>
+        </tr>
+        <tr id="Bind_Group1">
+                <td>绑定分组</td>
+                <td><input type="text" name="Bind_Group"/> </td>
+        </tr>
+        <tr id="Is_Special1">
+                <td>是否特殊产品</td>
+               <td> <input type="checkbox"  name="Is_Special" onchange="checkBoxChangeHandler(this)"/></td>
+        </tr>
+
+        <tr id="Arrive_Period1">
+                <td>到账时长</td>
+                <td><input type="text" name="Arrive_Period"/> </td>
+        </tr>
+
+
+        <tr id="Update_Memo1">
+                <td>备注</td>
+                <td></td>
+        </tr>
+                <tr id="Need_Proof1">
+                <td>是否启用凭证</td>
+               <td> <input type="checkbox"  name="Need_Proof" onchange="checkBoxChangeHandler(this)"/></td>
+        </tr>
+
+
+        <tr id="Proof_Exp1">
+                <td>凭证正则</td>
+                <td><input type="text" name="Proof_Exp"/> </td>
+        </tr>
+                <tr id="Ref_Weight1">
+                <td>是否参考权重</td>
+              <td> <input type="checkbox"  name="Ref_Weight" onchange="checkBoxChangeHandler(this)"/></td>
+        </tr>
+
+
+        <tr id="Weight1">
+                <td>权重值</td>
+                <td><input type="text" name="Weight"/> </td>
+        </tr>
+
+
+           <tr id="Pause_Interval_Time1">
+                <td>暂停间隔时长</td>
+                <td><input type="text" name="Pause_Interval_Time"/> </td>
+        </tr>
+
+
+        <tr id="Deal_Time_Rate1">
+                <td>三分钟到账率阈值</td>
+                <<td><input type="text" name="Deal_Time_Rate"/> </td>
+        </tr>
+
+           <tr id="Product_Group1">
+                <td>产品分组</td>
+                <td><input type="text" name="Product_Group"/> </td>
+        </tr>
+           <tr id="Base_Deal_Count1">
+                <td>到账率统计基数</td>
+                <td><input type="text" name="Base_Deal_Count"/> </td>
+        </tr>
+          <tr id="Deal_Time_Thresh1">
+                <td>处理时长阈值</td>
+                <td><input type="text" name="Deal_Time_Thresh"/> </td>
+        </tr>
+
+    </table>
+</div>
+</form>

@@ -1,4 +1,4 @@
     <delete id="@id">
-          DELETE FROM @tableName @alias
+          delete from @tableName @alias
 @where
     </delete>

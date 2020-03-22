@@ -31,7 +31,6 @@ async function init(project, company, dbConfig, generateDb = true) {
                 generateConfigItem(root, table, table.columns[table.primaryColumn], tables, relations);
         });
 
-
         // create all.js
         let allContent = "";
         tableNames.forEach(x => {
@@ -40,9 +39,9 @@ async function init(project, company, dbConfig, generateDb = true) {
         FILE.write(`${root}/all.js`, COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
 
         // create index.js
-        copy1("./templates/generator.js", `./output/${project}/index.js`, project, company);
-
+        copy1("./templates/generator.js", `./output/${project}/build.js`, project, company);
         copy('./templates/packages.js', `./output/${project}/packages.js`, project, company);
+        copy('./templates/dictionary.js',`./output/${project}/db/dictionary.js`)
 
         LOG.info(`project ${project} init finished!`);
 }
@@ -174,7 +173,6 @@ function generateConfigItem(configRoot, table, pk, tables, relations) {
  */
 function copy(source, target, project, company) {
         let content = FILE.read(source).replace(/@project/g, `${company}.${project}`);
-
         if (source.endsWith(".js") || source.endsWith(".java"))
                 content = COMPYRIGHT + content;
 

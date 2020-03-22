@@ -3,23 +3,25 @@ const { renderSelect } = require("./select-render");
 const { renderUpdate } = require("./update-render");
 const { renderDelete } = require("./delete-render");
 const { renderInsert } = require("./insert-render");
-const {NamingStrategy}=require("./../../../libs/naming-strategy")
+const { NamingStrategy } = require("./../../../libs/naming-strategy")
+const { STR } = require("./../../../libs/str")
 
-const _mapperConfigRender = new SimpleRender({}, `${__dirname}/templates/mapper.xml`);
+const MAPPER_CONFIG_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.xml`);
 
 /**
  * Render mapper config template
  * 
- * @param {mapperConfig} mapperConfig 
+ * @param {Config} mapperConfig 
  * @returns {String}
  */
 function renderMapperConfig(config) {
-        let content = "";
-        config.items.forEach(x => {
-                content += renderMapperConfigItem(x)+"\r\n";
-        });
+        let content = STR.arrayToString1(config.items, "", "", x => renderMapperConfigItem(x) + "\r\n");
+        let mapperModel = {
+                content,
+                tableName: NamingStrategy.toHungary(config.table.name).toLowerCase()
+        }
 
-        return _mapperConfigRender.renderTemplate({ content,tableName:NamingStrategy.toHungary(config.table.name).toLowerCase() });
+        return MAPPER_CONFIG_RENDER.renderTemplate(mapperModel);
 }
 
 /**

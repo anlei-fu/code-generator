@@ -15,11 +15,8 @@ const SELECT_RENDER = new SimpleRender({}, `${__dirname}/templates/select.xml`);
  * @returns {String}
  */
 function renderSelect(config) {
-        let joins = "";
-        config.joins.forEach(join => {
-                joins += renderJoin(join)+"\r\n";
-        });
-        
+        let joins = STR.arrayToString1(config.joins, "", "", x => renderJoin(join) + "\r\n");
+
         let columns = "";
         getIncludes(config).forEach((x, i, array) => {
                 x.suffix = i == array.length - 1 ? "" : ",";
@@ -34,9 +31,9 @@ function renderSelect(config) {
         }
 
         let selectModel = {
-                alias:config.alias||"",
+                alias: config.alias || "",
                 columns,
-                resultType: config.resp.doCreate ? `resp.${config.resp.type}` : `entity.${STR.upperFirstLetter(config.table.name)}`,
+                resultType: config.resp.doCreate ? `resp.${config.resp.type}` : `entity.${STR.upperFirstLetter(config.name)}`,
                 where: renderConditions(config),
                 joins: joins,
                 id: config.id,

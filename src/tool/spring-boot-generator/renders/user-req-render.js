@@ -2,8 +2,8 @@ const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-r
 
 const USER_REQ_RENDER = new SimpleRender({}, `${__dirname}/templates/user-req.js`);
 
-function renderUserReq(){
+function renderUserReq() {
         return USER_REQ_RENDER.renderTemplate();
 }
 
-exports.renderUserReq=renderUserReq;
+exports.renderUserReq = renderUserReq;

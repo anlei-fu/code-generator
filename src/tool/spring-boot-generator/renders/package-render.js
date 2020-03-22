@@ -1,7 +1,6 @@
 const { STR } = require("./../../../libs/str");
 const {ARRAY} =require("./../../../libs/utils");
 
-
 const PACKAGES = new Map();
 PACKAGES.set("List", {
         package: "import java.util.List;",
@@ -87,6 +86,12 @@ PACKAGES.set("@Url", {
         isSystem: false
 });
 
+class Packege{
+        constructor(){
+                
+        }
+}
+
 /**
  * Manage packages and render package segment
  */
@@ -98,11 +103,11 @@ class PackegeRender {
         /**
          * Add package
          * 
-         * @param {Package} pk 
+         * @param {Package} package 
          */
-        addPackage(pk) {
-                if (!PACKAGES.has(pk.name))
-                        PACKAGES.set(pk.name, pk);
+        addPackage(package) {
+                if (!PACKAGES.has(package.name))
+                        PACKAGES.set(package.name, package);
         }
 
         /**

@@ -1,0 +1,42 @@
+<style>
+        html body{
+                padding: 0;
+                margin: 0;
+                background-color: rosybrown;
+        }
+        .notify-box-wrapper{
+           position: fixed;
+           width: 100%;
+        }
+        .notify-box{
+           margin: 0 auto;
+           display:flex;
+           justify-content: center;
+           align-items: center;
+           height: 100px;
+           width: 80%;
+           border-radius: 10px;
+           background-color: rgba(12, 12, 12, 0.1);
+        }
+</style>
+
+<script>
+        function showNotify(content,duration=1500){
+                $(".notify-content").text(content);
+                $(".notify-box").show();
+                setTimeout(()=>{
+                        $(".notify-box").hide();
+                },duration);
+        }
+</script>
+<html>
+        <head></head>
+        <body>
+<div class="notify-box-wrapper">
+<div class="notify-box">
+   <p class="notify-content">some text</p>
+</div>
+</div>
+</body>
+</html>
+

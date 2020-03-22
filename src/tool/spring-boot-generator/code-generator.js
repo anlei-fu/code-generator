@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------entities-------------------------------------------------------------------------------*/
 
 class Field {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.type = "";
                 this.description = "";
@@ -13,7 +13,7 @@ class Field {
  * Join properties
  */
 class Join {
-        constructor() {
+        constructor () {
                 this.table = {}
                 this.includes = [];
                 this.conditions = [];
@@ -26,7 +26,7 @@ class Join {
  * Req properties
  */
 class Req {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.description = "";
                 this.exlcludes = new Set();
@@ -40,7 +40,7 @@ class Req {
  * Params properties
  */
 class Params {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.description = "";
                 this.req = new Req();
@@ -53,7 +53,7 @@ class Params {
  * Resp properties
  */
 class Resp {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.description = "";
                 this.doCreate = false;
@@ -65,7 +65,7 @@ class Resp {
  * Controller properties
  */
 class Controller {
-        constructor() {
+        constructor () {
                 this.path = "";
                 this.description = "";
         }
@@ -75,7 +75,7 @@ class Controller {
  * Config properties
  */
 class Config {
-        constructor() {
+        constructor () {
                 this.id = "";
 
                 /**
@@ -115,25 +115,25 @@ class Config {
  * GeneratorConfig properties
  */
 class GeneratorConfig {
-        constructor() {
-               
+        constructor () {
+
                 // items y
                 this.items = [new Config()];
 
                 // with require exist
-                this.exists=false;
+                this.exists = false;
 
                 // with batch delete operation
-                this.bacthDelete=false;
+                this.bacthDelete = false;
 
                 // with batch update operation
-                this.batchUpdate=false;
+                this.batchUpdate = false;
 
                 // auto join other table
-                this.detail=false;
+                this.detail = false;
 
                 // auto join other table list
-                this.detailList=false;
+                this.detailList = false;
         }
 }
 
@@ -156,7 +156,7 @@ class Generator {
          * 
          * @param {GeneratorConfig} config 
          */
-        constructor(config, writer, packageRender) {
+        constructor (config, writer, packageRender) {
                 this._checkConfig(config);
 
                 this._config = config;
@@ -234,7 +234,7 @@ class Generator {
 
                 // flag
                 let hasDocreateReq = false;
-                
+
                 // if has req to create
                 config.reqs.forEach(req => {
                         if (req.doCreate) {
@@ -257,9 +257,9 @@ class Generator {
 
                 // set default join type
                 if (config.joins) {
-                        config.joins.forEach(x => {
-                                x.type = x.type || "LEFT";
-                                this._initTable(x.table);
+                        config.joins.forEach(join => {
+                                join.type = join.type || "left";
+                                this._initTable(join.table);
                         });
                 }
 
@@ -296,19 +296,24 @@ class Generator {
                                 break;
                 }
 
-                let conditions = getConditions(config);
-                if (conditions.length == 1) {
-                        id += config.name + "By"
-                        id += STR.upperFirstLetter(conditions[0].name);
-                } else if (conditions.length < 4) {
-                        conditions.forEach((x, i, array) => {
-                                id += i == array.length - 1
-                                        ? "And" + STR.upperFirstLetter(x.name)
-                                        : STR.upperFirstLetter(x.name);
-                        });
-                        id += config.name + "By"
-                } else {
-                        id += config.name;
+                if (config.batch) {
+                        return id + config.name + "batch"
+                }
+                else {
+                        let conditions = getConditions(config);
+                        if (conditions.length == 1) {
+                                id += config.name + "By"
+                                id += STR.upperFirstLetter(conditions[0].name);
+                        } else if (conditions.length < 4) {
+                                conditions.forEach((x, i, array) => {
+                                        id += i == array.length - 1
+                                                ? "And" + STR.upperFirstLetter(x.name)
+                                                : STR.upperFirstLetter(x.name);
+                                });
+                                id += config.name + "By"
+                        } else {
+                                id += config.name;
+                        }
                 }
 
                 return id;
@@ -335,9 +340,22 @@ class Generator {
          * @param {String} entityType "entity|req|resp|param"
          */
         _initEntityBasicInfo(config, entity, entityType) {
-                entity.type = entity.type || STR.upperFirstLetter(config.id) + entityType;
+
                 entity.description = entity.description || "";
-                entity.name = entity.name || entityType.toLowerCase();
+                if (!entity.type) {
+                        entity.type = STR.upperFirstLetter(config.id) + entityType;
+                        if (entityType == "Req") {
+                                entity.type = entity.type.replace("Detail", "");
+                                let pos = entity.type.indexOf("By");
+                                if (pos != -1)
+                                        entity.type = entity.type.substr(0, pos) + "Req";
+                        } else {
+
+                        }
+                }
+                entity.name = entityType == "Req" ? entityType.toLowerCase() : entity.name;
+
+
         }
 
         /**
@@ -433,6 +451,14 @@ class Generator {
         }
 
         /**
+         * 
+         * @param {Config} config 
+         */
+        _generateBatchReq(config) {
+
+        }
+
+        /**
          * Generate resp file
          * 
          * @private
@@ -440,12 +466,15 @@ class Generator {
          * @returns {String}
          */
         _generateResp(config) {
+                console.log(config.id);
+                console.log(config.resp.doCreate);
                 if (config.resp.doCreate) {
                         let entity = {};
                         entity.type = "resp";
                         entity.description = config.resp.description;
-                        entity.fields=getIncludes(config);
-                        entity.name=config.resp.type;
+                        entity.fields = getIncludes(config);
+                        config.resp.type = config.resp.name;
+                        entity.name = config.resp.type;
                         let content = Render.renderEntity(entity);
                         this._generateEntityCore(content, "resp", config.resp.type);
                 }

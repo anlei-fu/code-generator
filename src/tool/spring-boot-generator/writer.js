@@ -8,7 +8,7 @@ const COMPYRIGHT_XML = FILE.read(`${__dirname}/templates/copyright.xml`).replace
  * Use to write all files
  */
 class Writer {
-        constructor (project,company) {
+        constructor (project, company) {
                 this._project = `${company}.${project}`;
                 let _root = `./${project}/src/main/java/com/${company}/${project}`;
                 this._mapperFolder = `${_root}/mapper`;

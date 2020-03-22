@@ -6,7 +6,7 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-11-22 11:06:32
  */
-const { FILE } = require("./../../libs/file");
+const { FILE } = require("../../libs/file");
 
 function setJavaEnviriments(javaHome) {
         return FILE.read("./templates/install-java.bat").replace("@home", javaHome);
@@ -59,7 +59,17 @@ function installNgix(){
 
 }
 
+
+
 function installMongoDb(){
+
+}
+
+function zookeeperConfig(){
+
+}
+
+function jarCli(){
 
 }
 

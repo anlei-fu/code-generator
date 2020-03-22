@@ -1,0 +1,237 @@
+<html>
+
+<head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <script src="./jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+
+        <script src="/scripts/jquery-md5.js"></script>
+        <script type="text/javascript">
+                var vcodeCounter = 0;
+                var phoneNumberChecker = /^1[3456789]\d{9}$/;
+                var data0 = {};
+                var sendVcodeSuccess = false;
+
+                // event biding
+                $(function () {
+
+
+
+                });
+
+                /**
+                 * success {boolean}
+                 * title {string}
+                 * content {string}
+                 */
+                function showMessageBox(content) {
+                        $(".message-box-content").text(content);
+
+                        $(".message-box").show();
+
+                        setTimeout(() => {
+                                $(".message-box").hide();
+                        }, 1000);
+                }
+
+
+                function checkPhoneNumber() {
+                        return phoneNumberChecker.test(getPhoneNumber());
+
+                }
+
+                function getPhoneNumber() {
+                        return $("#phoneNumber").val();
+                }
+
+                function checkVcode() {
+                        if (getVcode().trim() == "") {
+                                return false;
+                        }
+
+                        return true;
+                }
+
+                function getVcode() {
+                        return $("#vcode").val();
+                }
+
+                function varifyVCode() {
+                        if (!checkPhoneNumber()) {
+                                showMessageBox("号码不正确");
+                                return;
+                        }
+                        var param = "phoneNo=" + getPhoneNumber() + "&vCode=" + getVcode() + "&pno=" + data0.core.data.pno + "&coopOrder=" + data0.coopOrder;
+                }
+
+                // 发送验证码
+                function sendVcode() {
+                        showMessageBox("get vcode");
+                        if (!checkPhoneNumber()) {
+                                showMessageBox("号码不正确");
+                                return;
+                        }
+
+                        var param = "phoneNo=" + getPhoneNumber();
+                        $.ajax({
+                                url: "/FreePhoneBill/GetVCode?" + param,
+                                type: "get",
+                                async: false,
+                                success: function (data) {
+                                        console.log(data);
+                                        var result = $.parseJSON(data);
+                                        try {
+                                                var result = $.parseJSON(data);
+                                                if (result.core.code != 100) {
+                                                        showMessageBox(false, result.core.msg);
+                                                } else {
+                                                        data0 = result;
+                                                        sendVcodeSuccess = true;
+                                                }
+                                        } catch (e) {
+                                                showMessageBox("请稍后重试...");
+                                        }
+                                },
+                                error: function () {
+                                        showMessageBox("请稍后重试...");
+                                }
+                        });
+                }
+
+        </script>
+        <style>
+                body {
+                        padding: 0;
+                        margin: 0;
+
+                }
+
+                .container {
+                        margin: auto;
+                        position: absolute;
+                        top: 58%;
+                        width: 100%;
+                }
+
+
+                .tip {
+                        padding-left: 25%;
+                        color: #ce1a00;
+                        display: none;
+                }
+
+
+
+                .wrapper {
+                        background-color: #ce1a00;
+                        /* font-size: 0.8rem; */
+                        height: 100%;
+                }
+
+                .input-box {
+                        /* background-color: #e4e4e4e4; */
+                        border-style: none;
+                        margin: 6px 15px;
+                        letter-spacing: 1px;
+                        border-radius: 5px;
+                        padding: 2px;
+                        line-height: 1.5;
+                }
+
+                .vcode-button {
+                        border-style: none;
+                        border-radius: 3px;
+                        text-decoration: none;
+                        color: pink;
+                        padding: 2px;
+                        height: 25px;
+                }
+
+                .input-wrapper {
+                        background-color: white;
+                        padding: 3px;
+                        border-radius: 50px;
+                        position: relative;
+                        margin: 0 auto;
+                        margin-top: 15px;
+                        width: 80%;
+                }
+
+                .get-button {
+                        border-style: none;
+                        width: 100%;
+                        src: url("./images/indexBtn.png");
+                }
+
+                .get-button :hover {
+                        src: url("./images/btnT.png");
+                }
+
+                .message-box {
+                        display: none;
+                        position: fixed;
+                        top: 45%;
+                        left: 10%;
+                        width: 80%;
+                        z-index: 1000;
+                        text-align: center;
+                        background-color: rgb(12, 12, 12, 0.5);
+                        border-radius: 6px;
+                        z-index: 100;
+                }
+
+
+
+                .close-button {
+                        width: 20px;
+                        height: 20px;
+                        right: -10px;
+                        margin-top: -10px;
+                        position: absolute;
+                }
+
+
+                .message-box-content {
+                        color: white;
+                        font-size: 18px;
+                        line-height: 1;
+                }
+        </style>
+        <div class="wrapper">
+                <img src="./images/bg.png" style="width:100%">
+                <div class="container">
+                        <div class="input-wrapper">
+                                <span>
+                                        <input id="phoneNumber" style="width: 65%;" class="input-box" type="text"
+                                                placeholder="请输入手机号码" />
+                                </span>
+                                <span class="tip" id="phoneNumberTip">
+                                        *号码不正确
+                                </span>
+                        </div>
+
+                        <div class="input-wrapper">
+                                <span>
+                                        <input id="vcode" style="width: 42%;" class="input-box" type="text"
+                                                placeholder="请输入验证码" />
+                                </span><span>
+                                        <a href="javascript:void(0)" class="vcode-button" onclick="sendVcode()">
+                                                获取验证码</a>
+                                </span>
+                        </div>
+                        <div class="input-wrapper" onclick="varifyVCode()">
+                                <img class="get-button"  src="./images/indexBtn.png" />
+                        </div>
+                </div>
+                <div class="usbmit-button">
+                </div>
+        </div>
+        </div>
+        <div class="message-box">
+                <p class="message-box-content"></p>
+        </div>
+</body>
+
+</html>
