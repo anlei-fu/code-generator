@@ -1,0 +1,11 @@
+class WorkerNode{
+        main(){
+
+        }
+
+        start(){
+                
+        }
+
+
+}

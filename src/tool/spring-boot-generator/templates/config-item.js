@@ -11,7 +11,7 @@ exports.@snameConfig = {
 @insertMsg@@
                         new builder()
                                 .type("insert")
-                                .id("add@name")
+                                .id("add")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.@sname.columnsArray)
@@ -21,18 +21,18 @@ exports.@snameConfig = {
                                 .controller(controller => {
                                         controller.path("/@sname");
                                 })
+@insertUserReq@@
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("@skey")
 @insertReq
                                 })
-@insertUserReq@@
                                 .build(),
 
                         // deleteById
                         new builder()
                                 .type("delete")
-                                .id("delete@nameBy@deleteMethodName")
+                                .id("deleteBy@deleteMethodName")
                                 .alias("t")
                                 .conditions(collection => {
                                         collection.includes("@skey")
@@ -53,7 +53,7 @@ exports.@snameConfig = {
 @updateMsg@@
                         new builder()
                                 .type("update")
-                                .id("update@nameBy@updateMethodName")
+                                .id("updateBy@updateMethodName")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.@sname.columnsArray)
@@ -72,19 +72,19 @@ exports.@snameConfig = {
                                            .type("@keyType")
                                            .from("@PathVariable");
                                 })
+@updateUserReq@@                
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("@skey")
 @updateReq
                                            .name("Update@tnameReq")                                                
                                 })
-@updateUserReq@@
                                 .build(),
 
                         // getById
                         new builder()
                                 .type("select")
-                                .id("get@nameBy@selectMethodName")
+                                .id("getBy@selectMethodName")
                                 .alias("t")
                                 .includes(collection=>{
                                         collection.includes(all.@sname.columnsArray)
@@ -111,7 +111,7 @@ exports.@snameConfig = {
 @selectMsg@@
                         new builder()
                                 .type("select")
-                                .id("get@nameList")
+                                .id("getList")
                                 .alias("t")
                                 .includes(collection=>{
                                         collection.includes(all.@sname.columnsArray)
@@ -136,7 +136,7 @@ exports.@snameConfig = {
                         // get detail item
                         new builder()
                                 .type("select")
-                                .id("get@nameDetailBy@selectMethodName")
+                                .id("getDetailBy@selectMethodName")
                                 .alias("t")
                                 .includes(collection=>{
                                         collection.includes(all.@sname.columnsArray)
@@ -167,7 +167,7 @@ exports.@snameConfig = {
                          // get detail list
                         new builder()
                                 .type("select")
-                                .id("get@nameDetailList")
+                                .id("getDetailList")
                                 .alias("t")
                                 .includes(collection=>{
                                         collection.includes(all.@sname.columnsArray)

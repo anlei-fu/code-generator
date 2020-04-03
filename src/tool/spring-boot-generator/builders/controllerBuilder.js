@@ -28,6 +28,11 @@ exports.controllerBuilder = function controllerBuilder() {
                 return this;
         }
 
+        this.exportExcel=()=>{
+                this._exportExcel=true;
+                return this;
+        }
+
         /**
          *  Internal call
          */

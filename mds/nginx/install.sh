@@ -15,3 +15,6 @@ nginx -s reload
 
 // regenerate pid
 ./nginx -c /usr//local/nginx/conf/nginx.conf
+
+
+// nginx no arguments to restart nginx process

@@ -12,7 +12,7 @@ const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`)
  * @returns {String}
  */
 function renderMapper(config) {
-        let content = STR.arrayToString1(config.items, "", "",
+        let content = STR.arrayToString1(config.items,
                 x => MAPPER_ITEM_RENDER.renderTemplate(getMapperItemRenderConfig(x, config.name)));
 
         return MAPPER_RENDER.renderTemplate({ content });
@@ -41,18 +41,31 @@ function getMapperItemRenderConfig(config, name) {
 function getMapperItemParams(config) {
 
         // param generated
-        if (config.params.doCreate)
-                return `${config.params.type} params`;
+        if (config.params.doCreate) {
+                if (config.params.isBatch) {
+                        return `@Param("list")  List<${config.params.type}> params`
+                } else {
+                        return `${config.params.type} param`;
+                }
+        }
 
         let mapperParams = "";
         if (config.reqs.length > 1) {
-                mapperParams = STR.arrayToString1(config.reqs, "", "",
-                        x => `@Param("${x.name}") ${x.type} ${x.name}, `)
+                mapperParams = STR.arrayToString1(config.reqs, x => {
+                        return x.isBatch
+                                ? `@Param("${x.name}s") List<${x.type}> ${x.name}, `
+                                : `@Param("${x.name}") ${x.type} ${x.name}, `
+                })
                         .removeLastComa(mapperParams);
         } else {
-                mapperParams = !isJavaBaseType(config.reqs[0].type)
-                        ? `${config.reqs[0].type} ${config.reqs[0].name}`
-                        : `@Param("${config.reqs[0].name}") ${config.reqs[0].type} ${config.reqs[0].name}`;
+
+                if (config.reqs[0].isBatch) {
+                        mapperParams = `@Param("list") List<${config.reqs[0].type}> ${config.reqs[0].name}`;
+                } else {
+                        mapperParams = !isJavaBaseType(config.reqs[0].type)
+                                ? `${config.reqs[0].type} ${config.reqs[0].name}`
+                                : `@Param("${config.reqs[0].name}") ${config.reqs[0].type} ${config.reqs[0].name}`;
+                }
         }
 
         return mapperParams;

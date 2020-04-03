@@ -88,7 +88,7 @@ PACKAGES.set("@Url", {
 
 class Packege{
         constructor(){
-                
+
         }
 }
 
@@ -103,11 +103,11 @@ class PackegeRender {
         /**
          * Add package
          * 
-         * @param {Package} package 
+         * @param {Package} pk 
          */
-        addPackage(package) {
-                if (!PACKAGES.has(package.name))
-                        PACKAGES.set(package.name, package);
+        addPackage(pk) {
+                if (!PACKAGES.has(pk.name))
+                        PACKAGES.set(pk.name, pk);
         }
 
         /**

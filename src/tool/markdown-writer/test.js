@@ -1,19 +1,12 @@
-const { TimeSequenceBuilder } = require("./timeSequence");
+const { FlowBuilder } = require("./flow");
 const { FILE } = require("../../libs/file")
 
 function test() {
-        let builder = new TimeSequenceBuilder();
-        let c="client";
-        let s="server";
-        builder.titile("graphic 1")
-                .participants([c,s])
-                .sendSync(c, s, "hello")
-                .sendSync(s, c, "hello")
-                .noteLeft(c,"ok")
-                .sendSelfAsync(c,"completed!")
-                .loop("sync",c,c,"haha");
-
-        FILE.write("1.md", builder.build());
+       let builder = new FlowBuilder();
+      let text=  builder.start("start","start")
+               .input("task","task")
+               .build();
+    FILE.write("1.md",text);
 
 }
 test();

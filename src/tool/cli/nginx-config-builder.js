@@ -154,7 +154,7 @@ class HttpBuilder{
         /**
          * #服务器名字的hash表大小
          */
-        serverNamseHashBucketSize(){
+        serverNamesHashBucketSize(){
 
         }
 

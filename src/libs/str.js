@@ -30,7 +30,7 @@ function select(input, left, right, start = 0, count = 1) {
                 if (start == -1) {
                         break;
                 } else {
-                        ls.push(input.substr(i+left.length, start - i -left.length));
+                        ls.push(input.substr(i + left.length, start - i - left.length));
                         if (count != -1 && ls.length >= count)
                                 break;
                 }
@@ -64,10 +64,10 @@ function select1(input, left, right, start, count) {
                 if (start == -1) {
                         break;
                 } else {
-                        ls.push(input.substr(i, start - i +right.length));
+                        ls.push(input.substr(i, start - i + right.length));
                         if (count != -1 && ls.length >= count)
                                 break;
-                        start+=right.length;
+                        start += right.length;
                 }
 
                 start += right.length;
@@ -196,16 +196,16 @@ function arrayToString(array = [], prefix = "", suffix = "") {
  * @param {(Any,Number,[Any])=>String} converter  accept (item,index,array) and return a string
  * @returns {String}
  */
-function arrayToString1(array,prefix = "", suffix = "",converter){
-      if(!converter)
-         throw new Error("converter is required!");
+function arrayToString1(array, converter, prefix = "", suffix = "") {
+        if (!converter)
+                throw new Error("converter is required!");
 
-      let output=prefix;
-      array.forEach((item,index,arr)=>{
-         output+=converter(item,index,arr);
-      });
+        let output = prefix;
+        array.forEach((item, index, arr) => {
+                output += converter(item, index, arr);
+        });
 
-      return output+suffix;
+        return output + suffix;
 }
 
 /**
@@ -245,10 +245,11 @@ function split1(input, splitor, start, count) {
  * return repeated  string 
  */
 function repeat(pattern, times) {
+        let output = "";
         for (let i = 0; i < times; i++)
-                pattern += pattern;
+                output += pattern;
 
-        return pattern;
+        return output;
 }
 
 /**
@@ -424,7 +425,7 @@ function equalAny(target, matches = []) {
  * Target is ends with any of matches
  * 
  * @param {String} target 
- * @param {String} matches 
+ * @param {[String]} matches 
  * @return {boolean}
  */
 function endsWithAny(target, matches = []) {
@@ -440,12 +441,12 @@ function endsWithAny(target, matches = []) {
  * Target is starts with any of matches
  * 
  * @param {String} target 
- * @param {String} matches 
+ * @param {[String]} matches 
  * @return {boolean}
  */
-function startsWithAny(targte,matches=[]){
+function startsWithAny(target, matches = []) {
         for (const c of matches) {
-                target.startsWith(c)
+                if (target.startsWith(c))
                         return true;
         }
 
@@ -459,13 +460,59 @@ function startsWithAny(targte,matches=[]){
  * @param {Pairs} matches 
  * @returns {boolean}
  */
-function startsAndendsWithAny(target,matches={}){
-    for(const  c in matches){
-            if(target.startsWith(c)&&endsWith(matches[c]))
-               return true;
-    }
+function startsAndendsWithAny(target, matches = []) {
+        for (const c in matches) {
+                if (target.startsWith(c) && endsWith(c))
+                        return true;
+        }
 
-    return false;
+        return false;
+}
+
+/**
+ * 
+ * @param {String} target 
+ * @param {String} matches 
+ * @returns {Number}
+ */
+function firstIndexOfAny(target, matches = []) {
+        let index = -1;
+        for (const item of matches) {
+                let pos = target.indexOf(item);
+                index = pos < 0 ? index : index > pos ? pos : index;
+        }
+
+        return index;
+}
+
+/**
+ * 
+ * @param {String} text 
+ * @returns {String}
+ */
+function lastWord(text) {
+        let words = splitToWords(text);
+        return words[words.length - 1];
+}
+
+/**
+ * 
+ * @param {String} text 
+ * @returns {String}
+ */
+function firstWord(text) {
+        return splitToWords(text)[0];
+}
+
+/**
+ * 
+ * @param {Number} pos 
+ * @param {String} source 
+ * @param {String} merge 
+ * @returns {String}
+ */
+function insert(pos, source, merge) {
+        return source.substr(0, pos) + merge + source.substr(pos, source.length - pos);
 }
 
 
@@ -492,5 +539,9 @@ exports.STR = {
         startsWithAny,
         endsWithAny,
         startsAndendsWithAny,
-        arrayToString1
+        arrayToString1,
+        firstIndexOfAny,
+        firstWord,
+        lastWord,
+        insert
 }

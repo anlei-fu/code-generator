@@ -43,7 +43,20 @@ function getReqParams(config, withType) {
 
         let params = "";
         config.reqs.forEach(x => {
-                params += withType ? `${x.type} ${x.name}, ` : `${x.name}, `;
+                let item = "";
+                if (withType) {
+                        // batch with list
+                        if (x.isBatch) {
+                                item += `List<${x.type}>`
+                        } else {
+                                item += `${x.type}`
+                        }
+                        item += ` ${x.name}, `;
+                } else {
+                        item += `${x.name}, `;
+                }
+                params += item;
+
         });
 
         params = STR.removeLastComa(params);
@@ -66,9 +79,9 @@ function generateReq(config, req) {
         });
 
         // excludes user column fields
-        let userColumn = USER_ANALYZER.findUserColumn(config);
+        let userColumn = USER_ANALYZER.findUserColumnByConfig(config);
         if (userColumn)
-                req.excludes.add(userColumn);
+                req.excludes.add(userColumn.name);
 
         // get req by conditions
         let conditions;

@@ -18,3 +18,5 @@ java [options] -jar jarfile [args...]
 - jarfile 待启动的jar包的路径名称
 
 - args 传给启动类的main()方法的参数，用空格分开
+
+nohup  java -jar -Dlogging.path=./logs xy-app-web-0.0.2.jar --spring.profiles.active=test & 

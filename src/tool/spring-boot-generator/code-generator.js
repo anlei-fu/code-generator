@@ -344,17 +344,16 @@ class Generator {
                 entity.description = entity.description || "";
                 if (!entity.type) {
                         entity.type = STR.upperFirstLetter(config.id) + entityType;
-                        if (entityType == "Req") {
+                        if (entityType == "Req" || entityType == "Params") {
                                 entity.type = entity.type.replace("Detail", "");
                                 let pos = entity.type.indexOf("By");
                                 if (pos != -1)
-                                        entity.type = entity.type.substr(0, pos) + "Req";
+                                        entity.type = entity.type.substr(0, pos) + entityType;
                         } else {
 
                         }
                 }
                 entity.name = entityType == "Req" ? entityType.toLowerCase() : entity.name;
-
 
         }
 
@@ -439,6 +438,8 @@ class Generator {
                         if (x.doCreate) {
                                 let entity = {};
                                 entity.fields = generateReq(config, x);
+                                // if (config.type == "select")
+                                //         console.log(entity.fields);
                                 entity.description = x.description;
                                 entity.name = x.type;
                                 entity.type = "req";
@@ -450,13 +451,6 @@ class Generator {
                 })
         }
 
-        /**
-         * 
-         * @param {Config} config 
-         */
-        _generateBatchReq(config) {
-
-        }
 
         /**
          * Generate resp file
@@ -466,8 +460,6 @@ class Generator {
          * @returns {String}
          */
         _generateResp(config) {
-                console.log(config.id);
-                console.log(config.resp.doCreate);
                 if (config.resp.doCreate) {
                         let entity = {};
                         entity.type = "resp";

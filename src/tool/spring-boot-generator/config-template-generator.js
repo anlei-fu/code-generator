@@ -4,42 +4,14 @@ const { getJavaType } = require("./utils");
 const { SimpleRender } = require("../simple-pattern-render/simple-pattern-render");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
+const { UserAnalyzer } = require("./analyzer");
 const JOIN_ANALYZER = require("./join-analyzer")
 
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
 const REQ_IDENT = "                                           ";
 const COMMENT_IDENT = "                        ";
 const EXCLUDE_IDENT = "                                                  ";
-const USER_MATCHERS = {
-        insert: {
-                matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
-                        "createuser"])
-                        || STR.equalAny(columnName.toLowerCase(), ["account",
-                                "user",
-                                "admin",])
-        },
-        delete: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "account",
-                        "user",
-                        "admin"
-                ])
-        },
-        update: {
-                matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
-                        "updateuser",
-                        "edituser",
-                        "modifyuser"
-                ]) || STR.equalAny(columnName.toLowerCase(), ["user", "admin", "account"])
-        },
-        select: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "account",
-                        "user",
-                        "admin"
-                ])
-        }
-};
+const USER_ANALYZER = new UserAnalyzer();
 
 
 
@@ -64,9 +36,9 @@ class ConfigBuilderGenerator {
         generate(table, pk, tables, relations) {
 
                 // auto analyze join
-                let joinItems= JOIN_ANALYZER.analyze(relations, table, tables);
-                let joins =STR.arrayToString1(joinItems,"","",
-                           (join,i)=>JOIN_ANALYZER.renderJoinConfig(join, `t${i + 1}`))
+                let joinItems = JOIN_ANALYZER.analyze(relations, table, tables);
+                let joins = STR.arrayToString1(joinItems,
+                        (join, i) => JOIN_ANALYZER.renderJoinConfig(join, `t${i + 1}`))
 
                 let select = this._generateSelect(table);
                 let insert = this._generateInsert(table);
@@ -80,28 +52,27 @@ class ConfigBuilderGenerator {
                 let selectMethodName = key;
                 let keyType = getJavaType(pk.type);
 
+                // analyze user req
+                let userColumn = null;
                 let insertUserReq = "";
-                if (this._hasUser(table, "insert")) {
-                        insertUserReq = renderUserReq();
-                }
+                userColumn = USER_ANALYZER.findUserColumn(table, "insert");
+                if (userColumn != null)
+                        insertUserReq = renderUserReq(userColumn);
 
                 let deleteUserReq = "";
-                if (this._hasUser(table, "delete")) {
-                        insertUserReq = renderUserReq();
-                        deleteMethodName = "UserAnd" + deleteMethodName;
-                }
+                userColumn = USER_ANALYZER.findUserColumn(table, "delete");
+                if (userColumn != null)
+                        deleteUserReq = renderUserReq(userColumn);
 
                 let updateUserReq = "";
-                if (this._hasUser(table, "update")) {
-                        insertUserReq = renderUserReq();
-                        updateMethodName = "UserAnd" + updateMethodName;
-                }
+                userColumn = USER_ANALYZER.findUserColumn(table, "update");
+                if (userColumn != null)
+                        updateUserReq = renderUserReq(userColumn);
 
                 let selectUserReq = "";
-                if (this._hasUser(table, "select")) {
-                        insertUserReq = renderUserReq();
-                        selectMethodName = "UserAnd" + selectMethodName;
-                }
+                userColumn = USER_ANALYZER.findUserColumn(table, "select");
+                if (userColumn != null)
+                        selectUserReq = renderUserReq(userColumn);
 
                 let selete_text = this._renderExcludes(select.excludes)
                 if (select.expressions.length != 0)
@@ -139,8 +110,8 @@ class ConfigBuilderGenerator {
                 }
 
                 let content = CONFIG_ITEM_RENDER.renderTemplate(model);
-                let lines= STR.splitToLines(content).filter(x=>x.trim() != "@@");
-                let output = output=STR.arrayToString1(lines,"","",x=>`${x}\r\n`);
+                let lines = STR.splitToLines(content).filter(x => x.trim() != "@@");
+                let output = STR.arrayToString1(lines, x => `${x}\r\n`);
 
                 return output.replace(/@@/g, "");
         }
@@ -153,7 +124,7 @@ class ConfigBuilderGenerator {
          */
         _renderExcludes(items) {
                 return items.length != 0
-                        ? STR.arrayToString1(items, `${EXCLUDE_IDENT}.excludes([`, "])\r\n", x => `"${x}",`)
+                        ? STR.arrayToString1(items, x => `"${x}",`, `${EXCLUDE_IDENT}.excludes([`, "])\r\n")
                         : "";
         }
 
@@ -164,7 +135,7 @@ class ConfigBuilderGenerator {
          * @returns {String}
          */
         _renderExpression(items) {
-                return STR.arrayToString1(items, "", "",
+                return STR.arrayToString1(items,
                         x => `${EXCLUDE_IDENT}.exp("${x.key}","${x.expression}")\r\n`)
         }
 
@@ -309,21 +280,7 @@ class ConfigBuilderGenerator {
                 };
         }
 
-        /**
-         * Check if has user column
-         * 
-         * @param {Table} table 
-         * @param {String} type 
-         */
-        _hasUser(table, type) {
-                for (const c in table.columns) {
-                        let javaType = getJavaType(table.columns[c].type);
-                        if (javaType == "String" && USER_MATCHERS[type].matcher(c))
-                                return true;
-                };
 
-                return false;
-        }
 }
 
 exports.ConfigBuilderGenerator = ConfigBuilderGenerator

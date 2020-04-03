@@ -39,7 +39,7 @@ function test() {
       abbrOfProject:_18.abbrOfProject,
       edit:true,
    }
-   init(all.stDownChannel, config);
+   init(all.stCommonThresholdConfig, config);
 }
 
 test();

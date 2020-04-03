@@ -63,7 +63,7 @@ function resolve(project, validateTable = defaultValidate) {
                 }
         ];
 
-        let allColumnsMetaInfos = resolveFromCsvString(content, resolvers, true, false);
+        let allColumnsMetaInfos = resolveFromCsvString(content, resolvers, true,true);
         groups = ARRAY.groupBy(allColumnsMetaInfos, item => item.table);
 
         // merge columns into table
@@ -185,4 +185,4 @@ function analyzePrimaryColumn(table) {
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
-resolve("order_compare");
+resolve("18");

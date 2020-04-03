@@ -12,7 +12,7 @@ const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/templates/service.java
  * @returns {String}
  */
 function renderService(config) {
-        let content = STR.arrayToString1(config.items, "", "",
+        let content = STR.arrayToString1(config.items,
                 x => SERVICE_ITEM_RENDER.renderTemplate(getServiceItemModel(x, config.name)));
 
         content = content.trimRight() + "\r\n";

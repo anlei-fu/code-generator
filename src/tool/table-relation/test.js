@@ -7,7 +7,7 @@ const {MarkdownWriter}=require("./markdown-generator");
 
 function main(project) {
         DIR.create("./outputs");
-        let {all}=require(`./../mysql-table-info-resolver/output/${project}/all`);
+        let {all}=require(`./../oracle-table-info-resolver/outputs/${project}/all`);
         DIR.create(`./outputs/${project}`);
         let analyzer = new TableRelationAnalyzer(all);
         let results = analyzer.analyze();
@@ -20,4 +20,4 @@ function main(project) {
 }
 
 /*----------------------------------------------------------------main-------------------------------------------------------------------------------------------*/
-main("work-report");
+main("18");

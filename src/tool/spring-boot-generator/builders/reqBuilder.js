@@ -29,6 +29,11 @@ class ReqBuilder {
                 return this;
         }
 
+        batch(){
+                this._isBatch=true;
+                return this;
+        }
+
         /**
          * Remove columns
          * 
@@ -184,6 +189,7 @@ class ReqBuilder {
                         type: this._type,
                         excludes: new Set(this._excludes),
                         validates: this._validates,
+                        isBatch:this._isBatch
                 }
         }
 

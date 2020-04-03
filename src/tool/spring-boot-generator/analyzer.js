@@ -93,42 +93,13 @@ const DEFAULT_VALIDATES = {
                 "postCode": {
                         validate: "@PostCode"
                 },
-                "addr": {
-                        matcher: (x) => x.toLowerCase().endsWith("addr"),
-                },
-                "address": {
-                        matcher: (x) => x.toLowerCase().endsWith("address"),
-                },
-                "updateuser": {
-                        matcher: (x) => x.toLowerCase().endsWith("updateuser"),
-                },
-                "createuser": {
-                        matcher: (x) => x.toLowerCase().endsWith("createuser"),
-                },
         },
 
         Integer: {
                 "status": {
-                        matcher: (x) => x.toLowerCase().endsWith("status"),
+                        matcher: (x) => STR.endsWithAny(x.toLowerCase(),["type", "status", "state", "class", "level","style"])
+                                        ||STR.startsWithAny(x.toLowerCase(),["is", "need", "permit", "allow", "support", "can", "should"]),
                         generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
-                },
-                "state": {
-                        matcher: (x) => x.toLowerCase().endsWith("state"),
-                        generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
-                },
-                "type": {
-                        matcher: (x) => x.toLowerCase().endsWith("type"),
-                        generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
-                },
-                "level": {
-                        matcher: (x) => x.toLowerCase().endsWith("level"),
-                        generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
-                },
-                "gender": {
-                        validate: "@Enum(\"gender\")"
-                },
-                "sex": {
-                        validate: "@Enum(\"sex\")"
                 },
         }
 }
@@ -219,78 +190,18 @@ class ExcludesAnalyzer extends ValidateAnalyzer {
  */
 const DEFAULT_EXPRESSIONS = {
         Integer: {
-                price: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("price"),
+                range: {
+                        matcher: columnName => STR.endsWithAny(columnName.toLowerCase(),
+                                ["count", "total", "price", "num", "sum", "amount", "profit", "discount", "amount", "balance"]),
                         expression: "range"
-                },
-                total: {
-                        matcher: columnName => columnName.toLowerCase().startsWith("total"),
-                        expression: "range",
-                },
-                discount: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("discount"),
-                        expression: "range",
-                },
-                age: {
-                        expression: "range",
-                },
-                count: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("count"),
-                        expression: "range",
-                },
-                sum: {
-                        matcher: columnName => columnName.toLowerCase() == "sum",
-                        expression: "range",
-                },
-                balance: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("balance"),
-                        expression: "range",
-                },
-                amount: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("amount"),
-                        expression: "range",
-                },
-                timeout: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("timeout"),
-                        expression: "range",
-                },
-                grade: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("grade"),
-                        expression: "range",
                 }
         },
         Float: {
-                price: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("price"),
+                range: {
+                        matcher: columnName => STR.endsWithAny(columnName.toLowerCase(),
+                                ["count", "total", "price", "num", "sum", "amount", "profit", "discount", "amount", "balance"]),
                         expression: "range"
-                },
-                total: {
-                        matcher: columnName => columnName.toLowerCase().startsWith("total"),
-                        expression: "range",
-                },
-                discount: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("discount"),
-                        expression: "range",
-                },
-                age: {
-                        expression: "range",
-                },
-                count: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("count"),
-                        expression: "range",
-                },
-                sum: {
-                        matcher: columnName => columnName.toLowerCase() == "sum",
-                        expression: "range",
-                },
-                amount: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("amount"),
-                        expression: "range",
-                },
-                balance: {
-                        matcher: columnName => columnName.toLowerCase().endsWith("balance"),
-                        expression: "range",
-                },
+                }
         },
         Date: {
                 createTime: {
@@ -359,94 +270,32 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
  */
 const SELECT_EXLUCES = {
         String: {
-                title: {
-
-                },
-                remark: {
-
-                },
-                message: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "message"),
-                },
-                secret: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "secret"),
-                },
-                description: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "secret"),
-                },
-                memo: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "memo"),
-                },
-                summary: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "summary"),
-                },
-                text: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "text"),
-                },
-                content: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "content"),
-                },
-                msg: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "msg"),
-                },
-                detail: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "detail"),
-                },
-                name: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "name"),
-                },
-                info: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "info"),
-                },
-                log: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "log"),
-                },
-                url: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "url"),
-                },
-                file: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "file"),
-                },
-                path: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "path"),
-                },
-                pic: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "pic"),
-                },
-                img: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "img"),
-                },
-                avartar: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "avartar"),
-                },
-                pwd: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "pwd"),
-                },
-                password: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "password"),
-                },
-                hash: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "hash"),
-                },
-                credential: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "credentia"),
-
-                },
-                cookie: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "cookie"),
-                },
-                sign: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "sign"),
-                },
-                key: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "key"),
+                all: {
+                        matcher: columnName => !STR.endsWithAny(columnName.toLowerCase(), ["id", "no"])
                 }
         },
         Integer: {
-                value: {
-                        matcher: columnName => Matcher.lowerEndsWith(columnName, "value")
+                all: {
+                        matcher: columnName => !(STR.endsWithAny(columnName.toLowerCase(), ["id", "no", "type", "status", "state", "class", "level","style"])
+                                || STR.startsWithAny(columnName.toLowerCase(), ["is", "need", "permit", "allow", "support", "can", "should"]))
+                }
+        },
+        Date: {
+                date: {
+                        matcher: columnName => !STR.startsWithAny(columnName.toLowerCase(), ["create"])
+                }
+        },
+        Float: {
+                all: {
+                        matcher: columnName => true
+                }
+        },
+        Double: {
+                all: {
+                        matcher: columnName => true
                 }
         }
+
 }
 
 /**
@@ -476,7 +325,7 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
                 for (const item in this.excludes[type]) {
                         let match = this.excludes[type][item].matcher
                                 ? this.excludes[type][item].matcher(name)
-                                : Matcher.lowerIncludes(name, item);
+                                : name.toLowerCase().includes(item);
 
                         if (match)
                                 return false;
@@ -622,41 +471,51 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
 }
 
 /**
- * Default user column matchers
+ * Default user column admin matchers
+ * admin api
  */
-const DEFAULT_USER_MATCHERS = {
+const DEFAULT_USER_ADMIN_MATCHERS = {
         insert: {
                 matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
-                        "createuser"])
-                        || STR.equalAny(columnName.toLowerCase(), ["account",
-                                "user",
-                                "admin", "operator"])
+                        "createuser", "operator", "admin"])
         },
         delete: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "account",
-                        "user",
-                        "admin",
-                        "operator"
-                ])
+                matcher: columnName => false
         },
         update: {
                 matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
                         "updateuser",
                         "edituser",
                         "modifyuser",
-                        "operator"
-                ]) || STR.equalAny(columnName.toLowerCase(), ["user", "admin", "account"])
-        },
-        select: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "account",
-                        "user",
                         "admin",
                         "operator"
                 ])
+        },
+        select: {
+                matcher: columnName => false
         }
 };
+
+// user api 
+const DEFAULT_USER_MATCHER = {
+        insert: {
+                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
+                        "user", "userid", "owner"])
+        },
+        delete: {
+                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
+                        "user", "userid", "owner"])
+        },
+        update: {
+                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
+                        "user", "userid", "owner"])
+        },
+        select: {
+                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
+                        "user", "userid", "owner"])
+        }
+}
+
 
 /**
  * To find if table has user column
@@ -668,14 +527,22 @@ class UserAnalyzer {
          * 
          * @param {Config} config 
          */
-        findUserColumn(config) {
-                let table = config.table;
-                let type = config.type;
-                for (const columnName in table.columns) {
-                        let javaType = getJavaType(table.columns[columnName].type);
-                        if (javaType == "String" && DEFAULT_USER_MATCHERS[type].matcher(columnName))
-                                return table.columns[columnName].name;
+        findUserColumnByConfig(config) {
+                return this.findUserColumn(config.table, config.type);
 
+        }
+
+        /**
+         * Find userColumn
+         * 
+         * @param {Table} table 
+         * @param {String} sqlType 
+         */
+        findUserColumn(table, sqlType) {
+                for (const columnName in table.columns) {
+                        if (DEFAULT_USER_ADMIN_MATCHERS[sqlType].matcher(columnName)) {
+                                return table.columns[columnName];
+                        }
                 };
 
                 return null;

@@ -26,6 +26,8 @@ console.log(c.b());
 
 function testExtensionOperator(){
        
+        Math.round()
+
         let a=[1,2,4];
         console.log(...a);
         let b=[...a];

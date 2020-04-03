@@ -1,5 +1,5 @@
                                 .req(req=>{
-                                        req.name("user")
-                                           .type("String")
-                                           .from("@SessionAttribute")
+                                        req.name("@name")
+                                           .type("@type")
+                                           .from("@SessionAttribute(\"userId\")")
                                 })

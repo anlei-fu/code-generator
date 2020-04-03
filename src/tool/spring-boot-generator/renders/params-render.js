@@ -16,23 +16,23 @@ function renderParams(config, reqType) {
         map.forEach((value, key) => {
                 if (key == "req") {
                         value.forEach(x => {
-                                x.name = STR.upperFirstLetter(x.name);
+                                x.name=STR.upperFirstLetter(x.name);
                                 delete x.t;
                                 reqGetter += renderParamsReqGetterItem(x);
                         });
-                } else if (key == "constructor") {
+                } else if(key=="constructor") {
                         value.forEach(x => {
                                 delete x.t;
                                 getSet += renderParamsGetterSetterItem(x);
                                 constructorContent += `        this.${x.name} = ${x.name};\r\n`
                                 constructorParams += `${x.type} ${x.name}, `;
                         });
-                } else {
+                }else{
                         value.forEach(x => {
                                 delete x.t;
-                                getSet += renderParamsGetterSetterItem(x);
-                                constructorContent += `        this.${x.name} = user;\r\n`
-                                constructorParams += `${x.type} user, `;
+                        getSet += renderParamsGetterSetterItem(x);
+                        constructorContent += `        this.${x.name} = user;\r\n`
+                        constructorParams = `${x.type} user, `+constructorParams;
                         });
                 }
         });
@@ -49,7 +49,7 @@ function renderParams(config, reqType) {
                 constructorParams,
                 getSet,
                 constructorContent,
-                reqGetter: reqGetter.trimRight() + "\r\n"
+                reqGetter:reqGetter.trimRight()+"\r\n"
         });
 }
 

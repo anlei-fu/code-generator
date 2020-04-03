@@ -52,7 +52,8 @@ class FileSnapShot {
         } else {
             records = this._extractAndMerge(this._snapshot, current);
         }
-        DIR.remove(outputFolder);
+
+      //  DIR.remove(outputFolder);
         this._copy(records, outputFolder, folder);
         this._snapshot.modifyTime = new Date().toLocaleString();
         this._writeSnapShot();

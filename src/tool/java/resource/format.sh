@@ -1,0 +1,1 @@
+java -jar google-java-format-1.7-all-deps.jar -replace --aosp  test.java

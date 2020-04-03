@@ -24,7 +24,6 @@ async function test() {
                 }
                 
                 if (result) {
-                        
                        await toTargePage(page, "订单管理/订单管理/短信校验")
                 }
         } catch(ex){

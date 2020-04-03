@@ -13,15 +13,18 @@ exports.ColumnBuilder = class ColumnBuilder {
                 this._addtional = [];
         }
 
-        /**
-         * Add additional column
-         * 
-         * @param {String} expression 
-         * @param {String} alias 
-         */
-        additional(expression, alias) {
-                this._addtional.push({ expression, alias });
+        label(column, label) {
+                this._setProperty(column, "label", label);
                 return this;
+        }
+
+        width(column,width){
+                this._setProperty(column, "width", width);
+                return this;
+        }
+
+        batch(column) {
+                return this._setBoolProperty(column, "isBatch");
         }
 
         /**

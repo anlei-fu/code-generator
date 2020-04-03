@@ -124,7 +124,6 @@ function getAttribute(node, key) {
                         if (node.attributes[k].nodeName == key) {
                                 return node.attributes[k].nodeValue;
                         }
-
                 }
         }
 

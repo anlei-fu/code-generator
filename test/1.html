@@ -1,6 +1,169 @@
-<body>
-        <input type="checkbox" onchange=""/>
-</body>
+<div>
+        <lable class="prefix">every day</lable><span><input type="text" /></span><label>day</label>
+        <input type="text" /></span><label>hour</label><input type="text" /></span><label>minute</label>
+        <input type="text" /></span><label>second</label>
+</div>
+
 <script>
-        encodeURI
+         function MRCenterMsg() {
+                this.bind = function () {
+                        $.paging.config.form = "#query";
+                        $.paging.bind();
+                        $("#sub").click(function () {
+                                $.paging.submit();
+                        });
+                }
+        }
+        $(function () {
+                var user = new MRCenterMsg();
+                user.bind();
+
+                $('.selectpicker').selectpicker({
+                        noneSelectedText: '请选择',
+                        countSelectedText: '选择了{0}条记录',
+                        actionsBox: true,
+                        deselectAllText: '重置选择',
+                        selectAllText: '全选',
+                        width: 150
+                });
+                $('.selectpicker').selectpicker("refresh");
+                $('#face').selectpicker('val', $('#faceVal').val().split(','));
+                $('.selectpicker').selectpicker("render");
+
+                $("#time").datetimepicker({
+                        format: 'yyyy-mm-dd',
+                        language: 'zh-CN',
+                        todayBtn: true,
+                        autoclose: true,
+                        orientation: 'bottom',
+                        minView: "month"
+                });
+                var jsondata = $('#jsondata').val();
+                //console.log(jsondata);
+                var data = $.parseJSON(jsondata);
+                var flow = data.flow;
+                //            var tel = data.telfee;
+                DrawChart(flow, echarts.init($('#flow')[0]), '交易趋势图');
+                //            DrawChart(tel, echarts.init($('#telfee')[0]), '话费统计图');
+        });
+
+        function sum(arr) {
+                if (!arr.length) {
+                        return 0;
+                }
+                return eval(arr.join("+"));
+        };
+
+        function DrawChart(data, chartobj, title) {
+                //console.log(data);
+                var time = [], count = [], allprofit = [], allamount = [];
+                var kcount = [], kallprofit = [], kallamount = [];
+                var profitRateToday = [];
+                var profitRateYesterday = [];
+                for (var i = 0; i < data.length; i++) {
+                        time.push(data[i].SHORTTIME.toString());
+                        count.push(data[i].ALLCOUNT.toString());
+                        allprofit.push(data[i].ALLPROFIT.toString());
+                        allamount.push(data[i].ALLAMOUNT.toString());
+                        profitRateToday.push((data[i].ALLPROFIT / data[i].ALLAMOUNT).toFixed(2));
+                        // --------- 昨日 -----------
+                        kcount.push(data[i].KALLCOUNT.toString());
+                        kallprofit.push(data[i].KALLPROFIT.toString());
+                        kallamount.push(data[i].KALLAMOUNT.toString());
+                        profitRateYesterday.push((data[i].KALLPROFIT / data[i].KALLAMOUNT).toFixed(2));
+                }
+                $('#all1').text(sum(allamount).toFixed(2));
+                $('#all2').text(sum(allprofit).toFixed(2));
+                $('#all3').text(sum(count));
+                $('#all4').text(sum(kcount));
+                $('#all5').text(sum(kallamount).toFixed(2));
+                $('#all6').text(sum(kallprofit).toFixed(2));
+
+                var option = {
+                        tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                        type: 'cross',
+                                        crossStyle: {
+                                                color: '#999'
+                                        }
+                                }
+                        },
+                        toolbox: {
+                                feature: {
+                                        dataView: { show: true, readOnly: false },
+                                        magicType: { show: true, type: ['line', 'bar'] },
+                                        restore: { show: true },
+                                        saveAsImage: { show: true }
+                                }
+                        },
+                        color: ['#05af2b', '#ea0505', '#d8a615', '#989a96','pink','blue'],
+                        legend: {
+                                data: ['销售金额', '利润', '笔数', '笔数(昨日)', '今日利润率', '昨日利润率']
+                        },
+                        xAxis: [
+                                {
+                                        type: 'category',
+                                        data: time,
+                                        axisPointer: {
+                                                type: 'shadow'
+                                        }
+                                }
+                        ],
+                        yAxis: [
+                                {
+                                        type: 'value',
+                                        name: '金额',
+                                        axisLabel: {
+                                                formatter: '{value} 元'
+                                        }
+                                },
+                                {
+                                        type: 'value',
+                                        name: '笔数',
+                                        axisLabel: {
+                                                formatter: '{value} 笔'
+                                        }
+                                }
+                        ],
+                        series: [
+                                {
+                                        name: '销售金额',
+                                        type: 'line',
+                                        data: allamount
+                                },
+                                {
+                                        name: '利润',
+                                        type: 'line',
+                                        data: allprofit
+                                },
+                                {
+                                        name: '笔数',
+                                        type: 'bar',
+                                        yAxisIndex: 1,
+                                        data: count
+                                },
+                                {
+                                        name: '笔数(昨日)',
+                                        type: 'bar',
+                                        yAxisIndex: 1,
+                                        data: kcount
+                                },
+
+                                {
+                                        name: '今日利润率',
+                                        type: 'line',
+                                        data: profitRateToday,
+                                        yAxisIndex: 2,
+                                },
+                                {
+                                        name: '昨日利润率',
+                                        type: 'line',
+                                        data: profitRateYesterday,
+                                        yAxisIndex: 2,
+                                },
+                        ]
+                };
+                chartobj.setOption(option);
+        }
 </script>

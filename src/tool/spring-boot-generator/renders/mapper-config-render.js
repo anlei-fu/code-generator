@@ -15,7 +15,7 @@ const MAPPER_CONFIG_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper
  * @returns {String}
  */
 function renderMapperConfig(config) {
-        let content = STR.arrayToString1(config.items, "", "", x => renderMapperConfigItem(x) + "\r\n");
+        let content = STR.arrayToString1(config.items, x => renderMapperConfigItem(x) + "\r\n");
         let mapperModel = {
                 content,
                 tableName: NamingStrategy.toHungary(config.table.name).toLowerCase()

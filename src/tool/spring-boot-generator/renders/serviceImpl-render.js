@@ -21,7 +21,7 @@ function renderServiceImpl(config) {
         });
 
         content = content.trimRight() + "\r\n";
-        return SERVICE_IMPL_RENDER.renderTemplate({name:config.name,  content, sname: STR.lowerFirstLetter(config.name) });
+        return SERVICE_IMPL_RENDER.renderTemplate({ name: config.name, content, sname: STR.lowerFirstLetter(config.name) });
 }
 
 /**
@@ -51,18 +51,38 @@ function getServiceImplItemConfig(config, name) {
  * @returns {String}
  */
 function renderServiceImplContent(config) {
-        let content = `${config.params.type} params = new ${config.params.type}(@params);`;
-        content = content.replace("@params", getReqParamsWithoutType(config));
 
-        // if has default values, generate set expression
-        if (config.params.defaultValues) {
-                config.params.defaultValues.forEach((value, key) => {
-                        content += `params.set${STR.upperFirstLetter(key)}(${value});\r\n`;
-                });
+        let content="";
+        if (!hasBatchReq(config)) {
+                 content = `${config.params.type} params = new ${config.params.type}(@params);`;
+                content = content.replace("@params", getReqParamsWithoutType(config));
+
+                // if has default values, generate set expression
+                if (config.params.defaultValues) {
+                        config.params.defaultValues.forEach((value, key) => {
+                                content += `params.set${STR.upperFirstLetter(key)}(${value});\r\n`;
+                        });
+                }
+
+                return content;
+        } else {
+                 content=`List<${config.params.type}> params = new ArrayList<>;\r\n`;
+                 content+=`for ( final type item : req) {params.add(new ${config.params.type}(@params)); }`;
+                 content = content.replace("@params", getReqParamsWithoutType(config));
         }
 
         return content;
 }
+
+function hasBatchReq(config) {
+        for (const req of config.reqs) {
+                if (req.isBatch)
+                        return true;
+        }
+
+        return false;
+}
+
 /**
  * Get service impl item return type text
  * 

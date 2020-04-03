@@ -19,7 +19,7 @@ HTTP_MAPPINGS.set("select", "@GetMapping")
  * @returns {String}
  */
 function renderController(config) {
-        let content = STR.arrayToString1(config.items, "", "",
+        let content = STR.arrayToString1(config.items,
                 x => CONTROLLER_ITEM_RENDER.renderTemplate(getControllerItemConfig(x, config.name)));
 
         content = content.trimRight() + "\r\n";
@@ -58,10 +58,25 @@ function getControllerItemConfig(config, configName) {
 function getControllerItemArgs(config) {
         let args = "";
         config.reqs.forEach(x => {
-                x.from = x.from || "";
-                args += isJavaBaseType(x.type)
-                        ? `${x.from} ${x.type} ${x.name}, `.trimLeft()
-                        : `${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
+               
+                if(isJavaBaseType(x.type)){
+                        if(!x.isBatch){
+                        args +=`${x.from} ${x.type} ${x.name}, `.trimLeft();
+                        return;
+                        }
+                        args+=`${x.from} List<${x.type}> ${x.name}, `.trimLeft();
+
+                        return;
+                }
+                
+                 x.from = x.from || "";
+                 if(!x.isBatch){
+                         args+=`${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
+                         return;
+                 }
+
+                 // batch with list
+                 args+=`${x.from} @Validated @ModelAttribute List<${x.type}> ${x.name}, `.trimLeft();
         });
 
         return STR.removeLastComa(args);

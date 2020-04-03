@@ -28,6 +28,9 @@ function getColumn(table, columnConfig, alias) {
         if (columnConfig.alias)
                 columnConfig.name = columnConfig.alias;
 
+        if(columnConfig.batch)
+            columnConfig.type=`List<${columnConfig.type}>`;
+
         return columnConfig;
 }
 

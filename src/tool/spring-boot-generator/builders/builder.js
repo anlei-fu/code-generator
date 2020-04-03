@@ -35,6 +35,11 @@ exports.builder = function builder() {
                 return this;
         }
 
+        this.excel=()=>{
+                this._excel=true;
+                return this;
+        }
+
         /**
          * Set property "id"
          * 

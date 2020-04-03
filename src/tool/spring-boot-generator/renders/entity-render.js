@@ -23,25 +23,30 @@ class EntityModel {
 function renderEntity(entityModel) {
         let content = ""
 
+        let found=false;
         // generate all field items
         entityModel.fields.forEach(x => {
                 let validates = x.validates
-                        ? STR.arrayToString1(x.validates, "", "", x => renderValidate(x))
+                        ? STR.arrayToString1(x.validates, x => renderValidate(x))
                         : "";
 
+               
                 let fieldModel = {
                         name: x.name,
-                        type: x.type,
+                        type: x.isBatch ? `List<${x.type}>` : x.type,
                         description: x.description.replace(/\r\n/g, ""),
                         validates
                 };
+               
 
                 let field = ENTITY_FIELD_RENDER.renderTemplate(fieldModel);
+                if (x.isBatch)
+                found=true;
                 content += STR.removeEmptyLine(field) + "\r\n";
         });
 
         content = content.trimRight() + "\r\n";
-        let entityModel = {
+        let model = {
                 description: entityModel.description.replace(/\r\n/g, ""),
                 name: entityModel.name,
                 content,
@@ -49,7 +54,10 @@ function renderEntity(entityModel) {
                 extends: entityModel.extends ? `extends ${entityModel.extends}` : ""
         }
 
-        return ENTITY_RENDER.renderTemplate(entityModel)
+        let result= ENTITY_RENDER.renderTemplate(model)
+        if(found)
+        console.log(result);
+        return result;
 }
 
 exports.renderEntity = renderEntity;
