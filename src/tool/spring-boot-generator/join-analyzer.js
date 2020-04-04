@@ -1,13 +1,13 @@
 const sqlUtils = require("./../sqls/utils");
 const { STR } = require("./../../libs/str")
 const { NamingStrategy } = require("./../../libs/naming-strategy");
-const { DicAnalyzer } = require("./../dic-analyzer/analyze");
+const {  EnumAnalyzer } = require("./../dic-analyzer/analyze");
 const { SimpleRender } = require("./../simple-pattern-render/simple-pattern-render");
 const JOIN_RENDER = new SimpleRender({}, "./templates/config-join.js");
 
-const ENUM_ANALYZER = new DicAnalyzer();
+const ENUM_ANALYZER = new EnumAnalyzer();
 
-class JoinAnalyzeResult {
+class JoinConfig {
         constructor () {
                 /**
                  * @type {String}
@@ -32,12 +32,12 @@ class JoinAnalyzeResult {
 }
 
 /**
- * Resolve join config
+ * Analyze join config
  * 
  * @param {TableRelations} relations
  * @param {Table} targetTable
  * @param {Tables} tables
- * @returns {[JoinAnalyzeResult]}
+ * @returns {[JoinConfig]}
  */
 function analyze(relations, targetTable, tables) {
 
@@ -48,7 +48,7 @@ function analyze(relations, targetTable, tables) {
         // join with other table
         if (relations[targetTable.name]) {
                 relations[targetTable.name].forEach(relation => {
-                        let result = new JoinAnalyzeResult();
+                        let result = new JoinConfig();
                         result.targetTable = relation.otherTable;
                         result.outputColumn = sqlUtils.findNameColumn(tables[relation.otherTable]).name;
 
@@ -63,16 +63,16 @@ function analyze(relations, targetTable, tables) {
                 });
         }
 
-        // join with enum dic
+        // analyze join with enum dic
         Object.keys(targetTable.columns).filter(x => !relationsColumns.has(x))
                 .forEach(columnName => {
-                        let dicResult = ENUM_ANALYZER.analyze(targetTable.columns[columnName]);
-                        if (!dicResult)
+                        let enumResult = ENUM_ANALYZER.isEnumField(targetTable.columns[columnName]);
+                        if (!enumResult)
                                 return;
 
-                        let result = new JoinAnalyzeResult();
-                        result.targetTable = dicResult.table;
-                        result.outputColumn = dicResult.textField;
+                        let result = new JoinConfig();
+                        result.targetTable = enumResult.table;
+                        result.outputColumn = enumResult.textField;
                         result.outputAlias = `${columnName}Name`;
                         result.joinCondition = `t.${NamingStrategy.toHungary(columnName)} = @alias.value and @alias.type = '${columnName}'`;
                         results.push(result);
@@ -82,7 +82,7 @@ function analyze(relations, targetTable, tables) {
 }
 
 /**
- * Render join template
+ * Render with join template
  * 
  * @param {JoinConfig} config 
  * @param {String} alias 
@@ -97,7 +97,8 @@ function renderJoinConfig(config, alias) {
 }
 
 /**
- * Analyze join output-column should with table prefix , avoid  name conflict
+ * Analyze join-output-column name should with table prefix ,
+ * to avoid fileds name conflict
  * 
  * @param {String} otherTableName 
  * @param {String} columnName

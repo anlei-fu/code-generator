@@ -3,13 +3,17 @@ const { NamingStrategy } = require("./../../libs/naming-strategy");
 const { getJavaType } = require("./utils");
 
 /**
- * Get column from table and do initialize
+ * Find column from table and merge width columnConfig,
+ * return merged columnConfig
+ * @note 
+ * 1. column will be a copy of sourece column
+ * 2. column not found will throw a error
  * 
  * @param {Table} table 
  * @param {ColumnConfig} columnConfig 
  * @param {String} alias of table
  */
-function getColumn(table, columnConfig, alias) {
+function mergeColumnAndConlumnConfig(table, columnConfig, alias) {
 
         // column not found
         if (!table.columns[columnConfig.name])
@@ -28,10 +32,11 @@ function getColumn(table, columnConfig, alias) {
         if (columnConfig.alias)
                 columnConfig.name = columnConfig.alias;
 
+        // batch set list type
         if(columnConfig.batch)
             columnConfig.type=`List<${columnConfig.type}>`;
 
         return columnConfig;
 }
 
-exports.getColumn = getColumn;
+exports.mergeColumnAndConlumnConfig = mergeColumnAndConlumnConfig;

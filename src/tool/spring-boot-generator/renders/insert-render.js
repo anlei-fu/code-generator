@@ -4,8 +4,7 @@ const { renderColumn } = require("./column-render");
 const { renderProperty } = require("./property-render");
 const { renderTrim } = require("./trim-render");
 const { LOWER_INCLUDES_ANY_MATCHER } = require("./../matchers");
-const { OBJECT } = require("./../../../libs/utils");
-const { STR } = require("./../../../libs/str");
+const {ReqUtils}=require("./../req-utils")
 const { NamingStrategy } = require("./../../../libs/naming-strategy");
 const { getJavaType } = require("./../utils");
 
@@ -36,7 +35,14 @@ function renderInsert(config) {
                 includes.push(createTime);
         }
 
+        let isBatch=ReqUtils.hasBatchReq(config);
+
         includes.forEach((x, i, array) => {
+
+                // add 'item.' prefix
+                if(isBatch)
+                    x.property="item."+x.property;
+
                 x.suffix = i == array.length - 1 ? "" : ",";
                 var sourceColumn=x.column;
                 x.column=x.column.split(".")[1];

@@ -3,8 +3,8 @@ const { renderIf } = require("./if-render");
 const { STR } = require("./../../../libs/str")
 
 const IF_IDENT = "            ";
-const _asignRender = new SimpleRender();
-_asignRender.setTempalte(`${IF_IDENT}@prefix@column = #{@property}@suffix\r\n`);
+const ASIGN_RENDER = new SimpleRender();
+ASIGN_RENDER.setTempalte(`${IF_IDENT}@prefix@column = #{@property}@suffix\r\n`);
 
 class AsignModel {
         constructor () {
@@ -23,7 +23,7 @@ class AsignModel {
 function renderAsign(model) {
         model.suffix = model.suffix || "";
         model.property = STR.lowerFirstLetter(model.name);
-        let content = _asignRender.renderTemplate(model);
+        let content = ASIGN_RENDER.renderTemplate(model);
         model.content = content;
         return renderIf(model);
 }

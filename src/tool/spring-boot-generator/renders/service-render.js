@@ -1,5 +1,5 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const { getReqParamsWithType } = require("./../req-common");
+const { ReqUtils } = require("../req-utils");
 const { STR } = require("./../../../libs/str");
 
 const SERVICE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
@@ -27,7 +27,7 @@ function renderService(config) {
  */
 function getServiceItemModel(config, name) {
         return {
-                serviceParams: getReqParamsWithType(config),
+                serviceParams:ReqUtils.generateReqParamsWithType(config),
                 serviceReturnType: getServiceReturnType(config, name),
                 name: config.id
         };
@@ -42,7 +42,7 @@ function getServiceItemModel(config, name) {
  */
 function getServiceReturnType(config, name) {
         if (config.type != "select")
-                return "boolean";
+                return ReqUtils.hasBatchReq(config)?"int":"boolean";
 
         return config.resp.single
                 ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name

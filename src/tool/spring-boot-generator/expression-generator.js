@@ -22,7 +22,7 @@ function generateUpdateExpression(includes) {
 }
 
 /**
- * Set update sql if test expression
+ * Set update-sql 'if-test-expression'
  * 
  * @param {ColumnConfig} include 
  */
@@ -36,12 +36,9 @@ function generateUpdateExpressionCore(include) {
  */
 function generateExpressionCore(condition) {
 
-        // skip when required
-        if (condition.required)
-                return null;
-
-        // set default if expression
-        condition.ifExpression = `${condition.name} != null`;
+        // set default if expression, if condition is nullable
+        if (!condition.required)
+            condition.ifExpression = `${condition.name} != null`;
 
         if (condition.type == "String") {
                 if (condition.nullable)

@@ -52,7 +52,7 @@ exports.paramBuilder = function paramBuilder() {
         }
 
         /**
-         * 
+         * Internal call
          */
         this.build = () => {
                 return {

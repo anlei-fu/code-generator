@@ -1,5 +1,5 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
-const { getReqParamsWithoutType } = require("./../req-common");
+const { ReqUtils } = require("../req-utils");
 const { STR } = require("./../../../libs/str");
 const { isJavaBaseType } = require("./../utils");
 
@@ -41,7 +41,7 @@ function getControllerItemConfig(config, configName) {
                 name: config.id,
                 httpMapping: getControllerItemHttpMappiAnnotationg(config),
                 controllerReturnType: getControllerItemReturnType(config, configName),
-                serviceParams: getReqParamsWithoutType(config),
+                serviceParams: ReqUtils.generateReqParamsWithoutType(config),
                 description,
                 controllerParams: getControllerItemArgs(config),
                 sname: STR.lowerFirstLetter(configName),
@@ -58,25 +58,25 @@ function getControllerItemConfig(config, configName) {
 function getControllerItemArgs(config) {
         let args = "";
         config.reqs.forEach(x => {
-               
-                if(isJavaBaseType(x.type)){
-                        if(!x.isBatch){
-                        args +=`${x.from} ${x.type} ${x.name}, `.trimLeft();
-                        return;
+
+                if (isJavaBaseType(x.type)) {
+                        if (!x.isBatch) {
+                                args += `${x.from} ${x.type} ${x.name}, `.trimLeft();
+                                return;
                         }
-                        args+=`${x.from} List<${x.type}> ${x.name}, `.trimLeft();
+                        args += `${x.from} List<${x.type}> ${x.name}, `.trimLeft();
 
                         return;
                 }
-                
-                 x.from = x.from || "";
-                 if(!x.isBatch){
-                         args+=`${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
-                         return;
-                 }
 
-                 // batch with list
-                 args+=`${x.from} @Validated @ModelAttribute List<${x.type}> ${x.name}, `.trimLeft();
+                x.from = x.from || "";
+                if (!x.isBatch) {
+                        args += `${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
+                        return;
+                }
+
+                // batch with list
+                args += `${x.from} @Validated @ModelAttribute List<${x.type}> ${x.name}, `.trimLeft();
         });
 
         return STR.removeLastComa(args);

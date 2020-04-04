@@ -12,7 +12,7 @@ const { TYPE } = require("../../../libs/utils")
  * Build req config
  */
 class ReqBuilder {
-        constructor() {
+        constructor () {
 
                 this._excludes = [];
                 this._noValidated = true;
@@ -29,13 +29,16 @@ class ReqBuilder {
                 return this;
         }
 
-        batch(){
-                this._isBatch=true;
+        /**
+         * Mark it a batch req
+         */
+        batch() {
+                this._isBatch = true;
                 return this;
         }
 
         /**
-         * Remove columns
+         * Add columns into excludes
          * 
          * @param {String|Object | [String|Object]} items 
          * @returns {reqBuilder}
@@ -67,9 +70,9 @@ class ReqBuilder {
          * Add validate
          * 
          * @param {String|[String]} item 
-         * @param {String} validate 
+         * @param {String} validate  name
          */
-        validate(item,validate){
+        validate(item, validate) {
                 if (TYPE.isString(item)) {
                         this._addValidateCore(item, validate);
 
@@ -80,7 +83,6 @@ class ReqBuilder {
                 }
 
                 return this;
-
         }
 
         /**
@@ -118,11 +120,10 @@ class ReqBuilder {
                                 this._addValidateCore(item, `@NotBlank(max=${max},min=${min})`);
                         });
                 }
-
         }
 
         /**
-         * Set type of fields
+         * Set req entity name 
          * 
          * @param {String} type
          * @returns {reqBuilder}
@@ -133,7 +134,7 @@ class ReqBuilder {
         }
 
         /**
-         * Set name
+         * Set req name
          * 
          * @param {String} name 
          * @returns {reqBuilder}
@@ -144,7 +145,7 @@ class ReqBuilder {
         }
 
         /**
-         * Set description
+         * Set req description
          * 
          * @param {String} description 
          * @returns {reqBuilder}
@@ -166,7 +167,7 @@ class ReqBuilder {
         }
 
         /**
-         * Set from property
+         * Set from property in request handler parameter binds
          * 
          * @param {String} from 
          * @returns {reqBuilder}
@@ -189,7 +190,7 @@ class ReqBuilder {
                         type: this._type,
                         excludes: new Set(this._excludes),
                         validates: this._validates,
-                        isBatch:this._isBatch
+                        isBatch: this._isBatch
                 }
         }
 
@@ -204,8 +205,7 @@ class ReqBuilder {
 
                 if (!this._validates.get(item).has(validate))
                         this._validates.get(item).add(validate);
-                
         }
 }
 
-exports.ReqBuilder=ReqBuilder;
+exports.ReqBuilder = ReqBuilder;

@@ -11,6 +11,13 @@ const { FILE } = require("./../../libs/file");
 const { OBJECT } = require("./../../libs/utils");
 
 exports.SimpleRender = class SimpleRender {
+        /**
+         * 
+         * @param {Object} basePatterns 
+         * @param {String} templateFile  path
+         * @param {String} prefix of pattern
+         * @param {String} suffix of pattern
+         */
         constructor(basePatterns = {}, templateFile, prefix = "@", suffix = "") {
                 this._basePatterns = {};
                 this._prefix = prefix;
@@ -21,6 +28,7 @@ exports.SimpleRender = class SimpleRender {
                         this._basePatterns[`${this._prefix}${key}${this._suffix}`] = value;
                 });
 
+                // load template file
                 if (templateFile)
                         this._template = FILE.read(templateFile);
         }

@@ -4,7 +4,7 @@ const { DIR } = require("../../libs/dir");
 const { STR } = require("../../libs/str");
 const { ARRAY } = require("../../libs/utils");
 const { OBJECT } = require("../../libs/utils");
-const { writeMarkDown } = require("./mark-down-writer");
+const { renderMarkDown } = require("./mark-down-render");
 const { NamingStrategy } = require("../../libs/naming-strategy");
 
 const STRING_RESOLVER = x => x.replace(/\"/g, "\"");
@@ -27,7 +27,7 @@ function resolve(project, validateTable = defaultValidate) {
         DIR.create(`${__dirname}/outputs`);
         DIR.create(`${__dirname}/outputs/` + project);
 
-        let content = FILE.read(`${__dirname}/resource/${project}.csv`);
+        let csv = FILE.read(`${__dirname}/resource/${project}.csv`);
         let resolvers = [
                 {
                         name: "table",
@@ -63,7 +63,10 @@ function resolve(project, validateTable = defaultValidate) {
                 }
         ];
 
-        let allColumnsMetaInfos = resolveFromCsvString(content, resolvers, true,true);
+        // resolve all columns from csv file
+        let allColumnsMetaInfos = resolveFromCsvString(csv, resolvers, true, true);
+
+        // group columns by it's table 
         groups = ARRAY.groupBy(allColumnsMetaInfos, item => item.table);
 
         // merge columns into table
@@ -78,6 +81,7 @@ function resolve(project, validateTable = defaultValidate) {
                         columns: {},
                 };
 
+                // check is valid table (excludes temp-table or test-table)
                 if (!validateTable(table.name))
                         return;
 
@@ -86,24 +90,19 @@ function resolve(project, validateTable = defaultValidate) {
                                 return;
 
                         column.name = NamingStrategy.toCamel(column.column);
-                        if (table.columns[column.name] && table.columns[column.name].isPk) {
-                                console.log("found : " + column.name);
-                                return;
-                        }
-
                         table.description = column.tableDescription;
-
                         column.rawName = column.column
                         column.type = {
                                 name: column.dataType,
                                 length: column.dataLength
                         }
-
                         table.columns[column.name] = column;
 
+                        // set name column
                         if (!table.nameColumn && NAME_FIELD_MATCHER(column.name))
                                 table.nameColumn = column.name;
 
+                        // set pk column
                         if (column.isPk)
                                 table.primaryColumn = column.name;
 
@@ -115,13 +114,14 @@ function resolve(project, validateTable = defaultValidate) {
                         delete column.tableDescription
                 });
 
+                // try set pk column
                 if (!table.primaryColumn)
                         analyzePrimaryColumn(table);
 
                 tables.push(table);
         });
 
-        // big data base, group by table project prefix
+        // big data base(with lots of table), group by project prefix
         let tableGroups = ARRAY.groupBy(tables, x => x.rawName.split("_")[0].toLowerCase());
         let groupContent = "";
         let subAllTempalte = FILE.read("./templates/all.js");
@@ -144,7 +144,7 @@ function resolve(project, validateTable = defaultValidate) {
 
         FILE.write(`./outputs/${project}/all.js`, allTemplate.replace("@content", groupContent.trimRight()));
 
-        writeMarkDown(project);
+        renderMarkDown(project);
 }
 
 /**
@@ -167,6 +167,8 @@ function defaultValidate(name) {
  * @param {Table} table 
  */
 function analyzePrimaryColumn(table) {
+
+        // has any 'no' or 'id' column
         for (const key of Object.keys(table.columns)) {
                 if (STR.equalAny(key.toLowerCase(), ["no", "id"])) {
                         table.columns[key].isPk = true;
@@ -174,6 +176,11 @@ function analyzePrimaryColumn(table) {
                         return;
                 }
 
+
+        }
+
+        // first column ends with 'no' or 'id'
+        for (const key of Object.keys(table.columns)) {
                 if (STR.endsWithAny(key.toLowerCase(), ["no", "id"])
                         && table.name.toLowerCase().includes(STR.replace(key.toLowerCase(), { "no": "", "id": "" }))) {
                         table.columns[key].isPk = true;
@@ -184,5 +191,9 @@ function analyzePrimaryColumn(table) {
 
 }
 
-/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------main--------------------------------------------------------------------------------*/
+/**
+ * exports csv file from database -> put into resource folder -> then excuete this file
+ */
+
 resolve("18");

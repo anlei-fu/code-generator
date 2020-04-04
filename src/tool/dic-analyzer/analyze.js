@@ -39,7 +39,7 @@ const DEFAULT_MATCHER = {
 }
 
 
-class DicAnalyzer {
+class EnumAnalyzer {
         constructor () {
                 this._matchers = DEFAULT_MATCHER;
         }
@@ -50,7 +50,7 @@ class DicAnalyzer {
                 });
         }
 
-        analyze(column) {
+        isEnumField(column) {
                 if (sqlUtils.toJavaType(column.type) != "Integer")
                         return null;
 
@@ -62,4 +62,4 @@ class DicAnalyzer {
         }
 }
 
-module.exports.DicAnalyzer = DicAnalyzer;
+module.exports.EnumAnalyzer = EnumAnalyzer;

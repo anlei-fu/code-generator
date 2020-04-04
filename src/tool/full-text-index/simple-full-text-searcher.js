@@ -1,8 +1,4 @@
 const { OBJECT } = require("../../libs/utils");
-const { LoggerFactory } = require("./../logging/logger-factory");
-
-const LOG = LoggerFactory.getLogger("simple-full-text-searcher");
-
 
 /**
  * Properties of document

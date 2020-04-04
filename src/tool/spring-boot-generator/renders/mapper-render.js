@@ -1,6 +1,7 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
 const { isJavaBaseType } = require("./../utils");
 const { STR } = require("./../../../libs/str");
+const {ReqUtils} =require("./../req-utils");
 
 const MAPPER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);
 const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`);
@@ -42,7 +43,7 @@ function getMapperItemParams(config) {
 
         // param generated
         if (config.params.doCreate) {
-                if (config.params.isBatch) {
+                if (ReqUtils.hasBatchReq(config)) {
                         return `@Param("list")  List<${config.params.type}> params`
                 } else {
                         return `${config.params.type} param`;

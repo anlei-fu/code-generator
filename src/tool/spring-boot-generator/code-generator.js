@@ -142,7 +142,7 @@ class GeneratorConfig {
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { Render } = require("./renders/render.js");
-const { generateReq } = require("./req-common");
+const { ReqUtils } = require("./req-utils");
 const { getJavaType } = require("./utils");
 const { getConditions } = require("./condition-getter");
 const { getIncludes } = require("./includes-getter");
@@ -228,8 +228,10 @@ class Generator {
                 if (config.alias)
                         this._config.table.alias = config.alias;
 
-                // if absent set default 'select'
+                // if type absent set default 'select'
                 config.type = config.type || "select";
+
+                // if id absent generate default id
                 config.id = config.id || this._getDefaultId(config);
 
                 // flag
@@ -326,8 +328,8 @@ class Generator {
          * @param {Table} table 
          */
         _initTable(table) {
-                OBJECT.forEach(table.columns, (_, Column) => {
-                        Column.type = getJavaType(Column.type);
+                OBJECT.forEach(table.columns, (_, column) => {
+                        column.type = getJavaType(column.type);
                 });
         }
 
@@ -340,7 +342,6 @@ class Generator {
          * @param {String} entityType "entity|req|resp|param"
          */
         _initEntityBasicInfo(config, entity, entityType) {
-
                 entity.description = entity.description || "";
                 if (!entity.type) {
                         entity.type = STR.upperFirstLetter(config.id) + entityType;
@@ -363,12 +364,12 @@ class Generator {
          * @private
          */
         _generateEntity() {
-                var entity = {};
-                entity.name = this._config.name;
-                entity.type = "entity";
-                entity.description = this._config.table.description;
-                entity.fields = OBJECT.toArray(this._config.table.columns);
-                let content = Render.renderEntity(entity);
+                var entityConfig = {};
+                entityConfig.name = this._config.name;
+                entityConfig.type = "entity";
+                entityConfig.description = this._config.table.description;
+                entityConfig.fields = OBJECT.toArray(this._config.table.columns);
+                let content = Render.renderEntity(entityConfig);
                 this._generateEntityCore(content, "entity", this._config.name);
         }
 
@@ -436,15 +437,15 @@ class Generator {
         _generateReq(config) {
                 config.reqs.forEach(x => {
                         if (x.doCreate) {
-                                let entity = {};
-                                entity.fields = generateReq(config, x);
+                                let entityConfig = {};
+                                entityConfig.fields =ReqUtils.generateReqFields(config, x);
                                 // if (config.type == "select")
                                 //         console.log(entity.fields);
-                                entity.description = x.description;
-                                entity.name = x.type;
-                                entity.type = "req";
-                                entity.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
-                                let content = Render.renderEntity(entity);
+                                entityConfig.description = x.description;
+                                entityConfig.name = x.type;
+                                entityConfig.type = "req";
+                                entityConfig.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
+                                let content = Render.renderEntity(entityConfig);
 
                                 this._generateEntityCore(content, "req", x.type);
                         }
@@ -461,13 +462,13 @@ class Generator {
          */
         _generateResp(config) {
                 if (config.resp.doCreate) {
-                        let entity = {};
-                        entity.type = "resp";
-                        entity.description = config.resp.description;
-                        entity.fields = getIncludes(config);
+                        let entityConfig = {};
+                        entityConfig.type = "resp";
+                        entityConfig.description = config.resp.description;
+                        entityConfig.fields = getIncludes(config);
                         config.resp.type = config.resp.name;
-                        entity.name = config.resp.type;
-                        let content = Render.renderEntity(entity);
+                        entityConfig.name = config.resp.type;
+                        let content = Render.renderEntity(entityConfig);
                         this._generateEntityCore(content, "resp", config.resp.type);
                 }
         }
@@ -509,7 +510,7 @@ class Generator {
 
                         } else if (x.doCreate) {
                                 req = x;
-                                generateReq(config, x).forEach(y => {
+                               ReqUtils.generateReqFields(config, x).forEach(y => {
                                         if (map.has(y.name)) {
                                                 map.get(y.name)["source"] = "req";
                                         } else {
@@ -540,9 +541,12 @@ class Generator {
          * @param {String} entityName  
          */
         _generateEntityCore(content, entityType, entityName) {
+                
+                // add imports and sort them
                 content = this._packageRender.renderPackage(content);
 
                 if (entityType == "entity") {
+                        console.log(content);
                         this._writer.writeEntity(this._config.name, content);
                 } else if (entityType == "req") {
                         this._writer.writeReq(entityName, content);

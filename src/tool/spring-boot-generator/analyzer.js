@@ -97,8 +97,8 @@ const DEFAULT_VALIDATES = {
 
         Integer: {
                 "status": {
-                        matcher: (x) => STR.endsWithAny(x.toLowerCase(),["type", "status", "state", "class", "level","style"])
-                                        ||STR.startsWithAny(x.toLowerCase(),["is", "need", "permit", "allow", "support", "can", "should"]),
+                        matcher: (x) => STR.endsWithAny(x.toLowerCase(), ["type", "status", "state", "class", "level", "style"])
+                                || STR.startsWithAny(x.toLowerCase(), ["is", "need", "permit", "allow", "support", "can", "should"]),
                         generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                 },
         }
@@ -276,7 +276,7 @@ const SELECT_EXLUCES = {
         },
         Integer: {
                 all: {
-                        matcher: columnName => !(STR.endsWithAny(columnName.toLowerCase(), ["id", "no", "type", "status", "state", "class", "level","style"])
+                        matcher: columnName => !(STR.endsWithAny(columnName.toLowerCase(), ["id", "no", "type", "status", "state", "class", "level", "style"])
                                 || STR.startsWithAny(columnName.toLowerCase(), ["is", "need", "permit", "allow", "support", "can", "should"]))
                 }
         },
@@ -520,7 +520,7 @@ const DEFAULT_USER_MATCHER = {
 /**
  * To find if table has user column
  */
-class UserAnalyzer {
+class UserColumnAnalyzer {
 
         /**
          * Find possibale user column
@@ -549,9 +549,15 @@ class UserAnalyzer {
         }
 }
 
+class ExcelAnalyzer{
+        shouldBeExcelField(column){
+
+        }
+}
+
 module.exports = {
         SelectAnalyzer,
         UpdateAnlyzer,
         InsertAnalyzer,
-        UserAnalyzer
+        UserColumnAnalyzer
 }

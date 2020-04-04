@@ -1,4 +1,4 @@
-const { getColumn } = require("./column-getter")
+const { mergeColumnAndConlumnConfig } = require("./column-getter")
 const { generateExpression } = require("./expression-generator")
 const CACHE = new Map();
 /**
@@ -13,12 +13,12 @@ function getConditions(config) {
 
         let conditions = [];
         config.conditions.forEach(condition => {
-                conditions.push(getColumn(config.table, condition,config.alias));
+                conditions.push(mergeColumnAndConlumnConfig(config.table, condition,config.alias));
         });
 
         config.joins.forEach(join=>{
               join.conditions.forEach(condition=>{
-                conditions.push(getColumn(join.table, condition,join.alias));
+                conditions.push(mergeColumnAndConlumnConfig(join.table, condition,join.alias));
               });
         });
 

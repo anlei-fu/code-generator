@@ -7,7 +7,7 @@ const { LoggerFactory } = require("../logging/logger-factory")
 const LOG = LoggerFactory.getLogger("Table relation resolver");
 
 class TableMetaInfo {
-        constructor() {
+        constructor () {
 
                 /**
                  * Is count limited
@@ -47,7 +47,7 @@ class TableMetaInfo {
 }
 
 class TableRelation {
-        constructor() {
+        constructor () {
                 /**
                  * Other table
                  */
@@ -124,7 +124,7 @@ const DEFAULT_MAIN_TABLE_MATCHERS = {
 }
 
 class TableRelationAnalyzer {
-        constructor(tables) {
+        constructor (tables) {
                 this._candiadtesMatchers = RELATION_CANDIDATES_MATCHERS;
                 this._searcher = new SimpleFullTextSearcher();
                 this._tables = tables;
@@ -146,6 +146,7 @@ class TableRelationAnalyzer {
                 OBJECT.forEach(this._tables, (__, table) => {
                         OBJECT.forEach(table.columns, (_, column) => {
 
+                                //  there's no need to anlyze pk column
                                 if (column.isPk)
                                         return;
 
@@ -153,10 +154,9 @@ class TableRelationAnalyzer {
                                 if (!this._shouldBeCandidate(column.type, column.name, table.name))
                                         return;
 
-                                let columnEnd = this._normolizeColumnName(column.rawName.toLowerCase());
-
-                                // pk check
-                                if (table.rawName.toLowerCase().endsWith(columnEnd.toLowerCase()))
+                                // pk check       
+                                let normalizeizedColumnName = this._normolizeColumnName(column.rawName.toLowerCase());
+                                if (table.rawName.toLowerCase().endsWith(normalizeizedColumnName.toLowerCase()))
                                         return;
 
                                 this._generateRelation(relations, column, table.rawName, table.name);
@@ -181,7 +181,7 @@ class TableRelationAnalyzer {
          * Generate search keywords
          * 
          * @param {(String,String)=>String} generator  
-         * (column raw name,table raw name) =>search keywords
+         * (column-raw-name,table-raw-name) =>search keywords
          */
         useKeywordsGenerator(generator) {
                 this._customerKeywordsGenerator = generator;
@@ -198,7 +198,7 @@ class TableRelationAnalyzer {
         }
 
         /**
-         * Try useless  suffix
+         * Use to trim useless suffix
          * 
          * @param {[String]} suffixes
          */
@@ -250,9 +250,6 @@ class TableRelationAnalyzer {
         _shouldBeCandidate(type, columnName) {
                 if (!this._candiadtesMatchers[type])
                         return false;
-                if (columnName.includes("phone")) {
-                        let t = 0;
-                }
 
                 for (const key in this._candiadtesMatchers[type]) {
                         let match = this._candiadtesMatchers[type][key].matcher
@@ -275,14 +272,17 @@ class TableRelationAnalyzer {
          */
         _generateRelation(relations, selfColumn, selfTableRawName, table) {
 
+                // generate search keywords
                 let keywords = this._customerKeywordsGenerator
                         ? this._customerKeywordsGenerator(selfColumn.rawName, selfTableRawName)
                         : this._defaultSearchKeyWordsGenerator(selfColumn.rawName, selfTableRawName);
 
+                // nocandiate found
                 let candidates = this._searcher.search(keywords, 10);
                 if (candidates.length == 0)
                         return;
 
+                // get best candidate 
                 let bestCandidate = this._customerSearchResultsMatcher
                         ? this._customerSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates)
                         : this._defaultBestResultsMatcher(selfColumn.rawName, selfTableRawName, candidates);
@@ -308,7 +308,7 @@ class TableRelationAnalyzer {
         }
 
         /**
-         * Default keyword generator
+         * Default keyword generator(column raw name segs and table raw name segs)
          * 
          * @param {String} columnRawName 
          * @param {String} tableRawName 

@@ -1,4 +1,4 @@
-const { getColumn } = require("./column-getter");
+const { mergeColumnAndConlumnConfig } = require("./column-getter");
 const { generateUpdateExpression } = require("./expression-generator")
 const CACHE = new Map();
 
@@ -16,13 +16,13 @@ function getIncludes(config) {
         // merge with column meta info
         let includes = [];
         config.includes.forEach(include => {
-                includes.push(getColumn(config.table, include, config.alias));
+                includes.push(mergeColumnAndConlumnConfig(config.table, include, config.alias));
         });
 
         // concat joins includes
         config.joins.forEach(join => {
                 join.includes.forEach(include => {
-                        includes.push(getColumn(join.table, include, join.table.alias));
+                        includes.push(mergeColumnAndConlumnConfig(join.table, include, join.table.alias));
                 });
         });
 

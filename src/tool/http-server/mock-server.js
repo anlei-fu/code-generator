@@ -1,27 +1,28 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 const { LoggerFactory } = require("./../logging/logger-factory");
-const {TableFormmatter} =require("./../formatter/table-formatter")
+const { TableFormmatter } = require("./../formatter/table-formatter")
 const app = express();
-const formatter= new TableFormmatter();
+const formatter = new TableFormmatter();
+
 // allow cross domain
-app.all("*",(req,resp,next)=>{
-        console.log("into here");
-        resp.header("Access-Control-Allow-Origin", "*"); 
+app.all("*", (req, resp, next) => {
+        resp.header("Access-Control-Allow-Origin", "*");
         next();
 });
 
-
+// body parser (json & urlencoded) need install 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const LOG = LoggerFactory.getLogger("mock server");
-
 const SUPPORTED_METHODS = new Set(["get", "post", "put", "delete"]);
 
 /**
+ * Check is method name surppoted and lower it
  * 
  * @param {String} method 
+ * @returns {String}
  */
 function checkAndNomalizeMethod(method) {
         method = method.toLowerCase();
@@ -48,6 +49,11 @@ class Handler {
                 this.result = JSON.stringify(result);
         }
 
+        /**
+         * Log req basic infos
+         * 
+         * @param {Request} req 
+         */
         logReq(req) {
                 console.log(`${req.method} url:${req.url}`);
                 console.log("query");
@@ -56,6 +62,12 @@ class Handler {
                 console.log(formatter.format([req.body]));
         }
 
+        /**
+         * Core method, just return configired results randomly
+         * 
+         * @param {Request} req 
+         * @param {Response} resp 
+         */
         process(req, resp) {
                 this.logReq(req);
                 resp.send(this.result);
@@ -84,20 +96,20 @@ class AssertHandler extends Handler {
         }
 }
 
-class ComplexHandler extends Handler{
-        constructor(path, method,process){
-             super(path,method);
-             this._process=process;
+class ComplexHandler extends Handler {
+        constructor (path, method, process) {
+                super(path, method);
+                this._process = process;
         }
 
         /**
          * @override
          */
-        process(req,resp){
-                if(this._process){
-                   this._process(req,resp);
-                }else{
-                        super.process(req,resp);
+        process(req, resp) {
+                if (this._process) {
+                        this._process(req, resp);
+                } else {
+                        super.process(req, resp);
                 }
         }
 }
@@ -139,7 +151,7 @@ class HandlerCollectionBuilder {
          * @param {String} method 
          * @param {(req,resp)=>void} process 
          */
-        complexHandler(path,method,process){
+        complexHandler(path, method, process) {
                 this._handlers.push(new AssertHandler(path, method, result, assert));
                 return this;
         }
@@ -173,6 +185,7 @@ class MockServer {
                 });
 
                 LOG.info("server started!");
+                LOG.info("listen on " + port);
                 app.listen(port);
         }
 }

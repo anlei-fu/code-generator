@@ -1,5 +1,5 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const { getReqParamsWithType, getReqParamsWithoutType } = require("./../req-common")
+const { ReqUtils } = require("../req-utils")
 const { STR } = require("./../../../libs/str")
 const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
 const SERVICE_IMPL_PAGE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-page.java`);
@@ -26,6 +26,11 @@ function renderServiceImpl(config) {
 
 /**
  * Get service impl item config
+ *  public @serviceImplReturnType  @name(@serviceImplParams){
+ *         @content
+ *       return @mapper(@serviceImplMapperParams)@suffix;
+ *  }
+ * 
  * 
  * @param {Config} config 
  * @returns {String}
@@ -33,10 +38,10 @@ function renderServiceImpl(config) {
 function getServiceImplItemConfig(config, name) {
         return {
                 name: config.id,
-                serviceImplParams: getReqParamsWithType(config),
+                serviceImplParams:ReqUtils.generateReqParamsWithType(config),
                 serviceImplReturnType: getServiceImplItemReturnType(config, name),
-                serviceImplMapperParams: config.params.doCreate ? "params" : getReqParamsWithoutType(config),
-                suffix: config.type == "select" ? "" : " > 0",
+                serviceImplMapperParams: config.params.doCreate ? "params" :ReqUtils.generateReqParamsWithoutType(config),
+                suffix: config.type == "select" ? hasBatchReq(config)?"":" > 0":"",
                 content: !config.params.doCreate ? "" : renderServiceImplContent(config),
                 sname: STR.lowerFirstLetter(name)
         };
@@ -55,7 +60,7 @@ function renderServiceImplContent(config) {
         let content="";
         if (!hasBatchReq(config)) {
                  content = `${config.params.type} params = new ${config.params.type}(@params);`;
-                content = content.replace("@params", getReqParamsWithoutType(config));
+                content = content.replace("@params", ReqUtils.generateReqParamsWithoutType(config));
 
                 // if has default values, generate set expression
                 if (config.params.defaultValues) {
@@ -66,9 +71,11 @@ function renderServiceImplContent(config) {
 
                 return content;
         } else {
+                let reqType="";
+                let reqName="";
                  content=`List<${config.params.type}> params = new ArrayList<>;\r\n`;
-                 content+=`for ( final type item : req) {params.add(new ${config.params.type}(@params)); }`;
-                 content = content.replace("@params", getReqParamsWithoutType(config));
+                 content+=`        for ( final type item : req) {\r\n                params.add(new ${config.params.type}(@params)); \r\n        }`;
+                 content = content.replace("@params", ReqUtils.generateReqParamsWithoutType(config));
         }
 
         return content;
@@ -91,13 +98,18 @@ function hasBatchReq(config) {
  * @returns {String} 
  */
 function getServiceImplItemReturnType(config, name) {
-        if (config.type != "select")
-                return "boolean";
+        if (config.type == "select"){
+                return hasBatchReq(config)?"int":"boolean";
+        }
+              
 
         return config.resp.single
                 ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name
                 : config.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>` : `PageInfo<${name}>`;
 }
+
+
+
 
 
 exports.renderServiceImpl = renderServiceImpl

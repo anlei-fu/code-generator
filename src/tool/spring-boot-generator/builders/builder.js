@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-12-17 16:32:32
  */
 const { ColumnBuilder } = require("./columnBuilder");
-const { controllerBuilder } = require("./controllerBuilder");
+const { requestHandlerBuilder: controllerBuilder } = require("./requestHandlerBuilder");
 const { joinBuilder } = require("./joinBuilder")
 const { ReqBuilder } = require("./reqBuilder")
 const { respBuilder } = require("./respBuilder")
@@ -35,11 +35,6 @@ exports.builder = function builder() {
                 return this;
         }
 
-        this.excel=()=>{
-                this._excel=true;
-                return this;
-        }
-
         /**
          * Set property "id"
          * 
@@ -57,22 +52,6 @@ exports.builder = function builder() {
          */
         this.alias = (alias) => {
                 this._alias = alias;
-                return this;
-        }
-
-        /**
-         * Set property batch
-         */
-        this.batch = () => {
-                this._batch = true;
-                return this;
-        }
-
-        /**
-         *  Set exist property
-         */
-        this.exists = () => {
-                this._exists = true;
                 return this;
         }
 

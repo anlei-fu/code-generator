@@ -8,7 +8,6 @@ class FormatConfig {
         }
 }
 
-
 class TableFormmatter {
 
         /**
@@ -19,38 +18,41 @@ class TableFormmatter {
                 this.config = config;
         }
 
+        /**
+         * Format array of object to table style
+         * 
+         * @param {Any} rows 
+         */
         format(rows = []) {
 
-                rows.forEach(item=>{
-                        Object.keys(item).forEach(propertyName=>{
-                                 item[propertyName]=JSON.stringify(item[propertyName]);
+                // init every row ,convert it's properties to json-string 
+                rows.forEach(row => {
+                        Object.keys(row).forEach(propertyName => {
+                                row[propertyName] = JSON.stringify(row[propertyName]);
                         });
                 })
 
                 let table = this.convertToTable(rows, this.analyzeColumns(rows));
 
-              let totalWidth = 0;
-               table.forEach((value, key) => {
+                let totalWidth = 0;
+                table.forEach((value) => {
                         let maxWidth = this.analyzeMaxWidth(value);
-                        totalWidth += maxWidth+2+2*this.config.padding;
+                        totalWidth += maxWidth + 2 + 2 * this.config.padding;
                         this.nomrolizeItem(value, maxWidth);
                 });
 
-                console.log(totalWidth);
                 let output = "";
                 let columns = [...table.values()];
-                let baseLine= STR.repeat("-", totalWidth-1) + "\r\n";;
-                for (let i = 0; i < rows.length+1; i++) {
-                        let line =baseLine+"|";
+                let baseLine = STR.repeat("-", totalWidth - 1) + "\r\n";;
+                for (let i = 0; i < rows.length + 1; i++) {
+                        let line = baseLine + "|";
                         for (let j = 0; j < columns.length; j++) {
                                 line += columns[j][i];
                         }
                         output += line + "\r\n";
                 }
 
-                output+=baseLine;
-
-                return output;
+                return output+baseLine;
         }
 
         /**
@@ -66,8 +68,10 @@ class TableFormmatter {
                                 columns.add(key);
                         });
                 });
+
                 let array = [];
                 columns.forEach(value => array.push(value));
+
                 return array;
         }
 
@@ -83,17 +87,19 @@ class TableFormmatter {
                 let table = new Map();
 
                 // push index column
-                let indexColumn=["index"];
-                rows.forEach((x,i)=>{
-                       indexColumn.push((i+1).toString());
+                let indexColumn = ["index"];
+                rows.forEach((_, i) => {
+                        indexColumn.push((i + 1).toString());
                 });
-                table.set("index",indexColumn);
+
+                // set index column first
+                table.set("index", indexColumn);
 
                 columns.forEach(column => {
-                        let tableRaw = [column];
-                        table.set(column, tableRaw);
+                        let tableRow = [column];
+                        table.set(column, tableRow);
                         rows.forEach(row => {
-                                tableRaw.push(row[column] ? row[column].toString() : "");
+                                tableRow.push(row[column] ? row[column].toString() : "");
                         });
                 });
 
@@ -109,8 +115,11 @@ class TableFormmatter {
         analyzeMaxWidth(array = []) {
                 let maxLen = 0;
                 array.forEach(item => {
-                        maxLen = maxLen > item.length ? maxLen : item.length>this.config.maxWidth?this.config.maxWidth:item.length;
+                        maxLen = maxLen > item.length
+                                ? maxLen
+                                : item.length > this.config.maxWidth ? this.config.maxWidth : item.length;
                 });
+
                 return maxLen;
         }
 
@@ -120,26 +129,26 @@ class TableFormmatter {
          * @param {Number} width 
          */
         nomrolizeItem(array = [], width) {
-                let maxWidth = width +2 * this.config.padding;
+                let maxWidth = width + 2 * this.config.padding;
                 for (let i = 0; i < array.length; i++) {
-                        if(array[i].length%2==0)
-                          array[i]=array[i]+" ";
+                        if (array[i].length % 2 == 0)
+                                array[i] = array[i] + " ";
 
-                        let overMaxWidth=false;
+                        let overMaxWidth = false;
                         if (array[i].length > maxWidth) {
                                 array[i] = array[i].substr(0, maxWidth - 2) + ".";
-                                overMaxWidth=true;
+                                overMaxWidth = true;
                         }
 
                         let space = STR.repeat(" ", (maxWidth - this.config.padding * 2 - array[i].length) / 2);
-                        let padding=STR.repeat(" ",this.config.padding);
-                        if(overMaxWidth)
-                          padding=padding.substr(0,padding.length-1);
+                        let padding = STR.repeat(" ", this.config.padding);
+                        if (overMaxWidth)
+                                padding = padding.substr(0, padding.length - 1);
 
-                        let final=`${padding}${space}${array[i]}${space}${padding}|`;
-                        let more=final.length-maxWidth;
-                        if(more!=0)
-                             final=final.substr(0,final.length-2)+"|";
+                        let final = `${padding}${space}${array[i]}${space}${padding}|`;
+                        let more = final.length - maxWidth;
+                        if (more != 0)
+                                final = final.substr(0, final.length - 2) + "|";
 
                         array[i] = `${padding}${space}${array[i]}${space}${padding}|`;
                 }

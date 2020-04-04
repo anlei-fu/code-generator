@@ -10,19 +10,35 @@ const { TYPE, OBJECT } = require("../../../libs/utils")
 exports.ColumnBuilder = class ColumnBuilder {
         constructor () {
                 this._includes = {};
-                this._addtional = [];
         }
 
+        /**
+         * Set excel header name
+         * 
+         * @param {String} column 
+         * @param {String} label 
+         */
         label(column, label) {
                 this._setProperty(column, "label", label);
                 return this;
         }
 
+        /**
+         * Set excel column width
+         * 
+         * @param {String|[String]} column 
+         * @param {Number} width 
+         */
         width(column,width){
                 this._setProperty(column, "width", width);
                 return this;
         }
 
+        /**
+         * Mark column is a list
+         * 
+         * @param {String|[String]} column 
+         */
         batch(column) {
                 return this._setBoolProperty(column, "isBatch");
         }
@@ -142,8 +158,8 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @param {String|[String]|{name:String}|[{name:String}]} item 
          * @returns {ColumnBuilder}
          */
-        startWith(item) {
-                return this._setBoolProperty(item, "startWith");
+        startsWith(item) {
+                return this._setBoolProperty(item, "startsWith");
         }
 
         /**
@@ -152,8 +168,8 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @param {String|[String]|{name:String}|[{name:String}]} item 
          * @returns {ColumnBuilder}
          */
-        endWith(item) {
-                return this._setBoolProperty(item, "endWith");
+        endsWith(item) {
+                return this._setBoolProperty(item, "endsWith");
         }
 
         /**
@@ -162,8 +178,8 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @param {String|[String]|{name:String}|[{name:String}]} item 
          * @returns {ColumnBuilder}
          */
-        startAndEndWith(item) {
-                return this._setBoolProperty(item, "startAndEndWith");
+        startsAndEndsWith(item) {
+                return this._setBoolProperty(item, "startsAndEndsWith");
         }
 
         /**

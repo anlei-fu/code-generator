@@ -55,8 +55,7 @@ function renderEntity(entityModel) {
         }
 
         let result= ENTITY_RENDER.renderTemplate(model)
-        if(found)
-        console.log(result);
+        
         return result;
 }
 
