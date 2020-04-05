@@ -6,14 +6,13 @@
  * @LastEditors  : fuanlei
  * @LastEditTime : 2019-12-18 11:49:04
  */
-const { TYPE } = require("../../../libs/utils")
+const { TYPE } = require("../../../libs/utils");
 
 /**
  * Build req config
  */
 class ReqBuilder {
         constructor () {
-
                 this._excludes = [];
                 this._noValidated = true;
                 this._validates = new Map();
@@ -22,7 +21,7 @@ class ReqBuilder {
         /**
          * Determine  is create new entity
          * 
-         * @returns {reqBuilder}
+         * @returns {ReqBuilder}
          */
         doCreate() {
                 this._doCreate = true;
@@ -31,6 +30,8 @@ class ReqBuilder {
 
         /**
          * Mark it a batch req
+         * 
+         * @returns {ReqBuilder}
          */
         batch() {
                 this._isBatch = true;
@@ -41,7 +42,7 @@ class ReqBuilder {
          * Add columns into excludes
          * 
          * @param {String|Object | [String|Object]} items 
-         * @returns {reqBuilder}
+         * @returns {ReqBuilder}
          */
         excludes(items) {
                 this._excludes = TYPE.isString(items) ? [items] : items;
@@ -52,6 +53,7 @@ class ReqBuilder {
          * Add '@NotNull' validate
          * 
          * @param {String|[String]} item 
+         * @returns {ReqBuilder}
          */
         requireItem(item) {
                 if (TYPE.isString(item)) {
@@ -71,6 +73,7 @@ class ReqBuilder {
          * 
          * @param {String|[String]} item 
          * @param {String} validate  name
+         * @returns {ReqBuilder}
          */
         validate(item, validate) {
                 if (TYPE.isString(item)) {
@@ -89,11 +92,11 @@ class ReqBuilder {
          * Add 'NotBlank' validate
          * 
          * @param {String|[String]} item 
+         * @returns {ReqBuilder}
          */
         notBlank(item) {
                 if (TYPE.isString(item)) {
                         this._addValidateCore(item, "@NotBlank");
-
                 } else {
                         item.forEach(x => {
                                 this._addValidateCore(item, "@NotBlank");
@@ -106,15 +109,14 @@ class ReqBuilder {
         /**
          * Add range validates
          * 
-         * 
          * @param {String|[String]} item 
          * @param {Number} max 
          * @param {Number} min 
+         * @returns {ReqBuilder}
          */
         range(item, max, min) {
                 if (TYPE.isString(item)) {
                         this._addValidateCore(item, `@NotBlank(max=${max},min=${min})`);
-
                 } else {
                         item.forEach(x => {
                                 this._addValidateCore(item, `@NotBlank(max=${max},min=${min})`);
@@ -126,7 +128,7 @@ class ReqBuilder {
          * Set req entity name 
          * 
          * @param {String} type
-         * @returns {reqBuilder}
+         * @returns {ReqBuilder}
          */
         type(type) {
                 this._type = type;
@@ -137,7 +139,7 @@ class ReqBuilder {
          * Set req name
          * 
          * @param {String} name 
-         * @returns {reqBuilder}
+         * @returns {ReqBuilder}
          */
         name(name) {
                 this._name = name;
@@ -148,7 +150,7 @@ class ReqBuilder {
          * Set req description
          * 
          * @param {String} description 
-         * @returns {reqBuilder}
+         * @returns {ReqBuilder}
          */
         description(description) {
                 this._description = description;
@@ -159,7 +161,7 @@ class ReqBuilder {
         /**
          * Mark as no need validate-operation
          * 
-         * @returns {readonly}
+         * @returns {ReqBuilder}
          */
         noValidated() {
                 this._novalidated = false;
@@ -170,7 +172,7 @@ class ReqBuilder {
          * Set from property in request handler parameter binds
          * 
          * @param {String} from 
-         * @returns {reqBuilder}
+         * @returns {ReqBuilder}
          */
         from(from) {
                 this._from = from;

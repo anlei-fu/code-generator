@@ -7,30 +7,33 @@
  * @LastEditTime: 2019-12-17 16:32:32
  */
 const { ColumnBuilder } = require("./columnBuilder");
-const { requestHandlerBuilder: controllerBuilder } = require("./requestHandlerBuilder");
-const { joinBuilder } = require("./joinBuilder")
-const { ReqBuilder } = require("./reqBuilder")
-const { respBuilder } = require("./respBuilder")
-const { paramBuilder } = require("./paramBuilder")
+const { RequestHandlerBuilder } = require("./requestHandlerBuilder");
+const { JoinBuilder } = require("./joinBuilder");
+const { ReqBuilder } = require("./reqBuilder");
+const { RespBuilder } = require("./respBuilder");
+const { ParamBuilder } = require("./paramBuilder");
 
-exports.builder = function builder() {
-        this._type;
-        this._id;
-        this._includes = new ColumnBuilder();
-        this._conditions = new ColumnBuilder();
-        this._controller = new controllerBuilder();
-        this.reqs = [];
-        this._resp = new respBuilder();
-        this._params = new paramBuilder();
-        this._alias;
-        this.joins = [];
+class Builder {
+        constructor () {
+                this._type;
+                this._id;
+                this._includes = new ColumnBuilder();
+                this._conditions = new ColumnBuilder();
+                this._requestHandler = new RequestHandlerBuilder();
+                this.reqs = [];
+                this._resp = new RespBuilder();
+                this._params = new ParamBuilder();
+                this._alias;
+                this.joins = [];
+        }
 
         /**
          * Set property "id"
          * 
-         * @returns {builder}
+         * @param {String} id
+         * @returns {Builder}
          */
-        this.id = (id) => {
+        id(id) {
                 this._id = id;
                 return this;
         }
@@ -38,9 +41,10 @@ exports.builder = function builder() {
         /**
          * Set property "id"
          * 
-         * @returns {builder}
+         * @param {String} type
+         * @returns {Builder}
          */
-        this.type = (type) => {
+        type(type) {
                 this._type = type;
                 return this;
         }
@@ -48,9 +52,10 @@ exports.builder = function builder() {
         /**
          * Set property "alias"
          * 
-         * @returns {builder}
+         * @param {String} alias
+         * @returns {Builder}
          */
-        this.alias = (alias) => {
+        alias(alias) {
                 this._alias = alias;
                 return this;
         }
@@ -58,10 +63,10 @@ exports.builder = function builder() {
         /**
          * Add req item
          * 
-         * @param {(reqBuilder) => void} configer to config new req item
-         * @returns {builder}
+         * @param {(ReqBuilder) => void} configer to config new req item
+         * @returns {Builder}
          */
-        this.req = (configer) => {
+        req(configer) {
                 let builder = new ReqBuilder();
                 configer(builder);
                 this.reqs.push(builder);
@@ -71,10 +76,10 @@ exports.builder = function builder() {
         /**
          * Config resp
          * 
-         * @param {(respBuilder) => void} config to config resp
-         * @returns {builder}
+         * @param {(RespBuilder) => void} configer to config resp
+         * @returns {Builder}
          */
-        this.resp = (configer) => {
+        resp(configer) {
                 configer(this._resp);
                 return this;
         }
@@ -82,10 +87,10 @@ exports.builder = function builder() {
         /**
          * Config params
          * 
-         * @param {(paramBuilder) => void} configer to config params
-         * @returns {builder}
+         * @param {(ParamBuilder) => void} configer to config params
+         * @returns {Builder}
          */
-        this.params = (configer) => {
+        params(configer) {
                 configer(this._params);
                 return this;
         }
@@ -93,11 +98,11 @@ exports.builder = function builder() {
         /**
          * Add join item
          * 
-         * @param {(joinBuilder) => void} configer to config new join item
-         * @returns {builder}
+         * @param {(JoinBuilder) => void} configer to config new join item
+         * @returns {Builder}
          */
-        this.join = (configer) => {
-                let builder = new joinBuilder();
+        join(configer) {
+                let builder = new JoinBuilder();
                 configer(builder);
                 this.joins.push(builder);
                 return this;
@@ -106,10 +111,10 @@ exports.builder = function builder() {
         /**
          * Config includes
          * 
-         * @param {(columnBuilder) => void} configer  to build a includes collection
-         * @returns {builder}
+         * @param {(ColumnBuilder) => void} configer  to build a includes collection
+         * @returns {Builder}
          */
-        this.includes = (configer) => {
+        includes(configer) {
                 configer(this._includes);
                 return this;
         }
@@ -117,10 +122,10 @@ exports.builder = function builder() {
         /**
          * Config condition
          * 
-         * @param {(columnBuilder) => void} configer  to build a conditions collection
-         * @returns {builder}
+         * @param {(ColumnBuilder) => void} configer  to build a conditions collection
+         * @returns {Builder}
          */
-        this.conditions = (configer) => {
+        conditions(configer) {
                 configer(this._conditions);
                 return this;
         }
@@ -128,9 +133,9 @@ exports.builder = function builder() {
         /**
          * Set do not generate controller file
          * 
-         * @returns {builder}
+         * @returns {Builder}
          */
-        this.noController = () => {
+        noController() {
                 this._noController = true;
                 return this;
         }
@@ -138,9 +143,9 @@ exports.builder = function builder() {
         /**
          * Set do not generate service and service-impl file
          * 
-         * @returns {builder}
+         * @returns {Builder}
          */
-        this.noService = () => {
+        noService() {
                 this._noService = true;
                 return this;
         }
@@ -148,18 +153,18 @@ exports.builder = function builder() {
         /**
          * Config controller
          * 
-         * @param {(controllerBuilder) => void} configer  to config controller
-         * @returns {builder}
+         * @param {(RequestHandlerBuilder) => void} configer  to config controller
+         * @returns {Builder}
          */
-        this.controller = (configer) => {
-                configer(this._controller);
+        request(configer) {
+                configer(this._requestHandler);
                 return this;
         }
 
         /**
          * Build a generator config item
          */
-        this.build = () => {
+        build() {
                 let joins = [];
                 this.joins.forEach(x => {
                         joins.push(x.build());
@@ -181,7 +186,7 @@ exports.builder = function builder() {
                         reqs: reqs,
                         resp: this._resp.build(),
                         params: this._params.build(),
-                        controller: this._controller.build(),
+                        controller: this._requestHandler.build(),
                         includes: this._includes.build(),
                         conditions: this._conditions.build(),
                         noController: this._noController,
@@ -191,3 +196,5 @@ exports.builder = function builder() {
                 };
         }
 }
+
+exports.Builder = Builder;

@@ -195,6 +195,7 @@ exports.ColumnBuilder = class ColumnBuilder {
         /**
          * Set property "prefix" of every item
          * 
+         * @param {String} prefix
          * @returns {ColumnBuilder}
          */
         prefixAll(prefix) {

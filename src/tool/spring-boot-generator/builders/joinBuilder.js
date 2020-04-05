@@ -9,7 +9,7 @@
 const { ColumnBuilder } = require("./columnBuilder");
 const {OBJECT} =require("./../../../libs/utils")
 
-exports.joinBuilder = class joinBuilder {
+class JoinBuilder {
         constructor () {
                 this._includes = new ColumnBuilder();
                 this._conditions = new ColumnBuilder();
@@ -22,7 +22,7 @@ exports.joinBuilder = class joinBuilder {
          * Config includes
          * 
          * @param {ColumnBuilder => void} configer to build a includes conllection
-         * @returns {joinBuilder}
+         * @returns {JoinBuilder}
          */
         includes(configer) {
                 configer(this._includes);
@@ -33,7 +33,7 @@ exports.joinBuilder = class joinBuilder {
          * Config conditions
          * 
          * @param {ColumnBuilder => void} configer to build a conditions collection
-         * @returns {joinBuilder}
+         * @returns {JoinBuilder}
          */
         conditions(configer) {
                 configer(this._conditions);
@@ -43,7 +43,8 @@ exports.joinBuilder = class joinBuilder {
         /***
          * Set property "alias"
          * 
-         * @returns {joinBuilder}
+         * @param {String} alias
+         * @returns {JoinBuilder}
          */
         alias(alias) {
                 this._alias = alias;
@@ -55,7 +56,8 @@ exports.joinBuilder = class joinBuilder {
         /**
          * Set property "type"
          * 
-         * @returns {joinBuilder}
+         * @param {String} type
+         * @returns {JoinBuilder}
          */
         type(type) {
                 this._type = type;
@@ -65,6 +67,7 @@ exports.joinBuilder = class joinBuilder {
         /**
          * Set property "alias"
          * 
+         * @param {Table} table
          * @returns {joinBuilder}
          */
         table(table) {
@@ -100,5 +103,6 @@ exports.joinBuilder = class joinBuilder {
                         table: this._table
                 };
         }
-
 }
+
+exports.JoinBuilder=JoinBuilder;

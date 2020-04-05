@@ -6,14 +6,14 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-12-17 16:26:50
  */
-exports.respBuilder = function respBuilder() {
+class RespBuilder {
 
         /**
          * Determine is create new entity
          * 
-         * @returns  {respBuilder}
+         * @returns  {RespBuilder}
          */
-        this.doCreate = () => {
+        doCreate() {
                 this._doCreate = true;
                 return this;
         }
@@ -21,9 +21,9 @@ exports.respBuilder = function respBuilder() {
         /**
          * Determine is return single data
          * 
-         * @returns {respBuilder}
+         * @returns {RespBuilder}
          */
-        this.single = () => {
+        single() {
                 this._single = true;
                 return this;
         }
@@ -32,9 +32,9 @@ exports.respBuilder = function respBuilder() {
          * Set name of entity 
          * 
          * @param {String} name 
-         * @returns {respBuilder}
+         * @returns {RespBuilder}
          */
-        this.name = (name) => {
+        name(name) {
                 this._name = name;
                 return this;
         }
@@ -43,9 +43,9 @@ exports.respBuilder = function respBuilder() {
          * Set description of entity
          * 
          * @param {String} description 
-         * @returns {respBuilder}
+         * @returns {RespBuilder}
          */
-        this.description = (description) => {
+        description(description) {
                 this._description = description;
                 return this;
         }
@@ -53,12 +53,14 @@ exports.respBuilder = function respBuilder() {
         /**
          *  Internal call
          */
-        this.build = function build() {
+        build() {
                 return {
                         single: this._single,
-                        description: this._description||"",
+                        description: this._description || "",
                         name: this._name,
                         doCreate: this._doCreate
                 };
         }
 }
+
+exports.RespBuilder = RespBuilder;

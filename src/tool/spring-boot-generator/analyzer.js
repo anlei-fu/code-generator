@@ -42,52 +42,52 @@ class AnalyzerBase {
 const DEFAULT_VALIDATES = {
         String: {
                 "phone": {
-                        matcher: (x) => x.toLowerCase().includes("phone"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("phone"),
                         validate: "@Phone"
                 },
                 "mobile": {
-                        matcher: (x) => x.toLowerCase().includes("mobile"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("mobile"),
                         validate: "@Phone"
                 },
                 "telephone": {
-                        matcher: (x) => x.toLowerCase().includes("tel"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("tel"),
                         validate: "@Telephone"
                 },
                 "idCardNo": {
                         validate: "@IdCardNo"
                 },
                 "email": {
-                        matcher: (x) => x.toLowerCase().includes("email"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("email"),
                         validate: "@Email"
                 },
                 "pwd": {
-                        matcher: (x) => x.toLowerCase().includes("pwd"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("pwd"),
                         validate: "@Password"
                 },
                 "password": {
                         validate: "@Password"
                 },
                 "url": {
-                        matcher: (x) => x.toLowerCase().includes("url"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("url"),
                         validate: "@Url"
                 },
                 "path": {
-                        matcher: (x) => x.toLowerCase().includes("path"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("path"),
                         validate: "@Path"
                 },
                 "file": {
-                        matcher: (x) => x.toLowerCase().includes("file"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("file"),
                         validate: "@Path"
                 },
                 "domain": {
                         validate: "@Url"
                 },
                 "host": {
-                        matcher: (x) => x.toLowerCase() == "host",
+                        matcher: (columnName) => columnName.toLowerCase() == "host",
                         validate: "@Url"
                 },
                 "ip": {
-                        matcher: (x) => x.endsWith("Ip") || x.toLowerCase() == "ip",
+                        matcher: (columnName) => columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
                         validate: "@Ip"
                 },
                 "postCode": {
@@ -97,8 +97,8 @@ const DEFAULT_VALIDATES = {
 
         Integer: {
                 "status": {
-                        matcher: (x) => STR.endsWithAny(x.toLowerCase(), ["type", "status", "state", "class", "level", "style"])
-                                || STR.startsWithAny(x.toLowerCase(), ["is", "need", "permit", "allow", "support", "can", "should"]),
+                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(), ["type", "status", "state", "class", "level", "style"])
+                                || STR.startsWithAny(columnName.toLowerCase(), ["is", "need", "permit", "allow", "support", "can", "should"]),
                         generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                 },
         }

@@ -1,9 +1,11 @@
 const { STR } = require("./../../../libs/str")
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render")
-const { renderValidate } = require("./validate-render")
 
 const ENTITY_FIELD_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-item.java`);
 const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity.java`);
+
+const VALIDATE_RENDER = new SimpleRender({});
+VALIDATE_RENDER.setTempalte("    @validate\r\n");
 
 class EntityModel {
         constructor () {
@@ -14,49 +16,58 @@ class EntityModel {
         }
 }
 
-/**
- * Render entity template
- * 
- * @param {EntityModel} entityModel 
- * @returns {String}
- */
-function renderEntity(entityModel) {
-        let content = ""
+class EntityRender {
 
-        let found=false;
-        // generate all field items
-        entityModel.fields.forEach(x => {
-                let validates = x.validates
-                        ? STR.arrayToString1(x.validates, x => renderValidate(x))
-                        : "";
+        /**
+         * Render entity template
+         * 
+         * @param {EntityModel} entityModel 
+         * @returns {String}
+         */
+        renderEntity(entityModel) {
+                let content = ""
 
-               
-                let fieldModel = {
-                        name: x.name,
-                        type: x.isBatch ? `List<${x.type}>` : x.type,
-                        description: x.description.replace(/\r\n/g, ""),
-                        validates
-                };
-               
+                // generate all field items
+                entityModel.fields.forEach(field => {
+                        let validates = field.validates
+                                ? STR.arrayToString1(field.validates, x => this._renderValidate(x))
+                                : "";
 
-                let field = ENTITY_FIELD_RENDER.renderTemplate(fieldModel);
-                if (x.isBatch)
-                found=true;
-                content += STR.removeEmptyLine(field) + "\r\n";
-        });
+                        let fieldModel = {
+                                name: field.name,
+                                type: field.isBatch ? `List<${field.type}>` : field.type,
+                                description: field.description.replace(/\r\n/g, ""),
+                                validates
+                        };
 
-        content = content.trimRight() + "\r\n";
-        let model = {
-                description: entityModel.description.replace(/\r\n/g, ""),
-                name: entityModel.name,
-                content,
-                entityType: entityModel.type,
-                extends: entityModel.extends ? `extends ${entityModel.extends}` : ""
+
+                        let fieldContent = ENTITY_FIELD_RENDER.renderTemplate(fieldModel);
+                        content += STR.removeEmptyLine(fieldContent) + "\r\n";
+                });
+
+                content = content.trimRight() + "\r\n";
+                let model = {
+                        description: entityModel.description.replace(/\r\n/g, ""),
+                        name: entityModel.name,
+                        content,
+                        entityType: entityModel.type,
+                        extends: entityModel.extends ? `extends ${entityModel.extends}` : ""
+                }
+
+                let result = ENTITY_RENDER.renderTemplate(model)
+
+                return result;
         }
 
-        let result= ENTITY_RENDER.renderTemplate(model)
-        
-        return result;
+        /**
+         * Render validate template
+         * 
+         * @private
+         * @param {String} validate 
+         */
+        _renderValidate(validate) {
+                return VALIDATE_RENDER.renderTemplate({ validate });
+        }
 }
 
-exports.renderEntity = renderEntity;
+exports.EntityRender = EntityRender

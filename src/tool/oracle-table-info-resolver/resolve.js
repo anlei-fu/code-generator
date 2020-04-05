@@ -47,11 +47,11 @@ function resolve(project, validateTable = defaultValidate) {
                 },
                 {
                         name: "nullable",
-                        doResolve: x => x == "Y"
+                        doResolve: text => text == "Y"
                 },
                 {
                         name: "isPk",
-                        doResolve: x => STRING_RESOLVER(x).includes("PK")
+                        doResolve: text => STRING_RESOLVER(text).includes("PK")
                 },
                 {
                         name: "description",

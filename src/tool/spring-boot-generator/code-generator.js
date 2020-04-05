@@ -156,19 +156,17 @@ class Generator {
          * 
          * @param {GeneratorConfig} config 
          */
-        constructor (config, writer, packageRender) {
+        constructor (config) {
                 this._checkConfig(config);
 
                 this._config = config;
 
+                this._context=config.context;
                 this._initTable(config.table);
-                config.items.forEach(x => {
-                        x.table = config.table;
-                        this._initConfig(x);
+                config.items.forEach(item => {
+                        item.table = config.table;
+                        this._initConfig(item);
                 });
-
-                this._packageRender = packageRender;
-                this._writer = writer;
         }
 
         /**
@@ -302,7 +300,7 @@ class Generator {
                         return id + config.name + "batch"
                 }
                 else {
-                        let conditions = getConditions(config);
+                        let conditions =this._context.columnAnalyzer.getConditions(config);
                         if (conditions.length == 1) {
                                 id += config.name + "By"
                                 id += STR.upperFirstLetter(conditions[0].name);
@@ -369,7 +367,7 @@ class Generator {
                 entityConfig.type = "entity";
                 entityConfig.description = this._config.table.description;
                 entityConfig.fields = OBJECT.toArray(this._config.table.columns);
-                let content = Render.renderEntity(entityConfig);
+                let content =this._context.render.renderEntity(entityConfig);
                 this._generateEntityCore(content, "entity", this._config.name);
         }
 
@@ -380,7 +378,7 @@ class Generator {
          */
         _generateMapper() {
                 let content = Render.renderMapper(this._config);
-                content = this._packageRender.renderPackage(content);
+                content = this._context.packageRender.renderPackage(content);
                 this._writer.writeMapper(this._config.name, content);
         }
 
@@ -401,7 +399,7 @@ class Generator {
          */
         _generateService() {
                 let content = Render.renderService(this._config);
-                content = this._packageRender.renderPackage(content);
+                content = this._context.packageRender.renderPackage(content);
                 this._writer.writeService(this._config.name, content);
         }
 
@@ -412,7 +410,7 @@ class Generator {
          */
         _generateServiceImpl() {
                 let content = Render.renderServiceImpl(this._config);
-                content = this._packageRender.renderPackage(content);
+                content = this._context.packageRender.renderPackage(content);
                 this._writer.writeServiceImpl(this._config.name, content);
         }
 
@@ -423,7 +421,7 @@ class Generator {
          */
         _generateController() {
                 let content = Render.renderController(this._config);
-                content = this._packageRender.renderPackage(content);
+                content = this._context.packageRender.renderPackage(content);
                 this._writer.writeController(this._config.name, content);
         }
 
@@ -435,19 +433,19 @@ class Generator {
          * @returns {String}
          */
         _generateReq(config) {
-                config.reqs.forEach(x => {
-                        if (x.doCreate) {
+                config.reqs.forEach(req => {
+                        if (req.doCreate) {
                                 let entityConfig = {};
-                                entityConfig.fields =ReqUtils.generateReqFields(config, x);
+                                entityConfig.fields =ReqUtils.generateReqFields(config, req);
                                 // if (config.type == "select")
                                 //         console.log(entity.fields);
-                                entityConfig.description = x.description;
-                                entityConfig.name = x.type;
+                                entityConfig.description = req.description;
+                                entityConfig.name = req.type;
                                 entityConfig.type = "req";
                                 entityConfig.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
-                                let content = Render.renderEntity(entityConfig);
+                                let content =this._context.render.renderEntity(entityConfig);
 
-                                this._generateEntityCore(content, "req", x.type);
+                                this._generateEntityCore(content, "req", req.type);
                         }
                 })
         }
@@ -468,7 +466,7 @@ class Generator {
                         entityConfig.fields = getIncludes(config);
                         config.resp.type = config.resp.name;
                         entityConfig.name = config.resp.type;
-                        let content = Render.renderEntity(entityConfig);
+                        let content =this._context.render.renderEntity(entityConfig);
                         this._generateEntityCore(content, "resp", config.resp.type);
                 }
         }
@@ -487,35 +485,35 @@ class Generator {
                 let map = new Map();
 
                 if (config.type == "select" || config.type == "delete")
-                        getConditions(config).forEach(x => {
-                                map.set(x.name, x);
+                        getConditions(config).forEach(condition => {
+                                map.set(condition.name, condition);
                         });
                 else if (config.type == "update") {
-                        getIncludes(config).forEach(x => {
-                                map.set(x.name, x);
+                        getIncludes(config).forEach(include => {
+                                map.set(include.name, include);
                         });
-                        getConditions(config).forEach(x => {
-                                map.set(x.name, x);
+                        getConditions(config).forEach(condition => {
+                                map.set(condition.name, condition);
                         });
                 } else {
-                        getIncludes(config).forEach(x => {
-                                map.set(x.name, x);
+                        getIncludes(config).forEach(include => {
+                                map.set(include.name, include);
                         });
                 }
 
                 let req;
-                config.reqs.forEach(x => {
-                        if (!x.doCreate && map.has(x.name)) {
-                                map.get(x.name)["source"] = "constructor";
+                config.reqs.forEach(req => {
+                        if (!req.doCreate && map.has(req.name)) {
+                                map.get(req.name)["source"] = "constructor";
 
-                        } else if (x.doCreate) {
-                                req = x;
-                               ReqUtils.generateReqFields(config, x).forEach(y => {
-                                        if (map.has(y.name)) {
-                                                map.get(y.name)["source"] = "req";
+                        } else if (req.doCreate) {
+                                req = req;
+                               ReqUtils.generateReqFields(config, req).forEach(field => {
+                                        if (map.has(field.name)) {
+                                                map.get(field.name)["source"] = "req";
                                         } else {
-                                                map.set(y.name, y);
-                                                y.source = "req";
+                                                map.set(field.name, field);
+                                                field.source = "req";
                                         }
                                 });
                         } else {
@@ -528,7 +526,7 @@ class Generator {
                         configs.push(value);
                 });
 
-                let content = Render.renderParams(configs, req.type);
+                let content =this._context.render.renderParams(configs, req.type);
                 content = content.replace("@type", "param");
 
                 this._generateEntityCore(content, "param", config.params.type)
@@ -543,20 +541,19 @@ class Generator {
         _generateEntityCore(content, entityType, entityName) {
                 
                 // add imports and sort them
-                content = this._packageRender.renderPackage(content);
+                content = this._context.packageRender.renderPackage(content);
 
                 if (entityType == "entity") {
-                        console.log(content);
-                        this._writer.writeEntity(this._config.name, content);
+                        this._context.writer.writeEntity(this._config.name, content);
                 } else if (entityType == "req") {
-                        this._writer.writeReq(entityName, content);
+                        this._context.writer.writeReq(entityName, content);
                 } else if (entityType == "resp") {
-                        this._writer.writeResp(entityName, content);
+                        this._context.writer.writeResp(entityName, content);
                 } else {
-                        this._writer.writeParams(entityName, content);
+                        this._context.writer.writeParams(entityName, content);
                 }
 
-                this._packageRender.addPackage({
+                this._context.packageRender.addPackage({
                         name: STR.upperFirstLetter(entityName),
                         type: entityType,
                         isSystem: false

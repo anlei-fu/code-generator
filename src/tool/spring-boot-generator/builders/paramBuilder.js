@@ -6,35 +6,40 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-12-17 16:31:46
  */
-exports.paramBuilder = function paramBuilder() {
+class ParamBuilder {
 
-        this.defaultValues = new Map();
+        constructor () {
+                this.defaultValues = new Map();
+        }
 
         /**
          * Determine is create params entity
          * 
-         * @returns {paramBuilder}
+         * @returns {ParamBuilder}
          */
-        this.doCreate = () => {
+        doCreate() {
                 this._doCreate = true;
                 return this;
         }
 
         /**
+         * Set description of param entity
          * 
          * @param {String} description
-         * @returns {paramBuilder}
+         * @returns {ParamBuilder}
          */
-        this.description = (description) => {
+        description(description) {
                 this._description = description;
                 return this;
         }
 
         /**
+         * Set name of param
+         * 
          * @param {String} name
-         * @returns {paramBuilder}
+         * @returns {ParamBuilder}
          */
-        this.name = (name) => {
+        name(name) {
                 this._name = name;
                 return this;
         }
@@ -44,9 +49,9 @@ exports.paramBuilder = function paramBuilder() {
          * 
          * @param {String} key 
          * @param {String} expression 
-         * @returns {paramBuilder}
+         * @returns {ParamBuilder}
          */
-        this.defaultValue = (key, expression) => {
+        defaultValue(key, expression) {
                 this._defaultValues.set(key, expression);
                 return this;
         }
@@ -54,7 +59,7 @@ exports.paramBuilder = function paramBuilder() {
         /**
          * Internal call
          */
-        this.build = () => {
+        build() {
                 return {
                         name: this._name,
                         description: this._description,
@@ -63,3 +68,5 @@ exports.paramBuilder = function paramBuilder() {
                 }
         }
 }
+
+exports.ParamBuilder = ParamBuilder
