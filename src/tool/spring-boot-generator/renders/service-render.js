@@ -9,12 +9,12 @@ class ServiceRender {
         /**
          * Render service template
          * 
-         * @param {service} config 
+         * @param {ConfigGroup} configGroup 
          * @returns {String}
          */
-        renderService(config) {
-                let content = STR.arrayToString1(config.items,
-                        x => SERVICE_ITEM_RENDER.renderTemplate(this._getServiceItemModel(x, config.name)));
+        renderService(configGroup) {
+                let content = STR.arrayToString1(configGroup.items,
+                        configItem => SERVICE_ITEM_RENDER.renderTemplate(this._getMethodConfig(configItem, configGroup.name)));
 
                 content = content.trimRight() + "\r\n";
                 return SERVICE_RENDER.renderTemplate({ content });
@@ -24,14 +24,14 @@ class ServiceRender {
          * Get service item template
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getServiceItemModel(config, name) {
+        _getMethodConfig(configItem, tableName) {
                 return {
-                        serviceParams: ReqUtils.generateReqParamsWithType(config),
-                        serviceReturnType: this._getServiceReturnType(config, name),
-                        name: config.id
+                        args: ReqUtils.generateReqParamsWithType(configItem),
+                        returnType: this._getReturnType(configItem, tableName),
+                        menthodName: configItem.id
                 };
         }
 
@@ -39,17 +39,17 @@ class ServiceRender {
          * Get service return type text
          * 
          * @private
-         * @param {Config} config 
-         * @param {String} name
+         * @param {ConfigItem} configItem 
+         * @param {String} tableName
          * @returns {String} 
          */
-        _getServiceReturnType(config, name) {
-                if (config.type != "select")
-                        return ReqUtils.hasBatchReq(config) ? "int" : "boolean";
+        _getReturnType(configItem, tableName) {
+                if (configItem.type != "select")
+                        return ReqUtils.hasBatchReq(configItem) ? "int" : "boolean";
 
-                return config.resp.single
-                        ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name
-                        : config.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>` : `PageInfo<${name}>`;
+                return configItem.resp.single
+                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
+                        : configItem.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageInfo<${tableName}>`;
         }
 }
 

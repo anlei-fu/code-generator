@@ -1,6 +1,9 @@
 const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
 const { NamingStrategy } = require("./../../../libs/naming-strategy");
+const { OBJECT } = require("./../../../libs/utils");
 const { STR } = require("./../../../libs/str");
+const { getJavaType } = require("./../utils");
+const { ReqUtils } = require("./../req-utils");
 
 const BASE_PATH = `${__dirname}/templates`;
 const IF_IDENT = "            ";
@@ -57,7 +60,7 @@ class AsignModel {
         }
 }
 
-// set
+// set, use in update statement
 const SET_RENDER = new SimpleRender({}, `${BASE_PATH}/set.xml`);
 class SetModel {
         constructor () {
@@ -65,7 +68,13 @@ class SetModel {
         }
 }
 
-// trim, use in insert and in clause
+// in
+const INRENDER = new SimpleRender({}, `${BASE_PATH}/in.xml`);
+class InModel {
+
+}
+
+// trim, use in insert statement and in clause
 const TRIM_RENDER = new SimpleRender({}, `${BASE_PATH}/Trim.xml`);
 class TrimModel {
         constructor () {
@@ -84,7 +93,7 @@ class WhereModel {
 // insert
 const INSERT_RENDER = new SimpleRender({}, `${BASE_PATH}/insert.xml`);
 // use to analyze default time column and auto generate xxtime=current_timestamp
-const INSERT_TIME_MATCHERS = x => LOWER_INCLUDES_ANY_MATCHER(x, [
+const INSERT_TIME_MATCHERS = columnName => STR.includesAny(columnName.toLowerCase(), [
         "createtime",
         "createdate",
         "inserttime",
@@ -100,7 +109,7 @@ const SELECT_RENDER = new SimpleRender({}, `${BASE_PATH}/select.xml`);
 // update
 const SET_ITEM_IDENT = "            ";
 const UPDATE_RENDER = new SimpleRender({}, `${BASE_PATH}/update.xml`);
-const UPDATE_TIME_MATCHERS = x => LOWER_INCLUDES_ANY_MATCHER(x, [
+const UPDATE_TIME_MATCHERS = columnName => STR.includesAny(columnName.toLowerCase(), [
         "updatetime",
         "updatedate",
         "editdate",
@@ -117,14 +126,14 @@ class MapperConfigRender {
         /**
          * Render mapper config template
          * 
-         * @param {Config} mapperConfig 
+         * @param {ConfigGroup} configGroup
          * @returns {String}
          */
-        renderMapperConfig(config) {
-                let content = STR.arrayToString1(config.items, x => this._renderMapperConfigItem(x) + "\r\n");
+        renderMapperConfig(configGroup) {
+                let statements = STR.arrayToString1(configGroup.items, configItem => this._renderMapperConfigItem(configItem) + "\r\n");
                 let mapperModel = {
-                        content,
-                        tableName: NamingStrategy.toHungary(config.table.name).toLowerCase()
+                        statements,
+                        tableName: NamingStrategy.toHungary(configGroup.table.name).toLowerCase()
                 }
 
                 return MAPPER_CONFIG_RENDER.renderTemplate(mapperModel);
@@ -134,15 +143,15 @@ class MapperConfigRender {
          * Render mapper config item, dispatch by "config.type"
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _renderMapperConfigItem(config) {
-                switch (config.type) {
-                        case "insert": return this._renderInsert(config);
-                        case "update": return this._renderUpdate(config);
-                        case "delete": return this._renderDelete(config);
-                        default: return this._renderSelect(config);
+        _renderMapperConfigItem(configItem) {
+                switch (configItem.type) {
+                        case "insert": return this._renderInsert(configItem);
+                        case "update": return this._renderUpdate(configItem);
+                        case "delete": return this._renderDelete(configItem);
+                        default: return this._renderSelect(configItem);
                 }
         }
 
@@ -150,61 +159,65 @@ class MapperConfigRender {
          * Render insert sql template
          * 
          * @private
-         * @param {Config} config
+         * @param {ConfigItem} configItem
          * @returns {String}
          */
-        _renderInsert(config) {
-                let columns = "";
-                let properties = "";
-                let includes = config.context.columnAnalyzer.getIncludes(config);
-                let createTime = this._getInsertTime(config.table);
+        _renderInsert(configItem) {
+                let names = "";
+                let values = "";
+                let includes = configItem.context.columnAnalyzer.getIncludes(configItem);
+                let createTime = this._findCreateTimeColumn(configItem.table);
                 if (createTime) {
                         createTime.column = "1." + NamingStrategy.toHungary(createTime.name).toLowerCase();
                         includes.push(createTime);
                 }
 
-                let isBatch = ReqUtils.hasBatchReq(config);
+                let isBatch = ReqUtils.hasBatchReq(configItem);
 
-                includes.forEach((x, i, array) => {
+                includes.forEach((include, i, array) => {
 
-                        // add 'item.' prefix
+                        // add 'item.' prefix if is batch
                         if (isBatch)
-                                x.property = "item." + x.property;
+                                include.property = "item." + include.property;
 
-                        x.suffix = i == array.length - 1 ? "" : ",";
-                        var sourceColumn = x.column;
-                        x.column = x.column.split(".")[1];
-                        columns += this._renderColumn(x);
-                        x.column = sourceColumn;
-                        properties += this._renderProperty(x);
+                        include.suffix = i == array.length - 1 ? "" : ",";
+                        var sourceColumn = include.column;
+                        include.column = include.column.split(".")[1];
+                        names += this._renderColumnName(include);
+                        include.column = sourceColumn;
+                        values += this._renderValue(include);
                 });
 
-                properties = properties.replace("#{createTime}", "current_timestamp");
+                // todo : latency bug point 
+                values = values.replace("#{createTime}", "current_timestamp");
 
                 let parameterType;
-                if (config.params.doCreate) {
-                        parameterType = ` parameterType="com.@project.pojo.param.${config.params.type}"`;
-                } else if (config.reqs.length == 1 && config.reqs[0].doCreate) {
-                        parameterType = ` parameterType="com.@project.pojo.req.${config.reqs[0].type}"`;
+                if (configItem.params.doCreate) {
+                        parameterType = ` parameterType="com.@project.pojo.param.${configItem.params.type}"`;
+                } else if (configItem.reqs.length == 1 && configItem.reqs[0].doCreate) {
+                        parameterType = ` parameterType="com.@project.pojo.req.${configItem.reqs[0].type}"`;
                 }
 
                 let insertModel = {
-                        alias: config.alias || "",
-                        id: config.id,
-                        columns: this._renderTrim({ content: columns, suffix: ")", prefix: "(" }),
-                        properties: this._renderTrim({ content: properties, suffix: ")", prefix: "(" }),
+                        alias: configItem.alias || "",
+                        id: configItem.id,
+                        columnNames: this._renderTrim({ content: names, suffix: ")", prefix: "(" }),
+                        values: this._renderTrim({ content: values, suffix: ")", prefix: "(" }),
                         parameterType: parameterType || ""
                 }
 
-                return INSERT_RENDER.renderTemplate(insertModel);
+                let content = INSERT_RENDER.renderTemplate(insertModel);
+                return isBatch ? this._renderBatch(content) : content;
         }
 
         /**
+         * Get create time column from table
          * 
          * @private
          * @param {Table} table 
+         * @returns {Column}
          */
-        _getInsertTime(table) {
+        _findCreateTimeColumn(table) {
                 for (const c in table.columns) {
                         var type = getJavaType(table.columns[c].type);
                         if (type == "Date" && INSERT_TIME_MATCHERS(c))
@@ -218,14 +231,14 @@ class MapperConfigRender {
          * Render delete sql template
          * 
          * @private
-         * @param {Config} config
+         * @param {ConfigItem} configItem
          * @returns {String}
          */
-        _renderDelete(config) {
+        _renderDelete(configItem) {
                 let deleteModel = {
-                        alias: config.alias || "",
-                        id: config.id,
-                        where: this._renderConditions(config)
+                        alias: configItem.alias || "",
+                        id: configItem.id,
+                        where: this._renderConditions(configItem)
                 }
 
                 return DELETE_RENDER.renderTemplate(deleteModel);
@@ -235,32 +248,34 @@ class MapperConfigRender {
          * Render select sql template
          * 
          * @private
-         * @param {Config} config       
+         * @param {ConfigItem} configItem       
          * @returns {String}
          */
-        _renderSelect(config) {
-                let joinsSegment = STR.arrayToString1(config.joins, join => this._renderJoin(join) + "\r\n");
+        _renderSelect(configItem) {
+                let joinsSegment = STR.arrayToString1(configItem.joins, join => this._renderJoin(join) + "\r\n");
 
                 let outpuColumnsSegment = "";
-                config.context.columnAnalyzer.getIncludes(config).forEach((include, i, array) => {
+                configItem.context.columnAnalyzer.getIncludes(configItem).forEach((include, i, array) => {
                         include.suffix = i == array.length - 1 ? "" : ",";
-                        outpuColumnsSegment += this._renderColumn(include);
+                        outpuColumnsSegment += this._renderColumnName(include);
                 });
 
                 let parameterType;
-                if (config.params.doCreate) {
-                        parameterType = ` parameterType="com.@project.pojo.param.${config.params.type}"`;
-                } else if (config.reqs.length == 1 && config.reqs[0].doCreate) {
-                        parameterType = ` parameterType="com.@project.pojo.req.${config.reqs[0].type}"`;
+                if (configItem.params.doCreate) {
+                        parameterType = ` parameterType="com.@project.pojo.param.${configItem.params.type}"`;
+                } else if (configItem.reqs.length == 1 && configItem.reqs[0].doCreate) {
+                        parameterType = ` parameterType="com.@project.pojo.req.${configItem.reqs[0].type}"`;
                 }
 
                 let selectModel = {
-                        alias: config.alias || "",
+                        alias: configItem.alias || "",
                         columns: outpuColumnsSegment,
-                        resultType: config.resp.doCreate ? `resp.${config.resp.type}` : `entity.${STR.upperFirstLetter(config.table.name)}`,
-                        where: this._renderConditions(config),
+                        resultType: configItem.resp.doCreate
+                                ? `resp.${configItem.resp.type}` : `entity.${STR.upperFirstLetter(configItem.table.name)}`,
+
+                        where: this._renderConditions(configItem),
                         joins: joinsSegment,
-                        id: config.id,
+                        id: configItem.id,
                         parameterType: parameterType || ""
                 };
 
@@ -271,31 +286,31 @@ class MapperConfigRender {
          * Render update sql template
          * 
          * @private
-         * @param {Config} config
+         * @param {ConfigItem} configItem
          * @returns {String}
          */
-        _renderUpdate(config) {
+        _renderUpdate(configItem) {
 
                 let setColumnsSegment = "";
-                config.context.columnAnalyzer.getIncludes(config).forEach((x, i, array) => {
-                        x.prefix = "";
-                        x.suffix = i == array.length - 1 ? "" : ",";
-                        setColumnsSegment += this._renderAsign(x);
+                configItem.context.columnAnalyzer.getIncludes(configItem).forEach((include, i, array) => {
+                        include.prefix = "";
+                        include.suffix = i == array.length - 1 ? "" : ",";
+                        setColumnsSegment += this._renderAsign(include);
                 });
-                setColumnsSegment += this._renderUpdateTime(config.table, config.alias);
+                setColumnsSegment += this._renderUpdateTime(configItem.table, configItem.alias);
 
                 let parameterType;
-                if (config.params.doCreate) {
-                        parameterType = ` parameterType="com.@project.pojo.param.${config.params.type}"`;
-                } else if (config.reqs.length == 1 && config.reqs[0].doCreate) {
-                        parameterType = ` parameterType="com.@project.pojo.req.${config.reqs[0].type}"`;
+                if (configItem.params.doCreate) {
+                        parameterType = ` parameterType="com.@project.pojo.param.${configItem.params.type}"`;
+                } else if (configItem.reqs.length == 1 && configItem.reqs[0].doCreate) {
+                        parameterType = ` parameterType="com.@project.pojo.req.${configItem.reqs[0].type}"`;
                 }
 
                 let updateModel = {
-                        alias: config.alias || "",
-                        id: config.id,
+                        alias: configItem.alias || "",
+                        id: configItem.id,
                         set: this._renderSet({ content: setColumnsSegment }),
-                        where: this._renderConditions(config),
+                        where: this._renderConditions(configItem),
                         parameterType: parameterType || ""
                 }
 
@@ -303,6 +318,7 @@ class MapperConfigRender {
         }
 
         /**
+         * Render update sql ,update time field
          * 
          * @param {Table} table 
          * @param {String} alias 
@@ -382,11 +398,13 @@ class MapperConfigRender {
          * @param {ColumnModel} columnModel
          * @returns {String}
          */
-        _renderColumn(columnModel) {
-                columnModel.alias = columnModel.alias ? ` as ${NamingStrategy.toHungary(columnModel.alias).toLowerCase()}` : "";
+        _renderColumnName(columnModel) {
+                columnModel.alias = columnModel.alias
+                        ? ` as ${NamingStrategy.toHungary(columnModel.alias).toLowerCase()}` : "";
+
                 let content = COLUMN_RENDER.renderTemplate(columnModel);
                 columnModel.content = content;
-                return renderIf(columnModel);
+                return this._renderIf(columnModel);
         }
 
         /**
@@ -401,23 +419,28 @@ class MapperConfigRender {
                 asignModel.property = STR.lowerFirstLetter(asignModel.name);
                 let content = ASIGN_RENDER.renderTemplate(asignModel);
                 asignModel.content = content;
-                return renderIf(asignModel);
+                return this._renderIf(asignModel);
         }
 
         /**
          * Render sql where clause
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
+         * @returns {String}
          */
-        _renderConditions(config) {
-                let conditions = "";
-                config.context.columnAnalyzer.getConditions(config).forEach((x, i) => {
-                        x.prefix = i == 0 ? "" : "and ";
-                        conditions += x.expression ? this._renderExpression(x) : this._renderAsign(x);
+        _renderConditions(configItem) {
+                let whereSegment = "";
+                configItem.context.columnAnalyzer.getConditions(configItem).forEach((condition, i) => {
+                        condition.prefix = i == 0 ? "" : "and ";
+                        if (condition.isBatch) {
+                                whereSegment += this._renderIn(condition);
+                        } else {
+                                whereSegment += condition.expression ? this._renderExpression(condition) : this._renderAsign(condition);
+                        }
                 });
 
-                return this._renderWhere({ content: conditions });
+                return this._renderWhere({ content: whereSegment });
         }
 
         /**
@@ -442,10 +465,12 @@ class MapperConfigRender {
         }
 
         /**
+         * Render batch insert
          * 
          * @param {String} content 
+         * @returns {String}
          */
-        renderBatch(content) {
+        _renderBatch(content) {
                 let lines = STR.splitToLines(content.trim()).splice(1, 0, BTACH_PREFIX);
                 lines = lines.splice(lines.length - 2, BATCH_SUFFIX);
                 for (let line of lines) {
@@ -460,11 +485,24 @@ class MapperConfigRender {
          * 
          * @private     
          * @param {PropertyModel} propertyModel
+         * @returns {String}
          */
-        _renderProperty(propertyModel) {
+        _renderValue(propertyModel) {
                 propertyModel.property = propertyModel.name;
                 propertyModel.content = PROPERTY_RENDER.renderTemplate(propertyModel);
                 return this._renderIf(propertyModel);
+        }
+
+
+        /**
+         * Render in segment
+         * 
+         * @param {InModel} inModel 
+         * @returns {String}
+         */
+        _renderIn(inModel) {
+                inModel.content = INRENDER.renderTemplate(inModel);
+                return this._renderIf(inModel);
         }
 
 }

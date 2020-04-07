@@ -2,7 +2,7 @@ const { DIR } = require("./../../libs/dir");
 const { STR } = require("./../../libs/str");
 const { FILE } = require("./../../libs/file");
 const { resolve } = require("./../mysql-table-info-resolver/resolve");
-const { ConfigBuilderGenerator } = require("./config-template-generator");
+const { ConfigBuilderGenerator: ConfigGenerator } = require("./config-template-generator");
 const { LoggerFactory } = require("./../logging/logger-factory");
 const LOG = LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
 const COMPYRIGHT = FILE.read("./templates/copyright.java").replace("@date", new Date().toLocaleString());
@@ -31,17 +31,18 @@ async function init(project, company, dbConfig, generateDb = true) {
                 generateConfigItem(root, table, table.columns[table.primaryColumn], tables, relations);
         });
 
-        // create all.js
+        // create all.js integrated all config
         let allContent = "";
         tableNames.forEach(x => {
                 allContent += `        require("./${x}.js").${x}Config,\r\n`;
         });
-        FILE.write(`${root}/all.js`, COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
+        FILE.write(`${root}/all.js`,
+                COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
 
         // create index.js
-        copy1("./templates/generator.js", `./output/${project}/build.js`, project, company);
+        copy1("./templates/build.js", `./output/${project}/build.js`, project, company);
         copy('./templates/packages.js', `./output/${project}/packages.js`, project, company);
-        copy('./templates/dictionary.js',`./output/${project}/db/dictionary.js`)
+        copy('./templates/dictionary.js', `./output/${project}/db/dictionary.js`)
 
         LOG.info(`project ${project} init finished!`);
 }
@@ -87,12 +88,12 @@ function makeAllFolders(project, company, dbConfig) {
         DIR.create(`${root}/exception`);
 
         // resource items
-        DIR.create(`./output/${project}/${project}/src/main/resources`)
-        DIR.create(`./output/${project}/${project}/src/main/resources/mapper`)
+        DIR.create(`./output/${project}/${project}/src/main/resources`);
+        DIR.create(`./output/${project}/${project}/src/main/resources/mapper`);
 
         // test items
         DIR.create(`./output/${project}/${project}/src/test`);
-        DIR.create(`./output/${project}/${project}/src/test/java`)
+        DIR.create(`./output/${project}/${project}/src/test/java`);
         DIR.create(`./output/${project}/${project}/src/test/java/com`);
         DIR.create(`./output/${project}/${project}/src/test/java/com/${project}`);
 
@@ -121,7 +122,7 @@ function makeAllFolders(project, company, dbConfig) {
         copyFolder("./templates/validator", `${root}/validate/validator`, project, company);
 
         // application.properties
-        let patterns = {
+        let replacePatternPairs = {
                 "@dbHost": dbConfig.host,
                 "@dbPort": dbConfig.port,
                 "@dbName": dbConfig.db,
@@ -130,8 +131,9 @@ function makeAllFolders(project, company, dbConfig) {
                 "@project": `${company}.${project}`,
                 "@date": new Date().toLocaleString()
         };
-        let config = FILE.read("./templates/application.properties");
-        FILE.write(`./output/${project}/${project}/src/main/resources/application.properties`, STR.replace(config, patterns));
+        let configTemplate = FILE.read("./templates/application.properties");
+        FILE.write(`./output/${project}/${project}/src/main/resources/application.properties`,
+                STR.replace(configTemplate, replacePatternPairs));
 }
 
 /**
@@ -142,8 +144,8 @@ function makeAllFolders(project, company, dbConfig) {
  * @param {String} project 
  */
 function copyFolder(sourceFolder, targetFolder, project, company) {
-        DIR.getFiles(sourceFolder).forEach(x => {
-                copy(sourceFolder + "/" + x, targetFolder + "/" + x, project, company);
+        DIR.getFiles(sourceFolder).forEach(file => {
+                copy(sourceFolder + "/" + file, targetFolder + "/" + file, project, company);
         });
 }
 
@@ -154,14 +156,14 @@ function copyFolder(sourceFolder, targetFolder, project, company) {
  * @param {String} tableName 
  */
 function generateConfigItem(configRoot, table, pk, tables, relations) {
-        let templates = new ConfigBuilderGenerator().generate(table, pk, tables, relations);
-        let patterns = {
+        let template = new ConfigGenerator().generate(table, pk, tables, relations);
+        let replacePatternPairs = {
                 "@name": STR.upperFirstLetter(table.name),
                 "@sname": table.name,
         };
 
-        templates = STR.replace(templates, patterns);
-        FILE.write(`${configRoot}/${table.name}.js`, COMPYRIGHT + templates);
+        template = STR.replace(template, replacePatternPairs);
+        FILE.write(`${configRoot}/${table.name}.js`, COMPYRIGHT + template);
 }
 
 /**

@@ -7,6 +7,8 @@ const CONTROLLER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/cont
 const CONTROLLER_RENDER = new SimpleRender({}, `${__dirname}/templates/controller.java`);
 
 const HTTP_MAPPINGS = new Map();
+
+// map by sql statement type
 HTTP_MAPPINGS.set("select", "@GetMapping")
         .set("update", "@PutMapping")
         .set("delete", "@DeleteMapping")
@@ -16,36 +18,36 @@ class ControllerRender {
         /**
          * Render controller template
          * 
-         * @param {Config} config 
+         * @param {ConfigGroup} configGroup 
          * @returns {String}
          */
-        renderController(config) {
-                let content = STR.arrayToString1(config.items,
-                        x => CONTROLLER_ITEM_RENDER.renderTemplate(this._getControllerItemConfig(x, config.name)));
+        renderController(configGroup) {
+                let content = STR.arrayToString1(configGroup.items,
+                        configItem => CONTROLLER_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name)));
 
                 content = content.trimRight() + "\r\n";
 
-                let description = `${config.table.description || config.name}`;
-                return CONTROLLER_RENDER.renderTemplate({ description, content, sname: STR.lowerFirstLetter(config.name) });
+                let description = `${configGroup.table.description || configGroup.name}`;
+                return CONTROLLER_RENDER.renderTemplate({ description, content, sname: STR.lowerFirstLetter(configGroup.name) });
         }
 
         /**
          * Get controller item config
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getControllerItemConfig(config, configName) {
-                let description = config.controller.description || ""
+        _getRequestMethodConfig(configItem, configName) {
+                let description = configItem.controller.description || "";
                 description = description.replace(/\r\n/g, "");
                 return {
-                        name: config.id,
-                        httpMapping: this._getControllerItemHttpMappiAnnotationg(config),
-                        controllerReturnType: this._getControllerItemReturnType(config, configName),
-                        serviceParams: ReqUtils.generateReqParamsWithoutType(config),
+                        methodName: configItem.id,
+                        httpMapping: this._getHttpAnnotationg(configItem),
+                        returnType: this._getReturnType(configItem, configName),
+                        serviceArgs: ReqUtils.generateReqParamsWithoutType(configItem),
                         description,
-                        controllerParams: this._getControllerItemArgs(config),
+                        args: this._getArgs(configItem),
                         sname: STR.lowerFirstLetter(configName),
                 };
         }
@@ -54,31 +56,31 @@ class ControllerRender {
          * Get controler item params text
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getControllerItemArgs(config) {
+        _getArgs(configItem) {
                 let args = "";
-                config.reqs.forEach(x => {
+                configItem.reqs.forEach(req => {
 
-                        if (isJavaBaseType(x.type)) {
-                                if (!x.isBatch) {
-                                        args += `${x.from} ${x.type} ${x.name}, `.trimLeft();
+                        if (isJavaBaseType(req.type)) {
+                                if (!req.isBatch) {
+                                        args += `${req.from} ${req.type} ${req.name}, `.trimLeft();
                                         return;
                                 }
-                                args += `${x.from} List<${x.type}> ${x.name}, `.trimLeft();
+                                args += `${req.from} List<${req.type}> ${req.name}, `.trimLeft();
 
                                 return;
                         }
 
-                        x.from = x.from || "";
-                        if (!x.isBatch) {
-                                args += `${x.from} @Validated @ModelAttribute ${x.type} ${x.name}, `.trimLeft();
+                        req.from = req.from || "";
+                        if (!req.isBatch) {
+                                args += `${req.from} @Validated @ModelAttribute ${req.type} ${req.name}, `.trimLeft();
                                 return;
                         }
 
                         // batch with list
-                        args += `${x.from} @Validated @ModelAttribute List<${x.type}> ${x.name}, `.trimLeft();
+                        args += `${req.from} @Validated @ModelAttribute List<${req.type}> ${req.name}, `.trimLeft();
                 });
 
                 return STR.removeLastComa(args);
@@ -88,38 +90,38 @@ class ControllerRender {
          * Get controller ite http mapping annotation text
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getControllerItemHttpMappiAnnotationg(config) {
-                if (!HTTP_MAPPINGS.has(config.type))
-                        throw new Error(`unexceted type(${config.type})`);
+        _getHttpAnnotationg(configItem) {
+                if (!HTTP_MAPPINGS.has(configItem.type))
+                        throw new Error(`unexceted type(${configItem.type})`);
 
-                let path = config.controller.path || `/${this.config.name}/${config.id}`;
+                let path = configItem.controller.path || `/${this.config.name}/${configItem.id}`;
 
-                return `${HTTP_MAPPINGS.get(config.type)}(path = "${path}")`;
+                return `${HTTP_MAPPINGS.get(configItem.type)}(path = "${path}")`;
         }
 
         /**
          * Get controller item return type text
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @param {String} configName
          * @returns {String}
          */
-        _getControllerItemReturnType(config, configName) {
-                if (config.type != "select")
+        _getReturnType(configItem, configName) {
+                if (configItem.type != "select")
                         return "R";
 
                 // single or page info
-                if (config.resp.single) {
-                        return config.resp.doCreate
-                                ? `R<${STR.upperFirstLetter(config.resp.type)}>`
+                if (configItem.resp.single) {
+                        return configItem.resp.doCreate
+                                ? `R<${STR.upperFirstLetter(configItem.resp.type)}>`
                                 : `R<${configName}>`;
                 } else {
-                        return config.resp.doCreate
-                                ? `R<PageInfo<${STR.upperFirstLetter(config.resp.type)}>>`
+                        return configItem.resp.doCreate
+                                ? `R<PageInfo<${STR.upperFirstLetter(configItem.resp.type)}>>`
                                 : `R<PageInfo<${configName}>>`;
                 }
         }

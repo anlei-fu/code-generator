@@ -97,8 +97,10 @@ const DEFAULT_VALIDATES = {
 
         Integer: {
                 "status": {
-                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(), ["type", "status", "state", "class", "level", "style"])
-                                || STR.startsWithAny(columnName.toLowerCase(), ["is", "need", "permit", "allow", "support", "can", "should"]),
+                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(),
+                                ["type", "status", "state", "class", "level", "style"])
+                                || STR.startsWithAny(columnName.toLowerCase(),
+                                        ["is", "need", "permit", "allow", "support", "can", "should"]),
                         generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                 },
         }
@@ -119,14 +121,16 @@ class ValidateAnalyzer extends AnalyzerBase {
          * @param {String} type 
          * @returns {[String]} 
          */
-        getValidates(type, name) {
+        analyzeValidates(type, name) {
                 let validates = []
                 if (!this.validates[type])
                         return validates;
 
                 for (const item in this.validates[type]) {
                         let match = this.validates[type][item].matcher
-                                ? this.validates[type][item].matcher(name) : name.toLowerCase().indexOf(item) != -1;
+                                ? this.validates[type][item].matcher(name)
+                                : name.toLowerCase().indexOf(item) != -1;
+
                         if (!match)
                                 continue;
 
@@ -192,14 +196,16 @@ const DEFAULT_EXPRESSIONS = {
         Integer: {
                 range: {
                         matcher: columnName => STR.endsWithAny(columnName.toLowerCase(),
-                                ["count", "total", "price", "num", "sum", "amount", "profit", "discount", "amount", "balance"]),
+                                ["count", "total", "price", "num", "sum",
+                                        "amount", "profit", "discount", "amount", "balance"]),
                         expression: "range"
                 }
         },
         Float: {
                 range: {
                         matcher: columnName => STR.endsWithAny(columnName.toLowerCase(),
-                                ["count", "total", "price", "num", "sum", "amount", "profit", "discount", "amount", "balance"]),
+                                ["count", "total", "price", "num", "sum", "amount",
+                                        "profit", "discount", "amount", "balance"]),
                         expression: "range"
                 }
         },
@@ -215,7 +221,7 @@ const DEFAULT_EXPRESSIONS = {
 }
 
 /**
- * To generate column condition expression
+ * To analyze where-clause expression of column in sql
  */
 class ExpresssionAnalyzer extends ExcludesAnalyzer {
         constructor () {
@@ -230,7 +236,7 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
          * @param {String} type 
          * @returns {String?}
          */
-        getExpression(type, name) {
+        analyzeExpression(type, name) {
                 if (!this.expressions[type])
                         return null;
 
@@ -276,8 +282,12 @@ const SELECT_EXLUCES = {
         },
         Integer: {
                 all: {
-                        matcher: columnName => !(STR.endsWithAny(columnName.toLowerCase(), ["id", "no", "type", "status", "state", "class", "level", "style"])
-                                || STR.startsWithAny(columnName.toLowerCase(), ["is", "need", "permit", "allow", "support", "can", "should"]))
+                        matcher: columnName => !(STR.endsWithAny(columnName.toLowerCase(),
+                                ["id", "no", "type", "status", "state",
+                                        "class", "level", "style"])
+                                || STR.startsWithAny(columnName.toLowerCase(),
+                                        ["is", "need", "permit", "allow",
+                                                "support", "can", "should"]))
                 }
         },
         Date: {
@@ -341,7 +351,8 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
 const DEFAULT_INSERT_EXCLUDES = {
         String: {
                 updateUser: {
-                        matcher: columnName => Matcher.lowerIncludesAny(columnName, ["update", "edit"]) && Matcher.lowerIncludes("user")
+                        matcher: columnName => Matcher.lowerIncludesAny(columnName, ["update", "edit"])
+                                && Matcher.lowerIncludes("user")
                 }
         },
         Date: {
@@ -397,14 +408,14 @@ class InsertAnalyzer extends ExcludesAnalyzer {
          * @override
          * @param {Column} column 
          */
-        getValidates(column) {
+        analyzeValidates(column) {
                 let type = getJavaType(column.type);
                 let validates = [];
 
                 if (!column.nullable)
                         validates.push("@NotNull");
 
-                let ret = validates.concat(super.getValidates(type, column.name));
+                let ret = validates.concat(super.analyzeValidates(type, column.name));
                 return ret;
         }
 }
@@ -549,8 +560,8 @@ class UserColumnAnalyzer {
         }
 }
 
-class ExcelAnalyzer{
-        shouldBeExcelField(column){
+class ExcelAnalyzer {
+        shouldBeExcelField(column) {
 
         }
 }

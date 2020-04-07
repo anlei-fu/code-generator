@@ -6,7 +6,7 @@
                                                 })
                                                 
                                                 .type("left")
-                                                .joinCondition(@joinCondition)
                                                 .alias(@alias)
+                                                .joinCondition(@joinCondition)
                                                 .build()
                                 })

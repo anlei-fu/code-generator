@@ -10,13 +10,13 @@ class ServiceImplRender {
         /**
          * Render service impl template
          * 
-         * @param {Config} config 
+         * @param {ConfigGroup} configGroup 
          * @returns {String}
          */
-        renderServiceImpl(config) {
+        renderServiceImpl(configGroup) {
                 let content = "";
-                config.items.forEach(x => {
-                        let item = this._getServiceImplItemConfig(x, config.name);
+                configGroup.items.forEach(x => {
+                        let item = this._getMethodConfig(x, configGroup.name);
                         content += x.type == "select" && !x.resp.single
                                 ? STR.removeEmptyLine(SERVICE_IMPL_PAGE_ITEM_RENDER.renderTemplate(item)) + "\r\n"
                                 : STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
@@ -24,9 +24,9 @@ class ServiceImplRender {
 
                 content = content.trimRight() + "\r\n";
                 return SERVICE_IMPL_RENDER.renderTemplate({
-                        name: config.name,
+                        name: configGroup.name,
                         content,
-                        sname: STR.lowerFirstLetter(config.name)
+                        sname: STR.lowerFirstLetter(configGroup.name)
                 });
         }
 
@@ -38,20 +38,20 @@ class ServiceImplRender {
          *  }
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getServiceImplItemConfig(config, name) {
+        _getMethodConfig(configItem, tableName) {
                 return {
-                        name: config.id,
-                        serviceImplParams: ReqUtils.generateReqParamsWithType(config),
-                        serviceImplReturnType: this._getServiceImplItemReturnType(config, name),
-                        serviceImplMapperParams: config.params.doCreate
-                                ? "params" : ReqUtils.generateReqParamsWithoutType(config),
+                        methodName: configItem.id,
+                        args: ReqUtils.generateReqParamsWithType(configItem),
+                        returnType: this._getReturnType(configItem, tableName),
+                        mapperArgs: configItem.params.doCreate
+                                ? "params" : ReqUtils.generateReqParamsWithoutType(configItem),
 
-                        suffix: config.type == "select" ? hasBatchReq(config) ? "" : " > 0" : "",
-                        content: !config.params.doCreate ? "" : this._renderServiceImplContent(config),
-                        sname: STR.lowerFirstLetter(name)
+                        suffix: configItem.type == "select" ?ReqUtils.hasBatchReq(configItem) ? "" : " > 0" : "",
+                        content: !configItem.params.doCreate ? "" : this._renderMethodContent(configItem),
+                        sname: STR.lowerFirstLetter(tableName)
                 };
         }
 
@@ -61,19 +61,19 @@ class ServiceImplRender {
          * 
          * @private
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _renderServiceImplContent(config) {
+        _renderMethodContent(configItem) {
 
                 let content = "";
-                if (!hasBatchReq(config)) {
-                        content = `${config.params.type} params = new ${config.params.type}(@params);`;
-                        content = content.replace("@params", ReqUtils.generateReqParamsWithoutType(config));
+                if (!ReqUtils.hasBatchReq(configItem)) {
+                        content = `${configItem.params.type} params = new ${configItem.params.type}(@params);`;
+                        content = content.replace("@params", ReqUtils.generateReqParamsWithoutType(configItem));
 
                         // if has default values, generate set expression
-                        if (config.params.defaultValues) {
-                                config.params.defaultValues.forEach((value, key) => {
+                        if (configItem.params.defaultValues) {
+                                configItem.params.defaultValues.forEach((value, key) => {
                                         content += `params.set${STR.upperFirstLetter(key)}(${value});\r\n`;
                                 });
                         }
@@ -82,9 +82,9 @@ class ServiceImplRender {
                 } else {
                         let reqType = "";
                         let reqName = "";
-                        content = `List<${config.params.type}> params = new ArrayList<>;\r\n`;
-                        content += `        for ( final type item : req) {\r\n                params.add(new ${config.params.type}(@params)); \r\n        }`;
-                        content = content.replace("@params", ReqUtils.generateReqParamsWithoutType(config));
+                        content = `List<${configItem.params.type}> params = new ArrayList<>;\r\n`;
+                        content += `        for ( final type item : req) {\r\n                params.add(new ${configItem.params.type}(@params)); \r\n        }`;
+                        content = content.replace("@params", ReqUtils.generateReqParamsWithoutType(configItem));
                 }
 
                 return content;
@@ -94,17 +94,17 @@ class ServiceImplRender {
          * Get service impl item return type text
          * 
          * @private
-         * @param {Config} config 
-         * @param {String} name
+         * @param {ConfigItem} configItem 
+         * @param {String} tableName
          * @returns {String} 
          */
-        _getServiceImplItemReturnType(config, name) {
-                if (config.type == "select")
-                        return hasBatchReq(config) ? "int" : "boolean";
+        _getReturnType(configItem, tableName) {
+                if (configItem.type == "select")
+                        return ReqUtils.hasBatchReq(configItem) ? "int" : "boolean";
 
-                return config.resp.single
-                        ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name
-                        : config.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(config.resp.type)}>` : `PageInfo<${name}>`;
+                return configItem.resp.single
+                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
+                        : configItem.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageInfo<${tableName}>`;
         }
 }
 

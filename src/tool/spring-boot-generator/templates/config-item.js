@@ -1,5 +1,5 @@
 const { all } = require("./../db/all")
-const { builder } = require("./../../../builders/builder")
+const { Builder } = require("./../../../builders/builder")
 
 @tableInfo
 exports.@snameConfig = {
@@ -9,7 +9,7 @@ exports.@snameConfig = {
 
                         // add
 @insertMsg@@
-                        new builder()
+                        new Builder()
                                 .type("insert")
                                 .id("add")
                                 .alias("t")
@@ -18,8 +18,8 @@ exports.@snameConfig = {
                                                   .excludes("@skey")
 @insertExcludes
                                 })
-                                .controller(controller => {
-                                        controller.path("/@sname");
+                                .request(request => {
+                                        request.path("/@sname");
                                 })
 @insertUserReq@@
                                 .req(req => {
@@ -30,7 +30,7 @@ exports.@snameConfig = {
                                 .build(),
 
                         // deleteById
-                        new builder()
+                        new Builder()
                                 .type("delete")
                                 .id("deleteBy@deleteMethodName")
                                 .alias("t")
@@ -38,8 +38,8 @@ exports.@snameConfig = {
                                         collection.includes("@skey")
                                                   .require("@skey")
                                 })
-                                .controller(controller => {
-                                        controller.path("/@sname/{@skey}");
+                                .request(request => {
+                                        request.path("/@sname/{@skey}");
                                 })
                                 .req(req => {
                                         req.name("@skey")
@@ -51,7 +51,7 @@ exports.@snameConfig = {
                                 
                         // updateById
 @updateMsg@@
-                        new builder()
+                        new Builder()
                                 .type("update")
                                 .id("updateBy@updateMethodName")
                                 .alias("t")
@@ -64,8 +64,8 @@ exports.@snameConfig = {
                                         collection.includes("@skey")
                                                   .require("@skey")
                                 })
-                                .controller(controller => {
-                                        controller.path("/@sname/{@skey}");
+                                .request(request => {
+                                        request.path("/@sname/{@skey}");
                                 })
                                 .req(req => {
                                         req.name("@skey")
@@ -82,7 +82,7 @@ exports.@snameConfig = {
                                 .build(),
 
                         // getById
-                        new builder()
+                        new Builder()
                                 .type("select")
                                 .id("getBy@selectMethodName")
                                 .alias("t")
@@ -93,8 +93,8 @@ exports.@snameConfig = {
                                         collection.includes("@skey")
                                                   .require("@skey")
                                 })
-                                .controller(controller => {
-                                        controller.path("/@sname/{@skey}");
+                                .request(request => {
+                                        request.path("/@sname/{@skey}");
                                 })
                                 .req(req => {
                                         req.name("@skey")
@@ -109,7 +109,7 @@ exports.@snameConfig = {
 
                         // getList
 @selectMsg@@
-                        new builder()
+                        new Builder()
                                 .type("select")
                                 .id("getList")
                                 .alias("t")
@@ -121,8 +121,8 @@ exports.@snameConfig = {
                                                   .excludes("@skey")
 @selectExcludes
                                 })
-                                .controller(controller => {
-                                        controller.path("/@sname/list");
+                                .request(request => {
+                                        request.path("/@sname/list");
                                 })
                                 .req(req => {
                                         req.doCreate()
@@ -134,7 +134,7 @@ exports.@snameConfig = {
                                 .build(),
 
                         // get detail item
-                        new builder()
+                        new Builder()
                                 .type("select")
                                 .id("getDetailBy@selectMethodName")
                                 .alias("t")
@@ -146,8 +146,8 @@ exports.@snameConfig = {
                                                   .require("@skey")
                                 })
 @joins
-                                .controller(controller => {
-                                        controller.path("/@sname/detail/{@skey}");
+                                .request(request => {
+                                        request.path("/@sname/detail/{@skey}");
                                 })
                                 .req(req => {
                                         req.name("@skey")
@@ -165,7 +165,7 @@ exports.@snameConfig = {
                                 .build(),
 
                          // get detail list
-                        new builder()
+                        new Builder()
                                 .type("select")
                                 .id("getDetailList")
                                 .alias("t")
@@ -178,8 +178,8 @@ exports.@snameConfig = {
 @selectExcludes
                                  })
 @joins                                
-                                .controller(controller => {
-                                                controller.path("/@sname/detail/list");
+                                .request(request => {
+                                                request.path("/@sname/detail/list");
                                })
                                 .req(req => {
                                          req.doCreate()

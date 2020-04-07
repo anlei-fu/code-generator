@@ -1,6 +1,6 @@
 >start
 ```shell
-  consul agent -server -bootstrap-expect=3 -data-dir=/tmp/consul -node=10.200.110.90 -bind=10.200.110.90 -client=0.0.0.0 -datacenter=shenzhen -ui
+  consul agent -server -bootstrap-expect=3 -data-dir=/tmp/consul -node=192.168.117.146 -bind=192.168.117.146 -client=0.0.0.0 -datacenter=shenzhen -ui
 ``` 
  
  * server： 以server身份启动。默认是client

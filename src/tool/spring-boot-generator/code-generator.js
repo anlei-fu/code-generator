@@ -1,5 +1,8 @@
 /*-----------------------------------------------------------------------------------entities-------------------------------------------------------------------------------*/
 
+/**
+ * Field model properties
+ */
 class Field {
         constructor () {
                 this.name = "";
@@ -10,20 +13,20 @@ class Field {
 }
 
 /**
- * Join properties
+ * Join model properties
  */
 class Join {
         constructor () {
-                this.table = {}
-                this.includes = [];
-                this.conditions = [];
+                this.table = new Table();
+                this.includes = [new ColumnConfig()];
+                this.conditions = [new ColumnConfig()];
                 this.alias = "";
                 this.joinCondition = "";
         }
 }
 
 /**
- * Req properties
+ * Req model properties
  */
 class Req {
         constructor () {
@@ -37,7 +40,7 @@ class Req {
 }
 
 /**
- * Params properties
+ * Params model properties
  */
 class Params {
         constructor () {
@@ -50,7 +53,7 @@ class Params {
 }
 
 /**
- * Resp properties
+ * Resp model properties
  */
 class Resp {
         constructor () {
@@ -62,7 +65,7 @@ class Resp {
 }
 
 /**
- * Controller properties
+ * Controller model properties
  */
 class Controller {
         constructor () {
@@ -72,31 +75,34 @@ class Controller {
 }
 
 /**
- * Config properties
+ * Config model properties
  */
-class Config {
+class ConfigItem {
         constructor () {
+                /**
+                 *  Method name
+                 */
                 this.id = "";
 
                 /**
-                 * String 'entity'|'req'|'resp'|'param'
+                 * String |select|update|delete|insert|
                  */
                 this.type = "";
 
                 /**
                  * Table
                  */
-                this.table = {};
+                this.table = new Table();
 
                 /**
                  * [ColumnMetaInfo]
                  */
-                this.includes = [];
+                this.includes = [new ColumnConfig()];
 
                 /**
                  * [ColumnMetaInfo]
                  */
-                this.conditions = [];
+                this.conditions = [new ColumnConfig()];
 
                 /**
                  * [Join]
@@ -108,32 +114,21 @@ class Config {
                 this.reqs = [new Req()];
                 this.resp = new Resp();
                 this.params = new Params();
+                this.context=new GeneratorContext();
         }
 }
 
 /**
  * GeneratorConfig properties
  */
-class GeneratorConfig {
+class ConfigGroup {
         constructor () {
 
                 // items y
-                this.items = [new Config()];
-
-                // with require exist
-                this.exists = false;
-
-                // with batch delete operation
-                this.bacthDelete = false;
-
-                // with batch update operation
-                this.batchUpdate = false;
-
-                // auto join other table
-                this.detail = false;
-
-                // auto join other table list
-                this.detailList = false;
+                this.items = [new ConfigItem()];
+                this.name="";
+                this.table=new Table();
+                this.context=new GeneratorContext();
         }
 }
 
@@ -141,11 +136,8 @@ class GeneratorConfig {
 
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
-const { Render } = require("./renders/render.js");
 const { ReqUtils } = require("./req-utils");
 const { getJavaType } = require("./utils");
-const { getConditions } = require("./condition-getter");
-const { getIncludes } = require("./includes-getter");
 
 /**
  *  Genearte web project with spring-boot, mysql, mybatis, vue, ivue and  maven 
@@ -154,17 +146,19 @@ class Generator {
 
         /**
          * 
-         * @param {GeneratorConfig} config 
+         * @param {ConfigGroup} configGroup 
          */
-        constructor (config) {
-                this._checkConfig(config);
+        constructor (configGroup) {
+                this._checkConfig(configGroup);
 
-                this._config = config;
+                this._configGroup = configGroup;
+                this._context=configGroup.context;
 
-                this._context=config.context;
-                this._initTable(config.table);
-                config.items.forEach(item => {
-                        item.table = config.table;
+                // initialization
+                this._initTable(configGroup.table);
+
+                configGroup.items.forEach(item => {
+                        item.table = configGroup.table;
                         this._initConfig(item);
                 });
         }
@@ -173,7 +167,7 @@ class Generator {
          * Generate all files
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} config 
          * @returns {String}
          */
         generate() {
@@ -181,7 +175,7 @@ class Generator {
                 // entity
                 this._generateEntity();
 
-                this._config.items.forEach(x => {
+                this._configGroup.items.forEach(x => {
                         this._generateReq(x);
                         this._generateResp(x);
                         this._generateParams(x);
@@ -198,16 +192,16 @@ class Generator {
          * Check config is ok
          * 
          * @private
-         * @param {GeneratorConfig} config 
+         * @param {ConfigGroup} configGroup 
          */
-        _checkConfig(config) {
-                if (!config.name)
+        _checkConfig(configGroup) {
+                if (!configGroup.name)
                         throw new Error("config name property is required!")
 
-                if (!config.table)
+                if (!configGroup.table)
                         throw new Error("config table property is required!")
 
-                config.items.forEach(item => {
+                configGroup.items.forEach(item => {
                         item.joins.forEach(join => {
                                 if (!join.joinCondition || !join.table)
                                         throw new Error("join config incorrect!");
@@ -219,54 +213,54 @@ class Generator {
          * Initialize geneartor config
          * 
          * @private
-         * @param {GeneratorConfig} config 
+         * @param {ConfigItem} configItem 
          */
-        _initConfig(config) {
+        _initConfig(configItem) {
 
-                if (config.alias)
-                        this._config.table.alias = config.alias;
+                if (configItem.alias)
+                        this._configGroup.table.alias = configItem.alias;
 
-                // if type absent set default 'select'
-                config.type = config.type || "select";
+                // set default type 'select' if type absent
+                configItem.type = configItem.type || "select";
 
-                // if id absent generate default id
-                config.id = config.id || this._getDefaultId(config);
+                // generate default-id if id absent
+                configItem.id = configItem.id || this._getDefaultId(configItem);
 
                 // flag
                 let hasDocreateReq = false;
 
                 // if has req to create
-                config.reqs.forEach(req => {
+                configItem.reqs.forEach(req => {
                         if (req.doCreate) {
-                                this._initEntityBasicInfo(config, req, "Req");
+                                this._initEntityBasicInfo(configItem, req, "Req");
                                 hasDocreateReq = true;
                         }
                 });
 
-                // determine if generate params on has create req and params's length >1
-                if ((hasDocreateReq && config.reqs.length > 1) || config.reqs.length > 3) {
-                        config.params.doCreate = true;
-                        this._initEntityBasicInfo(config, config.params, "Params");
+                // determine if generate params on has doCreate req and reqs' length > 1
+                if ((hasDocreateReq && configItem.reqs.length > 1) || configItem.reqs.length > 3) {
+                        configItem.params.doCreate = true;
+                        this._initEntityBasicInfo(configItem, configItem.params, "Params");
                 }
 
                 // generate controller path and description
-                if (!config.noController) {
-                        config.controller.path = config.controller.path || `/${STR.lowerFirstLetter(config.name)}/${config.id}`;
-                        config.controller.description = config.controller.description || "";
+                if (!configItem.noController) {
+                        configItem.controller.path = configItem.controller.path || `/${STR.lowerFirstLetter(configItem.name)}/${configItem.id}`;
+                        configItem.controller.description = configItem.controller.description || "";
                 }
 
-                // set default join type
-                if (config.joins) {
-                        config.joins.forEach(join => {
+                // set default join type if absent and init join table
+                if (configItem.joins) {
+                        configItem.joins.forEach(join => {
                                 join.type = join.type || "left";
                                 this._initTable(join.table);
                         });
                 }
 
-                // determine if generate resp on joins' length >0 and type is select
-                if (config.joins.length > 0 && config.type == "select") {
-                        config.resp.doCreate = true;
-                        this._initEntityBasicInfo(config, config.resp, "Resp");
+                // determine if generate resp on joins' length > 0 and type is select
+                if (configItem.joins.length > 0 && configItem.type == "select") {
+                        configItem.resp.doCreate = true;
+                        this._initEntityBasicInfo(configItem, configItem.resp, "Resp");
                 }
 
         }
@@ -277,11 +271,11 @@ class Generator {
          * 
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          */
-        _getDefaultId(config) {
+        _getDefaultId(configItem) {
                 let id = "";
-                switch (config.type) {
+                switch (configItem.type) {
                         case "select":
                                 id = "get";
                                 break;
@@ -296,13 +290,13 @@ class Generator {
                                 break;
                 }
 
-                if (config.batch) {
-                        return id + config.name + "batch"
+                if (configItem.batch) {
+                        return id + configItem.name + "batch"
                 }
                 else {
-                        let conditions =this._context.columnAnalyzer.getConditions(config);
+                        let conditions =this._context.columnAnalyzer.getConditions(configItem);
                         if (conditions.length == 1) {
-                                id += config.name + "By"
+                                id += configItem.name + "By"
                                 id += STR.upperFirstLetter(conditions[0].name);
                         } else if (conditions.length < 4) {
                                 conditions.forEach((x, i, array) => {
@@ -310,9 +304,9 @@ class Generator {
                                                 ? "And" + STR.upperFirstLetter(x.name)
                                                 : STR.upperFirstLetter(x.name);
                                 });
-                                id += config.name + "By"
+                                id += configItem.name + "By"
                         } else {
-                                id += config.name;
+                                id += configItem.name;
                         }
                 }
 
@@ -335,25 +329,31 @@ class Generator {
          * Set basic infos if absent
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @param {Entity} entity 
          * @param {String} entityType "entity|req|resp|param"
          */
-        _initEntityBasicInfo(config, entity, entityType) {
+        _initEntityBasicInfo(configItem, entity, entityType) {
                 entity.description = entity.description || "";
                 if (!entity.type) {
-                        entity.type = STR.upperFirstLetter(config.id) + entityType;
+                        entity.type = STR.upperFirstLetter(configItem.id) + entityType;
+                        if(entity.type.includes(this._configGroup.name)){
+                                let tableName=STR.upperFirstLetter(this._configGroup.name);
+                                entity.type=STR.replace(entity.type,{
+                                        "get":"get"+tableName,
+                                        "update":"update"+tableName,
+                                        "add":"add"+tableName
+                                });
+                        }
                         if (entityType == "Req" || entityType == "Params") {
                                 entity.type = entity.type.replace("Detail", "");
                                 let pos = entity.type.indexOf("By");
                                 if (pos != -1)
                                         entity.type = entity.type.substr(0, pos) + entityType;
-                        } else {
-
-                        }
+                        } 
                 }
-                entity.name = entityType == "Req" ? entityType.toLowerCase() : entity.name;
 
+                entity.name = entityType == "Req" ? entityType.toLowerCase() : entity.name;
         }
 
         /**
@@ -363,12 +363,12 @@ class Generator {
          */
         _generateEntity() {
                 var entityConfig = {};
-                entityConfig.name = this._config.name;
+                entityConfig.name = this._configGroup.name;
                 entityConfig.type = "entity";
-                entityConfig.description = this._config.table.description;
-                entityConfig.fields = OBJECT.toArray(this._config.table.columns);
+                entityConfig.description = this._configGroup.table.description;
+                entityConfig.fields = OBJECT.toArray(this._configGroup.table.columns);
                 let content =this._context.render.renderEntity(entityConfig);
-                this._generateEntityCore(content, "entity", this._config.name);
+                this._writeEntity(content, "entity", this._configGroup.name);
         }
 
         /**
@@ -377,9 +377,9 @@ class Generator {
          * @private
          */
         _generateMapper() {
-                let content = Render.renderMapper(this._config);
+                let content = this._context.render.renderMapper(this._configGroup);
                 content = this._context.packageRender.renderPackage(content);
-                this._writer.writeMapper(this._config.name, content);
+                this._context.writer.writeMapper(this._configGroup.name, content);
         }
 
         /**
@@ -388,8 +388,8 @@ class Generator {
          * @private
          */
         _generateMapperConfig() {
-                let content = Render.renderMapperConfig(this._config);
-                this._writer.writeMapperConfig(this._config.name, content);
+                let content =this._context.render.renderMapperConfig(this._configGroup);
+                this._context.writer.writeMapperConfig(this._configGroup.name, content);
         }
 
         /**
@@ -398,9 +398,9 @@ class Generator {
          * @private
          */
         _generateService() {
-                let content = Render.renderService(this._config);
+                let content = this._context.render.renderService(this._configGroup);
                 content = this._context.packageRender.renderPackage(content);
-                this._writer.writeService(this._config.name, content);
+                this._context.writer.writeService(this._configGroup.name, content);
         }
 
         /**
@@ -409,9 +409,9 @@ class Generator {
          * @private
          */
         _generateServiceImpl() {
-                let content = Render.renderServiceImpl(this._config);
+                let content = this._context.render.renderServiceImpl(this._configGroup);
                 content = this._context.packageRender.renderPackage(content);
-                this._writer.writeServiceImpl(this._config.name, content);
+                this._context.writer.writeServiceImpl(this._configGroup.name, content);
         }
 
         /**
@@ -420,32 +420,30 @@ class Generator {
          * @private
          */
         _generateController() {
-                let content = Render.renderController(this._config);
+                let content =this._context.render.renderController(this._configGroup);
                 content = this._context.packageRender.renderPackage(content);
-                this._writer.writeController(this._config.name, content);
+                this._context.writer.writeController(this._configGroup.name, content);
         }
 
         /**
          * Generate req file
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _generateReq(config) {
-                config.reqs.forEach(req => {
+        _generateReq(configItem) {
+                configItem.reqs.forEach(req => {
                         if (req.doCreate) {
                                 let entityConfig = {};
-                                entityConfig.fields =ReqUtils.generateReqFields(config, req);
-                                // if (config.type == "select")
-                                //         console.log(entity.fields);
+                                entityConfig.fields =ReqUtils.analyzeReqFields(configItem, req);
                                 entityConfig.description = req.description;
                                 entityConfig.name = req.type;
                                 entityConfig.type = "req";
-                                entityConfig.extends = config.type == "select" && !config.resp.single ? "PageReq" : "";
+                                entityConfig.extends = configItem.type == "select" && !configItem.resp.single ? "PageReq" : "";
                                 let content =this._context.render.renderEntity(entityConfig);
 
-                                this._generateEntityCore(content, "req", req.type);
+                                this._writeEntity(content, "req", req.type);
                         }
                 })
         }
@@ -455,19 +453,19 @@ class Generator {
          * Generate resp file
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _generateResp(config) {
-                if (config.resp.doCreate) {
+        _generateResp(configItem) {
+                if (configItem.resp.doCreate) {
                         let entityConfig = {};
                         entityConfig.type = "resp";
-                        entityConfig.description = config.resp.description;
-                        entityConfig.fields = getIncludes(config);
-                        config.resp.type = config.resp.name;
-                        entityConfig.name = config.resp.type;
+                        entityConfig.description = configItem.resp.description;
+                        entityConfig.fields = configItem.context.columnAnalyzer.getIncludes(configItem);
+                        configItem.resp.type = configItem.resp.name;
+                        entityConfig.name = configItem.resp.type;
                         let content =this._context.render.renderEntity(entityConfig);
-                        this._generateEntityCore(content, "resp", config.resp.type);
+                        this._writeEntity(content, "resp", configItem.resp.type);
                 }
         }
 
@@ -475,40 +473,49 @@ class Generator {
          * Generate param file
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _generateParams(config) {
-                if (!config.params.doCreate)
+        _generateParams(configItem) {
+                if (!configItem.params.doCreate)
                         return;
 
+                // get all possible columns
                 let map = new Map();
-
-                if (config.type == "select" || config.type == "delete")
-                        getConditions(config).forEach(condition => {
+                if (configItem.type == "select" || configItem.type == "delete")
+                       configItem.context.columnAnalyzer.getConditions(configItem).forEach(condition => {
                                 map.set(condition.name, condition);
                         });
-                else if (config.type == "update") {
-                        getIncludes(config).forEach(include => {
+                else if (configItem.type == "update") {
+                        configItem.context.columnAnalyzer.getIncludes(configItem).forEach(include => {
                                 map.set(include.name, include);
                         });
-                        getConditions(config).forEach(condition => {
+                        configItem.context.columnAnalyzer.getConditions(configItem).forEach(condition => {
                                 map.set(condition.name, condition);
                         });
                 } else {
-                        getIncludes(config).forEach(include => {
+                        configItem.context.columnAnalyzer. getIncludes(configItem).forEach(include => {
                                 map.set(include.name, include);
                         });
                 }
 
-                let req;
-                config.reqs.forEach(req => {
+
+               //  analyze where field comes from  with source property
+               //  'constructor' -> from base type req
+               //  'req' -> from doCreate-req
+               //  'undefined' -> from user column
+                let docreateReqType;
+                configItem.reqs.forEach(req => {
                         if (!req.doCreate && map.has(req.name)) {
                                 map.get(req.name)["source"] = "constructor";
+                                docreateReqType=req.type;
 
                         } else if (req.doCreate) {
                                 req = req;
-                               ReqUtils.generateReqFields(config, req).forEach(field => {
+                               ReqUtils.analyzeReqFields(configItem, req).forEach(field => {
+
+                                        // maybe override source field to other fields
+                                        // such as 'createTime' -> 'createTimeStart' & 'createTimeEnd'
                                         if (map.has(field.name)) {
                                                 map.get(field.name)["source"] = "req";
                                         } else {
@@ -516,20 +523,20 @@ class Generator {
                                                 field.source = "req";
                                         }
                                 });
-                        } else {
                         }
                 });
 
+                // check user column and convert to array
                 let configs = [];
                 map.forEach(value => {
                         value.source = value.source || "user";
                         configs.push(value);
                 });
 
-                let content =this._context.render.renderParams(configs, req.type);
+                let content =this._context.render.renderParams(configs, docreateReqType);
                 content = content.replace("@type", "param");
 
-                this._generateEntityCore(content, "param", config.params.type)
+                this._writeEntity(content, "param", configItem.params.type)
         }
 
         /**
@@ -538,13 +545,13 @@ class Generator {
          * @param {String} entityType 'entity'|'req'|'resp'|'param' 
          * @param {String} entityName  
          */
-        _generateEntityCore(content, entityType, entityName) {
+        _writeEntity(content, entityType, entityName) {
                 
                 // add imports and sort them
                 content = this._context.packageRender.renderPackage(content);
 
                 if (entityType == "entity") {
-                        this._context.writer.writeEntity(this._config.name, content);
+                        this._context.writer.writeEntity(this._configGroup.name, content);
                 } else if (entityType == "req") {
                         this._context.writer.writeReq(entityName, content);
                 } else if (entityType == "resp") {
@@ -553,6 +560,7 @@ class Generator {
                         this._context.writer.writeParams(entityName, content);
                 }
 
+                // add into package cache
                 this._context.packageRender.addPackage({
                         name: STR.upperFirstLetter(entityName),
                         type: entityType,
@@ -562,8 +570,8 @@ class Generator {
 }
 
 module.exports = {
-        Config,
-        GeneratorConfig,
+        Config: ConfigItem,
+        GeneratorConfig: ConfigItem,
         Join,
         Req,
         Resp,

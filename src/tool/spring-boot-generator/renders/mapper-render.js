@@ -10,12 +10,12 @@ class MapperRender {
         /**
          * Render mapper template
          * 
-         * @param {GeneratorConfig} config 
+         * @param {ConfigGroup} configGroup 
          * @returns {String}
          */
-        renderMapper(config) {
-                let content = STR.arrayToString1(config.items,
-                        x => MAPPER_ITEM_RENDER.renderTemplate(this._getMapperItemRenderConfig(x, config.name)));
+        renderMapper(configGroup) {
+                let content = STR.arrayToString1(configGroup.items,
+                        config => MAPPER_ITEM_RENDER.renderTemplate(this._getMethodConfig(config, configGroup.name)));
 
                 return MAPPER_RENDER.renderTemplate({ content });
         }
@@ -24,14 +24,14 @@ class MapperRender {
          * Get mapper item render config
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getMapperItemRenderConfig(config, name) {
+        _getMethodConfig(configItem, name) {
                 return {
-                        name: config.id,
-                        mapperReturnType: this._getMapperItemReturnType(config, name),
-                        mapperParams: this._getMapperItemParams(config)
+                        name: configItem.id,
+                        mapperReturnType: this._getReturnType(configItem, name),
+                        mapperParams: this._getArgs(configItem)
                 }
         }
 
@@ -39,23 +39,23 @@ class MapperRender {
          * Get mapper item params text
          * 
          * @private
-         * @param {Config} config 
+         * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getMapperItemParams(config) {
+        _getArgs(configItem) {
 
                 // param generated
-                if (config.params.doCreate) {
-                        if (ReqUtils.hasBatchReq(config)) {
-                                return `@Param("list")  List<${config.params.type}> params`
+                if (configItem.params.doCreate) {
+                        if (ReqUtils.hasBatchReq(configItem)) {
+                                return `@Param("list")  List<${configItem.params.type}> params`
                         } else {
-                                return `${config.params.type} param`;
+                                return `${configItem.params.type} param`;
                         }
                 }
 
                 let mapperParams = "";
-                if (config.reqs.length > 1) {
-                        mapperParams = STR.arrayToString1(config.reqs, x => {
+                if (configItem.reqs.length > 1) {
+                        mapperParams = STR.arrayToString1(configItem.reqs, x => {
                                 return x.isBatch
                                         ? `@Param("${x.name}s") List<${x.type}> ${x.name}, `
                                         : `@Param("${x.name}") ${x.type} ${x.name}, `
@@ -63,12 +63,12 @@ class MapperRender {
                                 .removeLastComa(mapperParams);
                 } else {
 
-                        if (config.reqs[0].isBatch) {
-                                mapperParams = `@Param("list") List<${config.reqs[0].type}> ${config.reqs[0].name}`;
+                        if (configItem.reqs[0].isBatch) {
+                                mapperParams = `@Param("list") List<${configItem.reqs[0].type}> ${configItem.reqs[0].name}`;
                         } else {
-                                mapperParams = !isJavaBaseType(config.reqs[0].type)
-                                        ? `${config.reqs[0].type} ${config.reqs[0].name}`
-                                        : `@Param("${config.reqs[0].name}") ${config.reqs[0].type} ${config.reqs[0].name}`;
+                                mapperParams = !isJavaBaseType(configItem.reqs[0].type)
+                                        ? `${configItem.reqs[0].type} ${configItem.reqs[0].name}`
+                                        : `@Param("${configItem.reqs[0].name}") ${configItem.reqs[0].type} ${configItem.reqs[0].name}`;
                         }
                 }
 
@@ -79,18 +79,18 @@ class MapperRender {
          * Get mapper item return type text
          * 
          * @private
-         * @param {Config} config 
-         * @param {String} name   table name
+         * @param {ConfigItem} configItem 
+         * @param {String} tableName 
          * @returns {String}
          */
-        _getMapperItemReturnType(config, name) {
+        _getReturnType(configItem, tableName) {
 
-                if (config.type != "select")
+                if (configItem.type != "select")
                         return "int";
 
-                return config.resp.single
-                        ? config.resp.doCreate ? STR.upperFirstLetter(config.resp.type) : name
-                        : config.resp.doCreate ? `List<${STR.upperFirstLetter(config.resp.type)}>` : `List<${name}>`;
+                return configItem.resp.single
+                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
+                        : configItem.resp.doCreate ? `List<${STR.upperFirstLetter(configItem.resp.type)}>` : `List<${tableName}>`;
         }
 }
 

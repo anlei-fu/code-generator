@@ -1,6 +1,6 @@
     @Override
-    public @serviceImplReturnType @name(@serviceImplParams) {
+    public @returnType @methodName(@args) {
         @content
-        return @snameMapper.@name(@serviceImplMapperParams)@suffix;
+        return @snameMapper.@methodName(@mapperArgs)@suffix;
     }
     

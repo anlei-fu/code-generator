@@ -78,6 +78,7 @@ class TableRelation {
 const DEFAULT_MATCHER = (name, pattern) =>
         name.toLowerCase().includes(pattern.toLowerCase())
 
+// to check is foreign key column
 const RELATION_CANDIDATES_MATCHERS = {
         String: {
                 Id: {
@@ -105,6 +106,7 @@ const RELATION_CANDIDATES_MATCHERS = {
 
 const DEFAULT_KEYWORD_CANDIATE = ["up", "down", "order", "base", "fund", "bank", "company", "diff", "package"];
 
+// to determane table is main table
 const DEFAULT_MAIN_TABLE_MATCHERS = {
         Default: {
                 matcher: columnName => STR.endsWithAny(columnName.toLowerCase(), [
@@ -124,6 +126,10 @@ const DEFAULT_MAIN_TABLE_MATCHERS = {
 }
 
 class TableRelationAnalyzer {
+        /**
+         * 
+         * @param {Tables} tables 01
+         */
         constructor (tables) {
                 this._candiadtesMatchers = RELATION_CANDIDATES_MATCHERS;
                 this._searcher = new SimpleFullTextSearcher();
@@ -188,17 +194,19 @@ class TableRelationAnalyzer {
         }
 
         /**
-         * Find best result
+         * Config customrized result matcher
          * 
          * @param {(String,String,[Any]) =>Any} matcher 
          * (column raw name,table raw name, searcher results)=> best result
+         * to determaine bset result
          */
         useSearchResultsMatcher(matcher) {
                 this._customerSearchResultsMatcher = matcher;
         }
 
         /**
-         * Use to trim useless suffix
+         * Config useless suffix, those  suffix will be removed from
+         * column name and table name
          * 
          * @param {[String]} suffixes
          */
@@ -209,9 +217,9 @@ class TableRelationAnalyzer {
         }
 
         /**
-         * Find relation column from other table
+         * Config customerized column matcher
          * 
-         * @param {(String,Table)=>Column} getter 
+         * @param {(String,Table)=>Column} getter  to find related column by self column
          */
         useOtherTableColumnGetter(getter) {
                 this._customerOtherTableColumnSelector = getter;

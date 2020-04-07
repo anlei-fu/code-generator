@@ -1,2 +1,2 @@
-    @serviceReturnType @name(@serviceParams);
+    @returnType @methodName(@args);
     
