@@ -68,7 +68,7 @@ class JoinBuilder {
          * Set property "alias"
          * 
          * @param {Table} table
-         * @returns {joinBuilder}
+         * @returns {JoinBuilder}
          */
         table(table) {
                 this._table = OBJECT.clone(table);
@@ -78,7 +78,7 @@ class JoinBuilder {
         /**
          * Set property "joinCondition"
          * 
-         * @returns {joinBuilder}
+         * @returns {JoinBuilder}
          */
         joinCondition(joinCondition) {
                 this._joinCondition = joinCondition;
@@ -86,7 +86,7 @@ class JoinBuilder {
         }
 
         /**
-         * @return {joinBuilder}
+         * @return {JoinBuilder}
          */
         build() {
 

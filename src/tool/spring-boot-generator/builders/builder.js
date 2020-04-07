@@ -111,7 +111,7 @@ class Builder {
         /**
          * Config includes
          * 
-         * @param {(ColumnBuilder) => void} configer  to build a includes collection
+         * @param {(ColumnBuilder) => void} configer  to build a include columns collection
          * @returns {Builder}
          */
         includes(configer) {
@@ -122,7 +122,7 @@ class Builder {
         /**
          * Config condition
          * 
-         * @param {(ColumnBuilder) => void} configer  to build a conditions collection
+         * @param {(ColumnBuilder) => void} configer  to build a condition columns collection
          * @returns {Builder}
          */
         conditions(configer) {

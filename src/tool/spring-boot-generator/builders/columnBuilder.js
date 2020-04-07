@@ -70,10 +70,10 @@ exports.ColumnBuilder = class ColumnBuilder {
         excludes(item) {
                 if (TYPE.isArray(item)) {
                         item.forEach(x => {
-                                this._excludeCore.call(this, x);
+                                this._excludesCore.call(this, x);
                         });
                 } else {
-                        this._excludeCore.call(this, item);
+                        this._excludesCore.call(this, item);
                 }
 
                 return this;
@@ -257,7 +257,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @private
          * @param {String|{name:String}} item 
          */
-        _excludeCore(item) {
+        _excludesCore(item) {
                 if (!(TYPE.isString(item) || TYPE.isObject(item)))
                         throw new TypeError(`required type is 'String' or 'Object', but input is ${typeof item}`);
 
