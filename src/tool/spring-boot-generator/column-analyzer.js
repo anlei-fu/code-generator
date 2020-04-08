@@ -1,4 +1,5 @@
 const { OBJECT } = require("./../../libs/utils");
+const { STR } = require("./../../libs/str");
 const { getJavaType } = require("./utils");
 const { NamingStrategy } = require("./../../libs/naming-strategy");
 
@@ -17,6 +18,9 @@ class ColumnAnalyzer {
          */
         mergeColumnAndConlumnConfig(table, columnConfig, alias) {
 
+               // console.log(columnConfig);
+                columnConfig.name = STR.lowerFirstLetter(columnConfig.name);
+
                 // column not found
                 if (!table.columns[columnConfig.name])
                         throw new Error(`column(${columnConfig.name}) can not be found in table(${table.name})`);
@@ -29,6 +33,7 @@ class ColumnAnalyzer {
 
                 // select-sql-statement output name of column
                 columnConfig.column = `${columnConfig.prefix}.${NamingStrategy.toHungary(columnConfig.name)}`;
+                columnConfig.property = columnConfig.isBatch ? columnConfig.name + "s" : columnConfig.name;
 
                 // entity field name of column
                 if (columnConfig.alias)
@@ -77,9 +82,6 @@ class ColumnAnalyzer {
          */
         getIncludes(configItem) {
 
-                if (configItem.context.cache.has(configItem.id))
-                        return configItem.context.cache.get(configItem.id);
-
                 // merge with column meta info
                 let includes = [];
                 configItem.includes.forEach(include => {
@@ -89,6 +91,8 @@ class ColumnAnalyzer {
                 // concat joins includes
                 configItem.joins.forEach(join => {
                         join.includes.forEach(include => {
+                              //  console.log("--------------------")
+                                //console.log(include);
                                 includes.push(this.mergeColumnAndConlumnConfig(join.table, include, join.table.alias));
                         });
                 });
@@ -105,7 +109,6 @@ class ColumnAnalyzer {
                 if (configItem.type == "update")
                         configItem.context.expressionGenerator.generateUpdateExpression(includes);
 
-                configItem.context.cache.set(configItem.id, includes);
                 return includes;
         }
 }

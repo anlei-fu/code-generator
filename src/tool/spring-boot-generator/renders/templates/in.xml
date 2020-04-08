@@ -1,5 +1,5 @@
 
-@prefx@column in
-<foreach list="@property" item="item" prefix="("suffix=")" suffixOverrride=",">
-       #{item},
-</foreach>
+              @prefix@column in
+              <foreach collection="@property" item="item" open="(" close=")" seprator=",">
+                     #{item}
+              </foreach>

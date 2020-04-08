@@ -62,7 +62,6 @@ class ControllerRender {
         _getArgs(configItem) {
                 let args = "";
                 configItem.reqs.forEach(req => {
-
                         if (isJavaBaseType(req.type)) {
                                 if (!req.isBatch) {
                                         args += `${req.from} ${req.type} ${req.name}, `.trimLeft();

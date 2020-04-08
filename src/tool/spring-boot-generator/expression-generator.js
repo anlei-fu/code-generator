@@ -43,6 +43,9 @@ class ExpressoinGenerator {
                 // set default if expression, if condition is nullable
                 if (!condition.required)
                         condition.ifExpression = `${condition.name} != null`;
+                
+                if(condition.isBatch)
+                     condition.ifExpression=`${condition.name}s != null and ${condition.name}s.size() != 0`
 
                 if (condition.type == "String") {
                         if (condition.nullable)
@@ -70,9 +73,12 @@ class ExpressoinGenerator {
                                 condition.expression = `@prefix${condition.column} between #{${condition.name}Min} and #{${condition.name}Max}\r\n`;
                         }
                 } else if (condition.type == "Date") {
-                        condition.ifExpression = `${condition.name}Start !=null and  ${condition.name}End != null`;
+                        condition.ifExpression = `${condition.name}Start != null and  ${condition.name}End != null`;
                         condition.expression = `@prefix${condition.column} between #{${condition.name}Start} and #{${condition.name}End}\r\n`;
                 }
+
+                if(condition.required)
+                        condition.ifExpression=null;
         }
 }
 

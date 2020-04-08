@@ -90,6 +90,10 @@ class WhereModel {
         }
 }
 
+// batch
+const BTACH_PREFIX = '  <foreach item="item" collection="list" separator=",">';
+const BATCH_SUFFIX = '  </foreach>';
+
 // insert
 const INSERT_RENDER = new SimpleRender({}, `${BASE_PATH}/insert.xml`);
 // use to analyze default time column and auto generate xxtime=current_timestamp
@@ -471,13 +475,14 @@ class MapperConfigRender {
          * @returns {String}
          */
         _renderBatch(content) {
-                let lines = STR.splitToLines(content.trim()).splice(1, 0, BTACH_PREFIX);
-                lines = lines.splice(lines.length - 2, BATCH_SUFFIX);
+                let lines=STR.splitToLines(content.trim())
+                lines.splice(1, 0, BTACH_PREFIX);
+                lines.splice(lines.length - 2, BATCH_SUFFIX);
                 for (let line of lines) {
-                        line = IDENT + line;
+                        line = "        "+ line;
                 }
 
-                return STR.arrayToString1(lines, line => line);
+                return STR.arrayToString1(lines, line => line+"\r\n");
         }
 
         /**

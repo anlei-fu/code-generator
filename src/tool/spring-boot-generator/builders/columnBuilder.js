@@ -199,7 +199,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * @returns {ColumnBuilder}
          */
         prefixAll(prefix) {
-                return this._setProperty(this._includes, prefix);
+                return this._setProperty(this._includes,"prefix",prefix);
         }
 
         /**
@@ -348,6 +348,7 @@ exports.ColumnBuilder = class ColumnBuilder {
          * 
          */
         build() {
+                console.log(this._includes);
                 return OBJECT.toArray(this._includes);
         }
 }

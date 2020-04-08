@@ -337,14 +337,15 @@ class Generator {
                 entity.description = entity.description || "";
                 if (!entity.type) {
                         entity.type = STR.upperFirstLetter(configItem.id) + entityType;
-                        if(entity.type.includes(this._configGroup.name)){
+                        if(!entity.type.includes(this._configGroup.name)){
                                 let tableName=STR.upperFirstLetter(this._configGroup.name);
                                 entity.type=STR.replace(entity.type,{
-                                        "get":"get"+tableName,
-                                        "update":"update"+tableName,
-                                        "add":"add"+tableName
+                                        "Get":"Get"+tableName,
+                                        "Update":"Update"+tableName,
+                                        "Add":"Add"+tableName
                                 });
                         }
+
                         if (entityType == "Req" || entityType == "Params") {
                                 entity.type = entity.type.replace("Detail", "");
                                 let pos = entity.type.indexOf("By");
@@ -494,7 +495,7 @@ class Generator {
                                 map.set(condition.name, condition);
                         });
                 } else {
-                        configItem.context.columnAnalyzer. getIncludes(configItem).forEach(include => {
+                        configItem.context.columnAnalyzer.getIncludes(configItem).forEach(include => {
                                 map.set(include.name, include);
                         });
                 }

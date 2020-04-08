@@ -34,7 +34,7 @@ class EntityRender {
                                 : "";
 
                         let fieldModel = {
-                                name: field.name,
+                                name: field.property||field.name,
                                 type: field.isBatch ? `List<${field.type}>` : field.type,
                                 description: field.description.replace(/\r\n/g, ""),
                                 validates
