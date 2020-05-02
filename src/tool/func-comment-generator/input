@@ -1,3 +1,0 @@
-create or replace function f_term_rule_check_addr(v_term_prd_no  varchar2,
-                                                  v_contact_addr varchar2,
-                                                  v_out_msg      out varchar2)

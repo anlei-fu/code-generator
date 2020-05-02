@@ -7,7 +7,7 @@
  * @LastEditTime : 2019-12-19 14:09:03
  */
 const fs = require("fs");
-const { LoggerFactory } = require("./../tool/logging/logger-factory")
+const { LoggerFactory } = require("./../generator/common/logging/logger-factory")
 
 const LOG = LoggerFactory.getLogger("DIR");
 

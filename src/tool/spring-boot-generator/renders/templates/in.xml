@@ -1,5 +1,0 @@
-
-              @prefix@column in
-              <foreach collection="@property" item="item" open="(" close=")" seprator=",">
-                     #{item}
-              </foreach>

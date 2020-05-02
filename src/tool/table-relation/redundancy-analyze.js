@@ -1,3 +1,0 @@
-function analyze(relations){
-
-}

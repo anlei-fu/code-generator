@@ -75,3 +75,21 @@ for /f "delims=" %%a in (zhidian.txt) do echo.%%a
 ```
 
 
+在bash中，$( )与` `（反引号）都是用来作命令替换的。
+```shell
+[root@localhost ~]# echo today is $(date "+%Y-%m-%d")
+today is 2017-11-07
+[root@localhost ~]# echo today is `date "+%Y-%m-%d"`
+today is 2017-11-07
+```
+
+${ }变量替换
+一般情况下，$var与${var}是没有区别的，但是用${ }会比较精确的界定变量名称的范围
+
+$(( ))与整数运算
+[root@localhost ~]# echo $((2*3))
+6
+[root@localhost ~]# a=5;b=7;c=2
+[root@localhost ~]# echo $((a+b*c))
+19
+[root@localhost ~]# echo $(($a+$b*$c))

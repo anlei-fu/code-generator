@@ -1,4 +1,4 @@
--- File created: Wed Mar 25 2020 20:45:26 GMT+0800 (GMT+08:00) with Oradew for VS Code
+-- File created: Sat Apr 18 2020 11:26:51 GMT+0800 (GMT+08:00) with Oradew for VS Code
 
 SPOOL spool__Run.sql.log
 SET FEEDBACK ON
@@ -9,7 +9,12 @@ SET DEFINE OFF
 PROMPT INFO: Deploying version 0.0.1 ...
 
 PROMPT ***********************************************************
-PROMPT tool: {script} 1
+PROMPT generator: {script} get-dic
+PROMPT ***********************************************************
+select distinct type from FC_SYSTEM_DICTIONARY t
+
+PROMPT ***********************************************************
+PROMPT generator: {script} 1
 PROMPT ***********************************************************
 insert into user
 (#column,
@@ -43,12 +48,36 @@ select
  @{}
 
 PROMPT ***********************************************************
-PROMPT tool: {script} get-dic
+PROMPT generator: {script} get-count
 PROMPT ***********************************************************
-select distinct type from FC_SYSTEM_DICTIONARY t
+            SELECT 
+                  COUNT(1) 
+            FROM @name  t  
+            WHERE 
+@conditions                                    
 
 PROMPT ***********************************************************
-PROMPT tool: {script} 1
+PROMPT generator: {script} get-list
+PROMPT ***********************************************************
+          SELECT 
+@columns      
+          FROM 
+            (SELECT RID
+                  FROM (SELECT R.RID, ROWNUM LINENUM
+                          FROM (SELECT t.rowid RID
+                                 FROM  @name t
+                                 WHERE 
+@conditions
+@orderBy
+                                   ) R
+                           WHERE ROWNUM <= { :PS} * { :PI})
+                  WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
+           INNER JOIN @name t on tab.rid = t.rowid
+@joins
+
+
+PROMPT ***********************************************************
+PROMPT generator: {script} 1
 PROMPT ***********************************************************
 create or replace procedure zd_merchants_day_report(v_start_time    varchar2, --查询日期开始
                                                     v_end_time      varchar2, --查询日期结束
@@ -429,7 +458,7 @@ end;
 
 
 PROMPT ***********************************************************
-PROMPT tool: {script} get-all
+PROMPT generator: {script} get-all
 PROMPT ***********************************************************
 SELECT 
 t1.table_name,
@@ -444,34 +473,5 @@ FROM user_tab_columns t1
 left join user_cons_columns t2 on  t1.table_name=t2.table_name and t1.column_name=t2.column_name
 left join user_col_comments t3 on  t1.table_name=t3.table_name and t1.column_name=t3.column_name
 left join user_tab_comments t4 on t1.table_name=t4.table_name
-
-PROMPT ***********************************************************
-PROMPT tool: {script} get-count
-PROMPT ***********************************************************
-            SELECT 
-                  COUNT(1) 
-            FROM @name  t  
-            WHERE 
-@conditions                                    
-
-PROMPT ***********************************************************
-PROMPT tool: {script} get-list
-PROMPT ***********************************************************
-          SELECT 
-@columns      
-          FROM 
-            (SELECT RID
-                  FROM (SELECT R.RID, ROWNUM LINENUM
-                          FROM (SELECT t.rowid RID
-                                 FROM  @name t
-                                 WHERE 
-@conditions
-@orderBy
-                                   ) R
-                           WHERE ROWNUM <= { :PS} * { :PI})
-                  WHERE LINENUM > { :PS} * ({ :PI} - 1)) tab
-           INNER JOIN @name t on tab.rid = t.rowid
-@joins
-
 COMMIT;
 SPOOL OFF

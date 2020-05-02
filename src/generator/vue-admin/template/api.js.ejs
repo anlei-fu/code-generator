@@ -1,0 +1,20 @@
+// <%= description %> 
+class <%= name %> {
+      constructor(request){
+            super(request);
+      }
+      <% methods.forEach(method =>{%>
+      /**
+       * <%=mehod.description %> 
+       * <%mehod.args.forEach(arg=>{)%>
+       * <%=arg.name%> {<%=arg.type%>} <%=arg.description%> <%});%> 
+       * <%=method.returnType%>
+       */
+       async <%=method.name><%>(<% method.args.forEach((arg,i,array)=>{%><%if(i!=0){%> <%}%><%= arg.name%><%if(i==array.length){%>,<%}%><%});%>){
+            return <%=method.httpMethod%>(<%=method.url%><%if(method.args.length>1){%>,<%if(method.httpMethod=="get"){%>{param:<%=arg.name%>}<%}else{%>{data:<%=arg.name%>}<%}%><%}%>);
+       }
+
+       <%}%>
+}
+
+exports.<%= name %> = <% name %>  

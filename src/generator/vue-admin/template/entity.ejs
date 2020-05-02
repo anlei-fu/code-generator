@@ -1,0 +1,11 @@
+class <%= name %><% if(parent) {%> extends <%= parent %><% } %> {
+        constructor () {
+                super();
+                <% fields.forEach(field => { %>
+                // <%= field.despcription %>
+                this.<%= field.name %> = <%- field.type %>;
+                <% }) %> 
+        } 
+}
+
+exports.<%=name%> = <%=name%>  
