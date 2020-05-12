@@ -90,7 +90,7 @@ class MapperRender {
 
                 return configItem.resp.single
                         ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
-                        : configItem.resp.doCreate ? `List<${STR.upperFirstLetter(configItem.resp.type)}>` : `List<${tableName}>`;
+                        : configItem.resp.doCreate ? `Page<${STR.upperFirstLetter(configItem.resp.type)}>` : `Page<${tableName}>`;
         }
 }
 

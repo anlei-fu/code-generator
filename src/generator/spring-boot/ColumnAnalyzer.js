@@ -4,40 +4,6 @@ const { getJavaType } = require("./utils");
 const { NamingStrategy } = require("../../libs/naming-strategy");
 
 class ColumnAnalyzer {
-
-        /**
-         * Find column from table and merge into columnConfig,
-         * return merged columnConfig
-         * @note 
-         * 1. column will be a deep-copy of source column
-         * 2. column not found will throw a error
-         * 
-         * @param {Table} table 
-         * @param {ColumnConfig} columnConfig 
-         * @param {String} alias of table
-         */
-        mergeColumnAndConlumnConfig(table, columnConfig, alias) {
-
-                // console.log(columnConfig);
-                columnConfig.name = STR.lowerFirstLetter(columnConfig.name);
-
-                // column not found
-                if (!table.columns[columnConfig.name])
-                        throw new Error(`column(${columnConfig.name}) can not be found in table(${table.name})`);
-
-                // clone to avoid reference conflict
-                let copy = OBJECT.clone(table.columns[columnConfig.name]);
-                copy.type = getJavaType(copy.type);
-                OBJECT.extend(columnConfig, copy);
-                columnConfig.prefix = alias || NamingStrategy.toHungary(table.name);
-
-                // select-sql-statement output name of column
-                columnConfig.column = `${columnConfig.prefix}.${NamingStrategy.toHungary(columnConfig.name)}`;
-                columnConfig.property = columnConfig.isList ? columnConfig.name + "s" : columnConfig.name;
-
-                return columnConfig;
-        }
-
         /**
          * Get all codition columns
          * 
@@ -104,6 +70,39 @@ class ColumnAnalyzer {
                         configItem.context.expressionGenerator.generateUpdateExpression(includes);
 
                 return includes;
+        }
+
+        /**
+         * Find column from table and merge into columnConfig,
+         * return merged columnConfig
+         * @note 
+         * 1. column will be a deep-copy of source column
+         * 2. column not found will throw a error
+         * 
+         * @param {Table} table 
+         * @param {ColumnConfig} columnConfig 
+         * @param {String} alias of table
+         */
+        mergeColumnAndConlumnConfig(table, columnConfig, alias) {
+
+                // console.log(columnConfig);
+                columnConfig.name = STR.lowerFirstLetter(columnConfig.name);
+
+                // column not found
+                if (!table.columns[columnConfig.name])
+                        throw new Error(`column(${columnConfig.name}) can not be found in table(${table.name})`);
+
+                // clone to avoid reference conflict
+                let copy = OBJECT.clone(table.columns[columnConfig.name]);
+                copy.type = getJavaType(copy.type);
+                OBJECT.extend(columnConfig, copy);
+                columnConfig.prefix = alias || NamingStrategy.toHungary(table.name);
+
+                // select-sql-statement output name of column
+                columnConfig.column = `${columnConfig.prefix}.${NamingStrategy.toHungary(columnConfig.name)}`;
+                columnConfig.property = columnConfig.isList ? columnConfig.name + "s" : columnConfig.name;
+
+                return columnConfig;
         }
 }
 

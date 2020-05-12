@@ -1,77 +1,194 @@
-{
-	"code": 100,
-	"message": "操作成功",
-	"data": {
-		"total": 5,
-		"pages": null,
-		"pageIndex": 1,
-		"pageSize": 10,
-		"list": [
-			{
-				"id": 95,
-				"phoneNo": "13064881187",
-				"email": null,
-				"alipayMpUid": null,
-				"loginPwd": null,
-				"verifyState": 0,
-				"lastLoginIp": null,
-				"lastLoginTime": null,
-				"createTime": "2019-12-09T01:50:21.000+0000",
-				"idCardNo": "510922199507078439",
-				"realName": "牟超"
-			},
-			{
-				"id": 92,
-				"phoneNo": "15102879405",
-				"email": "",
-				"alipayMpUid": null,
-				"loginPwd": null,
-				"verifyState": 0,
-				"lastLoginIp": null,
-				"lastLoginTime": null,
-				"createTime": "2019-12-05T09:53:13.000+0000",
-				"idCardNo": "513029199007240098",
-				"realName": "邓孝辉"
-			},
-			{
-				"id": 87,
-				"phoneNo": "18408219182",
-				"email": null,
-				"alipayMpUid": null,
-				"loginPwd": null,
-				"verifyState": 0,
-				"lastLoginIp": null,
-				"lastLoginTime": null,
-				"createTime": "2019-12-05T01:52:08.000+0000",
-				"idCardNo": "510812199304110031",
-				"realName": "郭巍"
-			},
-			{
-				"id": 85,
-				"phoneNo": "13730800955",
-				"email": "453015429@qq.com",
-				"alipayMpUid": null,
-				"loginPwd": null,
-				"verifyState": 0,
-				"lastLoginIp": null,
-				"lastLoginTime": null,
-				"createTime": "2019-12-05T01:30:01.000+0000",
-				"idCardNo": "511028198604097717",
-				"realName": "兰长勇"
-			},
-			{
-				"id": 83,
-				"phoneNo": "13882356167",
-				"email": "784698830@qq.com",
-				"alipayMpUid": null,
-				"loginPwd": null,
-				"verifyState": 0,
-				"lastLoginIp": null,
-				"lastLoginTime": null,
-				"createTime": "2019-12-05T01:24:53.000+0000",
-				"idCardNo": "511102199207126517",
-				"realName": "吕伟杰"
-			}
-		]
+"success": true,
+"data": [
+	{
+		"name": "生活服务app充值(正式)",
+		"url": "https://hwsh.qianxingniwo.com/hwpay.html"
+	},
+	{
+		"name": "生活服务app慢充(正式)",
+		"url": "https://hwsh.qianxingniwo.com/slowpage/hwslowpay.html"
+	},
+	{
+		"name": "生活服务app流量活动(正式)",
+		"url": "https://hwsh.qianxingniwo.com/hwactive/app/flowpay.html"
+	},
+	{
+		"name": "生活服务app优化券(正式)",
+		"url": "https://hwsh.qianxingniwo.com/hwActivity/html/MyVoucher.htm"
+	},
+	{
+		"name": "生活服务app充值(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwpay.html"
+	},
+	{
+		"name": "生活服务app慢充(预生产)",
+		"url": "https://pre.qianxingniwo.com/slowpage/hwslowpay.html"
+	},
+	{
+		"name": "生活服务app流量活动(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwactive/app/flowpay.html"
+	},
+	{
+		"name": "生活服务app优化券(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwActivity/html/MyVoucher.htm"
+	},
+	{
+		"name": "生活服务app充值(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwpay.html"
+	},
+	{
+		"name": "生活服务app慢充(预发布)",
+		"url": "https://offline.qianxingniwo.com/slowpage/hwslowpay.html"
+	},
+	{
+		"name": "生活服务app流量活动(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwactive/app/flowpay.html"
+	},
+	{
+		"name": "生活服务app优化券(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwActivity/html/MyVoucher.htm"
+	},
+	{
+		"name": "生活服务app充值(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwpay.html"
+	},
+	{
+		"name": "生活服务app慢充(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/slowpage/hwslowpay.html"
+	},
+	{
+		"name": "生活服务app流量活动(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwactive/app/flowpay.html"
+	},
+	{
+		"name": "生活服务app优化券(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwActivity/html/MyVoucher.htm"
+	},
+	{
+		"name": "/",
+		"url": "/"
+	},
+	{
+		"name": "智能短信充值(正式)",
+		"url": "https://webh5.qianxingniwo.com/hwwap/recharge/wappay.html"
+	},
+	{
+		"name": "智能短信慢充(正式)",
+		"url": "https://webh5.qianxingniwo.com/hwwap/hwwapslowpay.html"
+	},
+	{
+		"name": "智能短信流量活动(正式)",
+		"url": "https://webh5.qianxingniwo.com/hwactive/h5/flowpay.html"
+	},
+	{
+		"name": "智能短信充值(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwwap/recharge/wappay.html"
+	},
+	{
+		"name": "智能短信慢充(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwwap/hwwapslowpay.html"
+	},
+	{
+		"name": "智能短信流量活动(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwactive/h5/flowpay.html"
+	},
+	{
+		"name": "智能短信充值(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwwap/recharge/wappay.html"
+	},
+	{
+		"name": "智能短信慢充(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwwap/hwwapslowpay.html"
+	},
+	{
+		"name": "智能短信流量活动(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwactive/h5/flowpay.html"
+	},
+	{
+		"name": "智能短信充值(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwwap/recharge/wappay.html"
+	},
+	{
+		"name": "智能短信慢充(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwwap/hwwapslowpay.html"
+	},
+	{
+		"name": "智能短信流量活动(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwactive/h5/flowpay.html"
+	},
+	{
+		"name": "/",
+		"url": "/"
+	},
+	{
+		"name": "华为商城wap(正式)",
+		"url": "https://webh5.qianxingniwo.com/hwwap/recharge/mallpay.html"
+	},
+	{
+		"name": "华为商城pc(正式)",
+		"url": "https://webh5.qianxingniwo.com/hwweb/recharge.html"
+	},
+	{
+		"name": "华为商城wap(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwwap/recharge/mallpay.html"
+	},
+	{
+		"name": "华为商城pc(预生产)",
+		"url": "https://pre.qianxingniwo.com/hwweb/recharge.html"
+	},
+	{
+		"name": "华为商城wap(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwwap/recharge/mallpay.html"
+	},
+	{
+		"name": "华为商城pc(预发布)",
+		"url": "https://offline.qianxingniwo.com/hwweb/recharge.html"
+	},
+	{
+		"name": "华为商城wap(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwwap/recharge/mallpay.html"
+	},
+	{
+		"name": "华为商城pc(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/hwweb/recharge.html"
+	},
+	{
+		"name": "/",
+		"url": "/"
+	},
+	{
+		"name": "优途话费(正式)",
+		"url": "http://youtu.qianxingniwo.com:8111/zsy/recharge"
+	},
+	{
+		"name": "优途话费(预生产)",
+		"url": "https://pre.qianxingniwo.com/zsy/recharge"
+	},
+	{
+		"name": "优途话费(预发布)",
+		"url": "https://offline.qianxingniwo.com/zsy/recharge"
+	},
+	{
+		"name": "优途话费(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/zsy/recharge"
+	},
+	{
+		"name": "/",
+		"url": "/"
+	},
+	{
+		"name": "华为快应用(测试)",
+		"url": "http://demo.qianxingniwo.com:8111/fast/app/hwpay"
+	},
+	{
+		"name": "华为快应用(预发布)",
+		"url": "https://offline.qianxingniwo.com/fast/app/hwpay"
+	},
+	{
+		"name": "华为快应用(预生产)",
+		"url": "https://pre.qianxingniwo.com/fast/app/hwpay"
+	},
+	{
+		"name": "华为快应用(正式)",
+		"url": "https://hwsh.qianxingniwo.com/fast/app/hwpay"
 	}
-}

@@ -130,7 +130,6 @@ class ReqUtils {
          * @returns {String}
          */
         _generateReqArgsCore(configItem, withType) {
-
                 let params = "";
                 configItem.reqs.forEach(x => {
                         let item = "";
@@ -146,8 +145,8 @@ class ReqUtils {
                         } else {
                                 item += `${x.name}, `;
                         }
-                        params += item;
 
+                        params += item;
                 });
 
                 params = STR.removeLastComa(params);

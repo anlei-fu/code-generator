@@ -1,3 +1,9 @@
+/*----------------------------------------------------------------------------
+ * Jasmine code generator, a tool to build web crud application,with spring-
+ * boot, mybatis, mysql,swagger,spring-security.
+ * Generated at 2020-4-18 4:54:16 PM 
+ * All rights reserved by fuanlei(email:767550758@qq.com) since 2019
+ *---------------------------------------------------------------------------*/
 package com.@project.pojo.resp;
 
 import io.swagger.annotations.ApiModel;
@@ -27,6 +33,22 @@ public class R<T> {
         this.data = data;
     }
 
+    public  static  R failed(){
+        return create(RConstant.SUCCESSED_CODE, "failed");
+    }
+
+    public  static  R failed(int code){
+        return create(RConstant.SUCCESSED_CODE, "failed");
+    }
+
+    public  static  R failed(String msg){
+        return create(RConstant.SUCCESSED_CODE, "failed");
+    }
+
+    public  static  R failed(int code,String msg){
+        return create(RConstant.SUCCESSED_CODE, "failed");
+    }
+
     public static R success() {
         return success("success");
     }
@@ -42,7 +64,6 @@ public class R<T> {
     public static R doResponse(boolean result) {
         return doResponse(result, "Operate failed");
     }
-
     public static <T> R<T> doResponse(T result) {
         return doResponse(result, "No data found");
     }
@@ -53,6 +74,12 @@ public class R<T> {
 
     public static <T> R<T> doResponse(T result, String failedMsg) {
         return result != null ? new R(RConstant.SUCCESSED_CODE, "Success", result) : create(RConstant.FAILED_CODE, failedMsg);
+    }
+    
+    public  static  R doResponse(int excepted,int actual){
+        return  excepted==actual
+                ?success()
+                :failed("excepted operate "+excepted+" data,"+"actually succeed "+actual+" data");
     }
 
     public static class RConstant {

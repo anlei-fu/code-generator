@@ -1,7 +1,8 @@
 @ApiOperation("@description")
     @httpMapping
     public @returnType @methodName(@args) {
-        return R.doResponse(@snameService.@methodName(@serviceArgs));
+        @serviceReturnType result =@snameService.@methodName(@serviceArgs);
+        return R.doResponse(result,@failedMsg);
     }
 
     

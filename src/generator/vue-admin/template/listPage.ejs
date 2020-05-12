@@ -1,0 +1,90 @@
+<template>
+        <div>
+          <Filters>
+            <% filters.forEach(item => {%> 
+             <% if(item.type=="timeRange") {%> 
+             <TimeRange v-model="timeRange" <% if(item.label){ %> <%=item.label %> <% } %>/>
+             <% } %> <% else if(item.type=="select") { %>
+                <Select v-model="query.<%=item.filed%>" title="<%=item.title%>" enum="<%=item.enum%> " />
+             <% } %>  <% else if(item.type=="radioGroup") { %>
+                <span>
+                        <RadioGroup
+                          v-model="radioKey"
+                          :options="<%=item.options%> "
+                        />
+                        <Input v-model="keyword" />
+                      </span>
+             <% } %>  <% else if(item.type=="checkBoxGroup") { %>
+             <% } %> 
+        <% )}; %> 
+        <QueryButton @click="getData(true)" />
+          </Filters>
+          <Table :data="model.list">
+            <Column v-for="item in model.columns" :key="item.field" :column="item"/>
+          </Table>
+          <Pager :total="model.total" :current="query.pageIndex" @pi-change="changePageIndex" @ps-change="changePageSize" />
+        </div>
+      </template>
+      
+      <script>
+        export default {
+          data() {
+            return {
+              model: {
+                list: [],
+                total: 0,
+                columns: <%=columns %>
+              },
+      
+              query: {
+               <% query.forEach(filed=>{%>
+                <%=item.name%>:<%=item.default%>,
+               <%})%>
+              },
+              <% if(timeRange){%>
+              timeRange: [this.date.addDays(-30), this.date.now()],
+              <%}%>
+              <% if(radioGroup)%{>
+              radioKey: "<%=defaultRadioKey%>",
+              keyword: "",
+              <%}%>
+            };
+          },
+      
+          created() {
+            this.getData();
+          },
+      
+          methods: {
+            changePageSize(newSize) {
+              this.query.pageSize = newSize;
+              this.getData();
+            },
+      
+            changePageIndex(newIndex) {
+              this.query.pageIndex = newIndex;
+              this.getData();
+            },
+      
+            async getData(reset = false) {
+              if (reset) {
+                this.query.pageIndex = 1;
+              }
+      
+              <%if(radioGroup){%>
+              this.resetFields(this.query, null,<%=radioGroupItems%>);
+              this.query[this.radioKey] = this.keyword;
+              <%}%>
+              
+              <%if(timeRange){%>
+                this.query.startTime = this.timeRange[0];
+                this.query.endTime = this.timeRange[1];
+              <%}%>
+
+              const res = await this.$get(this.apis.getPurchaseList, this.query);
+              this.handleListResp(res);
+            },
+          },
+        };
+      </script>
+      

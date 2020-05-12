@@ -19,9 +19,7 @@ class SpringBootProjectInitializer {
         async  init(project, company, dbConfig, generateDb = true) {
 
                 // create project required folders
-                this._makeAllFolders(project, company, dbConfig);
-                
-                this._copy('./templates/dictionary.js', `./output/${project}/db/dictionary.js`);
+                this._makeFoldersAndCoopyFiles(project, company, dbConfig);
 
                 if (generateDb)
                         await resolve(dbConfig, dbConfig.db, `${__dirname}/output/${project}/db`);
@@ -44,11 +42,6 @@ class SpringBootProjectInitializer {
                 FILE.write(`${root}/all.js`,
                         COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
 
-                // create index.js
-                this._copy1("./templates/build.js", `./output/${project}/build.js`, project, company);
-                this._copy('./templates/packages.js', `./output/${project}/packages.js`, project, company);
-                this._copy('./templates/dictionary.js', `./output/${project}/db/dictionary.js`);
-
                 LOG.info(`project ${project} init finished!`);
         }
 
@@ -60,7 +53,7 @@ class SpringBootProjectInitializer {
          * @param {String} company
          * @param {DbConfig} dbConfig
          */
-        _makeAllFolders(project, company, dbConfig) {
+        _makeFoldersAndCoopyFiles(project, company, dbConfig) {
 
                 // base structure
                 DIR.create(`./output/`);
@@ -105,13 +98,16 @@ class SpringBootProjectInitializer {
                 DIR.create(`./output/${project}/${project}/src/test/java/com`);
                 DIR.create(`./output/${project}/${project}/src/test/java/com/${project}`);
 
+                this._copy('./templates/dictionary.js', `./output/${project}/db/dictionary.js`);
+
                 // all default files
                 this._copy("./templates/R.java", `${root}/pojo/resp/R.java`, project, company);
+                this._copy("./templates/PageResult.java", `${root}/pojo/resp/PageResult.java`, project, company);
                 this._copy("./templates/WebConfig.java", `${root}/config/WebConfig.java`, project, company);
                 this._copy("./templates/SwaggerConfig.java", `${root}/config/SwaggerConfig.java`, project, company);
                 this._copy("./templates/ValidatorConfig.java", `${root}/config/ValidatorConfig.java`, project, company);
                 this._copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resources/logback.xml`, project, company);
-
+               
                 // page req
                 this._copy("./templates/PageReq.java", `${root}/pojo/req/PageReq.java`, project, company);
 
@@ -122,6 +118,10 @@ class SpringBootProjectInitializer {
                 this._copy("./templates/build.gradle", `./output/${project}/${project}/build.gradle`, project, company);
 
                 this._copy("./templates/Application.java", `./output/${project}/${project}/src/main/java/com/${company}/${project}/Application.java`, project, company);
+
+                 // create index.js
+                 this._copy1("./templates/build.js", `./output/${project}/build.js`, project, company);
+                 this._copy('./templates/packages.js', `./output/${project}/packages.js`, project, company);
 
                 // annotation
                 this._copyFolder("./templates/annotation", `${root}/validate/annotation`, project, company);
@@ -215,7 +215,5 @@ class SpringBootProjectInitializer {
                 FILE.write(target, content);
         }
 }
-
-
 
 exports.SpringBootProjectInitializer = SpringBootProjectInitializer;

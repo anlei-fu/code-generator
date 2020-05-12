@@ -49,6 +49,8 @@ class ControllerRender {
                         description,
                         args: this._getArgs(configItem),
                         sname: STR.lowerFirstLetter(configName),
+                        serviceReturnType:this._getServiceReturnType(configItem,configName),
+                        failedMsg:this._getErrorMsg(configItem)
                 };
         }
 
@@ -120,9 +122,26 @@ class ControllerRender {
                                 : `R<${configName}>`;
                 } else {
                         return configItem.resp.doCreate
-                                ? `R<PageInfo<${STR.upperFirstLetter(configItem.resp.type)}>>`
-                                : `R<PageInfo<${configName}>>`;
+                                ? `R<PageResult<${STR.upperFirstLetter(configItem.resp.type)}>>`
+                                : `R<PageResult<${configName}>>`;
                 }
+        }
+
+        _getServiceReturnType(configItem,tableName) {
+                if (configItem.type != "select")
+                        return ReqUtils.hasBatchReq(configItem) ? "int" : "boolean";
+
+                return configItem.resp.single
+                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
+                        : configItem.resp.doCreate ? `PageResult<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageResult<${tableName}>`;
+        }
+
+        _getErrorMsg(configItem) {
+                if (configItem.type != "select") {
+                        return `"${configItem.type} failed, check data is existed"`;
+                }
+
+                return `"nodata found, check data is existed"`;
         }
 }
 

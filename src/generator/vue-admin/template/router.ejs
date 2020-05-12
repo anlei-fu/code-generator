@@ -1,0 +1,106 @@
+import Vue from "vue";
+import Router from "vue-router";
+import Login from "@/components/Login";
+import Home from "@/components/Home";
+
+Vue.use(Router);
+
+const routes = [
+	{
+		path: "/",
+		name: "login",
+		component: Login,
+	},
+	{
+		path: "/home",
+		name: "home",
+		component: Home,
+		children: [
+			//合同签约
+			{
+				path: "/contractsign/list",
+				name: "签署信息",
+				component: () => import("@/components/pages/contractSign/contractSign"),
+			},
+			{
+				path: "/contractmain/list",
+				name: "合同信息",
+				component: () => import("@/components/pages/contractMain/contractMain"),
+			},
+			//用户企业
+			{
+				path: "/useraccount/list",
+				name: "用户账号",
+				component: () => import("@/components/pages/userAccount/userAccount"),
+			},
+			{
+				path: "/userreal/list",
+				name: "用户实名",
+				component: () => import("@/components/pages/userReal/userReal"),
+			},
+			{
+				path: "/company/list",
+				name: "用户企业",
+				component: () => import("@/components/pages/userCompany/userCompany"),
+			},
+			{
+				path: "/usercontact/list",
+				name: "用户联系人",
+				component: () => import("@/components/pages/userContact/userContact"),
+			},
+			//资金钱包
+			{
+				path: "/receiptaccount/list",
+				name: "收款账号",
+				component: () => import("@/components/pages/receiptAccount/receiptAccount"),
+			},
+			{
+				path: "/userwallet/list",
+				name: "用户钱包",
+				component: () => import("@/components/pages/userWallet/userWallet"),
+			},
+			{
+				path: "/purchaserecord/list",
+				name: "购买记录",
+				component: () => import("@/components/pages/records/purchaseRecord"),
+			},
+			{
+				path: "/consumerecord/list",
+				name: "消费记录",
+				component: () => import("@/components/pages/records/consumeRecord"),
+			},
+			//系统配置
+			{
+				path: "/meal/list",
+				name: "系统套餐",
+				component: () => import("@/components/pages/meal/meal"),
+			},
+			{
+				path: "/user/detail",
+				name: "系统套餐",
+				component: () => import("@/components/pages/userAccount/userDetail"),
+			},
+			{
+				path: "/dictionary/list",
+				name: "字典表",
+				component: () => import("@/components/pages/dictionary/dictionary"),
+			},
+			{
+				path: "/syslog/list",
+				name: "系统日志",
+				component: () => import("@/components/pages/sysLog/sysLog"),
+			},
+		],
+	},
+];
+
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+	return originalPush.call(this, location).catch((err) => err);
+};
+
+export default new Router({
+	mode: "history",
+	base: "signAdmin", //浏览器路由
+	routes: routes,
+});

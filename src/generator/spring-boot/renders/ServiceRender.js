@@ -49,7 +49,7 @@ class ServiceRender {
 
                 return configItem.resp.single
                         ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
-                        : configItem.resp.doCreate ? `PageInfo<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageInfo<${tableName}>`;
+                        : configItem.resp.doCreate ? `PageResult<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageResult<${tableName}>`;
         }
 }
 

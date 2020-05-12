@@ -65,3 +65,7 @@ function testPropertyVisitor(){
 }
 
 testPropertyVisitor();
+
+var a='';
+
+console.log(!!a);

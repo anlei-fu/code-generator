@@ -1,0 +1,10 @@
+class Writer{
+        writeListPage(){
+
+        }
+        
+        writeEdit(){
+                
+        }
+
+}

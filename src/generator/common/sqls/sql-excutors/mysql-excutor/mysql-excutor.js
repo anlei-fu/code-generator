@@ -20,7 +20,7 @@ class MysqlExcutor {
          * @param {DbConfig} config 
          */
         constructor(config) {
-                this.pool = mysql.createPool(config);
+                this._pool = mysql.createPool(config);
         }
 
         /**
@@ -31,11 +31,11 @@ class MysqlExcutor {
          */
         query(sql) {
                 return new Promise((resolve, reject) => {
-                        this.pool.query(sql, (error, results) => {
+                        this._pool.query(sql, (error, results) => {
                                 if (error) {
                                         reject(error)
                                 } else {
-                                        resolve(merge(results));
+                                        resolve(convert(results));
                                 }
                         });
                 });
@@ -48,7 +48,7 @@ class MysqlExcutor {
          */
         excute(sql) {
                 return new Promise((resolve, reject) => {
-                        this.pool.query(sql, (error, results, fields) => {
+                        this._pool.query(sql, (error, results, _) => {
                                 if (error) {
                                         LOG.error(`sql is (${sql})`,error);
                                         reject(error)
@@ -72,23 +72,29 @@ class MysqlExcutor {
          */
         excuteTransanction(sql, isolateLevel) {
                 return new Promise((resolve, reject) => {
-                        this.pool.getConnection((getCnnError, cnn) => {
-                                if (getCnnError)
+                        this._pool.getConnection((getCnnError, cnn) => {
+                                if (getCnnError){
                                         reject(getCnnError);
+                                        return;
+                                }
 
                                 cnn.beginTransaction(transanctionError => {
-                                        if (transanctionError)
+                                        if (transanctionError){
                                                 reject(transanctionError);
+                                                return;
+                                        }
 
-                                        cnn.query(sql, (queryError, results, fields) => {
+                                        cnn.query(sql, (queryError, _, __) => {
                                                 if (queryError)
                                                         reject(queryError);
 
                                                 let t = 0;
 
                                                 cnn.commit(commitError => {
-                                                        if (commitError)
+                                                        if (commitError){
                                                                 reject(commitError);
+                                                                return;
+                                                        }
 
                                                         cnn.release();
 
@@ -106,8 +112,8 @@ class MysqlExcutor {
  * 
  * @param {[object]} results 
  */
-function merge(results) {
-        let datas = [];
+function convert(results) {
+        let result = [];
         results.forEach(x => {
                 let data = {};
                 OBJECT.forEach(x, (key, value) => {
@@ -115,10 +121,10 @@ function merge(results) {
                         data[name] = value;
                 })
 
-                datas.push(data);
+                result.push(data);
         })
 
-        return datas;
+        return result;
 }
 
 exports.MysqlExcutor = MysqlExcutor;

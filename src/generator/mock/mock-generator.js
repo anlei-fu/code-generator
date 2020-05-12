@@ -113,6 +113,45 @@ const DEFAULT_CANDIDATES = {
 
 }
 
+
+class MockConfig{
+        constructor(){
+                this.range={
+                        min:0,
+                        max:9999,
+                },
+
+                this.collections=[];
+        }
+}
+
+class MockConfigBuilder{
+        range(key,min,max){
+
+        }
+
+        startsWith(key,start){
+
+        }
+
+        endsWidth(key, end){
+
+        }
+
+        startsAndEndsWith(key,start,end){
+
+        }
+        
+        collection(key,collection){
+
+        }
+
+        setProperty(key,value){
+
+        }
+}
+
+
 const CANDIDATE_PICKER = (name, collection) => {
         for (const key in collection) {
                 if (collection[key].match(name)) {
@@ -155,10 +194,8 @@ class MockGenerator {
         }
 
         getMockData(name, type) {
-                if (!type)
-                        return;
-                if (!this._candidates[type])
-                        throw new Error(`candidate(${name}) type '${type}' not found`);
+                if (!type||!this._candidates[type])
+                        throw new Error(`candidate(${name}) type '${type}' is null or no candidate to generate`);
 
                 return CANDIDATE_PICKER(name, this._candidates[type]);
         }

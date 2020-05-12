@@ -12,7 +12,8 @@ class AnalyzerBase {
         * Add customer configs just extend not override
         * 
         * @param {any} target 
-        * @param {{type:String,items:[String]}} param1 
+        * @param {{type:String,items:[String]}} config
+        * @private
         */
         _useCore(target, config) {
                 OBJECT.deepExtend(target, config);
@@ -23,6 +24,7 @@ class AnalyzerBase {
          * 
          * @param {any} target 
          * @param {any} config 
+         * @private
          */
         _disableCore(target, config) {
                 Object.keys(config).forEach(typeKey => {
@@ -315,7 +317,6 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
         constructor () {
                 super();
                 this.excludes = SELECT_EXLUCES;
-
         }
 
         /**

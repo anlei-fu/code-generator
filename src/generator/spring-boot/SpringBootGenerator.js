@@ -534,9 +534,6 @@ class SpringBootGenerator {
                         configs.push(value);
                 });
 
-
-                console.log("render params");
-                console.log("req+" + docreateReqType);
                 let content = this._context.render.renderParams(configs, docreateReqType)
                         .replace("@type", "param");
 
@@ -574,8 +571,8 @@ class SpringBootGenerator {
 }
 
 module.exports = {
-        Config: ConfigItem,
-        GeneratorConfig: ConfigItem,
+        ConfigItem,
+        ConfigGroup,
         Join,
         Req,
         Resp,

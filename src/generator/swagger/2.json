@@ -1,0 +1,3288 @@
+{
+	"Advise": {
+		"add": {
+			"method": "post",
+			"path": "/advise",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"content": {
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/advise/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/advise/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/advise/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/advise/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/advise/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"content": {
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/advise/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"Company": {
+		"add": {
+			"method": "post",
+			"path": "/company",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"companyName": {
+					"description": "公司名称",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/company/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/company/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/company/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/company/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/company/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"companyName": {
+					"description": "公司名称",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/company/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"ContentDetail": {
+		"add": {
+			"method": "post",
+			"path": "/contentDetail",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"comeFrom": {
+					"description": "来自哪里",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"content": {
+					"description": "内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"contentMainId": {
+					"description": "类容主表id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"remark": {
+					"description": "备注",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"sort": {
+					"description": "显示顺序",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"state": {
+					"description": "-1关闭,1正常",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"title": {
+					"description": "标题",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"type": {
+					"description": "保留",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/contentDetail/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/contentDetail/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/contentDetail/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/contentDetail/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/contentDetail/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"comeFrom": {
+					"description": "来自哪里",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"content": {
+					"description": "内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"contentMainId": {
+					"description": "类容主表id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"remark": {
+					"description": "备注",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"sort": {
+					"description": "显示顺序",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"state": {
+					"description": "-1关闭,1正常",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"title": {
+					"description": "标题",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"type": {
+					"description": "保留",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/contentDetail/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"ContentMain": {
+		"add": {
+			"method": "post",
+			"path": "/contentMain",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"modelName": {
+					"description": "消息模块名称",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"modelNo": {
+					"description": "模块编号",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"showNum": {
+					"description": "最大显示数",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"state": {
+					"description": "-1关闭,1正常",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "保留",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/contentMain/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/contentMain/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/contentMain/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/contentMain/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/contentMain/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"modelName": {
+					"description": "消息模块名称",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"modelNo": {
+					"description": "模块编号",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"showNum": {
+					"description": "最大显示数",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"state": {
+					"description": "-1关闭,1正常",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "保留",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/contentMain/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"Department": {
+		"add": {
+			"method": "post",
+			"path": "/department",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"companyId": {
+					"description": "所属公司",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"departmentName": {
+					"description": "部门名称",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"leaderId": {
+					"description": "部门负责人Id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"parentId": {
+					"description": "上级部门Id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"replyEnd": {
+					"description": "回复结束时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"replyStart": {
+					"description": "回复开始时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"reportEnd": {
+					"description": "汇报结束时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"reportStart": {
+					"description": "汇报开始时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"showScore": {
+					"description": "是否展示评:1展示;2-不展示",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/department/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/department/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/department/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/department/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/department/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"companyId": {
+					"description": "所属公司",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"departmentName": {
+					"description": "部门名称",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"leaderId": {
+					"description": "部门负责人Id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"parentId": {
+					"description": "上级部门Id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"replyEnd": {
+					"description": "回复结束时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"replyStart": {
+					"description": "回复开始时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"reportEnd": {
+					"description": "汇报结束时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"reportStart": {
+					"description": "汇报开始时间(预设)",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"showScore": {
+					"description": "是否展示评:1展示;2-不展示",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/department/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"草稿": {
+		"add": {
+			"method": "post",
+			"path": "/draft",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"content": {
+					"description": "内容 ，最长3000字符",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"employeeId": {
+					"description": "用户 id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/draft/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/draft/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/draft/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/draft/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/draft/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"content": {
+					"description": "内容 ，最长3000字符",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"employeeId": {
+					"description": "用户 id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/draft/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"Employee": {
+		"add": {
+			"method": "post",
+			"path": "/employee",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"companyId": {
+					"description": "所属公司",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"departmentId": {
+					"description": "所属部门",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"downNum": {
+					"description": "默认查询下级数,默认1",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"employeeKey": {
+					"description": "用户加密key,禁止修改,否则将不能解密",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"leaderId": {
+					"description": "上级领导",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"loginId": {
+					"description": "登录Id",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"loginPwd": {
+					"description": "登录密码",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"realName": {
+					"description": "员工姓名",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"state": {
+					"description": "用户状:-1禁用,1默认正常",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "账号类:-1离职 ,:普通用户,1:管理员",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/employee/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/employee/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/employee/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/employee/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/employee/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"companyId": {
+					"description": "所属公司",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"departmentId": {
+					"description": "所属部门",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"downNum": {
+					"description": "默认查询下级数,默认1",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"employeeKey": {
+					"description": "用户加密key,禁止修改,否则将不能解密",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"leaderId": {
+					"description": "上级领导",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"loginId": {
+					"description": "登录Id",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"loginPwd": {
+					"description": "登录密码",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"realName": {
+					"description": "员工姓名",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"state": {
+					"description": "用户状:-1禁用,1默认正常",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "账号类:-1离职 ,:普通用户,1:管理员",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/employee/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"Message": {
+		"add": {
+			"method": "post",
+			"path": "/message",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"content": {
+					"description": "消息内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"key": {
+					"description": "用于跳转定位，一般是汇报id",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"receiveUserId": {
+					"description": "消息接收人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"state": {
+					"description": "2:未读,0已读",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "1-回复;2-驳回;3-批注;4-抄送;:自己回复领导的",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"url": {
+					"description": "重定向url",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"userId": {
+					"description": "消息创建人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/message/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/message/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/message/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/message/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/message/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"content": {
+					"description": "消息内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"key": {
+					"description": "用于跳转定位，一般是汇报id",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"receiveUserId": {
+					"description": "消息接收人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"state": {
+					"description": "2:未读,0已读",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "1-回复;2-驳回;3-批注;4-抄送;:自己回复领导的",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"url": {
+					"description": "重定向url",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"userId": {
+					"description": "消息创建人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/message/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"Reply": {
+		"add": {
+			"method": "post",
+			"path": "/reply",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"message": {
+					"description": "回复消息",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"parentId": {
+					"description": "父消息id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"replyTime": {
+					"description": "回复时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"replyUserId": {
+					"description": "回复用户Id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"reportId": {
+					"description": "报告编号",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"status": {
+					"description": "状: 2:-等待 0-完成(如果是抄送的表示已读) 90驳回",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": ":直接领导的汇报;2.抄送的汇报;3.汇报人的回复",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/reply/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/reply/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/reply/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/reply/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/reply/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"message": {
+					"description": "回复消息",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"parentId": {
+					"description": "父消息id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"replyTime": {
+					"description": "回复时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"replyUserId": {
+					"description": "回复用户Id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"reportId": {
+					"description": "报告编号",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"status": {
+					"description": "状: 2:-等待 0-完成(如果是抄送的表示已读) 90驳回",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": ":直接领导的汇报;2.抄送的汇报;3.汇报人的回复",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/reply/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"Report": {
+		"add": {
+			"method": "post",
+			"path": "/report",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"content": {
+					"description": "报告内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"contentAes": {
+					"description": "加密汇报内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"employeeId": {
+					"description": "员工编号",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"endTime": {
+					"description": "结束时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"monthId": {
+					"description": "月报ID",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"replyTime": {
+					"description": "回复时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"reportType": {
+					"description": "报告类型,:月报; :周报; :日报",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"scoreOne": {
+					"description": "得分项1 工作饱和度",
+					"required": false,
+					"type": "number",
+					"format": "double",
+					"from": "query"
+				},
+				"scoreThree": {
+					"description": "得分项3 工作完成度",
+					"required": false,
+					"type": "number",
+					"format": "double",
+					"from": "query"
+				},
+				"scoreTwo": {
+					"description": "得分项2 工作成效",
+					"required": false,
+					"type": "number",
+					"format": "double",
+					"from": "query"
+				},
+				"startTime": {
+					"description": "开始时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"status": {
+					"description": "状: 20:等待审核 30-驳回后修改完成 0-审核成功  90-驳回",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"title": {
+					"description": "标题",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"weekId": {
+					"description": "周报ID",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/report/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/report/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/report/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/report/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/report/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"content": {
+					"description": "报告内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"contentAes": {
+					"description": "加密汇报内容",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"employeeId": {
+					"description": "员工编号",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"endTime": {
+					"description": "结束时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"monthId": {
+					"description": "月报ID",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"replyTime": {
+					"description": "回复时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"reportType": {
+					"description": "报告类型,:月报; :周报; :日报",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"scoreOne": {
+					"description": "得分项1 工作饱和度",
+					"required": false,
+					"type": "number",
+					"format": "double",
+					"from": "query"
+				},
+				"scoreThree": {
+					"description": "得分项3 工作完成度",
+					"required": false,
+					"type": "number",
+					"format": "double",
+					"from": "query"
+				},
+				"scoreTwo": {
+					"description": "得分项2 工作成效",
+					"required": false,
+					"type": "number",
+					"format": "double",
+					"from": "query"
+				},
+				"startTime": {
+					"description": "开始时间",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"status": {
+					"description": "状: 20:等待审核 30-驳回后修改完成 0-审核成功  90-驳回",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"title": {
+					"description": "标题",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"weekId": {
+					"description": "周报ID",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/report/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"系统字典表": {
+		"add": {
+			"method": "post",
+			"path": "/systemDictionary",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"remark": {
+					"description": "字典备注",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"sortNum": {
+					"description": "字典排序",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "字典类型",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"value": {
+					"description": "字典值",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/systemDictionary/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/systemDictionary/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/systemDictionary/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/systemDictionary/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/systemDictionary/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"remark": {
+					"description": "字典备注",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"sortNum": {
+					"description": "字典排序",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"description": "字典类型",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"value": {
+					"description": "字典值",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/systemDictionary/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	},
+	"SystemLog": {
+		"add": {
+			"method": "post",
+			"path": "/systemLog",
+			"description": "add",
+			"contentType": "application/json",
+			"query": {
+				"content": {
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"employeeId": {
+					"description": "操作人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"primaryId": {
+					"description": "操作id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"rank": {
+					"description": "日志重要等:数字越大等级越高,1-低,2-中,3-高",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"remark": {
+					"description": "备注",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"tableName": {
+					"description": "操作表名",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"title": {
+					"description": "修改标:如部门修改",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"type": {
+					"description": "1-修改,2-增间,3-删除(假删除),4-查询(查询一般不计日志)",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailList": {
+			"method": "get",
+			"path": "/systemLog/detail/list",
+			"description": "getDetailList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getDetailById": {
+			"method": "get",
+			"path": "/systemLog/detail/{id}",
+			"description": "getDetailById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"getList": {
+			"method": "get",
+			"path": "/systemLog/list",
+			"description": "getList",
+			"contentType": "application/json",
+			"query": {
+				"createTimeStart": {
+					"description": " start time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"createTimeEnd": {
+					"description": " end time",
+					"required": false,
+					"type": "string",
+					"format": "date-time",
+					"from": "query"
+				},
+				"state": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"type": {
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"userId": {
+					"description": "提建议的人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageIndex": {
+					"description": "index of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"pageSize": {
+					"description": "size of page",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"getById": {
+			"method": "get",
+			"path": "/systemLog/{id}",
+			"description": "getById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		},
+		"updateById": {
+			"method": "put",
+			"path": "/systemLog/{id}",
+			"description": "updateById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				},
+				"content": {
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"employeeId": {
+					"description": "操作人id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"primaryId": {
+					"description": "操作id",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"rank": {
+					"description": "日志重要等:数字越大等级越高,1-低,2-中,3-高",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				},
+				"remark": {
+					"description": "备注",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"tableName": {
+					"description": "操作表名",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"title": {
+					"description": "修改标:如部门修改",
+					"required": false,
+					"type": "string",
+					"from": "query"
+				},
+				"type": {
+					"description": "1-修改,2-增间,3-删除(假删除),4-查询(查询一般不计日志)",
+					"required": false,
+					"type": "integer",
+					"format": "int32",
+					"from": "query"
+				}
+			},
+			"response": {}
+		},
+		"deleteById": {
+			"method": "delete",
+			"path": "/systemLog/{id}",
+			"description": "deleteById",
+			"contentType": "application/json",
+			"query": {
+				"id": {
+					"description": "id",
+					"required": true,
+					"type": "integer",
+					"format": "int32",
+					"from": "path"
+				}
+			},
+			"response": {}
+		}
+	}
+}

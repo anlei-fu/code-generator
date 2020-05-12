@@ -79,7 +79,7 @@ const DEFAULT_MATCHER = (name, pattern) =>
         name.toLowerCase().includes(pattern.toLowerCase())
 
 // to check is foreign key column
-const RELATION_CANDIDATES_MATCHERS = {
+const RELATION_COLUMN_CANDIDATES_MATCHERS = {
         String: {
                 Id: {
                         matcher: (columnName) => columnName.endsWith("Id")
@@ -131,7 +131,7 @@ class TableRelationAnalyzer {
          * @param {Tables} tables 01
          */
         constructor (tables) {
-                this._candiadtesMatchers = RELATION_CANDIDATES_MATCHERS;
+                this._candiadtesMatchers = RELATION_COLUMN_CANDIDATES_MATCHERS;
                 this._searcher = new SimpleFullTextSearcher();
                 this._tables = tables;
                 this._customerOtherTableColumnSelector;
@@ -139,6 +139,7 @@ class TableRelationAnalyzer {
                 this._customerSearchResultsMatcher;
                 this._customerKeywordsGenerator;
                 this._mainTableMatchers = DEFAULT_MAIN_TABLE_MATCHERS;
+
                 this._initSearcher();
         }
 
@@ -256,6 +257,8 @@ class TableRelationAnalyzer {
          * @returns {boolean} 
          */
         _shouldBeCandidate(type, columnName) {
+
+                // not surpported type
                 if (!this._candiadtesMatchers[type])
                         return false;
 
@@ -274,9 +277,10 @@ class TableRelationAnalyzer {
         /**
          * Generate relation core func
          * 
-         * @param {String} selfTableRawName 
          * @param {Realations} relations 
          * @param {String} selfColumn 
+         * @param {String} selfTableRawName 
+         * @param {String} table
          */
         _generateRelation(relations, selfColumn, selfTableRawName, table) {
 
@@ -295,6 +299,7 @@ class TableRelationAnalyzer {
                         ? this._customerSearchResultsMatcher(selfColumn.rawName, selfTableRawName, candidates)
                         : this._defaultBestResultsMatcher(selfColumn.rawName, selfTableRawName, candidates);
 
+                // no any match
                 if (!bestCandidate)
                         return;
 
@@ -354,7 +359,7 @@ class TableRelationAnalyzer {
                 let best;
                 for (const result of results) {
 
-                        // self table skip
+                        // self table skip ? tree-like
                         if (result.content.toLowerCase() == tableRawName.toLowerCase())
                                 continue;
 

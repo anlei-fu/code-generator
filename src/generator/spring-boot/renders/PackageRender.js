@@ -30,10 +30,17 @@ PACKAGES.set("@NotNull", {
         isSystem: true
 });
 
-PACKAGES.set("PageInfo", {
-        package: "import com.github.pagehelper.PageInfo;",
+PACKAGES.set("PageResult", {
+        package: "import com.@project.pojo.resp.PageResult;",
         isSystem: false
 });
+
+PACKAGES.set("Page", {
+        package: "import com.github.pagehelper.Page;",
+        isSystem: false
+});
+
+
 
 PACKAGES.set("PageHelperUtils", {
         package: "import com.@project.utils.PageHelperUtils;",

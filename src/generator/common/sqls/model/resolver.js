@@ -31,30 +31,32 @@ async function resolve(sqlConfig, schema) {
         let columns = await excutor.query(`${QUERY_COLUMNS_SQL}='${schema}'`);
         let output = new Map();
 
-        columns.forEach(x => {
-                let table = NamingStrategy.toCamel(x.tableName);
+        columns.forEach(columMetaInfo => {
+                let table = NamingStrategy.toCamel(columMetaInfo.tableName);
                 if (!output.has(table)){
                         output.set(table, new Table(table));
-                        output.get(table).description=tables.get(x.tableName).tableComment;
+                        output.get(table).description=tables.get(columMetaInfo.tableName).tableComment;
                 }
 
                 let column = new Column();
-                if (x.columnKey && x.columnKey.indexOf("PRI") != -1) {
+                if (columMetaInfo.columnKey && columMetaInfo.columnKey.indexOf("PRI") != -1) {
                         column.isPk = true;
                         output.get(table).primaryKey = column.name;
                 }
 
-                if (x.extra == "auto_increment")
+                if (columMetaInfo.extra == "auto_increment")
                         column.autoIncrement = true;
                 
-                if (x.columnDefault)
-                    column.defaultValue-x.columnComment;
+                if (columMetaInfo.columnDefault)
+                    column.defaultValue=columMetaInfo.columnComment;
 
-                column.name = NamingStrategy.toCamel(x.columnName);
-                column.rawName=x.columnName;
-                column.nullable = x.isNullable == "YES";
-                column.description = x.columnComment;
-                column.type = SqlType.parse(x.columnType);
+                column.name = NamingStrategy.toCamel(columMetaInfo.columnName);
+                column.rawName=columMetaInfo.columnName;
+                column.nullable = columMetaInfo.isNullable == "YES";
+                column.description = columMetaInfo.columnComment;
+                column.type = SqlType.parse(columMetaInfo.columnType);
+
+                // set to target table
                 output.get(table).columns[column.name] = column;
         });
 

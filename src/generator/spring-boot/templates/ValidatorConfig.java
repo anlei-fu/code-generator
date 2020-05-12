@@ -1,4 +1,4 @@
-package com.qianxingniwo.config;
+package com.@project.config;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
