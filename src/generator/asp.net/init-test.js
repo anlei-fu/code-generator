@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const {all}=require("../oracle-table-info-resolver/outputs/18/all")
+const {all}=require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/18/all");
 
 const SETTLE={
    project:"",
@@ -39,7 +39,7 @@ function test() {
       abbrOfProject:_18.abbrOfProject,
       edit:true,
    }
-   init(all.stCommonThresholdConfig, config);
+   init(all.stPhoneTag, config);
 }
 
 test();

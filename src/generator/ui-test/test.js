@@ -1,6 +1,9 @@
 const puppeteer = require('puppeteer');
 const { login } = require("./login");
 const { toTargePage } = require("./goto-test-page");
+const {LoggerFactory} =require("./../common/logging/logger-factory");
+
+const LOG =LoggerFactory.getLogger("param checker");
 
 async function test() {
         const browser = await puppeteer.launch({
@@ -10,25 +13,17 @@ async function test() {
         });
 
         const page = await browser.newPage();
-        await page.goto('http://localhost:3650/system/index');
+        await page.goto('http://localhost:8080');
+      await  page.evaluate(()=>{
+               return window.error=(error)=>LOG.error("page",error);
+        })
 
-        page.on("console", (e) => {
-                console.log(e.text());
+        page.on("error", (e) => {
+                console.log(e);
         });
-
-        try {
-                let result = await login(page);
-                if(!result){
-                        console.log("login failed!");
-                        return;
-                }
-                
-                if (result) {
-                       await toTargePage(page, "订单管理/订单管理/短信校验")
-                }
-        } catch(ex){
-              console.log(ex);
-        }
+        page.on("pageerror",e=>{
+                console.log(e);
+        })
 };
 
 test();

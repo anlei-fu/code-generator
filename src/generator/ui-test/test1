@@ -1,0 +1,355 @@
+{
+	"Commands": [
+		{
+			"type": 18,
+			"value": "focus text box"
+		},
+		{
+			"type": 0,
+			"value": null,
+			"location": {
+				"x": 50,
+				"y": 138
+			}
+		},
+		{
+			"type": 3,
+			"value": 1000,
+			"location": null
+		},
+		{
+			"type": 0,
+			"value": null,
+			"locatioconst { UiCommandBuilder, Point } = require("./UiCommandBuilder");
+
+
+class GenerateConfig{
+
+}
+
+
+class TestGenerator {
+
+        constructor (config) {
+                this._config = config || {};
+                this._config.select.firstItem=this._config.select.firstItem||{offsetx:-80,offsety:51};
+                this._config.select.gutter=this._config.select.gutter||36;
+                this._config.select.clearDlay=this._config.select.clearDlay
+                
+                this._config.timeRange.lastMonth=this._config.timeRange.lastMonth||{offsetx:-312,offsety:80};
+                this._config.timeRange.lastThreeMonth=this._config.timeRange.lastThreeMonth||{offsetx:-312,offsety:100};
+                this._config.timeRange.previousYear=this._config.timeRange.previousYear||{offsetx:-208,offsety:63};
+                this._config.timeRange.startTime=this._config.timeRange.startTime||{offsetx:-189,offsety:260};
+                this._config.timeRange.endTime=this._config.timeRange.endTime||{offsetx:361,offsety:260};
+
+                this._config.timeRange.testSuits=his._config.timeRange.testSuits||{lastMonth:true,lastThreeMonth:true};
+
+
+                this._config.afterQueryDelay=5000;
+                this._config.select.dropDelay=1000;
+                this._config.timeRange.showDlay=1000;
+                this._config.changModuleDelay=1000;
+                this._config.changeMenuDelay=1000;
+                this._config.expandingMenuDelay=1000;
+                this._config.timeRange.changeDelay=100;
+
+
+                this._builder = new UiCommandBuilder();
+        }
+
+        /**
+         * 
+         * @param {TestConfig} config 
+         * @returns 
+         */
+        generate(config) {
+                this.expandAllModules(config.modules);
+
+                config.modules.forEach(module => {
+                        this.generateModule(module);
+                });
+
+                return this._builder.name(config.name)
+                        .description(config.name)
+                        .build();
+        }
+
+        /**
+         * 
+         * @param {[ModuleConfig]} modules 
+         */
+        expandAllModules(modules) {
+                this._builder.info("expand all module");
+                modules.forEach(module => {
+                        if (module.expanded)
+                                return;
+
+                        this._builder.click(module.location)
+                                .wait(this._config.expandingMenuDelay)
+                                .click(82, 205)
+                                .info(`${module.name} expanded!`);
+                });
+        }
+
+        /**
+         * 
+         * @param {ModuleConfig} config 
+         */
+        generateModule(config) {
+                this._builder.click(config.location)
+                             .wait(config.changModuleDelay)
+                             .info(`begin testting module ${config.name}`);
+
+                config.menus.forEach(menu => {
+                        this.generateMenu(menu);
+                })
+        }
+
+        /**
+         * 
+         * @param {MenuConfig} config 
+         */
+        generateMenu(config) {
+                this._builder
+                        .click(config.location)
+                        .wait(this._config.changeMenuDelay)
+                        .info(`begin testting menu ${config.name}`);
+
+                if (config.timeRange)
+                        this.generateTimeRange(config.timeRange, config);
+
+                config.selects.forEach(select => {
+                        this.generateSelect(select, config);
+                });
+
+                if (config.radioGroup)
+                        this.generateRadioGroup(config.radioGroup, config)
+
+        }
+
+        /**
+         * 
+         * @param {SelectConfig} selectConfig 
+         * @param {MenuConfig} menuConfig 
+         */
+        generateSelect(selectConfig, menuConfig) {
+                let points = {
+                        anchor: selectConfig.location,
+                        firstItem: { 
+                                x: selectConfig.location.x +this._config.select.firstItem.offsetx,
+                                y: selectConfig.location.y +this._config.select.firstItem.offsety
+                        }
+                }
+
+                this._builder.info(`begin test select ${selectConfig.name}`);
+
+                for (let i = 0; i < selectConfig.count; i++) {
+                        let itemPos = { x: points.firstItem.x, y:points.firstItem.y + i * 36 };
+                        this._builder.info(`test select item ${i}`)
+                                .click(points.anchor)
+                                .wait(this._config.select.dropDelay)
+                                .click(itemPos)
+                                .click(menuConfig.queryButtonLocation)
+                                .wait(this._config.afterQueryDelay)
+                                .click(points.anchor)
+                                .wait(this._config.select.clearDelay);
+                }
+
+                this._builder.info(`finish test select ${selectConfig.name}`);
+
+        }
+
+        generateRadioGroup() {
+
+        }
+
+        /**
+         * 
+         * @param {TimeRangeConfig} timeRangeConfig 
+         * @param {MenuConfig} menuConfig 
+         */
+        generateTimeRange(timeRangeConfig, menuConfig) {
+                let points = {
+                        anchor: timeRangeConfig.location,
+                        lastMonth: { x: timeRangeConfig.location.x - 312, y: timeRangeConfig.location.y + 80 },
+                        lastThreeMonth: { x: timeRangeConfig.location.x - 312, y: timeRangeConfig.location.y + 100 },
+                        previousYear: { x: timeRangeConfig.location.x - 208, y: timeRangeConfig.location.y + 63 },
+                        startTime: { x: timeRangeConfig.location.x - 189, y: timeRangeConfig.location.y + 260 },
+                        endTime: { x: timeRangeConfig.location.x + 361, y: timeRangeConfig.location.y + 260 }
+                }
+
+                this._builder.info("before test time range")
+                        .info("last month")
+                        .click(points.anchor)
+                        .wait(2000)
+                        .click(points.lastMonth)
+                        .wait(500)
+                        .click(menuConfig.queryButtonLocation)
+                        .wait(3000)
+                        .info("last three month")
+                        .click(points.anchor)
+                        .wait(1500)
+                        .click(points.lastThreeMonth)
+                        .wait(500)
+                        .click(menuConfig.queryButtonLocation)
+                        .wait(3000)
+                        .info("last year")
+                        .click(points.anchor)
+                        .wait(1500)
+                        .click(points.previousYear)
+                        .wait(500)
+                        .click(points.startTime)
+                        .wait(500)
+                        .click(points.endTime)
+                        .wait(500)
+                        .click(menuConfig.queryButtonLocation)
+                        .wait(3000);
+        }
+
+
+}
+
+
+
+
+
+class TestAnalyzer {
+        constructor () {
+
+        }
+
+        analyzeSelect(anchor, name, count) {
+                let builder = new UiCommandBuilder();
+                let gutter = 100;
+                let point = {
+                        dropDown: anchor,
+                        clear: anchor
+                }
+
+                let results = [];
+
+                builder.info(`begin test select control ${name}`);
+
+
+                for (let i = 0; i < count; i++) {
+                        builder.click(point.clear)
+                                .click(point.dropDown)
+                                .wait(500)
+                                .click({ x: point.anchor.x, y: point.anchor.y + gutter * i });
+
+                        results.push(builder.build().Commands);
+                        builder.clear();
+                }
+
+                builder.click(point.clear);
+                builder.info("finish test select");
+                results.push(builder.build().Commands);
+
+                return results;
+        }
+
+        analyzeRadioButtons(options, input) {
+                let builder = new UiCommandBuilder();
+                let clearPos = 0;
+                let results = [];
+
+
+                builder.info("begin test radio group");
+
+                options.forEach(item => {
+                        builder.click(clearPos)
+                                .click(item.location)
+                                .wait(100)
+                                .click(input)
+                                .type(item.text);
+
+                        results.push(builder.build.commands());
+                        builder.clear();
+                });
+
+                builder.click(clearPos)
+                builder.info("finish test radio group");
+
+                results.push(builder.build().Commands);
+
+                return results;
+        }
+
+        timeRangeAnalyzer(anchor) {
+                let previous = {};
+                let lastMonth = {};
+                let lastThree = {};
+                let startDate = {};
+                let endDate = {};
+
+                let results = [];
+                let builder = new UiCommandBuilder();
+
+                builder.info("begin test timeRange")
+                        .click(anchor)
+                        .wait(500)
+                        .click(lastMonth)
+
+                results.push(builder.build().Commands);
+                builder.clear();
+
+                builder.click(anchor)
+                        .wait(500)
+                        .click(lastThree);
+
+                results.push(builder.build().Commands);
+                builder.clear();
+
+                builder.click(anchor)
+                        .wait(500)
+                        .click(lastThree);
+
+        }
+}
+
+
+exports.TestGenerator =TestGenerator
+n": {
+				"x": 137,
+				"y": 221
+			}
+		},
+		{
+			"type": 3,
+			"value": 1000,
+			"location": null
+		},
+		{
+			"type": 0,
+			"value": null,
+			"location": {
+				"x": 112,
+				"y": 273
+			}
+		},
+		{
+			"type": 3,
+			"value": 1000,
+			"location": null
+		},
+		{
+			"type": 0,
+			"value": null,
+			"location": {
+				"x": 118,
+				"y": 334
+			}
+		},
+		{
+			"type": 3,
+			"value": 1000,
+			"location": null
+		},
+		{
+			"type": 19,
+			"value": "test"
+		}
+	],
+	"Name": "test1",
+	"Description": "test1 description"
+}

@@ -1,4 +1,4 @@
-const { SimpleRender } = require("./../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const IMPORT_EXCEL_RENDER = new SimpleRender({}, `${__dirname}/templates/importExcel.html`);
 
 function renderImpotExcel(config) {

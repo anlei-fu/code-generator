@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { renderBatchSelectHtml } = require("./batch-select-render")
 
 const ITEM_RENDER = new SimpleRender({});
@@ -21,7 +21,7 @@ function renderHeaders(config) {
         });
 
         if (config.operations.length > 0)
-                content += `${IDENT}<th>操作</th>\r\n`;
+                content += `${IDENT}<th>擝作</th>\r\n`;
 
         return content.trimRight();
 }

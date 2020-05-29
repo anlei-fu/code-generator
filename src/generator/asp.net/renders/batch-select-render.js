@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 
 const BTACH_SELECT_JS_RENDER = new SimpleRender({}, `${__dirname}/templates/batch-select.js`);
 const BTACH_SELECT_HTML_RENDER = new SimpleRender({}, `${__dirname}/templates/batch-select.html`);

@@ -1,717 +1,346 @@
-@using MatchingRecharge.Utility
-@model MatchingRecharge.ServiceModel.StCommonThresholdConfigListModel
-@{
-Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<link href="/Content/pagination.css" rel="stylesheet" type="text/css" />
-<script src="../../Scripts/Calendar/WdatePicker.js" type="text/javascript"></script>
-<script src="/Scripts/jquery.pagination.js" type="text/javascript"></script>
-<script src="/Scripts/jquery.query.js" type="text/javascript"></script>
-<script src="/Scripts/jquery.paging.js" type="text/javascript"></script>
-<script src="../../Scripts/jquery-blockui.js" type="text/javascript"></script>
-<script type="text/javascript">
-        function MRCenterOrder() {
-                this.bind = function () {
-                        $.paging.config.form = "#conditionForm";
-                        $.paging.bind();
-                        $("#ddlps").val($("#ps").val());
-                        $("#ddlps").change(function () {
-                                $("#ps").val($(this).val());
-                        });
-                        $(".list_submit").click(function () {
-                                $.paging.submit();
-                        });
-                }
-        }
-
-        $(function () {
-                var user = new MRCenterOrder();
-                user.bind();
-        });
-
-        var channelCache = {};
-
-
-        $(() => {
-                $("#ChannelType").change(() => {
-                        console.log("changed");
-                        var val = $("#ChannelType").val();
-                        console.log(val);
-                        if (!val)
-                                return;
-                        if (channelCache[val]) {
-                                render1(channelCache[val]);
-                                return;
-                        }
-
-                        $.ajax({
-                                url: "/StCommonThresholdConfig/GetChannelList?channelType=" + val,
-                                type: "post",
-                                async: false,
-                                success: (resp) => {
-                                        var result = $.parseJSON(resp);
-                                        channelCache[val] = result;
-                                        render1();
-                                },
-                                error: () => {
-                                        console.log("faield")
-                                }
-                        });
-                });
-        })
-
-
-        function render1(result) {
-                console.log(result);
-                $("#ChannelNo").empty();
-                $("#ChannelNo").val(null);
-                $(`<option>请选择</option>`).appendTo($("#ChannelNo"));
-                result.forEach(item => {
-                        $(`<option value="${item.ChannelNo}">${item.ChannelName}</option>`).appendTo($("#ChannelNo"));
-                });
-
-                $("#conditionForm").find(".js-sSelect").remove();
-                $("#conditionForm").find("select").sSelect();
-        }
-
-        //删除
-        function _delete(id) {
-                if (!confirm("你确认要删除该信息吗?"))
-                        return;
-
-                $.ajax({
-                        type: "post",
-                        data: { id: id },
-                        url: '/StCommonThresholdConfig/Delete',
-                        success: function (data) {
-                                data = $.parseJSON(data);
-                                alert(data.Message)
-                                location.reload();
-                        },
-                        error: function () {
-                                alert("调用失败，请重试");
-                        }
-                });
-        }
-
-        // 添加或编辑
-        function add(id, title) {
-                console.log("into edit");
-                var html = $.ajax({ url: "/StCommonThresholdConfig/item/" + id + "?" + Math.random(), async: false }).responseText;
-                art.dialog({
-                        content: html,
-                        title: title,
-                        lock: true,
-                        ok: function () {
-                                $('#mainForm').submit();
-                                return false;
-                        },
-                        okVal: "提交",
-                        cancelVal: "取消",
-                        cancel: true
-                });
-        }
-
-</script>
-<div class="order_list">
-        <form method="get" id="conditionForm">
-                <div class="con_search_box clearfix">
-                        <p class="sc_p">
-                                渠道类型:
-                                <select id="ChannelType">
-                                        <option>--请选择--</option>
-                                        <option value="1">下游</option>
-                                        <option value="2">上游</option>
-                                </select>
-                        </p>
-                        <p class="sc_p">
-                                渠道名称:
-                                <select id="ChannelNo">
-                                        <option>--请选择--</option>
-                                </select>
-                        </p>
-                        <p class="sc_p">
-                                阈值类型：
-                                @Html.DropDownList("ThresholdType", new
-                                SelectList(MatchingRecharge.UserService.DataService.Instance.GetDataList("ThresholdType"),
-                                "Value", "Name"), "--请选择--")
-                        </p>
-                        <p class="sc_p">
-                                状态:
-                                @Html.DropDownList("Status", new
-                                SelectList(MatchingRecharge.UserService.DataService.Instance.GetDataList("Status"),
-                                "Value", "Name"), "--请选择--")
-                        </p>
-                        <p class="sc_p">
-                                <input class="list_submit" type="button" />
-                                <input type="button" onclick="add('','添加')" class="add_btn hand" />
-                        </p>
-                </div>
-                <input type="hidden" value="0" name="pi" id="pi" />
-                <input type="hidden" value="10" name="ps" id="ps" />
-                <input type="hidden" value="@Model.TotalCount" id="count" />
-        </form>
-        <div>
-        </div>
-        <div class="list_content" id="divshelflist">
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" nodata="*">
-                        <thead>
-                                <tr>
-                                        <th>
-                                                编号
-                                        </th>
-                                        <th>
-                                                渠道名称
-                                        </th>
-                                        <th>
-                                                渠道类型
-                                        </th>
-                                        <th>
-                                                业务类型
-                                        </th>
-                                        <th>
-                                                充值类型
-                                        </th>
-                                        <th>
-                                                运营商
-                                        </th>
-                                        <th>
-                                                省份
-                                        </th>
-                                        <th>
-                                                地市
-                                        </th>
-                                        <th>
-                                                面值
-                                        </th>
-                                        <th>
-                                                阈值类型
-                                        </th>
-                                        <th>
-                                                阈值
-                                        </th>
-                                        <th>
-                                                时间区间
-                                        </th>
-                                        <th>
-                                                基础值
-                                        </th>
-                                        <th>
-                                                状态
-                                        </th>
-                                        <th>
-                                                更新时间
-                                        </th>
-                                        <th>
-                                                更新人
-                                        </th>
-                                        <th>
-                                                操作
-                                        </th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                                @foreach (var item in Model.List)
-                                {
-                                <tr>
-                                        <td>@item.ConfigId
-                                        </td>
-                                        <td>@item.GetDataValue("ChannelName")
-                                        </td>
-                                        <td>@item.GetDataValue("ChannelTypeName")
-                                        </td>
-                                        <td>@(item.BusinessType == 0 ? "所有" : item.GetDataValue("BusinessTypeName"))
-                                        </td>
-                                        <td>@(item.RechargeMode == -1 ? "所有" : item.GetDataValue("RechargeModeName"))
-                                        </td>
-                                        <td>@(item.CarrierNo == "*" ? "*" : item.GetDataValue("CarrierName"))
-                                        </td>
-                                        <td>@(item.ProvinceNo == "*" ? "全国" : item.GetDataValue("ProvinceName"))
-                                        </td>
-                                        <td>@(item.CityNo == "*" ? "*" : item.GetDataValue("CityName"))
-                                        </td>
-                                        <td>@item.Face
-                                        </td>
-                                        <td>@item.GetDataValue("ThresholdTypeName")
-                                        </td>
-                                        <td>@item.Threshold
-                                        </td>
-                                        <td>@item.TimeInterval
-                                        </td>
-                                        <td>@item.BaseCntr
-                                        </td>
-                                        <td>@item.GetDataValue("StatusName")
-                                        </td>
-                                        <td>@item.UpdateTime
-                                        </td>
-                                        <td>@item.UpdateUser
-                                        </td>
-                                        <td>
-                                                <a href="javascript:void(0)" onclick="add(@item.ConfigId,'编辑')">编辑</a>
-                                                <a href="javascript:void(0)" onclick="_delete(@item.ConfigId)">
-                                                        删除</a>
-                                        </td>
-                                </tr>
-                                }
-                        </tbody>
-                </table>
-                <div class="list_number">
-                        共 @Model.TotalCount 条记录 | 每页显示:
-                        <select id="ddlps">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                        </select>
-                        条
-                </div>
-                <div id="pager" class="list_pager">
-                </div>
-                <div style="clear: both;">
-                </div>
-        </div>
-</div>
-<html>
+<html style="font-size: 50px;">
 
 <head>
-        <title>合同生成</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes,height = device-height" />
+    <meta charset="utf-8">
+    <meta name="referrer" content="unsafe-url">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>5G特惠流量包30元5G（百合）</title>
+    <link href="./css/1.css" rel="stylesheet">
+    <link href="./css/2.css" rel="stylesheet">
+    <script type="javascript" src="./jquery-3.1.1.min.js"></script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 </head>
 
-<body>
-        <script src="/Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
+<body style="background-color:#0962E1" cz-shortcut-listen="true">
+    <script>
 
-                $(() => {
-                        $(".copy").click(() => {
-                                if (copyUtil($(".success-content").text())) {
-                                        $(".success-view-container").hide();
-                                        $(".mask").hide();
-                                        showMsgBox("已拷贝到剪贴板");
-                                } else {
-                                        showMsgBox("浏览器不支持，请手工拷贝");
-                                }
+        // event biding
+        $(() => {
+            $("#vcode").click(() => sendVCode());
+            $("#submit").click(() => submit());
+            $("#confirm").click(() => closeDialog());
+            $("#showRule").click(()=>showRule());
+            $("#closeRule").click(()=>closeRule());
+        });
 
-                        });
+        //==============================================================================================
+        // ui
+        //==============================================================================================
+        function showSpinner() {
+            changeVisibility("#mask", true);
+            changeVisibility("#spinner", true);
+        }
 
-                        $(".close").click(() => {
-                                $(".success-view-container").hide();
-                                $(".mask").hide();
-                        });
+        function closeSpinner() {
+            changeVisibility("#mask", false);
+            changeVisibility("#spinner", false);
+        }
 
-                        console.log($("#date").val());
-                        $("#date").val($("#date").val());
-                }
-                );
+        function showNotify(msg) {
+            setText("#notifyContent", msg)
+            changeVisibility("#notify", true);
+            setTimeout(() => closeNotify(), 3000);
+        }
 
-                var buttonEnable = true;
+        function closeNotify() {
+            changeVisibility("#notify", false);
+        }
 
-                function onSubmitSave() {
+        function showDialog(title, msg) {
+            setText("#title", title);
+            setText("#content", msg);
+            changeVisibility("#mask", true);
+            changeVisibility("#dialog", true);
+        }
 
-                        if (!buttonEnable)
-                                return;
+        function closeDialog() {
+            changeVisibility("#mask", false);
+            changeVisibility("#dialog", false);
+        }
 
-                        if (!$("#companyNo").val()) {
-                                showMsgBox("请选择公司");
-                                return;
-                        }
+        function showRule(){
+           changeVisibility("#rule",true);
+        }
 
-                        if (!$("#businessType").val()) {
-                                showMsgBox("请选择业务类型");
-                                return;
-                        }
-
-                        if (!$("#partnerCompanyName").val()) {
-                                showMsgBox("请输入对方公司名称");
-                                return;
-                        }
-
-                        var data = $("#itemForm").serialize();
-                        console.log(data);
-                        $.ajax({
-                                type: "post",
-                                url: "/ContractInfo/Add?" + data,
-                                async: false,
-                                success: function (resp) {
-                                        console.log(resp);
-                                        var result = $.parseJSON(resp);
-                                        if (result.Status) {
-                                                showResult(result.Message);
-                                                buttonEnable = false;
-                                                $(".create-button").css("backgroud-color", "#525F41");
-
-                                        } else {
-
-                                                showMsgBox(result.Message);
-                                        }
-
-                                },
-                                error: function (ex) {
-                                        showMsgBox("操作失败");
-                                        console.log(ex);
-                                }
-
-                        });
-                }
-
-                function showMsgBox(msg) {
-                        $("#msgBoxContent").text(msg);
-                        $("#msgBox").show();
-
-                        setTimeout(function () {
-                                $("#msgBox").hide();
-                        }, 3000);
-                }
-
-                function goToQuery() {
-                        location.href = "/ContractInfo/Query";
-                }
-
-                function showResult(contractNo) {
-                        $(".success-content").text(contractNo);
-                        $(".success-view-container").show();
-                        $(".mask").show();
-                }
+        function closeRule(){
+            changeVisibility("#rule",false);
+        }
 
 
-                function copyUtil(info) {
 
-                        var $textArea = $('<textarea></textarea>');
-                        $textArea.val(info);
-                        $textArea.css('opacity', '0');
-                        $('body').append($textArea);
-                        $textArea.select();
-                        //通过执行copy指令将选中的信息复制到剪切板
-                        var status = document.execCommand('copy', false, null);
-                        $textArea.remove();
-                        //浏览器不支持copy指令
-                        if (!status) {
-                                status = prompt('请复制到剪切板', info);
-                        }
+        //==============================================================================================
+        // api
+        //==============================================================================================
+        var vcodeCounter = 0;
+        var isVcodeSended = false;
 
-                        return status;
+        // 接口地址配置
+        var config = {
+            vcodeUrl: "",
+            submitUrl: ""
+        };
+
+        // 发送验证码参数
+        var vcodeParams = {
+            phoneNo: null,
+        };
+
+        // 提交订单参数
+        var submitParams = {
+            phoneNo: null,
+            vcode: null,
+            coopOrder: null,
+            productNo: null,
+        }
+
+        /**
+         * 发送验证码，
+         *   检查当前是否可发送
+         *   号码是否正确
+         *   保存返回值到 submitParams
+         **/
+        async function sendVCode() {
+            if (vcodeCounter != 0)
+                return;
+
+            // check phoneNo
+            vcodeParams.phoneNo = getValue("#phoneNo");
+            if (!vcodeParams.phoneNo || false) {
+                showNotify("请输入正确的号码")
+                return;
+            }
+
+            try {
+
+                var result = await post(vcodeUrl, vcodeParams);
+                if (!result || !result.Status) {
+                    showNotify("发送验证码失败，请稍后重试");
+                    return;
                 }
 
+                submitParams.coopOrder = result.coopOrder;
 
+                showNotify("验证码已发送");
+                resetCounter();
 
-        </script>
-        <style type="text/css">
-                html {
-                        padding: 0;
-                        margin: 0;
+            } catch (ex) {
+                console.error(ex);
+                showNotify("发送验证码失败，请稍后重试");
+            }
+        }
+
+        /**
+         * 提交订单
+         *  
+         **/
+        async function submit() {
+            if (!isVcodeSended) {
+                showNotify("请先发送验证码");
+                return;
+            }
+
+            // check phoneNo
+            submitParams.phoneNo = getValue("#phoneNo");
+            if (!vcodeParams.phoneNo || false) {
+                showNotify("请输入正确的号码")
+                return;
+            }
+
+            // check vcode
+            submitParams.vcode = getValue("#vcode");
+            if (!submitParams.vcode || submitParams.vcode.trim().length != 4) {
+                showNotify("请输入正确的验证码")
+                return;
+            }
+
+            try {
+                var result = await post(config.submitUrl, submitParams);
+                if (!result || !result.Status) {
+                    showNotify("提交订单失败，请稍后重试");
+                    return;
                 }
 
-                body {
-                        background-color: #FFFFFF;
-                        padding: 0;
-                        margin: 0;
-                        height: 100%;
-                        width: 100%;
-                }
+                showDialog("", "");
+            } catch (ex) {
+                console.error(ex);
+                showNotify("提交订单失败，请稍后重试");
+            }
 
-                input.input1[type=datetime-local] {
-                        -webkit-appearance: none;
-                        outline: none;
-                        border: none;
-                }
+        }
 
-                select {
-                        -webkit-appearance: none; //这样select默认的样式就没有了，后面的箭头也没有了，自己找个图标添加进去就可以了
-                        padding-right: 30px; //给右边图标留位置
-                        background: url("arrow.png") no-repeat scroll right center transparent; //放自己的图标
-                }
+        // 重置验证码计时器
+        function resetCounter() {
+            vcodeCounter = 60;
+            var interval = setInterval(() => {
+                if (--vcodeCounter == 0) {
 
-                .row {
-                        margin-top: 18px;
-                        font-size: 0;
-                }
+                } else {
 
-                .container {
-                        width: 90%;
-                        margin: 0 auto;
-                        @* margin-top: 10%;
-                        *@
                 }
+            }, 1000);
+        }
 
-                .label {
-                        padding: 5px;
-                        width: 6rem;
-                        display: inline-block;
-                        color: #7B797B;
-                        font-size: 14px;
-                        height: 40px;
-                        line-height: 40px;
-                        text-align: left;
-                }
+        //==============================================================================================
+        //  jquery wrap
+        //==============================================================================================
+        function post(url, params) {
+            console.log(`url:${url}`);
+            console.log(`params:`);
+            console.log(params);
+            return new Promise((resolve, reject) => {
+                showSpinner();
+                $.ajax({
+                    url,
+                    data: params,
+                    success: resp => {
+                        console.log("resp:");
+                        console.log(resp);
+                        closeSpinner()
+                        resolve($.parseJSON(resp));
+                    },
+                    error: err => {
+                        closeSpinner();
+                        reject(err);
+                    }
+                })
+            });
+        }
 
-                .text-box {
-                        padding: 4px;
-                        border-radius: 5px;
-                        border: 1px solid #7B797B;
-                        width: 67%;
-                        margin-left: 0px;
-                        box-sizing: border-box;
-                }
+        function setText(selector, text) {
+            $(selector).val(text);
+        }
 
-                select,
-                .input1 {
-                        width: 67%;
-                        display: inline-block;
-                        box-sizing: border-box;
-                        padding: 4px;
-                        border-radius: 5px;
-                        border: 1px solid #7B797B;
-                        background-color: White;
-                        height: 40%;
-                        margin-left: 0px;
-                        height: 40px;
-                        line-height: 40px;
-                }
+        function getValue(selector) {
+            return $(selector).val();
+        }
 
-                option {
-                        padding: 4px;
-                        width: 60%;
-                        margin-left: 0px;
-                }
+        function changeVisibility(selector, show) {
+            if (show) {
+                $(selector).show();
+            } else {
+                $(show).hide();
+            }
+        }
 
-                textarea {
-                        padding: 4px;
-                        width: 60%;
-                        margin-left: 0px;
-                }
 
-                .header {
-                        background-color: #F1F1F1;
-                        text-align: center;
-                        padding: 10px;
-                        border-radius: 4px;
-                }
-
-                .text-area {
-                        padding: 3px;
-                        border-radius: 5px;
-                }
-
-                .create-button {
-                        width: 95%;
-                        line-height: 40px;
-                        border-radius: 5px;
-                        font-size: 14px;
-                        text-align: center;
-                        background-color: #5ABA5A;
-                        border: none;
-                        transition: .5;
-                        color: white;
-                        text-align: center;
-                        margin: 40px auto 0;
-                }
-
-                .submit-button {
-                        width: 95%;
-                        line-height: 40px;
-                        border-radius: 5px;
-                        font-size: 14px;
-                        text-align: center;
-                        background-color: #0E90D2;
-                        border: none;
-                        transition: .5;
-                        color: white;
-                        text-align: center;
-                        margin: 20px auto 0;
-                }
-
-                .submit-button :active {
-                        background-color: red;
-                }
-
-                .msg-box {
-                        width: 100%;
-                        position: fixed;
-                        top: 60%;
-                        display: none;
-                }
-
-                .msg-box-container {
-                        width: 70%;
-                        margin: 0 auto;
-                        background-color: rgb(35, 35, 35, 0.35);
-                        border-radius: 7px;
-                }
-
-                .msg-box-content {
-                        text-align: center;
-                        padding: 8px;
-                        font-size: 14px;
-                }
-
-                .time-wrapper {
-                        display: inline-block !important;
-                        min-width: 64% !important;
-                        padding: 1px;
-                        border-radius: 5px;
-                        border: 1px solid #7B797B;
-                        background-color: White;
-                        text-align: left;
-                        box-sizing: border-box;
-                        height: 40px;
-                        line-height: 40px;
-                }
-
-                .time-text-box {
-                        padding: 4px;
-                        border: none;
-                }
-
-                .success-view-container {
-                        position: fixed;
-                        top: 0;
-                        background-color: transparent;
-                        display: none;
-                        z-index: 10000;
-                        background: rgba(0, 0, 0, 0.5);
-                        width: 100%;
-                        width: 100%;
-                        height: 100%;
-                }
-
-                .success-view {
-                        position: absolute;
-                        width: 85%;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background-color: #fff;
-                        border-radius: 5px;
-                        padding: 20px 10px;
-                        text-align: center;
-                }
-
-                .success-title {
-                        line-height: 30px;
-                        margin-bottom: 10px;
-                }
-
-                .success-content {
-                        line-height: 30px;
-                        margin-bottom: 20px;
-                }
-
-                .success-btns {
-                        text-align: right;
-                        display: flex;
-                        justify-content: center;
-                }
-
-                .btn {
-                        padding: 9px 5px;
-                        border-radius: 5px;
-                        width: 6rem;
-                }
-
-                .close {
-                        background-color: white;
-                        border: 1px solid #0E90D2;
-                        color: #0E90D2;
-                        margin-right: 10px;
-                }
-
-                .copy {
-                        background-color: #0E90D2;
-                        border: none;
-                        color: White;
-                }
-
-                .radio-group {
-                        width: 67%;
-                        display: inline-block;
-                        text-align: left;
-                }
-
-                .radio-group label {
-                        margin-right: 10px;
-                        font-size: 14px;
-                }
-
-                .mask {
-                        position: fixed;
-                        background-color: Red;
-                }
-        </style>
-        <form id="itemForm">
-                <div class="header">
-                        <span class="title">生成合同编号</span>
+    </script>
+    <div id="app">
+        <div class="content" style="background: url(./images/config.jpg); min-height: 13.34rem;">
+            <img src="http://dev.coc.10086.cn/coc/user/authentication?token=800154b8c5e145728e7f0616b371d691"
+                style="display: none;">
+            <img id="bgImage" src="./images/config.jpg" style="display: none;">
+            <img id="bgImage1" src="" style="display: none;"> <img id="bgImage2" src="" style="display: none;">
+            <img id="bgImage3" src="" style="display: none;"> <img id="bgImage4" src="" style="display: none;">
+            <div class="productarea" style="top: 32%;">
+                <div class="productarea_l3">
                 </div>
-                <div class="container">
-                        <div>
-                                <div class="row">
-                                        <span class="label">日期:</span><input class="time-wrapper input1" id="date"
-                                                name="date" type="date" placeholder="请输入时间"
-                                                value="@DateTime.Now.ToString(" yyyy-MM-dd")" />
-                                </div>
-                                <div class="row">
-                                        <span class="label">公司:</span>
-                                        @Html.DropDownList("companyNo", new
-                                        SelectList(UserSystem.UserService.SystemDictionaryService.Instance.GetDataList("Company"),
-                                        "Value", "Name"), "请选择")
-                                </div>
-                                <div class="row">
-                                        <span class="label">渠道类型:</span> <span class="radio-group">
-                                                <label>
-                                                        <input name="channelType" checked="true" type="radio"
-                                                                value="SY" />上游</label>
-                                                <label>
-                                                        <input name="channelType" type="radio" value="XY" />下游
-                                                </label>
-                                        </span>
-                                </div>
-                                <div class="row">
-                                        <span class="label">业务类型:</span>
-                                        @Html.DropDownList("businessType", new
-                                        SelectList(UserSystem.UserService.SystemDictionaryService.Instance.GetDataList("BusinessType"),
-                                        "Value", "Name"), "请选择")
-                                </div>
-                                <div class="row">
-                                        <span class="label">对方公司名称:</span>
-                                        <input class="input1" type="text" id="partnerCompanyName"
-                                                name="partnerCompanyName" />
-                                </div>
-                                <div class="row">
-                                        <span class="label" style="vertical-align: top">备注:</span>
-                                        <textarea id="memo" name="memo" class="text-box" rows="3"></textarea>
-                                </div>
-                                <div>
-                                        <p class="create-button" onclick="onSubmitSave()">生成</p>
-                                        @* <input type="button" value="" /> *@
-                                </div>
-                                <div>
-                                        <p class="submit-button" onclick="goToQuery()">查询</p>
-                                        @* <input type="button" class="" value="" onclick="()" /> *@
-                                </div>
-                        </div>
+            </div>
+            <div class="inputarea" style="top: 64%;">
+                <div class="inputarea1">
+                    <input type="tel" maxlength="11" placeholder="中国移动手机号码">
                 </div>
-                <div id="msgBox" class="msg-box">
-                        <div class="msg-box-container">
-                                <p class="msg-box-content" id="msgBoxContent">
-                                </p>
-                        </div>
+                <div class="inputarea2">
+                    <input type="number" placeholder="6位数验证码">
+                    <h6 id="vcode">获取验证码</h6>
                 </div>
-                <div class="success-view-container">
-                        <div class="success-view">
-                                <div class="success-title">
-                                        生成合同号成功</div>
-                                <div class="success-content">
-                                        SCQXSYHF2020041601</div>
-                                <div class="success-btns">
-                                        <button class="btn close" type="button">
-                                                关闭</button>
-                                        <button class="btn copy" type="button">
-                                                复制合同号</button>
-                                </div>
-                        </div>
+                <div id="submit" class="btn_home" style="color: rgb(255, 255, 255); background-color: rgb(251, 73, 14);">
+                    立即订购
                 </div>
-                <div class="mask">
-                </div>
-        </form>
+            </div>
+            <div id="showRule" class="more_info" style="color: rgb(251, 212, 3); top: 90%; border-bottom-color: rgb(251, 212, 3);">
+                订购说明
+            </div>
+
+            <div id="barrage" class="barrage" style="display: none;">
+                <a href="javascript:;" class="tubiaoa">
+                    <div id="barrage_name" class="barrage_name">
+                        <img>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>$(function () {
+            $("input,textarea").on("blur", function () {
+                setTimeout(function () {
+                    if (document.body.scrollHeight < 740) {
+                        window.scrollTo(0, 0);
+                    }
+                }, 100)
+            }).on('focus', function () {
+                var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                var offsetTop = $(this).offset().top - (clientHeight / 4);
+                setTimeout(function () {
+                    if (document.body.scrollHeight < 740) {
+                        // window.scrollTo(0, offsetTop);
+                        window.scrollTo(0, document.body.scrollHeight);
+                    }
+                }, 100)
+            })
+        });</script>
+    <div id="notify" class="van-toast van-toast--middle van-toast--text" style="z-index: 2007; display: none;">
+        <div id="notifyContent" class="van-toast__text">请填写正确的手机号码</div>
+    </div>
+    <div class="van-overlay" style="z-index: 2000; display: none;">
+    </div>
+
+    <div id="dialog" role="dialog" class="van-dialog" aria-labelledby="温馨提示" style="z-index: 2011;">
+        <div id="title" class="van-dialog__header">
+            温馨提示
+        </div>
+        <div class="van-dialog__content">
+            <div id="content" class="van-dialog__message van-dialog__message--has-title">
+                填写中国移动手机号码
+            </div>
+        </div>
+        <div class="van-hairline--top van-dialog__footer">
+            <button id="confirm" class="van-button van-button--default van-button--large van-dialog__confirm">
+                <span class="van-button__text">
+                    我知道了
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div id="spinner" class="van-toast van-toast--middle" style="z-index: 2009; display: none;">
+        <div class="van-loading van-loading--circular van-toast__loading">
+            <span class="van-loading__spinner van-loading__spinner--circular" style="color: white;">
+                <svg viewBox="25 25 50 50" class="van-loading__circular">
+                    <circle cx="50" cy="50" r="20" fill="none"></circle>
+                </svg>
+            </span>
+        </div>
+        <div class="van-toast__text">
+            加载中...
+        </div>
+    </div>
+
+    <div id="mask" class="van-overlay" style="z-index: 2010;"></div>
+
+    <div id="rule" class="myInfo van-popup van-popup--center" style="z-index: 2013;">
+        <img id="closeRule" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0YTRhYmYyYS0zMTBhLTRmNzItOGE1YS03NGQxZTE1NTRkYWEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ5MjhDMDFEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ5MjhDMDBEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3ZGNkY2VhMS03Yzc3LTQ0ZWItYmY1Ni02NzY4MWEyODQzZGUiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDplYTZmMzZhMS05MTkxLTQ0NGEtYWUwNS03NTVhNjFmODk4ZTIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6vGgAoAAABjUlEQVR42rzWLU/EMBgH8K17Qw8zzDF5DokiIYEQEIgL9xWmL1jUobAI1DQJEnE5AhgMAoPA8gWYIyQnupfb+G/sErbbunY7aNK0fbL11/Utk5Mkkf46Eekfkuq6bloeIPd0Xb9GSVkvBEHA7FBRlM35fD6QZfkOzXfHcSQVlQ1M2RRB1ff9E8MwBk0QI/WjKHpCX1Ycx8do7y2m6wPB17SB8hDQLaprbQAMNgPyvibIP2uCKZKQd/HAfQeoACCdIl+WF56m09QSYgLl3dUGagSqtjDNF/6ZA+IC6s4JxQ45aoC4AdZhnDEgIaDpxC9BlNJHUYDnWilDO6JAdq1gdMtBVS1AYRiOEHsBoKUBfM2b53lXq7wg+wCmCyD/oi3Lsm7S8awCKSwy6he/pm7ICxGBg3aOfFZaIy6ICADjms3QCFUhNgOQ2kBlxMYLTYAwRCoAmwMQgkgHgBsiHQEuiGCRvxBczx8etwDqIB1FJOXSJyFkG1gP+aHj388Mt/W+pmlDXEUT0zSz4LcAAwBIzQZ/FTjfSQAAAABJRU5ErkJggg=="
+            class="closeIcon">
+        <p style="color: rgb(51, 51, 51);">
+        <p>
+            <span style="font-size: large;">
+                1.流量使用范围：特惠包内流量可在2G-5G网络下通用的全国流量（不含港澳台），执行通用流量使用范围规则。
+                <br>
+                2.生效及扣费规则：订购立即生效，办理结果以最终短信下发为准。
+                <br>
+                3.流量优先级：5G特惠流量包为通用流量月包产品，流量优先级高于主套餐套内流量，低于用户订购的定向流量包、流量小时包、日包、假日流量包。
+                <br>
+                4.退订方式：可通过中国移动手机营业厅进行退订，次月生效。
+                <br>
+                5.套外资费：默认按照客户主套餐套外资费执行。
+                <br>
+                6.封顶规则：执行客户基础产品封顶规则。
+                <br>
+                7.结转规则：流量不结转、不能共享、不能转赠。
+                <br>
+            </span>
+        </p>
+        </p>
+    </div>
 </body>
 
 </html>

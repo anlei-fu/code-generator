@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { OBJECT } = require("../../../libs/utils");
 const { renderGetCountSql } = require("./get-count-render");
 const { renderGetListSql } = require("./getList-sql-render");

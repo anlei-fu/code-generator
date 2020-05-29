@@ -3,15 +3,15 @@ const { STR } = require("../../libs/str");
 const { getJavaType } = require("./utils");
 const { NamingStrategy } = require("../../libs/naming-strategy");
 
-class ColumnAnalyzer {
+class ColumnMerger {
         /**
-         * Get all codition columns
+         * Merge all possible condition columns
          * 
          * @returns {[ColumnConfig]}
          */
-        analyzeConditions(configItem) {
+        mergeConditions(configItem) {
 
-                // already generated and cached before
+                // if already generated and cached before, just return
                 if (configItem.context.cache.has(configItem.id))
                         return configItem.context.cache.get(configItem.id);
 
@@ -38,7 +38,7 @@ class ColumnAnalyzer {
          * 
          * @returns {[ColumnConfig]}
          */
-        analyzeIncludes(configItem) {
+        mergeIncludes(configItem) {
 
                 // merge with column meta info
                 let includes = [];
@@ -107,4 +107,4 @@ class ColumnAnalyzer {
 }
 
 
-exports.ColumnAnalyzer = ColumnAnalyzer
+exports.ColumnMerger = ColumnMerger

@@ -9,7 +9,7 @@ const { getJavaType } = require("./utils");
 class AnalyzerBase {
 
         /**
-        * Add customer configs just extend not override
+        * Add custom configs just extend not override
         * 
         * @param {any} target 
         * @param {{type:String,items:[String]}} config
@@ -118,6 +118,7 @@ class ValidateAnalyzer extends AnalyzerBase {
         }
 
         /**
+         * Analyze column validate
          * 
          * @param {String} name 
          * @param {String} type 
@@ -147,6 +148,7 @@ class ValidateAnalyzer extends AnalyzerBase {
         }
 
         /**
+         * Use custom validate config
          * 
          * @param {{type:String,}} config 
          */
@@ -155,6 +157,7 @@ class ValidateAnalyzer extends AnalyzerBase {
         }
 
         /**
+         * Disable validate config
          * 
          * @param {*} config 
          */
@@ -172,7 +175,7 @@ class ExcludesAnalyzer extends ValidateAnalyzer {
         }
 
         /**
-         * Use additional excludes config
+         * Use custom excludes config
          * 
          * @param {any} target 
          * @param {{type:String,items:[String]}} config
@@ -234,8 +237,8 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
         /**
          * Get column filter expression by name and type
          * 
-         * @param {String} name 
-         * @param {String} type 
+         * @param {String} name, field name
+         * @param {String} type Integer|String|Date and so on
          * @returns {String?}
          */
         analyzeExpression(type, name) {
@@ -255,7 +258,7 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
         }
 
         /**
-         * Use customer expressions
+         * Use custom expressions
          * 
          * @param {Config} config 
          */
@@ -404,10 +407,11 @@ class InsertAnalyzer extends ExcludesAnalyzer {
         }
 
         /**
-         * Get validate of field, check with nullable constraint
+         * Get validates of field, and analyze should hava nullable constraint
          * 
          * @override
          * @param {Column} column 
+         * @returns {[string]}
          */
         analyzeValidates(column) {
                 let type = getJavaType(column.type);
@@ -458,7 +462,7 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
         }
 
         /**
-         * Analyze candiate
+         * Analyze candiate 
          * 
          * @override
          * @param {String} type 
@@ -538,6 +542,7 @@ class UserColumnAnalyzer {
          * Find possibale user column
          * 
          * @param {Config} config 
+         * @returns {Column?}
          */
         findUserColumnByConfig(config) {
                 return this.findUserColumn(config.table, config.type);
@@ -548,7 +553,8 @@ class UserColumnAnalyzer {
          * Find userColumn
          * 
          * @param {Table} table 
-         * @param {String} sqlType 
+         * @param {String} sqlType select|update|delete|insert
+         * @returns {Column?}
          */
         findUserColumn(table, sqlType) {
                 for (const columnName in table.columns) {
@@ -561,11 +567,6 @@ class UserColumnAnalyzer {
         }
 }
 
-class ExcelAnalyzer {
-        shouldBeExcelField(column) {
-
-        }
-}
 
 module.exports = {
         SelectAnalyzer,

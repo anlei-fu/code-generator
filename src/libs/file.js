@@ -87,7 +87,6 @@ function appendLine(path, data, charset="utf-8") {
  */
 function append(path, data, charset="UTF-8") {
         fs.appendFileSync(path, data, charset);
-        LOG.info(`append ${path}`);
 }
 
 /**

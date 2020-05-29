@@ -5,9 +5,9 @@ const { SimpleRender } = require("./../common/renders/SimplePatterRender");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./Analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
 const { UserColumnAnalyzer } = require("./Analyzer");
-const {JoinAnalyzer} = require("./JoinAnalyzer")
+const { JoinAnalyzer } = require("./JoinAnalyzer")
 
-const JOIN_ANALYZER =new JoinAnalyzer();
+const JOIN_ANALYZER = new JoinAnalyzer();
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
 const REQ_IDENT = "                                           ";
 const COMMENT_IDENT = "                        ";
@@ -41,9 +41,9 @@ class UpdateConfig {
         }
 }
 
-class Expressoin{
-        constructor(){
-                
+class Expressoin {
+        constructor () {
+
         }
 }
 
@@ -108,8 +108,6 @@ class ConfigItemBuilderGenerator {
                 if (userColumn != null)
                         selectUserReq = renderUserReq(userColumn);
 
-
-
                 let selete_text = this._renderExcludes(selectConfig.excludes)
                 if (selectConfig.expressions.length != 0)
                         selete_text += this._renderExpression(selectConfig.expressions);
@@ -153,9 +151,11 @@ class ConfigItemBuilderGenerator {
 
                 return output.replace(/@@/g, "");
         }
+
         /**
          * Generate select config
          * 
+         * @private
          * @param {Table} table 
          * @returns {SelectConfig}
          */
@@ -207,6 +207,7 @@ class ConfigItemBuilderGenerator {
         /**
          * Generate update config
          * 
+         * @private
          * @param {Table} table 
          * @returns {UpdateConfig}
          */
@@ -248,6 +249,7 @@ class ConfigItemBuilderGenerator {
         /**
          * Generate Insert config
          * 
+         * @private
          * @param {Table} table 
          * @returns {InsertConfig}
          */
@@ -286,18 +288,21 @@ class ConfigItemBuilderGenerator {
         /**
          * Render excludes
          * 
+         * @private
          * @param {[String]} excludes 
          * @returns {String}
          */
         _renderExcludes(excludes) {
-                return excludes.length != 0
-                        ? STR.arrayToString1(excludes, exclude => `"${exclude}",`, `${EXCLUDE_IDENT}.excludes([`, "])\r\n")
-                        : "";
+                return excludes.length == 0
+                        ? ""
+                        : STR.arrayToString1(excludes,
+                                exclude => `"${exclude}",`, `${EXCLUDE_IDENT}.excludes([`, "])\r\n");
         }
 
         /**
          * Render exxpression
          * 
+         * @private
          * @param {[Expression]} expressions 
          * @returns {String}
          */
@@ -309,6 +314,7 @@ class ConfigItemBuilderGenerator {
         /**
          * Render req
          * 
+         * @private
          * @param {{key:String,validates:[String]}} reqFields 
          * @returns {String}
          */

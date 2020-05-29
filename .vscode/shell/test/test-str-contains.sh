@@ -1,0 +1,1 @@
+awk '{if(NR>=20 && NR<=30) print $1}' /etc/password  

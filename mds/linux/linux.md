@@ -65,3 +65,7 @@ yum list installed
 
 ### system ctl
 systemctl list-units
+
+###
+ps -ef可以看父进程ID  PPID  以及完整的command命令 CMD
+ps -aux 可以看进程的CPU占用率和内存占用率

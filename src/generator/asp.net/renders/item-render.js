@@ -1,5 +1,5 @@
 
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { renderItemSelect } = require("./item-select-render");
 const { renderItemText } = require("./item-text-render");
 const { renderItemRow } = require("./item-row-render");

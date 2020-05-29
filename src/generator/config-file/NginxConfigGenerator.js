@@ -3,14 +3,13 @@ class UpStreamBuilder{
 
     }
 
+    /**
+     * Balance type ip-hash|weight
+     */
     type(){
 
     }
-
-    weight(){
-
-    }
-
+   
     hash(){
 
     }
@@ -25,7 +24,44 @@ class UpStreamServerBuilder{
 
    }
 
+   /**
+    * 
+    * @param {Number} value 
+    */
+   weight(value=1){
+
+   }
+
+   /**
+    * mark server is a backup
+    */
    backUp(){
+
+   }
+   
+   /**
+    * mark server current is down
+    */
+   down(){
+
+   }
+
+  
+   /**
+    * failed wait to reuse
+    */
+   failTime(){
+
+   }
+   
+   /**
+    * 
+    *  e.g fail count to 10 in 1min 
+    */
+   maxFail(value=10){
+
+   }
+   failTimeout(value="60s"){
 
    }
 }
@@ -147,7 +183,7 @@ class HttpBuilder{
         /**
          * #默认编码
          */
-        charset(){
+        charset(value ="utf-8"){
 
         }
 

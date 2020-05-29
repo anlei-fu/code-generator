@@ -4,6 +4,18 @@ class Writer{
         }
         
         writeEdit(){
+
+        }
+
+        writeRouter(){
+
+        }
+
+        writeMain(){
+
+        }
+
+        writeCore(){
                 
         }
 

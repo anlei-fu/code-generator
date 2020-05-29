@@ -106,11 +106,11 @@ function createFolder(project, name, root) {
 }
 
 function generateRelationMatchers(project, tableName) {
-        let relations = require(`./../table-relation/outputs/${project}.js`).relations[tableName];
+        let relations  //require(`./../table-relation/outputs/${project}.js`).relations[tableName];
         if (!relations)
                 return {};
 
-        let tables = require(`./../oracle-table-info-resolver/outputs/${project}/all.js`).all;
+        let tables = require(`./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/${project}/all.js`).all;
         let matchers = {};
         relations.forEach(x => {
                 if (tables[x.otherTable].nameColumn && tables[x.otherTable].primaryColumn) {

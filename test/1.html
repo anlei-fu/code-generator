@@ -1,332 +1,339 @@
-@model SuperTiny.Entity.MSTCarrierProductShelf
-@using MatchingRecharge.UserService;
-@using SuperTiny.UserService;
-@using SuperTiny.Entity;
-@{
-    Layout = null;
-}
-<link href="/Content/jquery.select.debug.css" rel="stylesheet" type="text/css" />
-<script src="/Scripts/plugin.chinese.to.pinyin.js" type="text/javascript"></script>
-<script src="/Scripts/jquery.select.debug.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-        $("#mainForm").find('select').sSelect();
-        $('#mainForm').validate({
-            errorClass: "error",
-            focusInvalid: true,
-            submitHandler: function (form) {
-                if (isBatchEdit&&!getAndCheckProductIds()) {
-                    alert("产品面值未配置或不正确");
-                    return;
-                }
-                return saveLocalShelf();
-            },
-            rules: {
-                cost: { required: true, range: [0, 1] },
-                realcost: { required: true, range: [0, 1] },
-                CCount: { required: true, digits: true },
-                uppface: { digits: true }
-            },
-            messages: {}
+<html style="font-size: 48px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="unsafe-url">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>5G特惠流量包30元5G（百合）</title>
+    <script src="./jquery-3.1.1.min.js" type="text/javascript"></script>
+    <link href="./css/5g-new-common.css" rel="stylesheet">
+    <link href="./css/5g-new-main.css" rel="stylesheet">
+</head>
+
+<body style="background-color:#0962E1" cz-shortcut-listen="true">
+    <script>
+        console.log("html called");
+        console.log("$ is")
+        console.log($);
+
+        // event biding
+        $(() => {
+            $("#getVcode").click(() => sendVCode());
+            $("#submit").click(() => presubmit());
+            $("#confirm").click(() => closeDialog());
+            $("#showRule").click(() => showRule());
+            $("#closeRule").click(() => closeRule());
+            $("#ok").click(() => {
+                closeConfirm();
+                submit();
+            });
+            $("#cancel").click(() => closeConfirm())
         });
-    });
 
-    // init
-    $(function () {
-        // 编辑情况隐藏
-        if ($("__id").val()) {
-            $("#batch-add-product").hide();
+        //==============================================================================================
+        // ui operations
+        //==============================================================================================
+        function showSpinner() {
+            changeVisibility("#mask", true);
+            changeVisibility("#spinner", true);
         }
-    });
 
-    // cache{ {bussinessNo:[product]}...}
-    var products={};
-    var isBatchEdit = false;
-
-    // toggle batch and sigle mode
-    function batchEditCheckChanged(show) {
-        if (show) {
-            isBatchEdit = true;
-            $("#edit-container").show();
-            $("#single").hide();
-            renderBatchAdd();
-        } else {
-            isBatchEdit = false;
-            $("#edit-container").hide();
-            $("#single").show();
-            $("#product-container").val("");
+        function closeSpinner() {
+            changeVisibility("#mask", false);
+            changeVisibility("#spinner", false);
         }
-    }
 
-    /*
-     * 渲染 product by bussiness no
-     *
-     */
-    var all = "<input style='margin-left:10px;' type='checkbox' onchange='selectAllProduct(this.checked)'>全部";
-    var template = `<input style='margin-left:5px;' 
-                            type='checkbox' id='#productCheck'
-                            onchange='changeProductVisibility("#productNo",this.checked)' />
-                     #productName
-                    <input style="display:none;width:20px;" 
-                           type='text'  
-                           id='#productNo' width="50px" readonly="#readonly" value="#face" />`;
-    function renderBatchAdd() {
-        console.log("into render batch");
-        if (!isBatchEdit)
-            return;
-        
-        var bsussinessNo=$("bno").val();
-        if(!bussinessNo)
-           return;
-        
-        console.log(`bussinessNo:${bussinessNo}`);
+        function showNotify(msg) {
+            setText("#notifyContent", msg)
+            changeVisibility("#notify", true);
+            setTimeout(() => closeNotify(), 3000);
+        }
 
-        // fetach
-        if(!products[bussinessNo]&&!getProducts(bussinessNo))
-              return;
+        function closeNotify() {
+            changeVisibility("#notify", false);
+        }
 
-        $("#edit-container").empty();
-        $("#edit-container").append(all);
+        function showDialog(title, msg) {
+            setText("#title", title);
+            setText("#content", msg);
+            changeVisibility("#mask", true);
+            changeVisibility("#dialog", true);
+        }
 
-         products[bsussinessNo].forEach(product=>{
-             console.log(product.ProductName);
-             var item = template.replace(/#productName/, product.ProductName)
-                                .replace(/#productNo/g, product.ProductNo)
-                                .replace(/#face/,product.Face);
+        function closeDialog() {
+            changeVisibility("#mask", false);
+            changeVisibility("#dialog", false);
+        }
 
-            $("#edit-container").append(item);
-         });
-    }
-    
-    // 查询产品
-    function getProducts(bussinessNo){
-        var success=false;
-        $.ajax({
-            url:"",
-            type:"post",
-            async:false,
-            success:resp=>{
+        function showRule() {
+            changeVisibility("#mask", true);
+            changeVisibility("#rule", true);
+        }
 
-            },
-            error:error=>{
-                   alert("查询产品失败");
-                   success=false;
+        function closeRule() {
+            changeVisibility("#mask", false);
+            changeVisibility("#rule", false);
+        }
+
+        function showConfirm() {
+            changeVisibility("#mask", true);
+            changeVisibility("#confirmBox", true);
+        }
+
+        function closeConfirm() {
+            changeVisibility("#mask", false);
+            changeVisibility("#confirmBox", false);
+        }
+
+        //==============================================================================================
+        // api
+        //==============================================================================================
+        var vcodeCounter = 0;
+        var isVcodeSended = false;
+
+        // 接口地址配置
+        var config = {
+            vcodeUrl: "http://localhost:8083/getvcode",
+            submitUrl: "http://localhost:8083/submit"
+        };
+
+        // 发送验证码参数
+        var vcodeParams = {
+            phoneNo: null,
+        };
+
+        // 提交订单参数
+        var submitParams = {
+            phoneNo: null,
+            smsCode: null,
+            coopOrder: null,
+            coopId: null,
+            pno: null
+        }
+
+        /**
+         * 发送验证码，
+         *   检查当前是否可发送
+         *   号码是否正确
+         *   保存返回值到 submitParams(cooporder,pno,coopId...)
+         **/
+        async function sendVCode() {
+            if (vcodeCounter != 0)
+                return;
+
+            // check phoneNo
+            vcodeParams.phoneNo = getValue("#phoneNo");
+            if (!vcodeParams.phoneNo || !/^1[3456789]\d{9}$/.test(vcodeParams.phoneNo)) {
+                showNotify("请输入正确的号码")
+                return;
             }
-        });
-        
-        return success;
-    }
 
-    /**
-    *设置面值输入框 可见性
-    */
-    function changeProductVisibility(id, show) {
-        console.log(id);
-        if (!show) {
-            $("#" + id).hide();
-        } else {
-            $("#" + id).show();
-        }
-
-        getAndCheckProductIds();
-    }
-
-    /**
-    *  check box changed ,resave all products
-    *  检查面值是否正确，并且保存到 input hidden 控件上
-    */
-    function getAndCheckProductIds() {
-        var batchAddValidatePassed = true;
-        var products = "";
-        $("#edit-container input[type=checkbox]").each(function () {
-            if ($(this).is(":checked")) {
-
-                // exclude all
-                var productId = $(this).attr("id").replace("Check", "");
-                if (!productId)
-                    return;
-
-                var face = $("#" + productId).val();
-                face = parseFloat(face);
-                console.log(`product :${productId}, face :${face}`);
-                if (isNaN(face)||face<0) {
-                    batchAddValidatePassed = false;
+            try {
+                var result = await post(config.vcodeUrl, vcodeParams);
+                if (!result || !result.core || result.core.code != 100) {
+                    showNotify("发送验证码失败，请稍后重试");
                     return;
                 }
 
-                products += `${productId}|${face}`;
+                submitParams.coopOrder = result.coopOrder;
+                submitParams.coopId = result.core.coopId;
+                submitParams.pno = result.core.pno;
+
+                isVcodeSended = true;
+                showNotify("验证码已发送");
+                resetCounter();
+
+            } catch (ex) {
+                console.error(ex);
+                showNotify("发送验证码失败，请稍后重试");
             }
-        });
-
-        $("#product-container").val(products);
-        console.log(products);
-        console.log("check result");
-        console.log(batchAddValidatePassed);
-
-        return batchAddValidatePassed;
-    }
-
-
-    /**
-    * 全选回调
-    */
-    function selectAllProduct(checked) {
-        $("#edit-container input[type=checkbox]").attr("checked", checked);
-        if (checked) {
-            $("#edit-container input").show();
-        } else {
-            $("#edit-container :text").hide();
         }
-    }
-</script>
-<form id="mainForm" method="post">
-  @if (Model.ShelfNo == null)
-  {
-<input type="hidden" name="products" id="product-container" />
-  }
-<table>
-    <tr>
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>渠道名称：
-        </td>
-        <td width="200" class="textalign_l">
-            @if (Model.ShelfNo == null)
-            {
-                @Html.DropDownList("cno", new SelectList(UpChannelService.Instance.GetUpChannelList(), "ChannelNo", "ChannelName", Model.UpChannelNo), new { style = "width:128px" })
+
+        // 预提交 检查参数，弹出确认框
+        function presubmit() {
+            if (!isVcodeSended) {
+                showNotify("请先发送验证码");
+                return;
             }
-            else
-            {
-                @Model.ChannelName
-                <input type="hidden" name="ShelfNo" value="@Model.ShelfNo" />
+
+            // check phoneNo
+            submitParams.phoneNo = getValue("#phoneNo");
+            if (!vcodeParams.phoneNo || !/^1[3456789]\d{9}$/.test(vcodeParams.phoneNo)) {
+                showNotify("请输入正确的号码")
+                return;
             }
-        </td>
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>业务名称：
-        </td>
-        <td width="200" class="textalign_l">
-            @if (Model.ShelfNo == null)
-            {
-                @Html.DropDownList("bno", new SelectList(ViewBag.BussinessList, "BusinessNo", "BusinessName", Model.BusinessNo), new { style = "width:128px", onchange = "changeBussiness(this);" })
+
+            // check vcode
+            submitParams.smsCode = getValue("#vcode");
+            if (!submitParams.smsCode || submitParams.smsCode.trim().length != 6) {
+                showNotify("请输入6位验证码")
+                return;
             }
-            else
-            {
-                @Model.BusinessName
+
+            showConfirm();
+        }
+
+        /**
+         * 提交订单
+         *  
+         **/
+        async function submit() {
+            try {
+                var result = await post(config.submitUrl, submitParams);
+                if (!result || result.code != 100) {
+                    showNotify("提交订单失败，请稍后重试");
+                    return;
+                }
+
+                showDialog("成功", "您已成功办理了该业务");
+            } catch (ex) {
+                console.error(ex);
+                showNotify("提交订单失败，请稍后重试");
             }
-        </td>
-    </tr>
-    <tr>
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>省份：
-        </td>
-        <td width="200" class="textalign_l">
-            @Html.DropDownList("province", new SelectList(SystemProvinceService.Instance.GetProvinceList(), "ProvinceID", "ProvinceName", Model.ProvinceNo), new { style = "width:128px" })
-        </td>
-       
-    </tr>
-    <tr id="single">
-        <td width="120" class="textalign_r">
-            支持产品：
-        </td>
-        <td width="200" class="textalign_l">
-            @Html.DropDownList("providepno", new SelectList(ViewBag.ProductList, "ProductNo", "ProductName", Model.CarrierProductNo), "*", new { style = "width:128px",  })
-        </td>
-          <td width="120" class="textalign_r">
-            上游产品面值：
-        </td>
-        <td width="200" class="textalign_l">
-            <input type="text" name="uppface" class="widthinput" value="@Model.UpProductFace" maxlength="7" />
-        </td>
-    </tr>
-      @if (Model.ShelfNo == null)
-      {
-    <tr id="batch-add-product">
-        <td>
-            <input type="checkbox" id="batch-add" onchange="batchEditCheckChanged(this.checked)" />
-            批量添加（(产品：面值)）：
-        </td>
-        <td>
-            <div id="edit-container">
+
+        }
+
+        // 重置验证码计时器
+        function resetCounter() {
+            vcodeCounter = 60;
+            var interval = setInterval(() => {
+                if (--vcodeCounter != 0) {
+                    setText("#getVcode", `还剩${vcodeCounter}秒`);
+                } else {
+                    clearInterval(interval);
+                    setText("#getVcode", `获取验证码`);
+                }
+            }, 1000);
+        }
+
+        //==============================================================================================
+        //  jquery api wrap
+        //==============================================================================================
+        function post(url, params) {
+            console.log(`url:${url}`);
+            console.log(`params:`);
+            console.log(params);
+            return new Promise((resolve, reject) => {
+                showSpinner();
+                $.ajax({
+                    type: "post",
+                    url,
+                    data: params,
+                    success: resp => {
+                        console.log("resp:");
+                        console.log(resp);
+                        closeSpinner()
+                        resolve($.parseJSON(resp));
+                    },
+                    error: err => {
+                        closeSpinner();
+                        reject(err);
+                    }
+                })
+            });
+        }
+
+        function setText(selector, text) {
+            $(selector).text(text);
+        }
+
+        function getValue(selector) {
+            return $(selector).val();
+        }
+
+        function changeVisibility(selector, show) {
+            if (show) {
+                $(selector).show();
+            } else {
+                $(selector).hide();
+            }
+        }
+
+    </script>
+    <div id="app">
+        <div class="content" style="background: url(./images/5g-new-back-Image.jpg); min-height: 13.34rem;">
+            <div class="inputarea" style="top: 64%;">
+                <div class="inputarea1">
+                    <input type="tel" id="phoneNo" maxlength="11" placeholder="中国移动手机号码">
+                </div>
+                <div class="inputarea2">
+                    <input type="number" id="vcode" placeholder="6位数验证码">
+                    <h6 id="getVcode">获取验证码</h6>
+                </div>
+                <div id="submit" class="btn_home"
+                    style="color: rgb(255, 255, 255); background-color: rgb(251, 73, 14);">
+                    立即订购
+                </div>
             </div>
-        </td>
-    </tr>
-      }
-    <tr height="">
-        <td width="120" class="textalign_r">
-            排除产品：
-        </td>
-        <td width="200" class="textalign_l">
-            <div id="divExtProduct">
-                @foreach (SuperTiny.Entity.MSTCarrierProducts item in ViewBag.ProductList)
-                {
-                    <input type="checkbox" name="extpno" value="@item.ProductNo" @((Model.ExcProductNo != null && Model.ExcProductNo.IndexOf("|" + item.ProductNo + "|") >= 0) ? "checked='checked'" : "") /><span>@item.ProductName</span> 
-                }
+            <div id="showRule" class="more_info"
+                style="color: rgb(251, 212, 3); top: 90%; border-bottom-color: rgb(251, 212, 3);">
+                订购说明
             </div>
-        </td>
-        <td width="120" class="textalign_r">
-            上游产品编号：
-        </td>
-        <td width="200" class="textalign_l">
-            <input type="text" name="uppno" class="widthinput" value="@Model.UpProductNo" maxlength="200" />
-        </td>
-    </tr>
-    <tr height="30">
-      
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>扣款折扣：
-        </td>
-        <td width="200" class="textalign_l">
-            <input type="text" name="cost" class="widthinput" value="@Model.CostDiscount" maxlength="13" />
-        </td>
-    </tr>
-    <tr height="30">
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>实际折扣：
-        </td>
-        <td width="200" class="textalign_l">
-            <input type="text" name="realcost" class="widthinput" value="@Model.RealDiscount" maxlength="13" />
-        </td>
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>同时充值张数：
-        </td>
-        <td width="200" class="textalign_l">
-            <input type="text" name="MinCount" class="widthinput" value="@Model.MinCount" maxlength="6" style="width:50px" />
-            ~
-            <input type="text" name="CCount" class="widthinput" value="@Model.CardCount" maxlength="6" style="width:50px"  />
-        </td>
-    </tr>
-    <tr height="30">
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>状态：
-        </td>
-        <td width="200" class="textalign_l">
-            <input type="checkbox" name="status" value="0" @(Model.Status == EnableStatus.Enable ? "checked='checked'" : "") />
-        </td>
-        <td width="120" class="textalign_r">
-            <em class="required">*</em> 扣款方式：
-        </td>
-        <td width="200" class="textalign_l">
-            <select name="ChargebackType">
-                @foreach (var item in (DataService.Instance.GetDataList(typeof(SuperTiny.Entity.ChargeBackType))))
-                {
-                    <option  value=@item.Value  @(((int?)Model.ChargebackType).ToString() == item.Value ? "selected=selected" : "")>@item.Name</option>
-                }
-            </select>
-            @*  @Html.DropDownList("ChargebackType", new SelectList(DataService.Instance.GetDataList(typeof(SuperTiny.Entity.ChargeBackType)), "value", "name", Convert.ToInt32(Model.ChargebackType)))*@
-        </td>
-    </tr>
-    <tr height="30">
-        <td width="120" class="textalign_r">
-            是否需要指定下游：
-        </td>
-        <td width="200" class="textalign_l">
-            <input type="checkbox" name="IsSpecifyDown" value="0" @(Model.IsSpecifyDown == 0 ? "checked=checked" : "")/>
-        </td>
-        <td width="120" class="textalign_r">
-            <em class="required">*</em>前后项：
-        </td>
-        <td width="200" class="textalign_l">
-            @Html.DropDownList("BillType", new SelectList(MatchingRecharge.UserService.DataService.Instance.GetDataList("BillType"), "value", "name"), Model.BillType)
-        </td>
-    </tr>
-</table>
-</form>
+        </div>
+    </div>
+    <!-- popups:notify,dialog,confirm,mask,spinner,rule-->
+    <div id="notify" class="van-toast van-toast--middle van-toast--text" style="z-index: 2007; display: none;">
+        <div id="notifyContent" class="van-toast__text">请填写正确的手机号码</div>
+    </div>
+    <div id="dialog" role="dialog" class="van-dialog" aria-labelledby="温馨提示" style="z-index: 2011;display:none;">
+        <div id="title" class="van-dialog__header">
+            温馨提示
+        </div>
+        <div class="van-dialog__content">
+            <div id="content" class="van-dialog__message van-dialog__message--has-title">
+                填写中国移动手机号码
+            </div>
+        </div>
+        <div class="van-hairline--top van-dialog__footer">
+            <button id="confirm" class="van-button van-button--default van-button--large van-dialog__confirm">
+                <span class="van-button__text">
+                    我知道了
+                </span>
+            </button>
+        </div>
+    </div>
+    <div id="spinner" class="van-toast van-toast--middle" style="z-index: 2005;display: none; ">
+        <div class="van-loading van-loading--circular van-toast__loading"><span
+                class="van-loading__spinner van-loading__spinner--circular" style="color: white;"><svg
+                    viewBox="25 25 50 50" class="van-loading__circular">
+                    <circle cx="50" cy="50" r="20" fill="none"></circle>
+                </svg></span></div>
+        <div class="van-toast__text">加载中...</div>
+    </div>
+    <div id="mask" class="van-overlay" style="z-index: 2010;display:none;"></div>
+    <div id="rule" class="myInfo van-popup van-popup--center" style="z-index: 2013;display:none;">
+        <img id="closeRule"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0YTRhYmYyYS0zMTBhLTRmNzItOGE1YS03NGQxZTE1NTRkYWEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ5MjhDMDFEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ5MjhDMDBEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3ZGNkY2VhMS03Yzc3LTQ0ZWItYmY1Ni02NzY4MWEyODQzZGUiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDplYTZmMzZhMS05MTkxLTQ0NGEtYWUwNS03NTVhNjFmODk4ZTIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6vGgAoAAABjUlEQVR42rzWLU/EMBgH8K17Qw8zzDF5DokiIYEQEIgL9xWmL1jUobAI1DQJEnE5AhgMAoPA8gWYIyQnupfb+G/sErbbunY7aNK0fbL11/Utk5Mkkf46Eekfkuq6bloeIPd0Xb9GSVkvBEHA7FBRlM35fD6QZfkOzXfHcSQVlQ1M2RRB1ff9E8MwBk0QI/WjKHpCX1Ycx8do7y2m6wPB17SB8hDQLaprbQAMNgPyvibIP2uCKZKQd/HAfQeoACCdIl+WF56m09QSYgLl3dUGagSqtjDNF/6ZA+IC6s4JxQ45aoC4AdZhnDEgIaDpxC9BlNJHUYDnWilDO6JAdq1gdMtBVS1AYRiOEHsBoKUBfM2b53lXq7wg+wCmCyD/oi3Lsm7S8awCKSwy6he/pm7ICxGBg3aOfFZaIy6ICADjms3QCFUhNgOQ2kBlxMYLTYAwRCoAmwMQgkgHgBsiHQEuiGCRvxBczx8etwDqIB1FJOXSJyFkG1gP+aHj388Mt/W+pmlDXEUT0zSz4LcAAwBIzQZ/FTjfSQAAAABJRU5ErkJggg=="
+            class="closeIcon" />
+        <p style="color: rgb(51, 51, 51); height: 8.9rem;">
+            <span style="font-size: large;">
+                1.流量使用范围：特惠包内流量可在2G-5G网络下通用的全国流量（不含港澳台），执行通用流量使用范围规则。
+                <br>
+                2.生效及扣费规则：订购立即生效，办理结果以最终短信下发为准。
+                <br>
+                3.流量优先级：5G特惠流量包为通用流量月包产品，流量优先级高于主套餐套内流量，低于用户订购的定向流量包、流量小时包、日包、假日流量包。
+                <br>
+                4.退订方式：可通过中国移动手机营业厅进行退订，次月生效。
+                <br>
+                5.套外资费：默认按照客户主套餐套外资费执行。
+                <br>
+                6.封顶规则：执行客户基础产品封顶规则。
+                <br>
+                7.结转规则：流量不结转、不能共享、不能转赠。
+                <br>
+            </span>
+        </p>
+    </div>
+    <div id="confirmBox" class="myDialog myDialog2 van-popup van-popup--center"
+        style="background: url(./images/popup.png); z-index: 2033; display: none;">
+        <h1 style="color: rgb(51, 51, 51);">您即将订购5G特惠流量包</h1>
+        <p>30元5GB的特惠流量包。是否确定订购？</p>
+        <div id="cancel" class="dialog_btn3" style="background-color: rgb(99, 99, 99); color: rgb(195, 195, 195);">取消
+        </div>
+        <div id="ok" class="dialog_btn2" style="background-color: rgb(250, 69, 5); color: rgb(255, 255, 255);">确定
+        </div>
+    </div>
+</body>
+
+</html>

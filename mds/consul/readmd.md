@@ -3,7 +3,7 @@
   consul agent -server -bootstrap-expect=3 -data-dir=/tmp/consul -node=192.168.117.146 -bind=192.168.117.146 -client=0.0.0.0 -datacenter=shenzhen -ui
 ``` 
  
- * server： 以server身份启动。默认是client
+ * server： 以server身份启动。默认是 client|server
  * bootstrap-expect：集群要求的最少server数量，当低于这个数量，集群即失效。
  * data-dir：data存放的目录，更多信息请参阅consul数据同步机制
  * node：节点id，集群中的每个node必须有一个唯一的名称。默认情况下，Consul使用机器的hostname

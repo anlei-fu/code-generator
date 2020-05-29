@@ -34,7 +34,7 @@ class SpringBootProjectInitializer {
                         this._generateConfigBuilderItem(root, table, table.columns[table.primaryColumn], tables, relations);
                 });
 
-                // create all.js integrated all config
+                // create all.js which integrated all config
                 let allContent = "";
                 tableNames.forEach(x => {
                         allContent += `        require("./${x}.js").${x}Config,\r\n`;
@@ -107,7 +107,7 @@ class SpringBootProjectInitializer {
                 this._copy("./templates/SwaggerConfig.java", `${root}/config/SwaggerConfig.java`, project, company);
                 this._copy("./templates/ValidatorConfig.java", `${root}/config/ValidatorConfig.java`, project, company);
                 this._copy("./templates/logback.xml", `./output/${project}/${project}/src/main/resources/logback.xml`, project, company);
-               
+
                 // page req
                 this._copy("./templates/PageReq.java", `${root}/pojo/req/PageReq.java`, project, company);
 
@@ -119,9 +119,9 @@ class SpringBootProjectInitializer {
 
                 this._copy("./templates/Application.java", `./output/${project}/${project}/src/main/java/com/${company}/${project}/Application.java`, project, company);
 
-                 // create index.js
-                 this._copy1("./templates/build.js", `./output/${project}/build.js`, project, company);
-                 this._copy('./templates/packages.js', `./output/${project}/packages.js`, project, company);
+                // create index.js
+                this._copy1("./templates/build.js", `./output/${project}/build.js`, project, company);
+                this._copy('./templates/packages.js', `./output/${project}/packages.js`, project, company);
 
                 // annotation
                 this._copyFolder("./templates/annotation", `${root}/validate/annotation`, project, company);
@@ -153,7 +153,7 @@ class SpringBootProjectInitializer {
          * @param {String} project 
          * @param {String} company
          */
-       _copyFolder(sourceFolder, targetFolder, project, company) {
+        _copyFolder(sourceFolder, targetFolder, project, company) {
                 DIR.getFiles(sourceFolder).forEach(file => {
                         this._copy(sourceFolder + "/" + file, targetFolder + "/" + file, project, company);
                 });

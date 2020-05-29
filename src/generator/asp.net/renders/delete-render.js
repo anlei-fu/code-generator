@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 
 const DELET_JS_RENDER = new SimpleRender({}, `${__dirname}/templates/delete.js`);
 const DELETE_HTML_RENDER= new SimpleRender({},`${__dirname}/templates/delete.html`)

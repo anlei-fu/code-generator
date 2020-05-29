@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { STR } = require("../../../libs/str")
 
 const LIST_SQL_RENDER = new SimpleRender({}, `${__dirname}/templates/get-list.sql`);

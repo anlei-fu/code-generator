@@ -18,8 +18,6 @@ class ApiClientOptions {
         }
 }
 
-
-
 class ApiClientFactory {
         /**
          * Create api client
@@ -37,7 +35,7 @@ class ApiClientFactory {
                                 apiClient[key][item] = async (params) => {
                                         let resp = await client.request(group[item].url, group[item].method, params);
                                         if (options.resultHandler)
-                                                resultHandler(resp,group[item].url,group[item].method);
+                                               options.resultHandler(resp,group[item].url,group[item].method);
 
                                         return resp;
                                 }

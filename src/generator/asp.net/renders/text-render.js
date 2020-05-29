@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 
 const TEXT_RENDER = new SimpleRender({}, `${__dirname}/templates/text.html`);
 

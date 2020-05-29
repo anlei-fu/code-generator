@@ -13,15 +13,31 @@ var result = {
       }
 }
 
+var vcodeResult={
+    core:{
+          code:100,
+          msg:"send vcode success",
+          coopId:"1",
+          pno:"2015"
+    },
+    coopOrder:"201502155454545"
+}
+
+var submitResult={
+     code:100,
+     msg:"submit success"
+}
+
 
 function main() {
       let buidler = new HandlerCollectionBuilder();
       let handlers = buidler.handler("*", "get", result)
-            .handler("/ContractInfo/Add", "post", SUCCESS_RESULT)
+            .handler("/getvcode", "post",vcodeResult)
+            .handler("/submit","post",submitResult)
             .build();
 
       let server = new MockServer();
-      server.run(8084, handlers);
+      server.run(8083, handlers);
 }
 
 main();

@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { renderExportExcelController } = require("./export-excel-render");
 const {renderControllerDefaultValue}=require("./controller-defaultValue-render");
 

@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { renderExportExcelService} = require("./export-excel-render");
 
 const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/templates/service.cs`);

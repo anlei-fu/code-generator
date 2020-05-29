@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { renderAddJs } = require("./addRender");
 const { renderBatchSelectJs } = require("./batch-select-render");
 const { renderDeleteJs } = require("./delete-render");
