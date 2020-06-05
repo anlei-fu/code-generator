@@ -20,17 +20,21 @@ class GraphBuilder {
          * 
          * @param {[String]} edges 
          */
-        path(edges) {
+        path(...edges) {
                 let result = "";
                 edges.forEach((x, i, array) => {
                         if (i == array.length - 1) {
                                result+=x.name;
                         } else {
-                                result += `${x.name}--${x.text}-->`;
+                                result +=x.text? 
+                                      `${x.name}--${x.text}-->`
+                                       :`${x.name}-->`;
                         }
                 })
 
                 this._output += result+";\r\n";
+
+                return this;
         }
 
         build() {

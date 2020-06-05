@@ -7,14 +7,14 @@ const {
         SelectAnalyzer,
         InsertAnalyzer,
         ControlAnlyzer,
-        ColumnAnalyzer,
+        columnMerger,
         DelfaultValueAnalyzer
 } = require("./analyzer");
 
 const selectAnalyzer = new SelectAnalyzer();
 const insertAnalyzer = new InsertAnalyzer();
 const controlAnalyzer = new ControlAnlyzer();
-const columnAnalyzer = new ColumnAnalyzer();
+const columnMerger = new columnMerger();
 const defaultValueAnalyzer = new DelfaultValueAnalyzer();
 
 /**
@@ -32,7 +32,7 @@ function init(table, config) {
         controlAnalyzer.useDictionaryMatchers(require(`./resource/${config.abbrOfProject}/dictionaryMatchers.js`).dictionaryMatchers);
         controlAnalyzer.useCustomerMatchers(require(`./resource/${config.abbrOfProject}/customerMatchers.js`).customerMatchers);
         controlAnalyzer.useRelation(generateRelationMatchers(config.abbrOfProject, table.name));
-        columnAnalyzer.controlAnalyzer = controlAnalyzer;
+        columnMerger.controlAnalyzer = controlAnalyzer;
         selectAnalyzer.controlAnalyzer = controlAnalyzer;
 
         config.table = table;
@@ -188,13 +188,13 @@ function buildSelectConfig(table, config) {
         }
 
         // must reset index
-        columnAnalyzer.index = 0;
+        columnMerger.index = 0;
 
         OBJECT.forEach(table.columns, (_, column) => {
                 if (!selectAnalyzer.shouldBeCandidate(column))
                         return;
 
-                let analyzeResult = columnAnalyzer.analyzeColumn(column);
+                let analyzeResult = columnMerger.analyzeColumn(column);
                 buildControlConfig(analyzeResult, selectConfig, column);
 
                 if (analyzeResult.column.indexOf("t.") == -1)
@@ -308,7 +308,7 @@ function buildAddConfig(table, config) {
                 if (!insertAnalyzer.shouldBeCandidate(column))
                         return;
 
-                let analyzeResult = columnAnalyzer.analyzeColumn(column);
+                let analyzeResult = columnMerger.analyzeColumn(column);
                 buildControlConfig(analyzeResult, addConfig, column);
         });
 

@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const {all}=require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/18/all");
+const {all}=require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/zd/all");
 
 const SETTLE={
    project:"",
@@ -32,14 +32,14 @@ const _18={
 
 function test() {
    let config = {
-      delete: true,
-      add: true,
-      project: _18.project,
-      root:_18.root,
-      abbrOfProject:_18.abbrOfProject,
-      edit:true,
+    //  delete: true,
+    //  add: true,
+      project: ZD.project,
+      root:ZD.root,
+      abbrOfProject:ZD.abbrOfProject,
+     // edit:true,
    }
-   init(all.stPhoneTag, config);
+   init(all.matchBillSummary, config);
 }
 
 test();

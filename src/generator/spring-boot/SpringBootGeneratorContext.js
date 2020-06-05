@@ -1,7 +1,7 @@
 const { PackegeRender } = require("./renders/PackageRender");
 const { Writer } = require("./Writer");
 const { ExpressoinGenerator } = require("./ExpressoinGenerator");
-const { ColumnAnalyzer } = require("./ColumnAnalyzer");
+const { ColumnMerger} = require("./ColumnMerger");
 const { render } = require("./renders/Render");
 
 /**
@@ -15,7 +15,7 @@ class SpringBootGeneratorContext {
                 this.company = company;
                 this.cache = new Map();
                 this.expressionGenerator = new ExpressoinGenerator();
-                this.columnAnalyzer = new ColumnAnalyzer();
+                this.columnMerger = new ColumnMerger();
                 this.render = render;
         }
 }

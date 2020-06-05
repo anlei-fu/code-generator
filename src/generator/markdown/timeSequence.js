@@ -24,7 +24,7 @@ exports.TimeSequenceBuilder = class TimeSequenceBuilder {
          * @param {[String]} participarts 
          * @returns {TimeSequenceBuilder}
          */
-        participants(participarts) {
+        participants(...participarts) {
                 participarts.forEach(x => {
                         this._output += `participant ${x}\r\n`;
                 });

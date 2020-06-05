@@ -293,7 +293,7 @@ class SpringBootGenerator {
                         return id + configItem.name + "batch"
                 }
                 else {
-                        let conditions = this._context.columnAnalyzer.analyzeConditions(configItem);
+                        let conditions = this._context.columnMerger.mergeConditions(configItem);
                         if (conditions.length == 1) {
                                 id += configItem.name + "By"
                                 id += STR.upperFirstLetter(conditions[0].name);
@@ -461,7 +461,7 @@ class SpringBootGenerator {
                         let entityConfig = {};
                         entityConfig.type = "resp";
                         entityConfig.description = configItem.resp.description;
-                        entityConfig.fields = configItem.context.columnAnalyzer.analyzeIncludes(configItem);
+                        entityConfig.fields = configItem.context.columnMerger.mergeIncludes(configItem);
                         configItem.resp.type = configItem.resp.name;
                         entityConfig.name = configItem.resp.type;
                         let content = this._context.render.renderEntity(entityConfig);
@@ -483,18 +483,18 @@ class SpringBootGenerator {
                 // get all possible columns
                 let map = new Map();
                 if (configItem.type == "select" || configItem.type == "delete")
-                        configItem.context.columnAnalyzer.analyzeConditions(configItem).forEach(condition => {
+                        configItem.context.columnMerger.mergeConditions(configItem).forEach(condition => {
                                 map.set(condition.name, condition);
                         });
                 else if (configItem.type == "update") {
-                        configItem.context.columnAnalyzer.analyzeIncludes(configItem).forEach(include => {
+                        configItem.context.columnMerger.mergeIncludes(configItem).forEach(include => {
                                 map.set(include.name, include);
                         });
-                        configItem.context.columnAnalyzer.analyzeConditions(configItem).forEach(condition => {
+                        configItem.context.columnMerger.mergeConditions(configItem).forEach(condition => {
                                 map.set(condition.name, condition);
                         });
                 } else {
-                        configItem.context.columnAnalyzer.analyzeIncludes(configItem).forEach(include => {
+                        configItem.context.columnMerger.mergeIncludes(configItem).forEach(include => {
                                 map.set(include.name, include);
                         });
                 }
@@ -538,6 +538,10 @@ class SpringBootGenerator {
                         .replace("@type", "param");
 
                 this._writeEntity(content, "param", configItem.params.type)
+        }
+
+        _generateTestFile(){
+
         }
 
         /**

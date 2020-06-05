@@ -1,0 +1,33 @@
+    /**
+     * <%=description  %> 
+     */
+    @Test
+    public void test<%=methodName %> throws Exception {
+        
+        <% if(hasDoCreateReq) {%><%=doCreateReqName %> req =new <%=doCreateReqName %>();
+        <% fields.forEach(field=>{%>
+          req.set<%=field.name%>(<%=fieldValue%>);
+        <%}%>
+         
+        <%if(isQuery){%>
+          <% retunrValueType%> result =service.<%=methodName %><% args.forEach((arg,i,array)=>{%>
+                <% if(arg.isDoCreateReq){ %>
+                        <% if(i==array.length-1) {%>
+                                <% =arg.value %> 
+                        <% } %>  <% else{ %>
+                                <% =arg.value %> ,
+                        <% } %> 
+                <%}%><% else{ %>
+                        <% if(i==array.length-1) {%>
+                                req
+                        <% } %>  <% else{ %>
+                                req,
+                        <% } %>  
+                <% } %>  
+         <%})%>
+        <%}%><% else { %> 
+        <% } %> 
+
+        
+        TestUtil.printQuery(dto,service.getList(dto));
+    }

@@ -169,7 +169,7 @@ class MapperConfigRender {
         _renderInsert(configItem) {
                 let names = "";
                 let values = "";
-                let includes = configItem.context.columnAnalyzer.analyzeIncludes(configItem);
+                let includes = configItem.context.columnMerger.mergeIncludes(configItem);
                 let createTime = this._findCreateTimeColumn(configItem.table);
                 if (createTime) {
                         createTime.column = "1." + NamingStrategy.toHungary(createTime.name).toLowerCase();
@@ -259,7 +259,7 @@ class MapperConfigRender {
                 let joinsSegment = STR.arrayToString1(configItem.joins, join => this._renderJoin(join) + "\r\n");
 
                 let outpuColumnsSegment = "";
-                configItem.context.columnAnalyzer.analyzeIncludes(configItem).forEach((include, i, array) => {
+                configItem.context.columnMerger.mergeIncludes(configItem).forEach((include, i, array) => {
                         include.suffix = i == array.length - 1 ? "" : ",";
                         outpuColumnsSegment += this._renderColumnName(include);
                 });
@@ -296,7 +296,7 @@ class MapperConfigRender {
         _renderUpdate(configItem) {
 
                 let setColumnsSegment = "";
-                configItem.context.columnAnalyzer.analyzeIncludes(configItem).forEach((include, i, array) => {
+                configItem.context.columnMerger.mergeIncludes(configItem).forEach((include, i, array) => {
                         include.prefix = "";
                         include.suffix = i == array.length - 1 ? "" : ",";
                         setColumnsSegment += this._renderAsign(include);
@@ -435,7 +435,7 @@ class MapperConfigRender {
          */
         _renderConditions(configItem) {
                 let whereSegment = "";
-                configItem.context.columnAnalyzer.analyzeConditions(configItem).forEach((condition, i) => {
+                configItem.context.columnMerger.mergeConditions(configItem).forEach((condition, i) => {
                         condition.prefix = i == 0 ? "" : "and ";
                         if (condition.isList) {
                                 whereSegment += this._renderIn(condition);

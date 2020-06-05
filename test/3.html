@@ -1,0 +1,52 @@
+<script>
+        //下游支持产品批量启用
+        async function enableDownProductNew(type) {
+                debugger
+                let nos = getShelfNos();
+                nos = nos.filter(no => {
+                        if ($("#" + no).val() == "QG|vivo20191106") {
+                                $(`input[name='ShelfNo',value=${no}]`).attr("checked", false);
+                                return false;
+                        }
+
+                        return true;
+                });
+
+                if (nos.length == 0) {
+                        alert("请至少选择一条数据");
+                        return;
+                }
+
+                if (!confirm(`您确认要批量启用所选择的${no.length}个产品吗?`)) {
+                        return
+                }
+
+                let data = $("#divshelflist").serialize() + "&type=" + type;
+
+                let result = await postData("/STUserAjax/EnableDownProduct", data);
+
+
+        }
+
+        function getShelfNos() {
+                let nos = [];
+                $("input[name='ShelfNo']:checked").each(function() {
+                        nos.push($(this).val());
+                });
+
+                return nos;
+
+        }
+
+        function postData(url, data) {
+                return new Promise(resolve => {
+                        $.ajax({
+                                type: "post",
+                                data: data,
+                                url: url,
+                                success: resp => resolve($.parseJSON(resp)),
+                                erro: resolve({ Status: false, Message: "系统异常" })
+                        });
+                })
+        }
+</script>

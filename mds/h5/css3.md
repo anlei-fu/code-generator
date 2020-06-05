@@ -235,3 +235,72 @@ inherit	|规定应从父元素继承 box-sizing 属性的值。
 
 
 
+# css proirity
+------
+
+Inline style (inside an HTML element)
+External and internal style sheets (in the head section)
+Browser default
+
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+
+
+  The background-attachment property specifies whether the background image should scroll or be fixed (will not scroll with the rest of the page):
+
+CSS Outline
+An outline is a line that is drawn around elements, OUTSIDE the borders, to make the element "stand out".
+ outline-offset: 15px;
+
+The text-transform property is used to specify uppercase and lowercase letters in a text.
+It can be used to turn everything into uppercase or lowercase letters, or capitalize the first letter of each word:
+
+The text-indent property is used to specify the indentation of the first line of a text.
+
+The letter-spacing property is used to specify the space between the characters in a text.
+
+The word-spacing property is used to specify the space between the words in a text.
+
+The white-space property specifies how white-space inside an element is handled.
+
+The border-collapse property sets whether the table borders should be collapsed into a single border:
+
+A block-level element always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can).
+
+An inline element does not start on a new line and only takes up as much width as necessary.
+
+An element with position: sticky; is positioned based on the user's scroll position.
+
+A sticky element toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed).
+
+The CSS word-break property specifies line breaking rules.
+
+The CSS writing-mode property specifies whether lines of text are laid out horizontally or vertically.
+
+The CSS writing-mode property specifies whether lines of text are laid out horizontally or vertically.
+
+The translate() method moves an element from its current position (according to the parameters given for the X-axis and the Y-axis).
+
+The rotate() method rotates an element clockwise or counter-clockwise according to a given degree.
+
+The scale() method increases or decreases the size of an element (according to the parameters given for the width and height).
+
+The scaleX() method increases or decreases the width of an element.
+
+The skewX() method skews an element along the X-axis by the given angle.
+
+The skewY() method skews an element along the Y-axis by the given angle.
+
+The matrix() method combines all the 2D transform methods into one.
+
+The rotateX() method rotates an element around its X-axis at a given degree:
+
+The rotateY() method rotates an element around its Y-axis at a given degree:
+
+The rotateZ() method rotates an element around its Z-axis at a given degree:
+
+The outline-offset property adds space between an outline and the edge or border of an element.
+
+
+

@@ -1,11 +1,11 @@
-const { resolveFromCsvString } = require("../csv-resolver/csv-resolver");
-const { FILE } = require("../../libs/file");
-const { DIR } = require("../../libs/dir");
-const { STR } = require("../../libs/str");
-const { ARRAY } = require("../../libs/utils");
-const { OBJECT } = require("../../libs/utils");
+const { resolveFromCsvString } = require("./../../../csv-resolver/csv-resolver");
+const { FILE } = require("./../../../../../libs/file");
+const { DIR } = require("./../../../../../libs/dir");
+const { STR } = require("./../../../../../libs/str");
+const { ARRAY } = require("./../../../../../libs/utils");
+const { OBJECT } = require("./../../../../../libs/utils");
 const { renderMarkDown } = require("./mark-down-render");
-const { NamingStrategy } = require("../../libs/naming-strategy");
+const { NamingStrategy } = require("./../../../../../libs/naming-strategy");
 
 const STRING_RESOLVER = x => x.replace(/\"/g, "\"");
 
@@ -196,4 +196,4 @@ function analyzePrimaryColumn(table) {
  * exports csv file from database -> put into resource folder -> then excuete this file
  */
 
-resolve("18");
+resolve("zd");

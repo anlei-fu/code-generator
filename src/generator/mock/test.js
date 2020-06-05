@@ -15,7 +15,7 @@ var result = {
 
 var vcodeResult={
     core:{
-          code:100,
+          code:0,
           msg:"send vcode success",
           coopId:"1",
           pno:"2015"
@@ -25,6 +25,7 @@ var vcodeResult={
 
 var submitResult={
      code:100,
+     status:1,
      msg:"submit success"
 }
 

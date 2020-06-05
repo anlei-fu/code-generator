@@ -1,7 +1,7 @@
-const { FILE } = require("../../../../libs/file");
-const { OBJECT } = require("../../../../libs/utils");
+const { FILE } = require("./../../../../../libs/file");
+const { OBJECT } = require("./../../../../../libs/utils");
 
-const { SimpleRender } = require("../../../simple-pattern-render/simple-pattern-render");
+const { SimpleRender } = require("./../../../renders/SimplePatterRender");
 
 const TABLE_RENDER = new SimpleRender({}, `${__dirname}/templates/table.md`);
 const ROW_RENDER = new SimpleRender({}, `${__dirname}/templates/row.md`);

@@ -18,6 +18,8 @@ async function test() {
                return window.error=(error)=>LOG.error("page",error);
         })
 
+        page.click()
+
         page.on("error", (e) => {
                 console.log(e);
         });

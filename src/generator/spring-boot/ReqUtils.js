@@ -49,16 +49,16 @@ class ReqUtils {
                 // get req by conditions
                 let conditions;
                 if (configItem.type == "select" || configItem.type == "delete") {
-                        conditions = configItem.context.columnAnalyzer.analyzeConditions(configItem);
+                        conditions = configItem.context.columnMerger.mergeIncludes(configItem);
                 } else if (configItem.type == "insert") {
 
                         // insert case: fields =includes
-                        conditions = configItem.context.columnAnalyzer.analyzeIncludes(configItem);
+                        conditions = configItem.context.columnMerger.mergeConditions(configItem);
                 } else {
 
                         // update case: fields = includes + conditions
-                        conditions = configItem.context.columnAnalyzer.analyzeIncludes(configItem)
-                               .concat(configItem.context.columnAnalyzer.analyzeConditions(configItem));
+                        conditions = configItem.context.columnMerger.mergeConditions(configItem)
+                               .concat(configItem.context.columnMerger.mergeIncludes(configItem));
                 }
 
                 let result = [];

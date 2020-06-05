@@ -6,7 +6,7 @@ class ApiConfig {
         constructor () {
                 this.method = "";
                 this.path = "";
-                this.timeot = "";
+                this.timeuot = "";
         }
 }
 
