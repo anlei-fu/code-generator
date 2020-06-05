@@ -6,9 +6,18 @@ const { ExcutorBase } = require("./ExcutorBase");
  */
 exports.JsExcutor = class JsExcutor extends ExcutorBase {
         constructor () {
-                super("js excutor");
+                super("JsExcutor");
         }
 
+        /**
+         * Excute a js file by given args and context
+         * the file exports a main async function which return 
+         * a @see ExcuteResult
+         * 
+         * @param {String} jsFile 
+         * @param {Any?} args 
+         * @returns {ExcuteResult}
+         */
         async excute(jsFile, args) {
                 let resultBuilder = this._context.factory.newResultBuilder(`Excute shell ${jsFile}`);
 

@@ -1,4 +1,4 @@
-const { AccessBase } = require("./AcccessBase");
+const { AccessBase } = require("../../Common/AcccessBase");
 
 class TaskAccess extends AccessBase {
 

@@ -16,7 +16,7 @@ class JavaProjectController extends Controller {
               this._access=access;
         }
 
-        getById(query) {
+        getById({query}) {
             return this._access.getById({id:query.id});
         }
 

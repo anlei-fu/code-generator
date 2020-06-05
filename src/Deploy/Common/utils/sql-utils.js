@@ -1,4 +1,7 @@
-const { validateUtils } = require("./validateUtils");
+const { validateUtils } = require("./validate-utils");
+const { TYPE } = require("./utils");
+const { NamingStrategy } = require("./naming-strategy");
+const { StopWatch } = require("./../StopWatch");
 
 /**
  * Generate update string
@@ -35,6 +38,7 @@ function getUpdateString(table, fields) {
  * @returns {String?}
  */
 function getInsertString(table, fields) {
+        let watch = new StopWatch();
         validateUtils.requireNotNull(table);
 
         fields = trimEmptyFields(fields);
@@ -42,21 +46,22 @@ function getInsertString(table, fields) {
         if (fieldNames.length == 0)
                 return "";
 
-        let sql = `insert into ${table} (@fields)values(@values)`;
+        let sql = `insert into ${table}`;
         let fieldsStr = "";
         let valuesStr = "";
         fieldNames.forEach((field, i, arr) => {
                 if (i != arr.length - 1) {
-                        fieldsStr += `${field},`;
-                        value += `${formatSqlString(fields[field])},`;
+                        fieldsStr += `${NamingStrategy.toHungary(field)},`;
+                        valuesStr += `${formatSqlString(fields[field])},`;
                 } else {
-                        fieldsStr += `${field}`;
-                        value += `${formatSqlString(fields[field])}`;
+                        fieldsStr += `${NamingStrategy.toHungary(field)}`;
+                        valuesStr += `${formatSqlString(fields[field])}`;
                 }
         });
 
-        return sql.replace(/@fields/, fieldsStr)
-                .replace(/@valus/, valuesStr);
+        sql = `${sql}(${fieldsStr})values(${valuesStr})`;
+        console.log(sql);
+        return sql;
 }
 
 /***
@@ -68,13 +73,13 @@ function formatSqlString(value) {
         if (value == undefined)
                 throw new Error("argument can not be null");
 
-        if (value instanceof String) {
-                return `${name}='${value.replace(/'/g, "''")}',`
+        if (TYPE.isString(value)) {
+                return `'${value.replace(/'/g, "''")}'`
         } else if (value instanceof Date) {
-                return `${name}='${value.toLocaleString()}',`
+                return `'${value.toLocaleString()}'`
         }
         else {
-                return `${name}=${value},`
+                return `${value}`
         }
 }
 
@@ -95,7 +100,7 @@ function trimEmptyFields(fields) {
 }
 
 function getEqualConditions(model) {
-      let _new =trimEmptyFields(model);
+        let _new = trimEmptyFields(model);
 }
 
 /**

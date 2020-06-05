@@ -1,4 +1,8 @@
-const { LoggerSurpport } = require("../../Common/LoggerSurpport");
+const { LoggerSurpport } = require("./LoggerSurpport");
+
+/**
+ * Controller base
+ */
 class Controller extends LoggerSurpport {
 
         constructor (name, controllerConfig = {}) {
@@ -7,18 +11,24 @@ class Controller extends LoggerSurpport {
         }
 
         /**
+         * To mount url-handler mapping
+         * 
          * @abstract
+         * @param {Express.Application}
          */
         mount(app) {
                 throw new Error("this method has not been implemented");
         }
 
         /**
+         * Extract http contetx.req to controller args and invoke controller method
+         * @type  {({query,params,body})=>ApiResponse|Promise<ApiResponse>}
+         * then send response, and error catching process
          * 
-         * @private
-         * @param {*} req 
-         * @param {*} resp 
-         * @param {*} handler 
+         * @protect
+         * @param {Express.Request} req 
+         * @param {Express.Response} resp 
+         * @param {({query,params,body})=>ApiResponse|Promise<ApiResponse>} handler 
          */
         async _process(req, resp, handler) {
                 try {
@@ -28,18 +38,16 @@ class Controller extends LoggerSurpport {
                                         return;
                         }
 
-                        let result = await handler(req.query, req.body);
+                        let result = await handler({ query: req.query, body: req.body, params: req.params });
                         resp.send(result);
 
                         if (this._controllerConfig.afterProcess) {
-                                await this._controllerConfig.afterProcess(req, resp);
+                                await this._controllerConfig.afterProcess(req, result);
                         }
 
                 } catch (ex) {
 
                 }
-
-
         }
 }
 

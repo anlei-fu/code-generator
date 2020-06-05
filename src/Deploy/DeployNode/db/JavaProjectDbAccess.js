@@ -1,12 +1,12 @@
-const {AccessBase} =require("./AcccessBase");
+const {AccessBase} =require("../../Common/AcccessBase");
 
 class JavaProjectAccess extends AccessBase {
         /**
          * 
          * @param {String} dbFile 
          */
-        constructor (dbFile) {
-                super("java_project",dbFile);
+        constructor (name) {
+                super(name,{table:"java_project"});
         }        
 }
 

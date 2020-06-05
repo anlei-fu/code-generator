@@ -31,9 +31,12 @@ class TaskRunner extends Service {
         }
 
         /**
-         * @abstract
+         * To pending task excuting
+         * 
+         * @param {()=>void} callback
+         * @param {boolean} force
          */
-        pause(callback) {
+        pause(callback,force=false) {
 
                 if (this._status != ServiceStatus.RUNNING) {
                         this.warn("pause refused ,cause service status is not 'running'");
@@ -60,6 +63,9 @@ class TaskRunner extends Service {
 
         resume() {
                 if (this._status != ServiceStatus.PAUSED) {
+                        this.warn(
+                                `to resume service failed, cause current status is ${this.status}`
+                        )
                         return;
                 }
 
@@ -72,7 +78,7 @@ class TaskRunner extends Service {
          */
         start() {
                 if (this._status != ServiceStatus.STOPPED) {
-                        this.warn("service is not stopped,but start be called again");
+                        this.warn("to service refused,but start be called again");
                         return;
                 }
 
@@ -133,7 +139,7 @@ class TaskRunner extends Service {
 
                 if (this._excutingTask > this._config.maxConcurrency) {
                         this.info(
-                                `to start new task refused, over max concurrency,` +
+                                `to start new task refused, cause over max concurrency,` +
                                 `and there's ${this._excutingTask} tasks running`);
                         return;
                 }

@@ -1,5 +1,11 @@
 class JsManager{
     constructor(){
+          this._workDir="";
+          this._js={};
+
+    }
+   
+    getMain(jsFile){
 
     }
 

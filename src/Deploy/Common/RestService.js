@@ -4,41 +4,45 @@ const app = express();
 
 // allow cross domain
 app.all("*", (req, resp, next) => {
-        resp.header("Access-Control-Allow-Origin", "*");
-        next();
+    resp.header("Access-Control-Allow-Origin", "*");
+    next();
 });
 
 // body parser (json & urlencoded) need install 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const {Service} =require("./Service");
+const { Service } = require("./Service");
 
 /**
- * To host a http rest service
+ * To host a http rest service, base on 'express' http server
  */
-class RestService extends Service{
-    constructor(controllers=[]){
-            super("rest-service");
-            this._controllers=controllers;
+class RestService extends Service {
+    /**
+     * 
+     * @param {[Controller]} controllers 
+     */
+    constructor (controllers = []) {
+        super("RestService");
+        this._controllers = controllers;
     }
 
-    init(){
-        this._controllers.forEach(controller=>{
-             controller.mount(app);
+    init() {
+        this._controllers.forEach(controller => {
+            controller.mount(app);
         });
     }
 
-    pause(){
+    pause() {
 
     }
 
-    start(){
-           app.listen(80);
+    start() {
+        app.listen(80);
     }
 
-    stop(){
+    stop() {
 
     }
-
-
 }
+
+exports.RestService = RestService;

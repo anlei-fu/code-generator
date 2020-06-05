@@ -1,18 +1,21 @@
 
-const { sqlUtils } = require("../utils/sqlUtils");
-const { SqliteExcutor } = require("../../Common/excutor/SqliteExcutor");
-const { validateUtils } = require("./../utils/validateUtils");
+const { sqlUtils } = require("./utils/sql-utils");
+const { SqliteExcutor } = require("./excutor/SqliteExcutor");
+const { validateUtils } = require("./utils/validate-utils");
+const { LoggerSurpport } = require("./LoggerSurpport");
+const { StopWatch } = require("./StopWatch");
 
 /**
  * Simple wrap of @see SqliteExcutor ,provide basic sql operations
  */
-class AccessBase {
+class AccessBase extends LoggerSurpport {
         /**
          * 
          * @param {String} table  not null
          * @param {EntityConfig} param1 
          */
-        constructor (table, { db = "db.db", idField = "id", idIsStringOrDate = false }) {
+        constructor (name, { table, db = "db.db", idField = "id", idIsStringOrDate = false }) {
+                super(name);
                 validateUtils.requireNotNull(table);
                 this._table = table;
                 this._excutor = new SqliteExcutor(db);
@@ -27,7 +30,7 @@ class AccessBase {
          * @param {PageConfig} pageConfig
          * @returns {Promise<Entity>}
          */
-        list(conditions, pageConfig) {
+        async  list(conditions, pageConfig) {
 
         }
 
@@ -37,8 +40,8 @@ class AccessBase {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        add(model) {
-                return this.executeCore(sqlUtils.getInsertString(this._table, model));
+        async add(model) {
+                return this._executeCore(sqlUtils.getInsertString(this._table, model));
         }
 
         /**
@@ -47,7 +50,7 @@ class AccessBase {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        updateById(id, model) {
+        async  updateById(id, model) {
                 let sql = `${sqlUtils.getUpdateString(this._table, model)}`;
                 if (!sql)
                         return false;
@@ -61,7 +64,7 @@ class AccessBase {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        deleteById(id) {
+        async  deleteById(id) {
                 return this._executeCore(`delete from ${this._table} ${this._getIdWhereClause(id)}`);
         }
 
@@ -71,8 +74,8 @@ class AccessBase {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        getById(id) {
-                return this._excutor.querySingle(`select * from ${this._getIdWhereClause(id)}`);
+        async getById(id) {
+                return this._excutor.querySingle(`select * from ${this._table} ${this._getIdWhereClause(id)}`);
         }
 
         /**
@@ -81,8 +84,8 @@ class AccessBase {
          * @param {[Object]} model 
          * @returns {Promise<Boolean>}
          */
-        async addBatch(models) {
-                let t = models.forEach(model => {
+        addBatch(models) {
+                let t = models.forEach(async model => {
                         try {
                                 let result = await this.add(model);
                                 if (result)
@@ -107,8 +110,8 @@ class AccessBase {
                         return false;
 
                 return this._executeCore(
-                        `${this._getUpdateString(model)}` +
-                        `where ${this._getInLike(ids, this._idField)}`
+                        `${sqlUtils.getUpdateString(model)}` +
+                        `where ${sqlUtils.getInLike(ids, this._idField)}`
                 );
         }
 
@@ -124,7 +127,7 @@ class AccessBase {
 
                 return this._executeCore(
                         `delete from ${this._table} ` +
-                        `where ${this._getInLike(ids, this._idField)}`
+                        `where ${sqlUtils.getInLike(ids, this._idField)}`
                 );
         }
 
@@ -150,28 +153,6 @@ class AccessBase {
         }
 
         /**
-         * Generate update string
-         * 
-         * @private
-         * @param {Object} model 
-         * @returns {string?}
-         */
-        _getUpdateString(model) {
-                return sqlUtils.getUpdateString(this._table, model);
-        }
-
-        /**
-         * Get equal conditions join by 'and'
-         * 
-         * @private
-         * @param {Object} model 
-         * @returns {string}
-         */
-        _getEqualConditions(model) {
-            return sqlUtils.getEqualConditions(model);
-        }
-
-        /**
          * Get where clause by id
          * 
          * @private
@@ -182,14 +163,6 @@ class AccessBase {
                 return ` where ${this._idField} = ${sqlUtils.formatSqlString(id)}`;
         }
 
-        /**
-         * 
-         * @param {[string|number]} items 
-         * @param {string} prefix 
-         */
-        _getInLike(items, field, prefix = "in") {
-               return sqlUtils.getInLike(items,field,prefix);
-        }
 
         /**
          * Excute core
