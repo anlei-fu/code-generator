@@ -130,6 +130,7 @@ function getInLike(items, field, prefix = "in") {
         return sql;
 }
 
+
 exports.sqlUtils = {
         getUpdateString,
         trimEmptyFields,

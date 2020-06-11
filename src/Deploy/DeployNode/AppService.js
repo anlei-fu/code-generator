@@ -1,19 +1,17 @@
-
-class DeployNode{
+class AppService{
         start(){
-            
+
         }
 
         stop(){
 
         }
 
-        pause(){
+        status(){
 
         }
 
-        resume(){
+        restart(){
 
         }
-
 }

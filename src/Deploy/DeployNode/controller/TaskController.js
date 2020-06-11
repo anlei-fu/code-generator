@@ -1,31 +1,31 @@
 const { Controller } = require("./Controller");
 
-class TaskController extends Controller {
-        addTask(){
+exports.TaskController = class TaskController extends Controller {
+        addTask() {
 
         }
 
-        status(){
+        status() {
 
         }
 
-        listExcutingTaks(){
+        listExcutingTaks() {
 
         }
 
-        listWaitingToExecuteTasks(){
+        listWaitingToExecuteTasks() {
 
         }
 
-        cancelTask(){
+        cancelTask() {
 
         }
-        
+
         /**
          * @override
          */
-        install(app){
+        install(app) {
 
         }
-        
+
 }

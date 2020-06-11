@@ -128,6 +128,33 @@ function exists(path) {
 }
 
 /**
+ * Read file text to a json object
+ * 
+ * @param {String} path 
+ * @returns {any}
+ */
+function readJson(path){
+     return JSON.parse(read(path));
+}
+
+/**
+ * Write object with json format to file
+ * 
+ * @param {String} path 
+ * @param {any} obj 
+ * @param {boolean} beautiful 
+ */
+function writeJson(path,obj,beautiful=false){
+        let content="";
+        if(beautiful){
+           content.JSON.stringify(obj,null,"\t");
+        }else{
+
+        }
+   return write(path,JSON.stringify(obj))
+}
+
+/**
  * Exports
  */
 exports.FILE = {
@@ -138,7 +165,9 @@ exports.FILE = {
         appendLine,
         exists,
         copy,
-        remove
+        remove,
+        readJson,
+        writeJson
 }
 
 

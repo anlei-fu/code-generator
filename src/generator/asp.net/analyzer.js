@@ -165,7 +165,7 @@ const { NamingStrategy } = require("../../libs/naming-strategy");
  *    join expression
  *    select output column
  */
-class columnMerger {
+class ColumnAnalyzer {
 
         constructor () {
                 this.controlAnalyzer;
@@ -448,6 +448,6 @@ module.exports = {
         InsertAnalyzer,
         SelectAnalyzer,
         ControlAnlyzer,
-        columnMerger,
+        ColumnAnalyzer,
         DelfaultValueAnalyzer
 }

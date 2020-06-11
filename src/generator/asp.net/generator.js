@@ -10,7 +10,7 @@ class Generator {
          * 
          * @param {GeneratoraConfig} config 
          */
-        constructor(config) {
+        constructor (config) {
                 this._config = config;
                 this._writer = new Writer(config.project, config.name, config.prefix);
         }
@@ -19,8 +19,8 @@ class Generator {
          * Generate all files
          */
         generate() {
-                if(this._config.add||this._config.edit)
-                  this._generateItem();
+                if (this._config.add || this._config.edit)
+                        this._generateItem();
 
                 this._generateIndex();
                 this._generateAccess();
@@ -69,7 +69,7 @@ class Generator {
         /**
          * Generate item file
          */
-        _generateItem(){
+        _generateItem() {
                 let content = renders.renderItem(this._config.addConfig);
                 this._writer.writeItem(content);
         }

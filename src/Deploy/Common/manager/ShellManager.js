@@ -1,36 +1,8 @@
-const fs = require("fs");
-const {DeployContext} =require("../DeployClientContext");
-class ShellManager {
-        constructor (basePath) {
-                if (!fs.existsSync(basePath)
-                        || fs.lstatSync(basePath).isDirectory()) {
-                        fs.mkdirSync(basePath);
-                }
-
-                this._basePath = basePath;
-                this._context=new DeployContext();
+const { FileManagerBase } = require("./FileManager");
+class ShellManager extends FileManagerBase {
+        constructor (workDir) {
+                super("ShellManager", workDir);
         }
-
-        exists(file) {
-                if(!file||!file.endsWith(".sh"))
-                   return false;
-
-                return fs.existsSync(this.getFullPath(file));
-        }
-
-        deploy(params) {
-
-        }
-
-        rollback(){
-                
-        }
-
-        getFullPath(relatived){
-                return `${this._basePath}/${relatived}`;
-        }
-
-
 }
 
 exports.ShellManager = ShellManager;

@@ -1,15 +1,17 @@
 const { Service } = require("./Service");
-const { ServiceStatus } = require("../DeployNode/po/constant/ServiceStatus");
-const { TaskStatus } = require("../DeployNode/po/constant/TaskStatus");
-const { } = require("../DeployNode/po/constant/TaskResultCode");
-
+const { ServiceStatus } = require("./po/constant/ServiceStatus");
+const { TaskStatus } = require("./po/constant/TaskStatus");
+const { TaskExcutor } = require("./excutor/TaskExcutor");
 /**
  * To execute task
  */
-class TaskRunner extends Service {
+class TaskService extends Service {
 
         constructor () {
                 super();
+
+                this._taskExcutor = new TaskExcutor();
+
                 this._excutingTask = {};
                 this._waitToExcute = [];
                 this._taskInterval = {};
@@ -31,61 +33,18 @@ class TaskRunner extends Service {
         }
 
         /**
-         * To pending task excuting
-         * 
-         * @param {()=>void} callback
-         * @param {boolean} force
-         */
-        pause(callback,force=false) {
-
-                if (this._status != ServiceStatus.RUNNING) {
-                        this.warn("pause refused ,cause service status is not 'running'");
-                        return;
-                }
-
-                this._pausedCallBack = callback;
-
-                clearInterval(this._taskInterval);
-
-                if (this._excutingTask.length > 0) {
-                        this.warn(`service status trigger to pausing ,cause there's ${this._excutingTask.length} tasks still running`);
-                        this._status = ServiceStatus.PAUSING;
-                } else {
-                        
-                        this._status = ServiceStatus.PAUSED;
-                        this._serverEventListerner.onServicePaused();
-                        this.info(`service paused`);
-
-                        if (this._pausedCallBack)
-                                this._pausedCallBack();
-                }
-        }
-
-        resume() {
-                if (this._status != ServiceStatus.PAUSED) {
-                        this.warn(
-                                `to resume service failed, cause current status is ${this.status}`
-                        )
-                        return;
-                }
-
-                this._taskInterval = setInterval(run, this._config.interval);
-                this._serverEventListerner.onServiceResumed();
-        }
-
-        /**
          * @abstract
          */
         start() {
                 if (this._status != ServiceStatus.STOPPED) {
-                        this.warn("to service refused,but start be called again");
+                        this.warn(`to start service refused,cause current status is ${this._status}`);
                         return;
                 }
 
-                this._status = ServiceStatus.STARTED;
                 this._taskInterval = setInterval(run, this._config.interval);
-                this._serverEventListerner.onServiceStarted();
+                this._status = ServiceStatus.RUNNING;
                 this.info("service started");
+                this._raiseServiceStarted();
         }
 
         /**
@@ -94,46 +53,87 @@ class TaskRunner extends Service {
         stop(callback, force = false) {
                 this.info(`call stop force=${force}`);
 
-                if (this._status == ServiceStatus.STOPPING || this._status == ServiceStatus.STOPPED) {
-                        this.warn("service status is stopped or stopping,stop already be called or service not started");
+                if ((this._status == ServiceStatus.STOPPING || this._status == ServiceStatus.STOPPED)
+                        && !force) {
+                        this.warn(`to stop service refused,cause current status is ${this._status}`);
                         return;
                 }
 
                 this._stoppedCallback = callback;
-                clearInterval(this._taskInterval);
+                this._clearIntervalCore();
 
-                if (force) {
-                        this._status = ServiceStatus.STOPPED;
-
-                        this.warn("service stopped forecely");
-
-                        this._serverEventListerner.onServiceStopped();
-
-                        if (this._stoppedCallback)
-                                this._stoppedCallback();
-
+                if (this._excutingTask.length > 0 && !force) {
+                        this._status = ServiceStatus.STOPPING;
+                        this.info(`service status trigger to stoping ,cause there's ${this._excutingTask.length} task still running`);
                         return;
                 }
 
-                if (this._excutingTask.length > 0) {
-                        this._status = ServiceStatus.STOPPING;
-                        this.info(`service status trigger to stoping ,cause there's ${this._excutingTask.length} task still running`);
-                } else {
+                this._status = ServiceStatus.STOPPED;
+                this.warn("service stopped");
+                this._raiseServiceStopped();
 
-                        this._status = ServiceStatus.STOPPED;
-                        this._serverEventListerner.onServiceStopped();
-
-                        if (this._stoppedCallback)
-                                this._stoppedCallback();
-
-                        this.info("service stopped");
-                }
+                if (this._stoppedCallback)
+                        this._stoppedCallback();
         }
 
-        async run() {
-                
-                if(this._status!=ServiceStatus.RUNNING){
-                        this.warn(`run refused cause current status is ${this._status}`);
+        /**
+         * Puase service and pending task excuting
+         * 
+         * @param {()=>void} callback
+         * @param {boolean} force
+         */
+        pause(callback, force = false) {
+
+                if (this._status != ServiceStatus.RUNNING) {
+                        this.warn("pause refused ,cause service status is not 'running'");
+                        return;
+                }
+
+                this._pausedCallBack = callback;
+                this._clearIntervalCore();
+
+                if (this._excutingTask.length > 0 && !force) {
+                        this.warn(`service status trigger to pausing ,cause there's ${this._excutingTask.length} tasks still running`);
+                        this._status = ServiceStatus.PAUSING;
+                        return;
+                }
+
+                this._status = ServiceStatus.PAUSED;
+                this.info(`service paused`);
+
+                this._raiseServicePaused();
+
+                if (this._pausedCallBack)
+                        this._pausedCallBack();
+        }
+
+        /**
+         * Resume service
+         */
+        resume() {
+                if (this._status != ServiceStatus.PAUSED) {
+                        this.warn(
+                                `to resume service failed, cause current status is ${this.status}`
+                        )
+                        return;
+                }
+
+                this._taskInterval = setInterval(this._run, this._config.interval);
+
+                this._status = ServiceStatus.RUNNING;
+                this.info("service resumed");
+                this._raiseServiceResumed();
+        }
+
+        /**
+         * Run a task
+         * 
+         * @private
+         */
+        async _run() {
+
+                if (this._status != ServiceStatus.RUNNING) {
+                        this.warn(`to stop service refused,cause current status is ${this._status}`);
                         return;
                 }
 
@@ -155,26 +155,48 @@ class TaskRunner extends Service {
 
                 let task = this._waitToExcute.pop();
                 this.info(`start excuting task '${task.id}'`);
-                await this.beforeTaskExcuting(task);
-
                 let result;
                 try {
-                        result = await this._context.taskExcutor.excute(task);
+                        await this._beforeTaskExcuting(task);
+                        result = await this._taskExcutor.excute(task);
+                        await this._afterTaskFinished(task, result);
                 } catch (ex) {
                         this.error(`excute task ${task.id} exceptionaly`, ex);
                 }
 
                 this.info(`finish excuting task id:${task.id},result code:${result.code}`);
-                await this.afterTaskFinished(task, result);
         }
 
-        async afterTaskFinished(task, result) {
+        /**
+         * PreExecute task
+         * 
+         * @private
+         * @param {Task} task 
+         */
+        async _beforeTaskExcuting(task) {
+                await this._taskAccess.updateTaskStatus(task.id, { status: TaskStatus.EXCUTING });
+                await this._taskNotifier.notifyTaskStarted(task.id);
+        }
+
+        /**
+         * Process task  excute result
+         * 
+         * @private
+         * @param {Task} task 
+         * @param {ExecuteResult} result 
+         */
+        async _afterTaskFinished(task, result) {
                 this._excutingTask.remove(task.id);
+                await this._taskAccess.updateTaskStatus(task.id, { status: 1 });
+                await this._taskNotifier.notifyTaskFinished();
+
+                // process service status 'paussing' and 'stopping'
                 if (this._excutingTask.size() == 0) {
                         if (this._status == ServiceStatus.STOPPING) {
                                 this._status = ServiceStatus.STOPPED;
                                 this.info("service stopped");
-                                this._serverEventListerner.onServiceStopped();
+                                this._raiseServiceStopped();
+
                                 if (this._stoppedCallback)
                                         this._stoppedCallback();
                         }
@@ -182,23 +204,25 @@ class TaskRunner extends Service {
                         if (this._status == ServiceStatus.PAUSING) {
                                 this._status = ServiceStatus.PAUSED;
                                 this.info("service paused");
-                                this._serverEventListerner.onServicePaused();
+                                this._raiseServicePaused();
 
                                 if (this._pausedCallBack)
                                         this._pausedCallBack();
                         }
                 }
-
-                await this._taskAccess.updateTaskStatus(task.id, { status: 1 });
-                await this._taskNotifier.notifyTaskStarted();
         }
 
-        async beforeTaskExcuting(task) {
-                await this._taskAccess.updateTaskStatus(task.id, { status: TaskStatus.EXCUTING });
-                await this._taskNotifier.notifyTaskStarted();
+        /**
+         * Clear interval core
+         */
+        _clearIntervalCore() {
+                if (this._taskInterval) {
+                        clearInterval(this._taskInterval);
+                        this._taskInterval == null;
+                }
         }
 
 
 }
 
-exports.TaskRunner = TaskRunner
+exports.TaskService = TaskService;

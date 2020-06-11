@@ -1,0 +1,26 @@
+{
+        "goodsid": "1610241535",
+        "productName": "%E8%85%BE%E8%AE%AF%E5%A4%A7%E7%8E%8B%E5%8D%A1",
+        "channel": "08-2278-6162-9999+",
+        "certInfo": {
+                "certName": "傅安雷",
+                "certId": "513401199502133818",
+                "contactPhone": "18208324615"
+        },
+        "post": {
+                "webProvince": "340000",
+                "webCity": "340200",
+                "webCounty": "340202",
+                "webProvinceName": "安徽",
+                "webCityName": "芜湖市",
+                "webCountyName": "镜湖区",
+                "address": "华西村1组1号"
+        },
+        "provinceCode": "30",
+        "cityCode": "303",
+        "goodsId": "981610241535",
+        "captchaCode": "1555",
+        "pageUrl": "",
+        "commJson": {},
+        "pageLink": "common-fill/common-success"
+}

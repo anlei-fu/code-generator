@@ -1,0 +1,59 @@
+<html>
+
+<head>
+        <script src="./jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+        <script>
+
+                function get(url,params,config){
+                       return request(url,"get",params,config); 
+                }
+
+                function post(url,params,config){
+                        return request(url,"post",params,config); 
+                }
+
+                function put(url,params,config){
+                        return request(url,"put",params,config); 
+                }
+
+                function _delete(url,params,config){
+                        return _delete(url,"put",params,config); 
+                }
+
+                function request(url, method, params, { isJson = false, timeout = 10000 }) {
+                         if(DEBUG){
+                                 console.log(`${method} ${url}`);
+                                 console.log(`params is`);
+                                 console.log(params);
+                         }
+
+                        return new Promise((resolve, reject) => {
+                                $.ajax({
+                                        url,
+                                        type: method,
+                                        data: isJson ? JSON.stringify(params) : params,
+                                        contentType: isJson ? "application/json " : "application/x-www-form-urlencoded",
+                                        timeout,
+                                        success: resp => {
+                                                if(DEBUG){
+                                                   console.log("resp is");
+                                                   console.log(resp);
+                                                }
+
+                                                try {
+                                                        resolve($.parseJSON(resp));
+                                                } catch (ex) {
+                                                        reject(ex);
+                                                }
+                                        },
+                                        error: err => reject(err)
+                                });
+                        });
+                }
+        </script>
+</body>
+
+</html>

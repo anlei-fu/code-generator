@@ -1,17 +1,18 @@
-class ServiceEventListener{
-        onstarted(serviceName){
 
+exports.ServiceEventListener = class ServiceEventListener {
+        onServiceStarted(serviceName) {
+                throw new Error("method has not been implemented");
         }
 
-        onpaused(serviceName){
-
+        onServicePaused(serviceName) {
+                throw new Error("method has not been implemented");
         }
 
-        onstopped(serviceName){
-
+        onServiceStopped(serviceName) {
+                throw new Error("method has not been implemented");
         }
 
-        onresumed(serviceName){
-
+        onServiceResumed(serviceName) {
+                throw new Error("method has not been implemented");
         }
 }

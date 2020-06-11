@@ -1,0 +1,508 @@
+<html style=" width: 100%;">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>资料填写</title>
+    <script src="./jquery-3.1.1.min.js" type="text/javascript"></script>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/costumer.css" rel="stylesheet">
+    <style>
+        @media screen and (min-width: 310px) and (max-width: 340px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (min-width: 350px) and (max-width: 370px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (min-width: 370px) and (max-width: 385px) {
+            html {
+                font-size: 18.75px;
+            }
+        }
+
+        @media screen and (min-width: 400px) and (max-width: 420px) {
+            html {
+                font-size: 20.55px;
+            }
+        }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+    <script>
+
+        // event biding
+        $(() => {
+            $("#getVcode").click(() => sendVCode());
+            $("#submit").click(() => presubmit());
+            $("#close").click(() => closeDialog());
+            $("#showRule").click(() => showRule());
+        });
+
+        //==============================================================================================
+        // ui operations
+        //==============================================================================================
+
+        function showNotify(msg) {
+            setText("#notifyContent", msg)
+            changeVisibility("#notify", true);
+            setTimeout(() => closeNotify(), 3000);
+        }
+
+        function closeNotify() {
+            changeVisibility("#notify", false);
+        }
+
+        function showDialog(title, msg) {
+            setText("#title", title);
+            setText("#content", msg);
+            changeVisibility("#mask", true);
+            changeVisibility("#dialog", true);
+        }
+
+        function closeDialog() {
+            changeVisibility("#mask", false);
+            changeVisibility("#dialog", false);
+        }
+
+        function showRule() {
+            changeVisibility("#mask", true);
+            changeVisibility("#rule", true);
+        }
+
+        function closeRule() {
+            changeVisibility("#mask", false);
+            changeVisibility("#rule", false);
+        }
+
+        function showConfirm() {
+            changeVisibility("#mask", true);
+            changeVisibility("#confirmBox", true);
+        }
+
+        function closeConfirm() {
+            changeVisibility("#mask", false);
+            changeVisibility("#confirmBox", false);
+        }
+
+        function showProtocol() {
+
+        }
+
+        function closeProtocol() {
+
+        }
+
+        function toggleProtocolCheck() {
+
+        }
+
+        function showAreaSelect() {
+
+        }
+
+        function closeAreaSelect() {
+
+        }
+
+        function changeCities() {
+
+        }
+
+        function changeDistricts() {
+
+        }
+
+        function showError() {
+
+        }
+
+        function closeError() {
+
+        }
+
+        //==============================================================================================
+        // api
+        //==============================================================================================
+        var vcodeCounter = 0;
+        var isVcodeSended = false;
+
+        // 接口地址配置
+        var apiUrls = {
+            vcodeUrl: "http://localhost:8083/getvcode",
+            submitUrl: "http://localhost:8083/submit",
+            getCities: "",
+            getProvinces: "",
+        };
+
+        // 发送验证码参数
+        var vcodeParams = {
+            phoneNo: null,
+        };
+        /**
+         * 发送验证码，
+         *   检查当前是否可发送
+         *   号码是否正确
+         *   保存返回值到 submitParams(cooporder,pno,coopId...)
+         **/
+        async function sendVCode() {
+            if (vcodeCounter != 0)
+                return;
+
+            // check phoneNo
+            vcodeParams.phoneNo = getValue("#phoneNo");
+            if (!vcodeParams.phoneNo || !/^1[3456789]\d{9}$/.test(vcodeParams.phoneNo)) {
+                showNotify("请输入正确的号码")
+                return;
+            }
+
+            try {
+                var result = await post(apiUrl.vcodeUrl, vcodeParams);
+                if (!result || !result.core || result.core.code != 100) {
+                    showNotify("发送验证码失败，请稍后重试");
+                    return;
+                }
+
+                submitParams.coopOrder = result.coopOrder;
+                submitParams.coopId = result.core.coopId;
+                submitParams.pno = result.core.pno;
+
+                isVcodeSended = true;
+                showNotify("验证码已发送");
+                resetCounter();
+
+            } catch (ex) {
+                console.error(ex);
+                showNotify("发送验证码失败，请稍后重试");
+            }
+        }
+
+        // 提交订单参数
+        var submitParams = {
+            goodsid: "1610241535",
+            productName: "%E8%85%BE%E8%AE%AF%E5%A4%A7%E7%8E%8B%E5%8D%A1",
+            channel: "08-2278-6162-9999+",
+            certInfo: {
+                "certName": "傅安雷",
+                "certId": "513401199502133818",
+                "contactPhone": "18208324615"
+            },
+            post: {
+                "webProvince": "340000",
+                "webCity": "340200",
+                "webCounty": "340202",
+                "webProvinceName": "安徽",
+                "webCityName": "芜湖市",
+                "webCountyName": "镜湖区",
+                "address": "华西村1组1号"
+            },
+            provinceCode: "30",
+            cityCode: "303",
+            goodsId: "981610241535",
+            captchaCode: "1555",
+            pageUrl: "",
+            commJson: {},
+            pageLink: "common-fill/common-success"
+        }
+
+        // 预提交 检查参数，弹出确认框
+        function presubmit() {
+            if (!isVcodeSended) {
+                showNotify("请先发送验证码");
+                return;
+            }
+
+            // check phoneNo
+            submitParams.phoneNo = getValue("#phoneNo");
+            if (!vcodeParams.phoneNo || !/^1[3456789]\d{9}$/.test(vcodeParams.phoneNo)) {
+                showNotify("请输入正确的号码")
+                return;
+            }
+
+            // check vcode
+            submitParams.smsCode = getValue("#vcode");
+            if (!submitParams.smsCode || submitParams.smsCode.trim().length != 6) {
+                showNotify("请输入6位验证码")
+                return;
+            }
+
+            showConfirm();
+        }
+
+        /**
+         * 提交订单
+         *  
+         **/
+        async function submit() {
+            try {
+                var result = await post(apiUrls.submitUrl, submitParams);
+                if (!result || result.code != 100) {
+                    showNotify("提交订单失败，请稍后重试");
+                    return;
+                }
+
+                showDialog("成功", "您已成功办理了该业务");
+            } catch (ex) {
+                console.error(ex);
+                showNotify("提交订单失败，请稍后重试");
+            }
+
+        }
+
+        // 重置验证码计时器
+        function resetCounter() {
+            vcodeCounter = 60;
+            var interval = setInterval(() => {
+                if (--vcodeCounter != 0) {
+                    setText("#getVcode", `还剩${vcodeCounter}秒`);
+                } else {
+                    clearInterval(interval);
+                    setText("#getVcode", `获取验证码`);
+                }
+            }, 1000);
+        }
+
+        //==============================================================================================
+        //  jquery api wrap
+        //==============================================================================================
+
+
+        function get(url, params) {
+            return _request(url, "get", params);
+        }
+
+        function post(url, params) {
+            return _request(url, "post", params);
+        }
+
+        function postJson(url,params){
+            return _request(url,"post",params);
+        }
+
+        function _request(url, method, params) {
+            console.log(`url:${url}`);
+            console.log(`params:`);
+            console.log(params);
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    type: method,
+                    url,
+                    data: params,
+                    success: resp => {
+                        console.log("resp:");
+                        console.log(resp);
+                        resolve($.parseJSON(resp));
+                    },
+                    error: err => {
+                        reject(err);
+                    }
+                })
+            });
+        }
+
+        function setText(selector, text) {
+            $(selector).text(text);
+        }
+
+        function getValue(selector) {
+            return $(selector).val();
+        }
+
+        function changeVisibility(selector, show) {
+            if (show) {
+                $(selector).show();
+            } else {
+                $(selector).hide();
+            }
+        }
+
+    </script>
+
+    <section class="fill-wrapper">
+        <h2 id="fill-desc">已选择 <span>“腾讯大王卡”</span></h2>
+        <h2 id="top-desc" hidden="" style="display: block;">根据国家实名制要求, 请准确提供身份证信息</h2>
+        <div class="fee" hidden="">
+            <h2>入网首月扣费</h2>
+            <ul class="feeTitle">
+                <li data-firstfee="1">首月全量全价</li>
+                <li class="selected" data-firstfee="2">首月半价半量</li>
+                <li data-firstfee="3">首月按量计费</li>
+            </ul>
+            <ul class="feeDetail">
+                <li hidden=""><span>详情描述：</span>首月扣费按全价收取费用，套餐内容不变，5G会员立即生效。</li>
+                <li><span>详情描述：</span>首月扣费按半价收取费用，套餐内容减半，5G会员立即生效。</li>
+                <li hidden=""><span>详情描述：</span>指按实际使用业务量和单价计费，首月资费国内语音拨打、国内流量均按照套外单价执行，腾讯王卡5G会员次月生效。
+                </li>
+            </ul>
+        </div>
+        <div class="fill fill-info">
+            <ul class="fill-list">
+                <li id="apply-name">
+                    <div class="p-title">姓名</div>
+                    <div class="p-content"> <input id="certName" type="text" title="姓名" placeholder="请输入身份证件姓名"
+                            maxlength="20"> </div>
+                </li>
+                <li id="apply-id">
+                    <div class="p-title">身份证</div>
+                    <div class="p-content"> <input id="certNo" type="text" title="身份证" placeholder="请输入身份证号"
+                            maxlength="18"> <i class="errorI"></i>
+                    </div>
+                </li>
+                <li id="apply-phone">
+                    <div class="p-title">联系电话</div>
+                    <div class="p-content"> <input id="mobilePhone" type="tel" title="联系电话" placeholder="请输入联系电话"
+                            maxlength="13"> </div>
+                </li>
+                <li id="apply-yzm" hidden="" style="display: list-item;">
+                    <div class="p-title">验证码</div>
+                    <div class="p-content"> <input id="vcode" class="yzmInput" maxlength="4" type="text" title="请输入验证码"
+                            placeholder="请输入验证码"> <span class="rightI" style="display:none"></span> <span class="yzm"
+                            id="getVcode">获取验证码</span> </div>
+                </li>
+            </ul>
+        </div>
+        <div class="fill fill-two fill-info">
+            <div class="voiceCaptcha" hidden="">*收不到验证码？试试<a href="javascript:;" id="voiceCaptcha">语音验证码&gt;</a></div>
+            <h2>请填写配送地址<span class="red">(支持全国配送，新疆、西藏仅限省内配送)</span></h2>
+            <ul class="fill-list">
+                <li id="area">
+                    <div class="p-title">所在地区</div>
+                    <div class="p-content p-select grey">请选择区/县</div>
+                </li>
+                <li class="delivery" id="addr-detail">
+                    <div class="p-content p-text-area">
+                        <p class="text-temp" id="address-temp"></p> <textarea id="address" class="text-area"
+                            name="address" rows="1" title="delivery-desc" placeholder="街道/镇+村/小区/写字楼+门牌号"></textarea>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="apply step1">
+        <div class="btn-box">
+            <p class="protocol" id="protocol" hidden=""> <i class="protocol-radio"></i>我已阅读并同意<a href="javascript:;"
+                    id="go-protocol">《客户入网服务协议及业务协议》</a>、<a href="javascript:;" id="go-protocol1">《关于信息收集使用规则公告》</a>
+            </p> <a id="submit" href="javascript:;" class="btn">立即提交</a>
+        </div>
+    </section>
+    <!-- Rule -->
+    <section id="rule" class="popup" hidden="">
+        <div class="content">
+            <h2 class="protocol-title">关于客户个人信息收集、使用规则的公告</h2>
+            <div class="protocol-desc">
+                <p class="no-indent">尊敬的客户：</p>
+                <p>根据《中华人民共和国反恐怖主义法》、《全国人民代表大会常务委员会关于加强网络信息保护的决定》、《电信和互联网用户个人信息保护规定》（工业和信息化部令第24号）和《电话用户真实身份信息登记规定》（工业和信息化部令第25号）等国家法律法规的要求，客户在中国联合网络通信有限公司各类营业网点（含自有营业厅、手机营业厅、网上营业厅、授权合作代理商等）办理固定电话、移动电话（含无线上网卡）入网、过户以及需要出示客户证件的有关业务时，客户应配合出示有效证件原件并进行查验、登记，登记信息包括姓名、证件类型、号码及地址等。同时，为更好地提供服务，需要客户提供如联系人、联系电话、通信地址、电子邮箱等信息。客户本人持有效证件可通过自有营业厅查询和/或更正本人信息，或登录手机营业厅查询本人信息。
+                </p>
+                <p>如客户拒绝依法提供个人有效证件及真实信息，我公司有权不提供服务或终止服务。</p>
+                <p>为向客户提供优质、个性化的服务，包括但不限于提供通信服务、保障通信服务安全、改善服务质量、推介个性化产品等，我公司将遵循合法、正当、必要的原则，按照法律法规规定和/或协议约定使用留存客户个人信息，并妥善保管，严格保密，依法保护客户个人信息，非因下列事由，不对外泄露客户个人信息：
+                </p>
+                <p>(a)事先获得客户的明确授权； </p>
+                <p>(b)根据有关的法律法规要求；</p>
+                <p>(c)按照相关司法机关和/或政府主管部门的要求；</p>
+                <p>(d)为维护社会公众的利益所必需且适当；</p>
+                <p>(e)为维护我公司或客户的合法权益所必需且适当。</p>
+                <p class="alignRight">中国联合网络通信有限公司</p>
+            </div>
+        </div> <a class="popup-close" href="JavaScript:;" data-type="2"></a>
+    </section>
+
+    <!--Notify-->
+    <section id="notify" hidden="">
+        <div id="notifyContent" class="protocol_apply">您须理解并同意入网协议</div>
+    </section>
+    <section id="change-box" class="popup" hidden="">
+        <div class="content">
+            <p class="popup-desc">根据国家实名制要求，<span>未满8周岁不能办理新入网业务</span>，请您更换16岁以上的证件下单</p>
+            <div class="btn-change"> <a href="javascript:;" class="popup-change">更换证件</a> </div>
+        </div>
+    </section>
+
+    <div class="privacy" >
+        <p>请保持联系号码畅通，我们可能随时与您联系。本次为阶段性优惠活动，</p>
+        <p>数量有限，联系电话无人接听或恶意下单情况，将不予发货。</p>
+    </div>
+    <div class="privacys">
+        <p>国际/港澳台漫游和国际/港澳台长途功能将于号码激活时同步生效，不使用不会产生费用哦</p>
+    </div>
+
+    <!-- Area Select -->
+    <section id="areaSelect" class="sidebar location">
+        <ul id="province" class="first-list">
+            <li data-code="11" data-ess-code="110000" class="selected">北京</li>
+            <li data-code="13" data-ess-code="120000">天津</li>
+            <li data-code="18" data-ess-code="130000">河北</li>
+            <li data-code="19" data-ess-code="140000">山西</li>
+            <li data-code="10" data-ess-code="150000">内蒙古</li>
+            <li data-code="91" data-ess-code="210000">辽宁</li>
+            <li data-code="90" data-ess-code="220000">吉林</li>
+            <li data-code="97" data-ess-code="230000">黑龙江</li>
+            <li data-code="31" data-ess-code="310000">上海</li>
+            <li data-code="34" data-ess-code="320000">江苏</li>
+            <li data-code="36" data-ess-code="330000">浙江</li>
+            <li data-code="30" data-ess-code="340000">安徽</li>
+            <li data-code="38" data-ess-code="350000">福建</li>
+            <li data-code="75" data-ess-code="360000">江西</li>
+            <li data-code="17" data-ess-code="370000">山东</li>
+            <li data-code="76" data-ess-code="410000">河南</li>
+            <li data-code="71" data-ess-code="420000">湖北</li>
+            <li data-code="74" data-ess-code="430000">湖南</li>
+            <li data-code="51" data-ess-code="440000">广东</li>
+            <li data-code="59" data-ess-code="450000">广西</li>
+            <li data-code="50" data-ess-code="460000">海南</li>
+            <li data-code="83" data-ess-code="500000">重庆</li>
+            <li data-code="81" data-ess-code="510000">四川</li>
+            <li data-code="85" data-ess-code="520000">贵州</li>
+            <li data-code="86" data-ess-code="530000">云南</li>
+            <li data-code="79" data-ess-code="540000">西藏</li>
+            <li data-code="84" data-ess-code="610000">陕西</li>
+            <li data-code="87" data-ess-code="620000">甘肃</li>
+            <li data-code="70" data-ess-code="630000">青海</li>
+            <li data-code="88" data-ess-code="640000">宁夏</li>
+            <li data-code="89" data-ess-code="650000">新疆</li>
+        </ul>
+        <ul id="city" class="second-list">
+            <li data-province-name="北京" data-code="110100" data-ess-code="110" class="selected">北京市</li>
+        </ul>
+        <ul id="district" class="third-list">
+            <li data-code="110101">东城区</li>
+            <li data-code="110102">西城区</li>
+            <li data-code="110105">朝阳区</li>
+            <li data-code="110106">丰台区</li>
+            <li data-code="110107">石景山区</li>
+            <li data-code="110108">海淀区</li>
+            <li data-code="110109">门头沟区</li>
+            <li data-code="110111">房山区</li>
+            <li data-code="110112">通州区</li>
+            <li data-code="110113">顺义区</li>
+            <li data-code="110114">昌平区</li>
+            <li data-code="110115">大兴区</li>
+            <li data-code="110116">怀柔区</li>
+            <li data-code="110117">平谷区</li>
+            <li data-code="110228">密云县</li>
+            <li data-code="110229">延庆县</li>
+        </ul>
+    </section>
+
+    <!-- Dialog -->
+    <section id="dialog" class="popup" hidden="">
+        <div class="content"> <img class="popup-icon"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QkYxMjVEMjREQUQxMUU3Qjg3MTgxOTRCRjNENEIzMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MTNCRDZCQTRFNzExMUU3Qjg3MTgxOTRCRjNENEIzMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRCRjEyNUQwNERBRDExRTdCODcxODE5NEJGM0Q0QjMzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRCRjEyNUQxNERBRDExRTdCODcxODE5NEJGM0Q0QjMzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3r75swAADl1JREFUeNrsXWls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"
+                alt="fail">
+            <p class="popup-title" id="title">抱歉</p>
+            <p class="popup-desc center" id="content">产品销售太火爆啦，请您稍后重试</p>
+        </div> <a class="popup-close" id="close" href="JavaScript:;" data-type="3"></a>
+    </section>
+
+    <div class="mask" hidden=""></div>
+</body>
+
+</html>

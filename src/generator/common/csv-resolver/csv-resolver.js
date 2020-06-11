@@ -92,8 +92,9 @@ function split(content) {
                         if (!parseQuotation) {
                                 if (reader.hasPrevious()) {
                                         if (reader.previous != "\\") {
-                                                if (cell != "")
+                                                if (cell != ""){
                                                         throw new Error(`unexcepted syntax at row ${result.length}`);
+                                                }
 
                                                 parseQuotation = true;
                                         } else {

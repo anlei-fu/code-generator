@@ -4,6 +4,7 @@ const { FILE } = require("../../../libs/file");
 function main() {
         generateDb();
         deployStructure();
+        appStructure();
 }
 
 function generateDb() {
@@ -21,6 +22,45 @@ function generateDb() {
 
         FILE.write("./output/db.md", content);
 
+}
+
+function appStructure(){
+        const  app="app" 
+              ,master="master"
+              ,node="node"
+              ,taskService="taskService"
+              ,git="git"
+              ,fileSystem="fileSystem"
+              ,db="dbService"
+              ,userInterface="userInterface"
+              ,deployService="deployService"
+              ,buildService="buildService"
+              ,appService="appService"
+              ,jobService="jobService"
+              ,proxyService="proxyService"
+              ,webUi="webUi";
+
+        
+              const builder = new GraphBuilder("TD");
+
+           let content=   builder
+                     .path(e(app),e(git))
+                     .path(e(app),e(master))
+                     .path(e(app),e(fileSystem))
+                     .path(e(master),e(userInterface))
+                     .path(e(userInterface),e(webUi))
+                     .path(e(master),e(node))
+                     .path(e(master),e(db))
+                     .path(e(node),e(taskService))
+                     .path(e(node),e(deployService))
+                     .path(e(node),e(appService))
+                     .path(e(node),e(jobService))
+                     .path(e(node),e(proxyService))
+                     .path(e(node),e(buildService))
+                     .build();
+
+                     FILE.write("./output/app-structure.md", content);
+        
 }
 
 function deployStructure() {

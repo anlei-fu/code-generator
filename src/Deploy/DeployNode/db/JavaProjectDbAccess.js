@@ -1,13 +1,16 @@
-const {AccessBase} =require("../../Common/AcccessBase");
+const { AccessBase } = require("../../Common/AcccessBase");
 
 class JavaProjectAccess extends AccessBase {
         /**
          * 
          * @param {String} dbFile 
          */
-        constructor (name) {
-                super(name,{table:"java_project"});
-        }        
+        constructor (excutor) {
+                super("JavaProjectAccess", {
+                        table: "java_project",
+                        excutor,
+                });
+        }
 }
 
-exports.JavaProjectAccess=JavaProjectAccess;
+exports.JavaProjectAccess = JavaProjectAccess;

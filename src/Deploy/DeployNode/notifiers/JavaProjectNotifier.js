@@ -5,8 +5,8 @@ const Api={
         UPDATE_BY_ID:"/java/{projectId}",
 }
 class JavaProjectNotifier extends HttpVisitor {
-        constructor () {
-                super();
+        constructor (config) {
+                super(config);
         }
 
         /**

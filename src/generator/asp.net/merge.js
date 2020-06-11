@@ -1,7 +1,7 @@
 const { XML_DOM } = require("./../../libs/xml-dom");
 const { FILE } = require("./../../libs/file");
 class ProjectMerger {
-        
+
         /**
          * 
          * @param {String} root  of project file
@@ -17,52 +17,62 @@ class ProjectMerger {
         merge() {
 
                 // entity
-                this._mergeCore(`./M${this.name}.cs`,
+                this._mergeCore(
+                        `./M${this.name}.cs`,
                         `${this.root}/Common Layer/${this.project}.Entity/${this.project}.Entity.csproj`,
                         this._mergeEntity);
 
                 // iaccess
-                this._mergeCore(`./I${this.name}Access.cs`,
+                this._mergeCore(
+                        `./I${this.name}Access.cs`,
                         `${this.root}/Common Layer/${this.project}.Interfaces/${this.project}.Interfaces.csproj`,
                         this._mergeIAccess);
 
                 // ihandler
-                this._mergeCore(`./I${this.name}Handler.cs`,
+                this._mergeCore(
+                        `./I${this.name}Handler.cs`,
                         `${this.root}/Common Layer/${this.project}.Interfaces/${this.project}.Interfaces.csproj`,
                         this._mergeIHandler);
 
                 // access
-                this._mergeCore(`./${this.name}Access.cs`,
+                this._mergeCore(
+                        `./${this.name}Access.cs`,
                         `${this.root}/Data Layer/${this.project}.DBAccess/${this.project}.DBAccess.csproj`,
                         this._mergeAccess);
 
                 // handler
-                this._mergeCore(`./${this.name}Handler.cs`,
+                this._mergeCore(
+                        `./${this.name}Handler.cs`,
                         `${this.root}/Logic Layer/${this.project}.Logic/${this.project}.Logic.csproj`,
                         this._mergeHandler);
 
                 // service
-                this._mergeCore(`./${this.name}Service.cs`,
+                this._mergeCore(
+                        `./${this.name}Service.cs`,
                         `${this.root}/Service Layer/${this.project}.UserService/${this.project}.UserService.csproj`,
                         this._mergeService);
 
                 // models
-                this._mergeCore(`./${this.name}ItemModel.cs`,
+                this._mergeCore(
+                        `./${this.name}ItemModel.cs`,
                         `${this.root}/Service Layer/${this.project}.Model/${this.project}.Model.csproj`,
                         this._mergeServiceModels);
 
                 // controller
-                this._mergeCore(`./${this.name}Controller.cs`,
+                this._mergeCore(
+                        `./${this.name}Controller.cs`,
                         `${this.root}/User Layer/${this.project}.UserWeb/${this.project}.UserWeb.csproj`,
                         this._mergeController);
 
                 // controller
-                this._mergeCore(`./${this.name}.xml`,
+                this._mergeCore(
+                        `./${this.name}.xml`,
                         `${this.root}/User Layer/${this.project}.UserWeb/${this.project}.UserWeb.csproj`,
                         this._mergeConfigFile);
 
                 // views
-                this._mergeCore(`./${this.name}Index.cshtml`,
+                this._mergeCore(
+                        `./${this.name}Index.cshtml`,
                         `${this.root}/User Layer/${this.project}.UserWeb/${this.project}.UserWeb.csproj`,
                         this._mergeViews);
         }

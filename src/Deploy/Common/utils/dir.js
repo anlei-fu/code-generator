@@ -23,6 +23,17 @@ function exists(path) {
 }
 
 /**
+ * Create manay folders
+ * 
+ * @param  {...String} paths 
+ */
+function createMany(...paths){
+        paths.forEach(path=>{
+                create(path);
+        })
+}
+
+/**
  * Create folder
  * 
  * @param {String} path 
@@ -130,6 +141,7 @@ exports.DIR = {
         getFolders,
         remove,
         create,
+        createMany,
         exists,
         copy
 }

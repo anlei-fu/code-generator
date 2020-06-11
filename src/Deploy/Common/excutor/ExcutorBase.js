@@ -1,5 +1,5 @@
 const { LoggerSurpport } = require("../LoggerSurpport");
-const { DeployContext } = require("../../DeployNode/DeployClientContext");
+const { DeployContext } = require("../../DeployNode/DeployContext");
 
 exports.ExcutorBase = class ExcutorBase extends LoggerSurpport {
         /**
@@ -7,8 +7,13 @@ exports.ExcutorBase = class ExcutorBase extends LoggerSurpport {
          * @param {String} name 
          * @param {DeployContext} context 
          */
-        constructor (name,context) {
+        constructor (name, taskType) {
                 super(name);
-                this._context=context;
+                this._taskType = taskType;
+                this._resultBuilderFactory = resultBuilderFactory;
+        }
+
+        get taskType() {
+                return this._taskType;
         }
 }

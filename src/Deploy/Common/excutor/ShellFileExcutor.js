@@ -1,20 +1,17 @@
 
 const child = require('child_process');
 const { ExcutorBase } = require("./ExcutorBase");
-const { OBJECT } = require("./../utils/utils");
+const { OBJECT } = require("../utils/utils");
+const {TaskType} =require("./../po/constant/TaskType");
 
 /**
  * To execute shell file
  */
-class ShellExcutor extends ExcutorBase {
+class ShellFileExcutor extends ExcutorBase {
 
-        /**
-         * 
-         * @param {DeployContext} context 
-         */
         constructor (context) {
-                super("ShellExcutor");
-                this._context = context;
+                super("ShellExcutor",TaskType.SHELL_FILE);
+                this._shellManager = context.resourceManager.shellManager;
         }
 
         /**
@@ -28,13 +25,13 @@ class ShellExcutor extends ExcutorBase {
          * @returns {Result}
          */
         async excute(shellFile, params) {
-                let resultBuilder = this._context.factory.newResultBuilder(`Excute shell ${shellFile}`);
+                let resultBuilder = this._resultBuilderFactory.newResultBuilder(`Excute shell ${shellFile}`);
 
-                // check file exists
-                let shellExists = this._context.resourceManager
-                        .shellManager.exists(shellFile);
-                if (!shellExists)
+                if (this._shellManager.exists(shellFile))
                         return resultBuilder.shellNotFound(shellFile);
+
+                if (params)
+                        params = OBJECT.toArray(params);
 
                 let { error, stdout, stderr } = await this._executeCore(shellFile, params);
                 if (error
@@ -56,8 +53,8 @@ class ShellExcutor extends ExcutorBase {
          * @param {String} shellFile 
          * @param {Object|Array} params 
          */
-        _executeCore(shellFile, params) {
-                params=OBJECT.toArray(params);
+        _executeCore(shellFile, params = []) {
+                params = OBJECT.toArray(params);
                 return new Promise((resolve) => {
                         child.execFile("sh", params.unshift(shellFile), (error, stdout, stderr) => {
                                 resolve({ error, stdout, stderr });
@@ -66,4 +63,4 @@ class ShellExcutor extends ExcutorBase {
         }
 }
 
-exports.ShellExcutor = ShellExcutor
+exports.ShellFileExcutor = ShellFileExcutor

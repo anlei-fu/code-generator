@@ -6,5 +6,6 @@ class JavaProject{
                 this.jarName="";
                 this.status=0;
                 this.deployFile=0;
+                this.lastUpdateTime=new Date();
         }
 }

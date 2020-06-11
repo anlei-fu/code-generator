@@ -2,9 +2,9 @@ const {ShellManager} =require("./ShellManager");
 const {JsManager} =require("./JsManager")
 
 class ResourceManager {
-        constructor () {
-            this.shellManager =new ShellManager();
-            this.jsManager =new JsManager();
+        constructor (jsBaseFolder,shellBaseFolder) {
+            this.shellManager =new ShellManager(shellBaseFolder);
+            this.jsManager =new JsManager(jsBaseFolder);
         }
 
         init() {
