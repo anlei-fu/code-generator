@@ -4,6 +4,27 @@ class HttpClient extends LoggerSurpport {
         constructor (name, baseConfig = { timeout: 10000 }) {
                 super(name || "HttpClient");
                 this._client = axios.default.create(baseConfig);
+                this._baseConfig = baseConfig;
+                this.init();
+        }
+
+        init() {
+                if (this._baseConfig.requestInterceptor)
+                        this._client.interceptors.request.use(this._baseConfig.requestInterceptor);
+
+                if (this._baseConfig.responseInterceptor) {
+                        this._client.interceptors.request.use(this._baseConfig.responseInterceptor);
+                } else {
+                        this._client.interceptors.response.use(
+                                (resp) => {
+                                        let result = typeof resp.data == "string" ? JSON.parse(resp.data) : resp.data;
+                                        return result;
+                                },
+                                (error) => {
+                                        return Promise.reject(error);
+                                }
+                        );
+                }
         }
 
         /**
@@ -14,7 +35,7 @@ class HttpClient extends LoggerSurpport {
          * @returns {Promise<ApiResponse>}
          */
         get(url, params) {
-                return this._request({ url, data, params, method: "get" });
+                return this._request({ url, params, method: "get" });
         }
 
         /**
@@ -35,7 +56,7 @@ class HttpClient extends LoggerSurpport {
          * @param {Object} params 
          * @returns {Promise<ApiResponse<boolean>>}
          */
-        delete(url, params) {
+        delete(url, params, data) {
                 return this._request({ url, data, params, method: "delete" });
         }
 
@@ -59,11 +80,22 @@ class HttpClient extends LoggerSurpport {
          */
         async _request({ url, params, data, method }) {
                 try {
-                        return await this._client[method](
+                        this.info(`${method} ${url}`);
+                        if (params) {
+                                this.info("params:",JSON.stringify(params));
+                        } else if (data) {
+                                this.info("data:",JSON.stringify(data));
+                        }
+
+                        let resp = await this._client[method](
                                 this._normalizeUrl({ url, params, data },
                                         { params, data }));
-                } catch (ex) {
 
+                        this.info("resp:",JSON.stringify(resp));
+
+                        return resp;
+                } catch (ex) {
+                        this.error(`${method} ${url}`,ex);
                 }
         }
 
@@ -75,8 +107,25 @@ class HttpClient extends LoggerSurpport {
          * @returns {String}
          */
         _normalizeUrl({ url, params, data }) {
+                params = params || data;
+                let pathReg = /\{[a-zA-Z]*\}/g;
+                let pathVariables = url.match(pathReg);
+                if (pathVariables && pathVariables.length > 0) {
 
+                        // clone ,cause will delete property
+                        params = JSON.parse(JSON.stringify(params));
+                        pathVariables.forEach(variable => {
+                                let property = variable.replace(/(\{|\})/g, "");
+                                if (!params[property]) {
+                                        throw new Error(`url(${url})'s varible(${property}) not found in params`, params)
+                                }
+
+                                url = url.replace(new RegExp(variable, "g"), params[property]);
+                        });
+                }
+
+                return url;
         }
 }
 
-exports.HttpVisitor = HttpClient;
+exports.HttpClient = HttpClient;

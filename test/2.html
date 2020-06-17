@@ -14,14 +14,17 @@
 <body style="background-color:#0962E1" cz-shortcut-listen="true">
     <script>
 
+      
+
+
 
         // event biding
         $(() => {
             $("#vcode").click(() => sendVCode());
             $("#submit").click(() => submit());
             $("#confirm").click(() => closeDialog());
-            $("#showRule").click(()=>showRule());
-            $("#closeRule").click(()=>closeRule());
+            $("#showRule").click(() => showRule());
+            $("#closeRule").click(() => closeRule());
         });
 
         //==============================================================================================
@@ -59,12 +62,12 @@
             changeVisibility("#dialog", false);
         }
 
-        function showRule(){
-           changeVisibility("#rule",true);
+        function showRule() {
+            changeVisibility("#rule", true);
         }
 
-        function closeRule(){
-            changeVisibility("#rule",false);
+        function closeRule() {
+            changeVisibility("#rule", false);
         }
 
 
@@ -244,11 +247,13 @@
                     <input type="number" placeholder="6位数验证码">
                     <h6 id="vcode">获取验证码</h6>
                 </div>
-                <div id="submit" class="btn_home" style="color: rgb(255, 255, 255); background-color: rgb(251, 73, 14);">
+                <div id="submit" class="btn_home"
+                    style="color: rgb(255, 255, 255); background-color: rgb(251, 73, 14);">
                     立即订购
                 </div>
             </div>
-            <div id="showRule" class="more_info" style="color: rgb(251, 212, 3); top: 90%; border-bottom-color: rgb(251, 212, 3);">
+            <div id="showRule" class="more_info"
+                style="color: rgb(251, 212, 3); top: 90%; border-bottom-color: rgb(251, 212, 3);">
                 订购说明
             </div>
 
@@ -319,7 +324,8 @@
     <div id="mask" class="van-overlay" style="z-index: 2010;"></div>
 
     <div id="rule" class="myInfo van-popup van-popup--center" style="z-index: 2013;">
-        <img id="closeRule" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0YTRhYmYyYS0zMTBhLTRmNzItOGE1YS03NGQxZTE1NTRkYWEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ5MjhDMDFEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ5MjhDMDBEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3ZGNkY2VhMS03Yzc3LTQ0ZWItYmY1Ni02NzY4MWEyODQzZGUiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDplYTZmMzZhMS05MTkxLTQ0NGEtYWUwNS03NTVhNjFmODk4ZTIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6vGgAoAAABjUlEQVR42rzWLU/EMBgH8K17Qw8zzDF5DokiIYEQEIgL9xWmL1jUobAI1DQJEnE5AhgMAoPA8gWYIyQnupfb+G/sErbbunY7aNK0fbL11/Utk5Mkkf46Eekfkuq6bloeIPd0Xb9GSVkvBEHA7FBRlM35fD6QZfkOzXfHcSQVlQ1M2RRB1ff9E8MwBk0QI/WjKHpCX1Ycx8do7y2m6wPB17SB8hDQLaprbQAMNgPyvibIP2uCKZKQd/HAfQeoACCdIl+WF56m09QSYgLl3dUGagSqtjDNF/6ZA+IC6s4JxQ45aoC4AdZhnDEgIaDpxC9BlNJHUYDnWilDO6JAdq1gdMtBVS1AYRiOEHsBoKUBfM2b53lXq7wg+wCmCyD/oi3Lsm7S8awCKSwy6he/pm7ICxGBg3aOfFZaIy6ICADjms3QCFUhNgOQ2kBlxMYLTYAwRCoAmwMQgkgHgBsiHQEuiGCRvxBczx8etwDqIB1FJOXSJyFkG1gP+aHj388Mt/W+pmlDXEUT0zSz4LcAAwBIzQZ/FTjfSQAAAABJRU5ErkJggg=="
+        <img id="closeRule"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0YTRhYmYyYS0zMTBhLTRmNzItOGE1YS03NGQxZTE1NTRkYWEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzQ5MjhDMDFEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzQ5MjhDMDBEOUVEMTFFOTlBQzlGQjc2RDQzQTEwMjgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3ZGNkY2VhMS03Yzc3LTQ0ZWItYmY1Ni02NzY4MWEyODQzZGUiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDplYTZmMzZhMS05MTkxLTQ0NGEtYWUwNS03NTVhNjFmODk4ZTIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6vGgAoAAABjUlEQVR42rzWLU/EMBgH8K17Qw8zzDF5DokiIYEQEIgL9xWmL1jUobAI1DQJEnE5AhgMAoPA8gWYIyQnupfb+G/sErbbunY7aNK0fbL11/Utk5Mkkf46Eekfkuq6bloeIPd0Xb9GSVkvBEHA7FBRlM35fD6QZfkOzXfHcSQVlQ1M2RRB1ff9E8MwBk0QI/WjKHpCX1Ycx8do7y2m6wPB17SB8hDQLaprbQAMNgPyvibIP2uCKZKQd/HAfQeoACCdIl+WF56m09QSYgLl3dUGagSqtjDNF/6ZA+IC6s4JxQ45aoC4AdZhnDEgIaDpxC9BlNJHUYDnWilDO6JAdq1gdMtBVS1AYRiOEHsBoKUBfM2b53lXq7wg+wCmCyD/oi3Lsm7S8awCKSwy6he/pm7ICxGBg3aOfFZaIy6ICADjms3QCFUhNgOQ2kBlxMYLTYAwRCoAmwMQgkgHgBsiHQEuiGCRvxBczx8etwDqIB1FJOXSJyFkG1gP+aHj388Mt/W+pmlDXEUT0zSz4LcAAwBIzQZ/FTjfSQAAAABJRU5ErkJggg=="
             class="closeIcon">
         <p style="color: rgb(51, 51, 51);">
         <p>

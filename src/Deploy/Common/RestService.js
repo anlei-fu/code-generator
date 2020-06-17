@@ -1,5 +1,5 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('./node_modules/express');
+const bodyParser = require('./node_modules/body-parser');
 const { Service } = require("./Service");
 const { ServiceStatus } = require("./po/constant/ServiceStatus");
 const { Controller } = require("./Controller");
@@ -30,8 +30,8 @@ class RestService extends Service {
         validateUtils.requireNumber(port);
         super("RestService");
         this._controllers = controllers;
-        this._controllers.forEach(c=>{
-             validateUtils.requireInstanceOf(c,Controller);
+        this._controllers.forEach(c => {
+            validateUtils.requireInstanceOf(c, Controller);
         });
 
         this._port = port;
@@ -48,12 +48,13 @@ class RestService extends Service {
     }
 
     /**
-     * Mount all controller
      * 
+     * @param {NodeContext} context
      */
-    init() {
+    init(context) {
         this._controllers.forEach(controller => {
             controller.mount(app);
+             controller.init(context);
         });
     }
 
@@ -70,6 +71,7 @@ class RestService extends Service {
 
         this._status = ServiceStatus.RUNNING;
         this.info("service started");
+        this.info("listen on " + this._port);
         this._raiseServiceStarted();
 
     }

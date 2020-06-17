@@ -1,7 +1,7 @@
 const { JavaProjectController } = require("./controller/JavaProjectController");
 const { TaskController } = require("./controller/TaskController");
-const { validateUtils } = require("./../Common/utils/validate-utils");
-const { AccessBase } = require("./../Common/AcccessBase");
+const { validateUtils } = require("./../common/utils/validate-utils");
+const { AccessBase } = require("./../common/AcccessBase");
 const {FileVersionController} =require("./controller/FileVersionController");
 
 exports.ControllerBuilder = class ControllerBuilder {

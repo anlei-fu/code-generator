@@ -316,7 +316,7 @@ function export_(obj, name, relpace = true) {
  * @returns {String}
  */
 function doReplace(json) {
-        let str = require("./../libs/str").STR;
+        let str = require("../libs/str").STR;
         json = str.reverse(json);
         let output = "";
         let isInQuote = false;
@@ -414,7 +414,8 @@ function isFunction(obj) {
  * @param {Any} obj 
  */
 function isNumber(obj) {
-        return obj.constructor == Number;
+        let result =typeof obj;
+        return typeof obj == "number";
 }
 
 /**
@@ -423,7 +424,7 @@ function isNumber(obj) {
  * @param {any} obj 
  */
 function isBoolean(obj) {
-        return obj.constructor == Boolean;
+        return typeof obj == "boolean";
 }
 
 exports.TYPE = {

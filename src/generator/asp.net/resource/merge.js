@@ -8,10 +8,10 @@ const { ProjectMerger } = require("./../../merge");
 let name = "@name";
 let root = "@root";
 
-let entityFolder = `${root}/Common Layer/@project.Entity/Entity`;
-let iaccessFolder = `${root}/Common Layer/@project.Interfaces/DataAccess`;
+let entityFolder = `${root}/common Layer/@project.Entity/Entity`;
+let iaccessFolder = `${root}/common Layer/@project.Interfaces/DataAccess`;
 let accessFolder = `${root}/Data Layer/@project.DBAccess`;
-let ihandler = `${root}/Common Layer/@project.Interfaces/Logic`;
+let ihandler = `${root}/common Layer/@project.Interfaces/Logic`;
 let handler = `${root}/Logic Layer/@project.Logic`;
 let serviceFolder = `${root}/Service Layer/@project.UserService`;
 let model = `${root}/Service Layer/@project.Model`;

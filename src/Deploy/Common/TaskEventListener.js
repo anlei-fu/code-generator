@@ -1,17 +1,17 @@
-class TaskListener{
-        onTaskScheduled(){
+exports.TaskListener = class {
+        onTaskScheduled() {
 
         }
 
-        onTaskExcute(){
+        onTaskExcute() {
 
         }
 
-        onTaskFinished(){
+        onTaskFinished() {
 
         }
 
-        onTaskException(){
-                
+        onTaskException() {
+
         }
 }

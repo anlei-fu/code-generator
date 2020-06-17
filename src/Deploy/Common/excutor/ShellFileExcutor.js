@@ -2,15 +2,23 @@
 const child = require('child_process');
 const { ExcutorBase } = require("./ExcutorBase");
 const { OBJECT } = require("../utils/utils");
-const {TaskType} =require("./../po/constant/TaskType");
+const { TaskType } = require("../po/constant/TaskType");
 
 /**
  * To execute shell file
  */
 class ShellFileExcutor extends ExcutorBase {
 
-        constructor (context) {
-                super("ShellExcutor",TaskType.SHELL_FILE);
+        constructor () {
+                super("ShellExcutor", TaskType.SHELL_FILE);
+
+
+                // init by context
+                this._shellManager = null;
+        }
+
+        init(context){
+                super(context);
                 this._shellManager = context.resourceManager.shellManager;
         }
 
@@ -25,25 +33,26 @@ class ShellFileExcutor extends ExcutorBase {
          * @returns {Result}
          */
         async excute(shellFile, params) {
-                let resultBuilder = this._resultBuilderFactory.newResultBuilder(`Excute shell ${shellFile}`);
 
                 if (this._shellManager.exists(shellFile))
-                        return resultBuilder.shellNotFound(shellFile);
+                        return this._excuteResultFactory.shellNotFound(shellFile);
 
                 if (params)
                         params = OBJECT.toArray(params);
 
                 let { error, stdout, stderr } = await this._executeCore(shellFile, params);
-                if (error
+                if (
+                        error
                         || (stdout || "").endsWith("100")
-                        || stderr) {
+                        || stderr
+                ) {
                         let info = `Execute shell failed`;
                         info += `stdout:\r\n${stdout || ""}`;
                         info += `stderr:\r\n${stderr || ""}`;
-                        return resultBuilder.excuteShellFailed(shellFile, info);
+                        return this._excuteResultFactory.excuteShellFailed(shellFile, info);
                 }
 
-                return resultBuilder.excuteShellSuccess(shellFile, executeResult.stdout);
+                return this._excuteResultFactory.excuteShellSuccess(shellFile, executeResult.stdout);
         }
 
         /**

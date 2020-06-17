@@ -7,6 +7,12 @@ namespace @project.Model
     /// </summary>
 	public class @nameListModel
     {
+       
+       public @nameListModel()
+       {
+           List = new List<@prefix@name>();
+       }
+
        /// <summary>
        /// 记录列表
        /// </summary>

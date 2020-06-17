@@ -1,11 +1,12 @@
 const { LoggerFactory } = require("./logging/logger-factory");
 class LoggerSurpport {
         constructor (logName) {
+                this.name = logName;
                 this._logger = LoggerFactory.getLogger(logName);
         }
 
         warn(msg, obj) {
-                this._logger.warn(msg,obj);
+                this._logger.warn(msg, obj);
         }
 
         error(msg, error, obj) {

@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/dc/all");
+const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/18/all");
 
 const SETTLE = {
    project: "",
@@ -7,8 +7,9 @@ const SETTLE = {
 }
 
 const FC = {
-   project: "",
-   root: "",
+   project: "QXFC",
+   root: "F:/业务开发项目_研发一/非充系统/qxfc/Web",
+   abbrOfProject:"fc"
 }
 
 const ZD = {
@@ -38,14 +39,14 @@ const DC = {
 
 function test() {
    let config = {
-      delete: true,
-      add: true,
-      project: "DaiChong",
-      root: "F:/业务开发项目_研发一/代充系统/Management",
-      abbrOfProject: "dc",
-      edit: true,
+       delete: true,
+       add: true,
+      project: _18.project,
+      root: _18.root,
+      abbrOfProject:_18.abbrOfProject,
+       edit: true,
    }
-   init(all.dcVirtualSection, config);
+   init(all.bdBindPriority, config);
 }
 
 test();

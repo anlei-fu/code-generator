@@ -1,8 +1,23 @@
-class ExcuteResult{
-        constructor(){
-            this.code=100;
-            this.log="";
-        }
-}
+exports.ExecuteResult = class {
+    constructor () {
+        /**
+         * Executing type
+         */
+        this.type = 0;
+        
+        /**
+         * Description
+         */
+        this.description = "";
 
-exports.ExcuteResult=ExcuteResult;
+        /**
+         * Excecute infomation and output
+         */
+        this.log = "";
+
+        /**
+         * Execute result code
+         */
+        this.code = 100;
+    }
+}

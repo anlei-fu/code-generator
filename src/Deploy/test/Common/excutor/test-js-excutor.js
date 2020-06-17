@@ -1,6 +1,6 @@
 
 var assert = require('assert');
-const { JsExcutor } = require("./../../../Common/excutor/JsExcutor");
+const { JsExcutor } = require("./../../../common/excutor/JsExcutor");
 
 const EXCUTOR = new JsExcutor(`JsExcutor`);
 

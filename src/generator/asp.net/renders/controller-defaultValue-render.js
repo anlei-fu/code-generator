@@ -11,11 +11,11 @@ const CONTROLLER_DEFAULT_VALUE_RENDER = new SimpleRender({}, `${__dirname}/templ
  */
 function renderControllerDefaultValue(config) {
         let updateContent = renderUpdateConfig(config);
-        let insertContent = renderInsertConfig(config);
-        if (updateContent == "" && insertContent == "")
+        let addContent = renderInsertConfig(config);
+        if (updateContent == "" && addContent == "")
                 return "";
 
-        return CONTROLLER_DEFAULT_VALUE_RENDER.renderTemplate({ updateConfig: updateContent, insertConfig: insertContent });
+        return CONTROLLER_DEFAULT_VALUE_RENDER.renderTemplate({ updateContent, addContent });
 }
 
 /**

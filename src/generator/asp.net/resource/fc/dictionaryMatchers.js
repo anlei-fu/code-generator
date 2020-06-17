@@ -1,15 +1,7 @@
-exports.dics = {
-	TYPE: {
-		name: "TYPE",
-		table: "systemDictionary",
-		text: "Name",
-		type: "Type",
-		value: "Value",
-		defaultText: "--请选择--"
-	},
+exports.dictionaryMatchers = {
 	FlowType: {
 		name: "FlowType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -17,7 +9,7 @@ exports.dics = {
 	},
 	HdType: {
 		name: "HdType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -25,7 +17,7 @@ exports.dics = {
 	},
 	UserType: {
 		name: "UserType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -33,7 +25,7 @@ exports.dics = {
 	},
 	ManualStatus: {
 		name: "ManualStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -41,7 +33,7 @@ exports.dics = {
 	},
 	NotifyType: {
 		name: "NotifyType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -49,7 +41,7 @@ exports.dics = {
 	},
 	Carrier: {
 		name: "Carrier",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -57,7 +49,7 @@ exports.dics = {
 	},
 	OperateType: {
 		name: "OperateType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -65,7 +57,7 @@ exports.dics = {
 	},
 	FeeType: {
 		name: "FeeType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -73,7 +65,7 @@ exports.dics = {
 	},
 	DebitMode: {
 		name: "DebitMode",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -81,7 +73,7 @@ exports.dics = {
 	},
 	NotifyStatus: {
 		name: "NotifyStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -89,7 +81,7 @@ exports.dics = {
 	},
 	BindStatus: {
 		name: "BindStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -97,7 +89,7 @@ exports.dics = {
 	},
 	Status: {
 		name: "Status",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -105,7 +97,7 @@ exports.dics = {
 	},
 	ChangeType: {
 		name: "ChangeType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -113,7 +105,7 @@ exports.dics = {
 	},
 	IccType: {
 		name: "IccType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -121,7 +113,7 @@ exports.dics = {
 	},
 	DealType: {
 		name: "DealType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -129,7 +121,7 @@ exports.dics = {
 	},
 	BindMode: {
 		name: "BindMode",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -137,7 +129,7 @@ exports.dics = {
 	},
 	IccIdStatus: {
 		name: "IccIdStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -145,7 +137,7 @@ exports.dics = {
 	},
 	ScriptType: {
 		name: "ScriptType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -153,7 +145,7 @@ exports.dics = {
 	},
 	SyncStatus: {
 		name: "SyncStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -161,7 +153,7 @@ exports.dics = {
 	},
 	OrderStatus: {
 		name: "OrderStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -169,7 +161,7 @@ exports.dics = {
 	},
 	ExpressStatus: {
 		name: "ExpressStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -177,7 +169,7 @@ exports.dics = {
 	},
 	MarkStatus: {
 		name: "MarkStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -185,7 +177,7 @@ exports.dics = {
 	},
 	ActionType: {
 		name: "ActionType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -193,7 +185,7 @@ exports.dics = {
 	},
 	Write_Card_Mode: {
 		name: "Write_Card_Mode",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -201,7 +193,7 @@ exports.dics = {
 	},
 	Priority: {
 		name: "Priority",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -209,7 +201,7 @@ exports.dics = {
 	},
 	LimitType: {
 		name: "LimitType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -217,7 +209,7 @@ exports.dics = {
 	},
 	COMPANY: {
 		name: "COMPANY",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -225,7 +217,7 @@ exports.dics = {
 	},
 	TaskStatus: {
 		name: "TaskStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -233,7 +225,7 @@ exports.dics = {
 	},
 	DealMode: {
 		name: "DealMode",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -241,7 +233,7 @@ exports.dics = {
 	},
 	ValueType: {
 		name: "ValueType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -249,7 +241,7 @@ exports.dics = {
 	},
 	IsTure: {
 		name: "IsTure",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -257,7 +249,7 @@ exports.dics = {
 	},
 	ActiveStatus: {
 		name: "ActiveStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -265,7 +257,7 @@ exports.dics = {
 	},
 	RefundStatus: {
 		name: "RefundStatus",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",
@@ -273,7 +265,7 @@ exports.dics = {
 	},
 	RuleType: {
 		name: "RuleType",
-		table: "systemDictionary",
+		table: "FcSystemDictionary",
 		text: "Name",
 		type: "Type",
 		value: "Value",

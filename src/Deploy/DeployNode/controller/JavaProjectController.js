@@ -1,31 +1,58 @@
-const { Controller } = require("./Controller");
-const { JavaProjectAccess } = require("./../db/JavaProjectDbAccess")
+const { Controller } = require("../../common/Controller");
+const { JavaProjectAccess } = require("./../db/JavaProjectDbAccess");
 
-const RequestPath = {
-        GET_BY_ID: "",
-        LIST: "",
-        STATUS: ""
-}
-
+const Api = {
+        GET_BY_ID: "/app/:id",
+        LIST: "/app/list",
+        STATUS: "/app/status/:id"
+};
 exports.JavaProjectController = class JavaProjectController extends Controller {
         /**
          * 
          * @param {JavaProjectAccess} access 
          */
         constructor (access) {
-                this._access =access;
+                super("JavaProjectController");
+                this._access = access;
         }
 
-        getById({ query }) {
-                return this._access.getById({ id: query.id });
+        /**
+         * Get project
+         * 
+         * @param {*} param0 
+         * @returns {ApiResponse}
+         */
+        async getById({ params }) {
+                let item = await this._access.getById({ id: params.id });
+                if (!item)
+                        return this.fail("", 1);
+
+                return this.resposneObject(item);
         }
 
-        list(query) {
-
+        /**
+         * Get list
+         * 
+         * @param {*} param0 
+         * @returns {ApiResponse}
+         */
+        async list({ query }) {
+                let list = await this._access.list({ status: query.status, appType: query.appType });
+                return this.resposneObject(list);
         }
 
-        status(query) {
+        /**
+         * GetStatus
+         * 
+         * @param {*} param0 
+         * @returns {ApiResponse}
+         */
+        async status({ params }) {
+                let item = await this._access.getById({ id: params.id });
+                if (!item)
+                        return this.fail("", 1);
 
+                return this.resposneObject({ status: item.status });
         }
 
         /**
@@ -34,8 +61,8 @@ exports.JavaProjectController = class JavaProjectController extends Controller {
          * @override
          */
         mount(app) {
-                app.get(RequestPath.GET_BY_ID, (req, resp) => this._process(req, resp, this.getById))
-                        .get(RequestPath.LIST, (req, resp) => this._process(req, resp, this.list))
-                        .get(RequestPath.STATUS, (req, resp) => this._process(req, resp, this.status))
+                app.get(Api.GET_BY_ID, (req, resp) => this._process(req, resp, this.getById))
+                        .get(Api.LIST, (req, resp) => this._process(req, resp, this.list))
+                        .get(Api.STATUS, (req, resp) => this._process(req, resp, this.status))
         }
 }

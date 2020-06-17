@@ -1,9 +1,9 @@
-const { AccessBase } = require("../../Common/AcccessBase");
+const { AccessBase } = require("../../common/AcccessBase");
 
 class TaskAccess extends AccessBase {
 
-        constructor (dbFile) {
-                super("task", dbFile);
+        constructor (excutor) {
+                super("task", "task",excutor);
         }
 
         listPendingTasks() {

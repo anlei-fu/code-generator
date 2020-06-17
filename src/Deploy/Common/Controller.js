@@ -1,9 +1,10 @@
-const { LoggerSurpport } = require("./LoggerSurpport");
+const { Initiable } = require("./Init");
+const { ApiResponseFactory } = require("./factory/ApiResponseFactory");
 
 /**
  * Controller base
  */
-class Controller extends LoggerSurpport {
+class Controller extends Initiable {
 
         constructor (name, controllerConfig = {}) {
                 super(name);
@@ -14,10 +15,51 @@ class Controller extends LoggerSurpport {
          * To mount url-handler mapping
          * 
          * @abstract
-         * @param {Express.Application}
+         * @param {Express.Application} app
          */
         mount(app) {
                 throw new Error("this method has not been implemented");
+        }
+
+        responseBoolean(result,msg,code){
+                return result?this.success(msg,code):this.fail(msg,code)
+        }
+
+        resposneObject(result,msg,code){
+                
+        }
+
+        /**
+         * Return success result
+         * 
+         * @param {String} msg 
+         * @param {Any} data 
+         * @returns {ApiResponse}
+         */
+        success(msg, data) {
+                return ApiResponseFactory.success(msg, data);
+        }
+
+        /**
+         * Return failed result
+         * 
+         * @param {String} msg
+         * @param {Number} code
+         * @returns {ApiResponse} 
+         */
+        fail(msg, code) {
+                return ApiResponseFactory.fail(code, msg);
+        }
+
+        /**
+         * Return system error result
+         * 
+         * @param {String} msg 
+         * @param {Number} code 
+         * @returns {ApiResponse}
+         */
+        systemError(msg, code) {
+                return ApiResponseFactory.systemError(msg, code);
         }
 
         /**
@@ -32,23 +74,29 @@ class Controller extends LoggerSurpport {
          */
         async _process(req, resp, handler) {
                 try {
-                        if (this._controllerConfig.beforeProcess) {
-                                let pass = await this._controllerConfig.beforeProcess(req, resp);
-                                if (!pass)
-                                        return;
+                        let result;
+                        try {
+                                if (this._controllerConfig.beforeProcess) {
+                                        let pass = await this._controllerConfig.beforeProcess(req, resp);
+                                        if (!pass)
+                                                return;
+                                }
+
+                                result = await handler.call(this, { query: req.query, body: req.body, params: req.params });
+                        } catch (e) {
+                                this.error(`handle ${req.method} ${req.path} failed`, ex);
+                                result = this.systemError();
                         }
 
-                        let result = await handler({ query: req.query, body: req.body, params: req.params });
                         resp.send(result);
 
-                        if (this._controllerConfig.afterProcess) {
+                        if (this._controllerConfig.afterProcess)
                                 await this._controllerConfig.afterProcess(req, result);
-                        }
 
                 } catch (ex) {
-
+                        this.error(`handle ${req.method} ${req.path} failed`, ex);
                 }
         }
 }
 
-exports.Controller = Controller
+exports.Controller = Controller;

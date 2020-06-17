@@ -1,9 +1,9 @@
 
 const { sqlUtils } = require("./utils/sql-utils");
-const { SqliteExcutor } = require("./excutor/SqliteExcutor");
 const { validateUtils } = require("./utils/validate-utils");
 const { LoggerSurpport } = require("./LoggerSurpport");
-const { StopWatch } = require("./StopWatch");
+const { PageResult } = require("./po/model/PageResult");
+
 
 /**
  * Simple wrap of @see SqliteExcutor ,provide basic sql operations
@@ -14,24 +14,57 @@ class AccessBase extends LoggerSurpport {
          * @param {String} table  not null
          * @param {EntityConfig} param1 
          */
-        constructor (name, { table, db = "db.db", idField = "id", idIsStringOrDate = false }) {
+        constructor (name, sqlExcutor, table, { idField = "id", idIsStringOrDate = false }) {
                 super(name);
                 validateUtils.requireNotNull(table);
                 this._table = table;
-                this._excutor = new SqliteExcutor(db);
+                this._excutor = sqlExcutor;
                 this._idField = idField;
                 this._idIsStringOrDate = idIsStringOrDate;
         }
 
         /**
-         * Query
+         * Get page result
          * 
-         * @param {Object} conditions
-         * @param {PageConfig} pageConfig
-         * @returns {Promise<Entity>}
+         * @param {Object|String} model 
+         * @param {PageConfig} param1 
+         * @returns {Promise<PageResult>}
          */
-        async  list(conditions, pageConfig) {
+        page(model, { index, size }) {
+                let whereClause = typeof model == "string"
+                        ? model : sqlUtils.getEqualConditions(model);
 
+                let ls = this._query(whereClause, { index, size });
+                let total = this._getCount(whereClause);
+
+                return new PageResult(ls, total);
+        }
+
+        /**
+         * Query list result
+         * 
+         * @param {Object|String} conditions
+         * @param {PageConfig} pageConfig
+         * @returns {Promise<Entity[]>}
+         */
+        list() {
+                let whereClause = typeof model == "string"
+                        ? model : sqlUtils.getEqualConditions(model);
+
+                return this._query(whereClause, { index: 1, size: 1000000000 });
+
+        }
+
+        /**
+         * Get count by given conditions
+         * 
+         * @param {Object|String} model
+         * @returns {Promise<Number>}
+         */
+        getCount(model) {
+                let whereClause = typeof model == "string"
+                        ? model : sqlUtils.getEqualConditions(model);
+                return this._getCount(whereClause);
         }
 
         /**
@@ -40,7 +73,7 @@ class AccessBase extends LoggerSurpport {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        async add(model) {
+        add(model) {
                 return this._executeCore(sqlUtils.getInsertString(this._table, model));
         }
 
@@ -50,7 +83,7 @@ class AccessBase extends LoggerSurpport {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        async  updateById(id, model) {
+        updateById(id, model) {
                 let sql = `${sqlUtils.getUpdateString(this._table, model)}`;
                 if (!sql)
                         return false;
@@ -64,7 +97,7 @@ class AccessBase extends LoggerSurpport {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        async  deleteById(id) {
+        deleteById(id) {
                 return this._executeCore(`delete from ${this._table} ${this._getIdWhereClause(id)}`);
         }
 
@@ -72,9 +105,9 @@ class AccessBase extends LoggerSurpport {
          * Get a record by id 
          * 
          * @param {Object} model 
-         * @returns {Promise<Boolean>}
+         * @returns {Promise<Entity>}
          */
-        async getById(id) {
+        getById(id) {
                 return this._excutor.querySingle(`select * from ${this._table} ${this._getIdWhereClause(id)}`);
         }
 
@@ -105,12 +138,12 @@ class AccessBase extends LoggerSurpport {
          * @param {Object} model 
          * @returns {Promise<Boolean>}
          */
-        async  updateBatch(ids, model) {
+        updateBatch(ids, model) {
                 if (ids.length == 0)
                         return false;
 
                 return this._executeCore(
-                        `${sqlUtils.getUpdateString(model)}` +
+                        `${sqlUtils.getUpdateString(this._table, model)}` +
                         `where ${sqlUtils.getInLike(ids, this._idField)}`
                 );
         }
@@ -121,7 +154,7 @@ class AccessBase extends LoggerSurpport {
          * @param {[string|number]} ids 
          * @returns {Promise<Boolean>}
          */
-        async deleteBtach(ids) {
+        deleteBtach(ids) {
                 if (ids.length == 0)
                         return false;
 
@@ -134,7 +167,7 @@ class AccessBase extends LoggerSurpport {
         /**
          * Insert a record 
          * 
-         * @returns {Promise<Entity>}
+         * @returns {Promise<Entity[]>}
          */
         getAll() {
                 return this._excutor.query(`select * from ${this._table}`);
@@ -146,10 +179,23 @@ class AccessBase extends LoggerSurpport {
          * @private
          * @param {String} whereClause
          * @param {PageConfig} pageConfig
-         * @returns {Promise<Entity>}
+         * @returns {Promise<Entity[]>}
          */
         _query(whereClause, { index = 1, size = 10 }) {
+                let sql = `select * from ${this._table} where ${whereClause} limit ${index * size}, ${size}`;
+                return this._excutor.query(sql);
+        }
 
+        /**
+         * Count the record by given conditions
+         * 
+         * @private
+         * @param {String} whereClause 
+         * @returns {Number}
+         */
+        _getCount(whereClause) {
+                let sql = `count where ${whereClause}`;
+                return this._excutor.query(sql);
         }
 
         /**

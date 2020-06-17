@@ -1,41 +1,20 @@
 const { formatUtils } = require("./../utils/formatUtils");
-
-class ExecuteResult {
-        constructor () {
-                /**
-                 * Executing type
-                 */
-                this.type = 0;
-                /**
-                 * Description
-                 */
-                this.description = "";
-                /**
-                 * Excecute infomation and output
-                 */
-                this.log = "";
-                /**
-                 * Execute result code
-                 */
-                this.code = 100;
-        }
-
-}
+const { ExecuteResult } = require("./../po/model/ExcuteResult");
 
 /**
  * Builder of @see {ExcuteResult}
  */
-class ExcuteResultBuilder {
-        constructor (description) {
+exports.ExecuteResultBuilder = class {
+        constructor (type) {
                 this._result = new ExecuteResult();
-                this._result.description = description;
+                this._result.type =`----------------------------------------------------------------${type}------------------------------------------------------------------------`;
         }
 
         /**
          * Set type of result
          * 
-         * @param {*} type 
-         * @returns {ExcuteResultBuilder}
+         * @param {string} type 
+         * @returns {ExecuteResultBuilder}
          */
         type(type) {
                 this._result.type = type;
@@ -46,7 +25,7 @@ class ExcuteResultBuilder {
          * Set code of result @see {ExecuteResultCode}
          * 
          * @param {*} code 
-         * @returns {ExcuteResultBuilder}
+         * @returns {ExecuteResultBuilder}
          */
         code(code) {
                 this._result.code = code;
@@ -57,7 +36,7 @@ class ExcuteResultBuilder {
          * Set description of result
          * 
          * @param {String} desc 
-         * @returns {ExcuteResultBuilder}
+         * @returns {ExecuteResultBuilder}
          */
         description(desc) {
                 this._result.description = desc;
@@ -69,7 +48,7 @@ class ExcuteResultBuilder {
          * 
          * @param {String} brief 
          * @param {String} detail 
-         * @returns {ExcuteResultBuilder}
+         * @returns {ExecuteResultBuilder}
          */
         info(brief, detail) {
                 return this._log("info", brief, detail);
@@ -80,17 +59,17 @@ class ExcuteResultBuilder {
          * 
          * @param {String} brief 
          * @param {String} detail 
-         * @returns {ExcuteResultBuilder}
+         * @returns {ExecuteResultBuilder}
          */
         error(brief, detail) {
-                return this._log("info", brief, detail);
+                return this._log("error", brief, detail);
         }
 
         /**
          * Prepend result
          * 
          * @param {ExecuteResult} result
-         * @returns {ExcuteResultBuilder}
+         * @returns {ExecuteResultBuilder}
          */
         prependResult(result) {
                 return this._result.log = result.log + this._result.log;
@@ -112,14 +91,18 @@ class ExcuteResultBuilder {
          * @returns {ExecuteResult}
          */
         build() {
+                let content = "";
                 if (this._result.description)
-                        this._result.log = this._result.description + "\r\n" + this._result.log;
+                        content = this._result.description + "\r\n";
 
-                if (this._result.type) {
+                if (this._result.type)
+                        content += `${this._result.type} ` + "\r\n";
 
-                }
+                content += this._result.log;
 
-                this._result.log += `Exit Code ${this._result.code}`;
+                content += `Exit >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${this._result.code}` + "\r\n";
+
+                this._result.log = content;
 
                 return this._result;
         }
@@ -128,7 +111,7 @@ class ExcuteResultBuilder {
          * Append line to the log
          */
         _appendLine() {
-                this._result.log += "\r\n";
+                this._result.log += "\n";
         }
 
         /**
@@ -137,12 +120,12 @@ class ExcuteResultBuilder {
          * @param {String} type "info"|"error"
          * @param {String?} brief 
          * @param {String?} detail 
-         * @returns {ExcuteResultBuilder}
+         * @returns {ExecuteResultBuilder}
          */
-        _log(type, brief = "", detail = "") {
-                this._result.info += this._appendEventTitle(type, brief);
+        _log(type, brief = "", detail) {
+                this._appendEventTitle(type, brief);
                 if (detail)
-                        this._result += formatUtils.formatObject(detail) + "\r\r";
+                        this._result.log += formatUtils.formatSingleObject("============detail===========", detail);
                 return this;
         }
 
@@ -152,8 +135,6 @@ class ExcuteResultBuilder {
          * @param {String} type 
          */
         _appendEventTitle(type, brief) {
-                this._result.log += `[${type}][${new Date().toLocaleString()}]  ${brief}\r\n`;
+                this._result.log += `[${type}][${new Date().toLocaleString()}]  ${brief}` + "\r\n";
         }
 }
-
-exports.ExcuteResultBuilder = ExcuteResultBuilder;

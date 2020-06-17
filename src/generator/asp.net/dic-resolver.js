@@ -1,8 +1,8 @@
 
-const {LoggerFactory}=require("../logging/logger-factory");
+const {LoggerFactory}=require("./../common/logging/logger-factory");
 const { FILE } = require("../../libs/file");
 const { DIR } = require("../../libs/dir");
-const { resolveFromCsvString } = require("../csv-resolver/csv-resolver");
+const { resolveFromCsvString } = require("../common//csv-resolver/csv-resolver");
 const STRING_RESOLVER = x => x.replace(/\"/g, "\"");
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
@@ -50,4 +50,4 @@ function resolve(project,table,text="Name",type="Type") {
 }
 
 /*-------------------------------------------------------------------resolve---------------------------------------------------------------------------*/
-resolve("18","DzSystemDictionary");
+resolve("fc","FcSystemDictionary");

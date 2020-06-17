@@ -1,10 +1,10 @@
-const { HttpVisitor: HttpClient } = require("../HttpClient");
+const { HttpClient } = require("../HttpClient");
 
-const Api={
-        INIT:"/java/init/{projectId}",
-        UPDATE_BY_ID:"/java/{projectId}",
+const Api = {
+        INITILIZED: "/java/init/{projectId}",
+        UPDATE_BY_ID: "/java/{projectId}",
 }
-class JavaProjectNotifier extends HttpVisitor {
+class JavaProjectNotifier extends HttpClient {
         constructor (config) {
                 super(config);
         }
@@ -16,7 +16,7 @@ class JavaProjectNotifier extends HttpVisitor {
          * @returns {ApiResponse}
          */
         notifyProjectInitialized(projectId) {
-                return this.put(Api.INIT,{projectId});
+                return this.put(Api.INITILIZED, { projectId });
         }
 
         /**

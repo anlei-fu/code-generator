@@ -1,5 +1,5 @@
 
-const chalk = require("chalk");
+const chalk = require("./node_modules/chalk");
 const { Logger } = require("./logger");
 
 // Init loggers
@@ -18,10 +18,10 @@ if (!global.LOG_WRITERS) {
                                 console.log(chalk.redBright("[ERROR]") + chalk.magentaBright(`[${logEvent.time}]` + chalk.blueBright(`[${logEvent.name}]: `) + chalk.white(`${logEvent.msg || ""}`)));
 
                                 if (logEvent.error)
-                                        console.log(chalk.white(logEvent.error));
+                                        console.log(chalk.white(logEvent.error.toString()));
                                 
                                 if(logEvent.obj){
-                                   console.log("target");
+                                   console.log("target:");
                                    console.log(chalk.white(logEvent.obj));
                                 }
                                 
@@ -29,14 +29,14 @@ if (!global.LOG_WRITERS) {
                                 console.log(chalk.greenBright("[INFO]") + chalk.magentaBright(`[${logEvent.time}]` + chalk.blueBright(`[${logEvent.name}]: `) + chalk.white(`${logEvent.msg || ""}`)));
                                
                                 if(logEvent.obj){
-                                        console.log("target");
+                                        console.log("target:");
                                         console.log(chalk.white(logEvent.obj));
                                      }
                         } else if (logEvent.level == "warn") {
                                 console.log(chalk.yellowBright("[WARN]") + chalk.magentaBright(`[${logEvent.time}]` + chalk.blueBright(`[${logEvent.name}]: `) + chalk.white(`${logEvent.msg || ""}`)));
                               
                                 if(logEvent.obj){
-                                        console.log("target");
+                                        console.log("target:");
                                         console.log(chalk.white(logEvent.obj));
                                      }
                         }

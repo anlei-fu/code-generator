@@ -1,35 +1,48 @@
 const { Service } = require("./Service");
 const { ServiceStatus } = require("./po/constant/ServiceStatus");
 const { TaskStatus } = require("./po/constant/TaskStatus");
-const { TaskExcutor } = require("./excutor/TaskExcutor");
 /**
  * To execute task
  */
 class TaskService extends Service {
 
-        constructor () {
-                super();
+        constructor ( taskConfig,eventListener ) {
+                super("TaskService");
 
-                this._taskExcutor = new TaskExcutor();
+                // by contructor
+                this._config = taskConfig;
+                this._serverEventListerner = eventListener;
 
+                // init by context
+                this._taskExcutor = null;
+                this._context = null;
+                this._taskAccess = null;
+                this._taskNotifier = null;
+                
+                // self properties
                 this._excutingTask = {};
                 this._waitToExcute = [];
-                this._taskInterval = {};
-                this._config = {};
-                this._context = {};
-                this._taskAccess = {};
-                this._taskNotifier = {};
-                this._serverEventListerner = {};
-
-                this._stoppedCallback = {};
-                this._pausedCallBack = {};
+                this._taskInterval = null;
+                this._stoppedCallback = null;
+                this._pausedCallBack = null;
         }
 
         /**
-         * @abstract
+         * 
+         * @param {NodeContext} context
          */
-        init() {
+        init(context) {
+           this._context=context;
 
+           if(!context.accsses.taskAccess)
+              throw new Error(`taskAccess can not be found in context`);
+           
+           if(!context.excutors.taskExcutor)
+              throw new Error(`taskExcutor can not be found in context`);
+           
+           this._taskExcutor=context.excutors.taskExcutor;
+           this._taskAccess=context.accsses.taskAccess;
+           this._taskNotifier=context.notifiers.taskNotifier;
         }
 
         /**
@@ -64,7 +77,10 @@ class TaskService extends Service {
 
                 if (this._excutingTask.length > 0 && !force) {
                         this._status = ServiceStatus.STOPPING;
-                        this.info(`service status trigger to stoping ,cause there's ${this._excutingTask.length} task still running`);
+                        this.info(
+                                `service status trigger to stoping,` +
+                                `cause there's ${this._excutingTask.length} task still running`
+                        );
                         return;
                 }
 
@@ -93,7 +109,10 @@ class TaskService extends Service {
                 this._clearIntervalCore();
 
                 if (this._excutingTask.length > 0 && !force) {
-                        this.warn(`service status trigger to pausing ,cause there's ${this._excutingTask.length} tasks still running`);
+                        this.warn(
+                                `service status trigger to pausing ,` +
+                                `cause there's ${this._excutingTask.length} tasks still running`
+                        );
                         this._status = ServiceStatus.PAUSING;
                         return;
                 }
@@ -112,9 +131,7 @@ class TaskService extends Service {
          */
         resume() {
                 if (this._status != ServiceStatus.PAUSED) {
-                        this.warn(
-                                `to resume service failed, cause current status is ${this.status}`
-                        )
+                        this.warn(`to resume service failed, cause current status is ${this.status}`)
                         return;
                 }
 
@@ -140,7 +157,8 @@ class TaskService extends Service {
                 if (this._excutingTask > this._config.maxConcurrency) {
                         this.info(
                                 `to start new task refused, cause over max concurrency,` +
-                                `and there's ${this._excutingTask} tasks running`);
+                                `and there's ${this._excutingTask} tasks running`
+                        );
                         return;
                 }
 
@@ -164,7 +182,10 @@ class TaskService extends Service {
                         this.error(`excute task ${task.id} exceptionaly`, ex);
                 }
 
-                this.info(`finish excuting task id:${task.id},result code:${result.code}`);
+                this.info(
+                        `finish excuting task id:${task.id},` +
+                        `result code:${result.code}`
+                );
         }
 
         /**
@@ -221,8 +242,6 @@ class TaskService extends Service {
                         this._taskInterval == null;
                 }
         }
-
-
 }
 
 exports.TaskService = TaskService;

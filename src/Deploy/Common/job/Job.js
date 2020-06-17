@@ -1,60 +1,110 @@
-exports.Job = class Job {
-        constructor (id, jobListener, jobScheduler, name, description) {
-                this._id = id;
-                this._listener = jobListener;
-                this._name = name;
-                this._jobScheduler = jobScheduler;
-                this._description = description;
-                this._innerJob = {};
+const { LoggerSurpport } = require("./../LoggerSurpport");
+const {idUtils} =require("./../utils/Id-utils");
+
+
+exports.Job = class Job extends LoggerSurpport {
+        constructor ({
+                id=idUtils.nextId(),
+                jobListener = null,
+                name = "unamed",
+                description = "",
+                expression="",
+        }) {
+
+                super(name);
+
+                /**
+                 * Unique id of all job
+                 */
+                this.id = id;
+
+                /**
+                 * Job event listening
+                 */
+                this.listener = jobListener;
+
+                /**
+                 * Job name
+                 */
+                this.name = name;
+
+                /**
+                 * Job scheduler
+                 */
+                this.jobScheduler = null;
+
+                /**
+                 * Job description
+                 */
+                this.description = description;
+
+                /**
+                 * Inner job
+                 */
+                this.innerJob = {};
+
+                /**
+                 * Job satus
+                 */
+                this.status = 1;
+
+                /**
+                 * Job execute plan string
+                 */
+                this.expression = expression;
+
         }
-
-        get sheduled() {
-                return this._jobScheduler != null;
-        }
-
-        get nextExecuteDate() {
-                if (!this.sheduled)
-                        return null;
-
-                return this._innerJob.nextDate();
-        }
-
-        get name() {
-                return this._name;
-        }
-
-        get description() {
-                return this._description;
-        }
-
-        get id() {
-                return this._id;
-        }
-
 
         /**
-         * Run method
+         * Get the time that job next executing
+         * 
+         * @returns {Date?}
+         */
+        get nextExecuteDate() {
+                if (!this.jobScheduler)
+                        return null;
+
+                return this.innerJob.nextInvocation();
+        }
+
+        /**
+         * Run method , async function
          * 
          * @abstract
          */
-        run() {
+        run(context) {
                 throw new Error("this method has not been implemented");
         }
 
+        /**
+         * Cancel the job if has scheduled
+         */
         cancel() {
-                this._jobScheduler.cancel(this);
+                if (this.status)
+                        this.jobScheduler.cancelJob(this);
         }
 
+        /**
+         * Raise  job executing event
+         */
         raiseJobExcuting() {
                 if (this._listener)
                         this._listener.onJobExcuting(this);
         }
 
+        /**
+         * Raise job execute finished event
+         */
         raiseJobFinished() {
                 if (this._listener)
                         this._listener.onJobFinished(this);
         }
 
+        /**
+         * Raise the error when job excuting
+         * 
+         * @param {Error} error 
+         */
         raiseJobError(error) {
                 if (this._listener)
                         this._listener.onJobError(this, error);

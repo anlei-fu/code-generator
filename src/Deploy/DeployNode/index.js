@@ -1,6 +1,6 @@
-const { ServiceContainer } = require("../Common/Node");
+const { ServiceContainer } = require("../common/Node");
 const { DeployContext } = require("./DeployContext");
-const { FILE } = require("../Common/utils/file");
+const { FILE } = require("../common/utils/file");
 const { RestServiceBuilder } = require("./RestServiceBuilder");
 const { TaskServiceBuilder } = require("./TaskServiceBuilder");
 

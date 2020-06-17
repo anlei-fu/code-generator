@@ -9,7 +9,7 @@ const { TYPE } = require("./utils");
  * @param  {...String} params when target is a object ,represent fields of target to check
  * @returns {boolean}
  */
-function anyNull(target, ...params = []) {
+function anyNull(target, ...params) {
         if (!target) {
                 return true;
         }
@@ -57,7 +57,7 @@ function requireNotNull(target, ...fields) {
 }
 
 function requireNumber(value) {
-        if (TYPE.isNumber(value))
+        if (!TYPE.isNumber(value))
                 throw new TypeError(`require a number a value ,but got ${typeof value}`);
 }
 

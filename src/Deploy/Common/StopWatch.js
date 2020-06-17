@@ -7,8 +7,6 @@ exports.StopWatch = class StopWatch {
                 if (!this._start)
                         throw new Error("watch has not been started");
 
-                console.log(`start :${this._start.getTime()}`);
-                console.log(`now :${new Date().getTime()}`);
                 return new Date().getTime() - this._start.getTime();
         }
 

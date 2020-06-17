@@ -19,19 +19,19 @@ class ProjectMerger {
                 // entity
                 this._mergeCore(
                         `./M${this.name}.cs`,
-                        `${this.root}/Common Layer/${this.project}.Entity/${this.project}.Entity.csproj`,
+                        `${this.root}/common Layer/${this.project}.Entity/${this.project}.Entity.csproj`,
                         this._mergeEntity);
 
                 // iaccess
                 this._mergeCore(
                         `./I${this.name}Access.cs`,
-                        `${this.root}/Common Layer/${this.project}.Interfaces/${this.project}.Interfaces.csproj`,
+                        `${this.root}/common Layer/${this.project}.Interfaces/${this.project}.Interfaces.csproj`,
                         this._mergeIAccess);
 
                 // ihandler
                 this._mergeCore(
                         `./I${this.name}Handler.cs`,
-                        `${this.root}/Common Layer/${this.project}.Interfaces/${this.project}.Interfaces.csproj`,
+                        `${this.root}/common Layer/${this.project}.Interfaces/${this.project}.Interfaces.csproj`,
                         this._mergeIHandler);
 
                 // access

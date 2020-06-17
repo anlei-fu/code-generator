@@ -304,7 +304,7 @@ function text(obj, name) {
 function export_(obj, name, relpace = true) {
         let json = JSON.stringify(obj, null, "\t");
         if (relpace)
-               json=doReplace(json);
+                json = doReplace(json);
 
         return `exports.${name} = ${json};\r\n\r\n`;
 }
@@ -327,8 +327,7 @@ function doReplace(json) {
 
                         output += json[i];
                         i += 1;
-                }
-                else if (json[i] == "\"") {
+                } else if (json[i] == "\"") {
                         if (isInQuote) {
                                 isInQuote = false;
                         } else {

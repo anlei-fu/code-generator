@@ -13,14 +13,15 @@ class JsManager extends FileManagerBase {
      * @returns {MainFunction?}
      */
     getMain(jsFile) {
-        if (_js[jsFile])
-            return this._js[jsFile];
-
         if (!this.exists(jsFile))
             return null;
 
+        jsFile = this.getFullPath(jsFile);
+        if (this._js[jsFile])
+            return this._js[jsFile];
+
         try {
-            let main = require(`${this._workDir}/${jsFile}`).main;
+            let main = require(jsFile).main;
             if (main)
                 this._js[jsFile] = main;
 
@@ -37,14 +38,6 @@ class JsManager extends FileManagerBase {
      */
     clearCache() {
         this._js = {};
-    }
-
-    deploy() {
-
-    }
-
-    rollback() {
-
     }
 }
 

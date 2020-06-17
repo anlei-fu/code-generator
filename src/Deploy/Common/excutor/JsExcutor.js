@@ -1,15 +1,18 @@
 const { ExcutorBase } = require("./ExcutorBase");
-const {TaskType} =require("./../po/constant/TaskType");
+const { TaskType } = require("../po/constant/TaskType");
 
 /**
  * To excute js file
  */
 exports.JsExcutor = class JsExcutor extends ExcutorBase {
-        constructor (context) {
-                super("JsExcutor",TaskType.JS_FILE);
-                this._jsManager = context.resourceManager.jsManager;
-                this._resultBuilderFactory = context.resultBuilderFactory;
-                this._context=context;
+        constructor () {
+                super("JsExcutor", TaskType.JS_FILE);
+                this._jsManager = null;
+        }
+
+        init(context){
+                super.init(context);
+                this._jsManager=context.resourceManager.jsManager;
         }
 
         /**
@@ -22,16 +25,14 @@ exports.JsExcutor = class JsExcutor extends ExcutorBase {
          * @returns {ExcuteResult}
          */
         async excute(jsFile, args) {
-                let resultBuilder = this._resultBuilderFactory.newResultBuilder(`Excute js ${jsFile}`);
-
                 let main = this._jsManager.getMain(jsFile);
                 if (!main)
-                        return resultBuilder.mainNotFound(jsFile);
+                        return this._excuteResultFactory.mainNotFound(jsFile);
 
                 try {
                         return await main(this._context, args);
                 } catch (ex) {
-                        return resultBuilder.jsExcuteFailed(jsFile, args, ex);
+                        return this._excuteResultFactory.jsExcuteFailed(jsFile, args, ex);
                 }
         }
 }

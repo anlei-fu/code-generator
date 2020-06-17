@@ -51,7 +51,7 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @returns {String}
  */
 function read(path, charset="utf-8") {
-        return fs.readFileSync(path, charset).toString();
+        return fs.readFileSync(path,{ encoding:charset}).toString();
 }
 
 /**

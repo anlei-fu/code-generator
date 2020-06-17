@@ -1,4 +1,4 @@
-const { LoggerSurpport } = require("./LoggerSurpport");
+const { Initiable } = require("./Init");
 const { ServiceEventListener } = require("./ServiceEventListener");
 const { ServiceStatus } = require("./po/constant/ServiceStatus");
 
@@ -7,7 +7,7 @@ const { ServiceStatus } = require("./po/constant/ServiceStatus");
  * 
  * @abstract
  */
-class Service extends LoggerSurpport {
+class Service extends Initiable {
         /**
          * 
          * @param {String} name 
@@ -27,15 +27,6 @@ class Service extends LoggerSurpport {
          */
         get status() {
                 return this._status;
-        }
-
-        /**
-         * To init service
-         * 
-         * @abstract
-         */
-        init() {
-                throw new Error("method has not been implemented");
         }
 
         /**

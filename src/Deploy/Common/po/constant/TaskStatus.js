@@ -1,15 +1,23 @@
-exports.TaskStatus={
-        WAIT:1,
+exports.TaskStatus = {
 
-        SHEDULED:2,
+        // wait to schedule
+        WAIT: 1,
 
-        EXCUTING:3,
+        // sheduled and wait excuting
+        SHEDULED: 2,
 
-        PAUSING:4,
+        // excuting
+        EXCUTING: 3,
 
-        FAILED:5,
+        // pausing
+        PAUSING: 4,
 
-        SUCCESS:6,
-        
-        EXCEPTION:6
+        // execute fanished and failed
+        FAILED: 5,
+
+        // execute fanished and suceed
+        SUCCESS: 6,
+
+        // execute fanished and exceptionaly
+        EXCEPTION: 6
 }

@@ -1,4 +1,4 @@
-const {SqliteExcutor} =require("../Common/excutor/SqliteExcutor");
+const {SqliteExcutor} =require("../common/excutor/SqliteExcutor");
 
 function main(){
         let excutor =new SqliteExcutor("12.db");

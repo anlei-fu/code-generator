@@ -1,7 +1,7 @@
 const { JavaProjectAccess } = require("./db/JavaProjectDbAccess");
 const { TaskAccess } = require("./db/TaskAccess");
-const {FileVersionAccess} =require("./db/FileVersionAccess");
-const { validateUtils } = require("./../Common/utils/validate-utils");
+const { FileVersionAccess } = require("./db/FileVersionAccess");
+const { validateUtils } = require("./../common/utils/validate-utils");
 
 exports.AccessBuilder = class AccessBuilder {
         static build(sqlExcutor) {
@@ -10,7 +10,7 @@ exports.AccessBuilder = class AccessBuilder {
                 return {
                         javaProjectAccess: new JavaProjectAccess(sqlExcutor),
                         taskAccess: new TaskAccess(sqlExcutor),
-                        fileVersionAccess:new FileVersionAccess(sqlExcutor)
+                        fileVersionAccess: new FileVersionAccess(sqlExcutor)
                 }
         }
 }

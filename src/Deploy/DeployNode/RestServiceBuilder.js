@@ -1,4 +1,4 @@
-const { RestService } = require("../Common/RestService");
+const { RestService } = require("../common/RestService");
 const { ControllerBuilder } = require("./ControllerBuilder");
 
 exports.RestServiceBuilder = class RestServiceBuilder {

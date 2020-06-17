@@ -1,7 +1,7 @@
 const { validateUtils } = require("./validate-utils");
 const { TYPE } = require("./utils");
 const { NamingStrategy } = require("./naming-strategy");
-const { StopWatch } = require("./../StopWatch");
+const { StopWatch } = require("../StopWatch");
 
 /**
  * Generate update string
@@ -38,7 +38,6 @@ function getUpdateString(table, fields) {
  * @returns {String?}
  */
 function getInsertString(table, fields) {
-        let watch = new StopWatch();
         validateUtils.requireNotNull(table);
 
         fields = trimEmptyFields(fields);
@@ -99,8 +98,30 @@ function trimEmptyFields(fields) {
         return _new;
 }
 
+/**
+ * Get equal conditions join by 'and'
+ * 
+ * @param {Any} model 
+ * @returns {String}
+ */
 function getEqualConditions(model) {
         let _new = trimEmptyFields(model);
+        let fieldNames = Object.keys(_new);
+        if (fieldNames.length == 0)
+                return null;
+
+        let sql = "";
+        fieldNames.forEach((fieldName, i, array) => {
+                let field = model[fieldName];
+
+                if (i == 0) {
+                        sql += `${NamingStrategy.toHungary(field)} = ${formatSqlString(field)} `;
+                } else {
+                        sql += ` and ${NamingStrategy.toHungary(field)} = ${formatSqlString(field)} `
+                }
+        });
+
+        return sql;
 }
 
 /**
@@ -136,5 +157,6 @@ exports.sqlUtils = {
         trimEmptyFields,
         formatSqlString,
         getInsertString,
-        getInLike
+        getInLike,
+        getEqualConditions
 }

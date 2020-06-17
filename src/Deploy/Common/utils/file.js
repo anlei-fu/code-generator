@@ -9,7 +9,7 @@
 
 // import
 const fs = require("fs");
-const { LoggerFactory } = require("./../generator/common/logging/logger-factory")
+const { LoggerFactory } = require("../logging/logger-factory");
 
 const LOG = LoggerFactory.getLogger("FILE");
 

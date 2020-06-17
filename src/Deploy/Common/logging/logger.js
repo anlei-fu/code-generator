@@ -58,7 +58,7 @@ class Logger {
                 global.WRITE_LOG({
                         msg: msg,
                         level: level,
-                        erro: error,
+                        error: error,
                         name: this._name,
                         obj:obj,
                         time: new Date().toLocaleString()

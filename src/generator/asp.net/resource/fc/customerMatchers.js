@@ -13,14 +13,14 @@ exports.customerMatchers = {
                         value: "Value",
                         defaultText: "--请选择--",
                         type: "Type",
-                        table: "SystemDictionary",
+                        table: "FcSystemDictionary",
                 },
                 Type: {
                         matcher: x => x.endsWith("Type"),
                         text: "Name",
                         defaultText: "--请选择--",
                         type: "Type",
-                        table: "SystemDictionary",
+                        table: "FcSystemDictionary",
                 },
                 State: {
                         matcher: x => x.endsWith("State"),
@@ -28,7 +28,7 @@ exports.customerMatchers = {
                         value: "Value",
                         type: "Type",
                         defaultText: "--请选择--",
-                        table: "SystemDictionary",
+                        table: "FcSystemDictionary",
                 },
                 Has: {
                         matcher: x => x.startsWith("Has"),
@@ -36,7 +36,7 @@ exports.customerMatchers = {
                         value: "Value",
                         type: "Type",
                         defaultText: "--请选择--",
-                        table: "SystemDictionary",
+                        table: "FcSystemDictionary",
                 },
                 Is: {
                         matcher: x => x.startsWith("Has"),
@@ -44,7 +44,7 @@ exports.customerMatchers = {
                         value: "Value",
                         type: "Type",
                         defaultText: "--请选择--",
-                        table: "SystemDictionary",
+                        table: "FcSystemDictionary",
                 },
                 AccountId: {
                         matcher: x => STR.includesAny(x, ["AccountId", "CompanyId", "FlowId", "StepId", "ProductId"]),
