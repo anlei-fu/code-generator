@@ -1,4 +1,4 @@
-const { Initiable } = require("./Init");
+const { Initiable } = require("./Initiable");
 const { ServiceEventListener } = require("./ServiceEventListener");
 const { ServiceStatus } = require("./po/constant/ServiceStatus");
 
@@ -15,9 +15,9 @@ class Service extends Initiable {
          */
         constructor (name, serviceEventListner) {
                 super(name);
-                this._status = ServiceStatus.STOPPED;
                 this._listener = serviceEventListner;
                 this._name = name;
+                this._status = ServiceStatus.STOPPED;
         }
 
         /**
@@ -27,18 +27,6 @@ class Service extends Initiable {
          */
         get status() {
                 return this._status;
-        }
-
-        /**
-         * To puase service
-         * 
-         * 
-         * @abstract
-         * @param {()=>void} callback 
-         * @param {boolean} force
-         */
-        pause(callback, force = false) {
-                throw new Error("method has not been implemented");
         }
 
         /**
@@ -60,6 +48,22 @@ class Service extends Initiable {
          */
         stop(callback, force = false) {
                 throw new Error("method has not been implemented");
+        }
+
+        /**
+         * To puase service
+         * 
+         * @abstract
+         * @param {()=>void} callback 
+         * @param {boolean} force
+         */
+        pause(callback, force = false) {
+        }
+
+        /**
+         * To resume service
+         */
+        resume(){
         }
 
         /**

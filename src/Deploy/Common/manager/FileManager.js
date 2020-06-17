@@ -1,7 +1,7 @@
-const { LoggerSurpport } = require("./../LoggerSurpport");
+const { Initiable } = require("../Initiable");
 const { FILE } = require("./../utils/file");
 
-exports.FileManagerBase = class FileManagerBase extends LoggerSurpport {
+exports.FileManagerBase = class FileManagerBase extends Initiable {
         constructor (name, workDir) {
                 super(name);
                 this._workDir = workDir;
@@ -14,5 +14,4 @@ exports.FileManagerBase = class FileManagerBase extends LoggerSurpport {
         exists(file) {
                 return FILE.exists(this.getFullPath(file));
         }
-
 }

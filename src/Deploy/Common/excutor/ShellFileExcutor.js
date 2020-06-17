@@ -17,8 +17,13 @@ class ShellFileExcutor extends ExcutorBase {
                 this._shellManager = null;
         }
 
+        /**
+         * Init
+         * 
+         * @param {NodeContext} context 
+         */
         init(context){
-                super(context);
+                super.init(context);
                 this._shellManager = context.resourceManager.shellManager;
         }
 

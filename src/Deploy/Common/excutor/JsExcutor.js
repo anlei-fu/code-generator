@@ -10,6 +10,11 @@ exports.JsExcutor = class JsExcutor extends ExcutorBase {
                 this._jsManager = null;
         }
 
+        /**
+         * Init
+         * 
+         * @param {NodeContext} context 
+         */
         init(context){
                 super.init(context);
                 this._jsManager=context.resourceManager.jsManager;

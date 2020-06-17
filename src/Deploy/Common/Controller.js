@@ -1,5 +1,7 @@
-const { Initiable } = require("./Init");
+const { Initiable } = require("./Initiable");
 const { ApiResponseFactory } = require("./factory/ApiResponseFactory");
+const { ApiResponse } = require("./po/model/ApiResponse");
+const { ApiResponseCode } = require("./po/constant/ApiResponseCode");
 
 /**
  * Controller base
@@ -21,12 +23,30 @@ class Controller extends Initiable {
                 throw new Error("this method has not been implemented");
         }
 
-        responseBoolean(result,msg,code){
-                return result?this.success(msg,code):this.fail(msg,code)
+        /**
+         * Response boolean result
+         * 
+         * @param {boolean} result 
+         * @param {string} msg 
+         * @param {number} code 
+         * @returns {ApiResponse}
+         */
+        responseBoolean(result, msg, code) {
+                return result ? this.success(msg, code) : this.fail(msg, code)
         }
 
-        resposneObject(result,msg,code){
-                
+        /**
+         * Response object result
+         * 
+         * @param {Object} result 
+         * @param {String} msg 
+         * @param {String} code 
+         * @returns {ApiResponse<Object>}
+         */
+        resposneObject(result, msg, code) {
+                return result
+                        ? new ApiResponse(ApiResponseCode.SUCCESS, "success", result)
+                        : new ApiResponse(code || ApiResponseCode.NO_DATA_FOUND, msg || "no data found");
         }
 
         /**
@@ -52,14 +72,26 @@ class Controller extends Initiable {
         }
 
         /**
-         * Return system error result
+         * Response no data found
          * 
-         * @param {String} msg 
-         * @param {Number} code 
          * @returns {ApiResponse}
          */
-        systemError(msg, code) {
-                return ApiResponseFactory.systemError(msg, code);
+        noDataFound(){
+                return new ApiResponse(ApiResponseCode.NO_DATA_FOUND,"no data found");
+        }
+
+        /**
+         * Return system error result
+         * 
+         * @param {Number} code 
+         * @param {String} msg 
+         * @returns {ApiResponse}
+         */
+        systemError(code, msg) {
+                return ApiResponseFactory.systemError(
+                        code || ApiResponseCode.SYSTEM_ERROR,
+                        msg || "system error"
+                );
         }
 
         /**

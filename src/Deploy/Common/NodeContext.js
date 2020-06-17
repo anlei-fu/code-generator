@@ -17,6 +17,10 @@ exports.NodeContext = class NodeContext extends Service {
                 this.notifiers = {};
 
                 this.resourceManager = {};
+
+                this.factory={};
+
+                this.gitHelper={};
         }
 
         init() {

@@ -1,14 +1,21 @@
 const axios = require("axios");
-const { LoggerSurpport } = require("./LoggerSurpport");
-class HttpClient extends LoggerSurpport {
+const { Initiable } = require("./Initiable");
+const { NodeContext } = require("./NodeContext");
+
+
+class HttpClient extends Initiable {
         constructor (name, baseConfig = { timeout: 10000 }) {
                 super(name || "HttpClient");
                 this._client = axios.default.create(baseConfig);
                 this._baseConfig = baseConfig;
-                this.init();
         }
 
-        init() {
+        /**
+         * Init
+         * 
+         * @param {NodeContext} context 
+         */
+        init(context) {
                 if (this._baseConfig.requestInterceptor)
                         this._client.interceptors.request.use(this._baseConfig.requestInterceptor);
 
@@ -82,20 +89,20 @@ class HttpClient extends LoggerSurpport {
                 try {
                         this.info(`${method} ${url}`);
                         if (params) {
-                                this.info("params:",JSON.stringify(params));
+                                this.info("params:", JSON.stringify(params));
                         } else if (data) {
-                                this.info("data:",JSON.stringify(data));
+                                this.info("data:", JSON.stringify(data));
                         }
 
                         let resp = await this._client[method](
                                 this._normalizeUrl({ url, params, data },
                                         { params, data }));
 
-                        this.info("resp:",JSON.stringify(resp));
+                        this.info("resp:", JSON.stringify(resp));
 
                         return resp;
                 } catch (ex) {
-                        this.error(`${method} ${url}`,ex);
+                        this.error(`${method} ${url}`, ex);
                 }
         }
 

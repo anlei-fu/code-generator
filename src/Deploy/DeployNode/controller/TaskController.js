@@ -1,5 +1,7 @@
 const { Controller } = require("../../common/Controller");
-const { TaskAccess } = require("./../db/TaskAccess");
+const { TaskStatus } = require("./../../common/po/constant/TaskStatus");
+const { validateUtils } = require("./../../common/utils/validate-utils");
+const {NodeContext} =require("./../../common/NodeContext");
 
 const API = {
         ADD: "/task/add",
@@ -7,15 +9,20 @@ const API = {
         LIST_EXCUTEING: "/task/list/executing",
         WAIT_TO_EXCUTE: "/task/list/wait",
 };
+class TaskController extends Controller {
 
-exports.TaskController = class TaskController extends Controller {
+        constructor () {
+                super("TaskController");
+        }
 
         /**
+         * Init
          * 
-         * @param {TaskAccess} access 
+         * @param {NodeContext} context 
          */
-        constructor (access) {
-                this._access = access;
+        init(context) {
+                validateUtils.requireNotNull(context.accesses, "TaskAccess");
+                this._access = context.accesses.TaskAccess;
         }
 
         /**
@@ -25,6 +32,7 @@ exports.TaskController = class TaskController extends Controller {
          * @returns {ApiResponse}
          */
         async addTask({ body }) {
+                validateUtils.requireNumber(body, "id", "taskType");
                 let result = await this._access.add({
                         id: body.id,
                         taskType: body.taskType,
@@ -41,9 +49,10 @@ exports.TaskController = class TaskController extends Controller {
          * @returns {ApiResponse}
          */
         async status({ params }) {
+                validateUtils.requireNumber(params, "id");
                 let item = await this._access.getById(params.id);
                 if (!item)
-                        return this.fail("No data found", 1);
+                        return this.noDataFound();
 
                 return this.resposneObject({ status: item.status });
         }
@@ -54,7 +63,7 @@ exports.TaskController = class TaskController extends Controller {
          * @returns {ApiResponse}
          */
         async listExcutingTask() {
-                let list = await this._access.list({ status: 1 });
+                let list = await this._access.list({ status: TaskStatus.EXCUTING });
                 return this.resposneObject(list || []);
         }
 
@@ -64,8 +73,8 @@ exports.TaskController = class TaskController extends Controller {
          * @returns {ApiResponse}
          */
         async listWaitingToExecuteTasks() {
-                let list = await this._access.list({ status: 1 });
-                return this.resposneObject(list || []);
+                let list = await this._access.list({ status: TaskStatus.SHEDULED });
+                return this.resposneObject(list);
         }
 
         /**
@@ -81,3 +90,5 @@ exports.TaskController = class TaskController extends Controller {
                         .get(API.STATUS, (req, resp) => this._process(req, resp, this.status));
         }
 }
+
+exports.TaskController = TaskController;

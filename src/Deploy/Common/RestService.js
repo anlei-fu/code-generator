@@ -4,6 +4,7 @@ const { Service } = require("./Service");
 const { ServiceStatus } = require("./po/constant/ServiceStatus");
 const { Controller } = require("./Controller");
 const { validateUtils } = require("./utils/validate-utils");
+const { NodeContext } = require("./NodeContext");
 
 const app = express();
 
@@ -13,13 +14,13 @@ app.all("*", (req, resp, next) => {
     next();
 });
 
-// body parser (json & urlencoded) need install 
+// body parser (json & urlencoded) need to install independently
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /**
- * To host a http rest service, base on 'express' http server
+ * To host a http rest service, base on 'express' http framework
  */
 class RestService extends Service {
     /**
@@ -35,7 +36,6 @@ class RestService extends Service {
         });
 
         this._port = port;
-        this.init();
     }
 
     /**
@@ -48,13 +48,14 @@ class RestService extends Service {
     }
 
     /**
+     * Init
      * 
      * @param {NodeContext} context
      */
     init(context) {
         this._controllers.forEach(controller => {
             controller.mount(app);
-             controller.init(context);
+            controller.init(context);
         });
     }
 

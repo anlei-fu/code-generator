@@ -6,6 +6,10 @@ class JsManager extends FileManagerBase {
         this._js = {};
     }
 
+    init(context){
+
+    }
+
     /**
      * Find and load main function
      * 

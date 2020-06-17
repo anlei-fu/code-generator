@@ -18,13 +18,7 @@ class NodeContextBuilder {
          * @returns {NodeContextBuilder}
          */
         withNodeInfo(config) {
-                let info = config;
-                if (TYPE.isFunction(config))
-                        info = config(this);
-
-                validateUtils.requireNotNull(config, "port", "controllers");
-                this._context.nodeInfo = info;
-
+                this._context.nodeInfo = config;
                 return this;
         }
 
@@ -35,13 +29,7 @@ class NodeContextBuilder {
          * @returns { NodeContextBuilder }
          */
         withMasterInfo(config) {
-                let info = config;
-                if (TYPE.isFunction(config))
-                        info = config(this);
-
-                validateUtils.requireNotNull(config, "port", "controllers");
-                this._context.masterNodeInfo = info;
-
+                this._context.masterNodeInfo = config;
                 return this;
         }
 
@@ -53,7 +41,7 @@ class NodeContextBuilder {
          */
         useRestService(config) {
                 if (TYPE.isFunction(config)) {
-                        let service = config(this);
+                        let service = config(this._context);
                         validateUtils.requireInstanceOf(service, RestService);
                         this._context.services.RestService = service;
                 } else {
@@ -72,7 +60,7 @@ class NodeContextBuilder {
          */
         useTaskService(config) {
                 if (TYPE.isFunction(config)) {
-                        let service = config(this);
+                        let service = config(this._context);
                         validateUtils.requireInstanceOf(service, TaskService);
                         this._context.services.TaskService = service;
                 } else {
@@ -92,7 +80,7 @@ class NodeContextBuilder {
         useAccess(config) {
                 let access = config;
                 if (TYPE.isFunction(config))
-                        access = config(this);
+                        access = config(this._context);
 
                 validateUtils.requireNotNull(access, "name");
                 validateUtils.requireInstanceOf(access, AccessBase);
@@ -110,7 +98,7 @@ class NodeContextBuilder {
         useAccesses(config) {
                 let accesses = config
                 if (TYPE.isFunction(config))
-                        accesses = config(this);
+                        accesses = config(this._context);
 
                 accesses.forEach(a => {
                         validateUtils.requireNotNull(a, "name");
@@ -131,7 +119,7 @@ class NodeContextBuilder {
         useService(config) {
                 let service = config;
                 if (TYPE.isFunction(config))
-                        service = config(this);
+                        service = config(this._context);
 
                 validateUtils.requireInstanceOf(service, Service);
                 validateUtils.requireNotNull(service, "name");
@@ -149,7 +137,7 @@ class NodeContextBuilder {
         useServices(config) {
                 let services = config;
                 if (TYPE.isFunction(config))
-                        services = config(this);
+                        services = config(this._context);
 
                 services.forEach(s => {
                         validateUtils.requireNotNull(s, "name");
@@ -169,7 +157,7 @@ class NodeContextBuilder {
         useExcutor(config) {
                 let excutor = config;
                 if (TYPE.isFunction(config))
-                        let excutor = config(this);
+                        let excutor = config(this._context);
 
                 validateUtils.requireNotNull(excutor, "name");
                 this._context.excutors[excutor.name] = excutor;
@@ -186,7 +174,7 @@ class NodeContextBuilder {
         useExcutors(config) {
                 let excutors = config;
                 if (TYPE.isFunction(config))
-                        excutors = config(this);
+                        excutors = config(this._context);
 
                 excutors.forEach(e => {
                         validateUtils.requireNotNull(e, "name");
@@ -205,7 +193,7 @@ class NodeContextBuilder {
         useNotifier(config) {
                 let notifier = cconfig;
                 if (TYPE.isFunction(config))
-                        notifier = config(this);
+                        notifier = config(this._context);
 
                 validateUtils.requireNotNull(notifier, "name");
                 this._context.notifiers[notifier.name] = notifier;
@@ -222,7 +210,7 @@ class NodeContextBuilder {
         useNotifiers(config) {
                 let notifiers = config;
                 if (TYPE.isFunction(config))
-                        notifiers = config(this);
+                        notifiers = config(this._context);
 
                 notifiers.forEach(n => {
                         validateUtils.requireNotNull(n, "name");
@@ -241,7 +229,7 @@ class NodeContextBuilder {
         useManager(config) {
                 let manager = config;
                 if (TYPE.isFunction(config))
-                        manager = config(this);
+                        manager = config(this._context);
 
                 validateUtils.requireNotNull(manager, "name");
                 this._context.resourceManager[manager.name] = manager;
@@ -258,7 +246,7 @@ class NodeContextBuilder {
         useManagers(config) {
                 let managers = config;
                 if (TYPE.isFunction(config))
-                        managers = config(this);
+                        managers = config(this._context);
 
                 managers.forEach(n => {
                         validateUtils.requireNotNull(n, "name");
@@ -269,10 +257,30 @@ class NodeContextBuilder {
         }
 
         /**
+         * Init and build
+         * 
          * @returns {NodeContext}
          */
         build() {
+             this._init(this._context.excutors);
+             this._init(this._context.services);
+             this._init(this._context.resourceManager);
+             this._init(this._context.notifiers);
+             this._init(this._context.services);
 
+             return this._context;
+
+        }
+
+        /**
+         * Init all initiable conponents with context
+         * 
+         * @param {{Initiables} collection 
+         */
+        _init(collection){
+                Object.keys(collection).forEach(key=>{
+                   collection[key].init(this._context);
+                });
         }
 
 }

@@ -1,4 +1,4 @@
-const { Initiable } = require("../Init");
+const { Initiable } = require("../Initiable");
 
 exports.ExcutorBase = class ExcutorBase extends Initiable {
         /**

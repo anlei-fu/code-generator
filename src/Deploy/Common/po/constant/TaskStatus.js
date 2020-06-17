@@ -3,7 +3,7 @@ exports.TaskStatus = {
         // wait to schedule
         WAIT: 1,
 
-        // sheduled and wait excuting
+        // sheduled but wait to execute
         SHEDULED: 2,
 
         // excuting
@@ -15,9 +15,9 @@ exports.TaskStatus = {
         // execute fanished and failed
         FAILED: 5,
 
-        // execute fanished and suceed
+        // execute fanished and succeed
         SUCCESS: 6,
 
         // execute fanished and exceptionaly
-        EXCEPTION: 6
+        EXCEPTION: 7
 }

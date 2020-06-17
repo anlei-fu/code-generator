@@ -1,12 +1,14 @@
 const { Service } = require("./Service");
 const { ServiceStatus } = require("./po/constant/ServiceStatus");
 const { TaskStatus } = require("./po/constant/TaskStatus");
+const { NodeContext } = require("./NodeContext");
+const { validateUtils } = require("./utils/validate-utils");
 /**
  * To execute task
  */
 class TaskService extends Service {
 
-        constructor ( taskConfig,eventListener ) {
+        constructor () {
                 super("TaskService");
 
                 // by contructor
@@ -18,7 +20,7 @@ class TaskService extends Service {
                 this._context = null;
                 this._taskAccess = null;
                 this._taskNotifier = null;
-                
+
                 // self properties
                 this._excutingTask = {};
                 this._waitToExcute = [];
@@ -32,21 +34,18 @@ class TaskService extends Service {
          * @param {NodeContext} context
          */
         init(context) {
-           this._context=context;
+                this._context = context;
 
-           if(!context.accsses.taskAccess)
-              throw new Error(`taskAccess can not be found in context`);
-           
-           if(!context.excutors.taskExcutor)
-              throw new Error(`taskExcutor can not be found in context`);
-           
-           this._taskExcutor=context.excutors.taskExcutor;
-           this._taskAccess=context.accsses.taskAccess;
-           this._taskNotifier=context.notifiers.taskNotifier;
+                validateUtils.requireNotNull(context.accesses, "TaskAccess");
+                validateUtils.requireNotNull(context.excutors, "TaskExcutor");
+
+                this._taskExcutor = context.excutors.taskExcutor;
+                this._taskAccess = context.accsses.taskAccess;
+                this._taskNotifier = context.notifiers.taskNotifier;
         }
 
         /**
-         * @abstract
+         * To start task service
          */
         start() {
                 if (this._status != ServiceStatus.STOPPED) {
@@ -61,10 +60,10 @@ class TaskService extends Service {
         }
 
         /**
-         * @abstract
+         * To stop task service
          */
         stop(callback, force = false) {
-                this.info(`call stop force=${force}`);
+                this.info(`call 'stop' method and force=${force}`);
 
                 if ((this._status == ServiceStatus.STOPPING || this._status == ServiceStatus.STOPPED)
                         && !force) {
@@ -93,7 +92,7 @@ class TaskService extends Service {
         }
 
         /**
-         * Puase service and pending task excuting
+         *To Puase service and pending task excuting
          * 
          * @param {()=>void} callback
          * @param {boolean} force
@@ -127,7 +126,7 @@ class TaskService extends Service {
         }
 
         /**
-         * Resume service
+         * To Resume task service
          */
         resume() {
                 if (this._status != ServiceStatus.PAUSED) {
@@ -150,14 +149,14 @@ class TaskService extends Service {
         async _run() {
 
                 if (this._status != ServiceStatus.RUNNING) {
-                        this.warn(`to stop service refused,cause current status is ${this._status}`);
+                        this.warn(`to run task refused,cause current status is ${this._status}`);
                         return;
                 }
 
                 if (this._excutingTask > this._config.maxConcurrency) {
                         this.info(
-                                `to start new task refused, cause over max concurrency,` +
-                                `and there's ${this._excutingTask} tasks running`
+                                `to run new task refused, cause over max concurrency,` +
+                                `and there's ${this._excutingTask} tasks are running`
                         );
                         return;
                 }
