@@ -1,4 +1,5 @@
 const { TYPE } = require("./utils");
+const { ArgTypeError } = require("./../error/ArgTypeError");
 
 /**
  * To check there any null property of a object
@@ -43,6 +44,8 @@ function requireNotNull(target, ...fields) {
                         if (typeof arg == undefined)
                                 throw new ReferenceError("element of array is null");
                 });
+
+                return;
         }
 
         if (TYPE.isObject(target)) {
@@ -50,15 +53,35 @@ function requireNotNull(target, ...fields) {
                         if (!target[field])
                                 throw new ReferenceError(`property.${field} of target is null`);
                 });
+
+                return;
         }
 
         if (!target)
                 throw new ReferenceError(`given target is null`);
 }
 
-function requireNumber(value) {
+function requireNumber(value, ...fields) {
+        if (TYPE.isArray(value)) {
+                value.forEach(arg => {
+                        if (!TYPE.isNumber(arg))
+                                throw new ArgTypeError(`require a number a value ,but got a ${typeof value}`);
+                });
+
+                return;
+        }
+
+        if (TYPE.isObject(value)) {
+                fields.forEach(field => {
+                        if (!TYPE.isNumber(value[field]))
+                                throw new ArgTypeError(`${field} require a number a value ,but got a ${typeof value[field]}`);
+                });
+
+                return;
+        }
+
         if (!TYPE.isNumber(value))
-                throw new TypeError(`require a number a value ,but got ${typeof value}`);
+                throw new ArgTypeError(`require a number a value ,but got a ${typeof value}`);
 }
 
 function requireInstanceOf(instance, type) {

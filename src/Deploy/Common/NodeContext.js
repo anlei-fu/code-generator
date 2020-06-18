@@ -4,7 +4,7 @@ exports.NodeContext = class NodeContext extends Service {
         constructor () {
                 super("NodeContext");
 
-                this.nodeInfo = config.nodeInfo;
+                this.nodeInfo = {};
 
                 this.masterNodeInfo = {};
 
@@ -18,9 +18,11 @@ exports.NodeContext = class NodeContext extends Service {
 
                 this.resourceManager = {};
 
-                this.factory={};
+                this.factories={};
 
                 this.gitHelper={};
+
+                this.config={};
         }
 
         init() {

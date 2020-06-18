@@ -1,18 +1,18 @@
 
-const { ExcutorBase } = require("./ExcutorBase");
+const { ExecutorBase } = require("./ExecutorBase");
 const { TaskType } = require("../po/constant/TaskType");
 
-exports.TaskExcutor = class TaskExcutor extends ExcutorBase {
+exports.TaskExcutor = class TaskExcutor extends ExecutorBase {
 
         constructor () {
-                super("TaskExcutor", TaskType.ALL);
+                super("TaskExecutor", TaskType.ALL);
 
                 // self properties
                 this._excutors = new Map();
         }
 
         init(context) {
-                super(context);
+                super.init(context);
 
                 let keys = Object.keys(context.excutors);
                 keys.forEach(excutorName => {
@@ -29,7 +29,7 @@ exports.TaskExcutor = class TaskExcutor extends ExcutorBase {
 
         async execute(task) {
 
-                if (!task || task.taskType)
+                if (!task || !task.taskType)
                         return this._excuteResultFactory.taskIncorrect(task);
 
                 if (!this._excutors.has(task.taskType))
@@ -45,7 +45,7 @@ exports.TaskExcutor = class TaskExcutor extends ExcutorBase {
 
                 // every excutor has its try catch block, process it internally
                 // and return a certain task result 
-                return this._excutors.get(task.taskType).execute(task.file, args);
+                return this._excutors.get(task.taskType).execute(task.scriptFile, args);
         }
 
 

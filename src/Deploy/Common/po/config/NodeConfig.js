@@ -1,5 +1,8 @@
 const { MasterNodeInfo } = require("./MasterNodeInfo");
 const { NodeInfo } = require("./NodeInfo");
+const { ResourceConfig } = require("./ResourseConfig");
+const { RestServiceConfig } = require("./RestServiceConfig");
+const { TaskServiceConfig } = require("./TaskServiceConfig");
 
 
 exports.NodeConfig = class {
@@ -9,29 +12,12 @@ exports.NodeConfig = class {
                 this.info = new NodeInfo();
 
                 // master info
-                this.masterInfo = new MasterNodeInfo();
+                this.masterNodeInfo = new MasterNodeInfo();
 
-                // resour config
-                this.jsBaseFolder = "./script/js";
-                this.shellBaseFolder = "./script/shell";
-                this.dbFile = "./data/db.db";
+                this.resource = new ResourceConfig();
 
-                // restful service port
-                this.restServicePort = 10032;
+                this.rest = new RestServiceConfig();
 
-                // task service config
-                // task loop interval
-                this.taskLoopInterval = 100;
-
-                // max concurret task threshold
-                this.taskMaxConcurrency = 10;
-
-                // system resource config
-                // shell base folder
-                this.systemShellFolder = "./script/shell/system";
-                
-                // js base folder
-                this.systemJsFolder = "./script/js/system";
-
+                this.task = new TaskServiceConfig();
         }
 }

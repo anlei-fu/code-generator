@@ -2,6 +2,10 @@ const { ExecuteResultBuilder } = require("../builder/ExecuteResultBuilder");
 const { ExcuteResultCode } = require("../po/constant/ExecuteResultCode");
 const { formatUtils } = require("../utils/formatUtils")
 class ExecuteResultFactory {
+        
+        constructor(){
+                this.name="ExecuteResultFactory";
+        }
 
         /**
          * Create shell not found result
@@ -10,7 +14,7 @@ class ExecuteResultFactory {
          * @param {ExecueteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static shellNotExist(shellFile, previousResult) {
+        shellNotExist(shellFile, previousResult) {
                 return this._fileNotFoundResult("shell", shellFile, previousResult);
         }
 
@@ -22,7 +26,7 @@ class ExecuteResultFactory {
          * @param {ExecueteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static shellFailed(shellFile, { params, log, error }, previousResult) {
+        shellFailed(shellFile, { params, log, error }, previousResult) {
                 let builder = new ExecuteResultBuilder("shell");
 
                 let detail = formatUtils.formatObjects({ params, log, error }) + "\r\n";
@@ -40,7 +44,7 @@ class ExecuteResultFactory {
          * @param {ExecuteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static shellSuccessed(shellFile, log, previousResult) {
+        shellSuccessed(shellFile, log, previousResult) {
                 let builder = new ExecuteResultBuilder("shell");
 
                 let detail = formatUtils.formatObjects({ log }) + "\r\n";
@@ -57,11 +61,11 @@ class ExecuteResultFactory {
          * @param {ExecuteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static jsNotExist(jsFile, previousResult) {
+        jsNotExist(jsFile, previousResult) {
                 return this._fileNotFoundResult("js", jsFile, previousResult);
         }
 
-        static mainNotFound(jsFile) {
+        mainNotFound(jsFile) {
                 let builder = new ExecuteResultBuilder("js");
                 return builder.code(ExcuteResultCode.MAIN_NOT_FOUND)
                         .error(`main function can not be found in (${jsFile})'s exports`)
@@ -76,7 +80,7 @@ class ExecuteResultFactory {
          * @param {ExecueteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static jsIncorrect(jsFile, error, previousResult) {
+        jsIncorrect(jsFile, error, previousResult) {
                 let builder = new ExecuteResultBuilder("Js");
 
                 builder.error(`js file '${jsFile}' incorrect`, error)
@@ -94,7 +98,7 @@ class ExecuteResultFactory {
          * @param {ExecueteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static jsFailed(jsFile, args, error, previousResult) {
+        jsFailed(jsFile, args, error, previousResult) {
                 let builder = new ExecuteResultBuilder("js");
 
                 let detail = formatUtils.formatObjects({ args, error }) + "\r\n";
@@ -112,7 +116,7 @@ class ExecuteResultFactory {
          * @param {ExecueteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static jsSuccessed(jsfile, log, previousResult) {
+        jsSuccessed(jsfile, log, previousResult) {
                 let builder = new ExecuteResultBuilder("js");
 
                 let detail = formatUtils.formatObjects({ log }) + "\r\n";
@@ -130,7 +134,7 @@ class ExecuteResultFactory {
          * @param {ExecueteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static _fileNotFoundResult(type, file, previousResult) {
+        _fileNotFoundResult(type, file, previousResult) {
                 let builder = new ExecuteResultBuilder(type);
                 builder.error(`${type} file '${file}' not found`)
                         .code(ExcuteResultCode.FILE_NOT_FOUND);
@@ -145,7 +149,7 @@ class ExecuteResultFactory {
          * @param {ExecueteResult} previousResult 
          * @returns {ExecueteResult}
          */
-        static _build(builder, previousResult) {
+        _build(builder, previousResult) {
                 return previousResult
                         ? builder.prependResultAndBuild(previousResult) : builder.build();
         }

@@ -4,7 +4,7 @@ const { ApiResponseCode } = require("../po/constant/ApiResponseCode");
 exports.ApiResponseFactory = class ApiResponseFactory {
         static success(msg, data) {
                 return new ApiResponse(
-                        piResponseCode.SUCCESS,
+                        ApiResponseCode.SUCCESS,
                         msg || "operation succeed",
                         data
                 );

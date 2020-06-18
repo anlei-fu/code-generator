@@ -1,16 +1,16 @@
 
 const child = require('child_process');
-const { ExcutorBase } = require("./ExcutorBase");
+const { ExecutorBase } = require("./ExecutorBase");
 const { OBJECT } = require("../utils/utils");
 const { TaskType } = require("../po/constant/TaskType");
 
 /**
  * To execute shell file
  */
-class ShellFileExcutor extends ExcutorBase {
+class ShellFileExecutor extends ExecutorBase {
 
         constructor () {
-                super("ShellExcutor", TaskType.SHELL_FILE);
+                super("ShellExecutor", TaskType.SHELL_FILE);
 
 
                 // init by context
@@ -37,7 +37,7 @@ class ShellFileExcutor extends ExcutorBase {
          * @param {[String]} params 
          * @returns {Result}
          */
-        async excute(shellFile, params) {
+        async execute(shellFile, params) {
 
                 if (this._shellManager.exists(shellFile))
                         return this._excuteResultFactory.shellNotFound(shellFile);
@@ -77,4 +77,4 @@ class ShellFileExcutor extends ExcutorBase {
         }
 }
 
-exports.ShellFileExcutor = ShellFileExcutor
+exports.ShellFileExecutor = ShellFileExecutor

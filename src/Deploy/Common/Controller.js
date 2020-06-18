@@ -2,6 +2,8 @@ const { Initiable } = require("./Initiable");
 const { ApiResponseFactory } = require("./factory/ApiResponseFactory");
 const { ApiResponse } = require("./po/model/ApiResponse");
 const { ApiResponseCode } = require("./po/constant/ApiResponseCode");
+const { ArgTypeError } = require("./error/ArgTypeError");
+const { DebugUtils } = require("./utils/debug-utils");
 
 /**
  * Controller base
@@ -76,8 +78,8 @@ class Controller extends Initiable {
          * 
          * @returns {ApiResponse}
          */
-        noDataFound(){
-                return new ApiResponse(ApiResponseCode.NO_DATA_FOUND,"no data found");
+        noDataFound() {
+                return new ApiResponse(ApiResponseCode.NO_DATA_FOUND, "no data found");
         }
 
         /**
@@ -106,6 +108,10 @@ class Controller extends Initiable {
          */
         async _process(req, resp, handler) {
                 try {
+                        if(DebugUtils.isDebugMode()){
+                                this.info(`${req.method}  ${req.path}`);
+                        }
+
                         let result;
                         try {
                                 if (this._controllerConfig.beforeProcess) {
@@ -114,10 +120,33 @@ class Controller extends Initiable {
                                                 return;
                                 }
 
+                                if (DebugUtils.isDebugMode) {
+                                        console.log("args:");
+                                        console.log({ query: req.query, body: req.body, params: req.params });
+                                }
+
                                 result = await handler.call(this, { query: req.query, body: req.body, params: req.params });
                         } catch (e) {
-                                this.error(`handle ${req.method} ${req.path} failed`, ex);
-                                result = this.systemError();
+                                this.error(`handle ${req.method} ${req.path} failed`, e);
+
+                                if (e instanceof TypeError) {
+                                        result = new ApiResponse(ApiResponseCode.PARAMETER_INCORRECT, "parameter incorrect");
+                                } else if (e instanceof ArgTypeError) {
+                                        result = new ApiResponse(ApiResponseCode.PARAMETER_INCORRECT, "parameter type incorrect");
+                                } else if (e instanceof ReferenceError) {
+                                        result = new ApiResponse(ApiResponseCode.REQUIRED_PARAMETER_ABSENT, "vital parameter absent");
+                                } else {
+                                        result = this.systemError();
+                                }
+
+                                if (DebugUtils.isDebugMode) {
+                                        console.error(e);
+                                }
+                        }
+
+                        if (DebugUtils.isDebugMode) {
+                                console.log("resp:");
+                                console.log(result);
                         }
 
                         resp.send(result);
@@ -127,6 +156,9 @@ class Controller extends Initiable {
 
                 } catch (ex) {
                         this.error(`handle ${req.method} ${req.path} failed`, ex);
+                        if (DebugUtils.isDebugMode) {
+                                console.error(ex);
+                        }
                 }
         }
 }

@@ -11,22 +11,22 @@ class TaskService extends Service {
         constructor () {
                 super("TaskService");
 
-                // by contructor
-                this._config = taskConfig;
-                this._serverEventListerner = eventListener;
+                this._serverEventListerner = null;
 
                 // init by context
                 this._taskExcutor = null;
                 this._context = null;
                 this._taskAccess = null;
                 this._taskNotifier = null;
+                this._maxConcurrency = null;
+                this._pollRate = null;
 
                 // self properties
-                this._excutingTask = {};
+                this._excutingTask = new Map();
                 this._waitToExcute = [];
-                this._taskInterval = null;
                 this._stoppedCallback = null;
                 this._pausedCallBack = null;
+                this._taskInterval = null;
         }
 
         /**
@@ -37,11 +37,15 @@ class TaskService extends Service {
                 this._context = context;
 
                 validateUtils.requireNotNull(context.accesses, "TaskAccess");
-                validateUtils.requireNotNull(context.excutors, "TaskExcutor");
+                validateUtils.requireNotNull(context.excutors, "TaskExecutor");
 
-                this._taskExcutor = context.excutors.taskExcutor;
-                this._taskAccess = context.accsses.taskAccess;
-                this._taskNotifier = context.notifiers.taskNotifier;
+                this._taskExcutor = context.excutors.TaskExecutor;
+                this._taskAccess = context.accesses.TaskAccess;
+                this._taskNotifier = context.notifiers.TaskNotifier;
+
+                this._taskFetchSize = context.config.task.fetchSize || 10;
+                this._pollRate = context.config.task.pollRate || 10 * 1000;
+                this._maxConcurrency = context.config.task.maxConcurrency || 10;
         }
 
         /**
@@ -53,7 +57,7 @@ class TaskService extends Service {
                         return;
                 }
 
-                this._taskInterval = setInterval(run, this._config.interval);
+                this._taskInterval = setInterval(() => this._run.call(this), this._pollRate);
                 this._status = ServiceStatus.RUNNING;
                 this.info("service started");
                 this._raiseServiceStarted();
@@ -118,7 +122,6 @@ class TaskService extends Service {
 
                 this._status = ServiceStatus.PAUSED;
                 this.info(`service paused`);
-
                 this._raiseServicePaused();
 
                 if (this._pausedCallBack)
@@ -134,7 +137,8 @@ class TaskService extends Service {
                         return;
                 }
 
-                this._taskInterval = setInterval(this._run, this._config.interval);
+                let self = this;
+                this._taskInterval = setInterval(() => this._run.call(self), this._pollRate);
 
                 this._status = ServiceStatus.RUNNING;
                 this.info("service resumed");
@@ -153,7 +157,7 @@ class TaskService extends Service {
                         return;
                 }
 
-                if (this._excutingTask > this._config.maxConcurrency) {
+                if (this._excutingTask.size > this._maxConcurrency) {
                         this.info(
                                 `to run new task refused, cause over max concurrency,` +
                                 `and there's ${this._excutingTask} tasks are running`
@@ -162,12 +166,12 @@ class TaskService extends Service {
                 }
 
                 if (this._waitToExcute.length == 0) {
-                        let tasks = await this._taskAccess.getTaskToExcute();
+                        let tasks = await this._taskAccess.getTaskToExcute(this._taskFetchSize);
                         this.info(`fetch new tasks from db, got ${tasks.length}`);
                         if (tasks.length == 0)
                                 return;
 
-                        this._waitToExcute.concat(tasks);
+                        this._waitToExcute = this._waitToExcute.concat(tasks);
                 }
 
                 let task = this._waitToExcute.pop();
@@ -175,7 +179,7 @@ class TaskService extends Service {
                 let result;
                 try {
                         await this._beforeTaskExcuting(task);
-                        result = await this._taskExcutor.excute(task);
+                        result = await this._taskExcutor.execute(task);
                         await this._afterTaskFinished(task, result);
                 } catch (ex) {
                         this.error(`excute task ${task.id} exceptionaly`, ex);
@@ -194,8 +198,9 @@ class TaskService extends Service {
          * @param {Task} task 
          */
         async _beforeTaskExcuting(task) {
-                await this._taskAccess.updateTaskStatus(task.id, { status: TaskStatus.EXCUTING });
-                await this._taskNotifier.notifyTaskStarted(task.id);
+                this._excutingTask.set(task.id, task);
+                await this._taskAccess.updateById(task.id, { status: TaskStatus.EXCUTING, startTime: new Date() });
+                //  await this._taskNotifier.notifyTaskStarted(task.id);
         }
 
         /**
@@ -206,12 +211,12 @@ class TaskService extends Service {
          * @param {ExecuteResult} result 
          */
         async _afterTaskFinished(task, result) {
-                this._excutingTask.remove(task.id);
-                await this._taskAccess.updateTaskStatus(task.id, { status: 1 });
-                await this._taskNotifier.notifyTaskFinished();
+                this._excutingTask.delete(task.id);
+                await this._taskAccess.updateById(task.id, { status: TaskStatus.SUCCESS, log: "success", finishTime: new Date() });
+                // await this._taskNotifier.notifyTaskFinished();
 
                 // process service status 'paussing' and 'stopping'
-                if (this._excutingTask.size() == 0) {
+                if (this._excutingTask.size == 0) {
                         if (this._status == ServiceStatus.STOPPING) {
                                 this._status = ServiceStatus.STOPPED;
                                 this.info("service stopped");
@@ -241,6 +246,8 @@ class TaskService extends Service {
                         this._taskInterval == null;
                 }
         }
+
+
 }
 
 exports.TaskService = TaskService;

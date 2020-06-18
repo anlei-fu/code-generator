@@ -1,8 +1,8 @@
 
 var assert = require('assert');
-const { JsExcutor } = require("./../../../common/excutor/JsExcutor");
+const { JsExecutor } = require("../../../common/excutor/JsExecutor");
 
-const EXCUTOR = new JsExcutor(`JsExcutor`);
+const EXCUTOR = new JsExecutor(`JsExecutor`);
 
 function test() {
         describe('js excutor test', function () {

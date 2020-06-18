@@ -115,9 +115,9 @@ function getEqualConditions(model) {
                 let field = model[fieldName];
 
                 if (i == 0) {
-                        sql += `${NamingStrategy.toHungary(field)} = ${formatSqlString(field)} `;
+                        sql += `${NamingStrategy.toHungary(fieldName)} = ${formatSqlString(field)} `;
                 } else {
-                        sql += ` and ${NamingStrategy.toHungary(field)} = ${formatSqlString(field)} `
+                        sql += ` and ${NamingStrategy.toHungary(fieldName)} = ${formatSqlString(field)} `
                 }
         });
 

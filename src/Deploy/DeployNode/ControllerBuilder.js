@@ -1,4 +1,4 @@
-const { AppController: JavaProjectController } = require("./controller/JavaProjectController");
+const { AppController: JavaProjectController } = require("./controller/AppProjectController");
 const { TaskController } = require("./controller/TaskController");
 const { validateUtils } = require("./../common/utils/validate-utils");
 const { AccessBase } = require("./../common/AcccessBase");

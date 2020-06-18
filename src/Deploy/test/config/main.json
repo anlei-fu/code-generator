@@ -1,0 +1,21 @@
+{
+        "resource": {
+                "js": {
+                        "dir": "C:/Users/Administrator/Desktop/Projects/code-generator/src/Deploy/test/resource/js"
+                },
+                "shell": {
+                        "dir": "C:/Users/Administrator/Desktop/Projects/code-generator/src/Deploy/test/resource/shell"
+                }
+        },
+        "data": {
+                "dir": "C:/Users/Administrator/Desktop/Projects/code-generator/src/Deploy/test/data",
+                "file": "db.db"
+        },
+        "task": {
+                "pollRate": 100,
+                "maxConcurrecy": 10
+        },
+        "rest": {
+                "port": 8085
+        }
+}

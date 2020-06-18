@@ -1,12 +1,14 @@
-const { ExcutorBase } = require("./ExcutorBase");
+const { ExecutorBase } = require("./ExecutorBase");
 const { TaskType } = require("../po/constant/TaskType");
+const { validateUtils } = require("./../utils/validate-utils");
+const { NodeContext } = require("./../NodeContext");
 
 /**
  * To excute js file
  */
-exports.JsExcutor = class JsExcutor extends ExcutorBase {
+exports.JsExecutor = class JsExecutor extends ExecutorBase {
         constructor () {
-                super("JsExcutor", TaskType.JS_FILE);
+                super("JsExecutor", TaskType.JS_FILE);
                 this._jsManager = null;
         }
 
@@ -15,9 +17,10 @@ exports.JsExcutor = class JsExcutor extends ExcutorBase {
          * 
          * @param {NodeContext} context 
          */
-        init(context){
+        init(context) {
                 super.init(context);
-                this._jsManager=context.resourceManager.jsManager;
+                validateUtils.requireNotNull(context.resourceManager, "JsManager");
+                this._jsManager = context.resourceManager.JsManager;
         }
 
         /**
@@ -29,7 +32,7 @@ exports.JsExcutor = class JsExcutor extends ExcutorBase {
          * @param {Any?} args 
          * @returns {ExcuteResult}
          */
-        async excute(jsFile, args) {
+        async execute(jsFile, args) {
                 let main = this._jsManager.getMain(jsFile);
                 if (!main)
                         return this._excuteResultFactory.mainNotFound(jsFile);

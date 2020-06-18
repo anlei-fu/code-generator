@@ -4,9 +4,6 @@ class ShellManager extends FileManagerBase {
                 super("ShellManager", workDir);
         }
 
-        init(context){
-
-        }
 }
 
 exports.ShellManager = ShellManager;

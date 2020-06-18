@@ -9,6 +9,8 @@ exports.TaskType = {
         // base on executing a shell file
         SHELL_FILE: 11,
 
+        SQL:20,
+
         // all kinds of task
         ALL: 100
 }

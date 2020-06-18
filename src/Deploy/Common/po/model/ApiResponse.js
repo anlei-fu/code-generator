@@ -3,16 +3,16 @@ exports.ApiResponse = class {
                 /**
                  * 
                  */
-                this.code = 100;
+                this.code = code;
 
                 /**
                  * 
                  */
-                this.msg = "";
+                this.msg = msg;
 
                 /**
                  * 
                  */
-                this.data = null;
+                this.data = data;
         }
 }

@@ -1,5 +1,5 @@
 
-const chalk = require("./node_modules/chalk");
+const chalk = require("chalk");
 const { Logger } = require("./logger");
 
 // Init loggers

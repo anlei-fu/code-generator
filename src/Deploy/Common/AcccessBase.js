@@ -1,26 +1,38 @@
 
 const { sqlUtils } = require("./utils/sql-utils");
 const { validateUtils } = require("./utils/validate-utils");
-const { LoggerSurpport } = require("./LoggerSurpport");
+const { Initiable } = require("./Initiable");
 const { PageResult } = require("./po/model/PageResult");
+const { NodeContext } = require("./NodeContext");
 
 
 /**
- * Simple wrap of @see SqliteExcutor ,provide basic sql operations
+ * Simple wrap of @see SqliteExecutor ,provide basic sql operations
  */
-class AccessBase extends LoggerSurpport {
+class AccessBase extends Initiable {
         /**
          * 
          * @param {String} table  not null
          * @param {EntityConfig} param1 
          */
-        constructor (name, sqlExcutor, table, { idField = "id", idIsStringOrDate = false }) {
+        constructor (name, table, { idField, idIsStringOrDate }={}) {
                 super(name);
                 validateUtils.requireNotNull(table);
                 this._table = table;
-                this._excutor = sqlExcutor;
-                this._idField = idField;
-                this._idIsStringOrDate = idIsStringOrDate;
+                this._idField = idField || "id";
+                this._idIsStringOrDate = idIsStringOrDate || false;
+
+                this._excutor = null;
+        }
+
+        /**
+         * Init
+         * 
+         * @param {NodeContext} context 
+         */
+        init(context) {
+                validateUtils.requireNotNull(context.excutors, "SqlExecutor");
+                this._excutor = context.excutors.SqlExecutor;
         }
 
         /**
@@ -47,11 +59,11 @@ class AccessBase extends LoggerSurpport {
          * @param {PageConfig} pageConfig
          * @returns {Promise<Entity[]>}
          */
-        list() {
+        list(model) {
                 let whereClause = typeof model == "string"
                         ? model : sqlUtils.getEqualConditions(model);
 
-                return this._query(whereClause, { index: 1, size: 1000000000 });
+                return this._query(whereClause, { index: 0, size: 1000000000 });
 
         }
 
@@ -181,8 +193,18 @@ class AccessBase extends LoggerSurpport {
          * @param {PageConfig} pageConfig
          * @returns {Promise<Entity[]>}
          */
-        _query(whereClause, { index = 1, size = 10 }) {
-                let sql = `select * from ${this._table} where ${whereClause} limit ${index * size}, ${size}`;
+        _query(whereClause, { index = 0, size = 10 }) {
+                let sql = `select * from ${this._table} where ${whereClause} limit ${index * size}, ${index * size+size}`;
+                return this._excutor.query(sql);
+        }
+
+        /**
+         * Query by sql
+         * 
+         * @param {String} sql 
+         * @returns {Promise<Entity[]>}
+         */
+        _queryOraginal(sql){
                 return this._excutor.query(sql);
         }
 

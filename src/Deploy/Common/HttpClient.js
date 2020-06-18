@@ -94,13 +94,17 @@ class HttpClient extends Initiable {
                                 this.info("data:", JSON.stringify(data));
                         }
 
-                        let resp = await this._client[method](
-                                this._normalizeUrl({ url, params, data },
-                                        { params, data }));
+                        url = this._normalizeUrl({ url, params, data });
+                        let resp = await this._client({
+                                method,
+                                url,
+                                params,
+                                data
+                        });
 
-                        this.info("resp:", JSON.stringify(resp));
+                        this.info("resp:", JSON.stringify(resp.data));
 
-                        return resp;
+                        return resp.data;
                 } catch (ex) {
                         this.error(`${method} ${url}`, ex);
                 }

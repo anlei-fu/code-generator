@@ -1,4 +1,4 @@
-const { JavaProjectAccess } = require("./db/JavaProjectDbAccess");
+const { JavaProjectAccess } = require("./db/AppAccess");
 const { TaskAccess } = require("./db/TaskAccess");
 const { FileVersionAccess } = require("./db/FileVersionAccess");
 const { validateUtils } = require("./../common/utils/validate-utils");

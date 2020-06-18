@@ -33,6 +33,7 @@ var submitResult={
 function main() {
       let buidler = new HandlerCollectionBuilder();
       let handlers = buidler.handler("*", "get", result)
+            .handler("*", "post", result)
             .handler("/getvcode", "post",vcodeResult)
             .handler("/submit","post",submitResult)
             .build();

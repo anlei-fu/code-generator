@@ -1,23 +1,36 @@
 const sqlite3 = require('sqlite3').verbose();
-const { NamingStrategy } = require("./../utils/naming-strategy");
-const {StopWatch} =require("./../StopWatch");
-
-const DebugMode = true;
+const { NamingStrategy } = require("../utils/naming-strategy");
+const { ExecutorBase } = require("./ExecutorBase");
+const { TaskType } = require("../po/constant/TaskType");
+const { FILE } = require("./../utils/file");
+const { DIR } = require("./../utils/dir");
+const { DebugUtils } = require("./../utils/debug-utils");
 
 /**
  * Sqlite accessor
  */
-class SqliteExcutor {
-        constructor (db) {
-                this._dbFile = db;
-                this._excutor = new sqlite3.Database(this._dbFile);
+class SqliteExecutor extends ExecutorBase {
+        constructor (dbFolder, dbFile) {
+                super("SqlExecutor", TaskType.SQL)
+                this._dbForlder = dbFolder;
+                this._dbFile = dbFile;
+        }
+
+        init(context) {
+
+                DIR.create(this._dbForlder);
+
+                if (!FILE.exists(`${this._dbForlder}/${this._dbFile}`))
+                        FILE.write(`${this._dbForlder}/${this._dbFile}`, "");
+
+                this._excutor = new sqlite3.Database(`${this._dbForlder}/${this._dbFile}`);
         }
 
         query(sql) {
                 return new Promise((resolve, reject) => {
                         this._excutor.all(sql, (err, data) => {
                                 if (err) {
-                                        if (DebugMode)
+                                        if (DebugUtils.isDebugMode())
                                                 console.log(sql);
 
                                         reject(err)
@@ -38,16 +51,13 @@ class SqliteExcutor {
         }
 
         excute(sql) {
-                let watch =new  StopWatch();
-                watch.start();
                 return new Promise((resolve, reject) => {
-                        console.log(`elapsed:${watch.elased}`);
                         this._excutor.run(sql, (result, err) => {
                                 if (err || result) {
-                                        if (DebugMode)
+                                        if (DebugUtils.isDebugMode())
                                                 console.log(sql);
 
-                                       
+
                                         reject(err || result)
                                         return;
                                 }
@@ -77,4 +87,4 @@ class SqliteExcutor {
 
 }
 
-exports.SqliteExcutor = SqliteExcutor
+exports.SqliteExecutor = SqliteExecutor

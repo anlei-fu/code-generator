@@ -1,5 +1,5 @@
-const express = require('./node_modules/express');
-const bodyParser = require('./node_modules/body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 const { Service } = require("./Service");
 const { ServiceStatus } = require("./po/constant/ServiceStatus");
 const { Controller } = require("./Controller");

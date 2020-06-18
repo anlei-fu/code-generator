@@ -1,48 +1,61 @@
 const { NodeContextBuilder } = require("./../common/builder/NodeContextBuilder");
 const { JsManager } = require("./../common/manager/JsManager");
 const { ShellManager } = require("./../common/manager/ShellManager");
-const { JsExcutor } = require("./../common/excutor/JsExcutor");
-const { ShellFileExcutor } = require("./../common/excutor/ShellFileExcutor");
+const { JsExecutor } = require("../common/excutor/JsExecutor");
+const { ShellFileExecutor } = require("../common/excutor/ShellFileExecutor");
 const { TaskExcutor } = require("./../common/excutor/TaskExcutor");
 const { RestService } = require("./../common/RestService");
 const { TaskService } = require("./../common/TaskService");
+const { SqliteExecutor } = require("./../common/excutor/SqliteExecutor");
+const { ConfigLoader } = require("./../common/ConfigLoader");
+const { ExecuteResultFactory } = require("./../common/factory/ExecuteResultFactory");
+const { TaskAccess } = require("./../DeployNode/db/TaskAccess");
+const { TaskController } = require("./../DeployNode/controller/TaskController");
+const { DebugUtils } = require("./../common/utils/debug-utils");
 // const { NodeInfoBuilder } = require("./../common/builder/NodeInfoBuilder");
 
 function test() {
         let builder = new NodeContextBuilder();
-        let context = builder.withNodeInfo(context => {
-
-        }).withMasterInfo(context => {
-
-        }).useManagers(() => {
-                return [
-                        new JsManager(""),
-                        new ShellManager("")
-                ]
-        }).useAccesses(() => {
-                return [
-
-                ]
-        }).useExcutors(() => {
-                return [
-                        new JsExcutor(),
-                        new ShellFileExcutor(),
-                        new TaskExcutor()
-                ]
-        }).useRestService(context => {
-                return new RestService(
-                        context.config.restPort,
-                        [
-
+        let config = ConfigLoader.load("./config");
+        let context = builder.withConfig(config)
+                .useManagers((context) => {
+                        return [
+                                new JsManager(context.config.resource.js.dir),
+                                new ShellManager(context.config.resource.shell.dir)
                         ]
-                );
-        }).useTaskService(context => {
-                return new TaskService(context.taskConfig,null);
-        }).useNotifiers(context => {
+                }).useAccesses(() => {
+                        return [
+                                new TaskAccess()
+                        ]
+                }).useExcutors((context) => {
+                        return [
+                                new JsExecutor(),
+                                new ShellFileExecutor(),
+                                new TaskExcutor(),
+                                new SqliteExecutor(context.config.data.dir, context.config.data.file)
+                        ]
+                }).useRestService(context => {
+                        return new RestService(
+                                context.config.rest.port,
+                                [
+                                        new TaskController()
+                                ]
+                        );
+                }).useTaskService(context => {
+                        return new TaskService(context.taskConfig, null);
+                }).useFactory(() => {
+                        return new ExecuteResultFactory();
+                }).useNotifiers(context => {
+                        return []
+                }).build();
 
-        }).build();
+        //     context.start();
 
-        context.start();
+        DebugUtils.setDebugMode();
+
+        context.services.TaskService.start();
+
+      // context.excutors.JsExecutor.excute("1.js","svg");
 
 }
 

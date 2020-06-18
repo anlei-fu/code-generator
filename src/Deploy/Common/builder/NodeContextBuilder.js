@@ -11,6 +11,13 @@ class NodeContextBuilder {
                 this._context = new NodeContext();
         }
 
+        withConfig(config) {
+                this._context.config = config;
+                this._context.nodeInfo = config.nodeInfo;
+                this._context.masterNodeInfo = config.masterNodeInfo;
+                return this;
+        }
+
         /**
          * config node info
          * 
@@ -84,7 +91,7 @@ class NodeContextBuilder {
 
                 validateUtils.requireNotNull(access, "name");
                 validateUtils.requireInstanceOf(access, AccessBase);
-                this._context.accesss[access.name] = access;
+                this._context.accesses[access.name] = access;
 
                 return this;
         }
@@ -103,7 +110,7 @@ class NodeContextBuilder {
                 accesses.forEach(a => {
                         validateUtils.requireNotNull(a, "name");
                         validateUtils.requireInstanceOf(a, AccessBase);
-                        this._context.accesss[a.name] = a;
+                        this._context.accesses[a.name] = a;
                 });
 
                 return this;
@@ -157,7 +164,7 @@ class NodeContextBuilder {
         useExcutor(config) {
                 let excutor = config;
                 if (TYPE.isFunction(config))
-                        let excutor = config(this._context);
+                        excutor = config(this._context);
 
                 validateUtils.requireNotNull(excutor, "name");
                 this._context.excutors[excutor.name] = excutor;
@@ -250,7 +257,43 @@ class NodeContextBuilder {
 
                 managers.forEach(n => {
                         validateUtils.requireNotNull(n, "name");
-                        this._context.managers[n.name] = n;
+                        this._context.resourceManager[n.name] = n;
+                });
+
+                return this;
+        }
+
+        /**
+         * Use factory
+         * 
+         * @param {Factory|(NodeContext)=>Factory} config 
+         * @returns {NodeContextBuilder}
+         */
+        useFactory(config){
+                let factory = config;
+                if (TYPE.isFunction(config))
+                        factory = config(this._context);
+
+                validateUtils.requireNotNull(factory, "name");
+                this._context.factories[factory.name] = factory;
+
+                return this;
+        }
+
+        /**
+         * Use factories
+         * 
+         * @param {[Factory]|(NodeContext)=>[Factory]} config 
+         * @returns {NodeContextBuilder}
+         */
+        useFactories(config){
+                let factories = config;
+                if (TYPE.isFunction(config))
+                        factories = config(this._context);
+
+                factories.forEach(f => {
+                        validateUtils.requireNotNull(f, "name");
+                        this._context.factories[f.name] = f;
                 });
 
                 return this;
@@ -262,13 +305,14 @@ class NodeContextBuilder {
          * @returns {NodeContext}
          */
         build() {
-             this._init(this._context.excutors);
-             this._init(this._context.services);
-             this._init(this._context.resourceManager);
-             this._init(this._context.notifiers);
-             this._init(this._context.services);
+                this._init(this._context.accesses);
+                this._init(this._context.excutors);
+                this._init(this._context.services);
+                this._init(this._context.resourceManager);
+                this._init(this._context.notifiers);
+                
 
-             return this._context;
+                return this._context;
 
         }
 
@@ -277,11 +321,13 @@ class NodeContextBuilder {
          * 
          * @param {{Initiables} collection 
          */
-        _init(collection){
-                Object.keys(collection).forEach(key=>{
-                   collection[key].init(this._context);
+        _init(collection) {
+                Object.keys(collection).forEach(key => {
+                        collection[key].init(this._context);
                 });
         }
+
+
 
 }
 

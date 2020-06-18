@@ -41,7 +41,6 @@ class Service extends Initiable {
         /**
          * To puase service
          * 
-         * 
          * @abstract
          * @param {()=>void} callback 
          * @param {boolean} force

@@ -1,0 +1,8 @@
+{
+        "ip":"localhost",
+        "description":" test node",
+        "name":"test1",
+        "uniqueId":"100001",
+        "token":"123456",
+        "nodeType":1
+}

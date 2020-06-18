@@ -1,11 +1,12 @@
 const { Controller } = require("../../common/Controller");
 const { TaskStatus } = require("./../../common/po/constant/TaskStatus");
 const { validateUtils } = require("./../../common/utils/validate-utils");
-const {NodeContext} =require("./../../common/NodeContext");
+const { ConvertUtils } = require("./../../common/utils/convert-utils");
+const { NodeContext } = require("./../../common/NodeContext");
 
 const API = {
         ADD: "/task/add",
-        STATUS: "/task/status/:taskId",
+        STATUS: "/task/status/:id",
         LIST_EXCUTEING: "/task/list/executing",
         WAIT_TO_EXCUTE: "/task/list/wait",
 };
@@ -49,8 +50,9 @@ class TaskController extends Controller {
          * @returns {ApiResponse}
          */
         async status({ params }) {
-                validateUtils.requireNumber(params, "id");
-                let item = await this._access.getById(params.id);
+                let id = ConvertUtils.toNumber(params.id);
+                validateUtils.requireNumber(id);
+                let item = await this._access.getById(id);
                 if (!item)
                         return this.noDataFound();
 

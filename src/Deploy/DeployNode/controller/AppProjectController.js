@@ -1,7 +1,8 @@
 const { Controller } = require("../../common/Controller");
-const { JavaProjectAccess } = require("./../db/JavaProjectDbAccess");
-const { validateUtils } = require("./../../common/utils/validate-utils");
-const { NodeContext } = require("./../../common/NodeContext");
+const { JavaProjectAccess } = require("../db/AppAccess");
+const { validateUtils } = require("../../common/utils/validate-utils");
+const { ConvertUtils } = require("./../../common/utils/convert-utils");
+const { NodeContext } = require("../../common/NodeContext");
 
 const Api = {
         GET_BY_ID: "/app/:id",
@@ -35,8 +36,9 @@ class AppController extends Controller {
          * @returns {ApiResponse<Task>}
          */
         async getById({ params }) {
-                validateUtils.requireNumber(params, "id");
-                let item = await this._access.getById({ id: params.id });
+                let id =ConvertUtils.toNumber(params.id);
+                validateUtils.requireNumber(id);
+                let item = await this._access.getById(id);
                 return item ? this.resposneObject(item) : this.noDataFound();
         }
 
@@ -64,8 +66,9 @@ class AppController extends Controller {
          * @returns {ApiResponse<{status:number}>}
          */
         async status({ params }) {
-                validateUtils.requireNumber(params, "id");
-                let item = await this._access.getById({ id: params.id });
+                let id =ConvertUtils.toNumber(params.id);
+                validateUtils.requireNumber(id);
+                let item = await this._access.getById(id);
                 return item ? this.resposneObject({ status: item.status }) : this.noDataFound();
         }
 
