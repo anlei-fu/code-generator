@@ -11,7 +11,7 @@ exports.DelayCaculator = class {
          * @param {(currectDelay:number,min:number,max:number,positive:boolean) => number} caculator 
          */
         constructor (min, max, positiveRate = 1.5, negativeRate = 0.7, caculator) {
-                this._currentDelay = "";
+                this._currentDelay = 1000;
                 this._min = min;
                 this._max = max;
                 this._poitiveRate = positiveRate;
@@ -34,7 +34,7 @@ exports.DelayCaculator = class {
          * @param {boolean} positive 
          * @returns {number}
          */
-        nextDelay(positive) {
+        nextDelay(positive=true) {
                 let value = this._caculator
                         ? this._caculator(this._currentDelay, this._min, this.max, positive)
                         : this._defaultCaculator(positive);
@@ -53,7 +53,7 @@ exports.DelayCaculator = class {
          * @returns {number}
          */
         _defaultCaculator(positive) {
-                return positive ?
+                return !positive ?
                         this._currentDelay * this._poitiveRate
                         : this._currentDelay * this._negativeRate;
         }

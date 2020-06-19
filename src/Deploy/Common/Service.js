@@ -35,7 +35,7 @@ class Service extends Initiable {
          * @abstract
          */
         start() {
-                throw new Error("method has not been implemented");
+                this.info(`${this.name} started`);
         }
 
         /**
@@ -46,7 +46,7 @@ class Service extends Initiable {
          * @param {boolean} force
          */
         stop(callback, force = false) {
-                throw new Error("method has not been implemented");
+                this.info(`${this.name} stopped`);
         }
 
         /**
@@ -57,12 +57,14 @@ class Service extends Initiable {
          * @param {boolean} force
          */
         pause(callback, force = false) {
+                this.info(`${this.name} paused`);
         }
 
         /**
          * To resume service
          */
         resume(){
+                this.info(`${this.name} started`);
         }
 
         /**

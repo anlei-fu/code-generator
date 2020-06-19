@@ -86,7 +86,7 @@ class AccessBase extends Initiable {
          * @returns {Promise<Boolean>}
          */
         add(model) {
-                return this._executeCore(sqlUtils.getInsertString(this._table, model));
+                return this.execute(sqlUtils.getInsertString(this._table, model));
         }
 
         /**
@@ -100,7 +100,7 @@ class AccessBase extends Initiable {
                 if (!sql)
                         return false;
 
-                return this._executeCore(`${sql} ${this._getIdWhereClause(id)}`);
+                return this.execute(`${sql} ${this._getIdWhereClause(id)}`);
         }
 
         /**
@@ -110,7 +110,7 @@ class AccessBase extends Initiable {
          * @returns {Promise<Boolean>}
          */
         deleteById(id) {
-                return this._executeCore(`delete from ${this._table} ${this._getIdWhereClause(id)}`);
+                return this.execute(`delete from ${this._table} ${this._getIdWhereClause(id)}`);
         }
 
         /**
@@ -154,7 +154,7 @@ class AccessBase extends Initiable {
                 if (ids.length == 0)
                         return false;
 
-                return this._executeCore(
+                return this.execute(
                         `${sqlUtils.getUpdateString(this._table, model)}` +
                         `where ${sqlUtils.getInLike(ids, this._idField)}`
                 );
@@ -170,7 +170,7 @@ class AccessBase extends Initiable {
                 if (ids.length == 0)
                         return false;
 
-                return this._executeCore(
+                return this.execute(
                         `delete from ${this._table} ` +
                         `where ${sqlUtils.getInLike(ids, this._idField)}`
                 );
@@ -183,6 +183,17 @@ class AccessBase extends Initiable {
          */
         getAll() {
                 return this._excutor.query(`select * from ${this._table}`);
+        }
+
+        /**
+         * Execute 
+         * 
+         *
+         * @param {Object} model 
+         * @returns {Promise<Boolean>}
+         */
+        execute(sql) {
+                return this._excutor.excute(sql);
         }
 
         /**
@@ -232,16 +243,7 @@ class AccessBase extends Initiable {
         }
 
 
-        /**
-         * Excute core
-         * 
-         * @private
-         * @param {Object} model 
-         * @returns {Promise<Boolean>}
-         */
-        _executeCore(sql) {
-                return this._excutor.excute(sql);
-        }
+
 }
 
 exports.AccessBase = AccessBase;

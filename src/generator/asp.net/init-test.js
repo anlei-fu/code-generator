@@ -46,7 +46,7 @@ function test() {
       abbrOfProject:_18.abbrOfProject,
        edit: true,
    }
-   init(all.bdBindPriority, config);
+   init(all.monHostConfig, config);
 }
 
 test();

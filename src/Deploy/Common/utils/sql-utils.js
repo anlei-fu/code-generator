@@ -20,10 +20,10 @@ function getUpdateString(table, fields) {
 
         let updateSql = `update ${table} set \r\n`;
         fieldNames.forEach(name => {
-                if (fields[name] instanceof String || fields[name] instanceof Date) {
-                        updateSql += `${name}='${formatSqlString(fields[name])}',`
+                if (typeof fields[name] == "string" || fields[name] instanceof Date) {
+                        updateSql += `${NamingStrategy.toHungary(name)}=${formatSqlString(fields[name])},`
                 } else {
-                        updateSql += `${name}=${fields[name]},`
+                        updateSql += `${NamingStrategy.toHungary(name)}=${fields[name]},`
                 }
         });
 

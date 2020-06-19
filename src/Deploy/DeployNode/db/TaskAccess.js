@@ -6,7 +6,7 @@ class TaskAccess extends AccessBase {
         }
 
         getTaskToExcute(max){
-              return this._query("status = 0  order by id asc",{index:0,size:max});
+              return this._query("status = 1  order by id asc",{index:0,size:max});
         }
 
 }

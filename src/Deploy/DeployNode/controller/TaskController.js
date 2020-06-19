@@ -9,6 +9,7 @@ const API = {
         STATUS: "/task/status/:id",
         LIST_EXCUTEING: "/task/list/executing",
         WAIT_TO_EXCUTE: "/task/list/wait",
+        RETRY:"/task/retry/:id"
 };
 class TaskController extends Controller {
 
@@ -27,6 +28,26 @@ class TaskController extends Controller {
         }
 
         /**
+         * Retry task
+         * 
+         * @param {*} param0 
+         */
+        async retry({ params }) {
+                let id = ConvertUtils.toNumber(params.id);
+                validateUtils.requireNumber(id);
+                let item = await this._access.getById(id);
+                if (!item)
+                        return this.noDataFound();
+
+                let result = await this._access.updateById(id, {
+                        executeCount: item.executeCount || 1 + 1,
+                        status:TaskStatus.WAIT
+                });
+
+                return this.responseBoolean(result);
+        }
+
+        /**
          * Add task
          * 
          * @param {*} param0 
@@ -38,6 +59,7 @@ class TaskController extends Controller {
                         id: body.id,
                         taskType: body.taskType,
                         args: body.args,
+                        scriptFile:body.scriptFile
                 });
 
                 return this.responseBoolean(result);
@@ -89,7 +111,8 @@ class TaskController extends Controller {
                 app.post(API.ADD, (req, resp) => this._process(req, resp, this.addTask))
                         .get(API.LIST_EXCUTEING, (req, resp) => this._process(req, resp, this.listExcutingTask))
                         .get(API.WAIT_TO_EXCUTE, (req, resp) => this._process(req, resp, this.listWaitingToExecuteTasks))
-                        .get(API.STATUS, (req, resp) => this._process(req, resp, this.status));
+                        .get(API.STATUS, (req, resp) => this._process(req, resp, this.status))
+                        .put(API.RETRY, (req, resp) => this._process(req, resp, this.retry));
         }
 }
 

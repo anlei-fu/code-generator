@@ -1,12 +1,12 @@
-
-let id = 10000;
+if (!global.id)
+        global.id = 10000;
 
 function newGuid() {
 
 }
 
 function nextId() {
-        return ++id;
+        return ++global.id;
 }
 
 exports.idUtils = {

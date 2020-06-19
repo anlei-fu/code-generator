@@ -19,5 +19,10 @@ exports.TaskStatus = {
         SUCCESS: 6,
 
         // execute fanished and exceptionaly
-        EXCEPTION: 7
+        EXCEPTION: 7,
+
+        FINISHED:8,
+
+        // timeouted
+        TIMEOUT:9,
 }

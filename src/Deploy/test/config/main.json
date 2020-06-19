@@ -12,7 +12,7 @@
                 "file": "db.db"
         },
         "task": {
-                "pollRate": 100,
+                "pollRate": 60000,
                 "maxConcurrecy": 10
         },
         "rest": {

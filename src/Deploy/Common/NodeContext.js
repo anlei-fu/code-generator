@@ -18,11 +18,13 @@ exports.NodeContext = class NodeContext extends Service {
 
                 this.resourceManager = {};
 
-                this.factories={};
+                this.factories = {};
 
-                this.gitHelper={};
+                this.gitHelper = {};
 
-                this.config={};
+                this.config = {};
+
+                this.jobs = {};
         }
 
         init() {
@@ -30,7 +32,7 @@ exports.NodeContext = class NodeContext extends Service {
         }
 
         start() {
-              
+
         }
 
         stop() {

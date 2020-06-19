@@ -1,7 +1,8 @@
 const { NodeContext } = require("../NodeContext");
 const { Service } = require("../Service");
-const { RestService } = require("../RestService");
-const { TaskService } = require("../TaskService");
+const { Initiable } = require("./../Initiable");
+const { RestService } = require("../service/RestService");
+const { TaskService } = require("../service/TaskService");
 const { TYPE } = require("../utils/utils");
 const { validateUtils } = require("../utils/validate-utils");
 const { AccessBase } = require("../AcccessBase");
@@ -269,7 +270,7 @@ class NodeContextBuilder {
          * @param {Factory|(NodeContext)=>Factory} config 
          * @returns {NodeContextBuilder}
          */
-        useFactory(config){
+        useFactory(config) {
                 let factory = config;
                 if (TYPE.isFunction(config))
                         factory = config(this._context);
@@ -286,7 +287,7 @@ class NodeContextBuilder {
          * @param {[Factory]|(NodeContext)=>[Factory]} config 
          * @returns {NodeContextBuilder}
          */
-        useFactories(config){
+        useFactories(config) {
                 let factories = config;
                 if (TYPE.isFunction(config))
                         factories = config(this._context);
@@ -294,6 +295,42 @@ class NodeContextBuilder {
                 factories.forEach(f => {
                         validateUtils.requireNotNull(f, "name");
                         this._context.factories[f.name] = f;
+                });
+
+                return this;
+        }
+
+        /**
+         * Use factory
+         * 
+         * @param {Factory|(NodeContext)=>Job} config 
+         * @returns {NodeContextBuilder}
+         */
+        useJob(config) {
+                let job = config;
+                if (TYPE.isFunction(config))
+                        job = config(this._context);
+
+                validateUtils.requireNotNull(job, "name");
+                this._context.jobs[job.name] = job;
+
+                return this;
+        }
+
+        /**
+         * Use factories
+         * 
+         * @param {[Factory]|(NodeContext)=>[Job]} config 
+         * @returns {NodeContextBuilder}
+         */
+        useJobs(config) {
+                let jobs = config;
+                if (TYPE.isFunction(config))
+                        jobs = config(this._context);
+
+                jobs.forEach(j => {
+                        validateUtils.requireNotNull(j, "name");
+                        this._context.jobs[j.name] = j;
                 });
 
                 return this;
@@ -310,7 +347,8 @@ class NodeContextBuilder {
                 this._init(this._context.services);
                 this._init(this._context.resourceManager);
                 this._init(this._context.notifiers);
-                
+                this._init(this._context.jobs);
+
 
                 return this._context;
 
@@ -323,11 +361,10 @@ class NodeContextBuilder {
          */
         _init(collection) {
                 Object.keys(collection).forEach(key => {
-                        collection[key].init(this._context);
+                        if (collection[key] instanceof Initiable)
+                                collection[key].init(this._context);
                 });
         }
-
-
 
 }
 

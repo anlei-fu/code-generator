@@ -7,7 +7,7 @@ class EchoJob extends Job {
                 super({ name: "echo job", expression: "5-20 * * * * ?" });
         }
 
-        run(context) {
+        execute(context) {
                 console.log("i'm running");
                 this.info(`next executing: ${this.nextExecuteDate}`);
                 // this.cancel();
@@ -19,7 +19,7 @@ function main() {
         DebugUtils.setDebugMode();
         let service = new JobService();
         let job = new EchoJob();
-        service.startNewJob(job);
+        service.scheduleJob(job);
 }
 
 /*************************************************main******************************************************************** */

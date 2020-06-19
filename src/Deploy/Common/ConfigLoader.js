@@ -9,15 +9,22 @@ exports.ConfigLoader = class {
          * @param {String} configDir 
          * @returns {Object}
          */
-        static load(configDir) {
-                let config = FILE.readJson(`${configDir}/main.json`);
+        static load(configDir, mainFile = "main.json") {
+                let config = FILE.readJson(`${configDir}/${mainFile}`);
 
                 DIR.getFiles(configDir).forEach(f => {
-                        if (f == "main.json" || !f.endsWith(".json"))
+                        if (f == mainFile)
                                 return;
+                        let ext = f.lastIndexOf(".");
+                        let name = f;
+                        if (ext != -1)
+                                name = f.substr(0, ext + 1);
 
-                        config[f.replace(".json", "")] = FILE.readJson(`${configDir}/${f}`);
+
+                        config[name] = FILE.readJson(`${configDir}/${f}`);
                 });
+
+                // do check
 
                 return config;
         }

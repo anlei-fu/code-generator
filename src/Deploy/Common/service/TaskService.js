@@ -1,8 +1,10 @@
-const { Service } = require("./Service");
-const { ServiceStatus } = require("./po/constant/ServiceStatus");
-const { TaskStatus } = require("./po/constant/TaskStatus");
-const { NodeContext } = require("./NodeContext");
-const { validateUtils } = require("./utils/validate-utils");
+const { Service } = require("./../Service");
+const { ServiceStatus } = require("./../po/constant/ServiceStatus");
+const { TaskStatus } = require("./../po/constant/TaskStatus");
+const { NodeContext } = require("./../NodeContext");
+const { validateUtils } = require("./../utils/validate-utils");
+const { DelayCaculator } = require("./../DelayCaculator");
+
 /**
  * To execute task
  */
@@ -26,7 +28,8 @@ class TaskService extends Service {
                 this._waitToExcute = [];
                 this._stoppedCallback = null;
                 this._pausedCallBack = null;
-                this._taskInterval = null;
+                this._taskTimeout = null;
+                this._delayCaculator = null;
         }
 
         /**
@@ -46,6 +49,11 @@ class TaskService extends Service {
                 this._taskFetchSize = context.config.task.fetchSize || 10;
                 this._pollRate = context.config.task.pollRate || 10 * 1000;
                 this._maxConcurrency = context.config.task.maxConcurrency || 10;
+
+                this._delayCaculator = new DelayCaculator(
+                        context.config.task.pollRateMIn || 200,
+                        context.config.task.pollRateMax || 20000
+                );
         }
 
         /**
@@ -57,7 +65,10 @@ class TaskService extends Service {
                         return;
                 }
 
-                this._taskInterval = setInterval(() => this._run.call(this), this._pollRate);
+                this._taskTimeout = setTimeout(
+                        () => this._run.call(this),
+                        this._delayCaculator.nextDelay()
+                );
                 this._status = ServiceStatus.RUNNING;
                 this.info("service started");
                 this._raiseServiceStarted();
@@ -76,7 +87,7 @@ class TaskService extends Service {
                 }
 
                 this._stoppedCallback = callback;
-                this._clearIntervalCore();
+                this._clearTimeoutCore();
 
                 if (this._excutingTask.length > 0 && !force) {
                         this._status = ServiceStatus.STOPPING;
@@ -84,6 +95,7 @@ class TaskService extends Service {
                                 `service status trigger to stoping,` +
                                 `cause there's ${this._excutingTask.length} task still running`
                         );
+
                         return;
                 }
 
@@ -109,7 +121,7 @@ class TaskService extends Service {
                 }
 
                 this._pausedCallBack = callback;
-                this._clearIntervalCore();
+                this._clearTimeoutCore();
 
                 if (this._excutingTask.length > 0 && !force) {
                         this.warn(
@@ -137,8 +149,10 @@ class TaskService extends Service {
                         return;
                 }
 
-                let self = this;
-                this._taskInterval = setInterval(() => this._run.call(self), this._pollRate);
+                this._taskTimeout = setTimeout(
+                        () => this._run.call(self),
+                        this._delayCaculator.nextDelay()
+                );
 
                 this._status = ServiceStatus.RUNNING;
                 this.info("service resumed");
@@ -154,22 +168,39 @@ class TaskService extends Service {
 
                 if (this._status != ServiceStatus.RUNNING) {
                         this.warn(`to run task refused,cause current status is ${this._status}`);
+                        this._taskTimeout = setTimeout(
+                                () => this._run.call(self),
+                                this._delayCaculator.nextDelay(false)
+                        );
+
                         return;
                 }
 
                 if (this._excutingTask.size > this._maxConcurrency) {
                         this.info(
                                 `to run new task refused, cause over max concurrency,` +
-                                `and there's ${this._excutingTask} tasks are running`
+                                `and there are ${this._excutingTask.size} tasks  running`
                         );
+
+                        this._taskTimeout = setTimeout(
+                                () => this._run.call(this),
+                                this._delayCaculator.nextDelay(false)
+                        );
+
                         return;
                 }
 
                 if (this._waitToExcute.length == 0) {
                         let tasks = await this._taskAccess.getTaskToExcute(this._taskFetchSize);
                         this.info(`fetch new tasks from db, got ${tasks.length}`);
-                        if (tasks.length == 0)
+                        if (tasks.length == 0) {
+                                this._taskTimeout = setTimeout(
+                                        () => this._run.call(this),
+                                        this._delayCaculator.nextDelay(false)
+                                );
+
                                 return;
+                        }
 
                         this._waitToExcute = this._waitToExcute.concat(tasks);
                 }
@@ -185,9 +216,14 @@ class TaskService extends Service {
                         this.error(`excute task ${task.id} exceptionaly`, ex);
                 }
 
+                this._taskTimeout = setTimeout(
+                        () => this._run.call(this),
+                        this._delayCaculator.nextDelay(true)
+                );
+
                 this.info(
-                        `finish excuting task id:${task.id},` +
-                        `result code:${result.code}`
+                        `finish excuting task id:${task.id},`
+                        //        `result code:${result.code}`
                 );
         }
 
@@ -212,7 +248,15 @@ class TaskService extends Service {
          */
         async _afterTaskFinished(task, result) {
                 this._excutingTask.delete(task.id);
-                await this._taskAccess.updateById(task.id, { status: TaskStatus.SUCCESS, log: "success", finishTime: new Date() });
+                await this._taskAccess.updateById(
+                        task.id,
+                        {
+                                resultCode: result.code,
+                                status: TaskStatus.FINISHED,
+                                log: result.log,
+                                finishTime: new Date()
+                        }
+                );
                 // await this._taskNotifier.notifyTaskFinished();
 
                 // process service status 'paussing' and 'stopping'
@@ -240,10 +284,10 @@ class TaskService extends Service {
         /**
          * Clear interval core
          */
-        _clearIntervalCore() {
-                if (this._taskInterval) {
-                        clearInterval(this._taskInterval);
-                        this._taskInterval == null;
+        _clearTimeoutCore() {
+                if (this._taskTimeout) {
+                        clearTimeout(this._taskTimeout);
+                        this._taskTimeout == null;
                 }
         }
 

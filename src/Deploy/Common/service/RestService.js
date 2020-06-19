@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Service } = require("./Service");
-const { ServiceStatus } = require("./po/constant/ServiceStatus");
-const { Controller } = require("./Controller");
-const { validateUtils } = require("./utils/validate-utils");
-const { NodeContext } = require("./NodeContext");
+const { Service } = require("./../Service");
+const { ServiceStatus } = require("./../po/constant/ServiceStatus");
+const { Controller } = require("./../Controller");
+const { validateUtils } = require("./../utils/validate-utils");
+const { NodeContext } = require("./../NodeContext");
 
 const app = express();
 
@@ -50,6 +50,7 @@ class RestService extends Service {
     /**
      * Init
      * 
+     * @override
      * @param {NodeContext} context
      */
     init(context) {
@@ -61,6 +62,8 @@ class RestService extends Service {
 
     /**
      * Start service
+     * 
+     * @override
      */
     start() {
         if (this._status != ServiceStatus.STOPPED) {
@@ -79,6 +82,8 @@ class RestService extends Service {
 
     /**
      * Stop server
+     * 
+     * @override
      */
     stop() {
         if (this._status != ServiceStatus.RUNNING) {

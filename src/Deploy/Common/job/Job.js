@@ -1,14 +1,14 @@
-const { LoggerSurpport } = require("./../LoggerSurpport");
-const {idUtils} =require("./../utils/Id-utils");
+const { Initiable } = require("./../Initiable");
+const { idUtils } = require("./../utils/Id-utils");
+const { JobStatus } = require("./../po/constant/JobStatus");
 
 
-exports.Job = class Job extends LoggerSurpport {
+exports.Job = class Job extends Initiable {
         constructor ({
-                id=idUtils.nextId(),
                 jobListener = null,
                 name = "unamed",
                 description = "",
-                expression="",
+                expression = "",
         }) {
 
                 super(name);
@@ -16,7 +16,7 @@ exports.Job = class Job extends LoggerSurpport {
                 /**
                  * Unique id of all job
                  */
-                this.id = id;
+                this.id = idUtils.nextId();
 
                 /**
                  * Job event listening
@@ -24,14 +24,9 @@ exports.Job = class Job extends LoggerSurpport {
                 this.listener = jobListener;
 
                 /**
-                 * Job name
-                 */
-                this.name = name;
-
-                /**
                  * Job scheduler
                  */
-                this.jobScheduler = null;
+                this.scheduler = null;
 
                 /**
                  * Job description
@@ -46,7 +41,7 @@ exports.Job = class Job extends LoggerSurpport {
                 /**
                  * Job satus
                  */
-                this.status = 1;
+                this.status = JobStatus.UNSCHEDULED;
 
                 /**
                  * Job execute plan string
@@ -61,7 +56,7 @@ exports.Job = class Job extends LoggerSurpport {
          * @returns {Date?}
          */
         get nextExecuteDate() {
-                if (!this.jobScheduler)
+                if (!this.scheduler)
                         return null;
 
                 return this.innerJob.nextInvocation();
@@ -72,7 +67,7 @@ exports.Job = class Job extends LoggerSurpport {
          * 
          * @abstract
          */
-        run(context) {
+        execute(context) {
                 throw new Error("this method has not been implemented");
         }
 
@@ -80,8 +75,8 @@ exports.Job = class Job extends LoggerSurpport {
          * Cancel the job if has scheduled
          */
         cancel() {
-                if (this.status)
-                        this.jobScheduler.cancelJob(this);
+                if (this.scheduler)
+                        this.scheduler.cancelJob(this);
         }
 
         /**
