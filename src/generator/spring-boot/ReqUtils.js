@@ -27,6 +27,35 @@ class ReqUtils {
         }
 
         /**
+         * Check is there any req is need to do create
+         * 
+         * @param {ConfigItem} configItem 
+         */
+        hasDoCreateReq(configItem){
+              for(const req of configItem.reqs){
+                      if(req.doCreate)
+                        return true;
+              }
+
+              return false;
+        }
+
+        /**
+         * Get the do create rea from reqs
+         * 
+         * @param {ConfigItem} configItem 
+         * @returns {Req}
+         */
+        getDoCreateReq(configItem){
+                for(const req of configItem.reqs){
+                        if(req.doCreate)
+                          return req;
+                }
+  
+                return null;
+        }
+
+        /**
          * Generate Req entity fields
          * 
          * @param {ConfigItem} configItem 
@@ -49,11 +78,11 @@ class ReqUtils {
                 // get req by conditions
                 let conditions;
                 if (configItem.type == "select" || configItem.type == "delete") {
-                        conditions = configItem.context.columnMerger.mergeIncludes(configItem);
+                        conditions = configItem.context.columnMerger.mergeConditions(configItem);
                 } else if (configItem.type == "insert") {
 
                         // insert case: fields =includes
-                        conditions = configItem.context.columnMerger.mergeConditions(configItem);
+                        conditions = configItem.context.columnMerger.mergeIncludes(configItem);
                 } else {
 
                         // update case: fields = includes + conditions

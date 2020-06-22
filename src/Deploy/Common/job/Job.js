@@ -2,7 +2,9 @@ const { Initiable } = require("./../Initiable");
 const { idUtils } = require("./../utils/Id-utils");
 const { JobStatus } = require("./../po/constant/JobStatus");
 
-
+/**
+ * @BaseClass
+ */
 exports.Job = class Job extends Initiable {
         constructor ({
                 jobListener = null,

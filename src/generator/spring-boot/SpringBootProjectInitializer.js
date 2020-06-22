@@ -15,14 +15,15 @@ class SpringBootProjectInitializer {
          * @param {String} company
          * @param {DbConfig} dbConfig
          * @param {Boolean} generateDb
+         * @param {boolean} generateRelation
          */
-        async  init(project, company, dbConfig, generateDb = true) {
+        async  init(project, company, dbConfig, generateDb = true, generateRelation = true) {
 
                 // create project required folders
                 this._makeFoldersAndCoopyFiles(project, company, dbConfig);
 
                 if (generateDb)
-                        await resolve(dbConfig, dbConfig.db, `${__dirname}/output/${project}/db`);
+                        await resolve(dbConfig, dbConfig.db, `${__dirname}/output/${project}/db`, generateRelation);
 
                 // generate all items config
                 let tables = require(`${__dirname}/output/${project}/db/all.js`).all;
@@ -88,6 +89,8 @@ class SpringBootProjectInitializer {
                 DIR.create(`${root}/validate/validator`);
                 DIR.create(`${root}/exception`);
 
+                DIR.create(`./output/${project}/${project}/src/test/java/com/${company}/${project}/service/impl`)
+
                 // resource items
                 DIR.create(`./output/${project}/${project}/src/main/resources`);
                 DIR.create(`./output/${project}/${project}/src/main/resources/mapper`);
@@ -96,9 +99,8 @@ class SpringBootProjectInitializer {
                 DIR.create(`./output/${project}/${project}/src/test`);
                 DIR.create(`./output/${project}/${project}/src/test/java`);
                 DIR.create(`./output/${project}/${project}/src/test/java/com`);
-                DIR.create(`./output/${project}/${project}/src/test/java/com/${project}`);
 
-                this._copy('./templates/dictionary.js', `./output/${project}/db/dictionary.js`);
+                // this._copy('./templates/dictionary.js', `./output/${project}/db/dictionary.js`);
 
                 // all default files
                 this._copy("./templates/R.java", `${root}/pojo/resp/R.java`, project, company);
@@ -128,6 +130,13 @@ class SpringBootProjectInitializer {
 
                 // validator
                 this._copyFolder("./templates/validator", `${root}/validate/validator`, project, company);
+
+                this._copy(
+                        "./templates/TestUtils.java",
+                        `./output/${project}/${project}/src/test/java/com/${company}/${project}/TestUtils.java`,
+                        project,
+                        company
+                );
 
                 // application.properties
                 let replacePatternPairs = {

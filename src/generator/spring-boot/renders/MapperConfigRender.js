@@ -296,9 +296,10 @@ class MapperConfigRender {
         _renderUpdate(configItem) {
 
                 let setColumnsSegment = "";
+                let hasTimeFiled=this._hasUpdateTimeField(configItem.table);
                 configItem.context.columnMerger.mergeIncludes(configItem).forEach((include, i, array) => {
                         include.prefix = "";
-                        include.suffix = i == array.length - 1 ? "" : ",";
+                        include.suffix = !hasTimeFiled&&i ==array.length - 1 ? "" : ",";
                         setColumnsSegment += this._renderAsign(include);
                 });
                 setColumnsSegment += this._renderUpdateTime(configItem.table, configItem.alias);
@@ -336,6 +337,24 @@ class MapperConfigRender {
                 });
 
                 return STR.removeLastComa(content);
+        }
+
+        /**
+         * To is there any update time field and set with 'current_timestamp'
+         * 
+         * @private
+         * @param {Table} table
+         * @returns {boolean}
+         */
+        _hasUpdateTimeField(table){
+                for(const columnName in table.columns){
+                        if (getJavaType(table.columns[columnName].type) == "Date"
+                         && UPDATE_TIME_MATCHERS(columnName))
+                         return true;
+                }
+
+                return false;
+              
         }
 
         /**

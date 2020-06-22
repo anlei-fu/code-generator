@@ -45,6 +45,7 @@ function findNameColumn(table) {
                 });
         }
         searcher.addDocuments(docs);
+    
 
         let results = searcher.search(table.rawName + "_name", 10);
         let best;
@@ -53,7 +54,9 @@ function findNameColumn(table) {
                 if (item.name.toLowerCase().endsWith("name"))
                         return item
         }
-        return best;
+      
+        let ret= best||table.columns[table.primaryColumn];
+        return ret;
 }
 
 /***

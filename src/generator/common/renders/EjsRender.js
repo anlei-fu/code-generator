@@ -11,7 +11,7 @@ class EjsRender {
         }
 
         renderContentFromFile(templateFile, model) {
-                return this.renderContent(FILE.read(templateFile), model);
+                return this.renderContent(FILE.read(`${this._root}/${templateFile}`), model);
         }
 
         renderContent(template, model) {

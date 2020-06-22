@@ -27,6 +27,7 @@ class ParamRender {
                                         reqGetter += this._renderParamsReqItemGetterSetter(x);
                                 });
                         } else if (key == "constructor") {
+                                value=value.reverse();
                                 value.forEach(x => {
                                         delete x.t;
                                         getSet += this._renderParamsGetterSetterItem(x);

@@ -1,40 +1,31 @@
-const sqlUtils = require("../sqls/utils")
+const sqlUtils = require("../sqls/utils");
+const { STR } = require("./../../../libs/str");
 
 const DEFAULT_MATCHER = {
         status: {
-                match: columnName => columnName.endsWith("status"),
-                textField: "name",
-                valueField: "value",
+                match: columnName =>{ 
+                   let lower =columnName.toLowerCase();
+                   let suffixes=["type", "status", "state", "class", "level", "style"]
+                  return STR.endsWithAny(lower,suffixes);
+
+                },
+                label: "label",
+                value: "value",
                 placeHolder: "请选择",
-                table: "SystemDictionary",
-        },
-        type: {
-                match: columnName => columnName.endsWith("type"),
-                textField: "name",
-                valueField: "value",
-                placeHolder: "请选择",
-                table: "SystemDictionary",
-        },
-        state: {
-                match: columnName => columnName.endsWith("state"),
-                textField: "name",
-                valueField: "value",
-                placeHolder: "请选择",
-                table: "SystemDictionary",
+                table: "dictionary",
         },
         has: {
-                match: columnName => columnName.startsWith("has"),
-                textField: "name",
-                valueField: "value",
+                match: columnName => { 
+                        let lower =columnName.toLowerCase();
+                        let suffixes=["is","has","need","support","permit","allow","enable","disable"]
+                       return STR.startsWithAny(lower,suffixes);
+     
+                     },
+                label: "label",
+                value: "value",
                 type: "CheckBox",
-                table: "SystemDictionary",
-        },
-        is: {
-                match: columnName => columnName.startsWith("is"),
-                textField: "name",
-                valueField: "value",
-                type: "CheckBox",
-                table: "SystemDictionary",
+                table: "dictionary",
+                defaultType:"booleanFlag"
         },
 }
 

@@ -9,10 +9,11 @@
 const { RANDOM } = require("./../../libs/random");
 const { OBJECT } = require("./../../libs/utils");
 const { STR } = require("./../../libs/str");
+
+
 const DEFAULT_CANDIDATES = {
         String: {
                 company: {
-
                         match: x => STR.equalAny(x.toLowerCase(), ["company", "companyname"]),
                         candidates: ["microsoft", "oracle", "google", "tencent", "github", "ebay"]
                 },
@@ -24,9 +25,13 @@ const DEFAULT_CANDIDATES = {
                         match: x => STR.includesAny(x.toLowerCase(), ["path", "file"]),
                         candidates: ["c://123.png", "f://456.jpg", "g://google.bmp", "p://tencent.gif", "k://github.png", "ftp://ebay.jpg"]
                 },
-                name: {
+                userName: {
                         match: x => STR.includesAny(x.toLowerCase(), ["user", "admin", "operator", "employee", "username"]),
-                        candidates: ["li shi yu", "wang wei", "liu ming", "li hua", "deep", "newman"]
+                        candidates: ["li shi yu", "wang wei", "liu ming", "li hua", "johne", "deep", "newman"]
+                },
+                anyName: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["name"]),
+                        candidates: ["jasmine", "balsam", "narcissus", "lily", "calla", "carnation", "rose"]
                 },
                 phone: {
                         match: x => STR.includesAny(x.toLowerCase(), ["phone", "mobile"]),
@@ -40,39 +45,88 @@ const DEFAULT_CANDIDATES = {
                         match: x => STR.includesAny(x.toLowerCase(), ["tele"]),
                         candidates: ["0831-3447882", "0851-3437852", "021-3447842", "027-84457882", "0531-5657882", "023-18102666"]
                 },
-            
+
                 url: {
                         match: x => STR.includesAny(x.toLowerCase(), ["url", "web", "domain"]),
                         candidates: ["http://www.google.com", "http://www.bbc.co.uk", "http://www.qq.com", "https://www.baidu.com", "http://www.163.com", "http://www.msdn.com"]
                 },
                 ip: {
-                        match: x => STR.includesAny(x.toLowerCase(), ["ip", "gateway"]),
-                        candidates: ["http://www.google.com", "http://www.bbc.co.uk", "http://www.qq.com", "https://www.baidu.com", "http://www.163.com", "http://www.msdn.com"]
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["ip", "gateway"]),
+                        candidates: ["192.168.0.2", "192.168.0.1", "192.168.0.3", "192.168.0.4", "192.168.0.9", "192.168.0.56"]
                 },
+                account: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["account"]),
+                        candidates: ["admin", "", "test", "superAdmin", "guest", "guest2"]
+                },
+                password: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["password"]),
+                        candidates: ["123456", "1qaz2wsx", "admin", "122189", "administrator", "password"]
+                },
+
                 address: {
                         match: x => STR.includesAny(x.toLowerCase(), ["addr", "address"]),
-                        candidates: ["", "", "http://www.qq.com", "https://www.baidu.com", "http://www.163.com", "http://www.msdn.com"]
+                        candidates: ["newyork,us", "", "west london,uk", "tokyo", "shanghai", "chengdu"]
                 },
                 time: {
                         match: x => STR.includesAny(x.toLowerCase(), ["time", "date"]),
                         candidates: [new Date().toLocaleString(), "2008-12-06", "2019-02-16"]
                 },
-                description:{
-                        match: x => STR.includesAny(x.toLowerCase(), ["descrp", "remark","detail"]),
-                        candidates: ["this is descripion mock data segment",
-                                     "mock generator, generate lots of data for testing",
-                                      "jasmine code generator, generate every thing you need",
-                                       "avoid anoy thing to do"]
+                description: {
+                        match: x => STR.includesAny(x.toLowerCase(), ["description", "msg", "remark"]),
+                        candidates: ["this is description mock data segment",
+                                "mock generator, generate lots of data for testing",
+                                "jasmine code generator, generate every thing you need",
+                                "avoid annoy thing to do"]
+                },
+                title: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["title"]),
+                        candidates: [
+                                " twelve angry men",
+                                "ranger bull",
+                                "a silent lamb",
+                                " casino"
+                        ]
+                },
+
+                content: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["content", "text", "log", "detail"]),
+                        candidates: [
+                                "this is content mock...",
+                                `there're three paris in the world,the most  famous one in france ,one in canada ,and last one in texas,us`,
+                                "there are three waterloon bridges in the wrold too...",
+                                "you think when you leave chinatown you can get justice ,but every where is chinatown.... from a black movie",
+                                "every adult once ever been a child ,but few she or he can remember what it looks like at that time "
+                        ]
+                },
+                label: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["label", "text", "title"]),
+                        candidates: ["title", "label", "name", "sex", "country", "city"]
                 },
                 _default: {
                         match: x => true,
-                        candidates: ["mock data1", "mock data2", "mock data3"]
+                        candidates: ["mock string", "mock string", "mock string"]
                 },
         },
         Integer: {
                 count: {
                         match: x => STR.includesAny(x.toLowerCase(), ["count", "amount", "sum"]),
                         candidates: [12, 0, 1984, 899, 56589, 6142]
+                },
+
+                id: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["id"]),
+                        candidates: [1, 6, 7, 2, 8, 15, 35, 29]
+                },
+                booleanFlag: {
+                        match: x => STR.startsWithAny(
+                                x.toLowerCase(),
+                                ["need", "should", "can", "allow", "is", "has", "support", "permit", "forbit"]
+                        ) || x.toLowerCase() == "status",
+                        candidates: [0, 1]
+                },
+                enableStatus: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), ["enablestatus"]) || x.toLowerCase() == "status",
+                        candidates: [0, 1]
                 },
 
                 _default: {
@@ -83,11 +137,11 @@ const DEFAULT_CANDIDATES = {
         Date: {
                 time: {
                         match: x => STR.includesAny(x.toLowerCase(), ["time", "date"]),
-                        candidates: [new Date().toLocaleString(), "2008-12-06", "2019-02-16"]
+                        candidates: ["new Date()"]
                 },
                 _default: {
                         match: x => true,
-                        candidates: [new Date().toLocaleString(), "2008-12-06", "2019-02-16"]
+                        candidates: ["new Date()"]
                 }
         },
         Float: {
@@ -114,39 +168,39 @@ const DEFAULT_CANDIDATES = {
 }
 
 
-class MockConfig{
-        constructor(){
-                this.range={
-                        min:0,
-                        max:9999,
+class MockConfig {
+        constructor () {
+                this.range = {
+                        min: 0,
+                        max: 9999,
                 },
 
-                this.collections=[];
+                        this.collections = [];
         }
 }
 
-class MockConfigBuilder{
-        range(key,min,max){
+class MockConfigBuilder {
+        range(key, min, max) {
 
         }
 
-        startsWith(key,start){
+        startsWith(key, start) {
 
         }
 
-        endsWidth(key, end){
+        endsWidth(key, end) {
 
         }
 
-        startsAndEndsWith(key,start,end){
-
-        }
-        
-        collection(key,collection){
+        startsAndEndsWith(key, start, end) {
 
         }
 
-        setProperty(key,value){
+        collection(key, collection) {
+
+        }
+
+        setProperty(key, value) {
 
         }
 }
@@ -193,8 +247,14 @@ class MockGenerator {
                 });
         }
 
+        /**
+         * Get random data of type 
+         * 
+         * @param {String} name 
+         * @param {String} type  |String|Date|Integer|Float
+         */
         getMockData(name, type) {
-                if (!type||!this._candidates[type])
+                if (!type || !this._candidates[type])
                         throw new Error(`candidate(${name}) type '${type}' is null or no candidate to generate`);
 
                 return CANDIDATE_PICKER(name, this._candidates[type]);

@@ -3,20 +3,24 @@ const { validateUtils } = require("./../utils/validate-utils");
 const { NodeContext } = require("./../NodeContext");
 const { TaskStatus } = require("./../po/constant/TaskStatus");
 
+/**
+ * Use to terminate timeouted task execution, just update db info
+ * 
+ * @SystemJob
+ */
 class TaskTerminateJob extends Job {
-        constructor (expression) {
+        constructor () {
                 super({
                         jobListener:null,
                         name: "TaskTerminateJob",
-                        expression,
-                        description: " to terminate timeouted job"
+                        description: "Use to terminate timeouted task execution"
                 });
 
                 this._taskAccess = null;
         }
 
         /**
-         * Init 
+         * Init : get @see {TaskAccess} and task expression from context
          * 
          * @override
          * @param {NodeContext} context 
@@ -24,6 +28,7 @@ class TaskTerminateJob extends Job {
         init(context) {
                 validateUtils.requireNotNull(context.accesses, "TaskAccess");
                 this._taskAccess = context.accesses.TaskAccess;
+                this.expression=context.config.task.taskTerminateJobExecuteExpression||"* 0/10 * * * *";
         }
 
         /**

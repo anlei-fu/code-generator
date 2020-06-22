@@ -1,4 +1,8 @@
 const { LoggerFactory } = require("./logging/logger-factory");
+
+/**
+ * @Baseclass
+ */
 class LoggerSurpport {
         constructor (logName) {
                 this.name = logName;

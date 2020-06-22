@@ -9,7 +9,7 @@ const API = {
         STATUS: "/task/status/:id",
         LIST_EXCUTEING: "/task/list/executing",
         WAIT_TO_EXCUTE: "/task/list/wait",
-        RETRY:"/task/retry/:id"
+        RETRY: "/task/retry/:id"
 };
 class TaskController extends Controller {
 
@@ -41,7 +41,7 @@ class TaskController extends Controller {
 
                 let result = await this._access.updateById(id, {
                         executeCount: item.executeCount || 1 + 1,
-                        status:TaskStatus.WAIT
+                        taskStatus: TaskStatus.WAIT
                 });
 
                 return this.responseBoolean(result);
@@ -59,7 +59,7 @@ class TaskController extends Controller {
                         id: body.id,
                         taskType: body.taskType,
                         args: body.args,
-                        scriptFile:body.scriptFile
+                        scriptFilePath: body.scriptFilePath
                 });
 
                 return this.responseBoolean(result);
@@ -78,7 +78,7 @@ class TaskController extends Controller {
                 if (!item)
                         return this.noDataFound();
 
-                return this.resposneObject({ status: item.status });
+                return this.resposneObject({ taskStatus: item.taskStatus });
         }
 
         /**
@@ -87,7 +87,7 @@ class TaskController extends Controller {
          * @returns {ApiResponse}
          */
         async listExcutingTask() {
-                let list = await this._access.list({ status: TaskStatus.EXCUTING });
+                let list = await this._access.list({ taskStatus: TaskStatus.EXCUTING });
                 return this.resposneObject(list || []);
         }
 
@@ -97,7 +97,7 @@ class TaskController extends Controller {
          * @returns {ApiResponse}
          */
         async listWaitingToExecuteTasks() {
-                let list = await this._access.list({ status: TaskStatus.SHEDULED });
+                let list = await this._access.list({ taskStatus: TaskStatus.SHEDULED });
                 return this.resposneObject(list);
         }
 

@@ -20,6 +20,8 @@ class Writer {
                 this._reqFolder = `${_root}/pojo/req`;
                 this._respFolder = `${_root}/pojo/resp`;
                 this._paramsFolder = `${_root}/pojo/param`;
+
+                this._testFolder=`./${project}/src/test/java/com/${company}/${project}/service/impl`;
         }
 
         /**
@@ -111,6 +113,10 @@ class Writer {
          */
         writeController(name, content) {
                 this._writeCore(`${this._controllerFolder}/${name}Controller.java`, content, name);
+        }
+
+        writeTest(name,content){
+                this._writeCore(`${this._testFolder}/${name}ServiceTest.java`, content, name);
         }
 
         /**

@@ -175,7 +175,9 @@ class SpringBootGenerator {
                 this._generateEntity();
 
                 this._configGroup.items.forEach(configItem => {
-                        this._generateReq(configItem);
+                        let write=!configItem.id.includes("Detail");
+                                    this._generateReq(configItem,write);
+                                    
                         this._generateResp(configItem);
                         this._generateParams(configItem);
                 });
@@ -185,6 +187,7 @@ class SpringBootGenerator {
                 this._generateService();
                 this._generateServiceImpl();
                 this._generateController();
+                this._generateTest();
         }
 
         /**
@@ -426,13 +429,24 @@ class SpringBootGenerator {
         }
 
         /**
+         * Generate test file
+         * 
+         * @private
+         */
+        _generateTest(){
+                let content = this._context.render.renderTest(this._configGroup);
+                content = this._context.packageRender.renderPackage(content);
+                this._context.writer.writeTest(this._configGroup.name, content);
+        }
+
+        /**
          * Generate req file
          * 
          * @private
          * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _generateReq(configItem) {
+        _generateReq(configItem,write) {
                 configItem.reqs.forEach(req => {
                         if (req.doCreate) {
                                 let entityConfig = {};
@@ -440,10 +454,12 @@ class SpringBootGenerator {
                                 entityConfig.description = req.description;
                                 entityConfig.name = req.type;
                                 entityConfig.type = "req";
+                                req.fields=entityConfig.fields;
                                 entityConfig.extends = configItem.type == "select" && !configItem.resp.single ? "PageReq" : "";
                                 let content = this._context.render.renderEntity(entityConfig);
 
-                                this._writeEntity(content, "req", req.type);
+                                if(write)
+                                    this._writeEntity(content, "req", req.type),write;
                         }
                 })
         }
@@ -464,6 +480,7 @@ class SpringBootGenerator {
                         entityConfig.fields = configItem.context.columnMerger.mergeIncludes(configItem);
                         configItem.resp.type = configItem.resp.name;
                         entityConfig.name = configItem.resp.type;
+                        configItem.resp.fields=entityConfig.fields;
                         let content = this._context.render.renderEntity(entityConfig);
                         this._writeEntity(content, "resp", configItem.resp.type);
                 }
@@ -540,9 +557,6 @@ class SpringBootGenerator {
                 this._writeEntity(content, "param", configItem.params.type)
         }
 
-        _generateTestFile(){
-
-        }
 
         /**
          * 

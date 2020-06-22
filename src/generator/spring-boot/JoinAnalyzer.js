@@ -1,5 +1,6 @@
 const sqlUtils = require("../common/sqls/utils");
 const { STR } = require("../../libs/str")
+const { TYPE } = require("../../libs/utils")
 const { NamingStrategy } = require("../../libs/naming-strategy");
 const { EnumAnalyzer } = require("../common/enum-analyzer/EnumAnalyzer");
 const { SimpleRender } = require("../common/renders/SimplePatterRender");
@@ -54,12 +55,21 @@ class JoinAnalyzer {
                         relations[targetTable.name].forEach(relation => {
                                 let joinConfig = new JoinConfig();
                                 joinConfig.targetTable = relation.otherTable;
-                                joinConfig.outputColumn = sqlUtils.findNameColumn(tables[relation.otherTable]).name;
+                                joinConfig.outputColumn =relation.outputColumn||sqlUtils.findNameColumn(tables[relation.otherTable]).name;
 
-                                // analyze alias to avoid name the same
-                                let analyzeAliasResult =this._analyzeJoinColumnAlias(targetTable.columns, relation.otherTable, joinConfig.outputColumn);
-                                if (joinConfig.outputColumn != analyzeAliasResult)
-                                        joinConfig.outputAlias = analyzeAliasResult;
+                                if (relation.outputAlias) {
+                                        if (TYPE.isFunction(relation.outputAlias)) {
+                                                joinConfig.outputAlias = relation.outputAlias(relation.selfColumn);
+                                        } else {
+                                                joinConfig.outputAlias = relation.outputAlias;
+                                        }
+                                } else {
+
+                                        // analyze alias to avoid name the same
+                                        let analyzeAliasResult = this._analyzeJoinColumnAlias(targetTable.columns, relation.otherTable, joinConfig.outputColumn);
+                                        if (joinConfig.outputColumn != analyzeAliasResult)
+                                                joinConfig.outputAlias = analyzeAliasResult;
+                                }
 
                                 joinConfig.joinCondition = ` t.${NamingStrategy.toHungary(relation.selfColumn)} = @alias.${NamingStrategy.toHungary(relation.otherTableColumn)}`
                                 configs.push(joinConfig);
@@ -76,9 +86,11 @@ class JoinAnalyzer {
 
                                 let joinConfig = new JoinConfig();
                                 joinConfig.targetTable = enumResult.table;
-                                joinConfig.outputColumn = enumResult.textField;
-                                joinConfig.outputAlias = `${columnName}Name`;
-                                joinConfig.joinCondition = `t.${NamingStrategy.toHungary(columnName)} = @alias.value and @alias.type = '${columnName}'`;
+                                joinConfig.outputColumn = enumResult.label;
+                                joinConfig.outputAlias = `${columnName}Label`;
+                                let enumType = STR.startsWithAny(["need", "should", "can", "support", "is", "has", "allow", "permit"])
+                                        ? "booleanFlag" : columnName;
+                                joinConfig.joinCondition = `t.${NamingStrategy.toHungary(columnName)} = @alias.value and @alias.type = '${enumType}'`;
                                 configs.push(joinConfig);
                         })
 

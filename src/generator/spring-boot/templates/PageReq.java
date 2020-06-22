@@ -15,11 +15,11 @@ public class PageReq {
     @ApiModelProperty("index of page")
     @NotNull
     @Min(1)
-    private Integer pageIndex;
+    private Integer pageIndex=1;
 
     @ApiModelProperty("size of page")
     @NotNull
     @Min(5)
     @Max(200)
-    private Integer pageSize;
+    private Integer pageSize=10;
 }

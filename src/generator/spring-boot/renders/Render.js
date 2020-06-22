@@ -5,6 +5,7 @@ const { ControllerRender } = require("./ControllerRender");
 const { ServiceRender } = require("./ServiceRender");
 const { ServiceImplRender } = require("./ServiceImplRender");
 const { ParamRender } = require("./ParamsRender");
+const {TestRender} =require("./TestRender");
 
 exports.render = {
         renderEntity: (entityConfig) => new EntityRender().renderEntity(entityConfig),
@@ -13,5 +14,6 @@ exports.render = {
         renderService: (configGroup) => new ServiceRender().renderService(configGroup),
         renderServiceImpl: (configGroup) => new ServiceImplRender().renderServiceImpl(configGroup),
         renderController: (configGroup) => new ControllerRender().renderController(configGroup),
-        renderParams: (configGroup,reqType) => new ParamRender().renderParams(configGroup,reqType)
+        renderParams: (configGroup,reqType) => new ParamRender().renderParams(configGroup,reqType),
+        renderTest:(configGroup)=>new TestRender().renderTest(configGroup)
 }

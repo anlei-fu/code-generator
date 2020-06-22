@@ -2,7 +2,9 @@ const axios = require("axios");
 const { Initiable } = require("./Initiable");
 const { NodeContext } = require("./NodeContext");
 
-
+/**
+ * @BaseClass
+ */
 class HttpClient extends Initiable {
         constructor (name, baseConfig = { timeout: 10000 }) {
                 super(name || "HttpClient");

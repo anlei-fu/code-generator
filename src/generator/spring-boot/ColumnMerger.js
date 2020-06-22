@@ -11,25 +11,21 @@ class ColumnMerger {
          */
         mergeConditions(configItem) {
 
-                // if already generated and cached before, just return
-                if (configItem.context.cache.has(configItem.id))
-                        return configItem.context.cache.get(configItem.id);
-
                 let conditions = [];
                 configItem.conditions.forEach(condition => {
                         conditions.push(this.mergeColumnAndConlumnConfig(configItem.table, condition, configItem.alias));
                 });
 
-                configItem.joins.forEach(join => {
-                        join.conditions.forEach(condition => {
-                                conditions.push(this.mergeColumnAndConlumnConfig(join.table, condition, join.alias));
-                        });
-                });
+                // At this time do not support other join table filter
+                // configItem.joins.forEach(join => {
+                //         join.conditions.forEach(condition => {
+                //                 conditions.push(this.mergeColumnAndConlumnConfig(join.table, condition, join.alias));
+                //         });
+                // });
 
                 // add mapper.xml if test expression if need
                 configItem.context.expressionGenerator.generateExpression(conditions);
 
-                configItem.context.cache.set(configItem.id, conditions);
                 return conditions;
         }
 

@@ -142,6 +142,10 @@ class PackegeRender {
 
                 PACKAGES.forEach((value, key) => {
 
+                        if(key=="App"&&content.includes("Tests")){
+                                let t=0;
+                        }
+
                         if (key == "List" && !content.includes("List<"))
                                 return;
 
@@ -149,7 +153,7 @@ class PackegeRender {
                         `${key}\n`,
                         `${key}>`,
                         `${key}(`,
-                        `${key}<`]) || packagesPattern.includes(key))
+                        `${key}<`]) || packagesPattern.includes("."+key+";"))
                                 return;
 
                         if (value.isSystem) {

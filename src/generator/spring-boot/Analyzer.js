@@ -99,12 +99,19 @@ const DEFAULT_VALIDATES = {
 
         Integer: {
                 "status": {
-                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(),
-                                ["type", "status", "state", "class", "level", "style"])
-                                || STR.startsWithAny(columnName.toLowerCase(),
-                                        ["is", "need", "permit", "allow", "support", "can", "should"]),
+                        matcher: (columnName) => STR.endsWithAny(
+                                columnName.toLowerCase(),
+                                ["type", "status", "state", "class", "level", "style"]
+                        ) && !STR.equalAny(columnName.toLowerCase(), ["status"]),
                         generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                 },
+                "boolean": {
+                        matcher: columnName => STR.startsWithAny(
+                                columnName.toLowerCase(),
+                                ["is", "need", "permit", "allow", "support", "can", "should"]
+                        ) || STR.equalAny(columnName.toLowerCase(), ["status"]),
+                        validate: `@Enum("booleanFlag")`,
+                }
         }
 }
 
@@ -136,6 +143,10 @@ class ValidateAnalyzer extends AnalyzerBase {
 
                         if (!match)
                                 continue;
+                        
+                        if(name.startsWith("need")){
+                                let t=0;
+                        }
 
                         if (this.validates[type][item].generator) {
                                 validates.push(this.validates[type][item].generator(name))
@@ -356,7 +367,7 @@ const DEFAULT_INSERT_EXCLUDES = {
         String: {
                 updateUser: {
                         matcher: columnName => Matcher.lowerIncludesAny(columnName, ["update", "edit"])
-                                && Matcher.lowerIncludes("user")
+                                && Matcher.lowerIncludes(columnName, "user")
                 }
         },
         Date: {
@@ -395,9 +406,11 @@ class InsertAnalyzer extends ExcludesAnalyzer {
                         return true;
 
                 for (const item in this.excludes[type]) {
+
                         let match = this.excludes[type][item].matcher
                                 ? this.excludes[type][item].matcher(column.name)
                                 : Matcher.lowerIncludes(column.name, item);
+
 
                         if (match)
                                 return false;
@@ -439,7 +452,8 @@ const DEFAULT_UPDATE_EXCLUDES = {
                                 "editdate",
                                 "editetime",
                                 "modifydate",
-                                "modifytime"])
+                                "modifytime",
+                                "createuser"])
                 }
         },
         String: {

@@ -36,7 +36,7 @@ class AppController extends Controller {
          * @returns {ApiResponse<Task>}
          */
         async getById({ params }) {
-                let id =ConvertUtils.toNumber(params.id);
+                let id = ConvertUtils.toNumber(params.id);
                 validateUtils.requireNumber(id);
                 let item = await this._access.getById(id);
                 return item ? this.resposneObject(item) : this.noDataFound();
@@ -50,12 +50,12 @@ class AppController extends Controller {
          */
         async list({ query }) {
                 if (query.status)
-                        validateUtils.requireNumber(query, "status");
+                        validateUtils.requireNumber(query, "appStatus");
 
                 if (query.appType)
                         validateUtils.requireNumber(query, "appType");
 
-                let list = await this._access.list({ status: query.status, appType: query.appType });
+                let list = await this._access.list({ appStatus: query.appStatus, appType: query.appType });
                 return this.resposneObject(list);
         }
 
@@ -66,10 +66,10 @@ class AppController extends Controller {
          * @returns {ApiResponse<{status:number}>}
          */
         async status({ params }) {
-                let id =ConvertUtils.toNumber(params.id);
+                let id = ConvertUtils.toNumber(params.id);
                 validateUtils.requireNumber(id);
                 let item = await this._access.getById(id);
-                return item ? this.resposneObject({ status: item.status }) : this.noDataFound();
+                return item ? this.resposneObject({ appStatus: item.appStatus }) : this.noDataFound();
         }
 
         /**

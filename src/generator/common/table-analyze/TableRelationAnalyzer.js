@@ -153,6 +153,9 @@ class TableRelationAnalyzer {
                 OBJECT.forEach(this._tables, (__, table) => {
                         OBJECT.forEach(table.columns, (_, column) => {
 
+                                if(column.name=="appInstanceId"){
+                                        let t=0;
+                                }
                                 //  there's no need to anlyze pk column
                                 if (column.isPk)
                                         return;
@@ -395,8 +398,6 @@ class TableRelationAnalyzer {
                 return STR.replace(columnName, {
                         "_no": "",
                         "_id": "",
-                        id: "",
-                        no: "",
                 });
         }
 
