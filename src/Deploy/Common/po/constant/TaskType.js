@@ -11,6 +11,10 @@ exports.TaskType = {
 
         SQL:20,
 
+        MYSQL:21,
+        
+        SQLITE:22,
+
         // all kinds of task
         ALL: 100
 }

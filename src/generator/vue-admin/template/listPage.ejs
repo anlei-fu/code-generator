@@ -4,9 +4,9 @@
             <% filters.forEach(item => {%> 
              <% if(item.type=="timeRange") {%> 
              <TimeRange v-model="timeRange" <% if(item.label){ %> <%=item.label %> <% } %>/>
-             <% } %> <% else if(item.type=="select") { %>
+             <% }  else if(item.type == "select") { %>
                 <Select v-model="query.<%=item.filed%>" title="<%=item.title%>" enum="<%=item.enum%> " />
-             <% } %>  <% else if(item.type=="radioGroup") { %>
+             <% }  else if(item.type == "radioGroup") { %>
                 <span>
                         <RadioGroup
                           v-model="radioKey"
@@ -14,7 +14,7 @@
                         />
                         <Input v-model="keyword" />
                       </span>
-             <% } %>  <% else if(item.type=="checkBoxGroup") { %>
+             <% } else if(item.type=="checkBoxGroup") { %>
              <% } %> 
         <% )}; %> 
         <QueryButton @click="getData(true)" />
@@ -33,12 +33,12 @@
               model: {
                 list: [],
                 total: 0,
-                columns: <%=columns %>
+                columns: <%-columns %>
               },
       
               query: {
                <% query.forEach(filed=>{%>
-                <%=item.name%>:<%=item.default%>,
+                <%=item.name%>:<%-item.default%>,
                <%})%>
               },
               <% if(timeRange){%>
@@ -72,7 +72,7 @@
               }
       
               <%if(radioGroup){%>
-              this.resetFields(this.query, null,<%=radioGroupItems%>);
+              this.resetFields(this.query, null,<%-radioGroupItems%>);
               this.query[this.radioKey] = this.keyword;
               <%}%>
               

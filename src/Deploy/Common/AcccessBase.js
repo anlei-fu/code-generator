@@ -67,6 +67,8 @@ class AccessBase extends Initiable {
 
         }
 
+
+
         /**
          * Get count by given conditions
          * 
@@ -186,6 +188,16 @@ class AccessBase extends Initiable {
         }
 
         /**
+         * Query data
+         * 
+         * @param {string} sql 
+         * @returns {Promise<Entity>}
+         */
+        query(sql){
+                   return this._excutor.query(sql);
+        }
+
+        /**
          * Execute 
          * 
          *
@@ -212,6 +224,7 @@ class AccessBase extends Initiable {
         /**
          * Query by sql
          * 
+         * @private
          * @param {String} sql 
          * @returns {Promise<Entity[]>}
          */

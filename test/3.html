@@ -1,52 +1,208 @@
 <script>
-        //下游支持产品批量启用
-        async function enableDownProductNew(type) {
-                debugger
-                let nos = getShelfNos();
-                nos = nos.filter(no => {
-                        if ($("#" + no).val() == "QG|vivo20191106") {
-                                $(`input[name='ShelfNo',value=${no}]`).attr("checked", false);
-                                return false;
+        $(function () {
+                $('#mainForm').validate({
+                        errorClass: "error",
+                        focusInvalid: true,
+                        submitHandler: async function (form) {
+                                if (!getValue("#ivrStatus")) {
+                                        alert("请选择外呼结果");
+                                        return;
+                                }
+
+                                if (postData.dealStatus == 30) {
+                                        postData.nextTime = $("#time").val();
+                                        if (!postData.nextTime) {
+                                                alert("请选择下次处理时间");
+                                                return;
+                                        }
+                                }
+
+                                postData.address = $("#addr").val();
+                                postData.name = $("#name").val();
+                                postData.idNo = $("no").val();
+                                postData.nextTime = $("#time").val();
+
+                                try {
+                                        let result = await post("/FCOptimizeOrder/Update", postData);
+                                        alert(result.Message);
+                                        if (result.Status)
+                                                location.reload();
+                                } catch (ex) {
+                                        alert("操作失败");
+                                }
+
+                        },
+
+                });
+
+                $('select').each(function () {
+                        if ($(this).css('display') != "none") {
+                                $(this).sSelect();
                         }
-
-                        return true;
                 });
+        });
 
-                if (nos.length == 0) {
-                        alert("请至少选择一条数据");
+        var dic = []
+
+        var postData = {
+                orderNo: "",
+                id: 1,
+                idNo: "",
+                name: "",
+                address: "",
+                ivrDetgail: 1,
+                ivrStatus: 1,
+                dealStatus: 1
+        }
+
+        $(() => {
+                postData.id = $("#__id").val();
+                postData.orderNo = $("#orderNo").val();
+                dic = $.parseJSON($("#dic").val());
+        })
+
+        function onIvrStatusChanged() {
+                let ivrStatus = getValue("#ivrStatsu");
+                postData.ivrStatus = ivrStatus;
+                if (!ivrStatus)
                         return;
-                }
 
-                if (!confirm(`您确认要批量启用所选择的${no.length}个产品吗?`)) {
-                        return
-                }
+                let items = vrStatus == 90
+                        ? dic.filter(x => x.value % 2 == 0)
+                        : dic.filter(x => x.value % 2 != 0);
 
-                let data = $("#divshelflist").serialize() + "&type=" + type;
+                $("#ivrDetail").empty();
 
-                let result = await postData("/STUserAjax/EnableDownProduct", data);
-
-
-        }
-
-        function getShelfNos() {
-                let nos = [];
-                $("input[name='ShelfNo']:checked").each(function() {
-                        nos.push($(this).val());
+                items.forEach(item => {
+                        $(`<option value="${item.Value}">${item.Name}<option>`)
+                                .appendTo($("#ivrDetail"));
                 });
 
-                return nos;
-
         }
 
-        function postData(url, data) {
-                return new Promise(resolve => {
+        function onIvrDetailCahnged() {
+                let ivrDetgail = getValue("#ivrDetail");
+                postData.ivrDetgail = ivrDetgail;
+                postData.dealStatus == ivrDetgail > 200 ? 90 : ivrDetgail > 100 ? 20 : 0;
+
+                if (postData.dealStatus > 200) {
+                        $("#nextTime").hide();
+                        $("#address").hide();
+                        $("#idNo").hide();
+                        $("#reanName").hide();
+                } else if (postData.dealStatus > 100) {
+                        $("#nextTime").show();
+                        $("#address").hide();
+                        $("#idNo").hide();
+                        $("#reanName").hide();
+                } else {
+                        $("#address").show();
+                        $("#idNo").show();
+                        $("#realName").show();
+                }
+        }
+
+        function post(url, params) {
+                console.log(`url:${url}`);
+                console.log(`params:`);
+                console.log(params);
+                return new Promise((resolve, reject) => {
+                        showSpinner();
                         $.ajax({
                                 type: "post",
-                                data: data,
-                                url: url,
-                                success: resp => resolve($.parseJSON(resp)),
-                                erro: resolve({ Status: false, Message: "系统异常" })
-                        });
-                })
+                                url,
+                                data: params,
+                                success: resp => {
+                                        console.log("resp:");
+                                        console.log(resp);
+                                        closeSpinner()
+                                        resolve($.parseJSON(resp));
+                                },
+                                error: err => {
+                                        closeSpinner();
+                                        reject(err);
+                                }
+                        })
+                });
         }
+
 </script>
+
+<form id="mainForm" method="post">
+        <input type="hidden" id="__id" value="@ViewBag.Id" />
+        <input type="hidden" id="orderNo" value="@ViewBag.OrderNo" />
+        <input type="hidden" id="dic" value="@ViewBag.Dic" />
+        <table>
+                <tr>
+                        <td width="120" class="textalign_r">
+                                外呼状态：
+                        </td>
+                        <td width="300" class="textalign_l">
+                                <select id="ivrStatus" onchange="onIvrStatusChanged">
+                                        <option value="">--请选择--</option>
+                                        <option value="0">接通</option>
+                                        <option value="90">未接通</option>
+                                </select>
+                        </td>
+                </tr>
+                <tr>
+                        <td width="120" class="textalign_r">
+                                外呼详情：
+                        </td>
+                        <td width="300" class="textalign_l">
+                                <select id="ivrDetail" onchange="onIvrStatusChanged"></select>
+                        </td>
+                </tr>
+                <tr id="address">
+                        <td width="50" class="textalign_r">
+                                买家地址：
+                        </td>
+                        <td width="200" class="textalign_l">
+                                <textarea style="text-align:left;" rows="4" cols="30"
+                                        name="BuyerAddress"> @ViewBag.Address.Trim()</textarea>
+                        </td>
+                </tr>
+                <tr id="realName">
+                        <td class="textalign_r">
+                                号卡实名：
+                        </td>
+                        <td width="300" class="textalign_l">
+                                <input class="widthinput" type="text" id="name" maxlength="300"
+                                        value="@Model.CurrentModel.ActiveRealName" style="width:138px" />
+                        </td>
+                </tr>
+                <tr id="idNo">
+                        <td class="textalign_r">
+                                实名身份证号码：
+                        </td>
+                        <td width="300" class="textalign_l">
+                                <input class="widthinput" type="text" id="no" maxlength="300"
+                                        value="@Model.CurrentModel.ActiveIdno" style="width:138px" />
+                        </td>
+                </tr>
+                <tr id="nextTime">
+                        <td width="120" class="textalign_r">
+                                下次处理时间：
+                        </td>
+                        <td width="350" class="textalign_l">
+                                <select id="time">
+                                        <option value="">--请选择--</option>
+                                        <option value="1">一小时后</option>
+                                        <option value="2">两小时后</option>
+                                        <option value="5">五小时后</option>
+                                        <option value="6">明天</option>
+                                </select>
+                        </td>
+                </tr>
+                <tr>
+                        <td width="120" class="textalign_r">
+                                备注：
+                        </td>
+                        <td width="300" class="textalign_l">
+                                <textarea name="Msg" style="font-size: 12px; min-width: 70%; min-height: 5rem;"
+                                        maxlength="32"></textarea>
+                        </td>
+                </tr>
+
+        </table>
+</form>

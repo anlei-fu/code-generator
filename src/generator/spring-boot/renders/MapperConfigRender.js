@@ -296,10 +296,10 @@ class MapperConfigRender {
         _renderUpdate(configItem) {
 
                 let setColumnsSegment = "";
-                let hasTimeFiled=this._hasUpdateTimeField(configItem.table);
+                let hasTimeFiled = this._hasUpdateTimeField(configItem.table);
                 configItem.context.columnMerger.mergeIncludes(configItem).forEach((include, i, array) => {
                         include.prefix = "";
-                        include.suffix = !hasTimeFiled&&i ==array.length - 1 ? "" : ",";
+                        include.suffix = !hasTimeFiled && i == array.length - 1 ? "" : ",";
                         setColumnsSegment += this._renderAsign(include);
                 });
                 setColumnsSegment += this._renderUpdateTime(configItem.table, configItem.alias);
@@ -346,15 +346,15 @@ class MapperConfigRender {
          * @param {Table} table
          * @returns {boolean}
          */
-        _hasUpdateTimeField(table){
-                for(const columnName in table.columns){
+        _hasUpdateTimeField(table) {
+                for (const columnName in table.columns) {
                         if (getJavaType(table.columns[columnName].type) == "Date"
-                         && UPDATE_TIME_MATCHERS(columnName))
-                         return true;
+                                && UPDATE_TIME_MATCHERS(columnName))
+                                return true;
                 }
 
                 return false;
-              
+
         }
 
         /**
@@ -365,9 +365,36 @@ class MapperConfigRender {
          * @returns {String} 
          */
         _renderExpression(expressionModel) {
-                let content = expressionModel.expression.replace("@prefix", expressionModel.prefix);
-                expressionModel.content = content;
-                return this._renderIf(expressionModel);
+                if (expressionModel.exp == "timeRange") {
+                        let out = "";
+                        expressionModel.content =
+                                `${expressionModel.prefix} t.${expressionModel.rawName} >= #{${expressionModel.property}Start}\r\n`;
+                        expressionModel.ifExpression = `${expressionModel.property}Start != null`;
+                        out = this._renderIf(expressionModel);
+
+                        expressionModel.content =
+                                `and t.${expressionModel.rawName} &lt; #{${expressionModel.property}End}\r\n`;
+                        expressionModel.ifExpression = `${expressionModel.property}End != null`;
+                        out += this._renderIf(expressionModel);
+                        return out;
+                } else if (expressionModel.exp = "range") {
+                        let out = "";
+
+                        expressionModel.content =
+                                `${expressionModel.prefix} t.${expressionModel.rawName} >= #{${expressionModel.property}Min}\r\n`;
+                        expressionModel.ifExpression = `${expressionModel.property}Min != null`;
+                        out = this._renderIf(expressionModel);
+
+                        expressionModel.content =
+                                `and t.${expressionModel.rawName} &lt; #{${expressionModel.property}Max}\r\n`;
+                        expressionModel.ifExpression = `${expressionModel.property}Max != null`;
+                        out += this._renderIf(expressionModel);
+                        return out;
+                } else {
+                        let content = expressionModel.expression.replace("@prefix", expressionModel.prefix);
+                        expressionModel.content = content;
+                        return this._renderIf(expressionModel);
+                }
         }
 
         /**
@@ -494,14 +521,14 @@ class MapperConfigRender {
          * @returns {String}
          */
         _renderBatch(content) {
-                let lines=STR.splitToLines(content.trim())
+                let lines = STR.splitToLines(content.trim())
                 lines.splice(1, 0, BTACH_PREFIX);
-                lines.splice(lines.length - 1,0, BATCH_SUFFIX);
+                lines.splice(lines.length - 1, 0, BATCH_SUFFIX);
                 for (let line of lines) {
-                        line = "        "+ line;
+                        line = "        " + line;
                 }
 
-                return STR.arrayToString1(lines, line => line+"\r\n");
+                return STR.arrayToString1(lines, line => line + "\r\n");
         }
 
         /**

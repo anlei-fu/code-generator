@@ -1,4 +1,4 @@
-const { UiCommandBuilder,Point } = require("./UiCommandBuilder");
+const { UiCommandBuilder, Point } = require("./UiCommandBuilder");
 const { FILE } = require("./../../libs/file");
 
 let builder = new UiCommandBuilder();
@@ -6,16 +6,6 @@ let builder = new UiCommandBuilder();
 function getLocation(x, y) {
         return { x, y }
 }
-
-
-
-
-
-
-
-
-
-
 
 let _modules = {
         contract: getLocation(59, 133),
@@ -36,52 +26,48 @@ let config = {
         account: getLocation(86, 421),
 }
 
-
 function expand(modules) {
         Object.keys(modules).forEach(x => {
-                builder.click(modules[x].x, modules[x].y)
-                        .click(30, 193)
-                        .wait(1000);
+                     builder.click(modules[x].x, modules[x].y)
+                            .click(30, 193)
+                            .wait(1000);
         })
 }
 
-
 function main() {
-
-
         let root = "C:/Users/Administrator/Desktop/Projects/ui-test/UiTets/bin/Debug/project/新建文件夹";
         builder.name("test1")
                 .description("test1 description")
-                // .click(1158,458)
-                // .type("fual")
-                // .wait(500)
-                // .click(1183,501)
-                // .type("1qaz2wsx")
-                // .click(1206,546)
+        // .click(1158,458)
+        // .type("fual")
+        // .wait(500)
+        // .click(1183,501)
+        // .type("1qaz2wsx")
+        // .click(1206,546)
 
         expand(_modules);
 
         _modules.config = getLocation(359, 132);
         gotoPage(_modules.contract, contract.contract);
-        builder.click(965,349)
-               .wait(500)
-               .click(342,290)
-               .wait(1000)
-               .click(132,345)
-               .click(191,453)
-               .click(633,489)
-               .click(811,291)
-               .wait(500)
-               .click(811,320)
-               .click(965,349)
-               .wait(500)
-               .click(965,349)
-               .wait(10000)
+        builder.click(965, 349)
+                .wait(500)
+                .click(342, 290)
+                .wait(1000)
+                .click(132, 345)
+                .click(191, 453)
+                .click(633, 489)
+                .click(811, 291)
+                .wait(500)
+                .click(811, 320)
+                .click(965, 349)
+                .wait(500)
+                .click(965, 349)
+                .wait(10000)
         gotoPage(_modules.contract, contract.sign);
         gotoPage(_modules.config, config.meal);
         gotoPage(_modules.config, config.dic);
         gotoPage(_modules.config, config.log);
-        gotoPage(_modules.config,config.account);
+        gotoPage(_modules.config, config.account);
 
 
         var commands = builder.build();

@@ -104,7 +104,7 @@ function toJavaType(sqlType) {
         } else if (sqlType.name.includes("double")) {
                 return "Double";
         } else if (sqlType.name.includes("small")) {
-                return "Boolean";
+                return "Integer";
         } else if (sqlType.name.includes("time") || sqlType.name.includes("date")) {
                 return "Date";
         } else {

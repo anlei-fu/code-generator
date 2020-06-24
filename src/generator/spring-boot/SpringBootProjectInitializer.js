@@ -40,6 +40,7 @@ class SpringBootProjectInitializer {
                 tableNames.forEach(x => {
                         allContent += `        require("./${x}.js").${x}Config,\r\n`;
                 });
+                
                 FILE.write(`${root}/all.js`,
                         COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
 
