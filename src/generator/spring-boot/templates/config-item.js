@@ -29,6 +29,32 @@ exports.@snameConfig = {
                                 })
                                 .build(),
 
+                                @insertMsg@@
+                        new ConfigItemBuilder()
+                                .type("insert")
+                                .id("addBatch")
+                                .alias("t")
+                                .includes(collection => {
+                                        collection.includes(all.@sname.columnsArray)
+                                                  .excludes("@skey")
+@insertExcludes
+                                })
+                                .request(request => {
+                                        request.path("/@sname/batch");
+                                })
+@insertUserReq@@
+                                .req(req => {
+                                        req.doCreate()
+                                           .excludes("@skey")
+                                           .name("add@nameReq")
+                                           .list()
+@insertReq
+                                })
+                                .params(params=>{
+                                        params.name("add@nameParams")
+                                })
+                                .build(),
+
                         // deleteById
                         new ConfigItemBuilder()
                                 .type("delete")
@@ -48,7 +74,28 @@ exports.@snameConfig = {
                                 })
 @deleteUserReq@@
                                 .build(),
+
+                                new ConfigItemBuilder()
+                                .type("delete")
+                                .id("deleteBatch")
+                                .alias("t")
+                                .conditions(collection => {
+                                        collection.includes("@skey")
+                                                  .require("@skey")
+                                                  .list("@skey")
+                                })
+                                .request(request => {
+                                        request.path("/@sname/deleteBatch");
+                                })
+                                .req(req => {
+                                        req.name("@skeys")
+                                           .type("@keyType")
+                                           .list();
+                                })
+@deleteUserReq@@
+                                .build(),
                                 
+
                         // updateById
 @updateMsg@@
                         new ConfigItemBuilder()
@@ -58,6 +105,7 @@ exports.@snameConfig = {
                                 .includes(collection => {
                                         collection.includes(all.@sname.columnsArray)
                                                   .excludes("@skey")
+                                                  .list("@skey")
 @updateExcludes
                                 })
                                 .conditions(collection => {
@@ -79,6 +127,33 @@ exports.@snameConfig = {
 @updateReq
                                            .name("Update@tnameReq")                                                
                                 })
+                                .build(),
+
+                                // updateBatch
+@updateMsg@@
+                                new ConfigItemBuilder()
+                                .type("update")
+                                .id("updateBatch")
+                                .alias("t")
+                                .includes(collection => {
+                                        collection.includes(all.@sname.columnsArray)
+                                .excludes("@skey")
+@updateExcludes
+                                 })
+                                 .conditions(collection => {
+                                        collection.includes("@skey")
+                                        .require("@skey")
+                                        .list("@skey");
+                                })
+                                .request(request => {
+                                        request.path("/@sname/updateBatch");
+                                 })
+@updateUserReq@@                
+                                .req(req => {
+                                        req.doCreate()
+@updateReq
+                                .name("Update@tnameBatchReq")                                                
+                                 })
                                 .build(),
 
                         // getById
@@ -111,7 +186,7 @@ exports.@snameConfig = {
 @selectMsg@@
                         new ConfigItemBuilder()
                                 .type("select")
-                                .id("getList")
+                                .id("getPage")
                                 .alias("t")
                                 .includes(collection=>{
                                         collection.includes(all.@sname.columnsArray)
@@ -133,7 +208,7 @@ exports.@snameConfig = {
 @selectUserReq                   
                                 .build(),
 
-                        // get detail item
+                        // get detail by id
                         new ConfigItemBuilder()
                                 .type("select")
                                 .id("getDetailBy@selectMethodName")
@@ -167,7 +242,7 @@ exports.@snameConfig = {
                          // get detail list
                         new ConfigItemBuilder()
                                 .type("select")
-                                .id("getDetailList")
+                                .id("getDetailPage")
                                 .alias("t")
                                 .includes(collection=>{
                                         collection.includes(all.@sname.columnsArray)

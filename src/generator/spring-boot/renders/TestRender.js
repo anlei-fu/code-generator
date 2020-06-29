@@ -38,6 +38,8 @@ class TestRender {
         renderTest(configGroup) {
                 let content = "";
                 configGroup.items.forEach(item => {
+                        if(item.id.includes("Batch"))
+                            return;
                         content += this.renderTestItem(item);
                 });
 

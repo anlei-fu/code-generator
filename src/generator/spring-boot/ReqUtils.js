@@ -123,12 +123,23 @@ class ReqUtils {
          * @returns {Boolean}
          */
         hasBatchReq(configItem) {
+               return this.getBatchReqName(configItem)!=null;
+        }
+
+        getBatchReqName(configItem){
                 for (const req of configItem.reqs) {
                         if (req.isList)
-                                return true;
+                                return req.name;
+                        
+                        if(req.doCreate){
+                                for(const item of req.fields){
+                                        if(item.isList)
+                                         return item.name;
+                                }
+                        }
                 }
 
-                return false;
+                return null;
         }
 
         /**

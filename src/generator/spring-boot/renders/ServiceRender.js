@@ -1,6 +1,7 @@
 const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { ReqUtils } = require("../ReqUtils");
 const { STR } = require("../../../libs/str");
+const {ConfirItemUtils} =require("./../ConfigItemUtils");
 
 const SERVICE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
 const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/templates/service.java`);
@@ -30,26 +31,9 @@ class ServiceRender {
         _getMethodConfig(configItem, tableName) {
                 return {
                         args: ReqUtils.generateReqArgsWithType(configItem),
-                        returnType: this._getReturnType(configItem, tableName),
+                        returnType: ConfirItemUtils.getServiceReturnType(configItem, tableName),
                         methodName: configItem.id
                 };
-        }
-
-        /**
-         * Get service return type text
-         * 
-         * @private
-         * @param {ConfigItem} configItem 
-         * @param {String} tableName
-         * @returns {String} 
-         */
-        _getReturnType(configItem, tableName) {
-                if (configItem.type != "select")
-                        return ReqUtils.hasBatchReq(configItem) ? "int" : "boolean";
-
-                return configItem.resp.single
-                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
-                        : configItem.resp.doCreate ? `PageResult<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageResult<${tableName}>`;
         }
 }
 

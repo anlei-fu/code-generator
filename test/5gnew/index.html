@@ -1,0 +1,394 @@
+<html>
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="viewport"
+                content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <title>5G流量包</title>
+        <link href="./css/3.css" rel="stylesheet" type="text/css">
+        <link href="./css/1.css" rel="stylesheet">
+
+        <link href="./css/2.css" rel="stylesheet">
+        <style type="text/css" title="fading circle style">
+                .circle-color-9>div::before {
+                        background-color: #ccc;
+                }
+        </style>
+        <script src="./script/jquery-3.1.1.min.js"></script>
+</head>
+<script>
+        // event biding
+        $(() => {
+                $("#getVcode").click(() => sendVCode());
+                $("#submit").click(() => presubmit());
+                $("#confirm").click(() => closeDialog());
+                $("#ok").click(() => {
+                        closeConfirm();
+                        submit();
+                });
+                $("#cancel").click(() => closeConfirm())
+        });
+
+        //==============================================================================================
+        // ui operations
+        //==============================================================================================
+        function showSpinner() {
+                changeVisibility("#mask", true);
+                changeVisibility("#spinner", true);
+        }
+
+        function closeSpinner() {
+                changeVisibility("#mask", false);
+                changeVisibility("#spinner", false);
+        }
+
+        function showNotify(msg) {
+                setText("#notifyContent", msg)
+                changeVisibility("#notify", true);
+                setTimeout(() => closeNotify(), 3000);
+        }
+
+        function closeNotify() {
+                changeVisibility("#notify", false);
+        }
+
+        function showDialog(title, msg) {
+                setText("#title", title);
+                setText("#content", msg);
+                changeVisibility("#mask", true);
+                changeVisibility("#dialog", true);
+        }
+
+        function closeDialog() {
+            changeVisibility("#mask", false);
+            changeVisibility("#dialog", false);
+        }
+
+        // function showRule() {
+        //     changeVisibility("#mask", true);
+        //     changeVisibility("#rule", true);
+        // }
+
+        // function closeRule() {
+        //     changeVisibility("#mask", false);
+        //     changeVisibility("#rule", false);
+        // }
+
+        function showConfirm() {
+                changeVisibility("#mask", true);
+                changeVisibility("#confirmBox", true);
+        }
+
+        function closeConfirm() {
+                changeVisibility("#mask", false);
+                changeVisibility("#confirmBox", false);
+        }
+
+        //==============================================================================================
+        // api
+        //==============================================================================================
+        var vcodeCounter = 0;
+        var isVcodeSended = false;
+
+        // 接口地址配置
+        var config = {
+                vcodeUrl: "http://localhost:8083/getvcode",
+                submitUrl: "http://localhost:8083/submit"
+        };
+
+        // 发送验证码参数
+        var vcodeParams = {
+                phoneNo: null,
+                coopId: null
+        };
+
+        // 提交订单参数
+        var submitParams = {
+                phoneNo: null,
+                smsCode: null,
+                coopOrder: null,
+                coopId: null,
+        };
+
+        /**
+         * 发送验证码，
+         *   检查当前是否可发送
+         *   号码是否正确
+         *   保存返回值到 submitParams(cooporder,pno,coopId...)
+         **/
+        async function sendVCode() {
+                if (vcodeCounter != 0)
+                        return;
+                debugger
+                // check phoneNo
+                vcodeParams.phoneNo = getValue("#phoneNo");
+                if (!vcodeParams.phoneNo || !/^1[3456789]\d{9}$/.test(vcodeParams.phoneNo)) {
+                        showNotify("请输入正确的号码")
+                        return;
+                }
+
+                try {
+                        var result = await post(config.vcodeUrl, vcodeParams);
+                        if (!result || !result.core || result.core.code != 0) {
+                                showNotify(result.core.msg);
+                                return;
+                        }
+
+                        submitParams.coopOrder = result.coopOrder;
+
+                        isVcodeSended = true;
+                        showNotify("验证码已发送");
+                        resetCounter();
+
+                } catch (ex) {
+                        console.error(ex);
+                        showNotify("发送验证码失败，请稍后重试");
+                }
+        }
+
+        // 预提交 检查参数，弹出确认框
+        function presubmit() {
+                if (!isVcodeSended) {
+                        showNotify("请先发送验证码");
+                        return;
+                }
+
+                // check phoneNo
+                submitParams.phoneNo = getValue("#phoneNo");
+                if (!vcodeParams.phoneNo || !/^1[3456789]\d{9}$/.test(vcodeParams.phoneNo)) {
+                        showNotify("请输入正确的号码")
+                        return;
+                }
+
+                // check vcode
+                submitParams.smsCode = getValue("#vcode");
+                if (!submitParams.smsCode || submitParams.smsCode.trim().length != 6) {
+                        showNotify("请输入6位验证码")
+                        return;
+                }
+
+                showConfirm();
+        }
+
+        /**
+         * 提交订单
+         *  
+         **/
+        async function submit() {
+                try {
+                        debugger
+                        var result = await post(config.submitUrl, submitParams);
+                        if (!result || result.status != 1) {
+                                showNotify(result.msg);
+                                return;
+                        }
+
+                        showDialog("温馨提示", "您已成功办理了该业务");
+                } catch (ex) {
+                        console.error(ex);
+                        showNotify("提交订单失败，请稍后重试");
+                }
+
+        }
+
+        // 重置验证码计时器
+        function resetCounter() {
+                vcodeCounter = 60;
+                var interval = setInterval(() => {
+                        if (--vcodeCounter != 0) {
+                                changeVisibility("#getVcode");
+                                changeVisibility("#vcodeCounter",true);
+                                setText("#vcodeCounter", `还剩${vcodeCounter}秒`);
+                        } else {
+                                clearInterval(interval);
+                                changeVisibility("#vcodeCounter");
+                                changeVisibility("#getVcode",true);
+                        }
+                }, 1000);
+        }
+
+        //==============================================================================================
+        //  jquery api wrap
+        //==============================================================================================
+        function post(url, params) {
+                console.log(`url:${url}`);
+                console.log(`params:`);
+                console.log(params);
+                return new Promise((resolve, reject) => {
+                        showSpinner();
+                        $.ajax({
+                                type: "post",
+                                url,
+                                data: params,
+                                success: resp => {
+                                        console.log("resp:");
+                                        console.log(resp);
+                                        closeSpinner()
+                                        resolve($.parseJSON(resp));
+                                },
+                                error: err => {
+                                        closeSpinner();
+                                        reject(err);
+                                }
+                        })
+                });
+        }
+
+        function setText(selector, text) {
+                $(selector).text(text);
+        }
+
+        function getValue(selector) {
+                return $(selector).val();
+        }
+
+        function changeVisibility(selector, show) {
+                if (show) {
+                        $(selector).show();
+                } else {
+                        $(selector).hide();
+                }
+        }
+
+        $(() => {
+                vcodeParams.coopId = getValue("#coopId");
+                submitParams.coopId = getValue("#coopId");
+        });
+
+</script>
+
+<body cz-shortcut-listen="true">
+        <div id="app">
+                <div data-v-25a1f9ba="" class="main">
+                        <div data-v-25a1f9ba="" class="Promotion5G">
+                                <div data-v-25a1f9ba="" style="font-size: 0px;"><img data-v-25a1f9ba=""
+                                                src="./image/banner.jpeg" alt="" vinpu="" class="width"></div>
+                                <div data-v-25a1f9ba="" class="Promotion5G_box">
+                                        <div data-v-25a1f9ba="" class="Promotion5G_info">
+                                                <div data-v-25a1f9ba="" class="Promotion5G_info_box">
+                                                        <div data-v-25a1f9ba="" class="code_wrap"><input
+                                                                        data-v-25a1f9ba="" placeholder="请输入您的手机号"
+                                                                        type="tel" id="phoneNo" maxlength="11" class="width"></div>
+                                                        <div data-v-25a1f9ba="" class="code_wrap Promotion5G_box_code">
+                                                                <input data-v-25a1f9ba="" id="vcode" placeholder="请输入短信验证码"
+                                                                        maxlength="6" type="tel">
+                                                                <p data-v-25a1f9ba="" style="flex: 1 1 0%;"><span
+                                                                                data-v-25a1f9ba="" id="getVcode">发送验证码</span> <span
+                                                                                data-v-25a1f9ba="" class="code"
+                                                                                style="display: none;" id="vcodeCounter">59秒</span></p>
+                                                        </div>
+                                                </div>
+                                                <div data-v-25a1f9ba="" class="botton"><img data-v-25a1f9ba=""
+                                                                src="./image/btn.png" alt="" id="submit" class="width"></div>
+                                                <!-- <p data-v-25a1f9ba="" class="desc text_align_center">放心查看，不会产生订购</p> -->
+                                                <div data-v-25a1f9ba="" style="padding: 0.0667rem 0px;"></div>
+                                                <div data-v-25a1f9ba="" class="Promotion5G_info_box">
+                                                        <h3 data-v-25a1f9ba=""
+                                                                class="Promotion5G_box_name text_align_center"><span
+                                                                        data-v-25a1f9ba="">产品规则</span></h3>
+                                                        <div data-v-25a1f9ba=""
+                                                                class="biao display_flex flex_ju_content_SB flex_nowrap">
+                                                                <ul data-v-25a1f9ba="" class="biao_left flex1">
+                                                                        <li data-v-25a1f9ba="">产品名称</li>
+                                                                        <li data-v-25a1f9ba="">
+                                                                                5G特惠流量包
+                                                                                <br data-v-25a1f9ba="">
+                                                                                (非物联卡业务)
+                                                                        </li>
+                                                                </ul>
+                                                                <ul data-v-25a1f9ba="" class="biao_left flex1">
+                                                                        <li data-v-25a1f9ba="">网络适用</li>
+                                                                        <li data-v-25a1f9ba="">
+                                                                                2G-5G网络
+                                                                                <br data-v-25a1f9ba="">
+                                                                                均可适用
+                                                                        </li>
+                                                                </ul>
+                                                        </div>
+                                                        <ul data-v-25a1f9ba="" class="des">
+                                                                <li data-v-25a1f9ba="">
+                                                                        <p data-v-25a1f9ba="">资费详情</p>
+                                                                        <p data-v-25a1f9ba="">1、包内流量为可在2G-5G网络下通用的全国流量；
+                                                                        </p>
+                                                                        <p data-v-25a1f9ba="">
+                                                                                2、5G特惠流量包订购立即生效，按月自动续订型，包含流量当月有效，变更、退订次月生效；
+                                                                        </p>
+                                                                        <p data-v-25a1f9ba="">3、包含流量当月有效，不可结转、共享、转赠；
+                                                                        </p>
+                                                                        <p data-v-25a1f9ba="">
+                                                                                4、订购产品与您当前基础套餐存在互斥将不能成功办理，其他规则可咨询中国移动10086客服热线。
+                                                                        </p>
+                                                                        <p data-v-25a1f9ba="">5、5G网速需具备5G网络及5G终端</p>
+                                                                </li>
+                                                        </ul>
+                                                </div>
+                                        </div>
+                                        <div data-v-25a1f9ba="" class="apron" style="display: none;"></div>
+                                </div>
+                                <div id="confirmBox" data-v-82f77b92="" data-v-25a1f9ba="" class="po_fixed"
+                                        style="display: none;">
+                                        <div data-v-82f77b92="" class="main_info"><i data-v-82f77b92=""
+                                                        class="iconfont icon-guanbi" id="cancel"></i>
+                                                <h3 data-v-82f77b92="">超实惠5G流量包</h3>
+                                                <div data-v-82f77b92="" class="main_info_box">
+                                                        <p data-v-82f77b92=""
+                                                                class="fs18 flex display_flex flex_ju_content_SB"
+                                                                style="padding-bottom: 0.35rem; padding-top: 0.2rem;">
+                                                                <span data-v-82f77b92="" class="fs18">业务套餐</span><span
+                                                                        data-v-82f77b92="" class="fs18"></span></p>
+                                                        <p data-v-82f77b92=""
+                                                                class="fs18 flex display_flex flex_ju_content_SB"
+                                                                style="padding-bottom: 0.4rem;"><span data-v-82f77b92=""
+                                                                        class="fs18">可用网络</span> <span
+                                                                        data-v-82f77b92=""
+                                                                        class="fs18">2G、3G、4G、5G</span></p>
+                                                        <div data-v-82f77b92="" class="main_info_botton">
+                                                                <p data-v-82f77b92="" id="ok">立即体验</p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div id="dialog" data-v-09c9347a="" data-v-25a1f9ba="" class="po_fixed" style="display: none;">
+                                        <div data-v-09c9347a="" class="main_info">
+                                                <div data-v-09c9347a="" class="text_align_center">
+                                                      <div id="title" style="font-size: .214rem;
+                                                      line-height: 39px;"></div>
+                                                      <div id="content" style="font-size: .195rem;"></div>
+                                                </div>
+                                                <div id="confirm" data-v-09c9347a="" class="main_info_botton">
+                                                        <p data-v-09c9347a="">确认</p>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <div id="spinner" class="mint-indicator" style="display: none;">
+                <div class="mint-indicator-wrapper" style="padding: 15px;"><span class="mint-indicator-spin">
+                                <div class="mint-spinner-fading-circle circle-color-9"
+                                        style="width: 32px; height: 32px;">
+                                        <div class="mint-spinner-fading-circle-circle is-circle2"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle3"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle4"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle5"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle6"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle7"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle8"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle9"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle10"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle11"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle12"></div>
+                                        <div class="mint-spinner-fading-circle-circle is-circle13"></div>
+                                </div>
+                        </span><span class="mint-indicator-text" style="display: none;"></span></div>
+                <div id="mask" class="mint-indicator-mask"></div>
+        </div>
+
+        <div id="notify" class="mint-toast is-placemiddle" style="padding: 10px; display: none;">
+                <!----><span id="notifyContent" class="mint-toast-text"
+                        style="padding-top: 0px;">亲，目前仅支持移动用户，敬请期待</span></div>
+
+</body>
+
+</html>

@@ -88,9 +88,12 @@ class MapperRender {
                 if (configItem.type != "select")
                         return "int";
 
-                return configItem.resp.single
-                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
-                        : configItem.resp.doCreate ? `Page<${STR.upperFirstLetter(configItem.resp.type)}>` : `Page<${tableName}>`;
+                if (!configItem.doCreate)
+                        return configItem.resp.single ? tableName : configItem.list
+                                ? `List<${STR.upperFirstLetter(tableName)}>` : `Page<${STR.upperFirstLetter(tableName)}>`
+
+                return configItem.resp.single ? configItem.resp.type : configItem.list
+                        ? `List<${STR.upperFirstLetter(configItem.resp.type)}>` : `Page<${STR.upperFirstLetter(configItem.resp.type)}>`
         }
 }
 

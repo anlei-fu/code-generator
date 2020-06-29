@@ -30,16 +30,18 @@ var submitResult={
 }
 
 
-function main() {
+async function  main() {
+      try{
       let buidler = new HandlerCollectionBuilder();
-      let handlers = buidler.handler("*", "get", result)
-            .handler("*", "post", result)
-            .handler("/getvcode", "post",vcodeResult)
+      let handlers = buidler.handler("/getvcode", "post",vcodeResult)
             .handler("/submit","post",submitResult)
             .build();
 
       let server = new MockServer();
-      server.run(8083, handlers);
+    await  server.run(8083, handlers);
+      }catch(ex){
+            let t=0;
+      }
 }
 
 main();

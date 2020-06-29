@@ -175,6 +175,8 @@ class SpringBootGenerator {
                 this._generateEntity();
 
                 this._configGroup.items.forEach(configItem => {
+
+                        // get detail list use get list req
                         let write=!configItem.id.includes("Detail");
                                     this._generateReq(configItem,write);
                                     
@@ -338,7 +340,7 @@ class SpringBootGenerator {
         _initEntityBasicInfo(configItem, entity, entityType) {
                 entity.description = entity.description || "";
                 if (!entity.type) {
-                        entity.type = STR.upperFirstLetter(configItem.id) + entityType;
+                        entity.type =entity.name? STR.upperFirstLetter(entity.name):STR.upperFirstLetter(configItem.id) + entityType;
                         if (!entity.type.includes(this._configGroup.name)) {
                                 let tableName = STR.upperFirstLetter(this._configGroup.name);
                                 entity.type = STR.replace(entity.type, {
@@ -494,6 +496,10 @@ class SpringBootGenerator {
          * @returns {String}
          */
         _generateParams(configItem) {
+                if(configItem.type=="insert"&&configItem.id.includes("Batch")){
+                   return;
+                }
+
                 if (!configItem.params.doCreate)
                         return;
 

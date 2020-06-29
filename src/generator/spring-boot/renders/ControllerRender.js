@@ -44,18 +44,23 @@ class ControllerRender {
                 return {
                         methodName: configItem.id,
                         httpMapping: this._getHttpAnnotationg(configItem),
-                        returnType: this._getReturnType(configItem, configName),
+                        returnType: this._getControllerReturnType(configItem, configName),
                         serviceArgs: ReqUtils.generateReqArgsWithoutType(configItem),
                         description,
                         args: this._getArgs(configItem),
                         sname: STR.lowerFirstLetter(configName),
-                        serviceReturnType:this._getServiceReturnType(configItem,configName),
-                        failedMsg:this._getErrorMsg(configItem)
+                        serviceReturnType: this._getServiceReturnType(configItem, configName),
+                        resultName: this._getResultName(configItem),
+                        response: this._getResponse(configItem, this._getResultName(configItem))
                 };
         }
 
         /**
          * Get controler item params text
+         * 
+         * note special fiedls
+         * a) session attribute
+         * b) path variable
          * 
          * @private
          * @param {ConfigItem} configItem 
@@ -64,6 +69,7 @@ class ControllerRender {
         _getArgs(configItem) {
                 let args = "";
                 configItem.reqs.forEach(req => {
+                        req.from = req.from || "";
                         if (isJavaBaseType(req.type)) {
                                 if (!req.isList) {
                                         args += `${req.from} ${req.type} ${req.name}, `.trimLeft();
@@ -73,8 +79,7 @@ class ControllerRender {
 
                                 return;
                         }
-
-                        req.from = req.from || "";
+                       
                         if (!req.isList) {
                                 args += `${req.from} @Validated @ModelAttribute ${req.type} ${req.name}, `.trimLeft();
                                 return;
@@ -88,7 +93,8 @@ class ControllerRender {
         }
 
         /**
-         * Get controller ite http mapping annotation text
+         * Get controller ite http mapping annotation 
+         * |GetMapping|PostMapping|DeleteMapping|PutMapping
          * 
          * @private
          * @param {ConfigItem} configItem 
@@ -104,14 +110,14 @@ class ControllerRender {
         }
 
         /**
-         * Get controller item return type text
+         * Get controller item return type R|R<Page<Model>>|R<List<Model>>
          * 
          * @private
          * @param {ConfigItem} configItem 
          * @param {String} configName
          * @returns {String}
          */
-        _getReturnType(configItem, configName) {
+        _getControllerReturnType(configItem, configName) {
                 if (configItem.type != "select")
                         return "R";
 
@@ -120,6 +126,11 @@ class ControllerRender {
                         return configItem.resp.doCreate
                                 ? `R<${STR.upperFirstLetter(configItem.resp.type)}>`
                                 : `R<${configName}>`;
+                } else if (configItem.resp.list) {
+                        return configItem.resp.doCreate
+                                ? `R<List<${STR.upperFirstLetter(configItem.resp.type)}>>`
+                                : `R<List<${configName}>>`;
+
                 } else {
                         return configItem.resp.doCreate
                                 ? `R<PageResult<${STR.upperFirstLetter(configItem.resp.type)}>>`
@@ -127,22 +138,90 @@ class ControllerRender {
                 }
         }
 
-        _getServiceReturnType(configItem,tableName) {
+        /**
+         * Get method return type
+         * 1. select
+         *   a) docreate
+         *     1> single -> resp
+         *     2> list -> list<resp>
+         *     3> page -> page<resp> 
+         *   b) not doCreate   
+         *     1> single -> entity
+         *     2> list -> list<entity>
+         *     3> page -> page<entity> 
+         * 2. other
+         *     batch -> int or boolean
+         * 
+         * @private
+         * @param {ConfigItem} configItem 
+         * @param {String} tableName 
+         * @returns {String}
+         */
+        _getServiceReturnType(configItem, tableName) {
                 if (configItem.type != "select")
                         return ReqUtils.hasBatchReq(configItem) ? "int" : "boolean";
 
-                return configItem.resp.single
-                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
-                        : configItem.resp.doCreate ? `PageResult<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageResult<${tableName}>`;
-        }
-
-        _getErrorMsg(configItem) {
-                if (configItem.type != "select") {
-                        return `"${configItem.type} failed, check data is existed"`;
+                if (configItem.resp.doCreate) {
+                        return configItem.resp.single
+                                ? STR.upperFirstLetter(configItem.resp.type)
+                                : configItem.resp.list ? `List<${STR.upperFirstLetter(configItem.resp.type)}>`
+                                        : `PageResult<${STR.upperFirstLetter(configItem.resp.type)}>`
                 }
 
-                return `"nodata found, check data is existed"`;
+                return configItem.resp.single
+                        ? STR.upperFirstLetter(tableName)
+                        : configItem.resp.list ? `List<${STR.upperFirstLetter(tableName)}>`
+                                : `PageResult<${STR.upperFirstLetter(tableName)}>`
+
         }
+
+        /**
+         * Get result variable name
+         * possible
+         * 'result' in normal condition and 'succeed' in batch condition
+         * 
+         * @private
+         * @param {ConfigItem} configItem 
+         * @returns {String}
+         */
+        _getResultName(configItem) {
+                return ReqUtils.hasBatchReq(configItem) ? "succeed" : "result";
+        }
+
+        /**
+         * Get 'return-part' content
+         * 
+         * @param {ConfigItem} configItem 
+         * @param {String} resultName 
+         * @returns {String}
+         */
+        _getResponse(configItem, resultName) {
+                if (configItem.type == "selete")
+                        return `return responseData(${resultName});`;
+
+                if (ReqUtils.hasBatchReq(configItem))
+                        return this._getBatchExcepted(configItem) + `return responseBatch(${resultName},expected);`;
+
+                return `return responseBoolean(${resultName});`;
+        }
+
+        /**
+         * Get expected succeed row content
+         * 
+         * @private
+         * @param {ConfigItem} configItem 
+         * @returns {String}
+         */
+        _getBatchExcepted(configItem) {
+                if (configItem.type == "update") {
+                        return `int expected = ${ReqUtils.getDoCreateReq(configItem).name}.get${ReqUtils.getBatchReqName(configItem)}();\r\n`;
+                } else if (configItem.type == "insert") {
+                        return `int expected = ${ReqUtils.getDoCreateReq(configItem).name}.size();\r\n`;
+                } else {
+                        return `int expected = ${ReqUtils.getBatchReqName()}.size();\r\n`;
+                }
+        }
+
 }
 
 exports.ControllerRender = ControllerRender

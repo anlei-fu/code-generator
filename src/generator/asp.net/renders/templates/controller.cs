@@ -43,6 +43,7 @@ namespace @project.UserWeb.Controllers
         /// </summary>
         /// <param name="id">主键编号</param>
         /// <returns></returns>
+        [HttpPost]
         public string Item()
         {
             try

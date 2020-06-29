@@ -1,5 +1,6 @@
 const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { ReqUtils } = require("../ReqUtils");
+const {ConfirItemUtils} =require("./../ConfigItemUtils");
 const { STR } = require("../../../libs/str");
 
 const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
@@ -17,9 +18,13 @@ class ServiceImplRender {
                 let content = "";
                 configGroup.items.forEach(x => {
                         let item = this._getMethodConfig(x, configGroup.name);
-                        content += x.type == "select" && !x.resp.single
-                                ? STR.removeEmptyLine(SERVICE_IMPL_PAGE_ITEM_RENDER.renderTemplate(item)) + "\r\n"
-                                : STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
+                          
+                        if(x.type!="select"||(x.type=="select"&&(x.resp.single||x.resp.list))){
+                                content+=STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
+                                return;
+                        }
+
+                        content +=STR.removeEmptyLine(SERVICE_IMPL_PAGE_ITEM_RENDER.renderTemplate(item)) + "\r\n";
                 });
 
                 content = content.trimRight() + "\r\n";
@@ -45,11 +50,11 @@ class ServiceImplRender {
                 return {
                         methodName: configItem.id,
                         args: ReqUtils.generateReqArgsWithType(configItem),
-                        returnType: this._getReturnType(configItem, tableName),
+                        returnType:ConfirItemUtils.getServiceReturnType(configItem, tableName),
                         mapperArgs: configItem.params.doCreate
                                 ? "params" : ReqUtils.generateReqArgsWithoutType(configItem),
 
-                        suffix: configItem.type != "select" ?ReqUtils.hasBatchReq(configItem) ? "" : " > 0" : "",
+                        suffix: configItem.type != "select" ? ReqUtils.hasBatchReq(configItem) ? "" : " > 0" : "",
                         content: !configItem.params.doCreate ? "" : this._renderMethodContent(configItem),
                         sname: STR.lowerFirstLetter(tableName)
                 };
@@ -65,9 +70,8 @@ class ServiceImplRender {
          * @returns {String}
          */
         _renderMethodContent(configItem) {
-
                 let content = "";
-                if (!ReqUtils.hasBatchReq(configItem)) {
+                if (!ReqUtils.hasBatchReq(configItem) || configItem.type == "update") {
                         content = `${configItem.params.type} params = new ${configItem.params.type}(@params);`;
                         content = content.replace("@params", ReqUtils.generateReqArgsWithoutType(configItem));
 
@@ -80,33 +84,17 @@ class ServiceImplRender {
 
                         return content;
                 } else {
-                        let reqTypeAndName=ReqUtils.getCoreReqNameAndType(configItem);
+                        let reqTypeAndName = ReqUtils.getCoreReqNameAndType(configItem);
                         content = `List<${configItem.params.type}> params = new LinkedList<>();\r\n`;
                         content += `        for ( final ${reqTypeAndName.type} item : ${reqTypeAndName.name}) {\r\n                params.add(new ${configItem.params.type}(@params)); \r\n        }`;
-                        content = content.replace("@params", 
-                                                ReqUtils.generateReqArgsWithoutType(configItem).replace(reqTypeAndName.name,"item"));
-                                          
+                        content = content.replace("@params",
+                                ReqUtils.generateReqArgsWithoutType(configItem).replace(reqTypeAndName.name, "item"));
+
                 }
 
                 return content;
         }
 
-        /**
-         * Get service impl item return type text
-         * 
-         * @private
-         * @param {ConfigItem} configItem 
-         * @param {String} tableName
-         * @returns {String} 
-         */
-        _getReturnType(configItem, tableName) {
-                if (configItem.type != "select")
-                        return ReqUtils.hasBatchReq(configItem) ? "int" : "boolean";
-
-                return configItem.resp.single
-                        ? configItem.resp.doCreate ? STR.upperFirstLetter(configItem.resp.type) : tableName
-                        : configItem.resp.doCreate ? `PageResult<${STR.upperFirstLetter(configItem.resp.type)}>` : `PageResult<${tableName}>`;
-        }
 }
 
 exports.ServiceImplRender = ServiceImplRender;
