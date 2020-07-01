@@ -13,10 +13,12 @@ class ColumnMerger {
 
                 let conditions = [];
                 configItem.conditions.forEach(condition => {
-                        conditions.push(this.mergeColumnAndConlumnConfig(configItem.table, condition, configItem.alias));
+                        conditions.push(
+                                this.mergeColumnAndConlumnConfig(configItem.table, condition, configItem.alias)
+                        );
                 });
 
-                // At this time do not support other join table filter
+                // At this time do not support other join table condition filter
                 // configItem.joins.forEach(join => {
                 //         join.conditions.forEach(condition => {
                 //                 conditions.push(this.mergeColumnAndConlumnConfig(join.table, condition, join.alias));
@@ -39,25 +41,32 @@ class ColumnMerger {
                 // merge with column meta info
                 let includes = [];
                 configItem.includes.forEach(include => {
-                        includes.push(this.mergeColumnAndConlumnConfig(configItem.table,
+                        includes.push(
+                                this.mergeColumnAndConlumnConfig(configItem.table,
                                 include,
-                                configItem.alias));
+                                configItem.alias)
+                        );
                 });
 
                 // concat joins includes
                 configItem.joins.forEach(join => {
                         join.includes.forEach(include => {
-                                includes.push(this.mergeColumnAndConlumnConfig(join.table,
+                                includes.push(
+                                        this.mergeColumnAndConlumnConfig(join.table,
                                         include,
-                                        join.table.alias));
+                                        join.table.alias)
+                                );
                         });
                 });
 
                 // set insert not null expression if column nullable
                 if (configItem.type == "insert") {
                         includes.forEach(include => {
-                                if (include.nullable)
+                                if (include.nullable){
                                         include.ifExpression = `${include.name} != null`;
+                                        if(getJavaType(include.type)=="String")
+                                        include.ifExpression+=` and ${include.name} != ''`;
+                                }
                         });
                 }
 
@@ -80,8 +89,6 @@ class ColumnMerger {
          * @param {String} alias of table
          */
         mergeColumnAndConlumnConfig(table, columnConfig, alias) {
-
-                // console.log(columnConfig);
                 columnConfig.name = STR.lowerFirstLetter(columnConfig.name);
 
                 // column not found
@@ -92,10 +99,14 @@ class ColumnMerger {
                 let copy = OBJECT.clone(table.columns[columnConfig.name]);
                 copy.type = getJavaType(copy.type);
                 OBJECT.extend(columnConfig, copy);
+
+                // no alias specified set table name as prefix
                 columnConfig.prefix = alias || NamingStrategy.toHungary(table.name);
 
                 // select-sql-statement output name of column
                 columnConfig.column = `${columnConfig.prefix}.${NamingStrategy.toHungary(columnConfig.name)}`;
+
+                // if field is list and 's' suffix
                 columnConfig.property = columnConfig.isList ? columnConfig.name + "s" : columnConfig.name;
 
                 return columnConfig;

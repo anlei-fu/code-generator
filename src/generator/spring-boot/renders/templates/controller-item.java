@@ -1,8 +1,7 @@
-@ApiOperation("@description")
+    @ApiOperation("@description")
     @httpMapping
     public @returnType @methodName(@args) {
-        @serviceReturnType @resultName =@snameService.@methodName(@serviceArgs);
+        @serviceReturnType @resultName = @snameService.@methodName(@serviceArgs);
         return @response;
     }
 
-    

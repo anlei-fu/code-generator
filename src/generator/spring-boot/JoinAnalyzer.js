@@ -55,23 +55,32 @@ class JoinAnalyzer {
                         relations[targetTable.name].forEach(relation => {
                                 let joinConfig = new JoinConfig();
                                 joinConfig.targetTable = relation.otherTable;
-                                joinConfig.outputColumn =relation.outputColumn||sqlUtils.findNameColumn(tables[relation.otherTable]).name;
+
+                                // if other table output column is not specified 
+                                // use name column as default output column
+                                joinConfig.outputColumn =
+                                        relation.outputColumn || sqlUtils.findNameColumn(tables[relation.otherTable]).name;
 
                                 if (relation.outputAlias) {
-                                        if (TYPE.isFunction(relation.outputAlias)) {
-                                                joinConfig.outputAlias = relation.outputAlias(relation.selfColumn);
-                                        } else {
-                                                joinConfig.outputAlias = relation.outputAlias;
-                                        }
+                                        joinConfig.outputAlias = TYPE.isFunction(relation.outputAlias)
+                                                ? relation.outputAlias(relation.selfColumn)
+                                                : joinConfig.outputAlias = relation.outputAlias;
                                 } else {
-
                                         // analyze alias to avoid name the same
-                                        let analyzeAliasResult = this._analyzeJoinColumnAlias(targetTable.columns, relation.otherTable, joinConfig.outputColumn);
+                                        let analyzeAliasResult = this._analyzeJoinColumnAlias(
+                                                targetTable.columns,
+                                                relation.otherTable,
+                                                joinConfig.outputColumn
+                                        );
+
                                         if (joinConfig.outputColumn != analyzeAliasResult)
                                                 joinConfig.outputAlias = analyzeAliasResult;
                                 }
 
-                                joinConfig.joinCondition = ` t.${NamingStrategy.toHungary(relation.selfColumn)} = @alias.${NamingStrategy.toHungary(relation.otherTableColumn)}`
+                                joinConfig.joinCondition =
+                                        ` t.${NamingStrategy.toHungary(relation.selfColumn)}` +
+                                        ` = @alias.${NamingStrategy.toHungary(relation.otherTableColumn)}`
+
                                 configs.push(joinConfig);
                                 joinColumns.add(relation.selfColumn);
                         });
@@ -80,17 +89,22 @@ class JoinAnalyzer {
                 // analyze join with enum dic
                 Object.keys(targetTable.columns).filter(x => !joinColumns.has(x))
                         .forEach(columnName => {
-                                let enumResult = ENUM_ANALYZER.isEnumField(targetTable.columns[columnName]);
-                                if (!enumResult)
+                                let isEnumField = ENUM_ANALYZER.isEnumField(targetTable.columns[columnName]);
+                                if (!isEnumField)
                                         return;
 
                                 let joinConfig = new JoinConfig();
-                                joinConfig.targetTable = enumResult.table;
-                                joinConfig.outputColumn = enumResult.label;
+                                joinConfig.targetTable = isEnumField.table;
+                                joinConfig.outputColumn = isEnumField.label;
                                 joinConfig.outputAlias = `${columnName}Label`;
+
                                 let enumType = STR.startsWithAny(["need", "should", "can", "support", "is", "has", "allow", "permit"])
                                         ? "booleanFlag" : columnName;
-                                joinConfig.joinCondition = `t.${NamingStrategy.toHungary(columnName)} = @alias.value and @alias.type = '${enumType}'`;
+
+                                joinConfig.joinCondition =
+                                        `t.${NamingStrategy.toHungary(columnName)}` +
+                                        ` = @alias.value and @alias.type = '${enumType}'`;
+
                                 configs.push(joinConfig);
                         })
 
@@ -106,7 +120,9 @@ class JoinAnalyzer {
          */
         renderJoinConfig(joinConfig, alias) {
                 joinConfig.joinCondition = `"${joinConfig.joinCondition.replace(/@alias/g, alias)}"`
-                joinConfig.outputAlias = joinConfig.outputAlias ? `.alias("${joinConfig.outputColumn}","${joinConfig.outputAlias}")` : "";
+                joinConfig.outputAlias = joinConfig.outputAlias
+                        ? `.alias("${joinConfig.outputColumn}","${joinConfig.outputAlias}")` : "";
+
                 joinConfig.outputColumn = `"${joinConfig.outputColumn}"`;
                 joinConfig.alias = `"${alias}"`;
                 return STR.removeEmptyLine(JOIN_RENDER.renderTemplate(joinConfig));
@@ -139,7 +155,8 @@ class JoinAnalyzer {
                         }
                 }
 
-                return shouldWithPrefix ? otherTableName + STR.upperFirstLetter(columnName) : columnName;
+                return shouldWithPrefix
+                        ? otherTableName + STR.upperFirstLetter(columnName) : columnName;
         }
 }
 

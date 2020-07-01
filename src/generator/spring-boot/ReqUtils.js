@@ -80,7 +80,6 @@ class ReqUtils {
                 if (configItem.type == "select" || configItem.type == "delete") {
                         conditions = configItem.context.columnMerger.mergeConditions(configItem);
                 } else if (configItem.type == "insert") {
-
                         // insert case: fields =includes
                         conditions = configItem.context.columnMerger.mergeIncludes(configItem);
                 } else {
@@ -126,7 +125,16 @@ class ReqUtils {
                return this.getBatchReqName(configItem)!=null;
         }
 
+        /**
+         * Get first batch req or req-field except 'select' type
+         * 
+         * @param {ConfigItem} configItem 
+         * @returns {String}
+         */
         getBatchReqName(configItem){
+                if(configItem.type=="select")
+                  return null;
+
                 for (const req of configItem.reqs) {
                         if (req.isList)
                                 return req.name;
@@ -143,12 +151,12 @@ class ReqUtils {
         }
 
         /**
-         * Get main req's 'type' and 'name' properties from config
+         * Get decrete-req's 'type' and 'name' properties from config
          * 
          * @param {ConfigItem} configItem 
          * @returns {CoreReqTypeAndNameResult}
          */
-        getCoreReqNameAndType(configItem) {
+        getDoCreateReqNameAndType(configItem) {
                 for(const req of configItem.reqs){
                         if(req.doCreate){
                               return {
@@ -181,11 +189,9 @@ class ReqUtils {
                                 } else {
                                         item += `${x.type}`
                                 }
-                                item += ` ${x.name}, `;
-                        } else {
-                                item += `${x.name}, `;
-                        }
+                        } 
 
+                        item += `${x.name}, `;
                         params += item;
                 });
 

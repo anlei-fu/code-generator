@@ -145,7 +145,9 @@ const { getJavaType } = require("./utils");
 class SpringBootGenerator {
 
         /**
+         * Contructor of SpringBootGenerator
          * 
+         * @constructor
          * @param {ConfigGroup} configGroup 
          */
         constructor (configGroup) {
@@ -193,7 +195,7 @@ class SpringBootGenerator {
         }
 
         /**
-         * Check config is ok
+         * Check config is ok, must conatain 'name' and 'table' field
          * 
          * @private
          * @param {ConfigGroup} configGroup 
@@ -221,6 +223,7 @@ class SpringBootGenerator {
          */
         _initConfig(configItem) {
 
+                // set sql table alias if configed
                 if (configItem.alias)
                         this._configGroup.table.alias = configItem.alias;
 
@@ -340,7 +343,13 @@ class SpringBootGenerator {
         _initEntityBasicInfo(configItem, entity, entityType) {
                 entity.description = entity.description || "";
                 if (!entity.type) {
-                        entity.type =entity.name? STR.upperFirstLetter(entity.name):STR.upperFirstLetter(configItem.id) + entityType;
+
+                        // set entity type  if absent
+                        entity.type =entity.name
+                        ? STR.upperFirstLetter(entity.name):STR.upperFirstLetter(configItem.id) + entityType;
+
+                        // add table suffix if absent e.g AddReq => AddPersonReq
+                        // to avoid name conflict
                         if (!entity.type.includes(this._configGroup.name)) {
                                 let tableName = STR.upperFirstLetter(this._configGroup.name);
                                 entity.type = STR.replace(entity.type, {
@@ -350,6 +359,7 @@ class SpringBootGenerator {
                                 });
                         }
 
+                        // Detail page use the same req create by page
                         if (entityType == "Req" || entityType == "Params") {
                                 entity.type = entity.type.replace("Detail", "");
                                 let pos = entity.type.indexOf("By");
@@ -457,7 +467,10 @@ class SpringBootGenerator {
                                 entityConfig.name = req.type;
                                 entityConfig.type = "req";
                                 req.fields=entityConfig.fields;
-                                entityConfig.extends = configItem.type == "select" && !configItem.resp.single ? "PageReq" : "";
+
+                                entityConfig.extends = 
+                                configItem.type == "select" && configItem.resp.list ? "PageReq" : "";
+
                                 let content = this._context.render.renderEntity(entityConfig);
 
                                 if(write)
@@ -465,7 +478,6 @@ class SpringBootGenerator {
                         }
                 })
         }
-
 
         /**
          * Generate resp file
@@ -522,7 +534,6 @@ class SpringBootGenerator {
                         });
                 }
 
-
                 //  analyze where field comes from  with source property
                 //  'constructor' -> from base type req
                 //  'req' -> from doCreate-req
@@ -563,7 +574,6 @@ class SpringBootGenerator {
                 this._writeEntity(content, "param", configItem.params.type)
         }
 
-
         /**
          * 
          * @param {String} content  rendered without package
@@ -585,7 +595,7 @@ class SpringBootGenerator {
                         this._context.writer.writeParams(entityName, content);
                 }
 
-                // add into package cache
+                // add into package-render cache
                 this._context.packageRender.addPackage({
                         name: STR.upperFirstLetter(entityName),
                         type: entityType,

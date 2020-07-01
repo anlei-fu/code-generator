@@ -84,7 +84,7 @@ class ServiceImplRender {
 
                         return content;
                 } else {
-                        let reqTypeAndName = ReqUtils.getCoreReqNameAndType(configItem);
+                        let reqTypeAndName = ReqUtils.getDoCreateReqNameAndType(configItem);
                         content = `List<${configItem.params.type}> params = new LinkedList<>();\r\n`;
                         content += `        for ( final ${reqTypeAndName.type} item : ${reqTypeAndName.name}) {\r\n                params.add(new ${configItem.params.type}(@params)); \r\n        }`;
                         content = content.replace("@params",

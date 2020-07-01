@@ -101,15 +101,40 @@ const DEFAULT_VALIDATES = {
                 "status": {
                         matcher: (columnName) => STR.endsWithAny(
                                 columnName.toLowerCase(),
-                                ["type", "status", "state", "class", "level", "style"]
-                        ) && !STR.equalAny(columnName.toLowerCase(), ["status"]),
+                                [
+                                        "type",
+                                        "status",
+                                        "state",
+                                        "class",
+                                        "level",
+                                        "style"
+                                ]
+                        ) && !STR.equalAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "status"
+                                ]
+                        ),
                         generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                 },
                 "boolean": {
                         matcher: columnName => STR.startsWithAny(
                                 columnName.toLowerCase(),
-                                ["is", "need", "permit", "allow", "support", "can", "should"]
-                        ) || STR.equalAny(columnName.toLowerCase(), ["status"]),
+                                [
+                                        "is",
+                                        "need",
+                                        "permit",
+                                        "allow",
+                                        "support",
+                                        "can",
+                                        "should"
+                                ]
+                        ) || STR.equalAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "status"
+                                ]
+                        ),
                         validate: `@Enum("booleanFlag")`,
                 }
         }
@@ -143,9 +168,9 @@ class ValidateAnalyzer extends AnalyzerBase {
 
                         if (!match)
                                 continue;
-                        
-                        if(name.startsWith("need")){
-                                let t=0;
+
+                        if (name.startsWith("need")) {
+                                let t = 0;
                         }
 
                         if (this.validates[type][item].generator) {
@@ -211,9 +236,21 @@ class ExcludesAnalyzer extends ValidateAnalyzer {
 const DEFAULT_EXPRESSIONS = {
         Integer: {
                 range: {
-                        matcher: columnName => STR.endsWithAny(columnName.toLowerCase(),
-                                ["count", "total", "price", "num", "sum",
-                                        "amount", "profit", "discount", "amount", "balance"]),
+                        matcher: columnName => STR.endsWithAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "count",
+                                        "total",
+                                        "price",
+                                        "num",
+                                        "sum",
+                                        "amount",
+                                        "profit",
+                                        "discount",
+                                        "amount",
+                                        "balance"
+                                ]
+                        ),
                         expression: "range"
                 }
         },
@@ -290,7 +327,7 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
 /**
  * Default select ecludes
  */
-const SELECT_EXLUCES = {
+const SELECT_INCLUDES = {
         String: {
                 all: {
                         matcher: columnName => !STR.endsWithAny(columnName.toLowerCase(), ["id", "no"])
@@ -299,29 +336,53 @@ const SELECT_EXLUCES = {
         Integer: {
                 all: {
                         matcher: columnName => !(STR.endsWithAny(columnName.toLowerCase(),
-                                ["id", "no", "type", "status", "state",
-                                        "class", "level", "style"])
-                                || STR.startsWithAny(columnName.toLowerCase(),
-                                        ["is", "need", "permit", "allow",
-                                                "support", "can", "should"]))
+                                [
+                                        "id",
+                                        "no",
+                                        "type",
+                                        "status",
+                                        "state",
+                                        "class",
+                                        "level",
+                                        "style"
+                                ]
+                        ) || STR.startsWithAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "is",
+                                        "need",
+                                        "permit",
+                                        "allow",
+                                        "support",
+                                        "can",
+                                        "should"
+                                ])
+                        )
                 }
         },
         Date: {
                 date: {
-                        matcher: columnName => !STR.startsWithAny(columnName.toLowerCase(), ["create"])
+                        matcher: columnName => !STR.startsWithAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "create"
+                                ]
+                        )
+
                 }
         },
+
         Float: {
                 all: {
-                        matcher: columnName => true
+                        matcher: columnName => false
                 }
         },
+
         Double: {
                 all: {
-                        matcher: columnName => true
+                        matcher: columnName => false
                 }
         }
-
 }
 
 /**
@@ -330,7 +391,7 @@ const SELECT_EXLUCES = {
 class SelectAnalyzer extends ExpresssionAnalyzer {
         constructor () {
                 super();
-                this.excludes = SELECT_EXLUCES;
+                this.includes = SELECT_INCLUDES;
         }
 
         /**
@@ -344,12 +405,12 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
         shouldBeCandidate(type, name) {
 
                 // unknown type
-                if (!this.excludes[type])
+                if (!this.includes[type])
                         return true;
 
-                for (const item in this.excludes[type]) {
-                        let match = this.excludes[type][item].matcher
-                                ? this.excludes[type][item].matcher(name)
+                for (const item in this.includes[type]) {
+                        let match = this.includes[type][item].matcher
+                                ? this.includes[type][item].matcher(name)
                                 : name.toLowerCase().includes(item);
 
                         if (match)
@@ -444,24 +505,31 @@ class InsertAnalyzer extends ExcludesAnalyzer {
 const DEFAULT_UPDATE_EXCLUDES = {
         Date: {
                 update: {
-                        matcher: columnName => Matcher.lowerIncludesAny(columnName, [
-                                "updatetime",
-                                "updatedate",
-                                "createtime",
-                                "createdate",
-                                "editdate",
-                                "editetime",
-                                "modifydate",
-                                "modifytime",
-                                "createuser"])
+                        matcher: columnName => Matcher.lowerIncludesAny(
+                                columnName,
+                                [
+                                        "updatetime",
+                                        "updatedate",
+                                        "createtime",
+                                        "createdate",
+                                        "editdate",
+                                        "editetime",
+                                        "modifydate",
+                                        "modifytime",
+                                        "createuser"
+                                ]
+                        )
                 }
         },
         String: {
                 createUser: {
-                        matcher: columnName => Matcher.lowerIncludesAny(columnName, [
-                                "createuser",
-                                "creator",
-                        ])
+                        matcher: columnName => Matcher.lowerIncludesAny(
+                                columnName,
+                                [
+                                        "createuser",
+                                        "creator",
+                                ]
+                        )
                 }
         }
 }
@@ -506,20 +574,27 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
  */
 const DEFAULT_USER_ADMIN_MATCHERS = {
         insert: {
-                matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
-                        "createuser", "operator", "admin"])
+                matcher: columnName => STR.includesAny(
+                        columnName.toLowerCase(),
+                        [
+                                "createuser", "operator", "admin"
+                        ]
+                )
         },
         delete: {
                 matcher: columnName => false
         },
         update: {
-                matcher: columnName => STR.includesAny(columnName.toLowerCase(), [
-                        "updateuser",
-                        "edituser",
-                        "modifyuser",
-                        "admin",
-                        "operator"
-                ])
+                matcher: columnName => STR.includesAny(
+                        columnName.toLowerCase(),
+                        [
+                                "updateuser",
+                                "edituser",
+                                "modifyuser",
+                                "admin",
+                                "operator"
+                        ]
+                )
         },
         select: {
                 matcher: columnName => false
@@ -529,20 +604,43 @@ const DEFAULT_USER_ADMIN_MATCHERS = {
 // user api 
 const DEFAULT_USER_MATCHER = {
         insert: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "user", "userid", "owner"])
+                matcher: columnName => STR.equalAny(
+                        columnName.toLowerCase(),
+                        [
+                                "user",
+                                "userid",
+                                "owner"
+                        ]
+                )
         },
         delete: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "user", "userid", "owner"])
+                matcher: columnName => STR.equalAny(
+                        columnName.toLowerCase(),
+                        [
+                                "user",
+                                "userid",
+                                "owner"
+                        ]
+                )
         },
         update: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "user", "userid", "owner"])
+                matcher: columnName => STR.equalAny(
+                        columnName.toLowerCase(),
+                        [
+                                "user",
+                                "userid",
+                                "owner"]
+                )
         },
         select: {
-                matcher: columnName => STR.equalAny(columnName.toLowerCase(), [
-                        "user", "userid", "owner"])
+                matcher: columnName => STR.equalAny(
+                        columnName.toLowerCase(),
+                        [
+                                "user",
+                                "userid",
+                                "owner"
+                        ]
+                )
         }
 }
 

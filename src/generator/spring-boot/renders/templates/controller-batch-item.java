@@ -1,7 +1,8 @@
-@ApiOperation("@description")
+    @ApiOperation("@description")
     @httpMapping
     public @returnType @methodName(@args) {
-        int excepted = @excepted;
+        @expected;
         int succeed = @snameService.@methodName(@serviceArgs);
-        return R.responseBatch(excepted,succeed);
+        return @response;
     }
+

@@ -11,7 +11,7 @@
         <%}%> 
          
         <%if(isQuery){%>
-          <%-returnType%> result =service.<%=methodNames%>(
+          <%-returnType%> result =controller.<%=methodNames%>(
           <%args.forEach((arg,i,array)=>{%>
                                 <%if(!arg.isDoCreateReq){%>
                                         <%if(i==array.length-1){%>

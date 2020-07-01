@@ -5,10 +5,24 @@ const { SimpleRender } = require("./../common/renders/SimplePatterRender");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./Analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
 const { UserColumnAnalyzer } = require("./Analyzer");
-const { JoinAnalyzer } = require("./JoinAnalyzer")
+const { JoinAnalyzer } = require("./JoinAnalyzer");
+const {GenerateItemConfig} =require("./GenerateConfig");
 
 const JOIN_ANALYZER = new JoinAnalyzer();
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
+const ADD_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-add.js`);
+const ADD_BACTH_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-add-batch.js`);
+const DELETE_BY_ID_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-delete-by-id.js`);
+const DELETE_BATCH_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-delete-batch.js`);
+const UPDATE_BY_ID_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-update-by-id.js`);
+const UPDATE_BATCH_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-update-batch.js`);
+const GET_BY_ID_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-get-by-id.js`);
+const GET_PAGE_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-get-page.js`);
+const GET_DETAIL_BY_ID_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-get-detail-page.js`);
+const GET_DETAIL_PAGE_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-get-detail-page.js`);
+const GET_ALL_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-get-all.js`);
+const COUNT_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item-count.js`);
+
 const REQ_IDENT = "                                           ";
 const COMMENT_IDENT = "                        ";
 const EXCLUDE_IDENT = "                                                  ";
@@ -52,10 +66,15 @@ class Expressoin {
  * Analyze and render a config template
  */
 class ConfigItemBuilderGenerator {
-        constructor () {
+        /**
+         * 
+         * @param {GenerateItemConfig} config 
+         */
+        constructor (config) {
                 this._selectAnalyzer = new SelectAnalyzer();
                 this._insertAnalyzer = new InsertAnalyzer();
                 this._updateAnalyzer = new UpdateAnlyzer();
+                this._config=config;
         }
 
         /**
@@ -143,7 +162,23 @@ class ConfigItemBuilderGenerator {
 
                 }
 
-                let content = CONFIG_ITEM_RENDER.renderTemplate(generateConfig);
+                let content="";
+                content+=this._renderItem(this._config.add,ADD_RENDER,generateConfig);
+                content+=this._renderItem(this._config.addBatch,ADD_BACTH_RENDER,generateConfig);
+                content+=this._renderItem(this._config.deleteById,DELETE_BY_ID_RENDER,generateConfig);
+                content+=this._renderItem(this._config.deleteBatch,DELETE_BATCH_RENDER,generateConfig);
+                content+=this._renderItem(this._config.updateById,UPDATE_BY_ID_RENDER,generateConfig);
+                content+=this._renderItem(this._config.updateBatch,UPDATE_BATCH_RENDER,generateConfig);
+                content+=this._renderItem(this._config.getById,GET_BY_ID_RENDER,generateConfig);
+                content+=this._renderItem(this._config.getPage,GET_PAGE_RENDER,generateConfig);
+                content+=this._renderItem(this._config.getDetailById,GET_DETAIL_BY_ID_RENDER,generateConfig);
+                content+=this._renderItem(this._config.getDeatailPage,GET_DETAIL_PAGE_RENDER,generateConfig);
+                content+=this._renderItem(this._config.getAll,GET_ALL_RENDER,generateConfig);
+                content+=this._renderItem(this._config.count,COUNT_RENDER,generateConfig);
+
+                generateConfig.content=content;
+
+                content = CONFIG_ITEM_RENDER.renderTemplate(generateConfig);
 
                 // remove useless line startsWith '@@'
                 let lines = STR.splitToLines(content).filter(x => x.trim() != "@@");
@@ -328,6 +363,19 @@ class ConfigItemBuilderGenerator {
                 })
 
                 return output;
+        }
+
+        /**
+         * 
+         * @param {String} item 
+         * @param {SimpleRender} render 
+         * @param {Any} model 
+         */
+        _renderItem(item,render,model){
+              if(!item)
+                return "";
+
+                return render.renderTemplate(model);
         }
 }
 

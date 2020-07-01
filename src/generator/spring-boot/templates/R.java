@@ -1,6 +1,12 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
+ * Generated at 2020-6-30 9:48:55 AM 
+ * All rights reserved by fuanlei(email:767550758@qq.com) since 2019
+ *---------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+ * Jasmine code generator, a tool to build web crud application,with spring-
+ * boot, mybatis, mysql,swagger,spring-security.
  * Generated at 2020-4-18 4:54:16 PM 
  * All rights reserved by fuanlei(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
@@ -34,19 +40,19 @@ public class R<T> {
     }
 
     public  static  R failed(){
-        return create(RConstant.SUCCESSED_CODE, "failed");
+        return create(RConstant.SUCCEED_CODE, "failed");
     }
 
     public  static  R failed(int code){
-        return create(RConstant.SUCCESSED_CODE, "failed");
+        return create(RConstant.SUCCEED_CODE, "failed");
     }
 
     public  static  R failed(String msg){
-        return create(RConstant.SUCCESSED_CODE, "failed");
+        return create(RConstant.SUCCEED_CODE, "failed");
     }
 
     public  static  R failed(int code,String msg){
-        return create(RConstant.SUCCESSED_CODE, "failed");
+        return create(RConstant.SUCCEED_CODE, "failed");
     }
 
     public static R success() {
@@ -54,7 +60,7 @@ public class R<T> {
     }
 
     public static R success(String msg) {
-        return create(RConstant.SUCCESSED_CODE, "Success");
+        return create(RConstant.SUCCEED_CODE, "Success");
     }
 
     public static R create(int code, String msg) {
@@ -73,7 +79,7 @@ public class R<T> {
     }
 
     public static <T> R<T> doResponse(T result, String failedMsg) {
-        return result != null ? new R(RConstant.SUCCESSED_CODE, "Success", result) : create(RConstant.FAILED_CODE, failedMsg);
+        return result != null ? new R(RConstant.SUCCEED_CODE, "Success", result) : create(RConstant.FAILED_CODE, failedMsg);
     }
     
     public  static  R doResponse(int excepted,int actual){
@@ -83,7 +89,7 @@ public class R<T> {
     }
 
     public static class RConstant {
-        public static final int SUCCESSED_CODE = 100;
+        public static final int SUCCEED_CODE = 100;
         public static final int FAILED_CODE = 200;
         public static final int REQUIRED_PARAMETER_NOT_FOUND = 201;
         public static final int PARAMETER_NOT_NULL = 202;

@@ -46,7 +46,7 @@ class MapperRender {
 
                 // param generated
                 if (configItem.params.doCreate) {
-                        if (ReqUtils.hasBatchReq(configItem)) {
+                        if (ReqUtils.hasBatchReq(configItem)&&configItem.type!="update") {
                                 return `@Param("list")  List<${configItem.params.type}> params`
                         } else {
                                 return `${configItem.params.type} param`;
@@ -88,7 +88,7 @@ class MapperRender {
                 if (configItem.type != "select")
                         return "int";
 
-                if (!configItem.doCreate)
+                if (!configItem.resp.doCreate)
                         return configItem.resp.single ? tableName : configItem.list
                                 ? `List<${STR.upperFirstLetter(tableName)}>` : `Page<${STR.upperFirstLetter(tableName)}>`
 

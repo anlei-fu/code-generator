@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(tags = "@description")
 @RestController
-public class @nameController {
+public class @nameController extends ControllerBase {
 
     @Autowired
     private @nameService @snameService;
 
-    @content
+@content
 }

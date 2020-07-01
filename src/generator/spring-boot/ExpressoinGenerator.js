@@ -1,3 +1,6 @@
+const { getJavaType } = require("./utils");
+
+// Use to generate mapper 'if-test' expression and 'sql-expression'
 class ExpressoinGenerator {
         /**
          * Dispatch function 
@@ -30,6 +33,8 @@ class ExpressoinGenerator {
          */
         _generateUpdateExpressionCore(include) {
                 include.ifExpression = `${include.name} != null`;
+                if (getJavaType(include.type) == "String")
+                        include.ifExpression += ` and ${include.name} != ''`;
         }
 
         /**
@@ -43,20 +48,20 @@ class ExpressoinGenerator {
                 // set default if expression, if condition is nullable
                 if (!condition.required)
                         condition.ifExpression = `${condition.name} != null`;
-                
-                if(condition.isList)
-                     condition.ifExpression=`${condition.name}s != null and ${condition.name}s.size() != 0`
+
+                if (condition.isList)
+                        condition.ifExpression = `${condition.name}s != null and ${condition.name}s.size() != 0`
 
                 if (condition.type == "String") {
                         if (condition.nullable)
                                 condition.ifExpression = `${condition.name} != null and ${condition.name} != ''`;
 
                         if (condition.like) {
-                                condition.expression = `@prefix${condition.column} like '%\${${condition.like}}%'\r\n`;
+                                condition.expression = `@prefix${condition.column} like concat('%', #{${condition.like}}, '%')\r\n`;
                         } else if (condition.startWith) {
-                                condition.expression = `@prefix${condition.column} like '\${${condition.like}}%'\r\n`;
+                                condition.expression = `@prefix${condition.column} like concat(#{${condition.like}}, '%')\r\n`;
                         } else if (condition.endWith) {
-                                condition.expression = `@prefix${condition.column} like '%\${${condition.like}}'\r\n`;
+                                condition.expression = `@prefix${condition.column} like concat('%', #{${condition.like}})\r\n`;
                         }
 
                 } else if (condition.type == "Integer" || condition.type == "Float" || condition.type == "Double") {
@@ -77,10 +82,9 @@ class ExpressoinGenerator {
                         condition.expression = `@prefix${condition.column} between #{${condition.name}Start} and #{${condition.name}End}\r\n`;
                 }
 
-                if(condition.required)
-                        condition.ifExpression=null;
+                if (condition.required)
+                        condition.ifExpression = null;
         }
 }
 
-
-exports.ExpressoinGenerator=ExpressoinGenerator
+exports.ExpressoinGenerator = ExpressoinGenerator

@@ -4,6 +4,7 @@ const { STR } = require("../../../libs/str");
 const { isJavaBaseType } = require("../utils");
 
 const CONTROLLER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-item.java`);
+const CONTROLLER_BATCH_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-batch-item.java`);
 const CONTROLLER_RENDER = new SimpleRender({}, `${__dirname}/templates/controller.java`);
 
 const HTTP_MAPPINGS = new Map();
@@ -22,8 +23,14 @@ class ControllerRender {
          * @returns {String}
          */
         renderController(configGroup) {
-                let content = STR.arrayToString1(configGroup.items,
-                        configItem => CONTROLLER_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name)));
+                let content = STR.arrayToString1(
+                        configGroup.items,
+                        configItem => {
+                                return ReqUtils.hasBatchReq(configItem)
+                                ?CONTROLLER_BATCH_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name))
+                                :CONTROLLER_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name))
+                        }
+                );
 
                 content = content.trimRight() + "\r\n";
 
@@ -51,7 +58,8 @@ class ControllerRender {
                         sname: STR.lowerFirstLetter(configName),
                         serviceReturnType: this._getServiceReturnType(configItem, configName),
                         resultName: this._getResultName(configItem),
-                        response: this._getResponse(configItem, this._getResultName(configItem))
+                        response: this._getResponse(configItem, this._getResultName(configItem)),
+                        expected:ReqUtils.hasBatchReq(configItem)?this._getBatchExpected(configItem):""
                 };
         }
 
@@ -196,13 +204,13 @@ class ControllerRender {
          * @returns {String}
          */
         _getResponse(configItem, resultName) {
-                if (configItem.type == "selete")
-                        return `return responseData(${resultName});`;
+                if (configItem.type == "select")
+                        return `responseData(${resultName})`;
 
                 if (ReqUtils.hasBatchReq(configItem))
-                        return this._getBatchExcepted(configItem) + `return responseBatch(${resultName},expected);`;
+                        return `responseBatch(${resultName}, expected)`;
 
-                return `return responseBoolean(${resultName});`;
+                return `responseBoolean(${resultName})`;
         }
 
         /**
@@ -212,13 +220,13 @@ class ControllerRender {
          * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _getBatchExcepted(configItem) {
+        _getBatchExpected(configItem) {
                 if (configItem.type == "update") {
-                        return `int expected = ${ReqUtils.getDoCreateReq(configItem).name}.get${ReqUtils.getBatchReqName(configItem)}();\r\n`;
+                        return `int expected = ${ReqUtils.getDoCreateReq(configItem).name}.get${STR.upperFirstLetter(ReqUtils.getBatchReqName(configItem))}s().size()`;
                 } else if (configItem.type == "insert") {
-                        return `int expected = ${ReqUtils.getDoCreateReq(configItem).name}.size();\r\n`;
+                        return `int expected = ${ReqUtils.getDoCreateReq(configItem).name}.size()`;
                 } else {
-                        return `int expected = ${ReqUtils.getBatchReqName()}.size();\r\n`;
+                        return `int expected = ${ReqUtils.getBatchReqName(configItem)}.size()`;
                 }
         }
 

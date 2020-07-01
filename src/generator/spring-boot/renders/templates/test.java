@@ -2,7 +2,7 @@ package com.@project.service.impl;
 
 @packages
 import com.@project.Application;
-import com.@project.service.@nameService;
+import com.@project.controller.@nameController;
 import com.@project.TestUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class @nameServiceTest {
 
     @Autowired
-    private @nameService service;
+    private @nameController controller;
 
     @Before
     public void before() {
