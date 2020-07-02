@@ -1,5 +1,5 @@
-const { FILE } = require("./../../libs/file");
-const { OBJECT } = require("./../../libs/utils");
+const { FILE } = require("../../libs/file");
+const { OBJECT } = require("../../libs/utils");
 const { GenerateConfigItemBuilder } = require("./GenerateConfig");
 
 class GenerateConfigGenerator {
@@ -14,7 +14,7 @@ class GenerateConfigGenerator {
                                 .build();
                 });
 
-                FILE.write(`./output/${project}/generateConfig.js`, OBJECT.export_(items, items))
+                FILE.write(`./output/${project}/generateConfig.js`, OBJECT.export_(items, "config"))
         }
 }
 

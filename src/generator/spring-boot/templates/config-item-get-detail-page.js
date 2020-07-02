@@ -1,6 +1,6 @@
 
-                         // get detail page
-                         @selectMsg@@
+                        // get detail page
+@selectMsg@@
                          new ConfigItemBuilder()
                          .type("select")
                          .id("getDetailPage")
@@ -15,13 +15,14 @@
                           })
 @joins                                
                          .request(request => {
-                                         request.path("/@sname/detail/list");
+                                         request.path("/@sname/detail/page")
+                                                .description("get @sname page with additional details");;
                         })
                          .req(req => {
                                   req.doCreate()
                                  .excludes("@skey")
 @selectReq
-                                 .name("Get@tnameListReq")
+                                 .name("Get@tnamePageReq")
                          })
 @selectUserReq                   
                          .resp(resp=>{
@@ -30,3 +31,4 @@
                                      .build()
                          })
                          .build(),
+

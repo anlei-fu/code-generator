@@ -149,7 +149,7 @@ class PackegeRender {
                         if (key == "List" && !content.includes("List<"))
                                 return;
 
-                        if (!STR.includesAny(content, [`${key} `,
+                        if (!STR.includesAny(content, [` ${key} `,
                         `${key}\n`,
                         `${key}>`,
                         `${key}(`,

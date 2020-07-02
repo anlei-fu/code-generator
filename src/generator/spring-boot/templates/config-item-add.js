@@ -1,5 +1,5 @@
                         // add
-                        @insertMsg@@
+@insertMsg@@
                         new ConfigItemBuilder()
                                 .type("insert")
                                 .id("add")
@@ -10,7 +10,8 @@
 @insertExcludes
                                 })
                                 .request(request => {
-                                        request.path("/@sname");
+                                        request.path("/@sname")
+                                               .description("add @sname");
                                 })
 @insertUserReq@@
                                 .req(req => {
@@ -19,3 +20,4 @@
 @insertReq
                                 })
                                 .build(),
+

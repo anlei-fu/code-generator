@@ -10,7 +10,9 @@ const IF_IDENT = "            ";
 
 // if
 const IF_RENDER = new SimpleRender({});
-IF_RENDER.setTempalte(`${IF_IDENT}<if test="@ifExpression">\r\n${IF_IDENT}      @content${IF_IDENT}</if>\r\n`);
+IF_RENDER.setTempalte(
+        `${IF_IDENT}<if test="@ifExpression">\r\n${IF_IDENT}      @content${IF_IDENT}</if>\r\n`
+);
 class IfModel {
         constructor () {
                 this.ifExpression = "";
@@ -97,12 +99,16 @@ const BATCH_SUFFIX = '  </foreach>';
 // insert
 const INSERT_RENDER = new SimpleRender({}, `${BASE_PATH}/insert.xml`);
 // use to analyze default time column and auto generate xxtime=current_timestamp
-const INSERT_TIME_MATCHERS = columnName => STR.includesAny(columnName.toLowerCase(), [
-        "createtime",
-        "createdate",
-        "inserttime",
-        "insertdate"
-]);
+const INSERT_TIME_MATCHERS = columnName
+        => STR.includesAny(
+                columnName.toLowerCase(),
+                [
+                        "createtime",
+                        "createdate",
+                        "inserttime",
+                        "insertdate"
+                ]
+        );
 
 // delete
 const DELETE_RENDER = new SimpleRender({}, `${BASE_PATH}/delete.xml`);
@@ -113,14 +119,18 @@ const SELECT_RENDER = new SimpleRender({}, `${BASE_PATH}/select.xml`);
 // update
 const SET_ITEM_IDENT = "            ";
 const UPDATE_RENDER = new SimpleRender({}, `${BASE_PATH}/update.xml`);
-const UPDATE_TIME_MATCHERS = columnName => STR.includesAny(columnName.toLowerCase(), [
-        "updatetime",
-        "updatedate",
-        "editdate",
-        "editetime",
-        "modifydate",
-        "modifytime"
-]);
+const UPDATE_TIME_MATCHERS = columnName
+        => STR.includesAny(
+                columnName.toLowerCase(),
+                [
+                        "updatetime",
+                        "updatedate",
+                        "editdate",
+                        "editetime",
+                        "modifydate",
+                        "modifytime"
+                ]
+        );
 
 // mapper.xml template render
 const MAPPER_CONFIG_RENDER = new SimpleRender({}, `${BASE_PATH}/mapper.xml`);
@@ -134,7 +144,11 @@ class MapperConfigRender {
          * @returns {String}
          */
         renderMapperConfig(configGroup) {
-                let statements = STR.arrayToString1(configGroup.items, configItem => this._renderMapperConfigItem(configItem) + "\r\n");
+                let statements = STR.arrayToString1(
+                        configGroup.items,
+                        configItem => this._renderMapperConfigItem(configItem) + "\r\n"
+                );
+
                 let mapperModel = {
                         statements,
                         tableName: NamingStrategy.toHungary(configGroup.table.name).toLowerCase()
@@ -170,6 +184,7 @@ class MapperConfigRender {
                 let names = "";
                 let values = "";
                 let includes = configItem.context.columnMerger.mergeIncludes(configItem);
+
                 let createTime = this._findCreateTimeColumn(configItem.table);
                 if (createTime) {
                         createTime.column = "1." + NamingStrategy.toHungary(createTime.name).toLowerCase();
@@ -180,7 +195,7 @@ class MapperConfigRender {
 
                 includes.forEach((include, i, array) => {
 
-                        // add 'item.' prefix if is batch
+                        // add 'item.' prefix if is batch field
                         if (isList)
                                 include.property = "item." + include.property;
 
@@ -256,13 +271,17 @@ class MapperConfigRender {
          * @returns {String}
          */
         _renderSelect(configItem) {
-                let joinsSegment = STR.arrayToString1(configItem.joins, join => this._renderJoin(join) + "\r\n");
+                let joinsSegment = STR.arrayToString1(
+                        configItem.joins,
+                        join => this._renderJoin(join) + "\r\n"
+                );
 
                 let outpuColumnsSegment = "";
-                configItem.context.columnMerger.mergeIncludes(configItem).forEach((include, i, array) => {
-                        include.suffix = i == array.length - 1 ? "" : ",";
-                        outpuColumnsSegment += this._renderColumnName(include);
-                });
+                configItem.context.columnMerger.mergeIncludes(configItem)
+                        .forEach((include, i, array) => {
+                                include.suffix = i == array.length - 1 ? "" : ",";
+                                outpuColumnsSegment += this._renderColumnName(include);
+                        });
 
                 let parameterType;
                 if (configItem.params.doCreate) {
@@ -297,11 +316,14 @@ class MapperConfigRender {
 
                 let setColumnsSegment = "";
                 let hasTimeFiled = this._hasUpdateTimeField(configItem.table);
-                configItem.context.columnMerger.mergeIncludes(configItem).forEach((include, i, array) => {
-                        include.prefix = "";
-                        include.suffix = !hasTimeFiled && i == array.length - 1 ? "" : ",";
-                        setColumnsSegment += this._renderAsign(include);
-                });
+
+                configItem.context.columnMerger.mergeIncludes(configItem)
+                        .forEach((include, i, array) => {
+                                include.prefix = "";
+                                include.suffix = !hasTimeFiled && i == array.length - 1 ? "" : ",";
+                                setColumnsSegment += this._renderAsign(include);
+                        });
+
                 setColumnsSegment += this._renderUpdateTime(configItem.table, configItem.alias);
 
                 let parameterType;
@@ -368,12 +390,15 @@ class MapperConfigRender {
                 if (expressionModel.exp == "timeRange") {
                         let out = "";
                         expressionModel.content =
-                                `${expressionModel.prefix} t.${expressionModel.rawName} >= #{${expressionModel.property}Start}\r\n`;
+                                `${expressionModel.prefix} t.${expressionModel.rawName} >= ` +
+                                `#{${expressionModel.property}Start}\r\n`;
+
                         expressionModel.ifExpression = `${expressionModel.property}Start != null`;
                         out = this._renderIf(expressionModel);
 
                         expressionModel.content =
                                 `and t.${expressionModel.rawName} &lt; #{${expressionModel.property}End}\r\n`;
+
                         expressionModel.ifExpression = `${expressionModel.property}End != null`;
                         out += this._renderIf(expressionModel);
                         return out;
@@ -381,12 +406,15 @@ class MapperConfigRender {
                         let out = "";
 
                         expressionModel.content =
-                                `${expressionModel.prefix} t.${expressionModel.rawName} >= #{${expressionModel.property}Min}\r\n`;
+                                `${expressionModel.prefix} t.${expressionModel.rawName} >= `
+                                + `#{${expressionModel.property}Min}\r\n`;
+
                         expressionModel.ifExpression = `${expressionModel.property}Min != null`;
                         out = this._renderIf(expressionModel);
 
                         expressionModel.content =
                                 `and t.${expressionModel.rawName} &lt; #{${expressionModel.property}Max}\r\n`;
+
                         expressionModel.ifExpression = `${expressionModel.property}Max != null`;
                         out += this._renderIf(expressionModel);
                         return out;
@@ -481,14 +509,16 @@ class MapperConfigRender {
          */
         _renderConditions(configItem) {
                 let whereSegment = "";
-                configItem.context.columnMerger.mergeConditions(configItem).forEach((condition, i) => {
-                        condition.prefix = i == 0 ? "" : "and ";
-                        if (condition.isList) {
-                                whereSegment += this._renderIn(condition);
-                        } else {
-                                whereSegment += condition.expression ? this._renderExpression(condition) : this._renderAsign(condition);
-                        }
-                });
+                configItem.context.columnMerger
+                        .mergeConditions(configItem).forEach((condition, i) => {
+                                condition.prefix = i == 0 ? "" : "and ";
+                                if (condition.isList) {
+                                        whereSegment += this._renderIn(condition);
+                                } else {
+                                        whereSegment += condition.expression
+                                                ? this._renderExpression(condition) : this._renderAsign(condition);
+                                }
+                        });
 
                 return this._renderWhere({ content: whereSegment });
         }
@@ -544,7 +574,6 @@ class MapperConfigRender {
                 return this._renderIf(propertyModel);
         }
 
-
         /**
          * Render in segment
          * 
@@ -555,7 +584,6 @@ class MapperConfigRender {
                 inModel.content = INRENDER.renderTemplate(inModel);
                 return this._renderIf(inModel);
         }
-
 }
 
 exports.MapperConfigRender = MapperConfigRender

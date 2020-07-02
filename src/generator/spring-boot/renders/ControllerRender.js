@@ -2,6 +2,7 @@ const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { ReqUtils } = require("../ReqUtils");
 const { STR } = require("../../../libs/str");
 const { isJavaBaseType } = require("../utils");
+const { ConfirItemUtils } = require("./../ConfigItemUtils");
 
 const CONTROLLER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-item.java`);
 const CONTROLLER_BATCH_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-batch-item.java`);
@@ -27,13 +28,12 @@ class ControllerRender {
                         configGroup.items,
                         configItem => {
                                 return ReqUtils.hasBatchReq(configItem)
-                                ?CONTROLLER_BATCH_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name))
-                                :CONTROLLER_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name))
+                                        ? CONTROLLER_BATCH_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name))
+                                        : CONTROLLER_ITEM_RENDER.renderTemplate(this._getRequestMethodConfig(configItem, configGroup.name))
                         }
                 );
 
                 content = content.trimRight() + "\r\n";
-
                 let description = `${configGroup.table.description || configGroup.name}`;
                 return CONTROLLER_RENDER.renderTemplate({ description, content, sname: STR.lowerFirstLetter(configGroup.name) });
         }
@@ -56,10 +56,10 @@ class ControllerRender {
                         description,
                         args: this._getArgs(configItem),
                         sname: STR.lowerFirstLetter(configName),
-                        serviceReturnType: this._getServiceReturnType(configItem, configName),
+                        serviceReturnType: ConfirItemUtils.getServiceReturnType(configItem, configName),
                         resultName: this._getResultName(configItem),
                         response: this._getResponse(configItem, this._getResultName(configItem)),
-                        expected:ReqUtils.hasBatchReq(configItem)?this._getBatchExpected(configItem):""
+                        expected: ReqUtils.hasBatchReq(configItem) ? this._getBatchExpected(configItem) : ""
                 };
         }
 
@@ -83,11 +83,11 @@ class ControllerRender {
                                         args += `${req.from} ${req.type} ${req.name}, `.trimLeft();
                                         return;
                                 }
-                                args += `${req.from} List<${req.type}> ${req.name}, `.trimLeft();
 
+                                args += `${req.from} List<${req.type}> ${req.name}, `.trimLeft();
                                 return;
                         }
-                       
+
                         if (!req.isList) {
                                 args += `${req.from} @Validated @ModelAttribute ${req.type} ${req.name}, `.trimLeft();
                                 return;
@@ -113,7 +113,6 @@ class ControllerRender {
                         throw new Error(`unexceted type(${configItem.type})`);
 
                 let path = configItem.controller.path || `/${this.config.name}/${configItem.id}`;
-
                 return `${HTTP_MAPPINGS.get(configItem.type)}(path = "${path}")`;
         }
 
@@ -147,44 +146,7 @@ class ControllerRender {
         }
 
         /**
-         * Get method return type
-         * 1. select
-         *   a) docreate
-         *     1> single -> resp
-         *     2> list -> list<resp>
-         *     3> page -> page<resp> 
-         *   b) not doCreate   
-         *     1> single -> entity
-         *     2> list -> list<entity>
-         *     3> page -> page<entity> 
-         * 2. other
-         *     batch -> int or boolean
-         * 
-         * @private
-         * @param {ConfigItem} configItem 
-         * @param {String} tableName 
-         * @returns {String}
-         */
-        _getServiceReturnType(configItem, tableName) {
-                if (configItem.type != "select")
-                        return ReqUtils.hasBatchReq(configItem) ? "int" : "boolean";
-
-                if (configItem.resp.doCreate) {
-                        return configItem.resp.single
-                                ? STR.upperFirstLetter(configItem.resp.type)
-                                : configItem.resp.list ? `List<${STR.upperFirstLetter(configItem.resp.type)}>`
-                                        : `PageResult<${STR.upperFirstLetter(configItem.resp.type)}>`
-                }
-
-                return configItem.resp.single
-                        ? STR.upperFirstLetter(tableName)
-                        : configItem.resp.list ? `List<${STR.upperFirstLetter(tableName)}>`
-                                : `PageResult<${STR.upperFirstLetter(tableName)}>`
-
-        }
-
-        /**
-         * Get result variable name
+         * Get '@result' variable name
          * possible
          * 'result' in normal condition and 'succeed' in batch condition
          * 
@@ -197,7 +159,7 @@ class ControllerRender {
         }
 
         /**
-         * Get 'return-part' content
+         * Get '@response' varible
          * 
          * @param {ConfigItem} configItem 
          * @param {String} resultName 
@@ -229,7 +191,6 @@ class ControllerRender {
                         return `int expected = ${ReqUtils.getBatchReqName(configItem)}.size()`;
                 }
         }
-
 }
 
 exports.ControllerRender = ControllerRender

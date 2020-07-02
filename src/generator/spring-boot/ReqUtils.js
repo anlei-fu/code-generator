@@ -62,7 +62,7 @@ class ReqUtils {
          * @param {ReqConfig} req 
          * @returns {[ColumnConfig]}
          */
-        analyzeReqFields(configItem, req) {
+        analyzeDocreateReqFields(configItem, req) {
 
                 // excludes other reqs fields
                 configItem.reqs.forEach(x => {
@@ -185,9 +185,9 @@ class ReqUtils {
 
                                 // batch with list
                                 if (x.isList) {
-                                        item += `List<${x.type}>`
+                                        item += `List<${x.type}> `
                                 } else {
-                                        item += `${x.type}`
+                                        item += `${x.type} `
                                 }
                         } 
 

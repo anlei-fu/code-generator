@@ -6,23 +6,6 @@ exports.@snameConfig = {
         table: all.@sname,
         name: "@name",
                 items: [
-
-
-
-
-
-
-
-                                
-
-
-
-
-
-
-
-
-
-
-                ]
+@content                        
+ ]
 }

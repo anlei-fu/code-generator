@@ -9,7 +9,15 @@
 
 const { SpringBootProjectInitializer } = require("./SpringBootProjectInitializer")
 
-async function main(project, dbConfig,generateDb,generateRelation) {
+async function main() {
+       
+        let config={
+                generateDb:true,
+                generaeStructure:true,
+                generateBuilder:true,
+                project:"deploy",
+                company:"jasmine"
+        }
         let dbConfig={
                 dataSourceConfig:{
                         host: "localhost",
@@ -23,15 +31,8 @@ async function main(project, dbConfig,generateDb,generateRelation) {
 
         }
         let initializer = new SpringBootProjectInitializer();
-        await initializer.init(project, "jasmine",dbConfig);
+        await initializer.init(config,dbConfig);
 }
 
 /*-------------------------------------------------main--------------------------------------------------*/
-main(
-        "deploy",
-        {
-               
-        },
-        true,
-        false
-);
+main();

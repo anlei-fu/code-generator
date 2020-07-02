@@ -13,7 +13,8 @@
                                 })
 @joins
                                 .request(request => {
-                                        request.path("/@sname/detail/{@skey}");
+                                        request.path("/@sname/detail/{@skey}")
+                                               .description("get single @sname with additional details");;
                                 })
                                 .req(req => {
                                         req.name("@skey")
@@ -29,3 +30,4 @@
 @selectUserReq@@         
                                            
                                 .build(),
+

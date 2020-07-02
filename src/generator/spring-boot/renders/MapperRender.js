@@ -14,8 +14,10 @@ class MapperRender {
          * @returns {String}
          */
         renderMapper(configGroup) {
-                let content = STR.arrayToString1(configGroup.items,
-                        config => MAPPER_ITEM_RENDER.renderTemplate(this._getMethodConfig(config, configGroup.name)));
+                let content = STR.arrayToString1(
+                        configGroup.items,
+                        config => MAPPER_ITEM_RENDER.renderTemplate(this._getMethodConfig(config, configGroup.name))
+                );
 
                 return MAPPER_RENDER.renderTemplate({ content });
         }
@@ -46,7 +48,10 @@ class MapperRender {
 
                 // param generated
                 if (configItem.params.doCreate) {
-                        if (ReqUtils.hasBatchReq(configItem)&&configItem.type!="update") {
+                        if (
+                                ReqUtils.hasBatchReq(configItem)
+                                && configItem.type != "update"
+                        ) {
                                 return `@Param("list")  List<${configItem.params.type}> params`
                         } else {
                                 return `${configItem.params.type} param`;
@@ -55,16 +60,18 @@ class MapperRender {
 
                 let mapperParams = "";
                 if (configItem.reqs.length > 1) {
-                        mapperParams = STR.arrayToString1(configItem.reqs, x => {
-                                return x.isList
-                                        ? `@Param("${x.name}s") List<${x.type}> ${x.name}, `
-                                        : `@Param("${x.name}") ${x.type} ${x.name}, `
-                        })
+                        mapperParams = STR.arrayToString1(
+                                configItem.reqs,
+                                req => {
+                                        return req.isList
+                                                ? `@Param("${req.name}s") List<${req.type}> ${req.name}, `
+                                                : `@Param("${req.name}") ${req.type} ${req.name}, `
+                                })
                                 .removeLastComa(mapperParams);
                 } else {
-
                         if (configItem.reqs[0].isList) {
-                                mapperParams = `@Param("list") List<${configItem.reqs[0].type}> ${configItem.reqs[0].name}`;
+                                mapperParams =
+                                        `@Param("list") List<${configItem.reqs[0].type}> ${configItem.reqs[0].name}`;
                         } else {
                                 mapperParams = !isJavaBaseType(configItem.reqs[0].type)
                                         ? `${configItem.reqs[0].type} ${configItem.reqs[0].name}`
@@ -90,10 +97,12 @@ class MapperRender {
 
                 if (!configItem.resp.doCreate)
                         return configItem.resp.single ? tableName : configItem.list
-                                ? `List<${STR.upperFirstLetter(tableName)}>` : `Page<${STR.upperFirstLetter(tableName)}>`
+                                ? `List<${STR.upperFirstLetter(tableName)}>`
+                                : `Page<${STR.upperFirstLetter(tableName)}>`
 
                 return configItem.resp.single ? configItem.resp.type : configItem.list
-                        ? `List<${STR.upperFirstLetter(configItem.resp.type)}>` : `Page<${STR.upperFirstLetter(configItem.resp.type)}>`
+                        ? `List<${STR.upperFirstLetter(configItem.resp.type)}>`
+                        : `Page<${STR.upperFirstLetter(configItem.resp.type)}>`
         }
 }
 

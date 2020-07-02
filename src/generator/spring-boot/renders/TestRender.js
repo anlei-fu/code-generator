@@ -92,9 +92,6 @@ class TestRender {
                 model.methodName = STR.upperFirstLetter(configItem.id);
                 model.returnType = this._getReturnType(configItem, STR.upperFirstLetter(configItem.table.name));
 
-
-
-
                 return this._render.renderContentFromFile("test-item.ejs", model);
         }
 

@@ -11,7 +11,7 @@
         <%}%> 
          
         <%if(isQuery){%>
-          <%-returnType%> result =controller.<%=methodNames%>(
+          R result =controller.<%=methodNames%>(
           <%args.forEach((arg,i,array)=>{%>
                                 <%if(!arg.isDoCreateReq){%>
                                         <%if(i==array.length-1){%>
@@ -28,7 +28,7 @@
                                 <%}%>  
                         <%})%>);
         <%}else{%> 
-                boolean result =service.<%=methodNames%>(
+                R result =controller.<%=methodNames%>(
                         <%args.forEach((arg,i,array)=>{%>
                                 <%if(!arg.isDoCreateReq){%>
                                         <% if(i==array.length-1){%>

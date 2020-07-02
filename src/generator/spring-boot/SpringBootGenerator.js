@@ -178,10 +178,10 @@ class SpringBootGenerator {
 
                 this._configGroup.items.forEach(configItem => {
 
-                        // get detail list use get list req
-                        let write=!configItem.id.includes("Detail");
-                                    this._generateReq(configItem,write);
-                                    
+                        // 'get detail page' use the same req as 'get page req'
+                        let write = !configItem.id.includes("Detail");
+                        this._generateReq(configItem, write);
+
                         this._generateResp(configItem);
                         this._generateParams(configItem);
                 });
@@ -195,7 +195,7 @@ class SpringBootGenerator {
         }
 
         /**
-         * Check config is ok, must conatain 'name' and 'table' field
+         * Check config is ok, must conatain 'name' and 'table' properties
          * 
          * @private
          * @param {ConfigGroup} configGroup 
@@ -223,7 +223,7 @@ class SpringBootGenerator {
          */
         _initConfig(configItem) {
 
-                // set sql table alias if configed
+                // set sql table alias if configed or use default alias table-name
                 if (configItem.alias)
                         this._configGroup.table.alias = configItem.alias;
 
@@ -244,13 +244,13 @@ class SpringBootGenerator {
                         }
                 });
 
-                // determine if generate params on has doCreate req and reqs' length > 1
+                // determine if generate  sql-params on has doCreate req and reqs' length > 1
                 if ((hasDocreateReq && configItem.reqs.length > 1) || configItem.reqs.length > 3) {
                         configItem.params.doCreate = true;
                         this._initEntityBasicInfo(configItem, configItem.params, "Params");
                 }
 
-                // generate controller path and description
+                // set controller default path and description if not configed
                 if (!configItem.noController) {
                         configItem.controller.path = configItem.controller.path || `/${STR.lowerFirstLetter(configItem.name)}/${configItem.id}`;
                         configItem.controller.description = configItem.controller.description || "";
@@ -311,7 +311,7 @@ class SpringBootGenerator {
                                                 ? "And" + STR.upperFirstLetter(condition.name)
                                                 : STR.upperFirstLetter(condition.name);
                                 });
-                                id += configItem.name + "By"
+                                id += configItem.name;
                         } else {
                                 id += configItem.name;
                         }
@@ -345,8 +345,8 @@ class SpringBootGenerator {
                 if (!entity.type) {
 
                         // set entity type  if absent
-                        entity.type =entity.name
-                        ? STR.upperFirstLetter(entity.name):STR.upperFirstLetter(configItem.id) + entityType;
+                        entity.type = entity.name
+                                ? STR.upperFirstLetter(entity.name) : STR.upperFirstLetter(configItem.id) + entityType;
 
                         // add table suffix if absent e.g AddReq => AddPersonReq
                         // to avoid name conflict
@@ -359,7 +359,7 @@ class SpringBootGenerator {
                                 });
                         }
 
-                        // Detail page use the same req create by page
+                        // Detail page use the same req create by pageb config item
                         if (entityType == "Req" || entityType == "Params") {
                                 entity.type = entity.type.replace("Detail", "");
                                 let pos = entity.type.indexOf("By");
@@ -368,7 +368,8 @@ class SpringBootGenerator {
                         }
                 }
 
-                entity.name = entityType == "Req" ? entityType.toLowerCase() : entity.name;
+                entity.name = entityType == "Req"
+                        ? entityType.toLowerCase() : entity.name;
         }
 
         /**
@@ -377,12 +378,12 @@ class SpringBootGenerator {
          * @private
          */
         _generateEntity() {
-                var entityConfig = {};
-                entityConfig.name = this._configGroup.name;
-                entityConfig.type = "entity";
-                entityConfig.description = this._configGroup.table.description;
-                entityConfig.fields = OBJECT.toArray(this._configGroup.table.columns);
-                let content = this._context.render.renderEntity(entityConfig);
+                var entityModel = {};
+                entityModel.name = this._configGroup.name;
+                entityModel.type = "entity";
+                entityModel.description = this._configGroup.table.description;
+                entityModel.fields = OBJECT.toArray(this._configGroup.table.columns);
+                let content = this._context.render.renderEntity(entityModel);
                 this._writeEntity(content, "entity", this._configGroup.name);
         }
 
@@ -445,7 +446,7 @@ class SpringBootGenerator {
          * 
          * @private
          */
-        _generateTest(){
+        _generateTest() {
                 let content = this._context.render.renderTest(this._configGroup);
                 content = this._context.packageRender.renderPackage(content);
                 this._context.writer.writeTest(this._configGroup.name, content);
@@ -458,23 +459,25 @@ class SpringBootGenerator {
          * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        _generateReq(configItem,write) {
+        _generateReq(configItem, write) {
                 configItem.reqs.forEach(req => {
                         if (req.doCreate) {
                                 let entityConfig = {};
-                                entityConfig.fields = ReqUtils.analyzeReqFields(configItem, req);
+                                entityConfig.fields = ReqUtils.analyzeDocreateReqFields(configItem, req);
                                 entityConfig.description = req.description;
                                 entityConfig.name = req.type;
                                 entityConfig.type = "req";
-                                req.fields=entityConfig.fields;
+                                req.fields = entityConfig.fields;
 
-                                entityConfig.extends = 
-                                configItem.type == "select" && configItem.resp.list ? "PageReq" : "";
+                                entityConfig.extends =
+                                        configItem.type == ("select" && !configItem.resp.single && !configItem.resp.list)
+                                                ? "PageReq" : "";
 
                                 let content = this._context.render.renderEntity(entityConfig);
 
-                                if(write)
-                                    this._writeEntity(content, "req", req.type),write;
+                                // avoid write twice such as page and detail page
+                                if (write)
+                                        this._writeEntity(content, "req", req.type), write;
                         }
                 })
         }
@@ -491,10 +494,14 @@ class SpringBootGenerator {
                         let entityConfig = {};
                         entityConfig.type = "resp";
                         entityConfig.description = configItem.resp.description;
-                        entityConfig.fields = configItem.context.columnMerger.mergeIncludes(configItem);
+
+                        entityConfig.fields =
+                                configItem.context.columnMerger.mergeIncludes(configItem);
+
                         configItem.resp.type = configItem.resp.name;
                         entityConfig.name = configItem.resp.type;
-                        configItem.resp.fields=entityConfig.fields;
+                        configItem.resp.fields = entityConfig.fields;
+
                         let content = this._context.render.renderEntity(entityConfig);
                         this._writeEntity(content, "resp", configItem.resp.type);
                 }
@@ -508,8 +515,10 @@ class SpringBootGenerator {
          * @returns {String}
          */
         _generateParams(configItem) {
-                if(configItem.type=="insert"&&configItem.id.includes("Batch")){
-                   return;
+                if (configItem.type == "insert"
+                        && configItem.id.includes("Batch")
+                ) {
+                        return;
                 }
 
                 if (!configItem.params.doCreate)
@@ -518,20 +527,24 @@ class SpringBootGenerator {
                 // get all possible columns
                 let map = new Map();
                 if (configItem.type == "select" || configItem.type == "delete")
-                        configItem.context.columnMerger.mergeConditions(configItem).forEach(condition => {
-                                map.set(condition.name, condition);
-                        });
+                        configItem.context.columnMerger
+                                .mergeConditions(configItem).forEach(condition => {
+                                        map.set(condition.name, condition);
+                                });
                 else if (configItem.type == "update") {
-                        configItem.context.columnMerger.mergeIncludes(configItem).forEach(include => {
-                                map.set(include.name, include);
-                        });
-                        configItem.context.columnMerger.mergeConditions(configItem).forEach(condition => {
-                                map.set(condition.name, condition);
-                        });
+                        configItem.context.columnMerger
+                                .mergeIncludes(configItem).forEach(include => {
+                                        map.set(include.name, include);
+                                });
+                        configItem.context.columnMerger
+                                .mergeConditions(configItem).forEach(condition => {
+                                        map.set(condition.name, condition);
+                                });
                 } else {
-                        configItem.context.columnMerger.mergeIncludes(configItem).forEach(include => {
-                                map.set(include.name, include);
-                        });
+                        configItem.context.columnMerger
+                                .mergeIncludes(configItem).forEach(include => {
+                                        map.set(include.name, include);
+                                });
                 }
 
                 //  analyze where field comes from  with source property
@@ -542,22 +555,20 @@ class SpringBootGenerator {
                 configItem.reqs.forEach(req => {
                         if (!req.doCreate && map.has(req.name)) {
                                 map.get(req.name)["source"] = "constructor";
-
-
                         } else if (req.doCreate) {
-                                req = req;
-                                ReqUtils.analyzeReqFields(configItem, req).forEach(field => {
+                                ReqUtils.analyzeDocreateReqFields(configItem, req)
+                                        .forEach(field => {
 
-                                        docreateReqType = req.type;
-                                        // maybe override source field to other fields
-                                        // such as 'createTime' -> 'createTimeStart' & 'createTimeEnd'
-                                        if (map.has(field.name)) {
-                                                map.get(field.name)["source"] = "req";
-                                        } else {
-                                                map.set(field.name, field);
-                                                field.source = "req";
-                                        }
-                                });
+                                                docreateReqType = req.type;
+                                                // maybe override source field to other fields
+                                                // such as 'createTime' -> 'createTimeStart' & 'createTimeEnd'
+                                                if (map.has(field.name)) {
+                                                        map.get(field.name)["source"] = "req";
+                                                } else {
+                                                        map.set(field.name, field);
+                                                        field.source = "req";
+                                                }
+                                        });
                         }
                 });
 

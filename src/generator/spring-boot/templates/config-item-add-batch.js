@@ -1,5 +1,5 @@
                         // add batch
-                                @insertMsg@@
+@insertMsg@@
                         new ConfigItemBuilder()
                                 .type("insert")
                                 .id("addBatch")
@@ -10,7 +10,8 @@
 @insertExcludes
                                 })
                                 .request(request => {
-                                        request.path("/@sname/batch");
+                                        request.path("/@sname/batch")
+                                                .description("bacth add @sname");
                                 })
 @insertUserReq@@
                                 .req(req => {
@@ -21,6 +22,7 @@
 @insertReq
                                 })
                                 .params(params=>{
-                                        params.name("add@nameParams")
+                                        params.name("add@nameSqlParam")
                                 })
                                 .build(),
+

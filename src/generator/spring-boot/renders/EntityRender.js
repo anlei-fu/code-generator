@@ -9,7 +9,7 @@ VALIDATE_RENDER.setTempalte("    @validate\r\n");
 
 class EntityModel {
         constructor () {
-                this.fields = [];
+                this.fields = [new Field()];
                 this.description = "";
                 this.type = "";
                 this.extends = "";
@@ -56,7 +56,6 @@ class EntityRender {
                 }
 
                 let result = ENTITY_RENDER.renderTemplate(model)
-
                 return result;
         }
 

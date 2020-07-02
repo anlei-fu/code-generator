@@ -11,7 +11,8 @@
                                                   .require("@skey")
                                 })
                                 .request(request => {
-                                        request.path("/@sname/{@skey}");
+                                        request.path("/@sname/{@skey}")
+                                                .description("get single @sname");;
                                 })
                                 .req(req => {
                                         req.name("@skey")
@@ -23,3 +24,4 @@
                                 })
 @selectUserReq@@
                                 .build(),
+

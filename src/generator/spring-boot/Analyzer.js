@@ -44,52 +44,62 @@ class AnalyzerBase {
 const DEFAULT_VALIDATES = {
         String: {
                 "phone": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("phone"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("phone"),
                         validate: "@Phone"
                 },
                 "mobile": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("mobile"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("mobile"),
                         validate: "@Phone"
                 },
                 "telephone": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("tel"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("tel"),
                         validate: "@Telephone"
                 },
                 "idCardNo": {
                         validate: "@IdCardNo"
                 },
                 "email": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("email"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("email"),
                         validate: "@Email"
                 },
                 "pwd": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("pwd"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("pwd"),
                         validate: "@Password"
                 },
                 "password": {
                         validate: "@Password"
                 },
                 "url": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("url"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("url"),
                         validate: "@Url"
                 },
                 "path": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("path"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("path"),
                         validate: "@Path"
                 },
                 "file": {
-                        matcher: (columnName) => columnName.toLowerCase().includes("file"),
+                        matcher: (columnName)
+                                => columnName.toLowerCase().includes("file"),
                         validate: "@Path"
                 },
                 "domain": {
                         validate: "@Url"
                 },
                 "host": {
-                        matcher: (columnName) => columnName.toLowerCase() == "host",
+                        matcher: (columnName)
+                                => columnName.toLowerCase() == "host",
                         validate: "@Url"
                 },
                 "ip": {
-                        matcher: (columnName) => columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
+                        matcher: (columnName)
+                                => columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
                         validate: "@Ip"
                 },
                 "postCode": {
@@ -216,8 +226,8 @@ class ExcludesAnalyzer extends ValidateAnalyzer {
          * @param {any} target 
          * @param {{type:String,items:[String]}} config
          */
-        useExcludes(config) {
-                this._useCore(this.excludes, config)
+        useIncludes(config) {
+                this._useCore(this.includes, config)
         }
 
         /**
@@ -225,8 +235,8 @@ class ExcludesAnalyzer extends ValidateAnalyzer {
          * 
          * @param {{type:String,items:[String]}} config 
          */
-        disableEcludes(config) {
-                this._disableCore(this.excludes, config);
+        disableIncludes(config) {
+                this._disableCore(this.includes, config);
         }
 }
 

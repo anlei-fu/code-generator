@@ -1,5 +1,5 @@
-                        // updateById
-                        @updateMsg@@
+// updateById
+@updateMsg@@
                         new ConfigItemBuilder()
                                 .type("update")
                                 .id("updateBy@updateMethodName")
@@ -15,7 +15,8 @@
                                                   .require("@skey")
                                 })
                                 .request(request => {
-                                        request.path("/@sname/{@skey}");
+                                        request.path("/@sname/{@skey}")
+                                               .description("update single @sname");;
                                 })
                                 .req(req => {
                                         req.name("@skey")
@@ -30,3 +31,4 @@
                                            .name("Update@tnameReq")                                                
                                 })
                                 .build(),
+

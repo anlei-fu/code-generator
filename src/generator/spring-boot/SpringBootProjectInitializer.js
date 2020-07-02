@@ -1,13 +1,24 @@
-const { DIR } = require("../../libs/dir");
+const { DbInfoGenerator } = require("./DbInfoGenerator");
+const { ProjectStructreGenerator } = require("./ProjectStructureGenerator");
+const { GenerateConfigGenerator } = require("./BuilderConfigGenerator");
+
 const { STR } = require("../../libs/str");
 const { FILE } = require("../../libs/file");
-const { resolve } = require("./../common/table-analyze/table-info-resolvers/mysql-table-info-resolver/resolve");
-const { ConfigItemBuilderGenerator } = require("./ConfigItemBuilderGenerator");
+const { ConfigBuilderGenerator } = require("./ConfigBuilderGenerator");
 const { LoggerFactory } = require("../common/logging/logger-factory");
+
+
 const LOG = LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
 const COMPYRIGHT = FILE.read("./templates/copyright.java").replace("@date", new Date().toLocaleString());
 
 class SpringBootProjectInitializer {
+        constructor () {
+                this._dbGenerator = new DbInfoGenerator();
+                this._projectStructureGenerator = new ProjectStructreGenerator();
+                this._builderConfigGenerator = new GenerateConfigGenerator();
+                this._configBuilderGenerator = new ConfigBuilderGenerator();
+        }
+
         /**
          * Initialize a spring boot CRUD web project 
          * 
@@ -17,16 +28,41 @@ class SpringBootProjectInitializer {
          * @param {Boolean} generateDb
          * @param {boolean} generateRelation
          */
-        async  init(project, company, dbConfig,generateConfig) {
+        async  init(config, dbConfig) {
+
+                if (config.generateStructure) {
+                        this._projectStructureGenerator.generate(
+                                config.project,
+                                config.company,
+                                dbConfig.dataSourceConfig
+                        );
+                }
+
+                if (config.generateDb) {
+                        await this._dbGenerator.generate(config.project, dbConfig);
+                }
 
                 // generate all items config
-                let tables = require(`${__dirname}/output/${project}/db/all.js`).all;
-                let relations = require(`${__dirname}/output/${project}/db/relations.js`).relations;
-                let root = `./output/${project}/config`;
-                let generatorItems = Object.keys(generateConfig.items);
+                let tables = require(`${__dirname}/output/${config.project}/db/all.js`).all;
+
+                if (config.generateBuilder) {
+                        this._builderConfigGenerator.generate(tables, config.project);
+                }
+
+                let relations = require(`${__dirname}/output/${config.project}/db/relations.js`).relations;
+                let root = `./output/${config.project}/config`;
+                let builderConfigs = require(`./output/${config.project}/generateConfig.js`).config;
+                let generatorItems = Object.keys(builderConfigs);
                 generatorItems.forEach(item => {
                         let table = tables[item];
-                        this._generateConfigBuilderItem(generateConfig.items,root, table, table.columns[table.primaryColumn], tables, relations);
+                        this._generateConfigBuilderItem(
+                                builderConfigs[item],
+                                root,
+                                table,
+                                table.columns[table.primaryColumn],
+                                tables,
+                                relations
+                        );
                 });
 
                 // create all.js which integrated all config
@@ -34,14 +70,14 @@ class SpringBootProjectInitializer {
                 generatorItems.forEach(x => {
                         allContent += `        require("./${x}.js").${x}Config,\r\n`;
                 });
-                
+
                 FILE.write(`${root}/all.js`,
                         COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
 
-                LOG.info(`project ${project} init finished!`);
+                LOG.info(`project ${config.project} init finished!`);
         }
 
-       
+
 
         /**
          * Generate config item
@@ -53,8 +89,15 @@ class SpringBootProjectInitializer {
          * @param {Tables} tables
          * @param {Relations} relations
          */
-        _generateConfigBuilderItem(config,configRoot, table, pkColumn, tables, relations) {
-                let template = new ConfigItemBuilderGenerator().generate(table, pkColumn, tables, relations);
+        _generateConfigBuilderItem(config, configRoot, table, pkColumn, tables, relations) {
+                let template = this._configBuilderGenerator.generate(
+                        config,
+                        table,
+                        pkColumn,
+                        tables,
+                        relations
+                );
+
                 let replacePatternPairs = {
                         "@name": STR.upperFirstLetter(table.name),
                         "@sname": table.name,

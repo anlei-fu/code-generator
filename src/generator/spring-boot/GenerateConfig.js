@@ -16,18 +16,17 @@ const METHODS = {
 
 class GenerateItemConfig {
         constructor () {
-                this.add = null;
-                this.addBatch = null;
-                this.deleteById = null;
-                this.deleteBatch = null;
-                this.updateById = null;
-                this.updateBatch = null;
-                this.getById = null;
-                this.getPage = null;
-                this.getDetailById = null;
-                this.getDeatailPage = null;
-                this.getAll = null;
-                this.count = null;
+                this.add = false;
+                this.addBatch = false;
+                this.deleteById = false;
+                this.deleteBatch = false;
+                this.updateById = false;
+                this.updateBatch = false;
+                this.getById = false;
+                this.getPage = false;
+                this.getDetailById = false;
+                this.getAll = false;
+                this.count = false;
         }
 }
 
@@ -57,18 +56,18 @@ class GenerateConfigItemBuilder {
          * 
          */
         all() {
-                this._config.add = METHODS.add;
-                this._config.addBatch = METHODS.ADD_BATCH;
-                this._config.deleteById = METHODS.DELETE_BY_ID;
-                this._config.deleteBatch = METHODS.DELETE_BATCH;
-                this._config.updateById = METHODS.UPDATE_BY_ID;
-                this._config.updateBatch = METHODS.UPDATE_BATCH;
-                this._config.getById = METHODS.GET_BY_ID;
-                this._config.getPage = METHODS.GET_PAGE;
-                this._config.getDetailById = METHODS.GET_DETAIL_BY_ID;
-                this._config.getDeatailPage = METHODS.GET_DETAIL_PAGE;
-                this._config.getAll = METHODS.GET_ALL;
-                this._config.count = METHODS.COUNT;
+                this._config.add = true;
+                this._config.addBatch = true;
+                this._config.deleteById = true;
+                this._config.deleteBatch = true;
+                this._config.updateById = true;
+                this._config.updateBatch = true;
+                this._config.getById = true;
+                this._config.getPage = true;
+                this._config.getDetailById = true;
+                this._config.getDetailPage = true;
+                this._config.getAll = true;
+                this._config.count = true;
                 return this;
         }
 
@@ -81,40 +80,40 @@ class GenerateConfigItemBuilder {
 
         except(...items) {
                 items.forEach(item => {
-                        this._config[item] = null;
+                        this._config[item] = false;
                 });
                 return this;
         }
 
         onlyQuery() {
-                this._config.getAll = METHODS.GET_ALL;
-                this._config.getById = METHODS.GET_BY_ID;
-                this._config.getPage = METHODS.GET_PAGE;
-                this._config.getDetailById = METHODS.GET_DETAIL_BY_ID;
-                this._config.getDeatailPage = METHODS.GET_DETAIL_PAGE;
+                this._config.getAll = true;
+                this._config.getById = true;
+                this._config.getPage = true;
+                this._config.getDetailById = true;
+                this._config.getDeatailPage = true;
                 return this;
         }
 
         noDetail() {
-                this._config.getDetailById = null;
-                this._config.getDeatailPage = null;
+                this._config.getDetailById = false;
+                this._config.getDeatailPage = false;
                 return this;
         }
 
         noCount() {
-                this._config.count = null;
+                this._config.count = false;
                 return this;
         }
 
         noBatch() {
-                this._config.addBatch = null;
-                this._config.deleteBatch = null;
-                this._config.updateBatch = null;
+                this._config.addBatch = false;
+                this._config.deleteBatch = false;
+                this._config.updateBatch = false;
                 return this;
         }
 
         noGetAll() {
-                this._config.getAll = null;
+                this._config.getAll = false;
                 return this;
         }
 
@@ -125,4 +124,4 @@ class GenerateConfigItemBuilder {
 }
 
 exports.GenerateItemConfig = GenerateItemConfig;
-exports.GenerateConfigItemBuilder=GenerateConfigItemBuilder;
+exports.GenerateConfigItemBuilder = GenerateConfigItemBuilder;

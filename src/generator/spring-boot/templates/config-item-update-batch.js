@@ -1,4 +1,4 @@
-                                // updateBatch
+// updateBatch
                                 @updateMsg@@
                                 new ConfigItemBuilder()
                                 .type("update")
@@ -15,7 +15,8 @@
                                         .list("@skey");
                                 })
                                 .request(request => {
-                                        request.path("/@sname/updateBatch");
+                                        request.path("/@sname/updateBatch")
+                                               .description("update @sname batch");;
                                  })
 @updateUserReq@@                
                                 .req(req => {
@@ -24,3 +25,4 @@
                                 .name("Update@tnameBatchReq")                                                
                                  })
                                 .build(),
+

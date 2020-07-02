@@ -1,5 +1,5 @@
-                        // getPage
-                        @selectMsg@@
+// getPage
+@selectMsg@@
                         new ConfigItemBuilder()
                                 .type("select")
                                 .id("getPage")
@@ -13,13 +13,15 @@
 @selectExcludes
                                 })
                                 .request(request => {
-                                        request.path("/@sname/list");
+                                        request.path("/@sname/page")
+                                               .description("get @sname page");;
                                 })
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("@skey")
 @selectReq
-                                           .name("Get@tnameListReq")
+                                           .name("Get@tnamePageReq")
                                 })
 @selectUserReq                   
                                 .build(),
+

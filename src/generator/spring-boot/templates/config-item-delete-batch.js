@@ -9,7 +9,8 @@
                                                   .list("@skey")
                                 })
                                 .request(request => {
-                                        request.path("/@sname/deleteBatch");
+                                        request.path("/@sname/deleteBatch")
+                                               .description("bacth delete @sname");;
                                 })
                                 .req(req => {
                                         req.name("@skeys")
@@ -18,3 +19,4 @@
                                 })
 @deleteUserReq@@
                                 .build(),
+
