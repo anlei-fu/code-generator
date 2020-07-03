@@ -44,62 +44,46 @@ class AnalyzerBase {
 const DEFAULT_VALIDATES = {
         String: {
                 "phone": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("phone"),
-                        validate: "@Phone"
-                },
-                "mobile": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("mobile"),
+                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(),["phone","phonenno","mobile","mobileno"]),
                         validate: "@Phone"
                 },
                 "telephone": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("tel"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("tel"),
                         validate: "@Telephone"
                 },
                 "idCardNo": {
                         validate: "@IdCardNo"
                 },
                 "email": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("email"),
+                        matcher: (columnName) => columnName.toLowerCase().includes("email"),
                         validate: "@Email"
                 },
                 "pwd": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("pwd"),
+                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(),["password","pwd"]),
                         validate: "@Password"
                 },
-                "password": {
-                        validate: "@Password"
-                },
+               
                 "url": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("url"),
+                        matcher: (columnName) => columnName.toLowerCase().endsWith("url"),
                         validate: "@Url"
                 },
                 "path": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("path"),
+                        matcher: (columnName)=> columnName.toLowerCase().endsWith("path"),
                         validate: "@Path"
                 },
                 "file": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase().includes("file"),
+                        matcher: (columnName)=> columnName.toLowerCase().endsWith("file"),
                         validate: "@Path"
                 },
                 "domain": {
                         validate: "@Url"
                 },
                 "host": {
-                        matcher: (columnName)
-                                => columnName.toLowerCase() == "host",
+                        matcher: (columnName) => columnName.toLowerCase() == "host",
                         validate: "@Url"
                 },
                 "ip": {
-                        matcher: (columnName)
-                                => columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
+                        matcher: (columnName)=> columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
                         validate: "@Ip"
                 },
                 "postCode": {
@@ -108,6 +92,29 @@ const DEFAULT_VALIDATES = {
         },
 
         Integer: {
+                "boolean": {
+                        matcher: columnName => STR.startsWithAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "is",
+                                        "need",
+                                        "permit",
+                                        "allow",
+                                        "support",
+                                        "can",
+                                        "should",
+                                        "enbale",
+                                        "disable"
+                                ]
+                        ) || STR.equalAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "status",
+                                        "enbalestatus"
+                                ]
+                        ),
+                        validate: `@Enum("booleanFlag")`,
+                },
                 "status": {
                         matcher: (columnName) => STR.endsWithAny(
                                 columnName.toLowerCase(),
@@ -127,26 +134,6 @@ const DEFAULT_VALIDATES = {
                         ),
                         generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
                 },
-                "boolean": {
-                        matcher: columnName => STR.startsWithAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "is",
-                                        "need",
-                                        "permit",
-                                        "allow",
-                                        "support",
-                                        "can",
-                                        "should"
-                                ]
-                        ) || STR.equalAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "status"
-                                ]
-                        ),
-                        validate: `@Enum("booleanFlag")`,
-                }
         }
 }
 
@@ -345,7 +332,8 @@ const SELECT_INCLUDES = {
         },
         Integer: {
                 all: {
-                        matcher: columnName => !(STR.endsWithAny(columnName.toLowerCase(),
+                        matcher: columnName => !(STR.endsWithAny(
+                                columnName.toLowerCase(),
                                 [
                                         "id",
                                         "no",
@@ -587,7 +575,9 @@ const DEFAULT_USER_ADMIN_MATCHERS = {
                 matcher: columnName => STR.includesAny(
                         columnName.toLowerCase(),
                         [
-                                "createuser", "operator", "admin"
+                                "createuser", 
+                                "operator", 
+                                "admin"
                         ]
                 )
         },

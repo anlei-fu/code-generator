@@ -64,8 +64,6 @@ class TestRender {
                         model.fields = [];
                         req.fields.forEach(field => {
                                 let mockValue = this._mockGenerator.getMockData(field.name, field.type);
-                                if (typeof mockValue == "string" && field.type != "Date")
-                                        mockValue = `"${mockValue}"`
 
                                 model.fields.push({
                                         name: STR.upperFirstLetter(field.name),
@@ -105,9 +103,6 @@ class TestRender {
          */
         _getMockValue(name, type) {
                 let mockValue = this._mockGenerator.getMockData(name, type);
-                if (typeof mockValue == "string" && type != "Date")
-                        mockValue = `"${mockValue}"`
-
                 return mockValue;
         }
 

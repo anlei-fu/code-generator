@@ -142,14 +142,14 @@ class PackegeRender {
 
                 PACKAGES.forEach((value, key) => {
 
-                        if(key=="App"&&content.includes("Tests")){
+                        if(key.includes("PageReq")&&content.includes("Service")){
                                 let t=0;
                         }
 
                         if (key == "List" && !content.includes("List<"))
                                 return;
 
-                        if (!STR.includesAny(content, [` ${key} `,
+                        if (!STR.includesAny(content, [`${key} `,
                         `${key}\n`,
                         `${key}>`,
                         `${key}(`,

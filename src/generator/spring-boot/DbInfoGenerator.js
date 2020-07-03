@@ -1,12 +1,12 @@
 const { resolve } = require("./../common/sqls/model/resolver");
 
 class DbInfoGenerator {
-        async generate(project, dbConfig) {
+        async generate(targetFolder, dbConfig) {
                 if (dbConfig.generateDb)
                         await resolve(
                                 dbConfig.dataSourceConfig,
                                 dbConfig.dataSourceConfig.db,
-                                `${__dirname}/output/${project}/db`,
+                                `${targetFolder}/db`,
                                 dbConfig.generateRelation
                         );
         }

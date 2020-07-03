@@ -1,15 +1,15 @@
 const { PackegeRender } = require("./renders/PackageRender");
 const { Writer } = require("./Writer");
 const { ExpressoinGenerator } = require("./ExpressoinGenerator");
-const { ColumnMerger} = require("./ColumnMerger");
+const { ColumnMerger } = require("./ColumnMerger");
 const { render } = require("./renders/Render");
 
 /**
  * Components and global-config container 
  */
 class SpringBootGeneratorContext {
-        constructor (project, company) {
-                this.writer = new Writer(project, company);
+        constructor (project, company, targetFolder) {
+                this.writer = new Writer(project, company, targetFolder);
                 this.packageRender = new PackegeRender(project, company);
                 this.project = project;
                 this.company = company;

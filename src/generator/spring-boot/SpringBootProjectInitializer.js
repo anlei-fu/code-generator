@@ -9,7 +9,7 @@ const { LoggerFactory } = require("../common/logging/logger-factory");
 
 
 const LOG = LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");
-const COMPYRIGHT = FILE.read("./templates/copyright.java").replace("@date", new Date().toLocaleString());
+const COMPYRIGHT = FILE.read(`${__dirname}/templates/copyright.java`).replace("@date", new Date().toLocaleString());
 
 class SpringBootProjectInitializer {
         constructor () {
@@ -43,15 +43,15 @@ class SpringBootProjectInitializer {
                 }
 
                 // generate all items config
-                let tables = require(`${__dirname}/output/${config.project}/db/all.js`).all;
+                let tables = require(`${config.targetFolder}/${config.project}/db/all.js`).all;
 
                 if (config.generateBuilder) {
                         this._builderConfigGenerator.generate(tables, config.project);
                 }
 
-                let relations = require(`${__dirname}/output/${config.project}/db/relations.js`).relations;
-                let root = `./output/${config.project}/config`;
-                let builderConfigs = require(`./output/${config.project}/generateConfig.js`).config;
+                let relations = require(`${config.targetFolder}/${config.project}/db/relations.js`).relations;
+                let root = `${config.targetFolder}/${config.project}/config`;
+                let builderConfigs = require(`${config.targetFolder}/${config.project}/generateConfig.js`).config;
                 let generatorItems = Object.keys(builderConfigs);
                 generatorItems.forEach(item => {
                         let table = tables[item];
@@ -72,7 +72,7 @@ class SpringBootProjectInitializer {
                 });
 
                 FILE.write(`${root}/all.js`,
-                        COMPYRIGHT + FILE.read("./templates/config-all.js").replace("@content", allContent.trimRight()));
+                        COMPYRIGHT + FILE.read(`${__dirname}/templates/config-all.js`).replace("@content", allContent.trimRight()));
 
                 LOG.info(`project ${config.project} init finished!`);
         }

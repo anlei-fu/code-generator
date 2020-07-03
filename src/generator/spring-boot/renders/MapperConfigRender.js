@@ -99,8 +99,7 @@ const BATCH_SUFFIX = '  </foreach>';
 // insert
 const INSERT_RENDER = new SimpleRender({}, `${BASE_PATH}/insert.xml`);
 // use to analyze default time column and auto generate xxtime=current_timestamp
-const INSERT_TIME_MATCHERS = columnName
-        => STR.includesAny(
+const INSERT_TIME_MATCHERS = columnName => STR.includesAny(
                 columnName.toLowerCase(),
                 [
                         "createtime",
@@ -119,8 +118,7 @@ const SELECT_RENDER = new SimpleRender({}, `${BASE_PATH}/select.xml`);
 // update
 const SET_ITEM_IDENT = "            ";
 const UPDATE_RENDER = new SimpleRender({}, `${BASE_PATH}/update.xml`);
-const UPDATE_TIME_MATCHERS = columnName
-        => STR.includesAny(
+const UPDATE_TIME_MATCHERS = columnName => STR.includesAny(
                 columnName.toLowerCase(),
                 [
                         "updatetime",

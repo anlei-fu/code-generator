@@ -50,8 +50,8 @@ function readLines(path, charset, trim, ignoreEmpty) {
  * @param {String?} charset ,Charset name
  * @returns {String}
  */
-function read(path, charset="utf-8") {
-        return fs.readFileSync(path,{ encoding:charset}).toString();
+function read(path, charset = "utf-8") {
+        return fs.readFileSync(path, { encoding: charset }).toString();
 }
 
 /**
@@ -61,7 +61,7 @@ function read(path, charset="utf-8") {
  * @param {String} data ,Data to write 
  * @param {String?} charset, Charset name 
  */
-function write(path, data, charset="utf-8") {
+function write(path, data, charset = "utf-8") {
         fs.writeFileSync(path, data, charset);
         // LOG.info(`write ${path}`);
 }
@@ -73,7 +73,7 @@ function write(path, data, charset="utf-8") {
  * @param {String} data ,Data to append 
  * @param {String?} charset, Charset name 
  */
-function appendLine(path, data, charset="utf-8") {
+function appendLine(path, data, charset = "utf-8") {
         append(path, data + "\r\n", charset);
         LOG.info(`append line ${path}`);
 }
@@ -85,7 +85,7 @@ function appendLine(path, data, charset="utf-8") {
  * @param {String} data  to append
  * @param {String?} charset, Charset name 
  */
-function append(path, data, charset="UTF-8") {
+function append(path, data, charset = "UTF-8") {
         fs.appendFileSync(path, data, charset);
 }
 
@@ -128,6 +128,33 @@ function exists(path) {
 }
 
 /**
+ * Read file text to a json object
+ * 
+ * @param {String} path 
+ * @returns {any}
+ */
+function readJson(path) {
+        return JSON.parse(read(path));
+}
+
+/**
+ * Write object with json format to file
+ * 
+ * @param {String} path 
+ * @param {any} obj 
+ * @param {boolean} beautiful 
+ */
+function writeJson(path, obj, beautiful = false) {
+        let content = "";
+        if (beautiful) {
+                content.JSON.stringify(obj, null, "\t");
+        } else {
+
+        }
+        return write(path, JSON.stringify(obj))
+}
+
+/**
  * Exports
  */
 exports.FILE = {
@@ -138,7 +165,9 @@ exports.FILE = {
         appendLine,
         exists,
         copy,
-        remove
+        remove,
+        readJson,
+        writeJson
 }
 
 

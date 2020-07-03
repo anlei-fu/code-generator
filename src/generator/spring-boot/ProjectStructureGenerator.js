@@ -1,5 +1,5 @@
 class ProjectStructreGenerator {
-        generate(project, company, dataSourceConfig) {
+        generate(project, company,targetFolder, dataSourceConfig) {
                 // create project required folders
                 this._makeFoldersAndCoopyFiles(project, company, dataSourceConfig);
         }
@@ -15,21 +15,21 @@ class ProjectStructreGenerator {
         _makeFoldersAndCoopyFiles(project, company, dbConfig) {
 
                 // base structure
-                DIR.create(`./output/`);
-                DIR.create(`./output/${project}`);
-                DIR.create(`./output/${project}/db`);
-                DIR.create(`./output/${project}/config`);
-                DIR.create(`./output/${project}/${project}`);
+                DIR.create(`${targetFolde}/`);
+                DIR.create(`${targetFolde}/${project}`);
+                DIR.create(`${targetFolde}/${project}/db`);
+                DIR.create(`${targetFolde}/${project}/config`);
+                DIR.create(`${targetFolde}/${project}/${project}`);
 
                 // project folders
-                DIR.create(`./output/${project}/${project}/src`);
-                DIR.create(`./output/${project}/${project}/src`);
-                DIR.create(`./output/${project}/${project}/src/main`);
-                DIR.create(`./output/${project}/${project}/src/main/java`);
-                DIR.create(`./output/${project}/${project}/src/main/java/com`);
-                DIR.create(`./output/${project}/${project}/src/main/java/com/${company}`);
+                DIR.create(`${targetFolde}/${project}/${project}/src`);
+                DIR.create(`${targetFolde}/${project}/${project}/src`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/main`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/main/java`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/main/java/com`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/main/java/com/${company}`);
 
-                let root = `./output/${project}/${project}/src/main/java/com/${company}/${project}`;
+                let root = `${targetFolde}/${project}/${project}/src/main/java/com/${company}/${project}`;
                 DIR.create(root);
                 DIR.create(`${root}/service`);
                 DIR.create(`${root}/pojo`);
@@ -48,73 +48,73 @@ class ProjectStructreGenerator {
                 DIR.create(`${root}/exception`);
 
                 DIR.create(
-                        `./output/${project}/${project}/src/test/java/com/${company}/${project}/service/impl`
+                        `${targetFolde}/${project}/${project}/src/test/java/com/${company}/${project}/service/impl`
                 )
 
                 // resource folder
-                DIR.create(`./output/${project}/${project}/src/main/resources`);
-                DIR.create(`./output/${project}/${project}/src/main/resources/mapper`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/main/resources`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/main/resources/mapper`);
 
                 // test folder
-                DIR.create(`./output/${project}/${project}/src/test`);
-                DIR.create(`./output/${project}/${project}/src/test/java`);
-                DIR.create(`./output/${project}/${project}/src/test/java/com`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/test`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/test/java`);
+                DIR.create(`${targetFolde}/${project}/${project}/src/test/java/com`);
 
-                // this._copy('./templates/dictionary.js', `./output/${project}/db/dictionary.js`);
+                // this._copy('./templates/dictionary.js', `${targetFolde}/${project}/db/dictionary.js`);
 
                 // all default files
                 this._copy(
-                        "./templates/R.java",
+                        `${__dirname}/templates/R.java`,
                         `${root}/pojo/resp/R.java`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/ControllerBase.java",
+                        `${__dirname}/templates/ControllerBase.java`,
                         `${root}/controller/ControllerBase.java`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/PageResult.java",
+                        `${__dirname}/templates/PageResult.java`,
                         `${root}/pojo/resp/PageResult.java`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/WebConfig.java",
+                        `${__dirname}/templates/WebConfig.java`,
                         `${root}/config/WebConfig.java`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/SwaggerConfig.java",
+                        `${__dirname}/templates/SwaggerConfig.java`,
                         `${root}/config/SwaggerConfig.java`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/ValidatorConfig.java",
+                        `${__dirname}/templates/ValidatorConfig.java`,
                         `${root}/config/ValidatorConfig.java`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/logback.xml",
-                        `./output/${project}/${project}/src/main/resources/logback.xml`,
+                        `${__dirname}/templates/logback.xml`,
+                        `${targetFolde}/${project}/${project}/src/main/resources/logback.xml`,
                         project,
                         company
                 );
 
                 // page req
                 this._copy(
-                        "./templates/PageReq.java",
+                        `${__dirname}/templates/PageReq.java`,
                         `${root}/pojo/req/PageReq.java`,
                         project,
                         company
@@ -122,7 +122,7 @@ class ProjectStructreGenerator {
 
                 // page helper util
                 this._copy(
-                        "./templates/PageHelperUtils.java",
+                        `${__dirname}/templates/PageHelperUtils.java`,
                         `${root}/utils/PageHelperUtils.java`,
                         project,
                         company
@@ -130,37 +130,37 @@ class ProjectStructreGenerator {
 
                 // build.gradle
                 this._copy(
-                        "./templates/build.gradle",
-                        `./output/${project}/${project}/build.gradle`,
+                        `${__dirname}/templates/build.gradle`,
+                        `${targetFolde}/${project}/${project}/build.gradle`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/Application.java",
-                        `./output/${project}/${project}/src/main/java/com/${company}/${project}/Application.java`,
+                        `${__dirname}/templates/Application.java`,
+                        `${targetFolde}/${project}/${project}/src/main/java/com/${company}/${project}/Application.java`,
                         project,
                         company
                 );
 
                 // create index.js
                 this._copy1(
-                        "./templates/build.js",
-                        `./output/${project}/build.js`,
+                        `${__dirname}/templates/build.js`,
+                        `${targetFolde}/${project}/build.js`,
                         project,
                         company
                 );
 
                 this._copy(
-                        './templates/packages.js',
-                        `./output/${project}/packages.js`,
+                        `${__dirname}/templates/packages.js`,
+                        `${targetFolde}/${project}/packages.js`,
                         project,
                         company
                 );
 
                 // annotation
                 this._copyFolder(
-                        "./templates/annotation",
+                        `${__dirname}/templates/annotation`,
                         `${root}/validate/annotation`,
                         project,
                         company
@@ -168,15 +168,15 @@ class ProjectStructreGenerator {
 
                 // validator
                 this._copyFolder(
-                        "./templates/validator",
+                        `${__dirname}/templates/validator`,
                         `${root}/validate/validator`,
                         project,
                         company
                 );
 
                 this._copy(
-                        "./templates/TestUtils.java",
-                        `./output/${project}/${project}/src/test/java/com/${company}/${project}/TestUtils.java`,
+                        `${__dirname}/templates/TestUtils.java`,
+                        `${targetFolde}/${project}/${project}/src/test/java/com/${company}/${project}/TestUtils.java`,
                         project,
                         company
                 );
@@ -191,9 +191,9 @@ class ProjectStructreGenerator {
                         "@project": `${company}.${project}`,
                         "@date": new Date().toLocaleString()
                 };
-                let configTemplate = FILE.read("./templates/application.properties");
+                let configTemplate = FILE.read(`${__dirname}/templates/application.properties`);
                 FILE.write(
-                        `./output/${project}/${project}/src/main/resources/application.properties`,
+                        `${targetFolde}/${project}/${project}/src/main/resources/application.properties`,
                         STR.replace(configTemplate, replacePatternPairs)
                 );
         }

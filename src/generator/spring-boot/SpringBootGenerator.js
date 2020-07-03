@@ -470,7 +470,7 @@ class SpringBootGenerator {
                                 req.fields = entityConfig.fields;
 
                                 entityConfig.extends =
-                                        configItem.type == ("select" && !configItem.resp.single && !configItem.resp.list)
+                                        configItem.type == "select" && !configItem.resp.single && !configItem.resp.list
                                                 ? "PageReq" : "";
 
                                 let content = this._context.render.renderEntity(entityConfig);
