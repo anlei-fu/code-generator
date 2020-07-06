@@ -1,0 +1,25 @@
+/*----------------------------------------------------------------------------
+ * Jasmine code generator, a tool to build web crud application,with spring-
+ * boot, mybatis, mysql,swagger,spring-security.
+ * Generated at 2020-6-30 9:48:55 AM 
+ * All rights reserved by fuanlei(email:767550758@qq.com) since 2019
+ *---------------------------------------------------------------------------*/
+const { ConfigGenerator } = require(
+        "libPath/ConfigGenerator"
+);
+
+const { analyzeConfig } = require("./analyzeConfig");
+
+
+function main() {
+        let generator = new ConfigGenerator(analyzeConfig);
+        generator.generate(
+                "targetFolder",
+                "libPath",
+                "project"
+        );
+        console.log("config finished!");
+}
+
+/*-------------------------------------------------run--------------------------------------------------------*/
+main();

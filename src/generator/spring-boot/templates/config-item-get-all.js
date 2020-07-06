@@ -8,23 +8,14 @@
                                         collection.includes(all.@sname.columnsArray)
                                 })
                                 .conditions(collection=>{
-                                        collection.includes(all.@sname.columnsArray)
-                                                  .excludes("@skey")
-@selectExcludes
+                                        collection.includes([])
                                 })
                                 .request(request => {
                                         request.path("/@sname/all")
                                                .description("get all @sname");;
                                 })
-                                .req(req => {
-                                        req.doCreate()
-                                           .excludes("@skey")
-@selectReq
-                                           .name("Get@tnameListReq")
-                                })
-@selectUserReq                   
                                 .resp(resp=>{
-                                        resp.list
+                                        resp.list()
                                 })
                                 .build(),
 

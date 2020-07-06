@@ -1,4 +1,5 @@
 const { getJavaType } = require("./utils");
+const { ColumnConfig } = require("./builders/ColumnConfig");
 
 // Use to generate mapper 'if-test' expression and 'sql-expression'
 class ExpressoinGenerator {
@@ -58,7 +59,7 @@ class ExpressoinGenerator {
 
                         if (condition.like) {
                                 condition.expression = `@prefix${condition.column} like concat('%', #{${condition.like}}, '%')\r\n`;
-                        } else if (condition.startWith) {
+                        } else if (condition.startsWith) {
                                 condition.expression = `@prefix${condition.column} like concat(#{${condition.like}}, '%')\r\n`;
                         } else if (condition.endWith) {
                                 condition.expression = `@prefix${condition.column} like concat('%', #{${condition.like}})\r\n`;

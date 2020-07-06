@@ -115,6 +115,12 @@ class Writer {
                 this._writeCore(`${this._controllerFolder}/${name}Controller.java`, content, name);
         }
 
+        /**
+         * Write test file
+         * 
+         * @param {String} name 
+         * @param {String} content 
+         */
         writeTest(name,content){
                 this._writeCore(`${this._testFolder}/${name}ServiceTest.java`, content, name);
         }

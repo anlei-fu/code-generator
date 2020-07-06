@@ -29,6 +29,14 @@ class RespBuilder {
         }
 
         /**
+         * Set list result
+         */
+        list(){
+                this._list=true;
+                return this;
+        }
+
+        /**
          * Set name of entity 
          * 
          * @param {String} name 
@@ -58,7 +66,8 @@ class RespBuilder {
                         single: this._single,
                         description: this._description || "",
                         name: this._name,
-                        doCreate: this._doCreate
+                        doCreate: this._doCreate,
+                        list:this._list
                 };
         }
 }

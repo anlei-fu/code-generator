@@ -1,5 +1,5 @@
 const { all } = require("./../db/all")
-const { ConfigItemBuilder } = require("./../../../builders/ConfigItemBuilder")
+const { ConfigItemBuilder } = require("@libPath/builders/ConfigItemBuilder")
 
 @tableInfo
 exports.@snameConfig = {

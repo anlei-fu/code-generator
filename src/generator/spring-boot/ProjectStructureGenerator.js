@@ -1,7 +1,12 @@
+const { FILE } = require("../../libs/file");
+const { DIR } = require("../../libs/dir");
+const { STR } = require("../../libs/str");
+
+const COMPYRIGHT = FILE.read(`${__dirname}/templates/copyright.java`).replace("@date", new Date().toLocaleString());
 class ProjectStructreGenerator {
-        generate(project, company,targetFolder, dataSourceConfig) {
+        generate(targetFolder, libPath, project, company, dataSourceConfig) {
                 // create project required folders
-                this._makeFoldersAndCoopyFiles(project, company, dataSourceConfig);
+                this._makeFoldersAndCoopyFiles(targetFolder, libPath, project, company, dataSourceConfig);
         }
 
         /**
@@ -12,24 +17,24 @@ class ProjectStructreGenerator {
         * @param {String} company
         * @param {DbConfig} dbConfig
         */
-        _makeFoldersAndCoopyFiles(project, company, dbConfig) {
+        _makeFoldersAndCoopyFiles(targetFolder, libPath, project, company, dbConfig) {
 
                 // base structure
-                DIR.create(`${targetFolde}/`);
-                DIR.create(`${targetFolde}/${project}`);
-                DIR.create(`${targetFolde}/${project}/db`);
-                DIR.create(`${targetFolde}/${project}/config`);
-                DIR.create(`${targetFolde}/${project}/${project}`);
+                DIR.create(`${targetFolder}/`);
+                DIR.create(`${targetFolder}/${project}`);
+                DIR.create(`${targetFolder}/${project}/db`);
+                DIR.create(`${targetFolder}/${project}/config`);
+                DIR.create(`${targetFolder}/${project}/${project}`);
 
                 // project folders
-                DIR.create(`${targetFolde}/${project}/${project}/src`);
-                DIR.create(`${targetFolde}/${project}/${project}/src`);
-                DIR.create(`${targetFolde}/${project}/${project}/src/main`);
-                DIR.create(`${targetFolde}/${project}/${project}/src/main/java`);
-                DIR.create(`${targetFolde}/${project}/${project}/src/main/java/com`);
-                DIR.create(`${targetFolde}/${project}/${project}/src/main/java/com/${company}`);
+                DIR.create(`${targetFolder}/${project}/${project}/src`);
+                DIR.create(`${targetFolder}/${project}/${project}/src`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/main`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/main/java`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/main/java/com`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/main/java/com/${company}`);
 
-                let root = `${targetFolde}/${project}/${project}/src/main/java/com/${company}/${project}`;
+                let root = `${targetFolder}/${project}/${project}/src/main/java/com/${company}/${project}`;
                 DIR.create(root);
                 DIR.create(`${root}/service`);
                 DIR.create(`${root}/pojo`);
@@ -48,17 +53,17 @@ class ProjectStructreGenerator {
                 DIR.create(`${root}/exception`);
 
                 DIR.create(
-                        `${targetFolde}/${project}/${project}/src/test/java/com/${company}/${project}/service/impl`
-                )
+                        `${targetFolder}/${project}/${project}/src/test/java/com/${company}/${project}/service/impl`
+                );
 
                 // resource folder
-                DIR.create(`${targetFolde}/${project}/${project}/src/main/resources`);
-                DIR.create(`${targetFolde}/${project}/${project}/src/main/resources/mapper`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/main/resources`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/main/resources/mapper`);
 
                 // test folder
-                DIR.create(`${targetFolde}/${project}/${project}/src/test`);
-                DIR.create(`${targetFolde}/${project}/${project}/src/test/java`);
-                DIR.create(`${targetFolde}/${project}/${project}/src/test/java/com`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/test`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/test/java`);
+                DIR.create(`${targetFolder}/${project}/${project}/src/test/java/com`);
 
                 // this._copy('./templates/dictionary.js', `${targetFolde}/${project}/db/dictionary.js`);
 
@@ -107,7 +112,7 @@ class ProjectStructreGenerator {
 
                 this._copy(
                         `${__dirname}/templates/logback.xml`,
-                        `${targetFolde}/${project}/${project}/src/main/resources/logback.xml`,
+                        `${targetFolder}/${project}/${project}/src/main/resources/logback.xml`,
                         project,
                         company
                 );
@@ -131,29 +136,76 @@ class ProjectStructreGenerator {
                 // build.gradle
                 this._copy(
                         `${__dirname}/templates/build.gradle`,
-                        `${targetFolde}/${project}/${project}/build.gradle`,
+                        `${targetFolder}/${project}/${project}/build.gradle`,
                         project,
                         company
                 );
 
                 this._copy(
                         `${__dirname}/templates/Application.java`,
-                        `${targetFolde}/${project}/${project}/src/main/java/com/${company}/${project}/Application.java`,
+                        `${targetFolder}/${project}/${project}/src/main/java/com/${company}/${project}/Application.java`,
                         project,
                         company
                 );
 
-                // create index.js
-                this._copy1(
-                        `${__dirname}/templates/build.js`,
-                        `${targetFolde}/${project}/build.js`,
-                        project,
-                        company
+                // create build.js
+                FILE.write(
+                        `${targetFolder}/${project}/build.js`,
+                        STR.replace(
+                                FILE.read(`${__dirname}/templates/build.js`),
+                                {
+                                        project,
+                                        company,
+                                        libPath
+                                }
+                        )
+                );
+
+
+
+                // create config.js
+                FILE.write(
+                        `${targetFolder}/${project}/config.js`,
+                        STR.replace(
+                                FILE.read(`${__dirname}/templates/config.js`),
+                                {
+                                        targetFolder,
+                                        project,
+                                        company,
+                                        libPath
+                                }
+                        )
+                );
+
+                // create analyzeConfig.js
+                FILE.write(
+                        `${targetFolder}/${project}/analyzeConfig.js`,
+                        STR.replace(
+                                FILE.read(`${__dirname}/templates/analyzeConfig.js`),
+                                {
+                                        project,
+                                        company,
+                                        libPath
+                                }
+                        )
+                );
+
+                // create mockConfig.js
+                FILE.write(
+                        `${targetFolder}/${project}/mockConfig.js`,
+                        STR.replace(
+                                FILE.read(`${__dirname}/templates/mockConfig.js`),
+                                {
+                                        project,
+                                        company,
+                                        libPath
+                                }
+                        )
                 );
 
                 this._copy(
                         `${__dirname}/templates/packages.js`,
-                        `${targetFolde}/${project}/packages.js`,
+                        `${targetFolder}/${project}/packages.js`,
                         project,
                         company
                 );
@@ -176,7 +228,7 @@ class ProjectStructreGenerator {
 
                 this._copy(
                         `${__dirname}/templates/TestUtils.java`,
-                        `${targetFolde}/${project}/${project}/src/test/java/com/${company}/${project}/TestUtils.java`,
+                        `${targetFolder}/${project}/${project}/src/test/java/com/${company}/${project}/TestUtils.java`,
                         project,
                         company
                 );
@@ -193,7 +245,7 @@ class ProjectStructreGenerator {
                 };
                 let configTemplate = FILE.read(`${__dirname}/templates/application.properties`);
                 FILE.write(
-                        `${targetFolde}/${project}/${project}/src/main/resources/application.properties`,
+                        `${targetFolder}/${project}/${project}/src/main/resources/application.properties`,
                         STR.replace(configTemplate, replacePatternPairs)
                 );
         }
@@ -216,6 +268,23 @@ class ProjectStructreGenerator {
                                 company
                         );
                 });
+        }
+
+        /**
+         * Copy file and replace '@project' pattern
+         * 
+         * @private
+         * @param {String} source 
+         * @param {String} target 
+         * @param {String} project 
+         * @param {String} company
+         */
+        _copy(source, target, project, company) {
+                let content = FILE.read(source).replace(/@project/g, `${company}.${project}`);
+                if (source.endsWith(".js") || source.endsWith(".java"))
+                        content = COMPYRIGHT + content;
+
+                FILE.write(target, content);
         }
 
         /**

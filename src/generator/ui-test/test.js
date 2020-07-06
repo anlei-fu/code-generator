@@ -13,10 +13,9 @@ async function test() {
         });
 
         const page = await browser.newPage();
-        await page.goto('http://localhost:8080');
-      await  page.evaluate(()=>{
-               return window.error=(error)=>LOG.error("page",error);
-        })
+        await page.goto('https://movie.douban.com/subject/34845342/');
+
+       let value = await page.$eval(`#info > span:nth-child(16)`,el=> el.innerHTML);
 
         page.click()
 
@@ -27,5 +26,7 @@ async function test() {
                 console.log(e);
         })
 };
+
+
 
 test();

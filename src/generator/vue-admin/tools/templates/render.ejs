@@ -1,0 +1,26 @@
+const { RenderBase } = require("./RenderBase");
+const { <%=name%> } =require("./../builders/<%=name%>Builder");
+
+/**
+ * <%=name%> render
+ */
+class <%=name%>Render extends RenderBase {
+        constructor () {
+            super();
+        }
+
+        /**
+         * Render <%=name%>
+         * 
+         * @param {<%=name%>} model
+         * @returns {String}
+         */
+        render(model){
+                return this._render.renderContentFromFile(
+                        `<%=file%>`,
+                        model
+                )
+        }
+}
+
+exports.<%=name%>Render = <%=name%>Render;

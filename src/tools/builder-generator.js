@@ -26,6 +26,6 @@ exports.builderGenerator =main;
 
 /******************************************main**********************************8888 */
 main(
-        "DataSourceConfig",
-        ["host", "port", "db", "user", "password"]
+        "Select",
+        ["name", "enume", "label"]
 );

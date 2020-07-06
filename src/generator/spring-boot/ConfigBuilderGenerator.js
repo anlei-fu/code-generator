@@ -6,7 +6,8 @@ const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./Analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
 const { UserColumnAnalyzer } = require("./Analyzer");
 const { JoinAnalyzer } = require("./JoinAnalyzer");
-const {GenerateItemConfig} =require("./GenerateConfig");
+const { AnalyzeConfig } = require("./builders/AnalyzerConfig");
+const { GenerateConfig } = require("./builders/GenerateConfig");
 
 const JOIN_ANALYZER = new JoinAnalyzer();
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
@@ -68,24 +69,34 @@ class Expressoin {
 class ConfigBuilderGenerator {
         /**
          * 
-         * @param {GenerateItemConfig} config 
+         * @param {AnalyzeConfig} analyzeConfig 
          */
-        constructor () {
+        constructor (analyzeConfig = {}) {
                 this._selectAnalyzer = new SelectAnalyzer();
                 this._insertAnalyzer = new InsertAnalyzer();
                 this._updateAnalyzer = new UpdateAnlyzer();
+
+                if (analyzeConfig.selectConfig)
+                        this._selectAnalyzer.useIncludes(analyzeConfig.selectConfig);
+
+                if (analyzeConfig.insertConfig)
+                        this._insertAnalyzer.useIncludes(analyzeConfig.insertConfig);
+
+                if (analyzeConfig.updateConfig)
+                        this._updateAnalyzer.useIncludes(analyzeConfig.updateConfig);
         }
 
         /**
          * Generate a config file by table
          * 
+         * @param {GenerateConfig} config
          * @param {Table} table 
          * @param {Column} pkColumn
          * @param {TableRelations} relations
          * @param {Tables} tables
          * @returns {String}
          */
-        generate(config,table, pkColumn, tables, relations) {
+        generate(config, libPath, table, pkColumn, tables, relations) {
 
                 // analyze join config and render
                 let joinConfigs = JOIN_ANALYZER.analyze(relations, table, tables);
@@ -138,6 +149,7 @@ class ConfigBuilderGenerator {
                         keyType,
                         key,
                         skey,
+                        libPath,
                         deleteMethodName,
                         updateMethodName,
                         selectMethodName,
@@ -160,21 +172,21 @@ class ConfigBuilderGenerator {
                         selectMsg: selectConfig.msg.trimRight()
                 }
 
-                let content="";
-                content+=this._renderItem(config.add,ADD_RENDER,generateConfig);
-                content+=this._renderItem(config.addBatch,ADD_BACTH_RENDER,generateConfig);
-                content+=this._renderItem(config.deleteById,DELETE_BY_ID_RENDER,generateConfig);
-                content+=this._renderItem(config.deleteBatch,DELETE_BATCH_RENDER,generateConfig);
-                content+=this._renderItem(config.updateById,UPDATE_BY_ID_RENDER,generateConfig);
-                content+=this._renderItem(config.updateBatch,UPDATE_BATCH_RENDER,generateConfig);
-                content+=this._renderItem(config.getById,GET_BY_ID_RENDER,generateConfig);
-                content+=this._renderItem(config.getPage,GET_PAGE_RENDER,generateConfig);
-                content+=this._renderItem(config.getDetailById,GET_DETAIL_BY_ID_RENDER,generateConfig);
-                content+=this._renderItem(config.getDetailPage,GET_DETAIL_PAGE_RENDER,generateConfig);
-                content+=this._renderItem(config.getAll,GET_ALL_RENDER,generateConfig);
-                content+=this._renderItem(config.count,COUNT_RENDER,generateConfig);
+                let content = "";
+                content += this._renderItem(config.add, ADD_RENDER, generateConfig);
+                content += this._renderItem(config.addBatch, ADD_BACTH_RENDER, generateConfig);
+                content += this._renderItem(config.deleteById, DELETE_BY_ID_RENDER, generateConfig);
+                content += this._renderItem(config.deleteBatch, DELETE_BATCH_RENDER, generateConfig);
+                content += this._renderItem(config.updateById, UPDATE_BY_ID_RENDER, generateConfig);
+                content += this._renderItem(config.updateBatch, UPDATE_BATCH_RENDER, generateConfig);
+                content += this._renderItem(config.getById, GET_BY_ID_RENDER, generateConfig);
+                content += this._renderItem(config.getPage, GET_PAGE_RENDER, generateConfig);
+                content += this._renderItem(config.getDetailById, GET_DETAIL_BY_ID_RENDER, generateConfig);
+                content += this._renderItem(config.getDetailPage, GET_DETAIL_PAGE_RENDER, generateConfig);
+                content += this._renderItem(config.getAll, GET_ALL_RENDER, generateConfig);
+                content += this._renderItem(config.count, COUNT_RENDER, generateConfig);
 
-                generateConfig.content=content;
+                generateConfig.content = content;
 
                 content = CONFIG_ITEM_RENDER.renderTemplate(generateConfig);
 
@@ -369,9 +381,9 @@ class ConfigBuilderGenerator {
          * @param {SimpleRender} render 
          * @param {Any} model 
          */
-        _renderItem(item,render,model){
-              if(!item)
-                return "";
+        _renderItem(item, render, model) {
+                if (!item)
+                        return "";
 
                 return render.renderTemplate(model);
         }

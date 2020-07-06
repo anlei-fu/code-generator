@@ -8,16 +8,18 @@
  */
 
 const { SpringBootProjectInitializer } = require("./SpringBootProjectInitializer");
-const { InitConfigBuilder } = require("./InitConfig");
+const { InitConfigBuilder } = require("./builders/InitConfig");
 
 async function main() {
 
         let builder =new InitConfigBuilder();
         builder.project("deploy")
                .company("jasmine")
+               .targetFolder("D:/test")
                .generateDb()
-               .generateStructue()
-               .generateBuilder()
+               .generateStructure()
+               .generateBuilder(false)
+               .libPath("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot")
                .useDbConfig(db=>{
                        db.generateDb()
                          .generateRelation(false)
@@ -29,42 +31,33 @@ async function main() {
                                 .db("deploy_system")
                          })
                })
-               .useMockConfig(mock=>{
-                          mock.use("Float",item=>{
-                                  item.name("")
-                                      .matcher("")
-                                      .generator(name=>name)
-                          }).use("",item=>{
-
-                          }).use()
-               })
                .useAnalyzeConfig(analyze=>{
 
                });
 
         let config = builder.build();
 
-         config = {
-                generateDb: true,
-                generaeStructure: true,
-                generateBuilder: true,
-                project: "deploy",
-                company: "jasmine"
-        }
-        let dbConfig = {
-                dataSourceConfig: {
-                        host: "localhost",
-                        port: "3306",
-                        db: "deploy_system",
-                        user: "root",
-                        password: "2011801243"
-                },
-                generateDb: true,
-                generateRelation: false
+        //  config = {
+        //         generateDb: true,
+        //         generaeStructure: true,
+        //         generateBuilder: true,
+        //         project: "deploy",
+        //         company: "jasmine"
+        // }
+        // let dbConfig = {
+        //         dataSourceConfig: {
+        //                 host: "localhost",
+        //                 port: "3306",
+        //                 db: "deploy_system",
+        //                 user: "root",
+        //                 password: "2011801243"
+        //         },
+        //         generateDb: true,
+        //         generateRelation: false
 
-        }
+        // }
         let initializer = new SpringBootProjectInitializer();
-        await initializer.init(config, dbConfig);
+        await initializer.init(config);
 }
 
 /*-------------------------------------------------main--------------------------------------------------*/

@@ -1,0 +1,14 @@
+exports.ControlType = {
+	SELECT: 1,
+	RADIO_GROUP: 2,
+	CHECK_BOX: 3,
+	CHECK_BOX_GROUP: 4,
+	INPU_BOX: 5,
+	PLAIN_TEXT: 6,
+	TIME_RANGE: 7,
+	RANGE: 8,
+	PICTURE_VIEW: 9,
+	TABLE: 10,
+	DROP_DOWN: 11
+};
+

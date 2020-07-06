@@ -1,0 +1,64 @@
+<template>
+        <Modal ref="modal" width="<% =width %> " :title="title" @onOk="edit">
+          <el-form ref="editForm" :model="editModel" :rules="rules" label-position="left" label-width="120px">
+          <% fileds.forEach(item=>{%>
+                <el-form-item label="<%=item.label%>" prop="<%=item.field%>">
+                 <% =item.conten%>        
+                </el-form-item>
+          <%}) %> 
+          </el-form>
+        </Modal>
+      </template>
+      <script>
+        export default {
+          props: {
+            data: Object,
+            title: String,
+            mode:{
+              type:String,
+              default:"update",
+              require:true
+            },
+            ids:{
+              type:Array,
+              default:()=>[]
+            },
+            id:{
+              type:String|Number
+            }
+          },
+          created() {
+            this.editModel = this.data;
+          },
+          data() {
+            return {
+              editModel: <%fields%>,
+              rules:<%=validates%>
+            };
+          },
+          watch: {
+            data(val) {
+              this.editModel = val;
+            },
+          },
+          methods: {
+            edit(formName) {
+              this.$refs.editForm.validate(async (valid) => {
+                if (valid) {
+                  this.$refs.modal.close();
+                  let res = this.editModel.id 
+                  ? await this.api.dictionary.update(this.editModel)
+                  : await this.api.dictionary.add(this.editModel);
+      
+                  this.handleNormalResp(res);
+                }
+              });
+            },
+            show() {
+              this.$refs.modal.show();
+            },
+          },
+        };
+      </script>
+   
+      

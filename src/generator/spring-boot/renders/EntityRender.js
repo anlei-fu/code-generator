@@ -1,5 +1,6 @@
 const { STR } = require("../../../libs/str")
 const { SimpleRender } = require("../../common/renders/SimplePatterRender");
+const {Entity} =require("./../builders/Entity");
 
 const ENTITY_FIELD_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-item.java`);
 const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity.java`);
@@ -7,21 +8,14 @@ const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity.java`)
 const VALIDATE_RENDER = new SimpleRender({});
 VALIDATE_RENDER.setTempalte("    @validate\r\n");
 
-class EntityModel {
-        constructor () {
-                this.fields = [new Field()];
-                this.description = "";
-                this.type = "";
-                this.extends = "";
-        }
-}
+
 
 class EntityRender {
 
         /**
          * Render entity template
          * 
-         * @param {EntityModel} entityModel 
+         * @param {Entity} entityModel 
          * @returns {String}
          */
         renderEntity(entityModel) {
@@ -33,7 +27,9 @@ class EntityRender {
                                 ? STR.arrayToString1(field.validates, x => this._renderValidate(x))
                                 : "";
 
+                        // move to out
                         let fieldName=field.alias||field.property||field.name;
+                        
                         let fieldModel = {
                                 name: fieldName,
                                 type: field.isList ? `List<${field.type}>` : field.type,

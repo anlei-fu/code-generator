@@ -2,6 +2,8 @@ const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { isJavaBaseType } = require("../utils");
 const { STR } = require("../../../libs/str");
 const { ReqUtils } = require("../ReqUtils");
+const {ConfigGroup} =require("./../builders/ConfigGroup");
+const {ConfigItem} =require("./../builders/ConfigItem");
 
 const MAPPER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);
 const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`);
@@ -16,7 +18,9 @@ class MapperRender {
         renderMapper(configGroup) {
                 let content = STR.arrayToString1(
                         configGroup.items,
-                        config => MAPPER_ITEM_RENDER.renderTemplate(this._getMethodConfig(config, configGroup.name))
+                        config => MAPPER_ITEM_RENDER.renderTemplate(
+                                this._getMethodConfig(config, configGroup.name)
+                        )
                 );
 
                 return MAPPER_RENDER.renderTemplate({ content });
@@ -45,6 +49,8 @@ class MapperRender {
          * @returns {String}
          */
         _getArgs(configItem) {
+                if(configItem.reqs.length==0)
+                   return "";
 
                 // param generated
                 if (configItem.params.doCreate) {
@@ -96,11 +102,11 @@ class MapperRender {
                         return "int";
 
                 if (!configItem.resp.doCreate)
-                        return configItem.resp.single ? tableName : configItem.list
+                        return configItem.resp.single ? tableName : configItem.resp.list
                                 ? `List<${STR.upperFirstLetter(tableName)}>`
                                 : `Page<${STR.upperFirstLetter(tableName)}>`
 
-                return configItem.resp.single ? configItem.resp.type : configItem.list
+                return configItem.resp.single ? configItem.resp.type : configItem.resp.list
                         ? `List<${STR.upperFirstLetter(configItem.resp.type)}>`
                         : `Page<${STR.upperFirstLetter(configItem.resp.type)}>`
         }

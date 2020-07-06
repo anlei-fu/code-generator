@@ -4,6 +4,8 @@ const { OBJECT } = require("../../../libs/utils");
 const { STR } = require("../../../libs/str");
 const { getJavaType } = require("../utils");
 const { ReqUtils } = require("../ReqUtils");
+const { ConfigGroup } = require("./../builders/ConfigGroup");
+const { ConfigItem } = require("./../builders/ConfigItem");
 
 const BASE_PATH = `${__dirname}/templates`;
 const IF_IDENT = "            ";
@@ -100,14 +102,14 @@ const BATCH_SUFFIX = '  </foreach>';
 const INSERT_RENDER = new SimpleRender({}, `${BASE_PATH}/insert.xml`);
 // use to analyze default time column and auto generate xxtime=current_timestamp
 const INSERT_TIME_MATCHERS = columnName => STR.includesAny(
-                columnName.toLowerCase(),
-                [
-                        "createtime",
-                        "createdate",
-                        "inserttime",
-                        "insertdate"
-                ]
-        );
+        columnName.toLowerCase(),
+        [
+                "createtime",
+                "createdate",
+                "inserttime",
+                "insertdate"
+        ]
+);
 
 // delete
 const DELETE_RENDER = new SimpleRender({}, `${BASE_PATH}/delete.xml`);
@@ -119,16 +121,16 @@ const SELECT_RENDER = new SimpleRender({}, `${BASE_PATH}/select.xml`);
 const SET_ITEM_IDENT = "            ";
 const UPDATE_RENDER = new SimpleRender({}, `${BASE_PATH}/update.xml`);
 const UPDATE_TIME_MATCHERS = columnName => STR.includesAny(
-                columnName.toLowerCase(),
-                [
-                        "updatetime",
-                        "updatedate",
-                        "editdate",
-                        "editetime",
-                        "modifydate",
-                        "modifytime"
-                ]
-        );
+        columnName.toLowerCase(),
+        [
+                "updatetime",
+                "updatedate",
+                "editdate",
+                "editetime",
+                "modifydate",
+                "modifytime"
+        ]
+);
 
 // mapper.xml template render
 const MAPPER_CONFIG_RENDER = new SimpleRender({}, `${BASE_PATH}/mapper.xml`);
@@ -518,7 +520,8 @@ class MapperConfigRender {
                                 }
                         });
 
-                return this._renderWhere({ content: whereSegment });
+
+                return whereSegment == "" ? "" : this._renderWhere({ content: whereSegment });
         }
 
         /**

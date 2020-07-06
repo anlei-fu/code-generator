@@ -2,6 +2,8 @@ const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { ReqUtils } = require("../ReqUtils");
 const { STR } = require("../../../libs/str");
 const { ConfirItemUtils } = require("./../ConfigItemUtils");
+const { ConfigGroup } = require("./../builders/ConfigGroup");
+const { ConfigItem } = require("./../builders/ConfigItem");
 
 const SERVICE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/service-item.java`);
 const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/templates/service.java`);

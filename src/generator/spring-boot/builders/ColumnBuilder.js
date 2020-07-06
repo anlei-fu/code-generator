@@ -24,17 +24,6 @@ exports.ColumnBuilder = class ColumnBuilder {
         }
 
         /**
-         * Set excel column width
-         * 
-         * @param {String|[String]} column 
-         * @param {Number} width 
-         */
-        width(column,width){
-                this._setProperty(column, "width", width);
-                return this;
-        }
-
-        /**
          * Mark column is a list
          * 
          * @param {String|[String]} column 

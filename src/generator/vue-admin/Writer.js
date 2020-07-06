@@ -2,17 +2,9 @@ class Writer{
         writeListPage(){
 
         }
-        
-        writeEdit(){
 
-        }
-
-        writeRouter(){
-
-        }
-
-        writeMain(){
-
+        writeAuplate(){
+                
         }
 
         writeCore(){

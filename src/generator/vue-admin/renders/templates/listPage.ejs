@@ -1,0 +1,70 @@
+<template>
+        <div>
+          <Filters>
+           <%-filters%> 
+        <QueryButton @click="getData(true)" />
+          </Filters>
+          <list-body filter border stripe columnFilter :columns="columns" :datas="data" />
+          <Pager :total="model.total" :current="query.pageIndex" @pi-change="changePageIndex" @ps-change="changePageSize" />
+        </div>
+      </template>
+      
+      <script>
+        export default {
+          data() {
+            return {
+              model: {
+                list: [],
+                total: 0,
+                columns: <%-columns %>
+              },
+      
+              query: <%-query%>,
+              <% if(hasTimeRange){%>
+              timeRange: [this.date.addDays(-30), this.date.now()],
+              <%}%>
+
+              <% if(hasRadioGroup)%{>
+              radioKey: "<%=defaultRadioKey%>",
+              keyword: "",
+              <%}%>
+            };
+          },
+      
+          created() {
+            this.getData();
+          },
+      
+          methods: {
+            changePageSize(newSize) {
+              this.query.pageSize = newSize;
+              this.getData();
+            },
+      
+            changePageIndex(newIndex) {
+              this.query.pageIndex = newIndex;
+              this.getData();
+            },
+      
+            async getData(reset = false) {
+              if (reset) {
+                this.query.pageIndex = 1;
+              }
+      
+              <%if(hasRadioGroup){%>
+              this.resetFields(this.query, null,<%-radioGroupItems%>);
+              this.query[this.radioKey] = this.keyword;
+              <%}%>
+              
+              <%if(timeRange){%>
+                this.query.<%=timeRange.startTime%> = this.timeRange[0];
+                this.query.<%=timeRange.startTime%> = this.timeRange[1];
+              <%}%>
+
+              const res = await this.<%=apiGroup%>.<%=pageMethod%>(this.query);
+              this.handleListResp(res);
+            },
+          },
+        };
+      </script>
+      

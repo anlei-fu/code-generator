@@ -1,14 +1,21 @@
+const {ListPageAnalyzer} =require("./ListPageAnalyzer");
+const {} =require()
 class VueAdminGenerator{
-        generate(configGroup){
-            configGroup.items.forEach(configItem=>{
-                   this.generateQueryPage(configItem);
-                   this.generateEditPage(configItem);
-                   
-            });
+        constructor(){
+           this._listPageAnalyzer= new ListPageAnalyzer();
         }
 
-        generateQueryPage(){
+        generate(configGroup){
+           let listPageItem =this.findListPageItem(configGroup);
+        }
 
+        findListPageItem(configGroup){
+
+        }
+
+        generateQueryPage(configItem){
+               let controls= analyzeControl(configItem.req);
+               let columns =analyzColumn(configItem.resp);
         }
 
         generateEditPage(){

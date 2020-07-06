@@ -3,6 +3,8 @@ const { ReqUtils } = require("../ReqUtils");
 const { STR } = require("../../../libs/str");
 const { isJavaBaseType } = require("../utils");
 const { ConfirItemUtils } = require("./../ConfigItemUtils");
+const {ConfigGroup} =require("./../builders/ConfigGroup");
+const {ConfigItem} =require("./../builders/ConfigItem");
 
 const CONTROLLER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-item.java`);
 const CONTROLLER_BATCH_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-batch-item.java`);
@@ -112,6 +114,7 @@ class ControllerRender {
                 if (!HTTP_MAPPINGS.has(configItem.type))
                         throw new Error(`unexceted type(${configItem.type})`);
 
+                // TODO
                 let path = configItem.controller.path || `/${this.config.name}/${configItem.id}`;
                 return `${HTTP_MAPPINGS.get(configItem.type)}(path = "${path}")`;
         }

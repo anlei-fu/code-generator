@@ -1,5 +1,7 @@
 const { STR } = require("../../libs/str");
 const { UserColumnAnalyzer } = require("./Analyzer");
+const { ConfigItem } = require("./builders/ConfigItem");
+const { Req } = require("./builders/Req");
 
 const USER_ANALYZER = new UserColumnAnalyzer();
 
@@ -31,13 +33,13 @@ class ReqUtils {
          * 
          * @param {ConfigItem} configItem 
          */
-        hasDoCreateReq(configItem){
-              for(const req of configItem.reqs){
-                      if(req.doCreate)
-                        return true;
-              }
+        hasDoCreateReq(configItem) {
+                for (const req of configItem.reqs) {
+                        if (req.doCreate)
+                                return true;
+                }
 
-              return false;
+                return false;
         }
 
         /**
@@ -46,12 +48,12 @@ class ReqUtils {
          * @param {ConfigItem} configItem 
          * @returns {Req}
          */
-        getDoCreateReq(configItem){
-                for(const req of configItem.reqs){
-                        if(req.doCreate)
-                          return req;
+        getDoCreateReq(configItem) {
+                for (const req of configItem.reqs) {
+                        if (req.doCreate)
+                                return req;
                 }
-  
+
                 return null;
         }
 
@@ -59,7 +61,7 @@ class ReqUtils {
          * Generate Req entity fields
          * 
          * @param {ConfigItem} configItem 
-         * @param {ReqConfig} req 
+         * @param {Req} req 
          * @returns {[ColumnConfig]}
          */
         analyzeDocreateReqFields(configItem, req) {
@@ -86,7 +88,7 @@ class ReqUtils {
 
                         // update case: fields = includes + conditions
                         conditions = configItem.context.columnMerger.mergeConditions(configItem)
-                               .concat(configItem.context.columnMerger.mergeIncludes(configItem));
+                                .concat(configItem.context.columnMerger.mergeIncludes(configItem));
                 }
 
                 let result = [];
@@ -102,11 +104,39 @@ class ReqUtils {
                                 // generate additional req fields by expression, and excludes sourece field
                                 let exp = condition.exp;
                                 if (exp == "range") {
-                                        result.push({ name: `${condition.name}Min`, type: condition.type, validates: condition.validates, description: `${condition.description} min` });
-                                        result.push({ name: `${condition.name}Max`, type: condition.type, validates: condition.validates, description: `${condition.description} max` });
+                                        result.push(
+                                                {
+                                                        name: `${condition.name}Min`,
+                                                        type: condition.type,
+                                                        validates: condition.validates,
+                                                        description: `${condition.description} min`
+                                                }
+                                        );
+                                        result.push(
+                                                {
+                                                        name: `${condition.name}Max`,
+                                                        type: condition.type,
+                                                        validates: condition.validates,
+                                                        description: `${condition.description} max`
+                                                }
+                                        );
                                 } else if (exp == "timeRange") {
-                                        result.push({ name: `${condition.name}Start`, type: condition.type, validates: condition.validates, description: `${condition.description} start time` });
-                                        result.push({ name: `${condition.name}End`, type: condition.type, validates: condition.validates, description: `${condition.description} end time` });
+                                        result.push(
+                                                {
+                                                        name: `${condition.name}Start`,
+                                                        type: condition.type,
+                                                        validates: condition.validates,
+                                                        description: `${condition.description} start time`
+                                                }
+                                        );
+                                        result.push(
+                                                {
+                                                        name: `${condition.name}End`,
+                                                        type: condition.type,
+                                                        validates: condition.validates,
+                                                        description: `${condition.description} end time`
+                                                }
+                                        );
                                 } else {
                                         result.push(condition);
                                 }
@@ -122,7 +152,7 @@ class ReqUtils {
          * @returns {Boolean}
          */
         hasBatchReq(configItem) {
-               return this.getBatchReqName(configItem)!=null;
+                return this.getBatchReqName(configItem) != null;
         }
 
         /**
@@ -131,18 +161,18 @@ class ReqUtils {
          * @param {ConfigItem} configItem 
          * @returns {String}
          */
-        getBatchReqName(configItem){
-                if(configItem.type=="select")
-                  return null;
+        getBatchReqName(configItem) {
+                if (configItem.type == "select")
+                        return null;
 
                 for (const req of configItem.reqs) {
                         if (req.isList)
                                 return req.name;
-                        
-                        if(req.doCreate){
-                                for(const item of req.fields){
-                                        if(item.isList)
-                                         return item.name;
+
+                        if (req.doCreate) {
+                                for (const item of req.fields) {
+                                        if (item.isList)
+                                                return item.name;
                                 }
                         }
                 }
@@ -157,12 +187,12 @@ class ReqUtils {
          * @returns {CoreReqTypeAndNameResult}
          */
         getDoCreateReqNameAndType(configItem) {
-                for(const req of configItem.reqs){
-                        if(req.doCreate){
-                              return {
-                                      name:req.name,
-                                      type:req.type
-                              }
+                for (const req of configItem.reqs) {
+                        if (req.doCreate) {
+                                return {
+                                        name: req.name,
+                                        type: req.type
+                                }
                         }
                 }
 
@@ -189,7 +219,7 @@ class ReqUtils {
                                 } else {
                                         item += `${x.type} `
                                 }
-                        } 
+                        }
 
                         item += `${x.name}, `;
                         params += item;

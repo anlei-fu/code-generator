@@ -3,6 +3,9 @@ const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { ReqUtils } = require("./../ReqUtils");
 const { MockGenerator } = require("./../../mock/mock-generator");
 const { STR } = require("./../../../libs/str");
+const { ConfigGroup } = require("./../builders/ConfigGroup");
+const { ConfigItem } = require("./../builders/ConfigItem");
+
 class Field {
         constructor () {
                 this.value = "";

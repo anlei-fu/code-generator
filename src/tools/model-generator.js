@@ -21,13 +21,18 @@ function main(modelName, items, withBuilder = true) {
         if(withBuilder)
            content+=builderGenerator(modelName,items);
 
-        FILE.write(`./output/${modelName}.js`, content);
+        FILE.write(`./../../src/generator/spring-boot/builders/${modelName}.js`, content);
         return content;
 
 }
 
 /******************************************main**********************************8888 */
 main(
-        "AnalyzeConfig",
-        ["seletctConfig","updateConfig","deletConfig"]
+        "ColumnConfig",
+        [
+        "property",
+        "alias",
+        "suffix",
+        "prefix",
+]
 );

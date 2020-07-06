@@ -1,7 +1,9 @@
 const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { ReqUtils } = require("../ReqUtils");
-const {ConfirItemUtils} =require("./../ConfigItemUtils");
+const { ConfirItemUtils } = require("./../ConfigItemUtils");
 const { STR } = require("../../../libs/str");
+const { ConfigGroup } = require("./../builders/ConfigGroup");
+const { ConfigItem } = require("./../builders/ConfigItem");
 
 const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
 const SERVICE_IMPL_PAGE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-page.java`);
@@ -16,15 +18,17 @@ class ServiceImplRender {
          */
         renderServiceImpl(configGroup) {
                 let content = "";
-                configGroup.items.forEach(x => {
-                        let item = this._getMethodConfig(x, configGroup.name);
-                          
-                        if(x.type!="select"||(x.type=="select"&&(x.resp.single||x.resp.list))){
-                                content+=STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
+                configGroup.items.forEach(configItem => {
+                        let item = this._getMethodConfig(configItem, configGroup.name);
+
+                        if (configItem.type != "select" ||
+                                (configItem.type == "select" && (configItem.resp.single || configItem.resp.list))
+                        ) {
+                                content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
                                 return;
                         }
 
-                        content +=STR.removeEmptyLine(SERVICE_IMPL_PAGE_ITEM_RENDER.renderTemplate(item)) + "\r\n";
+                        content += STR.removeEmptyLine(SERVICE_IMPL_PAGE_ITEM_RENDER.renderTemplate(item)) + "\r\n";
                 });
 
                 content = content.trimRight() + "\r\n";
@@ -44,13 +48,14 @@ class ServiceImplRender {
          * 
          * @private
          * @param {ConfigItem} configItem 
+         * @param {String} tableName
          * @returns {String}
          */
         _getMethodConfig(configItem, tableName) {
                 return {
                         methodName: configItem.id,
                         args: ReqUtils.generateReqArgsWithType(configItem),
-                        returnType:ConfirItemUtils.getServiceReturnType(configItem, tableName),
+                        returnType: ConfirItemUtils.getServiceReturnType(configItem, tableName),
                         mapperArgs: configItem.params.doCreate
                                 ? "params" : ReqUtils.generateReqArgsWithoutType(configItem),
 
@@ -73,7 +78,10 @@ class ServiceImplRender {
                 let content = "";
                 if (!ReqUtils.hasBatchReq(configItem) || configItem.type == "update") {
                         content = `${configItem.params.type} params = new ${configItem.params.type}(@params);`;
-                        content = content.replace("@params", ReqUtils.generateReqArgsWithoutType(configItem));
+                        content = content.replace(
+                                "@params",
+                                ReqUtils.generateReqArgsWithoutType(configItem)
+                        );
 
                         // if has default values, generate set expression
                         if (configItem.params.defaultValues) {

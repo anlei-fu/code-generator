@@ -2,19 +2,26 @@ const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { getJavaType } = require("./utils");
 const { NamingStrategy } = require("../../libs/naming-strategy");
+const { ConfigItem } = require("./builders/ConfigItem");
+const { Table } = require("./builders/Table");
 
 class ColumnMerger {
         /**
          * Merge all possible condition columns
          * 
-         * @returns {[ColumnConfig]}
+         * @param {ConfigItem} configItem
+         * @returns 
          */
         mergeConditions(configItem) {
 
                 let conditions = [];
                 configItem.conditions.forEach(condition => {
                         conditions.push(
-                                this.mergeColumnAndConlumnConfig(configItem.table, condition, configItem.alias)
+                                this.mergeColumnAndConlumnConfig(
+                                        configItem.table,
+                                        condition,
+                                        configItem.alias
+                                )
                         );
                 });
 
@@ -34,6 +41,7 @@ class ColumnMerger {
         /**
          * Get all select columns ,or update columns ,or insert columns
          * 
+         * @param {ConfigItem} configItem
          * @returns {[ColumnConfig]}
          */
         mergeIncludes(configItem) {
@@ -42,9 +50,11 @@ class ColumnMerger {
                 let includes = [];
                 configItem.includes.forEach(include => {
                         includes.push(
-                                this.mergeColumnAndConlumnConfig(configItem.table,
-                                include,
-                                configItem.alias)
+                                this.mergeColumnAndConlumnConfig(
+                                        configItem.table,
+                                        include,
+                                        configItem.alias
+                                )
                         );
                 });
 
@@ -52,9 +62,11 @@ class ColumnMerger {
                 configItem.joins.forEach(join => {
                         join.includes.forEach(include => {
                                 includes.push(
-                                        this.mergeColumnAndConlumnConfig(join.table,
-                                        include,
-                                        join.table.alias)
+                                        this.mergeColumnAndConlumnConfig(
+                                                join.table,
+                                                include,
+                                                join.table.alias
+                                        )
                                 );
                         });
                 });
@@ -62,10 +74,10 @@ class ColumnMerger {
                 // set insert not null expression if column nullable
                 if (configItem.type == "insert") {
                         includes.forEach(include => {
-                                if (include.nullable){
+                                if (include.nullable) {
                                         include.ifExpression = `${include.name} != null`;
-                                        if(getJavaType(include.type)=="String")
-                                        include.ifExpression+=` and ${include.name} != ''`;
+                                        if (getJavaType(include.type) == "String")
+                                                include.ifExpression += ` and ${include.name} != ''`;
                                 }
                         });
                 }

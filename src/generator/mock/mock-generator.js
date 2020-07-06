@@ -330,7 +330,7 @@ class MockGenerator {
                 this._candidates = DEFAULT_CANDIDATES;
         }
 
-        useCandidates(config) {
+        useMockConfig(config) {
                 Object.keys(config).forEach(x => {
                         if (!this._candidates[x]) {
                                 this._candidates[x] = config[x];

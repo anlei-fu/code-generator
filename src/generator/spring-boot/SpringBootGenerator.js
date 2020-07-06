@@ -1,139 +1,6 @@
-/*-----------------------------------------------------------------------------------entities-------------------------------------------------------------------------------*/
-
-/**
- * Field model properties
- */
-class Field {
-        constructor () {
-                this.name = "";
-                this.type = "";
-                this.description = "";
-                this.validates = [""];
-        }
-}
-
-/**
- * Join model properties
- */
-class Join {
-        constructor () {
-                this.table = new Table();
-                this.includes = [new ColumnConfig()];
-                this.conditions = [new ColumnConfig()];
-                this.alias = "";
-                this.joinCondition = "";
-        }
-}
-
-/**
- * Req model properties
- */
-class Req {
-        constructor () {
-                this.name = "";
-                this.description = "";
-                this.exlcludes = new Set();
-                this.type = "";
-                this.doCreate = false;
-                this.fields = [new Field()]; // just for write entity
-        }
-}
-
-/**
- * Params model properties
- */
-class Params {
-        constructor () {
-                this.name = "";
-                this.description = "";
-                this.req = new Req();
-                this.fields = [new Field()];
-                this.defaultValues = new Map();
-        }
-}
-
-/**
- * Resp model properties
- */
-class Resp {
-        constructor () {
-                this.name = "";
-                this.description = "";
-                this.doCreate = false;
-                this.single = false;
-        }
-}
-
-/**
- * Controller model properties
- */
-class Controller {
-        constructor () {
-                this.path = "";
-                this.description = "";
-        }
-}
-
-/**
- * Config model properties
- */
-class ConfigItem {
-        constructor () {
-                /**
-                 *  Method name
-                 */
-                this.id = "";
-
-                /**
-                 * String |select|update|delete|insert|
-                 */
-                this.type = "";
-
-                /**
-                 * Table
-                 */
-                this.table = new Table();
-
-                /**
-                 * [ColumnMetaInfo]
-                 */
-                this.includes = [new ColumnConfig()];
-
-                /**
-                 * [ColumnMetaInfo]
-                 */
-                this.conditions = [new ColumnConfig()];
-
-                /**
-                 * [Join]
-                 */
-                this.joins = [new Join()];
-                this.noController = false;
-                this.noService = false;
-                this.controller = new Controller();
-                this.reqs = [new Req()];
-                this.resp = new Resp();
-                this.params = new Params();
-                this.context = new SpringBootGeneratorContext();
-        }
-}
-
-/**
- * GeneratorConfig properties
- */
-class ConfigGroup {
-        constructor () {
-
-                // items y
-                this.items = [new ConfigItem()];
-                this.name = "";
-                this.table = new Table();
-                this.context = new SpringBootGeneratorContext();
-        }
-}
-
-/*----------------------------------------------------------------------------------------main-----------------------------------------------------------------------*/
-
+const { ConfigGroup } = require("./builders/ConfigGroup");
+const { ConfigItem } = require("./builders/ConfigItem");
+const { Entity } = require("./builders/Entity");
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { ReqUtils } = require("./ReqUtils");
@@ -168,8 +35,6 @@ class SpringBootGenerator {
         /**
          * Generate all files
          * 
-         * @private
-         * @returns {String}
          */
         generate() {
 
@@ -346,7 +211,8 @@ class SpringBootGenerator {
 
                         // set entity type  if absent
                         entity.type = entity.name
-                                ? STR.upperFirstLetter(entity.name) : STR.upperFirstLetter(configItem.id) + entityType;
+                                ? STR.upperFirstLetter(entity.name)
+                                : STR.upperFirstLetter(configItem.id) + entityType;
 
                         // add table suffix if absent e.g AddReq => AddPersonReq
                         // to avoid name conflict
@@ -615,13 +481,4 @@ class SpringBootGenerator {
         }
 }
 
-module.exports = {
-        ConfigItem,
-        ConfigGroup,
-        Join,
-        Req,
-        Resp,
-        Params,
-        Controller,
-        SpringBootGenerator
-}
+module.exports.SpringBootGenerator = SpringBootGenerator;

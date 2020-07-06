@@ -1,6 +1,7 @@
 const { all } = require("./config/all");
-const { SpringBootGenerator } = require("./../../SpringBootGenerator");
-const { SpringBootGeneratorContext } = require("./../../SpringBootGeneratorContext");
+const { SpringBootGenerator } = require("libPath/SpringBootGenerator");
+const { SpringBootGeneratorContext } = require("libPath/builders/SpringBootGeneratorContext");
+const { mockConfig } = require("./mockConfig");
 
 /**
  * Jasmine spring boot CRUD web project code generator
@@ -8,7 +9,7 @@ const { SpringBootGeneratorContext } = require("./../../SpringBootGeneratorConte
  * All rights reserved by fuanlei since 2019
  */
 
-const CONTEXT = new SpringBootGeneratorContext("@project","@company");
+const CONTEXT = new SpringBootGeneratorContext("project", "company", mockConfig);
 
 function build() {
         all.forEach(configGroup => {

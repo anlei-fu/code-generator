@@ -1,7 +1,17 @@
-class ValidateConfig{
-        
+const VALIDATE_CONFIG = {
+       String: {
+
+       },
+       Integer: {
+
+       },
+       Date: {
+
+       }
 }
 
-class ValidateAnalyzer{
+class ValidateAnalyzer {
+       analyze(column) {
 
+       }
 }

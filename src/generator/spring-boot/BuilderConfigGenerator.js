@@ -1,11 +1,11 @@
 const { FILE } = require("../../libs/file");
 const { OBJECT } = require("../../libs/utils");
-const { GenerateConfigItemBuilder } = require("./GenerateConfig");
+const { GenerateConfigBuilder } = require("./builders/GenerateConfig");
 
 class GenerateConfigGenerator {
-        generate(tables,project) {
+        generate(targetFolder,tables,project) {
                 let items = {};
-                let builder = new GenerateConfigItemBuilder();
+                let builder = new GenerateConfigBuilder();
                 Object.keys(tables).forEach(table => {
                         items[table] = builder.all()
                                 .noBatch()
@@ -14,7 +14,7 @@ class GenerateConfigGenerator {
                                 .build();
                 });
 
-                FILE.write(`./output/${project}/generateConfig.js`, OBJECT.export_(items, "config"))
+                FILE.write(`${targetFolder}/${project}/generateConfig.js`, OBJECT.export_(items, "config"))
         }
 }
 
