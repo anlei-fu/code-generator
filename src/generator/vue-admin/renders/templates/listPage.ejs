@@ -3,8 +3,9 @@
           <Filters>
            <%-filters%> 
         <QueryButton @click="getData(true)" />
+         
           </Filters>
-          <list-body filter border stripe columnFilter :columns="columns" :datas="data" />
+          <ListBody filter stripe columnFilter :columns="columns" :datas="data" />
           <Pager :total="model.total" :current="query.pageIndex" @pi-change="changePageIndex" @ps-change="changePageSize" />
         </div>
       </template>
@@ -28,6 +29,18 @@
               radioKey: "<%=defaultRadioKey%>",
               keyword: "",
               <%}%>
+              <% if(update)%{>
+               updateConfig:{
+                 model:"",
+                 id:"",
+                 ids:"",
+                 defaultItems:[],
+                 defaultModel:{
+
+                 }
+               }
+              <%}%>
+
             };
           },
       
@@ -45,6 +58,33 @@
               this.query.pageIndex = newIndex;
               this.getData();
             },
+
+            <% if(deleteById){%>
+              deleteById(item){
+                  this.$utils.confirm(
+                    `confirm delete item with key ${item.<%=keyName%>}`,
+                    async ()=>{
+                      let result = await  this.$apis.<%=name%>.deleteBy<%=keyName%>({});
+                      if(this.$utils.success(result)){
+                        this.getData();
+                      }
+                     }
+                    );
+              },
+            <%}%>
+            <% if(deleteById){%>
+              deleteBatch(){
+                  this.$utils.confirm(
+                    `confirm delete these items?`,
+                    async ()=>{
+                      let result = await  this.$apis.<%=name%>.deleteBatch({<%=keyName%>s:this.getSelectedItems()});
+                      if(this.$utils.success(result)){
+                        this.getData();
+                      }
+                     }
+                    );
+              },
+            <%}%>
       
             async getData(reset = false) {
               if (reset) {

@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/fc/all");
+const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/18/all");
 
 const SETTLE = {
    project: "",
@@ -41,12 +41,12 @@ function test() {
    let config = {
        delete: true,
        add: true,
-      project: FC.project,
-      root: FC.root,
-      abbrOfProject:FC.abbrOfProject,
+      project: _18.project,
+      root: _18.root,
+      abbrOfProject:_18.abbrOfProject,
        edit: true,
    }
-   init(all.fcDownModule, config);
+   init(all.stDownRefuseConfig, config);
 }
 
 test();

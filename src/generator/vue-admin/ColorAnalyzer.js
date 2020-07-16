@@ -1,5 +1,8 @@
 const ColorAnalyzeConfig={
         Integer:{
+            
+        },
+        Float:{
 
         },
         String:{

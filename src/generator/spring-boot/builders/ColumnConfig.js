@@ -1,50 +1,10 @@
-const { Column, ColumnBuilder } = require("./Column");
-
-class ColumnConfig extends Column {
+class ColumnConfig {
         constructor () {
-
-                // sql value or field alias
-                this.property = "";
-
-                // sql alias or 
-                this.alias = "";
-
-                // sql suffix
-                this.suffix = "";
-
-                // sql prefix
-                this.prefix = "";
-
-                // represent java type
-                this.type = "";
-
-                this.required = false;
-
-                // represent a batch field
-                this.isList = false;
-
-                // sql like expression
-                this.like = false;
-
-                // range field
-                this.range = false;
-
-                // time range field
-                this.timeRange = false;
-
-                // sql starts with
-                this.startsWith = false;
-
-                // sql ends with
-                this.endsWith = false;
-
-                this.startsAndEndsWith = false;
-
-                this.ifExpression = "";
-
-                this.expression = "";
-
-                this.label="";
+                this.property = "";              
+                this.alias = "";              
+                this.suffix = "";              
+                this.prefix = "";              
+ 
         }
 }
 
@@ -53,9 +13,9 @@ exports.ColumnConfig = ColumnConfig;
 /**
  * Builder for ColumnConfig
  */
-class ColumnConfigBuilder extends ColumnBuilder {
-        constructor () {
-                this._config = new ColumnConfig();
+class ColumnConfigBuilder{
+        constructor(){
+                this._config =new ColumnConfig();
         }
 
         /**
@@ -64,7 +24,7 @@ class ColumnConfigBuilder extends ColumnBuilder {
          * @param {String} property
          * @returns {ColumnConfigBuilder}
          */
-        property(property) {
+        property(property){
                 this._config.property = property;
                 return this;
         }
@@ -75,7 +35,7 @@ class ColumnConfigBuilder extends ColumnBuilder {
          * @param {String} alias
          * @returns {ColumnConfigBuilder}
          */
-        alias(alias) {
+        alias(alias){
                 this._config.alias = alias;
                 return this;
         }
@@ -86,7 +46,7 @@ class ColumnConfigBuilder extends ColumnBuilder {
          * @param {String} suffix
          * @returns {ColumnConfigBuilder}
          */
-        suffix(suffix) {
+        suffix(suffix){
                 this._config.suffix = suffix;
                 return this;
         }
@@ -97,20 +57,20 @@ class ColumnConfigBuilder extends ColumnBuilder {
          * @param {String} prefix
          * @returns {ColumnConfigBuilder}
          */
-        prefix(prefix) {
+        prefix(prefix){
                 this._config.prefix = prefix;
                 return this;
         }
 
-
+ 
         /**
          * Build 
          * 
          * @returns {ColumnConfig}
          */
-        build() {
+        build(){
                 return this._config;
-        }
+        }      
 }
 
 exports.ColumnConfigBuilder = ColumnConfigBuilder;

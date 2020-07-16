@@ -3,13 +3,18 @@ const { ColorAnalyzer } = require("./ColorAnalyzer");
 const { FormatAnalyzer } = require("./FormatAnalyzer");
 const { Utils } = require("./Utils");
 class ColumnAnalyzer {
+        constructor (colorAnalyzer, formatAnalyzer, controlAnalyzer) {
+                this._colorAnalyzer = colorAnalyzer;
+                this._formatAnalyzer = formatAnalyzer;
+                this._controlAnalyzer = colorAnalyzer;
+        }
         analyze(resp) {
-               let items=[];
-               resp.fields.forEach(field=>{
+                let items = [];
+                resp.fields.forEach(field => {
                         items.push(this.analyzeItem(field));
-               });
+                });
 
-               return items;
+                return items;
         }
 
         analyzeItem(column) {
@@ -19,17 +24,12 @@ class ColumnAnalyzer {
                                 this.analyzeDefaultShow(column.type, column.name)
                         )
                         .title(
-                               Utils.analyzeLabel(field.description,field.name)
+                                Utils.analyzeLabel(field.description, field.name)
                         )
                         .type(column.type)
-                        .render(
-                                this.ananlyzeRender(column.type, column.type)
-                        )
+                        .color(this._colorAnalyzer.analyze())
+                        .format(this._formatAnalyzer.analyze())
                         .build();
-        }
-
-        ananlyzeRender(type, name) {
-
         }
 
         /**
@@ -43,4 +43,4 @@ class ColumnAnalyzer {
         }
 }
 
-exports.ColumnAnalyzer =ColumnAnalyzer;
+exports.ColumnAnalyzer = ColumnAnalyzer;

@@ -1,6 +1,6 @@
 const { SimpleRender } = require("./../generator/common/renders/SimplePatterRender");
 const { FILE } = require("./../libs/file");
-const {builderGenerator} =require("./builder-generator");
+const { builderGenerator } = require("./builder-generator");
 
 const MODEL_RENDER = new SimpleRender({}, `./templates/model.js`);
 const MODEL_ITEM_RENDER = new SimpleRender({}, `./templates/model-item.js`);
@@ -18,21 +18,20 @@ function main(modelName, items, withBuilder = true) {
                 content
         });
 
-        if(withBuilder)
-           content+=builderGenerator(modelName,items);
+        if (withBuilder)
+                content += builderGenerator(modelName, items);
 
-        FILE.write(`./../../src/generator/spring-boot/builders/${modelName}.js`, content);
+        FILE.write(`C:/Users/Administrator/Desktop/Projects/code-generator/src/spider/model/${modelName}.js`, content);
         return content;
 
 }
 
-/******************************************main**********************************8888 */
+/******************************************main**********************************8888*/
 main(
-        "ColumnConfig",
+        "CrawlerContext",
         [
-        "property",
-        "alias",
-        "suffix",
-        "prefix",
-]
+                "config",
+                "resultReporter",
+                "jsManager",
+        ],
 );

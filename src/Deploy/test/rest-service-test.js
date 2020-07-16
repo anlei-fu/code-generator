@@ -1,4 +1,4 @@
-const { RestService } = require("./../common/RestService");
+const { RestService } = require("./../common/service/RestService");
 const { Controller } = require("./../common/Controller");
 
 class EchoController extends Controller {

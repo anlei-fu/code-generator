@@ -32,22 +32,18 @@ class EnumBuilder {
         }
 }
 
-let name = "SqlDataType";
+let name = "CrawlTaskResultCode";
 let builder = new EnumBuilder();
 builder.items(
         [
-              "varChar",
-              "text",
-              "smallInt",
-              "tinyInt",
-              "int",
-              "time_stamp"
+              "SUCCESS",
+              "BLOCKED",
         ]
 );
 
 let enums = builder.build();
 
 FILE.write(
-        `./../../src/generator/db-generator/constants/${name}.js`,
+        `C:/Users/Administrator/Desktop/Projects/code-generator/src/spider/constant/${name}.js`,
         OBJECT.export_(enums, name)
 );

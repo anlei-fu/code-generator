@@ -17,7 +17,7 @@ const CONTROL_ANALYZE_CONFIG = {
                                         "style"
                                 ]
                         ),
-                        control: ""
+                        control: "select"
 
                 },
                 boolean: {
@@ -42,10 +42,16 @@ const CONTROL_ANALYZE_CONFIG = {
                 }
         },
         String: {
-
+               default:{
+                       matcher:name=>true,
+                       control:"radioGroup"
+               }
         },
         Date: {
-
+                default:{
+                        matcher:name=>true,
+                        control:"timeRange"
+                }
         }
 }
 
@@ -67,9 +73,6 @@ class ControlAnalyzer {
                 return new ControlBuilder()
                         .name(field.name)
                         .label(Utils.analyzeLabel(field.description, field.name))
-                        .defaultValue(
-                                this.analyzeDefaultValue(field.type, field.name)
-                        )
                         .type(
                                 this.analyzeType(field.type, field.name)
                         )
@@ -79,24 +82,39 @@ class ControlAnalyzer {
                         .build();
         }
 
-        analyzeDefaultValue() {
-
-        }
-
         analyzeType(type, name) {
-
+               let type =this.analyzeType(type,name);
+               switch(type){
+                       case "select":
+                               return getSelection(name);
+                       case "radioGroup":
+                               return this.getRadioGroupConfig(name);
+                        case "timeRange":
+                                return this.getTimeRangeConfig(name);
+                        case "plainText":
+                           return this.getTextBoxConfig(name);
+               }
         }
 
-        analyzeConfig(type, name) {
-
+        analyzeConfig(name) {
+              return {
+                      model:name,
+                      cache:name
+              }
         }
 
-        getSelectConfig(type, name) {
-
+        getSelectConfig(name) {
+                return {
+                        model:name,
+                        cache:name
+                }
         }
 
         getRadioGroupConfig() {
-
+                return {
+                        model:name,
+                        key:name
+                }
         }
 
         getCheckBoxConfig() {
@@ -108,11 +126,16 @@ class ControlAnalyzer {
         }
 
         getTimeRangeConfig() {
-
+                return {
+                        model:timeRange,
+                        key:name
+                }
         }
 
         getTextBoxConfig() {
-
+                return {
+                        model:name,
+                }
         }
 }
 

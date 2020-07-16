@@ -41,9 +41,9 @@ class CellConverter {
  * @param {boolean} excludeFirstRow 
  * @returns {[Any]}
  */
-function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true,quotation=true) {
+function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true, quotation = true) {
         let outputs = [];
-        let rows=quotation?split(csv):defaultSplit(csv);
+        let rows = quotation ? split(csv) : defaultSplit(csv);
         rows.forEach((row, rowNo) => {
                 if (excludeFirstRow && rowNo == 0)
                         return;
@@ -64,14 +64,14 @@ function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true,quotati
         return outputs;
 }
 
-function defaultSplit(content){
-   let rows=[];
-   STR.splitToLines(STR.removeEmptyLine(content)).forEach(line=>{
-       let cells=line.split(",");
-       rows.push(cells);
-   });
+function defaultSplit(content) {
+        let rows = [];
+        STR.splitToLines(STR.removeEmptyLine(content)).forEach(line => {
+                let cells = line.split(",");
+                rows.push(cells);
+        });
 
-   return rows;
+        return rows;
 }
 
 /**
@@ -92,7 +92,7 @@ function split(content) {
                         if (!parseQuotation) {
                                 if (reader.hasPrevious()) {
                                         if (reader.previous != "\\") {
-                                                if (cell != ""){
+                                                if (cell != "") {
                                                         throw new Error(`unexcepted syntax at row ${result.length}`);
                                                 }
 
@@ -195,5 +195,10 @@ function normalizeString(str) {
 
 module.exports = {
         toCsvString,
-        resolveFromCsvString
+        resolveFromCsvString,
+        resolvers: {
+                STR: value => value,
+                NUMBER: value => parseFloat(value),
+                DATE: value => new Date(value)
+        }
 }

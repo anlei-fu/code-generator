@@ -57,7 +57,7 @@ function test() {
                 }).useJobs(() => {
                         return [
                                 new TaskTerminateJob("30 * * * * *"),
-                                new EchoJob()
+                                // new EchoJob()
                         ];
                 }).build();
 

@@ -3,6 +3,13 @@ const VALIDATE_CONFIG = {
 
        },
        Integer: {
+            default:{
+                   matcher:name=>true,
+                   validate:"number",
+
+            }
+       },
+       Float:{
 
        },
        Date: {
