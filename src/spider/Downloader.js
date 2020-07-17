@@ -30,16 +30,23 @@ const ErrorMap = {
 
 class Downloader {
         /**
+         * 
+         * @param {CrawlTaskContext} context 
+         */
+        constructor (context) {
+                this._context = context;
+        }
+
+        /**
          * Download page
          * 
          * @param {UrlPair} url 
-         * @param {CrawlTaskContext} context 
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        async download(url, context, headers) {
+        async download(url, headers) {
                 try {
-                        return await this._downloadCore(url, context, headers);
+                        return await this._downloadCore(url, headers);
                 } catch (ex) {
                         return this._getErrorResp(ex.message);
                 }
@@ -50,13 +57,12 @@ class Downloader {
          * 
          * @private
          * @param {UrlPair} url 
-         * @param {CrawlTaskContext} context 
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        _downloadCore(url, context, headers) {
+        _downloadCore(url, headers) {
                 return new Promise((resolve, reject) => {
-                        let axiosConfig = this._createConfig(url, context, headers);
+                        let axiosConfig = this._createConfig(url, this._context, headers);
                         axios.default.get(url.target, axiosConfig)
                                 .then(
                                         res => {
@@ -66,12 +72,11 @@ class Downloader {
                                                 });
                                                 res.data.on('end', () => {
                                                         let buffer = Buffer.concat(chunks);
-                                                        let str = iconv.decode(buffer, context.encoding || "utf8");
+                                                        let str = iconv.decode(buffer, this._context.config.encoding || "utf8");
                                                         resolve({ data: str, status: res.status })
                                                 })
                                         }
-                                )
-                                .catch(ex => reject(ex));
+                                ).catch(ex => reject(ex));
                 })
         }
 
@@ -80,11 +85,10 @@ class Downloader {
          * 
          * @private
          * @param {UrlPair} url 
-         * @param {CrawlTaskContext} context 
          * @param {Object} headers 
          * @returns {import("axios").AxiosRequestConfig}
          */
-        _createConfig(url, context, headers) {
+        _createConfig(url, headers) {
                 headers = headers || {};
 
                 OBJECT.setIfAbsent(headers, "Referer", url.referUrl);
@@ -99,9 +103,9 @@ class Downloader {
                         OBJECT.setIfAbsent(headers, "Set-Cookie", "");
 
                 return {
-                        timeout: context.timeout || 10000,
-                        proxy: context.proxy,
-                        maxContentLength: 1024 * 1024 * 1024,
+                        timeout: this._context.config.timeout || 10000,
+                        proxy: this._context.config.proxy,
+                        maxContentLength: 1024 * 1024 * 1024, // 1mb
                         headers,
                         responseType: 'stream',
                 }
@@ -123,10 +127,3 @@ class Downloader {
 }
 
 exports.Downloader = Downloader;
-
-async function main() {
-        let downloader = new Downloader();
-        let resp = await downloader.download({ target: "https://www.baidu.com/", referUrl: "" }, {}, {})
-}
-
-main();

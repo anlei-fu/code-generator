@@ -12,7 +12,6 @@ exports.Job = class Job extends Initiable {
                 description = "",
                 expression = "",
         }) {
-
                 super(name);
 
                 /**
@@ -49,7 +48,6 @@ exports.Job = class Job extends Initiable {
                  * Job execute plan string
                  */
                 this.expression = expression;
-
         }
 
         /**

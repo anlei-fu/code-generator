@@ -1,7 +1,7 @@
 class SpeedItem {
         constructor () {
-                this.startTime = "";
-                this.finishTime = "";
+                this.startTime = new Date();
+                this.finishTime = new Date();
                 this.isSuccess = false;
         }
 }

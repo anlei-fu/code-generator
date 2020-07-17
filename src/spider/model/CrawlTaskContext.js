@@ -3,6 +3,7 @@ const { Browser } = require("../Browser");
 const { BlockRuleChecker } = require("../BlockRuleChecker");
 const { CrawlTaskConfig } = require("./CrawlTaskConfig");
 const { UrlResolver } = require("../UrlResolver");
+const { validateUtils } = require("./../utils/validate-utils");
 
 const cheerio = require('cheerio');
 
@@ -12,6 +13,12 @@ class CrawlTaskContext {
          * @param {CrawlTaskConfig} config 
          */
         constructor (config) {
+                validateUtils.requireNotNull(
+                        config,
+                        [
+                                "rules",
+                        ]
+                );
                 this.cheerIo = cheerio;
                 this.ruleChecker = new BlockRuleChecker(config.rules);
                 this.downloader = new Downloader(config);
@@ -74,7 +81,6 @@ class CrawlContextBuilder {
                 this._config.ruleChecker = ruleChecker;
                 return this;
         }
-
 
         /**
          * Build 

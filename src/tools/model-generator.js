@@ -28,10 +28,11 @@ function main(modelName, items, withBuilder = true) {
 
 /******************************************main**********************************8888*/
 main(
-        "CrawlerContext",
+        "BlockRule",
         [
-                "config",
-                "resultReporter",
-                "jsManager",
+                "status",
+                "checkType",
+                "keywords",
+                "pageResult"
         ],
 );

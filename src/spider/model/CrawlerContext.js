@@ -1,10 +1,32 @@
 const { CrawlerConfig } = require("./CrawlerConfig");
+const { JsManager } = require("./../JsManager");
+const { ResultReporter } = require("./../ResultReporter");
+const { UrlResolver } = require("./../UrlResolver");
 class CrawlerContext {
-        constructor () {
-                this.config = new CrawlerConfig();
-                this.resultReporter = "";
-                this.jsManager = "";
+        /**
+         * 
+         * @param {CrawlerConfig} config 
+         */
+        constructor (config) {
+                /**
+                 * crawler config 
+                 */
+                this.config = config;
 
+                /**
+                 * result reporter
+                 */
+                this.resultReporter = new ResultReporter();
+
+                /**
+                 * use to manage script
+                 */
+                this.jsManager = new JsManager(config.scriptDir);
+
+                /**
+                 * use to resolve and merge url
+                 */
+                this.urlResolver = new UrlResolver();
         }
 }
 

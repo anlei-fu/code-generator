@@ -1,4 +1,9 @@
 class SpeedCaculator {
+
+        constructor(){
+                this.items=[];
+        }
+
         addItem(item) {
                 this._item.push(item);
         }

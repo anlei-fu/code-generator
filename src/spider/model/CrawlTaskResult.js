@@ -1,22 +1,95 @@
 const { CrawlTaskResultCode } = require("./../constant/CrawlTaskResultCode")
 class CrawlTaskResult {
         constructor () {
+                /**
+                 * ip of crawler from config file
+                 */
                 this.crawlerIp = "";
+
+                /**
+                 * unique id of crawler from config file
+                 */
                 this.crawlerId = "";
+
+                /**
+                 * task id from task config
+                 */
                 this.taskId = 1;
+
+                /**
+                 * the time task begin to execute
+                 */
                 this.startTime = new Date();
+
+                /**
+                 * the time that task finished
+                 */
                 this.finishTime = new Date();
+
+                /**
+                 * the urls that crawl succeed
+                 */
                 this.successUrls = [];
+
+                /**
+                 * the urls that crawl failed
+                 */
                 this.failedUrls = [];
+
+                /**
+                 * the urls that invalid
+                 */
                 this.badUrls = [];
+
+                /**
+                 * the urls that newly deteted @type {UrlPair}
+                 */
                 this.newUrls = [];
+
+                /**
+                 * the urls that has not been crawled and be blocked
+                 */
                 this.unCrawledUrls = [];
+
+                /**
+                 * the datas that craled
+                 */
                 this.datas = [];
+
+                /**
+                 * the crawl task code @see {CrawlTaskResultCode}
+                 */
                 this.taskResultCode = CrawlTaskResultCode.SUCCESS;
+
+                /**
+                 * the crawl task message not required
+                 */
                 this.message = "";
+
+                /**
+                 * the avarage speed of all
+                 */
                 this.avarage = "";
+
+                /**
+                 * the mean speed of success
+                 */
                 this.mean = "";
+
+                /**
+                 * the avarage speed of success
+                 */
                 this.successAvarage = 10;
+
+                /**
+                 * 
+                 */
+                this.cookieId = 100;
+
+                /**
+                 * 
+                 */
+                this.proxyId = 100;
         }
 }
 
@@ -47,7 +120,7 @@ class CrawlTaskResultBuilder {
          * @param {String} crawlerId
          * @returns {CrawlTaskResultBuilder}
          */
-        crawlerIp(crawlerId) {
+        crawlerId(crawlerId) {
                 this._config.crawlerId = crawlerId;
                 return this;
         }

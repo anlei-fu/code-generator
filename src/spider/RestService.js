@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Service } = require("./Service");
-const { ServiceStatus } = require("./../po/constant/ServiceStatus");
+const { ServiceStatus } = require("./constant/ServiceStatus");
 const { Controller } = require("./Controller");
 const { validateUtils } = require("./utils/validate-utils");
 

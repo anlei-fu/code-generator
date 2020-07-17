@@ -1,6 +1,13 @@
 class UrlPair {
         constructor () {
-                this.target = "";              
+                /**
+                 * target url
+                 */
+                this.target = "";     
+                
+                /**
+                 * refferUrl
+                 */
                 this.refferUrl = "";              
         }
 }

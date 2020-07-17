@@ -32,12 +32,15 @@ class EnumBuilder {
         }
 }
 
-let name = "CrawlTaskResultCode";
+let name = "CheckType";
 let builder = new EnumBuilder();
 builder.items(
         [
-              "SUCCESS",
-              "BLOCKED",
+              "IncludesAny",
+              "IncludesAll",
+              "NotIncludesAny",
+              "NotIncludesAll",
+              "StatusCheck"
         ]
 );
 

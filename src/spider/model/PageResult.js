@@ -1,10 +1,34 @@
 class PageResult {
         constructor () {
-                this.pageResultCode = 0;              
-                this.url = "";              
-                this.status = "";              
-                this.data = {};              
-                this.newUrls = [];              
+                /**
+                 * the result code of page @see {}
+                 */
+                this.pageResultCode = 0;     
+                
+                /**
+                 * the url of page
+                 */
+                this.url = "";        
+                
+                /**
+                 * the status code of dowload page
+                 */
+                this.status = 200; 
+                
+                /**
+                 * the data extracted
+                 */
+                this.data = {};       
+                
+                /**
+                 * new matched urls @type {UrlPair}
+                 */
+                this.newUrls = [];   
+                
+                /**
+                 * not required
+                 */
+                this.msg="";
         }
 }
 
@@ -73,6 +97,16 @@ class PageResultBuilder{
                 return this;
         }
 
+        /**
+         * Set property msg
+         * 
+         * @param {String} newUrls
+         * @returns {PageResultBuilder}
+         */
+        msg(msg){
+                this._config.msg = msg;
+                return this;
+        }
  
         /**
          * Build 

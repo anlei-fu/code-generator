@@ -1,26 +1,111 @@
-const {UrlPair} =require("./UrlPair");
+const { UrlPair } = require("./UrlPair");
 
 class CrawlTaskConfig {
         constructor () {
-                this.taskId=0;
+                /**
+                 * id of task
+                 */
+                this.taskId = 0;
+
+                /**
+                 * block rules
+                 */
                 this.rules = [];
+
+                /**
+                 * script to crawl
+                 */
                 this.script = "";
+
+                /**
+                 * crawl max concurrency
+                 */
                 this.maxConcurrency = 20;
+
+                /**
+                 * need cookie
+                 */
                 this.needCookie = false;
+
+                /**
+                 * cookie id
+                 */
+                this.cookieId = 1;
+
+                /**
+                 * cookie
+                 */
                 this.cookie = {};
+
+                /**
+                 * urls to crawl
+                 */
                 this.urls = [new UrlPair()];
+
+                /**
+                 * page dowload timeout
+                 */
                 this.timeout = 0;
+
+                /**
+                 * is static crawl
+                 */
                 this.isStatic = false;
+
+                /**
+                 * crawl need proxy
+                 */
                 this.needProxy = false;
+
+                /**
+                 * proxy id
+                 */
+                this.proxyId = 1;
+
+                /**
+                 * proxy
+                 */
                 this.proxy = {};
+
+                /**
+                 * additional params
+                 */
                 this.aditionalParams = "";
-                this.cookieId=1;
-                this.proxyId=1;
-                this.intervalMax=1000;
-                this.intervalMin=100;
-                this.browserMaxPaggeSize=100;
-                this.encoding="";
-                this.maxPage=10;
+
+                /**
+                 * 
+                 */
+                this.pollMaxRate = 1000;
+
+                /**
+                 * 
+                 */
+                this.polllMinRate = 100;
+
+                /**
+                 * 
+                 */
+                this.browserMaxPaggeSize = 100;
+
+                /**
+                 * page default encoding
+                 */
+                this.encoding = "";
+
+                /**
+                 * 
+                 */
+                this.autoDownloadPage = false;
+
+                /**
+                 * 
+                 */
+                this.waitForPageDelay = 100;
+
+
+                this.maxFail = 100;
+
+                this.maxFailContinuously = 30;
         }
 }
 

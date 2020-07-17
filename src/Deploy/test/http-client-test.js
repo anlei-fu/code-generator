@@ -1,7 +1,7 @@
 const { HttpClient } = require("./../common/HttpClient");
 
 async function test() {
-        let client = new HttpClient("test", { baseURL: "http://localhost:8085" });
+        let client = new HttpClient("test", { baseURL: "http://localhost:10051" });
 
         //---------------------task-----------------------------------
         //add
@@ -18,7 +18,15 @@ async function test() {
         // await client.put("/test/{id}", { id: 10 });
         // await client.delete("test/{id}", { id: 10 })
 
-        await client.put("/task/retry/{id}",{id:2})
+        await client.post(
+                "/run",
+                {
+                        taskId: 2,
+                        urls: [],
+                        script: "1234.js",
+                        rules:{},
+                }
+        );
 }
 
 /*********************************************test*************************************************************************/

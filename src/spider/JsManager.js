@@ -1,9 +1,11 @@
 const { FileManagerBase } = require("./FileManager");
+const { ScriptFeatcher } = require("./ScripFetcher");
 
 class JsManager extends FileManagerBase {
     constructor (workDir) {
         super("JsManager", workDir);
         this._js = {};
+        this._fetcher = new ScriptFeatcher(workDir);
     }
 
     /**
@@ -13,8 +15,11 @@ class JsManager extends FileManagerBase {
      * @returns {MainFunction?}
      */
     getMain(jsFile) {
-        if (!this.exists(jsFile))
-            return null;
+        if (!this.exists(jsFile)) {
+            this._fetcher.fetch(jsFile);
+            if (!this.exists(jsFile))
+                throw new Error(`script ${jsFile} can not be found`);
+        }
 
         jsFile = this.getFullPath(jsFile);
         if (this._js[jsFile])
@@ -28,9 +33,8 @@ class JsManager extends FileManagerBase {
             return main;
         } catch (ex) {
             this.error(`failed to loading js file ${jsFile}`, ex);
+            throw ex;
         }
-
-        return null;
     }
 
     /**
