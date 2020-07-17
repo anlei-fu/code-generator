@@ -30,7 +30,7 @@ class CrawlTaskConfig {
                 /**
                  * cookie id
                  */
-                this.cookieId = 1;
+                this.accountId = 1;
 
                 /**
                  * cookie

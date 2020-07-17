@@ -91,7 +91,7 @@ class RestService extends Service {
      */
     stop() {
         if (this._status != ServiceStatus.RUNNING) {
-            this.warn(`to start service refused,cause current status is ${this._status}`);
+            this.warn(`to stop service refused,cause current status is ${this._status}`);
             return;
         }
 

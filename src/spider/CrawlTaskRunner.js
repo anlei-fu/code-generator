@@ -39,6 +39,12 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 this._taskResultBuilder.crawlerIp(this._crawlerContext.config.ip)
                 this._taskResultBuilder.crawlerId(this._crawlerContext.config.uniqueId);
 
+                if (config.proxyId)
+                        this._taskResultBuilder.proxyId(this._taskContext.config.proxyId);
+
+                if (config.accountId)
+                        this._taskResultBuilder.accountId(this._taskContext.config.accountId);
+
                 try {
                         await this._init(config);
                 } catch (ex) {
@@ -61,7 +67,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
          */
         _schedule(positive) {
                 setTimeout(() => {
-                        this.run.call(this);
+                        this._run.call(this);
                 }, this._delayCaculator.nextDelay(positive));
         }
 
@@ -89,13 +95,15 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 }
 
                 // // check crawler script
-                await this.checkAndDwonloadScript(config.script);
+                await this._downloadAndLoadScript(config.script);
         }
 
         /**
          * Check is script existed or download
+         * 
+         * @private
          */
-        async checkAndDwonloadScript(script) {
+        async _downloadAndLoadScript(script) {
                 try {
                         this._main = this._crawlerContext.jsManager.getMain(script);
                 } catch (ex) {
@@ -106,8 +114,12 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
         /**
          * Run a crawl task
+         * 
+         * @private
          */
-        async run() {
+        async _run() {
+
+
 
                 // blocked
                 if (this._status == TaskRunnerStatus.BLOCKED) {
@@ -173,7 +185,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         }
                 );
 
-                this.checkAndSetResult(result);
+                this._checkAndSavePageResult(result);
                 this._currentRunning--;
 
                 // blocked and all task is finished
@@ -191,9 +203,14 @@ class CrawlerTaskRunner extends LoggerSurpport {
         /**
          * Check page crawl result
          * 
+         * @private
          * @param {PageResult} result 
          */
-        checkAndSetResult(result) {
+        _checkAndSavePageResult(result) {
+
+                // close browser if is not static crawl type
+                if (!this._taskContext.config.isStatic)
+                        this._taskContext.browser.close();
 
                 // blocked
                 if (result.pageResultCode == PageResultCode.BLOCKED) {
@@ -229,6 +246,8 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
         /**
          * Finish crawler task
+         * 
+         * @private
          */
         async _finish(msg) {
                 if (this._taskContext.config.urls.length != 0) {
@@ -270,7 +289,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                                 }
                         }
 
-                        ThreadUtils.sleep(10000);
+                        await ThreadUtils.sleep(10000);
                 }
         }
 }
