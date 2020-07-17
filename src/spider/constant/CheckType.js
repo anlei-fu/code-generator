@@ -1,18 +1,18 @@
 exports.CheckType = {
 
-	// str includes any
+	// Html includes any
 	INCLUDES_ANY: 1,
 
-	// str includes all
+	// Html includes all
 	INCLUDES_ALL: 2,
 
-	// str not includes any
+	// Html not includes any
 	NOT_INCLUDES_ANY: 3,
 
-	// str not includes all
+	// Html not includes all
 	NOT_INCLUDES_ALL: 4,
 
-	// match status code
+	// Match http status code
 	STATUS_CHECK: 5
 };
 

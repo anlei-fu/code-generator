@@ -1,11 +1,23 @@
 const { FileManagerBase } = require("./FileManager");
 const { ScriptFeatcher } = require("./ScripFetcher");
+const { CrawlerContext } = require("./model/CrawlerContext");
 
+/**
+ * @CrawlerContext component ,to manage crawl script
+ */
 class JsManager extends FileManagerBase {
-    constructor (workDir) {
-        super("JsManager", workDir);
+    /**
+     * Constructor of JsManager
+     * 
+     * @constructor
+     * @param {String} scriptDir 
+     * @param {CrawlerContext} context 
+     */
+    constructor (scriptDir, context) {
+        super("JsManager", scriptDir);
         this._js = {};
-        this._fetcher = new ScriptFeatcher(workDir);
+        this._context = context;
+        this._fetcher = new ScriptFeatcher(scriptDir);
     }
 
     /**
@@ -16,9 +28,10 @@ class JsManager extends FileManagerBase {
      */
     getMain(jsFile) {
         if (!this.exists(jsFile)) {
-            this._fetcher.fetch(jsFile);
+            // download from file server
+            this._fetcher.fetch(this._context.fileHost, jsFile);
             if (!this.exists(jsFile))
-                throw new Error(`script ${jsFile} can not be found`);
+                throw new Error(`script(${jsFile}) download failed`);
         }
 
         jsFile = this.getFullPath(jsFile);
@@ -32,7 +45,7 @@ class JsManager extends FileManagerBase {
 
             return main;
         } catch (ex) {
-            this.error(`failed to loading js file ${jsFile}`, ex);
+            this.error(`failed to loading script(${jsFile})`, ex);
             throw ex;
         }
     }

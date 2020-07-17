@@ -1,25 +1,25 @@
 exports.ServiceStatus = {
-        // begin starting
+        // Begin starting service
         STARTING: 100,
 
-        // fully started
+        // Service fully started
         STARTED: 101,
 
-        // begin stopping
+        // Service begin stopping
         STOPPING: 108,
 
-        // fully stopped
+        // Service fully stopped
         STOPPED: 109,
 
-        // begin pausing
+        // Service begin pausing
         PAUSING: 112,
 
-        // fully paused
+        // Service fully paused
         PAUSED: 113,
 
-        // running
+        // Service is running
         RUNNING: 115,
 
-        //unknown status
+        // Unknown service status
         UNKNOWN: 117
 }

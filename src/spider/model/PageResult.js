@@ -1,34 +1,37 @@
+const { PageResultCode } = require("./../constant/PageResultCode");
+const { UrlPair } = require("./UrlPair");
+
 class PageResult {
         constructor () {
                 /**
-                 * the result code of page @see {}
+                 * The result code of page @see {PageResultCode}
                  */
-                this.pageResultCode = 0;     
-                
+                this.pageResultCode = PageResultCode.SUCCCESS;
+
                 /**
-                 * the url of page
+                 * The url of page
                  */
-                this.url = "";        
-                
+                this.url = "";
+
                 /**
-                 * the status code of dowload page
+                 * The http status code of dowload page
                  */
-                this.status = 200; 
-                
+                this.status = 200;
+
                 /**
-                 * the data extracted
+                 * The data extracted
                  */
-                this.data = {};       
-                
+                this.data = {};
+
                 /**
-                 * new matched urls @type {UrlPair}
+                 * The newly detected matched urls @type {UrlPair}
                  */
-                this.newUrls = [];   
-                
+                this.newUrls = [];
+
                 /**
-                 * not required
+                 * The page msg, not required
                  */
-                this.msg="";
+                this.msg = "";
         }
 }
 
@@ -37,18 +40,18 @@ exports.PageResult = PageResult;
 /**
  * Builder for PageResult
  */
-class PageResultBuilder{
-        constructor(){
-                this._config =new PageResult();
+class PageResultBuilder {
+        constructor () {
+                this._config = new PageResult();
         }
 
         /**
          * Set property pageResultCode
          * 
-         * @param {String} pageResultCode
+         * @param {Number} pageResultCode
          * @returns {PageResultBuilder}
          */
-        pageResultCode(pageResultCode){
+        pageResultCode(pageResultCode) {
                 this._config.pageResultCode = pageResultCode;
                 return this;
         }
@@ -59,7 +62,7 @@ class PageResultBuilder{
          * @param {String} url
          * @returns {PageResultBuilder}
          */
-        url(url){
+        url(url) {
                 this._config.url = url;
                 return this;
         }
@@ -67,10 +70,10 @@ class PageResultBuilder{
         /**
          * Set property status
          * 
-         * @param {String} status
+         * @param {Number} status
          * @returns {PageResultBuilder}
          */
-        status(status){
+        status(status) {
                 this._config.status = status;
                 return this;
         }
@@ -78,10 +81,10 @@ class PageResultBuilder{
         /**
          * Set property data
          * 
-         * @param {String} data
+         * @param {Object} data
          * @returns {PageResultBuilder}
          */
-        data(data){
+        data(data) {
                 this._config.data = data;
                 return this;
         }
@@ -89,10 +92,10 @@ class PageResultBuilder{
         /**
          * Set property newUrls
          * 
-         * @param {String} newUrls
+         * @param {[UrlPair]} newUrls
          * @returns {PageResultBuilder}
          */
-        newUrls(newUrls){
+        newUrls(newUrls) {
                 this._config.newUrls = newUrls;
                 return this;
         }
@@ -103,19 +106,19 @@ class PageResultBuilder{
          * @param {String} newUrls
          * @returns {PageResultBuilder}
          */
-        msg(msg){
+        msg(msg) {
                 this._config.msg = msg;
                 return this;
         }
- 
+
         /**
          * Build 
          * 
          * @returns {PageResult}
          */
-        build(){
+        build() {
                 return this._config;
-        }      
+        }
 }
 
 exports.PageResultBuilder = PageResultBuilder;

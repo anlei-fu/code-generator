@@ -4,7 +4,9 @@ const { ResultReporter } = require("./../ResultReporter");
 const { UrlResolver } = require("./../UrlResolver");
 class CrawlerContext {
         /**
+         * Constructor of CrawlerContext
          * 
+         * @constructor
          * @param {CrawlerConfig} config 
          */
         constructor (config) {
@@ -14,7 +16,7 @@ class CrawlerContext {
                 this.config = config;
 
                 /**
-                 * result reporter
+                 * use to notify master task result
                  */
                 this.resultReporter = new ResultReporter();
 
@@ -27,6 +29,16 @@ class CrawlerContext {
                  * use to resolve and merge url
                  */
                 this.urlResolver = new UrlResolver();
+
+                /**
+                 * the master host that available got through master heartbeat
+                 */
+                this.masters = [""];
+
+                /**
+                 * the file server host got through master heartbeat
+                 */
+                this.fileHost = "";
         }
 }
 

@@ -1,11 +1,11 @@
 class SpeedCaculator {
 
         constructor(){
-                this.items=[];
+                this._items=[];
         }
 
         addItem(item) {
-                this._item.push(item);
+                this._items.push(item);
         }
 
         get getAvarage() {

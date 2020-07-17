@@ -1,5 +1,10 @@
 var url = require('url');
+
+/**
+ * @CrawlTaskContext component
+ */
 class UrlResolver {
+
         /**
          * Resolve and merge url
          * 

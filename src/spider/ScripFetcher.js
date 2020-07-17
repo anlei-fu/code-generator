@@ -1,10 +1,23 @@
-const {CLI} =require("./utils/cli");
+const { CLI } = require("./utils/cli");
 class ScriptFeatcher {
-        constructor (workDir) {
-                this._workDir = workDir;
+        /**
+         * Constructor of ScriptFeatcher , only work on linux
+         * 
+         * @constructor
+         * @param {String} scriptDir 
+         */
+        constructor (scriptDir) {
+                this._scriptDir = scriptDir;
         }
-        fetch(file) {
-             CLI.excute(`wget -P ${this._workDir} http://gateway/${file}  --no-check-certificate `)
+
+        /**
+         * Download script into script folder
+         * 
+         * @param {String} fileHost 
+         * @param {String} script 
+         */
+        fetch(fileHost, script) {
+                CLI.excute(`wget -P ${this._scriptDir} http://${fileHost}/${script}  --no-check-certificate `)
         }
 }
 

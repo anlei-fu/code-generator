@@ -19,11 +19,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /**
- * To host a http rest service, base on 'express' http framework
+ * To host a http rest service, base on lib 'express' http framework
  */
 class RestService extends Service {
+
     /**
+     * Constructor of RestService
      * 
+     * @constructor
+     * @param {Number} port
      * @param {[Controller]} controllers 
      */
     constructor (port, controllers = []) {
@@ -40,10 +44,12 @@ class RestService extends Service {
     /**
      * Config express middleware
      * 
-     * @param {Express.middleware}
+     * @param {[Express.middleware]}
      */
-    useMiddleware(middleware) {
-
+    useMiddleware(...middlewares) {
+        middlewares.forEach(m => {
+            app.use(m);
+        });
     }
 
     /**
@@ -71,7 +77,6 @@ class RestService extends Service {
         }
 
         this._server = app.listen(this._port);
-
         this._status = ServiceStatus.RUNNING;
         this.info("service started");
         this.info("listen on " + this._port);

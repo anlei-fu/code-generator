@@ -73,17 +73,17 @@ class CrawlTaskConfig {
                 this.aditionalParams = "";
 
                 /**
-                 * 
+                 * the min task schedule rate(ms)
                  */
-                this.pollMaxRate = 1000;
+                this.pollMaxRate = 10000;
 
                 /**
-                 * 
+                 * the max task schedule rate(ms)
                  */
-                this.polllMinRate = 100;
+                this.polllMinRate = 30;
 
                 /**
-                 * 
+                 * max page that @see {Browser} can open
                  */
                 this.browserMaxPaggeSize = 100;
 
@@ -93,19 +93,24 @@ class CrawlTaskConfig {
                 this.encoding = "";
 
                 /**
-                 * 
+                 * if true will auto download page and check download result
                  */
                 this.autoDownloadPage = false;
 
                 /**
-                 * 
+                 * the delay of next get of @see {Page} if @see {Browser} get page failed
                  */
-                this.waitForPageDelay = 100;
+                this.browserWaitForPageDelay = 100;
 
-
+                /**
+                 * the max failed count that task allow
+                 */
                 this.maxFail = 100;
 
-                this.maxFailContinuously = 30;
+                /**
+                 * the max continuously failed count that task allow
+                 */
+                this.maxContinuouslyFail = 5;
         }
 }
 

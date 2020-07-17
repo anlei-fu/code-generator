@@ -2,92 +2,92 @@ const { CrawlTaskResultCode } = require("./../constant/CrawlTaskResultCode")
 class CrawlTaskResult {
         constructor () {
                 /**
-                 * ip of crawler from config file
+                 * Ip of crawler from config file
                  */
                 this.crawlerIp = "";
 
                 /**
-                 * unique id of crawler from config file
+                 * Unique id of crawler from config file
                  */
                 this.crawlerId = "";
 
                 /**
-                 * task id from task config
+                 * Task id from task config
                  */
                 this.taskId = 1;
 
                 /**
-                 * the time task begin to execute
+                 * The time task begin to execute
                  */
                 this.startTime = new Date();
 
                 /**
-                 * the time that task finished
+                 * The time that task finish executing
                  */
                 this.finishTime = new Date();
 
                 /**
-                 * the urls that crawl succeed
+                 * The urls that crawl succeed
                  */
                 this.successUrls = [];
 
                 /**
-                 * the urls that crawl failed
+                 * The urls that crawl failed
                  */
                 this.failedUrls = [];
 
                 /**
-                 * the urls that invalid
+                 * The urls that invalid
                  */
                 this.badUrls = [];
 
                 /**
-                 * the urls that newly deteted @type {UrlPair}
+                 * The urls that newly deteted @type {UrlPair}
                  */
                 this.newUrls = [];
 
                 /**
-                 * the urls that has not been crawled and be blocked
+                 * The urls that has not been crawled when task be blocked
                  */
                 this.unCrawledUrls = [];
 
                 /**
-                 * the datas that craled
+                 * The datas that crawled
                  */
                 this.datas = [];
 
                 /**
-                 * the crawl task code @see {CrawlTaskResultCode}
+                 * The crawl task result code @see {CrawlTaskResultCode}
                  */
                 this.taskResultCode = CrawlTaskResultCode.SUCCESS;
 
                 /**
-                 * the crawl task message not required
+                 * The crawl task result message not required
                  */
                 this.message = "";
 
                 /**
-                 * the avarage speed of all
+                 * The avarage speed of all crawling
                  */
                 this.avarage = "";
 
                 /**
-                 * the mean speed of success
+                 * The mean speed of success crawling
                  */
                 this.mean = "";
 
                 /**
-                 * the avarage speed of success
+                 * The avarage speed of success crawling
                  */
                 this.successAvarage = 10;
 
                 /**
-                 * 
+                 * The account id if use cookie
                  */
-                this.cookieId = 100;
+                this.accountId = 100;
 
                 /**
-                 * 
+                 * The proxy id if use proxy
                  */
                 this.proxyId = 100;
         }
@@ -252,6 +252,28 @@ class CrawlTaskResultBuilder {
          */
         message(message) {
                 this._config.message = message;
+                return this;
+        }
+
+        /**
+         * Set property accountId
+         * 
+         * @param {String} accountId
+         * @returns {CrawlTaskResultBuilder}
+         */
+        accountId(accountId) {
+                this._config.accountId = accountId;
+                return this;
+        }
+
+        /**
+         * Set property proxytId
+         * 
+         * @param {String} proxyId
+         * @returns {CrawlTaskResultBuilder}
+         */
+        proxyId(proxyId) {
+                this._config.proxyId = proxyId;
                 return this;
         }
 

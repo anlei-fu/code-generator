@@ -8,7 +8,7 @@ class UrlPair {
                 /**
                  * refferUrl
                  */
-                this.refferUrl = "";              
+                this.referer = "";              
         }
 }
 
@@ -40,7 +40,7 @@ class UrlPairBuilder{
          * @returns {UrlPairBuilder}
          */
         refferUrl(refferUrl){
-                this._config.refferUrl = refferUrl;
+                this._config.referer = refferUrl;
                 return this;
         }
 

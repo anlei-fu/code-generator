@@ -6,11 +6,18 @@ const { PageResultCode } = require("./constant/PageResultCode");
 const { STR } = require("./utils/str");
 
 class BlockRuleChecker {
+        /**
+         * Constructor of BlockRuleChecker
+         * 
+         * @constructor
+         * @param {[BlockRule]} rules 
+         */
         constructor (rules) {
                 this._rules = [new BlockRule()];
         }
 
         /**
+         * To check download result
          * 
          * @param {DownloadResult} downloadResult 
          * @returns {PageResult}

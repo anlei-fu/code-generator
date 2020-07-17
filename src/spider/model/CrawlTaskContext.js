@@ -21,7 +21,7 @@ class CrawlTaskContext {
                 );
                 this.cheerIo = cheerio;
                 this.ruleChecker = new BlockRuleChecker(config.rules);
-                this.downloader = new Downloader(config);
+                this.downloader = new Downloader(this);
                 this.browser = new Browser(config);
                 this.urlResolver = new UrlResolver();
                 this.config = config;

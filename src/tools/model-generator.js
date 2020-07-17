@@ -28,11 +28,10 @@ function main(modelName, items, withBuilder = true) {
 
 /******************************************main**********************************8888*/
 main(
-        "BlockRule",
+        "MasterHeartBeat",
         [
-                "status",
-                "checkType",
-                "keywords",
-                "pageResult"
+                "masters",
+                "fileHost",
+                "master"
         ],
 );

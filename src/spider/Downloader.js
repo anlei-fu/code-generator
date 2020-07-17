@@ -1,6 +1,5 @@
 const axios = require("axios");
-let iconv = require('iconv-lite');
-
+const iconv = require('iconv-lite');
 const { OBJECT } = require("./utils/utils");
 const { STR } = require("./utils/str");
 const { DownloadResult } = require("./model/DownloadResult");
@@ -28,9 +27,14 @@ const ErrorMap = {
         }
 }
 
+/**
+ * @CrawlTaskContext component ,wrap of lib 'axios' and 'iconv'
+ */
 class Downloader {
         /**
+         * Constructor of Downloader
          * 
+         * @constructor
          * @param {CrawlTaskContext} context 
          */
         constructor (context) {
@@ -38,7 +42,7 @@ class Downloader {
         }
 
         /**
-         * Download page
+         * Download page and process download error
          * 
          * @param {UrlPair} url 
          * @param {Object} headers 
@@ -53,7 +57,7 @@ class Downloader {
         }
 
         /**
-         * Download page
+         * Download page core
          * 
          * @private
          * @param {UrlPair} url 
@@ -62,7 +66,7 @@ class Downloader {
          */
         _downloadCore(url, headers) {
                 return new Promise((resolve, reject) => {
-                        let axiosConfig = this._createConfig(url, this._context, headers);
+                        let axiosConfig = this._createConfig(url, headers);
                         axios.default.get(url.target, axiosConfig)
                                 .then(
                                         res => {
@@ -73,7 +77,7 @@ class Downloader {
                                                 res.data.on('end', () => {
                                                         let buffer = Buffer.concat(chunks);
                                                         let str = iconv.decode(buffer, this._context.config.encoding || "utf8");
-                                                        resolve({ data: str, status: res.status })
+                                                        resolve({ html: str, status: res.status })
                                                 })
                                         }
                                 ).catch(ex => reject(ex));
@@ -91,20 +95,26 @@ class Downloader {
         _createConfig(url, headers) {
                 headers = headers || {};
 
-                OBJECT.setIfAbsent(headers, "Referer", url.referUrl);
+                // header referer 
+                if (url.referer)
+                        OBJECT.setIfAbsent(headers, "Referer", url.referer);
+
+                // header accept
                 OBJECT.setIfAbsent(headers, "Accept", "*/*");
+
+                // header user agent
                 OBJECT.setIfAbsent(
                         headers,
                         "User-Agent",
                         "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
                 );
 
-                if (context.cookie)
+                if (this._context.cookie)
                         OBJECT.setIfAbsent(headers, "Set-Cookie", "");
 
                 return {
                         timeout: this._context.config.timeout || 10000,
-                        proxy: this._context.config.proxy,
+                        // proxy: this._context.config.proxy,
                         maxContentLength: 1024 * 1024 * 1024, // 1mb
                         headers,
                         responseType: 'stream',
@@ -112,7 +122,7 @@ class Downloader {
         }
 
         /**
-         * Get status code by error message
+         * Get status code by error message from @see {ErrorMap}
          * 
          * @private
          * @param {string} message 

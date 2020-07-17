@@ -1,12 +1,12 @@
 class DownloadResult {
         constructor () {
                 /**
-                 * status code of dowload @see {}
+                 * Http status code of download @see {}
                  */
                 this.status = 200;
 
                 /**
-                 * the html of download
+                 * The html downloaded
                  */
                 this.html = "";
         }
@@ -28,7 +28,7 @@ class DownloadResultBuilder {
          * @param {String} statusCode
          * @returns {DownloadResultBuilder}
          */
-        statusCode(statusCode) {
+        status(statusCode) {
                 this._config.status = statusCode;
                 return this;
         }
@@ -43,7 +43,6 @@ class DownloadResultBuilder {
                 this._config.html = html;
                 return this;
         }
-
 
         /**
          * Build 

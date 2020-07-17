@@ -4,6 +4,9 @@ const { ThreadUtils } = require("./utils/thread-utils");
 const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
 const { LoggerSurpport } = require("./LoggerSurpport");
 
+/**
+ * @CrawlTaskContext component ,wrap of lib 'puppeteer'
+ */
 class Browser extends LoggerSurpport {
         /**
          * Constructor of browser
@@ -12,14 +15,15 @@ class Browser extends LoggerSurpport {
          * @param {CrawlTaskConfig} config 
          */
         constructor (config) {
-                super("Browser")
+                super("Browser" + config.taskId);
                 this._config = config;
                 this._config.browserMaxPaggeSize = this._config.browserMaxPaggeSize || 50;
+                this._config.browserWaitForPageDelay = this._config.browserWaitForPageDelay || 200;
                 this._pages = [new BrowserPage()];
         }
 
         /**
-         * Init browser
+         * Launch browser
          * 
          * @returns {Promise<void>}
          */
@@ -54,19 +58,19 @@ class Browser extends LoggerSurpport {
                                         p = await this._browser.newPage();
                                         if (this._config.cookie)
                                                 await p.setCookie(this._config.cookie)
-                                } catch (ex) {
-                                        continue;
-                                }
-                                let page = new BrowserPage();
-                                page.page = p;
-                                page.available = false;
-                                this._pages.push(page);
+                                        let page = new BrowserPage();
+                                        page.page = p;
+                                        page.available = false;
+                                        this._pages.push(page);
 
-                                return page;
+                                        return page;
+                                } catch (ex) {
+                                        this.error(`get page failed`, ex);
+                                }
                         }
 
                         // wait for page available
-                        await ThreadUtils.sleep(this._config.waitForPageDelay || 50);
+                        await ThreadUtils.sleep(this._config.browserWaitForPageDelay);
                 }
         }
 
@@ -79,7 +83,8 @@ class Browser extends LoggerSurpport {
                 try {
                         await this._browser.close();
                 } catch (ex) {
-
+                        //TODO if this happened, should terminate process?
+                        this.error("close browser failed", ex);
                 }
         }
 }

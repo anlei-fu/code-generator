@@ -1,9 +1,26 @@
+const { CheckType } = require("./../constant/CheckType");
+const { PageResultCode } = require("./../constant/PageResultCode");
 class BlockRule {
         constructor () {
-                this.status = "";
-                this.checkType = "";
-                this.keywords = "";
-                this.pageResult = "";
+                /**
+                 * Download http status code
+                 */
+                this.status = 200;
+
+                /**
+                 * Rule check type @see {CheckType}
+                 */
+                this.checkType = CheckType.STATUS_CHECK;
+
+                /**
+                 * Keywords to match
+                 */
+                this.keywords = [""];
+
+                /**
+                 * Pageresult if match @see {PageResultCode}
+                 */
+                this.pageResult = PageResultCode.SUCCCESS;
         }
 }
 
@@ -20,7 +37,7 @@ class BlockRuleBuilder {
         /**
          * Set property status
          * 
-         * @param {String} status
+         * @param {Number} status
          * @returns {BlockRuleBuilder}
          */
         status(status) {
@@ -31,7 +48,7 @@ class BlockRuleBuilder {
         /**
          * Set property checkType
          * 
-         * @param {String} checkType
+         * @param {Number} checkType
          * @returns {BlockRuleBuilder}
          */
         checkType(checkType) {
@@ -42,7 +59,7 @@ class BlockRuleBuilder {
         /**
          * Set property keywords
          * 
-         * @param {String} keywords
+         * @param {[String]} keywords
          * @returns {BlockRuleBuilder}
          */
         keywords(keywords) {
@@ -53,14 +70,13 @@ class BlockRuleBuilder {
         /**
          * Set property pageResult
          * 
-         * @param {String} pageResult
+         * @param {Number} pageResult
          * @returns {BlockRuleBuilder}
          */
         pageResult(pageResult) {
                 this._config.pageResult = pageResult;
                 return this;
         }
-
 
         /**
          * Build 

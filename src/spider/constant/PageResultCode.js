@@ -1,17 +1,17 @@
 exports.PageResultCode = {
-	// page not found
+	// Page not found
 	NOT_EXIST: 1,
 
-	// download page failed
-	FAILED: 2,
+	// Exrtuct page failed
+	EXTRUCT_FAILED: 2,
 
-	// blocked
+	// Blocked page
 	BLOCKED: 3,
 
-	// success
+	// Success
 	SUCCCESS: 4,
 
-	// download page failed
+	// Download page failed
 	DOWNLOAD_FAILED: 5,
 };
 

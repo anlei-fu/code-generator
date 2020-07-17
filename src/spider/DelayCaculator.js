@@ -3,7 +3,9 @@
  */
 exports.DelayCaculator = class {
         /**
+         * Constructor of  DelayCaculator
          * 
+         * @constructor
          * @param {number} min 
          * @param {number} max 
          * @param {number} positiveRate
@@ -34,7 +36,7 @@ exports.DelayCaculator = class {
          * @param {boolean} positive 
          * @returns {number}
          */
-        nextDelay(positive=true) {
+        nextDelay(positive = true) {
                 let value = this._caculator
                         ? this._caculator(this._currentDelay, this._min, this.max, positive)
                         : this._defaultCaculator(positive);

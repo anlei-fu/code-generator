@@ -22,9 +22,72 @@ async function test() {
                 "/run",
                 {
                         taskId: 2,
-                        urls: [],
-                        script: "1234.js",
-                        rules:{},
+                        urls: [
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                },
+                                {
+                                        target:"https://www.baidu.com/",
+                                        referer:"https://www.baidu.com/"
+                                }
+                        ],
+                        script: "baidu.js",
+                        isStatic:true,
+                        autoDownloadPage:true,
+                        rules:[],
                 }
         );
 }

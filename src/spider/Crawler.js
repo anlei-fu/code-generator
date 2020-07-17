@@ -8,6 +8,12 @@ class Crawler extends LoggerSurpport {
         constructor () {
                 super("Crawler");
         }
+
+        /**
+         * To start a crawler client with a config file
+         * 
+         * @param {String} configFile 
+         */
         start(configFile) {
                 let config = FILE.readJson(configFile);
                 validateUtils.requireNotNull(

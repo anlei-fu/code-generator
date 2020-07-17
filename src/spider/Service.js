@@ -8,10 +8,13 @@ const { ServiceStatus } = require("./constant/ServiceStatus");
  * @abstract
  */
 class Service extends Initiable {
+
         /**
+         * Constructor of Service
          * 
+         * @constructor
          * @param {String} name 
-         * @param {ServiceEventListener} serviceEventListner 
+         * @param {ServiceEventListener} serviceEventListner ,not required
          */
         constructor (name, serviceEventListner) {
                 super(name);
@@ -32,7 +35,7 @@ class Service extends Initiable {
         /**
          * To start service
          * 
-         * @abstract
+         * @virtual
          */
         start() {
                 this.info(`${this.name} started`);
@@ -41,7 +44,7 @@ class Service extends Initiable {
         /**
          * To puase service
          * 
-         * @abstract
+         * @virtual
          * @param {()=>void} callback 
          * @param {boolean} force
          */
@@ -52,7 +55,7 @@ class Service extends Initiable {
         /**
          * To puase service
          * 
-         * @abstract
+         * @virtual
          * @param {()=>void} callback 
          * @param {boolean} force
          */
@@ -63,7 +66,7 @@ class Service extends Initiable {
         /**
          * To resume service
          */
-        resume(){
+        resume() {
                 this.info(`${this.name} started`);
         }
 

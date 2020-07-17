@@ -2,5 +2,5 @@
         "ip": "192.168.5.32",
         "port": 10051,
         "uniqueId": 123456,
-        "scriptDir": "/usr/spider"
+        "scriptDir": "./script"
 }
