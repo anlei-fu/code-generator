@@ -60,7 +60,7 @@ class IncludeConfigItemBuilder {
 
 class AnalyzeConfig {
         constructor () {
-                this.seletctConfig = {};
+                this.selectConfig = {};
                 this.updateConfig = {};
                 this.insertConfig = {};
                 this.joinConfig = {};
@@ -86,11 +86,11 @@ class AnalyzeConfigBuilder {
          * @param {(IncludeConfigItemBuilder)=>void} configer
          * @returns {AnalyzeConfigBuilder}
          */
-        useSeletctConfig(type, configer) {
+        useSelectConfig(type, configer) {
                 let builder = new IncludeConfigItemBuilder();
                 configer(builder);
                 let config = builder.build();
-                this._config.seletctConfig[type][config.name] = config;
+                this._config.selectConfig[type][config.name] = config;
                 return this;
         }
 

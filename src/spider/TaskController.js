@@ -33,7 +33,7 @@ class TaskController extends Controller {
                         body,
                         "taskId",
                         "urls",
-                        "script",
+                        "scriptPath",
                         "rules"
                 );
 

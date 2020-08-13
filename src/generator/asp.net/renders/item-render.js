@@ -25,7 +25,7 @@ function renderItem(addConfig) {
                 if(!x.textArea)
                    requires.push(`                ${x.name}: { required: true },\r\n`);
 
-                x.type=x.textArea?"textArea":"text";
+                x.type=x.textArea?"textarea":"text";
                 items.push(renderItemText(x));
         });
 

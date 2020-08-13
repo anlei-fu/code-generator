@@ -6,4 +6,4 @@ function main(folder){
 }
 
 /***********************************************main********************************************************/
-main("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/output/deploy/deploy/");
+main("D:/test/crawler/crawler/jasmine-crawler/admin-web");

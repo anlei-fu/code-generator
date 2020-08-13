@@ -30,7 +30,7 @@ class CrawlTaskConfig {
                 /**
                  * cookie id
                  */
-                this.accountId = 1;
+                this.x=cookieId = 1;
 
                 /**
                  * cookie
@@ -85,7 +85,7 @@ class CrawlTaskConfig {
                 /**
                  * max page that @see {Browser} can open
                  */
-                this.browserMaxPaggeSize = 100;
+                this.browserMaxPageSize = 100;
 
                 /**
                  * page default encoding

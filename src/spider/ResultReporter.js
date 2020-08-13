@@ -17,8 +17,9 @@ class ResultReporter {
          */
         async sendResult(master, taskResult) {
                 let client = new HttpClient("ResultReporter", { baseUrl: master });
-                return client.post(SEND_RESULTT, taskResult);
+                return client.post(API.SEND_RESULTT, taskResult);
         }
+
 }
 
 exports.ResultReporter = ResultReporter;

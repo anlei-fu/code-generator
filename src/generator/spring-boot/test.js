@@ -13,12 +13,12 @@ const { InitConfigBuilder } = require("./builders/InitConfig");
 async function main() {
 
         let builder =new InitConfigBuilder();
-        builder.project("deploy")
+        builder.project("crawler")
                .company("jasmine")
-               .targetFolder("D:/test")
+               .targetFolder("D:/test/all")
                .generateDb()
                .generateStructure()
-               .generateBuilder(false)
+               .generateBuilder()
                .libPath("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot")
                .useDbConfig(db=>{
                        db.generateDb()
@@ -28,7 +28,7 @@ async function main() {
                                 .port(3306)
                                 .user("root")
                                 .password("2011801243")
-                                .db("deploy_system")
+                                .db("new_system")
                          })
                })
                .useAnalyzeConfig(analyze=>{

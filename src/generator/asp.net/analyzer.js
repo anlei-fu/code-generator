@@ -273,7 +273,7 @@ class ControlAnlyzer {
 
                 // check by system dictionary
                 for (const c in this._dictionaryMatchers) {
-                        if (c.includes(column.name))
+                        if (c.toLowerCase()==column.name.toLowerCase())
                                 return true;
                 }
 

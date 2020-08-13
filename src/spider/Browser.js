@@ -17,7 +17,7 @@ class Browser extends LoggerSurpport {
         constructor (config) {
                 super("Browser" + config.taskId);
                 this._config = config;
-                this._config.browserMaxPaggeSize = this._config.browserMaxPaggeSize || 50;
+                this._config.browserMaxPageSize = this._config.browserMaxPageSize || 50;
                 this._config.browserWaitForPageDelay = this._config.browserWaitForPageDelay || 200;
                 this._pages = [new BrowserPage()];
         }

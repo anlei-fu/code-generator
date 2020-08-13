@@ -1,6 +1,6 @@
-package com.jasmine.deploy.controller;
+package com.@project.controller;
 
-import com.jasmine.deploy.pojo.resp.R;
+import com.@project.pojo.resp.R;
 
 public class ControllerBase {
 

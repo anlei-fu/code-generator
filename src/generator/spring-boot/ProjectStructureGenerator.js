@@ -161,8 +161,6 @@ class ProjectStructreGenerator {
                         )
                 );
 
-
-
                 // create config.js
                 FILE.write(
                         `${targetFolder}/${project}/config.js`,

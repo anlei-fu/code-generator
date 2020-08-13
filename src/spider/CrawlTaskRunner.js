@@ -26,6 +26,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 this._crawlerContext = context;
                 this._taskResultBuilder = new CrawlTaskResultBuilder();
                 this._speedCaculator = new SpeedCaculator();
+                this._currentRunning=0;
         }
 
         /**
@@ -38,12 +39,13 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 this._taskResultBuilder.startTime(new Date());
                 this._taskResultBuilder.crawlerIp(this._crawlerContext.config.ip)
                 this._taskResultBuilder.crawlerId(this._crawlerContext.config.uniqueId);
+                
 
                 if (config.proxyId)
                         this._taskResultBuilder.proxyId(this._taskContext.config.proxyId);
 
-                if (config.accountId)
-                        this._taskResultBuilder.accountId(this._taskContext.config.accountId);
+                if (config.cookieId)
+                        this._taskResultBuilder.cookieId(this._taskContext.config.cookieId);
 
                 try {
                         await this._init(config);
@@ -150,7 +152,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 config.url = urlPair;
                 config.context = this._taskContext;
                 this._currentRunning++;
-                this.info(`begin crawling url(${urlPair.target})`);
+                this.info(`begin crawling url(${urlPair.url})`);
                 try {
                         if (this._taskContext.config.autoDownloadPage
                                 && this._taskContext.config.isStatic
@@ -167,14 +169,14 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         }
                 } catch (ex) {
                         result = new PageResultBuilder()
-                                .url(urlPair.target)
+                                .url(urlPair.url)
                                 .pageResultCode(PageResultCode.EXTRUCT_FAILED)
                                 .msg(ex.message)
                                 .build();
-                        this.error(`crawl url(${urlPair.target}) failed`, ex);
+                        this.error(`crawl url(${urlPair.url}) failed`, ex);
                 }
 
-                this.info(`crawl url(${urlPair.target}) finished and result is ${result.pageResultCode}, msg is ${result.msg || "null"}`);
+                this.info(`crawl url(${urlPair.url}) finished and result is ${result.pageResultCode}, msg is ${result.msg || "null"}`);
 
                 let finishTime = new Date();
                 this._speedCaculator.addItem(
@@ -266,7 +268,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // notify task result util success
                 while (true) {
-                        let masters = this._crawlerContext.config.masters;
+                        let masters = this._crawlerContext.masters;
                         for (const master of masters) {
                                 try {
                                         let res = await this._crawlerContext

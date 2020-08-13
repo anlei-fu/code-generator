@@ -430,11 +430,8 @@ const DEFAULT_INSERT_EXCLUDES = {
                 }
         },
         Date: {
-                updateTime: {
-
-                },
-                createTime: {
-
+                default:{
+                        matcher:columnName=>true
                 }
         }
 }
@@ -445,7 +442,7 @@ const DEFAULT_INSERT_EXCLUDES = {
 class InsertAnalyzer extends ExcludesAnalyzer {
         constructor () {
                 super();
-                this.excludes = DEFAULT_INSERT_EXCLUDES;
+                this.includes = DEFAULT_INSERT_EXCLUDES;
         }
 
         /**
@@ -461,13 +458,13 @@ class InsertAnalyzer extends ExcludesAnalyzer {
                         return false;
 
                 let type = getJavaType(column.type);
-                if (!this.excludes[type])
+                if (!this.includes[type])
                         return true;
 
-                for (const item in this.excludes[type]) {
+                for (const item in this.includes[type]) {
 
-                        let match = this.excludes[type][item].matcher
-                                ? this.excludes[type][item].matcher(column.name)
+                        let match = this.includes[type][item].matcher
+                                ? this.includes[type][item].matcher(column.name)
                                 : Matcher.lowerIncludes(column.name, item);
 
 
@@ -538,7 +535,7 @@ const DEFAULT_UPDATE_EXCLUDES = {
 class UpdateAnlyzer extends ExcludesAnalyzer {
         constructor () {
                 super();
-                this.excludes = DEFAULT_UPDATE_EXCLUDES;
+                this.includes = DEFAULT_UPDATE_EXCLUDES;
         }
 
         /**
@@ -550,12 +547,12 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
          * @returns {boolean}
          */
         shouldBeCandidate(type, name) {
-                if (!this.excludes[type])
+                if (!this.includes[type])
                         return true;
 
-                for (const item in this.excludes[type]) {
-                        let match = this.excludes[type][item].matcher
-                                ? this.excludes[type][item].matcher(name)
+                for (const item in this.includes[type]) {
+                        let match = this.includes[type][item].matcher
+                                ? this.includes[type][item].matcher(name)
                                 : Matcher.lowerIncludes(name, item)
 
                         if (match)

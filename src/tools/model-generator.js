@@ -21,17 +21,19 @@ function main(modelName, items, withBuilder = true) {
         if (withBuilder)
                 content += builderGenerator(modelName, items);
 
-        FILE.write(`C:/Users/Administrator/Desktop/Projects/code-generator/src/spider/model/${modelName}.js`, content);
+        FILE.write(`C:/Users/Administrator/Desktop/Projects/vue-admin/spider/src/lib/${modelName}.js`, content);
         return content;
 
 }
 
 /******************************************main**********************************8888*/
 main(
-        "MasterHeartBeat",
+        "select",
         [
-                "masters",
-                "fileHost",
-                "master"
+                "model",
+                "enum",
+                "texts",
+                "textArea",
+                "rules",
         ],
 );

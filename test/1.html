@@ -16,8 +16,24 @@
         console.log("html called");
         console.log("$ is")
         console.log($);
+        
+        function checkTime(){
+            debugger
+            var startTime =new Date($("#str").val());
+            var endTime =new Date($("#etr").val());
+            var oneDay =24*60*60*1000;
+            var seletctType =$("#DataSelectType").val();
+            if (seletctType==2) {
+                      if(!startTime||!endTime
+                       || (endTime.getTime()<startTime.getTime()) 
+                       || (endTime.getTime()- startTime.getTime())>oneDay){
+                           alert("时间范围不正确，最多查询一天的数据！")
+                        return false;
+                       }
+                   }
+          return true;
 
-
+        }
 
         // event biding
         $(() => {

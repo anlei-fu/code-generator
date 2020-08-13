@@ -3,6 +3,6 @@
     </td>
     <td width="300" class="textalign_l">
         <p class="sc_p">
-            @Html.DropDownList("@name", new SelectList(@serviceService.Instance.GetChannelList(@dicType), "@value", "@text", Model.CurrentModel.@name), "@defaultText")
+            @Html.DropDownList("@name", new SelectList(@serviceService.Instance.GetDataList(@dicType), "@value", "@text", Model.CurrentModel.@name), "@defaultText")
         </p>
     </td>

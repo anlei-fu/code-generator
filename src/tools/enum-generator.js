@@ -32,15 +32,14 @@ class EnumBuilder {
         }
 }
 
-let name = "CheckType";
+let name = "TaskStatus";
 let builder = new EnumBuilder();
 builder.items(
         [
-              "IncludesAny",
-              "IncludesAll",
-              "NotIncludesAny",
-              "NotIncludesAll",
-              "StatusCheck"
+              "wait",
+              "excuting",
+              "success",
+              "blocked"
         ]
 );
 

@@ -261,7 +261,7 @@ class CrawlTaskResultBuilder {
          * @param {String} accountId
          * @returns {CrawlTaskResultBuilder}
          */
-        accountId(accountId) {
+        cookieId(accountId) {
                 this._config.accountId = accountId;
                 return this;
         }

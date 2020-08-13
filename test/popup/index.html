@@ -1,0 +1,325 @@
+<script type="text/javascript">
+
+        $(() => {
+                $('#mainForm').validate(
+                        {
+                                errorClass: "error",
+                                focusInvalid: true,
+                                submitHandler: async function (form) {
+                                        try {
+                                                getData();
+                                                let resp = await post();
+                                                alert(resp.Messge);
+                                                return resp.Status;
+                                        } catch (ex) {
+                                                alert("操作失败");
+                                        }
+
+                                        return false;
+                                }
+                        }
+                )
+        })
+
+
+        // 数据模型
+        var data = {
+                ProductId: null,
+                FirstChargeFace: null,
+                RewardCntr: null,
+                RewardType: null,
+                RewardMonth: null,
+                RewardDetail: null, // 10|10|20|10
+                Status: null,
+        },
+
+        // 默认期数选项
+        var allowedRewardCount = new Set([]);
+
+        // 当前是否 自定义期数模式
+        var customerRewardCountMode = false;
+
+        // 需要首充
+        var needCharge = true;
+
+        // 绑定事件
+        $(() => {
+                // 需要首充 checkbox
+                $("#firstChargeFaceToggler").change((target) => {
+                        if ($(target).attr("checked")) {
+                                $("#firstChargeFace").hide();
+                                needCharge = false;
+                        } else {
+                                $("#firstChargeFace").hide();
+                                needCharge = true;
+                        }
+                });
+
+                // 自定义期数 checkbox
+                $("#rewardCountToggle").change((target) => {
+                        if ($(target).attr("checked")) {
+                                $("#defaultRewardCoutContainer").hide();
+                                $("#customerCountContainer").show();
+                                customerRewardCountMode = true;
+                        } else {
+                                $("#defaultRewardCoutContainer").show();
+                                $("#customerCountContainer").hide();
+                                customerRewardCountMode = false;
+                        }
+                });
+
+                // sumit click 自定义期数
+                $("#customerRewardCountBtn").click(() => {
+                        renderRewardDetail($("customerRewardCount").val())
+                });
+
+
+        });
+
+        // 更新 reward count
+        function changeRewardCount(count) {
+                count = parseFloat(count);
+                if (!count) {
+                        alert("");
+                        return;
+                }
+
+                let detail = "";
+                for (let i = 0; i < count; i++) {
+                        detail += "0|";
+                }
+                renderRewardDetail(detail);
+        }
+
+        // 渲染 detail table
+        function renderRewardDetail(detail) {
+                let values = [];
+                detail.split("|").forEach(x => {
+                        values.push(parseFloat(x));
+                });
+                var content = `<table><tr>${renderTableHeader(values.length)}</tr><tr>${renderTableRow(values)}</tr>`;
+
+                $("#rewardItemsContainer").empty();
+                $("#rewardItemsContainer").append($(content));
+
+        }
+
+        // 渲染 header
+        function renderTableHeader(count) {
+                var content = "";
+                for (let i = 0; i < count; i++) {
+                        content += `<th>T+${i}期</th>`;
+                }
+                return content;
+        }
+
+        // 渲染 body
+        function renderTableRow(values) {
+                var content = "";
+                values.forEach(x => {
+                        content += `<td><input class="detail_value" type="text" value="${x}"/><td>`
+                })
+                return content;
+        }
+
+        // 选择单选按钮  
+        function chooseRadio(prefix, value) {
+                $(`#${prefix}_${value}`).attr("checked", true);
+        }
+
+        // 初始化页面
+        function init() {
+                // 首充面值
+                if (data.FirstChargeFace == 0) {
+                        needCharge = false;
+                        $("#firstChargeFace").hide();
+                        $("#firstChargeFaceToggler").attr("checked", true);
+                } else {
+                        $("#firstChargeFace").show();
+                        $("#firstChargeFaceToggler").removeAttr("checked");
+                        $("#firstChargeFace").val(data.FirstChargeFace);
+                }
+
+                // 佣金类型
+                chooseRadio("reward_type", data.RewardType);
+
+                // 设置 佣金月类型
+                chooseRadio("month_type", data.RewardMonth);
+
+                // 佣金次数
+                if (!data.RewardCount || allowedRewardCount.has(data.RewardCount)) {
+                        customerRewardCountMode = true;
+                        $("#defaultRewardCoutContainer").show();
+                        $("#rewardCountToggle").removeAttr("checked");
+                        $("#customerCountContainer").hide();
+                        chooseRadio("reward_count", data.RewardCount);
+                } else {
+                        customerRewardCountMode = false;
+                        $("#defaultRewardCoutContainer").hide();
+                        $("#rewardCountToggle").Attr("checked", true);
+                        $("#customerCountContainer").show();
+                        $("#customerRewardCount").val(data.RewardCount);
+                }
+
+                // 设置状态选择
+                if (data.Status == 0) {
+                        $("#status").attr("checked", true);
+                }
+
+                renderRewardDetail(data.RewardDetail);
+        }
+
+        // 获取提交数据并检查
+        function getData() {
+                if (needCharge) {
+                        data.FirstChargeFace = $("#firstChargeFace").val();
+                        isNumber(data.FirstChargeFace, "首充面值不正确");
+                } else {
+                        data.FirstChargeFace = 0;
+                }
+
+                data.RewardType = getRadioValue("reward_type", []);
+                data.RewardMonth = getRadioValue("reward_month", []);
+                data.RewardCntr = getRewardCount();
+                isNumber(data.RewardCntr, "期数不正确");
+                data.RewardDetail = getRewardDetail();
+                data.Status = getStatus();
+        }
+
+        // 获取期数
+        function getRewardCount() {
+                if (customerRewardCountMode) {
+                        return $("#").val();
+                } else {
+                        return getRadioValue("reawrd_count", []);
+                }
+        }
+
+        // 获取选中单选按钮的值
+        function getRadioValue(type, values) {
+                for (const value of values) {
+                        if ($(`${type}_${value}`).attr("checked"))
+                                return value;
+                }
+
+                throw new Error("unexcepted result");
+        }
+
+        // 获取期数详情
+        function getRewardDetail() {
+                content = "";
+                $(".detail_value").each((x, i) => {
+                        let value = $(x).val();
+                        isNumber(value, `第${i}期数值不正确`);
+                        content += `${value}|`;
+                })
+
+                return content;
+        }
+
+        // 获取状态值
+        function getStatus() {
+                if ($("#status").attr("checked"))
+                        return 0;
+
+                return 1;
+        }
+
+
+        // 检查是否是正确的数字
+        function isNumber(value, msg) {
+                value = parseFloat(value);
+                if (!value) {
+                        alert(msg);
+                        throw new Error();
+                }
+        }
+
+        // post
+        function post(data) {
+                return new Promise((resolve, rejetct) => {
+                        $.ajax({
+                                url: "",
+                                type: "post",
+                                dataType: "json",
+                                data: JSON.stringify(data),
+                                success: resp => resolve(resp),
+                                error: err => rejetct(err)
+                        });
+                });
+        }
+
+
+        // init
+        $(() => {
+                data = $.parseJSON($("#data").val());
+                init();
+        })
+
+</script>
+<form id="mainForm" method="post">
+        <input type="hidden" id="data" value="@Model.Data" />
+        <table>
+                <tr>
+                        <td>首充面值</td>
+                        <td>
+                                <input type="text" id="firstChargeFace" />
+                                <span><input type="checkbox" id="firstChargeFaceToggler" />不首充</span>
+                        </td>
+                </tr>
+                <tr>
+                        <td>佣金类型</td>
+                        <td>
+                                <input type="radio" id="reward_type_1" /><label for="reward_type1">定额</label>
+                                <input type="radio" id="reward_type_2" /><label for="reward_type2">比例</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>首赠月份</td>
+                        <td>
+                                <input type="radio" id="month_type_0" /><label for="month_type_0">当月</label>
+                                <input type="radio" id="month_type_1" /><label for="month_type_1">次月</label>
+                                <input type="radio" id="month_type_2" /><label for="month_type_2">第二月</label>
+                                <input type="radio" id="month_type_3" /><label for="month_type_3">第三月</label>
+                        </td>
+                </tr>
+                <tr>
+                        <td>赠送次数</td>
+                        <td>
+                                <span id="defaultRewardCoutContainer">
+                                        <input type="radio" id="reward_count_1"
+                                                onchange="function(){if(this.checked) changeRewardCount(1)}" /><label
+                                                for="reward_count_1">1期</label>
+                                        <input type="radio" id="reward_count_6"
+                                                onchange="()=>{ if(this.checked) changeRewardCount(6)}" /><label
+                                                for="reward_count_6">6期</label>
+                                        <input type="radio" id="reward_count_12"
+                                                onchange="()=>{ if(this.checked) changeRewardCount(12)}" /><label
+                                                for="reward_count_12">12期</label>
+                                        <input type="radio" id="reward_count_24"
+                                                onchange="()=>{ if(this.checked) changeRewardCount(24)}" /><label
+                                                for="reward_count_24">24期</label>
+                                </span>
+
+                                <span><input type="checkbox" id="rewardCountToggle" />自定义</span>
+                                <span id="customerCountContainer">
+                                        <input type="text" id="customerRewardCount" />
+                                        <button id="customerRewardCountBtn"></button>
+                                </span>
+                        </td>
+                </tr>
+                <tr>
+                        <td>资费详情</td>
+                        <td>
+                                <div id="rewardItemsContainer"></div>
+                        </td>
+                </tr>
+                <tr>
+                        <td>状态</td>
+                        <td>
+                                <inpu id="status" />
+                        </td>
+                </tr>
+
+        </table>
+</form>

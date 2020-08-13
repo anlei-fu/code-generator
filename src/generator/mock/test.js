@@ -33,8 +33,8 @@ var submitResult={
 async function  main() {
       try{
       let buidler = new HandlerCollectionBuilder();
-      let handlers = buidler.handler("/getvcode", "post",vcodeResult)
-            .handler("/submit","post",submitResult)
+      let handlers = buidler.handler("/Mobile5gNew/getvcode", "post",vcodeResult)
+            .handler("/Mobile5gNew/SubmitOrder","post",submitResult)
             .build();
 
       let server = new MockServer();

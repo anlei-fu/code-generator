@@ -67,7 +67,7 @@ class Downloader {
         _downloadCore(url, headers) {
                 return new Promise((resolve, reject) => {
                         let axiosConfig = this._createConfig(url, headers);
-                        axios.default.get(url.target, axiosConfig)
+                        axios.default.get(url.url, axiosConfig)
                                 .then(
                                         res => {
                                                 let chunks = [];

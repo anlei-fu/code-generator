@@ -1,208 +1,454 @@
-<script>
+@{ Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/Content/bootsratp/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/bootsratp/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/bootsratp/css/bootstrap-datetimepicker.min.css" rel="stylesheet"
+        type="text/css" />
+    <script src="/Scripts/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="/Content/bootsratp/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/Content/bootsratp/js/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/Content/bootsratp/js/defaults-zh_CN.min.js" type="text/javascript"></script>
+    <script src="/Content/bootsratp/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    @*
+    <script src="/Content/bootsratp/js/bootstrap-datetimepicker.js" type="text/javascript"></script>*@
+    <script src="/Content/bootsratp/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+    <!-------------------------->
+    <script src="/Scripts/jquery.pagination.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.query.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.paging.js" type="text/javascript"></script>
+    <!-- 引入 ECharts 文件 -->
+    <script src="/Scripts/echarts.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function MRCenterMsg() {
+            this.bind = function () {
+                $.paging.config.form = "#query";
+                $.paging.bind();
+                $("#sub").click(function () {
+                    $.paging.submit();
+                });
+            }
+        }
         $(function () {
-                $('#mainForm').validate({
-                        errorClass: "error",
-                        focusInvalid: true,
-                        submitHandler: async function (form) {
-                                if (!getValue("#ivrStatus")) {
-                                        alert("请选择外呼结果");
-                                        return;
-                                }
+            var user = new MRCenterMsg();
+            user.bind();
 
-                                if (postData.dealStatus == 30) {
-                                        postData.nextTime = $("#time").val();
-                                        if (!postData.nextTime) {
-                                                alert("请选择下次处理时间");
-                                                return;
-                                        }
-                                }
+            $('.selectpicker').selectpicker({
+                noneSelectedText: '请选择',
+                countSelectedText: '选择了{0}条记录',
+                actionsBox: true,
+                deselectAllText: '重置选择',
+                selectAllText: '全选',
+                width: 150
+            });
+            $('.selectpicker').selectpicker("refresh");
+            $('#face').selectpicker('val', $('#faceVal').val().split(','));
+            $('.selectpicker').selectpicker("render");
 
-                                postData.address = $("#addr").val();
-                                postData.name = $("#name").val();
-                                postData.idNo = $("no").val();
-                                postData.nextTime = $("#time").val();
-
-                                try {
-                                        let result = await post("/FCOptimizeOrder/Update", postData);
-                                        alert(result.Message);
-                                        if (result.Status)
-                                                location.reload();
-                                } catch (ex) {
-                                        alert("操作失败");
-                                }
-
-                        },
-
-                });
-
-                $('select').each(function () {
-                        if ($(this).css('display') != "none") {
-                                $(this).sSelect();
-                        }
-                });
+            $("#time").datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                todayBtn: true,
+                autoclose: true,
+                orientation: 'bottom',
+                minView: "month"
+            });
+            var jsondata = $('#jsondata').val();
+            //console.log(jsondata);
+            var data = $.parseJSON(jsondata);
+            var flow = data.flow;
+            //            var tel = data.telfee;
+            DrawChart(flow, echarts.init($('#flow')[0]), '交易趋势图');
+            //            DrawChart(tel, echarts.init($('#telfee')[0]), '话费统计图');
         });
 
-        var dic = []
+        // get summary of array
+        function sum(arr) {
+            if (!arr.length) {
+                return 0;
+            }
+            return eval(arr.join("+"));
+        };
 
-        var postData = {
-                orderNo: "",
-                id: 1,
-                idNo: "",
-                name: "",
-                address: "",
-                ivrDetgail: 1,
-                ivrStatus: 1,
-                dealStatus: 1
-        }
-
-        $(() => {
-                postData.id = $("#__id").val();
-                postData.orderNo = $("#orderNo").val();
-                dic = $.parseJSON($("#dic").val());
-        })
-
-        function onIvrStatusChanged() {
-                let ivrStatus = getValue("#ivrStatsu");
-                postData.ivrStatus = ivrStatus;
-                if (!ivrStatus)
-                        return;
-
-                let items = vrStatus == 90
-                        ? dic.filter(x => x.value % 2 == 0)
-                        : dic.filter(x => x.value % 2 != 0);
-
-                $("#ivrDetail").empty();
-
-                items.forEach(item => {
-                        $(`<option value="${item.Value}">${item.Name}<option>`)
-                                .appendTo($("#ivrDetail"));
+        // just for test
+        function getMockData() {
+            var data = [];
+            var now = new Date().getTime();
+            for (var i = 100; i > 0; i--) {
+                data.push({
+                    TIMES: new Date((now - i * 1000 * 60 * 30)),
+                    ACT_SUC_CNTR: 95,
+                    ACT_THREE_MINT: 95,
+                    ACT_TEN_MINT: 95,
+                    SUC_CNTR: 95,
+                    THREE_CNTR: 95,
+                    TEN_CNTR: 95,
+                    ALL_CNTR: 95,
+                    ORDER_SALES_FEE: 95
                 });
+            }
 
+            return data;
         }
 
-        function onIvrDetailCahnged() {
-                let ivrDetgail = getValue("#ivrDetail");
-                postData.ivrDetgail = ivrDetgail;
-                postData.dealStatus == ivrDetgail > 200 ? 90 : ivrDetgail > 100 ? 20 : 0;
+        function DrawChart(data, chartobj, title) {
 
-                if (postData.dealStatus > 200) {
-                        $("#nextTime").hide();
-                        $("#address").hide();
-                        $("#idNo").hide();
-                        $("#reanName").hide();
-                } else if (postData.dealStatus > 100) {
-                        $("#nextTime").show();
-                        $("#address").hide();
-                        $("#idNo").hide();
-                        $("#reanName").hide();
-                } else {
-                        $("#address").show();
-                        $("#idNo").show();
-                        $("#realName").show();
+            //data = getMockData();
+            var time = []
+            , total_suc_rate = []       // 下游成功率
+            , one_suc_rate = []         // 一分钟成功率
+            , three_suc_rate = []       // 三分钟成功率
+            , ten_suc_rate = []         // 十分钟到账率
+
+            , one_finish_rate=[]        // 1分钟完成率
+            , three_finish_rate=[]      // 3分钟完成率
+
+            , total_sale_fee = []       // 订单总金额
+            , total_count = []          // 订单总笔数
+            , suc_total = []            // 成功总笔数-
+            , one_suc_count = []        // 1分钟成功笔数
+            , three_suc_count = []      // 三分钟成功笔数
+            , ten_suc_count = []        // 10分钟成功笔数
+            , one_finish_count=[]       // 1分钟完成笔数
+            , three_finish_count=[]     // 3分钟完成笔数
+            , refer = []                // 参考基线
+            , down_time = []            // 订单总时长
+            , down_suc_time = [];       // 成功订单时长
+
+            for (var i = 0; i < data.length; i++) {
+                time.push(data[i].TIMES.toString());
+
+                // rate
+                total_suc_rate.push(data[i].ACT_SUC_CNTR.toString());
+                three_suc_rate.push(data[i].ACT_THREE_MINT.toString());
+                ten_suc_rate.push(data[i].ACT_TEN_MINT.toString());
+                one_suc_rate.push(data[i].ACT_ONE_MINT.toString());
+
+                // count
+                total_count.push(data[i].ALL_CNTR.toString());
+                suc_total.push(data[i].SUC_CNTR.toString());
+                three_suc_count.push(data[i].THREE_CNTR.toString());
+                ten_suc_count.push(data[i].TEN_CNTR.toString());
+                one_suc_count.push(data[i].ONE_CNTR.toString());
+                one_finish_count.push(data[i].ONE_MINUTE_FINISH_COUNT.toString());
+                three_finish_count.push(data[i].THREE_MINUTE_FINISH_COUNT.toString());
+
+                refer.push(98.5);
+                //统计
+               
+                total_sale_fee.push(data[i].ORDER_SALES_FEE.toString());
+                down_time.push(parseFloat(data[i].DOWN_TIME));
+                down_suc_time.push(parseFloat(data[i].DOWN_SUC_TIME));
+            }
+            
+            // summary label
+            $('#total').text(sum(total_count));
+            $('#total_sale_fee').text(sum(total_sale_fee).toFixed(2));
+            $('#suc_rate').text((sum(suc_total) * 100 / sum(total_count)).toFixed(2) + "%");
+            $('#three_finish_rate').text((sum(three_finish_count) * 100 / sum(total_count)).toFixed(2) + "%");
+            $('#suc_total').text(sum(suc_total));
+            $('#ten_suc_rate').text((sum(ten_suc_count) * 100 / sum(suc_total)).toFixed(2) + "%");
+            $('#one_finish_rate').text((sum(one_finish_count) * 100 / sum(total_count)).toFixed(2) + "%");
+            $('#average_callback_time').text(avg_str(down_time).toFixed(2));
+            $('#suc_callback_time').text(avg_str(down_suc_time).toFixed(2));
+            $('#one_suc_rate').text((sum(one_suc_count) * 100 / sum(suc_total)).toFixed(2) + "%");
+            $('#three_suc_rate').text((sum(three_suc_count) * 100 / sum(suc_total)).toFixed(2) + "%");
+            
+            function avg_str(array) {
+                //将array的长度赋给len
+                var len = array.length;
+                var sum = 0;
+                //利用for循环遍历数组的内容，利用sum累加求和
+                for (var i = 0; i < len; i++) {
+                    sum += array[i];
                 }
+                //        返回数组的和与长度求平均值
+                return sum / len;
+            }
+
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        crossStyle: {
+                            color: '#999'
+                        }
+                    }
+                },
+                toolbox: {
+                    //                    show: true,
+                    feature: {
+                        //                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                color: ['#05af2b', '#989a96', '#ea0505', '#d8a615', 'rgba(128,128,128,0.5)'],
+                legend: {
+                    data: ['下游成功率', '下游一分钟到账率', '下游三分钟到账率', "下游十分钟到账率(成功)", "预期到账率(98.5%)"]
+                },
+                xAxis: [
+                {
+                    type: 'category',
+                    data: time,
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                }
+            ],
+                yAxis: [
+                {
+                    type: 'value',
+                    name: '百分比',
+                    axisLabel: {
+                        formatter: '{value} %'
+                    },
+                    min: 80,
+                    max: 100
+                }
+            ],
+                series: [
+                {
+                    name: '下游成功率',
+                    type: 'line',
+                    data: total_suc_rate
+                },
+                         {
+                             name: '下游一分钟到账率',
+                             type: 'line',
+                             data: one_finish_rate
+                         },
+                {
+                    name: '下游三分钟到账率',
+                    type: 'line',
+                    data: three_finish_rate
+                },
+
+                {
+                    name: '下游十分钟到账率(成功)',
+                    type: 'line',
+                    data: ten_suc_rate
+                },
+                 {
+                     name: "预期到账率(98.5%)",
+                     type: "line",
+                     data: refer,
+                     lineStyle: {
+                         width: 1
+                     }
+                 }
+            ]
+            };
+            chartobj.setOption(option);
         }
-
-        function post(url, params) {
-                console.log(`url:${url}`);
-                console.log(`params:`);
-                console.log(params);
-                return new Promise((resolve, reject) => {
-                        showSpinner();
-                        $.ajax({
-                                type: "post",
-                                url,
-                                data: params,
-                                success: resp => {
-                                        console.log("resp:");
-                                        console.log(resp);
-                                        closeSpinner()
-                                        resolve($.parseJSON(resp));
-                                },
-                                error: err => {
-                                        closeSpinner();
-                                        reject(err);
-                                }
-                        })
-                });
+    </script>
+    <style>
+        #flow /*#telfee*/
+        {
+            width: 95%;
+            height: 700px;
+            margin: 0 auto;
+            margin-top: 20px;
         }
+        
+        .top
+        {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        
+        #query > .form-group:not(:first-child)
+        {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="hidden" value="@ViewData["DataJson"]" id="jsondata" />
+    <nav class="top">
+        <form id="query" class="form-inline">
+        <div class="form-group">
+            <label for="time">
+                时间:
+            </label>@*form_datetime*@
+            <input type="text" class="form-control" id="time" name="time" readonly value="@DateTime.Now.ToString(" yyyy-MM-dd ")"/>
+        </div>
+@*        <div class="form-group">
+            <label for="ChannelType">
+                渠道类型:
+            </label>
+            <select id="ChannelType" name="ChannelType" class="selectpicker show-menu-arrow form-control"
+                data-live-search="true" data-selected-text-format="count">
+                <option value="">请选择</option>
+                @foreach (var item in MatchingRecharge.UserService.DataService.Instance.GetDataTypeList("ChannelSource"))
+                {
+                    <option value="@item.Value">@item.Name</option>
+                }
+            </select>
+        </div>*@
+        <div class="form-group">
+            <label for="channel">
+                下游渠道:
+            </label>
+            <select id="clannel" name="clannel" class="selectpicker show-menu-arrow form-control"
+                data-live-search="true" data-selected-text-format="count">
+                @foreach (var item in SuperTiny.UserService.DownChannelService.Instance.GetChannelList())
+                {
+                    <option value="@item.ChannelNo" @(item.ChannelNo.Trim().Contains("821148322") ? "selected" : "") >@item.ChannelName</option>
+                }
+                @*<option value="2119523448">腾讯虚拟</option>
+                <option value="167846">京东流量</option>
+                <option value="1050035697">淘宝商城</option>
+                <option value="761724391">11ww天猫</option>
+                <option value="HNJP">彩旗(话费)</option>
+                <option value="jinpengwang">彩旗网厅(话费)</option>
+                <option value="jinpengll">彩旗流量（新）</option>
+                <option value="33083">京东（下游）</option>
+                <option value="hwshfw">华为生活服务</option>
+                <option value="HNJPDW">彩旗对外(话费)</option>
+                <option value="2555813200">千行通信店</option>
+                <option value="qudong">长沙海米网络</option>
+                <option value="2398785126">宽带在线天猫</option>
+                <option value="705752027">杭州卡创科技</option>
+                <option value="821148322">拼多多</option>
+                <option value="meituan">美团充值</option>*@
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="carrier">
+                运营商:
+            </label>
+            <select id="carrier" name="carrier" class="selectpicker show-menu-arrow form-control"
+                data-live-search="true" data-selected-text-format="count">
+                <option value="">请选择</option>
+                @foreach (var item in MatchingRecharge.UserService.CarrierInfoService.Instance.GetAllCarrierList())
+                {
+                    <option value="@item.CarrierNo">@item.CarrierName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="business">
+                业务类型:
+            </label>
+            <select id="Business" name="Business" class="selectpicker show-menu-arrow form-control"
+                data-live-search="true" data-selected-text-format="count">
+                <option value="">请选择</option>
+                <option value="-1">话费</option>
+                <option value="-2">流量</option>
+                <option value="-3">个性流量</option>
+                @foreach (var item in MatchingRecharge.UserService.DataService.Instance.GetDataList("BusinessType"))
+                {
+                    <option value="@item.Value">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Province">
+                省份:
+            </label>
+            <select id="Province" name="Province" class="selectpicker show-menu-arrow form-control"
+                data-live-search="true" data-selected-text-format="count">
+                <option value="">请选择</option>
+                @foreach (var item in SuperTiny.UserService.SystemProvinceService.Instance.GetProvinceList())
+                {
+                    <option value="@item.ProvinceID">@item.ProvinceName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Province">
+                面值:
+            </label>
+            <select id="face" name="face" class="selectpicker show-menu-arrow form-control"  multiple
+                data-live-search="true" data-selected-text-format="count">
+                @foreach (var item in MatchingRecharge.UserService.StFaceInfoService.Instance.GetDataList())
+                {
+                    <option value="@item.FaceVal">@item.FaceVal</option>
+                }
+            </select>
+        </div>
 
-</script>
-
-<form id="mainForm" method="post">
-        <input type="hidden" id="__id" value="@ViewBag.Id" />
-        <input type="hidden" id="orderNo" value="@ViewBag.OrderNo" />
-        <input type="hidden" id="dic" value="@ViewBag.Dic" />
-        <table>
-                <tr>
-                        <td width="120" class="textalign_r">
-                                外呼状态：
-                        </td>
-                        <td width="300" class="textalign_l">
-                                <select id="ivrStatus" onchange="onIvrStatusChanged">
-                                        <option value="">--请选择--</option>
-                                        <option value="0">接通</option>
-                                        <option value="90">未接通</option>
-                                </select>
-                        </td>
-                </tr>
-                <tr>
-                        <td width="120" class="textalign_r">
-                                外呼详情：
-                        </td>
-                        <td width="300" class="textalign_l">
-                                <select id="ivrDetail" onchange="onIvrStatusChanged"></select>
-                        </td>
-                </tr>
-                <tr id="address">
-                        <td width="50" class="textalign_r">
-                                买家地址：
-                        </td>
-                        <td width="200" class="textalign_l">
-                                <textarea style="text-align:left;" rows="4" cols="30"
-                                        name="BuyerAddress"> @ViewBag.Address.Trim()</textarea>
-                        </td>
-                </tr>
-                <tr id="realName">
-                        <td class="textalign_r">
-                                号卡实名：
-                        </td>
-                        <td width="300" class="textalign_l">
-                                <input class="widthinput" type="text" id="name" maxlength="300"
-                                        value="@Model.CurrentModel.ActiveRealName" style="width:138px" />
-                        </td>
-                </tr>
-                <tr id="idNo">
-                        <td class="textalign_r">
-                                实名身份证号码：
-                        </td>
-                        <td width="300" class="textalign_l">
-                                <input class="widthinput" type="text" id="no" maxlength="300"
-                                        value="@Model.CurrentModel.ActiveIdno" style="width:138px" />
-                        </td>
-                </tr>
-                <tr id="nextTime">
-                        <td width="120" class="textalign_r">
-                                下次处理时间：
-                        </td>
-                        <td width="350" class="textalign_l">
-                                <select id="time">
-                                        <option value="">--请选择--</option>
-                                        <option value="1">一小时后</option>
-                                        <option value="2">两小时后</option>
-                                        <option value="5">五小时后</option>
-                                        <option value="6">明天</option>
-                                </select>
-                        </td>
-                </tr>
-                <tr>
-                        <td width="120" class="textalign_r">
-                                备注：
-                        </td>
-                        <td width="300" class="textalign_l">
-                                <textarea name="Msg" style="font-size: 12px; min-width: 70%; min-height: 5rem;"
-                                        maxlength="32"></textarea>
-                        </td>
-                </tr>
-
-        </table>
-</form>
+                <div class="form-group">
+            <label for="RechargeMode">
+                充值类型:
+            </label>
+            <select id="RechargeMode" name="RechargeMode" class="selectpicker show-menu-arrow form-control" 
+                data-live-search="true" data-selected-text-format="count">
+                 <option value="">请选择</option>
+                @foreach (var item in MatchingRecharge.UserService.DataService.Instance.GetDataList("RechargeMode"))
+                {
+                    <option value="@item.Value">@item.Name</option>
+                }
+            </select>
+        </div>
+        <button id="sub" class="btn btn-default" style="width: 100px;">
+            查询
+        </button>
+        </form>
+    </nav>
+    <div class="container-fluid" style="margin-top: 10px;">
+        <div class="row">
+            <div class="col-md-1">
+                总笔数:</div>
+            <div class="col-md-1" id="total">
+            </div>
+               <div class="col-md-1">
+                成功笔数:</div>
+            <div class="col-md-1" id="suc_total">
+            </div>
+            <div class="col-md-1">
+                交易金额:</div>
+            <div class="col-md-1" id="total_sale_fee">
+            </div>
+            <div class="col-md-1">
+                成功率:</div>
+            <div class="col-md-1" id="suc_rate">
+            </div>
+                 <div class="col-md-1">
+                一分钟到账率:</div>
+            <div class="col-md-1" id="one_finish_rate">
+            </div>
+            <div class="col-md-1">
+                三分钟到账率:</div>
+            <div class="col-md-1" id="three_finish_rate">
+            </div>
+            <div class="col-md-1">
+                十分钟到账率:</div>
+            <div class="col-md-1" id="ten_suc_rate">
+            </div>
+               <div class="col-md-1">
+                平均回调时长:</div>
+            <div class="col-md-1" id="average_callback_time">
+            </div>
+               <div class="col-md-1">
+                成功回调时长:</div>
+            <div class="col-md-1" id="suc_callback_time">
+            </div>
+                <div class="col-md-1">
+                一分钟到账率(成功):</div>
+            <div class="col-md-1" id="one_finish_rate">
+            </div>
+               <div class="col-md-1">
+                三分钟到账率(成功):</div>
+            <div class="col-md-1" id="three_finish_rate">
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="faceVal" value="@ViewData["FaceVal"]" />
+    <!--流量容器-->
+    <div id="flow">
+    </div>
+    @*
+    <!--话费容器-->
+    <div id="telfee">
+    </div>*@
+</body>
+</html>

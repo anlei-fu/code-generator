@@ -3,7 +3,7 @@ class UrlPair {
                 /**
                  * target url
                  */
-                this.target = "";     
+                this.url = "";     
                 
                 /**
                  * refferUrl
@@ -29,7 +29,7 @@ class UrlPairBuilder{
          * @returns {UrlPairBuilder}
          */
         targe(target){
-                this._config.target = target;
+                this._config.url = target;
                 return this;
         }
 

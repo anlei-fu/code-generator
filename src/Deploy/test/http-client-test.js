@@ -27,62 +27,7 @@ async function test() {
                                         target:"https://www.baidu.com/",
                                         referer:"https://www.baidu.com/"
                                 },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                },
-                                {
-                                        target:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
-                                }
+                               
                         ],
                         script: "baidu.js",
                         isStatic:true,
