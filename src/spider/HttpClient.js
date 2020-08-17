@@ -116,6 +116,7 @@ class HttpClient extends Initiable {
                         return resp.data;
                 } catch (ex) {
                         this.error(`${method} ${url}`, ex);
+                        throw ex;
                 }
         }
 
@@ -127,6 +128,10 @@ class HttpClient extends Initiable {
          * @returns {String}
          */
         _normalizeUrl({ url, params, data }) {
+                
+                if(!url)
+                  throw new Error("url can not be empty!");
+
                 params = params || data;
                 let pathReg = /\{[a-zA-Z]*\}/g;
                 let pathVariables = url.match(pathReg);

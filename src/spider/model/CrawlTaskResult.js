@@ -2,29 +2,24 @@ const { CrawlTaskResultCode } = require("./../constant/CrawlTaskResultCode")
 class CrawlTaskResult {
         constructor () {
                 /**
-                 * Ip of crawler from config file
-                 */
-                this.crawlerIp = "";
-
-                /**
-                 * Unique id of crawler from config file
-                 */
-                this.crawlerId = "";
-
-                /**
                  * Task id from task config
                  */
                 this.taskId = 1;
 
                 /**
-                 * The time task begin to execute
+                 * The crawl task result code @see {CrawlTaskResultCode}
                  */
-                this.startTime = new Date();
+                this.taskResult = CrawlTaskResultCode.SUCCESS;
 
                 /**
-                 * The time that task finish executing
+                 * Total url count
                  */
-                this.finishTime = new Date();
+                this.urlTotal = 0;
+
+                /**
+                 * The crawl task result message not required
+                 */
+                this.message = "";
 
                 /**
                  * The urls that crawl succeed
@@ -57,39 +52,24 @@ class CrawlTaskResult {
                 this.datas = [];
 
                 /**
-                 * The crawl task result code @see {CrawlTaskResultCode}
-                 */
-                this.taskResultCode = CrawlTaskResultCode.SUCCESS;
-
-                /**
-                 * The crawl task result message not required
-                 */
-                this.message = "";
-
-                /**
                  * The avarage speed of all crawling
                  */
-                this.avarage = "";
+                this.avarageSpeedOfAll = 0;
 
                 /**
                  * The mean speed of success crawling
                  */
-                this.mean = "";
+                this.meanSpeedOfSuccess = 0;
 
                 /**
                  * The avarage speed of success crawling
                  */
-                this.successAvarage = 10;
+                this.averageSpeedOfSuccess = 0;
 
                 /**
-                 * The account id if use cookie
+                 * The max speed of success
                  */
-                this.accountId = 100;
-
-                /**
-                 * The proxy id if use proxy
-                 */
-                this.proxyId = 100;
+                this.maxSpeedOfSuccess = 0;
         }
 }
 
@@ -104,28 +84,6 @@ class CrawlTaskResultBuilder {
         }
 
         /**
-         * Set property crawlerIp
-         * 
-         * @param {String} crawlerIp
-         * @returns {CrawlTaskResultBuilder}
-         */
-        crawlerIp(crawlerIp) {
-                this._config.crawlerIp = crawlerIp;
-                return this;
-        }
-
-        /**
-         * Set property crawlerId
-         * 
-         * @param {String} crawlerId
-         * @returns {CrawlTaskResultBuilder}
-         */
-        crawlerId(crawlerId) {
-                this._config.crawlerId = crawlerId;
-                return this;
-        }
-
-        /**
          * Set property taskId
          * 
          * @param {String} taskId
@@ -137,35 +95,13 @@ class CrawlTaskResultBuilder {
         }
 
         /**
-         * Set property startTime
-         * 
-         * @param {String} startTime
-         * @returns {CrawlTaskResultBuilder}
-         */
-        startTime(startTime) {
-                this._config.startTime = startTime;
-                return this;
-        }
-
-        /**
-         * Set property finishTime
-         * 
-         * @param {String} finishTime
-         * @returns {CrawlTaskResultBuilder}
-         */
-        finishTime(finishTime) {
-                this._config.finishTime = finishTime;
-                return this;
-        }
-
-        /**
          * Set property successUrls
          * 
          * @param {String} successUrl
          * @returns {CrawlTaskResultBuilder}
          */
         successUrl(successUrl) {
-                this._config.successUrls.push(successUrl);
+                this._config.successUrls.concat(successUrl);
                 return this;
         }
 
@@ -176,7 +112,7 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         failedUrl(failedUrl) {
-                this._config.failedUrls.push(failedUrl);
+                this._config.failedUrls.concat(failedUrl);
                 return this;
         }
 
@@ -187,7 +123,7 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         badUrl(badUrl) {
-                this._config.badUrls.push(badUrl);
+                this._config.badUrls.concat(badUrl);
                 return this;
         }
 
@@ -198,7 +134,7 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         newUrls(newUrls) {
-                this._config.newUrls.push(newUrls);
+                this._config.newUrls.concat(newUrls);
                 return this;
         }
 
@@ -230,7 +166,7 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         success() {
-                this._config.taskResultCode = CrawlTaskResultCode.SUCCESS;
+                this._config.taskResult = CrawlTaskResultCode.SUCCESS;
                 return this;
         }
 
@@ -240,7 +176,17 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         blocked() {
-                this._config.taskResultCode = CrawlTaskResultCode.BLOCKED;
+                this._config.taskResult = CrawlTaskResultCode.BLOCKED;
+                return this;
+        }
+
+        /**
+         * Set property taskResult TO FAILED
+         * 
+         *  @returns {CrawlTaskResultBuilder}
+         */
+        failed() {
+                this._config.taskResult = CrawlTaskResultCode.FAILED;
                 return this;
         }
 
@@ -255,25 +201,48 @@ class CrawlTaskResultBuilder {
                 return this;
         }
 
+
         /**
-         * Set property accountId
+         * Set property averageSpeedOfAll
          * 
-         * @param {String} accountId
+         * @param {Number} value 
          * @returns {CrawlTaskResultBuilder}
          */
-        cookieId(accountId) {
-                this._config.accountId = accountId;
+        averageSpeedOfAll(value) {
+                this._config.avarageSpeedOfAll = value;
                 return this;
         }
 
         /**
-         * Set property proxytId
+         * Set property averageSpeedOfSuccess
          * 
-         * @param {String} proxyId
+         * @param {Number} value 
          * @returns {CrawlTaskResultBuilder}
          */
-        proxyId(proxyId) {
-                this._config.proxyId = proxyId;
+        averageSpeedOfSuccess(value) {
+                this._config.averageSpeedOfSuccess = value;
+                return this;
+        }
+
+        /**
+         * Set property meanSpeedOfSuccess
+         * 
+         * @param {Number} value 
+         * @returns {CrawlTaskResultBuilder}
+         */
+        meanSpeedOfSuccess(value) {
+                this._config.meanSpeedOfSuccess = value;
+                return this;
+        }
+
+        /**
+         * Set property maxSpeedOfSuccess
+         * 
+         * @param {Number} value 
+         * @returns {CrawlTaskResultBuilder}
+         */
+        maxSpeedOfSuccess(value) {
+                this._config.maxSpeedOfSuccess = value;
                 return this;
         }
 

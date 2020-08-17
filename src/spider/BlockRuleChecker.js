@@ -2,7 +2,7 @@ const { DownloadResult } = require("./model/DownloadResult");
 const { PageResult, PageResultBuilder } = require("./model/PageResult");
 const { BlockRule } = require("./model/BlockRule");
 const { CheckType } = require("./constant/CheckType");
-const { PageResultCode } = require("./constant/PageResultCode");
+const { PageResultCode } = require("./constant/PageResult");
 const { STR } = require("./utils/str");
 
 class BlockRuleChecker {
@@ -13,7 +13,7 @@ class BlockRuleChecker {
          * @param {[BlockRule]} rules 
          */
         constructor (rules) {
-                this._rules = [new BlockRule()];
+                this._rules = rules;
         }
 
         /**
@@ -23,12 +23,11 @@ class BlockRuleChecker {
          * @returns {PageResult}
          */
         check(downloadResult) {
-                let builder = new PageResultBuilder();
                 for (const rule of this._rules) {
 
                         if (downloadResult.status == rule.status || rule.status == -1) {
                                 let match = false;
-                                switch (rule.checkType) {
+                                switch (rule.compareType) {
                                         case CheckType.INCLUDES_ALL:
                                                 match = STR.includesAll(downloadResult.html, rule.keywords);
                                                 break;
@@ -49,11 +48,11 @@ class BlockRuleChecker {
                                 }
 
                                 if (match)
-                                        return builder.pageResultCode(rule.pageResult).build();
+                                        return rule.pageResult;
                         }
                 }
 
-                return builder.pageResultCode(PageResultCode.SUCCCESS).build();
+                return PageResultCode.SUCCCESS;
         }
 }
 

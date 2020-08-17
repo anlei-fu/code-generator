@@ -326,7 +326,7 @@ function lowerFirstLetter(input) {
  * @returns {[String]}
  */
 function splitToLines(input) {
-        return input.split("\r\n");
+        return input.split("\n");
 }
 
 /**
@@ -339,7 +339,7 @@ function removeEmptyLine(input) {
         let temp = "";
         splitToLines(input).forEach(l => {
                 if (l.trim() != "")
-                        temp += l + "\n";
+                        temp += l + "\r\n";
         })
 
         return temp;

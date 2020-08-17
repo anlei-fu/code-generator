@@ -8,7 +8,7 @@ class SpeedItem {
 
 exports.SpeedItem = SpeedItem;
 
-/**
+/***-n -
  * Builder for SpeedItem
  */
 class SpeedItemBuilder {

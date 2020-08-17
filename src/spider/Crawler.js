@@ -4,6 +4,7 @@ const { RestService } = require("./RestService");
 const { CrawlerContext } = require("./model/CrawlerContext");
 const { validateUtils } = require("./utils/validate-utils");
 const { LoggerSurpport } = require("./LoggerSurpport");
+
 class Crawler extends LoggerSurpport {
         constructor () {
                 super("Crawler");
@@ -14,7 +15,7 @@ class Crawler extends LoggerSurpport {
          * 
          * @param {String} configFile 
          */
-        start(configFile) {
+       async start(configFile) {
                 let config = FILE.readJson(configFile);
                 validateUtils.requireNotNull(
                         config,
@@ -25,11 +26,15 @@ class Crawler extends LoggerSurpport {
                 );
 
                 this._context = new CrawlerContext(config);
-                this._restService = new RestService(config.port, [new TaskController()]);
-                this._restService.init(this._context);
-                this._restService.start();
+
+                this._restservice = new RestService(config.port, [new TaskController()]);
+                this._restservice.init(this._context);
+                this._restservice.start();
+
                 this.info(`crawler started id is ${config.uniqueId} and ip is ${config.ip}`);
         }
 }
 
 exports.Crawler = Crawler;
+let crawler = new Crawler();
+crawler.start(`./config.json`);

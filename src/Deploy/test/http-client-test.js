@@ -24,15 +24,16 @@ async function test() {
                         taskId: 2,
                         urls: [
                                 {
-                                        target:"https://www.baidu.com/",
+                                        url:"https://www.baidu.com/",
                                         referer:"https://www.baidu.com/"
                                 },
                                
                         ],
-                        script: "baidu.js",
-                        isStatic:true,
-                        autoDownloadPage:true,
-                        rules:[],
+                        scriptPath: "1.js",
+                        crawlType:1,
+                        urlMaxConcurrency:10,
+                        // autoDownloadPage:true,
+                        blockRules:[],
                 }
         );
 }

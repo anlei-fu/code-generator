@@ -17,7 +17,7 @@ const VUE_FORMAT_CONFIG = {
         vueIndentScriptAndStyle: true,
         htmlWhitespaceSensitivity: "ignore",
         parser: "vue",
-        printWidth: 300,
+        printWidth: 100,
 }
 
 /**

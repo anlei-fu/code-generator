@@ -1,6 +1,6 @@
 const { Initiable } = require("./../Initiable");
 const { idUtils } = require("./../utils/Id-utils");
-const { JobStatus } = require("./../po/constant/JobStatus");
+const { JobStatus } = require("./../constant/JobStatus");
 
 /**
  * @BaseClass

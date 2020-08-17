@@ -17,7 +17,6 @@ app.all("*", (req, resp, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 /**
  * To host a http rest service, base on lib 'express' http framework
  */
@@ -99,7 +98,7 @@ class RestService extends Service {
 
         this._status = ServiceStatus.STOPPED;
         this.info("service stopped");
-        this._raiseServiceStarted();
+        this._raiseServiceStopped();
     }
 }
 

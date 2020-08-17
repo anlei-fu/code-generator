@@ -41,6 +41,7 @@ class Browser extends LoggerSurpport {
          * @returns {Promise<BrowserPage>}
          */
         async getPage() {
+                let getCount = 0;
                 while (true) {
 
                         // find from created pages
@@ -68,6 +69,9 @@ class Browser extends LoggerSurpport {
                                         this.error(`get page failed`, ex);
                                 }
                         }
+
+                        if(getCount++>20)
+                           throw new Error("Get browser page timeouted!")
 
                         // wait for page available
                         await ThreadUtils.sleep(this._config.browserWaitForPageDelay);

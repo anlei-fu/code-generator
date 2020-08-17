@@ -2,7 +2,10 @@ const { Downloader } = require("../Downloader");
 const { Browser } = require("../Browser");
 const { BlockRuleChecker } = require("../BlockRuleChecker");
 const { CrawlTaskConfig } = require("./CrawlTaskConfig");
-const { UrlResolver } = require("../UrlResolver");
+const {UrlDecoder} =require("./../UrlDecoder");
+const {UrlEncoder} =require("./../UrlEncoder");
+const {UrlMatcher} =require("./../UrlMatcher");
+
 const { validateUtils } = require("./../utils/validate-utils");
 
 const cheerio = require('cheerio');
@@ -13,18 +16,18 @@ class CrawlTaskContext {
          * @param {CrawlTaskConfig} config 
          */
         constructor (config) {
-                validateUtils.requireNotNull(
-                        config,
-                        [
-                                "rules",
-                        ]
-                );
-                this.cheerIo = cheerio;
-                this.ruleChecker = new BlockRuleChecker(config.rules);
+
+                this.taskConfig = config;
+
+                this.blockRuleChecker = new BlockRuleChecker(config.blockRules||[]);
+
                 this.downloader = new Downloader(this);
-                this.browser = new Browser(config);
-                this.urlResolver = new UrlResolver();
-                this.config = config;
+
+                this.urlMatcher = new UrlMatcher(JSON.parse(config.urlMatchPatterns||"[]"));
+
+                this.urlDecoder = new UrlDecoder(JSON.parse(config.urlEncodes||"[]"));
+
+                this.urlEncoder =new UrlEncoder(JSON.parse(config.urlEncodes||"[]"));
         }
 }
 

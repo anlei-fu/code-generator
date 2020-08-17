@@ -1,5 +1,5 @@
 const { FileManagerBase } = require("./FileManager");
-const { ScriptFeatcher } = require("./ScripFetcher");
+const { ScriptFetcher } = require("./ScripFetcher");
 const { CrawlerContext } = require("./model/CrawlerContext");
 
 /**
@@ -17,7 +17,7 @@ class JsManager extends FileManagerBase {
         super("JsManager", scriptDir);
         this._js = {};
         this._context = context;
-        this._fetcher = new ScriptFeatcher(scriptDir);
+        this._fetcher = new ScriptFetcher(scriptDir);
     }
 
     /**
@@ -26,10 +26,11 @@ class JsManager extends FileManagerBase {
      * @param {String} jsFile 
      * @returns {MainFunction?}
      */
-    getMain(jsFile) {
+    async getMain(jsFile) {
         if (!this.exists(jsFile)) {
             // download from file server
-            this._fetcher.fetch(this._context.fileHost, jsFile);
+            await this._fetcher.fetch(this._context.fileHost, jsFile);
+            
             if (!this.exists(jsFile))
                 throw new Error(`script(${jsFile}) download failed`);
         }

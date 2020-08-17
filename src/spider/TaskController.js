@@ -5,7 +5,7 @@ const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
 const { MasterHeartbeat } = require("./model/MasterHeartbeat");
 const { validateUtils } = require("./utils/validate-utils");
 
-const RequestPath = {
+const API = {
         RUN: "/run",
         HEARTBEAT: "/heartbeat"
 }
@@ -34,7 +34,7 @@ class TaskController extends Controller {
                         "taskId",
                         "urls",
                         "scriptPath",
-                        "rules"
+                        "crawlType"
                 );
 
                 try {
@@ -42,7 +42,7 @@ class TaskController extends Controller {
                         await runner.start(body);
                         return this.success("started");
                 } catch (ex) {
-                        this.error(`run task failed`, ex, body);
+                        this.error(`run task(${body.taskId}) failed`, ex, body);
                         return this.fail(ex.toString());
                 }
         }
@@ -53,7 +53,7 @@ class TaskController extends Controller {
          * @param {{body:MasterHeartbeat}} param0 
          */
         heartbeat({ body }) {
-                this._context.masters = body;
+                this._context.masters = body.masters;
                 this._context.fileHost = body.fileHost;
                 this.info(`receive heartbeat from master(${body.master})`);
                 return this.success();
@@ -65,8 +65,8 @@ class TaskController extends Controller {
          * @override
          */
         mount(app) {
-                app.post(RequestPath.RUN, (req, resp) => this._process(req, resp, this.runNewTask))
-                        .post(RequestPath.HEARTBEAT, (req, resp) => this._process(req, resp, this.heartbeat));
+                app.post(API.RUN, (req, resp) => this._process(req, resp, this.runNewTask))
+                        .post(API.HEARTBEAT, (req, resp) => this._process(req, resp, this.heartbeat));
         }
 }
 

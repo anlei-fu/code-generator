@@ -1,4 +1,3 @@
-const { PageResultCode } = require("./../constant/PageResultCode");
 const { UrlPair } = require("./UrlPair");
 
 class PageResult {
@@ -6,12 +5,17 @@ class PageResult {
                 /**
                  * The result code of page @see {PageResultCode}
                  */
-                this.pageResultCode = PageResultCode.SUCCCESS;
+                this.pageResult = 1;
 
                 /**
                  * The url of page
                  */
                 this.url = "";
+
+                /**
+                 * The id of url
+                 */
+                this.id=0;
 
                 /**
                  * The http status code of dowload page
@@ -21,7 +25,7 @@ class PageResult {
                 /**
                  * The data extracted
                  */
-                this.data = {};
+                this.data;
 
                 /**
                  * The newly detected matched urls @type {UrlPair}
@@ -41,29 +45,21 @@ exports.PageResult = PageResult;
  * Builder for PageResult
  */
 class PageResultBuilder {
-        constructor () {
+        constructor (pageContext, url) {
+                this.url=url;
+                this.pageContext = pageContext;
                 this._config = new PageResult();
+                this._config.url = url;
         }
 
         /**
          * Set property pageResultCode
          * 
-         * @param {Number} pageResultCode
+         * @param {Number} pageResult
          * @returns {PageResultBuilder}
          */
-        pageResultCode(pageResultCode) {
-                this._config.pageResultCode = pageResultCode;
-                return this;
-        }
-
-        /**
-         * Set property url
-         * 
-         * @param {String} url
-         * @returns {PageResultBuilder}
-         */
-        url(url) {
-                this._config.url = url;
+        pageResult(pageResult) {
+                this._config.pageResult = pageResult;
                 return this;
         }
 
@@ -85,7 +81,11 @@ class PageResultBuilder {
          * @returns {PageResultBuilder}
          */
         data(data) {
-                this._config.data = data;
+                if(data)
+                this._config.data = JSON.stringify({
+                        url: this.url,
+                        data
+                });
                 return this;
         }
 
@@ -96,7 +96,13 @@ class PageResultBuilder {
          * @returns {PageResultBuilder}
          */
         newUrls(newUrls) {
-                this._config.newUrls = newUrls;
+                newUrls.forEach(x => {
+                        this._config.newUrls.push({
+                                url: this.pageContext.taskContext.urlEncoder.encode(x),
+                                refer: this.url.url,
+                                depth: this.url.depth + 1
+                        });
+                })
                 return this;
         }
 

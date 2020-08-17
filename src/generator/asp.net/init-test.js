@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/fc/all");
+const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/user_system/all");
 
 const SETTLE = {
    project: "",
@@ -36,6 +36,12 @@ const DC = {
    abbrOfProject: "dc"
 }
 
+const USER_SYSTEM = {
+   project: "MatchingRecharge",
+   root: "F:/业务开发项目_研发一/18充值系统/web",
+   abbrOfProject: "18"
+}
+
 
 function test() {
    let config = {
@@ -46,7 +52,7 @@ function test() {
       abbrOfProject:FC.abbrOfProject,
        edit: true,
    }
-   init(all.fcOrderOverview, config);
+   init(all.usSystemDictionary, config);
 }
 
 test();

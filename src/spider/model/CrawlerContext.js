@@ -1,7 +1,6 @@
 const { CrawlerConfig } = require("./CrawlerConfig");
 const { JsManager } = require("./../JsManager");
 const { ResultReporter } = require("./../ResultReporter");
-const { UrlResolver } = require("./../UrlResolver");
 class CrawlerContext {
         /**
          * Constructor of CrawlerContext
@@ -10,6 +9,7 @@ class CrawlerContext {
          * @param {CrawlerConfig} config 
          */
         constructor (config) {
+
                 /**
                  * crawler config 
                  */
@@ -23,12 +23,7 @@ class CrawlerContext {
                 /**
                  * use to manage script
                  */
-                this.jsManager = new JsManager(config.scriptDir);
-
-                /**
-                 * use to resolve and merge url
-                 */
-                this.urlResolver = new UrlResolver();
+                this.jsManager = new JsManager(config.scriptDir, this);
 
                 /**
                  * the master host that available got through master heartbeat

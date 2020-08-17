@@ -3,7 +3,7 @@ class MasterHeartbeat {
                 /**
                  * The masters that available
                  */
-                this.masters = [];
+                this.masters = [""];
 
                 /**
                  * The file server host that available

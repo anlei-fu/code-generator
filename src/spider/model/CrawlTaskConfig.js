@@ -3,112 +3,104 @@ const { UrlPair } = require("./UrlPair");
 class CrawlTaskConfig {
         constructor () {
                 /**
-                 * id of task
+                 * Id of task 
+                 * @NotNull
                  */
                 this.taskId = 0;
 
                 /**
-                 * block rules
-                 */
-                this.rules = [];
+                * Crawl type 
+                * @NotNull
+                */
+                this.crawlType = 1;
 
                 /**
-                 * script to crawl
+                 * Script to crawl 
+                 * @NotNull
                  */
-                this.script = "";
+                this.scriptPath = "";
 
                 /**
-                 * crawl max concurrency
+                 * Ip minute max concurrency 
+                 * @NotNull
                  */
-                this.maxConcurrency = 20;
+                this.ipMinuteSpeedLimit = 20;
 
                 /**
-                 * need cookie
+                 *  Max task count that can co-exists 
+                 * @NotNull
                  */
-                this.needCookie = false;
+                this.urlMaxConcurrency = 20;
 
                 /**
-                 * cookie id
+                 * urls to crawl 
+                 * @NotNull
                  */
-                this.x=cookieId = 1;
+                this.urls = [new UrlPair()];
+
+
+                /**
+                 * block rules 
+                 */
+                this.blockRules = [];
+
+                /**
+                 * If true will auto download page and check download result
+                 */
+                this.autoDownloadPage = true;
 
                 /**
                  * cookie
                  */
-                this.cookie = {};
+                this.cookie = "";
 
                 /**
-                 * urls to crawl
-                 */
-                this.urls = [new UrlPair()];
-
-                /**
-                 * page dowload timeout
-                 */
-                this.timeout = 0;
-
-                /**
-                 * is static crawl
-                 */
-                this.isStatic = false;
-
-                /**
-                 * crawl need proxy
-                 */
-                this.needProxy = false;
-
-                /**
-                 * proxy id
-                 */
-                this.proxyId = 1;
-
-                /**
-                 * proxy
+                 * Proxy
                  */
                 this.proxy = {};
 
                 /**
-                 * additional params
+                 * Additional params
                  */
                 this.aditionalParams = "";
 
                 /**
-                 * the min task schedule rate(ms)
+                 * Special headers
                  */
-                this.pollMaxRate = 10000;
+                this.headers = "";
 
                 /**
-                 * the max task schedule rate(ms)
+                 * User agent type
                  */
-                this.polllMinRate = 30;
+                this.userAgentType = 1;
 
                 /**
-                 * max page that @see {Browser} can open
-                 */
-                this.browserMaxPageSize = 100;
-
-                /**
-                 * page default encoding
+                 * Page default encoding
                  */
                 this.encoding = "";
 
                 /**
-                 * if true will auto download page and check download result
+                 * Url encodes
                  */
-                this.autoDownloadPage = false;
+                this.urlEncodes = "";
 
                 /**
-                 * the delay of next get of @see {Page} if @see {Browser} get page failed
+                 * Max timeout to download page @default 10000
                  */
-                this.browserWaitForPageDelay = 100;
+                this.downloadTimeout = 10000;
 
                 /**
-                 * the max failed count that task allow
+                 * Url Match patterns
+                 */
+                this.urlMatchPatterns = "";
+
+                /**
+                 * The max failed count that task allow
                  */
                 this.maxFail = 100;
 
                 /**
-                 * the max continuously failed count that task allow
+                 * The max continuously failed count that task allow
                  */
                 this.maxContinuouslyFail = 5;
         }

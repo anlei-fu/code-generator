@@ -27,9 +27,9 @@ class JobService extends Service {
          *  @override
          */
         start() {
-                Object.keys(this._context.jobs).forEach(jobName => {
-                        this.scheduleJob(this._context.jobs[jobName]);
-                });
+                // Object.keys(this._context.jobs).forEach(jobName => {
+                //         this.scheduleJob(this._context.jobs[jobName]);
+                // });
 
                 this.info("JobService Started");
         }

@@ -1,5 +1,5 @@
 const { CheckType } = require("./../constant/CheckType");
-const { PageResultCode } = require("./../constant/PageResultCode");
+const { PageResultCode } = require("../constant/PageResult");
 class BlockRule {
         constructor () {
                 /**
@@ -10,7 +10,7 @@ class BlockRule {
                 /**
                  * Rule check type @see {CheckType}
                  */
-                this.checkType = CheckType.STATUS_CHECK;
+                this.compareType = CheckType.STATUS_CHECK;
 
                 /**
                  * Keywords to match
@@ -52,7 +52,7 @@ class BlockRuleBuilder {
          * @returns {BlockRuleBuilder}
          */
         checkType(checkType) {
-                this._config.checkType = checkType;
+                this._config.compareType = checkType;
                 return this;
         }
 

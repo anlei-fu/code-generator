@@ -8,25 +8,25 @@ class FailRecorder {
          * @param {Number} maxContinuouslyFailedCount 
          */
         constructor (maxFail, maxContinuouslyFailedCount) {
-                this._maxFail = maxFail || 10 * 10000;
+                this._maxFail = maxFail || 1000;
                 this._maxConticuouslyFail = maxContinuouslyFailedCount || 30;
-                this._totalFail = 0;
-                this._continuouslyFailedCount = 0;
+                this.totalFail = 0;
+                this.continuouslyFailedCount = 0;
         }
 
         /**
          * Set current fail count to 0
          */
         success() {
-                this._continuouslyFailedCount = 0;
+                this.continuouslyFailedCount = 0;
         }
 
         /**
          * Increase continuously failed count and total failed count
          */
         failed() {
-                this._totalFail++;
-                this._continuouslyFailedCount++;
+                this.totalFail++;
+                this.continuouslyFailedCount++;
         }
 
         /**
@@ -35,7 +35,7 @@ class FailRecorder {
          * @returns {boolean}
          */
         get overMaxFailed() {
-                return this._continuouslyFailedCount > this._maxConticuouslyFail || this._totalFail > this._maxFail;
+                return this.continuouslyFailedCount > this._maxConticuouslyFail || this.totalFail > this._maxFail;
         }
 }
 

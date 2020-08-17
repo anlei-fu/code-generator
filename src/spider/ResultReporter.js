@@ -1,6 +1,6 @@
 const { HttpClient } = require("./HttpClient");
 const API = {
-        SEND_RESULT: "/task/result"
+       REPORT_RESULT: "/task/result",
 }
 
 /**
@@ -15,11 +15,10 @@ class ResultReporter {
          * @param {String} master 
          * @param {CrawlTaskResult} taskResult 
          */
-        async sendResult(master, taskResult) {
+        async reportResult(master, taskResult) {
                 let client = new HttpClient("ResultReporter", { baseUrl: master });
-                return client.post(API.SEND_RESULTT, taskResult);
+                return client.post(API.REPORT_RESULT, taskResult);
         }
-
 }
 
 exports.ResultReporter = ResultReporter;

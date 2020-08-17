@@ -1,4 +1,7 @@
 exports.TaskRunnerStatus = {
+	
+	UNSTARTED:0,
+
 	/**
 	 * Task is ok
 	 */

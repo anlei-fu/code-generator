@@ -76,7 +76,7 @@ class Downloader {
                                                 });
                                                 res.data.on('end', () => {
                                                         let buffer = Buffer.concat(chunks);
-                                                        let str = iconv.decode(buffer, this._context.config.encoding || "utf8");
+                                                        let str = iconv.decode(buffer, this._context.taskConfig.encoding || "utf8");
                                                         resolve({ html: str, status: res.status })
                                                 })
                                         }
@@ -109,11 +109,11 @@ class Downloader {
                         "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
                 );
 
-                if (this._context.cookie)
-                        OBJECT.setIfAbsent(headers, "Set-Cookie", "");
+                if (this._context.taskConfig.cookie)
+                        OBJECT.setIfAbsent(headers, "Set-Cookie", this._context.taskConfig.cookie);
 
                 return {
-                        timeout: this._context.config.timeout || 10000,
+                        timeout: this._context.taskConfig.downloadTimeout || 10000,
                         // proxy: this._context.config.proxy,
                         maxContentLength: 1024 * 1024 * 1024, // 1mb
                         headers,

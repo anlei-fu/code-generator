@@ -5,6 +5,9 @@ var url = require('url');
  */
 class UrlResolver {
 
+        constructor (source) {
+                this._sourece = source;
+        }
         /**
          * Resolve and merge url
          * 
@@ -12,7 +15,7 @@ class UrlResolver {
          * @param {String} target 
          * @returns {String}
          */
-        resolve(source, target) {
+        resolve(target) {
                 target = trim(target);
                 if (!target || startsWith(target, '#'))
                         return null;
@@ -21,7 +24,7 @@ class UrlResolver {
                 if (protocol.includes(['http:', 'https:'])) {
                         return target.split('#')[0];
                 } else if (!protocol) { // eslint-disable-line no-else-return
-                        return url.resolve(source, target).split('#')[0];
+                        return url.resolve(this._sourece, target).split('#')[0];
                 }
 
                 return null;
