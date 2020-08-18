@@ -323,8 +323,8 @@
 					"length": 256
 				}
 			},
-			"signUrl": {
-				"name": "signUrl",
+			"signURL": {
+				"name": "signURL",
 				"description": "签署URL",
 				"nullable": true,
 				"type": {
@@ -560,8 +560,8 @@
 					"length": 128
 				}
 			},
-			"apiUrl": {
-				"name": "apiUrl",
+			"apiURL": {
+				"name": "apiURL",
 				"description": "接口地址",
 				"nullable": true,
 				"type": {
@@ -708,8 +708,8 @@
 					"name": "float"
 				}
 			},
-			"authRedirectUrl": {
-				"name": "authRedirectUrl",
+			"authRedirectURL": {
+				"name": "authRedirectURL",
 				"description": "API授权跳转URL",
 				"nullable": true,
 				"type": {
@@ -717,8 +717,8 @@
 					"length": 128
 				}
 			},
-			"payRedirectUrl": {
-				"name": "payRedirectUrl",
+			"payRedirectURL": {
+				"name": "payRedirectURL",
 				"description": "支付完跳转URL",
 				"nullable": true,
 				"type": {
@@ -726,8 +726,8 @@
 					"length": 128
 				}
 			},
-			"payCallbackUrl": {
-				"name": "payCallbackUrl",
+			"payCallbackURL": {
+				"name": "payCallbackURL",
 				"description": "支付结果回调URL",
 				"nullable": true,
 				"type": {
@@ -735,8 +735,8 @@
 					"length": 128
 				}
 			},
-			"refundCallbackUrl": {
-				"name": "refundCallbackUrl",
+			"refundCallbackURL": {
+				"name": "refundCallbackURL",
 				"description": "退款结果回调URL",
 				"nullable": true,
 				"type": {

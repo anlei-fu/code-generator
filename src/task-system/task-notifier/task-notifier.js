@@ -15,7 +15,7 @@ class TaskNotifier {
 
                         if(task.notifyUrls){
                             task.notifyUrls.forEach(url=>{
-                                  this.notifyUrl(url,notifyModel);
+                                  this.notifyURL(url,notifyModel);
                             });
                         }
 
@@ -27,7 +27,7 @@ class TaskNotifier {
 
         }
 
-        notifyUrl() {
+        notifyURL() {
 
         }
 }

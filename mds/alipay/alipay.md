@@ -8,7 +8,7 @@
  -->
 |name|description|
 |---|---|---|
-|serverUrl||
+|serverURL||
 |appId||
 |format||
 |charset||

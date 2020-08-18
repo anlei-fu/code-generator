@@ -5,17 +5,17 @@ const { ServiceStatus } = require("./constant/ServiceStatus");
 const { Controller } = require("./Controller");
 const { validateUtils } = require("./utils/validate-utils");
 
-const app = express();
+const express = express();
 
 // allow cross domain
-app.all("*", (req, resp, next) => {
+express.all("*", (_, resp, next) => {
     resp.header("Access-Control-Allow-Origin", "*");
     next();
 });
 
 // body parser (json & urlencoded) need to install independently
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+express.use(bodyParser.json());
+express.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * To host a http rest service, base on lib 'express' http framework
@@ -47,7 +47,7 @@ class RestService extends Service {
      */
     useMiddleware(...middlewares) {
         middlewares.forEach(m => {
-            app.use(m);
+            express.use(m);
         });
     }
 
@@ -59,7 +59,7 @@ class RestService extends Service {
      */
     init(context) {
         this._controllers.forEach(controller => {
-            controller.mount(app);
+            controller.mount(express);
             controller.init(context);
         });
     }
@@ -75,10 +75,10 @@ class RestService extends Service {
             return;
         }
 
-        this._server = app.listen(this._port);
+        this._server = express.listen(this._port);
         this._status = ServiceStatus.RUNNING;
-        this.info("service started");
-        this.info("listen on " + this._port);
+        this.info("started");
+        this.info("and listen on " + this._port);
         this._raiseServiceStarted();
 
     }
@@ -95,7 +95,6 @@ class RestService extends Service {
         }
 
         this._server.close();
-
         this._status = ServiceStatus.STOPPED;
         this.info("service stopped");
         this._raiseServiceStopped();

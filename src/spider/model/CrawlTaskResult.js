@@ -22,27 +22,27 @@ class CrawlTaskResult {
                 this.message = "";
 
                 /**
-                 * The urls that crawl succeed
+                 * The urls that crawl succeed, element @type {URL}
                  */
                 this.successUrls = [];
 
                 /**
-                 * The urls that crawl failed
+                 * The urls that crawl failed, element @type {URL}
                  */
                 this.failedUrls = [];
 
                 /**
-                 * The urls that invalid
+                 * The urls that invalid, element @type {URL}
                  */
                 this.badUrls = [];
 
                 /**
-                 * The urls that newly deteted @type {UrlPair}
+                 * The urls that newly deteted, element @type {URL}
                  */
                 this.newUrls = [];
 
                 /**
-                 * The urls that has not been crawled when task be blocked
+                 * The urls that has not been crawled when task be blocked, element @type {URL}
                  */
                 this.unCrawledUrls = [];
 
@@ -97,40 +97,40 @@ class CrawlTaskResultBuilder {
         /**
          * Set property successUrls
          * 
-         * @param {String} successUrl
+         * @param {URL} successURL
          * @returns {CrawlTaskResultBuilder}
          */
-        successUrl(successUrl) {
-                this._config.successUrls.concat(successUrl);
+        successURL(successURL) {
+                this._config.successUrls.concat(successURL);
                 return this;
         }
 
         /**
          * Set property failedUrls
          * 
-         * @param {String} failedUrl
+         * @param {String} failedURL
          * @returns {CrawlTaskResultBuilder}
          */
-        failedUrl(failedUrl) {
-                this._config.failedUrls.concat(failedUrl);
+        failedURL(failedURL) {
+                this._config.failedUrls.concat(failedURL);
                 return this;
         }
 
         /**
          * Set property badUrls
          * 
-         * @param {String} badUrl
+         * @param {String} badURL
          * @returns {CrawlTaskResultBuilder}
          */
-        badUrl(badUrl) {
-                this._config.badUrls.concat(badUrl);
+        badURL(badURL) {
+                this._config.badUrls.concat(badURL);
                 return this;
         }
 
         /**
          * Set property newUrls
          * 
-         * @param {[Url]} newUrls
+         * @param {[URL]} newUrls
          * @returns {CrawlTaskResultBuilder}
          */
         newUrls(newUrls) {
@@ -141,7 +141,7 @@ class CrawlTaskResultBuilder {
         /**
          * Set property unCrawledUrls
          * 
-         * @param {[Url]} unCrawledUrls
+         * @param {[URL]} unCrawledUrls
          * @returns {CrawlTaskResultBuilder}
          */
         unCrawledUrls(unCrawledUrls) {

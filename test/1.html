@@ -114,8 +114,8 @@
 
         // 接口地址配置
         var config = {
-            vcodeUrl: "http://localhost:8083/getvcode",
-            submitUrl: "http://localhost:8083/submit"
+            vcodeURL: "http://localhost:8083/getvcode",
+            submitURL: "http://localhost:8083/submit"
         };
 
         // 发送验证码参数
@@ -150,7 +150,7 @@
             }
 
             try {
-                var result = await post(config.vcodeUrl, vcodeParams);
+                var result = await post(config.vcodeURL, vcodeParams);
                 if (!result || !result.core || result.core.code != 100) {
                     showNotify("发送验证码失败，请稍后重试");
                     return;
@@ -200,7 +200,7 @@
          **/
         async function submit() {
             try {
-                var result = await post(config.submitUrl, submitParams);
+                var result = await post(config.submitURL, submitParams);
                 if (!result || result.code != 100) {
                     showNotify("提交订单失败，请稍后重试");
                     return;

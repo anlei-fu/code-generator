@@ -1,4 +1,4 @@
-const { UrlPair } = require("./UrlPair");
+const { URL } = require("./URL");
 
 class PageResult {
         constructor () {
@@ -9,8 +9,10 @@ class PageResult {
 
                 /**
                  * The url of page
+                 * 
+                 * @type {URL}
                  */
-                this.url = "";
+                this.url;
 
                 /**
                  * The id of url
@@ -25,10 +27,10 @@ class PageResult {
                 /**
                  * The data extracted
                  */
-                this.data;
+                this.data="";
 
                 /**
-                 * The newly detected matched urls @type {UrlPair}
+                 * The newly detected matched urls element type @type {URL}
                  */
                 this.newUrls = [];
 
@@ -45,6 +47,7 @@ exports.PageResult = PageResult;
  * Builder for PageResult
  */
 class PageResultBuilder {
+
         constructor (pageContext, url) {
                 this.url=url;
                 this.pageContext = pageContext;
@@ -92,7 +95,7 @@ class PageResultBuilder {
         /**
          * Set property newUrls
          * 
-         * @param {[UrlPair]} newUrls
+         * @param {[URL]} newUrls
          * @returns {PageResultBuilder}
          */
         newUrls(newUrls) {

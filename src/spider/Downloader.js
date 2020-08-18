@@ -3,8 +3,9 @@ const iconv = require('iconv-lite');
 const { OBJECT } = require("./utils/utils");
 const { STR } = require("./utils/str");
 const { DownloadResult } = require("./model/DownloadResult");
-const { UrlPair } = require("./model/UrlPair");
-const { CrawlTaskContext } = require("./model/CrawlTaskContext");
+const { URL } = require("./model/URL");
+const { CrawlTaskContext } = require("./CrawlTaskContext");
+const { info } = require("console");
 
 const ErrorMap = {
         notExists: {
@@ -44,12 +45,18 @@ class Downloader {
         /**
          * Download page and process download error
          * 
-         * @param {UrlPair} url 
+         * @param {URL} url 
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
         async download(url, headers) {
                 try {
+                        if(!url.url||!(url.url.startsWith("http://")||url.url.startsWith("https://"))){
+                            return  {
+                                    status:404,
+                            };
+                        }
+                         
                         return await this._downloadCore(url, headers);
                 } catch (ex) {
                         return this._getErrorResp(ex.message);
@@ -60,7 +67,7 @@ class Downloader {
          * Download page core
          * 
          * @private
-         * @param {UrlPair} url 
+         * @param {URL} url 
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
@@ -88,7 +95,7 @@ class Downloader {
          * Create download config
          * 
          * @private
-         * @param {UrlPair} url 
+         * @param {URL} url 
          * @param {Object} headers 
          * @returns {import("axios").AxiosRequestConfig}
          */
@@ -96,8 +103,8 @@ class Downloader {
                 headers = headers || {};
 
                 // header referer 
-                if (url.referer)
-                        OBJECT.setIfAbsent(headers, "Referer", url.referer);
+                if (url.referUrl)
+                        OBJECT.setIfAbsent(headers, "Referer", url.referUrl);
 
                 // header accept
                 OBJECT.setIfAbsent(headers, "Accept", "*/*");
@@ -129,7 +136,7 @@ class Downloader {
          * @returns {DownloadResult}
          */
         _getErrorResp(message) {
-                for (key in ErrorMap) {
+                for (const key in ErrorMap) {
                         if (ErrorMap[key].matcher(message))
                                 return ErrorMap[key].resp;
                 }

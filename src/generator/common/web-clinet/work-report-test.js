@@ -21,7 +21,7 @@ exports.config = {
         groups: [
                 //--------------------------2 汇报---------------------
                 {
-                        baseUrl: "/report",
+                        baseURL: "/report",
                         name: "2 企业",
                         items: [{
                                 name: "2.1 添加企业 <br> /list",
@@ -89,7 +89,7 @@ exports.config = {
                 ,
                 //------------------------------------------3 合同----------------------------
                 {
-                        baseUrl: "/contract",
+                        baseURL: "/contract",
                         name: "3 合同",
                         items: [{
                                 name: "3.1 添加合同  <br>/contract",
@@ -109,8 +109,8 @@ exports.config = {
                                         expireTime: "2019-12-19T08:00:15.000+0000",
                                         validPeriod: 6,
                                         contractPrice: 6.6,
-                                        configUrl: "123.net",
-                                        configShortUrl: "789.net",
+                                        configURL: "123.net",
+                                        configShortURL: "789.net",
                                         jzqContractNo: "4565",
                                         jzqContractFile: "8989.pdf",
 
@@ -178,8 +178,8 @@ exports.config = {
                                         expireTime: "2019-12-19T08:00:15.000+0000",
                                         validPeriod: 6,
                                         contractPrice: 6.6,
-                                        configUrl: "123.net",
-                                        configShortUrl: "789.net",
+                                        configURL: "123.net",
+                                        configShortURL: "789.net",
                                         jzqContractNo: "4565",
                                         jzqContractFile: "8989.pdf",
                                 }
@@ -248,7 +248,7 @@ exports.config = {
                 ,
                 //-------------------------------------------4 钱包--------------------------
                 {
-                        baseUrl: "/wallet",
+                        baseURL: "/wallet",
                         name: "4 钱包",
                         items: [{
                                 name: "4.1 查询钱包余额 <br>/wallet ",
@@ -300,7 +300,7 @@ exports.config = {
                 ,
                 //-------------------------------------------5 套餐--------------------------
                 {
-                        baseUrl: "/meal",
+                        baseURL: "/meal",
                         name: "5 套餐",
                         items: [{
                                 name: "5.1 获取套餐列表 <br>/meal",
@@ -322,7 +322,7 @@ exports.config = {
                 ,
                 //------------------------------------------6 模板--------------------------
                 {
-                        baseUrl: "/sysTemplate",
+                        baseURL: "/sysTemplate",
                         name: "6 模板",
                         items: [{
                                 name: "6.3 新增模板 <br>/sysTemplate",
@@ -371,7 +371,7 @@ exports.config = {
                 ,
                 //-----------------------------------------7 联系人--------------------------
                 {
-                        baseUrl: "/contact",
+                        baseURL: "/contact",
                         name: "7 联系人",
                         items: [{
                                 name: "7.1 获取联系人列表 <br>/contact ",
@@ -413,7 +413,7 @@ exports.config = {
                 ,
                 //--------------------------------------------8 签章--------------------------
                 {
-                        baseUrl: "/seal",
+                        baseURL: "/seal",
                         name: "8 签章",
                         items: [{
                                 name: "8.1 获取印章列表 <br>/seal ",
@@ -453,7 +453,7 @@ exports.config = {
                 ,
                 //------------------------------------------9 用户模板----------------------
                 {
-                        baseUrl: "/userTemplate",
+                        baseURL: "/userTemplate",
                         name: "9 用户模板",
                         items: [{
                                 name: "9.1 新增模板 <br>/userTemplate",

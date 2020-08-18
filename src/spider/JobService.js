@@ -1,5 +1,5 @@
 const schedule = require('node-schedule');
-const { Job } = require("./model/job");
+const { Job } = require("./Job");
 const { Service } = require("./Service");
 const { JobStatus } = require("./constant/JobStatus");
 
@@ -9,6 +9,25 @@ class JobService extends Service {
                 this._innrJobMap = new Map();
                 this._outterJobMap = new Map();
                 this._context = null;
+        }
+
+                /**
+         * Get scheduled jobs
+         * 
+         * @returns {[Job]}
+         */
+        get scheduledJobs() {
+                return this._outterJobMap.values();
+        }
+
+        /**
+         * Get the jobs that status is executing
+         * 
+         * @returns {[Job]}
+         */
+        get executingJobs() {
+                return Array.from(this._outterJobMap.values())
+                        .filter(x => x.status == JobStatus.EXECUTING);
         }
 
         /**
@@ -46,25 +65,6 @@ class JobService extends Service {
                 });
 
                 this.info("JobService Stopped")
-        }
-
-        /**
-         * Get scheduled jobs
-         * 
-         * @returns {[Job]}
-         */
-        get scheduledJobs() {
-                return this._outterJobMap.values();
-        }
-
-        /**
-         * Get the jobs that status is executing
-         * 
-         * @returns {[Job]}
-         */
-        get excutingJobs() {
-                return Array.from(this._outterJobMap.values())
-                        .filter(x => x.status == JobStatus.EXECUTING);
         }
 
         /**

@@ -25,14 +25,14 @@ async function test() {
                         urls: [
                                 {
                                         url:"https://www.baidu.com/",
-                                        referer:"https://www.baidu.com/"
+                                        referUrl:"https://www.baidu.com/"
                                 },
                                
                         ],
-                        scriptPath: "1.js",
+                        scriptPath: "202008181643383753.js",
                         crawlType:1,
                         urlMaxConcurrency:10,
-                        // autoDownloadPage:true,
+                        autoDownloadPage:true,
                         blockRules:[],
                 }
         );

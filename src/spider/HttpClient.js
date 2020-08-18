@@ -103,7 +103,7 @@ class HttpClient extends Initiable {
                                 this.info("data:", JSON.stringify(data));
                         }
 
-                        url = this._normalizeUrl({ url, params, data });
+                        url = this._normalizeURL({ url, params, data });
                         let resp = await this._client({
                                 method,
                                 url,
@@ -127,7 +127,7 @@ class HttpClient extends Initiable {
          * @param {*} param0 
          * @returns {String}
          */
-        _normalizeUrl({ url, params, data }) {
+        _normalizeURL({ url, params, data }) {
                 
                 if(!url)
                   throw new Error("url can not be empty!");

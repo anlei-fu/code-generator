@@ -115,23 +115,23 @@
                 if (dataId != "") {
                     //top.$.cookie('nfine_currentmoduleid', dataId, { path: "/" });
                 }
-                var dataUrl = $(this).attr('href');
+                var dataURL = $(this).attr('href');
     
                 var menuName = $.trim($(this).text());
                 var flag = true;
-                if (dataUrl == undefined || $.trim(dataUrl).length == 0) {
+                if (dataURL == undefined || $.trim(dataURL).length == 0) {
                     return false;
                 }
     
                 $(this).parent('.li').addClass('act');
                
                 $('.menuTab').each(function () {
-                    if ($(this).data('id') == dataUrl) {
+                    if ($(this).data('id') == dataURL) {
                         if (!$(this).hasClass('active')) {
                             $(this).addClass('active').siblings('.menuTab').removeClass('active');
                             $.learuntab.scrollToTab(this);
                             $('.mainContent .LRADMS_iframe').each(function () {
-                                if ($(this).data('id') == dataUrl) {
+                                if ($(this).data('id') == dataURL) {
                                     $(this).show().siblings('.LRADMS_iframe').hide();
                                     return false;
                                 }
@@ -142,9 +142,9 @@
                     }
                 });
                 if (flag) {
-                    var str = '<a href="javascript:;" class="active menuTab" data-id="' + dataUrl + '">' + menuName + ' <i class="fa fa-remove"></i></a>';
+                    var str = '<a href="javascript:;" class="active menuTab" data-id="' + dataURL + '">' + menuName + ' <i class="fa fa-remove"></i></a>';
                     $('.menuTab').removeClass('active');
-                    var str1 = '<iframe class="LRADMS_iframe" id="iframe' + dataId + '" name="iframe' + dataId + '"  width="100%" height="100%" src="' + dataUrl + '" frameborder="0" data-id="' + dataUrl + '" seamless></iframe>';
+                    var str1 = '<iframe class="LRADMS_iframe" id="iframe' + dataId + '" name="iframe' + dataId + '"  width="100%" height="100%" src="' + dataURL + '" frameborder="0" data-id="' + dataURL + '" seamless></iframe>';
                     $('.mainContent').find('iframe.LRADMS_iframe').hide();
                     $('.mainContent').append(str1);
                     //$.loading(true);
@@ -160,19 +160,19 @@
     
                 $(".navbar-custom-menu>ul>li.open").removeClass("open");
                 var dataId = data_id;
-                var dataUrl = Href;
+                var dataURL = Href;
                 var menuName = Name;
                 var flag = true;
-                if (dataUrl == undefined || $.trim(dataUrl).length == 0) {
+                if (dataURL == undefined || $.trim(dataURL).length == 0) {
                     return false;
                 }
                 $('.menuTab').each(function () {
-                    if ($(this).data('id') == dataUrl) {
+                    if ($(this).data('id') == dataURL) {
                         if (!$(this).hasClass('active')) {
                             $(this).addClass('active').siblings('.menuTab').removeClass('active');
                             $.learuntab.scrollToTab(this);
                             $('.mainContent .LRADMS_iframe').each(function () {
-                                if ($(this).data('id') == dataUrl) {
+                                if ($(this).data('id') == dataURL) {
                                     $(this).show().siblings('.LRADMS_iframe').hide();
                                     return false;
                                 }
@@ -184,10 +184,10 @@
                 });
                 if (flag) {
     
-                    var str = '<a href="javascript:;" class="active menuTab" data-id="' + dataUrl + '">' + menuName + ' <i class="fa fa-remove"></i></a>';
+                    var str = '<a href="javascript:;" class="active menuTab" data-id="' + dataURL + '">' + menuName + ' <i class="fa fa-remove"></i></a>';
                     $('.menuTab').removeClass('active');
     
-                    var str1 = '<iframe class="LRADMS_iframe" id="iframe' + dataId + '" name="iframe' + dataId + '"  width="100%" height="100%" src="' + dataUrl + '" frameborder="0" data-id="' + dataUrl + '" seamless></iframe>';
+                    var str1 = '<iframe class="LRADMS_iframe" id="iframe' + dataId + '" name="iframe' + dataId + '"  width="100%" height="100%" src="' + dataURL + '" frameborder="0" data-id="' + dataURL + '" seamless></iframe>';
                     $('.mainContent').find('iframe.LRADMS_iframe').hide();
                     $('.mainContent').append(str1);
                     //$.loading(true);

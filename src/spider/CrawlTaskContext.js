@@ -1,12 +1,12 @@
-const { Downloader } = require("../Downloader");
-const { Browser } = require("../Browser");
-const { BlockRuleChecker } = require("../BlockRuleChecker");
-const { CrawlTaskConfig } = require("./CrawlTaskConfig");
-const {UrlDecoder} =require("./../UrlDecoder");
-const {UrlEncoder} =require("./../UrlEncoder");
-const {UrlMatcher} =require("./../UrlMatcher");
+const { Downloader } = require("./Downloader");
+const { Browser } = require("./Browser");
+const { BlockRuleChecker } = require("./BlockRuleChecker");
+const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
+const {UrlDecoder} =require("./UrlDecoder");
+const {UrlEncoder} =require("./UrlEncoder");
+const {UrlMatcher} =require("./UrlMatcher");
 
-const { validateUtils } = require("./../utils/validate-utils");
+const { validateUtils } = require("./utils/validate-utils");
 
 const cheerio = require('cheerio');
 
@@ -28,6 +28,11 @@ class CrawlTaskContext {
                 this.urlDecoder = new UrlDecoder(JSON.parse(config.urlEncodes||"[]"));
 
                 this.urlEncoder =new UrlEncoder(JSON.parse(config.urlEncodes||"[]"));
+
+                /**
+                 * @type {Browser}
+                 */
+                this.browser;
         }
 }
 

@@ -65,7 +65,7 @@ const DEFAULT_VALIDATES = {
                
                 "url": {
                         matcher: (columnName) => columnName.toLowerCase().endsWith("url"),
-                        validate: "@Url"
+                        validate: "@URL"
                 },
                 "path": {
                         matcher: (columnName)=> columnName.toLowerCase().endsWith("path"),
@@ -76,11 +76,11 @@ const DEFAULT_VALIDATES = {
                         validate: "@Path"
                 },
                 "domain": {
-                        validate: "@Url"
+                        validate: "@URL"
                 },
                 "host": {
                         matcher: (columnName) => columnName.toLowerCase() == "host",
-                        validate: "@Url"
+                        validate: "@URL"
                 },
                 "ip": {
                         matcher: (columnName)=> columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",

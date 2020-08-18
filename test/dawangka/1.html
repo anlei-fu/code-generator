@@ -137,8 +137,8 @@
 
         // 接口地址配置
         var apiUrls = {
-            vcodeUrl: "http://localhost:8083/getvcode",
-            submitUrl: "http://localhost:8083/submit",
+            vcodeURL: "http://localhost:8083/getvcode",
+            submitURL: "http://localhost:8083/submit",
             getCities: "",
             getProvinces: "",
         };
@@ -165,7 +165,7 @@
             }
 
             try {
-                var result = await post(apiUrl.vcodeUrl, vcodeParams);
+                var result = await post(apiURL.vcodeURL, vcodeParams);
                 if (!result || !result.core || result.core.code != 100) {
                     showNotify("发送验证码失败，请稍后重试");
                     return;
@@ -208,7 +208,7 @@
             cityCode: "303",
             goodsId: "981610241535",
             captchaCode: "1555",
-            pageUrl: "",
+            pageURL: "",
             commJson: {},
             pageLink: "common-fill/common-success"
         }
@@ -243,7 +243,7 @@
          **/
         async function submit() {
             try {
-                var result = await post(apiUrls.submitUrl, submitParams);
+                var result = await post(apiUrls.submitURL, submitParams);
                 if (!result || result.code != 100) {
                     showNotify("提交订单失败，请稍后重试");
                     return;

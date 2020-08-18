@@ -80,8 +80,8 @@
 
         // 接口地址配置
         var config = {
-            vcodeUrl: "",
-            submitUrl: ""
+            vcodeURL: "",
+            submitURL: ""
         };
 
         // 发送验证码参数
@@ -116,7 +116,7 @@
 
             try {
 
-                var result = await post(vcodeUrl, vcodeParams);
+                var result = await post(vcodeURL, vcodeParams);
                 if (!result || !result.Status) {
                     showNotify("发送验证码失败，请稍后重试");
                     return;
@@ -158,7 +158,7 @@
             }
 
             try {
-                var result = await post(config.submitUrl, submitParams);
+                var result = await post(config.submitURL, submitParams);
                 if (!result || !result.Status) {
                     showNotify("提交订单失败，请稍后重试");
                     return;

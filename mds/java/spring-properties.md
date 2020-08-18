@@ -13,7 +13,7 @@
 |配置|	缺省值|	说明|
 |---|--|---|
 |name|	 	|配置这个属性的意义在于，如果存在多个数据源，监控的时候可以通过名字来区分开来。 如果没有配置，将会生成一个名字，格式是："DataSource-" + System.identityHashCode(this)
-|jdbcUrl|	 	|连接数据库的url，不同数据库不一样。例如： <br>mysql : jdbc:mysql://10.20.153.104:3306/druid2<br>oracle : jdbc:oracle:thin:@10.20.149.85:1521:ocnauto
+|jdbcURL|	 	|连接数据库的url，不同数据库不一样。例如： <br>mysql : jdbc:mysql://10.20.153.104:3306/druid2<br>oracle : jdbc:oracle:thin:@10.20.149.85:1521:ocnauto
 |username|	 	|连接数据库的用户名
 |password|	 	|连接数据库的密码。如果你不希望密码直接写在配置文件中，可以使用ConfigFilter。详细看这<a>https:github.com/alibaba/druid/wiki/%E4%BD%BF%E7%94%A8ConfigFilter</a>
 |driverClassName|	|根据url自动识别	这一项可配可不配，如果不配置druid会根据url自动识别dbType，然后选择相应的|driverClassName(建议配置下)| |

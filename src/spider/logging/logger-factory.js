@@ -18,7 +18,7 @@ if (!global.LOG_WRITERS) {
                                 console.log(chalk.redBright("[ERROR]") + chalk.magentaBright(`[${logEvent.time}]` + chalk.blueBright(`[${logEvent.name}]: `) + chalk.white(`${logEvent.msg || ""}`)));
 
                                 if (logEvent.error)
-                                        console.log(chalk.white(logEvent.error.toString()));
+                                        console.log(chalk.white(logEvent.error));
                                 
                                 if(logEvent.obj){
                                    console.log("target:");

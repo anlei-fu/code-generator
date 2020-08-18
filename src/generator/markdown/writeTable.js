@@ -24,7 +24,7 @@ const doRequest = axios.default.create({
  * @param {String} encoding  Default utf-8
  * @param {Map<String,(String) => String>} renders  Index: string => string
  */
-function writeFromUrl(file, url, select, encoding = "utf-8", renders) {
+function writeFromURL(file, url, select, encoding = "utf-8", renders) {
         doRequest({ url: url, method: "get" })
                 .then(resp => {
                         if (resp.data) {

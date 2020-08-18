@@ -1,6 +1,10 @@
 class BrowserPage {
         constructor () {
-                this.page = "";
+                /**
+                 * @type {import("puppeteer").Page}
+                 */
+                this.page;
+                
                 this.available = false;
         }
 }

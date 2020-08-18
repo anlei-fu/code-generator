@@ -92,8 +92,8 @@
 
         // 接口地址配置
         var config = {
-                vcodeUrl: "http://localhost:8083/getvcode",
-                submitUrl: "http://localhost:8083/submit"
+                vcodeURL: "http://localhost:8083/getvcode",
+                submitURL: "http://localhost:8083/submit"
         };
 
         // 发送验证码参数
@@ -128,7 +128,7 @@
                 }
 
                 try {
-                        var result = await post(config.vcodeUrl, vcodeParams);
+                        var result = await post(config.vcodeURL, vcodeParams);
                         if (!result || !result.core || result.core.code != 0) {
                                 showNotify(result.core.msg);
                                 return;
@@ -177,7 +177,7 @@
         async function submit() {
                 try {
                         debugger
-                        var result = await post(config.submitUrl, submitParams);
+                        var result = await post(config.submitURL, submitParams);
                         if (!result || result.status != 1) {
                                 showNotify(result.msg);
                                 return;

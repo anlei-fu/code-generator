@@ -1,6 +1,6 @@
-const { CrawlerConfig } = require("./CrawlerConfig");
-const { JsManager } = require("./../JsManager");
-const { ResultReporter } = require("./../ResultReporter");
+const { CrawlerConfig } = require("./model/CrawlerConfig");
+const { JsManager } = require("./JsManager");
+const { ResultReporter } = require("./ResultReporter");
 class CrawlerContext {
         /**
          * Constructor of CrawlerContext

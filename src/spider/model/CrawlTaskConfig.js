@@ -1,4 +1,4 @@
-const { UrlPair } = require("./UrlPair");
+const { URL } = require("./URL");
 
 class CrawlTaskConfig {
         constructor () {
@@ -36,7 +36,7 @@ class CrawlTaskConfig {
                  * urls to crawl 
                  * @NotNull
                  */
-                this.urls = [new UrlPair()];
+                this.urls = [new URL()];
 
 
                 /**
@@ -80,7 +80,7 @@ class CrawlTaskConfig {
                 this.encoding = "";
 
                 /**
-                 * Url encodes
+                 * URL encodes
                  */
                 this.urlEncodes = "";
 
@@ -90,7 +90,7 @@ class CrawlTaskConfig {
                 this.downloadTimeout = 10000;
 
                 /**
-                 * Url Match patterns
+                 * URL Match patterns
                  */
                 this.urlMatchPatterns = "";
 

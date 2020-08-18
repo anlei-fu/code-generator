@@ -19,9 +19,9 @@ class Controller extends Initiable {
          * To mount url-handler mapping
          * 
          * @abstract
-         * @param {Express.Application} app
+         * @param {Express.Application} express
          */
-        mount(app) {
+        mount(express) {
                 throw new Error("this method has not been implemented");
         }
 

@@ -18,7 +18,7 @@ exports.config = {
         groups: [
                 {
                         name: "合同",
-                        baseUrl: "/contract",
+                        baseURL: "/contract",
                         items: [{
                                 name: "1.1.1  合同管理 查询 <br> /contract",
                                 params: {
@@ -61,7 +61,7 @@ exports.config = {
                 },
                 {
                         name: "用户",
-                        baseUrl: "/user",
+                        baseURL: "/user",
                         items: [{
                                 name: "2.1.1 用户账号 <by> /user/account",
                                 url: "/account",

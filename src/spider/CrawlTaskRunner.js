@@ -1,23 +1,19 @@
 const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
-const { CrawlTaskContext } = require("./model/CrawlTaskContext");
-// const { PageResult } = require("./model/PageResult");
+const { CrawlTaskContext } = require("./CrawlTaskContext");
 const { FailRecorder } = require("./FailRecorder");
 const { SpeedCaculator } = require("./SpeedCaculator");
 const { Browser } = require("./Browser");
 const { Downloader } = require("./Downloader");
 const { DelayCaculator } = require("./DelayCaculator");
 const { LoggerSurpport } = require("./LoggerSurpport");
-
 const { CrawlTaskResultBuilder, CrawlTaskResult } = require("./model/CrawlTaskResult");
-const { CrawlerContext } = require("./model/CrawlerContext");
-const { PageContext } = require("./model/PageContext");
-
+const { CrawlerContext } = require("./CrawlerContext");
+const { PageContext } = require("./PageContext");
 
 const { TaskRunnerStatus } = require("./constant/TaskRunnerStatus");
 const { PageResult } = require("./constant/PageResult");
 const { CrawlType } = require("./constant/CrawlType");
 const { ThreadUtils } = require("./utils/thread-utils");
-const cheerio = require('cheerio');
 
 class CrawlerTaskRunner extends LoggerSurpport {
         /**
@@ -47,9 +43,10 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 } catch (ex) {
                         this._finish(ex.toString());
                         this.error(
-                                `start task (${taskConfig.taskId}) failed,cause init failed`
+                                `start task (${taskConfig.taskId}) failed, cause init failed`
                                 , ex
                         );
+                        return;
                 }
 
                 this.info(`start executing crawl task(${taskConfig.taskId})`);
@@ -77,7 +74,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 this._taskContext = new CrawlTaskContext(config);
 
                 this._failRecorder = new FailRecorder(
-                        config.maxContinuouslyFail || 15,
+                        config.maxContinuouslyFail || 20,
                         config.maxFail || 200
                 );
 
@@ -90,15 +87,14 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // create downloader
                 if (!config.crawlType == CrawlType.STATIC) {
-                        this._taskContext.cheerIo = cheerio;
                         this._taskContext.downloader = new Downloader(this._taskContext);
                 } else {
                         this._taskContext.browser = new Browser(config);
                         await this._taskContext.browser.init();
                 }
 
-                // check crawler script
-                await this._downloadAndLoadScript(config.scriptPath);
+                // check crawl script
+                await this._loadScript(config.scriptPath);
         }
 
         /**
@@ -107,7 +103,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
          * @param {String} scriptPath
          * @private
          */
-        async _downloadAndLoadScript(scriptPath) {
+        async _loadScript(scriptPath) {
                 try {
                         this._main = await this._crawlerContext.jsManager.getMain(scriptPath);
                 } catch (ex) {
@@ -125,14 +121,14 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // blocked
                 if (this._status == TaskRunnerStatus.BLOCKED) {
-                        this.info(`to run new task failed ,cause task(${this._taskContext.taskConfig.taskId}) has been blocked!`);
+                        this.info(`failed to crawl, cause task(${this._taskContext.taskConfig.taskId}) has been blocked!`);
                         return;
                 }
 
                 // over maxconcurrecy
                 if (this._currentRunning > this._taskContext.taskConfig.urlMaxConcurrency) {
                         this._schedule(false);
-                        this.info(`to run new task failed ,cause task(${this._taskContext.taskConfig.taskId}) over max concurrency!`);
+                        this.info(`failed to crawl, cause task(${this._taskContext.taskConfig.taskId}) over max concurrency!`);
                         return;
                 }
 
@@ -144,11 +140,11 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 this._schedule(true);
 
-                let urlPair = this._taskContext.taskConfig.urls.pop();
-                let pageContext = new PageContext(this._taskContext, urlPair);
+                let url = this._taskContext.taskConfig.urls.pop();
+                let pageContext = new PageContext(this._taskContext, url);
 
                 this._currentRunning++;
-                this.info(`begin crawling url(${urlPair.url})`);
+                this.info(`begin crawling url(${url.url})`);
                 let startTime = new Date();
                 try {
 
@@ -165,14 +161,17 @@ class CrawlerTaskRunner extends LoggerSurpport {
                                 }
                         }
 
-                        if (prepareResult)
+                        if (prepareResult){
+                                // avoid main not set
+                                pageContext.pageResultBuilder.pageResult(PageResult.UNSET);
                                 await this._main(pageContext);
+                        }
                 } catch (ex) {
                         pageContext.pageResultBuilder
                                 .pageResult(PageResult.EXTRACT_FAILED)
                                 .msg(ex.message);
 
-                        this.error(`crawl url(${urlPair.url}) failed`, ex);
+                        this.error(`crawl url(${url.url}) failed`, ex);
                 }
 
                 // release browser page
@@ -181,16 +180,14 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 let pageResult = pageContext.pageResultBuilder.build();
                 this.info(
-                        `crawl url(${urlPair.url}) finished, result is ${pageResult.pageResult},`+
-                         `and msg is ${pageResult.msg || "null"}`
+                        `crawl url(${url.url}) finished, result is ${pageResult.pageResult},` +
+                        `and msg is ${pageResult.msg || "null"}`
                 );
 
-                let finishTime = new Date();
-                this._speedCaculator.addItem(
+                this._speedCaculator.add(
                         {
-                                startTime,
-                                finishTime,
-                                isSuccess: pageResult.pageResult == PageResult.SUCCCESS
+                                elapsed: new Date().getTime() - startTime.getTime(),
+                                success: pageResult.pageResult == PageResult.SUCCCESS
                         }
                 );
 
@@ -214,10 +211,15 @@ class CrawlerTaskRunner extends LoggerSurpport {
          * @returns {Promise<Boolean>}
          */
         async _prepareStaticPage(pageContext) {
+                this.info(`downloading page ${pageContext.url.url}`);
                 let downloadResult = await this._taskContext.downloader.download(pageContext.url);
-                let checkResult = this._taskContext.ruleChecker.check(downloadResult);
-                if (checkResult == PageResult.SUCCESS)
+                let checkResult = this._taskContext.blockRuleChecker.check(downloadResult);
+                if (checkResult == PageResult.SUCCESS) {
+                        this.info(`download page ${pageContext.url.url} succeed`);
                         pageContext.html = downloadResult.html;
+                } else {
+                        this.info(`download page ${pageContext.url.url} failed`);
+                }
 
                 pageContext.pageResultBuilder.pageResult(checkResult);
         }
@@ -242,7 +244,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // blocked
                 if (result.pageResult == PageResult.BLOCKED) {
-                        this._taskResultBuilder.failedUrl(result.url);
+                        this._taskResultBuilder.failedURL(result.url);
                         this._status = TaskRunnerStatus.BLOCKED;
                         this._taskResultBuilder.message("blocked");
                         return;
@@ -250,14 +252,14 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // failed
                 if (result.pageResult == PageResult.EXTRACT_FAILED) {
-                        this._taskResultBuilder.failedUrl(result.url);
+                        this._taskResultBuilder.failedURL(result.url);
                         this._failRecorder.failed();
                         if (this._failRecorder.overMaxFailed) {
                                 this._status = TaskRunnerStatus.BLOCKED;
                                 this._taskResultBuilder.message("over max failed");
                                 this.info(
                                         `over max failed, total :${this._failRecorder.totalFail},` +
-                                        `conticuously fail:${this._failRecorder._maxConticuouslyFail}`
+                                        `conticuously fail:${this._failRecorder.continuouslyFailedCount}`
                                 );
                         }
 
@@ -266,17 +268,22 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // bad url
                 if (result.pageResult == PageResult.NOT_EXIST) {
-                        this._taskResultBuilder.badUrl(result.url);
+                        this._taskResultBuilder.badURL(result.url);
                         this._failRecorder.failed();
                         if (this._failRecorder.overMaxFailed) {
                                 this._status = TaskRunnerStatus.BLOCKED;
                                 this._taskResultBuilder.message("over max failed");
+                                this.info(
+                                        `over max failed, total :${this._failRecorder.totalFail},` +
+                                        `conticuously fail:${this._failRecorder.continuouslyFailedCount}`
+                                );
                         }
+
                         return;
                 }
 
                 // success
-                this._taskResultBuilder.successUrl(result.url);
+                this._taskResultBuilder.successURL(result.url);
                 this._taskResultBuilder.data(result.data);
                 this._taskResultBuilder.newUrls(result.newUrls);
         }
@@ -289,8 +296,8 @@ class CrawlerTaskRunner extends LoggerSurpport {
          */
         _finish(msg) {
 
-                // close browser if is not static crawl type
-                if (this._taskContext.taskConfig.crawlType == CrawlType.BROWSER)
+                // close browser if use browser
+                if (this._taskContext.browser)
                         this._taskContext.browser.close();
 
                 // failed 
@@ -313,6 +320,12 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 if (msg)
                         this._taskResultBuilder.message(msg);
 
+                // set speed statistics
+                this._taskResultBuilder.averageSpeedOfAll(this._speedCaculator.avarageSpeedOfAll);
+                this._taskResultBuilder.averageSpeedOfSuccess(this._speedCaculator.averageSpeedOfSuccess);
+                this._taskResultBuilder.meanSpeedOfSuccess(this._speedCaculator.meanSpeedOfSuccess);
+                this._taskResultBuilder.maxSpeedOfSuccess(this._speedCaculator.maxSpeedOfSuccess);
+
                 let taskResult = this._taskResultBuilder.build();
                 this.reportTaskResult(taskResult);
         }
@@ -328,16 +341,16 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         let masters = this._crawlerContext.masters;
                         for (const master of masters) {
                                 try {
-                                        let res = await this._crawlerContext
+                                        let resp = await this._crawlerContext
                                                 .resultReporter
                                                 .reportResult(
                                                         master,
                                                         taskResult
                                                 );
 
-                                        this.info(`notify master(${master}) task(${this._taskContext.taskConfig.taskId}) task result`);
-                                        this.info(`and master response:`, res);
-                                        if (res&&res.code == 100)
+                                        this.info(`notify master(${master}) task(${this._taskContext.taskConfig.taskId}) result`);
+                                        this.info(`and master response:`, resp);
+                                        if (resp && resp.code == 100)
                                                 return;
 
                                 } catch (ex) {

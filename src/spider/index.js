@@ -1,7 +1,7 @@
 const { Crawler } = require("./Crawler");
+
 function main() {
-        let crawler = new Crawler();
-        crawler.start(`./config.json`);
+        new Crawler().start(`./config.json`);
 }
 
 /****************************************main****************************** */

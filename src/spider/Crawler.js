@@ -1,7 +1,7 @@
 const { FILE } = require("./utils/file");
 const { TaskController } = require("./TaskController");
 const { RestService } = require("./RestService");
-const { CrawlerContext } = require("./model/CrawlerContext");
+const { CrawlerContext } = require("./CrawlerContext");
 const { validateUtils } = require("./utils/validate-utils");
 const { LoggerSurpport } = require("./LoggerSurpport");
 

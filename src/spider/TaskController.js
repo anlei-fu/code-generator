@@ -1,5 +1,5 @@
 const { CrawlerTaskRunner } = require("./CrawlTaskRunner");
-const { CrawlerContext } = require("./model/CrawlerContext");
+const { CrawlerContext } = require("./CrawlerContext");
 const { Controller } = require("./Controller");
 const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
 const { MasterHeartbeat } = require("./model/MasterHeartbeat");
@@ -34,7 +34,10 @@ class TaskController extends Controller {
                         "taskId",
                         "urls",
                         "scriptPath",
-                        "crawlType"
+                        "crawlType",
+                        // "autoDownloadPage",
+                        // "ipMinuteSpeedLimit",
+                        // "urlMaxConcurrency"
                 );
 
                 try {
@@ -42,7 +45,7 @@ class TaskController extends Controller {
                         await runner.start(body);
                         return this.success("started");
                 } catch (ex) {
-                        this.error(`run task(${body.taskId}) failed`, ex, body);
+                        this.error(`run task(${body.taskId}) failed`, ex);
                         return this.fail(ex.toString());
                 }
         }
@@ -62,10 +65,11 @@ class TaskController extends Controller {
         /**
          * To mount requets handler
          * 
+         * @param {Express} express
          * @override
          */
-        mount(app) {
-                app.post(API.RUN, (req, resp) => this._process(req, resp, this.runNewTask))
+        mount(express) {
+                express.post(API.RUN, (req, resp) => this._process(req, resp, this.runNewTask))
                         .post(API.HEARTBEAT, (req, resp) => this._process(req, resp, this.heartbeat));
         }
 }

@@ -16,17 +16,31 @@ class UrlResolver {
          * @returns {String}
          */
         resolve(target) {
-                target = trim(target);
-                if (!target || startsWith(target, '#'))
+                if (!target || target.startsWith('#') || target.trim() == "")
                         return null;
 
+                target =decodeURI(target);
                 const { protocol } = url.parse(target);
-                if (protocol.includes(['http:', 'https:'])) {
-                        return target.split('#')[0];
-                } else if (!protocol) { // eslint-disable-line no-else-return
-                        return url.resolve(this._sourece, target).split('#')[0];
-                }
+                if (!protocol) {
+                        let u = url.resolve(this._sourece, target).split('#')[0];
+                        if (!u)
+                                return null;
 
+                        return {
+                                url: u.split("?")[0],
+                                query: u.includes("?") ? u.split("?")[1] : ""
+                        }
+                }
+                else if (protocol=="http:"||protocol=="https") {
+                        let u = target.split('#')[0]
+                        if (!u)
+                                return null;
+
+                        return {
+                                url: u.split("?")[0],
+                                query: u.includes("?") ? u.split("?")[1] : ""
+                        }
+                }
                 return null;
         }
 }

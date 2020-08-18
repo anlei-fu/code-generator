@@ -6,6 +6,12 @@ const { LoggerSurpport } = require("./LoggerSurpport");
 
 class ScriptFetcher extends LoggerSurpport {
 
+        /**
+         * Constructor of ScriptFetcher
+         * 
+         * @constructor
+         * @param {String} scriptFolder 
+         */
         constructor (scriptFolder) {
                 super("ScriptFetcher")
                 this._scriptFolder = scriptFolder;
@@ -14,16 +20,17 @@ class ScriptFetcher extends LoggerSurpport {
         /**
          * Download page and process download error
          * 
-         * @param {String} url
+         * @param {String} host
+         * @param {String} file
          */
         async fetch(host, file) {
                 try {
                         this.info(`dowloading ${file}`);
-                        let content = await this._downloadCore(`${host}/${file}`);
-                        FILE.write(`${this._scriptFolder}/${file}`, content.html);
-                        this.info(`dowloading ${file} success`);
+                        let content = await this._download(`${host}/${file}`);
+                        FILE.write(`${this._scriptFolder}/${file}`, content);
+                        this.info(`dowload ${file} succeed`);
                 } catch (ex) {
-                        this.error(`dowloading ${file} failed`, ex);
+                        this.error(`dowload ${file} failed`, ex);
                         throw ex;
                 }
         }
@@ -32,11 +39,11 @@ class ScriptFetcher extends LoggerSurpport {
          * Download page core
          * 
          * @private
-         * @param {UrlPair} url 
+         * @param {String} url 
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        _downloadCore(url) {
+        _download(url) {
                 return new Promise((resolve, reject) => {
                         axios.default.get(url, this._createConfig())
                                 .then(
@@ -48,7 +55,7 @@ class ScriptFetcher extends LoggerSurpport {
                                                 res.data.on('end', () => {
                                                         let buffer = Buffer.concat(chunks);
                                                         let str = iconv.decode(buffer, "utf8");
-                                                        resolve({ html: str, status: res.status })
+                                                        resolve(str)
                                                 })
                                         }
                                 ).catch(ex => reject(ex));
@@ -59,7 +66,7 @@ class ScriptFetcher extends LoggerSurpport {
          * Create download config
          * 
          * @private
-         * @param {UrlPair} url 
+         * @param {URL} url 
          * @param {Object} headers 
          * @returns {import("axios").AxiosRequestConfig}
          */

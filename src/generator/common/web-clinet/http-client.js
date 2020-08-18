@@ -39,7 +39,7 @@ function main() {
                 // records group item
                 let recordsItem = {
                         name: group.name,
-                        baseUrl: group.baseUrl,
+                        baseURL: group.baseURL,
                         records: []
                 };
                 recordsGroup.push(recordsItem);
@@ -91,7 +91,7 @@ function buildRequest(item, group) {
         let req = OBJECT.clone(config.defaultConfig);
         req.assert = config.defaultConfig.assert;
         OBJECT.extend(req, item, true);
-        req.url = `${config.defaultConfig.baseURL}${group.baseUrl}`;
+        req.url = `${config.defaultConfig.baseURL}${group.baseURL}`;
 
         if (item.url)
                 req.url += item.url;
