@@ -4,6 +4,12 @@ class UrlEncoder {
                 this._patterns = patterns;
         }
 
+        /**
+         * Encode url
+         * 
+         * @param {String} url 
+         * @returns {String}
+         */
         encode(url) {
                 return STR.replace(url, this._patterns);
         }

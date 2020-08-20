@@ -1,4 +1,5 @@
 const { URL } = require("./URL");
+const {BlockRule} =require("./BlockRule");
 
 class CrawlTaskConfig {
         constructor () {
@@ -38,11 +39,10 @@ class CrawlTaskConfig {
                  */
                 this.urls = [new URL()];
 
-
                 /**
                  * block rules 
                  */
-                this.blockRules = [];
+                this.blockRules = [new BlockRule()];
 
                 /**
                  * If true will auto download page and check download result
@@ -119,18 +119,18 @@ class CrawlTaskConfigBuilder {
         /**
          * Set property siteId
          * 
-         * @param {String} siteId
+         * @param {number} taskId
          * @returns {CrawlTaskConfigBuilder}
          */
-        siteId(siteId) {
-                this._config.siteId = siteId;
+        taskId(taskId) {
+                this._config.taskId = taskId;
                 return this;
         }
 
         /**
          * Set property rules
          * 
-         * @param {String} rules
+         * @param {[BlockRule]} rules
          * @returns {CrawlTaskConfigBuilder}
          */
         rules(rules) {
@@ -139,25 +139,46 @@ class CrawlTaskConfigBuilder {
         }
 
         /**
-         * Set property script
+         * Set property crawl type
          * 
-         * @param {String} script
-         * @returns {CrawlTaskConfigBuilder}
+         * @param {Nunber} type 
          */
-        script(script) {
-                this._config.script = script;
+        crawlType(type){
+                this._config.crawlType=type;
                 return this;
         }
 
         /**
-         * Set property speed
+         * Set property script
          * 
-         * @param {String} speed
+         * @param {String} scriptPath
          * @returns {CrawlTaskConfigBuilder}
          */
-        speed(speed) {
-                this._config.speed = speed;
+        script(scriptPath) {
+                this._config.scriptPath = scriptPath;
                 return this;
+        }
+
+        /**
+         * Set property encoding
+         * 
+         * @param {String} encoding 
+         * @returns {CrawlTaskConfigBuilder}
+         */
+        encoding(encoding){
+            this._config.encoding=encoding;
+            return this;
+        }
+
+        /**
+         * Set property download timeout
+         * 
+         * @param {Number} value 
+         * @returns {CrawlTaskConfigBuilder}
+         */
+        downloadTimeout(value){
+            this._config.downloadTimeout=value;
+            return this;
         }
 
         /**
@@ -166,19 +187,52 @@ class CrawlTaskConfigBuilder {
          * @param {String} needCookie
          * @returns {CrawlTaskConfigBuilder}
          */
-        needCookie(needCookie) {
-                this._config.needCookie = needCookie;
+        cookie(cookie) {
+                this._config.cookie = cookie;
                 return this;
         }
 
         /**
-         * Set property fetchTotal
+         * Set property proxy
          * 
-         * @param {String} fetchTotal
+         * @param {Proxy} proxy 
          * @returns {CrawlTaskConfigBuilder}
          */
-        fetchTotal(fetchTotal) {
-                this._config.fetchTotal = fetchTotal;
+        proxy(proxy){
+                this._config.proxy=proxy;
+                return this;
+        }
+
+        /**
+         * Set property urlMatchPatterns
+         * 
+         * @param {String} patterns 
+         * @returns {CrawlTaskConfigBuilder}
+         */
+        urlMatchPatterns(patterns){
+                this._config.urlMatchPatterns=patterns;
+                return this;
+        }
+
+        /**
+         * Set property encodes
+         * 
+         * @param {String} encodes 
+         * @returns {CrawlTaskConfigBuilder}
+         */
+        urlEncodes(encodes){
+              this._config.urlEncodes=encodes;
+              return this;
+        }
+
+        /**
+         * Set property autoDownloadPage
+         * 
+         * @param {Boolean} value 
+         * @returns {CrawlTaskConfigBuilder}
+         */
+        autoDownloadPage(value){
+                this._config.autoDownloadPage=value;
                 return this;
         }
 

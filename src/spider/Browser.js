@@ -70,8 +70,8 @@ class Browser extends LoggerSurpport {
                                 }
                         }
 
-                        if(getCount++>20)
-                           throw new Error("Get browser page timeouted!")
+                        if (getCount++ > 20)
+                                throw new Error("Get browser page timeouted!")
 
                         // wait for page available
                         await ThreadUtils.sleep(this._config.browserWaitForPageDelay);

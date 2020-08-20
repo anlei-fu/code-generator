@@ -8,7 +8,7 @@ const WATHC_MAP = new Map();
  */
 function setDebugMode() {
         if (!global.DEBUG) {
-                console.log("Debug mode setted");
+                console.log("Debug mode set");
                 global.DEBUG = true;
         }
 }

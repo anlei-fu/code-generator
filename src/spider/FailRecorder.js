@@ -15,6 +15,15 @@ class FailRecorder {
         }
 
         /**
+         * To check is over max fail count or continuously failed count
+         * 
+         * @returns {boolean}
+         */
+        get isOverMaxFailed() {
+                return this.continuouslyFailedCount > this._maxConticuouslyFail || this.totalFail > this._maxFail;
+        }
+
+        /**
          * Set current fail count to 0
          */
         success() {
@@ -27,15 +36,6 @@ class FailRecorder {
         failed() {
                 this.totalFail++;
                 this.continuouslyFailedCount++;
-        }
-
-        /**
-         * To check is over max fail count or continuously failed count
-         * 
-         * @returns {boolean}
-         */
-        get overMaxFailed() {
-                return this.continuouslyFailedCount > this._maxConticuouslyFail || this.totalFail > this._maxFail;
         }
 }
 

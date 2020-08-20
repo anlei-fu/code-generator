@@ -5,9 +5,8 @@ const { STR } = require("./utils/str");
 const { DownloadResult } = require("./model/DownloadResult");
 const { URL } = require("./model/URL");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
-const { info } = require("console");
 
-const ErrorMap = {
+const ERROR_MAP = {
         notExists: {
                 matcher: message => message.includes("404"),
                 resp: { status: 404 }
@@ -136,9 +135,9 @@ class Downloader {
          * @returns {DownloadResult}
          */
         _getErrorResp(message) {
-                for (const key in ErrorMap) {
-                        if (ErrorMap[key].matcher(message))
-                                return ErrorMap[key].resp;
+                for (const key in ERROR_MAP) {
+                        if (ERROR_MAP[key].matcher(message))
+                                return ERROR_MAP[key].resp;
                 }
         }
 }

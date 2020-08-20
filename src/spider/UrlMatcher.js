@@ -6,6 +6,12 @@ class UrlMatcher {
                 })
         }
 
+        /**
+         * Check is url matched with regexes
+         * 
+         * @param {String} url 
+         * @returns {Boolean}
+         */
         match(url) {
                 if (this.exps.length == 0)
                         return true;

@@ -1,27 +1,50 @@
 class SpeedCaculator {
 
+        /**
+         * Constructor of SpeedCaculator
+         */
         constructor(){
-                this._items=[];
+                this._records=[];
         }
 
-        add(item) {
-                this._items.push(item);
+        /**
+         * Add record
+         * 
+         * @param {SpeedItem} record 
+         */
+        add(record) {
+                this._records.push(record);
         }
 
+        /**
+         * Average speed of all crawling
+         * 
+         * @returns {Number}
+         */
         get avarageSpeedOfAll() {
-               this._items.reduce((previous,current)=> {return{elpased:previous.elapsed+current.elapsed}})/this._items.length;
+               this._records.reduce((previous,current)=> {return{elpased:previous.elapsed+current.elapsed}})/this._records.length;
         }
 
+        /**
+         * Average speed of succeed crawling
+         * 
+         * @returns {Number}
+         */
         get averageSpeedOfSuccess(){
-             let succeed= this._items.filter(x=>x.success);
+             let succeed= this._records.filter(x=>x.success);
              if(succeed.length==0)
                return 0;
 
              succeed.reduce((previous,current)=> {return{elpased:previous.elapsed+current.elapsed}})/succeed.length;
         }
 
-        get meanSpeedOfSuccess() {
-                let succeed= this._items.filter(x=>x.success);
+        /**
+         * Median speed of succeed crawling
+         * 
+         * @returns {Number}
+         */
+        get medianSpeedOfSuccess() {
+                let succeed= this._records.filter(x=>x.success);
                 succeed= succeed.sort((x,y)=>x.elapsed-y.elapsed);
 
                 if(succeed.length==0)
@@ -34,8 +57,13 @@ class SpeedCaculator {
                 }
         }
 
+        /**
+         * Max speed of succeed crawling
+         * 
+         * @returns {Number}
+         */
         get maxSpeedOfSuccess() {
-                let succeed= this._items.filter(x=>x.success);
+                let succeed= this._records.filter(x=>x.success);
                 succeed= succeed.sort((x,y)=>x.elapsed-y.elapsed);
                 if(succeed.length==0)
                   return 0;

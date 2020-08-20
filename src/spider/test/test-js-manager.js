@@ -8,8 +8,6 @@ describe('script fetcher', function () {
         });
 });
 
-
-
 // async function main(){
 //         let manager =new JsManager(`${__dirname}/output`,{fileHost:"http://localhost:80"});
 //         let main=  await manager.getMain("1.js");

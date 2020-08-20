@@ -26,15 +26,11 @@ class Crawler extends LoggerSurpport {
                 );
 
                 this._context = new CrawlerContext(config);
-
                 this._restservice = new RestService(config.port, [new TaskController()]);
                 this._restservice.init(this._context);
                 this._restservice.start();
-
                 this.info(`crawler started id is ${config.uniqueId} and ip is ${config.ip}`);
         }
 }
 
 exports.Crawler = Crawler;
-let crawler = new Crawler();
-crawler.start(`./config.json`);

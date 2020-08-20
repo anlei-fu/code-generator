@@ -8,6 +8,12 @@ class UrlDecoder {
                 })
         }
 
+        /**
+         * Decode url
+         * 
+         * @param {String} url 
+         * @returns {String}
+         */
         decode(url) {
                 return STR.replace(url, this._patterns);
         }

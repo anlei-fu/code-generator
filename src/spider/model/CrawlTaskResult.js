@@ -100,7 +100,7 @@ class CrawlTaskResultBuilder {
          * @param {URL} successURL
          * @returns {CrawlTaskResultBuilder}
          */
-        successURL(successURL) {
+        success(successURL) {
                 this._config.successUrls.concat(successURL);
                 return this;
         }
@@ -111,7 +111,7 @@ class CrawlTaskResultBuilder {
          * @param {String} failedURL
          * @returns {CrawlTaskResultBuilder}
          */
-        failedURL(failedURL) {
+        failed(failedURL) {
                 this._config.failedUrls.concat(failedURL);
                 return this;
         }
@@ -122,7 +122,7 @@ class CrawlTaskResultBuilder {
          * @param {String} badURL
          * @returns {CrawlTaskResultBuilder}
          */
-        badURL(badURL) {
+        bad(badURL) {
                 this._config.badUrls.concat(badURL);
                 return this;
         }
@@ -201,7 +201,6 @@ class CrawlTaskResultBuilder {
                 return this;
         }
 
-
         /**
          * Set property averageSpeedOfAll
          * 
@@ -230,7 +229,7 @@ class CrawlTaskResultBuilder {
          * @param {Number} value 
          * @returns {CrawlTaskResultBuilder}
          */
-        meanSpeedOfSuccess(value) {
+        medianSpeedOfSuccess(value) {
                 this._config.meanSpeedOfSuccess = value;
                 return this;
         }

@@ -80,7 +80,6 @@ class CrawlerContextBuilder {
                 return this;
         }
 
-
         /**
          * Build 
          * 

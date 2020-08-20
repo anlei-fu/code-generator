@@ -9,6 +9,7 @@ const API = {
         RUN: "/run",
         HEARTBEAT: "/heartbeat"
 }
+
 class TaskController extends Controller {
         constructor () {
                 super("TaskController")
@@ -51,7 +52,7 @@ class TaskController extends Controller {
         }
 
         /**
-         * To receive master haertbeat 
+         * To receive master heartbeat 
          * 
          * @param {{body:MasterHeartbeat}} param0 
          */
@@ -63,7 +64,7 @@ class TaskController extends Controller {
         }
 
         /**
-         * To mount requets handler
+         * To mount requests handler
          * 
          * @param {Express} express
          * @override

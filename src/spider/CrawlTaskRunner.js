@@ -2,8 +2,6 @@ const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
 const { FailRecorder } = require("./FailRecorder");
 const { SpeedCaculator } = require("./SpeedCaculator");
-const { Browser } = require("./Browser");
-const { Downloader } = require("./Downloader");
 const { DelayCaculator } = require("./DelayCaculator");
 const { LoggerSurpport } = require("./LoggerSurpport");
 const { CrawlTaskResultBuilder, CrawlTaskResult } = require("./model/CrawlTaskResult");
@@ -12,7 +10,6 @@ const { PageContext } = require("./PageContext");
 
 const { TaskRunnerStatus } = require("./constant/TaskRunnerStatus");
 const { PageResult } = require("./constant/PageResult");
-const { CrawlType } = require("./constant/CrawlType");
 const { ThreadUtils } = require("./utils/thread-utils");
 
 class CrawlerTaskRunner extends LoggerSurpport {
@@ -46,6 +43,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                                 `start task (${taskConfig.taskId}) failed, cause init failed`
                                 , ex
                         );
+
                         return;
                 }
 
@@ -72,6 +70,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
          */
         async _init(config) {
                 this._taskContext = new CrawlTaskContext(config);
+                await this._taskContext.init();
 
                 this._failRecorder = new FailRecorder(
                         config.maxContinuouslyFail || 20,
@@ -84,16 +83,8 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         pollMinRate,
                         10000
                 );
-
-                // create downloader
-                if (!config.crawlType == CrawlType.STATIC) {
-                        this._taskContext.downloader = new Downloader(this._taskContext);
-                } else {
-                        this._taskContext.browser = new Browser(config);
-                        await this._taskContext.browser.init();
-                }
-
-                // check crawl script
+              
+                // load script
                 await this._loadScript(config.scriptPath);
         }
 
@@ -139,30 +130,15 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 }
 
                 this._schedule(true);
+                this.info(`begin crawling url(${url.url})`);
 
                 let url = this._taskContext.taskConfig.urls.pop();
                 let pageContext = new PageContext(this._taskContext, url);
-
                 this._currentRunning++;
-                this.info(`begin crawling url(${url.url})`);
                 let startTime = new Date();
                 try {
-
-                        // get browser page
-                        if (this._taskContext.taskConfig.crawlType == CrawlType.BROWSER)
-                                pageContext.page = await this._taskContext.browser.getPage();
-
-                        let prepareResult = true;
-                        if (this._taskContext.taskConfig.autoDownloadPage) {
-                                if (this._taskContext.taskConfig.crawlType == CrawlType.STATIC) {
-                                        prepareResult = await this._prepareStaticPage(pageContext);
-                                } else if (this._taskContext.taskConfig.crawlType == CrawlType.BROWSER) {
-                                        prepareResult = await this._prepareBrowserPage(pageContext);
-                                }
-                        }
-
-                        if (prepareResult){
-                                // avoid main not set
+                        if (await pageContext.prepare()){
+                                // To check is main ok
                                 pageContext.pageResultBuilder.pageResult(PageResult.UNSET);
                                 await this._main(pageContext);
                         }
@@ -174,9 +150,8 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         this.error(`crawl url(${url.url}) failed`, ex);
                 }
 
-                // release browser page
-                if (pageContext.page)
-                        pageContext.page.available = true;
+                // release browser page if need
+                pageContext.release();
 
                 let pageResult = pageContext.pageResultBuilder.build();
                 this.info(
@@ -197,41 +172,11 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 if (
                         // blocked
                         (this._status == TaskRunnerStatus.BLOCKED && this._currentRunning == 0)
-                        //finished
+                        // finished
                         || (this._currentRunning == 0 && this._taskContext.taskConfig.urls.length == 0)
                 ) {
                         this._finish();
                 }
-        }
-
-        /**
-         * Download page and check page result
-         * 
-         * @param {PageContext} pageContext 
-         * @returns {Promise<Boolean>}
-         */
-        async _prepareStaticPage(pageContext) {
-                this.info(`downloading page ${pageContext.url.url}`);
-                let downloadResult = await this._taskContext.downloader.download(pageContext.url);
-                let checkResult = this._taskContext.blockRuleChecker.check(downloadResult);
-                if (checkResult == PageResult.SUCCESS) {
-                        this.info(`download page ${pageContext.url.url} succeed`);
-                        pageContext.html = downloadResult.html;
-                } else {
-                        this.info(`download page ${pageContext.url.url} failed`);
-                }
-
-                pageContext.pageResultBuilder.pageResult(checkResult);
-        }
-
-        /**
-         * Open page and check result
-         * 
-         * @param {PageContext} pageContext 
-         * @returns {Promise<Boolean>}
-         */
-        async _prepareBrowserPage(pageContext) {
-
         }
 
         /**
@@ -244,7 +189,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // blocked
                 if (result.pageResult == PageResult.BLOCKED) {
-                        this._taskResultBuilder.failedURL(result.url);
+                        this._taskResultBuilder.failed(result);
                         this._status = TaskRunnerStatus.BLOCKED;
                         this._taskResultBuilder.message("blocked");
                         return;
@@ -252,9 +197,9 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // failed
                 if (result.pageResult == PageResult.EXTRACT_FAILED) {
-                        this._taskResultBuilder.failedURL(result.url);
+                        this._taskResultBuilder.failed(result);
                         this._failRecorder.failed();
-                        if (this._failRecorder.overMaxFailed) {
+                        if (this._failRecorder.isOverMaxFailed) {
                                 this._status = TaskRunnerStatus.BLOCKED;
                                 this._taskResultBuilder.message("over max failed");
                                 this.info(
@@ -268,9 +213,9 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                 // bad url
                 if (result.pageResult == PageResult.NOT_EXIST) {
-                        this._taskResultBuilder.badURL(result.url);
+                        this._taskResultBuilder.bad(result);
                         this._failRecorder.failed();
-                        if (this._failRecorder.overMaxFailed) {
+                        if (this._failRecorder.isOverMaxFailed) {
                                 this._status = TaskRunnerStatus.BLOCKED;
                                 this._taskResultBuilder.message("over max failed");
                                 this.info(
@@ -283,9 +228,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 }
 
                 // success
-                this._taskResultBuilder.successURL(result.url);
-                this._taskResultBuilder.data(result.data);
-                this._taskResultBuilder.newUrls(result.newUrls);
+                this._taskResultBuilder.success(result);
         }
 
         /**
@@ -294,13 +237,12 @@ class CrawlerTaskRunner extends LoggerSurpport {
          * @param {String} msg
          * @private
          */
-        _finish(msg) {
+         _finish(msg) {
 
                 // close browser if use browser
-                if (this._taskContext.browser)
-                        this._taskContext.browser.close();
+                this._taskContext.release();
 
-                // failed 
+                 // failed 
                 if (this._taskContext.taskConfig.urls.length != 0) {
                         this._taskResultBuilder.unCrawledUrls(this._taskContext.taskConfig.urls);
 
@@ -323,7 +265,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 // set speed statistics
                 this._taskResultBuilder.averageSpeedOfAll(this._speedCaculator.avarageSpeedOfAll);
                 this._taskResultBuilder.averageSpeedOfSuccess(this._speedCaculator.averageSpeedOfSuccess);
-                this._taskResultBuilder.meanSpeedOfSuccess(this._speedCaculator.meanSpeedOfSuccess);
+                this._taskResultBuilder.medianSpeedOfSuccess(this._speedCaculator.medianSpeedOfSuccess);
                 this._taskResultBuilder.maxSpeedOfSuccess(this._speedCaculator.maxSpeedOfSuccess);
 
                 let taskResult = this._taskResultBuilder.build();

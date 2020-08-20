@@ -196,4 +196,4 @@ function analyzePrimaryColumn(table) {
  * exports csv file from database -> put into resource folder -> then excuete this file
  */
 
-resolve("user_system");
+resolve("18");

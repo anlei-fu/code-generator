@@ -13,7 +13,7 @@ class UrlResolver {
          * 
          * @param {String} source 
          * @param {String} target 
-         * @returns {String}
+         * @returns {{url:String,query:String}}
          */
         resolve(target) {
                 if (!target || target.startsWith('#') || target.trim() == "")
@@ -41,6 +41,7 @@ class UrlResolver {
                                 query: u.includes("?") ? u.split("?")[1] : ""
                         }
                 }
+                
                 return null;
         }
 }

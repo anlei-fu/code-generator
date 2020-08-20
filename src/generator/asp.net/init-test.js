@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/user_system/all");
+const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/18/all");
 
 const SETTLE = {
    project: "",
@@ -46,13 +46,13 @@ const USER_SYSTEM = {
 function test() {
    let config = {
        delete: true,
-       add: true,
-      project: FC.project,
-      root: FC.root,
-      abbrOfProject:FC.abbrOfProject,
+      //  add: true,
+      project: _18.project,
+      root: _18.root,
+      abbrOfProject:_18.abbrOfProject,
        edit: true,
    }
-   init(all.usSystemDictionary, config);
+   init(all.mrDownFailOrderRecord, config);
 }
 
 test();

@@ -1,11 +1,12 @@
 const { URL } = require("./URL");
+const { PageResult: PageCode } = require("./../constant/PageResult")
 
 class PageResult {
         constructor () {
                 /**
-                 * The result code of page @see {PageResultCode}
+                 * The id of url
                  */
-                this.pageResult = 1;
+                this.id = 0;
 
                 /**
                  * The url of page
@@ -15,19 +16,19 @@ class PageResult {
                 this.url;
 
                 /**
-                 * The id of url
+                 * The result code of page @see {PageResultCode}
                  */
-                this.id=0;
+                this.pageResult = 1;
 
                 /**
                  * The http status code of dowload page
                  */
-                this.status = 200;
+                this.httpStatus = 200;
 
                 /**
                  * The data extracted
                  */
-                this.data="";
+                this.data = "";
 
                 /**
                  * The newly detected matched urls element type @type {URL}
@@ -49,7 +50,7 @@ exports.PageResult = PageResult;
 class PageResultBuilder {
 
         constructor (pageContext, url) {
-                this.url=url;
+                this.url = url;
                 this.pageContext = pageContext;
                 this._config = new PageResult();
                 this._config.url = url;
@@ -67,13 +68,61 @@ class PageResultBuilder {
         }
 
         /**
-         * Set property status
+         * Set page result to "Script Exception"
          * 
-         * @param {Number} status
          * @returns {PageResultBuilder}
          */
-        status(status) {
-                this._config.status = status;
+        scriptException() {
+                this._config.pageResult = PageCode.SCRIPT_EXCEPTION;
+                return this;
+        }
+
+        /**
+         * Set page result to "Page Incorrect"
+         * 
+         * @returns {PageResultBuilder}
+         */
+        pageIncorrect() {
+                this._config.pageResult = PageCode.PAGE_INCORRECT;
+                return this;
+        }
+
+        /**
+         * Set page result to "Success"
+         */
+        success() {
+                this._config.pageResult = PageCode.SUCCESS;
+                return this;
+        }
+
+        /**
+         * Set page result to "Failed"
+         * 
+         * @returns {PageResultBuilder}
+         */
+        failed() {
+                this._config.pageResult = PageCode.EXTRACT_FAILED;
+                return this;
+        }
+
+        /**
+         * Set page result to "Blocked"
+         * 
+         * @returns {PageResultBuilder}
+         */
+        blocked() {
+                this._config.pageResult = PageCode.BLOCKED;
+                return this;
+        }
+
+        /**
+         * Set property status
+         * 
+         * @param {Number} httpStatus
+         * @returns {PageResultBuilder}
+         */
+        httpStatus(httpStatus) {
+                this._config.httpStatus = httpStatus;
                 return this;
         }
 
@@ -84,11 +133,11 @@ class PageResultBuilder {
          * @returns {PageResultBuilder}
          */
         data(data) {
-                if(data)
-                this._config.data = JSON.stringify({
-                        url: this.url,
-                        data
-                });
+                if (data)
+                        this._config.data = JSON.stringify({
+                                url: this.url,
+                                data
+                        });
                 return this;
         }
 
@@ -98,7 +147,7 @@ class PageResultBuilder {
          * @param {[URL]} newUrls
          * @returns {PageResultBuilder}
          */
-        newUrls(newUrls) {
+        newUrl(newUrls) {
                 newUrls.forEach(x => {
                         this._config.newUrls.push({
                                 url: this.pageContext.taskContext.urlEncoder.encode(x),
