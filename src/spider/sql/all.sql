@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `new_system` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `new_system`;
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: new_system
@@ -25,11 +27,31 @@ DROP TABLE IF EXISTS `bind_record`;
 CREATE TABLE `bind_record` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `crawl_task_id` int(11) NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `bind_msg` varchar(100) DEFAULT NULL,
   `bind_result` smallint(6) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12351 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `block_rule`
+--
+
+DROP TABLE IF EXISTS `block_rule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `block_rule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `down_system_site_id` int(11) NOT NULL,
+  `http_status` smallint(6) NOT NULL,
+  `page_result` smallint(6) NOT NULL,
+  `check_type` smallint(6) NOT NULL,
+  `keywords` varchar(500) DEFAULT NULL,
+  `enable_status` smallint(6) DEFAULT '1',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,26 +70,10 @@ CREATE TABLE `cookie` (
   `current_use_count` int(11) NOT NULL DEFAULT '0',
   `delay_timeout_time` timestamp NULL DEFAULT NULL,
   `expire_time` timestamp NULL DEFAULT NULL,
-  `enabel_status` smallint(6) NOT NULL DEFAULT '1',
+  `enable_status` smallint(6) NOT NULL DEFAULT '1',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `cookie_block_record`
---
-
-DROP TABLE IF EXISTS `cookie_block_record`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cookie_block_record` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `current_use_count` int(11) DEFAULT NULL,
-  `cookie_id` varchar(45) DEFAULT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,19 +86,21 @@ DROP TABLE IF EXISTS `crawl_task`;
 CREATE TABLE `crawl_task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `site_id` int(11) NOT NULL,
+  `down_system_id` int(11) DEFAULT NULL,
   `down_system_site_id` int(11) NOT NULL COMMENT 'the site task belong to',
   `task_timeout_time` timestamp NULL DEFAULT NULL,
-  `task_status` smallint(6) DEFAULT '0',
+  `task_status` smallint(6) DEFAULT '1',
+  `task_msg` varchar(45) DEFAULT NULL,
   `data_sync_status` smallint(6) DEFAULT '0',
-  `task_execute_result_type` smallint(6) DEFAULT '0' COMMENT 'task execute result',
+  `task_result` smallint(6) DEFAULT NULL COMMENT 'task execute result',
   `bind_timeout_time` timestamp NULL DEFAULT NULL,
-  `bind_last_result` smallint(6) NOT NULL DEFAULT '0',
-  `bind_last_msg` varchar(45) DEFAULT NULL,
+  `bind_last_result` smallint(6) DEFAULT NULL,
+  `bind_last_msg` varchar(100) DEFAULT NULL,
   `bind_last_time` timestamp NULL DEFAULT NULL,
-  `bind_count` int(11) NOT NULL DEFAULT '0',
-  `dispatch_last_result` smallint(6) DEFAULT '0' COMMENT 'task status',
+  `bind_count` int(11) DEFAULT '0',
+  `dispatch_last_result` smallint(6) DEFAULT NULL COMMENT 'task status',
   `dispatch_last_time` timestamp NULL DEFAULT NULL,
-  `dispatch_last_msg` varchar(45) DEFAULT NULL,
+  `dispatch_last_msg` varchar(100) DEFAULT NULL,
   `dispatch_count` int(11) DEFAULT '0',
   `cookie_id` int(11) NOT NULL DEFAULT '-1',
   `proxy_id` int(11) DEFAULT '-1' COMMENT 'the proxy the task used',
@@ -100,20 +108,21 @@ CREATE TABLE `crawl_task` (
   `task_start_time` timestamp NULL DEFAULT NULL COMMENT 'the time task start to excute',
   `task_finish_time` timestamp NULL DEFAULT NULL COMMENT 'the time that task finished',
   `url_sync_status` smallint(6) DEFAULT '0',
-  `success_url_count` int(11) DEFAULT '-1' COMMENT 'the url count that crawl successfully',
+  `url_total_count` int(11) DEFAULT NULL,
+  `url_success_count` int(11) DEFAULT '-1' COMMENT 'the url count that crawl successfully',
   `url_failed_count` int(11) DEFAULT '-1' COMMENT 'the url count that crawl failed',
   `url_new_count` int(11) DEFAULT '-1' COMMENT 'the url count that newly detected',
   `url_bad_count` int(11) DEFAULT '-1' COMMENT 'the bad url count',
   `average_speed_of_all` int(11) DEFAULT '-1' COMMENT 'the average speed of all url',
   `average_speed_of_success` int(11) DEFAULT '-1' COMMENT 'the average speed ofsuccess url',
-  `mean_speed_of_success` int(11) DEFAULT '-1' COMMENT 'the mean speed of all url',
+  `median_speed_of_success` int(11) DEFAULT '-1' COMMENT 'the mean speed of all url',
   `max_speed_of_success` int(11) DEFAULT '-1' COMMENT 'the max speed of all success url',
   `enable_status` smallint(6) NOT NULL DEFAULT '1' COMMENT 'enable status',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'the time that task created',
   PRIMARY KEY (`id`),
   KEY `down_system_site_id_key` (`down_system_site_id`) /*!80000 INVISIBLE */,
   KEY `site_key` (`site_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='task info';
+) ENGINE=InnoDB AUTO_INCREMENT=7144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='task info';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,12 +146,13 @@ CREATE TABLE `crawler` (
   `max_concurrency` int(11) DEFAULT '200' COMMENT 'the max concurrency the crawler allowed',
   `current_concurrency` int(11) DEFAULT '0' COMMENT 'the current concurrency',
   `heartbeat_status` smallint(6) DEFAULT '0',
-  `heartbeat_last_time` timestamp NULL DEFAULT NULL COMMENT 'last heartbeat time',
+  `heartbeat_last_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'last heartbeat time',
   `heartbeat_lost_count` int(11) DEFAULT '0',
+  `last_sync_concurrency_time` timestamp NULL DEFAULT NULL,
   `enable_status` smallint(6) DEFAULT '0' COMMENT 'enable status',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='crawler info';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='crawler info';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +173,7 @@ CREATE TABLE `dictionary` (
   `last_update_time` timestamp NULL DEFAULT NULL,
   `color` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='enum value- name map';
+) ENGINE=InnoDB AUTO_INCREMENT=305 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='enum value- name map';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,10 +187,10 @@ CREATE TABLE `dispatch_record` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `crawl_task_id` int(11) DEFAULT NULL,
   `dispatch_result` smallint(6) DEFAULT NULL,
-  `dispatch_msg` varchar(45) DEFAULT NULL,
-  `create_time` varchar(45) DEFAULT NULL,
+  `dispatch_msg` varchar(100) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7468 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +202,7 @@ DROP TABLE IF EXISTS `down_system`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `down_system` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `aditional_params` varchar(500) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   `priority` int(11) NOT NULL DEFAULT '1',
   `description` varchar(200) DEFAULT NULL,
@@ -207,25 +218,7 @@ CREATE TABLE `down_system` (
   `enable_status` smallint(6) DEFAULT '1',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `down_system_crawl_job`
---
-
-DROP TABLE IF EXISTS `down_system_crawl_job`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `down_system_crawl_job` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `down_system_id` int(11) NOT NULL,
-  `job_date_type` smallint(6) NOT NULL DEFAULT '1',
-  `date_value` smallint(6) NOT NULL,
-  `enable_Status` smallint(6) DEFAULT '1',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,57 +231,64 @@ DROP TABLE IF EXISTS `down_system_site`;
 CREATE TABLE `down_system_site` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `site_id` int(11) NOT NULL,
-  `script_id` int(11) DEFAULT NULL,
+  `additional_params` varchar(500) DEFAULT NULL,
+  `script_path` varchar(45) DEFAULT NULL,
   `down_system_id` int(11) DEFAULT NULL,
   `priority` int(11) DEFAULT '1',
   `account_type` smallint(6) DEFAULT NULL,
   `account_need_validated` smallint(6) DEFAULT NULL,
+  `crawler_page_user_agent_type` smallint(6) DEFAULT '1',
   `crawler_page_encoding` varchar(45) DEFAULT 'utf8',
   `crawler_page_headers` varchar(200) DEFAULT NULL,
   `crawler_page_timeout` int(11) DEFAULT '20',
   `crawler_crawl_type` smallint(6) DEFAULT '1',
   `crawler_auto_download_page` smallint(6) DEFAULT '1',
-  `url_total_count` int(11) DEFAULT '0',
+  `url_base` varchar(45) DEFAULT NULL,
+  `url_filter_type` smallint(6) DEFAULT '1',
   `url_max_cache_count` int(11) DEFAULT '3000',
+  `url_total_count` int(11) DEFAULT '0',
   `url_finished_count` int(11) DEFAULT '0',
   `url_bad_count` int(11) DEFAULT '0',
   `url_encodes` varchar(500) DEFAULT NULL,
-  `url_max_crawl_count` smallint(6) DEFAULT '3',
   `url_match_patterns` varchar(500) DEFAULT NULL,
+  `url_max_crawl_count` smallint(6) DEFAULT '3',
   `url_max_depth` int(11) DEFAULT '10',
   `bloom_expected_url_size` int(11) DEFAULT '1000000',
   `bloom_fpp` float DEFAULT '0.35',
   `bloom` longtext,
-  `bloom_initialized` smallint(6) DEFAULT NULL,
-  `bloom_loading_status` smallint(6) DEFAULT '0',
+  `bloom_load_status` smallint(6) DEFAULT '0',
   `bloom_last_dump_time` timestamp NULL DEFAULT NULL,
   `task_url_batch_count` int(11) DEFAULT '300',
-  `task_max_wait_to_bind_count` int(11) DEFAULT '10',
+  `task_max_count` int(11) DEFAULT '10',
+  `task_current_count` int(11) DEFAULT '0',
   `task_bind_timeout` int(11) DEFAULT '5',
-  `task_current_bind_count` int(11) DEFAULT '0',
+  `task_timeout` int(11) DEFAULT '120',
   `task_max_running_count` int(11) DEFAULT '10',
   `task_current_running_count` int(11) DEFAULT '0',
-  `task_timeout` int(11) DEFAULT '120',
+  `task_url_max_fail_count` int(11) DEFAULT '100',
+  `task_url_max_continuously_fail_count` int(11) DEFAULT '20',
+  `task_url_max_concurrency` int(11) DEFAULT '20',
   `enable_status` smallint(6) DEFAULT '1',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `down_system_site_crawl_job`
+-- Table structure for table `down_system_site_run_limit`
 --
 
-DROP TABLE IF EXISTS `down_system_site_crawl_job`;
+DROP TABLE IF EXISTS `down_system_site_run_limit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `down_system_site_crawl_job` (
+CREATE TABLE `down_system_site_run_limit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `down_system_site_id` int(11) NOT NULL,
-  `job_date_type` smallint(6) NOT NULL DEFAULT '1',
+  `week_type` smallint(6) NOT NULL DEFAULT '1',
+  `day_part_type` smallint(6) NOT NULL,
   `enable_status` smallint(6) NOT NULL DEFAULT '1',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`,`job_date_type`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -305,7 +305,7 @@ CREATE TABLE `proxy` (
   `port` int(11) NOT NULL,
   `account` varchar(45) DEFAULT NULL COMMENT 'the account of the proxy',
   `password` varchar(45) DEFAULT NULL COMMENT 'the password of the proxy',
-  `protocol` varchar(45) DEFAULT NULL COMMENT 'the protocol that proxy used',
+  `proxy_protocol` smallint(6) DEFAULT '1' COMMENT 'the protocol that proxy used',
   `proxy_type` smallint(6) DEFAULT '1' COMMENT 'the type of proxy',
   `max_use_count` int(11) DEFAULT '10' COMMENT 'the max use count of proxy',
   `current_use_count` int(11) DEFAULT '0' COMMENT 'the current use count of proxy',
@@ -352,12 +352,12 @@ CREATE TABLE `site` (
   `description` varchar(200) DEFAULT NULL COMMENT 'the description of site',
   `home_page_url` varchar(100) DEFAULT NULL COMMENT 'the home page url of site',
   `parent_site_id` int(11) DEFAULT '-1' COMMENT 'the parent site of the site',
-  `crawl_need_use_cookie` smallint(6) DEFAULT '0' COMMENT 'need use cookie',
   `login_script_id` int(11) DEFAULT '1' COMMENT 'the login script of the site',
   `login_need_vcode` smallint(6) DEFAULT '0' COMMENT 'login need vcode',
   `login_capta_type` smallint(6) DEFAULT '-1' COMMENT 'the captaa type of the site',
+  `need_use_cookie` smallint(6) DEFAULT '0' COMMENT 'need use cookie',
   `need_use_proxy` smallint(6) DEFAULT '0' COMMENT 'need proxy',
-  `ip_delay_timeout` int(11) DEFAULT '180' COMMENT 'ip delay timeout when crawl success',
+  `ip_delay_timeout` int(11) DEFAULT '-1' COMMENT 'ip delay timeout when crawl success',
   `ip_block_timeout` int(11) DEFAULT '120' COMMENT 'ip block timeout when task be blocked',
   `ip_minute_speed_limit` int(11) DEFAULT '100',
   `ip_hour_speed_limit` int(11) DEFAULT '2000',
@@ -371,15 +371,15 @@ CREATE TABLE `site` (
   `account_max_block_count` int(11) DEFAULT '6',
   `account_block_timeout` int(11) DEFAULT '10',
   `account_max_cookie_count` int(11) DEFAULT '5',
-  `account_delay_timeout` int(11) DEFAULT '3',
+  `account_delay_timeout` int(11) DEFAULT '-1',
   `cookie_max_use_count` int(11) DEFAULT '3',
   `cookie_max_block_count` int(11) DEFAULT '5',
   `cookie_expire_timeout` int(11) DEFAULT '30' COMMENT 'the timeout ookie expire',
-  `cookie_delay_timeout` int(11) DEFAULT '5',
+  `cookie_delay_timeout` int(11) DEFAULT '-1',
   `enable_status` smallint(6) DEFAULT '1',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='site info';
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='site info';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -391,22 +391,22 @@ DROP TABLE IF EXISTS `site_account`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `site_account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `site_id` int(11) NOT NULL COMMENT 'the site that account belong',
   `account` varchar(45) NOT NULL,
+  `phone` varchar(11) DEFAULT NULL COMMENT 'the phone of account',
+  `email` varchar(45) DEFAULT NULL COMMENT 'the email of account',
   `login_type` smallint(6) DEFAULT '1',
   `account_type` smallint(6) DEFAULT '-1',
   `validated` smallint(6) DEFAULT '0',
   `nick_name` varchar(45) DEFAULT NULL,
   `description` varchar(300) DEFAULT NULL COMMENT 'description  of account',
-  `site_id` int(11) NOT NULL COMMENT 'the site that account belong',
-  `phone` varchar(11) DEFAULT NULL COMMENT 'the phone of account',
-  `email` varchar(45) DEFAULT NULL COMMENT 'the email of account',
   `password` varchar(45) DEFAULT NULL COMMENT 'the password of account',
   `last_login_time` timestamp NULL DEFAULT NULL COMMENT 'the time that account last login',
   `last_login_ip` varchar(45) DEFAULT NULL COMMENT 'the ip that the account last login',
   `current_use_count` int(11) DEFAULT '0' COMMENT 'the current use count of the account ',
   `block_current_count` int(11) DEFAULT '0',
-  `block_timeout_time` timestamp NULL DEFAULT NULL,
-  `delay_timeout_time` timestamp NULL DEFAULT NULL,
+  `block_timeout_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `delay_timeout_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `enable_status` smallint(6) DEFAULT '1' COMMENT 'enable status',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   PRIMARY KEY (`id`)
@@ -426,6 +426,23 @@ CREATE TABLE `site_account_block_record` (
   `current_cookie_count` int(11) DEFAULT NULL,
   `site_Account_id` int(11) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `site_account_run_limit`
+--
+
+DROP TABLE IF EXISTS `site_account_run_limit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `site_account_run_limit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `site_account_id` smallint(6) DEFAULT NULL,
+  `month_day_type` smallint(6) DEFAULT NULL,
+  `enable_status` smallint(6) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -460,7 +477,7 @@ CREATE TABLE `site_ip_delay_map` (
   `delay_timeout_time` timestamp NOT NULL,
   `ip` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=340 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -488,18 +505,31 @@ DROP TABLE IF EXISTS `url`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `url` (
-  `url` varchar(200) NOT NULL,
-  `depth` smallint(6) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `last_crawl_task_id` int(11) DEFAULT NULL,
   `down_system_site_id` int(11) DEFAULT NULL COMMENT 'the site that the url belong',
-  `url_type` smallint(6) NOT NULL,
-  `refer_url` varchar(45) DEFAULT NULL COMMENT 'the related url',
-  `crawl_count` int(11) DEFAULT NULL COMMENT 'current retry count of url',
-  `url_status` smallint(6) DEFAULT NULL COMMENT 'crawl status',
+  `url` varchar(300) NOT NULL DEFAULT '1',
+  `last_crawl_http_status` smallint(6) DEFAULT NULL,
+  `url_status` smallint(6) DEFAULT '1' COMMENT 'crawl status',
+  `url_type` smallint(6) NOT NULL DEFAULT '1',
+  `priority` int(11) DEFAULT '1',
+  `depth` smallint(6) NOT NULL DEFAULT '1',
+  `refer_url` varchar(300) DEFAULT NULL COMMENT 'the related url',
+  `http_method` smallint(6) DEFAULT '1',
+  `query` varchar(2000) DEFAULT NULL,
+  `params` varchar(2000) DEFAULT NULL,
+  `total_success_count` int(11) DEFAULT '0',
+  `total_crawl_count` int(11) DEFAULT '0' COMMENT 'current retry count of url',
+  `last_cache_time` timestamp NULL DEFAULT NULL,
+  `last_page_result` smallint(6) DEFAULT NULL,
+  `last_crawl_msg` varchar(45) DEFAULT NULL,
+  `last_success_time` timestamp NULL DEFAULT NULL,
   `last_crawl_time` varchar(45) DEFAULT NULL COMMENT 'last crawl  time',
-  `query_string` varchar(300) DEFAULT NULL,
+  `enable_status` smallint(6) DEFAULT '1',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
   KEY `down_system_site_key` (`down_system_site_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='url info';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='url info';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -528,4 +558,4 @@ CREATE TABLE `vcode` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-12 15:21:01
+-- Dump completed on 2020-08-29 11:04:02
