@@ -38,13 +38,11 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 try {
                         await this._init(taskConfig);
                 } catch (ex) {
-                        this._finish(ex.toString());
                         this.error(
                                 `start task (${taskConfig.taskId}) failed, cause init failed`
                                 , ex
                         );
-
-                        return;
+                        throw ex;
                 }
 
                 this.info(`start executing crawl task(${taskConfig.taskId})`);
@@ -69,12 +67,13 @@ class CrawlerTaskRunner extends LoggerSurpport {
          * @param {CrawlTaskConfig} config 
          */
         async _init(config) {
+                config.urlMaxConcurrency = config.urlMaxConcurrency || 10;
                 this._taskContext = new CrawlTaskContext(config);
                 await this._taskContext.init();
 
                 this._failRecorder = new FailRecorder(
-                        config.maxContinuouslyFail || 20,
-                        config.maxFail || 200
+                        config.urlMaxContinuouslyFail || 20,
+                        config.urMaxFail || 200
                 );
 
                 let pollMinRate = config.ipMinuteSpeedLimit
@@ -83,7 +82,26 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         pollMinRate,
                         10000
                 );
-              
+
+                // decode urls
+                let urls = [];
+                config.urls.forEach(url => {
+                        if (!url || !url.url)
+                                return;
+
+                        url.encodedUrl = url.url;
+                        url.depth = url.depth || 0;
+                        url.url = this._taskContext.urlDecoder.decode(url.url);
+
+                        if (url.referUrl)
+                                url.referUrl = this._taskContext.urlDecoder.decode(url.referUrl);
+
+                        urls.push(url);
+                });
+
+                config.urls = urls;
+                this._taskResultBuilder.urlTotal(config.urls.length);
+
                 // load script
                 await this._loadScript(config.scriptPath);
         }
@@ -130,21 +148,21 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 }
 
                 this._schedule(true);
-                this.info(`begin crawling url(${url.url})`);
 
                 let url = this._taskContext.taskConfig.urls.pop();
                 let pageContext = new PageContext(this._taskContext, url);
+                this.info(`begin crawling url(${url.url})`);
                 this._currentRunning++;
                 let startTime = new Date();
                 try {
-                        if (await pageContext.prepare()){
+                        if (await pageContext.prepare()) {
                                 // To check is main ok
                                 pageContext.pageResultBuilder.pageResult(PageResult.UNSET);
                                 await this._main(pageContext);
                         }
                 } catch (ex) {
                         pageContext.pageResultBuilder
-                                .pageResult(PageResult.EXTRACT_FAILED)
+                                .pageResult(PageResult.SCRIPT_INCORRECT)
                                 .msg(ex.message);
 
                         this.error(`crawl url(${url.url}) failed`, ex);
@@ -187,17 +205,22 @@ class CrawlerTaskRunner extends LoggerSurpport {
          */
         _checkAndSavePageResult(result) {
 
+                this._taskResultBuilder.pageResult(result);
+
                 // blocked
                 if (result.pageResult == PageResult.BLOCKED) {
-                        this._taskResultBuilder.failed(result);
                         this._status = TaskRunnerStatus.BLOCKED;
                         this._taskResultBuilder.message("blocked");
                         return;
                 }
 
                 // failed
-                if (result.pageResult == PageResult.EXTRACT_FAILED) {
-                        this._taskResultBuilder.failed(result);
+                if (result.pageResult == PageResult.SCRIPT_INCORRECT
+                        || result.pageResult == PageResult.DOWNLOAD_FAILED
+                        || result.pageResult == PageResult.PAGE_NOT_EXIST
+                        || result.pageResult == PageResult.PAGE_INCORRECT
+                        || result.pageResult == PageResult.UNSET
+                ) {
                         this._failRecorder.failed();
                         if (this._failRecorder.isOverMaxFailed) {
                                 this._status = TaskRunnerStatus.BLOCKED;
@@ -210,25 +233,6 @@ class CrawlerTaskRunner extends LoggerSurpport {
 
                         return;
                 }
-
-                // bad url
-                if (result.pageResult == PageResult.NOT_EXIST) {
-                        this._taskResultBuilder.bad(result);
-                        this._failRecorder.failed();
-                        if (this._failRecorder.isOverMaxFailed) {
-                                this._status = TaskRunnerStatus.BLOCKED;
-                                this._taskResultBuilder.message("over max failed");
-                                this.info(
-                                        `over max failed, total :${this._failRecorder.totalFail},` +
-                                        `conticuously fail:${this._failRecorder.continuouslyFailedCount}`
-                                );
-                        }
-
-                        return;
-                }
-
-                // success
-                this._taskResultBuilder.success(result);
         }
 
         /**
@@ -237,12 +241,12 @@ class CrawlerTaskRunner extends LoggerSurpport {
          * @param {String} msg
          * @private
          */
-         _finish(msg) {
+        _finish(msg) {
 
                 // close browser if use browser
                 this._taskContext.release();
 
-                 // failed 
+                // failed 
                 if (this._taskContext.taskConfig.urls.length != 0) {
                         this._taskResultBuilder.unCrawledUrls(this._taskContext.taskConfig.urls);
 

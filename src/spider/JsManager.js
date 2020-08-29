@@ -39,7 +39,7 @@ class JsManager extends FileManagerBase {
             return this._js[jsFile];
 
         try {
-            let main = require(jsFile).main;
+            let main = require(this.getFullPath(jsFile)).main;
             if (main)
                 this._js[jsFile] = main;
 

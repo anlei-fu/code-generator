@@ -22,24 +22,9 @@ class CrawlTaskResult {
                 this.message = "";
 
                 /**
-                 * The urls that crawl succeed, element @type {URL}
+                 * Page results @type {PageResult}
                  */
-                this.successUrls = [];
-
-                /**
-                 * The urls that crawl failed, element @type {URL}
-                 */
-                this.failedUrls = [];
-
-                /**
-                 * The urls that invalid, element @type {URL}
-                 */
-                this.badUrls = [];
-
-                /**
-                 * The urls that newly deteted, element @type {URL}
-                 */
-                this.newUrls = [];
+                this.pageResults=[];
 
                 /**
                  * The urls that has not been crawled when task be blocked, element @type {URL}
@@ -59,7 +44,7 @@ class CrawlTaskResult {
                 /**
                  * The mean speed of success crawling
                  */
-                this.meanSpeedOfSuccess = 0;
+                this.medianSpeedOfSuccess = 0;
 
                 /**
                  * The avarage speed of success crawling
@@ -95,68 +80,24 @@ class CrawlTaskResultBuilder {
         }
 
         /**
-         * Set property successUrls
+         * Set property count
          * 
-         * @param {URL} successURL
+         * @param {Number} count
          * @returns {CrawlTaskResultBuilder}
          */
-        success(successURL) {
-                this._config.successUrls.concat(successURL);
+        urlTotal(count){
+                this._config.urlTotal=count;
                 return this;
         }
 
         /**
-         * Set property failedUrls
+         * Set property message
          * 
-         * @param {String} failedURL
+         * @param {String} message
          * @returns {CrawlTaskResultBuilder}
          */
-        failed(failedURL) {
-                this._config.failedUrls.concat(failedURL);
-                return this;
-        }
-
-        /**
-         * Set property badUrls
-         * 
-         * @param {String} badURL
-         * @returns {CrawlTaskResultBuilder}
-         */
-        bad(badURL) {
-                this._config.badUrls.concat(badURL);
-                return this;
-        }
-
-        /**
-         * Set property newUrls
-         * 
-         * @param {[URL]} newUrls
-         * @returns {CrawlTaskResultBuilder}
-         */
-        newUrls(newUrls) {
-                this._config.newUrls.concat(newUrls);
-                return this;
-        }
-
-        /**
-         * Set property unCrawledUrls
-         * 
-         * @param {[URL]} unCrawledUrls
-         * @returns {CrawlTaskResultBuilder}
-         */
-        unCrawledUrls(unCrawledUrls) {
-                this._config.unCrawledUrls = unCrawledUrls;
-                return this;
-        }
-
-        /**
-         * Set property data
-         * 
-         * @param {Any} data
-         * @returns {CrawlTaskResultBuilder}
-         */
-        data(data) {
-                this._config.datas.push(data);
+        message(message) {
+                this._config.message = message;
                 return this;
         }
 
@@ -191,13 +132,24 @@ class CrawlTaskResultBuilder {
         }
 
         /**
-         * Set property message
+         * Add page result
          * 
-         * @param {String} message
+         * @param {PageResult} result 
          * @returns {CrawlTaskResultBuilder}
          */
-        message(message) {
-                this._config.message = message;
+        pageResult(result){
+                       this._config.pageResults.push(result);
+                       return this;
+        }
+
+        /**
+         * Set property unCrawledUrls
+         * 
+         * @param {[URL]} unCrawledUrls
+         * @returns {CrawlTaskResultBuilder}
+         */
+        unCrawledUrls(unCrawledUrls) {
+                this._config.unCrawledUrls = unCrawledUrls;
                 return this;
         }
 
@@ -230,7 +182,7 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         medianSpeedOfSuccess(value) {
-                this._config.meanSpeedOfSuccess = value;
+                this._config.medianSpeedOfSuccess = value;
                 return this;
         }
 

@@ -1,5 +1,5 @@
-const { CheckType } = require("./../constant/CheckType");
-const { PageResultCode } = require("../constant/PageResult");
+const { CheckType} = require("./../constant/CheckType");
+const { PageResult } = require("./../constant/PageResult");
 class BlockRule {
         constructor () {
                 /**
@@ -10,17 +10,17 @@ class BlockRule {
                 /**
                  * Rule check type @see {CheckType}
                  */
-                this.compareType = CheckType.STATUS_CHECK;
+                this.ruleType =CheckType.STATUS_CHECK;
 
                 /**
                  * Keywords to match
                  */
-                this.keywords = [""];
+                this.keywords = [];
 
                 /**
                  * Pageresult if match @see {PageResultCode}
                  */
-                this.pageResult = PageResultCode.SUCCCESS;
+                this.pageResult = PageResult.SUCCCESS;
         }
 }
 
@@ -52,7 +52,7 @@ class BlockRuleBuilder {
          * @returns {BlockRuleBuilder}
          */
         checkType(checkType) {
-                this._config.compareType = checkType;
+                this._config.ruleType = checkType;
                 return this;
         }
 

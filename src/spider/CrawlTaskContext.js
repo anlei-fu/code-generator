@@ -33,12 +33,12 @@ class CrawlTaskContext {
                 /**
                  * @private
                  */
-                this._urlDecoder = new UrlDecoder(JSON.parse(config.urlEncodes || "{}"));
+                this.urlDecoder = new UrlDecoder(JSON.parse(config.urlEncodes || "{}"));
 
                 /**
                  * @private
                  */
-                this._urlEncoder = new UrlEncoder(JSON.parse(config.urlEncodes || "{}"));
+                this.urlEncoder = new UrlEncoder(JSON.parse(config.urlEncodes || "{}"));
         }
 
         /**
@@ -46,7 +46,7 @@ class CrawlTaskContext {
          */
         async init() {
                 // create downloader
-                if (!this.taskConfig.crawlType == CrawlType.STATIC) {
+                if (this.taskConfig.crawlType == CrawlType.STATIC) {
                         this.downloader = new Downloader(this);
                 } else {
                         this.browser = new Browser(this.taskConfig);

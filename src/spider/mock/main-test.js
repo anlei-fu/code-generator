@@ -8,29 +8,39 @@ const { PageContext } = require("./../PageContext");
  * @param {PageContext} pageContext 
  */
 async function run(pageContext) {
-      let $ =pageContext.$;
-      let matcher =pageContext.taskContext.urlMatcher;
-      let builder =pageContext.pageResultBuilder;
+        let $ = pageContext.$;
+        let matcher = pageContext.taskContext.urlMatcher;
+        let builder = pageContext.pageResultBuilder;
 
-      $("a").each((i,e)=>{
-         let url = pageContext.urlResolver.resolve("");
-         if(matcher.match(url)){
-                 builder.newUrl(url)
-         }
-      });
+        $("a").each((i, e) => {
+                let href = $(e).attr("href");
+                let full = pageContext.urlResolver.resolve(href);
 
-      builder.data({});
-      builder.pageResult();
+                if (full && matcher.match(full.url)) {
+                        builder.newUrl(full);
+                        console.log(full.url);
+                }
+        });
+
+        builder.data({});
+        builder.success();
 }
 
 async function main() {
         let taskConfig = new CrawlTaskConfigBuilder()
                 .autoDownloadPage(true)
                 .downloadTimeout(10000)
+                .urlMatchPatterns(`["^(http://|https://)yp\.jd\.com"]`)
+                .urlEncodes(`{"^(http://|http://|)jipiao\.jd\.com/":"#1/"}`)
                 .crawlType(1)
+                .encoding("gb2312")
                 .build();
 
-        let context = await createPageContext(taskConfig, {});
+        let context = await createPageContext(
+                taskConfig,
+                { url: "https://www.jd.com/" }
+        );
+
         await run(context)
 }
 

@@ -18,7 +18,7 @@ async function createPageContext(taskConfig, url) {
                 throw new Error("prepare page context failed!")
         }
 
-        return pageContext();
+        return pageContext;
 }
 
 module.exports = {

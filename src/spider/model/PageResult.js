@@ -8,12 +8,7 @@ class PageResult {
                  */
                 this.id = 0;
 
-                /**
-                 * The url of page
-                 * 
-                 * @type {URL}
-                 */
-                this.url;
+                this.url = "";
 
                 /**
                  * The result code of page @see {PageResultCode}
@@ -28,7 +23,7 @@ class PageResult {
                 /**
                  * The data extracted
                  */
-                this.data = "";
+                this.data = null;
 
                 /**
                  * The newly detected matched urls element type @type {URL}
@@ -53,7 +48,8 @@ class PageResultBuilder {
                 this.url = url;
                 this.pageContext = pageContext;
                 this._config = new PageResult();
-                this._config.url = url;
+                this._config.id = url.id;
+                this._config.url = url.url;
         }
 
         /**
@@ -73,7 +69,7 @@ class PageResultBuilder {
          * @returns {PageResultBuilder}
          */
         scriptException() {
-                this._config.pageResult = PageCode.SCRIPT_EXCEPTION;
+                this._config.pageResult = PageCode.SCRIPT_INCORRECT;
                 return this;
         }
 
@@ -101,7 +97,7 @@ class PageResultBuilder {
          * @returns {PageResultBuilder}
          */
         failed() {
-                this._config.pageResult = PageCode.EXTRACT_FAILED;
+                this._config.pageResult = PageCode.SCRIPT_INCORRECT;
                 return this;
         }
 
@@ -135,7 +131,8 @@ class PageResultBuilder {
         data(data) {
                 if (data)
                         this._config.data = JSON.stringify({
-                                url: this.url,
+                                id: this.id,
+                                url: this.url.encodedUrl,
                                 data
                         });
                 return this;
@@ -144,17 +141,20 @@ class PageResultBuilder {
         /**
          * Set property newUrls
          * 
-         * @param {[URL]} newUrls
+         * @param {URL} newUrl
          * @returns {PageResultBuilder}
          */
-        newUrl(newUrls) {
-                newUrls.forEach(x => {
-                        this._config.newUrls.push({
-                                url: this.pageContext.taskContext.urlEncoder.encode(x),
-                                refer: this.url.url,
-                                depth: this.url.depth + 1
-                        });
-                })
+        newUrl(newUrl) {
+                if (!newUrl || !newUrl.url)
+                        return;
+
+                this._config.newUrls.push({
+                        url: this.pageContext.taskContext.urlEncoder.encode(newUrl.url),
+                        refer: this.url.encodedUrl,
+                        depth: this.url.depth + 1,
+                        query: newUrl.query
+                });
+
                 return this;
         }
 

@@ -40,9 +40,9 @@ class CrawlTaskConfig {
                 this.urls = [new URL()];
 
                 /**
-                 * block rules 
+                 * element type @type {BlockRule} block rules 
                  */
-                this.blockRules = [new BlockRule()];
+                this.blockRules = [];
 
                 /**
                  * If true will auto download page and check download result
@@ -97,12 +97,12 @@ class CrawlTaskConfig {
                 /**
                  * The max failed count that task allow
                  */
-                this.maxFail = 100;
+                this.urMaxFail = 100;
 
                 /**
                  * The max continuously failed count that task allow
                  */
-                this.maxContinuouslyFail = 5;
+                this.urlMaxContinuouslyFail = 20;
         }
 }
 

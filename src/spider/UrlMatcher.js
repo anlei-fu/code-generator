@@ -13,11 +13,14 @@ class UrlMatcher {
          * @returns {Boolean}
          */
         match(url) {
+                if(!url)
+                  return false;
+
                 if (this.exps.length == 0)
                         return true;
 
                 for (const exp of this.exps) {
-                        if (exp.match(url))
+                        if (exp.test(url))
                                 return true;
                 }
 

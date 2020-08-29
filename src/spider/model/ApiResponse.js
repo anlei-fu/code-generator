@@ -1,5 +1,5 @@
 exports.ApiResponse = class {
-        constructor (code,msg,data) {
+        constructor (code,message,data) {
                 /**
                  * 
                  */
@@ -8,7 +8,7 @@ exports.ApiResponse = class {
                 /**
                  * 
                  */
-                this.msg = msg;
+                this.message = message;
 
                 /**
                  * 

@@ -1,8 +1,7 @@
 const { DownloadResult } = require("./model/DownloadResult");
-const { PageResult, PageResultBuilder } = require("./model/PageResult");
 const { BlockRule } = require("./model/BlockRule");
-const { CheckType } = require("./constant/CheckType");
-const { PageResultCode } = require("./constant/PageResult");
+const { CheckType} = require("./constant/CheckType");
+const { PageResult} = require("./constant/PageResult");
 const { STR } = require("./utils/str");
 
 class BlockRuleChecker {
@@ -14,20 +13,21 @@ class BlockRuleChecker {
          */
         constructor (rules) {
                 this._rules = rules;
+                this._init();
         }
 
         /**
          * To check download result
          * 
          * @param {DownloadResult} downloadResult 
-         * @returns {PageResult}
+         * @returns {Number}
          */
         check(downloadResult) {
                 for (const rule of this._rules) {
 
                         if (downloadResult.status == rule.status || rule.status == -1) {
                                 let match = false;
-                                switch (rule.compareType) {
+                                switch (rule.ruleType) {
                                         case CheckType.INCLUDES_ALL:
                                                 match = STR.includesAll(downloadResult.html, rule.keywords);
                                                 break;
@@ -52,7 +52,18 @@ class BlockRuleChecker {
                         }
                 }
 
-                return PageResultCode.SUCCCESS;
+                return PageResult.SUCCESS;
+        }
+
+        /**
+         * Parse keywords to array and check
+         */
+        _init(){
+                this._rules.forEach(r=>{
+                        r.keywords=JSON.parse(r.keywords);
+                        if(!Array.isArray(r.keywords))
+                           throw new TypeError("incorrect type of keywords");
+                })
         }
 }
 
