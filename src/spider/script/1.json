@@ -1,0 +1,348 @@
+{
+"taskId": 7570,
+"taskResult": 1,
+"urlTotal": 42,
+"msg": "",
+"pageResults": [
+    {
+        "id": 1,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":1,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 42,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":42,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 41,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":41,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 40,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":40,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 39,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":39,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 38,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":38,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 37,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":37,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 36,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":36,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 35,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":35,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 34,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":34,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 33,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":33,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 32,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":32,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 31,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":31,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 30,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":30,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 29,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":29,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 28,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":28,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 27,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":27,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 26,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":26,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 25,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":25,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 24,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":24,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 23,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":23,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 22,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":22,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 21,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":21,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 20,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":20,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 19,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":19,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 18,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":18,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 17,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":17,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 16,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":16,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 15,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":15,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 14,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":14,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 13,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":13,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 12,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":12,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 11,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":11,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 10,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":10,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 9,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":9,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 8,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":8,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 7,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":7,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 6,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":6,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 5,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":5,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 4,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":4,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 3,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":3,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    },
+    {
+        "id": 2,
+        "pageResult": 1,
+        "httpStatus": 200,
+        "data": "{\"id\":2,\"url\":\"http://www.baidu.com\",\"data\":{}}",
+        "newUrls": [],
+        "msg": ""
+    }
+],
+"unCrawledUrls": [],
+"medianSpeedOfSuccess": 0,
+"averageSpeedOfSuccess": 0,
+"maxSpeedOfSuccess": 0
+}

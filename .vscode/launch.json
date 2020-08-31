@@ -5,14 +5,7 @@
         // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
         "version": "0.2.0",
         "configurations": [
-            {
-                "type": "chrome",
-                "request": "launch",
-                "name": "Launch Chrome against localhost",
-                "url": "${file}",
-                "sourceMaps": true, 
-                "webRoot": "${workspaceRoot}"
-            },
+     
              {
                 "name": "nodeLauch", //单独调试js，即可以直接运行js
                 "type": "node",

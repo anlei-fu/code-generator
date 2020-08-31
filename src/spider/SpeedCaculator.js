@@ -3,8 +3,8 @@ class SpeedCaculator {
         /**
          * Constructor of SpeedCaculator
          */
-        constructor(){
-                this._records=[];
+        constructor() {
+                this._records = [];
         }
 
         /**
@@ -21,8 +21,8 @@ class SpeedCaculator {
          * 
          * @returns {Number}
          */
-        get avarageSpeedOfAll() {
-               this._records.reduce((previous,current)=> {return{elpased:previous.elapsed+current.elapsed}})/this._records.length;
+        get averageSpeedOfAll() {
+                this._records.reduce((previous, current) => { return { elpased: previous.elapsed + current.elapsed } }).elapsed / this._records.length;
         }
 
         /**
@@ -30,12 +30,12 @@ class SpeedCaculator {
          * 
          * @returns {Number}
          */
-        get averageSpeedOfSuccess(){
-             let succeed= this._records.filter(x=>x.success);
-             if(succeed.length==0)
-               return 0;
+        get averageSpeedOfSuccess() {
+                let succeed = this._records.filter(x => x.success);
+                if (succeed.length == 0)
+                        return 0;
 
-             succeed.reduce((previous,current)=> {return{elpased:previous.elapsed+current.elapsed}})/succeed.length;
+                succeed.reduce((previous, current) => { return { elpased: previous.elapsed + current.elapsed } }).elapsed / succeed.length;
         }
 
         /**
@@ -44,16 +44,16 @@ class SpeedCaculator {
          * @returns {Number}
          */
         get medianSpeedOfSuccess() {
-                let succeed= this._records.filter(x=>x.success);
-                succeed= succeed.sort((x,y)=>x.elapsed-y.elapsed);
+                let succeed = this._records.filter(x => x.success);
+                succeed = succeed.sort((x, y) => x.elapsed - y.elapsed);
 
-                if(succeed.length==0)
-                   return 0;
+                if (succeed.length == 0)
+                        return 0;
 
-                if(succeed%2==0){
-                        return (succeed[succeed.length/2-1].elapsed+succeed[succeed.length/2].elapsed)/2;
-                }else{
-                        return succeed[succeed.length/2].elapsed;
+                if (succeed % 2 == 0) {
+                        return (succeed[succeed.length / 2 - 1].elapsed + succeed[succeed.length / 2].elapsed) / 2;
+                } else {
+                        return succeed[succeed.length / 2].elapsed;
                 }
         }
 
@@ -63,10 +63,10 @@ class SpeedCaculator {
          * @returns {Number}
          */
         get maxSpeedOfSuccess() {
-                let succeed= this._records.filter(x=>x.success);
-                succeed= succeed.sort((x,y)=>x.elapsed-y.elapsed);
-                if(succeed.length==0)
-                  return 0;
+                let succeed = this._records.filter(x => x.success);
+                succeed = succeed.sort((x, y) => x.elapsed - y.elapsed);
+                if (succeed.length == 0)
+                        return 0;
 
                 return succeed[0];
         }

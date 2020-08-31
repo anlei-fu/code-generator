@@ -7,8 +7,6 @@ exports.main = async (pageContext)=>{
   $("a").each((i, e) => {
           let href = $(e).attr("href");
           let full = pageContext.urlResolver.resolve(href);
-          if(full)
-          console.log(full.url);
   });
 
   builder.data({});

@@ -8,8 +8,6 @@ class PageResult {
                  */
                 this.id = 0;
 
-                this.url = "";
-
                 /**
                  * The result code of page @see {PageResultCode}
                  */
@@ -49,7 +47,6 @@ class PageResultBuilder {
                 this.pageContext = pageContext;
                 this._config = new PageResult();
                 this._config.id = url.id;
-                this._config.url = url.url;
         }
 
         /**
@@ -131,7 +128,7 @@ class PageResultBuilder {
         data(data) {
                 if (data)
                         this._config.data = JSON.stringify({
-                                id: this.id,
+                                id: this.url.id,
                                 url: this.url.encodedUrl,
                                 data
                         });

@@ -99,6 +99,9 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         urls.push(url);
                 });
 
+                if(urls.length==0)
+                   throw new Error("no url to crawl");
+
                 config.urls = urls;
                 this._taskResultBuilder.urlTotal(config.urls.length);
 
@@ -267,7 +270,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         this._taskResultBuilder.message(msg);
 
                 // set speed statistics
-                this._taskResultBuilder.averageSpeedOfAll(this._speedCaculator.avarageSpeedOfAll);
+                this._taskResultBuilder.averageSpeedOfAll(this._speedCaculator.averageSpeedOfAll);
                 this._taskResultBuilder.averageSpeedOfSuccess(this._speedCaculator.averageSpeedOfSuccess);
                 this._taskResultBuilder.medianSpeedOfSuccess(this._speedCaculator.medianSpeedOfSuccess);
                 this._taskResultBuilder.maxSpeedOfSuccess(this._speedCaculator.maxSpeedOfSuccess);

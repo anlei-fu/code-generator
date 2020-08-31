@@ -19,7 +19,7 @@ class CrawlTaskResult {
                 /**
                  * The crawl task result message not required
                  */
-                this.message = "";
+                this.msg = "";
 
                 /**
                  * Page results @type {PageResult}
@@ -32,14 +32,9 @@ class CrawlTaskResult {
                 this.unCrawledUrls = [];
 
                 /**
-                 * The datas that crawled
-                 */
-                this.datas = [];
-
-                /**
                  * The avarage speed of all crawling
                  */
-                this.avarageSpeedOfAll = 0;
+                this.averageSpeedOfAll = 0;
 
                 /**
                  * The mean speed of success crawling
@@ -97,7 +92,7 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         message(message) {
-                this._config.message = message;
+                this._config.msg = message;
                 return this;
         }
 
@@ -160,7 +155,7 @@ class CrawlTaskResultBuilder {
          * @returns {CrawlTaskResultBuilder}
          */
         averageSpeedOfAll(value) {
-                this._config.avarageSpeedOfAll = value;
+                this._config.averageSpeedOfAll = value;
                 return this;
         }
 
