@@ -1,0 +1,5 @@
+class RandomDelayCaculator{
+        constructor(minuteLimit){
+
+        }
+}

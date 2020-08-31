@@ -22,7 +22,12 @@ class SpeedCaculator {
          * @returns {Number}
          */
         get averageSpeedOfAll() {
-                this._records.reduce((previous, current) => { return { elpased: previous.elapsed + current.elapsed } }).elapsed / this._records.length;
+                if(this._records.length==0)
+                  return 0;
+
+                let res =this._records.reduce((previous, current) => { return { elapsed: previous.elapsed + current.elapsed } })
+
+              return  parseInt(res.elapsed / this._records.length);
         }
 
         /**
@@ -35,7 +40,9 @@ class SpeedCaculator {
                 if (succeed.length == 0)
                         return 0;
 
-                succeed.reduce((previous, current) => { return { elpased: previous.elapsed + current.elapsed } }).elapsed / succeed.length;
+                let res =succeed.reduce((previous, current) => { return { elapsed: previous.elapsed + current.elapsed } });
+
+             return  parseInt(res.elapsed / succeed.length);
         }
 
         /**
@@ -50,10 +57,10 @@ class SpeedCaculator {
                 if (succeed.length == 0)
                         return 0;
 
-                if (succeed % 2 == 0) {
-                        return (succeed[succeed.length / 2 - 1].elapsed + succeed[succeed.length / 2].elapsed) / 2;
+                if (succeed.length % 2 == 0) {
+                        return (succeed[parseInt(succeed.length / 2 - 1)].elapsed + succeed[succeed.length / 2].elapsed) / 2;
                 } else {
-                        return succeed[succeed.length / 2].elapsed;
+                        return succeed[parseInt(succeed.length / 2)].elapsed;
                 }
         }
 
@@ -64,11 +71,11 @@ class SpeedCaculator {
          */
         get maxSpeedOfSuccess() {
                 let succeed = this._records.filter(x => x.success);
-                succeed = succeed.sort((x, y) => x.elapsed - y.elapsed);
+                succeed = succeed.sort((x, y) => y.elapsed-x.elapsed);
                 if (succeed.length == 0)
                         return 0;
 
-                return succeed[0];
+                return succeed[0].elapsed;
         }
 }
 
