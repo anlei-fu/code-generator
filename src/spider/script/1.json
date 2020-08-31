@@ -1,348 +1,394 @@
 {
-"taskId": 7570,
-"taskResult": 1,
-"urlTotal": 42,
-"msg": "",
-"pageResults": [
-    {
-        "id": 1,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":1,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 42,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":42,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 41,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":41,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 40,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":40,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 39,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":39,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 38,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":38,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 37,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":37,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 36,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":36,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 35,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":35,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 34,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":34,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 33,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":33,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 32,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":32,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 31,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":31,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 30,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":30,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 29,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":29,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 28,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":28,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 27,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":27,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 26,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":26,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 25,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":25,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 24,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":24,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 23,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":23,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 22,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":22,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 21,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":21,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 20,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":20,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 19,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":19,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 18,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":18,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 17,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":17,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 16,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":16,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 15,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":15,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 14,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":14,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 13,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":13,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 12,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":12,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 11,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":11,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 10,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":10,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 9,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":9,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 8,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":8,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 7,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":7,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 6,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":6,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 5,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":5,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 4,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":4,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 3,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":3,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    },
-    {
-        "id": 2,
-        "pageResult": 1,
-        "httpStatus": 200,
-        "data": "{\"id\":2,\"url\":\"http://www.baidu.com\",\"data\":{}}",
-        "newUrls": [],
-        "msg": ""
-    }
-],
-"unCrawledUrls": [],
-"medianSpeedOfSuccess": 0,
-"averageSpeedOfSuccess": 0,
-"maxSpeedOfSuccess": 0
-}
+    "taskId": 8489,
+    "taskResult": 1,
+    "urlTotal": 2,
+    "msg": "",
+    "pageResults": [
+        {
+            "id": 78,
+            "pageResult": 1,
+            "httpStatus": 200,
+            "data": "{\"id\":78,\"url\":\"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6\",\"data\":{\"summary\":\"\"}}",
+            "newUrls": [
+                {
+                    "url": "#1//秒懂本尊答",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//秒懂大师说",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//秒懂看瓦特",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//秒懂五千年",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//秒懂全视界",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//百科校园",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//珠峰计划/4156302",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//2011计划/2913309",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//111计划/10958807",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//强基计划/24266392",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//卓越工程师教育培养计划/4942299",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url": "#1//卓越医生教育培养计划/3805307",
+                    "refer": "https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6",
+                    "depth": 2,
+                    "query": ""
+                },
+                {
+                    "url":"#1//卓越法律人才教育 
+    培养计划/9781317","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家建设高水平大学公派研究生项目/819876","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中国政府奖学金来华留学生接收院校/15447730","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国深化创新创业教
+    育改革示范高校/22051296","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//学位授权自主审核单位/23552013","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//医学“双一流”建设联盟/23370719","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//自主划线高校/10534999","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//成都科技大学/2406343","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//华西医科大学/344575","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//成都科技大学/2406343","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//华西协合大学/12579037","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//成都科技大学/2406343","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川联合大学/109872","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//华西医科 
+    大学/344575","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//朱德","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//巴金","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//杨尚昆/115245","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//郭沫若","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//陈昌智","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//戴秉国","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//柯召/3396493","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//吴玉章/2221","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//江竹筠/1973654","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//饺子/23621816","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//世界一流大学建设高
+    校/22189945","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//985工程/1077915","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//211工程/203547","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国重点大学/2154589","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//2011计划/2913309","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//世界一流大学建设高校/22189945","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//985工程/1077915","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//211工程/203547","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国重点大学/2154589","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//2011计划/2913309","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//111计划/10958807","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//珠峰计划/4156302","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//基础学科招生改革试点/24266387","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//强基计划/24266392","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//卓越医生教育培养计划/3805307","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//卓越工程师教育培养计划/4942299","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//卓越法律人才教育培养计划/9781317","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//医学“双 
+    一流”建设联盟/23370719","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国深化创新创业教育改革示范高校/22051296","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中华人民共和国教育部直属高校/9526186","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中国政府奖学金 
+    来华留学生接收院校/15447730","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//校歌","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//武侯区/7261564","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//双流区/14860434","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国大学生满意度50强高校","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国毕业生就业典型经验高校/5911615","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国大学生满意度50强高校","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国毕业生就业典型经验高校/5911615","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国创新创业典型经验高校/22748441","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//朱德","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//巴金","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//杨尚昆
+    /115245","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//郭沫若","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//陈昌智","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//戴秉国","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//柯召/3396493","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//吴玉章/2221","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//江竹筠/1973654","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//饺子/23621816","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//鸦片战争/29632","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//洋务运动","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//奎俊","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//文翁石室/4191395","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//张之洞/17493","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//书目答问/5194498","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//輶轩语/4221819","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//戊戌六君子","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//杨锐/4058","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//廖平/70071","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//维新变法","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//宋育仁","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//孙中山/128084","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//彭家珍","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//罗伦/4059183","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//蒲殿俊","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//骆成骧","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//张百熙","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//壬寅学制","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//癸卯学制","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//存古学堂/2047967","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//牛津大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//剑桥大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//多伦多大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//华西医科大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//蔡元培","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//壬子学制","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//北京师范大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//南京大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1// 
+    武汉大学","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中山大学/5672","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//东北大学/18014","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//湘江评论","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//星期日/1860236","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//“五卅”惨案","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//五四运动","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//乔治·布什/15286260","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中山大学/5672","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//齐鲁大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//金陵大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//金陵女子文理学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中央大学/9780739","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//燕京大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//土地改革","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//新民主主义","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//重庆大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//成华大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川农业大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//云南大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//贵州大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//川北大学","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家
+    大学生文化素质教育基地/2680904","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家示范性软件学院/4348743","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家大学生创新性实验计划/5326077","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国毕业生就业典型经验高校
+    /5911615","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学国际关系学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//全国创新创业典型经验高校/22748441","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//双一流/19394525","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//世界一流大学建设高校/22189945","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//一流网络安
+    全学院建设示范项目高校/22129111","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//医学“双一流”建设联盟/23370719","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中华优秀传统文化传承基地/50801975","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//首批高等学校科技成果 
+    转化和技术转移基地/23294721","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//成渝地区双城经济圈高校联盟/50061533","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学—牛津大学华西消化道肿瘤联合研究中心/50101237","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家重点实验室/8638970","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家工程实验室/8638369","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家工程技术研究中心/7527872","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家临床医学研究中心/10236007","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//前沿科学中心/23728695","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//教育部人文社会科学重点研究基地/1589624","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家技术转移中心/3624679","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家大学科技园/9149021","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//水力学与山区河流开发保 
+    护国家重点实验室/2237615","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//高分子材料工程国家重点实验室/2237247","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//生物治疗国家重点实验室/4525117","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//口腔医学国家重点实验室/2237802","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//视觉合成图形图像技术国防重点学科实验室/6406290","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家空管自动化系统技术重点实验室","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//皮革化学与工程教育部重点实验室
+    /3714639","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//生物资源与生态环境教育部重点实验室","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//绿色化学与技术教育部重点实验室","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//靶向药物教育部重点实验室","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//出生缺陷与相关妇儿疾病教育部重点实验室","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学道教与宗教文化研究所/4338308","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学中国俗文化研究所/1767257","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学南亚研究所/10923144","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学中国藏学研究所/4109225","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//现代交通管理系统教育部工程研究中心","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//磷资源综合利用与清洁加工教育部工程研究中心","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//自然指数
+    /19620142","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学图书馆/5267732","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//美国国会图书馆/3454533","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//美国自然博物馆/15785007","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//康乃尔大学/514441","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//大英图书馆/3689624","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//名古屋大学/2567564","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//澳大利亚国立大学/1781473","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//圣彼得堡国立大学/2064768","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//巴黎大学/831979","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中国科学院院士/327194","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//朱清时/2733586","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//刘应
+    明/4137761","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//侯朝焕/4140464","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//赵尔宓/4314132","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//魏于全/2261257","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//李安民/8363856","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//冯小明/81204","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中国工程院院士/5925613","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//涂铭旌/4468986","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//高洁/8907932","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//林祥棣/5721627","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//谢和平/5206469","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//李言荣/6535291","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//周寿桓/6495706","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//张兴栋/7459023","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//石碧/45115","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//王玉忠/9239848","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//项楚","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//卿希泰","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//游志
+    胜","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//罗志田","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//曹顺庆","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//钟本和/11037264","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//詹石窗/3965303","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//霍巍/4118349","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//材料科学与工程学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//电气工程学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//法学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//华西药学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//软件学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//商学院","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家重点学科/7871690","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//ESI/3812216","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//口腔医学/19105124","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//中国语言文学/2597054","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//宗教学/990494","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//理论经济学/17465","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//哲学/140608","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//教育部学位与研究生教育发展中心/148056","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//第四轮学科评估/22303511","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家精品课程/5290197","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家级精品视频公开课/24570123","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家级特色专业/3490017","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家级实验教学示范中心/4218533","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家级工程实践教育中心/7106069","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家级虚拟仿真实验教学中心/19982901","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家大学生文化素质教育基地/2680904","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//国家级一流本科专业建设点/24243134","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//省级一流本科专业建设点/24243146","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//工程训练中心","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//哈佛大学费正清中国 
+    研究中心/20281574","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学美国研究中心/6211946","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//香港理工大学/1340040","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//匹兹堡大学/2025918","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学国家大学科技园/6664870","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//邓
+    小平/116181","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//李言荣","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//许唯临/11037160","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//陈志坚/13211118","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//褚良银/4793952","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//曹萍/8748952","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//敬静/5213016","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//郭勇/23407360","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//晏世经/1940654","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//侯太 
+    平/5995885","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//梁斌/13352614","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//李蓉军/20819954","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//张林/8660349","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//涂智/8792307","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//卢铁城/10407259","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//谢和平/5206469","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//杨泉明/3348370","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//任鸿隽","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//童第周 ","refer":"https: //baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//周太玄","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//刘承钊","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//冯友兰","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//朱光潜","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//李劼人","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//吴宓","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//魏时珍","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//恽代英","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//王右木","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//朱德","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//杨尚昆","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//郭沫若","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//巴金","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//江姐","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//毛英才","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//四川大学校友会","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//百科热词团队","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//百度百科：热词版本","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//百度百科：热词版本","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":""},{"url":"#1//百度百科：本人词条编辑服务/22442459","refer":"https://baike.baidu.com/item/%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6","depth":2,"query":"bk_fr=pcFooter"}],"msg":""},{"id":77,"pageResult":1,"httpStatus":200,"data":"{\"id\":77,\"url\":\"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486\",\"data\":{\"summary\":\"\\n美
+    利坚合众国（英语：United States of America，United States），简称“美国”，是由华盛顿哥伦比亚特区、50个州和关岛等众多海外领土组成的联邦共和立宪制国家。其主体部分位于北美洲中部，美国中央情报局《世界概况》1989年至1996年初始版美国
+    总面积是937.3万平方公里，人口3.3亿\\n[
+                        1
+                    ] \\n，通用英语，是一个移民国家。\\n[
+                        2
+                    ] \\n美国原为印第安人的聚居地，15世纪末，西班牙、荷兰、法国、英国等相继移民至此。\\n[
+                        2
+                    ] \\n18世纪前，英国在美国大西洋沿岸建立了13个英属北美殖民地。1775年，爆发了美国人民反抗大英帝国殖民统治的独立战争。1776年7月4日，在费城召开了第二次大陆会议，由乔治·华盛顿任大陆军总司令，发表《独立宣言》，宣布美利坚合众国正式成立。\\n[
+                        2
+                    ] \\n1783年独立战争结束，英国承认13个殖民地独立。1787年通过美国宪法，成立联邦制国家。1861年—1865年，美国爆发了南北战争。亚伯拉罕·林肯领导北方的自由州战胜了南方的蓄奴州。美国从此结束了“半奴隶半自由的状态”，开始全面实行自由资本主义，走上了快速发展的道路。1803年—1959年间，通过购 
+    买和战争的手段，领土不断扩张。美国是一个高度发达的资本主义国家，在两次世界大战中，美国和其他盟国取得胜利，经历数十年的冷战，在苏联解体后，成为唯一的超级大国，在经济、文化、工业等领域都处于全世界的领先地位。\\n[
+                        3-4
+                    ] \\n美国的 
+    白宫、硅谷、华尔街、好莱坞、百老汇等等在全球范围内都享有声誉。\\n[
+                        5-8
+                    ] \\n2020年1月13日，获2020胡润至尚优品·最青睐的留学目的地称号。\\n[
+                        9
+                    ] \\n\\n\"}}",
+                    "newUrls": [
+                        {
+                            "url": "#1//秒懂本尊答",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//秒懂大师说",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//秒懂看瓦特",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//秒懂五千年",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//秒懂全视界",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//百科校园",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//百度百科：多义词",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//义项",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//美国",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": "force=1"
+                        },
+                        {
+                            "url": "#1//美国/14804532",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//美国/20799937",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//美国/20104921",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//美国/22255111",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//美国/50683744",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//华盛顿哥伦比亚特区/83601",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//州",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//关岛/519630",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//海外领土/5127375",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//共和立宪制",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//北美洲/135465",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//美国中央情报局",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//世界概况",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//英语/109997",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//移民/12980648",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//印第安人/254718",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//西班牙/148941",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//荷兰/190469",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//法国/1173384",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//英国/144602",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//18世纪/5196088",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//英属北美殖民地/8117508",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//大英帝国/1758667",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//殖民统治/4886271",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//独立战争/5250",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//费城/18188",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//大陆会议/5490714",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//乔治·华盛顿",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//大陆军",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//独立宣言/53146",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//美国宪法/7455165",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//联邦制国家/10849643",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url": "#1//南北战争/631932",
+                            "refer": "https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486",
+                            "depth": 2,
+                            "query": ""
+                        },
+                        {
+                            "url":"#1//亚伯拉罕·林肯/25619","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//自由州/784885","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//蓄奴州/3356720","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//自由资本主义/5096738","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//购买/1409332","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//战争/14004","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//资本主义/87961","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//世界大战/16222","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//冷战/82478","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//苏联解体/634053","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//超级大国/1975636","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//经济/403149","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//文化/23624","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//工业/254750","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白宫/24068","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//硅谷/139194","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华尔街/165","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//好莱坞/79274","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//百老汇/71294","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//北美洲/135465","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿/374","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//纽约/6230","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//洛杉矶","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//芝加哥/9600","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//休斯敦","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//费城/18188","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//旧金山/29211","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//波士顿/81031","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//匹兹堡","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//独立日/1886205","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//USA","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//英语/109997","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美元","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//唐纳德·特朗普","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//迈克·彭斯","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//欧裔美国人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//拉丁裔","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//非裔美国人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//亚裔美国人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美洲原住民","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//基督新教","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//天主教","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//摩门教","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//犹太教","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美联储","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//常春藤联盟/1517208","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//玫瑰花","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白头海雕","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿/1500378","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//林肯/91","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//罗斯福/14750","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//杰克逊/5584743","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//英美法系","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//普通法","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//星条旗","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//纽约/6230","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//山姆大叔/88149","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//自由女神","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//超级英雄/1253","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国历史","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//印第安人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//北美洲","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//中美洲","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//南美洲","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哥伦布/84539","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//印第安人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//印第安","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//土著人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//格兰德河","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1// 
+    爱斯基摩人","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白种人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//维京人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//殖民","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//詹姆士镇","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//殖民地/85011","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//殖民者","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//爱尔兰/40941","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//印第安人","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//清教徒/3605","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//五月花号/2947","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新英格兰/5978476","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//普利茅斯/734782","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//五月花号公约/10789207","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//英国/144602","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//地理环境/1126968","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//殖民地/85011","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//波士顿倾茶事件","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//费城/18188","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//马萨诸塞州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//北美独立 
+    战争","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//乔治·华盛顿/25610","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//独
+    立宣言/53146","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//本杰明·富兰克林","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//波旁王朝","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//法国/1173384","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//西班牙/148941","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//荷兰","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//约克 
+    镇战役","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//费城/18188","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿/1500378","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//缔结","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//孟德斯鸠","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//三权分立","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国第二次独立战争","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//拿破仑/166205","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美墨战争","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//西进运动","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//血泪之路","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//南北战争","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//蓄奴州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//自由州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美利坚联盟国","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//林肯/91","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//解放黑人奴隶宣言","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//宅地法","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//葛底斯堡演讲/5482461","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//奴隶制度","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//林肯/91","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//工业化","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//城市化/42793","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//第一次世界大战","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//资本主义","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//大萧条/3304","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//富兰克林·罗斯福","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//罗斯福新政","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//第二次世界大战","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//偷袭珍珠港/432","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//太平洋战场/194784","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//轴心国","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//超级大国","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//冷战/82478","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//朝鲜战争/5310","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//中华人民共和国","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//古巴导弹危机","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//冷战/82478","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿波罗11号","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//越南战争","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//通货膨胀","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//苏联解体","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//冷战/82478","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//一超多强","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//超级大国","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美洲/200267","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿拉斯加/154572","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//夏威夷群岛","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//中央情报局/667138","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//世界概况","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新泽西州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//长岛/2801222","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//平原/24464","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//北卡罗来纳州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新罕布什尔州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿巴拉契亚山脉","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿巴拉契亚山脉/3798826","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//五大湖","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//密西西比河","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//密苏里河","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//大平原","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//落基山脉","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//科罗拉多州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//内华达山脉/5695373","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//怀俄明州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//黄石国家公园","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//活火山/1247352","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//麦金利山","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//大陆性气候","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//亚热带气候","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//东部时间","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//CST","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//芝加哥","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新奥尔良","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//太平洋时间","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//PST","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//洛杉矶","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿拉斯加","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//夏威
+    夷/6068","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//石油","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//天然气","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铁矿石","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//钾盐","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//磷酸盐","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//硫磺/488553","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//矿物/133026","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铜/668243","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铅/2141563","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//钼","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铀","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铝矾土","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//金/8243","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//汞/498401","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//镍","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//碳酸钾","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//银/70453","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//钨/16309466","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//锌","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铝/7206938","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铋","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//钛/499070","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//锰
+    /701057","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//钴/10524852","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//铬","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//天然气/36482","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//原油","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿/374","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿哥伦比亚特区/83601","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//亚拉巴马州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//蒙哥马利/9638033","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿拉斯加州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//朱诺/10416013","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//亚利桑那州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//菲尼克斯/4856","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿肯色州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//小石城/5393602","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//加利福尼亚州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//萨克拉门
+    托/5404480","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//科罗拉多州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//丹 
+    佛/2927494","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//康涅狄格州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哈 
+    特福德/2007563","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//特拉华州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1// 
+    多佛/6059172","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//佛罗里达州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1// 
+    塔拉哈西/2004734","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//佐治亚州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//亚特兰大/11926","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//夏威夷州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//火奴鲁鲁/81317","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//爱达荷州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1// 
+    博伊西/3279458","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//伊利诺伊州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//斯普林菲尔德/1420017","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//印第安纳州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//印第安纳波利斯/10473726","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//爱荷华州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//得梅因/3558622","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//堪萨斯州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//托皮卡/1162040","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//肯塔基州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//法兰克福/35351","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//路易斯安那州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//巴吞鲁日/10934876","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//缅因州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//奥古斯塔/15920824","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//马里兰州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//安纳波利斯/6463525","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//马萨诸塞州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//波士顿/81031","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//密歇根州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//兰辛/84503","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//明尼苏达州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//圣保罗/2827142","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//密西西比州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//杰克逊/13236831","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//密苏里州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//杰斐逊城/2449179","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//蒙大拿州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//海伦娜/13581136","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//内布拉斯加州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//内华达州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//卡森城/11001834","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新罕布什尔州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//康科德/84534","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新泽西州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//特伦顿/1988236","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新墨西哥州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//圣菲/84537","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//纽约州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//奥尔巴尼/84536","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//北卡罗来纳州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//纳罗利/5233584","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//北达科他州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//俾斯麦/2225298","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//俄亥俄州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哥伦布/9657567","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//俄克拉何马州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//俄克拉何马城/9863244","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//俄勒冈州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//塞勒姆/18640702","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//宾夕法尼亚州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哈里斯堡/1973648","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//罗得岛州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//普罗维登斯/2014124","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//南卡罗来纳州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哥伦比亚/6561398","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//南达科他州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//皮尔/17490571","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//田纳西州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//纳什维尔/26068","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//得克萨斯","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//奥斯汀/15484","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//犹他州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//盐湖城/8808871","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//佛蒙特州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//蒙彼利埃/8939524","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//弗吉尼亚州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//里士满/964714","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//奥林匹亚/6379216","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//西弗吉尼亚州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//查尔斯顿/1761052","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//威斯康星州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//麦迪逊/3692324","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//怀俄明州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//夏延/1167577","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//星条旗","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白头海雕","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国国歌","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白头海雕","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//秃鹰/3696720","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//国鸟","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白头雕","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//独立宣言/53146","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//国徽/63243","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白头雕","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//贝拉克·奥巴马","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美洲野牛/2926749","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//国兽","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//黄石公园/814548","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//玫瑰花/275439","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//国花","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//蓝宝石/492","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//绰号/81379","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//山姆大叔","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//英美战争","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//纽约/6230","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//山姆大叔","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//山姆大叔","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国国会","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//山姆大叔","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//总统制/359739","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//唐纳德·特朗普/9916449","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//迈克·彭斯/19833271","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//迈克·蓬佩奥/20217553","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//史蒂芬·姆努钦/23340649","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//帕特里克·沙纳汉/20490674","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//马修·惠特克/23140542","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//索尼·珀杜/23340714","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//威尔伯·罗斯/9929432","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//参议员/9532222","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//共和党/4911681","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//民主党/861657","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//制造业","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//摩根大通/4843826","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国银行/1535813","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//富国银行/4961596","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//花旗集团/521383","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//福布斯/301065","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//摩根大通/4843826","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//伯克希尔·哈撒韦公司/661768","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国银行/1535813","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//苹果公司/304038","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//AT%26T/15206829","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//微软/124767","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//雪佛龙公司/6142660","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//GDP/41201","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//发展中国家 ","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//经济全球化","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//官方语言","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//路易斯安那州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//夏威夷州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//夏威夷语","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新墨西哥州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国梦/972","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//马丁·路德·金日","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿诞辰日","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国阵亡将士纪念日","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国独立日","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//劳动节","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哥伦布日","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//退伍军人节","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//感恩节","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//圣诞节/127881","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//参谋长联席会议/9774540","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//州际高速公路","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//德怀特·艾森豪威尔","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//长岛","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//新泽西州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//康涅狄格州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//Amtrak","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//亚特兰大哈兹菲尔德-杰克逊国际机场","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//孟菲斯国际机场","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//曼哈顿原子
+    弹计划/15780658","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿波罗登月计划","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//人类基因组计划","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//第二次世界大战/174090","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//原子弹","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//ARPA","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//诺贝尔","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//基因组","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//阿兹海
+    默症","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国国家航空航天局","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1// 
+    波音公司","refer":"https: //baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//洛克希德·马丁公司","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国国家科学院","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国国家工程院","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国国家医学院","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哈佛大学/261536","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//普林斯顿大学/400839","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//耶鲁大学/411935","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//宾夕法尼亚大学/513402","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//杜克大学/2026361","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//斯坦福大学/278716","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//加州理工学院/2312465","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//麻省理工学院/117999","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//哥伦比亚大学/513683","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//达特茅斯学院/653332","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿大学圣路易斯分校/12770502","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//西北大学/1685410","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//康奈尔大学/567130","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//约翰·霍普金斯大学/515149","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//布朗大学/2650384","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//芝加哥大学/514980","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//莱斯大学/3566187","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//加利福尼亚大学伯克利分校/854061","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美式橄榄球","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//棒球/86098","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//篮球/123564","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//冰球","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//戴维·黑尔/10470719","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//面签","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//华盛顿纪念碑","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//白宫/24068","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//詹姆斯·门罗","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//国会山","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//美国自然历史博物馆","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//曼哈顿/635","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//大都会艺术博物馆","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//总统山","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//拉什莫尔山","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//南达科他州","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//乔治·华盛顿/25610","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//托马斯·杰弗逊","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//西奥多·罗斯福","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//亚伯拉罕·林肯/25619","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//大峡谷国家公园","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//黄石国家公园/28964","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//尼亚加拉大瀑布","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//夏威夷群岛","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//科罗拉多大峡谷","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//世界文化与自然遗产","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//世界文化遗产","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//世界自然遗产","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//百度百科：热词版本","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//百科热词团队","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//百度百科：热词版本","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":""},{"url":"#1//百度百科：本人词条编辑服务/22442459","refer":"https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486","depth":2,"query":"bk_fr=pcFooter"}],"msg":""}],"unCrawledUrls":[],"averageSpeedOfAll":1245,"medianSpeedOfSuccess":0,"averageSpeedOfSuccess":0,"maxSpeedOfSuccess":0} 
