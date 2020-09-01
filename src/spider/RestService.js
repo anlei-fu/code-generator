@@ -14,8 +14,8 @@ app.all("*", (_, resp, next) => {
 });
 
 // body parser (json & urlencoded) need to install independently
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 /**
  * To host a http rest service, base on lib 'express' http framework

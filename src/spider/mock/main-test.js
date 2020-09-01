@@ -16,8 +16,10 @@ async function run(pageContext) {
         $("a").each((i, e) => {
                 let href = $(e).attr("href");
                 let full = pageContext.urlResolver.resolve(href);
-                if(full&&matcher.match(full.url))
+                if(full&&matcher.match(full.url)){
                  builder.newUrl(full);
+                 console.log(full.url);
+                }
         });
 
 
