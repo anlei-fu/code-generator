@@ -1,7 +1,8 @@
 const { HttpClient } = require("./../common/HttpClient");
+const {FILE} =require("./../common/utils/file");
 
 async function test() {
-        let client = new HttpClient("test", { baseURL: "http://localhost:10051" });
+        let client = new HttpClient("test", { baseURL: "http://localhost:10042" });
 
         //---------------------task-----------------------------------
         //add
@@ -18,24 +19,31 @@ async function test() {
         // await client.put("/test/{id}", { id: 10 });
         // await client.delete("test/{id}", { id: 10 })
 
-        await client.post(
-                "/run",
-                {
-                        taskId: 2,
-                        urls: [
-                                {
-                                        url:"https://www.baidu.com/",
-                                        referUrl:"https://www.baidu.com/"
-                                },
+        // await client.post(
+        //         "/run",
+        //         {
+        //                 taskId: 2,
+        //                 urls: [
+        //                         {
+        //                                 url:"https://www.baidu.com/",
+        //                                 referUrl:"https://www.baidu.com/"
+        //                         },
                                
-                        ],
-                        scriptPath: "202008181643383753.js",
-                        crawlType:1,
-                        urlMaxConcurrency:10,
-                        autoDownloadPage:true,
-                        blockRules:[],
-                }
-        );
+        //                 ],
+        //                 scriptPath: "202008181643383753.js",
+        //                 crawlType:1,
+        //                 urlMaxConcurrency:10,
+        //                 autoDownloadPage:true,
+        //                 blockRules:[],
+        //         }
+        // );
+
+        // let req = FILE.readJson("1.json")
+        // await client.post("/task/result",
+        //    req
+        // )
+
+        await client.get("/url/getByDownSystemSiteId/42");
 }
 
 /*********************************************test*************************************************************************/
