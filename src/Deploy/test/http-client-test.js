@@ -2,7 +2,7 @@ const { HttpClient } = require("./../common/HttpClient");
 const {FILE} =require("./../common/utils/file");
 
 async function test() {
-        let client = new HttpClient("test", { baseURL: "http://localhost:10042" });
+        let client = new HttpClient("test", { baseURL: "http://localhost:10032" });
 
         //---------------------task-----------------------------------
         //add
@@ -38,12 +38,12 @@ async function test() {
         //         }
         // );
 
-        // let req = FILE.readJson("1.json")
-        // await client.post("/task/result",
-        //    req
-        // )
+        let req = FILE.readJson("1.json")
+        await client.post("/task/result",
+           req
+        )
 
-        await client.get("/url/getByDownSystemSiteId/42");
+        // await client.get("/url/getByDownSystemSiteId/42");
 }
 
 /*********************************************test*************************************************************************/

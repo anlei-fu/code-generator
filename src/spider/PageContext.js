@@ -5,8 +5,9 @@ const { BrowserPage } = require("./model/BrowserPage");
 const { URL } = require("./model/URL");
 const { CrawlType } = require("./constant/CrawlType");
 const { STR } = require("./utils/str");
-const {LoggerSurpport} =require("./LoggerSurpport");
-const {PageResult} =require("./constant/PageResult");
+const { LoggerSurpport } = require("./LoggerSurpport");
+const { PageResult } = require("./constant/PageResult");
+const { HttpClient } = require("./HttpClient");
 
 const cheerio = require('cheerio');
 
@@ -26,7 +27,9 @@ class PageContext extends LoggerSurpport {
 
                 this.pageResultBuilder = new PageResultBuilder(this, url);
 
-                this.strUtils=STR;
+                this.httpClient = new HttpClient("api");
+
+                this.strUtils = STR;
 
                 /**
                  * @type {String}
@@ -71,15 +74,15 @@ class PageContext extends LoggerSurpport {
         * @returns {Promise<Boolean>}
         */
         async _prepareStaticPage() {
-               this.info(`downloading page ${this.url.url}`);
+                this.info(`downloading page ${this.url.url}`);
                 let downloadResult = await this.taskContext.downloader.download(this.url);
                 let checkResult = this.taskContext.blockRuleChecker.check(downloadResult);
                 this.pageResultBuilder.pageResult(checkResult);
-               
+
                 if (checkResult != PageResult.SUCCESS) {
                         this.info(`download page ${this.url.url} failed`);
                         return false;
-                } 
+                }
 
                 this.info(`download page ${this.url.url} succeed`);
                 this.html = downloadResult.html;
