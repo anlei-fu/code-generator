@@ -20,5 +20,8 @@ exports.PageResult = {
 
 	// Blocked page
 	BLOCKED: 7,
+
+	FAIL_TO_RUN:8,
+	BAD:9,
 };
 

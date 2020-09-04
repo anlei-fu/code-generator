@@ -52,7 +52,7 @@ function test() {
       abbrOfProject:_18.abbrOfProject,
        edit: true,
    }
-   init(all.mrDownFailOrderRecord, config);
+   init(all.downApplicationCusData, config);
 }
 
 test();

@@ -147,7 +147,7 @@ class PageResultBuilder {
 
                 this._config.newUrls.push({
                         url: this.pageContext.taskContext.urlEncoder.encode(newUrl.url),
-                        refer: this.url.encodedUrl,
+                        referUrl: this.url.encodedUrl,
                         depth: this.url.depth + 1,
                         query: newUrl.query
                 });
