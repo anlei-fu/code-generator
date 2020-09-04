@@ -1,14 +1,4 @@
-
-const { createPageContext } = require("./PageContextBuilder");
-const { CrawlTaskConfigBuilder } = require("./../model/CrawlTaskConfig");
-const { PageContext } = require("./../PageContext");
-const {FILE} =require("./../utils/file");
-
-/**
- * 
- * @param {PageContext} pageContext 
- */
-async function run(pageContext) {
+exports.main = async (pageContext)=>{
         let $ = pageContext.$;
         let matcher = pageContext.taskContext.urlMatcher;
         let builder = pageContext.pageResultBuilder;
@@ -16,10 +6,8 @@ async function run(pageContext) {
         $("a").each((i, e) => {
                 let href = $(e).attr("href");
                 let full = pageContext.urlResolver.resolve(href);
-                if(full&&matcher.match(full.url)){
+                if(full&&matcher.match(full.url))
                  builder.newUrl(full);
-                 console.log(full.url);
-                }
         });
 
 
@@ -84,30 +72,4 @@ async function run(pageContext) {
         let revert=0;
 
        
-        FILE.writeJson("1.json",{
-                title,
-                summary,
-                synonyms,
-                properties
-        });
 }
-
-async function main() {
-        let taskConfig = new CrawlTaskConfigBuilder()
-                .autoDownloadPage(true)
-                .downloadTimeout(10000)
-                .urlMatchPatterns(`["^(http://|https://)baike.baidu.com/item/.*"]`)
-                .urlEncodes(`{"https://baike.baidu.com/item":"#1"}`)
-                .crawlType(1)
-                .build();
-
-        let context = await createPageContext(
-                taskConfig,
-                { url: "https://baike.baidu.com/item/霍邱县第二中学/9527660" }
-        );
-
-        await run(context)
-}
-
-/*********************************************main***********************************************************/
-main();

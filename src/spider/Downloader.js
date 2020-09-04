@@ -74,7 +74,8 @@ class Downloader {
                 return new Promise((resolve, reject) => {
                         let axiosConfig = this._createConfig(url, headers);
                         let path =url.query?`${url.url}?${url.query}`:url.url;
-                        // path =encodeURI(path);
+                        if(!path.includes("%"))
+                         path =encodeURI(path);
                         axios.default.get(path, axiosConfig)
                                 .then(
                                         res => {
