@@ -42,12 +42,13 @@ async function run(pageContext) {
         data.watched=$("#subject-others-interests > div > a:nth-child(1)").text();
         data.wantToWatch=$("#subject-others-interests > div > a:nth-child(2)").text();
 
-        $("a").each((i, e) => {
+        builder.data(data);
+        builder.success();
+        $("#recommendations > div").find("a").each((i, e) => {
                 let href = $(e).attr("href");
                 let full = pageContext.urlResolver.resolve(href);
-                if(full&&matcher.match(full.url)){
+                if(full){
                  builder.newUrl(full);
-                 console.log(full.url);
                 }
         });
 
@@ -60,14 +61,14 @@ async function main() {
         let taskConfig = new CrawlTaskConfigBuilder()
                 .autoDownloadPage(true)
                 .downloadTimeout(10000)
-                .urlMatchPatterns(`["^(http://|https://)https://movie.douban.com/subject/.*"]`)
+                .urlMatchPatterns(`["^(http://|https://)movie.douban.com/subject/[0-9]+/\\\\\\\\?from.*"]`)
                 .urlEncodes(`{"https://movie.douban.com/subject":"#1"}`)
                 .crawlType(1)
                 .build();
 
         let context = await createPageContext(
                 taskConfig,
-                { url: "https://movie.douban.com/subject/35027709/" }
+                { url: "https://movie.douban.com/subject/1294915/" }
         );
 
         await run(context)

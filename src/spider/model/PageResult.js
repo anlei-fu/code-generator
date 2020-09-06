@@ -2,7 +2,7 @@ const { URL } = require("./URL");
 const { PageResult: PageCode } = require("./../constant/PageResult")
 
 class PageResult {
-        constructor () {
+        constructor() {
                 /**
                  * The id of url
                  */
@@ -42,7 +42,7 @@ exports.PageResult = PageResult;
  */
 class PageResultBuilder {
 
-        constructor (pageContext, url) {
+        constructor(pageContext, url) {
                 this.url = url;
                 this.pageContext = pageContext;
                 this._config = new PageResult();
@@ -164,6 +164,18 @@ class PageResultBuilder {
         msg(msg) {
                 this._config.msg = msg;
                 return this;
+        }
+
+        findUrl() {
+
+                this.pageContext.$("a").each((i, e) => {
+                        let href = this.pageContext.$(e).attr("href");
+                        let full = this.pageContext.urlResolver.resolve(href);
+                        if (full && this.pageContext.taskContext.urlMatcher.match(full.url)) {
+                               this.newUrl(full);
+                        }
+                });
+
         }
 
         /**

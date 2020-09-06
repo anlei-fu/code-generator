@@ -5,6 +5,7 @@ const { STR } = require("./utils/str");
 const { DownloadResult } = require("./model/DownloadResult");
 const { URL } = require("./model/URL");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
+const {LoggerSurpport} =require("./LoggerSurpport");
 
 const ERROR_MAP = {
         notExists: {
@@ -30,7 +31,7 @@ const ERROR_MAP = {
 /**
  * @CrawlTaskContext component ,wrap of lib 'axios' and 'iconv'
  */
-class Downloader {
+class Downloader extends LoggerSurpport {
         /**
          * Constructor of Downloader
          * 
@@ -38,6 +39,7 @@ class Downloader {
          * @param {CrawlTaskContext} context 
          */
         constructor (context) {
+                super("Downloader");
                 this._context = context;
         }
 
@@ -58,6 +60,7 @@ class Downloader {
                          
                         return await this._downloadCore(url, headers);
                 } catch (ex) {
+                        this.error(`download ${url.url} failed`,ex);
                         return this._getErrorResp(ex.message);
                 }
         }
@@ -74,13 +77,7 @@ class Downloader {
                 return new Promise((resolve, reject) => {
                         let axiosConfig = this._createConfig(url, headers);
                         let path =url.query?`${url.url}?${url.query}`:url.url;
-                        if(!path.includes("%"))
-<<<<<<< HEAD
-                         path =encodeURI(path);
-=======
-                            path =encodeURI(path);
-                            
->>>>>>> 55f923f4348814dc65cdd08a50799983d0d34a7b
+                         path =this._encodeUrl(path);
                         axios.default.get(path, axiosConfig)
                                 .then(
                                         res => {
@@ -98,6 +95,12 @@ class Downloader {
                 })
         }
 
+        _encodeUrl(url){
+              url=  unescape(url);
+              url =encodeURI(url);
+              return url;
+        }
+
         /**
          * Create download config
          * 
@@ -110,8 +113,10 @@ class Downloader {
                 headers = headers || {};
 
                 // header referer 
-                if (url.referUrl)
+                if (url.referUrl){
+                        url.referUrl=this._encodeUrl(url.referUrl);
                         OBJECT.setIfAbsent(headers, "Referer", url.referUrl);
+                }
 
                 // header accept
                 OBJECT.setIfAbsent(headers, "Accept", "*/*");

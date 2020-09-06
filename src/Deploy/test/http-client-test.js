@@ -38,12 +38,13 @@ async function test() {
         //         }
         // );
 
-        let req = FILE.readJson("1.json")
-        await client.post("/task/result",
-           req
-        )
+        // let req = FILE.readJson("1.json")
+        // await client.post("/task/result",
+        //    req
+        // )
 
-        // await client.get("/url/getByDownSystemSiteId/42");
+        //await client.get("/url/getByDownSystemSiteId/42");
+     let resp=   await client.get("http://service.library.mtime.com/Movie.api?Ajax_CallBack=true&Ajax_CallBackType=Mtime.Library.Services&Ajax_CallBackMethod=GetMovieOverviewRating&Ajax_CrossDomain=1&Ajax_RequestUrl=http%3A%2F%2Fmovie.mtime.com%2F264006%2F&Ajax_CallBackArgument0=264006");
 }
 
 /*********************************************test*************************************************************************/

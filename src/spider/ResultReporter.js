@@ -17,7 +17,7 @@ class ResultReporter {
          * @param {CrawlTaskResult} taskResult 
          */
         async reportResult(master, taskResult) {
-                let client = new HttpClient("ResultReporter", { baseURL: master });
+                let client = new HttpClient("ResultReporter", { baseURL: master,maxContentLength: Infinity, maxRedirects: 5});
                 return client.post(API.REPORT_RESULT, taskResult);
         }
 }

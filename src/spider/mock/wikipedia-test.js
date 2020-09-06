@@ -21,15 +21,6 @@ async function run(pageContext) {
         let builder = pageContext.pageResultBuilder;
         let strUtils =pageContext.strUtils;
 
-        $("a").each((i, e) => {
-                let href = $(e).attr("href");
-                let full = pageContext.urlResolver.resolve(href);
-                if(full&&matcher.match(full.url)){
-                 builder.newUrl(full);
-                 console.log(full.url);
-                }
-        });
-
 
        let title1="body > div.body-wrapper.feature.large-feature.starLarge > div.feature-poster > div > div.layout.lemmaWgt-posterBg > div.poster-top > dl > dd > h1";
        let title2 ="body > div.body-wrapper > div.content-wrapper > div > div.main-content > dl.lemmaWgt-lemmaTitle.lemmaWgt-lemmaTitle- > dd > h1";
@@ -142,11 +133,7 @@ async function main() {
 
         let context = await createPageContext(
                 taskConfig,
-<<<<<<< HEAD:src/spider/mock/main-test.js
-                { url: "https://baike.baidu.com/item/霍邱县第二中学/9527660" }
-=======
-                { url: "https://baike.baidu.com/item/清朝/175141" }
->>>>>>> 55f923f4348814dc65cdd08a50799983d0d34a7b:src/spider/mock/wikipedia-test.js
+                { url: "https://baike.baidu.com/item/%20Google%20Play%20音乐/16102225" }
         );
 
         await run(context)

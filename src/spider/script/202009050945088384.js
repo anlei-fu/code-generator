@@ -29,5 +29,13 @@ exports.main = async (pageContext)=>{
         data.watched=$("#subject-others-interests > div > a:nth-child(1)").text();
         data.wantToWatch=$("#subject-others-interests > div > a:nth-child(2)").text();
 
-        builder.findUrl();
+        builder.data(data);
+        builder.success();
+        $("#recommendations > div").find("a").each((i, e) => {
+                let href = $(e).attr("href");
+                let full = pageContext.urlResolver.resolve(href);
+                if(full){
+                 builder.newUrl(full);
+                }
+        });
 };

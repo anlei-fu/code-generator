@@ -94,7 +94,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         url.url = this._taskContext.urlDecoder.decode(url.url);
 
                         if (url.referUrl)
-                                url.referUrl = this._taskContext.urlDecoder.decode(url.referUrl);
+                                url.referUrl = url.referUrl = this._taskContext.urlDecoder.decode(url.referUrl);
 
                         urls.push(url);
                 });
@@ -183,7 +183,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                 this._speedCaculator.add(
                         {
                                 elapsed: new Date().getTime() - startTime.getTime(),
-                                success: pageResult.pageResult == PageResult.SUCCCESS
+                                success: pageResult.pageResult == PageResult.SUCCESS
                         }
                 );
 

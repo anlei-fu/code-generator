@@ -3,6 +3,7 @@
                 "test": "mocha"
         },
         "dependencies": {
+                "axios": "^0.20.0",
                 "chalk": "^4.1.0"
         }
 }
