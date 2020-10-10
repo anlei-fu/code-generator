@@ -128,7 +128,7 @@ class Writer {
          * @param {String} content 
          */
         writeIndex(content) {
-                this._writeCore(`Index.cshtml`, content);
+                this._writeCore(`Index.cshtml`, "\ufeff"+content);
         }
 
         /**
@@ -137,7 +137,11 @@ class Writer {
          * @param {String} content 
          */
         writeItem(content) {
-                this._writeCore(`Item.cshtml`, content);
+                this._writeCore(`Item.cshtml`, "\ufeff"+content);
+        }
+
+        writeUrlMapping(content){
+                this._writeCore(`url.xml`,content);
         }
 
         /**
@@ -147,8 +151,8 @@ class Writer {
          * @param {String} file  to save
          * @param {String} content 
          */
-        _writeCore(file, content) {
-                FILE.write(file, STR.replace(content, this._patterns));
+        _writeCore(file, content,charset) {
+                FILE.write(file, STR.replace(content, this._patterns),charset);
         }
 
 }

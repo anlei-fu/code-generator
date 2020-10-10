@@ -23,6 +23,29 @@
         user.bind();
     });
 
+    function showConfirm(url,msg,refresh=true){
+        if(!confirm(msg))
+          return;
+
+          post(url,refresh);
+    }
+
+    function post(url,refresh=true){
+        $.ajax({
+            type:"post",
+            url,
+            success:resp=>{
+               let data =$.parseJSON(resp);
+               alert(data.Message);
+               if(refresh&&data.Status)
+                 location.reload();
+            },
+            error :err=>{
+               alert("操作失败");
+            }
+        })
+    }
+
 @js
 
 </script>

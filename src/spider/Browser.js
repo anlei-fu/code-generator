@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const { BrowserPage } = require("./model/BrowserPage");
-const { ThreadUtils } = require("./utils/thread-utils");
+const { ThreadUtils } =  require("./../libs");
 const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
 const { LoggerSurpport } = require("./LoggerSurpport");
 

@@ -15,7 +15,7 @@ async function main() {
         let builder =new InitConfigBuilder();
         builder.project("crawler")
                .company("jasmine")
-               .targetFolder("D:/test/all")
+               .targetFolder("D:/test/news")
                .generateDb()
                .generateStructure()
                .generateBuilder()

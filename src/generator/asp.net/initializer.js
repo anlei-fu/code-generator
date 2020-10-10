@@ -44,7 +44,7 @@ function init(table, config) {
         OBJECT.forEach(table.columns, (key, column) => {
                 column.type = getCSharpType(column.type);
                 column.name = STR.upperFirstLetter(column.name);
-                column.description = column.description.trim().split(":")[0];
+                column.description = normalizeLabel(column.description);
         });
 
         analyzeDefaultValues(config);
@@ -58,22 +58,22 @@ function init(table, config) {
         if (config.edit) {
                 config.operations.push({
                         condition: "",
-                        function: "add(@item.Id,'编辑')",
+                        function: `add('@item.${table.primaryColumn}','编辑')`,
                         lable: "编辑"
                 });
         }
 
-        if (config._delete) {
+        if (config.delete) {
                 config.operations.push({
                         condition: "",
-                        function: "_delete(@item.Id)",
+                        function: `_delete('@item.${STR.upperFirstLetter(table.primaryColumn)}')`,
                         lable: "删除"
                 });
         }
 
         // build export excel config
-        if (config.exportExcel)
-                buildExportExcel(table, config);
+        // if (config.exportExcel)
+        //         buildExportExcel(table, config);
 
         // build import excel config
         if (config.importExcel)
@@ -106,7 +106,7 @@ function createFolder(project, name, root) {
 }
 
 function generateRelationMatchers(project, tableName) {
-        let relations  //require(`./../table-relation/outputs/${project}.js`).relations[tableName];
+        let relations = require(`./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/${project}/relations.js`).relations[tableName];
         if (!relations)
                 return {};
 
@@ -252,7 +252,7 @@ function buildSelectConfig(table, config) {
  */
 function buildControlConfig(analyzeResult, config, column) {
         if (controlAnalyzer.shouldBeSelect(column)) {
-                analyzeResult.select.lable = normalizeLable(column.description);
+                analyzeResult.select.lable = normalizeLabel(column.description);
                 analyzeResult.select.name = column.name;
                 config.selects.push(analyzeResult.select);
         } else {
@@ -278,18 +278,27 @@ function buildTableConfig(table, config) {
 
         columns.forEach(column => {
                 let item = {
-                        header: normalizeLable(column.description),
+                        header: normalizeLabel(column.description),
                         content: "",
                 }
 
+
                 item.content = controlAnalyzer.shouldBeSelect(column)
-                        ? `@item.GetDataValue("${column.name}Name")`
+                        ? getSelectContent(column)
                         : `@item.${column.name}`
 
                 tableConfig.items.push(item);
         });
 
         config.tableConfig = tableConfig;
+}
+
+function getSelectContent(column){
+       if(STR.includesAny(column.name.toLowerCase(),["cityno","carrierno","businessno"])){
+               return `@(item.${STR.upperFirstLetter(column.name)}=="*"?"*"item.GetDataValue("${STR.replace(column.name, { "No": "", "Id": "" })}Name"))`;
+       }
+
+     return  `@item.GetDataValue("${STR.replace(column.name, { "No": "", "Id": "" })}Name")`
 }
 
 /**
@@ -315,69 +324,35 @@ function buildAddConfig(table, config) {
         config.addConfig = addConfig;
 }
 
-/**
- * 
- * @param {String} lable
- * @returns {String} 
- */
-function normalizeLable(lable) {
-        if (lable.length > 2) {
-                if (STR.includesAny(lable, ["渠道", "账户", "产品", "套餐", "公司", "流程", "终端"]))
-                        lable = lable.replace("编号", "名称");
-
-                lable = lable.trim();
-
-                if (lable.indexOf("：") != -1)
-                        return lable.split("：")[0];
-
-                if (lable.indexOf(":") != -1)
-                        return lable.split(":")[0];
-
-                if (lable.indexOf(" ") != -1)
-                        return lable.split(" ")[0];
-
-                if (lable.indexOf("，") != -1)
-                        return lable.split("，")[0];
-
-                if (lable.indexOf(",") != -1)
-                        return lable.split(",")[0];
-
-        }
-        return lable;
-}
-
 const SCORERS = {
-        primaryKey: {
-                match: x => x.isPk,
-                weight: 10
-        },
+
         createUser: {
                 match: x => {
                         let lower = x.name.toLowerCase();
                         return lower.includes("user") && STR.includesAny(lower, ["create", "created"]);
                 },
-                weight: -4
+                weight: -3
         },
         createTime: {
                 match: x => {
                         let lower = x.name.toLowerCase();
                         return STR.includesAny(lower, ["time", "date"]) && STR.includesAny(lower, ["create", "created"]);
                 },
-                weight: -3
+                weight: -4
         },
         updateUser: {
                 match: x => {
                         let lower = x.name.toLowerCase();
                         return STR.includesAny(lower, ["user"]) && STR.includesAny(lower, ["update", "edit"]);
                 },
-                weight: -2
+                weight: -1
         },
         updateTime: {
                 match: x => {
                         let lower = x.name.toLowerCase();
                         return STR.includesAny(lower, ["time", "date"]) && STR.includesAny(lower, ["update", "edit"]);
                 },
-                weight: -1,
+                weight: -2,
         },
         remark: {
                 match: x => {
@@ -386,10 +361,79 @@ const SCORERS = {
                 },
                 weight: 0,
         },
+        status: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["status"]);
+                },
+                weight: 1,
+        },
+
         other: {
                 match: x => true,
                 weight: 2
-        }
+        },
+
+        face: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["face", "price", "fee"]);
+                },
+                weight: 3,
+        },
+
+        city: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["city"]);
+                },
+                weight: 4,
+        },
+        province: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["province"]);
+                },
+                weight: 5,
+        },
+        carrier: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["carrier"]);
+                },
+                weight: 6,
+        },
+
+        business: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["business"]);
+                },
+                weight: 7,
+        },
+        product: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["face", "price", "fee"]);
+                },
+                weight: 8,
+        },
+
+        channel: {
+                match: x => {
+                        let lower = x.name.toLowerCase();
+                        return STR.includesAny(lower, ["channel"]);
+                },
+                weight: 9,
+        },
+
+        primaryKey: {
+                match: x => x.isPk,
+                weight: 10
+        },
+
+
+
 }
 
 /**
@@ -402,6 +446,32 @@ function getScore(column) {
                 if (SCORERS[c].match(column))
                         return SCORERS[c].weight;
         }
+}
+
+function normalizeLabel(label) {
+        if (label.includes(":"))
+                label = label.split(":")[0];
+
+        if (label.includes("："))
+                label = label.split("：")[0];
+
+        if (label.indexOf(" ") != -1)
+                label = label.split(" ")[0];
+
+        if (label.indexOf("，") != -1)
+                label = label.split("，")[0];
+
+        if (label.indexOf(",") != -1)
+                label = label.split(",")[0];
+
+        if (label.indexOf("(") != -1)
+                label = label.split("(")[0];
+
+        return STR.replace(label, {
+                "编码": "",
+                "编号": "",
+                "名称": ""
+        });
 }
 
 exports.init = init

@@ -7,4 +7,6 @@ module.exports = {
         LOWER_ENDS_WITH_MATCHER: x => x.toLowerCase().endsWith(y),
         LOWER_STARTS_WITH: x => x.toLowerCase().startsWith(x),
         LOWER_STARTS_AND_ENDS_WITH_MATCHER: (x, y, z) => x.toLowerCase().startsWith(y) && x.toLowerCase().endsWith(z.toLowerCase()),
+
+     
 }

@@ -23,7 +23,6 @@ async function run(pageContext) {
 
         data.imgs=[];
 
-
         data.date=$("#contain > div > div.article_title > div.share_box > p > span:nth-child(1)").text();
         data.title=$("#contain > div > div.article_title > h2:nth-child(1)").text();
         data.author=$("#contain > div > div.article_title > div.share_box > p > span:nth-child(3)").text();

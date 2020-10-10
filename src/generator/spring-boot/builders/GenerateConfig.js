@@ -90,13 +90,13 @@ class GenerateConfigBuilder {
                 this._config.getById = true;
                 this._config.getPage = true;
                 this._config.getDetailById = true;
-                this._config.getDeatailPage = true;
+                this._config.getDetailPage = true;
                 return this;
         }
 
         noDetail() {
                 this._config.getDetailById = false;
-                this._config.getDeatailPage = false;
+                this._config.getDetailPage = false;
                 return this;
         }
 

@@ -1,4 +1,5 @@
- [HttpPost]
+
+        [HttpPost]
         public void ExportExcel()
         {
             var data = @nameService.Instance.ExportExcel(Request.Form);

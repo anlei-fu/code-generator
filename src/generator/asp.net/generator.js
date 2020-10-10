@@ -1,6 +1,8 @@
 
 
 
+const { STR } = require("../../libs/str");
+const { config } = require("./outputs/DMSystem--ToPlanAudience/config");
 const { renders } = require("./renders/render")
 const { Writer } = require("./writer")
 
@@ -34,6 +36,7 @@ class Generator {
                 this._generateEntityConfig();
                 this._generateListModel();
                 this._generateHandler();
+                this._genrateUrlMapping();
         }
 
         /**
@@ -70,17 +73,10 @@ class Generator {
          * Generate item file
          */
         _generateItem() {
+                this._config.addConfig.dictionaryServiceName = this._config.dictionaryServiceName;
+                this._config.addConfig.dictionaryMethod = this._config.dictionaryServiceName.dictionaryMethod;
+                this._config.addConfig.upperTowLetter = this._config.upperTowLetter;
                 let content = renders.renderItem(this._config.addConfig);
-                this._writer.writeItem(content);
-        }
-
-        /**
-         * Generate item file
-         * 
-         * @private
-         */
-        generateItem() {
-                let content = renders.renderItem(this._config);
                 this._writer.writeItem(content);
         }
 
@@ -172,6 +168,33 @@ class Generator {
         _generateController() {
                 let content = renders.renderController(this._config);
                 this._writer.writeController(content);
+        }
+
+        /**
+         * 
+         */
+        _genrateUrlMapping() {
+                let content = `	<UrlGroup name="/@table/Index">
+           @items
+   </UrlGroup>`;
+
+                let items = `<url title="查询" name="^/@table/Index([\w/]*)$"/>`;
+                if (config._delete) {
+                        items += `<url title="删除" name="^/@table/Delete([\w/]*)$"/>`;
+                }
+
+                if (config.edit || config.add)
+                        items += `<url title="删除" name="^/@table/Item([\w/]*)$"/>`;
+
+                if (config.exportExcel)
+                        items += `<url title="删除" name="^/@table/ExportExcel([\w/]*)$"/>`;
+
+                if (config.BatchChangeStatus)
+                        items += `<url title="删除" name="^/@table/BatchChangeStatus([\w/]*)$"/>`;
+
+                let table = STR.upperFirstLetter(this._config.table.name);
+
+                this._writer.writeUrlMapping(STR.replace(content, { "@items": items, "@table": table }));
         }
 }
 

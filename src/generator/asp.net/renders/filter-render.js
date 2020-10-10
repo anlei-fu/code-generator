@@ -18,6 +18,9 @@ function renderFilter(config) {
       content+= TIME_FILTER_RENDER.renderTemplate({lable:"创建时间"});
 
    config.selectConfig.selects.forEach(x => {
+      x.dictionaryServiceName=config.dictionaryServiceName;
+      x.dictionaryMethod =config.dictionaryMethod;
+      x.upperTowLetter =config.upperTowLetter;
       content += renderSelect(x);
    });
 

@@ -2,7 +2,7 @@ const { DownloadResult } = require("./model/DownloadResult");
 const { BlockRule } = require("./model/BlockRule");
 const { CheckType} = require("./constant/CheckType");
 const { PageResult} = require("./constant/PageResult");
-const { STR } = require("./utils/str");
+const { STR } = require("./../libs");
 
 class BlockRuleChecker {
         /**

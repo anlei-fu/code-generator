@@ -188,8 +188,19 @@ class ColumnAnalyzer {
                         output.select = this.controlAnalyzer.getSelectControlConfig(column);
                         output.lable = column.description;
                         output.join = this.makeJoin(column, output.select);
-                        output.gettter = `.GetDataValue("${column.name}Name")`;
-                        output.column = `t${this.index}.NAME ${column.name}Name`;
+
+                        let outputName =`${column.name.replace("No","").replace("Id","")}Name`;
+                        let nameColumn =  STR.replace(column.rawName,{
+                               "UP_":"",
+                               "DOWN_":"",
+                               "_ID":"",
+                               "_NO":"",
+                               "_NAME":""
+                        }) +"_NAME "+outputName;
+
+
+                        output.gettter = `.GetDataValue("${outputName}")`;
+                        output.column = `t${this.index}.${nameColumn}`;
                 } else {
                         output.gettter = `.${column.name}`;
                         output.column = `t.${NamingStrategy.toHungary(column.name).toUpperCase()}`;
@@ -234,7 +245,8 @@ class ColumnAnalyzer {
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.VALUE`
                                 + ` AND t${this.index}.${NamingStrategy.toHungary(select.type).toUpperCase()} = '${column.name}'`;
                 } else {
-                        let suffix = column.name.includes("Id") ? "Id" : "No";
+                        select.name=select.name||select.value;
+                        let suffix = NamingStrategy.toHungary(STR.replace(select.name,{"up":"","down":""})).toUpperCase()
                         return `LEFT JOIN ${NamingStrategy.toHungary(select.table).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.${suffix}`;
                 }
@@ -292,16 +304,15 @@ class ControlAnlyzer {
          * @return {SelectControlConfig}
          */
         getSelectControlConfig(column) {
+                for (const c in this._relationMatchers) {
+                        if(c.toLowerCase()==column.name.toLowerCase())
+                          return this._relationMatchers[c];
+                }
 
                 // get from system dictionary
                 for (const c in this._dictionaryMatchers) {
                         if (c.includes(column.name))
                                 return this._dictionaryMatchers[c];
-                }
-
-                for (const c in this._relationMatchers) {
-                        if(c.toLowerCase()==column.name.toLowerCase())
-                          return this._relationMatchers[c];
                 }
 
                 // get from customs

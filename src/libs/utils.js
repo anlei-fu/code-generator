@@ -321,12 +321,14 @@ function doReplace(json) {
         let output = "";
         let isInQuote = false;
         for (let i = 0; i < json.length; i++) {
-                if (json[i] == ":") {
-                        if (i < json.length - 1 && json[i + 1] == "\"")
+                if (json[i] == ":" && !isInQuote) {
+                        output += json[i];
+                        if (i < json.length - 1 && json[i + 1] == "\"") {
                                 isInQuote = true;
 
-                        output += json[i];
-                        i += 1;
+                                i += 1;
+                        }
+
                 } else if (json[i] == "\"") {
                         if (isInQuote) {
                                 isInQuote = false;

@@ -46,7 +46,7 @@ class MysqlExcutor {
          * @returns {Promise<number>}  fields effected
          * @exception {SqlError}
          */
-        excute(sql) {
+        execute(sql) {
                 return new Promise((resolve, reject) => {
                         this._pool.query(sql, (error, results, _) => {
                                 if (error) {

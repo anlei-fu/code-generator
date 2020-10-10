@@ -92,6 +92,10 @@ function resolve(project, validateTable = defaultValidate) {
                         column.name = NamingStrategy.toCamel(column.column);
                         table.description = column.tableDescription;
                         column.rawName = column.column
+                        if(column.table=="DM_DOWN_PRODUCT"){
+                                let t =0;
+                        }
+
                         column.type = {
                                 name: column.dataType,
                                 length: column.dataLength
@@ -118,7 +122,7 @@ function resolve(project, validateTable = defaultValidate) {
                 if (!table.primaryColumn)
                         analyzePrimaryColumn(table);
 
-                tables.push(table);
+                                                                                                                                                                                      tables.push(table);
         });
 
         // big data base(with lots of table), group by project prefix
@@ -131,8 +135,8 @@ function resolve(project, validateTable = defaultValidate) {
 
                 let tableContent = "";
                 tabs.forEach(x => {
-                        let content = OBJECT.text(x, x.name);
-                        content = content.replace("let ", "exports.")
+                        let content = OBJECT.export_(x, x.name);
+                        
                         FILE.write(`./outputs/${project}/${group}/${x.name}.js`, content);
                         tableContent += `        ${x.name}:require("./${x.name}").${x.name},\r\n`;
                         groupContent += `        ${x.name}:require("./${group}/${x.name}").${x.name},\r\n`;
@@ -188,7 +192,6 @@ function analyzePrimaryColumn(table) {
                         return;
                 }
         }
-
 }
 
 /*---------------------------------------------------------------main--------------------------------------------------------------------------------*/
@@ -196,4 +199,4 @@ function analyzePrimaryColumn(table) {
  * exports csv file from database -> put into resource folder -> then excuete this file
  */
 
-resolve("18");
+resolve("dm");

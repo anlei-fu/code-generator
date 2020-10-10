@@ -19,7 +19,7 @@
                             var id = $('input[name=__id]').val();
                             alert(data.Message);
                             if (id != '') {
-                                refreshCurrentPage();
+                                location.reload();
                             }
                             return true;
                         } else {
@@ -38,6 +38,7 @@
             messages: {
         }
     });
+    
     $('select').each(function () {
         if ($(this).css('display') != "none") {
             $(this).sSelect();
