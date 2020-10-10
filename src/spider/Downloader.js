@@ -5,7 +5,7 @@ const { STR } = require("./utils/str");
 const { DownloadResult } = require("./model/DownloadResult");
 const { URL } = require("./model/URL");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
-const {LoggerSurpport} =require("./LoggerSurpport");
+const { LoggerSurpport } = require("./LoggerSurpport");
 
 const ERROR_MAP = {
         notExists: {
@@ -38,7 +38,7 @@ class Downloader extends LoggerSurpport {
          * @constructor
          * @param {CrawlTaskContext} context 
          */
-        constructor (context) {
+        constructor(context) {
                 super("Downloader");
                 this._context = context;
         }
@@ -52,15 +52,15 @@ class Downloader extends LoggerSurpport {
          */
         async download(url, headers) {
                 try {
-                        if(!url.url||!(url.url.startsWith("http://")||url.url.startsWith("https://"))){
-                            return  {
-                                    status:404,
-                            };
+                        if (!url.url || !(url.url.startsWith("http://") || url.url.startsWith("https://"))) {
+                                return {
+                                        status: 404,
+                                };
                         }
-                         
+
                         return await this._downloadCore(url, headers);
                 } catch (ex) {
-                        this.error(`download ${url.url} failed`,ex);
+                        this.error(`download ${url.url} failed`, ex);
                         return this._getErrorResp(ex.message);
                 }
         }
@@ -76,8 +76,8 @@ class Downloader extends LoggerSurpport {
         _downloadCore(url, headers) {
                 return new Promise((resolve, reject) => {
                         let axiosConfig = this._createConfig(url, headers);
-                        let path =url.query?`${url.url}?${url.query}`:url.url;
-                         path =this._encodeUrl(path);
+                        let path = url.query ? `${url.url}?${url.query}` : url.url;
+                        path = this._encodeUrl(path);
                         axios.default.get(path, axiosConfig)
                                 .then(
                                         res => {
@@ -95,10 +95,10 @@ class Downloader extends LoggerSurpport {
                 })
         }
 
-        _encodeUrl(url){
-              url=  unescape(url);
-              url =encodeURI(url);
-              return url;
+        _encodeUrl(url) {
+                url = unescape(url);
+                url = encodeURI(url);
+                return url;
         }
 
         /**
@@ -113,8 +113,8 @@ class Downloader extends LoggerSurpport {
                 headers = headers || {};
 
                 // header referer 
-                if (url.referUrl){
-                        url.referUrl=this._encodeUrl(url.referUrl);
+                if (url.referUrl) {
+                        url.referUrl = this._encodeUrl(url.referUrl);
                         OBJECT.setIfAbsent(headers, "Referer", url.referUrl);
                 }
 

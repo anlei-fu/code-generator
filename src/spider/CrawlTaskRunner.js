@@ -137,7 +137,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         return;
                 }
 
-                // over maxconcurrecy
+                // over max concurrecy
                 if (this._currentRunning > this._taskContext.taskConfig.urlMaxConcurrency) {
                         this._schedule(false);
                         this.info(`failed to crawl, cause task(${this._taskContext.taskConfig.taskId}) over max concurrency!`);
@@ -171,7 +171,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         this.error(`crawl url(${url.url}) failed`, ex);
                 }
 
-                // release browser page if need
+                // release browser page if used
                 pageContext.release();
 
                 let pageResult = pageContext.pageResultBuilder.build();
@@ -229,7 +229,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                                 this._status = TaskRunnerStatus.BLOCKED;
                                 this._taskResultBuilder.message("over max failed");
                                 this.info(
-                                        `over max failed, total :${this._failRecorder.totalFail},` +
+                                        `over max failed, total :${this._failRecorder.totalFailed},` +
                                         `conticuously fail:${this._failRecorder.continuouslyFailedCount}`
                                 );
                         }

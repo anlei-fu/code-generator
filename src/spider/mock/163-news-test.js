@@ -13,9 +13,7 @@ let newLemmaIdEnc="";
  */
 async function run(pageContext) {
         let $ = pageContext.$;
-        let matcher = pageContext.taskContext.urlMatcher;
         let builder = pageContext.pageResultBuilder;
-        let strUtils =pageContext.strUtils;
 
         var data={
             
@@ -23,6 +21,7 @@ async function run(pageContext) {
 
         data.imgs=[];
 
+        FILE.write("1.html",pageContext.html);
 
         data.date=$("#contain > div > div.article_title > div.share_box > p > span:nth-child(1)").text();
         data.title=$("#contain > div > div.article_title > h2:nth-child(1)").text();
@@ -35,9 +34,9 @@ async function run(pageContext) {
              data.imgs.push($(e).attr("src"));
         });
 
-
-        FILE.writeJson("163-news.json",data,true);
-      
+       builder.data(data);
+       builder.success();
+       FILE.writeJson("./output/wangyihao.json",data);
 }
 
 async function main() {
@@ -52,7 +51,7 @@ async function main() {
 
         let context = await createPageContext(
                 taskConfig,
-                { url: "http://dy.163.com/article/FLM1T2SB0514ADND.html" }
+                { url: "https://dy.163.com/article/FOGKRASC05504DLJ.html?clickfrom=w_yw" }
         );
 
         await run(context)

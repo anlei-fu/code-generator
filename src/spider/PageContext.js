@@ -19,6 +19,7 @@ class PageContext extends LoggerSurpport {
          */
         constructor (taskContext, url) {
                 super("pageContext");
+                
                 this.url = url;
 
                 this.taskContext = taskContext;

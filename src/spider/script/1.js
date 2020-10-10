@@ -1,33 +1,26 @@
 exports.main = async (pageContext)=>{
         let $ = pageContext.$;
-        let matcher = pageContext.taskContext.urlMatcher;
         let builder = pageContext.pageResultBuilder;
-        let strUtils =pageContext.strUtils;
 
         var data={
             
         };
 
-        data.mainImag=$("#mainpic > a > img").attr("src");
-        data.title =$("#content > h1 > span:nth-child(1)").text();
-        data.year=$("#content > h1 > span.year").text();
+        data.imgs=[];
 
-        data.info=$("#info").text();
-        data.grade =$("#interest_sectl > div.rating_wrap.clearbox > div.rating_self.clearfix > strong").text();
-        data.grader=$("#interest_sectl > div.rating_wrap.clearbox > div.rating_self.clearfix > div > div.rating_sum > a > span").text();
 
-        data.fiveStar =$("#interest_sectl > div.rating_wrap.clearbox > div.ratings-on-weight > div:nth-child(1) > span.rating_per").text();
-        data.fourStar =$("#interest_sectl > div.rating_wrap.clearbox > div.ratings-on-weight > div:nth-child(2) > span.rating_per").text();
-        data.threeStar =$("#interest_sectl > div.rating_wrap.clearbox > div.ratings-on-weight > div:nth-child(3) > span.rating_per").text();
-        data.twoStar =$("#interest_sectl > div.rating_wrap.clearbox > div.ratings-on-weight > div:nth-child(4) > span.rating_per").text();
-        data.oneStar =$("#interest_sectl > div.rating_wrap.clearbox > div.ratings-on-weight > div:nth-child(5) > span.rating_per").text();
-        data.officialGrade=$("#interest_sectl > div.rating_betterthan > a").text();
+        data.date=$("#contain > div > div.article_title > div.share_box > p > span:nth-child(1)").text();
+        data.title=$("#contain > div > div.article_title > h2:nth-child(1)").text();
+        data.author=$("#contain > div > div.article_title > div.share_box > p > span:nth-child(3)").text();
+        $("#contain > div > div.article_box > div.statement").remove();
+        data.content=$("#content").text();
+        data.comment=$("#contain > div > div.article_box > div.tie-areas.post_comment > div.tie-title-bar > span > a:nth-child(2)").text();
+        data.follower=$("#contain > div > div.article_box > div.tie-areas.post_comment > div.tie-title-bar > span > a:nth-child(4)").text();
+        $("#content").find("img").each((i,e)=>{
+             data.imgs.push($(e).attr("src"));
+        });
 
-        data.summary=$("#link-report > span").text();
-        data.shortComment=$("#comments-section > div.mod-hd > h2 > span > a").text();
-        data.review=$("#comments-section > div.mod-hd > h2 > span > a").text();
-        data.watched=$("#subject-others-interests > div > a:nth-child(1)").text();
-        data.wantToWatch=$("#subject-others-interests > div > a:nth-child(2)").text();
 
-        builder.findUrl();
-};
+       builder.data(data);
+       builder.success();
+}

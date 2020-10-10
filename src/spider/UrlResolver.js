@@ -5,7 +5,7 @@ var url = require('url');
  */
 class UrlResolver {
 
-        constructor (source) {
+        constructor(source) {
                 this._sourece = source;
         }
         /**
@@ -19,9 +19,9 @@ class UrlResolver {
                 if (!target || target.startsWith('#') || target.trim() == "")
                         return null;
 
-                try{
-                target =decodeURI(target);
-                }catch{
+                try {
+                        target = decodeURI(target);
+                } catch{
                         return null;
                 }
                 const { protocol } = url.parse(target);
@@ -35,7 +35,7 @@ class UrlResolver {
                                 query: u.includes("?") ? u.split("?")[1] : ""
                         }
                 }
-                else if (protocol=="http:"||protocol=="https:") {
+                else if (protocol == "http:" || protocol == "https:") {
                         let u = target.split('#')[0]
                         if (!u)
                                 return null;
@@ -45,7 +45,7 @@ class UrlResolver {
                                 query: u.includes("?") ? u.split("?")[1] : ""
                         }
                 }
-                
+
                 return null;
         }
 }

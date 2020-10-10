@@ -45,13 +45,13 @@ async function main() {
                 .downloadTimeout(10000)
                 .urlMatchPatterns(`["^(http://|https://)news.163.com/.*"]`)
                 .urlEncodes(`{"https://news.163.com":"#1"}`)
-                .encoding("gbk")
+                .encoding("utf8")
                 .crawlType(1)
                 .build();
 
         let context = await createPageContext(
                 taskConfig,
-                { url: "https://news.163.com/20/0904/10/FLM2OART00018AOR.html?clickfrom=www_first_yaowen" }
+                { url: "https://sports.163.com/20/1009/11/FOGC3GD100058780.html?clickfrom=w_sports" }
         );
 
         await run(context)

@@ -17,7 +17,6 @@ let newLemmaIdEnc="";
  */
 async function run(pageContext) {
         let $ = pageContext.$;
-        let matcher = pageContext.taskContext.urlMatcher;
         let builder = pageContext.pageResultBuilder;
         let strUtils =pageContext.strUtils;
 
@@ -33,7 +32,6 @@ async function run(pageContext) {
        }else{
           title=$(title3).text();
        }
-      
 
        let synonyms =[];
        $("body > div.body-wrapper > div.before-content > div.polysemant-list.polysemant-list-normal > ul >li").each((i,e)=>{
@@ -81,7 +79,7 @@ async function run(pageContext) {
        let targetSummary = $(summary1).length==0?summary2:summary1;
        let summary= $(targetSummary).text();
 
-        builder.success();
+       
         let lemmaId;
         let lemmaIdArr =strUtils.select(pageContext.html,`newLemmaId:"`,`",`,1);
         if(lemmaIdArr.length>0)
@@ -97,7 +95,8 @@ async function run(pageContext) {
           edit=strUtils.remove(edit,["编辑次数：","次历史版本"]);
         let cite =$("body > div.body-wrapper > div.content-wrapper > div > div.main-content > dl.lemma-reference.collapse.nslog-area.log-set-param > dd.reference-list-wrap").find("a").length;
 
-
+        builder.findUrl();
+        builder.success();
         builder.data({
                 title,
                 summary,
@@ -109,8 +108,9 @@ async function run(pageContext) {
                 cite
         });
 
-       
-        FILE.writeJson("1.json",{
+       FILE.write("1.html",pageContext.html);
+
+        FILE.writeJson("./output/1.json",{
                 title,
                 summary,
                 synonyms,
@@ -133,9 +133,10 @@ async function main() {
 
         let context = await createPageContext(
                 taskConfig,
-                { url: "https://baike.baidu.com/item/%20Google%20Play%20音乐/16102225" }
+                { url: "https://baike.baidu.com/item/虎/865" }
         );
 
+        
         await run(context)
 }
 
