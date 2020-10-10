@@ -92,10 +92,6 @@ function split(content) {
                         if (!parseQuotation) {
                                 if (reader.hasPrevious()) {
                                         if (reader.previous != "\\") {
-                                                if (cell != "") {
-                                                        throw new Error(`unexcepted syntax at row ${result.length}`);
-                                                }
-
                                                 parseQuotation = true;
                                         } else {
                                                 cell += c;
@@ -108,10 +104,11 @@ function split(content) {
                                         parseQuotation = true;
                                 }
                         } else {
-                                if (reader.previous != "\\") {
-                                        parseQuotation = false;
+                                if (reader.hasNext()&&reader.next() == "\"") {
+                                        cell+="\"";
                                 } else {
-                                        cell += c;
+                                        reader.back();
+                                        parseQuotation = false;
                                 }
                         }
 
@@ -146,6 +143,11 @@ function split(content) {
 
         return result;
 }
+
+// let data =`"TO_PLAN_LANDING_TYPE","PARAMS_TYPE","VARCHAR2","","Y","","落地页链接类型，当dpa_adtype为""DPA_LINK""时必填 允许值: ""DPA"", ""CUSTOM""","推广目的分类参数"`;
+
+//  let result = split(data);
+//  let t =0;
 
 /**
  * Convert to csv

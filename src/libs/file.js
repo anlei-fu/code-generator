@@ -9,9 +9,6 @@
 
 // import
 const fs = require("fs");
-const { LoggerFactory } = require("./../generator/common/logging/logger-factory")
-
-const LOG = LoggerFactory.getLogger("FILE");
 
 /**
  * Read all lines from file, read all data from file then split into lines
@@ -75,7 +72,6 @@ function write(path, data, charset = "utf-8") {
  */
 function appendLine(path, data, charset = "utf-8") {
         append(path, data + "\r\n", charset);
-        LOG.info(`append line ${path}`);
 }
 
 /**
@@ -101,8 +97,6 @@ function copy(source, destination, rmSource) {
 
         if (rmSource)
                 fs.unlinkSync(source);
-
-        LOG.info(`copy ${source} to ${destination}`);
 }
 
 /**
@@ -113,7 +107,6 @@ function copy(source, destination, rmSource) {
 function remove(path) {
         if (exists(path)) {
                 fs.unlinkSync(path);
-                LOG.info(`remove ${path}`);
         }
 }
 

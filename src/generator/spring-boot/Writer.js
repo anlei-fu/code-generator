@@ -21,7 +21,7 @@ class Writer {
                 this._respFolder = `${_root}/pojo/resp`;
                 this._paramsFolder = `${_root}/pojo/param`;
 
-                this._testFolder=`./${project}/src/test/java/com/${company}/${project}/service/impl`;
+                this._testFolder = `./${project}/src/test/java/com/${company}/${project}/service/impl`;
         }
 
         /**
@@ -121,7 +121,7 @@ class Writer {
          * @param {String} name 
          * @param {String} content 
          */
-        writeTest(name,content){
+        writeTest(name, content) {
                 this._writeCore(`${this._testFolder}/${name}ServiceTest.java`, content, name);
         }
 

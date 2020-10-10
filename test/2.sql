@@ -1,166 +1,118 @@
-/**
- 系统结算金额和笔数 就是 当天支付成功时间内的订单 
- 支付成功订单的金额 加上 -1 * 当天退款时间内的订单退款金额 。笔数类比(结算笔数-退款笔数)
-*/
-create or replace procedure  sp_order_diff_report(v_start_time    varchar2, --查询日期开始
-                                                  v_end_time      varchar2, --查询日期结束
-                                                  v_channel_no    varchar2, --渠道编号
-                                                  v_display_type  number, --显示类型
-                                                  v_out_errcode   out number, --错误码
-                                                  v_out_msg       out varchar2, --消息
-                                                  v_out_data      out sys_refcursor) --输出游标
-as
-  l_start_time date;
-  l_end_time   date;
+   select to_char(r.ordertime,'yyyy-mm') ordertime,
+       p.product_name ProductName,
+	   ppi.plat_name PlatName,
+       pait.agent_name AgentName,
+       ti.term_name TermName,
+       i.user_name UserName,
+	   t1.name BusinessType,
+       r.total,
+       r.valid,
+       nvl(r.activatecount,0) ActivateCount,
+       nvl(r.rechargecount,0) RechargeCount,
+       nvl(r.onNetCount,0) OnNetCount,
+       nvl(r.otherNetCount,0) OtherNetCount,
+	   nvl(round(r.valid / decode(r.total,0,null,r.total), 5) * 100,0) || '%' as validrate,
+       nvl(round(r.activatecount / decode(r.total,0,null,r.total), 5) * 100,0) || '%' as activaterate,
+       nvl(round(r.rechargecount / decode(r.activateCount,0,null,r.activateCount), 5) * 100,0) || '%' as rechargerate,
+       nvl(round(r.onNetCount / decode(r.activateCount,0,null,r.activateCount), 5) * 100,0) || '%' as onnetrate,
+       nvl(round(r.activateCount / decode(r.valid,0,null,r.valid), 5) * 100,0) || '%' as valid_active,
+       nvl(round(r.otherNetCount / decode(r.activateCount,0,null,r.activateCount), 5) * 100,0) || '%' as otherNetrate
 
-begin
-  l_start_time := to_date(v_start_time, 'yyyy-mm-dd');
-  l_end_time   := to_date(v_end_time, 'yyyy-mm-dd');
-
-  if(v_display_type=1) then
-        select 
-                to_date(t1.create_time,'yyyy-mm-dd') Time,
-                t4.channel_name ChannelName,
-
-                /*
-                 * 笔数(结算笔数-退款笔数)
-                 */
-                sum(decode(nvl(t2.status,90),
-                                90,
-                                1,
-                                0)
-                            ) OrderCount,
-
-                /*
-                 * 系统金额,
-                 * 退款金额 = （支付金额-手续费）乘以 失败面值/总面值
-                 * 失败面值= 充值面值-成功面值
-                 */
-                sum(decode(nvl(t2.status,90),
-                                0,
-                                t1.face-(t1.face-t1.service_fee)*((t1.face-t1.suc_Face)/t1.face),
-                                t1.face) 
-                    ) SystemFundSum,
-
-                /*
-                 * 商户总金额 ：（订单支付金额-手续费） +（订单退款金额-手续费）
-                 */
-                sum(decode(nvl(t2.status,90),
-                                0,
-                               (t1.face-t1.service_fee) -(t1.face-t1.service_fee)*((t1.face-t1.suc_face)/t1.face),
-                                t1.face-t1.service_fee
-                             )
-                    ) MechantFundSum,
-
-                /*
-                 * 订单差异
-                 */
-                sum(decode(nvl(t3.order_no,1),
-                                1,
-                                0,
-                                 t3.price-t3.real_fee
-                           )
-                     ) OrderDiffSum,
-
-                /*
-                 * 系统差异
-                 */
-                sum(decode(nvl(t3.order_no,1),
-                               1,
-                               0,
-                                t3.sys_price-t3.sys_real_face
-                           )
-                    ) SystemDiffSum
-
-                /*
-                 * 总差异
-                 */
-                sum(decode(nvl(t3.order_no,1),
-                                 1,
-                                 0,
-                                 (t3.price-t3.real_fee)+(t3.sys_price-t3.sys_real_face)
-                           )
-                    ) DiffSum
-        from order_main t1
-        left join order_refund t2 on t2.order_no=t1.order_no
-        left join bill_match_difference t3 on t3.order_no=t1.order_no
-        left join down_channel t4 on t4.down_channel_no=t1.down_channel_no      
-        group by 
-                t1.down_channel_no, 
-                t1.create_time,
-                t4.channel_name
-  else
-         select 
-                to_date(t1.create_time,'yyyy-mm-dd') Time,
-                t4.channel_name ChannelName,
-
-                /*
-                 * 笔数(结算笔数-退款笔数)
-                 */
-                sum(decode(nvl(t2.status,90),
-                                90,
-                                1,
-                                0)
-                            ) OrderCount,
-
-                /*
-                 * 系统金额,
-                 * 退款金额 = （支付金额-手续费）乘以 失败面值/总面值
-                 * 失败面值= 充值面值-成功面值
-                 */
-                sum(decode(nvl(t2.status,90),
-                                0,
-                                t1.face-(t1.face-t1.service_fee)*((t1.face-t1.suc_Face)/t1.face),
-                                t1.face) 
-                    ) SystemFundSum,
-
-                /*
-                 * 商户总金额 ：（订单支付金额-手续费） +（订单退款金额-手续费）
-                 */
-                sum(decode(nvl(t2.status,90),
-                                0,
-                               (t1.face-t1.service_fee) -(t1.face-t1.service_fee)*((t1.face-t1.suc_face)/t1.face),
-                                t1.face-t1.service_fee
-                             )
-                    ) MechantFundSum,
-
-                /*
-                 * 订单差异
-                 */
-                sum(decode(nvl(t3.order_no,1),
-                                1,
-                                0,
-                                 t3.price-t3.real_fee
-                           )
-                     ) OrderDiffSum,
-
-                /*
-                 * 系统差异
-                 */
-                sum(decode(nvl(t3.order_no,1),
-                               1,
-                               0,
-                                t3.sys_price-t3.sys_real_face
-                           )
-                    ) SystemDiffSum
-
-                /*
-                 * 总差异
-                 */
-                sum(decode(nvl(t3.order_no,1),
-                                 1,
-                                 0,
-                                 (t3.price-t3.real_fee)+(t3.sys_price-t3.sys_real_face)
-                           )
-                    ) DiffSum
-        from order_main t1
-        left join order_refund t2 on t2.order_no=t1.order_no
-        left join bill_match_difference t3 on t3.order_no=t1.order_no
-        left join down_channel t4 on t4.down_channel_no=t1.down_channel_no      
-        group by 
-                t1.down_channel_no, 
-                t1.create_time,
-                t4.channel_name
-  end if
-
-end
+  from (select trunc(t.create_time,'MM') orderTime,
+			   pai.agent_no,
+			   pai.plat_no,
+               ob.up_product_no,
+               t.promoter_id,
+               t.term_no,
+               t.Business_Type,
+               count(1) as total, --总订单数
+           --noformat start
+          sum(case when t.order_status = 0 then 1 else 0 end) as valid, --有效订单
+          sum(case when ext.activate_status = 0 then 1 else 0 end) as activateCount, --激活订单数
+          sum(case when ext.recharge_status = 0 then 1 else 0 end) as rechargeCount, --首充订单数
+      sum(case when ext.activate_status = 0 and ext.net_range = 1 then 1 else 0 end ) as onNetCount, --本网订单数
+          sum(case when ext.activate_status = 0 and ext.net_range = 2 then 1 else 0 end ) as otherNetCount  --异网订单数
+            --noformat end
+          from DM_ORDER_MAIN t
+          left join dm_order_main_ext ext
+            on t.order_no = ext.order_no
+          left join dm_order_bind ob 
+            on ob.order_no = t.order_no
+		   left join put_account_info pai on pai.promoter_id = t.promoter_id  	
+         group by trunc(t.create_time,'MM'),
+				  pai.agent_no,
+				  pai.plat_no,
+                  ob.up_product_no,
+                  t.promoter_id,
+                  t.term_no,
+                  t.Business_Type
+        having 1 = 1 
+       { &:ProductNo}
+	   { &:PaiAgentNo}
+	   { &:PaiPlatNo}	   
+       { &@t.PromoterId} 
+       { &@t.TermNo} 
+	   { &@t.BusinessType}
+       { &:ST} 
+       { &:ET}
+        ) r
+  left join DM_UP_PRODUCT p
+    on R.up_product_no = p.product_no
+  left join DM_Promoter_Info i
+    on R.Promoter_Id = i.Promoter_Id
+  left join dm_term_info ti
+    on R.term_no = ti.term_no
+  left join dm_system_dictionary t1 on R.Business_Type = t1.value and t1.type = 'BusinessType'
+  left join put_agent_info pait on pait.agent_no = r.agent_no
+  left join put_plat_info ppi on ppi.plat_no = r.plat_no
+  union all select r.ordertime,
+       null,
+       null,
+       null,
+	   null,
+	   null,
+	   null,
+       r.total,
+       nvl(r.valid,0) Valid,
+       nvl(r.activatecount,0) ActivateCount,
+       nvl(r.rechargecount,0) RechargeCount,
+       nvl(r.onNetCount,0) OnNetCount,
+       nvl(r.otherNetCount,0) OtherNetCount,
+	   nvl(ROUND(r.valid/decode(r.total,0,null,r.total),5)*100,0)||'%' AS validrate,
+       nvl(ROUND(r.activateCount/decode(r.total,0,null,r.total),5)*100,0)||'%' AS activaterate,
+       nvl(ROUND(r.rechargeCount/decode(r.activateCount,0,null,r.activateCount),5)*100,0)||'%' AS rechargerate,
+       nvl(ROUND(r.onNetCount/decode(r.activateCount,0,null,r.activateCount),5)*100,0)||'%' AS rechargerate,
+       nvl(round(r.activateCount / decode(r.valid,0,null,r.valid), 5) * 100,0) || '%' as valid_active,
+       nvl(ROUND(r.otherNetCount/decode(r.activateCount,0,null,r.activateCount),5)*100,0)||'%' AS rechargerate
+       from  (select
+           null as ordertime,
+               null,
+               null,
+               null,
+        count(1) as total, --总订单数
+           --noformat start
+          sum(case when t.order_status = 0 then 1 else 0 end) as valid, --有效订单
+          sum(case when ext.activate_status = 0 then 1 else 0 end) as activateCount, --激活订单数
+          sum(case when ext.recharge_status = 0 then 1 else 0 end) as rechargeCount, --首充订单数
+      sum(case when ext.activate_status = 0 and ext.net_range = 1 then 1 else 0 end ) as onNetCount, --本网订单数
+          sum(case when ext.activate_status = 0 and ext.net_range = 2 then 1 else 0 end ) as otherNetCount,  --异网订单数
+            --noformat end  
+            null,
+            null,
+            null,
+            null
+          from DM_ORDER_MAIN t
+          left join dm_order_main_ext ext
+            on t.order_no = ext.order_no
+           left join dm_order_bind ob on t.order_no = ob.order_no
+		    left join put_account_info pai on pai.promoter_id = t.promoter_id  
+            where 1=1
+         {&:ProductNo}
+		 { &:PaiPlatNo}
+         { &:PaiAgentNo}
+         { &@t.PromoterId} 
+		 { &@t.BusinessType}
+         { &@t.TermNo} 
+         { &:ST} 
+         { &:ET}
+       )r

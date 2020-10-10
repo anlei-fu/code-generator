@@ -1,6 +1,6 @@
 //删除
 function _delete(id) {
-        if (!confirm("你确认要删除该信息吗?"))
+        if (!confirm("确认删除该数据?"))
                 return;
 
         $.ajax({
@@ -9,7 +9,9 @@ function _delete(id) {
                 url: '/@name/Delete',
                 success: function (data) {
                         data = $.parseJSON(data);
-                        alert(data.message)
+                        alert(data.Message)
+                        if(data.Status)
+                          location.reload();
                 },
                 error: function () {
                         alert("调用失败，请重试");

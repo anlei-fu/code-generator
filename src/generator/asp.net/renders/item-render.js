@@ -3,7 +3,8 @@ const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { renderItemSelect } = require("./item-select-render");
 const { renderItemText } = require("./item-text-render");
 const { renderItemRow } = require("./item-row-render");
-const {STR}=require("./../../../libs/str")
+const { renderItemTextArea } = require("./item-text-area-render");
+const { STR } = require("./../../../libs/str")
 
 const ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/item.html`);
 
@@ -11,22 +12,26 @@ const ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/item.html`);
 function renderItem(addConfig) {
         let content = "";
         let items = [];
-        let requires=[];
+        let requires = [];
 
         addConfig.selects.forEach(x => {
-
-                console.log(x);
+                x.dictionaryServiceName = addConfig.dictionaryServiceName;
+                x.dictionaryMethod = addConfig.dictionaryMethod;
+                x.upperTowLetter = addConfig.upperTowLetter;
                 items.push(renderItemSelect(x));
                 requires.push(`                ${x.name}: { required: true },\r\n`);
         })
 
         addConfig.texts.forEach(x => {
 
-                if(!x.textArea)
-                   requires.push(`                ${x.name}: { required: true },\r\n`);
+                if (!x.textArea) {
+                        requires.push(`                ${x.name}: { required: true },\r\n`);
 
-                x.type=x.textArea?"textarea":"text";
-                items.push(renderItemText(x));
+                        x.type = "text";
+                        items.push(renderItemText(x));
+                } else {
+                        items.push(renderItemTextArea(x));
+                }
         });
 
         if (items.length > 8) {
@@ -44,9 +49,9 @@ function renderItem(addConfig) {
                 });
         }
 
-        let itemConfig={
+        let itemConfig = {
                 content,
-                rules:STR.arrayToString(requires).trimRight()
+                rules: STR.arrayToString(requires).trimRight()
         }
         return ITEM_RENDER.renderTemplate(itemConfig);
 

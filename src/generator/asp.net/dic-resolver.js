@@ -50,4 +50,4 @@ function resolve(project,table,text="Name",type="Type") {
 }
 
 /*-------------------------------------------------------------------resolve---------------------------------------------------------------------------*/
-resolve("fc","FcSystemDictionary");
+resolve("dm","DmSystemDictionary");

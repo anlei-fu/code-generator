@@ -9,6 +9,7 @@ class GenerateConfigGenerator {
                 Object.keys(tables).forEach(table => {
                         items[table] = builder.all()
                                 .noBatch()
+                                .noDetail()
                                 .noGetAll()
                                 .noCount()
                                 .build();

@@ -14,8 +14,10 @@
 <body style="background-color:#0962E1" cz-shortcut-listen="true">
     <script>
 
-      
-
+if(!/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/.test(url)){
+                  alert(`Url[${url}]不正确`);
+                  return;
+                }
 
 
         // event biding

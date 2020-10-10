@@ -21,8 +21,11 @@ async function run(pageContext) {
 
         data.imgs=[];
 
+<<<<<<< HEAD
         FILE.write("1.html",pageContext.html);
 
+=======
+>>>>>>> 709b1c8d687db41814fe9b83c5b5b2cf97fe2d7b
         data.date=$("#contain > div > div.article_title > div.share_box > p > span:nth-child(1)").text();
         data.title=$("#contain > div > div.article_title > h2:nth-child(1)").text();
         data.author=$("#contain > div > div.article_title > div.share_box > p > span:nth-child(3)").text();

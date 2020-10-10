@@ -1,6 +1,7 @@
 const { STR } = require("../../libs/str");
 const { OBJECT } = require("../../libs/utils");
 const { Matcher } = require("../common/matchers");
+const matchers = require("./matchers");
 const { getJavaType } = require("./utils");
 
 /**
@@ -119,6 +120,7 @@ const DEFAULT_VALIDATES = {
                         matcher: (columnName) => STR.endsWithAny(
                                 columnName.toLowerCase(),
                                 [
+                                        "flag",
                                         "type",
                                         "status",
                                         "state",
@@ -132,7 +134,7 @@ const DEFAULT_VALIDATES = {
                                         "status"
                                 ]
                         ),
-                        generator: (name) => "@Enum(@type)".replace("@type", `"${name}"`),
+                        generator: (name) => `@Enum(${name.toUpperCase()})`,
                 },
         }
 }
@@ -165,10 +167,6 @@ class ValidateAnalyzer extends AnalyzerBase {
 
                         if (!match)
                                 continue;
-
-                        if (name.startsWith("need")) {
-                                let t = 0;
-                        }
 
                         if (this.validates[type][item].generator) {
                                 validates.push(this.validates[type][item].generator(name))
@@ -322,40 +320,20 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
 }
 
 /**
- * Default select ecludes
+ * Default select excludes
  */
 const SELECT_INCLUDES = {
         String: {
                 all: {
-                        matcher: columnName => !STR.endsWithAny(columnName.toLowerCase(), ["id", "no"])
+                        matcher: Matcher.isIdFields
                 }
         },
         Integer: {
                 all: {
-                        matcher: columnName => !(STR.endsWithAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "id",
-                                        "no",
-                                        "type",
-                                        "status",
-                                        "state",
-                                        "class",
-                                        "level",
-                                        "style"
-                                ]
-                        ) || STR.startsWithAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "is",
-                                        "need",
-                                        "permit",
-                                        "allow",
-                                        "support",
-                                        "can",
-                                        "should"
-                                ])
-                        )
+                        matcher: Matcher.isEnumName
+                },
+                id:{
+                        matcher :Matcher.isIdFields
                 }
         },
         Date: {
@@ -425,8 +403,7 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
 const DEFAULT_INSERT_EXCLUDES = {
         String: {
                 updateUser: {
-                        matcher: columnName => Matcher.lowerIncludesAny(columnName, ["update", "edit"])
-                                && Matcher.lowerIncludes(columnName, "user")
+                        matcher: Matcher.isUpdateUser
                 }
         },
         Date: {

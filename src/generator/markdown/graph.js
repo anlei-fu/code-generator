@@ -20,7 +20,7 @@ class GraphBuilder {
          * 
          * @param {[String]} edges 
          */
-        path(...edges) {
+        path(edges) {
                 let result = "";
                 edges.forEach((x, i, array) => {
                         if (i == array.length - 1) {

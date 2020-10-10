@@ -15,8 +15,8 @@ const ENTITY_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-config
  */
 function renderEntityConfig(config) {
         let content="";
-        if (config.exportExcel) 
-           content+=renderExportExcelSql(config);
+        // if (config.exportExcel) 
+        //    content+=renderExportExcelSql(config);
 
         let renderConfig = {
                 name: config.table.rawName,

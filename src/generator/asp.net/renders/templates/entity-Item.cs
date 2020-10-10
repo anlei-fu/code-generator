@@ -1,5 +1,5 @@
-    ///<summary>
-    ///@description
-    ///</summary>
-    public @type @name { get; set; }
+        ///<summary>
+        ///@description
+        ///</summary>
+        public @type @name { get; set; }
 

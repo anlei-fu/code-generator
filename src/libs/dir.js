@@ -7,9 +7,6 @@
  * @LastEditTime : 2019-12-19 14:09:03
  */
 const fs = require("fs");
-const { LoggerFactory } = require("./../generator/common/logging/logger-factory")
-
-const LOG = LoggerFactory.getLogger("DIR");
 
 /**
  * Dose directory exists
@@ -40,8 +37,6 @@ function create(path) {
                         fs.mkdirSync(tempPath);
                 }
         }
-
-        LOG.info(`create ${path}`);
 }
 
 /**
@@ -65,7 +60,6 @@ function remove(path) {
                 })
 
         fs.rmdirSync(path);
-        LOG.info(`remove ${path}`);
 }
 
 /**

@@ -54,6 +54,7 @@ namespace @project.UserWeb.Controllers
 
                 string id = Request.Form["__id"];
 @defaultValue
+@additionalParams
                 IResult result = @nameService.Instance.Save(id, entity);
                 if (result.Status)
                 {

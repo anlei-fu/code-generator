@@ -6,7 +6,7 @@ const {FILE} =require("../utils/file");
 
 let api ={
         counter:"https://baike.baidu.com/api/wikiui/sharecounter?lemmaId=426146&method=get",
-        pv:"https://baike.baidu.com/api/lemmapv?id=75b053874e6b551c07ce6172&r=0.28400972783201994"
+        pv:"https://baike.baidu.com/api/lemmapv?id=75b053874e6b551c07ce6172"
 }
 
 let lemmaId="";

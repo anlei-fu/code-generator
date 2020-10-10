@@ -1,5 +1,6 @@
 const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
 const { renderOperationHtml } = require("./operation-render")
+const {STR} =require("./../../../libs/str");
 
 const ITEM_RENDER = new SimpleRender({});
 const IDENT = "                        ";
@@ -14,7 +15,7 @@ ITEM_RENDER.setTempalte(`${IDENT}<td>@value</td>\r\n`);
 function renderBody(config) {
         let row = "";
         if (config.batchOperation)
-                row += `${IDENT}<td><input type="checkbox" name="Id" value="@item.Id"/></td>\r\n`;
+                row += `${IDENT}<td><input type="checkbox" name="batchCheckbox" value="@item.${STR.upperFirstLetter(config.table.primaryColumn)}"/></td>\r\n`;
 
         config.tableConfig.items.forEach(x => {
                 row += ITEM_RENDER.renderTemplate({ value: x.content });

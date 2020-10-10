@@ -1,6 +1,6 @@
-const { OBJECT,ARRAY } = require("../../libs/utils");
-const { STR } = require("../../libs/str");
-const { GraphBuilder } = require("../common/markdown-generator/graph");
+const { OBJECT,ARRAY } = require("../../../libs/utils");
+const { STR } = require("../../../libs/str");
+const { GraphBuilder } = require("../../markdown/graph");
 
 class TableRelationMarkdownGenerator {
 
