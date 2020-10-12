@@ -1,4 +1,4 @@
-const { STR } = require("./utils/str");
+const { STR } = require("./../libs");
 class UrlDecoder {
         constructor (patterns = {}) {
                 this._patterns = {};
@@ -11,7 +11,7 @@ class UrlDecoder {
         /**
          * Decode url
          * 
-         * @param {String} url 
+         * @param {string} url 
          * @returns {String}
          */
         decode(url) {

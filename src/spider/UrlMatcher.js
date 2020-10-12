@@ -9,7 +9,7 @@ class UrlMatcher {
         /**
          * Check is url matched with regexes
          * 
-         * @param {String} url 
+         * @param {import { URL } from "./model/URL";} url 
          * @returns {Boolean}
          */
         match(url) {

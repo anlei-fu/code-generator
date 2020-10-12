@@ -1,4 +1,4 @@
-const { STR } = require("./utils/str");
+const { STR } = require("./../libs");
 class UrlEncoder {
         constructor (patterns = {}) {
                 this._patterns = patterns;

@@ -1,11 +1,11 @@
-const { Initiable } = require("./Initiable");
-const { FILE } = require("./utils/file");
-const { DIR } = require("./utils/dir");
+const { Initiable } = require("./../common");
+const { FILE,DIR } = require("./../libs");
 
 /**
  * @BaseClass
  */
-exports.FileManagerBase = class FileManagerBase extends Initiable {
+exports.
+FileManagerBase = class FileManagerBase extends Initiable {
 
         /**
          * Constructor of FileManagerBase

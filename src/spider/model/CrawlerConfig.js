@@ -1,5 +1,5 @@
 class CrawlerConfig {
-        constructor () {
+        constructor() {
                 /**
                  * Unique id of crawler
                  */
@@ -14,13 +14,23 @@ class CrawlerConfig {
                  * Script folder
                  */
                 this.scriptDir = "";
+
+                /***
+                 * Use debug mode
+                 */
+                this.debug = false;
+
+                /**
+                 * Log file directory
+                 */
+                this.logDir="";
         }
 }
 
 exports.CrawlerConfig = CrawlerConfig;
 
 class CrawlerConfigBuilder {
-        constructor () {
+        constructor() {
                 this._config = new CrawlerConfig();
         }
 
@@ -62,7 +72,7 @@ class CrawlerConfigBuilder {
          * 
          * @returns {CrawlerConfig}
          */
-        build(){
+        build() {
                 return this._config;
         }
 }

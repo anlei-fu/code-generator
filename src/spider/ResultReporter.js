@@ -1,4 +1,4 @@
-const { HttpClient } = require("./HttpClient");
+const { HttpClient } = require("./../http");
 
 const API = {
        REPORT_RESULT: "/task/result",

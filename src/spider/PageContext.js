@@ -2,12 +2,11 @@ const { UrlResolver } = require("./UrlResolver");
 const { PageResultBuilder } = require("./model/PageResult");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
 const { BrowserPage } = require("./model/BrowserPage");
-const { URL } = require("./model/URL");
 const { CrawlType } = require("./constant/CrawlType");
-const { STR } = require("./utils/str");
-const { LoggerSurpport } = require("./LoggerSurpport");
+const { STR } = require("./../libs");
+const { LoggerSurpport } = require("./../logging");
 const { PageResult } = require("./constant/PageResult");
-const { HttpClient } = require("./HttpClient");
+const { HttpClient } = require("./../http");
 
 const cheerio = require('cheerio');
 
@@ -17,9 +16,12 @@ class PageContext extends LoggerSurpport {
          * @param {CrawlTaskContext} taskContext 
          * @param {URL} url 
          */
-        constructor (taskContext, url) {
+        constructor(taskContext, url) {
                 super("pageContext");
-                
+
+                /**
+                 * @type {import { URL} from "./model/URL";}
+                 */
                 this.url = url;
 
                 this.taskContext = taskContext;
@@ -74,9 +76,9 @@ class PageContext extends LoggerSurpport {
         * @param {PageContext} pageContext 
         * @returns {Promise<Boolean>}
         */
-        async _prepareStaticPage() {
+        async _prepareStaticPage(encoding) {
                 this.info(`downloading page ${this.url.url}`);
-                let downloadResult = await this.taskContext.downloader.download(this.url);
+                let downloadResult = await this.taskContext.downloader.download(this.url, {}, encoding);
                 let checkResult = this.taskContext.blockRuleChecker.check(downloadResult);
                 this.pageResultBuilder.pageResult(checkResult);
 
@@ -89,7 +91,36 @@ class PageContext extends LoggerSurpport {
                 this.html = downloadResult.html;
                 this.$ = cheerio.load(this.html);
 
+                if (!encoding)
+                        await this._checkEncoding();
+
+
                 return true;
+        }
+
+        async _checkEncoding() {
+                let encoding ;
+                let end = false;
+                this.$("meta").each((i, e) => {
+                        if (end)
+                                return;
+
+                        let content = this.$(e).attr("content");
+                        if (content && content.toLowerCase().includes("charset")) {
+                                content = content.toLowerCase();
+                                if (content.includes("utf")) {
+                                        encoding = "utf8";
+                                } else if (content.includes("gbk")) {
+                                        encoding = "gbk";
+                                } else if (content.includes("gb2312")) {
+                                        encoding = "gb2312";
+                                }
+                                end = true;
+                        }
+                });
+
+                if (encoding && encoding != this.taskContext.taskConfig.encoding)
+                        await this._prepareStaticPage(encoding);
         }
 
         /**

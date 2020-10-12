@@ -1,16 +1,14 @@
-const { Initiable } = require("./Initiable");
-const { ApiResponseFactory } = require("./factory/ApiResponseFactory");
-const { ApiResponse } = require("./po/model/ApiResponse");
-const { ApiResponseCode } = require("./po/constant/ApiResponseCode");
-const { ArgTypeError } = require("./error/ArgTypeError");
-const { DebugUtils } = require("./utils/debug-utils");
-
+const { Initiable } = require("./../common");
+const { ApiResponseFactory } = require("./ApiResponseFactory");
+const { ApiResponse } = require("./ApiResponse");
+const { ApiResponseCode } = require("./ApiResponseCode");
+const { ArgTypeError } = require("./../error");
 /**
  * Controller base
  */
 class Controller extends Initiable {
 
-        constructor (name, controllerConfig = {}) {
+        constructor(name, controllerConfig = {}) {
                 super(name);
                 this._controllerConfig = controllerConfig;
         }
@@ -108,10 +106,7 @@ class Controller extends Initiable {
          */
         async _process(req, resp, handler) {
                 try {
-                        if(DebugUtils.isDebugMode()){
-                                this.info(`${req.method}  ${req.path}`);
-                        }
-
+                        this.info(`${req.method}  ${req.path}`);
                         let result;
                         try {
                                 if (this._controllerConfig.beforeProcess) {
@@ -120,10 +115,8 @@ class Controller extends Initiable {
                                                 return;
                                 }
 
-                                if (DebugUtils.isDebugMode) {
-                                        console.log("args:");
-                                        console.log({ query: req.query, body: req.body, params: req.params });
-                                }
+                                this.info("args:");
+                                this.info({ query: req.query, body: req.body, params: req.params });
 
                                 result = await handler.call(this, { query: req.query, body: req.body, params: req.params });
                         } catch (e) {
@@ -138,16 +131,10 @@ class Controller extends Initiable {
                                 } else {
                                         result = this.systemError();
                                 }
-
-                                if (DebugUtils.isDebugMode) {
-                                        console.error(e);
-                                }
                         }
 
-                        if (DebugUtils.isDebugMode) {
-                                console.log("resp:");
-                                console.log(result);
-                        }
+                        this.info("resp:");
+                        this.info(result);
 
                         resp.send(result);
 
@@ -156,9 +143,6 @@ class Controller extends Initiable {
 
                 } catch (ex) {
                         this.error(`handle ${req.method} ${req.path} failed`, ex);
-                        if (DebugUtils.isDebugMode) {
-                                console.error(ex);
-                        }
                 }
         }
 }

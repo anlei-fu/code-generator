@@ -1,4 +1,3 @@
-let api = "https://comment.api.163.com/api/v1/products/a2869674571f77b5a0867c3d71db5856/threads/";
 exports.main = async (pageContext)=>{
         let $ = pageContext.$;
         let builder = pageContext.pageResultBuilder;

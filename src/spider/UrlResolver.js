@@ -24,6 +24,7 @@ class UrlResolver {
                 } catch{
                         return null;
                 }
+
                 const { protocol } = url.parse(target);
                 if (!protocol) {
                         let u = url.resolve(this._sourece, target).split('#')[0];
@@ -34,8 +35,7 @@ class UrlResolver {
                                 url: u.split("?")[0],
                                 query: u.includes("?") ? u.split("?")[1] : ""
                         }
-                }
-                else if (protocol == "http:" || protocol == "https:") {
+                } else if (protocol == "http:" || protocol == "https:") {
                         let u = target.split('#')[0]
                         if (!u)
                                 return null;

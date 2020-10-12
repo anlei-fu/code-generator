@@ -2,7 +2,7 @@
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../model/CrawlTaskConfig");
 const { PageContext } = require("../PageContext");
-const { FILE } = require("../utils/file");
+const { FILE } = require("./../../libs");
 
 
 let api = "https://comment.api.163.com/api/v1/products/a2869674571f77b5a0867c3d71db5856/threads/";
@@ -12,9 +12,7 @@ let api = "https://comment.api.163.com/api/v1/products/a2869674571f77b5a0867c3d7
  */
 async function run(pageContext) {
         let $ = pageContext.$;
-        let matcher = pageContext.taskContext.urlMatcher;
         let builder = pageContext.pageResultBuilder;
-        let strUtils = pageContext.strUtils;
         let request = pageContext.httpClient;
 
         var data = {
@@ -46,7 +44,10 @@ async function run(pageContext) {
                 data.imgs.push($(e).attr("src"));
         });
 
+        builder.success();
 
+
+        FILE.write("1.html",pageContext.html);
         FILE.writeJson("163.json", data, true);
 
 }
@@ -63,7 +64,7 @@ async function main() {
 
         let context = await createPageContext(
                 taskConfig,
-                { url: "https://sports.163.com/20/1009/11/FOGC3GD100058780.html?clickfrom=w_sports" }
+                { url: "https://ent.163.com/20/0724/16/FIAKEN6G00039C3O.html" }
         );
 
         await run(context)

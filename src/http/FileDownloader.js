@@ -1,20 +1,20 @@
 
 const axios = require("axios");
 const iconv = require('iconv-lite');
-const { FILE } = require("./utils/file");
-const { LoggerSurpport } = require("./LoggerSurpport");
+const { FILE } = require("./../libs");
+const { LoggerSurpport } = require("./../logging");
 
-class ScriptFetcher extends LoggerSurpport {
+class FileDownloader extends LoggerSurpport {
 
         /**
-         * Constructor of ScriptFetcher
+         * Constructor of FileDownloader
          * 
          * @constructor
-         * @param {String} scriptFolder 
+         * @param {String} downloadFolder 
          */
-        constructor (scriptFolder) {
-                super("ScriptFetcher")
-                this._scriptFolder = scriptFolder;
+        constructor (downloadFolder) {
+                super("FileDownloader")
+                this._scriptFolder = downloadFolder;
         }
 
         /**
@@ -23,14 +23,14 @@ class ScriptFetcher extends LoggerSurpport {
          * @param {String} host
          * @param {String} file
          */
-        async fetch(host, file) {
+        async download(url, file,{headers={},timeout=10*1000,encoding="utf8"}) {
                 try {
-                        this.info(`dowloading ${file}`);
-                        let content = await this._download(`${host}/${file}`);
+                        this.info(`downloading ${file}`);
+                        let content = await this._downloadCore(url,{headers,timeout,encoding});
                         FILE.write(`${this._scriptFolder}/${file}`, content);
-                        this.info(`dowload ${file} succeed`);
+                        this.info(`download ${file} succeed`);
                 } catch (ex) {
-                        this.error(`dowload ${file} failed`, ex);
+                        this.error(`download ${file} failed`, ex);
                         throw ex;
                 }
         }
@@ -43,9 +43,9 @@ class ScriptFetcher extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        _download(url) {
+        _downloadCore(url,{headers,timeout,encoding}) {
                 return new Promise((resolve, reject) => {
-                        axios.default.get(url, this._createConfig())
+                        axios.default.get(url, this._createConfig({headers,timeout}))
                                 .then(
                                         res => {
                                                 let chunks = [];
@@ -54,7 +54,7 @@ class ScriptFetcher extends LoggerSurpport {
                                                 });
                                                 res.data.on('end', () => {
                                                         let buffer = Buffer.concat(chunks);
-                                                        let str = iconv.decode(buffer, "utf8");
+                                                        let str = iconv.decode(buffer, encoding);
                                                         resolve(str)
                                                 })
                                         }
@@ -70,14 +70,15 @@ class ScriptFetcher extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {import("axios").AxiosRequestConfig}
          */
-        _createConfig() {
+        _createConfig({headers,timeout}) {
                 return {
-                        timeout: 10000,
+                        timeout,
                         // proxy: this._context.config.proxy,
                         maxContentLength: 1024 * 1024 * 1024 * 10, // 1mb
                         responseType: 'stream',
+                        headers
                 }
         }
 }
 
-exports.ScriptFetcher = ScriptFetcher;
+exports.FileDownloader = FileDownloader;

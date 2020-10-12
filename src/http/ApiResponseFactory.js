@@ -1,5 +1,5 @@
-const { ApiResponse } = require("./model/ApiResponse");
-const { ApiResponseCode } = require("./constant/ApiResponseCode");
+const { ApiResponse } = require("./ApiResponse");
+const { ApiResponseCode } = require("./ApiResponseCode");
 
 exports.ApiResponseFactory = class ApiResponseFactory {
         static success(msg, data) {
