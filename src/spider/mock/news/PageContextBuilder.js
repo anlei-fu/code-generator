@@ -1,7 +1,7 @@
-const { CrawlTaskContext } = require("./../CrawlTaskContext");
-const { PageContext } = require("./../PageContext");
-const {CrawlTaskConfig} =require("./../model/CrawlTaskConfig");
-const {URL} =require("./../model/URL");
+const { CrawlTaskContext } = require("./../../CrawlTaskContext");
+const { PageContext } = require("./../../PageContext");
+const {CrawlTaskConfig} =require("./../../model/CrawlTaskConfig");
+const {URL} =require("./../../model/URL");
 
 /**
  * Create page context

@@ -46,6 +46,30 @@ class HttpClient extends Initiable {
                 return this._request({ url, params, method: "get" });
         }
 
+        async getJSONP(url, funcName) {
+                let resp;
+                try {
+                        resp = await this.get(url);
+                } catch (ex) {
+                        throw ex;
+                }
+
+                try {
+                        resp = resp.trim();
+                        if(resp.endsWith(";")){
+                        resp = resp.substr(0, resp.length - 2);
+                        }else{
+                                resp = resp.substr(0, resp.length - 1);
+                        }
+                        resp = resp.replace(`${funcName}(`, "");
+                        return JSON.parse(resp);
+                } catch (ex) {
+
+                }
+
+                return resp;
+        }
+
         /**
          * Do put request
          * 

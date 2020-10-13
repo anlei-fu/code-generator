@@ -59,7 +59,7 @@ main([
     "qianlongwang",
     //
     "hualongwang",
-    // 联合早报
+    // 联合早报(singapore)
     "lianhezaobao",
     //
     "qingnianbao",
@@ -71,6 +71,6 @@ main([
     "dazhongwang",
     // 闽南网
     "mingnanwang",
-    // 界面新闻
+    // 界面新闻 财经新媒体，由上海报业集团出品
     "jiemianxinwen",
 ])

@@ -1,5 +1,29 @@
 <script type="text/javascript">
 
+    async function reloadTask() {
+        try {
+            let resp = await post(`/ZyComplaintDetail/ReloadTask?startTime=${$("#s").val()}&endTime=${$("#e").val()}`);
+            $("#TaskId").empty();
+
+            resp.forEach(x => {
+                $(`<option value="${x.TaskId}">${x.TaskName}</option>`).appendTo($("#TaskId"));
+            });
+
+            if ($("#TaskId").next().is(".js-sSelect")) {
+                var width = $("#TaskId").next().attr("offsetWidth");
+                $("#TaskId").next().remove();
+                $("#TaskId").sSelect({ defaultWidth: width });
+            }
+
+        } catch (ex) {
+            console.log(ex);
+        }
+    }
+
+    $(() => {
+        $("#s").change(() => reloadTask());
+        $("#e").change(() => reloadTask());
+    });
 
 </script>
 <form id="mainForm" method="post">
@@ -10,7 +34,7 @@
                 <em class="required">*</em>实际返佣
             </td>
             <td class="textalign_l">
-                <input type="file" onchange="uploadFile(this.files[0])"/>
+                <input type="file" onchange="uploadFile(this.files[0])" />
             </td>
         </tr>
 </form>
