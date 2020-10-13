@@ -1,5 +1,5 @@
 const { TYPE } = require("./utils");
-// const { ArgTypeError } = require("./../error/ArgTypeError");
+const { ArgTypeError } = require("./../error");
 
 /**
  * To check there any null property of a object
@@ -33,25 +33,12 @@ function anyNull(target, ...params) {
 }
 
 /**
- * 
- * 
- * @param  {...any} targets 
- */
-function requireNotNull(...targets) {
-
-        targets.forEach(arg => {
-                if (typeof arg == undefined)
-                        throw new ReferenceError("element of array is null");
-        });
-}
-
-/**
  * To check is object null
  * 
  * @param {Any} target 
  * @param {[String]?} fields  when target is @type {Object} valid, represent fields of target to check
  */
-function requireFieldsNotNull(target, ...fields) {
+function requireNotNull(target, ...fields) {
         if (TYPE.isArray(target)) {
                 target.forEach(arg => {
                         if (typeof arg == undefined)
@@ -74,38 +61,37 @@ function requireFieldsNotNull(target, ...fields) {
                 throw new ReferenceError(`given target is null`);
 }
 
-// function requireNumber(value, ...fields) {
-//         if (TYPE.isArray(value)) {
-//                 value.forEach(arg => {
-//                         if (!TYPE.isNumber(arg))
-//                                 throw new ArgTypeError(`require a number a value ,but got a ${typeof value}`);
-//                 });
+function requireNumber(value, ...fields) {
+        if (TYPE.isArray(value)) {
+                value.forEach(arg => {
+                        if (!TYPE.isNumber(arg))
+                                throw new ArgTypeError(`require a number a value ,but got a ${typeof value}`);
+                });
 
-//                 return;
-//         }
+                return;
+        }
 
-//         if (TYPE.isObject(value)) {
-//                 fields.forEach(field => {
-//                         if (!TYPE.isNumber(value[field]))
-//                                 throw new ArgTypeError(`${field} require a number a value ,but got a ${typeof value[field]}`);
-//                 });
+        if (TYPE.isObject(value)) {
+                fields.forEach(field => {
+                        if (!TYPE.isNumber(value[field]))
+                                throw new ArgTypeError(`${field} require a number a value ,but got a ${typeof value[field]}`);
+                });
 
-//                 return;
-//         }
+                return;
+        }
 
-//         if (!TYPE.isNumber(value))
-//                 throw new ArgTypeError(`require a number a value ,but got a ${typeof value}`);
-// }
+        if (!TYPE.isNumber(value))
+                throw new ArgTypeError(`require a number a value ,but got a ${typeof value}`);
+}
 
-// function requireInstanceOf(instance, type) {
-//         if (!instance instanceof type)
-//                 throw new TypeError(`given instance ${typeof instance} is not from type ${type}`);
-// }
+function requireInstanceOf(instance, type) {
+        if (!instance instanceof type)
+                throw new TypeError(`given instance ${typeof instance} is not from type ${type}`);
+}
 
 exports.validateUtils = {
         anyNull,
         requireNotNull,
-        requireFieldsNotNull
-        // requireNumber,
-        // requireInstanceOf
+        requireNumber,
+        requireInstanceOf
 }

@@ -1,5 +1,5 @@
 const { CrawlerConfig } = require("./model/CrawlerConfig");
-const { JsManager } = require("./JsManager");
+const { JsManager } = require("./../file-manager");
 const { ResultReporter } = require("./ResultReporter");
 class CrawlerContext {
         /**
@@ -23,7 +23,7 @@ class CrawlerContext {
                 /**
                  * use to manage script
                  */
-                this.jsManager = new JsManager(config.scriptDir, this);
+                this.jsManager = new JsManager(config.scriptDir);
 
                 /**
                  * the master host that available got through master heartbeat

@@ -175,6 +175,18 @@ function deepExtend(self, other) {
 }
 
 /**
+ * 
+ * 
+ * @param {Object} target 
+ * @param {String} key 
+ * @param {any} value 
+ */
+function setIfAbsent(target,key,value){
+        if(!target[key])
+          target[key]=value;
+}
+
+/**
  * Colone object
  * 
  * @param {Object} target 
@@ -368,7 +380,8 @@ exports.OBJECT = {
         getValue,
         mapToObject,
         text,
-        export_
+        export_,
+        setIfAbsent
 }
 
 /*--------------------------------------------------------------------type----------------------------------------------------------------------------*/

@@ -171,7 +171,7 @@ class PageResultBuilder {
                 this.pageContext.$("a").each((i, e) => {
                         let href = this.pageContext.$(e).attr("href");
                         let full = this.pageContext.urlResolver.resolve(href);
-                        if (full && this.pageContext.taskContext.urlMatcher.match(full.url)) {
+                        if (full && this.pageContext.taskContext.urlMatcher.match(full)) {
                                this.newUrl(full);
                         }
                 });

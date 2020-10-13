@@ -1,9 +1,9 @@
 const { CrawlerTaskRunner } = require("./CrawlTaskRunner");
 const { CrawlerContext } = require("./CrawlerContext");
-const { Controller } = require("./Controller");
+const { Controller } = require("./../http");
 const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
 const { MasterHeartbeat } = require("./model/MasterHeartbeat");
-const { validateUtils } = require("./utils/validate-utils");
+const { validateUtils } = require("./../libs");
 
 const API = {
         RUN: "/run",

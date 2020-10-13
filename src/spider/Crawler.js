@@ -1,9 +1,9 @@
-const { FILE } = require("./utils/file");
+const { FILE } = require("./../libs");
 const { TaskController } = require("./TaskController");
-const { RestService } = require("./RestService");
+const { RestService } = require("./../http");
 const { CrawlerContext } = require("./CrawlerContext");
-const { validateUtils } = require("./utils/validate-utils");
-const { LoggerSurpport } = require("./LoggerSurpport");
+const { validateUtils } = require("./../libs");
+const { LoggerSurpport ,LoggerFactory} = require("./../logging");
 
 class Crawler extends LoggerSurpport {
         constructor () {
@@ -25,9 +25,14 @@ class Crawler extends LoggerSurpport {
                         "scriptDir"
                 );
 
+                if(config.debug)
+                    LoggerFactory.allowInfos(".*");
+
+                LoggerFactory.useFileAppender(config.logDir);
+
                 this._context = new CrawlerContext(config);
                 this._restservice = new RestService(config.port, [new TaskController()]);
-                this._restservice.init(this._context);55
+                this._restservice.init(this._context);
                 this._restservice.start();
                 this.info(`crawler started id is ${config.uniqueId} and ip is ${config.ip}`);
         }

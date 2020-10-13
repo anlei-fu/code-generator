@@ -9,18 +9,18 @@ class UrlMatcher {
         /**
          * Check is url matched with regexes
          * 
-         * @param {String} url 
+         * @param {import { URL } from "./model/URL";} url 
          * @returns {Boolean}
          */
         match(url) {
-                if(!url)
+                if(!url||!url.url)
                   return false;
 
                 if (this.exps.length == 0)
                         return true;
 
                 for (const exp of this.exps) {
-                        if (exp.test(url))
+                        if (exp.test(url.url))
                                 return true;
                 }
 

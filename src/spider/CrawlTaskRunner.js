@@ -1,16 +1,15 @@
+const { CrawlerContext } = require("./CrawlerContext");
 const { CrawlTaskConfig } = require("./model/CrawlTaskConfig");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
-const { FailRecorder } = require("./FailRecorder");
-const { SpeedCaculator } = require("./SpeedCaculator");
-const { DelayCaculator } = require("./DelayCaculator");
-const { LoggerSurpport } = require("./LoggerSurpport");
-const { CrawlTaskResultBuilder, CrawlTaskResult } = require("./model/CrawlTaskResult");
-const { CrawlerContext } = require("./CrawlerContext");
 const { PageContext } = require("./PageContext");
+const { SpeedCaculator } = require("./SpeedCaculator");
+const { DelayCaculator,FailRecorder } = require("./../compute");
+const { LoggerSurpport } = require("./../logging");
+const { CrawlTaskResultBuilder, CrawlTaskResult } = require("./model/CrawlTaskResult");
 
 const { TaskRunnerStatus } = require("./constant/TaskRunnerStatus");
 const { PageResult } = require("./constant/PageResult");
-const { ThreadUtils } = require("./utils/thread-utils");
+const { ThreadUtils } = require("./../libs");
 
 class CrawlerTaskRunner extends LoggerSurpport {
         /**
@@ -117,7 +116,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
          */
         async _loadScript(scriptPath) {
                 try {
-                        this._main = await this._crawlerContext.jsManager.getMain(scriptPath);
+                        this._main = await this._crawlerContext.jsManager.getMain(this._crawlerContext.fileHost,scriptPath);
                 } catch (ex) {
                         this.error(`load script(${scriptPath}) faield`, ex);
                         throw ex;
@@ -137,7 +136,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         return;
                 }
 
-                // over maxconcurrecy
+                // over max concurrecy
                 if (this._currentRunning > this._taskContext.taskConfig.urlMaxConcurrency) {
                         this._schedule(false);
                         this.info(`failed to crawl, cause task(${this._taskContext.taskConfig.taskId}) over max concurrency!`);
@@ -171,7 +170,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                         this.error(`crawl url(${url.url}) failed`, ex);
                 }
 
-                // release browser page if need
+                // release browser page if used
                 pageContext.release();
 
                 let pageResult = pageContext.pageResultBuilder.build();
@@ -229,7 +228,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                                 this._status = TaskRunnerStatus.BLOCKED;
                                 this._taskResultBuilder.message("over max failed");
                                 this.info(
-                                        `over max failed, total :${this._failRecorder.totalFail},` +
+                                        `over max failed, total :${this._failRecorder.totalFailed},` +
                                         `conticuously fail:${this._failRecorder.continuouslyFailedCount}`
                                 );
                         }

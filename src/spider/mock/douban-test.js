@@ -52,8 +52,7 @@ async function run(pageContext) {
                 }
         });
 
-        FILE.writeJson("douban.json",data,true);
-
+        FILE.writeJson("./output/douban.json",builder.build())
       
 }
 

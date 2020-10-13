@@ -2,5 +2,7 @@
         "ip": "127.0.0.1",
         "port": 10051,
         "uniqueId": 123456,
-        "scriptDir": "./script"
+        "scriptDir": "D:/project/code-generator/src/spider/script",
+        "logDir": "./log",
+        "debug": true
 }

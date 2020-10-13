@@ -1,11 +1,10 @@
 const axios = require("axios");
 const iconv = require('iconv-lite');
-const { OBJECT } = require("./utils/utils");
-const { STR } = require("./utils/str");
+const { OBJECT,STR } = require("./../libs");
 const { DownloadResult } = require("./model/DownloadResult");
 const { URL } = require("./model/URL");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
-const {LoggerSurpport} =require("./LoggerSurpport");
+const { LoggerSurpport } = require("./../logging");
 
 const ERROR_MAP = {
         notExists: {
@@ -38,7 +37,7 @@ class Downloader extends LoggerSurpport {
          * @constructor
          * @param {CrawlTaskContext} context 
          */
-        constructor (context) {
+        constructor(context) {
                 super("Downloader");
                 this._context = context;
         }
@@ -50,17 +49,18 @@ class Downloader extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        async download(url, headers) {
+        async download(url, headers,encoding) {
                 try {
-                        if(!url.url||!(url.url.startsWith("http://")||url.url.startsWith("https://"))){
-                            return  {
-                                    status:404,
-                            };
+                        if (!url.url || !(url.url.startsWith("http://") || url.url.startsWith("https://"))) {
+                                return {
+                                        status: 404,
+                                };
                         }
-                         
-                        return await this._downloadCore(url, headers);
+
+                        return await this._downloadCore(url, headers,encoding);
                 } catch (ex) {
-                        this.error(`download ${url.url} failed`,ex);
+                        console.log(ex);
+                        this.error(`download ${url.url} failed`, ex);
                         return this._getErrorResp(ex.message);
                 }
         }
@@ -73,11 +73,13 @@ class Downloader extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        _downloadCore(url, headers) {
+        _downloadCore(url, headers,encoding) {
+                encoding=encoding||this._context.taskConfig.encoding;
+
                 return new Promise((resolve, reject) => {
                         let axiosConfig = this._createConfig(url, headers);
-                        let path =url.query?`${url.url}?${url.query}`:url.url;
-                         path =this._encodeUrl(path);
+                        let path = url.query ? `${url.url}?${url.query}` : url.url;
+                        path = this._encodeUrl(path);
                         axios.default.get(path, axiosConfig)
                                 .then(
                                         res => {
@@ -87,7 +89,11 @@ class Downloader extends LoggerSurpport {
                                                 });
                                                 res.data.on('end', () => {
                                                         let buffer = Buffer.concat(chunks);
-                                                        let str = iconv.decode(buffer, this._context.taskConfig.encoding || "utf8");
+                                                        let content= res.headers["content-type"];
+                                                        if(content&&content.toLowerCase().includes("charset")){
+                                                            encoding=this._getEncoding(encoding,content);
+                                                        }
+                                                        let str = iconv.decode(buffer,  encoding || "utf8");
                                                         resolve({ html: str, status: res.status })
                                                 })
                                         }
@@ -95,10 +101,23 @@ class Downloader extends LoggerSurpport {
                 })
         }
 
-        _encodeUrl(url){
-              url=  unescape(url);
-              url =encodeURI(url);
-              return url;
+        _encodeUrl(url) {
+                url = unescape(url);
+                url = encodeURI(url);
+                return url;
+        }
+
+        _getEncoding(encoding,content){
+                content=content.toLowerCase();
+                if (content.includes("utf")) {
+                        encoding = "utf8";
+                } else if (content.includes("gbk")) {
+                        encoding = "gbk";
+                } else if (content.includes("gb2312")) {
+                        encoding = "gb2312";
+                }
+
+                return encoding;
         }
 
         /**
@@ -113,8 +132,8 @@ class Downloader extends LoggerSurpport {
                 headers = headers || {};
 
                 // header referer 
-                if (url.referUrl){
-                        url.referUrl=this._encodeUrl(url.referUrl);
+                if (url.referUrl) {
+                        url.referUrl = this._encodeUrl(url.referUrl);
                         OBJECT.setIfAbsent(headers, "Referer", url.referUrl);
                 }
 
