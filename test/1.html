@@ -1,29 +1,4 @@
-@model DMSystem.Model.ZyCardMonthRebateItemModel
 <script type="text/javascript">
-    $(
-        () => {
-            $('tr', 'div._content table').hover(function () {
-                if ($(this).is("[tag=fixed]")) return false;
-                var _color = $(this).parents("table").attr('hovercolor') || '#ebf5f8';
-                $(this).css('background-color', _color);
-            }, function () {
-                if ($(this).is("[tag=fixed]")) return false;
-                $(this).css('background-color', '#FFFFFF');
-            });
-
-            $("div._content tr").click(function () {
-                //            if ($(this).is("[tag=fixed]")) // 点击的是它自己
-                //                return false;
-                if ($(this).is("[bad=yes]")) return false;
-
-                if ($(this).siblings("[tag=fixed]").length > 0) {
-                    $(this).siblings("[tag=fixed]")
-                        .css("background-color", "#FFFFFF")
-                        .removeAttr("tag");
-                }
-                $(this).css("background-color", "#D3FF93").attr("tag", "fixed");
-            })
-        });
 
 
 </script>
@@ -35,17 +10,7 @@
                 <em class="required">*</em>实际返佣
             </td>
             <td class="textalign_l">
-                <input class="widthinput" type="text" name="ActualRebate" value="@Model.CurrentModel.ActualRebate"
-                    style="width:250px" />
+                <input type="file" onchange="uploadFile(this.files[0])"/>
             </td>
         </tr>
-        <tr>
-            <td class="textalign_r">
-                备注
-            </td>
-            <td class="textalign_l">
-                <textarea name="Remark" rows="4" cols="20" style="width: 250px">@Model.CurrentModel.Remark</textarea>
-            </td>
-        </tr>
-    </table>
 </form>

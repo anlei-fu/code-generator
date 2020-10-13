@@ -32,9 +32,7 @@ async function run(pageContext) {
         data.content=$("body > div.qq_conent.clearfix > div.LEFT > div.content.clearfix > div.content-article").text();
         data.comment=$("#cmtNum").text();
         data.follower=$("#bottom_sina_comment > div.sina-comment-form.sina-comment-top > div.hd.clearfix > span.count > em:nth-child(3) > a").text();
-      
-
-
+        
         FILE.writeJson("qq-news.json",data,true);
       
 }

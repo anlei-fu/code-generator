@@ -248,12 +248,12 @@ DM.project("DMSystem")
 
 function test() {
    let config = DM
-      .add(false)
-      .edit(false)
-      .delete(false)
+      .add(true)
+      .edit(true)
+      .delete(true)
       .build();
 
-   init(all.dmApiFailedLog, config);
+   init(all.zyComplainTask, config);
 }
 
 test();
