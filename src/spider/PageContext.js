@@ -15,7 +15,7 @@ class PageContext extends LoggerSurpport {
          * @param {CrawlTaskContext} taskContext 
          * @param {URL} url 
          */
-        constructor(taskContext, url) {
+        constructor (taskContext, url) {
                 super("pageContext");
 
                 /**
@@ -98,20 +98,26 @@ class PageContext extends LoggerSurpport {
         }
 
         async _checkEncoding() {
-                let encoding ;
+                let encoding;
                 let end = false;
                 this.$("meta").each((i, e) => {
                         if (end)
                                 return;
 
-                        let content = this.$(e).attr("content");
-                        if (content && content.toLowerCase().includes("charset")) {
-                                content = content.toLowerCase();
-                                if (content.includes("utf")) {
+                        let charsetStr = this.$(e).attr("charset");
+                        if (!charsetStr) {
+                                let content = this.$(e).attr("content");
+                                if (content && content.toLowerCase().includes("charset"))
+                                        charsetStr = content;
+                        }
+
+                        if (charsetStr) {
+                                charsetStr = charsetStr.toLowerCase();
+                                if (charsetStr.includes("utf")) {
                                         encoding = "utf8";
-                                } else if (content.includes("gbk")) {
+                                } else if (charsetStr.includes("gbk")) {
                                         encoding = "gbk";
-                                } else if (content.includes("gb2312")) {
+                                } else if (charsetStr.includes("gb2312")) {
                                         encoding = "gb2312";
                                 }
                                 end = true;

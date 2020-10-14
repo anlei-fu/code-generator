@@ -1,4 +1,6 @@
-
+/**
+ * 澎湃新闻  https://www.thepaper.cn/
+ */
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
 const { PageContext } = require("../../PageContext");
@@ -13,7 +15,7 @@ let api = "";
  * @param {Url} url 
  * @param {HttpClient} request 
  */
-function getCommet(url, request) {
+async function getCommet(url, request) {
         try {
                 let segs = url.url.split("?")[0].split("/");
                 let resp = await request.get(`${api}${segs[segs.length - 1].replace(".html", "")}`);
@@ -35,17 +37,15 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#epContentLeft > h1").text();
-        data.author = $("#ne_article_source").text();
-        $("#ne_article_source").remove();
-        data.date = $("#epContentLeft > div.post_time_source").text();
-        $("#contain > div > div.article_box > div.statement").remove();
-        data.content = $("#endText").text();
-        $("#endText").find("img").each((i, e) => {
+        data.title = $("body > div.bdwd.main.clearfix > div.main_lt > div.newscontent > h1").text();
+        data.author = $("body > div.bdwd.main.clearfix > div.main_lt > div.newscontent > div.news_about > p:nth-child(2)").text();
+        data.date = $("body > div.bdwd.main.clearfix > div.main_lt > div.newscontent > div.news_about > p:nth-child(2)").text();
+        data.content = $("body > div.bdwd.main.clearfix > div.main_lt > div.newscontent > div.news_txt").text();
+        $("body > div.bdwd.main.clearfix > div.main_lt > div.newscontent > div.news_txt").find("img").each((i, e) => {
                 data.imgs.push($(e).attr("src"));
         });
 
-        data.comment = getCommet(pageContext.url, pageContext.httpClient);
+        // data.comment = getCommet(pageContext.url, pageContext.httpClient);
 
         FILE.write("./output/thepaper.html", pageContext.html);
         FILE.writeJson("./output/thepaper.json", data, true);
@@ -65,7 +65,7 @@ async function main() {
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "" }
+                { url: "https://www.thepaper.cn/newsDetail_forward_9555202" }
         );
 
         await run(context)

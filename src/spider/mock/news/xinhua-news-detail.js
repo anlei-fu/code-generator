@@ -1,4 +1,6 @@
-
+/**
+ * 新华网 http://www.xinhuanet.com/
+ */
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
 const { PageContext } = require("../../PageContext");

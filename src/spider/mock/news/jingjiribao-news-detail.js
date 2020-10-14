@@ -1,4 +1,6 @@
-
+/**
+ * 经济日报 http://www.ce.cn/
+ */
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
 const { PageContext } = require("../../PageContext");
@@ -13,7 +15,7 @@ let api = "";
  * @param {Url} url 
  * @param {HttpClient} request 
  */
-function getCommet(url, request) {
+async function getCommet(url, request) {
         try {
                 let segs = url.url.split("?")[0].split("/");
                 let resp = await request.get(`${api}${segs[segs.length - 1].replace(".html", "")}`);
@@ -35,20 +37,18 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#epContentLeft > h1").text();
-        data.author = $("#ne_article_source").text();
-        $("#ne_article_source").remove();
-        data.date = $("#epContentLeft > div.post_time_source").text();
-        $("#contain > div > div.article_box > div.statement").remove();
-        data.content = $("#endText").text();
-        $("#endText").find("img").each((i, e) => {
+        data.title = $("#articleTitle").text();
+        data.author = $("#articleSource").text();
+        data.date = $("#articleTime").text();
+        data.content = $("#articleText").text();
+        $("#articleText").find("img").each((i, e) => {
                 data.imgs.push($(e).attr("src"));
         });
 
-        data.comment = getCommet(pageContext.url, pageContext.httpClient);
+      //  data.comment = getCommet(pageContext.url, pageContext.httpClient);
 
-        FILE.write("./output/jinjiribao.html", pageContext.html);
-        FILE.writeJson("./output/jinjiribao.json", data, true);
+        FILE.write("./output/jingjiribao.html", pageContext.html);
+        FILE.writeJson("./output/jingjiribao.json", data, true);
 }
 
 async function main() {
@@ -65,7 +65,7 @@ async function main() {
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "" }
+                { url: "http://military.people.com.cn/n1/2020/1014/c1011-31891475.html" }
         );
 
         await run(context)
