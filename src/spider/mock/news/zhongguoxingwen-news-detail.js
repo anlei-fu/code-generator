@@ -1,4 +1,6 @@
-
+/**
+ * 中新网 http://www.chinanews.com/
+ */
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
 const { PageContext } = require("../../PageContext");
@@ -13,7 +15,7 @@ let api = "";
  * @param {Url} url 
  * @param {HttpClient} request 
  */
-function getCommet(url, request) {
+async function getCommet(url, request) {
         try {
                 let segs = url.url.split("?")[0].split("/");
                 let resp = await request.get(`${api}${segs[segs.length - 1].replace(".html", "")}`);
@@ -35,17 +37,15 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#epContentLeft > h1").text();
-        data.author = $("#ne_article_source").text();
-        $("#ne_article_source").remove();
-        data.date = $("#epContentLeft > div.post_time_source").text();
-        $("#contain > div > div.article_box > div.statement").remove();
-        data.content = $("#endText").text();
-        $("#endText").find("img").each((i, e) => {
+        data.title = $("#cont_1_1_2 > h1").text();
+        data.author = $("#cont_1_1_2 > div.left-time > div").text();
+        data.date = $("#cont_1_1_2 > div.left-time > div").text();
+        data.content = $("#cont_1_1_2 > div.left_zw").text();
+        $("#cont_1_1_2 > div.left_zw").find("img").each((i, e) => {
                 data.imgs.push($(e).attr("src"));
         });
 
-        data.comment = getCommet(pageContext.url, pageContext.httpClient);
+        // data.comment = getCommet(pageContext.url, pageContext.httpClient);
 
         FILE.write("./output/zhongguoxingwen.html", pageContext.html);
         FILE.writeJson("./output/zhongguoxingwen.json", data, true);
@@ -65,7 +65,7 @@ async function main() {
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "" }
+                { url: "https://www.chinanews.com/cj/2020/10-14/9312194.shtml" }
         );
 
         await run(context)

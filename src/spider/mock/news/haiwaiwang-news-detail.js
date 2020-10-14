@@ -13,7 +13,7 @@ let api = "";
  * @param {Url} url 
  * @param {HttpClient} request 
  */
-function getCommet(url, request) {
+async function getCommet(url, request) {
         try {
                 let segs = url.url.split("?")[0].split("/");
                 let resp = await request.get(`${api}${segs[segs.length - 1].replace(".html", "")}`);
@@ -35,17 +35,27 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#epContentLeft > h1").text();
-        data.author = $("#ne_article_source").text();
-        $("#ne_article_source").remove();
-        data.date = $("#epContentLeft > div.post_time_source").text();
-        $("#contain > div > div.article_box > div.statement").remove();
-        data.content = $("#endText").text();
-        $("#endText").find("img").each((i, e) => {
-                data.imgs.push($(e).attr("src"));
+        data.title = $("body > div.showpage.m10 > div.show_body.clearfix > div.show_text.fl > h1").text();
+        data.author = $("#\33 1893747 > span:nth-child(2)").text();
+        data.date = $("").text();
+        data.content = $("").text();
+        $("").find("img").each((i, e) => {
+                let src = $(e).attr("src");
+                if (src) {
+                        let resolved = pageContext.urlResolver.resolve(src);
+                        if (resolved)
+                                src = resolved.url;
+                }
+
+                if (src) {
+                        data.imgs.push({
+                                src,
+                                alt: $(e).attr("alt")
+                        });
+                }
         });
 
-        data.comment = getCommet(pageContext.url, pageContext.httpClient);
+        // data.comment = getCommet(pageContext.url, pageContext.httpClient);
 
         FILE.write("./output/haiwaiwang.html", pageContext.html);
         FILE.writeJson("./output/haiwaiwang.json", data, true);
@@ -61,7 +71,7 @@ async function main() {
                 .crawlType(1)
                 .build();
 
-        
+
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url

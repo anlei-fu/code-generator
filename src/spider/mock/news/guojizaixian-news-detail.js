@@ -1,4 +1,6 @@
-
+/**
+ * 国际在线 http://www.cri.cn/
+ */
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
 const { PageContext } = require("../../PageContext");
@@ -13,7 +15,7 @@ let api = "";
  * @param {Url} url 
  * @param {HttpClient} request 
  */
-function getCommet(url, request) {
+async function getCommet(url, request) {
         try {
                 let segs = url.url.split("?")[0].split("/");
                 let resp = await request.get(`${api}${segs[segs.length - 1].replace(".html", "")}`);
@@ -35,17 +37,27 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#epContentLeft > h1").text();
-        data.author = $("#ne_article_source").text();
-        $("#ne_article_source").remove();
-        data.date = $("#epContentLeft > div.post_time_source").text();
-        $("#contain > div > div.article_box > div.statement").remove();
-        data.content = $("#endText").text();
-        $("#endText").find("img").each((i, e) => {
-                data.imgs.push($(e).attr("src"));
+        data.title = $("#atitle").text();
+        data.author = $("#asource").text();
+        data.date = $("#apublishtime").text();
+        data.content = $("#abody").text();
+        $("#abody").find("img").each((i, e) => {
+                let src = $(e).attr("src");
+                if (src) {
+                        let resolved = pageContext.urlResolver.resolve(src);
+                        if (resolved)
+                                src = resolved.url;
+                }
+
+                if (src) {
+                        data.imgs.push({
+                                src,
+                                alt: $(e).attr("alt")
+                        });
+                }
         });
 
-        data.comment = getCommet(pageContext.url, pageContext.httpClient);
+        // data.comment = getCommet(pageContext.url, pageContext.httpClient);
 
         FILE.write("./output/guojizaixian.html", pageContext.html);
         FILE.writeJson("./output/guojizaixian.json", data, true);
@@ -61,11 +73,11 @@ async function main() {
                 .crawlType(1)
                 .build();
 
-        
+
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "" }
+                { url: "http://news.cri.cn/20200928/cd17b569-f9ad-fb2a-43fd-b5dc900bebd6.html" }
         );
 
         await run(context)

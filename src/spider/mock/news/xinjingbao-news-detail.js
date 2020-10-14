@@ -1,11 +1,13 @@
-
+/**
+ * 新京报 http://www.bjnews.com.cn/
+ */
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
 const { PageContext } = require("../../PageContext");
 const { FILE } = require("./../../../libs");
 
 // TODO: find comment api
-let api = "";
+let api = "http://www.bjnews.com.cn/webapi/getupnum?id=@id&t=0.08300153604061511&callback_getupnum=jQuery17104925893491780924_1602656119331&_=1602656119459";
 
 /**
  * Get comment count
@@ -13,13 +15,14 @@ let api = "";
  * @param {Url} url 
  * @param {HttpClient} request 
  */
-function getCommet(url, request) {
+async function getCommet(url, request) {
         try {
                 let segs = url.url.split("?")[0].split("/");
-                let resp = await request.get(`${api}${segs[segs.length - 1].replace(".html", "")}`);
-                return resp.cmtCount;
+                let id=segs[segs.length - 1].replace(".html", "");
+                let path =api.replace("@id",id);
+                let resp = await request.getJSONP(path,"jQuery17104925893491780924_1602656119331");
+                return resp;
         } catch (ex) {
-                console.error(ex);
         }
 }
 
@@ -35,17 +38,18 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#epContentLeft > h1").text();
-        data.author = $("#ne_article_source").text();
-        $("#ne_article_source").remove();
-        data.date = $("#epContentLeft > div.post_time_source").text();
-        $("#contain > div > div.article_box > div.statement").remove();
-        data.content = $("#endText").text();
-        $("#endText").find("img").each((i, e) => {
+        data.title = $("#main > div.fl.nleft > div.title > h1").text();
+        data.author = $("#main > div.fl.nleft > div.ntit > div.fl.ntit_l > span.author").text();
+        data.date = $("#main > div.fl.nleft > div.ntit > div.fl.ntit_l > span.date").text();
+        data.content = $("#main > div.fl.nleft > div.content").text();
+        data.summary=$("#daoy").text();
+        $("#main > div.fl.nleft > div.content").find("img").each((i, e) => {
                 data.imgs.push($(e).attr("src"));
         });
 
-        data.comment = getCommet(pageContext.url, pageContext.httpClient);
+        let resp = await getCommet(pageContext.url, pageContext.httpClient);
+        if(resp&&resp.upnum)
+           data.upVote=resp.upnum;
 
         FILE.write("./output/xinjingbao.html", pageContext.html);
         FILE.writeJson("./output/xinjingbao.json", data, true);
@@ -65,7 +69,7 @@ async function main() {
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "" }
+                { url: "http://www.bjnews.com.cn/inside/2020/10/13/776852.html" }
         );
 
         await run(context)

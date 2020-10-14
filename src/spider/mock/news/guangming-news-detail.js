@@ -13,7 +13,7 @@ let api = "";
  * @param {Url} url 
  * @param {HttpClient} request 
  */
-function getCommet(url, request) {
+async function getCommet(url, request) {
         try {
                 let segs = url.url.split("?")[0].split("/");
                 let resp = await request.get(`${api}${segs[segs.length - 1].replace(".html", "")}`);
@@ -35,17 +35,25 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#epContentLeft > h1").text();
-        data.author = $("#ne_article_source").text();
-        $("#ne_article_source").remove();
-        data.date = $("#epContentLeft > div.post_time_source").text();
-        $("#contain > div > div.article_box > div.statement").remove();
-        data.content = $("#endText").text();
-        $("#endText").find("img").each((i, e) => {
-                data.imgs.push($(e).attr("src"));
+        data.title = $("body > div.g-main > div.m-title-box > h1").text();
+        data.author = $("body > div.g-main > div.m-title-box > div > div.m_tips > span.m-con-source > a").text();
+        data.date = $("body > div.g-main > div.m-title-box > div > div.m_tips > span.m-con-time").text();
+        data.content = $("#article_inbox > div.u-mainText").text();
+        $("#article_inbox > div.u-mainText").find("img").each((i, e) => {
+                let src =$(e).attr("src");
+                if(src){
+                        let resolved =pageContext.urlResolver.resolve(src);
+                        if(resolved)
+                          src=resolved.url;
+                }
+                
+                data.imgs.push({
+                        src,
+                        alt:$(e).attr("alt")
+                });
         });
 
-        data.comment = getCommet(pageContext.url, pageContext.httpClient);
+      //  data.comment = getCommet(pageContext.url, pageContext.httpClient);
 
         FILE.write("./output/guangming.html", pageContext.html);
         FILE.writeJson("./output/guangming.json", data, true);
@@ -65,7 +73,7 @@ async function main() {
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "" }
+                { url: "https://health.gmw.cn/2020-10/14/content_34266969.htm" }
         );
 
         await run(context)
