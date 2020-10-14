@@ -8,9 +8,8 @@
  */
 
 const mysql = require("mysql");
-const { NamingStrategy } = require("./../../../../../libs/naming-strategy");
-const { OBJECT } = require("./../../../../../libs/utils");
-const {LoggerFactory}=require("../../../logging/logger-factory");
+const { OBJECT,NamingStrategy } = require("../../../libs");
+const {LoggerFactory}=require("./../../../logging");
 
 const LOG=LoggerFactory.getLogger("mysql-excutor");
 

@@ -72,7 +72,7 @@ async function main() {
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "https://www.jiemian.com/article/5104472.html" }
+                { url: "https://www.jiemian.com/article/5107227.html" }
         );
 
         await run(context)
