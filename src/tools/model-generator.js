@@ -21,25 +21,19 @@ function main(modelName, items, withBuilder = true) {
         if (withBuilder)
                 content += builderGenerator(modelName, items);
 
-        FILE.write(`./output/${modelName}.js`, content);
+        FILE.write(`C:/Users/Administrator/Desktop/Projects/code-generator/src/rest-script/${modelName}.js`, content);
         return content;
 
 }
 
 /******************************************main**********************************8888*/
 main(
-        "GenerateConfig",
+        "ScriptServiceConfig",
         [
-                "project",
-                "root",
-                "abbrOfProject",
-                "dictionaryServiceName",
-                "dictionaryMethod",
-                "upperTowLetter",
-                "edit",
-                "delete",
-                "batch",
-                "add",
-                "exportExcel"
+                "port",
+                "scriptDir",
+                "logDir",
+                "apiUrl",
+                "fileHost"
         ],
 );

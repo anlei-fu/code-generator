@@ -1,6 +1,4 @@
-/**
- * 经济日报 http://www.ce.cn/
- */
+
 const { createPageContext } = require("./PageContextBuilder");
 const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
 const { PageContext } = require("../../PageContext");
@@ -37,18 +35,30 @@ async function run(pageContext) {
         };
 
         data.imgs = [];
-        data.title = $("#articleTitle").text();
-        data.author = $("#articleSource").text();
-        data.date = $("#articleTime").text();
-        data.content = $("#articleText").text();
-        $("#articleText").find("img").each((i, e) => {
-                data.imgs.push($(e).attr("src"));
+        data.title = $("body > div.layout.mg.articleName > h1").text();
+        data.author = $("body > div.layout.mg.articleName > div > div.tip.fl > a").text();
+        data.date = $("body > div.layout.mg.articleName > div > div.tip.fl > span").text();
+        data.content = $("body").find("div.w600 > div.art_context").text();
+        $("body").find("div.w600 > div.art_context").find("img").each((i, e) => {
+                let src = $(e).attr("src");
+                if (src) {
+                        let resolved = pageContext.urlResolver.resolve(src);
+                        if (resolved)
+                                src = resolved.url;
+                }
+
+                if (src) {
+                        data.imgs.push({
+                                src,
+                                alt: $(e).attr("alt")
+                        });
+                }
         });
 
-      //  data.comment = getCommet(pageContext.url, pageContext.httpClient);
+        // data.comment = getCommet(pageContext.url, pageContext.httpClient);
 
-        FILE.write("./output/jingjiribao.html", pageContext.html);
-        FILE.writeJson("./output/jingjiribao.json", data, true);
+        FILE.write("./output/hexunwang.html", pageContext.html);
+        FILE.writeJson("./output/hexunwang.json", data, true);
 }
 
 async function main() {
@@ -61,11 +71,11 @@ async function main() {
                 .crawlType(1)
                 .build();
 
-        
+
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: "http://www.ce.cn/macro/more/202010/15/t20201015_35890575.shtml" }
+                { url: "http://house.hexun.com/2020-10-15/202229140.html" }
         );
 
         await run(context)

@@ -7,7 +7,6 @@ class TimerService extends Service {
                 super("TimerService");
                 this._jobs = new Map();
                 this._jobTimeout = new Map();
-
                 this._context = null;
         }
 

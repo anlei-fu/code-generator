@@ -81,11 +81,25 @@ main([
     "jinchuwang",
     // 金羊网
     "dongbeiwang",
+    // 北方网
     "beifangwang",
+    // 大河网
     "dahewang",
+    // 四川新闻网
     "sichuanxinwenwang",
+    // 财新网
     "caixinwang",
+    // 和讯
     "hexunwang",
+    // 中金在线
     "zhongjinzaixian",
-    "dongfangcaifuwang"
-])
+    // 东方财富
+    "dongfangcaifuwang",
+    // 第一财金
+    "diyicaijing",
+    // 中证网
+    "zhongzhengwang",
+    // 上游新闻 重庆日报
+    "shangyouxinwen",
+    "shangguanxinwen",
+])  
