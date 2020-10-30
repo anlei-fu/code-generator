@@ -8,7 +8,6 @@ class GenerateConfigGenerator {
                 let builder = new GenerateConfigBuilder();
                 Object.keys(tables).forEach(table => {
                         items[table] = builder.all()
-                                .noBatch()
                                 .noDetail()
                                 .noGetAll()
                                 .noCount()

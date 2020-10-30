@@ -1,0 +1,292 @@
+<template>
+  <div>
+    <div>
+      <span style="float:right">
+        <Icon type="md-settings" size="20" @click="showSetting" />
+      </span>
+    </div>
+    <div class="filter">
+      <% if(timeRange){%>
+        <MyDateRange v-model="timeRange"/>
+        <%}%>
+
+      <% selects.forEach(s=>{%>
+      <MySelect v-show="show<%=s.upperModelName%>" v-model="query.<%=s.model%>" title="<%=s.title||s.enum%>" enum="<%=s.enum%>" width="200px" />
+      <%});%>
+
+      <% if(radioOptions.length!=0) {%>
+      <span v-show="showRadioGroup">
+      <MyRadioGroup  v-model="radioKey" :options="radioOptions" width="200px" />
+      <Input v-model="keyword" style="width:200px;"/>
+      </span>
+      <% } %>
+
+      <QueryButton @click="getData(true)" />
+      <% if(add){%>
+      <CreateButton @click="showAdd" />
+      <%}%>
+
+      <% if(batchEdit){%>
+      <BatchEditButton @click="batchEdit" />
+      <%}%>
+
+      <% if(batchDelete){%>
+      <BatchDeleteButton @click="batchDelete" />
+      <%}%>
+    </div>
+    <ListBody
+      ref="table"
+      filter
+      border
+      stripe
+      columnFilter
+      :columns="pageSetting.table.defaultShowingColumns"
+      :datas="data.list"
+      <% if(_delete){%>
+      @delete="showDelete"
+      <%}%>
+
+      <% if(edit){%>
+      @edit="showEdit"
+      <%}%>
+    />
+    <div class="pager">
+      <MyPager
+        :current="query.pageIndex"
+        :total="data.total"
+        @onSizeChanged="onPageSizeChanged"
+        @onIndexChanged="onPageIndexChanged"
+      />
+    </div>
+    <% if(add){%>
+      <add ref="add" :model="addSetting.model" :title="addSetting.title"></add>
+      <%}%>
+
+    <% if(edit){%>
+      <edit ref="edit" :model="editSetting.model" :title="editSetting.title"  @success="onEditSuccess"/>
+      <%}%>
+
+      <% if(batchEdit){%>
+        <batchEdit ref="batchEdit" :ids="batchEditSetting.ids"  @success="onBatchEditSuccess"/>
+        <%}%>
+
+    <PageSetting ref="setting" :setting="pageSetting" />
+  </div>
+</template>
+<script>
+
+<% if (add) {%>
+      import add from "./add";
+      <%}%>
+    <% if (edit) {%>
+      import edit from "./edit";
+      <%}%>
+
+    <% if (batchEdit) {%>
+      import batchEdit from "./batchEdit";
+      <%}%>
+
+export default {
+    components: {
+    <% if(edit) {%>
+      edit,
+      <%}%>
+
+    <% if (add) {%>
+    add,
+      <%}%>
+
+    <% if (batchEdit) {%>
+    batchEdit,
+      <%}%>
+
+  },
+  data() {
+    return {
+      pageSetting:<%- pageSetting %>,
+
+      <% if (edit) {%>
+      editSetting: {
+        model: {},
+          title: "edit",
+      },
+      <%}%>
+
+      <% if (add) {%>
+      addSetting: {
+        model: {},
+          title: "add",
+      },
+      <%}%>
+
+      <% if (batchEdit) {%>
+      batchEditSetting: {
+        model: "",
+          title: "batch edit",
+            ids: []
+      },
+      <%}%>
+
+      <% if (radioOptions!=undefined) {%>
+      radioKey:"",
+      keyword:"",
+      radioOptions:<%-radioOptions%>,
+      <%}%>
+
+      <% if (timeRange) {%>
+        timeRange:[],
+      <%}%>
+
+      query: <%=query %>,
+        // data set
+        data: {
+      total: 0,
+        list: [],
+      },
+  };
+      },
+  
+  created(){
+    this.getData(true);
+  },
+
+  // toggle filters show status
+  computed: {
+      <% filters.options.forEach(o => { %>
+    show<%=o.value %>() {
+      return this.$utils.arrayHas(this.pageSetting.filters.enabledFilters, "<%=o.value%>");
+    },
+      <%}) %>
+      },
+
+  methods: {
+      <% if (add) {%>
+      showAdd() {
+        this.addSetting.title = "add";
+        this.addSetting.model = {};
+        this.$refs.add.show();
+      },
+      <%}%>
+
+      <% if (edit) {%>
+      showEdit(row) {
+        this.editSetting.title = "edit";
+        this.editSetting.model = row;
+        this.$refs.edit.show();
+      },
+      onEditSuccess(row) {
+      let data = this.data.list.filter((x) => (x.id == row.id));
+      if (data.length > 0) this.$utils.copyFieldsFrom(data[0], row);
+    },
+      <%}%>
+
+      <% if (batchEdit) {%>
+      batchEdit() {
+        if (this.checkCount()) {
+            this.batchEditSetting.ids=this.getIds();
+            this.$refs.batchEdit.show();
+        }
+       },
+       onBatchEditSuccess(data){
+           let set =new Set(data.ids);
+          this.data.list.forEach(x=>{
+                  if(set.has(x.id))
+                    this.$utils.copyFieldsFrom(x,data);
+          })
+    },
+     
+      <%}%>
+
+      <% if (_delete) {%>
+      showDelete(row) {
+        this.$utils.showComfirm.call(this,
+          "Delete comfirm",
+          `are you sure to delete this data?`,
+          () => {
+            this.$utils.handleNormalRequest.call(this,async () =>
+            {
+            let resp = await this.$api.<%=name%>.deleteById({ id: row.id });
+            if (resp.code == 100)
+              this.data.list = this.data.list.filter((x) => x.id != row.id);
+
+            return resp;
+          }
+            );
+          }
+        );
+      },
+      <%}%>
+
+    <% if (batchDelete) {%>
+      batchDelete() {
+        if (this.checkCount()) {
+          this.$utils.showComfirm.call(this,
+            "Delete comfirm",
+            `are you sure to delete these data?`,
+            () => {
+              this.$utils.handleNormalRequest.call(this,async () =>
+               this.$api.<%=name %>.deleteBatch(this.getIds())
+              ,true);
+            }
+          );
+        }
+      },
+      <%}%>
+
+      <%if(batchEdit||batchDelete){%>
+        checkCount() {
+      let items = this.$refs.table.getSelection();
+      if (items.length == 0) {
+        return false;
+        this.$Message.info("no data selected");
+      }
+      return true;
+    },
+
+    getIds() {
+      return this.$utils.pickObjectArrayFileds(
+        this.$refs.table.getSelection(),
+        "id"
+      );
+    },
+    <%}%>
+    
+    showSetting() {
+      this.$refs.setting.show();
+    },
+
+    onPageSizeChanged(newSize) {
+      debugger;
+      this.query.pageSize = newSize;
+      this.getData(true);
+    },
+
+    onPageIndexChanged(newIndex) {
+      this.query.pageIndex = newIndex;
+      this.getData();
+    },
+
+    getData(reset) {
+      if (reset) {
+        this.query.pageIndex = 1;
+      }
+  
+      <% if (radioOptions!=undefined) {%>
+        this.$utils.resetFields(
+          this.query,
+          null,
+          this.$utils.pickObjectArrayFileds(this.radioOptions, "value")
+        );
+
+        this.query[this.radioKey] = this.keyword;
+      <%}%>
+ 
+      <% if (timeRange) {%>
+        this.query.createTimeStart = this.timeRange[0];
+        this.query.createTimeEnd = this.timeRange[1];
+      <%}%>
+        this.$utils.getListData.call(this,() => this.$api.<%=name %>.getList(this.query));
+    },
+  },
+      };
+</script>

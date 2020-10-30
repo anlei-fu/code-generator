@@ -1,3 +1,5 @@
-    @ApiModelProperty("@description")
+    /**
+     * @description
+     */
 @validates
     private @type @name;

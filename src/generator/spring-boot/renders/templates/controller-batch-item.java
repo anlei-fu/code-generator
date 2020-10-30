@@ -1,4 +1,3 @@
-    @ApiOperation("@description")
     @httpMapping
     public @returnType @methodName(@args) {
         @expected;

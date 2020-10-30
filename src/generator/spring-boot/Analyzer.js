@@ -66,22 +66,22 @@ const DEFAULT_VALIDATES = {
                
                 "url": {
                         matcher: (columnName) => columnName.toLowerCase().endsWith("url"),
-                        validate: "@URL"
+                        validate: "@Url"
                 },
                 "path": {
                         matcher: (columnName)=> columnName.toLowerCase().endsWith("path"),
-                        validate: "@Path"
+                        validate: "@Url"
                 },
                 "file": {
                         matcher: (columnName)=> columnName.toLowerCase().endsWith("file"),
-                        validate: "@Path"
+                        validate: "@Url"
                 },
                 "domain": {
-                        validate: "@URL"
+                        validate: "@Url"
                 },
                 "host": {
                         matcher: (columnName) => columnName.toLowerCase() == "host",
-                        validate: "@URL"
+                        validate: "@Url"
                 },
                 "ip": {
                         matcher: (columnName)=> columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
@@ -114,7 +114,7 @@ const DEFAULT_VALIDATES = {
                                         "enbalestatus"
                                 ]
                         ),
-                        validate: `@Enum("booleanFlag")`,
+                        validate: `@Enum("YesNo")`,
                 },
                 "status": {
                         matcher: (columnName) => STR.endsWithAny(
@@ -134,7 +134,7 @@ const DEFAULT_VALIDATES = {
                                         "status"
                                 ]
                         ),
-                        generator: (name) => `@Enum(${name.toUpperCase()})`,
+                        generator: (name) => `@Enum("${STR.upperFirstLetter(name)}")`,
                 },
         }
 }

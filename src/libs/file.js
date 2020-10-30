@@ -142,9 +142,9 @@ function writeJson(path, obj, beautiful = false) {
         if (beautiful) {
                 content = JSON.stringify(obj, null, "\t");
         } else {
-
+                content = JSON.stringify(obj);
         }
-        return write(path, JSON.stringify(obj))
+        return write(path, content)
 }
 
 /**

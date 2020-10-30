@@ -363,8 +363,10 @@ class MockGenerator {
          * @param {String} type  |String|Date|Integer|Float
          */
         getMockData(name, type) {
-                if (!type || !this._candidates[type])
+                if (!type || !this._candidates[type]){
+                        return;
                         throw new Error(`candidate(${name}) type '${type}' is null or no candidate to generate`);
+                }
 
                 return CANDIDATE_PICKER(name, this._candidates[type]);
         }

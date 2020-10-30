@@ -80,8 +80,9 @@ class TestRender {
                 model.args = [];
                 configItem.reqs.forEach(req => {
                         let mockValue = req.name;
-                        if (!req.doCreate)
-                                mockValue = this._getMockValue(req.name, req.type)
+                        if (!req.doCreate){
+                                mockValue = this._getMockValue(req.name, req.type);
+                        }
 
                         model.args.push({
                                 name: "req",

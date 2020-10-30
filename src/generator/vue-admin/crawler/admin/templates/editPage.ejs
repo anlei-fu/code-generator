@@ -1,0 +1,106 @@
+<template>
+        <MyModal title="title" ref="modal" @ok="ok">
+           
+             <Form ref="form" :model="query" :rules="rules" :label-width="50">
+               <FormItem label="Fields">
+                <MyCheckBoxGroup v-model="showingOptionalFields" :options="optionalFields"/>
+               </FormItem>
+             
+              <Scroll v-show="showScroll"  height="150" style="padding-right: 10px;">
+              <% optionalFields.forEach(r=>{%>
+                <% if(r.type=="select"){ %> 
+                        <FormItem v-if="show<%=r.upperModelName%>"   label="<%=r.model%>" prop="<%=r.model%>">
+                                <MySelect   v-model="query.<%=r.model%>" enum="<%=r.enum%>" width="100%" />
+                        </FormItem>
+                <% } %> 
+
+                <% if(r.type=="text"){ %> 
+                        <FormItem v-if="show<%=r.upperName%>"  label="<%=r.name%>" prop="<%=r.name%>">
+                                <Input v-model="query.<%=r.name%>" placeholder="Input value"/>
+                        </FormItem>
+                <% } %>
+
+                <% if(r.type=="textArea"){ %> 
+                 <% } %>  
+                
+              <%}); %> 
+        </Scroll>
+             
+         
+          </Form>
+        </MyModal>
+        
+      </template>
+      <script>
+      export default {
+         props:{
+                model:{
+                     type:Object,
+                     default:()=>{}
+                },
+                title:{
+                    type:String,
+                    default:""
+                }
+         },
+      
+       
+      
+        data() {
+            return {
+                optionalFields:<%-optionalOptionsStr%>,
+                showingOptionalFields:[],
+                rules:<%-rules%>,
+                query:<%-query%>,
+            }
+        },
+        created(){
+                this.$utils.copyFieldsFrom(this.query,this.model);
+         },
+         watch:{
+            model(newVal){
+                this.$utils.copyFieldsFrom(this.query,newVal);
+            }
+         },
+        computed:{
+                showScroll(){
+      return this.showingOptionalFields.length>0;
+    },
+            <% optionalOptions.forEach(o=>{%>
+                show<%=o.value%>(){
+                return this.$utils.arrayHas(this.showingOptionalFields,"<%=o.value%>");
+            },
+           <%});%>
+           
+        },
+        methods: {
+          show(){
+            this.$refs.modal.show()
+          },
+          close(){
+              this.$refs.modal.close();
+          },
+          ok(){
+            this.$refs.form.validate(valid=>{
+                    if(valid){
+                      this.$utils.handleNormalRequest.call(this,async ()=>{
+                        let resp = await this.$api.<%=name%>.updateById(this.query);
+            if (resp.code == 100){
+              this.$emit("success", this.query);
+              this.close();
+            }
+            return resp;
+                      });
+                      this.$refs.form.resetFields();
+                    }
+            });
+          }
+      
+        },
+      };
+      </script>
+      <style scoped>
+      .footer{
+        text-align: right;
+      }
+      </style>

@@ -15,20 +15,20 @@ async function main() {
         let builder =new InitConfigBuilder();
         builder.project("crawler")
                .company("jasmine")
-               .targetFolder("D:/test/news")
+               .targetFolder("D:/test/contract")
                .generateDb()
                .generateStructure()
                .generateBuilder()
                .libPath("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot")
                .useDbConfig(db=>{
                        db.generateDb()
-                         .generateRelation(false)
+                         .generateRelation(true)
                          .configDataSource(dataSource=>{
                                 dataSource.host("localhost")
                                 .port(3306)
                                 .user("root")
                                 .password("2011801243")
-                                .db("new_system")
+                                .db("contract_sign")
                          })
                })
                .useAnalyzeConfig(analyze=>{

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2020-7-31 9:09:23 PM
+All rights reserved by fuanlei(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crawler.mapper.VcodeMapper">
+    <insert id="add" parameterType="com.jasmine.crawler.pojo.req.AddVcodeReq">
+          insert into vcode 
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+             account_id,
+             vcode_type,
+             content,
+             create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+             #{accountId},
+             #{vcodeType},
+             #{content},
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteById">
+          delete from vcode t
+          <where>
+            t.id = #{id}
+          </where>
+    </delete>
+    <update id="updateById" parameterType="com.jasmine.crawler.pojo.param.UpdateVcodeParams">
+          update vcode t
+          <set>
+            <if test="accountId != null">
+                  t.account_id = #{accountId},
+            </if>
+            <if test="vcodeType != null">
+                  t.vcode_type = #{vcodeType},
+            </if>
+            <if test="content != null and content != ''">
+                  t.content = #{content},
+            </if>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </set>
+          <where>
+            t.id = #{id}
+          </where>
+    </update>
+    <select id="getById" resultType="com.jasmine.crawler.pojo.entity.Vcode">
+          select
+             t.id,
+             t.account_id,
+             t.vcode_type,
+             t.create_time,
+             t.content
+          from vcode t
+          <where>
+            t.id = #{id}
+          </where>
+    </select>
+    <select id="getPage" resultType="com.jasmine.crawler.pojo.entity.Vcode" parameterType="com.jasmine.crawler.pojo.req.GetVcodePageReq">
+          select
+             t.id,
+             t.account_id,
+             t.vcode_type,
+             t.create_time,
+             t.content
+          from vcode t
+          <where>
+            <if test="accountId != null">
+                  t.account_id = #{accountId}
+            </if>
+            <if test="vcodeType != null">
+                  and t.vcode_type = #{vcodeType}
+            </if>
+            <if test="createTimeStart != null">
+                  and  t.create_time >= #{createTimeStart}
+            </if>
+            <if test="createTimeEnd != null">
+                  and t.create_time &lt; #{createTimeEnd}
+            </if>
+          </where>
+    </select>
+</mapper>

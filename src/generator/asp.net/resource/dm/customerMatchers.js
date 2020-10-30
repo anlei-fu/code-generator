@@ -7,6 +7,9 @@ exports.customerMatchers = {
                 fid: {
 
                 },
+                PromoterId:{
+                        matcher: x => x.toLowerCase().startsWith("PromoterId"),
+                },
                 Status: {
                         matcher: x => x.endsWith("Status"),
                         text: "Name",
@@ -64,19 +67,19 @@ exports.customerMatchers = {
                 CityNo: {
                         generator: x => {
                                 return {
-                                        table: x.replace("No", ""),
+                                        table: "DmSystemCity",
                                         defaultText: "--请选择--",
-                                        text: x.replace("No", "Name"),
-                                        value: "No",
+                                        text: "CityName",
+                                        value: "CityNo",
                                 }
                         }
                 },
                 ProvinceNo: {
                         generator: x => {
                                 return {
-                                        table: x.replace("No", ""),
+                                        table: "DmSystemProvince",
                                         defaultText: "--请选择--",
-                                        text: x.replace("No", "Name"),
+                                        text: "ProvinceName",
                                         value: "ProvinceNo",
                                 }
                         }
@@ -85,7 +88,7 @@ exports.customerMatchers = {
                 ChannelNo: {
                         generator: x => {
                                 return {
-                                        table: x.replace("No", ""),
+                                        table: "DmDownChannel",
                                         defaultText: "--请选择--",
                                         text: x.replace("No", "Name").replace("up","").replace("down",""),
                                         value: "ChannelNo",
@@ -95,12 +98,43 @@ exports.customerMatchers = {
                 ProductNo: {
                         generator: x => {
                                 return {
-                                        table: x.replace("No", ""),
+                                        table: "DmDownProduct",
                                         defaultText: "--请选择--",
-                                        text: x.replace("No", "Name"),
-                                        value: "No",
+                                        text: "ProductName",
+                                        value: "ProductNo",
                                 }
                         }
                 },
+
+                PlatNo: {
+                        generator: x => {
+                                return {
+                                        table: "PutPlatInfo",
+                                        defaultText: "--请选择--",
+                                        text: "PlatName",
+                                        value: "PlatNo",
+                                }
+                        }
+                },
+                AgentNo:{
+                        generator: x => {
+                                return {
+                                        table: "PutAgentInfo",
+                                        defaultText: "--请选择--",
+                                        text: "AgentName",
+                                        value: "AgentNo",
+                                }
+                        }
+                },
+                TermNo:{
+                        generator: x => {
+                                return {
+                                        table: "DmTermInfo",
+                                        defaultText: "--请选择--",
+                                        text: "TermName",
+                                        value: "TermNo",
+                                }
+                        }
+                }
         }
 }

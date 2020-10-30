@@ -1,20 +1,20 @@
 package com.@project.validate.validator;
 
-import com.@project.validate.annotation.URL;
+import com.@project.validate.annotation.Url;
 import jdk.internal.joptsimple.internal.Strings;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 
-public class URLValidator implements ConstraintValidator<URL, String> {
+public class UrlValidator implements ConstraintValidator<Url, String> {
 
     private static final Pattern VALIDATOR = Pattern.compile("[a-zA-z]+://[^\\s]*");
 
     private boolean required;
 
     @Override
-    public void initialize(URL constraintAnnotation) {
+    public void initialize(Url constraintAnnotation) {
         this.required = constraintAnnotation.required();
     }
 
