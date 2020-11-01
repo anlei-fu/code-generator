@@ -1,0 +1,328 @@
+{
+	"message": "OK",
+	"code": 0,
+	"data": {
+		"list": [
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1901,
+				"first_industry_id": 1901,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "3C及电器",
+				"industry_name": "3C及电器"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1902,
+				"first_industry_id": 1902,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "快速消费品",
+				"industry_name": "快速消费品"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1903,
+				"first_industry_id": 1903,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "食品饮料",
+				"industry_name": "食品饮料"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1904,
+				"first_industry_id": 1904,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "服装配饰",
+				"industry_name": "服装配饰"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1905,
+				"first_industry_id": 1905,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "医疗",
+				"industry_name": "医疗"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1906,
+				"first_industry_id": 1906,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "商务服务",
+				"industry_name": "商务服务"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1907,
+				"first_industry_id": 1907,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "生活服务",
+				"industry_name": "生活服务"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1908,
+				"first_industry_id": 1908,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "房地产",
+				"industry_name": "房地产"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1909,
+				"first_industry_id": 1909,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "家居建材",
+				"industry_name": "家居建材"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1910,
+				"first_industry_id": 1910,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "教育培训",
+				"industry_name": "教育培训"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1911,
+				"first_industry_id": 1911,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "出行旅游",
+				"industry_name": "出行旅游"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1912,
+				"first_industry_id": 1912,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "社会公共",
+				"industry_name": "社会公共"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1913,
+				"first_industry_id": 1913,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "游戏",
+				"industry_name": "游戏"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1914,
+				"first_industry_id": 1914,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "零售",
+				"industry_name": "零售"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1915,
+				"first_industry_id": 1915,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "交通工具",
+				"industry_name": "交通工具"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1916,
+				"first_industry_id": 1916,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "汽车",
+				"industry_name": "汽车"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1917,
+				"first_industry_id": 1917,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "农林牧畜渔",
+				"industry_name": "农林牧畜渔"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1918,
+				"first_industry_id": 1918,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "化工及能源",
+				"industry_name": "化工及能源"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1919,
+				"first_industry_id": 1919,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "电子电工",
+				"industry_name": "电子电工"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1920,
+				"first_industry_id": 1920,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "机械设备",
+				"industry_name": "机械设备"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1921,
+				"first_industry_id": 1921,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "文体娱乐",
+				"industry_name": "文体娱乐"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1922,
+				"first_industry_id": 1922,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "传媒及内容",
+				"industry_name": "传媒及内容"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1923,
+				"first_industry_id": 1923,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "物流业",
+				"industry_name": "物流业"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1924,
+				"first_industry_id": 1924,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "通信",
+				"industry_name": "通信"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1925,
+				"first_industry_id": 1925,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "传统金融业",
+				"industry_name": "传统金融业"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1926,
+				"first_industry_id": 1926,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "互联网金融",
+				"industry_name": "互联网金融"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1927,
+				"first_industry_id": 1927,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "餐饮服务",
+				"industry_name": "餐饮服务"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1928,
+				"first_industry_id": 1928,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "工具类软件",
+				"industry_name": "工具类软件"
+			},
+			{
+				"second_industry_id": 0,
+				"third_industry_name": "NULL",
+				"level": 1,
+				"industry_id": 1929,
+				"first_industry_id": 1929,
+				"second_industry_name": "NULL",
+				"third_industry_id": 0,
+				"first_industry_name": "招商加盟",
+				"industry_name": "招商加盟"
+			}
+		]
+	},
+	"request_id": "202010301104460100230302171B13F220"
+}
