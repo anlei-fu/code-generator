@@ -19,13 +19,18 @@ namespace @project.UserWeb.Controllers
     /// </summary>
     public class @nameController : MainBaseController
     {
+        private static readonly List<RenderConfigItem> _renderConfig =
+            new RenderConfigsBuilder()
+@renderConfigs
         /// <summary>
         /// 显示列表页面数据
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View(@nameService.Instance.Query(Request.QueryString));
+            var model = @nameService.Instance.Query(Request.QueryString);
+            model.RenderConfigs = _renderConfig;
+            return View(model);
         }
 
         /// <summary>
@@ -35,7 +40,8 @@ namespace @project.UserWeb.Controllers
         /// <returns></returns>
         public ActionResult Item(string id)
         {
-            return View(@nameService.Instance.QueryItem(id));
+            var model = @nameService.Instance.QueryItem(id);
+            return View(model);
         }
 
         /// <summary>
@@ -60,10 +66,6 @@ namespace @project.UserWeb.Controllers
                 {
                     result.SetSuccessMessage("保存成功");
                 }
-                else
-                {
-                    result.SetErrorMessage("保存失败");
-                }
                 
                 return result.ToString();
             }
@@ -87,10 +89,6 @@ namespace @project.UserWeb.Controllers
                 if (result.Status)
                 {
                     result.SetSuccessMessage("删除成功");
-                }
-                else
-                {
-                    result.SetErrorMessage("删除失败");
                 }
 
                 return result.ToString();

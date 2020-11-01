@@ -92,8 +92,8 @@ PACKAGES.set("@Telephone", {
         isSystem: false
 });
 
-PACKAGES.set("@URL", {
-        package: "import com.@project.validate.annotation.URL;",
+PACKAGES.set("@Url", {
+        package: "import com.@project.validate.annotation.Url;",
         isSystem: false
 });
 

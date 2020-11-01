@@ -5,6 +5,11 @@ const { Initiable } = require("./../common");
  * @BaseClass
  */
 class HttpClient extends Initiable {
+        /**
+         * 
+         * @param {String} name 
+         * @param {import("axios").AxiosRequestConfig} baseConfig 
+         */
         constructor (name, baseConfig = { timeout: 10000 }) {
                 super(name || "HttpClient");
                 this._client = axios.default.create(baseConfig);

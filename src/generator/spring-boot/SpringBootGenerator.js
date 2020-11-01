@@ -4,7 +4,7 @@ const { Entity } = require("./builders/Entity");
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { ReqUtils } = require("./ReqUtils");
-const { getJavaType } = require("./utils");
+const { getJavaType, isJavaBaseType } = require("./utils");
 
 /**
  *  Genearte web project with spring-boot, mysql, mybatis, vue, ivue and  maven 
@@ -106,6 +106,11 @@ class SpringBootGenerator {
                         if (req.doCreate) {
                                 this._initEntityBasicInfo(configItem, req, "Req");
                                 hasDocreateReq = true;
+                        }else{
+                               if(!isJavaBaseType(req.type)){
+                                       req.name="Req";
+                                       req.type=STR.upperFirstLetter(configItem.table.name);
+                               }
                         }
                 });
 

@@ -66,14 +66,15 @@ class MapperRender {
 
                 let mapperParams = "";
                 if (configItem.reqs.length > 1) {
-                        mapperParams = STR.arrayToString1(
+                        mapperParams =  STR.arrayToString1(
                                 configItem.reqs,
                                 req => {
                                         return req.isList
                                                 ? `@Param("${req.name}s") List<${req.type}> ${req.name}, `
                                                 : `@Param("${req.name}") ${req.type} ${req.name}, `
-                                })
-                                .removeLastComa(mapperParams);
+                                });
+
+                           mapperParams = STR.removeLastComa(mapperParams);
                 } else {
                         if (configItem.reqs[0].isList) {
                                 mapperParams =

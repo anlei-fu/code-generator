@@ -57,17 +57,17 @@ class GenerateConfigBuilder {
          */
         all() {
                 this._config.add = true;
-                this._config.addBatch = true;
+                this._config.addBatch = false;
                 this._config.deleteById = true;
                 this._config.deleteBatch = true;
                 this._config.updateById = true;
                 this._config.updateBatch = true;
                 this._config.getById = true;
                 this._config.getPage = true;
-                this._config.getDetailById = true;
-                this._config.getDetailPage = true;
-                this._config.getAll = true;
-                this._config.count = true;
+                this._config.getDetailById = false;
+                this._config.getDetailPage = false;
+                this._config.getAll = false;
+                this._config.count = false;
                 return this;
         }
 

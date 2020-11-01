@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2020-7-31 9:09:23 PM
+All rights reserved by fuanlei(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crawler.mapper.DownSystemAnalyzeMapper">
+    <insert id="add" parameterType="com.jasmine.crawler.pojo.req.AddDownSystemAnalyzeReq">
+          insert into down_system_analyze 
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+          </trim>
+    </insert>
+    <delete id="deleteById">
+          delete from down_system_analyze t
+          <where>
+            t.id = #{id}
+          </where>
+    </delete>
+    <update id="updateById" parameterType="com.jasmine.crawler.pojo.param.UpdateDownSystemAnalyzeParams">
+          update down_system_analyze t
+          <set>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </set>
+          <where>
+            t.id = #{id}
+          </where>
+    </update>
+    <select id="getById" resultType="com.jasmine.crawler.pojo.entity.DownSystemAnalyze">
+          select
+             t.id
+          from down_system_analyze t
+          <where>
+            t.id = #{id}
+          </where>
+    </select>
+    <select id="getPage" resultType="com.jasmine.crawler.pojo.entity.DownSystemAnalyze" parameterType="com.jasmine.crawler.pojo.req.GetDownSystemAnalyzePageReq">
+          select
+             t.id
+          from down_system_analyze t
+    </select>
+</mapper>

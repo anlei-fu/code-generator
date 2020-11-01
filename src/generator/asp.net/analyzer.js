@@ -6,7 +6,7 @@ const { STR } = require("../../libs/str");
 const INSERT_EXCLUDES_MATCHERS = {
         int: {
                 id: {
-                        match: x => x == "Id"||x=="No",
+                        match: x => x == "Id" || x == "No",
                 }
         },
         string: {
@@ -47,8 +47,8 @@ class InsertAnalyzer {
          * @param {Column} column 
          */
         shouldBeCandidate(column) {
-                if(column.isPk)
-                    return false;
+                if (column.isPk)
+                        return false;
 
                 return !DEFAULT_MATCHER_COLLECTION_METHOD(column.name, column.type, this._insertExcludes)
         }
@@ -189,15 +189,21 @@ class ColumnAnalyzer {
                         output.lable = column.description;
                         output.join = this.makeJoin(column, output.select);
 
-                        let outputName =`${column.name.replace("No","").replace("Id","")}Name`;
-                        let nameColumn =  STR.replace(column.rawName,{
-                               "UP_":"",
-                               "DOWN_":"",
-                               "_ID":"",
-                               "_NO":"",
-                               "_NAME":""
-                        }) +"_NAME "+outputName;
+                        let outputName = `${column.name.replace("No", "").replace("Id", "")}Name`;
 
+
+                        let nameColumn;
+                        if (output.select.table.toLowerCase().includes("dictionary")) {
+                                nameColumn = "NAME " + outputName;
+                        } else {
+                                nameColumn = STR.replace(column.rawName, {
+                                        "UP_": "",
+                                        "DOWN_": "",
+                                        "_ID": "",
+                                        "_NO": "",
+                                        "_NAME": ""
+                                }) + "_NAME " + outputName;
+                        }
 
                         output.gettter = `.GetDataValue("${outputName}")`;
                         output.column = `t${this.index}.${nameColumn}`;
@@ -245,15 +251,15 @@ class ColumnAnalyzer {
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.VALUE`
                                 + ` AND t${this.index}.${NamingStrategy.toHungary(select.type).toUpperCase()} = '${column.name}'`;
                 } else {
-                        select.name=select.name||select.value;
-                        let suffix = NamingStrategy.toHungary(STR.replace(select.name,{"up":"","down":""})).toUpperCase()
+                        select.name = select.name || select.value;
+                        let suffix = NamingStrategy.toHungary(STR.replace(select.name, { "up": "", "down": "" })).toUpperCase()
                         return `LEFT JOIN ${NamingStrategy.toHungary(select.table).toUpperCase()} t${++this.index}`
                                 + ` ON t.${NamingStrategy.toHungary(column.name).toUpperCase()} = t${this.index}.${suffix}`;
                 }
         }
 
-        useTables(tables){
-           this._tables=tables;
+        useTables(tables) {
+                this._tables = tables;
         }
 }
 
@@ -278,20 +284,20 @@ class ControlAnlyzer {
          * @returns {boolean}
          */
         shouldBeSelect(column) {
-               
+
                 if (!this._customerSelectMatchers[column.type])
                         return false;
 
 
                 // check by system dictionary
                 for (const c in this._dictionaryMatchers) {
-                        if (c.toLowerCase()==column.name.toLowerCase())
+                        if (c.toLowerCase() == column.name.toLowerCase())
                                 return true;
                 }
 
-                for(const c in this._relationMatchers){
-                        if(c.toLowerCase()==column.name.toLowerCase())
-                          return true;
+                for (const c in this._relationMatchers) {
+                        if (c.toLowerCase() == column.name.toLowerCase())
+                                return true;
                 }
 
                 return DEFAULT_MATCHER_COLLECTION_METHOD(column.name, column.type, this._customerSelectMatchers);
@@ -305,8 +311,8 @@ class ControlAnlyzer {
          */
         getSelectControlConfig(column) {
                 for (const c in this._relationMatchers) {
-                        if(c.toLowerCase()==column.name.toLowerCase())
-                          return this._relationMatchers[c];
+                        if (c.toLowerCase() == column.name.toLowerCase())
+                                return this._relationMatchers[c];
                 }
 
                 // get from system dictionary
@@ -317,7 +323,7 @@ class ControlAnlyzer {
 
                 // get from customs
                 for (const item in this._customerSelectMatchers[column.type]) {
-                        let match =DEFAULT_MATCHER_METHOD(column.name, column.type, item, this._customerSelectMatchers);
+                        let match = DEFAULT_MATCHER_METHOD(column.name, column.type, item, this._customerSelectMatchers);
                         if (match) {
                                 return this._customerSelectMatchers[column.type][item].generator ?
                                         this._customerSelectMatchers[column.type][item].generator(column.name) :

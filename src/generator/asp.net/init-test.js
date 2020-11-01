@@ -251,9 +251,11 @@ function test() {
       .add(true)
       .edit(true)
       .delete(true)
+      .batchChangeStatus()
+      .batchDelete()
       .build();
 
-   init(all.zyComplainTask, config);
+   init(all.dmDownScript, config);
 }
 
 test();

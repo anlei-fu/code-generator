@@ -1,0 +1,464 @@
+{
+	"message": "OK",
+	"code": 0,
+	"data": {
+		"list": [
+			{
+				"categories": [],
+				"authors": [
+					{
+						"author_name": "凤阳龙妹(卡姿兰专场11号）",
+						"total_fans_num_str": "439.7万",
+						"cover_num_str": "439.7万",
+						"label_id": 96396015776,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/3117d000857e6ff277d8d.jpeg?from=4010531038",
+						"aweme_id": "2087004458",
+						"category_name": "舞蹈"
+					},
+					{
+						"author_name": "卡卡欧巴👉11号1点gxg总部专场",
+						"total_fans_num_str": "83.4万",
+						"cover_num_str": "83.4万",
+						"label_id": 60234184559,
+						"avatar": "https://p6-dy-ipv6.byteimg.com/aweme/100x100/2f6310004a53a355ca0a6.jpeg?from=4010531038",
+						"aweme_id": "14437780",
+						"category_name": "搞笑剧情"
+					},
+					{
+						"author_name": "卡卡女装直播号",
+						"total_fans_num_str": "68.3万",
+						"cover_num_str": "68.3万",
+						"label_id": 75058430950,
+						"avatar": "https://p29-dy.byteimg.com/img/tos-cn-avt-0015/a5bbbdbaf2d2edbfb678cca03c5220b8~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "144486655",
+						"category_name": "舞蹈"
+					},
+					{
+						"author_name": "卡卡穿搭10号森马专场直播",
+						"total_fans_num_str": "44.5万",
+						"cover_num_str": "44.5万",
+						"label_id": 110817049591,
+						"avatar": "https://p1-dy-ipv6.byteimg.com/aweme/100x100/2dc360006e00eae2186e2.jpeg?from=4010531038",
+						"aweme_id": "mgxx1014",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "万佳卡卡女装账号",
+						"total_fans_num_str": "30.5万",
+						"cover_num_str": "30.5万",
+						"label_id": 110763499533,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/360a97742059adf04e1e44c9316f65af~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "1987394764",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "卡芙娜饰品企业号",
+						"total_fans_num_str": "30.1万",
+						"cover_num_str": "30.1万",
+						"label_id": 91905212767,
+						"avatar": "https://p1-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/b8daea83631f1603f8de18462bc0304d~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "kavnar",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "卡卡女装官方号",
+						"total_fans_num_str": "25.9万",
+						"cover_num_str": "25.9万",
+						"label_id": 98982091810,
+						"avatar": "https://p29-dy.byteimg.com/img/tos-cn-avt-0015/9d648234b3a6a4edcc005804568ddaf5~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "1994434402",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "sckiquen诗卡奴官方号",
+						"total_fans_num_str": "24.8万",
+						"cover_num_str": "24.8万",
+						"label_id": 101327274087,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/fdb600046873ac36abe2.jpeg?from=4010531038",
+						"aweme_id": "1140569135",
+						"category_name": "美妆"
+					},
+					{
+						"author_name": "皮卡丘开箱v的小号",
+						"total_fans_num_str": "22.8万",
+						"cover_num_str": "22.8万",
+						"label_id": 2466939010288990,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/2f6f40003b8032458120c.jpeg?from=4010531038",
+						"aweme_id": "2239471670",
+						"category_name": "科技产品"
+					},
+					{
+						"author_name": "卡卡服装直播号",
+						"total_fans_num_str": "12.1万",
+						"cover_num_str": "12.1万",
+						"label_id": 60415344777,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/e119a35946b8551e5777099acee1cc81~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "justcc888888",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "卡卡女装官方账号",
+						"total_fans_num_str": "11.9万",
+						"cover_num_str": "11.9万",
+						"label_id": 96646255093,
+						"avatar": "https://p9-dy.byteimg.com/aweme/100x100/317a500007d8367208f7c.jpeg?from=4010531038",
+						"aweme_id": "Daod0000",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "万佳卡卡女装直播号·",
+						"total_fans_num_str": "10.2万",
+						"cover_num_str": "10.2万",
+						"label_id": 4107390494712366,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/3170f000b1a1be48bb479.jpeg?from=4010531038",
+						"aweme_id": "wanjia6",
+						"category_name": "亲子"
+					},
+					{
+						"author_name": "萨瓦滴卡唯一小号",
+						"total_fans_num_str": "7.4万",
+						"cover_num_str": "7.4万",
+						"label_id": 108310069292,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/b03f149d76444afb8c5269c4eeb73a0f~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "1964342479",
+						"category_name": "随拍"
+					},
+					{
+						"author_name": "卡卡JUST CC正品直播号",
+						"total_fans_num_str": "7.3万",
+						"cover_num_str": "7.3万",
+						"label_id": 3759983176463272,
+						"avatar": "https://p29-dy.byteimg.com/img/tos-cn-avt-0015/19a9e94ebfd9851a4d105de9bf824550~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "kk162",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "卡妹果果小号",
+						"total_fans_num_str": "6.1万",
+						"cover_num_str": "6.1万",
+						"label_id": 2541663196031294,
+						"avatar": "https://p26-dy.byteimg.com/img/tos-cn-avt-0015/81d396daed3161519690c6971d0f79ee~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "kmgg8888",
+						"category_name": "随拍"
+					},
+					{
+						"author_name": "卡卡女装店官方号",
+						"total_fans_num_str": "6.0万",
+						"cover_num_str": "6.0万",
+						"label_id": 3139823097619230,
+						"avatar": "https://p6-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/464fbcfec2559feb55ef045e71f897a4~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "JUSTCCGFZH",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "万佳卡卡女装直播号",
+						"total_fans_num_str": "5.8万",
+						"cover_num_str": "5.8万",
+						"label_id": 1807211268932296,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/2f7b300035f4a36f7a16a.jpeg?from=4010531038",
+						"aweme_id": "dyxoyn0docfd",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "万佳卡卡直播号(每晚九点)",
+						"total_fans_num_str": "5.5万",
+						"cover_num_str": "5.5万",
+						"label_id": 20844151909,
+						"avatar": "https://p9-dy.byteimg.com/aweme/100x100/31125000095a1217076ce.jpeg?from=4010531038",
+						"aweme_id": "nn455230233",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "可爱的小皮卡丘 （9月8号生日）",
+						"total_fans_num_str": "5.5万",
+						"cover_num_str": "5.5万",
+						"label_id": 98069474599,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/31ac90002cb2a795f8850.jpeg?from=4010531038",
+						"aweme_id": "Goodbye100",
+						"category_name": "射击类"
+					},
+					{
+						"author_name": "摩卡来了(11号诗篇女装专场)",
+						"total_fans_num_str": "4.9万",
+						"cover_num_str": "4.9万",
+						"label_id": 76660102395,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/f287d8c518c607cde2cf154e5df96d6c~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "332026601",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "卡拿玩具乐园(9月8号晚9点直播)",
+						"total_fans_num_str": "4.6万",
+						"cover_num_str": "4.6万",
+						"label_id": 102002126435,
+						"avatar": "https://p6-dy-ipv6.byteimg.com/aweme/100x100/318d30009bc4677130938.jpeg?from=4010531038",
+						"aweme_id": "V15767526986",
+						"category_name": "亲子教育"
+					},
+					{
+						"author_name": "卡卡1号旗舰店",
+						"total_fans_num_str": "4.4万",
+						"cover_num_str": "4.4万",
+						"label_id": 2312995562594941,
+						"avatar": "https://p9-dy.byteimg.com/img/tos-cn-avt-0015/48afe7fbe2cfb457212dee5b49755ce6~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "520JUSTC",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "广州卡卡专营服装店官方账号",
+						"total_fans_num_str": "4.0万",
+						"cover_num_str": "4.0万",
+						"label_id": 109232472804,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/eaa14f0eba8e566c1e485845517a980f~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "mvp8918",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "龙龙卡号",
+						"total_fans_num_str": "3.6万",
+						"cover_num_str": "3.6万",
+						"label_id": 2330583518156776,
+						"avatar": "https://p29-dy.byteimg.com/img/tos-cn-i-0813/5207d95a55ea463a84f0b50e20d44e8d~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "dyig0xb3brim",
+						"category_name": "其他"
+					},
+					{
+						"author_name": "劳卡全屋定制达人号",
+						"total_fans_num_str": "3.6万",
+						"cover_num_str": "3.6万",
+						"label_id": 2013900238749751,
+						"avatar": "https://p29-dy.byteimg.com/aweme/100x100/317550003f9272d1a7b51.jpeg?from=4010531038",
+						"aweme_id": "roco_china666",
+						"category_name": "装修设计"
+					},
+					{
+						"author_name": "卡卡正品授权直播号",
+						"total_fans_num_str": "3.4万",
+						"cover_num_str": "3.4万",
+						"label_id": 107907817609,
+						"avatar": "https://p9-dy.byteimg.com/aweme/100x100/31b9c00025f45e73b36ab.jpeg?from=4010531038",
+						"aweme_id": "1770141191",
+						"category_name": "随拍"
+					},
+					{
+						"author_name": "三姨妈说重卡(小号)",
+						"total_fans_num_str": "3.3万",
+						"cover_num_str": "3.3万",
+						"label_id": 4195388458798259,
+						"avatar": "https://p1-dy-ipv6.byteimg.com/aweme/100x100/31af5000550efec88c59c.jpeg?from=4010531038",
+						"aweme_id": "sanyimama",
+						"category_name": "其他"
+					},
+					{
+						"author_name": "不借号给卡卡西",
+						"total_fans_num_str": "3.3万",
+						"cover_num_str": "3.3万",
+						"label_id": 95534518385,
+						"avatar": "https://p6-dy-ipv6.byteimg.com/img/tos-cn-i-0813/ac7f5860b19145d6be49194dbb7278da~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "614862354",
+						"category_name": "沙盒类"
+					},
+					{
+						"author_name": "卡卡直播号",
+						"total_fans_num_str": "3.0万",
+						"cover_num_str": "3.0万",
+						"label_id": 2783582563344931,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/31875000b023cf338fdae.jpeg?from=4010531038",
+						"aweme_id": "JUSTCC202088",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "万佳卡卡服装店官方账号",
+						"total_fans_num_str": "3.0万",
+						"cover_num_str": "3.0万",
+						"label_id": 923207361896344,
+						"avatar": "https://p6-dy-ipv6.byteimg.com/aweme/100x100/3193900057a6f793b30ff.jpeg?from=4010531038",
+						"aweme_id": "xxwzw5800",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "🍃卡亚足道（8）号🍃",
+						"total_fans_num_str": "2.8万",
+						"cover_num_str": "2.8万",
+						"label_id": 106715158531,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/a0018e6eddef4724acb9e8fed473720d~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "1756992339",
+						"category_name": "随拍"
+					},
+					{
+						"author_name": "我在美国开卡车(直播号)",
+						"total_fans_num_str": "2.6万",
+						"cover_num_str": "2.6万",
+						"label_id": 106608941523,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/1b4a70001fd35476c5293.jpeg?from=4010531038",
+						"aweme_id": "Tb19730808",
+						"category_name": "其他"
+					},
+					{
+						"author_name": "卡卡自营直播账号",
+						"total_fans_num_str": "2.5万",
+						"cover_num_str": "2.5万",
+						"label_id": 1490589073814413,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/90217fe00f37125392d6d6d4556c9b8a~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "JUSTCC168888888",
+						"category_name": "搞笑剧情"
+					},
+					{
+						"author_name": "小号是卡门（限流中，连赞三个以上拉黑)",
+						"total_fans_num_str": "2.2万",
+						"cover_num_str": "2.2万",
+						"label_id": 59508342091,
+						"avatar": "https://p9-dy.byteimg.com/aweme/100x100/31122000869e6a3c6b761.jpeg?from=4010531038",
+						"aweme_id": "1017819051",
+						"category_name": "影视"
+					},
+					{
+						"author_name": "卡卡欧巴小号",
+						"total_fans_num_str": "2.2万",
+						"cover_num_str": "2.2万",
+						"label_id": 102927473368,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/c16000003f97583dac4.jpeg?from=4010531038",
+						"aweme_id": "1266679029",
+						"category_name": "其他"
+					},
+					{
+						"author_name": "南宁·SPACE·订卡总号",
+						"total_fans_num_str": "2.2万",
+						"cover_num_str": "2.2万",
+						"label_id": 109891954761,
+						"avatar": "https://p9-dy.byteimg.com/aweme/100x100/20bb40006c30e5e31d531.jpeg?from=4010531038",
+						"aweme_id": "1907037051",
+						"category_name": "休闲娱乐"
+					},
+					{
+						"author_name": "我的世界陌杉（健身打卡日常号）",
+						"total_fans_num_str": "2.2万",
+						"cover_num_str": "2.2万",
+						"label_id": 96944766797,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/f8de826eca024c25aa064106ec6f2d66~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "mo61920870",
+						"category_name": "沙盒类"
+					},
+					{
+						"author_name": "卡友之家汽配服务中心官方账号",
+						"total_fans_num_str": "2.1万",
+						"cover_num_str": "2.1万",
+						"label_id": 98532602348,
+						"avatar": "https://p6-dy-ipv6.byteimg.com/img/tos-cn-i-0813/b8d7fbaecd234d0bbdf08c052376d349~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "A585RR",
+						"category_name": "汽车"
+					},
+					{
+						"author_name": "卡卡女装2号店",
+						"total_fans_num_str": "2.1万",
+						"cover_num_str": "2.1万",
+						"label_id": 3408107853585300,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/d9d2b3c5ab1a0630b9ed9b57cc6ebb12~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "KaKa20208888",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "卡卡女装自营(直播号)",
+						"total_fans_num_str": "1.9万",
+						"cover_num_str": "1.9万",
+						"label_id": 99768595786,
+						"avatar": "https://p9-dy.byteimg.com/aweme/100x100/316fe000a195c195163fb.jpeg?from=4010531038",
+						"aweme_id": "Acoo8886",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "青海奥卡影视官方账号",
+						"total_fans_num_str": "1.7万",
+						"cover_num_str": "1.7万",
+						"label_id": 67544488227,
+						"avatar": "https://p29-dy.byteimg.com/img/tos-cn-i-0813/3ccd2ef59eca4f5bbc8ea896dec4c985~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "1169288724",
+						"category_name": "随拍"
+					},
+					{
+						"author_name": "NEKA耐卡官方号",
+						"total_fans_num_str": "1.7万",
+						"cover_num_str": "1.7万",
+						"label_id": 56398949040,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/2e0a500015b1bbaaa1ac9.jpeg?from=4010531038",
+						"aweme_id": "Neka2018",
+						"category_name": "汽车"
+					},
+					{
+						"author_name": "JUST CC卡卡号",
+						"total_fans_num_str": "1.6万",
+						"cover_num_str": "1.6万",
+						"label_id": 1257468469719240,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/2fa50000b46dabcc63686.jpeg?from=4010531038",
+						"aweme_id": "886889J",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "卡卡正版女装直播号",
+						"total_fans_num_str": "1.6万",
+						"cover_num_str": "1.6万",
+						"label_id": 461435698683966,
+						"avatar": "https://p6-dy-ipv6.byteimg.com/aweme/100x100/2d1fa0003e5827ecad884.jpeg?from=4010531038",
+						"aweme_id": "dy0rxnapqjhp",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "黑天鹅的卡卡万佳一号店",
+						"total_fans_num_str": "1.5万",
+						"cover_num_str": "1.5万",
+						"label_id": 4270112626975742,
+						"avatar": "https://p1-dy-ipv6.byteimg.com/img/tos-cn-avt-0015/33b6787e0d340ff360de764198940784~c5_100x100.jpeg?from=4010531038",
+						"aweme_id": "chenyaner5858",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "洛阳奥斯卡酒吧订台咨询号👋",
+						"total_fans_num_str": "1.4万",
+						"cover_num_str": "1.4万",
+						"label_id": 75025205056,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/3162e0008e3b15acfad57.jpeg?from=4010531038",
+						"aweme_id": "bxx299.COM",
+						"category_name": "休闲娱乐"
+					},
+					{
+						"author_name": "康运汽贸-精品重卡官方账号",
+						"total_fans_num_str": "1.3万",
+						"cover_num_str": "1.3万",
+						"label_id": 80602523632,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/310e3000513e985f6bf3d.jpeg?from=4010531038",
+						"aweme_id": "q15563120000",
+						"category_name": "汽车"
+					},
+					{
+						"author_name": "李洪涛  郑州奥斯卡酒吧订台咨询号",
+						"total_fans_num_str": "1.2万",
+						"cover_num_str": "1.2万",
+						"label_id": 3073853442230948,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/2d4f6000074492a7a1d29.jpeg?from=4010531038",
+						"aweme_id": "taoba7778",
+						"category_name": "随拍"
+					},
+					{
+						"author_name": "哚卡官方账号",
+						"total_fans_num_str": "1.1万",
+						"cover_num_str": "1.1万",
+						"label_id": 99355660605,
+						"avatar": "https://p29-dy.byteimg.com/aweme/100x100/f6f700033cf6dd2d277a.jpeg?from=4010531038",
+						"aweme_id": "1000807332",
+						"category_name": "穿搭"
+					},
+					{
+						"author_name": "普拉卡洛官方账号",
+						"total_fans_num_str": "1.1万",
+						"cover_num_str": "1.1万",
+						"label_id": 65214740611,
+						"avatar": "https://p3-dy-ipv6.byteimg.com/aweme/100x100/f71f000bb9277de4bcde.jpeg?from=4010531038",
+						"aweme_id": "140337551",
+						"category_name": "美食教程"
+					}
+				]
+			}
+		]
+	},
+	"request_id": "202010301104460100100252170E27930B"
+}

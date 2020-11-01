@@ -326,7 +326,7 @@ function lowerFirstLetter(input) {
  * @returns {[String]}
  */
 function splitToLines(input) {
-        return input.split("\n");
+        return input.split("\r\n");
 }
 
 /**

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2020-7-31 9:09:23 PM
+All rights reserved by fuanlei(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crawler.mapper.DynamicUrlJobMapper">
+    <insert id="add" parameterType="com.jasmine.crawler.pojo.req.AddDynamicUrlJobReq">
+          insert into dynamic_url_job 
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="downSystemId != null">
+                  down_system_id,
+            </if>
+            <if test="scriptId != null">
+                  script_id,
+            </if>
+            <if test="dynamicType != null">
+                  dynamic_type,
+            </if>
+             enable_status,
+             delay_timeout,
+             concurrency,
+            <if test="maxWaintToBindTaskCount != null">
+                  max_waint_to_bind_task_count,
+            </if>
+             create_time
+          </trim>
+          values
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="downSystemId != null">
+                  #{downSystemId},
+            </if>
+            <if test="scriptId != null">
+                  #{scriptId},
+            </if>
+            <if test="dynamicType != null">
+                  #{dynamicType},
+            </if>
+             #{enableStatus},
+             #{delayTimeout},
+             #{concurrency},
+            <if test="maxWaintToBindTaskCount != null">
+                  #{maxWaintToBindTaskCount},
+            </if>
+             current_timestamp
+          </trim>
+    </insert>
+    <delete id="deleteById">
+          delete from dynamic_url_job t
+          <where>
+            t.id = #{id}
+          </where>
+    </delete>
+    <update id="updateById" parameterType="com.jasmine.crawler.pojo.param.UpdateDynamicUrlJobParams">
+          update dynamic_url_job t
+          <set>
+            <if test="downSystemId != null">
+                  t.down_system_id = #{downSystemId},
+            </if>
+            <if test="scriptId != null">
+                  t.script_id = #{scriptId},
+            </if>
+            <if test="dynamicType != null">
+                  t.dynamic_type = #{dynamicType},
+            </if>
+            <if test="enableStatus != null">
+                  t.enable_status = #{enableStatus},
+            </if>
+            <if test="delayTimeout != null">
+                  t.delay_timeout = #{delayTimeout},
+            </if>
+            <if test="lastRunTime != null">
+                  t.last_run_time = #{lastRunTime},
+            </if>
+            <if test="concurrency != null">
+                  t.concurrency = #{concurrency},
+            </if>
+            <if test="maxWaintToBindTaskCount != null">
+                  t.max_waint_to_bind_task_count = #{maxWaintToBindTaskCount},
+            </if>
+            <if test="id != null">
+                  t.id = #{id}
+            </if>
+          </set>
+          <where>
+            t.id = #{id}
+          </where>
+    </update>
+    <select id="getById" resultType="com.jasmine.crawler.pojo.entity.DynamicUrlJob">
+          select
+             t.id,
+             t.down_system_id,
+             t.script_id,
+             t.dynamic_type,
+             t.create_time,
+             t.enable_status,
+             t.delay_timeout,
+             t.last_run_time,
+             t.concurrency,
+             t.max_waint_to_bind_task_count
+          from dynamic_url_job t
+          <where>
+            t.id = #{id}
+          </where>
+    </select>
+    <select id="getPage" resultType="com.jasmine.crawler.pojo.entity.DynamicUrlJob" parameterType="com.jasmine.crawler.pojo.req.GetDynamicUrlJobPageReq">
+          select
+             t.id,
+             t.down_system_id,
+             t.script_id,
+             t.dynamic_type,
+             t.create_time,
+             t.enable_status,
+             t.delay_timeout,
+             t.last_run_time,
+             t.concurrency,
+             t.max_waint_to_bind_task_count
+          from dynamic_url_job t
+          <where>
+            <if test="downSystemId != null">
+                  t.down_system_id = #{downSystemId}
+            </if>
+            <if test="scriptId != null">
+                  and t.script_id = #{scriptId}
+            </if>
+            <if test="dynamicType != null">
+                  and t.dynamic_type = #{dynamicType}
+            </if>
+            <if test="createTimeStart != null">
+                  and  t.create_time >= #{createTimeStart}
+            </if>
+            <if test="createTimeEnd != null">
+                  and t.create_time &lt; #{createTimeEnd}
+            </if>
+            <if test="enableStatus != null">
+                  and t.enable_status = #{enableStatus}
+            </if>
+          </where>
+    </select>
+</mapper>

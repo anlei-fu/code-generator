@@ -7,6 +7,7 @@
         "configurations": [
      
              {
+                "outFiles": [],
                 "name": "nodeLauch", //单独调试js，即可以直接运行js
                 "type": "node",
                 "request": "launch",
