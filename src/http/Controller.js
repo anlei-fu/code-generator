@@ -8,7 +8,7 @@ const { ArgTypeError } = require("./../error");
  */
 class Controller extends Initiable {
 
-        constructor(name, controllerConfig = {}) {
+        constructor (name, controllerConfig = {}) {
                 super(name);
                 this._controllerConfig = controllerConfig;
         }
@@ -118,7 +118,7 @@ class Controller extends Initiable {
                                 this.info("args:");
                                 this.info({ query: req.query, body: req.body, params: req.params });
 
-                                result = await handler.call(this, { query: req.query, body: req.body, params: req.params });
+                                result = await handler.call(this, { path: req.path, query: req.query, body: req.body, params: req.params });
                         } catch (e) {
                                 this.error(`handle ${req.method} ${req.path} failed`, e);
 

@@ -1,9 +1,12 @@
-const {Service} =require("./Service");
-const {ServiceStatus} =require("./ServiceStatus");
-const {Initiable} =require("./Initiable");
+const { Service } = require("./Service");
+const { ServiceStatus } = require("./ServiceStatus");
+const { Initiable } = require("./Initiable");
+const { ServiceProvider } = require("./ServiceProvider");
 
-module.exports={
+module.exports = {
         Service,
         Initiable,
-        ServiceStatus
+        ServiceStatus,
+        ServiceProvider
+
 }

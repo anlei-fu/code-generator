@@ -84,6 +84,14 @@ function toyyyyMMddhhmmss(date) {
         return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
 }
 
+function parseDate(str){
+        try{
+              return Date.parse(str);
+        }catch{
+                return null;
+        }
+}
+
 
 exports.DATE = {
         now,
@@ -103,5 +111,6 @@ exports.DATE = {
         toyyyy_MM_dd,
         toyyyy_MM_dd_hh_mm_ss,
         tohhmmss,
-        toyyyyMMddhhmmss
+        toyyyyMMddhhmmss,
+        parseDate
 }

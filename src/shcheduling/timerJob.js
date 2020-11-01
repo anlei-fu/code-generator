@@ -1,8 +1,7 @@
 const { Initiable } = require("./../common");
 const { idUtils } = require("./../libs");
 const { JobStatus } = require("./JobStatus");
-const { DelayCaculator } = require("./../DelayCaculator");
-const { NodeContext } = require("./../NodeContext");
+const { DelayCaculator } = require("./../compute");
 
 class TimerJob extends Initiable {
         constructor ({ name, description = "" }) {

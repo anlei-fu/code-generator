@@ -132,6 +132,7 @@ class HttpClient extends Initiable {
                         return resp.data;
                 } catch (ex) {
                         this.error(`${method} ${url}`, ex);
+                        throw ex;
                 }
         }
 

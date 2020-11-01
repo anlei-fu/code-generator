@@ -1,59 +1,49 @@
-
-const { createPageContext } = require("./PageContextBuilder");
-const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
-const { PageContext } = require("../../PageContext");
+/**
+ * Name: 大江网
+ * Domain: https://www.jxcn.cn/
+ * Date: 10/25/2020
+ */
+const { createPageContext } = require("./../../PageContextBuilder");
+const { CrawlTaskConfigBuilder } = require("../../../../model/CrawlTaskConfig");
+const { PageContext } = require("../../../../PageContext");
 
 /**
  * 
  * @param {PageContext} pageContext 
  */
-async function run(pageContext) {
-    let builder =pageContext.pageResultBuilder;
-        builder.findUrl();
-        console.log(builder.build());
-        builder.success();
+async function run(pageContext, dowrite) {
+        let builder = pageContext.pageResultBuilder;
+        let result = builder.findUrl().build();
+        if (dowrite) {
+                result.newUrls.forEach(x => {
+                        console.log(x.url);
+                });
+        }
+
+        return result.newUrls;
 }
 
-async function main() {
+async function homepage(testurl,dowrite) {
         let taskConfig = new CrawlTaskConfigBuilder()
                 .autoDownloadPage(true)
                 .downloadTimeout(10000)
                 // TODO: url match patterns ,Json array
-                .urlMatchPatterns(`["^(https|http)://.*\.163\.com/[0-9]+/[0-9]+/[0-9]+/.*\.html.*","^(http|https)://dy\.163\.com/article/.*\.html.*"]`)
-                 // TODO: url encodes json object
-                .urlEncodes(`{
-                    "http://dy.163.com/article": "#dy1",
-                    "https://dy.163.com/article": "#dy2",
-                    "https://money.163.com":"#money",
-                    "https://auto.163.com":"#auto",
-                    "https://gongyi.163.com":"#gongyi",
-                    "https://lady.163.com":"#lady",
-                    "https://jiankang.163.com":"#jiankang",
-                    "https://mkt.163.com":"#mkt",
-                    "https://ent.163.com":"#ent",
-                    "https://sports.163.com":"#sports",
-                    "https://war.163.com":"#war",
-                    "https://tech.163.com":"#tech",
-                    "https://news.163.com":"#news",
-                    "https://gov.163.com":"#gov",
-                    "https://edu.163.com":"#edu",
-                    "https://travel.163.com":"#travel",
-                    "https://home.163.com":"#home",
-                    "https://vhouse.163.com":"#vhouse"
-                }`)
+                .urlMatchPatterns(`["^(https|http)://.*@pattern.*[0-9]{4}/.*html.*"]`)
+                // TODO: url encodes json object
+                .urlEncodes("")
                 // TODO: encoding
-                .encoding("gbk")
+                .encoding("@encoding")
                 .crawlType(1)
                 .build();
 
         let context = await createPageContext(
                 taskConfig,
                 // TODO: homepage url
-                { url: "https://163.com/" }
+                { url: testurl }
         );
 
-        await run(context)
+        return await run(context, dowrite)
 }
 
 /*********************************************main***********************************************************/
-main();
+exports.homepage = homepage;

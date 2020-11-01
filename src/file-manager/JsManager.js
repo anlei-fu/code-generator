@@ -1,5 +1,6 @@
 const { FileManagerBase } = require("./FileManager");
 const { FileDownloader } = require("./../http");
+const { TimeoutCache } = require("./../cache");
 
 /**
  * @CrawlerContext component ,to manage crawl script
@@ -13,7 +14,7 @@ class JsManager extends FileManagerBase {
      */
     constructor (scriptDir) {
         super("JsManager", scriptDir);
-        this._js = {};
+        this._js = new TimeoutCache();
         this._fetcher = new FileDownloader(scriptDir);
     }
 
@@ -23,22 +24,22 @@ class JsManager extends FileManagerBase {
      * @param {String} jsFile 
      * @returns {MainFunction?}
      */
-    async getMain(fileHost,jsFile) {
+    async getMain(fileHost, jsFile) {
         if (!this.exists(jsFile)) {
             // download from file server
-            await this._fetcher.download(`${fileHost}/${jsFile}`, jsFile,{});
+            await this._fetcher.download(`${fileHost}/${jsFile}`, jsFile, {});
 
             if (!this.exists(jsFile))
                 throw new Error(`fetch script(${jsFile}) failed`);
         }
 
-        if (this._js[jsFile])
-            return this._js[jsFile];
+        if (this._js.has(jsFile))
+            return this._js.get(jsFile);
 
         try {
             let main = require(this.getFullPath(jsFile)).main;
             if (main)
-                this._js[jsFile] = main;
+                this._js.cache(jsFile, main, 1000 * 60 * 30);
 
             return main;
         } catch (ex) {
@@ -47,12 +48,6 @@ class JsManager extends FileManagerBase {
         }
     }
 
-    /**
-     * Clear cached main functions
-     */
-    clearCache() {
-        this._js = {};
-    }
 }
 
 exports.JsManager = JsManager;

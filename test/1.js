@@ -1,4 +1,5 @@
-const url = require("url");
-
-let parsed = url.parse("https://zhidao.baidu.com/question/567578621.html");
-console.log(parsed.host);
+let arr=[1,2,3,4];
+let arr1=arr.splice(1,1);
+console.log(arr);
+console.log("arra1");
+console.log(arr1);

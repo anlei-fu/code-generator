@@ -47,6 +47,10 @@ class Logger {
                 this._doWrite("error", msg, error, obj);
         }
 
+        fatal(msg,error,obj){
+                this._doWrite("fatal", msg, error, obj);
+        }
+
         /**
          * Write log 
          * 

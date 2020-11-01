@@ -140,11 +140,11 @@ function readJson(path) {
 function writeJson(path, obj, beautiful = false) {
         let content = "";
         if (beautiful) {
-                content = JSON.stringify(obj, null, "\t");
+                content = JSON.stringify(obj, null,"\t");
         } else {
-
+                content = JSON.stringify(obj);
         }
-        return write(path, JSON.stringify(obj))
+        return write(path, content)
 }
 
 /**

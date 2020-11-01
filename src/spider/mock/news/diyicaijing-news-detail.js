@@ -1,13 +1,8 @@
 
-/**
- * Name: @name
- * Domain: @domain
- * Date: @now
- */
-const { createPageContext } = require("./../../PageContextBuilder");
-const { CrawlTaskConfigBuilder } = require("../../../../model/CrawlTaskConfig");
-const { PageContext } = require("../../../../PageContext");
-const { FILE } = require("./../../../../../libs");
+const { createPageContext } = require("./PageContextBuilder");
+const { CrawlTaskConfigBuilder } = require("../../model/CrawlTaskConfig");
+const { PageContext } = require("../../PageContext");
+const { FILE } = require("./../../../libs");
 
 // TODO: find comment api
 let api = "";
@@ -33,22 +28,18 @@ async function getCommet(url, request) {
  * 
  * @param {PageContext} pageContext 
  */
-async function run(write, pageContext) {
-        if (write)
-                FILE.write("./@name.html", pageContext.html);
-        //BEGIN
+async function run(pageContext) {
         let $ = pageContext.$;
-        let builder = pageContext.pageResultBuilder;
         var data = {
 
         };
 
         data.imgs = [];
-        data.title = $("@title").text();
-        data.author = $("@author").text();
-        data.date = $("@date").text();
-        data.content = $("@content").text();
-        $("@content").find("img").each((i, e) => {
+        data.title = $("").text();
+        data.author = $("").text();
+        data.date = $("").text();
+        data.content = $("").text();
+        $("").find("img").each((i, e) => {
                 let src = $(e).attr("src");
                 if (src) {
                         let resolved = pageContext.urlResolver.resolve(src);
@@ -63,15 +54,14 @@ async function run(write, pageContext) {
                         });
                 }
         });
-        builder.data(data).success();
-        //END
-        if (write)
-                FILE.writeJson("./@name.json", data, true);
 
-        return builder.build();
+        // data.comment = getCommet(pageContext.url, pageContext.httpClient);
+
+        FILE.write("./output/diyicaijing.html", pageContext.html);
+        FILE.writeJson("./output/diyicaijing.json", data, true);
 }
 
-async function detail(write = true, testUrl) {
+async function main() {
         let taskConfig = new CrawlTaskConfigBuilder()
                 .autoDownloadPage(true)
                 .downloadTimeout(10000)
@@ -85,12 +75,11 @@ async function detail(write = true, testUrl) {
         let context = await createPageContext(
                 taskConfig,
                 // TODO: test url
-                { url: testUrl }
+                { url: "" }
         );
 
-        return await run(write, context)
+        await run(context)
 }
 
 /*********************************************main***********************************************************/
-
-exports.detail = detail;
+main();

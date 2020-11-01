@@ -19,6 +19,28 @@ function nextVal(min, max) {
         return result;
 }
 
+/**
+ * 
+ * @param {[]} array 
+ * @param {Number} count 
+ */
+function pickFromArray(array,count){
+       if(array.length<count)
+        throw new Error("array length can not less than count");
+
+        let result =[];
+
+     for(let i=0;i<count;i++){
+             let rd =nextVal(0,array.length);
+             result.push(array[rd]);
+             array.splice(rd,1)
+
+     }
+
+     return result;
+}
+
 exports.RANDOM={
-        nextVal
+        nextVal,
+        pickFromArray
 }

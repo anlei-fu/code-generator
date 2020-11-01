@@ -1,6 +1,6 @@
 const axios = require("axios");
 const iconv = require('iconv-lite');
-const { OBJECT,STR } = require("./../libs");
+const { OBJECT, STR } = require("./../libs");
 const { DownloadResult } = require("./model/DownloadResult");
 const { URL } = require("./model/URL");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
@@ -49,7 +49,7 @@ class Downloader extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        async download(url, headers,encoding) {
+        async download(url, headers, encoding) {
                 try {
                         if (!url.url || !(url.url.startsWith("http://") || url.url.startsWith("https://"))) {
                                 return {
@@ -57,7 +57,7 @@ class Downloader extends LoggerSurpport {
                                 };
                         }
 
-                        return await this._downloadCore(url, headers,encoding);
+                        return await this._downloadCore(url, headers, encoding);
                 } catch (ex) {
                         console.log(ex);
                         this.error(`download ${url.url} failed`, ex);
@@ -73,8 +73,8 @@ class Downloader extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        _downloadCore(url, headers,encoding) {
-                encoding=encoding||this._context.taskConfig.encoding;
+        _downloadCore(url, headers, encoding) {
+                encoding = encoding || this._context.taskConfig.encoding;
 
                 return new Promise((resolve, reject) => {
                         let axiosConfig = this._createConfig(url, headers);
@@ -89,12 +89,17 @@ class Downloader extends LoggerSurpport {
                                                 });
                                                 res.data.on('end', () => {
                                                         let buffer = Buffer.concat(chunks);
-                                                        let content= res.headers["content-type"];
-                                                        if(content&&content.toLowerCase().includes("charset")){
-                                                            encoding=this._getEncoding(encoding,content);
+                                                        /**
+                                                         * charset check ,if header contains pick headers or get from meta tag
+                                                         */
+                                                        let content = res.headers["content-type"];
+                                                        let needEncodingCheck = true;
+                                                        if (content && content.toLowerCase().includes("charset")) {
+                                                                encoding = this._getEncoding(encoding, content);
+                                                                needEncodingCheck = false;
                                                         }
-                                                        let str = iconv.decode(buffer,  encoding || "utf8");
-                                                        resolve({ html: str, status: res.status })
+                                                        let str = iconv.decode(buffer, encoding || "utf8");
+                                                        resolve({ html: str, status: res.status, needEncodingCheck })
                                                 })
                                         }
                                 ).catch(ex => reject(ex));
@@ -107,8 +112,8 @@ class Downloader extends LoggerSurpport {
                 return url;
         }
 
-        _getEncoding(encoding,content){
-                content=content.toLowerCase();
+        _getEncoding(encoding, content) {
+                content = content.toLowerCase();
                 if (content.includes("utf")) {
                         encoding = "utf8";
                 } else if (content.includes("gbk")) {

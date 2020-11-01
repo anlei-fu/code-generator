@@ -21,25 +21,25 @@ function main(modelName, items, withBuilder = true) {
         if (withBuilder)
                 content += builderGenerator(modelName, items);
 
-        FILE.write(`./output/${modelName}.js`, content);
+        FILE.write(`D:/project/code-generator/src/spider/mock/news/template/${modelName}.js`, content);
         return content;
 
 }
 
 /******************************************main**********************************8888*/
 main(
-        "GenerateConfig",
+        "NewSiteGenerateConfig",
         [
-                "project",
-                "root",
-                "abbrOfProject",
-                "dictionaryServiceName",
-                "dictionaryMethod",
-                "upperTowLetter",
-                "edit",
-                "delete",
-                "batch",
-                "add",
-                "exportExcel"
+                "name",
+                "domain",
+                "siteId",
+                "testUrl",
+                "title",
+                "author",
+                "date",
+                "content",
+                "encoding",
+                "navSelector",
+                "now"
         ],
 );

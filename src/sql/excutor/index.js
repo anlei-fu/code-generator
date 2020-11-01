@@ -1,5 +1,5 @@
-const {MysqlExcutor } =require("./mysql-excutor/mysql-excutor");
+const { MysqlExcutor } = require("./mysql-excutor/mysql-excutor");
 
-module.exports={
+module.exports = {
         MysqlExcutor
 }

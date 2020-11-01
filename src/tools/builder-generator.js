@@ -17,7 +17,7 @@ function main(modelName, items) {
                 config: modelName,
                 content
         });
-        FILE.write(`./output/${modelName}Builder.js`, content);
+        // FILE.write(`./output/${modelName}Builder.js`, content);
         return content;
 
 }

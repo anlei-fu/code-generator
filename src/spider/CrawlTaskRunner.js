@@ -309,6 +309,7 @@ class CrawlerTaskRunner extends LoggerSurpport {
                                 }
                         }
 
+                        this.fatal("no master to report result");
                         await ThreadUtils.sleep(10000);
                 }
         }
