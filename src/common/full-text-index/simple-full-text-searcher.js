@@ -1,4 +1,4 @@
-const { OBJECT } = require("../../../libs/utils");
+const { OBJECT, ARRAY } = require("../../libs/");
 
 /**
  * Properties of document
@@ -78,28 +78,37 @@ class SimpleFullTextSearcher {
          */
         addDocuments(documents) {
                 documents.forEach(document => {
-                        if (!this._documentsMap.has(document.name))
-                                this._documentsMap.set(document.name, document);
+                        this.addDocument(document);
+                });
+        }
 
-                        let tokens = this._customerTokenizer
-                                ? this._customerTokenizer(document.content)
-                                : this._defaultTokenizer(document.content);
+        /**
+         * Add single document
+         * 
+         * @param {Document} document 
+         */
+        addDocument(document) {
+                if (!this._documentsMap.has(document.name))
+                        this._documentsMap.set(document.name, document);
 
-                        tokens.forEach(token => {
-                                this._createTokenDocumentIndex(token, document.name, document.weight || 1);
-                        });
+                let tokens = this._customerTokenizer
+                        ? this._customerTokenizer(document.content)
+                        : this._defaultTokenizer(document.content);
 
-                        // caculate term frequency of every document
-                        new Set(tokens).forEach(token => {
-                                let map = this._tokenDocumentsMap.get(token);
-                                map.forEach((weight, documentName) => {
-                                        map.set(documentName, this._caculateTermFrequencyFactor(weight));
-                                });
-                        })
-
-                        this._documentsMap.get(document.name).totalTokenCount = tokens.length;
+                tokens.forEach(token => {
+                        this._createTokenDocumentIndex(token, document.name, document.weight || 1);
                 });
 
+                let set = new Set(tokens)
+                // caculate term frequency of every document
+                set.forEach(token => {
+                        let map = this._tokenDocumentsMap.get(token);
+                        map.forEach((weight, documentName) => {
+                                map.set(documentName, this._caculateTermFrequencyFactor(weight));
+                        });
+                })
+
+                this._documentsMap.get(document.name).totalTokenCount = set.size;
         }
 
         /**
@@ -144,6 +153,7 @@ class SimpleFullTextSearcher {
                         ? this._customerTokenizer(keywords)
                         : this._defaultTokenizer(keywords);
 
+                tokens = ARRAY.distinct(tokens, x => x);
                 // find matched tokens
                 let matchedTokenCollection = [];
                 tokens.forEach(token => {
@@ -165,8 +175,7 @@ class SimpleFullTextSearcher {
                                 if (!documentScores.has(documentName))
                                         documentScores.set(documentName, 0);
 
-                                let lengthNormlization = this._caculateLengthNormFactor(documentTokenHittedMap.get(documentName),
-                                        this._documentsMap.get(documentName).totalTokenCount);
+                                let lengthNormlization = this._caculateLengthNormFactor(this._documentsMap.get(documentName).totalTokenCount);
 
                                 // idf *tf*tf*norm
                                 let tokenScore = this._defaultTokenScorer(idf, tf, lengthNormlization);
@@ -244,7 +253,7 @@ class SimpleFullTextSearcher {
          * @returns {Number}
          */
         _defaultTokenScorer(idf, tf, lenthNorm) {
-                return tf * idf * idf * lenthNorm;
+                return  tf * idf * idf * lenthNorm;
         }
 
         /**
@@ -268,7 +277,7 @@ class SimpleFullTextSearcher {
         }
 
         /**
-         * Caculate coord fact
+         * Caculate coord factor
          * 
          * @param {Number} totalTokenCount , size of token that tokenized by tokenizer 
          * @param {Number} hittedTokenCount
@@ -303,8 +312,10 @@ class SimpleFullTextSearcher {
          * @param {Number} hittedDocumentTokenCount 
          * @param {Number} documentTotalTokenCount 
          */
-        _caculateLengthNormFactor(hittedDocumentTokenCount, documentTotalTokenCount) {
-                return 1.0 / Math.sqrt(documentTotalTokenCount + 1 - hittedDocumentTokenCount);
+        _caculateLengthNormFactor(documentTotalTokenCount) {
+                // let len =Math.sqrt(documentTotalTokenCount + 1 - hittedDocumentTokenCount);
+                let len = Math.sqrt(documentTotalTokenCount);
+                return 1.0 / len;
         }
 
         /**

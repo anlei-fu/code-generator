@@ -9,31 +9,31 @@
 				"children": [
 					{
 						"id": 928625648,
-						"cover_num_str": "1.8亿",
+						"cover_num_str": "1.7亿",
 						"children": [],
 						"value": "穿搭",
-						"fans_num_str": "1.8亿"
+						"fans_num_str": "1.7亿"
 					},
 					{
 						"id": 928625649,
-						"cover_num_str": "5597.4万",
+						"cover_num_str": "5377.8万",
 						"children": [],
 						"value": "街拍",
-						"fans_num_str": "5598.0万"
+						"fans_num_str": "5377.8万"
 					},
 					{
 						"id": 928714075,
-						"cover_num_str": "2154.1万",
+						"cover_num_str": "2012.3万",
 						"children": [],
 						"value": "时尚达人",
-						"fans_num_str": "2154.1万"
+						"fans_num_str": "2012.3万"
 					},
 					{
 						"id": 928625650,
-						"cover_num_str": "2.0亿",
+						"cover_num_str": "1.9亿",
 						"children": [],
 						"value": "好物推荐",
-						"fans_num_str": "2.0亿"
+						"fans_num_str": "1.9亿"
 					}
 				],
 				"value": "时尚",
@@ -41,14 +41,14 @@
 			},
 			{
 				"id": 928528504,
-				"cover_num_str": "2.6亿",
+				"cover_num_str": "2.5亿",
 				"children": [
 					{
 						"id": 928714076,
-						"cover_num_str": "1.2亿",
+						"cover_num_str": "1.1亿",
 						"children": [],
 						"value": "职场",
-						"fans_num_str": "1.2亿"
+						"fans_num_str": "1.1亿"
 					},
 					{
 						"id": 928714077,
@@ -59,24 +59,24 @@
 					},
 					{
 						"id": 928625651,
-						"cover_num_str": "798.4万",
+						"cover_num_str": "774.4万",
 						"children": [],
 						"value": "财经理财",
-						"fans_num_str": "798.4万"
+						"fans_num_str": "774.4万"
 					},
 					{
 						"id": 928714078,
-						"cover_num_str": "2702.6万",
+						"cover_num_str": "2656.7万",
 						"children": [],
 						"value": "名人演讲类",
-						"fans_num_str": "2702.6万"
+						"fans_num_str": "2656.7万"
 					},
 					{
 						"id": 928528511,
-						"cover_num_str": "5709.3万",
+						"cover_num_str": "5648.1万",
 						"children": [],
 						"value": "创业商业类",
-						"fans_num_str": "5709.3万"
+						"fans_num_str": "5648.1万"
 					},
 					{
 						"id": 928714079,
@@ -87,75 +87,75 @@
 					},
 					{
 						"id": 928625652,
-						"cover_num_str": "5151.5万",
+						"cover_num_str": "5092.2万",
 						"children": [],
 						"value": "法律",
-						"fans_num_str": "5151.5万"
+						"fans_num_str": "5092.2万"
 					}
 				],
 				"value": "个人管理",
-				"fans_num_str": "2.6亿"
+				"fans_num_str": "2.5亿"
 			},
 			{
 				"id": 928528505,
-				"cover_num_str": "1.8亿",
+				"cover_num_str": "1.7亿",
 				"children": [
 					{
 						"id": 928528516,
-						"cover_num_str": "8194.4万",
+						"cover_num_str": "7539.6万",
 						"children": [],
 						"value": "二次元真人出镜",
-						"fans_num_str": "8194.4万"
+						"fans_num_str": "7539.6万"
 					},
 					{
 						"id": 928528517,
-						"cover_num_str": "4333.2万",
+						"cover_num_str": "3821.3万",
 						"children": [],
 						"value": "二次元声音创作者",
-						"fans_num_str": "4333.2万"
+						"fans_num_str": "3821.3万"
 					},
 					{
 						"id": 928625660,
-						"cover_num_str": "3830.0万",
+						"cover_num_str": "3405.6万",
 						"children": [],
 						"value": "画师",
-						"fans_num_str": "3830.3万"
+						"fans_num_str": "3405.6万"
 					},
 					{
 						"id": 928625661,
-						"cover_num_str": "1.2亿",
-						"children": [],
-						"value": "动漫创作者",
-						"fans_num_str": "1.2亿"
-					},
-					{
-						"id": 928528518,
 						"cover_num_str": "1.1亿",
 						"children": [],
-						"value": "动漫IP",
+						"value": "动漫创作者",
 						"fans_num_str": "1.1亿"
 					},
 					{
+						"id": 928528518,
+						"cover_num_str": "1.0亿",
+						"children": [],
+						"value": "动漫IP",
+						"fans_num_str": "1.0亿"
+					},
+					{
 						"id": 928714088,
-						"cover_num_str": "2881.5万",
+						"cover_num_str": "2589.2万",
 						"children": [],
 						"value": "宅物",
-						"fans_num_str": "2881.7万"
+						"fans_num_str": "2589.2万"
 					}
 				],
 				"value": "二次元",
-				"fans_num_str": "1.8亿"
+				"fans_num_str": "1.7亿"
 			},
 			{
 				"id": 928528506,
-				"cover_num_str": "1.9亿",
+				"cover_num_str": "1.8亿",
 				"children": [
 					{
 						"id": 928528521,
-						"cover_num_str": "9710.9万",
+						"cover_num_str": "9365.5万",
 						"children": [],
 						"value": "好物挑选",
-						"fans_num_str": "9710.9万"
+						"fans_num_str": "9365.5万"
 					},
 					{
 						"id": 928625669,
@@ -173,28 +173,28 @@
 					},
 					{
 						"id": 928714095,
-						"cover_num_str": "3247.1万",
+						"cover_num_str": "3205.2万",
 						"children": [],
 						"value": "花艺",
-						"fans_num_str": "3247.1万"
+						"fans_num_str": "3205.2万"
 					},
 					{
 						"id": 928625670,
-						"cover_num_str": "2847.6万",
+						"cover_num_str": "2798.8万",
 						"children": [],
 						"value": "仪态",
-						"fans_num_str": "2847.7万"
+						"fans_num_str": "2798.8万"
 					}
 				],
 				"value": "生活",
-				"fans_num_str": "1.9亿"
+				"fans_num_str": "1.8亿"
 			},
 			{
 				"id": 928528507,
-				"cover_num_str": "1.9亿",
+				"cover_num_str": "1.8亿",
 				"children": [],
 				"value": "人文科普",
-				"fans_num_str": "1.9亿"
+				"fans_num_str": "1.8亿"
 			},
 			{
 				"id": 928528508,
@@ -205,25 +205,25 @@
 			},
 			{
 				"id": 928528509,
-				"cover_num_str": "1.7亿",
+				"cover_num_str": "1.6亿",
 				"children": [
 					{
 						"id": 928528523,
-						"cover_num_str": "4260.4万",
+						"cover_num_str": "4205.5万",
 						"children": [],
 						"value": "汽车科普",
-						"fans_num_str": "4260.4万"
+						"fans_num_str": "4205.5万"
 					},
 					{
 						"id": 928714100,
-						"cover_num_str": "1659.5万",
+						"cover_num_str": "1636.0万",
 						"children": [],
 						"value": "汽车周边",
-						"fans_num_str": "1659.6万"
+						"fans_num_str": "1636.0万"
 					}
 				],
 				"value": "汽车",
-				"fans_num_str": "1.7亿"
+				"fans_num_str": "1.6亿"
 			},
 			{
 				"id": 928625640,
@@ -231,10 +231,10 @@
 				"children": [
 					{
 						"id": 928714080,
-						"cover_num_str": "1.9亿",
+						"cover_num_str": "1.8亿",
 						"children": [],
 						"value": "运动健身",
-						"fans_num_str": "1.9亿"
+						"fans_num_str": "1.8亿"
 					},
 					{
 						"id": 928714081,
@@ -245,38 +245,38 @@
 					},
 					{
 						"id": 928625653,
-						"cover_num_str": "643.6万",
+						"cover_num_str": "584.9万",
 						"children": [],
 						"value": "体育媒体",
-						"fans_num_str": "643.6万"
+						"fans_num_str": "584.9万"
 					},
 					{
 						"id": 928625654,
-						"cover_num_str": "8623.2万",
+						"cover_num_str": "8324.3万",
 						"children": [],
 						"value": "极限运动",
-						"fans_num_str": "8623.2万"
+						"fans_num_str": "8324.3万"
 					},
 					{
 						"id": 928625655,
-						"cover_num_str": "1835.3万",
+						"cover_num_str": "1669.5万",
 						"children": [],
 						"value": "运动文化",
-						"fans_num_str": "1835.4万"
+						"fans_num_str": "1669.5万"
 					},
 					{
 						"id": 928714082,
-						"cover_num_str": "1612.4万",
+						"cover_num_str": "1525.2万",
 						"children": [],
 						"value": "体育资讯",
-						"fans_num_str": "1612.4万"
+						"fans_num_str": "1525.2万"
 					},
 					{
 						"id": 928686631,
-						"cover_num_str": "5272.0万",
+						"cover_num_str": "5043.1万",
 						"children": [],
 						"value": "户外",
-						"fans_num_str": "5272.0万"
+						"fans_num_str": "5043.1万"
 					}
 				],
 				"value": "体育健身",
@@ -284,7 +284,7 @@
 			},
 			{
 				"id": 928625641,
-				"cover_num_str": "1.6亿",
+				"cover_num_str": "1.5亿",
 				"children": [
 					{
 						"id": 928714086,
@@ -295,106 +295,106 @@
 					}
 				],
 				"value": "宠物",
-				"fans_num_str": "1.6亿"
+				"fans_num_str": "1.5亿"
 			},
 			{
 				"id": 928625642,
-				"cover_num_str": "1.6亿",
+				"cover_num_str": "1.5亿",
 				"children": [
 					{
 						"id": 928625662,
-						"cover_num_str": "2023.8万",
+						"cover_num_str": "1865.5万",
 						"children": [],
 						"value": "高考",
-						"fans_num_str": "2023.8万"
+						"fans_num_str": "1865.5万"
 					},
 					{
 						"id": 928528519,
-						"cover_num_str": "1487.8万",
+						"cover_num_str": "1425.3万",
 						"children": [],
 						"value": "考研",
-						"fans_num_str": "1487.8万"
+						"fans_num_str": "1425.3万"
 					},
 					{
 						"id": 928625663,
-						"cover_num_str": "950.9万",
+						"cover_num_str": "921.0万",
 						"children": [],
 						"value": "公考",
-						"fans_num_str": "950.9万"
+						"fans_num_str": "921.0万"
 					},
 					{
 						"id": 928714089,
-						"cover_num_str": "1473.5万",
+						"cover_num_str": "1395.6万",
 						"children": [],
 						"value": "留学",
-						"fans_num_str": "1473.5万"
+						"fans_num_str": "1395.6万"
 					},
 					{
 						"id": 928625665,
-						"cover_num_str": "8104.2万",
+						"cover_num_str": "7773.2万",
 						"children": [],
 						"value": "K12",
-						"fans_num_str": "8103.4万"
+						"fans_num_str": "7773.2万"
 					},
 					{
 						"id": 928714090,
-						"cover_num_str": "572.7万",
+						"cover_num_str": "542.6万",
 						"children": [],
 						"value": "艺考",
-						"fans_num_str": "572.7万"
+						"fans_num_str": "542.6万"
 					},
 					{
 						"id": 928714091,
-						"cover_num_str": "1149.7万",
+						"cover_num_str": "1136.2万",
 						"children": [],
 						"value": "资格证考试",
-						"fans_num_str": "1149.7万"
+						"fans_num_str": "1136.2万"
 					},
 					{
 						"id": 928625666,
-						"cover_num_str": "106.1万",
+						"cover_num_str": "101.0万",
 						"children": [],
 						"value": "四六级",
-						"fans_num_str": "106.1万"
+						"fans_num_str": "101.0万"
 					},
 					{
 						"id": 928625667,
-						"cover_num_str": "1936.4万",
+						"cover_num_str": "1898.4万",
 						"children": [],
 						"value": "职业教育",
-						"fans_num_str": "1936.4万"
+						"fans_num_str": "1898.4万"
 					},
 					{
 						"id": 928625668,
-						"cover_num_str": "6214.5万",
+						"cover_num_str": "5956.1万",
 						"children": [],
 						"value": "英语教学",
-						"fans_num_str": "6214.5万"
+						"fans_num_str": "5956.1万"
 					},
 					{
 						"id": 928714092,
-						"cover_num_str": "1242.9万",
+						"cover_num_str": "1149.1万",
 						"children": [],
 						"value": "英语剧情",
-						"fans_num_str": "1242.9万"
+						"fans_num_str": "1149.1万"
 					},
 					{
 						"id": 928528520,
-						"cover_num_str": "2475.6万",
+						"cover_num_str": "2307.3万",
 						"children": [],
 						"value": "小语种(日语、韩语、西语)",
-						"fans_num_str": "2474.9万"
+						"fans_num_str": "2307.3万"
 					},
 					{
 						"id": 928714093,
-						"cover_num_str": "1145.4万",
+						"cover_num_str": "1082.0万",
 						"children": [],
 						"value": "方言类",
-						"fans_num_str": "1145.4万"
+						"fans_num_str": "1082.0万"
 					}
 				],
 				"value": "教育",
-				"fans_num_str": "1.6亿"
+				"fans_num_str": "1.5亿"
 			},
 			{
 				"id": 928625643,
@@ -412,297 +412,297 @@
 			},
 			{
 				"id": 928625645,
-				"cover_num_str": "4957.1万",
+				"cover_num_str": "4836.0万",
 				"children": [],
 				"value": "婚庆",
-				"fans_num_str": "4957.1万"
+				"fans_num_str": "4836.0万"
 			},
 			{
 				"id": 928625646,
-				"cover_num_str": "1.5亿",
+				"cover_num_str": "1.4亿",
 				"children": [
 					{
 						"id": 928625671,
-						"cover_num_str": "7313.9万",
+						"cover_num_str": "6962.9万",
 						"children": [],
 						"value": "科技产品",
-						"fans_num_str": "7313.9万"
+						"fans_num_str": "6962.9万"
 					},
 					{
 						"id": 928714101,
-						"cover_num_str": "7407.5万",
+						"cover_num_str": "7185.6万",
 						"children": [],
 						"value": "科技周边",
-						"fans_num_str": "7408.2万"
+						"fans_num_str": "7185.6万"
 					},
 					{
 						"id": 928528524,
-						"cover_num_str": "3026.3万",
+						"cover_num_str": "2865.9万",
 						"children": [],
 						"value": "科技资讯",
-						"fans_num_str": "3026.3万"
+						"fans_num_str": "2865.9万"
 					},
 					{
 						"id": 928625672,
-						"cover_num_str": "1609.1万",
+						"cover_num_str": "1523.9万",
 						"children": [],
 						"value": "技术科普",
-						"fans_num_str": "1609.2万"
+						"fans_num_str": "1523.9万"
 					},
 					{
 						"id": 928625673,
-						"cover_num_str": "452.2万",
+						"cover_num_str": "424.5万",
 						"children": [],
 						"value": "科技KOL",
-						"fans_num_str": "452.2万"
+						"fans_num_str": "424.5万"
 					},
 					{
 						"id": 928714102,
-						"cover_num_str": "6533.8万",
+						"cover_num_str": "6295.4万",
 						"children": [],
 						"value": "科技公司",
-						"fans_num_str": "6534.3万"
+						"fans_num_str": "6295.4万"
 					}
 				],
 				"value": "科技",
-				"fans_num_str": "1.5亿"
+				"fans_num_str": "1.4亿"
 			},
 			{
 				"id": 928625647,
-				"cover_num_str": "1.6亿",
+				"cover_num_str": "1.5亿",
 				"children": [
 					{
 						"id": 928714106,
-						"cover_num_str": "1.6亿",
+						"cover_num_str": "1.5亿",
 						"children": [
 							{
-								"cover_num_str": "8086.6万",
+								"cover_num_str": "7312.5万",
 								"id": 928625681,
 								"value": "moba类",
-								"fans_num_str": "8086.6万"
+								"fans_num_str": "7312.5万"
 							},
 							{
-								"cover_num_str": "2825.1万",
+								"cover_num_str": "2359.6万",
 								"id": 928625682,
 								"value": "沙盒类",
-								"fans_num_str": "2825.3万"
+								"fans_num_str": "2359.6万"
 							},
 							{
-								"cover_num_str": "9622.7万",
+								"cover_num_str": "8816.5万",
 								"id": 928528529,
 								"value": "射击类",
-								"fans_num_str": "9622.7万"
+								"fans_num_str": "8816.5万"
 							},
 							{
-								"cover_num_str": "1788.2万",
+								"cover_num_str": "1596.6万",
 								"id": 928625683,
 								"value": "角色扮演类",
-								"fans_num_str": "1788.2万"
+								"fans_num_str": "1596.6万"
 							},
 							{
-								"cover_num_str": "4641.1万",
+								"cover_num_str": "4218.9万",
 								"id": 928528530,
 								"value": "休闲类",
-								"fans_num_str": "4641.1万"
+								"fans_num_str": "4218.9万"
 							},
 							{
-								"cover_num_str": "287.9万",
+								"cover_num_str": "254.0万",
 								"id": 928714111,
 								"value": "策略类",
-								"fans_num_str": "287.9万"
+								"fans_num_str": "254.0万"
 							},
 							{
-								"cover_num_str": "2892.8万",
+								"cover_num_str": "2576.9万",
 								"id": 928625684,
 								"value": "单机主机",
-								"fans_num_str": "2892.8万"
+								"fans_num_str": "2576.9万"
 							},
 							{
-								"cover_num_str": "2774.2万",
+								"cover_num_str": "2418.5万",
 								"id": 928528531,
 								"value": "其他手游",
-								"fans_num_str": "2774.2万"
+								"fans_num_str": "2418.5万"
 							},
 							{
-								"cover_num_str": "1843.2万",
+								"cover_num_str": "1638.7万",
 								"id": 928625685,
 								"value": "其他网游",
-								"fans_num_str": "1843.3万"
+								"fans_num_str": "1638.7万"
 							},
 							{
-								"cover_num_str": "4210.5万",
+								"cover_num_str": "3737.2万",
 								"id": 928528532,
 								"value": "综合游戏",
-								"fans_num_str": "4210.5万"
+								"fans_num_str": "3737.2万"
 							}
 						],
 						"value": "按类型",
-						"fans_num_str": "1.6亿"
+						"fans_num_str": "1.5亿"
 					},
 					{
 						"id": 928940129,
-						"cover_num_str": "1.3亿",
+						"cover_num_str": "1.2亿",
 						"children": [
 							{
-								"cover_num_str": "4478.7万",
+								"cover_num_str": "3975.4万",
 								"id": 928842800,
 								"value": "游戏其他",
-								"fans_num_str": "4478.7万"
+								"fans_num_str": "3975.4万"
 							},
 							{
-								"cover_num_str": "47.0万",
+								"cover_num_str": "41.8万",
 								"id": 929029188,
 								"value": "三国",
-								"fans_num_str": "47.0万"
+								"fans_num_str": "41.8万"
 							},
 							{
-								"cover_num_str": "5.7万",
+								"cover_num_str": "5.2万",
 								"id": 928940130,
 								"value": "传奇",
-								"fans_num_str": "5.7万"
+								"fans_num_str": "5.2万"
 							},
 							{
-								"cover_num_str": "509.5万",
+								"cover_num_str": "412.9万",
 								"id": 928842801,
 								"value": "丧尸",
-								"fans_num_str": "509.5万"
+								"fans_num_str": "412.9万"
 							},
 							{
-								"cover_num_str": "7410.5万",
+								"cover_num_str": "6730.6万",
 								"id": 928842802,
 								"value": "军事战争",
-								"fans_num_str": "7410.9万"
+								"fans_num_str": "6730.6万"
 							},
 							{
-								"cover_num_str": "1218.3万",
+								"cover_num_str": "1038.9万",
 								"id": 928842803,
 								"value": "生存/大逃杀",
-								"fans_num_str": "1218.3万"
+								"fans_num_str": "1038.9万"
 							},
 							{
-								"cover_num_str": "2183.2万",
+								"cover_num_str": "1811.0万",
 								"id": 928940131,
 								"value": "城市建设",
-								"fans_num_str": "2183.2万"
+								"fans_num_str": "1811.0万"
 							},
 							{
-								"cover_num_str": "906.6万",
+								"cover_num_str": "801.3万",
 								"id": 928842805,
 								"value": "仙侠/武侠",
-								"fans_num_str": "906.6万"
+								"fans_num_str": "801.3万"
 							},
 							{
-								"cover_num_str": "185.9万",
+								"cover_num_str": "153.1万",
 								"id": 928842804,
 								"value": "女性向",
-								"fans_num_str": "185.9万"
+								"fans_num_str": "153.1万"
 							},
 							{
-								"cover_num_str": "970.7万",
+								"cover_num_str": "853.4万",
 								"id": 929029189,
 								"value": "科幻/魔幻",
-								"fans_num_str": "970.7万"
+								"fans_num_str": "853.4万"
 							},
 							{
-								"cover_num_str": "47.8万",
+								"cover_num_str": "43.7万",
 								"id": 928940133,
 								"value": "西游",
-								"fans_num_str": "47.8万"
+								"fans_num_str": "43.7万"
 							},
 							{
-								"cover_num_str": "957.6万",
+								"cover_num_str": "836.9万",
 								"id": 929029190,
 								"value": "竞速赛车",
-								"fans_num_str": "957.6万"
+								"fans_num_str": "836.9万"
 							},
 							{
-								"cover_num_str": "92.3万",
+								"cover_num_str": "81.6万",
 								"id": 929029191,
 								"value": "体育",
-								"fans_num_str": "92.3万"
+								"fans_num_str": "81.6万"
 							},
 							{
-								"cover_num_str": "804.8万",
+								"cover_num_str": "696.4万",
 								"id": 928842806,
 								"value": "二次元",
-								"fans_num_str": "804.7万"
+								"fans_num_str": "696.4万"
 							},
 							{
-								"cover_num_str": "3084.0万",
+								"cover_num_str": "2756.4万",
 								"id": 928842807,
 								"value": "休闲益智",
-								"fans_num_str": "3084.0万"
+								"fans_num_str": "2756.4万"
 							},
 							{
-								"cover_num_str": "8243.1万",
+								"cover_num_str": "7463.1万",
 								"id": 928940134,
 								"value": "王者/lol",
-								"fans_num_str": "8237.3万"
+								"fans_num_str": "7463.1万"
 							}
 						],
 						"value": "按题材",
-						"fans_num_str": "1.3亿"
+						"fans_num_str": "1.2亿"
 					}
 				],
 				"value": "游戏",
-				"fans_num_str": "1.6亿"
+				"fans_num_str": "1.5亿"
 			},
 			{
 				"id": 928714065,
-				"cover_num_str": "1.6亿",
+				"cover_num_str": "1.5亿",
 				"children": [],
 				"value": "美妆",
-				"fans_num_str": "1.6亿"
+				"fans_num_str": "1.5亿"
 			},
 			{
 				"id": 928714066,
-				"cover_num_str": "2.9亿",
+				"cover_num_str": "2.8亿",
 				"children": [
 					{
 						"id": 928528514,
-						"cover_num_str": "2.3亿",
+						"cover_num_str": "2.2亿",
 						"children": [],
 						"value": "音乐",
-						"fans_num_str": "2.3亿"
+						"fans_num_str": "2.2亿"
 					},
 					{
 						"id": 928625656,
-						"cover_num_str": "10.3万",
+						"cover_num_str": "9.5万",
 						"children": [],
 						"value": "画画",
-						"fans_num_str": "10.3万"
+						"fans_num_str": "9.5万"
 					},
 					{
 						"id": 928714083,
-						"cover_num_str": "1.0亿",
+						"cover_num_str": "9731.9万",
 						"children": [],
 						"value": "手工",
-						"fans_num_str": "1.0亿"
+						"fans_num_str": "9731.9万"
 					},
 					{
 						"id": 928714084,
-						"cover_num_str": "1.8亿",
+						"cover_num_str": "1.7亿",
 						"children": [],
 						"value": "舞蹈",
-						"fans_num_str": "1.8亿"
+						"fans_num_str": "1.7亿"
 					},
 					{
 						"id": 928625657,
-						"cover_num_str": "7893.6万",
+						"cover_num_str": "7490.6万",
 						"children": [],
 						"value": "手势舞",
-						"fans_num_str": "7895.1万"
+						"fans_num_str": "7490.6万"
 					},
 					{
 						"id": 928625658,
-						"cover_num_str": "9219.9万",
+						"cover_num_str": "8797.4万",
 						"children": [],
 						"value": "摄影",
-						"fans_num_str": "9219.9万"
+						"fans_num_str": "8797.4万"
 					}
 				],
 				"value": "艺术",
-				"fans_num_str": "2.9亿"
+				"fans_num_str": "2.8亿"
 			},
 			{
 				"id": 928714067,
@@ -717,10 +717,10 @@
 					},
 					{
 						"id": 928625659,
-						"cover_num_str": "2539.2万",
+						"cover_num_str": "2510.4万",
 						"children": [],
 						"value": "家装指导",
-						"fans_num_str": "2539.2万"
+						"fans_num_str": "2510.4万"
 					}
 				],
 				"value": "装修家装",
@@ -728,14 +728,14 @@
 			},
 			{
 				"id": 928714068,
-				"cover_num_str": "1.4亿",
+				"cover_num_str": "1.3亿",
 				"children": [],
 				"value": "亲子教育",
-				"fans_num_str": "1.4亿"
+				"fans_num_str": "1.3亿"
 			},
 			{
 				"id": 928714069,
-				"cover_num_str": "5.1万",
+				"cover_num_str": "5.3万",
 				"children": [
 					{
 						"id": 928714097,
@@ -767,75 +767,75 @@
 					}
 				],
 				"value": "旅行",
-				"fans_num_str": "5.1万"
+				"fans_num_str": "5.3万"
 			},
 			{
 				"id": 928714070,
-				"cover_num_str": "3.3亿",
+				"cover_num_str": "3.2亿",
 				"children": [
 					{
 						"id": 928625674,
-						"cover_num_str": "2.8亿",
+						"cover_num_str": "2.7亿",
 						"children": [],
 						"value": "影视",
-						"fans_num_str": "2.8亿"
+						"fans_num_str": "2.7亿"
 					},
 					{
 						"id": 928714103,
-						"cover_num_str": "1.1亿",
-						"children": [],
-						"value": "娱乐明星资讯",
-						"fans_num_str": "1.1亿"
-					},
-					{
-						"id": 928714104,
-						"cover_num_str": "1.8亿",
-						"children": [],
-						"value": "音乐资讯",
-						"fans_num_str": "1.8亿"
-					},
-					{
-						"id": 928528525,
-						"cover_num_str": "9870.6万",
-						"children": [],
-						"value": "明星粉丝团",
-						"fans_num_str": "9870.6万"
-					},
-					{
-						"id": 928528526,
 						"cover_num_str": "1.0亿",
 						"children": [],
-						"value": "娱乐蓝v",
+						"value": "娱乐明星资讯",
 						"fans_num_str": "1.0亿"
 					},
 					{
+						"id": 928714104,
+						"cover_num_str": "1.7亿",
+						"children": [],
+						"value": "音乐资讯",
+						"fans_num_str": "1.7亿"
+					},
+					{
+						"id": 928528525,
+						"cover_num_str": "9451.8万",
+						"children": [],
+						"value": "明星粉丝团",
+						"fans_num_str": "9451.8万"
+					},
+					{
+						"id": 928528526,
+						"cover_num_str": "9715.2万",
+						"children": [],
+						"value": "娱乐蓝v",
+						"fans_num_str": "9715.2万"
+					},
+					{
 						"id": 928775162,
-						"cover_num_str": "2.0亿",
+						"cover_num_str": "1.9亿",
 						"children": [],
 						"value": "明星",
-						"fans_num_str": "2.0亿"
+						"fans_num_str": "1.9亿"
 					}
 				],
 				"value": "娱乐",
-				"fans_num_str": "3.3亿"
+				"fans_num_str": "3.2亿"
 			},
 			{
 				"id": 928714071,
-				"cover_num_str": "2.8亿",
+				"cover_num_str": "2.7亿",
 				"children": [
 					{
 						"id": 928625675,
-						"cover_num_str": "9910.2万",
+						"cover_num_str": "9438.0万",
 						"children": [],
 						"value": "美食其他",
-						"fans_num_str": "9911.5万"
+						"fans_num_str": "9438.0万"
 					},
 					{
 						"id": 928625676,
-						"cover_num_str": "2.0亿",
+						"cover_num_str": "1.9亿",
 						"children": [],
 						"value": "美食教程",
-						"fans_num_str": "2.0亿"
+						"fans_num_str": "1.9亿"
 					},
 					{
 						"id": 928625677,
@@ -846,10 +846,10 @@
 					},
 					{
 						"id": 928714105,
-						"cover_num_str": "6336.9万",
+						"cover_num_str": "5753.1万",
 						"children": [],
 						"value": "美食测评",
-						"fans_num_str": "6336.9万"
+						"fans_num_str": "5753.1万"
 					},
 					{
 						"id": 928528527,
@@ -860,59 +860,59 @@
 					},
 					{
 						"id": 928625678,
-						"cover_num_str": "8545.6万",
+						"cover_num_str": "8198.8万",
 						"children": [],
 						"value": "山村野食",
-						"fans_num_str": "8545.6万"
+						"fans_num_str": "8198.8万"
 					}
 				],
 				"value": "美食",
-				"fans_num_str": "2.8亿"
+				"fans_num_str": "2.7亿"
 			},
 			{
 				"id": 928714072,
-				"cover_num_str": "7028.9万",
+				"cover_num_str": "6831.6万",
 				"children": [
 					{
 						"id": 928714107,
-						"cover_num_str": "694.9万",
+						"cover_num_str": "675.9万",
 						"children": [],
 						"value": "购物场所",
-						"fans_num_str": "694.9万"
+						"fans_num_str": "675.9万"
 					},
 					{
 						"id": 928528528,
-						"cover_num_str": "1430.9万",
+						"cover_num_str": "1425.8万",
 						"children": [],
 						"value": "生活服务",
-						"fans_num_str": "1430.9万"
+						"fans_num_str": "1425.8万"
 					},
 					{
 						"id": 928625679,
-						"cover_num_str": "5343.4万",
+						"cover_num_str": "5162.8万",
 						"children": [],
 						"value": "休闲娱乐",
-						"fans_num_str": "5343.4万"
+						"fans_num_str": "5162.8万"
 					},
 					{
 						"id": 928625680,
-						"cover_num_str": "305.9万",
+						"cover_num_str": "290.2万",
 						"children": [],
 						"value": "演出展览",
-						"fans_num_str": "305.9万"
+						"fans_num_str": "290.2万"
 					}
 				],
 				"value": "休闲",
-				"fans_num_str": "7028.9万"
+				"fans_num_str": "6831.6万"
 			},
 			{
 				"id": 928714073,
-				"cover_num_str": "2226.3万",
+				"cover_num_str": "2096.0万",
 				"children": [],
 				"value": "校园生活",
-				"fans_num_str": "2226.3万"
+				"fans_num_str": "2096.0万"
 			}
 		]
 	},
-	"request_id": "202010301104460100100252022228C71B"
+	"request_id": "20201102142829010021037017016A4E5F"
 }

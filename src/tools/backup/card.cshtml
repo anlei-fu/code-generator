@@ -1,0 +1,337 @@
+@using DMSystem.Utility;
+@using DMSystem.Model;
+@using UserSystem.UserService;
+@using MatchingRecharge.Model;
+@using UserSystem.Entity;
+@using Lib4Net.Core;
+@using DMSystem.Model;
+
+           
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="../../Scripts/timeCtrl.js" type="text/javascript"></script>
+<script src="../../Scripts/cityByprovince.js?version=1.02" type="text/javascript"></script>
+<script type="text/javascript">
+    function MRCenterMsg() {
+        this.bind = function () {
+            $.paging.config.form = "#conditionForm";
+            $.paging.bind();
+            $("#ddlps").val($("#ps").val());
+            $("#ddlps").change(function () {
+                $("#ps").val($(this).val());
+            });
+
+            $(".list_submit").click(function () {
+                
+                if(isNaN($("#PhoneIncome").val())){
+                  alert("号卡返佣不正确");
+                  return;
+                }
+
+                if(isNaN($("#FlowIncome").val())){
+                  alert("流量返佣不正确");
+                  return;
+                }
+
+                $.paging.submit();
+            });
+            reloadTimeForReport($('#TimePeriod'));
+        }
+    }
+
+    $(function () {
+        var user = new MRCenterMsg();
+        user.bind();
+    });
+
+    //编辑
+    function edit(id) {
+        if (id != '') {
+            popEditDialog('/AdHourReport/EditCookie', 'id=' + id, '修改');
+        }
+        else {
+            popEditDialog('/AdHourReport/Item', 'id=' + id, '添加');
+        }
+    }
+    //删除
+    function del(id, obj) {
+        var url = location.href;
+        if (!confirm("你确认要删除该信息吗?")) {
+            return false;
+        }
+        $.ajax({
+            type: "post",
+            data: { id: id },
+            url: '/AdHourReport/Delete',
+            success: function (data) {
+                data = $.parseJSON(data);
+                if (data.Status) {
+                    art.dialog.tips("删除成功！");
+                    location.href = url;
+                }
+                return true;
+            },
+            error: function () {
+                alert("调用失败，请重试");
+            }
+        });
+    }
+    //时间段选择 日期框 控件控制
+    function reloadTimeForReport(obj) {
+        var selected = $(obj).val();
+        if (selected == 2) {
+            $('#dayDate').show();
+            $('#timeDate').hide();
+            $('#monthDate').hide();
+            $('#normalDate').hide();
+        } else if (selected == 1) {
+            $('#dayDate').hide();
+            $('#timeDate').show();
+            $('#monthDate').hide();
+            $('#normalDate').hide();
+        }else if( selected==3){
+            $('#dayDate').hide();
+            $('#timeDate').hide();
+            $('#monthDate').show();
+            $('#normalDate').hide();
+        }else if(selected ==4){
+            $('#dayDate').hide();
+            $('#timeDate').hide();
+            $('#monthDate').hide();
+            $('#normalDate').show();
+        }
+        
+         else {
+            $('#dayDate').hide();
+            $('#timeDate').hide();
+            $('#monthDate').hide();
+            $('#normalDate').hide();
+        }
+
+    }
+
+    $(function () {
+        $("#btnExport").click(function () {
+            if ($("#TimePeriod").val() == "") {
+                alert("必须选择查询订单日期");
+                return false;
+            }
+            exportExcel();
+        });
+    });
+    function exportExcel() {
+        conditionForm.action = "/AdHourReport/ExportExcel";
+        conditionForm.target = "_blank";
+        conditionForm.method = "post";
+        conditionForm.submit();
+        conditionForm.action = "";
+        conditionForm.target = "";
+        conditionForm.method = "get"
+        return false;
+    }
+
+    var incomeMap = {
+        // 无星级
+        "0": {
+            phone: 12.92,
+            flow: 21.4,
+        },
+        // 1星级
+        "1": {
+            phone: 23.96,
+            flow: 21.4,
+        },
+        // 2星级
+        "2": {
+            phone: 25.19,
+            flow: 21.4,
+        },
+        // 3星级
+        "3": {
+            phone: 28.01,
+            flow: 21.4,
+        },
+        // 4无星级
+        "4": {
+            phone: 29.11,
+            flow: 21.4,
+        },
+        // 5c星级
+        "5c": {
+            phone: 31.67,
+            flow: 21.4,
+        },
+        // 5b星级
+        "5b": {
+            phone: 32.70,
+            flow: 21.4,
+        },
+        // 无星级
+        "5a": {
+            phone: 33.39,
+            flow: 21.4,
+        },
+        // 无星级
+        "6c": {
+            phone: 35.00,
+            flow: 21.4,
+        },
+        // 无星级
+        "6b": {
+            phone: 36.69,
+            flow: 21.4,
+        },
+        // 无星级
+        "6a": {
+            phone: 36.38,
+            flow: 21.4,
+        },
+    };    
+
+    function changeIncome(){
+       var level= $("#income_level").val();
+       $("#PhoneIncome").val(incomeMap[level].phone);
+       $("#FlowIncome").val(incomeMap[level].flow);
+    }
+
+    $(()=>{
+        $("#income_level").change(()=>changeIncome());
+        changeIncome();
+    })
+
+
+
+</script>
+<div class="system_list">
+    <form method="get" id="conditionForm">
+    <input type="hidden" name="BusinessType" value="1" />
+    <div class="con_search_box clearfix">
+        <p class="sc_p">
+            统计类型：
+            <select id="TimePeriod" name="TimePeriod" onchange="reloadTimeForReport(this)" style="width: 120px">
+                <option value="2">按天统计</option>
+                <option value="1">按小时统计</option>
+                <option value="3">按月统计</option>
+            </select>
+        </p>
+        <p class="sc_p" style="dispaly: none" id="timeDate">
+            <input class="list_input Wdate" type="text" style="height: 25px; width: 160px;" name="hourST" id="st" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm',maxDate:'%y-%M-%d'});" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")"/>
+            -
+            <input class="list_input Wdate" type="text" style="height: 25px; width: 160px;" name="hourET" id="et" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm',minDate:'#F{$dp.$D(\'st\')}'});" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")"/>
+        </p>
+        <p class="sc_p" style="display: none" id="dayDate">
+          
+            <input class="list_input Wdate" style="height: 25px; width: 120px;" type="text" name="dayST" id="s" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+            -
+            <input class="list_input Wdate sc_frame" style="height: 25px; width: 120px;"  type="text" name="dayET" id="e" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'s\')}'});" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+           
+        </p>
+        <p class="sc_p" style="dispaly: none" id="monthDate">
+            <input class="list_input Wdate" type="text" style="height: 25px; width: 120px;" name="monthST" id="mSt" onclick="WdatePicker({dateFmt:'yyyy-MM',maxDate:'%y-%M'});" value="@DateTime.Now.ToString("yyyy-MM")"/>
+            -
+            <input class="list_input Wdate" type="text" style="height: 25px; width: 120px;" name="monthET" id="mEt" onclick="WdatePicker({dateFmt:'yyyy-MM',minDate:'#F{$dp.$D(\'mSt\')}'});" value="@DateTime.Now.ToString("yyyy-MM")"/>
+        </p>
+        <p class="sc_p" style="dispaly: none" id="normalDate">
+            <input class="list_input Wdate" type="text" style="height: 25px; width: 160px;" name="normalST" id="noSt" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'});" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")"/>
+            -
+            <input class="list_input Wdate" type="text" style="height: 25px; width: 160px;" name="normalET" id="noEt" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'noSt\')}'});" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")"/>
+        </p>
+        <p class="sc_p">
+            平台名称:
+            @Html.DropDownList("PlatNo", new SelectList(PutPlatInfoService.Instance.GetDataList(), "PlatNo", "PlatName"), "--所有--", new { style = "width:120px", onchange = "reloadAgent(this)" })
+        </p>
+        <p class="sc_p">
+            代理商：
+            @Html.DropDownList("AgentNo", new SelectList(PutAgentInfoService.Instance.GetDataList(), "AgentNo", "AgentName"), "--所有--", new { style = "width:120px", onchange = "reloadPromoter(this)" })
+        </p>
+        <p class="sc_p">
+            推广人：
+            @Html.DropDownList("PromoterId", new SelectList(DMPromoterInfoService.Instance.GetDataList(), "PromoterId", "UserName"), "--所有--", new { style = "width:120px" })
+        </p>
+        <p class="sc_p">
+            返佣星级：
+            @Html.DropDownList("income_level", new SelectList(DMSystemDictionaryService.Instance.GetDataStatusList("IncomeLevel"), "Value", "Name", "3"), new { style = "width:120px" })
+            <span>号卡返佣：<input class="sc_frame" style="width: 60px;" type="text" id="PhoneIncome"
+                name="PhoneIncome" /></span> <span style="display:none">流量返佣：<input class="sc_frame" style="width: 60px;"
+                    type="text" id="FlowIncome" name="FlowIncome" /></span>
+        </p>
+        <p class="sc_p">
+            账户ID：
+            <input type="text" name="AdvertiserId" id="AdvertiserId" class="sc_frame" style="width: 180px;" />
+        </p>
+        <p class="sc_p">
+            显示0消耗 
+            <input type="checkbox" name="CostZero" id="CostZero" />
+        </p>
+        <p class="sc_p">
+            <input class="list_submit" type="button" />
+            <input type="button" value="" class="export_btn hand" id="btnExport" />
+        </p>
+    </div>
+    <div id="pnl_plugin">
+    </div>
+    </form>
+         <style>
+        .channel_list .list_content table tr td
+        {
+            height:31px;
+            line-height: 20px;
+            border-bottom: 1px solid rgb(188, 218, 228);
+        }
+    </style>
+    <div class="list_content" id="divshelflist">
+        <table tag="float_th" class="border0" id="tab" width="100%" border="0" cellpadding="30"
+            cellspacing="0">
+            <thead>
+                <tr>
+                    <tr>
+                    @if (Model.Rows.Count >= 2)
+                    {
+                        for (int i = 0; i < Model.Columns.Count; i++)
+                        { 
+                        <th class="bd_l">
+                            @Model.Columns[i].ColumnName
+                        </th> 
+                        }
+                    }
+                </tr>
+                </tr>
+            </thead>
+            <tbody>
+               @if (Model.Rows.Count >= 2)
+                {
+
+                    for (int i = 0; i < Model.Rows.Count; i++)
+                    {
+                    <tr>
+                        @for (int j = 0; j < Model.Columns.Count; j++)
+                        {
+                           
+                            
+                            <td>
+                                @Model.Rows[i][j]
+                            </td>
+                            
+                        }
+                    </tr>
+                    }
+
+                }
+                else
+                {
+                    if (ViewBag.msg != null)
+                    { 
+                  
+                    }
+                    else
+                    {
+                    <font color="red">未查询到任何数据!</font>
+                    }
+                }
+            </tbody>
+        </table>
+      
+    </div>
+</div>

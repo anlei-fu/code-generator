@@ -12,21 +12,20 @@ const ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/item.html`);
 function renderItem(addConfig) {
         let content = "";
         let items = [];
-        let requires = [];
+        let requiredFields = "";
 
         addConfig.selects.forEach(x => {
                 x.dictionaryServiceName = addConfig.dictionaryServiceName;
                 x.dictionaryMethod = addConfig.dictionaryMethod;
                 x.upperTowLetter = addConfig.upperTowLetter;
                 items.push(renderItemSelect(x));
-                requires.push(`                ${x.name}: { required: true },\r\n`);
+                requiredFields+=`"${x.name}",\r\n`;
         })
 
         addConfig.texts.forEach(x => {
 
                 if (!x.textArea) {
-                        requires.push(`                ${x.name}: { required: true },\r\n`);
-
+                        requiredFields+=`"${x.name}",\r\n`;
                         x.type = "text";
                         items.push(renderItemText(x));
                 } else {
@@ -51,7 +50,7 @@ function renderItem(addConfig) {
 
         let itemConfig = {
                 content,
-                rules: STR.arrayToString(requires).trimRight()
+              requiredFields,
         }
         return ITEM_RENDER.renderTemplate(itemConfig);
 

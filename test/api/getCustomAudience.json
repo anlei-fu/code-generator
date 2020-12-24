@@ -2,9 +2,46 @@
 	"message": "OK",
 	"code": 0,
 	"data": {
-		"custom_audience_list": [],
-		"total_num": 0,
+		"custom_audience_list": [
+			{
+				"status": 2,
+				"name": "行业优质人群包",
+				"custom_audience_id": 301305928,
+				"source": "CUSTOM_AUDIENCE_TYPE_RULE",
+				"tag": "系统推荐",
+				"isdel": 0,
+				"delivery_status": "CUSTOM_AUDIENCE_DELIVERY_STATUS_AVAILABLE",
+				"upload_num": 17450100,
+				"cover_num": 17450100,
+				"data_source_id": null
+			},
+			{
+				"status": 2,
+				"name": "行业潜力人群包",
+				"custom_audience_id": 301305787,
+				"source": "CUSTOM_AUDIENCE_TYPE_RULE",
+				"tag": "系统推荐",
+				"isdel": 0,
+				"delivery_status": "CUSTOM_AUDIENCE_DELIVERY_STATUS_AVAILABLE",
+				"upload_num": 72256611,
+				"cover_num": 72256611,
+				"data_source_id": null
+			},
+			{
+				"status": 2,
+				"name": "行业通用人群包",
+				"custom_audience_id": 301305777,
+				"source": "CUSTOM_AUDIENCE_TYPE_RULE",
+				"tag": "系统推荐",
+				"isdel": 0,
+				"delivery_status": "CUSTOM_AUDIENCE_DELIVERY_STATUS_AVAILABLE",
+				"upload_num": 78316837,
+				"cover_num": 78316837,
+				"data_source_id": null
+			}
+		],
+		"total_num": 3,
 		"offset": 0
 	},
-	"request_id": "202010301104460100230302172413FE7A"
+	"request_id": "2020110214282801001002320101ECF3EA"
 }

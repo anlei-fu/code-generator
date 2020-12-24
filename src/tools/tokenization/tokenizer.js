@@ -256,6 +256,7 @@ class Tokenizer {
                         let c = this._reader.next();
                         switch (c) {
                                 case " ":
+                                case "\r":
                                 case "\t":
                                 case "\f":
                                 case "\n":

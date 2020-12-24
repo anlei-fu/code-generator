@@ -3,51 +3,15 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script type="text/javascript" src="/Scripts/common-utils.js?v=19"></script>
 <script type="text/javascript">
-    function MRCenterMsg() {
-        this.bind = function () {
-            $.paging.config.form = "#conditionForm";
-            $.paging.bind();
-            $("#ddlps").val($("#ps").val());
-            $("#ddlps").change(function () {
-                $("#ps").val($(this).val());
-            });
-            $(".list_submit").click(function () {
-                $.paging.submit();
-            });
-        }
-    }
-
-    $(function () {
-        var user = new MRCenterMsg();
-        user.bind();
-    });
-
-    function showConfirm(url,msg,refresh=true){
-        if(!confirm(msg))
-          return;
-
-          post(url,refresh);
-    }
-
-    function post(url,refresh=true){
-        $.ajax({
-            type:"post",
-            url,
-            success:resp=>{
-               let data =$.parseJSON(resp);
-               alert(data.Message);
-               if(refresh&&data.Status)
-                 location.reload();
-            },
-            error :err=>{
-               alert("操作失败");
-            }
-        })
-    }
-
+    var listPageHelper;
+     $(()=>{
+        listPageHelper= new ListPageHelper("@description","@name");
+        listPageHelper.init(true);
+     })
+    
 @js
-
 </script>
 <div class="channel_list">
     <form method="get" id="conditionForm">
@@ -55,27 +19,41 @@
 @filters
 @buttons
     </div>
-    <input type="hidden" value="0" name="pi" id="pi" />
-    <input type="hidden" value="10" name="ps" id="ps" />
-    <input type="hidden" value="@Model.TotalCount" id="count" />
+    @RenderPage("~/Views/Shared/PageInfoHidden.cshtml", new { Model.TotalCount })
     </form>
-    <div>
-    </div>
     <div class="list_content" id="divshelflist">
- @table
-        <div class="list_number">
-            共 @Model.TotalCount 条记录 | 每页显示:
-            <select id="ddlps">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-            条
-        </div>
-        <div id="pager" class="list_pager">
-        </div>
-        <div style="clear: both;">
-        </div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" nodata="*">
+            <thead>
+                <tr>
+                    @batchSelectLabel
+                    @foreach (var item in Model.RenderConfigs)
+                    {
+                        <th>@item.Label
+                        </th>
+                    }
+                    @operationLabel
+                </tr>
+            </thead>
+            <tbody>
+               
+             
+                @foreach (var item in Model.List)
+                {
+                    <tr>
+                        @batchSelectValue
+                       @foreach (var renderItem in Model.RenderConfigs)
+                        {
+                            <td>@renderItem.ToString(item)
+                            </td>
+                        }
+                        @operationValue
+                    </tr>
+                }
+               
+            
+            </tbody>
+        </table>
+        <!-------------------------------------------------------------Paging Info---------------------------------------------------------------------------->
+        @RenderPage("~/Views/Shared/PageInfo.cshtml", new { Model.TotalCount })
     </div>
 </div>

@@ -515,6 +515,12 @@ function insert(pos, source, merge) {
         return source.substr(0, pos) + merge + source.substr(pos, source.length - pos);
 }
 
+function splitToWord(str){
+
+}
+
+
+
 
 exports.STR = {
         select,

@@ -1,0 +1,5 @@
+    /**
+     * @description
+     */
+    private @type @name;
+    

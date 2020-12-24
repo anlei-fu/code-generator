@@ -466,6 +466,8 @@ class SpringBootGenerator {
 
                 // add imports and sort them
                 content = this._context.packageRender.renderPackage(content);
+                  
+                let packagePrefix=`import com.${this._context.company}.${this._context.project}.pojo.${entityType}.`;
 
                 if (entityType == "entity") {
                         this._context.writer.writeEntity(this._configGroup.name, content);
@@ -477,9 +479,12 @@ class SpringBootGenerator {
                         this._context.writer.writeParams(entityName, content);
                 }
 
+ 
+
                 // add into package-render cache
                 this._context.packageRender.addPackage({
-                        name: STR.upperFirstLetter(entityName),
+                        name:STR.upperFirstLetter(entityName),
+                        package:packagePrefix+STR.upperFirstLetter(entityName)+";",
                         type: entityType,
                         isSystem: false
                 });

@@ -24,16 +24,8 @@ function renderExportExcelService() {
 }
 
 function renderExportExcelController(config) {
-  let headers = "";
-  let contents = "";
-  config.tableConfig.items.forEach(x => {
-    headers += `                "${x.header}",\r\n`;
-    contents += `                row["${x.header}"] =${x.content.replace("@","")};\r\n`
-  });
-
   return EXPORT_EXCEL_CONTROLLER_RENDER.renderTemplate({
-    headers,
-    contents
+    name:STR.upperFirstLetter(config.table.name)
   });
 
 }

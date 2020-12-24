@@ -1,5 +1,5 @@
 const { init } = require("./initializer")
-const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/dm/all");
+const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/yxzt/all");
 
 class GenerateConfig {
    constructor () {
@@ -13,6 +13,7 @@ class GenerateConfig {
       this.delete = true;
       this.batchOperation = false;
       this.add = true;
+      this.clone=false;
       this.exportExcel = false;
       this.batchDelete = false;
       this.batchChangeStatus = false;
@@ -132,6 +133,11 @@ class GenerateConfigBuilder {
       return this;
    }
 
+   clone(value=true){
+      this._config.clone = value;
+      return this;
+   }
+
    /**
     * Set property exportExcel
     * 
@@ -233,7 +239,16 @@ _18.project("MatchingRecharge")
    .edit()
    .delete();
 
-
+   const YXZT = new GenerateConfigBuilder();
+   YXZT.project("SettleAccount")
+      .root("F:/业务开发项目_研发一/SettleAccount/SettleAccount_Yxzt")
+      .abbrOfProject("yxzt")
+      .dictionaryServiceName("YxztSystemDictionary")
+      .dictionaryMethod("GetDataList")
+      .upperTowLetter()
+      .add()
+      .edit()
+      .delete();
 
 const DM = new GenerateConfigBuilder();
 DM.project("DMSystem")
@@ -247,15 +262,14 @@ DM.project("DMSystem")
    .delete();
 
 function test() {
-   let config = DM
-      .add(true)
-      .edit(true)
-      .delete(true)
-      .batchChangeStatus()
-      .batchDelete()
+   let config = YXZT
+      .add(false)
+      .edit(false)
+      .delete(false)
+      .clone(false)
       .build();
 
-   init(all.dmDownScript, config);
+   init(all.yxztInStroreReport, config);
 }
 
 test();

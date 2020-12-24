@@ -18,7 +18,13 @@ function renderService(config) {
         if (config.batchChangeStatus)
                 content += content += FILE.read(`${__dirname}/templates/service-batchChangeStatus.cs`);
 
-        return SERVICE_RENDER.renderTemplate({ content });
+        let timeRange="";
+        if(config.selectConfig.timeFilter){
+           timeRange=FILE.read(`${__dirname}/templates/service-timeRange.cs`);
+
+        }
+
+        return SERVICE_RENDER.renderTemplate({ content,timeRange });
 }
 
 exports.renderService = renderService;

@@ -21,19 +21,17 @@ function main(modelName, items, withBuilder = true) {
         if (withBuilder)
                 content += builderGenerator(modelName, items);
 
-        FILE.write(`C:/Users/Administrator/Desktop/Projects/code-generator/src/rest-script/${modelName}.js`, content);
+        FILE.write(`C:/Users/Administrator/Desktop/Projects/vue-admin/spider/src/lib/chart/${modelName}.js`, content);
         return content;
 
 }
 
 /******************************************main**********************************8888*/
 main(
-        "ScriptServiceConfig",
+        "Legend",
         [
-                "port",
-                "scriptDir",
-                "logDir",
-                "apiUrl",
-                "fileHost"
+               
+
+
         ],
 );

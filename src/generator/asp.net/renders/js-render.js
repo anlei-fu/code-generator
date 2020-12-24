@@ -1,7 +1,4 @@
 const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
-const { renderAddJs } = require("./addRender");
-const { renderBatchSelectJs } = require("./batch-select-render");
-const { renderDeleteJs } = require("./delete-render");
 const {renderExportExcelJs} =require("./export-excel-render");
 
 const JS_RENDER = new SimpleRender({}, `${__dirname}/templates/js.js`);
@@ -13,23 +10,58 @@ const JS_RENDER = new SimpleRender({}, `${__dirname}/templates/js.js`);
  * @returns {String}
  */
 function renderJs(config) {
-  let content = "";
 
+  let content="";
   if (config.batchOperation)
-    content += renderBatchSelectJs();
+    content += `
+    var batchSelectHelper =new BatchSelectHelper("","");
+    batchSelectHelper.bind();
+    `;
 
   if (config.delete)
-    content += renderDeleteJs(config);
+    content += `
+    function _delete(id){
+      listPageHelper.delete(id);
+ }
+
+    `;
 
   if (config.add || config.edit)
-    content += renderAddJs(config);
+    content += `
+ function add(id){
+    listPageHelper.add(id);
+ }`;
 
-  if (config.exportExcel) 
-    content+= renderExportExcelJs();
-
-  if (config.importExcel) {
-
+ if(config.clone)
+    content+=`
+    function clone(id) {
+      listPageHelper.clone(id);
   }
+    `;
+
+  if (config.batchDelete) {
+        content+=`
+        function batchDelete(){
+          var ids =batchSelectHelper.getAllIds();
+          if(!ids)
+            return;
+
+          listPageHelper.confirmAndPost("","");
+       }
+        `;
+  }
+
+  if (config.batchChangeStatus) {
+    content+=`
+    function batchChangeStatus(){
+      var ids =batchSelectHelper.getAllIds();
+      if(!ids)
+        return;
+
+      listPageHelper.confirmAndPost("","");
+   }
+    `;
+}
 
   return JS_RENDER.renderTemplate({ content });
 

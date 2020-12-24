@@ -1,0 +1,91 @@
+<html>
+
+<head>
+        <script type="text/javascript" src="./jquery-1.4.4.min.js"></script>
+        <style>
+                #container {
+                        text-align: center;
+                        margin: 100px 408px;
+                        padding: 27px;
+                }
+
+                #word {
+                        line-height: 29px;
+                        display: inline-block;
+                        width: 319px;
+                        padding: 0px 7px;
+                }
+
+                #result {
+                        min-height: 300px;
+                        margin-top: 50px;
+                        text-align: left;
+                }
+
+                #search {
+                        line-height: 29px;
+                        padding: 0px 25px;
+                        margin-left: 5px;
+                }
+
+                .row {
+                        padding: 5px;
+                }
+
+                .name {
+                        color: deepskyblue;
+                        display: inline-block;
+                        width: 100px;
+                }
+
+                .score {
+                        color: darkgoldenrod;
+                }
+        </style>
+        <script>
+                function getAdvice(word) {
+                        return new Promise((resolve, reject) => {
+                                $.ajax({
+                                        url: "http://localhost:12306/advice?word=" + word,
+                                        async: true,
+                                        success: resp => {
+                                                resolve(resp);
+                                        },
+                                        error: err => reject(err)
+                                })
+                        });
+                }
+
+                $(() => {
+
+                        $("#search").click(async () => {
+                                let keyword = $("#word").val();
+                                if (!keyword)
+                                        return;
+
+                                let data = await getAdvice(keyword);
+                                $("#result").empty();
+                                data.forEach(x => {
+                                        let el = `<div class="row"><span class="name">${x.name}</span><span class="score">${x.score}</span></div>`;
+                                        $(el).appendTo($("#result"));
+                                });
+
+                        });
+
+                });
+
+        </script>
+</head>
+
+<body>
+        <div id="container">
+                <div>
+                        <input type="text" id="word" /> <button type="button" id="search">Search</button>
+                </div>
+                <div id="result">
+
+                </div>
+        </div>
+</body>
+
+</html>

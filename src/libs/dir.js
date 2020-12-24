@@ -29,11 +29,11 @@ function create(path) {
         if (exists(path))
                 return;
 
-        let segs =path.split("/");
-        let tempPath="";
-        for(const item of segs){
-                tempPath+=item+"/";
-                if(!exists(tempPath)){
+        let segs = path.split("/");
+        let tempPath = "";
+        for (const item of segs) {
+                tempPath += item + "/";
+                if (!exists(tempPath)) {
                         fs.mkdirSync(tempPath);
                 }
         }
@@ -105,15 +105,14 @@ function copy(target, destination) {
         if (!exists(target))
                 return;
 
-        let segs = target.split("/");
-        let desFolder = destination + "/" + segs[segs.length - 1];
-        create(desFolder);
+        if (!exists(destination))
+                create(destination);
 
         fs.readdirSync(target).forEach(f => {
-                if (fs.statSync(f).isDirectory()) {
-                        fs.copyFileSync(target + "/" + f, desFolder + "/" + f);
+                if (!fs.statSync(`${target}/${f}`).isDirectory()) {
+                        fs.copyFileSync(`${target}/${f}`, `${destination}/${f}`);
                 } else {
-                        copy(target + "/" + f, desFolder);
+                        copy(`${target}/${f}`, `${destination}/${f}`);
                 }
         })
 

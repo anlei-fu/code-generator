@@ -2,8 +2,8 @@ const {TableRelationMarkdownGenerator} = require("./../../TableRelationMarkdownG
 const { FILE } = require("./../../../../../libs/file");
 
 
-function main(project){
-  let generator = new TableRelationMarkdownGenerator(require(`./outputs/${project}/relations`).relations);
+function main(project,depth){
+  let generator = new TableRelationMarkdownGenerator(require(`./outputs/${project}/relations`).relations,depth);
   let mks= generator.generateMarkdown();
   let content ="";
   mks.forEach(x=>{
@@ -13,4 +13,4 @@ function main(project){
 }
 
 /****************************************************main************************************************************************88 */
-main("dm");
+main("os",10);

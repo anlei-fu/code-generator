@@ -1,5 +1,5 @@
-const { STR } = require("../../../libs/str");
-const {ARRAY} =require("../../../libs/utils");
+const { STR, ARRAY } = require("../../../libs/");
+const { tokenize, TOKEN_TYPE } = require("./../../../tools/tokenization/")
 
 const PACKAGES = new Map();
 PACKAGES.set("List", {
@@ -20,12 +20,12 @@ PACKAGES.set("@Param", {
         package: "import org.apache.ibatis.annotations.Param;",
 });
 
-PACKAGES.set("@NotBlank", {
+PACKAGES.set("NotBlank", {
         package: "import javax.validation.constraints.NotBlank;",
         isSystem: true
 });
 
-PACKAGES.set("@NotNull", {
+PACKAGES.set("NotNull", {
         package: "import javax.validation.constraints.NotNull;",
         isSystem: true
 });
@@ -97,8 +97,8 @@ PACKAGES.set("@Url", {
         isSystem: false
 });
 
-class Packege{
-        constructor(){
+class Packege {
+        constructor () {
 
         }
 }
@@ -107,7 +107,7 @@ class Packege{
  * Manage packages and render package segment
  */
 class PackegeRender {
-        constructor (project,company) {
+        constructor (project, company) {
                 this._project = `${company}.${project}`;
         }
 
@@ -138,40 +138,32 @@ class PackegeRender {
                         , systems = []
                         , others = STR.remove(packagesPattern, "@packages")
                                 .replace(/@project/g, this._project)
-                                .split("\n");
+                                .split("\n").filter(x=>x.trim());
 
-                PACKAGES.forEach((value, key) => {
+                let tokens = tokenize(content);
+                tokens.forEach(x => {
 
-                        if(key.includes("PageReq")&&content.includes("Service")){
-                                let t=0;
-                        }
-
-                        if (key == "List" && !content.includes("List<"))
-                                return;
-
-                        if (!STR.includesAny(content, [`${key} `,
-                        `${key}\n`,
-                        `${key}>`,
-                        `${key}(`,
-                        `${key}<`]) || packagesPattern.includes("."+key+";"))
-                                return;
-
-                        if (value.isSystem) {
-                                systems.push(value.package);
-                        } else {
-                                others.push(value.package || `import com.@project.pojo.${value.type}.${key};`);
+                        if (x.type == TOKEN_TYPE.symbol && PACKAGES.has(x.value)) {
+                                let p = PACKAGES.get(x.value);
+                                if (p.isSystem) {
+                                        systems.push(p.package)
+                                } else {
+                                        others.push(p.package);
+                                }
                         }
                 });
+
 
                 others.forEach((x, i) => {
-                        others[i] = x.replace(/@project/g, this._project);
+                                others[i] = x.replace(/@project/g, this._project);
                 });
 
-                others =ARRAY.distinct(others,x=> x.trim());
+                others = ARRAY.distinct(others, x => x.trim());
 
                 systems.forEach((x, i) => {
-                        systems[i] = x.replace(/@project/g, this._project);
+                                systems[i] = x.replace(/@project/g, this._project);
                 });
+                systems = ARRAY.distinct(systems, x => x.trim());
 
                 others = others.sort();
                 systems = systems.sort();

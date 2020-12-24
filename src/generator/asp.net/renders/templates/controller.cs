@@ -19,9 +19,8 @@ namespace @project.UserWeb.Controllers
     /// </summary>
     public class @nameController : MainBaseController
     {
-        private static readonly List<RenderConfigItem> _renderConfig =
-            new RenderConfigsBuilder()
-@renderConfigs
+@renderConfig
+
         /// <summary>
         /// 显示列表页面数据
         /// </summary>
