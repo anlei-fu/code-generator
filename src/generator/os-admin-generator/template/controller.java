@@ -47,7 +47,7 @@ public class @nameController {
 
     @ApiOperation(value = "获取 @description 分页列表")
     @GetMapping(path = "/page")
-    public APIResponse<PageList<@nameDO>> get@namePage(@RequestParam @namePageDTO dto) {
+    public APIResponse<PageList<@nameDO>> get@namePage(@namePageDTO dto) {
         PageList<@nameDO> result = service.get@namePage(dto);
         return APIResponse.success(result);
     }

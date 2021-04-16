@@ -2,7 +2,6 @@
 
 
 const { STR } = require("../../libs/str");
-const { config } = require("./outputs/DMSystem--ToPlanAudience/config");
 const { renders } = require("./renders/render")
 const { Writer } = require("./writer")
 

@@ -56,7 +56,7 @@ let operation ={
 
 };
  if(config.operations.length>0){
-   operation.operationLabel="<td>操作</td>"
+   operation.operationLabel="<th>操作</th>"
    let content="";
    config.operations.forEach(x=>{
        content+=`<a href="javascript:void(0)" onclick="${x.function}">${x.lable}</a>`

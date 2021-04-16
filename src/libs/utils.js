@@ -306,6 +306,12 @@ function text(obj, name) {
         return `let ${name} = ${json};\r\n\r\n`;
 }
 
+function jsCode(obj){
+        let json = JSON.stringify(obj, null, "\t");
+        json = doReplace(json);
+        return json;
+}
+
 /**
  * Make obj exports string
  * 
@@ -381,7 +387,8 @@ exports.OBJECT = {
         mapToObject,
         text,
         export_,
-        setIfAbsent
+        setIfAbsent,
+        jsCode
 }
 
 /*--------------------------------------------------------------------type----------------------------------------------------------------------------*/

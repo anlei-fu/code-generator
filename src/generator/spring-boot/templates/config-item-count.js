@@ -10,7 +10,7 @@
 @selectExcludes
                                 })
                                 .request(request => {
-                                        request.path("/@sname/count");
+                                        request.path("count");
                                 })
                                 .req(req => {
                                         req.doCreate()

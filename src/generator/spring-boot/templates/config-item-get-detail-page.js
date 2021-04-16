@@ -15,7 +15,7 @@
                           })
 @joins                                
                          .request(request => {
-                                         request.path("/@sname/detail/page")
+                                         request.path("detail/page")
                                                 .description("get @sname page with additional details");;
                         })
                          .req(req => {

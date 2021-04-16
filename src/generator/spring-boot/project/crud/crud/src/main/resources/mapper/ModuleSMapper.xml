@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2021-4-16 4:50:21 PM
+All rights reserved by fal(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crud.mapper.ModuleSMapper">
+    <delete id="deleteBatch">
+          delete from module_s t
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </delete>
+    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateModuleSBatchReq">
+          update module_s t
+          <set>
+            <if test="description != null and description != ''">
+                  t.description = #{description},
+            </if>
+            <if test="level != null">
+                  t.level = #{level},
+            </if>
+            <if test="name != null and name != ''">
+                  t.name = #{name},
+            </if>
+            <if test="parentMouduleId != null">
+                  t.parent_moudule_id = #{parentMouduleId},
+            </if>
+            <if test="projectId != null">
+                  t.project_id = #{projectId}
+            </if>
+          </set>
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </update>
+    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.ModuleS" parameterType="com.jasmine.crud.pojo.req.GetModuleSPageReq">
+          select
+             t.description,
+             t.id,
+             t.level,
+             t.name,
+             t.parent_moudule_id,
+             t.project_id
+          from module_s t
+          <where>
+            <if test="description != null and description != ''">
+                  t.description = #{description}
+            </if>
+            <if test="name != null and name != ''">
+                  and t.name = #{name}
+            </if>
+            <if test="parentMouduleId != null">
+                  and t.parent_moudule_id = #{parentMouduleId}
+            </if>
+            <if test="projectId != null">
+                  and t.project_id = #{projectId}
+            </if>
+          </where>
+    </select>
+</mapper>

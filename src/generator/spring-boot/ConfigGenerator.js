@@ -10,7 +10,7 @@ class ConfigGenerator {
         }
 
         generate(targetPath, libPath, project) {
-
+                
                 DIR.getFiles(`${targetPath}/${project}/config`).forEach(f => {
                         FILE.remove(`${targetPath}/${project}/config/${f}`);
                 });

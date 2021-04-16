@@ -1,7 +1,7 @@
 package com.@project.validate.validator;
 
 import com.@project.validate.annotation.Password;
-import jdk.internal.joptsimple.internal.Strings;
+import cn.hutool.core.util.StrUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -33,7 +33,7 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (Strings.isNullOrEmpty(value))
+        if (StrUtil.isEmpty(value))
             return !this.required;
 
         if (!VALIDATOR.matcher(value).matches())

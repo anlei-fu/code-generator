@@ -45,7 +45,7 @@ class AnalyzerBase {
 const DEFAULT_VALIDATES = {
         String: {
                 "phone": {
-                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(),["phone","phonenno","mobile","mobileno"]),
+                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(), ["phone", "phonenno", "mobile", "mobileno"]),
                         validate: "@Phone"
                 },
                 "telephone": {
@@ -60,20 +60,20 @@ const DEFAULT_VALIDATES = {
                         validate: "@Email"
                 },
                 "pwd": {
-                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(),["password","pwd"]),
+                        matcher: (columnName) => STR.endsWithAny(columnName.toLowerCase(), ["password", "pwd"]),
                         validate: "@Password"
                 },
-               
+
                 "url": {
                         matcher: (columnName) => columnName.toLowerCase().endsWith("url"),
                         validate: "@Url"
                 },
                 "path": {
-                        matcher: (columnName)=> columnName.toLowerCase().endsWith("path"),
+                        matcher: (columnName) => columnName.toLowerCase().endsWith("path"),
                         validate: "@Url"
                 },
                 "file": {
-                        matcher: (columnName)=> columnName.toLowerCase().endsWith("file"),
+                        matcher: (columnName) => columnName.toLowerCase().endsWith("file"),
                         validate: "@Url"
                 },
                 "domain": {
@@ -84,7 +84,7 @@ const DEFAULT_VALIDATES = {
                         validate: "@Url"
                 },
                 "ip": {
-                        matcher: (columnName)=> columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
+                        matcher: (columnName) => columnName.endsWith("Ip") || columnName.toLowerCase() == "ip",
                         validate: "@Ip"
                 },
                 "postCode": {
@@ -332,8 +332,8 @@ const SELECT_INCLUDES = {
                 all: {
                         matcher: Matcher.isEnumName
                 },
-                id:{
-                        matcher :Matcher.isIdFields
+                id: {
+                        matcher: Matcher.isIdFields
                 }
         },
         Date: {
@@ -407,8 +407,8 @@ const DEFAULT_INSERT_EXCLUDES = {
                 }
         },
         Date: {
-                default:{
-                        matcher:columnName=>true
+                default: {
+                        matcher: columnName => true
                 }
         }
 }
@@ -549,8 +549,8 @@ const DEFAULT_USER_ADMIN_MATCHERS = {
                 matcher: columnName => STR.includesAny(
                         columnName.toLowerCase(),
                         [
-                                "createuser", 
-                                "operator", 
+                                "createuser",
+                                "operator",
                                 "admin"
                         ]
                 )

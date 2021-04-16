@@ -1,10 +1,11 @@
 const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { ReqUtils } = require("../ReqUtils");
 const { ConfirItemUtils } = require("./../ConfigItemUtils");
-const { STR } = require("../../../libs/str");
+const { STR ,FILE} = require("../../../libs");
 const { ConfigGroup } = require("./../builders/ConfigGroup");
 const { ConfigItem } = require("./../builders/ConfigItem");
 
+const SERVICE_ITEM_CONTENT = FILE.read(`${__dirname}/templates/serviceImpl-item.java`);
 const SERVICE_IMPL_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-item.java`);
 const SERVICE_IMPL_PAGE_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl-page.java`);
 const SERVICE_IMPL_RENDER = new SimpleRender({}, `${__dirname}/templates/serviceImpl.java`);
@@ -24,7 +25,18 @@ class ServiceImplRender {
                         if (configItem.type != "select" ||
                                 (configItem.type == "select" && (configItem.resp.single || configItem.resp.list))
                         ) {
-                                content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderTemplate(item)) + "\r\n";
+                                let template =SERVICE_ITEM_CONTENT;
+                                if(configItem.id =="add"){
+                                     template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","add(req);");
+                                }else if(configItem.id == "update"){
+                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","update(req);");
+                                }else if(configItem.id.startsWith("deleteBy")){
+                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","delete(id);");
+                                }else if(configItem.id.startsWith("getBy")){
+                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","getById(id);");
+                                }
+
+                                content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderContent(template,item)) + "\r\n";
                                 return;
                         }
 

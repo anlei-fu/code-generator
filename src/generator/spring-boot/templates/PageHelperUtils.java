@@ -1,8 +1,8 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2020-4-18 4:54:16 PM 
- * All rights reserved by fuanlei(email:767550758@qq.com) since 2019
+ * Generated at 2021-4-16 4:25:23 PM
+ * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.@project.utils;
 
@@ -13,15 +13,14 @@ import com.@project.pojo.resp.PageResult;
 
 import java.util.function.Supplier;
 
-
 public class PageHelperUtils {
 
-    public  static <T>  PageResult<T> paging(PageReq req, Supplier<Page<T>> supplier){
-        startPage(req);
-        return  PageResult.create(req,supplier.get());
+    public static <T> PageResult<T> paging(PageReq req, Supplier<Page<T>> supplier) {
+        Page page = startPage(req);
+        return PageResult.create(page);
     }
 
-    public static void startPage(PageReq req) {
-        PageHelper.startPage(req.getPageIndex(), req.getPageSize());
+    public static Page startPage(PageReq req) {
+        return PageHelper.startPage(req.getPageIndex(), req.getPageSize());
     }
 }

@@ -13,9 +13,9 @@ const { InitConfigBuilder } = require("./builders/InitConfig");
 async function main() {
 
         let builder =new InitConfigBuilder();
-        builder.project("crawler")
+        builder.project("crud")
                .company("jasmine")
-               .targetFolder("D:/test/contract")
+               .targetFolder("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/project")
                .generateDb()
                .generateStructure()
                .generateBuilder()
@@ -28,7 +28,7 @@ async function main() {
                                 .port(3306)
                                 .user("root")
                                 .password("2011801243")
-                                .db("contract_sign")
+                                .db("crud_project_generator")
                          })
                })
                .useAnalyzeConfig(analyze=>{

@@ -6,7 +6,7 @@ class DtoGenerator {
 
         generate(table) {
                 let name = STR.upperFirstLetter(table.name);
-                name =name.substr(2,name.length-2);
+                name = name.substr(2, name.length - 2);
                 return DTO_RENDER.renderTemplate({ name });
         }
 }

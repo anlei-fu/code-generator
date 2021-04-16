@@ -14,6 +14,15 @@
 <body style="background-color:#0962E1" cz-shortcut-listen="true">
     <script>
 
+$(()=>{
+      
+       $("#OpenHigh").change(()=>{
+       changeHighUrl();
+       });
+       changeHighUrl();
+    
+    });
+
 function bind(source,target,url){
 
     var val =$(source).val();

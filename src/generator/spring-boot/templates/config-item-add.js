@@ -10,7 +10,7 @@
 @insertExcludes
                                 })
                                 .request(request => {
-                                        request.path("/@sname")
+                                        request.path("")
                                                .description("add @sname");
                                 })
 @insertUserReq@@

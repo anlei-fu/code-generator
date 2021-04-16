@@ -7,6 +7,7 @@ const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/template/controller.ja
 class ControllerGenerator {
         generate(table) {
                 let pk = this._findPkColumn(table);
+                console.log(table.name);
                 let pkName = NamingStrategy.toCamel(pk.rawName);
                 let pkUpperName = STR.upperFirstLetter(pkName);
                 let pkType = getJavaType(pk.type);

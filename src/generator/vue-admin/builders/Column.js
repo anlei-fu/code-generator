@@ -2,12 +2,11 @@ class Column {
         constructor () {
                 this.name = "";              
                 this.label = "";              
-                this.title = "";              
                 this.format = "";              
                 this.type = "";              
-                this.color = "";              
-                this.render = "";              
-                this.defaultShow = "";              
+                this.defaultShow = "";
+                this.radioField=false;
+                this.nullable=false;              
  
         }
 }
@@ -45,17 +44,6 @@ class ColumnBuilder{
         }
 
         /**
-         * Set property title
-         * 
-         * @param {String} title
-         * @returns {ColumnBuilder}
-         */
-        title(title){
-                this._config.title = title;
-                return this;
-        }
-
-        /**
          * Set property format
          * 
          * @param {String} format
@@ -78,28 +66,6 @@ class ColumnBuilder{
         }
 
         /**
-         * Set property color
-         * 
-         * @param {String} color
-         * @returns {ColumnBuilder}
-         */
-        color(color){
-                this._config.color = color;
-                return this;
-        }
-
-        /**
-         * Set property render
-         * 
-         * @param {String} render
-         * @returns {ColumnBuilder}
-         */
-        render(render){
-                this._config.render = render;
-                return this;
-        }
-
-        /**
          * Set property defaultShow
          * 
          * @param {String} defaultShow
@@ -110,7 +76,28 @@ class ColumnBuilder{
                 return this;
         }
 
- 
+        /**
+         * Set property defaultShow
+         * 
+         * @param {boolean} value
+         * @returns {ColumnBuilder}
+         */
+        nullable(value=true){
+                this._config.nullable = value;
+                return this;
+        }
+
+        /**
+         * Set property radioField
+         * 
+         * @param {boolean} value
+         * @returns {ColumnBuilder}
+         */
+        radioField(value=true){
+                this._config.radioField = value;
+                return this;
+        }
+
         /**
          * Build 
          * 

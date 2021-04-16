@@ -64,6 +64,6 @@ public class @nameService {
      * @return
      */
     public PageList<@nameDO> get@namePage(@namePageDTO dto) {
-        return DaoUtil.queryNormalPage(@snameDao,dto,@nameDO.class,"order by @pkRawName desc");
+        return DaoUtil.queryNormalPage(@snameDao,dto,@nameDO.class,"@pkRawName desc");
     }
 }

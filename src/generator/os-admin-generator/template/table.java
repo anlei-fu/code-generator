@@ -6,12 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 @date
 
 /**
  * @Copyright (C) 四川千行你我科技有限公司
  * @Author: fuanlei
- * @Date: 2020/12/7
+ * @Date: @time
  * @Description: @description
  */
 @Data

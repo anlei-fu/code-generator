@@ -3,8 +3,9 @@ const { ReqUtils } = require("../ReqUtils");
 const { STR } = require("../../../libs/str");
 const { isJavaBaseType } = require("../utils");
 const { ConfirItemUtils } = require("./../ConfigItemUtils");
-const {ConfigGroup} =require("./../builders/ConfigGroup");
-const {ConfigItem} =require("./../builders/ConfigItem");
+const { ConfigGroup } = require("./../builders/ConfigGroup");
+const { ConfigItem } = require("./../builders/ConfigItem");
+const { NamingStrategy } = require("../../../libs");
 
 const CONTROLLER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-item.java`);
 const CONTROLLER_BATCH_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/controller-batch-item.java`);
@@ -91,12 +92,12 @@ class ControllerRender {
                         }
 
                         if (!req.isList) {
-                                args += `${req.from} @Validated @ModelAttribute ${req.type} ${req.name}, `.trimLeft();
+                                args += `${req.from} @Validated ${req.type} ${req.name}, `.trimLeft();
                                 return;
                         }
 
                         // batch with list
-                        args += `${req.from} @Validated @ModelAttribute List<${req.type}> ${req.name}, `.trimLeft();
+                        args += `${req.from} @Validated List<${req.type}> ${req.name}, `.trimLeft();
                 });
 
                 return STR.removeLastComa(args);
@@ -115,8 +116,8 @@ class ControllerRender {
                         throw new Error(`unexceted type(${configItem.type})`);
 
                 // TODO
-                let path = configItem.controller.path || `/${this.config.name}/${configItem.id}`;
-                return `${HTTP_MAPPINGS.get(configItem.type)}(path = "${path}")`;
+                let path = configItem.controller.path;
+                return path ? `${HTTP_MAPPINGS.get(configItem.type)}(path = "${path}")` : `${HTTP_MAPPINGS.get(configItem.type)}`;
         }
 
         /**

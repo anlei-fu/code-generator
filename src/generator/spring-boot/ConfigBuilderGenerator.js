@@ -8,6 +8,7 @@ const { UserColumnAnalyzer } = require("./Analyzer");
 const { JoinAnalyzer } = require("./JoinAnalyzer");
 const { AnalyzeConfig } = require("./builders/AnalyzerConfig");
 const { GenerateConfig } = require("./builders/GenerateConfig");
+const { NamingStrategy } = require("../../libs");
 
 const JOIN_ANALYZER = new JoinAnalyzer();
 const CONFIG_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/config-item.js`);
@@ -173,6 +174,7 @@ class ConfigBuilderGenerator {
                 }
 
                 let content = "";
+                generateConfig.spname = NamingStrategy.toSplash(name);
                 content += this._renderItem(config.add, ADD_RENDER, generateConfig);
                 content += this._renderItem(config.addBatch, ADD_BACTH_RENDER, generateConfig);
                 content += this._renderItem(config.deleteById, DELETE_BY_ID_RENDER, generateConfig);

@@ -11,8 +11,8 @@ class ServiceGenerator {
                 let pkUpperName = STR.upperFirstLetter(pkName);
                 let pkType = getJavaType(pk.type);
                 let name = STR.upperFirstLetter(table.name);
-                let fullName =name;
-                name =name.substr(2,name.length-2);
+                let fullName = name;
+                name = name.substr(2, name.length - 2);
                 let sname = NamingStrategy.toCamel(name);
                 let description = table.description;
 
@@ -24,7 +24,7 @@ class ServiceGenerator {
                         pkUpperName,
                         description,
                         fullName,
-                        pkRawName:pk.rawName.toLowerCase()
+                        pkRawName: pk.rawName.toLowerCase()
                 })
         }
 

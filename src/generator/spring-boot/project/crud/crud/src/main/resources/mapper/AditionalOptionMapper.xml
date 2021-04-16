@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2021-4-16 4:50:21 PM
+All rights reserved by fal(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crud.mapper.AditionalOptionMapper">
+    <delete id="deleteBatch">
+          delete from aditional_option t
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </delete>
+    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateAditionalOptionBatchReq">
+          update aditional_option t
+          <set>
+            <if test="check != null and check != ''">
+                  t.check = #{check},
+            </if>
+            <if test="description != null and description != ''">
+                  t.description = #{description},
+            </if>
+            <if test="enable != null and enable != ''">
+                  t.enable = #{enable},
+            </if>
+            <if test="name != null and name != ''">
+                  t.name = #{name},
+            </if>
+            <if test="noticeText != null and noticeText != ''">
+                  t.notice_text = #{noticeText},
+            </if>
+            <if test="tableId != null and tableId != ''">
+                  t.table_id = #{tableId},
+            </if>
+            <if test="title != null and title != ''">
+                  t.title = #{title}
+            </if>
+          </set>
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </update>
+    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.AditionalOption" parameterType="com.jasmine.crud.pojo.req.GetAditionalOptionPageReq">
+          select
+             t.check,
+             t.description,
+             t.enable,
+             t.id,
+             t.name,
+             t.notice_text,
+             t.table_id,
+             t.title
+          from aditional_option t
+          <where>
+            <if test="check != null and check != ''">
+                  t.check = #{check}
+            </if>
+            <if test="description != null and description != ''">
+                  and t.description = #{description}
+            </if>
+            <if test="enable != null and enable != ''">
+                  and t.enable = #{enable}
+            </if>
+            <if test="name != null and name != ''">
+                  and t.name = #{name}
+            </if>
+            <if test="noticeText != null and noticeText != ''">
+                  and t.notice_text = #{noticeText}
+            </if>
+            <if test="tableId != null">
+                  and t.table_id = #{tableId}
+            </if>
+            <if test="title != null and title != ''">
+                  and t.title = #{title}
+            </if>
+          </where>
+    </select>
+</mapper>

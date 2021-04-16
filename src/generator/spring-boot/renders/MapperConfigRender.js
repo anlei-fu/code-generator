@@ -144,8 +144,12 @@ class MapperConfigRender {
          * @returns {String}
          */
         renderMapperConfig(configGroup) {
+                let items = configGroup.items.filter(x =>
+                        x.id != 'add' && x.id != "update" && !x.id.startsWith("getBy") && !x.id.startsWith("deleteBy")
+                )
+
                 let statements = STR.arrayToString1(
-                        configGroup.items,
+                        items,
                         configItem => this._renderMapperConfigItem(configItem) + "\r\n"
                 );
 

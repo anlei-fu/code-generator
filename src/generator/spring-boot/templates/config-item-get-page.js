@@ -13,7 +13,7 @@
 @selectExcludes
                                 })
                                 .request(request => {
-                                        request.path("/@sname/page")
+                                        request.path("/page")
                                                .description("get @sname page");;
                                 })
                                 .req(req => {

@@ -15,7 +15,7 @@
                                         .list("@skey");
                                 })
                                 .request(request => {
-                                        request.path("/@sname/updateBatch")
+                                        request.path("update-batch")
                                                .description("update @sname batch");;
                                  })
 @updateUserReq@@                

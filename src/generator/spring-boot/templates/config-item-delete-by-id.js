@@ -8,7 +8,7 @@
                                                   .require("@skey")
                                 })
                                 .request(request => {
-                                        request.path("/@sname/{@skey}")
+                                        request.path("{@skey}")
                                                .description("delete single @sname");;
                                 })
                                 .req(req => {

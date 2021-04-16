@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @packages
 
 @RestController
+@RequestMapping("dictionary")
 public class @nameController extends ControllerBase {
 
     @Autowired

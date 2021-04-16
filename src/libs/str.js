@@ -106,6 +106,18 @@ function remove(input, array) {
 }
 
 /**
+ * 
+ * @param {String} source 
+ * @param {Number} start 
+ * @param {Number} end 
+ */
+function removeRange(source,start,end){
+        let str1 = source.substr(0,start);
+        let str2 =source.substr(end,source.length-end);
+        return str1+str2;
+}
+
+/**
  * Remove matched pattern of string
  * 
  * @param {String} input 
@@ -549,5 +561,6 @@ exports.STR = {
         firstIndexOfAny,
         firstWord,
         lastWord,
-        insert
+        insert,
+        removeRange
 }

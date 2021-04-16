@@ -1,0 +1,128 @@
+<html>
+
+<head>
+        <script src="./echarts.min.js"></script>
+        <script src="./jquery-2.1.4.min.js"></script>
+</head>
+<script>
+
+        const DATA_LIST="";
+        const GET_DATA ="";
+
+        async function  getData(){
+
+        }
+
+        [].f
+
+
+        function renderChart(data) {
+                data = data.sort((x, y) => x.time - y.time);
+
+                var legend = {
+                        data: [],
+                        selected: {
+
+                        },
+                        left: 10,
+                        top: 20
+                };
+
+
+                let mychart = echarts.init(document.getElementById('container'));
+
+                var option = {
+                        title: {
+                                text: 'Data-view',
+                                left: 'center'
+                        },
+                        tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                        type: 'cross',
+                                        crossStyle: {
+                                                color: '#999'
+                                        }
+                                }
+                        },
+                        toolbox: {
+                                feature: {
+                                        dataView: { show: true, readOnly: false },
+                                        magicType: { show: true, type: ['line', 'bar'] },
+                                        restore: { show: true },
+                                        saveAsImage: { show: true }
+                                }
+                        },
+                        legend,
+                        xAxis: [
+                                {
+                                        type: 'category',
+                                        data: getColumnData(data, "time"),
+                                        axisPointer: {
+                                                type: 'shadow'
+                                        }
+                                }
+                        ],
+                        yAxis: [
+
+                        ],
+                        series: [
+                        ]
+                };
+
+                keys.forEach((key,index) => {
+                        option.yAxis.push({
+
+                                type: 'value',
+                                offset: 600,
+                                axisLabel: {
+                                        formatter: '{value}'
+                                }
+                        });
+
+                        option.series.push( buildSerials(data, "cost", "line", index));
+                })
+
+                mychart.setOption(option);
+        }
+
+        function buildSerials(data, field, type, axis) {
+                return {
+                        name: field,
+                        type,
+                        data: getColumnData(data, field),
+                        yAxisIndex: axis
+                }
+        }
+
+        function getColumnData(data, column) {
+                let results = []
+                data.forEach(item => {
+                        results.push(item[column]);
+                });
+
+                return results;
+        }
+
+</script>
+
+
+<body>
+        <style>
+                .container {
+                        margin-top: 100px;
+                        width: 100%;
+                        height: 700px;
+                        display: inline;
+                }
+        </style>
+        <div style="width:100%; text-align: center;">
+                <div class="container" id="container" style="display: inline-block;">
+
+                </div>
+        </div>
+
+
+</body>
+
+</html>

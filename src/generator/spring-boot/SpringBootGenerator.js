@@ -5,6 +5,7 @@ const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { ReqUtils } = require("./ReqUtils");
 const { getJavaType, isJavaBaseType } = require("./utils");
+const { NamingStrategy } = require("../../libs");
 
 /**
  *  Genearte web project with spring-boot, mysql, mybatis, vue, ivue and  maven 
@@ -122,7 +123,7 @@ class SpringBootGenerator {
 
                 // set controller default path and description if not configed
                 if (!configItem.noController) {
-                        configItem.controller.path = configItem.controller.path || `/${STR.lowerFirstLetter(configItem.name)}/${configItem.id}`;
+                        configItem.controller.path = configItem.controller.path;
                         configItem.controller.description = configItem.controller.description || "";
                 }
 

@@ -1,6 +1,7 @@
 package com.@project.service.impl;
 
 @packages
+import com.@project.mapper.BaseCrudMapper;
 import com.@project.mapper.@nameMapper;
 import com.@project.pojo.entity.@name;
 import com.@project.service.@nameService;
@@ -10,10 +11,20 @@ import com.@project.utils.PageHelperUtils;
 @packages
 
 @Service
-public class @nameServiceImpl implements @nameService {
+public class @nameServiceImpl extends AbstractCrudService<@name> implements @nameService {
 
     @Autowired
     private @nameMapper @snameMapper;
 
 @content
+
+    @Override
+    protected Class<@name> getEntityClass(){
+        return @name.class;
+    }
+
+    @Override
+    protected BaseCrudMapper<@name> getMapper() {
+        return  @snameMapper;
+    }
 }

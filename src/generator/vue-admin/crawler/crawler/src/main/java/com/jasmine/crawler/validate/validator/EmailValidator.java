@@ -7,7 +7,7 @@
 package com.jasmine.crawler.validate.validator;
 
 import com.jasmine.crawler.validate.annotation.Email;
-import jdk.internal.joptsimple.internal.Strings;
+import cn.hutool.core.util.StrUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -26,7 +26,7 @@ public class EmailValidator implements ConstraintValidator<Email, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (Strings.isNullOrEmpty(value))
+        if (StrUtil.isEmpty(value))
             return !this.required;
 
         return VALIDATOR.matcher(value).matches();

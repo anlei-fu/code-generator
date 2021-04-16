@@ -11,7 +11,7 @@
                                         collection.includes([])
                                 })
                                 .request(request => {
-                                        request.path("/@sname/all")
+                                        request.path("all")
                                                .description("get all @sname");;
                                 })
                                 .resp(resp=>{

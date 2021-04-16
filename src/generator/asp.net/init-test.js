@@ -1,5 +1,7 @@
 const { init } = require("./initializer")
-const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/yxzt/all");
+const { all } = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/dm/all");
+
+const yxzt = require("./../common/table-analyze/table-info-resolvers/oracle-table-info-resolver/outputs/yxzt/all").all;
 
 class GenerateConfig {
    constructor () {
@@ -263,13 +265,9 @@ DM.project("DMSystem")
 
 function test() {
    let config = YXZT
-      .add(false)
-      .edit(false)
-      .delete(false)
-      .clone(false)
       .build();
 
-   init(all.yxztInStroreReport, config);
+   init(yxzt.yxztOrder, config);
 }
 
 test();

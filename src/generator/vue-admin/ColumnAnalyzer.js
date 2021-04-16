@@ -1,45 +1,85 @@
+const { OBJECT } = require("../../libs/");
+const { COMMON_UTILS } = require("./../common")
 const { ColumnBuilder } = require("./builders/Column");
-const { ColorAnalyzer } = require("./ColorAnalyzer");
-const { FormatAnalyzer } = require("./FormatAnalyzer");
-const { Utils } = require("./Utils");
+
+
 class ColumnAnalyzer {
-        constructor (colorAnalyzer, formatAnalyzer, controlAnalyzer) {
-                this._colorAnalyzer = colorAnalyzer;
-                this._formatAnalyzer = formatAnalyzer;
-                this._controlAnalyzer = colorAnalyzer;
+        constructor () {
+           this._enumMatcher= COMMON_UTILS.DEFAULT_ENUM_MATCHERS;
         }
-        analyze(resp) {
-                let items = [];
-                resp.fields.forEach(field => {
-                        items.push(this.analyzeItem(field));
+        
+        extendEnum(matchers){
+              OBJECT.deepExtend(this._enumMatcher,matchers);
+        }
+
+        analyze(table) {
+                let result = []
+                let columns = OBJECT.toArray(table.columns);
+
+                columns.forEach(column => {
+                        result.push(this.analyzeItem(column));
                 });
 
-                return items;
+                return result;
         }
 
         analyzeItem(column) {
+
                 return new ColumnBuilder()
                         .name(column.name)
                         .defaultShow(
                                 this.analyzeDefaultShow(column.type, column.name)
                         )
-                        .title(
-                                Utils.analyzeLabel(field.description, field.name)
+                        .label(
+                                this.analyzeLabel(field.description, field.name)
+                        )
+                        .nullable(column.nullable)
+                        .radioField(
+                                this.analyzeRadioField(column)
                         )
                         .type(column.type)
-                        .color(this._colorAnalyzer.analyze())
-                        .format(this._formatAnalyzer.analyze())
+                        .format(
+                                this.analyzeFormat(column)
+                        )
                         .build();
         }
 
-        /**
-         * 
-         * @param {String} type 
-         * @param {String} name 
-         * @returns {boolean}
-         */
-        analyzeDefaultShow(type, name) {
+        analyzeDefaultShow(column) {
+                return true;
+        }
 
+        analyzeFormat(column) {
+                if (column.type == "Date") {
+                        return "date";
+                }
+
+                if (column.type == "Integer") {
+                        if (COMMON_UTILS.DEFAULT_MONEY_MATCHER(column.name)) {
+                                return "money";
+                        }
+                }
+
+                let matchers = this._enumMatcher[column.type];
+                if (matchers) {
+                        for (const key in matchers) {
+                                if (matchers[key].match(column.name))
+                                        return "enum";
+                        }
+                }
+
+                return null;
+        }
+
+        analyzeLabel(column) {
+                return column.description;
+        }
+
+        analyzeRadioField(column) {
+                let format = this.analyzeFormat(column);
+                if (format)
+                        return false;
+
+                return column.type == "String" && COMMON_UTILS.DEFAULT_RADIO_MATCHER(column.name);
         }
 }
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2021-4-16 4:50:21 PM
+All rights reserved by fal(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crud.mapper.ProjectMapper">
+    <delete id="deleteBatch">
+          delete from project t
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </delete>
+    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateProjectBatchReq">
+          update project t
+          <set>
+            <if test="company != null and company != ''">
+                  t.company = #{company},
+            </if>
+            <if test="description != null and description != ''">
+                  t.description = #{description},
+            </if>
+            <if test="name != null and name != ''">
+                  t.name = #{name}
+            </if>
+          </set>
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </update>
+    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.Project" parameterType="com.jasmine.crud.pojo.req.GetProjectPageReq">
+          select
+             t.company,
+             t.create_time,
+             t.description,
+             t.id,
+             t.name
+          from project t
+          <where>
+            <if test="company != null and company != ''">
+                  t.company = #{company}
+            </if>
+            <if test="createTimeStart != null">
+                  and  t.create_time >= #{createTimeStart}
+            </if>
+            <if test="createTimeEnd != null">
+                  and t.create_time &lt; #{createTimeEnd}
+            </if>
+            <if test="description != null and description != ''">
+                  and t.description = #{description}
+            </if>
+            <if test="name != null and name != ''">
+                  and t.name = #{name}
+            </if>
+          </where>
+    </select>
+</mapper>

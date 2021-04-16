@@ -1,7 +1,7 @@
         /**
          * Set property @name
          * 
-         * @param {String} @name
+         * @param {*} @name
          * @returns {@configBuilder}
          */
         @name(@name){

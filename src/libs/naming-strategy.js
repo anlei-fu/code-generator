@@ -40,6 +40,15 @@ function toCamel(input) {
 }
 
 /**
+ * Format to splash naming style
+ * 
+ * @param {String} input 
+ */
+function toSplash(input){
+        return toHungary(input).replace(/_/g,"-",);
+}
+
+/**
  * Format to hungary naming style
  * 
  * @param {String} input
@@ -102,5 +111,6 @@ function split(input) {
 exports.NamingStrategy = {
         toHungary,
         toCamel,
-        toPascal
+        toPascal,
+        toSplash
 }

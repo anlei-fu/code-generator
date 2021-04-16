@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2021-4-16 4:50:21 PM
+All rights reserved by fal(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crud.mapper.FieldInfoMapper">
+    <delete id="deleteBatch">
+          delete from field_info t
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </delete>
+    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateFieldInfoBatchReq">
+          update field_info t
+          <set>
+            <if test="batchEditable != null">
+                  t.batch_editable = #{batchEditable},
+            </if>
+            <if test="defaultShow != null">
+                  t.default_show = #{defaultShow},
+            </if>
+            <if test="description != null and description != ''">
+                  t.description = #{description},
+            </if>
+            <if test="editable != null">
+                  t.editable = #{editable},
+            </if>
+            <if test="filterType != null">
+                  t.filter_type = #{filterType},
+            </if>
+            <if test="formatPattern != null and formatPattern != ''">
+                  t.format_pattern = #{formatPattern},
+            </if>
+            <if test="formatType != null">
+                  t.format_type = #{formatType},
+            </if>
+            <if test="insertNullable != null">
+                  t.insert_nullable = #{insertNullable},
+            </if>
+            <if test="insertable != null">
+                  t.insertable = #{insertable},
+            </if>
+            <if test="isName != null">
+                  t.is_name = #{isName},
+            </if>
+            <if test="isPk != null">
+                  t.is_pk = #{isPk},
+            </if>
+            <if test="javaType != null and javaType != ''">
+                  t.java_type = #{javaType},
+            </if>
+            <if test="name != null and name != ''">
+                  t.name = #{name},
+            </if>
+            <if test="noticeText != null and noticeText != ''">
+                  t.notice_text = #{noticeText},
+            </if>
+            <if test="order != null">
+                  t.order = #{order},
+            </if>
+            <if test="rawName != null and rawName != ''">
+                  t.raw_name = #{rawName},
+            </if>
+            <if test="realColumn != null">
+                  t.real_column = #{realColumn},
+            </if>
+            <if test="tableId != null">
+                  t.table_id = #{tableId},
+            </if>
+            <if test="title != null and title != ''">
+                  t.title = #{title}
+            </if>
+          </set>
+          <where>
+              t.id in
+              <foreach collection="ids" item="item" open="(" close=")" separator=",">
+                     #{item}
+              </foreach>
+          </where>
+    </update>
+    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.FieldInfo" parameterType="com.jasmine.crud.pojo.req.GetFieldInfoPageReq">
+          select
+             t.batch_editable,
+             t.default_show,
+             t.description,
+             t.editable,
+             t.filter_type,
+             t.format_pattern,
+             t.format_type,
+             t.id,
+             t.insert_nullable,
+             t.insertable,
+             t.is_name,
+             t.is_pk,
+             t.java_type,
+             t.name,
+             t.notice_text,
+             t.order,
+             t.raw_name,
+             t.real_column,
+             t.table_id,
+             t.title
+          from field_info t
+          <where>
+            <if test="batchEditable != null">
+                  t.batch_editable = #{batchEditable}
+            </if>
+            <if test="defaultShow != null">
+                  and t.default_show = #{defaultShow}
+            </if>
+            <if test="description != null and description != ''">
+                  and t.description = #{description}
+            </if>
+            <if test="editable != null">
+                  and t.editable = #{editable}
+            </if>
+            <if test="filterType != null">
+                  and t.filter_type = #{filterType}
+            </if>
+            <if test="formatPattern != null and formatPattern != ''">
+                  and t.format_pattern = #{formatPattern}
+            </if>
+            <if test="formatType != null">
+                  and t.format_type = #{formatType}
+            </if>
+            <if test="insertNullable != null">
+                  and t.insert_nullable = #{insertNullable}
+            </if>
+            <if test="insertable != null">
+                  and t.insertable = #{insertable}
+            </if>
+            <if test="javaType != null and javaType != ''">
+                  and t.java_type = #{javaType}
+            </if>
+            <if test="name != null and name != ''">
+                  and t.name = #{name}
+            </if>
+            <if test="noticeText != null and noticeText != ''">
+                  and t.notice_text = #{noticeText}
+            </if>
+            <if test="order != null">
+                  and t.order = #{order}
+            </if>
+            <if test="rawName != null and rawName != ''">
+                  and t.raw_name = #{rawName}
+            </if>
+            <if test="realColumn != null">
+                  and t.real_column = #{realColumn}
+            </if>
+            <if test="tableId != null">
+                  and t.table_id = #{tableId}
+            </if>
+            <if test="title != null and title != ''">
+                  and t.title = #{title}
+            </if>
+          </where>
+    </select>
+</mapper>
