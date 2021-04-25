@@ -2,55 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Jasmine code generator, a tool to build web crud application,with spring-
 boot, mybatis, mysql,swagger,spring-security.
-Generated at 2021-4-16 4:50:21 PM
+Generated at 2021-4-25 6:53:03 PM
 All rights reserved by fal(email:767550758@qq.com) since 2019 -->
 <mapper namespace="com.jasmine.crud.mapper.ValidatorMapper">
-    <delete id="deleteBatch">
-          delete from validator t
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </delete>
-    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateValidatorBatchReq">
-          update validator t
-          <set>
-            <if test="fieldId != null">
-                  t.field_id = #{fieldId},
-            </if>
-            <if test="msg != null and msg != ''">
-                  t.msg = #{msg},
-            </if>
-            <if test="pattern != null and pattern != ''">
-                  t.pattern = #{pattern}
-            </if>
-          </set>
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </update>
-    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.Validator" parameterType="com.jasmine.crud.pojo.req.GetValidatorPageReq">
+    <select id="getDetailPage" resultType="com.jasmine.crud.pojo.resp.ValidatorDetailResp" parameterType="com.jasmine.crud.pojo.req.GetValidatorPageReq">
           select
              t.field_id,
              t.id,
              t.msg,
-             t.pattern
+             t.pattern,
+             t1.name as field_name
           from validator t
-          <where>
-            <if test="fieldId != null">
-                  t.field_id = #{fieldId}
-            </if>
-            <if test="msg != null and msg != ''">
-                  and t.msg = #{msg}
-            </if>
-            <if test="pattern != null and pattern != ''">
-                  and t.pattern = #{pattern}
-            </if>
-          </where>
+          left join field_info t1 on  t.field_id = t1.id
     </select>
 </mapper>

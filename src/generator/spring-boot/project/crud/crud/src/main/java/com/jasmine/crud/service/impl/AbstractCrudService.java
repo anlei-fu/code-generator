@@ -1,16 +1,16 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:25:23 PM 
+ * Generated at 2021-4-20 5:12:33 PM
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
 
-import com.jasmine.crud.mapper.BaseCrudMapper;
 import com.jasmine.crud.pojo.req.PageReq;
 import com.jasmine.crud.pojo.req.PageTimeReq;
 import com.jasmine.crud.pojo.resp.PageResult;
 import com.jasmine.crud.utils.DaoUtil;
+import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
@@ -51,7 +51,7 @@ public abstract class AbstractCrudService<T> {
         return DaoUtil.queryNormalPage(getMapper(), dto, getEntityClass(), orderByClause, timeRangeProperty, likeProperties);
     }
 
-    protected abstract BaseCrudMapper<T> getMapper();
+    protected abstract Mapper<T> getMapper();
 
     protected abstract Class<T> getEntityClass();
 }

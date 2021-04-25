@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Fri Apr 16 2021 16:50:21 GMT+0800 (GMT+08:00)
+ * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -54,16 +54,16 @@ public class TableInfoServiceTest {
 
                                          req.setApiPrefix("mock string");
                                          req.setBatchDelete(20);
-                                         req.setBatchEidit(90);
-                                         req.setDeletable(90);
-                                         req.setDescription("avoid annoy thing to do");
+                                         req.setBatchEidit(30);
+                                         req.setDeletable(20);
+                                         req.setDescription("this is description mock data segment");
                                          req.setEiditable(0);
-                                         req.setInsertable(20);
-                                         req.setMouduleId(1);
-                                         req.setName("narcissus");
+                                         req.setInsertable(30);
+                                         req.setMouduleId(29);
+                                         req.setName("jasmine");
                                          req.setProjectId(7);
-                                         req.setRawName("carnation");
-                                         req.setTitle("ranger bull");
+                                         req.setRawName("rose");
+                                         req.setTitle(" casino");
 
                 R result =controller.add(
 
@@ -82,7 +82,7 @@ public class TableInfoServiceTest {
 
                 R result =controller.deleteById(
 
-                                                7 
+                                                29 
 
                         );
 
@@ -97,18 +97,19 @@ public class TableInfoServiceTest {
 
                 UpdateTableInfoReq req =new UpdateTableInfoReq();
 
+                                         req.setId(35);
                                          req.setApiPrefix("mock string");
                                          req.setBatchDelete(20);
-                                         req.setBatchEidit(0);
-                                         req.setDeletable(30);
-                                         req.setDescription("avoid annoy thing to do");
-                                         req.setEiditable(30);
-                                         req.setInsertable(90);
-                                         req.setMouduleId(15);
-                                         req.setName("balsam");
+                                         req.setBatchEidit(20);
+                                         req.setDeletable(90);
+                                         req.setDescription("jasmine code generator, generate every thing you need");
+                                         req.setEiditable(20);
+                                         req.setInsertable(20);
+                                         req.setMouduleId(7);
+                                         req.setName("narcissus");
                                          req.setProjectId(1);
-                                         req.setRawName("calla");
-                                         req.setTitle(" casino");
+                                         req.setRawName("jasmine");
+                                         req.setTitle("a silent lamb");
 
                 R result =controller.update(
 
@@ -119,43 +120,17 @@ public class TableInfoServiceTest {
                  TestUtils.printQuery(req,result);
 
     }    /**
-     * getById 
+     * getDetailPage 
      *
      */
     @Test
-    public void testGetById(){
-
-          R result =controller.getById(
-
-                                        7 
-
-                        );
-
-                 TestUtils.print(result);
-
-    }    /**
-     * getPage 
-     *
-     */
-    @Test
-    public void testGetPage(){
+    public void testGetDetailPage(){
 
                 GetTableInfoPageReq req =new GetTableInfoPageReq();
 
-                                         req.setApiPrefix("mock string");
-                                         req.setBatchDelete(30);
-                                         req.setBatchEidit(0);
-                                         req.setDeletable(0);
-                                         req.setDescription("mock generator, generate lots of data for testing");
-                                         req.setEiditable(30);
-                                         req.setInsertable(30);
-                                         req.setMouduleId(6);
-                                         req.setName("narcissus");
-                                         req.setProjectId(1);
-                                         req.setRawName("calla");
-                                         req.setTitle("ranger bull");
+                                         req.setName("rose");
 
-          R result =controller.getPage(
+          R result =controller.getDetailPage(
 
                                         req 
 

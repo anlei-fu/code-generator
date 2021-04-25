@@ -2,11 +2,12 @@ package com.@project.mapper;
 
 @packages
 import com.jasmine.crud.pojo.entity.@name;
-import org.mapstruct.Mapper;
+import tk.mybatis.mapper.common.Mapper;
+import com.jasmine.crud.pojo.req.*;
+import com.jasmine.crud.pojo.resp.*;
 @packages
 
-@Mapper
-public interface @nameMapper extends BaseCrudMapper<@name> {
+public interface @nameMapper extends Mapper<@name> {
         
 @content   
 }

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:25:23 PM 
+ * Generated at 2021-4-20 5:12:33 PM
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud;
@@ -25,7 +25,7 @@ public class TestUtils {
     }
 
     public static void print(Object obj) {
-        String json = JSON.toJSONString(obj, SerializerFeature.PrettyFormat,SerializerFeature.WriteNullStringAsEmpty);
+        String json = JSON.toJSONString(obj, SerializerFeature.PrettyFormat, SerializerFeature.WriteNullStringAsEmpty);
         System.out.println(json);
     }
 

@@ -93,49 +93,49 @@ const DEFAULT_VALIDATES = {
         },
 
         Integer: {
-                "boolean": {
-                        matcher: columnName => STR.startsWithAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "is",
-                                        "need",
-                                        "permit",
-                                        "allow",
-                                        "support",
-                                        "can",
-                                        "should",
-                                        "enbale",
-                                        "disable"
-                                ]
-                        ) || STR.equalAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "status",
-                                        "enbalestatus"
-                                ]
-                        ),
-                        validate: `@Enum("YesNo")`,
-                },
-                "status": {
-                        matcher: (columnName) => STR.endsWithAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "flag",
-                                        "type",
-                                        "status",
-                                        "state",
-                                        "class",
-                                        "level",
-                                        "style"
-                                ]
-                        ) && !STR.equalAny(
-                                columnName.toLowerCase(),
-                                [
-                                        "status"
-                                ]
-                        ),
-                        generator: (name) => `@Enum("${STR.upperFirstLetter(name)}")`,
-                },
+                // "boolean": {
+                //         matcher: columnName => STR.startsWithAny(
+                //                 columnName.toLowerCase(),
+                //                 [
+                //                         "is",
+                //                         "need",
+                //                         "permit",
+                //                         "allow",
+                //                         "support",
+                //                         "can",
+                //                         "should",
+                //                         "enbale",
+                //                         "disable"
+                //                 ]
+                //         ) || STR.equalAny(
+                //                 columnName.toLowerCase(),
+                //                 [
+                //                         "status",
+                //                         "enbalestatus"
+                //                 ]
+                //         ),
+                //         validate: `@Enum("YesNo")`,
+                // },
+                // "status": {
+                //         matcher: (columnName) => STR.endsWithAny(
+                //                 columnName.toLowerCase(),
+                //                 [
+                //                         "flag",
+                //                         "type",
+                //                         "status",
+                //                         "state",
+                //                         "class",
+                //                         "level",
+                //                         "style"
+                //                 ]
+                //         ) && !STR.equalAny(
+                //                 columnName.toLowerCase(),
+                //                 [
+                //                         "status"
+                //                 ]
+                //         ),
+                //         generator: (name) => `@Enum("${STR.upperFirstLetter(name)}")`,
+                // },
         }
 }
 
@@ -229,6 +229,12 @@ class ExcludesAnalyzer extends ValidateAnalyzer {
  * Default expressions
  */
 const DEFAULT_EXPRESSIONS = {
+        String: {
+                all: {
+                        matcher: name => STR.endsWithAny(name, ["name"]),
+                        expression: "like"
+                }
+        },
         Integer: {
                 range: {
                         matcher: columnName => STR.endsWithAny(
@@ -324,12 +330,15 @@ class ExpresssionAnalyzer extends ExcludesAnalyzer {
  */
 const SELECT_INCLUDES = {
         String: {
-                all: {
+                enum: {
+                        matcher: Matcher.isEnumName
+                },
+                id: {
                         matcher: Matcher.isIdFields
                 }
         },
         Integer: {
-                all: {
+                enum: {
                         matcher: Matcher.isEnumName
                 },
                 id: {
@@ -390,10 +399,10 @@ class SelectAnalyzer extends ExpresssionAnalyzer {
                                 : name.toLowerCase().includes(item);
 
                         if (match)
-                                return false;
+                                return true;
                 }
 
-                return true;
+                return false;
         }
 }
 
@@ -463,8 +472,17 @@ class InsertAnalyzer extends ExcludesAnalyzer {
                 let type = getJavaType(column.type);
                 let validates = [];
 
-                if (!column.nullable)
-                        validates.push("@NotNull");
+                if (!column.nullable) {
+                        if (type == "String") {
+                                validates.push("@NotEmpty");
+                        } else {
+                                validates.push("@NotNull");
+                        }
+                }
+
+                if (column.isPk)
+                        validates.push("@Id");
+
 
                 let ret = validates.concat(super.analyzeValidates(type, column.name));
                 return ret;
@@ -537,6 +555,29 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
                 }
 
                 return true;
+        }
+
+        /**
+        * Get validates of field, and analyze should hava nullable constraint
+        * 
+        * @override
+        * @param {Column} column 
+        * @returns {[string]}
+        */
+        analyzeValidates(column) {
+                let type = getJavaType(column.type);
+                let validates = [];
+
+                if (!column.nullable) {
+                        if (type == "String") {
+                                validates.push("@NotEmpty");
+                        } else {
+                                validates.push("@NotNull");
+                        }
+                }
+
+                let ret = validates.concat(super.analyzeValidates(type, column.name));
+                return ret;
         }
 }
 

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:17 PM 
+ * Generated at 2021-4-25 6:52:53 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 const { all } = require("./../db/all")
@@ -13,11 +13,7 @@ exports.fieldInfoConfig = {
         name: "FieldInfo",
                 items: [
                         // add
-                        // filterType : validate --- @Enum("FilterType")  
-                        // formatType : validate --- @Enum("FormatType")  
                         // id excluded 
-                        // isName : validate --- @Enum("YesNo")  
-                        // isPk : validate --- @Enum("YesNo")  
                         // tableId : validate --- @NotNull
                         new ConfigItemBuilder()
                                 .type("insert")
@@ -35,10 +31,6 @@ exports.fieldInfoConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("filterType","@Enum(\"FilterType\")")
-                                           .validate("formatType","@Enum(\"FormatType\")")
-                                           .validate("isName","@Enum(\"YesNo\")")
-                                           .validate("isPk","@Enum(\"YesNo\")")
                                            .validate("tableId","@NotNull")
                                 })
                                 .build(),
@@ -63,44 +55,19 @@ exports.fieldInfoConfig = {
                                 })
                                 .build(),
 
-                                                              // delete batch
-                                new ConfigItemBuilder()
-                                .type("delete")
-                                .id("deleteBatch")
-                                .alias("t")
-                                .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
-                                                  .list("id")
-                                })
-                                .request(request => {
-                                        request.path("delete-batch")
-                                               .description("bacth delete fieldInfo");;
-                                })
-                                .req(req => {
-                                        req.name("ids")
-                                           .type("Integer")
-                                           .list();
-                                })
-                                .build(),
-
-// updateById
-                        // filterType : validate --- @Enum("FilterType")  
-                        // formatType : validate --- @Enum("FormatType")  
-                        // isName : validate --- @Enum("YesNo")  
-                        // isPk : validate --- @Enum("YesNo")
+                              // updateById
+                        // id : validate --- @NotNull  
+                        // tableId : validate --- @NotNull
                         new ConfigItemBuilder()
                                 .type("update")
                                 .id("update")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.fieldInfo.columnsArray)
-                                                  .list("id")
 
                                 })
                                 .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
+                                        collection.require("id")
                                 })
                                 .request(request => {
                                         request.path("")
@@ -108,105 +75,73 @@ exports.fieldInfoConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("id")
-                                           .validate("filterType","@Enum(\"FilterType\")")
-                                           .validate("formatType","@Enum(\"FormatType\")")
-                                           .validate("isName","@Enum(\"YesNo\")")
-                                           .validate("isPk","@Enum(\"YesNo\")")
+                                           .validate("id","@NotNull")
+                                           .validate("tableId","@NotNull")
                                            .name("UpdateFieldInfoReq")                                                
                                 })
                                 .build(),
 
-// updateBatch
-                                                        // filterType : validate --- @Enum("FilterType")  
-                        // formatType : validate --- @Enum("FormatType")  
-                        // isName : validate --- @Enum("YesNo")  
-                        // isPk : validate --- @Enum("YesNo")
-                                new ConfigItemBuilder()
-                                .type("update")
-                                .id("updateBatch")
-                                .alias("t")
-                                .includes(collection => {
-                                        collection.includes(all.fieldInfo.columnsArray)
-                                .excludes("id")
 
-                                 })
-                                 .conditions(collection => {
-                                        collection.includes("id")
-                                        .require("id")
-                                        .list("id");
+                        // get detail page
+                        // batchEditable : excluded 
+                        // defaultShow : excluded 
+                        // description : excluded 
+                        // editable : excluded 
+                        // filterType : excluded 
+                        // formatPattern : excluded 
+                        // formatType : excluded 
+                        // insertNullable : excluded 
+                        // insertable : excluded 
+                        // javaType : excluded 
+                        // name : expression --- like
+                        // noticeText : excluded 
+                        // order : excluded 
+                        // rawName : excluded 
+                        // realColumn : excluded 
+                        // tableId : excluded 
+                        // title : excluded
+                         new ConfigItemBuilder()
+                         .type("select")
+                         .id("getDetailPage")
+                         .alias("t")
+                         .includes(collection=>{
+                                 collection.includes(all.fieldInfo.columnsArray)
+                         })
+                         .conditions(collection=>{
+                                  collection.includes(all.fieldInfo.columnsArray)
+                                            .excludes("id")
+                                                  .excludes(["batchEditable","defaultShow","description","editable","filterType","formatPattern","formatType","insertNullable","insertable","javaType","noticeText","order","rawName","realColumn","tableId","title",])
+                                                  .exp("name","like")
+                          })
+                                .join(join=>{
+                                            join.table(all.tableInfo)
+                                                .includes(collection=>{
+                                                        collection.includes("name")
+                                                                   .alias("name","tableName")
+                                                })
+                                                .type("left")
+                                                .alias("t1")
+                                                .joinCondition(" t.table_id = t1.id")
+                                                .build()
                                 })
-                                .request(request => {
-                                        request.path("update-batch")
-                                               .description("update fieldInfo batch");;
-                                 })
-                                .req(req => {
-                                        req.doCreate()
-                                           .validate("filterType","@Enum(\"FilterType\")")
-                                           .validate("formatType","@Enum(\"FormatType\")")
-                                           .validate("isName","@Enum(\"YesNo\")")
-                                           .validate("isPk","@Enum(\"YesNo\")")
-                                .name("UpdateFieldInfoBatchReq")                                                
-                                 })
-                                .build(),
+                                
+                         .request(request => {
+                                         request.path("detail/page")
+                                                .description("get fieldInfo page with additional details");;
+                        })
+                         .req(req => {
+                                  req.doCreate()
+                                 .excludes("id")
 
-                        // getById
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getById")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.fieldInfo.columnsArray)
-                                })
-                                .conditions(collection =>{
-                                        collection.includes("id")
-                                                  .require("id")
-                                })
-                                .request(request => {
-                                        request.path("{id}")
-                                                .description("get single fieldInfo");;
-                                })
-                                .req(req => {
-                                        req.name("id")
-                                           .type("Integer")
-                                           .from("@PathVariable");
-                                })
-                                .resp(resp => {
-                                        resp.single();
-                                })
-                                .build(),
-
-// getPage
-                        // filterType : validates --- @Enum("FilterType")  
-                        // formatType : validates --- @Enum("FormatType")  
-                        // id : excluded 
-                        // isName : excluded 
-                        // isPk : excluded
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getPage")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.fieldInfo.columnsArray)
-                                })
-                                .conditions(collection=>{
-                                        collection.includes(all.fieldInfo.columnsArray)
-                                                  .excludes("id")
-                                                  .excludes(["id","isName","isPk",])
-                                })
-                                .request(request => {
-                                        request.path("/page")
-                                               .description("get fieldInfo page");;
-                                })
-                                .req(req => {
-                                        req.doCreate()
-                                           .excludes("id")
-                                           .validate("filterType","@Enum(\"FilterType\")")
-                                           .validate("formatType","@Enum(\"FormatType\")")
-                                           .name("GetFieldInfoPageReq")
-                                })
+                                 .name("GetFieldInfoPageReq")
+                         })
                    
-                                .build(),
+                         .resp(resp=>{
+                                 resp.doCreate()
+                                     .name("FieldInfoDetailResp")
+                                     .build()
+                         })
+                         .build(),
 
                         
  ]

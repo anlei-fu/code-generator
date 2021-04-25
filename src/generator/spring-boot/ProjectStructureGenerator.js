@@ -82,13 +82,6 @@ class ProjectStructreGenerator {
                         company
                 );
 
-                // MapperBase
-                this._copy(
-                        `${__dirname}/templates/BaseCrudMapper.java`,
-                        `${root}/mapper/BaseCrudMapper.java`,
-                        project,
-                        company
-                );
 
                  // AbstractCrudService
                  this._copy(

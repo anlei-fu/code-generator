@@ -6,12 +6,10 @@
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.@sname.columnsArray)
-                                                  .list("@skey")
 @updateExcludes
                                 })
                                 .conditions(collection => {
-                                        collection.includes("@skey")
-                                                  .require("@skey")
+                                        collection.require("@skey")
                                 })
                                 .request(request => {
                                         request.path("")
@@ -20,7 +18,6 @@
 @updateUserReq@@                
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("@skey")
 @updateReq
                                            .name("Update@tnameReq")                                                
                                 })

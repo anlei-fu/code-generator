@@ -1,7 +1,10 @@
-const { STR } = require("../../libs/str");
+const { STR, ARRAY } = require("../../libs");
 const { UserColumnAnalyzer } = require("./Analyzer");
 const { ConfigItem } = require("./builders/ConfigItem");
 const { Req } = require("./builders/Req");
+const { ColumnMerger } = require("./ColumnMerger");
+
+let merger = new ColumnMerger();
 
 const USER_ANALYZER = new UserColumnAnalyzer();
 
@@ -80,15 +83,17 @@ class ReqUtils {
                 // get req by conditions
                 let conditions;
                 if (configItem.type == "select" || configItem.type == "delete") {
-                        conditions = configItem.context.columnMerger.mergeConditions(configItem);
+                        conditions = merger.mergeConditions(configItem);
                 } else if (configItem.type == "insert") {
                         // insert case: fields =includes
-                        conditions = configItem.context.columnMerger.mergeIncludes(configItem);
+                        conditions = merger.mergeIncludes(configItem);
                 } else {
 
                         // update case: fields = includes + conditions
-                        conditions = configItem.context.columnMerger.mergeConditions(configItem)
-                                .concat(configItem.context.columnMerger.mergeIncludes(configItem));
+                        conditions = merger.mergeConditions(configItem)
+                                .concat(merger.mergeIncludes(configItem));
+
+                        conditions = ARRAY.distinct(conditions, x => x.name);
                 }
 
                 let result = [];

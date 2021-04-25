@@ -8,6 +8,7 @@ import com.@project.pojo.req.PageReq;
 import com.@project.pojo.req.PageTimeReq;
 import com.@project.pojo.resp.PageResult;
 import org.springframework.beans.BeanUtils;
+import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Config;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.mapperhelper.EntityHelper;
@@ -31,7 +32,7 @@ public class DaoUtil {
     /**
      * 常规分页查询
      *
-     * @param mapper        extends {@see MyMapper}
+     * @param mapper        extends {@see Mapper}
      * @param dto
      * @param targetClazz   class of entity
      * @param orderByClause 不需要加 order by 前缀
@@ -39,7 +40,7 @@ public class DaoUtil {
      * @return
      */
     public static <T> PageResult<T> queryNormalPage(
-            BaseCrudMapper<T> mapper,
+            Mapper<T> mapper,
             PageReq dto,
             Class<T> targetClazz,
             String orderByClause
@@ -60,7 +61,7 @@ public class DaoUtil {
      * @return
      */
     public static <T> PageResult<T> queryNormalPage(
-            BaseCrudMapper<T> mapper,
+            Mapper<T> mapper,
             PageReq dto,
             Class<T> targetClazz,
             String orderByClause,
@@ -84,7 +85,7 @@ public class DaoUtil {
      * @return
      */
     public static <T> List<T> queryNormalList(
-            BaseCrudMapper<T> mapper,
+            Mapper<T> mapper,
             PageReq dto,
             Class<T> targetClazz,
             String orderByClause) {
@@ -104,7 +105,7 @@ public class DaoUtil {
      * @return
      */
     public static <T> List<T> queryNormalList(
-            BaseCrudMapper<T> mapper,
+            Mapper<T> mapper,
             PageReq dto,
             Class<T> targetClazz,
             String orderByClause,
@@ -177,11 +178,11 @@ public class DaoUtil {
      * @param <T>
      * @return
      */
-    public static <T> boolean updateNormal(BaseCrudMapper<T> mapper, Object source, Class<T> targetClazz) {
+    public static <T> boolean updateNormal(Mapper<T> mapper, Object source, Class<T> targetClazz) {
         T instance = BeanUtils.instantiateClass(targetClazz);
         setEmptyStringFieldToNull(source);
         BeanUtils.copyProperties(source, instance);
-//        checkAndSetProperty(instance, "updateUser", RequestContextUtil.getCurrentUser());
+ //       checkAndSetProperty(instance, "updateUser", RequestContextUtil.getCurrentUser());
         checkAndSetProperty(instance, "updateTime", new Date());
         return mapper.updateByPrimaryKeySelective(instance) > 0;
     }
@@ -195,7 +196,7 @@ public class DaoUtil {
      * @param <T>
      * @return
      */
-    public static <T> boolean insertNormal(BaseCrudMapper<T> mapper, Object source, Class<T> targetClazz) {
+    public static <T> boolean insertNormal(Mapper<T> mapper, Object source, Class<T> targetClazz) {
         T instance = BeanUtils.instantiateClass(targetClazz);
         setEmptyStringFieldToNull(source);
         BeanUtils.copyProperties(source, instance);

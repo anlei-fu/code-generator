@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -19,16 +19,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Date;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * ProjectService Tester.
  *
  * @author fuanlei
  * @version 1.0
- * @since Fri Apr 16 2021 16:50:21 GMT+0800 (GMT+08:00)
+ * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -54,9 +52,9 @@ public class ProjectServiceTest {
 
                 AddProjectReq req =new AddProjectReq();
 
-                                         req.setCompany("github");
-                                         req.setDescription("this is description mock data segment");
-                                         req.setName("balsam");
+                                         req.setCompany("oracle");
+                                         req.setDescription("avoid annoy thing to do");
+                                         req.setName("carnation");
 
                 R result =controller.add(
 
@@ -75,7 +73,7 @@ public class ProjectServiceTest {
 
                 R result =controller.deleteById(
 
-                                                2 
+                                                1 
 
                         );
 
@@ -90,9 +88,10 @@ public class ProjectServiceTest {
 
                 UpdateProjectReq req =new UpdateProjectReq();
 
-                                         req.setCompany("github");
-                                         req.setDescription("avoid annoy thing to do");
-                                         req.setName("jasmine");
+                                         req.setId(29);
+                                         req.setCompany("oracle");
+                                         req.setDescription("this is description mock data segment");
+                                         req.setName("narcissus");
 
                 R result =controller.update(
 
@@ -103,36 +102,17 @@ public class ProjectServiceTest {
                  TestUtils.printQuery(req,result);
 
     }    /**
-     * getById 
+     * getDetailPage 
      *
      */
     @Test
-    public void testGetById(){
-
-          R result =controller.getById(
-
-                                        8 
-
-                        );
-
-                 TestUtils.print(result);
-
-    }    /**
-     * getPage 
-     *
-     */
-    @Test
-    public void testGetPage(){
+    public void testGetDetailPage(){
 
                 GetProjectPageReq req =new GetProjectPageReq();
 
-                                         req.setCompany("tencent");
-                                         req.setCreateTimeStart(new Date());
-                                         req.setCreateTimeEnd(new Date());
-                                         req.setDescription("mock generator, generate lots of data for testing");
-                                         req.setName("balsam");
+                                         req.setName("lily");
 
-          R result =controller.getPage(
+          R result =controller.getDetailPage(
 
                                         req 
 

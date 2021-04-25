@@ -27,13 +27,13 @@ class ServiceImplRender {
                         ) {
                                 let template =SERVICE_ITEM_CONTENT;
                                 if(configItem.id =="add"){
-                                     template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","add(req);");
+                                     template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.add(req);");
                                 }else if(configItem.id == "update"){
-                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","update(req);");
+                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.update(req);");
                                 }else if(configItem.id.startsWith("deleteBy")){
-                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","delete(id);");
+                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.delete(id);");
                                 }else if(configItem.id.startsWith("getBy")){
-                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","getById(id);");
+                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.getById(id);");
                                 }
 
                                 content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderContent(template,item)) + "\r\n";

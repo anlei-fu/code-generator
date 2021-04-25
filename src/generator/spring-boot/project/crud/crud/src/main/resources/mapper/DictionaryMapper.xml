@@ -2,39 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Jasmine code generator, a tool to build web crud application,with spring-
 boot, mybatis, mysql,swagger,spring-security.
-Generated at 2021-4-16 4:50:21 PM
+Generated at 2021-4-25 6:53:03 PM
 All rights reserved by fal(email:767550758@qq.com) since 2019 -->
 <mapper namespace="com.jasmine.crud.mapper.DictionaryMapper">
-    <delete id="deleteBatch">
-          delete from dictionary t
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </delete>
-    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateDictionaryBatchReq">
-          update dictionary t
-          <set>
-            <if test="name != null and name != ''">
-                  t.name = #{name},
-            </if>
-            <if test="type != null and type != ''">
-                  t.type = #{type},
-            </if>
-            <if test="value != null and value != ''">
-                  t.value = #{value}
-            </if>
-          </set>
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </update>
-    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.Dictionary" parameterType="com.jasmine.crud.pojo.req.GetDictionaryPageReq">
+    <select id="getDetailPage" resultType="com.jasmine.crud.pojo.resp.DictionaryDetailResp" parameterType="com.jasmine.crud.pojo.req.GetDictionaryPageReq">
           select
              t.id,
              t.name,
@@ -43,13 +14,10 @@ All rights reserved by fal(email:767550758@qq.com) since 2019 -->
           from dictionary t
           <where>
             <if test="name != null and name != ''">
-                  t.name = #{name}
+                  t.name like concat('%',#{name},'%') 
             </if>
             <if test="type != null">
                   and t.type = #{type}
-            </if>
-            <if test="value != null">
-                  and t.value = #{value}
             </if>
           </where>
     </select>

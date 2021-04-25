@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Fri Apr 16 2021 16:50:21 GMT+0800 (GMT+08:00)
+ * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -52,7 +52,7 @@ public class ValidatorServiceTest {
 
                 AddValidatorReq req =new AddValidatorReq();
 
-                                         req.setFieldId(6);
+                                         req.setFieldId(15);
                                          req.setMsg("this is description mock data segment");
                                          req.setPattern("mock string");
 
@@ -88,8 +88,9 @@ public class ValidatorServiceTest {
 
                 UpdateValidatorReq req =new UpdateValidatorReq();
 
-                                         req.setFieldId(1);
-                                         req.setMsg("avoid annoy thing to do");
+                                         req.setId(1);
+                                         req.setFieldId(35);
+                                         req.setMsg("jasmine code generator, generate every thing you need");
                                          req.setPattern("mock string");
 
                 R result =controller.update(
@@ -101,34 +102,15 @@ public class ValidatorServiceTest {
                  TestUtils.printQuery(req,result);
 
     }    /**
-     * getById 
+     * getDetailPage 
      *
      */
     @Test
-    public void testGetById(){
-
-          R result =controller.getById(
-
-                                        2 
-
-                        );
-
-                 TestUtils.print(result);
-
-    }    /**
-     * getPage 
-     *
-     */
-    @Test
-    public void testGetPage(){
+    public void testGetDetailPage(){
 
                 GetValidatorPageReq req =new GetValidatorPageReq();
 
-                                         req.setFieldId(6);
-                                         req.setMsg("jasmine code generator, generate every thing you need");
-                                         req.setPattern("mock string");
-
-          R result =controller.getPage(
+          R result =controller.getDetailPage(
 
                                         req 
 

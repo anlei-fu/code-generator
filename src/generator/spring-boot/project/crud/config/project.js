@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:17 PM 
+ * Generated at 2021-4-25 6:52:53 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 const { all } = require("./../db/all")
@@ -55,42 +55,20 @@ exports.projectConfig = {
                                 })
                                 .build(),
 
-                                                              // delete batch
-                                new ConfigItemBuilder()
-                                .type("delete")
-                                .id("deleteBatch")
-                                .alias("t")
-                                .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
-                                                  .list("id")
-                                })
-                                .request(request => {
-                                        request.path("delete-batch")
-                                               .description("bacth delete project");;
-                                })
-                                .req(req => {
-                                        req.name("ids")
-                                           .type("Integer")
-                                           .list();
-                                })
-                                .build(),
-
-// updateById
-                        // createTime : excluded
+                              // updateById
+                        // createTime : excluded 
+                        // id : validate --- @NotNull
                         new ConfigItemBuilder()
                                 .type("update")
                                 .id("update")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.project.columnsArray)
-                                                  .list("id")
                                                   .excludes(["createTime",])
 
                                 })
                                 .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
+                                        collection.require("id")
                                 })
                                 .request(request => {
                                         request.path("")
@@ -98,94 +76,48 @@ exports.projectConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("id")
-
+                                           .validate("id","@NotNull")
                                            .name("UpdateProjectReq")                                                
                                 })
                                 .build(),
 
-// updateBatch
-                                                        // createTime : excluded
-                                new ConfigItemBuilder()
-                                .type("update")
-                                .id("updateBatch")
-                                .alias("t")
-                                .includes(collection => {
-                                        collection.includes(all.project.columnsArray)
-                                .excludes("id")
-                                                  .excludes(["createTime",])
 
-                                 })
-                                 .conditions(collection => {
-                                        collection.includes("id")
-                                        .require("id")
-                                        .list("id");
-                                })
-                                .request(request => {
-                                        request.path("update-batch")
-                                               .description("update project batch");;
-                                 })
-                                .req(req => {
-                                        req.doCreate()
+                        // get detail page
+                        // company : excluded 
+                        // createTime : excluded 
+                        // description : excluded 
+                        // name : expression --- like
+                         new ConfigItemBuilder()
+                         .type("select")
+                         .id("getDetailPage")
+                         .alias("t")
+                         .includes(collection=>{
+                                 collection.includes(all.project.columnsArray)
+                         })
+                         .conditions(collection=>{
+                                  collection.includes(all.project.columnsArray)
+                                            .excludes("id")
+                                                  .excludes(["company","createTime","description",])
+                                                  .exp("name","like")
+                          })
+                                
+                         .request(request => {
+                                         request.path("detail/page")
+                                                .description("get project page with additional details");;
+                        })
+                         .req(req => {
+                                  req.doCreate()
+                                 .excludes("id")
 
-                                .name("UpdateProjectBatchReq")                                                
-                                 })
-                                .build(),
-
-                        // getById
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getById")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.project.columnsArray)
-                                })
-                                .conditions(collection =>{
-                                        collection.includes("id")
-                                                  .require("id")
-                                })
-                                .request(request => {
-                                        request.path("{id}")
-                                                .description("get single project");;
-                                })
-                                .req(req => {
-                                        req.name("id")
-                                           .type("Integer")
-                                           .from("@PathVariable");
-                                })
-                                .resp(resp => {
-                                        resp.single();
-                                })
-                                .build(),
-
-// getPage
-                        // createTime : expression --- timeRange
-                        // id : excluded
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getPage")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.project.columnsArray)
-                                })
-                                .conditions(collection=>{
-                                        collection.includes(all.project.columnsArray)
-                                                  .excludes("id")
-                                                  .excludes(["id",])
-                                                  .exp("createTime","timeRange")
-                                })
-                                .request(request => {
-                                        request.path("/page")
-                                               .description("get project page");;
-                                })
-                                .req(req => {
-                                        req.doCreate()
-                                           .excludes("id")
-
-                                           .name("GetProjectPageReq")
-                                })
+                                 .name("GetProjectPageReq")
+                         })
                    
-                                .build(),
+                         .resp(resp=>{
+                                 resp.doCreate()
+                                     .name("ProjectDetailResp")
+                                     .build()
+                         })
+                         .build(),
 
                         
  ]

@@ -25,7 +25,24 @@ PACKAGES.set("NotBlank", {
         isSystem: true
 });
 
-PACKAGES.set("NotNull", {
+
+PACKAGES.set("@NotEmpty", {
+        package: "import javax.validation.constraints.NotEmpty;",
+        isSystem: true
+});
+
+PACKAGES.set("@Id", {
+        package: "import javax.persistence.Id;",
+        isSystem: true
+});
+
+PACKAGES.set("@Column", {
+        package: "import javax.persistence.Column;",
+        isSystem: true
+});
+
+
+PACKAGES.set("@NotNull", {
         package: "import javax.validation.constraints.NotNull;",
         isSystem: true
 });
@@ -138,7 +155,7 @@ class PackegeRender {
                         , systems = []
                         , others = STR.remove(packagesPattern, "@packages")
                                 .replace(/@project/g, this._project)
-                                .split("\n").filter(x=>x.trim());
+                                .split("\n").filter(x => x.trim());
 
                 let tokens = tokenize(content);
                 tokens.forEach(x => {
@@ -155,13 +172,13 @@ class PackegeRender {
 
 
                 others.forEach((x, i) => {
-                                others[i] = x.replace(/@project/g, this._project);
+                        others[i] = x.replace(/@project/g, this._project);
                 });
 
                 others = ARRAY.distinct(others, x => x.trim());
 
                 systems.forEach((x, i) => {
-                                systems[i] = x.replace(/@project/g, this._project);
+                        systems[i] = x.replace(/@project/g, this._project);
                 });
                 systems = ARRAY.distinct(systems, x => x.trim());
 

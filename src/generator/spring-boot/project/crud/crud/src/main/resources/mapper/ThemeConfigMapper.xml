@@ -2,62 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Jasmine code generator, a tool to build web crud application,with spring-
 boot, mybatis, mysql,swagger,spring-security.
-Generated at 2021-4-16 4:50:21 PM
+Generated at 2021-4-25 6:53:03 PM
 All rights reserved by fal(email:767550758@qq.com) since 2019 -->
 <mapper namespace="com.jasmine.crud.mapper.ThemeConfigMapper">
-    <delete id="deleteBatch">
-          delete from theme_config t
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </delete>
-    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateThemeConfigBatchReq">
-          update theme_config t
-          <set>
-            <if test="baseColor1 != null and baseColor1 != ''">
-                  t.base_color1 = #{baseColor1},
-            </if>
-            <if test="baseColor2 != null and baseColor2 != ''">
-                  t.base_color2 = #{baseColor2},
-            </if>
-            <if test="login != null and login != ''">
-                  t.login = #{login},
-            </if>
-            <if test="projectId != null">
-                  t.project_id = #{projectId}
-            </if>
-          </set>
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </update>
-    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.ThemeConfig" parameterType="com.jasmine.crud.pojo.req.GetThemeConfigPageReq">
+    <select id="getDetailPage" resultType="com.jasmine.crud.pojo.resp.ThemeConfigDetailResp" parameterType="com.jasmine.crud.pojo.req.GetThemeConfigPageReq">
           select
              t.base_color1,
              t.base_color2,
              t.id,
              t.login,
-             t.project_id
+             t.project_id,
+             t1.name as project_name
           from theme_config t
-          <where>
-            <if test="baseColor1 != null and baseColor1 != ''">
-                  t.base_color1 = #{baseColor1}
-            </if>
-            <if test="baseColor2 != null and baseColor2 != ''">
-                  and t.base_color2 = #{baseColor2}
-            </if>
-            <if test="login != null and login != ''">
-                  and t.login = #{login}
-            </if>
-            <if test="projectId != null">
-                  and t.project_id = #{projectId}
-            </if>
-          </where>
+          left join project t1 on  t.project_id = t1.id
     </select>
 </mapper>

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Fri Apr 16 2021 16:50:21 GMT+0800 (GMT+08:00)
+ * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -55,7 +55,7 @@ public class ThemeConfigServiceTest {
                                          req.setBaseColor1("mock string");
                                          req.setBaseColor2("mock string");
                                          req.setLogin("mock string");
-                                         req.setProjectId(35);
+                                         req.setProjectId(1);
 
                 R result =controller.add(
 
@@ -89,6 +89,7 @@ public class ThemeConfigServiceTest {
 
                 UpdateThemeConfigReq req =new UpdateThemeConfigReq();
 
+                                         req.setId(6);
                                          req.setBaseColor1("mock string");
                                          req.setBaseColor2("mock string");
                                          req.setLogin("mock string");
@@ -103,35 +104,15 @@ public class ThemeConfigServiceTest {
                  TestUtils.printQuery(req,result);
 
     }    /**
-     * getById 
+     * getDetailPage 
      *
      */
     @Test
-    public void testGetById(){
-
-          R result =controller.getById(
-
-                                        29 
-
-                        );
-
-                 TestUtils.print(result);
-
-    }    /**
-     * getPage 
-     *
-     */
-    @Test
-    public void testGetPage(){
+    public void testGetDetailPage(){
 
                 GetThemeConfigPageReq req =new GetThemeConfigPageReq();
 
-                                         req.setBaseColor1("mock string");
-                                         req.setBaseColor2("mock string");
-                                         req.setLogin("mock string");
-                                         req.setProjectId(7);
-
-          R result =controller.getPage(
+          R result =controller.getDetailPage(
 
                                         req 
 

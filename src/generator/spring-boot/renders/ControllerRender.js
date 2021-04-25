@@ -38,7 +38,7 @@ class ControllerRender {
 
                 content = content.trimRight() + "\r\n";
                 let description = `${configGroup.table.description || configGroup.name}`;
-                return CONTROLLER_RENDER.renderTemplate({ description, content, sname: STR.lowerFirstLetter(configGroup.name) });
+                return CONTROLLER_RENDER.renderTemplate({ description, content, sname: STR.lowerFirstLetter(configGroup.name), spname: NamingStrategy.toSplash(configGroup.name) });
         }
 
         /**

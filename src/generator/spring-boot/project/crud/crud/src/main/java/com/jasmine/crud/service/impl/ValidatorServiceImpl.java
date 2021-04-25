@@ -1,25 +1,24 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
 
-import com.jasmine.crud.mapper.BaseCrudMapper;
 import com.jasmine.crud.mapper.ValidatorMapper;
 import com.jasmine.crud.pojo.entity.Validator;
+import com.jasmine.crud.pojo.req.*;
 import com.jasmine.crud.pojo.req.AddValidatorReq;
 import com.jasmine.crud.pojo.req.GetValidatorPageReq;
-import com.jasmine.crud.pojo.req.UpdateValidatorBatchReq;
 import com.jasmine.crud.pojo.req.UpdateValidatorReq;
+import com.jasmine.crud.pojo.resp.*;
 import com.jasmine.crud.pojo.resp.PageResult;
 import com.jasmine.crud.service.ValidatorService;
 import com.jasmine.crud.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import tk.mybatis.mapper.common.Mapper;
 
 @Service
 public class ValidatorServiceImpl extends AbstractCrudService<Validator> implements ValidatorService {
@@ -29,37 +28,22 @@ public class ValidatorServiceImpl extends AbstractCrudService<Validator> impleme
 
     @Override
     public boolean add(AddValidatorReq req) {
-        return add(req);
+        return super.add(req);
     }
 
     @Override
     public boolean deleteById(Integer id) {
-        return delete(id);
-    }
-
-    @Override
-    public int deleteBatch(List<Integer> ids) {
-        return validatorMapper.deleteBatch(ids);
+        return super.delete(id);
     }
 
     @Override
     public boolean update(UpdateValidatorReq req) {
-        return update(req);
+        return super.update(req);
     }
 
     @Override
-    public int updateBatch(UpdateValidatorBatchReq req) {
-        return validatorMapper.updateBatch(req);
-    }
-
-    @Override
-    public Validator getById(Integer id) {
-        return getById(id);
-    }
-
-    @Override
-    public PageResult<Validator> getPage(GetValidatorPageReq req) {
-        return PageHelperUtils.paging(req, () -> validatorMapper.getPage(req));
+    public PageResult<ValidatorDetailResp> getDetailPage(GetValidatorPageReq req) {
+        return PageHelperUtils.paging(req, () -> validatorMapper.getDetailPage(req));
     }
 
     @Override
@@ -68,7 +52,7 @@ public class ValidatorServiceImpl extends AbstractCrudService<Validator> impleme
     }
 
     @Override
-    protected BaseCrudMapper<Validator> getMapper() {
+    protected Mapper<Validator> getMapper() {
         return  validatorMapper;
     }
 }

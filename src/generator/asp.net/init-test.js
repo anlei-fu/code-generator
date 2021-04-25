@@ -264,10 +264,10 @@ DM.project("DMSystem")
    .delete();
 
 function test() {
-   let config = YXZT
+   let config = DM
       .build();
 
-   init(yxzt.yxztOrder, config);
+   init(all.dmTermInfoStat, config);
 }
 
 test();

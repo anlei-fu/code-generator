@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:17 PM 
+ * Generated at 2021-4-25 6:52:53 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 const { all } = require("./../db/all")
@@ -13,8 +13,7 @@ exports.moduleSConfig = {
         name: "ModuleS",
                 items: [
                         // add
-                        // id excluded 
-                        // level : validate --- @Enum("Level")
+                        // id excluded
                         new ConfigItemBuilder()
                                 .type("insert")
                                 .id("add")
@@ -31,7 +30,7 @@ exports.moduleSConfig = {
                                 .req(req => {
                                         req.doCreate()
                                            .excludes("id")
-                                           .validate("level","@Enum(\"Level\")")
+
                                 })
                                 .build(),
 
@@ -55,41 +54,18 @@ exports.moduleSConfig = {
                                 })
                                 .build(),
 
-                                                              // delete batch
-                                new ConfigItemBuilder()
-                                .type("delete")
-                                .id("deleteBatch")
-                                .alias("t")
-                                .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
-                                                  .list("id")
-                                })
-                                .request(request => {
-                                        request.path("delete-batch")
-                                               .description("bacth delete moduleS");;
-                                })
-                                .req(req => {
-                                        req.name("ids")
-                                           .type("Integer")
-                                           .list();
-                                })
-                                .build(),
-
-// updateById
-                        // level : validate --- @Enum("Level")
+                              // updateById
+                        // id : validate --- @NotNull
                         new ConfigItemBuilder()
                                 .type("update")
                                 .id("update")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.moduleS.columnsArray)
-                                                  .list("id")
 
                                 })
                                 .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
+                                        collection.require("id")
                                 })
                                 .request(request => {
                                         request.path("")
@@ -97,92 +73,59 @@ exports.moduleSConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("id")
-                                           .validate("level","@Enum(\"Level\")")
+                                           .validate("id","@NotNull")
                                            .name("UpdateModuleSReq")                                                
                                 })
                                 .build(),
 
-// updateBatch
-                                                        // level : validate --- @Enum("Level")
-                                new ConfigItemBuilder()
-                                .type("update")
-                                .id("updateBatch")
-                                .alias("t")
-                                .includes(collection => {
-                                        collection.includes(all.moduleS.columnsArray)
-                                .excludes("id")
 
-                                 })
-                                 .conditions(collection => {
-                                        collection.includes("id")
-                                        .require("id")
-                                        .list("id");
+                        // get detail page
+                        // description : excluded 
+                        // name : expression --- like
+                        // parentMouduleId : excluded 
+                        // projectId : excluded
+                         new ConfigItemBuilder()
+                         .type("select")
+                         .id("getDetailPage")
+                         .alias("t")
+                         .includes(collection=>{
+                                 collection.includes(all.moduleS.columnsArray)
+                         })
+                         .conditions(collection=>{
+                                  collection.includes(all.moduleS.columnsArray)
+                                            .excludes("id")
+                                                  .excludes(["description","parentMouduleId","projectId",])
+                                                  .exp("name","like")
+                          })
+                                .join(join=>{
+                                            join.table(all.project)
+                                                .includes(collection=>{
+                                                        collection.includes("name")
+                                                                   .alias("name","projectName")
+                                                })
+                                                .type("left")
+                                                .alias("t1")
+                                                .joinCondition(" t.project_id = t1.id")
+                                                .build()
                                 })
-                                .request(request => {
-                                        request.path("update-batch")
-                                               .description("update moduleS batch");;
-                                 })
-                                .req(req => {
-                                        req.doCreate()
-                                           .validate("level","@Enum(\"Level\")")
-                                .name("UpdateModuleSBatchReq")                                                
-                                 })
-                                .build(),
+                                
+                         .request(request => {
+                                         request.path("detail/page")
+                                                .description("get moduleS page with additional details");;
+                        })
+                         .req(req => {
+                                  req.doCreate()
+                                 .excludes("id")
 
-                        // getById
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getById")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.moduleS.columnsArray)
-                                })
-                                .conditions(collection =>{
-                                        collection.includes("id")
-                                                  .require("id")
-                                })
-                                .request(request => {
-                                        request.path("{id}")
-                                                .description("get single moduleS");;
-                                })
-                                .req(req => {
-                                        req.name("id")
-                                           .type("Integer")
-                                           .from("@PathVariable");
-                                })
-                                .resp(resp => {
-                                        resp.single();
-                                })
-                                .build(),
-
-// getPage
-                        // id : excluded 
-                        // level : excluded
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getPage")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.moduleS.columnsArray)
-                                })
-                                .conditions(collection=>{
-                                        collection.includes(all.moduleS.columnsArray)
-                                                  .excludes("id")
-                                                  .excludes(["id","level",])
-                                })
-                                .request(request => {
-                                        request.path("/page")
-                                               .description("get moduleS page");;
-                                })
-                                .req(req => {
-                                        req.doCreate()
-                                           .excludes("id")
-
-                                           .name("GetModuleSPageReq")
-                                })
+                                 .name("GetModuleSPageReq")
+                         })
                    
-                                .build(),
+                         .resp(resp=>{
+                                 resp.doCreate()
+                                     .name("ModuleSDetailResp")
+                                     .build()
+                         })
+                         .build(),
 
                         
  ]

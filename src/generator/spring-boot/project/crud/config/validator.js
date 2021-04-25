@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:17 PM 
+ * Generated at 2021-4-25 6:52:53 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 const { all } = require("./../db/all")
@@ -55,40 +55,19 @@ exports.validatorConfig = {
                                 })
                                 .build(),
 
-                                                              // delete batch
-                                new ConfigItemBuilder()
-                                .type("delete")
-                                .id("deleteBatch")
-                                .alias("t")
-                                .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
-                                                  .list("id")
-                                })
-                                .request(request => {
-                                        request.path("delete-batch")
-                                               .description("bacth delete validator");;
-                                })
-                                .req(req => {
-                                        req.name("ids")
-                                           .type("Integer")
-                                           .list();
-                                })
-                                .build(),
-
-// updateById
+                              // updateById
+                        // fieldId : validate --- @NotNull  
+                        // id : validate --- @NotNull
                         new ConfigItemBuilder()
                                 .type("update")
                                 .id("update")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.validator.columnsArray)
-                                                  .list("id")
 
                                 })
                                 .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
+                                        collection.require("id")
                                 })
                                 .request(request => {
                                         request.path("")
@@ -96,90 +75,58 @@ exports.validatorConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("id")
-
+                                           .validate("fieldId","@NotNull")
+                                           .validate("id","@NotNull")
                                            .name("UpdateValidatorReq")                                                
                                 })
                                 .build(),
 
-// updateBatch
-                                new ConfigItemBuilder()
-                                .type("update")
-                                .id("updateBatch")
-                                .alias("t")
-                                .includes(collection => {
-                                        collection.includes(all.validator.columnsArray)
-                                .excludes("id")
 
-                                 })
-                                 .conditions(collection => {
-                                        collection.includes("id")
-                                        .require("id")
-                                        .list("id");
+                        // get detail page
+                        // fieldId : excluded 
+                        // msg : excluded 
+                        // pattern : excluded
+                         new ConfigItemBuilder()
+                         .type("select")
+                         .id("getDetailPage")
+                         .alias("t")
+                         .includes(collection=>{
+                                 collection.includes(all.validator.columnsArray)
+                         })
+                         .conditions(collection=>{
+                                  collection.includes(all.validator.columnsArray)
+                                            .excludes("id")
+                                                  .excludes(["fieldId","msg","pattern",])
+                          })
+                                .join(join=>{
+                                            join.table(all.fieldInfo)
+                                                .includes(collection=>{
+                                                        collection.includes("name")
+                                                                   .alias("name","fieldName")
+                                                })
+                                                .type("left")
+                                                .alias("t1")
+                                                .joinCondition(" t.field_id = t1.id")
+                                                .build()
                                 })
-                                .request(request => {
-                                        request.path("update-batch")
-                                               .description("update validator batch");;
-                                 })
-                                .req(req => {
-                                        req.doCreate()
+                                
+                         .request(request => {
+                                         request.path("detail/page")
+                                                .description("get validator page with additional details");;
+                        })
+                         .req(req => {
+                                  req.doCreate()
+                                 .excludes("id")
 
-                                .name("UpdateValidatorBatchReq")                                                
-                                 })
-                                .build(),
-
-                        // getById
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getById")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.validator.columnsArray)
-                                })
-                                .conditions(collection =>{
-                                        collection.includes("id")
-                                                  .require("id")
-                                })
-                                .request(request => {
-                                        request.path("{id}")
-                                                .description("get single validator");;
-                                })
-                                .req(req => {
-                                        req.name("id")
-                                           .type("Integer")
-                                           .from("@PathVariable");
-                                })
-                                .resp(resp => {
-                                        resp.single();
-                                })
-                                .build(),
-
-// getPage
-                        // id : excluded
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getPage")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.validator.columnsArray)
-                                })
-                                .conditions(collection=>{
-                                        collection.includes(all.validator.columnsArray)
-                                                  .excludes("id")
-                                                  .excludes(["id",])
-                                })
-                                .request(request => {
-                                        request.path("/page")
-                                               .description("get validator page");;
-                                })
-                                .req(req => {
-                                        req.doCreate()
-                                           .excludes("id")
-
-                                           .name("GetValidatorPageReq")
-                                })
+                                 .name("GetValidatorPageReq")
+                         })
                    
-                                .build(),
+                         .resp(resp=>{
+                                 resp.doCreate()
+                                     .name("ValidatorDetailResp")
+                                     .build()
+                         })
+                         .build(),
 
                         
  ]

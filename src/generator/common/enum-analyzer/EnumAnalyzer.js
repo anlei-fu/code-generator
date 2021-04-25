@@ -9,7 +9,7 @@ const DEFAULT_MATCHER = {
                   return STR.endsWithAny(lower,suffixes);
 
                 },
-                label: "label",
+                label: "name",
                 value: "value",
                 placeHolder: "请选择",
                 table: "dictionary",
@@ -21,7 +21,7 @@ const DEFAULT_MATCHER = {
                        return STR.startsWithAny(lower,suffixes);
      
                      },
-                label: "label",
+                label: "name",
                 value: "value",
                 type: "CheckBox",
                 table: "dictionary",

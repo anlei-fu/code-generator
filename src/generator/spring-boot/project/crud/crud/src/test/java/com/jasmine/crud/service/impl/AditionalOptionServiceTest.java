@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Fri Apr 16 2021 16:50:21 GMT+0800 (GMT+08:00)
+ * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -55,7 +55,7 @@ public class AditionalOptionServiceTest {
                                          req.setCheck("mock string");
                                          req.setDescription("mock generator, generate lots of data for testing");
                                          req.setEnable("mock string");
-                                         req.setName("balsam");
+                                         req.setName("jasmine");
                                          req.setNoticeText("there're three paris in the world,the most  famous one in france ,one in canada ,and last one in texas,us");
                                          req.setTableId("mock string");
                                          req.setTitle("a silent lamb");
@@ -77,7 +77,7 @@ public class AditionalOptionServiceTest {
 
                 R result =controller.deleteById(
 
-                                                2 
+                                                15 
 
                         );
 
@@ -92,13 +92,14 @@ public class AditionalOptionServiceTest {
 
                 UpdateAditionalOptionReq req =new UpdateAditionalOptionReq();
 
+                                         req.setId(8);
                                          req.setCheck("mock string");
-                                         req.setDescription("jasmine code generator, generate every thing you need");
+                                         req.setDescription("this is description mock data segment");
                                          req.setEnable("mock string");
                                          req.setName("balsam");
-                                         req.setNoticeText("every adult once ever been a child ,but few she or he can remember what it looks like at that time ");
+                                         req.setNoticeText("you think when you leave chinatown you can get justice ,but every where is chinatown.... from a black movie");
                                          req.setTableId("mock string");
-                                         req.setTitle(" casino");
+                                         req.setTitle("a silent lamb");
 
                 R result =controller.update(
 
@@ -109,38 +110,17 @@ public class AditionalOptionServiceTest {
                  TestUtils.printQuery(req,result);
 
     }    /**
-     * getById 
+     * getDetailPage 
      *
      */
     @Test
-    public void testGetById(){
-
-          R result =controller.getById(
-
-                                        29 
-
-                        );
-
-                 TestUtils.print(result);
-
-    }    /**
-     * getPage 
-     *
-     */
-    @Test
-    public void testGetPage(){
+    public void testGetDetailPage(){
 
                 GetAditionalOptionPageReq req =new GetAditionalOptionPageReq();
 
-                                         req.setCheck("mock string");
-                                         req.setDescription("this is description mock data segment");
-                                         req.setEnable("mock string");
-                                         req.setName("lily");
-                                         req.setNoticeText("you think when you leave chinatown you can get justice ,but every where is chinatown.... from a black movie");
-                                         req.setTableId("mock string");
-                                         req.setTitle(" twelve angry men");
+                                         req.setName("rose");
 
-          R result =controller.getPage(
+          R result =controller.getDetailPage(
 
                                         req 
 

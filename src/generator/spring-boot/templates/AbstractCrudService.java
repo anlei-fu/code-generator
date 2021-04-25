@@ -1,10 +1,10 @@
 package com.@project.service.impl;
 
-import com.@project.mapper.BaseCrudMapper;
 import com.@project.pojo.req.PageReq;
 import com.@project.pojo.req.PageTimeReq;
 import com.@project.pojo.resp.PageResult;
 import com.@project.utils.DaoUtil;
+import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
@@ -45,7 +45,7 @@ public abstract class AbstractCrudService<T> {
         return DaoUtil.queryNormalPage(getMapper(), dto, getEntityClass(), orderByClause, timeRangeProperty, likeProperties);
     }
 
-    protected abstract BaseCrudMapper<T> getMapper();
+    protected abstract Mapper<T> getMapper();
 
     protected abstract Class<T> getEntityClass();
 }

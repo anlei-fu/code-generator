@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Fri Apr 16 2021 16:50:21 GMT+0800 (GMT+08:00)
+ * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -52,7 +52,7 @@ public class DictionaryServiceTest {
 
                 AddDictionaryReq req =new AddDictionaryReq();
 
-                                         req.setName("balsam");
+                                         req.setName("jasmine");
                                          req.setType("mock string");
                                          req.setValue("mock string");
 
@@ -73,7 +73,7 @@ public class DictionaryServiceTest {
 
                 R result =controller.deleteById(
 
-                                                2 
+                                                8 
 
                         );
 
@@ -88,7 +88,8 @@ public class DictionaryServiceTest {
 
                 UpdateDictionaryReq req =new UpdateDictionaryReq();
 
-                                         req.setName("lily");
+                                         req.setId(6);
+                                         req.setName("jasmine");
                                          req.setType("mock string");
                                          req.setValue("mock string");
 
@@ -101,34 +102,18 @@ public class DictionaryServiceTest {
                  TestUtils.printQuery(req,result);
 
     }    /**
-     * getById 
+     * getDetailPage 
      *
      */
     @Test
-    public void testGetById(){
-
-          R result =controller.getById(
-
-                                        6 
-
-                        );
-
-                 TestUtils.print(result);
-
-    }    /**
-     * getPage 
-     *
-     */
-    @Test
-    public void testGetPage(){
+    public void testGetDetailPage(){
 
                 GetDictionaryPageReq req =new GetDictionaryPageReq();
 
-                                         req.setName("carnation");
+                                         req.setName("rose");
                                          req.setType("mock string");
-                                         req.setValue("mock string");
 
-          R result =controller.getPage(
+          R result =controller.getDetailPage(
 
                                         req 
 

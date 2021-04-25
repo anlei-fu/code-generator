@@ -1,14 +1,15 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.pojo.req;
 
-import com.jasmine.crud.validate.annotation.Enum;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * 
@@ -40,7 +41,6 @@ public class AddFieldInfoReq  {
     /**
      * 
      */
-    @Enum("FilterType")
     private Integer filterType;
 
     /**
@@ -51,7 +51,6 @@ public class AddFieldInfoReq  {
     /**
      * 
      */
-    @Enum("FormatType")
     private Integer formatType;
 
     /**
@@ -67,13 +66,11 @@ public class AddFieldInfoReq  {
     /**
      * 
      */
-    @Enum("YesNo")
     private Integer isName;
 
     /**
      * 
      */
-    @Enum("YesNo")
     private Integer isPk;
 
     /**

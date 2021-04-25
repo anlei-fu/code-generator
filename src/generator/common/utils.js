@@ -9,7 +9,10 @@
 
 const { STR } = require("./../../libs/str");
 
-const JAVA_BASE_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String", "Long", "Double"]);
+/**
+ * Jave base types
+ */
+const JAVA_BASE_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String", "Long", "Double", "BigDecimal"]);
 
 /**
  * JAVA type constant
@@ -17,7 +20,11 @@ const JAVA_BASE_TYPES = new Set(["Integer", "Float", "Date", "Boolean", "String"
 const JAVA_TYPE = {
         STRING: "String",
         INTEGER: "Integer",
-        DATE: "Date"
+        DATE: "Date",
+        FLOAT: "Float",
+        BOOLEN: "Boolean",
+        LONG: "Long",
+        BigDecimal: "BigDecimal"
 }
 
 /**
@@ -25,7 +32,7 @@ const JAVA_TYPE = {
  * 
  * @param {string} x 
  */
-const DEFAULT_RADIO_MATCHER = x => STR.endsWithAny(x.toLowerCase(), ["no", "email", "id", "phone", "name","code","id"]);
+const DEFAULT_RADIO_MATCHER = x => STR.endsWithAny(x.toLowerCase(), ["no", "email", "id", "phone", "name", "code", "id"]);
 
 /**
  * Default money matcher
@@ -35,6 +42,7 @@ const DEFAULT_RADIO_MATCHER = x => STR.endsWithAny(x.toLowerCase(), ["no", "emai
 const DEFAULT_MONEY_MATCHER = x => STR.endsWithAny(x.toLowerCase(), ["price", "face", "cost", "balance"]);
 
 /**
+ * Default text-area matcher
  * 
  * @param {string} x 
  */
@@ -91,6 +99,11 @@ const DEFAULT_UPDATE_TIME_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
         "lastmodifytime"
 ])
 
+/**
+ * Default edit ignore fields matcher
+ * 
+ * @param {String} x 
+ */
 const DEFAULT_EDIT_IGNORE_FIELDS_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
         "updatetime",
         "modifytime",
@@ -99,6 +112,11 @@ const DEFAULT_EDIT_IGNORE_FIELDS_MATCHER = x => STR.endsWithAny(x.toLowerCase(),
         "createtime"
 ])
 
+/**
+ * Default float type matcher
+ * 
+ * @param {String} x 
+ */
 const DEFAULT_FLOAT_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
         "money",
         "rate",
@@ -117,44 +135,315 @@ const DEFAULT_FLOAT_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
 ])
 
 /**
+ * Diffirent sql operation type user fields matchers
+ */
+const DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS = {
+        insert: {
+                matcher: columnName => STR.includesAny(
+                        columnName.toLowerCase(),
+                        [
+                                "createuser",
+                                "operator",
+                                "admin"
+                        ]
+                )
+        },
+        delete: {
+                matcher: columnName => false
+        },
+        update: {
+                matcher: columnName => STR.includesAny(
+                        columnName.toLowerCase(),
+                        [
+                                "updateuser",
+                                "edituser",
+                                "modifyuser",
+                                "admin",
+                                "operator"
+                        ]
+                )
+        },
+        select: {
+                matcher: columnName => false
+        }
+};
+
+/**
+ * Match sql user column
+ * 
+ * @param {String} sqlType 
+ * @param {String} name 
+ */
+const DEFAULT_SQL_OPERATION_USER_FIELD_MATCHER = (sqlType, name) => {
+        if (!DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS[sqlType])
+                throw new Error(`unknown sql type "${sqlType}"`);
+
+        return DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS[sqlType].matcher(name);
+}
+
+/**
+ * Diffirent sql operation type time fields matchers
+ */
+const DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHERS = {
+        insert: {
+                matcher: columnName => STR.includesAny(
+                        columnName.toLowerCase(),
+                        [
+                                "createtime",
+                                "operator",
+                                "admin"
+                        ]
+                )
+        },
+        delete: {
+                matcher: columnName => false
+        },
+        update: {
+                matcher: columnName => STR.includesAny(
+                        columnName.toLowerCase(),
+                        [
+                                "updatetime",
+                                "lastupdatetime",
+                                "modifytime",
+                                "lasmodifytime",
+                        ]
+                )
+        },
+        select: {
+                matcher: columnName => false
+        }
+};
+
+/**
+ * Match sql time field
+ * 
+ * @param {String} sqlType 
+ * @param {String} name 
+ */
+const DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHER = (sqlType, name) => {
+        if (!DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS[sqlType])
+                throw new Error(`unknown sql type "${sqlType}"`);
+
+        return DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHERS[sqlType].matcher(name);
+}
+
+/**
  * Default enum matchers
  */
-const DEFAULT_ENUM_MATCHERS = {
+const DEFAULT_ALL_ENUM_MATCHERS = {
         String: {
-                type: {
-                        match: x => STR.endsWithAny(x.toLowerCase(), [
-                                "type",
-                                "status",
-                                "state"
-                        ])
-                },
-                all: {
-                        match: x => STR.endsWithAny(x.toLowerCase(), [
-                                "no",
-                        ]) && STR.includesAny(x.toLowerCase(), ["channel","product","term","plat","agent"])
-                },
-        },
-        Integer: {
-                status: {
+                ends: {
                         match: x => STR.endsWithAny(x.toLowerCase(), [
                                 "type",
                                 "status",
                                 "state",
-                                "id",
                                 "flag",
-                                "mode"
-                        ]) && !STR.includesAny(x.toLowerCase(), ["record","account","advertiser","app"])
+                                "mode",
+                                "class",
+                                "level",
+                                "style"
+                        ])
+                },
+                starts: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "can",
+                                "should",
+                                "is",
+                                "has"
+                        ])
+                },
+                join: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "id",
+                                "uid",
+                                "no"
+                        ])
+                }
+        },
+        Integer: {
+                ends: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "type",
+                                "status",
+                                "state",
+                                "flag",
+                                "mode",
+                                "class",
+                                "level",
+                                "style"
+                        ])
+                },
+                starts: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "can",
+                                "should",
+                                "is",
+                                "has"
+                        ])
+                },
+                join: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "id",
+                                "uid",
+                                "no"
+                        ])
                 }
         }
 
 }
 
 /**
+ * Default join key matcher
+ */
+const DEFAULT_JOIN_KEY_MATCHERS = {
+        String: {
+                all: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "id",
+                                "uid",
+                                "no"
+                        ])
+                },
+        },
+        Integer: {
+                all: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "id",
+                                "uid",
+                                "no"
+                        ])
+                },
+        }
+}
+
+/**
+ * Default dictionary matchers
+ */
+const DEFAULT_DICTIONARY_MATCHERS = {
+        String: {
+                /**
+                 * ends with matcher
+                 */
+                endsWith: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "type",
+                                "status",
+                                "state",
+                                "flag",
+                                "mode",
+                                "class",
+                                "level",
+                                "style"
+                        ])
+                },
+                /**
+                 * starts with matcher
+                 */
+                startsWith: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "can",
+                                "should",
+                                "is",
+                                "has"
+                        ])
+                },
+        },
+        Integer: {
+                /**
+                 * ends with matcher
+                 */
+                endsWith: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "type",
+                                "status",
+                                "state",
+                                "flag",
+                                "mode",
+                                "class",
+                                "level",
+                                "style"
+                        ])
+                },
+                /**
+                 * starts with matcher
+                 */
+                startsWith: {
+                        match: x => STR.endsWithAny(x.toLowerCase(), [
+                                "enable",
+                                "can",
+                                "should",
+                                "is",
+                                "has"
+                        ])
+                },
+        }
+
+}
+
+/**
+ * Default dictionary matcher
+ * 
+ * @param {{type:String,name:String}} x 
+ */
+const DEFAULT_DICTIONARY_MATCHER = x => {
+        for (let key in DEFAULT_DICTIONARY_MATCHERS) {
+                if (x.type == key) {
+                        for (key1 in DEFAULT_DICTIONARY_MATCHERS[key]) {
+                                if (DEFAULT_DICTIONARY_MATCHERS[key][key1].match(x.name)) {
+                                        return true;
+                                }
+                        }
+                }
+        }
+
+        return false;
+}
+
+/**
+ * To match join field
+ * 
+ * @param {{type:String,name:String}} x 
+ */
+const DEFAULT_JOIN_KEY_MATCHER = x => {
+        for (let key in DEFAULT_JOIN_KEY_MATCHERS) {
+                if (x.type == key) {
+                        for (key1 in DEFAULT_JOIN_KEY_MATCHERS[key]) {
+                                if (DEFAULT_JOIN_KEY_MATCHERS[key][key1].match(x.name)) {
+                                        return true;
+                                }
+                        }
+                }
+        }
+
+        return false;
+}
+
+/**
+ * To match all enum field
+ * 
+ * @param {{type:String,name:String}} x 
+ */
+const DEFAULT_ALL_ENUM_MATCHER = x => {
+        for (let key in DEFAULT_ALL_ENUM_MATCHERS) {
+                if (x.type == key) {
+                        for (key1 in DEFAULT_ALL_ENUM_MATCHERS[key]) {
+                                if (DEFAULT_ALL_ENUM_MATCHERS[key][key1].match(x.name)) {
+                                        return true;
+                                }
+                        }
+                }
+        }
+
+        return false;
+}
+
+/**
  *  Convert sql type to java type
  * 
- *  @param {SqlType} sqlType constains name(string) and length(number) properties
+ *  @param {SqlType|String} sqlType constains name(string) and length(number) properties
+ *  @param {String} name
  */
-function getJavaType(sqlType,name) {
+function getJavaType(sqlType, name) {
 
         // aready been converted
         if (typeof sqlType == "string")
@@ -180,8 +469,8 @@ function getJavaType(sqlType,name) {
         } else if (sqlType.name.includes("time") || sqlType.name.includes("date")) {
                 return "Date";
         } else {
-                if(DEFAULT_FLOAT_MATCHER(name)){
-                    return "BigDecimal";
+                if (DEFAULT_FLOAT_MATCHER(name)) {
+                        return "BigDecimal";
                 }
 
                 return "Integer";
@@ -242,7 +531,7 @@ function normalizeLabel(label) {
                 label = label.split("(")[0];
 
         return STR.replace(label, {
-               
+
         });
 }
 
@@ -264,7 +553,8 @@ module.exports.COMMON_UTILS = {
         formatJavaFile,
         isJavaBaseType,
         normalizeLabel,
-        DEFAULT_ENUM_MATCHERS,
+        DEFAULT_ENUM_MATCHERS: DEFAULT_ALL_ENUM_MATCHERS,
+        DEFAULT_ENUM_MATCHER: DEFAULT_ALL_ENUM_MATCHER,
         DEFAULT_CREATE_TIME_MATCHER,
         DEFAULT_CREATE_USER_MATCHER,
         DEFAULT_UPDATE_TIME_MATCHER,
@@ -274,5 +564,13 @@ module.exports.COMMON_UTILS = {
         DEFAULT_EDIT_IGNORE_FIELDS_MATCHER,
         DEFAULT_TEXTAREA_MATCHER,
         DEFAULT_FLOAT_MATCHER,
+        DEFAULT_DICTIONARY_MATCHERS,
+        DEFAULT_DICTIONARY_MATCHER,
+        DEFAULT_JOIN_KEY_MATCHERS,
+        DEFAULT_JOIN_KEY_MATCHER,
+        DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS,
+        DEFAULT_SQL_OPERATION_USER_FIELD_MATCHER,
+        DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHERS,
+        DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHER,
         JAVA_TYPE
 }

@@ -55,6 +55,7 @@ class JoinAnalyzer {
                 // join with other table
                 if (relations[targetTable.name]) {
                         relations[targetTable.name].forEach(relation => {
+
                                 let joinAnalyzeResult = new JoinAnalyzeResult();
                                 joinAnalyzeResult.targetTable = relation.otherTable;
 
@@ -89,26 +90,26 @@ class JoinAnalyzer {
                 }
 
                 // analyze join with enum dic
-                Object.keys(targetTable.columns).filter(x => !joinColumns.has(x))
-                        .forEach(columnName => {
-                                let isEnumField = ENUM_ANALYZER.isEnumField(targetTable.columns[columnName]);
-                                if (!isEnumField)
-                                        return;
+                // Object.keys(targetTable.columns).filter(x => !joinColumns.has(x))
+                //         .forEach(columnName => {
+                //                 let isEnumField = ENUM_ANALYZER.isEnumField(targetTable.columns[columnName]);
+                //                 if (!isEnumField)
+                //                         return;
 
-                                let joinConfig = new JoinAnalyzeResult();
-                                joinConfig.targetTable = isEnumField.table;
-                                joinConfig.outputColumn = isEnumField.label;
-                                joinConfig.outputAlias = `${columnName}Label`;
+                //                 let joinConfig = new JoinAnalyzeResult();
+                //                 joinConfig.targetTable = isEnumField.table;
+                //                 joinConfig.outputColumn = isEnumField.label;
+                //                 joinConfig.outputAlias = `${columnName}Label`;
 
-                                let enumType = STR.startsWithAny(["need", "should", "can", "support", "is", "has", "allow", "permit"])
-                                        ? "booleanFlag" : columnName;
+                //                 let enumType = STR.startsWithAny(["need", "should", "can", "support", "is", "has", "allow", "permit"])
+                //                         ? "booleanFlag" : columnName;
 
-                                joinConfig.joinCondition =
-                                        `t.${NamingStrategy.toHungary(columnName)}` +
-                                        ` = @alias.value and @alias.type = '${enumType}'`;
+                //                 joinConfig.joinCondition =
+                //                         `t.${NamingStrategy.toHungary(columnName)}` +
+                //                         ` = @alias.value and @alias.type = '${enumType}'`;
 
-                                joinResults.push(joinConfig);
-                        })
+                //                 joinResults.push(joinConfig);
+                //         })
 
                 return joinResults;
         }

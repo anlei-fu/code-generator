@@ -1,27 +1,24 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.controller;
 
-import com.jasmine.crud.pojo.entity.TableInfo;
+import com.jasmine.crud.pojo.req.*;
 import com.jasmine.crud.pojo.req.AddTableInfoReq;
 import com.jasmine.crud.pojo.req.GetTableInfoPageReq;
-import com.jasmine.crud.pojo.req.UpdateTableInfoBatchReq;
 import com.jasmine.crud.pojo.req.UpdateTableInfoReq;
+import com.jasmine.crud.pojo.resp.*;
 import com.jasmine.crud.pojo.resp.PageResult;
-import com.jasmine.crud.pojo.resp.R;
 import com.jasmine.crud.service.TableInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("dictionary")
+@RequestMapping("/table-info")
 public class TableInfoController extends ControllerBase {
 
     @Autowired
@@ -39,35 +36,15 @@ public class TableInfoController extends ControllerBase {
         return responseBoolean(result);
     }
 
-    @DeleteMapping(path = "delete-batch")
-    public R deleteBatch(List<Integer> ids) {
-        int expected = ids.size();
-        int succeed = tableInfoService.deleteBatch(ids);
-        return responseBatch(succeed, expected);
-    }
-
     @PutMapping
     public R update(@Validated UpdateTableInfoReq req) {
         boolean result = tableInfoService.update(req);
         return responseBoolean(result);
     }
 
-    @PutMapping(path = "update-batch")
-    public R updateBatch(@Validated UpdateTableInfoBatchReq req) {
-        int expected = req.getIds().size();
-        int succeed = tableInfoService.updateBatch(req);
-        return responseBatch(succeed, expected);
-    }
-
-    @GetMapping(path = "{id}")
-    public R<TableInfo> getById(@PathVariable Integer id) {
-        TableInfo result = tableInfoService.getById(id);
-        return responseData(result);
-    }
-
-    @GetMapping(path = "/page")
-    public R<PageResult<TableInfo>> getPage(@Validated GetTableInfoPageReq req) {
-        PageResult<TableInfo> result = tableInfoService.getPage(req);
+    @GetMapping(path = "detail/page")
+    public R<PageResult<TableInfoDetailResp>> getDetailPage(@Validated GetTableInfoPageReq req) {
+        PageResult<TableInfoDetailResp> result = tableInfoService.getDetailPage(req);
         return responseData(result);
     }
 

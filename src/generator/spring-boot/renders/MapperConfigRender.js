@@ -395,18 +395,18 @@ class MapperConfigRender {
                         let out = "";
                         expressionModel.content =
                                 `${expressionModel.prefix} t.${expressionModel.rawName} >= ` +
-                                `#{${expressionModel.property}Start}\r\n`;
+                                `#{startTime}\r\n`;
 
-                        expressionModel.ifExpression = `${expressionModel.property}Start != null`;
+                        expressionModel.ifExpression = `startTime != null`;
                         out = this._renderIf(expressionModel);
 
                         expressionModel.content =
-                                `and t.${expressionModel.rawName} &lt; #{${expressionModel.property}End}\r\n`;
+                                `and t.${expressionModel.rawName} &lt; #{endTime}\r\n`;
 
-                        expressionModel.ifExpression = `${expressionModel.property}End != null`;
+                        expressionModel.ifExpression = `endTime != null`;
                         out += this._renderIf(expressionModel);
                         return out;
-                } else if (expressionModel.exp = "range") {
+                } else if (expressionModel.exp == "range") {
                         let out = "";
 
                         expressionModel.content =
@@ -422,7 +422,17 @@ class MapperConfigRender {
                         expressionModel.ifExpression = `${expressionModel.property}Max != null`;
                         out += this._renderIf(expressionModel);
                         return out;
-                } else {
+                } else if (expressionModel.exp == "like") {
+                        let out = "";
+
+                        expressionModel.content =
+                                `${expressionModel.prefix} t.${expressionModel.rawName} like concat('%',#{${expressionModel.property}},'%') \r\n`;
+
+                        expressionModel.ifExpression = `${expressionModel.property} != null and ${expressionModel.property} != ''`;
+                        out = this._renderIf(expressionModel);
+                      
+                        return out;
+                }else {
                         let content = expressionModel.expression.replace("@prefix", expressionModel.prefix);
                         expressionModel.content = content;
                         return this._renderIf(expressionModel);
@@ -519,7 +529,7 @@ class MapperConfigRender {
                                 if (condition.isList) {
                                         whereSegment += this._renderIn(condition);
                                 } else {
-                                        whereSegment += condition.expression
+                                        whereSegment += condition.exp
                                                 ? this._renderExpression(condition) : this._renderAsign(condition);
                                 }
                         });

@@ -232,6 +232,10 @@ class ConfigBuilderGenerator {
                                 });
                         }
 
+                        if (columnName.endsWith("name")) {
+                                let t = 0;
+                        }
+
                         // analyze sql where-clause expression
                         let expression = this._selectAnalyzer.analyzeExpression(javaType, columnName);
                         if (expression) {
@@ -276,7 +280,7 @@ class ConfigBuilderGenerator {
                         }
 
                         // generate entity field validates
-                        let fieldValidates = this._updateAnalyzer.analyzeValidates(javaType, columnName);
+                        let fieldValidates = this._updateAnalyzer.analyzeValidates(column);
                         if (fieldValidates.length > 0) {
                                 msg += `${COMMENT_IDENT}// ${columnName} : validate --- ${STR.arrayToString(fieldValidates, "", "  ")}\r\n`;
                                 validates.push({

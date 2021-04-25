@@ -2,66 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Jasmine code generator, a tool to build web crud application,with spring-
 boot, mybatis, mysql,swagger,spring-security.
-Generated at 2021-4-16 4:50:21 PM
+Generated at 2021-4-25 6:53:03 PM
 All rights reserved by fal(email:767550758@qq.com) since 2019 -->
 <mapper namespace="com.jasmine.crud.mapper.TableInfoMapper">
-    <delete id="deleteBatch">
-          delete from table_info t
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </delete>
-    <update id="updateBatch" parameterType="com.jasmine.crud.pojo.req.UpdateTableInfoBatchReq">
-          update table_info t
-          <set>
-            <if test="apiPrefix != null and apiPrefix != ''">
-                  t.api_prefix = #{apiPrefix},
-            </if>
-            <if test="batchDelete != null">
-                  t.batch_delete = #{batchDelete},
-            </if>
-            <if test="batchEidit != null">
-                  t.batch_eidit = #{batchEidit},
-            </if>
-            <if test="deletable != null">
-                  t.deletable = #{deletable},
-            </if>
-            <if test="description != null and description != ''">
-                  t.description = #{description},
-            </if>
-            <if test="eiditable != null">
-                  t.eiditable = #{eiditable},
-            </if>
-            <if test="insertable != null">
-                  t.insertable = #{insertable},
-            </if>
-            <if test="mouduleId != null">
-                  t.moudule_id = #{mouduleId},
-            </if>
-            <if test="name != null and name != ''">
-                  t.name = #{name},
-            </if>
-            <if test="projectId != null">
-                  t.project_id = #{projectId},
-            </if>
-            <if test="rawName != null and rawName != ''">
-                  t.raw_name = #{rawName},
-            </if>
-            <if test="title != null and title != ''">
-                  t.title = #{title}
-            </if>
-          </set>
-          <where>
-              t.id in
-              <foreach collection="ids" item="item" open="(" close=")" separator=",">
-                     #{item}
-              </foreach>
-          </where>
-    </update>
-    <select id="getPage" resultType="com.jasmine.crud.pojo.entity.TableInfo" parameterType="com.jasmine.crud.pojo.req.GetTableInfoPageReq">
+    <select id="getDetailPage" resultType="com.jasmine.crud.pojo.resp.TableInfoDetailResp" parameterType="com.jasmine.crud.pojo.req.GetTableInfoPageReq">
           select
              t.api_prefix,
              t.batch_delete,
@@ -75,44 +19,13 @@ All rights reserved by fal(email:767550758@qq.com) since 2019 -->
              t.name,
              t.project_id,
              t.raw_name,
-             t.title
+             t.title,
+             t1.name as project_name
           from table_info t
+          left join project t1 on  t.project_id = t1.id
           <where>
-            <if test="apiPrefix != null and apiPrefix != ''">
-                  t.api_prefix = #{apiPrefix}
-            </if>
-            <if test="batchDelete != null">
-                  and t.batch_delete = #{batchDelete}
-            </if>
-            <if test="batchEidit != null">
-                  and t.batch_eidit = #{batchEidit}
-            </if>
-            <if test="deletable != null">
-                  and t.deletable = #{deletable}
-            </if>
-            <if test="description != null and description != ''">
-                  and t.description = #{description}
-            </if>
-            <if test="eiditable != null">
-                  and t.eiditable = #{eiditable}
-            </if>
-            <if test="insertable != null">
-                  and t.insertable = #{insertable}
-            </if>
-            <if test="mouduleId != null">
-                  and t.moudule_id = #{mouduleId}
-            </if>
             <if test="name != null and name != ''">
-                  and t.name = #{name}
-            </if>
-            <if test="projectId != null">
-                  and t.project_id = #{projectId}
-            </if>
-            <if test="rawName != null and rawName != ''">
-                  and t.raw_name = #{rawName}
-            </if>
-            <if test="title != null and title != ''">
-                  and t.title = #{title}
+                  t.name like concat('%',#{name},'%') 
             </if>
           </where>
     </select>

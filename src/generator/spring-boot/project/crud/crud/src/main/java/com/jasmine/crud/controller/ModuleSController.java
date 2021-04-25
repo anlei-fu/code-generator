@@ -1,27 +1,24 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:21 PM 
+ * Generated at 2021-4-25 6:53:03 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.controller;
 
-import com.jasmine.crud.pojo.entity.ModuleS;
+import com.jasmine.crud.pojo.req.*;
 import com.jasmine.crud.pojo.req.AddModuleSReq;
 import com.jasmine.crud.pojo.req.GetModuleSPageReq;
-import com.jasmine.crud.pojo.req.UpdateModuleSBatchReq;
 import com.jasmine.crud.pojo.req.UpdateModuleSReq;
+import com.jasmine.crud.pojo.resp.*;
 import com.jasmine.crud.pojo.resp.PageResult;
-import com.jasmine.crud.pojo.resp.R;
 import com.jasmine.crud.service.ModuleSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("dictionary")
+@RequestMapping("/module-s")
 public class ModuleSController extends ControllerBase {
 
     @Autowired
@@ -39,35 +36,15 @@ public class ModuleSController extends ControllerBase {
         return responseBoolean(result);
     }
 
-    @DeleteMapping(path = "delete-batch")
-    public R deleteBatch(List<Integer> ids) {
-        int expected = ids.size();
-        int succeed = moduleSService.deleteBatch(ids);
-        return responseBatch(succeed, expected);
-    }
-
     @PutMapping
     public R update(@Validated UpdateModuleSReq req) {
         boolean result = moduleSService.update(req);
         return responseBoolean(result);
     }
 
-    @PutMapping(path = "update-batch")
-    public R updateBatch(@Validated UpdateModuleSBatchReq req) {
-        int expected = req.getIds().size();
-        int succeed = moduleSService.updateBatch(req);
-        return responseBatch(succeed, expected);
-    }
-
-    @GetMapping(path = "{id}")
-    public R<ModuleS> getById(@PathVariable Integer id) {
-        ModuleS result = moduleSService.getById(id);
-        return responseData(result);
-    }
-
-    @GetMapping(path = "/page")
-    public R<PageResult<ModuleS>> getPage(@Validated GetModuleSPageReq req) {
-        PageResult<ModuleS> result = moduleSService.getPage(req);
+    @GetMapping(path = "detail/page")
+    public R<PageResult<ModuleSDetailResp>> getDetailPage(@Validated GetModuleSPageReq req) {
+        PageResult<ModuleSDetailResp> result = moduleSService.getDetailPage(req);
         return responseData(result);
     }
 

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-16 4:50:17 PM 
+ * Generated at 2021-4-25 6:52:53 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 const { all } = require("./../db/all")
@@ -54,40 +54,18 @@ exports.themeConfigConfig = {
                                 })
                                 .build(),
 
-                                                              // delete batch
-                                new ConfigItemBuilder()
-                                .type("delete")
-                                .id("deleteBatch")
-                                .alias("t")
-                                .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
-                                                  .list("id")
-                                })
-                                .request(request => {
-                                        request.path("delete-batch")
-                                               .description("bacth delete themeConfig");;
-                                })
-                                .req(req => {
-                                        req.name("ids")
-                                           .type("Integer")
-                                           .list();
-                                })
-                                .build(),
-
-// updateById
+                              // updateById
+                        // id : validate --- @NotNull
                         new ConfigItemBuilder()
                                 .type("update")
                                 .id("update")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.themeConfig.columnsArray)
-                                                  .list("id")
 
                                 })
                                 .conditions(collection => {
-                                        collection.includes("id")
-                                                  .require("id")
+                                        collection.require("id")
                                 })
                                 .request(request => {
                                         request.path("")
@@ -95,90 +73,58 @@ exports.themeConfigConfig = {
                                 })
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("id")
-
+                                           .validate("id","@NotNull")
                                            .name("UpdateThemeConfigReq")                                                
                                 })
                                 .build(),
 
-// updateBatch
-                                new ConfigItemBuilder()
-                                .type("update")
-                                .id("updateBatch")
-                                .alias("t")
-                                .includes(collection => {
-                                        collection.includes(all.themeConfig.columnsArray)
-                                .excludes("id")
 
-                                 })
-                                 .conditions(collection => {
-                                        collection.includes("id")
-                                        .require("id")
-                                        .list("id");
+                        // get detail page
+                        // baseColor1 : excluded 
+                        // baseColor2 : excluded 
+                        // login : excluded 
+                        // projectId : excluded
+                         new ConfigItemBuilder()
+                         .type("select")
+                         .id("getDetailPage")
+                         .alias("t")
+                         .includes(collection=>{
+                                 collection.includes(all.themeConfig.columnsArray)
+                         })
+                         .conditions(collection=>{
+                                  collection.includes(all.themeConfig.columnsArray)
+                                            .excludes("id")
+                                                  .excludes(["baseColor1","baseColor2","login","projectId",])
+                          })
+                                .join(join=>{
+                                            join.table(all.project)
+                                                .includes(collection=>{
+                                                        collection.includes("name")
+                                                                   .alias("name","projectName")
+                                                })
+                                                .type("left")
+                                                .alias("t1")
+                                                .joinCondition(" t.project_id = t1.id")
+                                                .build()
                                 })
-                                .request(request => {
-                                        request.path("update-batch")
-                                               .description("update themeConfig batch");;
-                                 })
-                                .req(req => {
-                                        req.doCreate()
+                                
+                         .request(request => {
+                                         request.path("detail/page")
+                                                .description("get themeConfig page with additional details");;
+                        })
+                         .req(req => {
+                                  req.doCreate()
+                                 .excludes("id")
 
-                                .name("UpdateThemeConfigBatchReq")                                                
-                                 })
-                                .build(),
-
-                        // getById
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getById")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.themeConfig.columnsArray)
-                                })
-                                .conditions(collection =>{
-                                        collection.includes("id")
-                                                  .require("id")
-                                })
-                                .request(request => {
-                                        request.path("{id}")
-                                                .description("get single themeConfig");;
-                                })
-                                .req(req => {
-                                        req.name("id")
-                                           .type("Integer")
-                                           .from("@PathVariable");
-                                })
-                                .resp(resp => {
-                                        resp.single();
-                                })
-                                .build(),
-
-// getPage
-                        // id : excluded
-                        new ConfigItemBuilder()
-                                .type("select")
-                                .id("getPage")
-                                .alias("t")
-                                .includes(collection=>{
-                                        collection.includes(all.themeConfig.columnsArray)
-                                })
-                                .conditions(collection=>{
-                                        collection.includes(all.themeConfig.columnsArray)
-                                                  .excludes("id")
-                                                  .excludes(["id",])
-                                })
-                                .request(request => {
-                                        request.path("/page")
-                                               .description("get themeConfig page");;
-                                })
-                                .req(req => {
-                                        req.doCreate()
-                                           .excludes("id")
-
-                                           .name("GetThemeConfigPageReq")
-                                })
+                                 .name("GetThemeConfigPageReq")
+                         })
                    
-                                .build(),
+                         .resp(resp=>{
+                                 resp.doCreate()
+                                     .name("ThemeConfigDetailResp")
+                                     .build()
+                         })
+                         .build(),
 
                         
  ]
