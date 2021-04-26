@@ -85,6 +85,43 @@ function toMap(array, keySelector) {
 }
 
 /**
+ * Find first or default null
+ * 
+ * @param {[]} array 
+ * @param {(any) => boolean} matcher 
+ * @returns {Any}
+ */
+function firstOrDefault(array, matcher) {
+        let data = array.filter(x => matcher(x));
+        if (data.length == 0)
+                return null;
+
+        return data[0];
+}
+
+/**
+ * Remove element
+ * 
+ * @param {[]} array 
+ * @param {Number} startIndex 
+ * @param {Number} count 
+ * @returns {[]}
+ */
+function remove(array, startIndex, count = 0) {
+        return array.splice(startIndex, count);
+}
+/**
+ * Has any element satisfy
+ * 
+ * @param {[]} array 
+ * @param {(any)=>boolean} matcher 
+ * @returns {boolean}
+ */
+function hasAny(array, matcher) {
+        return array.filter(x => matcher(x)).length > 0;
+}
+
+/**
  * Group array
  * 
  * @param {[Any]} array 
@@ -129,7 +166,10 @@ exports.ARRAY = {
         toSet,
         toMap,
         groupBy,
-        distinct
+        distinct,
+        firstOrDefault,
+        remove,
+        hasAny
 }
 /*-------------------------------------------------------------------object---------------------------------------------------------------------------*/
 
@@ -181,9 +221,9 @@ function deepExtend(self, other) {
  * @param {String} key 
  * @param {any} value 
  */
-function setIfAbsent(target,key,value){
-        if(!target[key])
-          target[key]=value;
+function setIfAbsent(target, key, value) {
+        if (!target[key])
+                target[key] = value;
 }
 
 /**
@@ -306,7 +346,7 @@ function text(obj, name) {
         return `let ${name} = ${json};\r\n\r\n`;
 }
 
-function jsCode(obj){
+function jsCode(obj) {
         let json = JSON.stringify(obj, null, "\t");
         json = doReplace(json);
         return json;

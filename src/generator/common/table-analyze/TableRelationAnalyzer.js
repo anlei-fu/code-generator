@@ -1,7 +1,7 @@
 const { OBJECT } = require("./../../../libs/utils");
 const { STR } = require("./../../../libs/str");
 const { SimpleFullTextSearcher } = require("../full-text-index/simple-full-text-searcher");
-const { getJavaType } = require("./../../spring-boot/utils");
+const { COMMON_UTILS } = require("./../../common");
 const { LoggerFactory } = require("../logging/logger-factory")
 
 const LOG = LoggerFactory.getLogger("Table relation resolver");
@@ -160,7 +160,7 @@ class TableRelationAnalyzer {
                                 if (column.isPk)
                                         return;
 
-                                column.type = getJavaType(column.type);
+                                column.type = COMMON_UTILS.getJavaType(column.type,column.name);
                                 if (!this._shouldBeCandidate(column.type, column.name, table.name))
                                         return;
 

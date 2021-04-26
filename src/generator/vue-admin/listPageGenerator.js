@@ -2,7 +2,7 @@ const { ConfigGroup } = require("./../spring-boot/builders/ConfigGroup");
 const { FieldAnalyzer } = require("./../spring-boot/FieldAnalyzer");
 const { ConfigInitializer } = require("./../spring-boot/ConfigInitializer");
 const { COMMON_UTILS } = require("./../common");
-const { FILE, OBJECT, NamingStrategy } = require("./../../libs");
+const { FILE, OBJECT, NamingStrategy, StringBuilder, ARRAY, STR } = require("./../../libs");
 const { SimpleRender } = require("./../common")
 
 const selectHtml = FILE.read(`${__dirname}/templates/select.html`);
@@ -13,20 +13,20 @@ const listPageRander = new SimpleRender({}, `${__dirname}/templates/list.vue`);
 
 class ListPageGenerator {
 
-
         /**
          * 
          * @param {ConfigGroup} configGroup 
          */
         generate(configGroup) {
+                // init config group
                 let initialzier = new ConfigInitializer();
                 initialzier.init(configGroup);
 
-                let targetItems = configGroup.items.filter(x => x.id.includes("Detail"));
-                if (targetItems.length == 0)
+                // find target page config item
+                let targetItem = ARRAY.firstOrDefault(configGroup.items, x => x.id.includes("Detail"));
+                if (!targetItem)
                         return;
 
-                let targetItem = targetItems[0];
                 let columns = [];
                 if (targetItem.resp.doCreate) {
                         columns = FieldAnalyzer.analyzeResp(targetItem);
@@ -75,83 +75,83 @@ class ListPageGenerator {
          * @param {ConfigGroup} configGroup 
          */
         generateColumn(columns, configGroup) {
-                let columnsContent = "new utils.ColumnBuilder()";
+                let builder = new StringBuilder();
+                builder.append("new utils.ColumnBuilder()");
                 let tableDeleteHtml = "";
                 let tableEditHtml = "";
                 columns.forEach(x => {
                         if (COMMON_UTILS.DEFAULT_DICTIONARY_MATCHER(x)) {
-                                columnsContent += `.enumColumn("${x.name}","${x.description}")\r\n`
+                                builder.appendLine(`.enumColumn("${x.name}","${x.description}")`);
                         } else if (COMMON_UTILS.DEFAULT_FLOAT_MATCHER(x.name) && x.type == "BigDecimal") {
-                                columnsContent += `.moneyColumn("${x.name}","${x.description}")\r\n`
+                                builder.appendLine(`.moneyColumn("${x.name}","${x.description}")`);
                         } else if (x.type == "Date") {
-                                columnsContent += `.dateColumn("${x.name}","${x.description}","yyyy-MM-dd hh:mm:ss")\r\n`
+                                builder.appendLine(`.dateColumn("${x.name}","${x.description}","yyyy-MM-dd hh:mm:ss")`);
                         } else {
-                                columnsContent += `.column("${x.name}","${x.description}")\r\n`
+                                builder.appendLine(`.column("${x.name}","${x.description}")`);
                         }
                 });
 
                 if (this._hasBatchOperation(configGroup)) {
-                        columnsContent += ".checkColumn()\r\n";
+                        builder.appendLine(".checkColumn()");
                 }
 
                 if (this._hasDelete(configGroup) || this._hasEdit(configGroup)) {
-                        columnsContent += ".operationColumn([";
+                        builder.append(".operationColumn([");
 
                         if (this._hasEdit(configGroup)) {
-                                columnsContent += `utils.operation("Edit","edit"),`
+                                builder.append(`utils.operation("Edit","edit"),`);
                                 tableEditHtml = `@edit="showEdit"`;
                         }
 
                         if (this._hasDelete(configGroup)) {
-                                columnsContent += `utils.operation("Delete","delete"),`
+                                builder.append(`utils.operation("Delete","delete"),`);
                                 tableDeleteHtml = `@delete="showDelete"`;
                         }
-                        columnsContent += "])\r\n"
+
+                        builder.appendLine("])");
                 }
 
-                columnsContent += ".build()"
+                builder.append(".build()");
                 return {
-                        columns: columnsContent,
+                        columns: builder.build(),
                         tableDeleteHtml,
                         tableEditHtml
                 }
         }
 
         /**
+         * Generate select config
          * 
-         * @param {[]} req 
+         * @param {[]} fields 
          */
-        generateSelect(req) {
-                let selectContent = "selects:new utils.SelectOperationBuilder()";
+        generateSelect(fields) {
 
-                let selectFields = req.filter(x => COMMON_UTILS.DEFAULT_ENUM_MATCHER(x));
-                if (selectFields.length == 0) {
+                if (!ARRAY.hasAny(fields, x => COMMON_UTILS.DEFAULT_ENUM_MATCHER(x))) {
                         return {
                                 selectContent: "",
                                 selectHtml: ""
                         }
                 }
-
-                selectFields.forEach(x => {
-                        selectContent += `.option("${x.name}","${x.label}")`;
-                });
-
-                selectContent += ".build(),";
+                let selectFields = fields.filter( x => COMMON_UTILS.DEFAULT_ENUM_MATCHER(x));
+                let builder = new StringBuilder()
+                        .appendLine("selects:new utils.SelectOperationBuilder()")
+                        .append(STR.arrayToString1(selectFields, x => `.option("${x.name}","${x.description}")\r\n`))
+                        .append(".build(),")
 
                 return {
-                        selectContent,
+                        selectContent: builder.build(),
                         selectHtml
                 }
         }
 
         /**
+         * Generate time range config
          * 
-         * @param {[]} req 
+         * @param {[]} fields 
          */
-        generateTimeRange(req) {
+        generateTimeRange(fields) {
                 let timeRangeContent = "timeRange:[new Date(),new Date()]";
-                let timeFields = req.filter(x => x.type == "Date");
-                if (timeFields.length > 0) {
+                if (ARRAY.hasAny(fields, x => x.type == "Date")) {
                         return {
                                 timeRangeContent,
                                 timeRangeHtml
@@ -165,38 +165,39 @@ class ListPageGenerator {
         }
 
         /**
-         * @param {[]} req 
+         * Generate radio group config
+         * 
+         * @param {[]} fields 
          */
-        generateRadioGroup(req) {
-                let radioGroupContent = "";
-                let radioFields = req.filter(x => x.type == "String" && COMMON_UTILS.DEFAULT_RADIO_MATCHER(x.name));
-                if (radioFields.length == 0) {
+        generateRadioGroup(fields) {
+
+        
+                if (!ARRAY.hasAny(fields, x => x.type == "String" && COMMON_UTILS.DEFAULT_RADIO_MATCHER(x.name))) {
                         return {
                                 radioGroupContent: "",
                                 radioHtml: ""
                         };
                 }
-
-                radioGroupContent = `
+                let radioFields = fields.filter(x => x.type == "String" && COMMON_UTILS.DEFAULT_RADIO_MATCHER(x.name));
+                let builder = new StringBuilder()
+                        .append(`
                 radioKey: "downSystemSiteName",
                 keyword: "",
                 radioOptions: new utils.RadioOperationBuilder()
-                `;
-
-                radioFields.forEach(x => {
-                        radioGroupContent += `.option("#${x.name}","${x.label}")`
-                })
-
-                radioGroupContent += ".build(),"
+                `)
+                        .append(STR.arrayToString1(radioFields, x => `.option("#${x.name}","${x.description}")\r\n`))
+                        .append(".build(),")
 
                 return {
-                        radioGroupContent,
+                        radioGroupContent: builder.build(),
                         radioGroupHtml
                 }
         }
 
         /**
-         * @param {[]} req 
+         * Generate button config
+         * 
+         * @param {ConfigGroup} configGroup 
          */
         generateButton(configGroup) {
                 if (this._hasItem(configGroup, x => x.id == "add")) {
@@ -211,18 +212,16 @@ class ListPageGenerator {
         }
 
         /**
+         * Generate query config
          * 
-         * @param {*} req 
+         * @param {[]} fields 
          */
-        generateQuery(req) {
-                let query = "query : { \r\n";
-                req.forEach(x => {
-                        query += `${x.name} : null, \r\n`;
-                });
-
-                query += "}"
-
-                return { query };
+        generateQuery(fields) {
+                let builder = new StringBuilder()
+                        .appendLine("query : {")
+                        .append(STR.arrayToString1(fields, x => `${x.name} : null, \r\n`))
+                        .append("}");
+                return { query: builder.build() };
         }
 
         /**
@@ -233,7 +232,7 @@ class ListPageGenerator {
         */
         _initTable(table) {
                 OBJECT.forEach(table.columns, (_, column) => {
-                        column.type = getJavaType(column.type);
+                        column.type = COMMON_UTILS.getJavaType(column.type, column.name);
                 });
         }
 

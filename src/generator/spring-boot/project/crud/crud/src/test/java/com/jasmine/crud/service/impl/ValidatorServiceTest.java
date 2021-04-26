@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-25 6:53:03 PM 
+ * Generated at 2021-4-26 3:27:14 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
+ * @since Mon Apr 26 2021 15:27:14 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -52,8 +52,8 @@ public class ValidatorServiceTest {
 
                 AddValidatorReq req =new AddValidatorReq();
 
-                                         req.setFieldId(15);
-                                         req.setMsg("this is description mock data segment");
+                                         req.setFieldId(8);
+                                         req.setMsg("jasmine code generator, generate every thing you need");
                                          req.setPattern("mock string");
 
                 R result =controller.add(
@@ -73,7 +73,7 @@ public class ValidatorServiceTest {
 
                 R result =controller.deleteById(
 
-                                                1 
+                                                7 
 
                         );
 
@@ -88,9 +88,9 @@ public class ValidatorServiceTest {
 
                 UpdateValidatorReq req =new UpdateValidatorReq();
 
-                                         req.setId(1);
-                                         req.setFieldId(35);
-                                         req.setMsg("jasmine code generator, generate every thing you need");
+                                         req.setId(29);
+                                         req.setFieldId(7);
+                                         req.setMsg("mock generator, generate lots of data for testing");
                                          req.setPattern("mock string");
 
                 R result =controller.update(

@@ -2,7 +2,7 @@ const { STR } = require("../../libs/str");
 const { OBJECT } = require("../../libs/utils");
 const { Matcher } = require("../common/matchers");
 const matchers = require("./matchers");
-const { getJavaType } = require("./utils");
+const { COMMON_UTILS } = require("./../common");
 
 /**
  * Analyze candidate
@@ -443,7 +443,7 @@ class InsertAnalyzer extends ExcludesAnalyzer {
                 if (column.autoInceament || column.defaulValue || column.isPk)
                         return false;
 
-                let type = getJavaType(column.type);
+                let type = COMMON_UTILS.getJavaType(column.type, column.name);
                 if (!this.includes[type])
                         return true;
 
@@ -469,7 +469,7 @@ class InsertAnalyzer extends ExcludesAnalyzer {
          * @returns {[string]}
          */
         analyzeValidates(column) {
-                let type = getJavaType(column.type);
+                let type = COMMON_UTILS.getJavaType(column.type, column.name);
                 let validates = [];
 
                 if (!column.nullable) {
@@ -565,7 +565,7 @@ class UpdateAnlyzer extends ExcludesAnalyzer {
         * @returns {[string]}
         */
         analyzeValidates(column) {
-                let type = getJavaType(column.type);
+                let type = COMMON_UTILS.getJavaType(column.type, column.name);
                 let validates = [];
 
                 if (!column.nullable) {

@@ -469,7 +469,7 @@ function getJavaType(sqlType, name) {
         } else if (sqlType.name.includes("time") || sqlType.name.includes("date")) {
                 return "Date";
         } else {
-                if (DEFAULT_FLOAT_MATCHER(name)) {
+                if (name && DEFAULT_FLOAT_MATCHER(name)) {
                         return "BigDecimal";
                 }
 

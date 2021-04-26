@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-25 6:53:03 PM 
+ * Generated at 2021-4-26 3:27:14 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
+ * @since Mon Apr 26 2021 15:27:14 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -52,7 +52,7 @@ public class DictionaryServiceTest {
 
                 AddDictionaryReq req =new AddDictionaryReq();
 
-                                         req.setName("jasmine");
+                                         req.setName("lily");
                                          req.setType("mock string");
                                          req.setValue("mock string");
 
@@ -73,7 +73,7 @@ public class DictionaryServiceTest {
 
                 R result =controller.deleteById(
 
-                                                8 
+                                                2 
 
                         );
 
@@ -88,7 +88,7 @@ public class DictionaryServiceTest {
 
                 UpdateDictionaryReq req =new UpdateDictionaryReq();
 
-                                         req.setId(6);
+                                         req.setId(29);
                                          req.setName("jasmine");
                                          req.setType("mock string");
                                          req.setValue("mock string");
@@ -110,7 +110,7 @@ public class DictionaryServiceTest {
 
                 GetDictionaryPageReq req =new GetDictionaryPageReq();
 
-                                         req.setName("rose");
+                                         req.setName("narcissus");
                                          req.setType("mock string");
 
           R result =controller.getDetailPage(

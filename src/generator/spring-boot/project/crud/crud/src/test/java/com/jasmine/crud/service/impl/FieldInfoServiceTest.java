@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-25 6:53:03 PM 
+ * Generated at 2021-4-26 3:27:14 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
+ * @since Mon Apr 26 2021 15:27:14 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -53,24 +53,24 @@ public class FieldInfoServiceTest {
                 AddFieldInfoReq req =new AddFieldInfoReq();
 
                                          req.setBatchEditable(20);
-                                         req.setDefaultShow(20);
-                                         req.setDescription("this is description mock data segment");
-                                         req.setEditable(0);
+                                         req.setDefaultShow(0);
+                                         req.setDescription("mock generator, generate lots of data for testing");
+                                         req.setEditable(90);
                                          req.setFilterType(0);
                                          req.setFormatPattern("mock string");
-                                         req.setFormatType(20);
-                                         req.setInsertNullable(20);
+                                         req.setFormatType(30);
+                                         req.setInsertNullable(90);
                                          req.setInsertable(90);
                                          req.setIsName(0);
                                          req.setIsPk(1);
                                          req.setJavaType("mock string");
-                                         req.setName("lily");
-                                         req.setNoticeText("every adult once ever been a child ,but few she or he can remember what it looks like at that time ");
+                                         req.setName("balsam");
+                                         req.setNoticeText("there're three paris in the world,the most  famous one in france ,one in canada ,and last one in texas,us");
                                          req.setOrder(30);
-                                         req.setRawName("lily");
-                                         req.setRealColumn(90);
-                                         req.setTableId(1);
-                                         req.setTitle("ranger bull");
+                                         req.setRawName("calla");
+                                         req.setRealColumn(20);
+                                         req.setTableId(7);
+                                         req.setTitle("a silent lamb");
 
                 R result =controller.add(
 
@@ -89,7 +89,7 @@ public class FieldInfoServiceTest {
 
                 R result =controller.deleteById(
 
-                                                1 
+                                                15 
 
                         );
 
@@ -105,25 +105,25 @@ public class FieldInfoServiceTest {
                 UpdateFieldInfoReq req =new UpdateFieldInfoReq();
 
                                          req.setId(7);
-                                         req.setBatchEditable(20);
-                                         req.setDefaultShow(0);
-                                         req.setDescription("this is description mock data segment");
-                                         req.setEditable(90);
-                                         req.setFilterType(0);
+                                         req.setBatchEditable(0);
+                                         req.setDefaultShow(30);
+                                         req.setDescription("jasmine code generator, generate every thing you need");
+                                         req.setEditable(20);
+                                         req.setFilterType(90);
                                          req.setFormatPattern("mock string");
                                          req.setFormatType(90);
                                          req.setInsertNullable(0);
                                          req.setInsertable(0);
                                          req.setIsName(1);
-                                         req.setIsPk(1);
+                                         req.setIsPk(0);
                                          req.setJavaType("mock string");
-                                         req.setName("lily");
-                                         req.setNoticeText("you think when you leave chinatown you can get justice ,but every where is chinatown.... from a black movie");
-                                         req.setOrder(30);
-                                         req.setRawName("balsam");
-                                         req.setRealColumn(0);
-                                         req.setTableId(7);
-                                         req.setTitle("a silent lamb");
+                                         req.setName("jasmine");
+                                         req.setNoticeText("there are three waterloon bridges in the wrold too...");
+                                         req.setOrder(0);
+                                         req.setRawName("calla");
+                                         req.setRealColumn(90);
+                                         req.setTableId(8);
+                                         req.setTitle(" twelve angry men");
 
                 R result =controller.update(
 
@@ -142,9 +142,9 @@ public class FieldInfoServiceTest {
 
                 GetFieldInfoPageReq req =new GetFieldInfoPageReq();
 
-                                         req.setIsName(1);
-                                         req.setIsPk(1);
-                                         req.setName("balsam");
+                                         req.setIsName(0);
+                                         req.setIsPk(0);
+                                         req.setName("calla");
 
           R result =controller.getDetailPage(
 

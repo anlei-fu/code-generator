@@ -1,6 +1,6 @@
 const { SimpleRender } = require("../common/renders/SimplePatterRender");
 const { STR, NamingStrategy } = require("../../libs");
-const { getJavaType } = require("../spring-boot/utils");
+const { COMMON_UTILS } = require("../common");
 
 const MOCK_RENDER = new SimpleRender({}, `${__dirname}/template/mock.java`);
 class MockGenerator {
@@ -33,8 +33,8 @@ class MockGenerator {
         }
 
         _getField(column) {
-                let javaType = getJavaType(column.type);
                 let name = NamingStrategy.toCamel(column.rawName);
+                let javaType = COMMON_UTILS.getJavaType(column.type,name);
                 if (javaType == "Integer") {
                         return `.${name}(1)\r\n`;
                 } else {

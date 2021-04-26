@@ -35,7 +35,7 @@ class CsvConverter {
          * @param {(Object)=>String} convertFunc 
          */
         constructor (field, title, convertFunc) {
-                this._filed = field;
+                this._field = field;
                 this._title = title;
                 this._convertFunc = convertFunc;
         }
@@ -50,8 +50,8 @@ class CsvConverter {
         /**
          * @returns {String}
          */
-        get filed() {
-                return this._filed;
+        get field() {
+                return this._field;
         }
 
         /**
@@ -70,51 +70,51 @@ class CsvResolverBuilder {
 
         /**
          * 
-         * @param {String} filed 
+         * @param {String} field 
          * @returns {CsvResolverBuilder}
          */
-        str(filed) {
-                this._resolvers.push(new CsvResolver(filed, str => str));
+        str(field) {
+                this._resolvers.push(new CsvResolver(field, str => str));
                 return this;
         }
 
         /**
          * 
-         * @param {String} filed 
+         * @param {String} field 
          * @returns {CsvResolverBuilder}
          */
-        number(filed) {
-                this._resolvers.push(new CsvResolver(filed, str => parseFloat(str)));
+        number(field) {
+                this._resolvers.push(new CsvResolver(field, str => parseFloat(str)));
                 return this;
         }
 
         /**
          * 
-         * @param {String} filed 
+         * @param {String} field 
          * @returns {CsvResolverBuilder}
          */
-        percent(filed) {
-                this._resolvers.push(new CsvResolver(filed, str => parseFloat(str.replace("%", "")) / 100));
+        percent(field) {
+                this._resolvers.push(new CsvResolver(field, str => parseFloat(str.replace("%", "")) / 100));
                 return this;
         }
 
         /**
          * 
-         * @param {String} filed 
+         * @param {String} field 
          * @returns {CsvResolverBuilder}
          */
-        boolean(filed) {
-                this._resolvers.push(new CsvResolver(filed, str => !!str));
+        boolean(field) {
+                this._resolvers.push(new CsvResolver(field, str => !!str));
                 return this;
         }
 
         /**
          * 
-         * @param {String} filed 
+         * @param {String} field 
          * @returns {CsvResolverBuilder}
          */
-        date(filed) {
-                this._resolvers.push(new CsvResolver(filed, str => new Date(str)));
+        date(field) {
+                this._resolvers.push(new CsvResolver(field, str => new Date(str)));
                 return this;
         }
 
@@ -132,18 +132,18 @@ class CsvConverterBuilder {
                 this._converters = [];
         }
 
-        normal(filed, title) {
-                this._converters.push(new CsvConverter(filed, title, value => value + ""))
+        normal(field, title) {
+                this._converters.push(new CsvConverter(field, title, value => value + ""))
                 return this;
         }
 
-        date(filed, title, pattern) {
-                this._converters.push(new CsvConverter(filed, title, value => value + ""))
+        date(field, title, pattern) {
+                this._converters.push(new CsvConverter(field, title, value => value + ""))
                 return this;
         }
 
-        float(filed, title, digit) {
-                this._converters.push(new CsvConverter(filed, title, value => {
+        float(field, title, digit) {
+                this._converters.push(new CsvConverter(field, title, value => {
                         if (digit) {
                                 return value.toFixed(digit) + "";
                         }
@@ -153,8 +153,8 @@ class CsvConverterBuilder {
                 return this;
         }
 
-        percent(filed, title, digit) {
-                this._converters.push(new CsvConverter(filed, title, value => {
+        percent(field, title, digit) {
+                this._converters.push(new CsvConverter(field, title, value => {
                         if (digit) {
                                 return value.toFixed(digit) * 100 + "%";
                         }
@@ -303,15 +303,15 @@ class CsvHelper {
                 data.forEach(x => {
                         let row = "";
                         converters.forEach(s => {
-                                if (!x[s.filed]) {
+                                if (!x[s.field]) {
                                         row += `"",`
                                         return;
                                 }
 
                                 try {
-                                        row += `"${s.convertFunc(x[s.filed]).replace(/"/g, '""')}",`;
+                                        row += `"${s.convertFunc(x[s.field]).replace(/"/g, '""')}",`;
                                 } catch {
-                                        throw new Error(`serializer of field '${s.filed}' convert failed,value is '${x[s.filed]}'`);
+                                        throw new Error(`serializer of field '${s.field}' convert failed,value is '${x[s.field]}'`);
                                 }
                         });
 

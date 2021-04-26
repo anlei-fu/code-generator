@@ -1,4 +1,4 @@
-const { NamingStrategy, FILE } = require("./../libs")
+const { NamingStrategy, FILE } = require("../libs")
 
 /**
  * 

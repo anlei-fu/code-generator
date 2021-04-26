@@ -1,5 +1,5 @@
 const { SimpleRender } = require("../common/renders/SimplePatterRender");
-const { getJavaType } = require("../spring-boot/utils");
+const { COMMON_UTILS } = require("../common");
 const { STR, NamingStrategy } = require("./../../libs/");
 
 const SERVICE_RENDER = new SimpleRender({}, `${__dirname}/template/controller.java`);
@@ -10,7 +10,7 @@ class ControllerGenerator {
                 console.log(table.name);
                 let pkName = NamingStrategy.toCamel(pk.rawName);
                 let pkUpperName = STR.upperFirstLetter(pkName);
-                let pkType = getJavaType(pk.type);
+                let pkType = COMMON_UTILS.getJavaType(pk.type);
                 let name = STR.upperFirstLetter(table.name);
                 let fullName =name;
                 name =name.substr(2,name.length-2);

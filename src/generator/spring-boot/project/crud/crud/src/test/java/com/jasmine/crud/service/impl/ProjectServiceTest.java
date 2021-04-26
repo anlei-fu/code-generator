@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-25 6:53:03 PM 
+ * Generated at 2021-4-26 3:27:14 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
+ * @since Mon Apr 26 2021 15:27:14 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -52,9 +52,9 @@ public class ProjectServiceTest {
 
                 AddProjectReq req =new AddProjectReq();
 
-                                         req.setCompany("oracle");
+                                         req.setCompany("tencent");
                                          req.setDescription("avoid annoy thing to do");
-                                         req.setName("carnation");
+                                         req.setName("rose");
 
                 R result =controller.add(
 
@@ -73,7 +73,7 @@ public class ProjectServiceTest {
 
                 R result =controller.deleteById(
 
-                                                1 
+                                                15 
 
                         );
 
@@ -89,9 +89,9 @@ public class ProjectServiceTest {
                 UpdateProjectReq req =new UpdateProjectReq();
 
                                          req.setId(29);
-                                         req.setCompany("oracle");
-                                         req.setDescription("this is description mock data segment");
-                                         req.setName("narcissus");
+                                         req.setCompany("google");
+                                         req.setDescription("mock generator, generate lots of data for testing");
+                                         req.setName("lily");
 
                 R result =controller.update(
 
@@ -110,7 +110,7 @@ public class ProjectServiceTest {
 
                 GetProjectPageReq req =new GetProjectPageReq();
 
-                                         req.setName("lily");
+                                         req.setName("carnation");
 
           R result =controller.getDetailPage(
 

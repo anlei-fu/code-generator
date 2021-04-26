@@ -1,9 +1,14 @@
-const { SimpleRender } = require("./../generator/common/renders/SimplePatterRender");
-const { FILE } = require("./../libs/file");
+const { SimpleRender } = require("../generator/common/renders/SimplePatterRender");
+const { FILE } = require("../libs");
 
 const builderRender = new SimpleRender({}, `./templates/builder.js`);
 const builderItemRender = new SimpleRender({}, `./templates/builderItem.js`);
 
+/**
+ * 
+ * @param {String} modelName 
+ * @param {[]} items 
+ */
 function main(modelName, items) {
         let content = "";
         items.forEach(item => {
@@ -22,7 +27,7 @@ function main(modelName, items) {
 
 }
 
-exports.builderGenerator =main;
+exports.builderGenerator = main;
 
 /******************************************main**********************************8888 */
 main(

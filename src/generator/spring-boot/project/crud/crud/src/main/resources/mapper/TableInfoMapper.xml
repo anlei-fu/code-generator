@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Jasmine code generator, a tool to build web crud application,with spring-
 boot, mybatis, mysql,swagger,spring-security.
-Generated at 2021-4-25 6:53:03 PM
+Generated at 2021-4-26 3:27:14 PM
 All rights reserved by fal(email:767550758@qq.com) since 2019 -->
 <mapper namespace="com.jasmine.crud.mapper.TableInfoMapper">
     <select id="getDetailPage" resultType="com.jasmine.crud.pojo.resp.TableInfoDetailResp" parameterType="com.jasmine.crud.pojo.req.GetTableInfoPageReq">

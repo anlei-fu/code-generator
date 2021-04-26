@@ -4,7 +4,7 @@ const { Entity } = require("./builders/Entity");
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { ReqUtils } = require("./ReqUtils");
-const { getJavaType, isJavaBaseType } = require("./utils");
+const { COMMON_UTILS } = require("./../common");
 const { NamingStrategy } = require("../../libs");
 const { FieldAnalyzer } = require("./FieldAnalyzer")
 
@@ -109,7 +109,7 @@ class SpringBootGenerator {
                                 this._initEntityBasicInfo(configItem, req, "Req");
                                 hasDocreateReq = true;
                         } else {
-                                if (!isJavaBaseType(req.type)) {
+                                if (!COMMON_UTILS.isJavaBaseType(req.type)) {
                                         req.name = "Req";
                                         req.type = STR.upperFirstLetter(configItem.table.name);
                                 }
@@ -200,7 +200,7 @@ class SpringBootGenerator {
          */
         _initTable(table) {
                 OBJECT.forEach(table.columns, (_, column) => {
-                        column.type = getJavaType(column.type);
+                        column.type = COMMON_UTILS.getJavaType(column.type,column.name);
                 });
         }
 

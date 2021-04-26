@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-25 6:53:03 PM 
+ * Generated at 2021-4-26 3:27:14 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author fuanlei
  * @version 1.0
- * @since Sun Apr 25 2021 18:53:03 GMT+0800 (GMT+08:00)
+ * @since Mon Apr 26 2021 15:27:14 GMT+0800 (GMT+08:00)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -52,11 +52,11 @@ public class ModuleSServiceTest {
 
                 AddModuleSReq req =new AddModuleSReq();
 
-                                         req.setDescription("mock generator, generate lots of data for testing");
-                                         req.setLevel(0);
+                                         req.setDescription("avoid annoy thing to do");
+                                         req.setLevel(20);
                                          req.setName("jasmine");
-                                         req.setParentMouduleId(35);
-                                         req.setProjectId(1);
+                                         req.setParentMouduleId(6);
+                                         req.setProjectId(2);
 
                 R result =controller.add(
 
@@ -75,7 +75,7 @@ public class ModuleSServiceTest {
 
                 R result =controller.deleteById(
 
-                                                29 
+                                                6 
 
                         );
 
@@ -90,12 +90,12 @@ public class ModuleSServiceTest {
 
                 UpdateModuleSReq req =new UpdateModuleSReq();
 
-                                         req.setId(1);
-                                         req.setDescription("mock generator, generate lots of data for testing");
+                                         req.setId(15);
+                                         req.setDescription("jasmine code generator, generate every thing you need");
                                          req.setLevel(0);
-                                         req.setName("narcissus");
-                                         req.setParentMouduleId(6);
-                                         req.setProjectId(8);
+                                         req.setName("calla");
+                                         req.setParentMouduleId(29);
+                                         req.setProjectId(1);
 
                 R result =controller.update(
 
@@ -115,7 +115,7 @@ public class ModuleSServiceTest {
                 GetModuleSPageReq req =new GetModuleSPageReq();
 
                                          req.setLevel(20);
-                                         req.setName("lily");
+                                         req.setName("jasmine");
 
           R result =controller.getDetailPage(
 

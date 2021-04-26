@@ -1,6 +1,6 @@
-const { CLI } = require("./../../../libs/cli");
-const { DIR } = require("./../../../libs/dir");
-const { LoggerFactory } = require("./../logging/logger-factory");
+const { CLI, DIR } = require("./../../libs");
+const { LoggerFactory } = require("./../../logging");
+
 const LOG = LoggerFactory.getLogger("java-formmater");
 
 class GoogleJavaFormatter {
@@ -13,7 +13,6 @@ class GoogleJavaFormatter {
         formatFolder(folder) {
                 DIR.getFiles(folder).forEach(file => {
                         if (file.toLowerCase().endsWith(".java")) {
-
                                 try {
                                         this.formatJavaFile(`${folder}/${file}`);
                                         LOG.info(`${folder}/${file}  formatted`);

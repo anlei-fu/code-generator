@@ -1,7 +1,7 @@
 const { PrettierFormatter } = require("./../generator/common/formatter/prettierFormatter");
 
-function main(folder){
-       let formatter =new PrettierFormatter();
+function main(folder) {
+       let formatter = new PrettierFormatter();
        formatter.formatJsFolder(folder);
 }
 

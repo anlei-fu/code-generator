@@ -1,6 +1,6 @@
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
-const { getJavaType } = require("./utils");
+const { COMMON_UTILS } = require("./../common");
 const { SimpleRender } = require("../common/renders/SimplePatterRender");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./Analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
@@ -101,6 +101,8 @@ class ConfigBuilderGenerator {
 
                 // analyze join config and render
                 let joinConfigs = JOIN_ANALYZER.analyze(relations, table, tables);
+
+                //
                 let joinsSegment = STR.arrayToString1(joinConfigs,
                         (joinConfig, i) => JOIN_ANALYZER.renderJoinConfig(joinConfig, `t${i + 1}`))
 
@@ -108,13 +110,18 @@ class ConfigBuilderGenerator {
                 let insertConfig = this._generateInsertConfig(table);
                 let updateConfig = this._generateUpdateConfig(table);
 
+                // upper pk name
                 let key = STR.upperFirstLetter(pkColumn.name);
+                // lower pk name
                 let skey = pkColumn.name;
+                // upper table name
                 let name = STR.upperFirstLetter(table.name);
+
                 let deleteMethodName = key;
                 let updateMethodName = key;
                 let selectMethodName = key;
-                let keyType = getJavaType(pkColumn.type);
+
+                let keyType = COMMON_UTILS.getJavaType(pkColumn.type);
 
                 // analyze user req
                 let userColumn = null;
@@ -138,11 +145,16 @@ class ConfigBuilderGenerator {
                 if (userColumn != null)
                         selectUserReq = renderUserReq(userColumn);
 
+                // excludes fields
                 let selete_text = this._renderExcludes(selectConfig.excludes)
+
+                // expression fields
                 if (selectConfig.expressions.length != 0)
                         selete_text += this._renderExpression(selectConfig.expressions);
 
+                // insert excludes
                 let insert_text = this._renderExcludes(insertConfig.excludes)
+                // update excludes
                 let update_text = this._renderExcludes(updateConfig.excludes)
 
                 let generateConfig = {
@@ -213,7 +225,7 @@ class ConfigBuilderGenerator {
                         , msg = "";
 
                 OBJECT.forEach(table.columns, (columnName, column) => {
-                        let javaType = getJavaType(column.type);
+                        let javaType = COMMON_UTILS.getJavaType(column.type,columnName);
 
                         // check should be in where clause
                         if (!this._selectAnalyzer.shouldBeCandidate(javaType, columnName)) {
@@ -230,10 +242,6 @@ class ConfigBuilderGenerator {
                                         key: columnName,
                                         validates: fieldValidates
                                 });
-                        }
-
-                        if (columnName.endsWith("name")) {
-                                let t = 0;
                         }
 
                         // analyze sql where-clause expression
@@ -268,7 +276,7 @@ class ConfigBuilderGenerator {
                         , msg = "";
 
                 OBJECT.forEach(table.columns, (columnName, column) => {
-                        let javaType = getJavaType(column.type);
+                        let javaType = COMMON_UTILS.getJavaType(column.type,columnName);
 
                         // should be in update req entity
                         // ex: update-time should be 

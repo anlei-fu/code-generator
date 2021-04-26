@@ -37,6 +37,11 @@ PACKAGES.set("@Id", {
 });
 
 PACKAGES.set("@Column", {
+        package: "import javax.persistence.Table;",
+        isSystem: true
+});
+
+PACKAGES.set("@Table", {
         package: "import javax.persistence.Column;",
         isSystem: true
 });

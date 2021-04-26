@@ -1,5 +1,5 @@
 const { OBJECT, STR, NamingStrategy } = require("../../libs");
-const { getJavaType } = require("./utils");
+const { COMMON_UTILS } = require("./../common");
 const { ConfigItem } = require("./builders/ConfigItem");
 const { Table } = require("./builders/Table");
 const { ExpressoinGenerator } = require("./ExpressoinGenerator");
@@ -81,7 +81,7 @@ class ColumnMerger {
                         includes.forEach(include => {
                                 if (include.nullable) {
                                         include.ifExpression = `${include.name} != null`;
-                                        if (getJavaType(include.type) == "String" && !this._stringCanBeEmpty) {
+                                        if (COMMON_UTILS.getJavaType(include.type,include.name) == "String" && !this._stringCanBeEmpty) {
                                                 include.ifExpression += ` and ${include.name} != ''`;
                                         }
                                 }
@@ -116,7 +116,7 @@ class ColumnMerger {
 
                 // clone to avoid reference conflict
                 let copy = OBJECT.clone(table.columns[columnConfig.name]);
-                copy.type = getJavaType(copy.type);
+                copy.type =COMMON_UTILS.getJavaType(copy.type,copy.name);
                 OBJECT.extend(columnConfig, copy);
 
                 // no alias specified set table name as prefix

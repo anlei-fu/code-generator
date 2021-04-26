@@ -2,7 +2,7 @@ const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { NamingStrategy } = require("../../../libs/naming-strategy");
 const { OBJECT } = require("../../../libs/utils");
 const { STR } = require("../../../libs/str");
-const { getJavaType } = require("../utils");
+const { COMMON_UTILS } = require("../../common");
 const { ReqUtils } = require("../ReqUtils");
 const { ConfigGroup } = require("./../builders/ConfigGroup");
 const { ConfigItem } = require("./../builders/ConfigItem");
@@ -242,7 +242,7 @@ class MapperConfigRender {
          */
         _findCreateTimeColumn(table) {
                 for (const c in table.columns) {
-                        var type = getJavaType(table.columns[c].type);
+                        var type = COMMON_UTILS.getJavaType(table.columns[c].type,table.columns[c].name);
                         if (type == "Date" && INSERT_TIME_MATCHERS(c))
                                 return table.columns[c];
                 }
@@ -357,7 +357,7 @@ class MapperConfigRender {
         _renderUpdateTime(table, alias) {
                 let content = "";
                 OBJECT.forEach(table.columns, (columnName, column) => {
-                        if (getJavaType(column.type) == "Date" && UPDATE_TIME_MATCHERS(columnName))
+                        if (COMMON_UTILS.getJavaType(column.type,columnName) == "Date" && UPDATE_TIME_MATCHERS(columnName))
                                 content = `${SET_ITEM_IDENT}${alias || NamingStrategy.toHungary(table.name).toLowerCase()}`
                                         + `.${NamingStrategy.toHungary(column.name).toLowerCase()}= current_timestamp,\r\n`;
                 });
@@ -374,7 +374,7 @@ class MapperConfigRender {
          */
         _hasUpdateTimeField(table) {
                 for (const columnName in table.columns) {
-                        if (getJavaType(table.columns[columnName].type) == "Date"
+                        if (COMMON_UTILS.getJavaType(table.columns[columnName].type,columnName) == "Date"
                                 && UPDATE_TIME_MATCHERS(columnName))
                                 return true;
                 }
