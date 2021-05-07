@@ -13,13 +13,13 @@ const { InitConfigBuilder } = require("./builders/InitConfig");
 async function main() {
 
         let builder =new InitConfigBuilder();
-        builder.project("crawler")
+        builder.project("news")
                .company("jasmine")
-               .targetFolder("D:/test/contract")
+               .targetFolder("D:/project/news")
                .generateDb()
                .generateStructure()
                .generateBuilder()
-               .libPath("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot")
+               .libPath("D:/project/code-generator/src/generator/spring-boot")
                .useDbConfig(db=>{
                        db.generateDb()
                          .generateRelation(true)
@@ -28,7 +28,7 @@ async function main() {
                                 .port(3306)
                                 .user("root")
                                 .password("2011801243")
-                                .db("contract_sign")
+                                .db("news")
                          })
                })
                .useAnalyzeConfig(analyze=>{

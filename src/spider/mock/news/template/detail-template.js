@@ -39,16 +39,26 @@ async function run(write, pageContext) {
         //BEGIN
         let $ = pageContext.$;
         let builder = pageContext.pageResultBuilder;
+        let selectors = [
+                {
+                       title:"@title",
+                       author:"@author",
+                       date:"@date",
+                       content:"@content"
+                }
+        ]
         var data = {
 
         };
 
+        let selector = selectors[0];
+
         data.imgs = [];
-        data.title = $("@title").text();
-        data.author = $("@author").text();
-        data.date = $("@date").text();
-        data.content = $("@content").text();
-        $("@content").find("img").each((i, e) => {
+        data.title = $(selector.title).text();
+        data.author = $(selector.author).text();
+        data.date = $(selector.date).text();
+        data.content = $(selector.content).text();
+        $(selector.content).find("img").each((i, e) => {
                 let src = $(e).attr("src");
                 if (src) {
                         let resolved = pageContext.urlResolver.resolve(src);
