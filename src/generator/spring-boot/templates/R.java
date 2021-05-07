@@ -40,19 +40,19 @@ public class R<T> {
     }
 
     public  static  R failed(){
-        return create(RConstant.SUCCEED_CODE, "failed");
+        return create(RConstant.FAILED_CODE, "failed");
     }
 
     public  static  R failed(int code){
-        return create(RConstant.SUCCEED_CODE, "failed");
+        return create(RConstant.FAILED_CODE, "failed");
     }
 
     public  static  R failed(String msg){
-        return create(RConstant.SUCCEED_CODE, "failed");
+        return create(RConstant.FAILED_CODE, "failed");
     }
 
     public  static  R failed(int code,String msg){
-        return create(RConstant.SUCCEED_CODE, "failed");
+        return create(RConstant.FAILED_CODE, "failed");
     }
 
     public static R success() {

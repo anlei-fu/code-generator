@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(tags = "@description")
 @RestController
+@RequestMapping("dictionary")
 public class @nameController {
 
     @Autowired

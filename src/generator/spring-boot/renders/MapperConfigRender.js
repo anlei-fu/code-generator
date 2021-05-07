@@ -2,7 +2,7 @@ const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { NamingStrategy } = require("../../../libs/naming-strategy");
 const { OBJECT } = require("../../../libs/utils");
 const { STR } = require("../../../libs/str");
-const { getJavaType } = require("../utils");
+const { COMMON_UTILS } = require("../../common");
 const { ReqUtils } = require("../ReqUtils");
 const { ConfigGroup } = require("./../builders/ConfigGroup");
 const { ConfigItem } = require("./../builders/ConfigItem");
@@ -144,8 +144,12 @@ class MapperConfigRender {
          * @returns {String}
          */
         renderMapperConfig(configGroup) {
+                let items = configGroup.items.filter(x =>
+                        x.id != 'add' && x.id != "update" && !x.id.startsWith("getBy") && !x.id.startsWith("deleteBy")
+                )
+
                 let statements = STR.arrayToString1(
-                        configGroup.items,
+                        items,
                         configItem => this._renderMapperConfigItem(configItem) + "\r\n"
                 );
 
@@ -238,7 +242,7 @@ class MapperConfigRender {
          */
         _findCreateTimeColumn(table) {
                 for (const c in table.columns) {
-                        var type = getJavaType(table.columns[c].type);
+                        var type = COMMON_UTILS.getJavaType(table.columns[c].type,table.columns[c].name);
                         if (type == "Date" && INSERT_TIME_MATCHERS(c))
                                 return table.columns[c];
                 }
@@ -353,7 +357,7 @@ class MapperConfigRender {
         _renderUpdateTime(table, alias) {
                 let content = "";
                 OBJECT.forEach(table.columns, (columnName, column) => {
-                        if (getJavaType(column.type) == "Date" && UPDATE_TIME_MATCHERS(columnName))
+                        if (COMMON_UTILS.getJavaType(column.type,columnName) == "Date" && UPDATE_TIME_MATCHERS(columnName))
                                 content = `${SET_ITEM_IDENT}${alias || NamingStrategy.toHungary(table.name).toLowerCase()}`
                                         + `.${NamingStrategy.toHungary(column.name).toLowerCase()}= current_timestamp,\r\n`;
                 });
@@ -370,7 +374,7 @@ class MapperConfigRender {
          */
         _hasUpdateTimeField(table) {
                 for (const columnName in table.columns) {
-                        if (getJavaType(table.columns[columnName].type) == "Date"
+                        if (COMMON_UTILS.getJavaType(table.columns[columnName].type,columnName) == "Date"
                                 && UPDATE_TIME_MATCHERS(columnName))
                                 return true;
                 }
@@ -391,18 +395,18 @@ class MapperConfigRender {
                         let out = "";
                         expressionModel.content =
                                 `${expressionModel.prefix} t.${expressionModel.rawName} >= ` +
-                                `#{${expressionModel.property}Start}\r\n`;
+                                `#{startTime}\r\n`;
 
-                        expressionModel.ifExpression = `${expressionModel.property}Start != null`;
+                        expressionModel.ifExpression = `startTime != null`;
                         out = this._renderIf(expressionModel);
 
                         expressionModel.content =
-                                `and t.${expressionModel.rawName} &lt; #{${expressionModel.property}End}\r\n`;
+                                `and t.${expressionModel.rawName} &lt; #{endTime}\r\n`;
 
-                        expressionModel.ifExpression = `${expressionModel.property}End != null`;
+                        expressionModel.ifExpression = `endTime != null`;
                         out += this._renderIf(expressionModel);
                         return out;
-                } else if (expressionModel.exp = "range") {
+                } else if (expressionModel.exp == "range") {
                         let out = "";
 
                         expressionModel.content =
@@ -418,7 +422,17 @@ class MapperConfigRender {
                         expressionModel.ifExpression = `${expressionModel.property}Max != null`;
                         out += this._renderIf(expressionModel);
                         return out;
-                } else {
+                } else if (expressionModel.exp == "like") {
+                        let out = "";
+
+                        expressionModel.content =
+                                `${expressionModel.prefix} t.${expressionModel.rawName} like concat('%',#{${expressionModel.property}},'%') \r\n`;
+
+                        expressionModel.ifExpression = `${expressionModel.property} != null and ${expressionModel.property} != ''`;
+                        out = this._renderIf(expressionModel);
+                      
+                        return out;
+                }else {
                         let content = expressionModel.expression.replace("@prefix", expressionModel.prefix);
                         expressionModel.content = content;
                         return this._renderIf(expressionModel);
@@ -515,7 +529,7 @@ class MapperConfigRender {
                                 if (condition.isList) {
                                         whereSegment += this._renderIn(condition);
                                 } else {
-                                        whereSegment += condition.expression
+                                        whereSegment += condition.exp
                                                 ? this._renderExpression(condition) : this._renderAsign(condition);
                                 }
                         });

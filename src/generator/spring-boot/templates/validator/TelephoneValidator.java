@@ -1,7 +1,7 @@
 package com.@project.validate.validator;
 
 import com.@project.validate.annotation.Telephone;
-import jdk.internal.joptsimple.internal.Strings;
+import cn.hutool.core.util.StrUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -20,7 +20,7 @@ public class TelephoneValidator implements ConstraintValidator<Telephone, String
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (Strings.isNullOrEmpty(value))
+        if (StrUtil.isEmpty(value))
             return !this.required;
 
         return VALIDATOR.matcher(value).matches();

@@ -11,6 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@classAnnotation
 public class @name @extends {
 
 @content

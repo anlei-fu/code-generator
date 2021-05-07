@@ -1,4 +1,1 @@
-utils.options([
-"EnableStatus",
-"Password",
-]),
+new Date().getHours

@@ -66,6 +66,13 @@ class InsertAnalyzer {
 
 const SELECT_INCLUDES_MATCHERS = {
         string: {
+                type:{
+                     match:  x => STR.endsWithAny(x.toLowerCase(), [
+                                "type",
+                                "status",
+                                "state"
+                        ])
+                },
                 all: {
                         match: x => STR.endsWithAny(x.toLowerCase(), [
                                 "no",

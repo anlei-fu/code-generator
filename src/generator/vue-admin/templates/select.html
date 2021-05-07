@@ -1,0 +1,10 @@
+<template   v-for="item in selects">
+        <MySelect
+        v-if ="item.show"
+        :model="query[item.field]"
+        :key="item.field"
+        :title="item.label"
+        :enum="item.enum"
+        :width="item.width"
+        />
+ </template>

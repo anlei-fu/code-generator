@@ -2,8 +2,8 @@ const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { isJavaBaseType } = require("../utils");
 const { STR } = require("../../../libs/str");
 const { ReqUtils } = require("../ReqUtils");
-const {ConfigGroup} =require("./../builders/ConfigGroup");
-const {ConfigItem} =require("./../builders/ConfigItem");
+const { ConfigGroup } = require("./../builders/ConfigGroup");
+const { ConfigItem } = require("./../builders/ConfigItem");
 
 const MAPPER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper-item.java`);
 const MAPPER_RENDER = new SimpleRender({}, `${__dirname}/templates/mapper.java`);
@@ -16,8 +16,12 @@ class MapperRender {
          * @returns {String}
          */
         renderMapper(configGroup) {
+                let items = configGroup.items.filter(x =>
+                        x.id != 'add' && x.id != "update" && !x.id.startsWith("getBy") && !x.id.startsWith("deleteBy")
+                )
+
                 let content = STR.arrayToString1(
-                        configGroup.items,
+                        items,
                         config => MAPPER_ITEM_RENDER.renderTemplate(
                                 this._getMethodConfig(config, configGroup.name)
                         )
@@ -49,8 +53,8 @@ class MapperRender {
          * @returns {String}
          */
         _getArgs(configItem) {
-                if(configItem.reqs.length==0)
-                   return "";
+                if (configItem.reqs.length == 0)
+                        return "";
 
                 // param generated
                 if (configItem.params.doCreate) {
@@ -66,7 +70,7 @@ class MapperRender {
 
                 let mapperParams = "";
                 if (configItem.reqs.length > 1) {
-                        mapperParams =  STR.arrayToString1(
+                        mapperParams = STR.arrayToString1(
                                 configItem.reqs,
                                 req => {
                                         return req.isList
@@ -74,7 +78,7 @@ class MapperRender {
                                                 : `@Param("${req.name}") ${req.type} ${req.name}, `
                                 });
 
-                           mapperParams = STR.removeLastComa(mapperParams);
+                        mapperParams = STR.removeLastComa(mapperParams);
                 } else {
                         if (configItem.reqs[0].isList) {
                                 mapperParams =

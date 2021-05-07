@@ -1,5 +1,5 @@
-const { STR } = require("./../../../libs/str");
-const { LoggerFactory } = require("./../logging/logger-factory");
+const { STR } = require("./../../libs");
+const { LoggerFactory } = require("./../../logging");
 const { CharSequenceReader } = require("./../tokenization/char-sequence-reader");
 
 const LOG = LoggerFactory.getLogger("csv-resolver");
@@ -104,8 +104,8 @@ function split(content) {
                                         parseQuotation = true;
                                 }
                         } else {
-                                if (reader.hasNext()&&reader.next() == "\"") {
-                                        cell+="\"";
+                                if (reader.hasNext() && reader.next() == "\"") {
+                                        cell += "\"";
                                 } else {
                                         reader.back();
                                         parseQuotation = false;
@@ -199,8 +199,23 @@ module.exports = {
         toCsvString,
         resolveFromCsvString,
         resolvers: {
-                STR: value => value,
-                NUMBER: value => parseFloat(value),
-                DATE: value => new Date(value)
+                STR: name => {
+                        return {
+                                doResolve: value => value,
+                                name
+                        }
+                },
+                NUMBER: name => {
+                        return {
+                                doResolve: value => parseFloat(value),
+                                name
+                        }
+                },
+                DATE: name => {
+                        return {
+                                doResolve: value => new Date(value),
+                                name
+                        }
+                },
         }
 }

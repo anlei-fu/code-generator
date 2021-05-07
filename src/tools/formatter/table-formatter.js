@@ -1,5 +1,5 @@
 
-const { STR } = require("./../../../libs/str")
+const { STR } = require("./../../libs")
 
 class FormatConfig {
         constructor () {
@@ -52,7 +52,7 @@ class TableFormmatter {
                         output += line + "\r\n";
                 }
 
-                return output+baseLine;
+                return output + baseLine;
         }
 
         /**

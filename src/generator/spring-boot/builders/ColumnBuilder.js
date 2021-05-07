@@ -6,7 +6,7 @@
  * @LastEditors  : fuanlei
  * @LastEditTime : 2019-12-19 10:45:55
  */
-const { TYPE, OBJECT } = require("../../../libs/utils")
+const { TYPE, OBJECT ,ARRAY } = require("../../../libs/utils")
 exports.ColumnBuilder = class ColumnBuilder {
         constructor () {
                 this._includes = {};
@@ -337,6 +337,6 @@ exports.ColumnBuilder = class ColumnBuilder {
          * 
          */
         build() {
-                return OBJECT.toArray(this._includes);
+                return ARRAY.distinct(OBJECT.toArray(this._includes),x=>x.name);
         }
 }

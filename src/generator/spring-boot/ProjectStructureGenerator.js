@@ -82,12 +82,22 @@ class ProjectStructreGenerator {
                         company
                 );
 
+
+                 // AbstractCrudService
+                 this._copy(
+                        `${__dirname}/templates/AbstractCrudService.java`,
+                        `${root}/service/impl/AbstractCrudService.java`,
+                        project,
+                        company
+                );
+
                 this._copy(
                         `${__dirname}/templates/PageResult.java`,
                         `${root}/pojo/resp/PageResult.java`,
                         project,
                         company
                 );
+                
 
                 this._copy(
                         `${__dirname}/templates/WebConfig.java`,
@@ -125,10 +135,24 @@ class ProjectStructreGenerator {
                         company
                 );
 
+                this._copy(
+                        `${__dirname}/templates/PageTimeReq.java`,
+                        `${root}/pojo/req/PageTimeReq.java`,
+                        project,
+                        company
+                );
+
                 // page helper util
                 this._copy(
                         `${__dirname}/templates/PageHelperUtils.java`,
                         `${root}/utils/PageHelperUtils.java`,
+                        project,
+                        company
+                );
+
+                this._copy(
+                        `${__dirname}/templates/DaoUtil.java`,
+                        `${root}/utils/DaoUtil.java`,
                         project,
                         company
                 );

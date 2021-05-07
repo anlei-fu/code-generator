@@ -1,4 +1,5 @@
        
-        public IResult BatchDelete(string ids,int status){
+        [HttpPost]
+        public IResult BatchDelete(string ids){
                 return @nameService.Instance.BatchDelete(ids, status);
         }

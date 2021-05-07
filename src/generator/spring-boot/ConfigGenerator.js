@@ -10,15 +10,20 @@ class ConfigGenerator {
         }
 
         generate(targetPath, libPath, project) {
-
+                
+                // remove old config files
                 DIR.getFiles(`${targetPath}/${project}/config`).forEach(f => {
                         FILE.remove(`${targetPath}/${project}/config/${f}`);
                 });
                 
                 // generate all items config
+                // load table infos
                 let tables = require(`${targetPath}/${project}/db/all.js`).all;
+                // load table relations
                 let relations = require(`${targetPath}/${project}/db/relations.js`).relations;
+                // config root path
                 let root = `${targetPath}/${project}/config`;
+                // load generate config
                 let builderConfigs = require(`${targetPath}/${project}/generateConfig.js`).config;
                 let generatorItems = Object.keys(builderConfigs);
                 generatorItems.forEach(item => {

@@ -13,4 +13,4 @@ function main(folder,day=5){
 }
 
 /***************************************main*************************************/
-main(DM,2*ONE_HOUR);
+main(DM,ONE_DAY*2);

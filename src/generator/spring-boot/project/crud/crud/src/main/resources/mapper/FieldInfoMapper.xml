@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Jasmine code generator, a tool to build web crud application,with spring-
+boot, mybatis, mysql,swagger,spring-security.
+Generated at 2021-4-26 3:27:14 PM
+All rights reserved by fal(email:767550758@qq.com) since 2019 -->
+<mapper namespace="com.jasmine.crud.mapper.FieldInfoMapper">
+    <select id="getDetailPage" resultType="com.jasmine.crud.pojo.resp.FieldInfoDetailResp" parameterType="com.jasmine.crud.pojo.req.GetFieldInfoPageReq">
+          select
+             t.batch_editable,
+             t.default_show,
+             t.description,
+             t.editable,
+             t.filter_type,
+             t.format_pattern,
+             t.format_type,
+             t.id,
+             t.insert_nullable,
+             t.insertable,
+             t.is_name,
+             t.is_pk,
+             t.java_type,
+             t.name,
+             t.notice_text,
+             t.order,
+             t.raw_name,
+             t.real_column,
+             t.table_id,
+             t.title,
+             t1.name as table_name
+          from field_info t
+          left join table_info t1 on  t.table_id = t1.id
+          <where>
+            <if test="isName != null">
+                  t.is_name = #{isName}
+            </if>
+            <if test="isPk != null">
+                  and t.is_pk = #{isPk}
+            </if>
+            <if test="name != null and name != ''">
+                  and  t.name like concat('%',#{name},'%') 
+            </if>
+          </where>
+    </select>
+</mapper>

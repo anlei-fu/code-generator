@@ -1,11 +1,16 @@
-const { OBJECT } = require("../../libs/utils");
-const { STR } = require("../../libs/str");
-const { getJavaType } = require("./utils");
-const { NamingStrategy } = require("../../libs/naming-strategy");
+const { OBJECT, STR, NamingStrategy } = require("../../libs");
+const { COMMON_UTILS } = require("./../common");
 const { ConfigItem } = require("./builders/ConfigItem");
 const { Table } = require("./builders/Table");
+const { ExpressoinGenerator } = require("./ExpressoinGenerator");
+
+let expressionGenerator = new ExpressoinGenerator();
 
 class ColumnMerger {
+        constructor (stringCanBeEmpty = false) {
+                this._stringCanBeEmpty = stringCanBeEmpty;
+        }
+
         /**
          * Merge all possible condition columns
          * 
@@ -33,7 +38,7 @@ class ColumnMerger {
                 // });
 
                 // add mapper.xml if test expression if need
-                configItem.context.expressionGenerator.generateExpression(conditions);
+                expressionGenerator.generateExpression(conditions);
 
                 return conditions;
         }
@@ -76,8 +81,9 @@ class ColumnMerger {
                         includes.forEach(include => {
                                 if (include.nullable) {
                                         include.ifExpression = `${include.name} != null`;
-                                        if (getJavaType(include.type) == "String")
+                                        if (COMMON_UTILS.getJavaType(include.type,include.name) == "String" && !this._stringCanBeEmpty) {
                                                 include.ifExpression += ` and ${include.name} != ''`;
+                                        }
                                 }
                         });
                 }
@@ -104,12 +110,13 @@ class ColumnMerger {
                 columnConfig.name = STR.lowerFirstLetter(columnConfig.name);
 
                 // column not found
-                if (!table.columns[columnConfig.name])
+                if (!table.columns[columnConfig.name]) {
                         throw new Error(`column(${columnConfig.name}) can not be found in table(${table.name})`);
+                }
 
                 // clone to avoid reference conflict
                 let copy = OBJECT.clone(table.columns[columnConfig.name]);
-                copy.type = getJavaType(copy.type);
+                copy.type =COMMON_UTILS.getJavaType(copy.type,copy.name);
                 OBJECT.extend(columnConfig, copy);
 
                 // no alias specified set table name as prefix

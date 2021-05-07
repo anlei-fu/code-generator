@@ -1,28 +1,41 @@
-var kafka = require('kafka-node'),
-        Producer = kafka.Producer,
-        client = new kafka.KafkaClient({
-                kafkaHost: "192.168.117.149:9092",
+var kafka = require('kafka-node');
+var client = new kafka.KafkaClient({
+        kafkaHost: "192.168.117.149:9092",
+});
 
-        }),
-        producer = new Producer(client);
+var consumer = kafka.Consumer;
+
+var consumerInstance = new consumer(client,[{ topic: 'topic1', partition: 0 }],{autoCommit:true});
+
+// var producer =kafka.Producer;
+
+// var producerInstance= new producer(client);
 
 // let payloads = [
 //         { topic: 'topic1', messages: 'hi', partition: 0 },
-//         { topic: 'topic2', messages: ['hello', 'world', km] }
+//         { topic: 'topic2', messages: ['hello', 'world'] }
 // ];
 
-var topicsToCreate = [{
-        topic: 'topic1',
-        partitions: 1,
-        replicationFactor: 2
-}];
+// var topicsToCreate = [{
+//         topic: 'topic2',
+//         partitions: 2,
+//         replicationFactor: 1
+// }];
 
-client.createTopics(topicsToCreate,(err)=>{
-        console.log(err);
-});
+// client.createTopics(topicsToCreate, (err,d) => {
+//         console.log("error");
+//         console.log(err);
+//         console.log("resp");
+//         console.log(d);
+// });
 
-// producer.on('ready', function () {
-//         producer.send(payloads, function (err, data) {
+// producerInstance.on('ready', function () {
+//         producerInstance.send(payloads, function (err, data) {
 //                 console.log(data);
 //         });
 // });
+
+
+consumerInstance.on('message', function (message) {
+        console.log(message);
+});

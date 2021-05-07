@@ -11,7 +11,7 @@
                                                   .require("@skey")
                                 })
                                 .request(request => {
-                                        request.path("/@sname/{@skey}")
+                                        request.path("{@skey}")
                                                 .description("get single @sname");;
                                 })
                                 .req(req => {

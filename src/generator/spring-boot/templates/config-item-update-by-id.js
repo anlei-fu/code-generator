@@ -2,31 +2,22 @@
 @updateMsg@@
                         new ConfigItemBuilder()
                                 .type("update")
-                                .id("updateBy@updateMethodName")
+                                .id("update")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.@sname.columnsArray)
-                                                  .excludes("@skey")
-                                                  .list("@skey")
 @updateExcludes
                                 })
                                 .conditions(collection => {
-                                        collection.includes("@skey")
-                                                  .require("@skey")
+                                        collection.require("@skey")
                                 })
                                 .request(request => {
-                                        request.path("/@sname/{@skey}")
+                                        request.path("")
                                                .description("update single @sname");;
-                                })
-                                .req(req => {
-                                        req.name("@skey")
-                                           .type("@keyType")
-                                           .from("@PathVariable");
                                 })
 @updateUserReq@@                
                                 .req(req => {
                                         req.doCreate()
-                                           .excludes("@skey")
 @updateReq
                                            .name("Update@tnameReq")                                                
                                 })

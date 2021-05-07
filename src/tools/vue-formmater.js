@@ -6,4 +6,4 @@ function main(folder,ignore){
  }
  
  /***********************************************main********************************************************/
- main("C:/Users/Administrator/Desktop/Projects/vue-admin/spider",x=>x=='F:/业务开发项目_研发一/contract-sign-admin/src/components/layout/home/Aside.vue');
+ main("F:/业务开发项目_研发一/os-admin-web/infoFlowSupport",x=>x=='F:/业务开发项目_研发一/contract-sign-admin/src/components/layout/home/Aside.vue');

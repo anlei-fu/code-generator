@@ -1,0 +1,239 @@
+<html>
+
+<head>
+        <script src="./echarts.min.js"></script>
+        <script src="./jquery-2.1.4.min.js"></script>
+        <script src="./jquery.cookie.js"></script>
+</head>
+
+<body>
+        <script>
+                $(() => {
+                        init();
+                })
+
+                const DATA_LIST = "list";
+                const GET_DATA = "/data";
+
+                async function init() {
+                        let data = await get(DATA_LIST);
+                        debugger
+                        data.forEach(x => {
+                                $("#options").append(`<option value="${x}">${x}</option>`);
+                        });
+
+
+                        $("#params").val(localStorage.getItem($("#options").val() + "p"));
+
+                        $("#options").change(() => {
+                                let key = $("#options").val();
+                                let params = localStorage.getItem(key + "p");
+                                $("#params").val(params);
+                        })
+
+                        $("#show").click(async () => {
+                                let params;
+                                try {
+                                        params = JSON.parse($("#params").val());
+                                } catch {
+                                        alert("error params");
+                                        return;
+                                }
+
+                                let resp = await get($("#options").val(), params);
+                                if (resp.code == "100") {
+                                        let key = $("#options").val();
+                                        localStorage.setItem(key + "p", $("#params").val());
+                                        renderChart(resp.data);
+                                } else {
+                                        alert(resp.msg);
+                                }
+                        });
+
+                        $("#save").click(() => {
+                                if (mychart) {
+                                        debugger
+                                        let showing = mychart.getOption().legend[0].selected;
+                                        let key = $("#options").val();
+                                        localStorage.setItem(key, JSON.stringify(showing));
+                                }
+                        })
+                }
+
+                function get(api, data) {
+                        return new Promise((resolve, reject) => {
+                                $.ajax({
+                                        url: "http://localhost:10056/" + api,
+                                        data,
+                                        async: true,
+                                        success: resp => {
+                                                resolve(resp);
+                                        },
+                                        error: err => {
+                                                alert("error happend！");
+                                                reject(err);
+                                        }
+                                })
+                        });
+                }
+                let mychart;
+                function renderChart(data) {
+                        let key = $("#options").val();
+                        let showing = localStorage.getItem(key);
+                        data.list = data.list.sort((x, y) => x.time - y.time);
+                        var legend = {
+                                data: [],
+                                selected: {
+
+                                },
+                                left: 10,
+                                top: 30
+                        };
+
+                        if (showing) {
+                                legend.selected = JSON.parse(showing);
+                        }
+
+                        if (mychart)
+                                mychart.dispose();
+
+
+                        mychart = echarts.init(document.getElementById('container'));
+
+                        var option = {
+                                padding: 10,
+                                backgroundColor: '#EEEEEE',
+                                title: {
+                                        text: 'Data-view',
+                                        left: 'center',
+                                },
+                                tooltip: {
+                                        trigger: 'axis',
+                                        axisPointer: {
+                                                type: 'cross',
+                                                crossStyle: {
+                                                        color: '#999'
+                                                }
+                                        }
+                                },
+                                toolbox: {
+                                        feature: {
+                                                dataView: { show: true, readOnly: false },
+                                                magicType: { show: true, type: ['line', 'bar'] },
+                                                restore: { show: true },
+                                                saveAsImage: { show: true },
+                                                dataZoom:
+                                                {
+                                                        realtime: false,
+                                                        yAxisIndex: 'none',
+                                                },
+                                                restore: {},
+                                        }
+                                },
+                                legend,
+                                xAxis: [
+                                        {
+                                                type: 'category',
+                                                data: getColumnData(data.list, data.xAxis),
+                                                axisPointer: {
+                                                        type: 'shadow'
+                                                }
+                                        }
+                                ],
+
+                                yAxis: [
+
+                                ],
+                                series: [
+                                ],
+                                dataZoom: [
+                                        { type: 'inside' },        //用于添加滚轮缩放
+                                        { type: 'slider' },  //用于添加滑动条缩放，
+                                ],
+                        };
+
+                        data.configs.forEach((config, index) => {
+                                option.yAxis.push({
+
+                                        type: 'value',
+                                        offset: 100 + 50 * index,
+                                        axisLabel: {
+                                                formatter: '{value}'
+                                        },
+                                });
+
+
+                                legend.data.push(config.key); 65
+                                option.series.push(buildSerials(data, config.key, config.type || "line", index));
+                        })
+
+                        mychart.setOption(option);
+                }
+
+                function buildSerials(data, field, type, axis) {
+                        return {
+                                name: field,
+                                type,
+                                data: getColumnData(data.list, field),
+                                yAxisIndex: axis,
+                                itemStyle: { normal: { label: { show: true, position: 'top' } } },
+                        }
+                }
+
+                function getColumnData(data, column) {
+                        let results = []
+                        data.forEach(item => {
+                                results.push(item[column]);
+                        });
+
+                        return results;
+                }
+
+        </script>
+        <style>
+                .container {
+                        margin-top: 20px;
+                        width: 100%;
+                        height: 750px;
+                        display: inline;
+                }
+
+                #word {
+                        line-height: 29px;
+                        display: inline-block;
+                        width: 319px;
+                        padding: 0px 7px;
+                }
+
+                #show {
+                        line-height: 29px;
+                        padding: 0px 25px;
+                        margin-left: 5px;
+                }
+
+                #save {
+                        line-height: 29px;
+                        padding: 0px 25px;
+                        margin-left: 5px;
+                }
+        </style>
+        <div style="text-align:center;">
+                <div>
+                        <select id="options" style="width: 215px;height: 31px;"></select>
+                        <textarea rows="8" id="params" cols="10" style=" width: 400px;
+                        vertical-align: middle;"></textarea>
+                        <button type="button" id="show">View</button>
+                        <button type="button" id="save">Save</button>
+                </div>
+
+        </div>
+        <div style="width:100%; text-align: center;">
+                <div class="container" id="container" style="display: inline-block;">
+
+                </div>
+        </div>
+
+
+</body>
+
+</html>

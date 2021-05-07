@@ -61,8 +61,14 @@ function toggleItem(name){
 function checkBoxChangeHandler(checkBox){
     checkBox.value=checkBox.checked?0:1;
 }
-
-
+ var value =$.cookie("ProductType");
+ var set =new Set(value.split(","));
+ $("input[name='ProductType']").each(x=>{
+        var v= $(x).val();
+        if(set.has(v)){
+                $(x).attr("checked",true);
+        }
+ });
 
 </script>
 <form id="mainForm" method="post">
@@ -255,4 +261,10 @@ function checkBoxChangeHandler(checkBox){
 
     </table>
 </div>
+<style>
+    border-top: 1px solid #BABABA;
+    border-left: 1px solid #BABABA;
+    border-right: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+</style>
 </form>

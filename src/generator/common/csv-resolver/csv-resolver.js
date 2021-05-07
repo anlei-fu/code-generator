@@ -1,6 +1,6 @@
 const { STR } = require("./../../../libs/str");
 const { LoggerFactory } = require("./../logging/logger-factory");
-const { CharSequenceReader } = require("./../tokenization/char-sequence-reader");
+const { CharSequenceReader } = require("./../../../tools/tokenization/char-sequence-reader");
 
 const LOG = LoggerFactory.getLogger("csv-resolver");
 

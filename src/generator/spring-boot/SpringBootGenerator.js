@@ -4,7 +4,9 @@ const { Entity } = require("./builders/Entity");
 const { OBJECT } = require("../../libs/utils");
 const { STR } = require("../../libs/str");
 const { ReqUtils } = require("./ReqUtils");
-const { getJavaType, isJavaBaseType } = require("./utils");
+const { COMMON_UTILS } = require("./../common");
+const { NamingStrategy } = require("../../libs");
+const { FieldAnalyzer } = require("./FieldAnalyzer")
 
 /**
  *  Genearte web project with spring-boot, mysql, mybatis, vue, ivue and  maven 
@@ -44,8 +46,8 @@ class SpringBootGenerator {
                 this._configGroup.items.forEach(configItem => {
 
                         // 'get detail page' use the same req as 'get page req'
-                        let write = !configItem.id.includes("Detail");
-                        this._generateReq(configItem, write);
+                        // let write = !configItem.id.includes("Detail");
+                        this._generateReq(configItem, true);
 
                         this._generateResp(configItem);
                         this._generateParams(configItem);
@@ -106,11 +108,11 @@ class SpringBootGenerator {
                         if (req.doCreate) {
                                 this._initEntityBasicInfo(configItem, req, "Req");
                                 hasDocreateReq = true;
-                        }else{
-                               if(!isJavaBaseType(req.type)){
-                                       req.name="Req";
-                                       req.type=STR.upperFirstLetter(configItem.table.name);
-                               }
+                        } else {
+                                if (!COMMON_UTILS.isJavaBaseType(req.type)) {
+                                        req.name = "Req";
+                                        req.type = STR.upperFirstLetter(configItem.table.name);
+                                }
                         }
                 });
 
@@ -122,7 +124,7 @@ class SpringBootGenerator {
 
                 // set controller default path and description if not configed
                 if (!configItem.noController) {
-                        configItem.controller.path = configItem.controller.path || `/${STR.lowerFirstLetter(configItem.name)}/${configItem.id}`;
+                        configItem.controller.path = configItem.controller.path;
                         configItem.controller.description = configItem.controller.description || "";
                 }
 
@@ -198,7 +200,7 @@ class SpringBootGenerator {
          */
         _initTable(table) {
                 OBJECT.forEach(table.columns, (_, column) => {
-                        column.type = getJavaType(column.type);
+                        column.type = COMMON_UTILS.getJavaType(column.type,column.name);
                 });
         }
 
@@ -253,7 +255,20 @@ class SpringBootGenerator {
                 entityModel.name = this._configGroup.name;
                 entityModel.type = "entity";
                 entityModel.description = this._configGroup.table.description;
-                entityModel.fields = OBJECT.toArray(this._configGroup.table.columns);
+                entityModel.fields = OBJECT.clone(OBJECT.toArray(this._configGroup.table.columns));
+                let pk = entityModel.fields.filter(x => x.isPk);
+                if (pk.length > 0) {
+                        pk[0].validates = ["@Id"];
+                }
+
+                entityModel.fields.forEach(x => {
+                        if (!x.validates) {
+                                x.validates = [`@Column(name = "\`${NamingStrategy.toHungary(x.name)}\`")`];
+                        } else {
+                                x.validates.push(`@Column(name = "\`${NamingStrategy.toHungary(x.name)}\`")`);
+                        }
+                });
+
                 let content = this._context.render.renderEntity(entityModel);
                 this._writeEntity(content, "entity", this._configGroup.name);
         }
@@ -333,25 +348,16 @@ class SpringBootGenerator {
         _generateReq(configItem, write) {
                 configItem.reqs.forEach(req => {
                         if (req.doCreate) {
-                                let entityConfig = {};
-                                entityConfig.fields = ReqUtils.analyzeDocreateReqFields(configItem, req);
-                                entityConfig.description = req.description;
-                                entityConfig.name = req.type;
-                                entityConfig.type = "req";
-                                req.fields = entityConfig.fields;
-
-                                entityConfig.extends =
-                                        configItem.type == "select" && !configItem.resp.single && !configItem.resp.list
-                                                ? "PageReq" : "";
-
+                                let entityConfig = FieldAnalyzer.analyzeReq(configItem);
                                 let content = this._context.render.renderEntity(entityConfig);
-
                                 // avoid write twice such as page and detail page
                                 if (write)
                                         this._writeEntity(content, "req", req.type), write;
                         }
                 })
         }
+
+
 
         /**
          * Generate resp file
@@ -362,17 +368,7 @@ class SpringBootGenerator {
          */
         _generateResp(configItem) {
                 if (configItem.resp.doCreate) {
-                        let entityConfig = {};
-                        entityConfig.type = "resp";
-                        entityConfig.description = configItem.resp.description;
-
-                        entityConfig.fields =
-                                configItem.context.columnMerger.mergeIncludes(configItem);
-
-                        configItem.resp.type = configItem.resp.name;
-                        entityConfig.name = configItem.resp.type;
-                        configItem.resp.fields = entityConfig.fields;
-
+                        let entityConfig = FieldAnalyzer.analyzeResp(configItem);
                         let content = this._context.render.renderEntity(entityConfig);
                         this._writeEntity(content, "resp", configItem.resp.type);
                 }
@@ -467,6 +463,8 @@ class SpringBootGenerator {
                 // add imports and sort them
                 content = this._context.packageRender.renderPackage(content);
 
+                let packagePrefix = `import com.${this._context.company}.${this._context.project}.pojo.${entityType}.`;
+
                 if (entityType == "entity") {
                         this._context.writer.writeEntity(this._configGroup.name, content);
                 } else if (entityType == "req") {
@@ -477,9 +475,12 @@ class SpringBootGenerator {
                         this._context.writer.writeParams(entityName, content);
                 }
 
+
+
                 // add into package-render cache
                 this._context.packageRender.addPackage({
                         name: STR.upperFirstLetter(entityName),
+                        package: packagePrefix + STR.upperFirstLetter(entityName) + ";",
                         type: entityType,
                         isSystem: false
                 });

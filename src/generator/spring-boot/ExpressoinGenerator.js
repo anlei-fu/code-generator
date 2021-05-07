@@ -1,8 +1,12 @@
-const { getJavaType } = require("./utils");
+const { COMMON_UTILS } = require("./../common");
 const { ColumnConfig } = require("./builders/ColumnConfig");
 
 // Use to generate mapper 'if-test' expression and 'sql-expression'
 class ExpressoinGenerator {
+        constructor (stringCanBeEmpty = false) {
+                this._stringCanBeEmpty = stringCanBeEmpty;
+        }
+
         /**
          * Dispatch function 
          * 
@@ -34,7 +38,7 @@ class ExpressoinGenerator {
          */
         _generateUpdateExpressionCore(include) {
                 include.ifExpression = `${include.name} != null`;
-                if (getJavaType(include.type) == "String")
+                if (COMMON_UTILS.getJavaType(include.type, include.name) == "String" && !this._stringCanBeEmpty)
                         include.ifExpression += ` and ${include.name} != ''`;
         }
 
@@ -54,8 +58,12 @@ class ExpressoinGenerator {
                         condition.ifExpression = `${condition.name}s != null and ${condition.name}s.size() != 0`
 
                 if (condition.type == "String") {
-                        if (condition.nullable)
-                                condition.ifExpression = `${condition.name} != null and ${condition.name} != ''`;
+                        if (condition.nullable) {
+                                condition.ifExpression = `${condition.name} != null `;
+                                if (!this._stringCanBeEmpty) {
+                                        condition.ifExpression += `and ${condition.name} != ''`;
+                                }
+                        }
 
                         if (condition.like) {
                                 condition.expression = `@prefix${condition.column} like concat('%', #{${condition.like}}, '%')\r\n`;

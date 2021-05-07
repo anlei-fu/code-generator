@@ -90,9 +90,13 @@ function resolve(project, validateTable = defaultValidate) {
                                 return;
 
                         column.name = NamingStrategy.toCamel(column.column);
+                        // unique
+                        if( table.columns[column.name])
+                          return;
+
                         table.description = column.tableDescription;
                         column.rawName = column.column
-                        if(column.table=="DM_DOWN_PRODUCT"){
+                        if(column.table=="OS_UP_REWARD_GRADE"){
                                 let t =0;
                         }
 
@@ -192,6 +196,14 @@ function analyzePrimaryColumn(table) {
                         return;
                 }
         }
+
+        for (const key of Object.keys(table.columns)) {
+                if (STR.endsWithAny(key.toLowerCase(), ["no", "id"])) {
+                        table.columns[key].isPk = true;
+                        table.primaryColumn = key;
+                        return;
+                }
+        }
 }
 
 /*---------------------------------------------------------------main--------------------------------------------------------------------------------*/
@@ -199,4 +211,4 @@ function analyzePrimaryColumn(table) {
  * exports csv file from database -> put into resource folder -> then excuete this file
  */
 
-resolve("dm");
+resolve("os");

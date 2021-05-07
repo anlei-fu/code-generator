@@ -1,7 +1,6 @@
 const prettier = require("prettier");
-const { FILE } = require("./../../../libs/file");
-const { DIR } = require("./../../../libs/dir");
-const { LoggerFactory } = require("./../logging/logger-factory");
+const { FILE, DIR } = require("./../../libs");
+const { LoggerFactory } = require("./../../logging");
 const LOG = LoggerFactory.getLogger("prettier-formmater");
 
 const JS_FORMAT_CONFIG = {
@@ -60,7 +59,7 @@ class PrettierFormatter {
                                 try {
                                         this.formatVueFile(`${folder}/${file}`);
                                         LOG.info(`${folder}/${file}  formatted`);
-                                } catch{
+                                } catch {
                                         LOG.error(`${folder}/${file}  failed`);
                                 }
                         }

@@ -2,7 +2,6 @@
 
 
 const { STR } = require("../../libs/str");
-const { config } = require("./outputs/DMSystem--ToPlanAudience/config");
 const { renders } = require("./renders/render")
 const { Writer } = require("./writer")
 
@@ -178,19 +177,25 @@ class Generator {
            @items
    </UrlGroup>`;
 
-                let items = `<url title="查询" name="^/@table/Index([\w/]*)$"/>`;
-                if (config._delete) {
-                        items += `<url title="删除" name="^/@table/Delete([\w/]*)$"/>`;
+                let items = `<url title="查询" name="^/@table/Index([\w/]*)$"/>\r\n`;
+                if (this._config._delete) {
+                        items += `<url title="删除" name="^/@table/Delete([\w/]*)$"/>\r\n`;
                 }
 
-                if (config.edit || config.add)
-                        items += `<url title="删除" name="^/@table/Item([\w/]*)$"/>`;
+                if (this._config.edit || this._config.add)
+                        items += `<url title="添加" name="^/@table/Item([\w/]*)$"/>\r\n`;
 
-                if (config.exportExcel)
-                        items += `<url title="删除" name="^/@table/ExportExcel([\w/]*)$"/>`;
+                if (this._config.exportExcel)
+                        items += `<url title="导出Excel" name="^/@table/ExportExcel([\w/]*)$"/>\r\n`;
 
-                if (config.BatchChangeStatus)
-                        items += `<url title="删除" name="^/@table/BatchChangeStatus([\w/]*)$"/>`;
+                if (this._config.batchChangeStatus)
+                        items += `<url title="批量修改状态" name="^/@table/BatchChangeStatus([\w/]*)$"/>\r\n`;
+
+                if (this._config.batchDelete)
+                        items += `<url title="批量删除" name="^/@table/BatchDelete([\w/]*)$"/>\r\n`;
+
+                if (this._config.clone)
+                        items += `<url title="批量删除" name="^/@table/Clone([\w/]*)$"/>\r\n`;
 
                 let table = STR.upperFirstLetter(this._config.table.name);
 

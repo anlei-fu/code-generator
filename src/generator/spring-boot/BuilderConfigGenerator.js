@@ -1,17 +1,23 @@
-const { FILE } = require("../../libs/file");
-const { OBJECT } = require("../../libs/utils");
-const { GenerateConfigBuilder } = require("./builders/GenerateConfig");
-
+const { FILE, OBJECT } = require("../../libs");
 class GenerateConfigGenerator {
-        generate(targetFolder,tables,project) {
+        generate(targetFolder, tables, project) {
                 let items = {};
-                let builder = new GenerateConfigBuilder();
                 Object.keys(tables).forEach(table => {
-                        items[table] = builder.all()
-                                .noDetail()
-                                .noGetAll()
-                                .noCount()
-                                .build();
+                        // Set default generate config
+                        items[table] = {
+                                add: true,
+                                addBatch: false,
+                                deleteById: true,
+                                deleteBatch: false,
+                                updateById: true,
+                                updateBatch: false,
+                                getById: false,
+                                getPage: false,
+                                getDetailById: false,
+                                getAll: false,
+                                count: false,
+                                getDetailPage: true
+                        };
                 });
 
                 FILE.write(`${targetFolder}/${project}/generateConfig.js`, OBJECT.export_(items, "config"))

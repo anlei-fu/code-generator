@@ -8,8 +8,14 @@
  */
 
 const mysql = require("mysql");
+<<<<<<< HEAD
 const { OBJECT,NamingStrategy } = require("../../../libs");
 const {LoggerFactory}=require("./../../../logging");
+=======
+const {NamingStrategy } = require("./../../../libs");
+const { OBJECT } = require("./../../../libs");
+const {LoggerFactory}=require("../../../logging/logger-factory");
+>>>>>>> e91563e6312f82450bb2ed2e3cc4a2ff6a189d4f
 
 const LOG=LoggerFactory.getLogger("mysql-excutor");
 
@@ -20,6 +26,29 @@ class MysqlExcutor {
          */
         constructor(config) {
                 this._pool = mysql.createPool(config);
+        }
+
+
+        /**
+         * query single value
+         * 
+         * @param {String} sql 
+         */
+        queryScalar(sql){
+                return new Promise((resolve, reject) => {
+                        this._pool.query(sql, (error, results) => {
+                                if (error) {
+                                        reject(error)
+                                } else {
+                                        let value =results[0];
+                                        let keys = Object.keys(value);
+                                        if(keys.length==0)
+                                          resolve(value);
+
+                                        resolve(value[keys[0]]);
+                                }
+                        });
+                });
         }
 
         /**

@@ -1,3 +1,4 @@
+const { COMMON_UTILS } = require("./../common/utils")
 
 /**
  * Convert SqlType to c# type
@@ -11,7 +12,9 @@ function getCSharpType(sqlType) {
         if (sqlType.name.toLowerCase().includes("date"))
                 return "DateTime";
 
-        return sqlType.length > 20 ? "decimal" : "int";
+        let type = sqlType.length > 20 ? "decimal" : "int";
+
+        return COMMON_UTILS.DEFAULT_FLOAT_MATCHER(type) ? "decimal" : type;
 }
 
 exports.getCSharpType = getCSharpType;

@@ -58,7 +58,7 @@ function init(table, config) {
         if (config.edit) {
                 config.operations.push({
                         condition: "",
-                        function: `add('@item.${table.primaryColumn}','编辑')`,
+                        function: `add('@item.${STR.upperFirstLetter(table.primaryColumn)}','编辑')`,
                         lable: "编辑"
                 });
         }
@@ -314,6 +314,9 @@ function buildAddConfig(table, config) {
         };
 
         OBJECT.forEach(table.columns, (key, column) => {
+                if(column.isPk)
+                  return;
+
                 if (!insertAnalyzer.shouldBeCandidate(column))
                         return;
 

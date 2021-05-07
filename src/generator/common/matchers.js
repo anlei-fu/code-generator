@@ -40,7 +40,7 @@ exports.Matcher = {
         ),
 
         // match id field
-        isIdFields: x => STR.endsWithAny(x, ["id", "no"]),
+        isIdFields: x => STR.endsWithAny(x, ["id", "no","name"]),
 
         isUpdateUser: x => STR.includesAny(x.toLowerCase(), ["update", "edit", "modify"])
                 && STR.includesAny(x.toLowerCase(), ["user"])

@@ -1,51 +1,17 @@
-@model @project.Model.@nameItemModel
+@model DMSystem.Model.DmDownScriptItemModel
+@using DMSystem.Utility
+@using DMSystem.Entity
 <script type="text/javascript">
-    $(function () {
-        $('#mainForm').validate({
-            errorClass: "error",
-            focusInvalid: true,
-            submitHandler: function (form) {
-                if (!$(form).valid()) {
-                    return false;
-                }
-                var data = $(form).serialize();
-                $.ajax({
-                    type: "post",
-                    data: data,
-                    url: "/@name/item",
-                    success: function (data) {
-                        data = $.parseJSON(data);
-                        if (data.Status) {
-                            var id = $('input[name=__id]').val();
-                            alert(data.Message);
-                            if (id != '') {
-                                location.reload();
-                            }
-                            return true;
-                        } else {
-                            alert(data.Message);
-                        }
-                        return false;
-                    },
-                    error: function () {
-                        alert("请求出错");
-                    }
-                });
-            },
-            rules: {
-@rules
-            },
-            messages: {
-        }
-    });
-    
-    $('select').each(function () {
-        if ($(this).css('display') != "none") {
-            $(this).sSelect();
-        }
-    });
-});
+    $(()=>{
+        CascaderHelper.bindPlatAgent("#plat2","#agent2");
+        var rules =new RuleBuilder()
+                       .require([
+                         @requiredFields
+                        ])
+                       .build();
 
+        EditPageHelper.init("/@name/Item",rules);
+     })
 
 </script>
 <form id="mainForm" method="post">

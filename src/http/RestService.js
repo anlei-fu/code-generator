@@ -25,7 +25,7 @@ class RestService extends Service {
      * 
      * @param {[Controller]} controllers 
      */
-    constructor (port, controllers = []) {
+    constructor (port, controllers = [],staticFolder) {
         validateUtils.requireNumber(port);
         super("RestService");
         this._controllers = controllers;
@@ -34,6 +34,10 @@ class RestService extends Service {
         });
 
         this._port = port;
+
+        if(staticFolder){
+            app.use(express.static(staticFolder));
+        }
     }
 
     /**

@@ -1,7 +1,7 @@
 const { GoogleJavaFormatter } = require("./../generator/common/formatter/GoogleJavaFormatter");
 
-function main(folder){
-       let formatter =new GoogleJavaFormatter();
+function main(folder) {
+       let formatter = new GoogleJavaFormatter();
        formatter.formatFolder(folder);
 }
 

@@ -10,7 +10,7 @@
 @insertExcludes
                                 })
                                 .request(request => {
-                                        request.path("/@sname/batch")
+                                        request.path("/@spname/batch")
                                                 .description("bacth add @sname");
                                 })
 @insertUserReq@@

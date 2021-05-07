@@ -1,203 +1,61 @@
 <script>
+    function MRCenterOrder() {
+        this.bind = function () {
+            $.paging.config.form = "#conditionForm";
+            $.paging.bind();
+            $("#ddlps").val($("#ps").val());
+            $("#ddlps").change(function () {
+                $("#ps").val($(this).val());
+            });
+            $(".list_submit").click(function () {
+                var level = $("#Grade").val();
+                $.cookie("PrincipalLevel", level, { expires: 10 });
+                $.paging.submit();
 
-    gfile', imgfile[0]);
+            });
+        }
+    }
 
-    var url = '/DMTermInfo/Import?' + 'time=' + new Date()
-    var xhr = new XMLHtt$(function () {
-        $('#mainForm').validate({
-            errorClass: "error",
-            focusInvalid: true,
-            submitHandler: function (form) {
-                if (!$(form).valid()) {
-                    return false;
-                }
-                var data = $(form).serialize();
+    $(function () {
 
-                $.ajax({
-                    type: "post",
-                    data: data,
-                    url: "/DMTermInfo/Item",
-                    success: function (data) {
-                        data = $.parseJSON(data);
-                        alert(data.Message);
-                        if (data.Status) {
-                            $.paging.submit();
-                        }
-                        return false;
-                    },
-                    error: function () {
-                        alert("请求出错");
-                    }
-                });
-            },
-            rules: {
-                TermName: { required: true }
-            },
-            errorPlacement: function (error, element) {
-                var msg = element.parent('#mainForm .js-sSelect');
-                if (msg.length <= 0) {
-                    error.appendTo(element.parent());
-                } else {
-                    error.appendTo(msg.parent());
-                }
-            }
-        });
+        var order = new MRCenterOrder();
+        order.bind();
 
-        $('select').each(function () {
-            if ($(this).css('display') != "none") {
-                $(this).sSelect();
-            }
-        });
+        $("#btnExport").click(() =>
+            exportExcel()
+        );
+
     });
 
-    function postFile() {
-        var imgfile = $('#UploadImg')[0].files
-
-        if (imgfile.size < 1) {
-            alert('请上传文件')
-            return false
-        }
-
-        var formdata = new FormData();
-        formdata.append('impRequest; //当前jquery版本提交formdata 会出错
-        xhr.open('post', url);
-
-        xhr.setRequestHeader("If-Modified-Since", "0");
-        xhr.send(formdata);
-        //xhr.setRequestHeader('If-Modified-Since', '0'); //禁用缓存
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var ret = $.parseJSON(xhr.response)
-                if (ret.Status) {
-                    alert("导入成功")
-                    $('input[name=ImageUrl]').val(ret.Message)
-                    $('#urlShow').text(ret.Message)
-                } else {
-                    alert(ret.Message)
-                }
-            }
-        }
+    function exportExcel() {
+        conditionForm.action = "/DMOrderMain/ExportPrincipalReport";
+        conditionForm.target = "_blank";
+        conditionForm.method = "post";
+        conditionForm.submit();
+        conditionForm.action = "";
+        conditionForm.target = "";
+        conditionForm.method = "get"
+        return false;
     }
 
-    function reloadSubselect({ containerId, filterId, url, paramName = "id", errMsg = "获取数据失败", withAll = false, allValue = "*" }) {
-
-        let u = `${url}?${paramName}=${$(filterId).val()}`;
-        console.log(u);
-        $(containerId).empty();
-        $.ajax({
-            url: `${url}?${paramName}=${$(filterId).val()}`,
-            type: "get",
-            success: (resp) => {
-                var data = $.parseJSON(resp);
-
-                if (!withAll) {
-                    $("<option value=''>--请选择--</option>").appendTo(containerId);
-                } else {
-                    $(`<option value='${allValue}'>--所有--</option>`).appendTo(containerId);
-                }
-                data.forEach(x => {
-                    $(`<option value="${x[value]}">${x[label]}</option>`).appendTo(containerId);
-                });
-                if ($(containerId).next().is(".js-sSelect")) {
-                    var width = $(containerId).next().attr("offsetWidth");
-                    $(containerId).next().remove();
-                    $(containerId).sSelect({ defaultWidth: width });
-                }
-            },
-            error: err => {
-                alert("获取产品失败");
-            }
-
+    $(() => {
+        $("#ReportType").change(x => {
+            changeTime();
         });
 
+        changeTime();
+
+    });
+
+    function changeTime() {
+
+        if ($("#ReportType").val() == "3") {
+            $("#dayDate").show();
+            $("#monthDate").hide();
+
+        } else {
+            $("#dayDate").hide();
+            $("#monthDate").show();
+        }
     }
-
-
-    function bindCascader({ containerId, filterId, url, paramName = "id", errMsg = "获取数据失败", withAll = false, allValue = "*", label = "Name", value = "Value" }) {
-        if (!containerId || !filterId || !url)
-            throw new Error("required params absent");
-
-        $(filterId).change(() => {
-            reloadSubselect({ containerId, filterId, url, paramName, errMsg, withAll, allValue, label, value });
-        });
-    }
-
-    $(() => bindCascader({ containerId: "#container", filterId: "#filter", url: "/DmTermInfo/GetDomainByAgentNo", paramName: "agentNo" }));
-</script>
-
-<script>
-
-    var incomeMap = {
-        // 无星级
-        "0": {
-            phone: 12.92,
-            flow: 17.1,
-        },
-        // 1星级
-        "1": {
-            phone: 23.96,
-            flow: 17.1,
-        },
-        // 2星级
-        "2": {
-            phone: 25.19,
-            flow: 17.1,
-        },
-        // 3星级
-        "3": {
-            phone: 28.01,
-            flow: 17.1,
-        },
-        // 4无星级
-        "4": {
-            phone: 29.11,
-            flow: 17.1,
-        },
-        // 5星级
-        "5": {
-            phone: 31.67,
-            flow: 17.1,
-        },
-        // 5c星级
-        "5c": {
-            phone: 32.70,
-            flow: 17.1,
-        },
-        // 5b星级
-        "5b": {
-            phone: 33.39,
-            flow: 17.1,
-        },
-        // 无星级
-        "5a": {
-            phone: 35.00,
-            flow: 17.1,
-        },
-        // 无星级
-        "6c": {
-            phone: 35.69,
-            flow: 17.1,
-        },
-        // 无星级
-        "6b": {
-            phone: 36.38,
-            flow: 17.1,
-        },
-        // 无星级
-        "6a": {
-            phone: 36.38,
-            flow: 17.1,
-        },
-    };    
-
-    function changeIncome(){
-       var level= $("#income_level").val();
-       $("#phone_income").val(incomeMap[level].phone);
-       $("#flow_income").val(incomeMap[level].flow);
-    }
-
-    $(()=>{
-        $("#income_level").change(()=>changeIncome());
-    })
-
 </script>
