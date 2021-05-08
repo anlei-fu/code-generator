@@ -1,12 +1,18 @@
-const { OBJECT,ARRAY } = require("../../../libs/utils");
+const { OBJECT, ARRAY } = require("../../../libs/utils");
 const { STR } = require("../../../libs/str");
 const { GraphBuilder } = require("../../markdown/graph");
 
 class TableRelationMarkdownGenerator {
 
-        constructor (relations,maxDepth=1) {
+        /**
+         * Constructor of TableRelationMarkdownGenerator
+         * 
+         * @param {[TableRelation]} relations   
+         * @param {number} maxDepth 
+         */
+        constructor (relations, maxDepth = 1) {
                 this._relations = relations;
-                this._maxDepth=maxDepth;
+                this._maxDepth = maxDepth;
         }
 
         /**
@@ -26,14 +32,14 @@ class TableRelationMarkdownGenerator {
                         });
 
                         content += builder.build() + "---\r\n";
-                        let item="";
-                        ARRAY.distinct(STR.splitToLines(content)).forEach(line=>{
-                           item+=line+"\r\n";
+                        let item = "";
+                        ARRAY.distinct(STR.splitToLines(content)).forEach(line => {
+                                item += line + "\r\n";
                         });
 
                         output.push({
                                 name: key,
-                                content:item
+                                content: item
                         });
                 });
 

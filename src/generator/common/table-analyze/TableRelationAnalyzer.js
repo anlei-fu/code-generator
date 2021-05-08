@@ -6,6 +6,9 @@ const { LoggerFactory } = require("../logging/logger-factory")
 
 const LOG = LoggerFactory.getLogger("Table relation resolver");
 
+/**
+ * Table meta info
+ */
 class TableMetaInfo {
         constructor () {
 
@@ -102,6 +105,17 @@ const RELATION_COLUMN_CANDIDATES_MATCHERS = {
                                 && columnName != "No"
                 },
         },
+        Long: {
+                Id: {
+                        matcher: (columnName) => columnName.endsWith("Id")
+                                && columnName != "Id"
+                },
+                No: {
+                        matcher: columnName => columnName.endsWith("No")
+                                && !STR.includesAny(columnName.toLowerCase(), ["phone", "post", "card", "id", "tel"])
+                                && columnName != "No"
+                },
+        },
 }
 
 const DEFAULT_KEYWORD_CANDIATE = ["up", "down", "order", "base", "fund", "bank", "company", "diff", "package"];
@@ -131,14 +145,54 @@ class TableRelationAnalyzer {
          * @param {Tables} tables 01
          */
         constructor (tables) {
-                this._candiadtesMatchers = RELATION_COLUMN_CANDIDATES_MATCHERS;
+                /**
+                 *  Use to check is the column a relation column
+                 */
+                this._relationColumnMatchers = RELATION_COLUMN_CANDIDATES_MATCHERS;
+                /**
+                 * Search result
+                 */
                 this._searcher = new SimpleFullTextSearcher();
+                /**
+                 * Tables
+                 */
                 this._tables = tables;
                 this._customerOtherTableColumnSelector;
+                /**
+                 * 
+                 */
                 this._uselessSuffix = new Set(["info", "main"]);
+                /**
+                 * Search result scorer
+                 */
                 this._customerSearchResultsMatcher;
+                /**
+                 * @type {(string,string) => string}
+                 */
                 this._customerKeywordsGenerator;
+                /**
+                 * To determine is table a main table
+                 */
                 this._mainTableMatchers = DEFAULT_MAIN_TABLE_MATCHERS;
+
+                /**
+                 * @type {(string)=>string}
+                 */
+                this._tableNameNormalizer = tableName => STR.replace(tableName, {
+                        "_main": "",
+                        "_info": "",
+                })
+
+                /**
+                 * @type {(string)=>string}
+                 */
+                this._columnNameNormalizer = columnName => {
+                        columnName = columnName.toLowerCase();
+                        return STR.replace(columnName, {
+                                "_no": "",
+                                "_id": "",
+                        })
+                };
 
                 this._initSearcher();
         }
@@ -150,22 +204,19 @@ class TableRelationAnalyzer {
          */
         analyze() {
                 let relations = {};
+
                 OBJECT.forEach(this._tables, (__, table) => {
                         OBJECT.forEach(table.columns, (_, column) => {
-
-                                if(column.name=="appInstanceId"){
-                                        let t=0;
-                                }
                                 //  there's no need to anlyze pk column
                                 if (column.isPk)
                                         return;
 
-                                column.type = COMMON_UTILS.getJavaType(column.type,column.name);
+                                column.type = COMMON_UTILS.getJavaType(column.type, column.name);
                                 if (!this._shouldBeCandidate(column.type, column.name, table.name))
                                         return;
 
-                                // pk check       
-                                let normalizeizedColumnName = this._normolizeColumnName(column.rawName.toLowerCase());
+                                // pk check       channel_no  down_channel self pk
+                                let normalizeizedColumnName = this._columnNameNormalizer(column.rawName.toLowerCase());
                                 if (table.rawName.toLowerCase().endsWith(normalizeizedColumnName.toLowerCase()))
                                         return;
 
@@ -184,7 +235,7 @@ class TableRelationAnalyzer {
          * @param {{Type:{Item:{matcher}}}} matchers 
          */
         useRelationColumnMatcher(matchers) {
-                OBJECT.deepExtend(this._candiadtesMatchers, matchers);
+                OBJECT.deepExtend(this._relationColumnMatchers, matchers);
         }
 
         /**
@@ -235,12 +286,11 @@ class TableRelationAnalyzer {
         _initSearcher() {
                 let docs = [];
                 OBJECT.forEach(this._tables, (tableName, table) => {
+                        // normalize table name
+                        let content = this._tableNameNormalizer(table.rawName);
                         docs.push({
                                 name: tableName,
-                                content: STR.replace(table.rawName.toLowerCase(), {
-                                        "_main": "",
-                                        "_info": "",
-                                }),
+                                content,
                                 weight: 1
                         });
                 })
@@ -262,12 +312,12 @@ class TableRelationAnalyzer {
         _shouldBeCandidate(type, columnName) {
 
                 // not surpported type
-                if (!this._candiadtesMatchers[type])
+                if (!this._relationColumnMatchers[type])
                         return false;
 
-                for (const key in this._candiadtesMatchers[type]) {
-                        let match = this._candiadtesMatchers[type][key].matcher
-                                ? this._candiadtesMatchers[type][key].matcher(columnName)
+                for (const key in this._relationColumnMatchers[type]) {
+                        let match = this._relationColumnMatchers[type][key].matcher
+                                ? this._relationColumnMatchers[type][key].matcher(columnName)
                                 : DEFAULT_MATCHER(columnName, key);
 
                         if (match)
@@ -356,6 +406,7 @@ class TableRelationAnalyzer {
 
                 // normalize 
                 let columnSegs = this._normolizeColumnName(columnRawName.toLowerCase()).split("_");
+                // ???
                 if (columnSegs[columnSegs.length - 1] == "")
                         columnSegs.pop();
 
@@ -376,7 +427,7 @@ class TableRelationAnalyzer {
                         if (this._uselessSuffix.has(tableSegs[tableSegs.length - 1]))
                                 tableSegs.pop();
 
-                        // same end seg ,return
+                        // same end seg , return best result
                         if (columnSegs[columnSegs.length - 1] == tableSegs[tableSegs.length - 1])
                                 return result;
                 };
