@@ -1,5 +1,8 @@
 const { SimpleRender } = require("../generator/common/renders/SimplePatterRender");
-const { FILE } = require("../libs");
+const { FILE, STR } = require("../libs");
+const {JsTypeAnalyzer} =require("./js-type-analyzer");
+
+let analyzer =new JsTypeAnalyzer();
 
 const builderRender = new SimpleRender({}, `./templates/builder.js`);
 const builderItemRender = new SimpleRender({}, `./templates/builderItem.js`);
@@ -14,15 +17,17 @@ function main(modelName, items) {
         items.forEach(item => {
                 content += builderItemRender.renderTemplate({
                         name: item,
-                        config: modelName
+                        config: modelName,
+                        type:analyzer.analyze(item)
                 });
         });
 
+        modelName =STR.upperFirstLetter(modelName);
         content = builderRender.renderTemplate({
                 config: modelName,
                 content
         });
-        FILE.write(`./output/${modelName}Builder.js`, content);
+        // FILE.write(`./output/${modelName}Builder.js`, content);
         return content;
 
 }

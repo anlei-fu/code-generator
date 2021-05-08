@@ -32,20 +32,73 @@ class EnumBuilder {
         }
 }
 
-let name = "TaskStatus";
-let builder = new EnumBuilder();
-builder.items(
-        [
-              "wait",
-              "excuting",
-              "success",
-              "blocked"
-        ]
-);
+/**
+ * 
+ * @param {String} name 
+ * @param {[String]} items 
+ */
+function main(name,items){
+        let builder = new EnumBuilder();
+        builder.items(
+               items
+        );
+        let enums = builder.build();
+        FILE.write(
+                `C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/admin-generator/web/constant/${name}.js`,
+                OBJECT.export_(enums, name)
+        );
+}
 
-let enums = builder.build();
+// main("JoinType",
+//   [
+//           "leftJoin",
+//           "innerJoin",
+//           "join",
+//           "fullJoin",
+//           "rightJoin"
+//         ]
+// )
 
-FILE.write(
-        `C:/Users/Administrator/Desktop/Projects/code-generator/src/spider/constant/${name}.js`,
-        OBJECT.export_(enums, name)
-);
+// main("ControlType",
+//   [
+//           "Input",
+//           "Textarea",
+//           "Password",
+//           "Link",
+//           "CheckBox",
+//           "CheckBoxGroup",
+//           "TimeRange",
+//           "Time",
+//           "Radio",
+//           "RadioGroup",
+//           "Select",
+//           "MutipleSelect",
+//           "FileUpLoader"
+//         ]
+// )
+
+// main(
+//         "ValidateType",
+//         [
+//                 "number",
+//                 "require",
+//                 "range",
+//                 "intRange",
+//                 "min",
+//                 "max",
+//                 "email",
+//                 "phone",
+//                 "telephone",
+//                 "idNo",
+//                 "url",
+//                 "postCode",
+//                 "scope"
+//         ]
+// )
+// main("OrderByType",
+//   ["Asc","Desc"]
+// )
+
+
+
+

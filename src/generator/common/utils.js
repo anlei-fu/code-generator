@@ -344,7 +344,12 @@ const DEFAULT_DICTIONARY_MATCHERS = {
                                 "can",
                                 "should",
                                 "is",
-                                "has"
+                                "has",
+                                "permit",
+                                "allow",
+                                "need",
+                                "enable",
+                                "disable"
                         ])
                 },
         },
@@ -369,15 +374,64 @@ const DEFAULT_DICTIONARY_MATCHERS = {
                  */
                 startsWith: {
                         match: x => STR.endsWithAny(x.toLowerCase(), [
-                                "enable",
                                 "can",
                                 "should",
                                 "is",
-                                "has"
+                                "has",
+                                "permit",
+                                "allow",
+                                "need",
+                                "enable",
+                                "disable"
                         ])
                 },
         }
+}
 
+/**
+ * Default relation column matchers
+ */
+const DEFAULT_RELATION_CANDIDATE_COLUMN_MATCHERS = {
+        Id: {
+                matcher: (columnName) => columnName.endsWith("Id")
+                        && columnName != "Id"
+        },
+        Uid: {
+                matcher: (columnName) => columnName.endsWith("Uid")
+                        && columnName != "Uid"
+        },
+        No: {
+                matcher: (columnName) => columnName.endsWith("No")
+                        && columnName != "No"
+                        && !STR.includesAny(
+                                columnName.toLowerCase(),
+                                [
+                                        "phone",
+                                        "post",
+                                        "card",
+                                        "id",
+                                        "tel",
+                                        "serial",
+                                        "batch",
+                                        "code"
+                                ]
+                        )
+
+        }
+}
+
+/**
+ * To determine is the column a relation key candidate
+ * 
+ * @param {String} name 
+ */
+const DEFAULT_RELATION_CANDIDATE_COLUMN_MATCHER = name => {
+        for (let key in DEFAULT_RELATION_CANDIDATE_COLUMN_MATCHERS) {
+                if (DEFAULT_RELATION_CANDIDATE_COLUMN_MATCHERS[key].matcher(name))
+                        return true;
+        }
+
+        return false;
 }
 
 /**
@@ -572,5 +626,7 @@ module.exports.COMMON_UTILS = {
         DEFAULT_SQL_OPERATION_USER_FIELD_MATCHER,
         DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHERS,
         DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHER,
+        DEFAULT_RELATION_CANDIDATE_COLUMN_MATCHERS,
+        DEFAULT_RELATION_CANDIDATE_COLUMN_MATCHER,
         JAVA_TYPE
 }
