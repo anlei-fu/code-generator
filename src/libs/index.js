@@ -9,11 +9,7 @@ const { DebugUtils } = require("./debug-utils");
 const { idUtils } = require("./Id-utils");
 const { ThreadUtils } = require("./thread-utils");
 const { DATE } = require("./date");
-<<<<<<< HEAD
-const { RANDOM } = require("./random");
-=======
 const { StringBuilder } = require("./string-builder");
->>>>>>> e91563e6312f82450bb2ed2e3cc4a2ff6a189d4f
 
 module.exports = {
         STR,
@@ -28,10 +24,6 @@ module.exports = {
         idUtils,
         ThreadUtils,
         DATE,
-<<<<<<< HEAD
-        RANDOM
-=======
         CLI,
         StringBuilder
->>>>>>> e91563e6312f82450bb2ed2e3cc4a2ff6a189d4f
 }

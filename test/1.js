@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-let arr=[1,2,3,4];
-let arr1=arr.splice(1,1);
-console.log(arr);
-console.log("arra1");
-console.log(arr1);
-=======
 (function ($) {
   $.extend({
     tablesorter: new (function () {
@@ -684,4 +677,3 @@ console.log(arr1);
     },
   });
 })(jQuery);
->>>>>>> e91563e6312f82450bb2ed2e3cc4a2ff6a189d4f

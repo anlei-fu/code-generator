@@ -21,37 +21,17 @@ function main(modelName, items, withBuilder = true) {
         if (withBuilder)
                 content += builderGenerator(modelName, items);
 
-<<<<<<< HEAD
-        FILE.write(`D:/project/code-generator/src/spider/mock/news/template/${modelName}.js`, content);
-=======
         FILE.write(`C:/Users/Administrator/Desktop/Projects/vue-admin/spider/src/lib/chart/${modelName}.js`, content);
->>>>>>> e91563e6312f82450bb2ed2e3cc4a2ff6a189d4f
         return content;
 
 }
 
 /******************************************main**********************************8888*/
 main(
-<<<<<<< HEAD
-        "NewSiteGenerateConfig",
-        [
-                "name",
-                "domain",
-                "siteId",
-                "testUrl",
-                "title",
-                "author",
-                "date",
-                "content",
-                "encoding",
-                "navSelector",
-                "now"
-=======
         "Legend",
         [
                
 
 
->>>>>>> e91563e6312f82450bb2ed2e3cc4a2ff6a189d4f
         ],
 );
