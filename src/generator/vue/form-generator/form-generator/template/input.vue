@@ -1,0 +1,1 @@
+ <MyInput v-model="model.@name"  size="@size" :maxlength="100" placeHolder="请输入@label" width="100%" />

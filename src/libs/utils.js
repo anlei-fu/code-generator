@@ -107,8 +107,29 @@ function firstOrDefault(array, matcher) {
  * @param {Number} count 
  * @returns {[]}
  */
-function remove(array, startIndex, count = 0) {
-        return array.splice(startIndex, count);
+function remove(array, startIndex, count = 1) {
+        array.splice(startIndex, count);
+        return array;
+}
+
+/**
+ * Exchange Position
+ * 
+ * @param {[]} array 
+ * @param {Number} sourceIndex 
+ * @param {Number} targetIndex 
+ */
+function exchange(array, sourceIndex, targetIndex) {
+        if (sourceIndex == targetIndex)
+                return array;
+
+        let item = array[sourceIndex];
+        
+        remove(array, sourceIndex);
+        let move = sourceIndex > targetIndex ? 1 : -1;
+        array.splice(targetIndex + move, 0, item)
+
+        return array;
 }
 /**
  * Has any element satisfy

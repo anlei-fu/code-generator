@@ -1,0 +1,1 @@
+ <MyInput v-model="model.@name" size="@size" width="100%" type="textarea" placeHolder="请输入@label" :maxlength="100" :rows="3" />

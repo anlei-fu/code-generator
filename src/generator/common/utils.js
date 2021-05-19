@@ -54,6 +54,7 @@ const DEFAULT_TEXTAREA_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
         "info",
         "detail",
         "log",
+        "description"
 ])
 
 /**
