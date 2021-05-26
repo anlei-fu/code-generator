@@ -1,4 +1,4 @@
-const { OBJECT } = require("./../../../libs/utils");
+const { OBJECT } = require("../../../libs/type");
 const { STR } = require("./../../../libs/str");
 const { SimpleFullTextSearcher } = require("../full-text-index/simple-full-text-searcher");
 const { COMMON_UTILS } = require("./../../common");
@@ -200,12 +200,16 @@ class TableRelationAnalyzer {
         /**
          * Analyze table relations
          * 
+         * @param {[String]} tableNames
          * @returns {{TableRelation}}
          */
-        analyze() {
+        analyze(tableNames) {
                 let relations = {};
 
-                OBJECT.forEach(this._tables, (__, table) => {
+                OBJECT.forEach(this._tables, (tableName, table) => {
+                        if (tableNames && !tableNames.includes(tableName))
+                                return;
+
                         OBJECT.forEach(table.columns, (_, column) => {
                                 //  there's no need to anlyze pk column
                                 if (column.isPk)

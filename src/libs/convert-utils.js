@@ -2,7 +2,7 @@ function toNumber(value) {
         return parseFloat(value);
 }
 
-function toJsonString(value, beautiful) {
+function toJsonString(value = {}, beautiful) {
         return beautiful
                 ? JSON.stringify(value, null, "  ") : JSON.stringify(value);
 }

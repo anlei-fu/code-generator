@@ -13,12 +13,12 @@ const { OPERATORS } = require("./constants");
 
 
 class Tokenizer {
-        
+
         /**
          * 
          * @param {CharSequenceReader} reader 
          */
-        constructor(reader) {
+        constructor (reader) {
                 this._reader = reader;
                 this._output = [];
         }
@@ -199,10 +199,10 @@ class Tokenizer {
                         if (c == ".") {
                                 if (!dotFound) {
                                         dotFound = true;
-                                        temp+=".";
+                                        temp += ".";
                                 }
                                 else
-                                     break;
+                                        break;
                         } else if (REGEX.isNumber.test(c)) {
                                 temp += c;
                         } else {
@@ -272,7 +272,7 @@ class Tokenizer {
                                         }
                                         break;
                         }
-                        
+
                         if (end)
                                 break;
                 }

@@ -1,4 +1,4 @@
-const { OBJECT } = require("../../../libs/utils");
+const { OBJECT } = require("../../../libs/type");
 
 /**
  * Properties of document

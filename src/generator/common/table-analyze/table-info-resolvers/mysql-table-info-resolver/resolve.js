@@ -1,7 +1,7 @@
 const { generate } = require("../../../sqls/model/model-generator");
 const { TableRelationAnalyzer } = require("../../TableRelationAnalyzer");
 const { FILE } = require("../../../../../libs/file");
-const { OBJECT } = require("../../../../../libs/utils");
+const { OBJECT } = require("../../../../../libs/type");
 
 
 

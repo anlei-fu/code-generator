@@ -3,12 +3,15 @@ const { FILE } = require("./file");
 const { DIR } = require("./dir");
 const { CLI } = require("./cli");
 const { NamingStrategy } = require("./naming-strategy");
-const { OBJECT, ARRAY, TYPE } = require("./utils");
+const { TYPE } = require("./type");
+const { OBJECT } = require("./object");
+const { ARRAY } = require("./array");
 const { validateUtils } = require("./validate-utils");
 const { DebugUtils } = require("./debug-utils");
 const { idUtils } = require("./Id-utils");
 const { ThreadUtils } = require("./thread-utils");
 const { DATE } = require("./date");
+const { RANDOM } = require("./random");
 const { StringBuilder } = require("./string-builder");
 
 module.exports = {
@@ -25,5 +28,6 @@ module.exports = {
         ThreadUtils,
         DATE,
         CLI,
-        StringBuilder
+        StringBuilder,
+        RANDOM
 }

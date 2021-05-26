@@ -8,8 +8,16 @@ class ConsoleAppender {
                 if (logEvent.level == "error") {
                         console.log(chalk.redBright("[ERROR]") + chalk.magentaBright(`[${logEvent.time}]` + chalk.blueBright(`[${logEvent.name}]: `) + chalk.white(`${logEvent.msg || ""}`)));
 
-                        if (logEvent.error)
-                                console.log(chalk.white(logEvent.error.toString()));
+                        if (logEvent.error){
+                                if(logEvent.error.msg){
+                                        console.log(chalk.white(logEvent.error.msg));
+                                }
+
+                                if(logEvent.error.stack){
+                                        console.log(chalk.white(logEvent.error.stack));
+                                }
+                               
+                        }
 
                         if (logEvent.obj) {
                                 console.log("target:");

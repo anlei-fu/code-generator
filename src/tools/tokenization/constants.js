@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-10-15 14:49:19
  */
 
-const {ARRAY} =require("./../../libs/utils");
+const {ARRAY} =require("../../libs/type");
 
 const ops=['=','!','&','|','.','(',')','*','/','<','>',';','"','\'',',','%','+','-','[',']','?',':'];
 

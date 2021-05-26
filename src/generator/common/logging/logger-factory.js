@@ -1,6 +1,6 @@
 
 const chalk = require("chalk");
-const { OBJECT } = require("../../../libs/utils");
+const { OBJECT } = require("../../../libs/type");
 const { Logger } = require("./logger")
 
 // Init loggers

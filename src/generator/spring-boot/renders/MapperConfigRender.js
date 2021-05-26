@@ -1,6 +1,6 @@
 const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { NamingStrategy } = require("../../../libs/naming-strategy");
-const { OBJECT } = require("../../../libs/utils");
+const { OBJECT } = require("../../../libs/type");
 const { STR } = require("../../../libs/str");
 const { COMMON_UTILS } = require("../../common");
 const { ReqUtils } = require("../ReqUtils");

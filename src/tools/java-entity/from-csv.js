@@ -1,5 +1,5 @@
 const { FILE, NamingStrategy, STR } = require("../../libs");
-const {COMMON_UTILS} =require("./../../generator/common")
+const {COMMON_UTILS} =require("../../generator/common")
 
 /**
  * Generate csv file
@@ -41,4 +41,4 @@ function main(entityName, file = "1.csv") {
 }
 
 /******************************************************************************************************************* */
-main("GrowthStatVO");
+main("ProductTypeStatVO");

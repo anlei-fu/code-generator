@@ -8,22 +8,22 @@
  */
 
 const mysql = require("mysql");
-const { NamingStrategy } = require("./../../../../../libs/naming-strategy");
-const { OBJECT } = require("./../../../../../libs/utils");
-const {LoggerFactory}=require("./../../../logging/logger-factory");
+const { NamingStrategy,OBJECT } = require("./../../../../../libs");
+const { LoggerFactory } = require("./../../../logging/logger-factory");
 
-const LOG=LoggerFactory.getLogger("mysql-excutor");
+const LOG = LoggerFactory.getLogger("mysql-excutor");
 
 class MysqlExcutor {
         /**
          * 
-         * @param {DbConfig} config 
+         * @param { import ("mysql").PoolConfig} config 
          */
-        constructor(config) {
+        constructor (config) {
                 this._pool = mysql.createPool(config);
         }
 
         /**
+         * Query statement
          * 
          * @param {String} sql
          * @returns {Promise<[any]]>} 
@@ -42,6 +42,8 @@ class MysqlExcutor {
         }
 
         /**
+         * Execute statement
+         * 
          * @param {String} sql
          * @returns {Promise<number>}  fields effected
          * @exception {SqlError}
@@ -50,7 +52,7 @@ class MysqlExcutor {
                 return new Promise((resolve, reject) => {
                         this._pool.query(sql, (error, results, _) => {
                                 if (error) {
-                                        LOG.error(`sql is (${sql})`,error);
+                                        LOG.error(`sql is (${sql})`, error);
                                         reject(error)
                                 } else {
                                         // is strict mode ?
@@ -65,6 +67,7 @@ class MysqlExcutor {
         }
 
         /**
+         * Mutiple statement
          * 
          * @param {String} sql
          * @returns {Promise<number>}  fields effected
@@ -73,13 +76,13 @@ class MysqlExcutor {
         excuteTransanction(sql, isolateLevel) {
                 return new Promise((resolve, reject) => {
                         this._pool.getConnection((getCnnError, cnn) => {
-                                if (getCnnError){
+                                if (getCnnError) {
                                         reject(getCnnError);
                                         return;
                                 }
 
                                 cnn.beginTransaction(transanctionError => {
-                                        if (transanctionError){
+                                        if (transanctionError) {
                                                 reject(transanctionError);
                                                 return;
                                         }
@@ -91,7 +94,7 @@ class MysqlExcutor {
                                                 let t = 0;
 
                                                 cnn.commit(commitError => {
-                                                        if (commitError){
+                                                        if (commitError) {
                                                                 reject(commitError);
                                                                 return;
                                                         }
@@ -109,8 +112,10 @@ class MysqlExcutor {
 }
 
 /**
+ * Convert field name from hungery to camel
  * 
  * @param {[object]} results 
+ * @returns {[]}
  */
 function convert(results) {
         let result = [];

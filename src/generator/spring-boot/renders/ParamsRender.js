@@ -1,6 +1,6 @@
 const { SimpleRender } = require("../../common/renders/SimplePatterRender");
 const { STR } = require("../../../libs/str");
-const { ARRAY } = require("../../../libs/utils");
+const { ARRAY } = require("../../../libs/type");
 
 const PARAMS_RENDER = new SimpleRender({}, `${__dirname}/templates/params.java`);
 const PARAMS_ITEM_REQ_GETTER_ITEM_RENDER = new SimpleRender({}, `${__dirname}/templates/params-req-getter-item.java`);

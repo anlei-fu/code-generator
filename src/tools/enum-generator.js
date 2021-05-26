@@ -1,5 +1,5 @@
 const { FILE } = require("./../libs/file");
-const { OBJECT } = require("./../libs/utils");
+const { OBJECT } = require("../libs/type");
 const { NamingStrategy } = require("./../libs/naming-strategy");
 
 class EnumBuilder {

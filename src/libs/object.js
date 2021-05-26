@@ -1,177 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: fuanlei
- * @Date: 2019-09-23 16:06:05
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-20 17:54:25
- */
-/**
- * Check target is defined, if target not defiend will throw an error
- * @param {Any} target 
- */
-const { STR } = require("./str");
-exports.UNDEFINED = "undefined";
-exports.EMPTY = "";
-
-
-/**
- * @description Check target is null or not, if null throw an argument error;
- * @param {Any} target 
- */
-exports.requireNotNull = target => {
-        // if (typeof target == "undefined")
-        //         throw new Error " target can not be null!";
-}
-
-/**
- * Parse value of basic type
- * 
- * @param {String} value
- */
-exports.parseValue = (value) => {
-        value = value.trim();
-
-        if (value.length == 0) {
-                return value;
-        } else if ((value.startsWith("\"") && value.endsWith("\""))
-                || (value.startsWith("'") && value.endsWith("'"))) {
-                return value.substr(1, value.length - 2);
-        } else if (value == "true") {
-                return true;
-        } else if (value == "false") {
-                return false;
-        } else {
-                let reg = /^(-?\d+)(\.\d+)?$/;
-
-                return reg.test(value) ? parseFloat(value) : value;
-        }
-}
-
-/*------------------------------------------------array---------------------------------------------------*/
-
-/**
- * Convert @see {Array} to @see {Set} 
- * 
- * @param {[Any]} array 
- * @returns {Set<Any>}
- */
-function toSet(array) {
-        let s = new Set();
-
-        array.forEach(x => {
-                if (!s.has(x))
-                        s.add(x);
-        });
-
-        return s;
-}
-
-/**
- * Convert @see {Array} to @see {Map}
- * 
- * @param {[Any]} array 
- * @param {(Any)=>String} keySelector 
- * @returns {Map<String,Any>}
- */
-function toMap(array, keySelector) {
-        let map = new Map();
-
-        array.forEach(x => {
-                map.set(keySelector(x), x);
-        })
-
-        return map;
-}
-
-/**
- * Find first or default null
- * 
- * @param {[]} array 
- * @param {(any) => boolean} matcher 
- * @returns {Any}
- */
-function firstOrDefault(array, matcher) {
-        let data = array.filter(x => matcher(x));
-        if (data.length == 0)
-                return null;
-
-        return data[0];
-}
-
-/**
- * Remove element
- * 
- * @param {[]} array 
- * @param {Number} startIndex 
- * @param {Number} count 
- * @returns {[]}
- */
-function remove(array, startIndex, count = 0) {
-        return array.splice(startIndex, count);
-}
-/**
- * Has any element satisfy
- * 
- * @param {[]} array 
- * @param {(any)=>boolean} matcher 
- * @returns {boolean}
- */
-function hasAny(array, matcher) {
-        return array.filter(x => matcher(x)).length > 0;
-}
-
-/**
- * Group array
- * 
- * @param {[Any]} array 
- * @param {Any=>String} keySelector 
- * @returns {Map<String,[Any]>}
- */
-function groupBy(array, keySelector) {
-        let map = new Map();
-
-        array.forEach(x => {
-                let key = keySelector(x);
-                if (!map.has(key))
-                        map.set(key, []);
-
-                map.get(key).push(x);
-        })
-
-        return map;
-}
-
-/**
- * Remove repeated element
- * 
- * @param {[Any]} array 
- * @param {Any=>String} keySelector 
- */
-function distinct(array, keySelector = x => x) {
-        let set = new Set();
-        let output = [];
-        array.forEach(x => {
-                let key = keySelector(x);
-                if (!set.has(key)) {
-                        set.add(key);
-                        output.push(x);
-                }
-        });
-
-        return output;
-}
-
-exports.ARRAY = {
-        toSet,
-        toMap,
-        groupBy,
-        distinct,
-        firstOrDefault,
-        remove,
-        hasAny
-}
-/*-------------------------------------------------------------------object---------------------------------------------------------------------------*/
 
 /**
  * Extend object
@@ -183,7 +9,7 @@ exports.ARRAY = {
 function extend(self, other, override) {
         let keys;
         if (!override)
-                keys = toSet(Object.keys(self));
+                keys = new Set(Object.keys(self));
 
         for (const p in other) {
                 if (override) {
@@ -232,7 +58,7 @@ function setIfAbsent(target, key, value) {
  * @param {Object} target 
  * @returns {Object}
  */
-function clone(target) {
+function clone(target = {}) {
         let copy = JSON.parse(JSON.stringify(target));
         extend(copy, target, false);
         return copy;
@@ -291,7 +117,6 @@ function hasKey(obj, key) {
  * @param {(key:String,value:Any)=>void} consumer 
  */
 function forEach(obj, consumer) {
-
         if (!consumer)
                 throw new ReferenceError("consumer can not be null!");
 
@@ -339,14 +164,14 @@ function getValue(obj, key) {
  * @param {String} name  let name
  * @returns {String}
  */
-function text(obj, name) {
+function text(obj = {}, name) {
         let json = JSON.stringify(obj, null, "\t");
         json = doReplace(json);
 
         return `let ${name} = ${json};\r\n\r\n`;
 }
 
-function jsCode(obj) {
+function jsCode(obj = {}) {
         let json = JSON.stringify(obj, null, "\t");
         json = doReplace(json);
         return json;
@@ -429,69 +254,4 @@ exports.OBJECT = {
         export_,
         setIfAbsent,
         jsCode
-}
-
-/*--------------------------------------------------------------------type----------------------------------------------------------------------------*/
-
-/**
- * Is type array
- * 
- * @param {Any} obj 
- */
-function isArray(obj) {
-        return obj instanceof Array
-}
-
-/**
- * Is type object
- * 
- * @param {Any} obj 
- */
-function isObject(obj) {
-        return obj instanceof Object;
-}
-
-/**
- * Is type string
- * 
- * @param {Any} obj 
- */
-function isString(obj) {
-        return obj.constructor == String;
-}
-
-/**
- * Is type function
- * 
- * @param {Any} obj 
- */
-function isFunction(obj) {
-        return obj.constructor == Function;
-}
-
-/**
- * Is type number
- * 
- * @param {Any} obj 
- */
-function isNumber(obj) {
-        return obj.constructor == Number;
-}
-
-/**
- * Is type boolean
- * 
- * @param {any} obj 
- */
-function isBoolean(obj) {
-        return obj.constructor == Boolean;
-}
-
-exports.TYPE = {
-        isArray,
-        isObject,
-        isString,
-        isFunction,
-        isNumber,
-        isBoolean
 }

@@ -1,4 +1,4 @@
-const { TYPE } = require("./utils");
+const { TYPE } = require("./type");
 const { ArgTypeError } = require("./../error");
 
 /**

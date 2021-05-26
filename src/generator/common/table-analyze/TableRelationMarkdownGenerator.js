@@ -1,4 +1,4 @@
-const { OBJECT, ARRAY } = require("../../../libs/utils");
+const { OBJECT, ARRAY } = require("../../../libs/type");
 const { STR } = require("../../../libs/str");
 const { GraphBuilder } = require("../../markdown/graph");
 

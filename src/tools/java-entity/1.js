@@ -1,152 +1,172 @@
 exports.columns = [
 	{
 		title: "",
-		field: "advertiserUid",
+		field: "reportTime",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "todayCost",
+		field: "productType",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "todayCount",
+		field: "cost",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "todayConvertCost",
+		field: "realCost",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "todayProfit",
+		field: "showCount",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayCost",
+		field: "clickCount",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayConvertCost",
+		field: "clickRate",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayCount",
+		field: "convertCount",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayProfit",
+		field: "convertRate",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekCost",
+		field: "convertPrice",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekConvertCost",
+		field: "totalOrderCount",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekCount",
+		field: "validOrderCount",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekyProfit",
+		field: "validOrderRate",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayCostGrowth",
+		field: "validOrderPrice",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayCostGrowthRate",
+		field: "activateCount",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayCountGrowth",
+		field: "validActivateRate",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayCountGrowthRate",
+		field: "activateCost",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayConvertCostGrowth",
+		field: "rechargeCount",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayConvertCostGrate",
+		field: "validRechargeRate",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayProfitGrowth",
+		field: "expectedIncome",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayProfitGrowthRate",
+		field: "expectedSingleIncome",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekCostGrowth",
+		field: "expectedProfit",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekCostGrowthRate",
+		field: "putGetRate",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "yesterdayCountGrowth",
+		field: "openCnt",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekCountGrowthRate",
+		field: "inputTel",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekConvertCostGrowth",
+		field: "clickCode",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekConvertCostGRate",
+		field: "inputCode",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekProfitGrowth",
+		field: "clickCheck",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "lastWeekProfitGrowthRate",
+		field: "clickSub",
 		align: "center"
 	},
 	{
 		title: "",
-		field: "principal",
+		field: "loadImgTime",
+		align: "center"
+	},
+	{
+		title: "",
+		field: "phoneRate",
+		align: "center"
+	},
+	{
+		title: "",
+		field: "checkRate",
+		align: "center"
+	},
+	{
+		title: "",
+		field: "subRate",
+		align: "center"
+	},
+	{
+		title: "",
+		field: "averageLoadTime",
 		align: "center"
 	}
 ];

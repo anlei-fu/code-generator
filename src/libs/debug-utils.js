@@ -43,6 +43,10 @@ function getElapsed(id) {
                 return watch.elapsed;
 }
 
+function assert(value,matcher,msg){
+        
+}
+
 exports.DebugUtils = {
         setDebugMode,
         isDebugMode,

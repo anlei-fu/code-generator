@@ -23,6 +23,7 @@ const JAVA_TYPE = {
         DATE: "Date",
         FLOAT: "Float",
         BOOLEN: "Boolean",
+        DOUBLE: "Double",
         LONG: "Long",
         BigDecimal: "BigDecimal"
 }
@@ -30,23 +31,26 @@ const JAVA_TYPE = {
 /**
  * Default radio matcher
  * 
- * @param {string} x 
+ * @param {String} fieldName 
+ * @returns {Boolean}
  */
-const DEFAULT_RADIO_MATCHER = x => STR.endsWithAny(x.toLowerCase(), ["no", "email", "id", "phone", "name", "code", "id"]);
+const DEFAULT_RADIO_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), ["no", "email", "id", "phone", "name", "code", "id"]);
 
 /**
  * Default money matcher
  * 
- * @param {String} x 
+ * @param {String} fieldName 
+ * @returns {Boolean}
  */
-const DEFAULT_MONEY_MATCHER = x => STR.endsWithAny(x.toLowerCase(), ["price", "face", "cost", "balance"]);
+const DEFAULT_MONEY_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), ["price", "face", "cost", "balance"]);
 
 /**
  * Default text-area matcher
  * 
- * @param {string} x 
+ * @param {String} fieldName 
+ * @returns {Boolean}
  */
-const DEFAULT_TEXTAREA_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
+const DEFAULT_TEXTAREA_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), [
         "remark",
         "descrp",
         "message",
@@ -59,20 +63,24 @@ const DEFAULT_TEXTAREA_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
 /**
  * DEFAULT_CREATE_USER_MATCHER
  * 
- * @param {string} x 
+ * @param {String} fieldName
+ * @returns {Boolean} 
  */
-const DEFAULT_CREATE_USER_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
+const DEFAULT_CREATE_USER_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), [
         "createuser",
         "owner",
+        "creator"
 ])
 
 /**
  * DEFAULT_UPDATE_USER_MATCHER
  * 
- * @param {string} x 
+ * @param {String} fieldName
+ * @returns {Boolean} 
  */
-const DEFAULT_UPDATE_USER_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
+const DEFAULT_UPDATE_USER_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), [
         "updateuser",
+        "updator",
         "lastupdateuser",
         "modifyuser",
         "lastmodifyuser"
@@ -81,18 +89,20 @@ const DEFAULT_UPDATE_USER_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
 /**
  * DEFAULT_CREATE_TIME_MATCHER
  * 
- * @param {string} x 
+ * @param {String} fieldName 
+ * @returns {Boolean}
  */
-const DEFAULT_CREATE_TIME_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
+const DEFAULT_CREATE_TIME_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), [
         "createtime",
 ])
 
 /**
  * DEFAULT_UPDATE_TIME_MATCHER
  * 
- * @param {string} x 
+ * @param {String} fieldName 
+ * @returns {Boolean}
  */
-const DEFAULT_UPDATE_TIME_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
+const DEFAULT_UPDATE_TIME_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), [
         "updatetime",
         "lastupdatetime",
         "modifytime",
@@ -102,22 +112,22 @@ const DEFAULT_UPDATE_TIME_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
 /**
  * Default edit ignore fields matcher
  * 
- * @param {String} x 
+ * @param {String} fieldName
+ * @returns {Boolean} 
  */
-const DEFAULT_EDIT_IGNORE_FIELDS_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
-        "updatetime",
-        "modifytime",
-        "updateuser",
-        "createuser",
-        "createtime"
-])
+const DEFAULT_EDIT_IGNORE_FIELDS_MATCHER = fieldName =>
+        DEFAULT_CREATE_USER_MATCHER(fieldName)
+        || DEFAULT_CREATE_TIME_MATCHER(fieldName)
+        || DEFAULT_UPDATE_TIME_MATCHER(fieldName)
+        || DEFAULT_UPDATE_USER_MATCHER(fieldName);
 
 /**
  * Default float type matcher
  * 
- * @param {String} x 
+ * @param {String} fieldName 
+ * @returns {Boolean}
  */
-const DEFAULT_FLOAT_MATCHER = x => STR.endsWithAny(x.toLowerCase(), [
+const DEFAULT_FLOAT_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerCase(), [
         "money",
         "rate",
         "fee",
@@ -173,6 +183,7 @@ const DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS = {
  * 
  * @param {String} sqlType 
  * @param {String} name 
+ * @returns {Boolean}
  */
 const DEFAULT_SQL_OPERATION_USER_FIELD_MATCHER = (sqlType, name) => {
         if (!DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS[sqlType])
@@ -219,6 +230,7 @@ const DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHERS = {
  * 
  * @param {String} sqlType 
  * @param {String} name 
+ * @returns {Boolean}
  */
 const DEFAULT_SQL_OPERATION_DATE_FIELD_MATCHER = (sqlType, name) => {
         if (!DEFAULT_SQL_OPERATION_USER_FIELD_MATCHERS[sqlType])
@@ -475,13 +487,13 @@ const DEFAULT_JOIN_KEY_MATCHER = x => {
 /**
  * To match all enum field
  * 
- * @param {{type:String,name:String}} x 
+ * @param {{type:String,name:String}} column 
  */
-const DEFAULT_ALL_ENUM_MATCHER = x => {
+const DEFAULT_ALL_ENUM_MATCHER = column => {
         for (let key in DEFAULT_ALL_ENUM_MATCHERS) {
-                if (x.type == key) {
+                if (column.type == key) {
                         for (key1 in DEFAULT_ALL_ENUM_MATCHERS[key]) {
-                                if (DEFAULT_ALL_ENUM_MATCHERS[key][key1].match(x.name)) {
+                                if (DEFAULT_ALL_ENUM_MATCHERS[key][key1].match(column.name)) {
                                         return true;
                                 }
                         }
@@ -489,6 +501,23 @@ const DEFAULT_ALL_ENUM_MATCHER = x => {
         }
 
         return false;
+}
+
+
+function getPossibleFormatType(javaType){
+
+}
+
+function getBestFormatType(javaType,name){
+
+}
+
+function getPossibleControlType(javaType){
+
+}
+
+function getBestControlType(javaType){
+
 }
 
 /**

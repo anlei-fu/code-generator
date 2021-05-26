@@ -1,0 +1,14 @@
+{
+        "account_id": "19880331",
+        "user_action_set_id": 1111791191,
+        "actions": [
+                {
+                        "action_time": 1492998081,
+                        "action_type": "RESERVATION",
+                        "url": "https://info.piao.com/card/yd_hk/Op5SI6qU?action_set_id=1111791191&qz_gdt=ca6x2yacaaajg5gxiwba",
+                        "trace": {
+                                "click_id": "ca6x2yacaaajg5gxiwba"
+                        }
+                }
+        ]
+}

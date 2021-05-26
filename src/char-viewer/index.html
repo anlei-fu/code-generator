@@ -103,10 +103,6 @@
                         var option = {
                                 padding: 10,
                                 backgroundColor: '#EEEEEE',
-                                title: {
-                                        text: 'Data-view',
-                                        left: 'center',
-                                },
                                 tooltip: {
                                         trigger: 'axis',
                                         axisPointer: {
@@ -114,20 +110,6 @@
                                                 crossStyle: {
                                                         color: '#999'
                                                 }
-                                        }
-                                },
-                                toolbox: {
-                                        feature: {
-                                                dataView: { show: true, readOnly: false },
-                                                magicType: { show: true, type: ['line', 'bar'] },
-                                                restore: { show: true },
-                                                saveAsImage: { show: true },
-                                                dataZoom:
-                                                {
-                                                        realtime: false,
-                                                        yAxisIndex: 'none',
-                                                },
-                                                restore: {},
                                         }
                                 },
                                 legend,
@@ -148,7 +130,6 @@
                                 ],
                                 dataZoom: [
                                         { type: 'inside' },        //用于添加滚轮缩放
-                                        { type: 'slider' },  //用于添加滑动条缩放，
                                 ],
                         };
 

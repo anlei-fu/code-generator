@@ -111,10 +111,10 @@ function remove(input, array) {
  * @param {Number} start 
  * @param {Number} end 
  */
-function removeRange(source,start,end){
-        let str1 = source.substr(0,start);
-        let str2 =source.substr(end,source.length-end);
-        return str1+str2;
+function removeRange(source, start, end) {
+        let str1 = source.substr(0, start);
+        let str2 = source.substr(end, source.length - end);
+        return str1 + str2;
 }
 
 /**
@@ -137,12 +137,12 @@ function removeWithMatch(input, left, right) {
  * Remove matched pattern of string
  * 
  * @param {String} input 
- * @param {Option} option
+ * @param {[{left:String,right:String}]} option
  * @returns {String}
  */
-function removeWithMatchMany(input, option) {
-        for (const item in option)
-                input = removeWithMatch(ite, option[item]);
+function removeWithMatchMany(input, options) {
+        for (const item of options)
+                input = removeWithMatch(input, item.left, item.right);
 
         return input;
 }
@@ -335,23 +335,25 @@ function lowerFirstLetter(input) {
  * Split string into lines by splitor "\r\n" on windows
  * 
  * @param {String} input 
+ * @param {String} lineSplitor
  * @returns {[String]}
  */
-function splitToLines(input) {
-        return input.split("\r\n");
+function splitToLines(input, lineSplitor) {
+        return input.split(lineSplitor);
 }
 
 /**
  * Remove empty line of string
  * 
  * @param {String} input 
+ * @param {String} lineSplitor
  * @returns {String}
  */
-function removeEmptyLine(input) {
+function removeEmptyLine(input, lineSplitor) {
         let temp = "";
-        splitToLines(input).forEach(l => {
+        splitToLines(input, lineSplitor).forEach(l => {
                 if (l.trim() != "")
-                        temp += l + "\r\n";
+                        temp += l + lineSplitor;
         })
 
         return temp;
@@ -378,11 +380,22 @@ function reverse(input) {
  * @returns {String}
  */
 function removeLastComa(target) {
-        target = target.trimRight();
-        if (target[target.length - 1] == ",")
-                target = target.substr(0, target.length - 1);
+        return removeLast(target, ",");
+}
 
-        return target;
+/**
+ * Remove last pattern
+ * 
+ * @param {String} source 
+ * @param {String} pattern 
+ * @returns {String}
+ */
+function removeLast(source, pattern) {
+        source = source.trimRight();
+        if (source.endsWith(pattern))
+                source = source.substr(0, source.length - pattern.length);
+
+        return source;
 }
 
 /**
@@ -450,6 +463,29 @@ function endsWithAny(target, matches = []) {
 }
 
 /**
+ * 
+ * @param {String} source 
+ */
+function singleBlank(source) {
+        let result = "";
+        let inBlank = false;
+        for (let i = 0; i < source.length; i++) {
+                if (source[i] == " " || source[i] == "\t") {
+                        if (inBlank)
+                                continue;
+
+                        result += " ";
+                        inBlank = true;
+                } else {
+                        inBlank = false;
+                        result += source[i];
+                }
+        }
+
+        return result;
+}
+
+/**
  * Target is starts with any of matches
  * 
  * @param {String} target 
@@ -487,14 +523,37 @@ function startsAndendsWithAny(target, matches = []) {
  * @param {String} matches 
  * @returns {Number}
  */
-function firstIndexOfAny(target, matches = []) {
+function firstIndexOfAny(target, matches = [], startIndex = 0) {
         let index = -1;
         for (const item of matches) {
-                let pos = target.indexOf(item);
-                index = pos < 0 ? index : index > pos ? pos : index;
+                let pos = target.indexOf(item, startIndex);
+                if (pos == -1) {
+                        continue;
+                } else {
+                        if (index == -1) {
+                                index = pos;
+                                continue;
+                        }
+                        index = index > pos ? pos : index;
+                }
         }
 
         return index;
+}
+
+/**
+ * Index of pattern return index + pattern length
+ * 
+ * @param {String} target 
+ * @param {String} pattern 
+ * @returns {Number}
+ */
+function indexOfWithPatternLength(target, pattern) {
+        let index = target.indexOf(pattern);
+        if (index == -1)
+                return -1;
+
+        return index + pattern.length;
 }
 
 /**
@@ -527,8 +586,8 @@ function insert(pos, source, merge) {
         return source.substr(0, pos) + merge + source.substr(pos, source.length - pos);
 }
 
-function splitToWord(str){
-
+function removeEmptyChar(content) {
+        return replace(content, { " ": "", "\n": "", "\t": "", "\r": "", "\b": "", "\f": "" });
 }
 
 
@@ -562,5 +621,9 @@ exports.STR = {
         firstWord,
         lastWord,
         insert,
-        removeRange
+        removeRange,
+        indexOfWithPatternLength,
+        removeEmptyChar,
+        removeLast,
+        singleBlank
 }

@@ -33,7 +33,7 @@ class SpellController extends Controller {
 
 function main() {
         LoggerFactory.allowInfos(".*");
-        let service = new RestService(12306, [new SpellController()]);
+        let service = new RestService(12306, [new SpellController()],"./");
         service.init();
         service.start();
 }

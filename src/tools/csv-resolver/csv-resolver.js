@@ -37,23 +37,25 @@ class CellConverter {
  * Resolve csv string to objects
  * 
  * @param {String} csv 
- * @param {[CellResolver]} cellResolvers 
- * @param {boolean} excludeFirstRow 
+ * @param {Object} config 
  * @returns {[Any]}
  */
-function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true, quotation = true) {
+function resolveFromCsvString(csv, config = { cellResolvers, excludeFirstRow: true, quotation: true, cellSplitor: ",", lineSplitor: "\n" }) {
         let outputs = [];
-        let rows = quotation ? split(csv) : defaultSplit(csv);
+        let rows = config.quotation ?
+                split(csv, config.lineSplitor, config.cellSplitor)
+                : defaultSplit(csv, config.lineSplitor, config.cellSplitor);
+
         rows.forEach((row, rowNo) => {
-                if (excludeFirstRow && rowNo == 0)
+                if (config.excludeFirstRow && rowNo == 0)
                         return;
 
                 let item = {};
                 row.forEach((cell, cellNo) => {
-                        if (cellNo >= cellResolvers.length) {
+                        if (cellNo >= config.cellResolvers.length) {
                                 LOG.warn(`cell count > resolver count at ${rowNo},${cellNo}`);
                         } else {
-                                item[cellResolvers[cellNo].name] = cellResolvers[cellNo].doResolve(cell);
+                                item[config.cellResolvers[cellNo].name] = config.cellResolvers[cellNo].doResolve(cell);
                         }
                 });
 
@@ -64,10 +66,18 @@ function resolveFromCsvString(csv, cellResolvers, excludeFirstRow = true, quotat
         return outputs;
 }
 
-function defaultSplit(content) {
+/**
+ * Split to cells
+ * 
+ * @param {String} content 
+ * @param {String} lineSplitor 
+ * @param {String} cellSplitor
+ * @returns {[[]]} 
+ */
+function defaultSplit(content, lineSplitor = "\n", cellSplitor = ",") {
         let rows = [];
-        STR.splitToLines(STR.removeEmptyLine(content)).forEach(line => {
-                let cells = line.split(",");
+        STR.splitToLines(STR.removeEmptyLine(content, lineSplitor), lineSplitor).forEach(line => {
+                let cells = line.trim().split(cellSplitor);
                 rows.push(cells);
         });
 
@@ -75,12 +85,12 @@ function defaultSplit(content) {
 }
 
 /**
- * Split csv string to cells, quotation required
+ * Split csv string to cells with quotation disposion 
  * 
  * @param {String} content
  * @returns {[[String]]} 
  */
-function split(content) {
+function split(content, lineSplitor = "\n", cellSplitor = ",") {
         let reader = new CharSequenceReader(content);
         let cell = "";
         let parseQuotation = false;
@@ -112,15 +122,14 @@ function split(content) {
                                 }
                         }
 
-                } else if (c == ",") {
-
+                } else if (c == cellSplitor) {
                         if (parseQuotation) {
                                 cell += c;
                         } else {
                                 row.push(cell);
                                 cell = "";
                         }
-                } else if (c == "\n") {
+                } else if (c == lineSplitor) {
                         if (parseQuotation) {
                                 cell += c;
                         } else {
@@ -144,11 +153,6 @@ function split(content) {
         return result;
 }
 
-// let data =`"TO_PLAN_LANDING_TYPE","PARAMS_TYPE","VARCHAR2","","Y","","落地页链接类型，当dpa_adtype为""DPA_LINK""时必填 允许值: ""DPA"", ""CUSTOM""","推广目的分类参数"`;
-
-//  let result = split(data);
-//  let t =0;
-
 /**
  * Convert to csv
  * 
@@ -156,21 +160,21 @@ function split(content) {
  * @param {[CellConverter]} cellConverters 
  * @returns {String}
  */
-function toCsvString(array, cellConverters, makeHeaders = true) {
+function toCsvString(array, config = { cellConverters, makeHeaders: true, lineSpllitor: "\n", cellSplitor: "," }) {
         let output = "";
 
-        if (makeHeaders) {
-                for (const key in cellConverters)
-                        output += `${normalizeString(cellConverters[key].header)},`;
+        if (config.makeHeaders) {
+                for (const key in config.cellConverters)
+                        output += `${normalizeString(config.cellConverters[key].header)}${cellSplitor}`;
 
-                output = STR.removeLastComa(output) + "\r\n";
+                output = STR.removeLast(output, config.cellSplitor) + config.lineSpllitor;
         }
 
         array.forEach(item => {
-                for (const convertor in cellConverters)
-                        output += `${normalizeString(cellConverters[convertor].doConvert(item[convertor]))},`;
+                for (const key in config.cellConverters)
+                        output += `${normalizeString(config.cellConverters[key].doConvert(item[key]))}${config.cellSplitor}`;
 
-                output = STR.removeLastComa(output) + "\r\n";
+                output = STR.removeLast(output, config.cellSplitor) + config.lineSpllitor;
         });
 
         return output;
@@ -198,6 +202,8 @@ function normalizeString(str) {
 module.exports = {
         toCsvString,
         resolveFromCsvString,
+        split,
+        defaultSplit,
         resolvers: {
                 STR: name => {
                         return {

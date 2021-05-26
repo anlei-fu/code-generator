@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-12-12 15:56:37
  */
 const { RANDOM } = require("./../../libs/random");
-const { OBJECT } = require("./../../libs/utils");
+const { OBJECT } = require("../../libs/type");
 const { STR } = require("./../../libs/str");
 
 
