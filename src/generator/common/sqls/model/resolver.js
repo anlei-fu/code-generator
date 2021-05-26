@@ -6,7 +6,7 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-11-15 15:43:24
  */
-const { MysqlExcutor } = require("./../sql-excutors/mysql-excutor/mysql-excutor");
+const { MysqlExcutor } = require("./../../sqls/sql-excutors/mysql-excutor/mysql-excutor");
 const { Table, Column, SqlType } = require("./../model");
 const { NamingStrategy } = require("./../../../../libs/naming-strategy")
 const { ARRAY } = require("../../../../libs/type")

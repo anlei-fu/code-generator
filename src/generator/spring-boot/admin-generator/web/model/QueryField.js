@@ -36,6 +36,10 @@ class QueryField {
                  * @type {[Alia]}
                  */
                 this.alias;              
+                /**
+                 * @type {String}
+                 */
+                this.show;              
  
         }
 }
@@ -146,6 +150,17 @@ class QueryFieldBuilder{
          */
         alias(alias){
                 this._config.alias = alias;
+                return this;
+        }
+
+        /**
+         * Set property show
+         * 
+         * @param {String} show
+         * @returns {QueryFieldBuilder}
+         */
+        show(show){
+                this._config.show = show;
                 return this;
         }
 

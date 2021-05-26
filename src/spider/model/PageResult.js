@@ -127,6 +127,19 @@ class PageResultBuilder {
          */
         data(data) {
                 if (data)
+
+                       if(data){
+                               let t =0;
+                               let keys =Object.keys(data);
+                               keys.forEach(key=>{
+                                       if(!data[key])
+                                         t++;
+                               })
+
+                               if(t>3)
+                                 return this.pageResult(PageCode.PAGE_INCORRECT);
+                       }
+                        
                         this._config.data = JSON.stringify({
                                 id: this.url.id,
                                 url: this.url.encodedUrl,
@@ -175,6 +188,8 @@ class PageResultBuilder {
                                this.newUrl(full);
                         }
                 });
+
+                return this;
 
         }
 

@@ -58,6 +58,7 @@ const DEFAULT_TEXTAREA_MATCHER = fieldName => STR.endsWithAny(fieldName.toLowerC
         "info",
         "detail",
         "log",
+        "description"
 ])
 
 /**

@@ -19,7 +19,7 @@ async function main() {
                .generateDb()
                .generateStructure()
                .generateBuilder()
-               .libPath("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot")
+               .libPath("D:/project/code-generator/src/generator/spring-boot")
                .useDbConfig(db=>{
                        db.generateDb()
                          .generateRelation(true)

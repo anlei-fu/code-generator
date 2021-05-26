@@ -1,0 +1,1 @@
+ <MySelect v-model="model.@name" size="@size" width="100%" options="options.@name" placeHolder="请选择@label"/>

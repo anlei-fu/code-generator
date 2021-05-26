@@ -1,0 +1,1 @@
+<Col :span="@span">@content</Col>

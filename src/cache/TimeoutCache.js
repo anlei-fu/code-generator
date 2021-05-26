@@ -9,7 +9,7 @@ exports.TimeoutCache = class TimeoutCache {
 
         cache(key, value, expire) {
                 this._caches.set(key, value);
-                setTimeout(() => caches.delete(key), expire);
+                setTimeout(() => this._caches.delete(key), expire);
         }
 
         getAll() {

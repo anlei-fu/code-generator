@@ -46,7 +46,7 @@ class TaskController extends Controller {
                         await runner.start(body);
                         return this.success("started");
                 } catch (ex) {
-                        this.error(`run task(${body.taskId}) failed`, ex);
+                        this.fatal(`run task(${body.taskId}) failed`, ex);
                         return this.fail(ex.toString());
                 }
         }

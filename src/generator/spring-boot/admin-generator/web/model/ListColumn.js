@@ -15,50 +15,6 @@ class ListColumn {
                 /**
                  * @type {String}
                  */
-                this.queryField;              
-                /**
-                 * @type {String}
-                 */
-                this.selectField;              
-                /**
-                 * @type {String}
-                 */
-                this.mutipleSelect;              
-                /**
-                 * @type {String}
-                 */
-                this.timeRangeField;              
-                /**
-                 * @type {String}
-                 */
-                this.radioField;              
-                /**
-                 * @type {String}
-                 */
-                this.canEdit;              
-                /**
-                 * @type {String}
-                 */
-                this.canAdd;              
-                /**
-                 * @type {String}
-                 */
-                this.isPkField;              
-                /**
-                 * @type {RadioConfig}
-                 */
-                this.radioConfig;              
-                /**
-                 * @type {SelectConfig}
-                 */
-                this.selectConfig;              
-                /**
-                 * @type {TimeRangeConfig}
-                 */
-                this.timeRangeConfig;              
-                /**
-                 * @type {String}
-                 */
                 this.defaultShow;              
                 /**
                  * @type {String}
@@ -71,11 +27,11 @@ class ListColumn {
                 /**
                  * @type {String}
                  */
-                this.nullValuePlaceHolder;              
+                this.canImport;              
                 /**
-                 * @type {Number}
+                 * @type {String}
                  */
-                this.addDefaultValue;              
+                this.nullValuePlaceHolder;              
                 /**
                  * @type {Number}
                  */
@@ -95,15 +51,15 @@ class ListColumn {
                 /**
                  * @type {String}
                  */
+                this.fixedPosition;              
+                /**
+                 * @type {String}
+                 */
                 this.otherTable;              
                 /**
                  * @type {String}
                  */
                 this.otherTableField;              
-                /**
-                 * @type {String}
-                 */
-                this.changeByField;              
                 /**
                  * @type {String}
                  */
@@ -116,14 +72,6 @@ class ListColumn {
                  * @type {String}
                  */
                 this.javaType;              
-                /**
-                 * @type {String}
-                 */
-                this.exportField;              
-                /**
-                 * @type {String}
-                 */
-                this.importField;              
  
         }
 }
@@ -172,127 +120,6 @@ class ListColumnBuilder{
         }
 
         /**
-         * Set property queryField
-         * 
-         * @param {String} queryField
-         * @returns {ListColumnBuilder}
-         */
-        queryField(queryField){
-                this._config.queryField = queryField;
-                return this;
-        }
-
-        /**
-         * Set property selectField
-         * 
-         * @param {String} selectField
-         * @returns {ListColumnBuilder}
-         */
-        selectField(selectField){
-                this._config.selectField = selectField;
-                return this;
-        }
-
-        /**
-         * Set property mutipleSelect
-         * 
-         * @param {String} mutipleSelect
-         * @returns {ListColumnBuilder}
-         */
-        mutipleSelect(mutipleSelect){
-                this._config.mutipleSelect = mutipleSelect;
-                return this;
-        }
-
-        /**
-         * Set property timeRangeField
-         * 
-         * @param {String} timeRangeField
-         * @returns {ListColumnBuilder}
-         */
-        timeRangeField(timeRangeField){
-                this._config.timeRangeField = timeRangeField;
-                return this;
-        }
-
-        /**
-         * Set property radioField
-         * 
-         * @param {String} radioField
-         * @returns {ListColumnBuilder}
-         */
-        radioField(radioField){
-                this._config.radioField = radioField;
-                return this;
-        }
-
-        /**
-         * Set property canEdit
-         * 
-         * @param {String} canEdit
-         * @returns {ListColumnBuilder}
-         */
-        canEdit(canEdit){
-                this._config.canEdit = canEdit;
-                return this;
-        }
-
-        /**
-         * Set property canAdd
-         * 
-         * @param {String} canAdd
-         * @returns {ListColumnBuilder}
-         */
-        canAdd(canAdd){
-                this._config.canAdd = canAdd;
-                return this;
-        }
-
-        /**
-         * Set property isPkField
-         * 
-         * @param {String} isPkField
-         * @returns {ListColumnBuilder}
-         */
-        isPkField(isPkField){
-                this._config.isPkField = isPkField;
-                return this;
-        }
-
-        /**
-         * Set property radioConfig
-         * 
-         * @param {RadioConfig} radioConfig
-         * @returns {ListColumnBuilder}
-         */
-        radioConfig(radioConfig){
-                this._config.radioConfig = radioConfig;
-                return this;
-        }
-
-        /**
-         * Set property selectConfig
-         * 
-         * @param {SelectConfig} selectConfig
-         * @returns {ListColumnBuilder}
-         */
-        selectConfig(selectConfig){
-                this._config.selectConfig = selectConfig;
-                return this;
-        }
-
-        /**
-         * Set property timeRangeConfig
-         * 
-         * @param {TimeRangeConfig} timeRangeConfig
-         * @returns {ListColumnBuilder}
-         */
-        timeRangeConfig(timeRangeConfig){
-                this._config.timeRangeConfig = timeRangeConfig;
-                return this;
-        }
-
-        /**
          * Set property defaultShow
          * 
          * @param {String} defaultShow
@@ -326,6 +153,17 @@ class ListColumnBuilder{
         }
 
         /**
+         * Set property canImport
+         * 
+         * @param {String} canImport
+         * @returns {ListColumnBuilder}
+         */
+        canImport(canImport){
+                this._config.canImport = canImport;
+                return this;
+        }
+
+        /**
          * Set property nullValuePlaceHolder
          * 
          * @param {String} nullValuePlaceHolder
@@ -333,17 +171,6 @@ class ListColumnBuilder{
          */
         nullValuePlaceHolder(nullValuePlaceHolder){
                 this._config.nullValuePlaceHolder = nullValuePlaceHolder;
-                return this;
-        }
-
-        /**
-         * Set property addDefaultValue
-         * 
-         * @param {Number} addDefaultValue
-         * @returns {ListColumnBuilder}
-         */
-        addDefaultValue(addDefaultValue){
-                this._config.addDefaultValue = addDefaultValue;
                 return this;
         }
 
@@ -392,6 +219,17 @@ class ListColumnBuilder{
         }
 
         /**
+         * Set property fixedPosition
+         * 
+         * @param {String} fixedPosition
+         * @returns {ListColumnBuilder}
+         */
+        fixedPosition(fixedPosition){
+                this._config.fixedPosition = fixedPosition;
+                return this;
+        }
+
+        /**
          * Set property otherTable
          * 
          * @param {String} otherTable
@@ -410,17 +248,6 @@ class ListColumnBuilder{
          */
         otherTableField(otherTableField){
                 this._config.otherTableField = otherTableField;
-                return this;
-        }
-
-        /**
-         * Set property changeByField
-         * 
-         * @param {String} changeByField
-         * @returns {ListColumnBuilder}
-         */
-        changeByField(changeByField){
-                this._config.changeByField = changeByField;
                 return this;
         }
 
@@ -454,28 +281,6 @@ class ListColumnBuilder{
          */
         javaType(javaType){
                 this._config.javaType = javaType;
-                return this;
-        }
-
-        /**
-         * Set property exportField
-         * 
-         * @param {String} exportField
-         * @returns {ListColumnBuilder}
-         */
-        exportField(exportField){
-                this._config.exportField = exportField;
-                return this;
-        }
-
-        /**
-         * Set property importField
-         * 
-         * @param {String} importField
-         * @returns {ListColumnBuilder}
-         */
-        importField(importField){
-                this._config.importField = importField;
                 return this;
         }
 

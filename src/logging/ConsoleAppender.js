@@ -38,6 +38,16 @@ class ConsoleAppender {
                                 console.log("target:");
                                 console.log(chalk.white(logEvent.obj));
                         }
+                }else if(logEvent.level == "fatal"){
+                        console.log(chalk.redBright("[FATAL]") + chalk.magentaBright(`[${logEvent.time}]` + chalk.blueBright(`[${logEvent.name}]: `) + chalk.white(`${logEvent.msg || ""}`)));
+
+                        if (logEvent.error)
+                                console.log(chalk.white(logEvent.error.toString()));
+
+                        if (logEvent.obj) {
+                                console.log("target:");
+                                console.log(chalk.white(logEvent.obj));
+                        }
                 }
         }
 }

@@ -19,6 +19,7 @@ function nextVal(min, max) {
         return result;
 }
 
+<<<<<<< HEAD
 
 function S4() {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -31,4 +32,30 @@ function guid() {
 exports.RANDOM = {
         nextVal,
         guid
+=======
+/**
+ * 
+ * @param {[]} array 
+ * @param {Number} count 
+ */
+function pickFromArray(array,count){
+       if(array.length<count)
+        throw new Error("array length can not less than count");
+
+        let result =[];
+
+     for(let i=0;i<count;i++){
+             let rd =nextVal(0,array.length);
+             result.push(array[rd]);
+             array.splice(rd,1)
+
+     }
+
+     return result;
+}
+
+exports.RANDOM={
+        nextVal,
+        pickFromArray
+>>>>>>> c25257861b0c992fa27bfd1b99d636b434d5c5be
 }

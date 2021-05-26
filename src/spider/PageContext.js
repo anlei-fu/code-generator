@@ -1,4 +1,3 @@
-const { UrlResolver } = require("./UrlResolver");
 const { PageResultBuilder } = require("./model/PageResult");
 const { CrawlTaskContext } = require("./CrawlTaskContext");
 const { BrowserPage } = require("./model/BrowserPage");
@@ -6,7 +5,7 @@ const { CrawlType } = require("./constant/CrawlType");
 const { STR } = require("./../libs");
 const { LoggerSurpport } = require("./../logging");
 const { PageResult } = require("./constant/PageResult");
-const { HttpClient } = require("./../http");
+const { HttpClient, UrlResolver } = require("./../http");
 
 const cheerio = require('cheerio');
 
@@ -16,7 +15,7 @@ class PageContext extends LoggerSurpport {
          * @param {CrawlTaskContext} taskContext 
          * @param {URL} url 
          */
-        constructor (taskContext, url) {
+        constructor(taskContext, url) {
                 super("pageContext");
 
                 /**
@@ -91,7 +90,7 @@ class PageContext extends LoggerSurpport {
                 this.html = downloadResult.html;
                 this.$ = cheerio.load(this.html);
 
-                if (!encoding)
+                if (!encoding && downloadResult.needEncodingCheck)
                         await this._checkEncoding();
 
 
