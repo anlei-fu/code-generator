@@ -1,21 +1,16 @@
-const { FILE } = require("../../../libs/file");
+const ejs = require("ejs");
 class EjsRender {
         constructor (root) {
-                this._ejs = require("ejs");
+                this._ejs = ejs;
                 this._root = root;
         }
 
-        render(templateFile, outputFile, model) {
-                FILE.write(outputFile,
-                        this.renderContent(FILE.read(templateFile), model));
+        renderByCustomerContent(template, model) {
+                return this._ejs.render(template, model, { strict: false });
         }
 
-        renderContentFromFile(templateFile, model) {
-                return this.renderContent(FILE.read(`${this._root}/${templateFile}`), model);
-        }
-
-        renderContent(template, model) {
-                return this._ejs.render(template, model, { root: this._root,strict:false,escape:false });
+        render(template, model) {
+                return this._ejs.render(template, model, { root: this._root, strict: false });
         }
 }
 

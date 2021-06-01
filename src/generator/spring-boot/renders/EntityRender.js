@@ -1,6 +1,6 @@
 const { NamingStrategy } = require("../../../libs");
 const { STR } = require("../../../libs/str")
-const { SimpleRender } = require("../../common/renders/SimplePatterRender");
+const { SimpleRender } = require("../../common/renders/SimplePatternRender");
 const { Entity } = require("./../builders/Entity");
 
 const ENTITY_FIELD_RENDER = new SimpleRender({}, `${__dirname}/templates/entity-item.java`);

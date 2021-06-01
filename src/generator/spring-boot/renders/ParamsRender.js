@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../common/renders/SimplePatterRender");
+const { SimpleRender } = require("../../common/renders/SimplePatternRender");
 const { STR } = require("../../../libs/str");
 const { ARRAY } = require("../../../libs/type");
 

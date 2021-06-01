@@ -1,5 +1,5 @@
 const { EjsRender } = require("./../../common/renders/EjsRender");
-const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
+const { SimpleRender } = require("../../common/renders/SimplePatternRender");
 const { ReqUtils } = require("./../ReqUtils");
 const { MockGenerator } = require("./../../mock/mock-generator");
 const { STR } = require("./../../../libs/str");
