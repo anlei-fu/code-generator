@@ -1,7 +1,9 @@
-const { SimpleRender } = require("./SimplePatterRender");
+const { SimpleRender } = require("./SimplePatternRender");
 const { EjsRender } = require("./EjsRender");
+const { SimpleEjsRender } = require("./SimpleEjsRender");
 
-module.exports ={
+module.exports = {
         SimpleRender,
-        EjsRender
+        EjsRender,
+        SimpleEjsRender
 }

@@ -18,7 +18,7 @@ exports.SimpleRender = class SimpleRender {
          * @param {String} prefix of pattern
          * @param {String} suffix of pattern
          */
-        constructor(basePatterns = {}, templateFile, prefix = "@", suffix = "") {
+        constructor (basePatterns = {}, templateFile, prefix = "@", suffix = "") {
                 this._basePatterns = {};
                 this._prefix = prefix;
                 this._suffix = suffix;
@@ -51,11 +51,11 @@ exports.SimpleRender = class SimpleRender {
                 this._suffix = suffix;
         }
 
-       /**
-        * Set property "_prefix"
-        * 
-        * @param {String} prefix 
-        */
+        /**
+         * Set property "_prefix"
+         * 
+         * @param {String} prefix 
+         */
         setPrefix(prefix) {
                 this._prefix = prefix;
         }
@@ -107,7 +107,7 @@ exports.SimpleRender = class SimpleRender {
         generateModel(config = {}) {
                 let copy = OBJECT.clone(this._basePatterns);
                 OBJECT.extend(copy, config);
-                
+
                 let _new = {};
                 OBJECT.forEach(copy, (key, value) => {
                         _new[`${this._prefix}${key}${this._suffix}`] = value;

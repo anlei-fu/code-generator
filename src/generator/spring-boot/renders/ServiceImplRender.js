@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../common/renders/SimplePatterRender");
+const { SimpleRender } = require("../../common/renders/SimplePatternRender");
 const { ReqUtils } = require("../ReqUtils");
 const { ConfirItemUtils } = require("./../ConfigItemUtils");
 const { STR ,FILE} = require("../../../libs");

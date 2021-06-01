@@ -1,6 +1,6 @@
 const { Controller, HttpClient } = require("./../http");
 const { DIR, NamingStrategy } = require("./../libs");
-const { SimpleRender } = require("./../generator/common/renders/SimplePatterRender");
+const { SimpleRender } = require("../generator/common/renders/SimplePatternRender");
 
 const CostRender = new SimpleRender({}, `${__dirname}/template/cost.sql`);
 const CityRender = new SimpleRender({}, `${__dirname}/template/city.sql`);

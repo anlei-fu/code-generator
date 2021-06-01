@@ -1,4 +1,4 @@
-const { SimpleRender } = require("./../generator/common/renders/SimplePatterRender");
+const { SimpleRender } = require("../generator/common/renders/SimplePatternRender");
 const { FILE, STR } = require("./../libs");
 const { JsTypeAnalyzer } = require("./js-type-analyzer")
 const { builderGenerator } = require("./js-builder-generator");

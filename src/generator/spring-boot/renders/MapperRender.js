@@ -1,4 +1,4 @@
-const { SimpleRender } = require("../../common/renders/SimplePatterRender");
+const { SimpleRender } = require("../../common/renders/SimplePatternRender");
 const { isJavaBaseType } = require("../utils");
 const { STR } = require("../../../libs/str");
 const { ReqUtils } = require("../ReqUtils");
