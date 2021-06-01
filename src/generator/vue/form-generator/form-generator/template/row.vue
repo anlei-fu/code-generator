@@ -1,1 +1,1 @@
-<Row>@content</Row>
+<Row  justify="space-between">@content</Row>

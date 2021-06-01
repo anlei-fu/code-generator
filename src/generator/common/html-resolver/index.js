@@ -1,4 +1,4 @@
-const { FILE, OBJECT } = require("../../../libs");
+const { FILE} = require("../../../libs");
 const { resolve } = require("./table-resolver");
 
 function main(file) {

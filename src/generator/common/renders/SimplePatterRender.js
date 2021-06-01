@@ -8,7 +8,7 @@
  */
 const { STR } = require("../../../libs/str");
 const { FILE } = require("../../../libs/file");
-const { OBJECT } = require("../../../libs/type");
+const { OBJECT } = require("../../../libs");
 
 exports.SimpleRender = class SimpleRender {
         /**

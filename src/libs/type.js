@@ -36,59 +36,71 @@ exports.parseValue = (value) => {
 }
 
 /**
- * Is type array
+ * Is a array
  * 
  * @param {Any} obj 
+ * @returns {Boolean}
  */
 function isArray(obj) {
-        return obj instanceof Array
+        return Array.isArray(obj);
 }
 
 /**
- * Is type object
+ * Is a object
  * 
  * @param {Any} obj 
+ * @returns {Boolean}
  */
 function isObject(obj) {
         return obj instanceof Object;
 }
 
 /**
- * Is type string
+ * Is a string
  * 
  * @param {Any} obj 
+ * @returns {Boolean}
  */
 function isString(obj) {
         return obj.constructor == String;
 }
 
 /**
- * Is type function
+ * Is a function
  * 
  * @param {Any} obj 
+ * @returns {Boolean}
  */
 function isFunction(obj) {
         return obj.constructor == Function;
 }
 
 /**
- * Is type number
+ * Is a number
  * 
  * @param {Any} obj 
+ * @returns {Boolean}
  */
 function isNumber(obj) {
-        return obj.constructor == Number;
+        return isNaN(obj);
 }
 
 /**
  * Is type boolean
  * 
- * @param {any} obj 
+ * @param {Any} obj 
+ * @returns {Boolean}
  */
 function isBoolean(obj) {
         return obj.constructor == Boolean;
 }
 
+/**
+ * Is a boolean
+ * 
+ * @param {Any} obj 
+ * @returns {Boolean}
+ */
 function isUndefined(obj) {
         return obj === null || obj === undefined;
 }

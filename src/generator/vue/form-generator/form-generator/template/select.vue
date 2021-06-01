@@ -1,1 +1,1 @@
- <MySelect v-model="model.@name" size="@size" width="100%" options="options.@name" placeHolder="请选择@label"/>
+ <MySelect v-model="data1.@name" size="@size" width="100%" :options="Enum.@enumType" placeHolder="请选择@label"/>

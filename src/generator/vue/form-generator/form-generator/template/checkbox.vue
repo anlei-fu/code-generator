@@ -1,1 +1,1 @@
- <MyCheckbox v-model="model.@name" />
+ <MyCheckbox v-model="data1.@name" />

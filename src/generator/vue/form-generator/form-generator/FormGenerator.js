@@ -1,6 +1,7 @@
 const { SimpleRender } = require("../../../common/renders/SimplePatterRender");
 const { STR, OBJECT, FILE, TYPE } = require("../../../../libs");
 const { COMMON_UTILS } = require("../../../common");
+const { NamingStrategy } = require("../../../../libs/naming-strategy");
 
 let formItemRender = new SimpleRender({}, `${__dirname}/template/formItem.vue`);
 let selectRender = new SimpleRender({}, `${__dirname}/template/select.vue`);
@@ -22,28 +23,30 @@ class FormGenerator {
      * @param {Number} columns
      * @param {String} folder
      */
-    generate(name, model, columns = 1, size = "default", folder) {
+    generate(name, model, columns = 1, size = "default", labelWidth = 50, folder) {
         let validates = {};
         let m = {};
+        let columns1 = [];
         model.forEach(x => {
             m[x.name] = null;
             validates[x.name] = [];
-            validates[x.name].push({ required: true, message: `${x.label}不能为空`, trigger: "change" });
+            validates[x.name].push({ required: true, message: `${x.label}不能为空` });
             x.size = size;
+            columns1.push({ title: x.label, field: x.name });
         });
 
         let items = "";
         if (columns == 1) {
             items = STR.arrayToString1(model, x => this.renderFormItem(x));
         } else {
-            let span = 24 / columns;
+            let span = Math.round(24 / columns);
             let row = "";
             model.forEach((x, index) => {
                 row += colRender.renderTemplate({ content: this.renderFormItem(x), span });
-                if ((index + 1) % columns == 0) {
-                    items += rowRender.renderTemplate({ content: row });
-                    row = "";
-                }
+                // if ((index + 1) % columns == 0) {
+                //     items += rowRender.renderTemplate({ content: row });
+                //     row = "";
+                // }
             });
 
             if (row) {
@@ -55,9 +58,11 @@ class FormGenerator {
             model: OBJECT.jsCode(m, "model"),
             rules: OBJECT.jsCode(validates, "validates"),
             items,
+            labelWidth
         }
 
-        FILE.write(folder ? `${folder}/${name}.vue` : `${__dirname}/output/${name}.vue`, formRender.renderTemplate(data));
+        FILE.write(folder ? `${folder}/${name}Form.vue` : `${__dirname}/output/${name}Form.vue`, formRender.renderTemplate(data));
+        FILE.write(folder ? `${folder}/${name}.js` : `${__dirname}/output/${name}.js`, OBJECT.jsCode(columns1));
     }
 
     renderFormItem(value) {
@@ -65,6 +70,7 @@ class FormGenerator {
         if (this.isCheckBox(value.value)) {
             content = checkboxRender.renderTemplate(value);
         } else if (this.isSelect(value.name)) {
+            value.enumType =NamingStrategy.toPascal(value.name);
             content = selectRender.renderTemplate(value);
         } else if (TYPE.isString(value.value) && this.isTextArea(value.name)) {
             content = textAreaRender.renderTemplate(value);
@@ -92,7 +98,9 @@ class FormGenerator {
             "mode",
             "class",
             "level",
-            "style"
+            "style",
+            "field",
+            "table"
         ]);
     }
 

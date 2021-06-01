@@ -84,21 +84,12 @@ function toyyyyMMddhhmmss(date) {
         return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
 }
 
-<<<<<<< HEAD
 function timestamp() {
         return parseInt(new Date().getTime() / 1000)
 }
 
 function timestampMs() {
         return Date().getTime();
-=======
-function parseDate(str){
-        try{
-              return Date.parse(str);
-        }catch{
-                return null;
-        }
->>>>>>> c25257861b0c992fa27bfd1b99d636b434d5c5be
 }
 
 
@@ -121,10 +112,6 @@ exports.DATE = {
         toyyyy_MM_dd_hh_mm_ss,
         tohhmmss,
         toyyyyMMddhhmmss,
-<<<<<<< HEAD
         timestamp,
         timestampMs
-=======
-        parseDate
->>>>>>> c25257861b0c992fa27bfd1b99d636b434d5c5be
 }
