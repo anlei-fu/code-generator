@@ -106,6 +106,7 @@ class Controller extends Initiable {
          */
         async _process(req, resp, handler) {
                 try {
+
                         this.info(`${req.method}  ${req.path}`);
                         let result;
                         try {
@@ -118,7 +119,11 @@ class Controller extends Initiable {
                                 this.info("args:");
                                 this.info({ query: req.query, body: req.body, params: req.params });
 
-                                result = await handler.call(this, { path: req.path, query: req.query, body: req.body, params: req.params });
+                                result = await handler.call(this,
+                                        {
+                                                path: req.path, query: req.query, body: req.body, params: req.params
+                                        }
+                                );
                         } catch (e) {
                                 this.error(`handle ${req.method} ${req.path} failed`, e);
 

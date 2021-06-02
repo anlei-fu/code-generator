@@ -17,7 +17,12 @@ exports.ScriptService = class ScriptService extends Service {
                 let context = new ScriptServiceContext();
                 let config = FILE.readJson(configPath);
                 context.init(config);
-                let rest = new RestService(this.config.port, new ScriptExctorController());
+                let rest = new RestService(
+                        config.port,
+                        [
+                                new ScriptExctorController(),
+                        ]
+                );
                 rest.init(context);
                 rest.start();
         }

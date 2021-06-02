@@ -188,3 +188,5 @@ lines.forEach(x => {
 
 )
 FILE.writeJson("1.json", data, true);
+
+console.log(parseFloat("100.5%"))

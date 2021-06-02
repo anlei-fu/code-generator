@@ -14,7 +14,7 @@ class AccessBase extends Initiable {
          * @param {String} table  not null
          * @param {EntityConfig} param1 
          */
-        constructor (name, table, { idField, idIsStringOrDate }={}) {
+        constructor (name, table, { idField, idIsStringOrDate } = {}) {
                 super(name);
                 validateUtils.requireNotNull(table);
                 this._table = table;
@@ -26,7 +26,8 @@ class AccessBase extends Initiable {
 
         /**
          * Init
-         * 
+         *  
+         * @require SqlExecutor exists
          * @param {NodeContext} context 
          */
         init(context) {
@@ -65,8 +66,6 @@ class AccessBase extends Initiable {
                 return this._query(whereClause, { index: 0, size: 1000000000 });
 
         }
-
-
 
         /**
          * Get count by given conditions
@@ -173,7 +172,7 @@ class AccessBase extends Initiable {
 
                 return this.execute(
                         `delete from ${this._table} ` +
-                      6  `where ${sqlUtils.getInLike(ids, this._idField)}`
+                        6  `where ${sqlUtils.getInLike(ids, this._idField)}`
                 );
         }
 
@@ -192,8 +191,8 @@ class AccessBase extends Initiable {
          * @param {string} sql 
          * @returns {Promise<Entity>}
          */
-        query(sql){
-                   return this._excutor.query(sql);
+        query(sql) {
+                return this._excutor.query(sql);
         }
 
         /**
@@ -216,7 +215,7 @@ class AccessBase extends Initiable {
          * @returns {Promise<Entity[]>}
          */
         _query(whereClause, { index = 0, size = 10 }) {
-                let sql = `select * from ${this._table} where ${whereClause} limit ${index * size}, ${index * size+size}`;
+                let sql = `select * from ${this._table} where ${whereClause} limit ${index * size}, ${index * size + size}`;
                 return this._excutor.query(sql);
         }
 
@@ -227,7 +226,7 @@ class AccessBase extends Initiable {
          * @param {String} sql 
          * @returns {Promise<Entity[]>}
          */
-        _queryOraginal(sql){
+        _queryOraginal(sql) {
                 return this._excutor.query(sql);
         }
 
