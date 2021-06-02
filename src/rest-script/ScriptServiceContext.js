@@ -1,8 +1,7 @@
 const { JsManager } = require("./../file-manager");
 const { ServiceProvider } = require("./../common");
-const { ScriptInfoManager } = require("./ScriptInfoManager");
-const { ScriptServiceConfig } = require("./ScriptServiceConfig");
 const { LoggerFactory } = require("./../logging");
+const { FileManagerGroup } = require("../file-manager/FileManagerGroup");
 
 exports.ScriptServiceContext = class ScriptServiceContext {
         constructor () {
@@ -23,9 +22,9 @@ exports.ScriptServiceContext = class ScriptServiceContext {
                 this.jsManager;
 
                 /**
-                 * @type {ScriptInfoManager}
+                 * @type {FileManagerGroup}
                  */
-                this.scriptInfoManager;
+                this.fileManagerGroup;
 
         }
 
@@ -35,9 +34,6 @@ exports.ScriptServiceContext = class ScriptServiceContext {
          */
         init(config) {
                 this.config = config;
-                this.jsManager = new JsManager(config.scriptDir);
-                this.scriptInfoManager = new ScriptInfoManager(config.scriptExpire, config.apiUrl);
-
                 if (config.debug)
                         LoggerFactory.allowInfos(".*");
 

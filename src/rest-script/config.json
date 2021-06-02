@@ -1,0 +1,10 @@
+{
+        "port": 12345,
+        "scriptDir": "C:/Users/Administrator/Desktop/Projects/code-generator/src/rest-script/script",
+        "logDir": "./log",
+        "debug": true,
+        "fileManagers": {
+                "script": "script",
+                "csv": "csv"
+        }
+}

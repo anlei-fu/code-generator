@@ -1,10 +1,10 @@
 const { Controller, RequestData } = require("./../http");
-const { ScriptServiceContext, ScriptServiceContext } = require("./ScriptServiceContext");
+const { ScriptServiceContext } = require("./ScriptServiceContext");
 
 exports.ScriptExctorController = class ScriptExctorController extends Controller {
-
         constructor () {
-                super("");
+                super("js executor");
+                this._jsManager;
         }
 
         /**
@@ -13,23 +13,23 @@ exports.ScriptExctorController = class ScriptExctorController extends Controller
          */
         init(context) {
                 this._context = context;
+                this._jsManager = new JsManager(config.scriptDir, false);
         }
 
         /**
          * 
          * @param {RequestData} req 
          */
-        async handle(req) {
-                let info = await this._context.scriptInfoManager.getScriptInfo(path);
-                if (!info)
-                        return this.responseBoolean(false, "");
-
-                let main = this._context.jsManager.getMain(info.scriptPath);
+        async execute({ body }) {
+                let main = await this._jsManager.getMain(null, body.script + ".js");
                 if (!main)
-                        return this.responseBoolean(false, "");
-
-                let data = await main(req);
-                return this.resposneObject(data);
+                        return this.responseBoolean(false, "script file not exists");
+                try {
+                        let data = await main(body.params);
+                        return this.resposneObject(data);
+                } catch (ex) {
+                        return this.fail("execute js failed", ex);
+                }
         }
 
         /**
@@ -39,8 +39,6 @@ exports.ScriptExctorController = class ScriptExctorController extends Controller
          * @override
          */
         mount(express) {
-                express.get("*", (req, resp) => this._process(req, resp, this.handle))
-                        .post("*", (req, resp) => this._process(req, resp, this.handle));
+                express.post("/run", (req, resp) => this._process(req, resp, this.execute));
         }
-
 }

@@ -1,0 +1,1 @@
+exports.main = x => x + 1;

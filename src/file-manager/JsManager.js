@@ -12,10 +12,11 @@ class JsManager extends FileManagerBase {
      * @constructor
      * @param {String} scriptDir 
      */
-    constructor (scriptDir) {
+    constructor (scriptDir, withFileSystem = true) {
         super("JsManager", scriptDir);
         this._js = new TimeoutCache();
         this._fetcher = new FileDownloader(scriptDir);
+        this._withFileSystem = withFileSystem;
     }
 
     /**
@@ -27,7 +28,8 @@ class JsManager extends FileManagerBase {
     async getMain(fileHost, jsFile) {
         if (!this.exists(jsFile)) {
             // download from file server
-            await this._fetcher.download(`${fileHost}/${jsFile}`, jsFile, {});
+            if (this._withFileSystem)
+                await this._fetcher.download(`${fileHost}/${jsFile}`, jsFile, {});
 
             if (!this.exists(jsFile))
                 throw new Error(`fetch script(${jsFile}) failed`);
