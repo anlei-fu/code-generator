@@ -105,6 +105,10 @@ function isUndefined(obj) {
         return obj === null || obj === undefined;
 }
 
+function isEmpty(obj) {
+        return obj === null || obj === undefined || obj === '';
+}
+
 exports.TYPE = {
         isArray,
         isObject,
@@ -112,5 +116,6 @@ exports.TYPE = {
         isFunction,
         isNumber,
         isBoolean,
-        isUndefined
+        isUndefined,
+        isEmpty
 }

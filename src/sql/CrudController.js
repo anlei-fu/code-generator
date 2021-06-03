@@ -2,13 +2,19 @@ const { Controller } = require("./../http")
 const { AccessBase } = require("./AcccessBase")
 
 class CrudController extends Controller {
-        constructor (table, pk, apiPrefix) {
-                this._access = new AccessBase(table, table, { idField: pk });
+        constructor(accessName, apiPrefix) {
+                super(`${accessName}-crud-controller`);
+                this._accessName = accessName;
                 this._apiPrefix = apiPrefix;
+                this._access;
         }
 
+        /**
+         * 
+         * @param {import("./CrudServiceContext").CrudServiceContext} context 
+         */
         init(context) {
-                this._access.init(context);
+                this._access = context.accesses[this._accessName];
         }
 
         async page({ query }) {

@@ -8,6 +8,10 @@ exports.Initiable = class Initiable extends LoggerSurpport {
                 super(name);
         }
 
+        /**
+         * 
+         * @param {import("./ServiceContext").ServiceContext} context 
+         */
         init(context) {
 
         }

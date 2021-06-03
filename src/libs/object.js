@@ -1,202 +1,3 @@
-<<<<<<< HEAD
-=======
-/*
- * @Descripttion: 
- * @version: 
- * @Author: fuanlei
- * @Date: 2019-09-23 16:06:05
- * @LastEditors: fuanlei
- * @LastEditTime: 2019-11-20 17:54:25
- */
-/**
- * Check target is defined, if target not defiend will throw an error
- * @param {Any} target 
- */
-const { STR } = require("./str");
-exports.UNDEFINED = "undefined";
-exports.EMPTY = "";
-
-
-/**
- * @description Check target is null or not, if null throw an argument error;
- * @param {Any} target 
- */
-exports.requireNotNull = target => {
-        // if (typeof target == "undefined")
-        //         throw new Error " target can not be null!";
-}
-
-/**
- * Parse value of basic type
- * 
- * @param {String} value
- */
-exports.parseValue = (value) => {
-        value = value.trim();
-
-        if (value.length == 0) {
-                return value;
-        } else if ((value.startsWith("\"") && value.endsWith("\""))
-                || (value.startsWith("'") && value.endsWith("'"))) {
-                return value.substr(1, value.length - 2);
-        } else if (value == "true") {
-                return true;
-        } else if (value == "false") {
-                return false;
-        } else {
-                let reg = /^(-?\d+)(\.\d+)?$/;
-
-                return reg.test(value) ? parseFloat(value) : value;
-        }
-}
-
-/*------------------------------------------------array---------------------------------------------------*/
-
-/**
- * Convert @see {Array} to @see {Set} 
- * 
- * @param {[Any]} array 
- * @returns {Set<Any>}
- */
-function toSet(array) {
-        let s = new Set();
-
-        array.forEach(x => {
-                if (!s.has(x))
-                        s.add(x);
-        });
-
-        return s;
-}
-
-/**
- * Convert @see {Array} to @see {Map}
- * 
- * @param {[Any]} array 
- * @param {(Any)=>String} keySelector 
- * @returns {Map<String,Any>}
- */
-function toMap(array, keySelector) {
-        let map = new Map();
-
-        array.forEach(x => {
-                map.set(keySelector(x), x);
-        })
-
-        return map;
-}
-
-/**
- * Find first or default null
- * 
- * @param {[]} array 
- * @param {(any) => boolean} matcher 
- * @returns {Any}
- */
-function firstOrDefault(array, matcher) {
-        let data = array.filter(x => matcher(x));
-        if (data.length == 0)
-                return null;
-
-        return data[0];
-}
-
-/**
- * Remove element
- * 
- * @param {[]} array 
- * @param {Number} startIndex 
- * @param {Number} count 
- * @returns {[]}
- */
-function remove(array, startIndex, count = 1) {
-        array.splice(startIndex, count);
-        return array;
-}
-
-/**
- * Exchange Position
- * 
- * @param {[]} array 
- * @param {Number} sourceIndex 
- * @param {Number} targetIndex 
- */
-function exchange(array, sourceIndex, targetIndex) {
-        if (sourceIndex == targetIndex)
-                return array;
-
-        let item = array[sourceIndex];
-        
-        remove(array, sourceIndex);
-        let move = sourceIndex > targetIndex ? 1 : -1;
-        array.splice(targetIndex + move, 0, item)
-
-        return array;
-}
-/**
- * Has any element satisfy
- * 
- * @param {[]} array 
- * @param {(any)=>boolean} matcher 
- * @returns {boolean}
- */
-function hasAny(array, matcher) {
-        return array.filter(x => matcher(x)).length > 0;
-}
-
-/**
- * Group array
- * 
- * @param {[Any]} array 
- * @param {Any=>String} keySelector 
- * @returns {Map<String,[Any]>}
- */
-function groupBy(array, keySelector) {
-        let map = new Map();
-
-        array.forEach(x => {
-                let key = keySelector(x);
-                if (!map.has(key))
-                        map.set(key, []);
-
-                map.get(key).push(x);
-        })
-
-        return map;
-}
-
-/**
- * Remove repeated element
- * 
- * @param {[Any]} array 
- * @param {Any=>String} keySelector 
- */
-function distinct(array, keySelector = x => x) {
-        let set = new Set();
-        let output = [];
-        array.forEach(x => {
-                let key = keySelector(x);
-                if (!set.has(key)) {
-                        set.add(key);
-                        output.push(x);
-                }
-        });
-
-        return output;
-}
-
-exports.ARRAY = {
-        toSet,
-        toMap,
-        groupBy,
-        distinct,
-        firstOrDefault,
-        remove,
-        hasAny
-}
-/*-------------------------------------------------------------------object---------------------------------------------------------------------------*/
-
->>>>>>> 3fba890e15b4c0ec48446ca469e49661e71352fa
 /**
  * Extend object
  * 
@@ -439,6 +240,21 @@ function mapToObject(map) {
         return obj;
 }
 
+/**
+ * Set obj to empty
+ * 
+ * @param {Any} obj 
+ * @param {[String]} fields
+ * @returns {Any} 
+ */
+function setFieldToNull(obj, fields) {
+        fields.forEach(x => {
+                obj[x] = null;
+        });
+
+        return obj;
+}
+
 exports.OBJECT = {
         extend,
         deepExtend,
@@ -451,5 +267,6 @@ exports.OBJECT = {
         text,
         export_,
         setIfAbsent,
-        jsCode
+        jsCode,
+        setFieldToNull
 }
