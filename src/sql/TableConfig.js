@@ -5,17 +5,15 @@ class TableConfig {
      * @param {String} table 
      * @param {String} pk 
      * @param {String} orderByClause 
-     * @param {[String]} ins
-     * @param {[String]} notIns
      * @param {[String]} likes
+     * @param {[String]} equals 
      */
-    constructor(table, pk, orderByClause, likes, ins, notIns) {
+    constructor (table, pk, orderByClause, equals, likes,) {
         this.table = table;
-        this.pk = pk;
-        this.ins = ins;
-        this.notIns = notIns;
-        this.likes = likes;
+        this.pk = pk || "id";
         this.orderByClause = orderByClause;
+        this.likes = likes;
+        this.equals = equals;
     }
 }
 

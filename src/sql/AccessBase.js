@@ -8,15 +8,16 @@ const { TableConfig } = require("./TableConfig");
 
 
 /**
- * Simple wrap of @see SqliteExecutor ,provide basic sql operations
+ * Simple wrap of @see SqlExcutor ,provide basic sql operations
  */
 class AccessBase extends Initiable {
         /**
+         * Constructor of AccessBase
          * 
          * @param {String} table  not null
          * @param {TableConfig} tableConfig 
          */
-        constructor(name, tableConfig) {
+        constructor (name, tableConfig) {
                 super(name);
                 validateUtils.requireNotNull(tableConfig, ["table", "pk"]);
                 this._tableConfig = tableConfig;
@@ -62,13 +63,13 @@ class AccessBase extends Initiable {
         }
 
         /**
-         * Get count by given conditions
+         * Get count 
          * 
          * @param {Any} entity
          * @param {import("./SqlGenerateConfig").SqlGenerateConfig} sqlGenerateConfig 
          * @returns {Promise<Number>}
          */
-        getCount(entity, sqlGenerateConfig) {
+        getCount(entity) {
                 let whereClause = SqlMaker.makeWhereClauseSql(entity, this._tableConfig);
                 return this._getCount(whereClause);
         }
@@ -80,7 +81,7 @@ class AccessBase extends Initiable {
          * @returns {Promise<Boolean>}
          */
         add(entity) {
-                return this.execute(SqlMaker.getInsertString(entity, this._tableConfig));
+                return this.execute(SqlMaker.makeInsertSql(entity, this._tableConfig));
         }
 
         /**
@@ -91,8 +92,9 @@ class AccessBase extends Initiable {
          */
         updateById(entity) {
                 let sql = SqlMaker.makeUpdateSql(entity, this._tableConfig);
-                if (!sql)
+                if (!sql) {
                         return false;
+                }
 
                 return this.execute(`${sql} ${this._getIdWhereClause(id)}`);
         }
@@ -146,13 +148,13 @@ class AccessBase extends Initiable {
          */
         updateBatch(ids, entity) {
                 if (ids.length == 0)
-                        return false;
+                        return 0;
 
-                let inSql = SqlMaker.makeInOrNotInSql(ids, this._idColumn).trim();
-
+                let sql = SqlMaker.makeInOrNotInSql(this._tableConfig.pk, ids).trim();
+                sql = SqlMaker.trimAnd(sql);
                 return this.execute(
-                        `${SqlMaker.getUpdateString(this._table, entity)}` +
-                        `where ${inSql.substr(3, inSql.length - 3)}`
+                        `${SqlMaker.makeUpdateSql(entity, this._tableConfig)}` +
+                        `where ${sql}`
                 );
         }
 
@@ -166,10 +168,11 @@ class AccessBase extends Initiable {
                 if (ids.length == 0)
                         return false;
 
-                let inSql = SqlMaker.makeInOrNotInSql(ids, this._idColumn).trim();
+                let sql = SqlMaker.makeInOrNotInSql(this._tableConfig.pk, ids).trim();
+                sql = SqlMaker.trimAnd(sql);
                 return this.execute(
                         `delete from ${this._tableConfig.table} ` +
-                        `where ${inSql.substr(3, inSql.length - 3)}`
+                        `where ${sql}`
                 );
         }
 
@@ -178,7 +181,7 @@ class AccessBase extends Initiable {
          * 
          * @returns {Promise<Entity[]>}
          */
-        getAll(orderByClause = "") {
+        getAll() {
                 return this._mysqlExecutor.query(`select * from ${this._tableConfig.table} ${this._tableConfig.orderByClause}`);
         }
 
@@ -212,10 +215,11 @@ class AccessBase extends Initiable {
          * @param {String} orderByClause
          * @returns {Promise<Entity[]>}
          */
-        _query(whereClause, pageConfig, orderByClause = "") {
-                let sql = `select * from ${this._table} ${whereClause} \n ${orderByClause} \n`
-                if (pageConfig)
+        _query(whereClause, pageConfig) {
+                let sql = `select * from ${this._table} ${whereClause} \n ${this._tableConfig.orderByClause} \n`
+                if (pageConfig) {
                         sql += `limit ${(pageConfig.pageIndex - 1) * pageConfig.pageSize}, ${pageConfig.pageIndex * ageModel.pageSize + pageConfig.pageSize}`;
+                }
 
                 return this._mysqlExecutor.query(sql);
         }
@@ -241,8 +245,9 @@ class AccessBase extends Initiable {
          */
         _getCount(whereClause, pageConfig) {
                 let sql = `select count(1) from ${this._table} ${whereClause}  \n`
-                if (pageConfig)
+                if (pageConfig) {
                         sql += `limit ${(pageConfig.pageIndex - 1) * pageConfig.pageSize}, ${pageConfig.pageIndex * ageModel.pageSize + pageConfig.pageSize}`;
+                }
 
                 return this._mysqlExecutor.query(sql);
         }
@@ -255,7 +260,7 @@ class AccessBase extends Initiable {
          * @returns {string}
          */
         _getIdWhereClause(id) {
-                return ` where ${this._idColumn} = ${SqlMaker.formatSqlString(id)}`;
+                return ` where ${this._tableConfig.pk} = ${SqlMaker.formatSqlString(id)}`;
         }
 
         /**

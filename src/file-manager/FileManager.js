@@ -27,16 +27,6 @@ exports.FileManagerBase = class FileManagerBase extends Initiable {
         }
 
         /**
-         * Get full path of file
-         * 
-         * @param {String} file 
-         * @returns {String}
-         */
-        getFullPath(file) {
-                return `${this._workDir}/${file}`
-        }
-
-        /**
          * To check is file exist
          * 
          * @param {String} file 
@@ -64,5 +54,15 @@ exports.FileManagerBase = class FileManagerBase extends Initiable {
          */
         read(file) {
                 return fs.readFileSync(this.getFullPath(file)).toString();
+        }
+
+        /**
+        * Get full path of file
+        * 
+        * @param {String} file 
+        * @returns {String}
+        */
+        getFullPath(file) {
+                return `${this._workDir}/${file}`
         }
 }

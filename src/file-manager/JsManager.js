@@ -12,42 +12,54 @@ class JsManager extends FileManagerBase {
      * @constructor
      * @param {String} scriptDir 
      */
-    constructor (scriptDir, withFileSystem = true) {
+    constructor (scriptDir, useFileSystem = true) {
         super("JsManager", scriptDir);
-        this._js = new TimeoutCache();
+        this._mainMap = new TimeoutCache();
         this._fetcher = new FileDownloader(scriptDir);
-        this._withFileSystem = withFileSystem;
+        this._useFileSystem = useFileSystem;
     }
 
     /**
      * Find and load main function
      * 
-     * @param {String} jsFile 
+     * @param {String} script 
      * @returns {MainFunction?}
      */
-    async getMain(fileHost, jsFile) {
-        if (!this.exists(jsFile)) {
+    async getMain(fileHost, script) {
+        if (!this.exists(script)) {
             // download from file server
-            if (this._withFileSystem)
-                await this._fetcher.download(`${fileHost}/${jsFile}`, jsFile, {});
+            if (this._useFileSystem)
+                await this._fetcher.download(`${fileHost}/${script}`, script, {});
 
-            if (!this.exists(jsFile))
-                throw new Error(`fetch script(${jsFile}) failed`);
+            if (!this.exists(script))
+                throw new Error(`fetch script(${script}) failed`);
         }
 
-        if (this._js.has(jsFile))
-            return this._js.get(jsFile);
+        if (this._mainMap.has(script))
+            return this._mainMap.get(script);
 
         try {
-            let main = require(this.getFullPath(jsFile)).main;
+            let main = require(this.getFullPath(script)).main;
             if (main)
-                this._js.cache(jsFile, main, 1000 * 60 * 30);
+                this._mainMap.cache(script, main, 1000 * 60 * 30);
 
             return main;
         } catch (ex) {
-            this.error(`failed to load script(${jsFile})`, ex);
+            this.error(`failed to load script(${script})`, ex);
             throw ex;
         }
+    }
+
+    reload(script) {
+
+    }
+
+    isLoaded(script) {
+
+    }
+
+    has(script) {
+
     }
 
 }

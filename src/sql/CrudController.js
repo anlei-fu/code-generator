@@ -1,8 +1,7 @@
 const { Controller } = require("./../http")
-const { AccessBase } = require("./AcccessBase")
 
 class CrudController extends Controller {
-        constructor(accessName, apiPrefix) {
+        constructor (accessName, apiPrefix) {
                 super(`${accessName}-crud-controller`);
                 this._accessName = accessName;
                 this._apiPrefix = apiPrefix;
@@ -10,6 +9,7 @@ class CrudController extends Controller {
         }
 
         /**
+         * Set table access
          * 
          * @param {import("./CrudServiceContext").CrudServiceContext} context 
          */
@@ -17,8 +17,13 @@ class CrudController extends Controller {
                 this._access = context.accesses[this._accessName];
         }
 
+        /**
+         * Get page result
+         * 
+         * @param {} param0 
+         */
         async page({ query }) {
-                let page = await this._access.page(query, query);
+                let page = await this._access.page(query);
                 return this.resposneObject(page);
         }
 
@@ -33,8 +38,8 @@ class CrudController extends Controller {
         }
 
         async list({ query }) {
-                let item = await this._access.list(query);
-                return this.resposneObject(item);
+                let ls = await this._access.list(query);
+                return this.resposneObject(ls);
         }
 
         async add({ body }) {

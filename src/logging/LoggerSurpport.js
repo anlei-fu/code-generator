@@ -4,11 +4,16 @@ const { LoggerFactory } = require("./logger-factory");
  * @Baseclass
  */
 class LoggerSurpport {
-        constructor(logName) {
-                this.name = logName;
-                this._logger = LoggerFactory.getLogger(logName);
+        constructor (name) {
+                this.name = name;
+                this._logger = LoggerFactory.getLogger(name);
         }
 
+        /**
+         * 
+         * @param {String} msg 
+         * @param {Any} obj 
+         */
         warn(msg, obj) {
                 this._logger.warn(msg, obj);
         }

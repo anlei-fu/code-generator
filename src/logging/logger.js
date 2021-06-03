@@ -2,7 +2,7 @@
  *  Properties of log item
  */
 class LogEvent {
-        constructor() {
+        constructor () {
                 this.name = "";
                 this.msg = "";
                 this.level = "";
@@ -15,7 +15,7 @@ class LogEvent {
  * Logger
  */
 class Logger {
-        constructor(name) {
+        constructor (name) {
                 this._name = name;
         }
 
@@ -47,7 +47,7 @@ class Logger {
                 this._doWrite("error", msg, error, obj);
         }
 
-        fatal(msg,error,obj){
+        fatal(msg, error, obj) {
                 this._doWrite("fatal", msg, error, obj);
         }
 
@@ -62,7 +62,7 @@ class Logger {
                 if (typeof msg != "string") {
                         try {
                                 msg = JSON.stringify(msg);
-                        } catch{
+                        } catch {
                                 msg = msg.toString();
                         }
                 }
@@ -78,4 +78,7 @@ class Logger {
         }
 }
 
-exports.Logger = Logger;
+module.exports = {
+        Logger,
+        LogEvent
+}

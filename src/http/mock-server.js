@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { LoggerFactory } = require("./../common/logging/logger-factory");
+const { LoggerFactory } = require("./../logging");
 const { TableFormmatter } = require("./../common/formatter/table-formatter")
 const app = express();
 const formatter = new TableFormmatter();

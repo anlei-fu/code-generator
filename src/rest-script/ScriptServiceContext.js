@@ -34,8 +34,9 @@ exports.ScriptServiceContext = class ScriptServiceContext {
          */
         init(config) {
                 this.config = config;
-                if (config.debug)
+                if (config.debug) {
                         LoggerFactory.allowInfos(".*");
+                }
 
                 LoggerFactory.useFileAppender(config.logDir);
                 return this;

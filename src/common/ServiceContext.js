@@ -1,7 +1,7 @@
 const { ServiceProvider } = require("./ServiceProvider");
 
 class ServiceContext {
-    constructor() {
+    constructor () {
         this.serviceProvider = new ServiceProvider();
     }
 }

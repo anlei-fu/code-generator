@@ -1,7 +1,7 @@
 const { NamingStrategy, TYPE, validateUtils, OBJECT } = require("../libs");
 const { TableConfig } = require("./TableConfig");
 /**
- * Generate update string
+ * Generate update sql
  * 
  * @param {Object} entity
  * @param {TableConfig} tableConfig
@@ -27,19 +27,17 @@ function makeUpdateSql(entity, tableConfig) {
                 }
         });
 
-        return updateSql.substr(0, updateSql.length - 1) + ` where  ${tableConfig.pk} = ${formatSqlString(pkValue)}`;
+        return updateSql.substr(0, updateSql.length - 1) + ` where ${tableConfig.pk} = ${formatSqlString(pkValue)}`;
 }
 
 /**
- * Generate insert string
+ * Make insert sql 
  * 
  * @param {Object} entity 
  * @param {TableConfig} tableConfig
  * @returns {String?}
  */
 function makeInsertSql(entity, tableConfig) {
-        validateUtils.requireNotNull(table);
-
         entity = trimEmptyFields(entity);
         let fieldNames = Object.keys(entity);
         if (fieldNames.length == 0)
@@ -65,16 +63,21 @@ function makeInsertSql(entity, tableConfig) {
 
 
 /**
- * Get equal conditions join by 'and'
+ * Make equals sql 
  * 
  * @param {Any} model 
+ * @param {TableConfig} tableConfig
  * @returns {String}
  */
-function makeEqualSql(model) {
+function makeEqualSql(model, tableConfig) {
         let _new = trimEmptyFields(model);
         let fieldNames = Object.keys(_new);
+        if (tableConfig && tableConfig.equals && tableConfig.equals.length > 0) {
+                fieldNames = fieldNames.filter(x => tableConfig.equals.includes(x));
+        }
+
         if (fieldNames.length == 0)
-                return null;
+                return "";
 
         let sql = "";
         fieldNames.forEach((fieldName) => {
@@ -86,62 +89,45 @@ function makeEqualSql(model) {
 }
 
 /**
- * Make where clause
+ * Make where clause sql
  * 
  * @param {Object} model 
  * @param {TableConfig} tableConfig 
+ * @returns {String}
  */
 function makeWhereClauseSql(model, tableConfig) {
         let likeClause = "";
-        if (likes && likes.length > 0) {
+        if (tableConfig.likes && tableConfig.likes.length > 0) {
                 let likeModel = {};
                 likes.forEach(x => {
-
-                        if (!TYPE.isArray(model[x]))
+                        if (TYPE.isEmpty(model[x]))
                                 return;
 
                         likeModel[x] = model[likeModel];
-
-                        likeClause += sqlUtils.makeLikeSql(likeModel)
-                        OBJECT.setFieldToNull(model, x);
                 });
 
-
+                likeClause += makeLikeSql(likeModel)
+                OBJECT.setFieldToNull(model, tableConfig.likes);
         }
 
-        let inClause = "";
-        if (ins && ins.length > 0) {
-                ins.forEach(x => {
-                        inClause += makeInOrNotInSql(model[x], x);
-                })
-
-                OBJECT.setFieldToNull(model, ins);
-        }
-
-        let notInClause = "";
-        if (ins && ins.length > 0) {
-                notIns.forEach(x => {
-                        inClause += makeInOrNotInSql(model[x], x, "not in");
-                })
-                OBJECT.setFieldToNull(model, notIns);
-        }
-
-        let equalClause = makeEqualSql(model);
-
-        let sql = equalClause + inClause + notInClause + likeClause;
-        sql = sql.trim();
-        if (sql.startsWith("and")) {
-                sql = sql.substr(3, sql.length - 3);
-        }
+        let equalClause = makeEqualSql(model, tableConfig);
+        let sql = equalClause + likeClause;
+        sql = trimAnd(sql);
 
         return `where ${sql}`;
 }
 
+/**
+ * Make like sql %keyword%
+ * 
+ * @param {Object} model 
+ * @returns {String}
+ */
 function makeLikeSql(model) {
         let _new = trimEmptyFields(model);
         let fieldNames = Object.keys(_new);
         if (fieldNames.length == 0)
-                return null;
+                return "";
 
         let sql = "";
         fieldNames.forEach((fieldName) => {
@@ -153,7 +139,7 @@ function makeLikeSql(model) {
 }
 
 /**
- * Generate in like sql segment
+ * Make in-like sql str
  * 
  * @param {[String|Number]} items 
  * @param {String} field 
@@ -182,7 +168,7 @@ function makeInOrNotInSql(items, field, prefix = "in") {
 /***
  * Nomorlize sql value, if a string escape \' mark
  * 
- * @returns {string}
+ * @returns {String}
  */
 function formatSqlString(value, withQuota = true) {
         if (TYPE.isUndefined(value))
@@ -192,20 +178,20 @@ function formatSqlString(value, withQuota = true) {
                 return withQuota ? `'${value.replace(/'/g, "''")}'` : `${value.replace(/'/g, "''")}`;
         } else if (value instanceof Date) {
                 return withQuota ? `'${value.toLocaleString()}'` : `${value.toLocaleString()}`;
-        }
-        else {
-                return `${value}`
+        } else {
+                return `${value}`;
         }
 }
 
 /**
- * Trim null fiedl of fields ,do a copy
+ * Trim null field and do a copy
  * 
  * @param {Object} fields 
  * @returns {Object}
  */
 function trimEmptyFields(fields) {
         let _new = {};
+
         Object.keys(fields).forEach(key => {
                 if (!TYPE.isEmpty(fields[key]))
                         _new[key] = fields[key];
@@ -214,6 +200,20 @@ function trimEmptyFields(fields) {
         return _new;
 }
 
+/**
+ * Remove and start in where clause
+ * 
+ * @param {String} sql 
+ * @returns {String}
+ */
+function trimAnd(sql) {
+        sql = sql.trim();
+        if (sql.startsWith("and")) {
+                sql = sql.substr(3, sql.length - 3);
+        }
+
+        return sql;
+}
 
 exports.SqlMaker = {
         makeUpdateSql,
@@ -223,5 +223,6 @@ exports.SqlMaker = {
         makeInOrNotInSql,
         makeEqualSql,
         makeLikeSql,
-        makeWhereClauseSql
+        makeWhereClauseSql,
+        trimAnd
 }

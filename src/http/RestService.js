@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Service,ServiceStatus } = require("./../common");
+const { Service, ServiceStatus } = require("./../common");
 const { Controller } = require("./Controller");
 const { validateUtils } = require("./../libs");
 
@@ -25,7 +25,7 @@ class RestService extends Service {
      * 
      * @param {[Controller]} controllers 
      */
-    constructor (port, controllers = [],staticFolder) {
+    constructor (port, controllers = [], staticFolder) {
         validateUtils.requireNumber(port);
         super("RestService");
         this._controllers = controllers;
@@ -35,7 +35,7 @@ class RestService extends Service {
 
         this._port = port;
 
-        if(staticFolder){
+        if (staticFolder) {
             app.use(express.static(staticFolder));
         }
     }
@@ -46,7 +46,7 @@ class RestService extends Service {
      * @param {import("express").RequestHandler}
      */
     useMiddleware(middleware) {
-         app.use(middleware);
+        app.use(middleware);
     }
 
     /**

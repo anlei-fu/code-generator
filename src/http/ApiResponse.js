@@ -1,5 +1,5 @@
 exports.ApiResponse = class {
-        constructor (code,msg,data) {
+        constructor (code, msg, data) {
                 /**
                  * 
                  */

@@ -121,7 +121,12 @@ class Controller extends Initiable {
 
                                 result = await handler.call(this,
                                         {
-                                                path: req.path, query: req.query, body: req.body, params: req.params
+                                                path: req.path,
+                                                query: req.query,
+                                                body: req.body,
+                                                params: req.params,
+                                                req,
+                                                resp
                                         }
                                 );
                         } catch (e) {

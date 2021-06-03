@@ -21,6 +21,11 @@ class FileManagerController extends Controller {
                 this._fileManagerGroup = new FileManagerGroup(this._root, context.config.fileManagers);
         }
 
+        /**
+         * Upload file
+         * 
+         * @param {*} param0 
+         */
         upload({ body, file, resp }) {
                 let fileManager = this._fileManagerGroup.getManager(body.key);
                 if (!fileManager){
@@ -44,6 +49,12 @@ class FileManagerController extends Controller {
 
         }
 
+        /**
+         * Download file
+         * 
+         * @param {*} req 
+         * @param {*} resp 
+         */
         downloadFile(req, resp) {
                 let fileManager = this._context.fileManagerGroup.getManager(req.body.key);
                 if (!fileManager)
@@ -64,6 +75,11 @@ class FileManagerController extends Controller {
 
         }
 
+        /**
+         * Read a file
+         * 
+         * @param {*} param0 
+         */
         readFile({ body }) {
                 let fileManager = this._context.fileManagerGroup.getManager(body.key);
                 if (!fileManager)
