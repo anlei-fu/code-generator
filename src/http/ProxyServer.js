@@ -18,8 +18,8 @@ const LOG = LoggerFactory.getLogger("proxy server");
 LoggerFactory.allowInfos(".*");
 
 class ProxyServer {
-        constructor(targetSite){
-             this._targetSite=targetSite;
+        constructor (targetSite) {
+                this._targetSite = targetSite;
         }
         /**
          * 
@@ -36,33 +36,33 @@ class ProxyServer {
                 app.listen(port);
         }
 
-        mount(method){
+        mount(method) {
                 app[method]("*", async (req, resp) => {
                         try {
                                 LOG.info(`${method} ${req.path}`);
-                                let requestParams={
+                                let requestParams = {
                                         params: req.query,
-                                        data:req.body,
+                                        data: req.body,
                                 }
 
                                 console.log(requestParams);
 
-                                let res = await axios.default[method](this._targetSite+req.path, {
+                                let res = await axios.default[method](this._targetSite + req.path, {
                                         headers: req.headers,
                                         params: req.query,
-                                        data:req.body
+                                        data: req.body
                                 })
 
                                 LOG.info("resp");
                                 console.log(res);
                                 resp.send(res);
 
-                        } catch(ex){
-                            LOG.error(`${req.method} ${req.path} ${ex}`);
+                        } catch (ex) {
+                                LOG.error(`${req.method} ${req.path} ${ex}`);
                         }
                 });
 
         }
 }
 
-exports.ProxyServer=ProxyServer
+exports.ProxyServer = ProxyServer

@@ -1,14 +1,14 @@
 const { RestService, Controller } = require("./../http");
 const { SpellChecker } = require("./SpellChecker");
-const {LoggerFactory} =require("./../logging");
-const {validateUtils} =require("./../libs")
+const { LoggerFactory } = require("./../logging");
+const { validateUtils } = require("./../libs")
 
 class SpellController extends Controller {
 
         constructor () {
                 super();
                 this._spellChecker = new SpellChecker();
-                this._spellChecker.load("./dic/english.txt");
+                this._spellChecker.load(`${__dirname}/dic/english.txt`);
         }
 
         getAdvice({ query }) {
@@ -31,9 +31,11 @@ class SpellController extends Controller {
         }
 }
 
+exports.SpellController = SpellController;
+
 function main() {
         LoggerFactory.allowInfos(".*");
-        let service = new RestService(12306, [new SpellController()],"./");
+        let service = new RestService(12306, [new SpellController()], "./");
         service.init();
         service.start();
 }

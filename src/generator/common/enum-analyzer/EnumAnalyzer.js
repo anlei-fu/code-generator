@@ -3,10 +3,10 @@ const { STR } = require("./../../../libs/str");
 
 const DEFAULT_MATCHER = {
         status: {
-                match: columnName =>{ 
-                   let lower =columnName.toLowerCase();
-                   let suffixes=["type", "status", "state", "class", "level", "style"]
-                  return STR.endsWithAny(lower,suffixes);
+                match: columnName => {
+                        let lower = columnName.toLowerCase();
+                        let suffixes = ["type", "status", "state", "class", "level", "style"]
+                        return STR.endsWithAny(lower, suffixes);
 
                 },
                 label: "name",
@@ -15,17 +15,17 @@ const DEFAULT_MATCHER = {
                 table: "dictionary",
         },
         has: {
-                match: columnName => { 
-                        let lower =columnName.toLowerCase();
-                        let suffixes=["is","has","need","support","permit","allow","enable","disable"]
-                       return STR.startsWithAny(lower,suffixes);
-     
-                     },
+                match: columnName => {
+                        let lower = columnName.toLowerCase();
+                        let suffixes = ["is", "has", "need", "support", "permit", "allow", "enable", "disable"]
+                        return STR.startsWithAny(lower, suffixes);
+
+                },
                 label: "name",
                 value: "value",
                 type: "CheckBox",
                 table: "dictionary",
-                defaultType:"booleanFlag"
+                defaultType: "booleanFlag"
         },
 }
 

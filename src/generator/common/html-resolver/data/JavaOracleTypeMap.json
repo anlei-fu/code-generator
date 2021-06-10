@@ -1,0 +1,203 @@
+[
+	[
+		{},
+		{
+			"SQL数据类型": "",
+			"JDBC类型代码": "1.0标准的JDBC类型:",
+			"标准的Java类型": "",
+			"Oracle扩展的Java类型": ""
+		},
+		{
+			"SQL数据类型": "CHAR",
+			"JDBC类型代码": "java.sql.Types.CHAR",
+			"标准的Java类型": "java.lang.String",
+			"Oracle扩展的Java类型": "oracle.sql.CHAR"
+		},
+		{
+			"SQL数据类型": "VARCHAR2",
+			"JDBC类型代码": "java.sql.Types.VARCHAR",
+			"标准的Java类型": "java.lang.String",
+			"Oracle扩展的Java类型": "oracle.sql.CHAR"
+		},
+		{
+			"SQL数据类型": "LONG",
+			"JDBC类型代码": "java.sql.Types.LONGVARCHAR",
+			"标准的Java类型": "java.lang.String",
+			"Oracle扩展的Java类型": "oracle.sql.CHAR"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.NUMERIC",
+			"标准的Java类型": "java.math.BigDecimal",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.DECIMAL",
+			"标准的Java类型": "java.math.BigDecimal",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.BIT",
+			"标准的Java类型": "boolean",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.TINYINT",
+			"标准的Java类型": "byte",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.SMALLINT",
+			"标准的Java类型": "short",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.INTEGER",
+			"标准的Java类型": "int",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.BIGINT",
+			"标准的Java类型": "long",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.REAL",
+			"标准的Java类型": "float",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.FLOAT",
+			"标准的Java类型": "double",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "NUMBER",
+			"JDBC类型代码": "java.sql.Types.DOUBLE",
+			"标准的Java类型": "double",
+			"Oracle扩展的Java类型": "oracle.sql.NUMBER"
+		},
+		{
+			"SQL数据类型": "RAW",
+			"JDBC类型代码": "java.sql.Types.BINARY",
+			"标准的Java类型": "byte[]",
+			"Oracle扩展的Java类型": "oracle.sql.RAW"
+		},
+		{
+			"SQL数据类型": "RAW",
+			"JDBC类型代码": "java.sql.Types.VARBINARY",
+			"标准的Java类型": "byte[]",
+			"Oracle扩展的Java类型": "oracle.sql.RAW"
+		},
+		{
+			"SQL数据类型": "LONGRAW",
+			"JDBC类型代码": "java.sql.Types.LONGVARBINARY",
+			"标准的Java类型": "byte[]",
+			"Oracle扩展的Java类型": "oracle.sql.RAW"
+		},
+		{
+			"SQL数据类型": "DATE",
+			"JDBC类型代码": "java.sql.Types.DATE",
+			"标准的Java类型": "java.sql.Date",
+			"Oracle扩展的Java类型": "oracle.sql.DATE"
+		},
+		{
+			"SQL数据类型": "DATE",
+			"JDBC类型代码": "java.sql.Types.TIME",
+			"标准的Java类型": "java.sql.Time",
+			"Oracle扩展的Java类型": "oracle.sql.DATE"
+		},
+		{
+			"SQL数据类型": "TIMESTAMP",
+			"JDBC类型代码": "java.sql.Types.TIMESTAMP",
+			"标准的Java类型": "javal.sql.Timestamp",
+			"Oracle扩展的Java类型": "oracle.sql.TIMESTAMP"
+		},
+		{
+			"SQL数据类型": "",
+			"JDBC类型代码": "2.0标准的JDBC类型:",
+			"标准的Java类型": "",
+			"Oracle扩展的Java类型": ""
+		},
+		{
+			"SQL数据类型": "BLOB",
+			"JDBC类型代码": "java.sql.Types.BLOB",
+			"标准的Java类型": "java.sql.Blob",
+			"Oracle扩展的Java类型": "oracle.sql.BLOB"
+		},
+		{
+			"SQL数据类型": "CLOB",
+			"JDBC类型代码": "java.sql.Types.CLOB",
+			"标准的Java类型": "java.sql.Clob",
+			"Oracle扩展的Java类型": "oracle.sql.CLOB"
+		},
+		{
+			"SQL数据类型": "用户定义的对象",
+			"JDBC类型代码": "java.sql.Types.STRUCT",
+			"标准的Java类型": "java.sql.Struct",
+			"Oracle扩展的Java类型": "oracle.sql.STRUCT"
+		},
+		{
+			"SQL数据类型": "用户定义的参考",
+			"JDBC类型代码": "java.sql.Types.REF",
+			"标准的Java类型": "java.sql.Ref",
+			"Oracle扩展的Java类型": "oracle.sql.REF"
+		},
+		{
+			"SQL数据类型": "用户定义的集合",
+			"JDBC类型代码": "java.sql.Types.ARRAY",
+			"标准的Java类型": "java.sql.Array",
+			"Oracle扩展的Java类型": "oracle.sql.ARRAY"
+		},
+		{
+			"SQL数据类型": "",
+			"JDBC类型代码": "Oracle扩展:",
+			"标准的Java类型": "",
+			"Oracle扩展的Java类型": ""
+		},
+		{
+			"SQL数据类型": "BFILE",
+			"JDBC类型代码": "oracle.jdbc.OracleTypes.BFILE",
+			"标准的Java类型": "N/A",
+			"Oracle扩展的Java类型": "oracle.sql.BFILE"
+		},
+		{
+			"SQL数据类型": "ROWID",
+			"JDBC类型代码": "oracle.jdbc.OracleTypes.ROWID",
+			"标准的Java类型": "N/A",
+			"Oracle扩展的Java类型": "oracle.sql.ROWID"
+		},
+		{
+			"SQL数据类型": "REF CURSOR",
+			"JDBC类型代码": "oracle.jdbc.OracleTypes.CURSOR",
+			"标准的Java类型": "java.sql.ResultSet",
+			"Oracle扩展的Java类型": "oracle.jdbc.OracleResultSet"
+		},
+		{
+			"SQL数据类型": "TIMESTAMP",
+			"JDBC类型代码": "oracle.jdbc.OracleTypes.TIMESTAMP",
+			"标准的Java类型": "java.sql.Timestamp",
+			"Oracle扩展的Java类型": "oracle.sql.TIMESTAMP"
+		},
+		{
+			"SQL数据类型": "TIMESTAMP WITH TIME ZONE",
+			"JDBC类型代码": "oracle.jdbc.OracleTypes.TIMESTAMPTZ",
+			"标准的Java类型": "java.sql.Timestamp",
+			"Oracle扩展的Java类型": "oracle.sql.TIMESTAMPTZ"
+		},
+		{
+			"SQL数据类型": "TIMESTAMP WITH LOCAL TIME ZONE",
+			"JDBC类型代码": "oracle.jdbc.OracleTypes.TIMESTAMPLTZ",
+			"标准的Java类型": "java.sql.Timestamp",
+			"Oracle扩展的Java类型": "oracle.sql.TIMESTAMPLTZ"
+		}
+	]
+]
