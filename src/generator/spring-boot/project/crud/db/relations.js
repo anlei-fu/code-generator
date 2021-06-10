@@ -1,54 +1,63 @@
 exports.relations = {
-	aditionalOption: [
+	backendConfig: [
 		{
-			otherTable: "tableInfo",
-			otherTableColumn: "id",
-			selfColumn: "tableId",
-			additionalCondition: "",
-			relationType: "manyToOne"
-		}
-	],
-	fieldInfo: [
-		{
-			otherTable: "tableInfo",
-			otherTableColumn: "id",
-			selfColumn: "tableId",
-			additionalCondition: "",
-			relationType: "manyToOne"
-		}
-	],
-	moduleS: [
-		{
-			otherTable: "project",
+			otherTable: "projectConfig",
 			otherTableColumn: "id",
 			selfColumn: "projectId",
 			additionalCondition: "",
-			relationType: "oneToMany"
+			relationType: "manyToOne"
+		}
+	],
+	casscader: [
+		{
+			otherTable: "projectConfig",
+			otherTableColumn: "id",
+			selfColumn: "projectId",
+			additionalCondition: "",
+			relationType: "manyToOne"
+		}
+	],
+	checkbox: [
+		{
+			otherTable: "projectConfig",
+			otherTableColumn: "id",
+			selfColumn: "projectId",
+			additionalCondition: "",
+			relationType: "manyToOne"
+		}
+	],
+	enumInfo: [
+		{
+			otherTable: "projectConfig",
+			otherTableColumn: "id",
+			selfColumn: "projectId",
+			additionalCondition: "",
+			relationType: "manyToOne"
+		}
+	],
+	frontendConfig: [
+		{
+			otherTable: "projectConfig",
+			otherTableColumn: "id",
+			selfColumn: "projectId",
+			additionalCondition: "",
+			relationType: "manyToOne"
+		}
+	],
+	tableEnum: [
+		{
+			otherTable: "projectConfig",
+			otherTableColumn: "id",
+			selfColumn: "projectId",
+			additionalCondition: "",
+			relationType: "manyToOne"
 		}
 	],
 	tableInfo: [
 		{
-			otherTable: "project",
+			otherTable: "projectConfig",
 			otherTableColumn: "id",
 			selfColumn: "projectId",
-			additionalCondition: "",
-			relationType: "oneToMany"
-		}
-	],
-	themeConfig: [
-		{
-			otherTable: "project",
-			otherTableColumn: "id",
-			selfColumn: "projectId",
-			additionalCondition: "",
-			relationType: "oneToMany"
-		}
-	],
-	validator: [
-		{
-			otherTable: "fieldInfo",
-			otherTableColumn: "id",
-			selfColumn: "fieldId",
 			additionalCondition: "",
 			relationType: "manyToOne"
 		}

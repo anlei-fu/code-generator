@@ -1,12 +1,12 @@
 
 // All Tables 
 exports.all={
-        aditionalOption:require("./aditionalOption").aditionalOption,
-        dictionary:require("./dictionary").dictionary,
-        fieldInfo:require("./fieldInfo").fieldInfo,
-        moduleS:require("./moduleS").moduleS,
-        project:require("./project").project,
+        backendConfig:require("./backendConfig").backendConfig,
+        casscader:require("./casscader").casscader,
+        checkbox:require("./checkbox").checkbox,
+        enumInfo:require("./enumInfo").enumInfo,
+        frontendConfig:require("./frontendConfig").frontendConfig,
+        projectConfig:require("./projectConfig").projectConfig,
+        tableEnum:require("./tableEnum").tableEnum,
         tableInfo:require("./tableInfo").tableInfo,
-        themeConfig:require("./themeConfig").themeConfig,
-        validator:require("./validator").validator,
 }

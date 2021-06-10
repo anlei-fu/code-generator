@@ -1,9 +1,9 @@
 const sqlUtils = require("../common/sqls/utils");
 const { STR } = require("../../libs/str")
-const { TYPE } = require("../../libs/utils")
+const { TYPE } = require("../../libs")
 const { NamingStrategy } = require("../../libs/naming-strategy");
 const { EnumAnalyzer } = require("../common/enum-analyzer/EnumAnalyzer");
-const { SimpleRender } = require("../common/renders/SimplePatterRender");
+const { SimpleRender } = require("../common/renders");
 const { Table } = require(`${__dirname}/builders/Table`);
 
 const JOIN_RENDER = new SimpleRender({}, `${__dirname}/templates/config-join.js`);

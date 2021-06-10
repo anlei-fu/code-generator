@@ -1,5 +1,5 @@
 const { STR } = require("../../libs/str");
-const { OBJECT } = require("../../libs/type");
+const { OBJECT } = require("../../libs");
 const { Matcher } = require("../common/matchers");
 const matchers = require("./matchers");
 const { COMMON_UTILS } = require("./../common");

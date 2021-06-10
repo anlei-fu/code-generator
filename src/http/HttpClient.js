@@ -10,10 +10,11 @@ class HttpClient extends Initiable {
          * @param {String} name 
          * @param {import("axios").AxiosRequestConfig} baseConfig 
          */
-        constructor (name, baseConfig = { timeout: 10000 }) {
+        constructor(name, apiPrefix, baseConfig = { timeout: 10000 }) {
                 super(name || "HttpClient");
                 this._client = axios.default.create(baseConfig);
                 this._baseConfig = baseConfig;
+                this._apiPrefix = apiPrefix;
         }
 
         /**
@@ -61,9 +62,9 @@ class HttpClient extends Initiable {
 
                 try {
                         resp = resp.trim();
-                        if(resp.endsWith(";")){
-                        resp = resp.substr(0, resp.length - 2);
-                        }else{
+                        if (resp.endsWith(";")) {
+                                resp = resp.substr(0, resp.length - 2);
+                        } else {
                                 resp = resp.substr(0, resp.length - 1);
                         }
                         resp = resp.replace(`${funcName}(`, "");
@@ -117,6 +118,9 @@ class HttpClient extends Initiable {
          */
         async _request({ url, params, data, method }) {
                 try {
+                         if(url)
+                            url=`${this._apiPrefix}/${url}`
+
                         this.info(`${method} ${url}`);
                         if (params) {
                                 this.info("params:", JSON.stringify(params));

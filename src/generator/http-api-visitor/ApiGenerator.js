@@ -19,6 +19,8 @@ class ConfigItem {
 
 const ITEM_RENDER = new SimpleRender({}, `${__dirname}/template/func-item.js`);
 const CLASS_RENDER = new SimpleRender({}, `${__dirname}/template/class.js`);
+const WEB_CLASS_RENDER = new SimpleRender({}, `${__dirname}/template/class-web.js`);
+
 
 
 class ApiGenerator {
@@ -35,6 +37,11 @@ class ApiGenerator {
         generate(configGroup) {
                 configGroup.content = STR.arrayToString1(configGroup.items, x => ITEM_RENDER.renderTemplate(x));
                 FILE.write(`${this._outputFolder}/${configGroup.name}.js`, CLASS_RENDER.renderTemplate(configGroup));
+        }
+
+        generateWeb(configGroup){
+                configGroup.content = STR.arrayToString1(configGroup.items, x => ITEM_RENDER.renderTemplate(x));
+                FILE.write(`${this._outputFolder}/${configGroup.name}.js`, WEB_CLASS_RENDER.renderTemplate(configGroup));
         }
 }
 

@@ -6,6 +6,6 @@
          * @return {Promise<Object>}
          */
         @name(params) {
-                return this.request('@path', '@method' ,params);
+                return this.@method('@path', params);
         }
 

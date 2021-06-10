@@ -28,7 +28,7 @@ exports.REGEX = {
         isTelephone: new RegExp("(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}"),
         isMobile: new RegExp("^1(3|4|5|6|7|8|9)\d{9}$"),
         isDomain: new RegExp("^((http:\/\/)|(https:\/\/))?([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}(\/)"),
-        isUrl: new RegExp("^(http|https)://([w-]+.)+[w-]+(/[w-./?%&=]*)?$"),
+        // isUrl: new RegExp("^(http|https)://([w-]+.)+[w-]+(/[w-./?%&=]*)?$"),
         isQq: new RegExp("[1-9][0-9]{4,}"),
         isPostCode: new RegExp("[1-9]d{5}(?!d)"),
         isIpAddress: new RegExp("((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))"),

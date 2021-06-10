@@ -18,6 +18,7 @@
                                         req.doCreate()
                                            .excludes("@skey")
                                            .name("add@nameReq")
+                                           .from("@RequestBody")
                                            .list()
 @insertReq
                                 })

@@ -4,7 +4,7 @@ const { GenerateConfigGenerator } = require("./BuilderConfigGenerator");
 const { InitConfig } = require("./builders/InitConfig");
 
 
-const { LoggerFactory } = require("../common/logging/logger-factory");
+const { LoggerFactory } = require("./../../logging");
 
 
 const LOG = LoggerFactory.getLogger("spring-boot-web-CRUD-project-initializer");

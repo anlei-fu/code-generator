@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-26 3:27:14 PM 
+ * Generated at 6/9/2021, 6:11:52 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -19,6 +19,7 @@ import com.jasmine.crud.utils.PageHelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
+
 
 @Service
 public class TableInfoServiceImpl extends AbstractCrudService<TableInfo> implements TableInfoService {
@@ -42,9 +43,15 @@ public class TableInfoServiceImpl extends AbstractCrudService<TableInfo> impleme
     }
 
     @Override
+    public TableInfo getById(Integer id) {
+        return super.getById(id);
+    }
+
+    @Override
     public PageResult<TableInfoDetailResp> getDetailPage(GetTableInfoPageReq req) {
         return PageHelperUtils.paging(req, () -> tableInfoMapper.getDetailPage(req));
     }
+
 
     @Override
     protected Class<TableInfo> getEntityClass(){

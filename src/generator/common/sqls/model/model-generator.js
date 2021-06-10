@@ -7,11 +7,11 @@
  * @LastEditTime: 2019-11-15 15:53:37
  */
 const { resolve } = require("./resolver");
-const { OBJECT } = require("../../../../libs/type");
+const { OBJECT } = require("../../../../libs");
 const sqlUtils = require("./../utils");
-const { FILE } = require("./../../../../libs/file");
-const { DIR } = require("./../../../../libs/dir");
-const { LoggerFactory } = require("./../../logging/logger-factory");
+const { FILE } = require("./../../../../libs");
+const { DIR } = require("./../../../../libs");
+const { LoggerFactory } = require("./../../../../logging");
 
 const LOG = LoggerFactory.getLogger("sql-model-generator");
 /**

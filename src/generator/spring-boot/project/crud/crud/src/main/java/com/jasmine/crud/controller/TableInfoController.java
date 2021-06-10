@@ -1,11 +1,12 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-26 3:27:14 PM 
+ * Generated at 6/9/2021, 6:11:52 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.controller;
 
+import com.jasmine.crud.pojo.entity.TableInfo;
 import com.jasmine.crud.pojo.req.*;
 import com.jasmine.crud.pojo.req.AddTableInfoReq;
 import com.jasmine.crud.pojo.req.GetTableInfoPageReq;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/table-info")
 public class TableInfoController extends ControllerBase {
@@ -25,7 +27,7 @@ public class TableInfoController extends ControllerBase {
     private TableInfoService tableInfoService;
 
     @PostMapping
-    public R add(@Validated AddTableInfoReq req) {
+    public R add(@RequestBody @Validated AddTableInfoReq req) {
         boolean result = tableInfoService.add(req);
         return responseBoolean(result);
     }
@@ -37,9 +39,15 @@ public class TableInfoController extends ControllerBase {
     }
 
     @PutMapping
-    public R update(@Validated UpdateTableInfoReq req) {
+    public R update(@RequestBody @Validated UpdateTableInfoReq req) {
         boolean result = tableInfoService.update(req);
         return responseBoolean(result);
+    }
+
+    @GetMapping(path = "{id}")
+    public R<TableInfo> getById(@PathVariable Integer id) {
+        TableInfo result = tableInfoService.getById(id);
+        return responseData(result);
     }
 
     @GetMapping(path = "detail/page")

@@ -16,7 +16,9 @@
 @insertUserReq@@
                                 .req(req => {
                                         req.doCreate()
+                                           .from("@RequestBody")
                                            .excludes("@skey")
+
 @insertReq
                                 })
                                 .build(),

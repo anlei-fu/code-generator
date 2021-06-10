@@ -80,6 +80,7 @@ class ControllerRender {
         _getArgs(configItem) {
                 let args = "";
                 configItem.reqs.forEach(req => {
+                         
                         req.from = req.from || "";
                         if (isJavaBaseType(req.type)) {
                                 if (!req.isList) {

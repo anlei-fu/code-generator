@@ -1,6 +1,6 @@
 const { all } = require("./config/all");
-const { SpringBootGenerator } = require("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/SpringBootGenerator");
-const { SpringBootGeneratorContext } = require("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/builders/SpringBootGeneratorContext");
+const { SpringBootGenerator } = require("D:/project/code-generator/src/generator/spring-boot/SpringBootGenerator");
+const { SpringBootGeneratorContext } = require("D:/project/code-generator/src/generator/spring-boot/builders/SpringBootGeneratorContext");
 const { mockConfig } = require("./mockConfig");
 
 /**

@@ -7,10 +7,10 @@
  * @LastEditTime: 2019-12-17 14:34:14
  */
 const { ColumnBuilder } = require("./ColumnBuilder");
-const {OBJECT} =require("../../../libs/utils")
+const { OBJECT } = require("../../../libs")
 
 class JoinBuilder {
-        constructor () {
+        constructor() {
                 this._includes = new ColumnBuilder();
                 this._conditions = new ColumnBuilder();
                 this._table;
@@ -105,4 +105,4 @@ class JoinBuilder {
         }
 }
 
-exports.JoinBuilder=JoinBuilder;
+exports.JoinBuilder = JoinBuilder;

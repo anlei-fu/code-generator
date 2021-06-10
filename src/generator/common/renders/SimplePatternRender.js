@@ -110,6 +110,9 @@ exports.SimpleRender = class SimpleRender {
 
                 let _new = {};
                 OBJECT.forEach(copy, (key, value) => {
+                        if(value===undefined){
+                                let t =0;
+                        }
                         _new[`${this._prefix}${key}${this._suffix}`] = value;
                 });
 

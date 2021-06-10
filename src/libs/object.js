@@ -1,3 +1,5 @@
+const {ARRAY} =require("./array")
+
 /**
  * Extend object
  * 
@@ -27,7 +29,7 @@ function extend(self, other, override) {
  * @param {Object} other 
  */
 function deepExtend(self, other) {
-        let keys = toSet(Object.keys(self));
+        let keys = ARRAY.toSet(Object.keys(self));
 
         for (const p in other) {
                 if (keys.has(p)) {

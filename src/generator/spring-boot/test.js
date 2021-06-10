@@ -9,13 +9,14 @@
 
 const { SpringBootProjectInitializer } = require("./SpringBootProjectInitializer");
 const { InitConfigBuilder } = require("./builders/InitConfig");
+const { LoggerFactory } = require("../../logging");
 
 async function main() {
 
         let builder =new InitConfigBuilder();
         builder.project("crud")
                .company("jasmine")
-               .targetFolder("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/project")
+               .targetFolder("D:/project/code-generator/src/generator/spring-boot/project")
                .generateDb()
                .generateStructure()
                .generateBuilder()
@@ -28,7 +29,7 @@ async function main() {
                                 .port(3306)
                                 .user("root")
                                 .password("2011801243")
-                                .db("crud_project_generator")
+                                .db("crud_project")
                          })
                })
                .useAnalyzeConfig(analyze=>{
@@ -56,6 +57,7 @@ async function main() {
         //         generateRelation: false
 
         // }
+        LoggerFactory.allowInfos(".*");
         let initializer = new SpringBootProjectInitializer();
         await initializer.init(config);
 }

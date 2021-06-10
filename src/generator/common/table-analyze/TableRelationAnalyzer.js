@@ -1,8 +1,8 @@
-const { OBJECT } = require("../../../libs/type");
-const { STR } = require("./../../../libs/str");
+const { OBJECT } = require("../../../libs");
+const { STR } = require("./../../../libs");
 const { SimpleFullTextSearcher } = require("../full-text-index/simple-full-text-searcher");
 const { COMMON_UTILS } = require("./../../common");
-const { LoggerFactory } = require("../logging/logger-factory")
+const { LoggerFactory } = require("./../../../logging")
 
 const LOG = LoggerFactory.getLogger("Table relation resolver");
 

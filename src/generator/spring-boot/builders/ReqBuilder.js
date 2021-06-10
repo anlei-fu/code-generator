@@ -6,7 +6,7 @@
  * @LastEditors  : fuanlei
  * @LastEditTime : 2019-12-18 11:49:04
  */
-const { TYPE } = require("../../../libs/utils");
+const { TYPE } = require("../../../libs");
 
 /**
  * Build req config

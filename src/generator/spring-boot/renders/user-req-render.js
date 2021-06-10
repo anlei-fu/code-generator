@@ -1,4 +1,4 @@
-const { SimpleRender } = require("./../../common/renders/SimplePatterRender");
+const { SimpleRender } = require("./../../common/renders");
 const { COMMON_UTILS } = require("./../../common")
 
 const USER_REQ_RENDER = new SimpleRender({}, `${__dirname}/templates/user-req.js`);

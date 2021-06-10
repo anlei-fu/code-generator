@@ -6,7 +6,7 @@
  * @LastEditors  : fuanlei
  * @LastEditTime : 2019-12-19 10:45:55
  */
-const { TYPE, OBJECT ,ARRAY } = require("../../../libs/utils")
+const { TYPE, OBJECT ,ARRAY } = require("../../../libs")
 exports.ColumnBuilder = class ColumnBuilder {
         constructor () {
                 this._includes = {};

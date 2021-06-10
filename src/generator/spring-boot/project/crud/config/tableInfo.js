@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-26 3:27:09 PM 
+ * Generated at 6/9/2021, 6:11:08 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 const { all } = require("./../db/all")
-const { ConfigItemBuilder } = require("C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/builders/ConfigItemBuilder")
+const { ConfigItemBuilder } = require("D:/project/code-generator/src/generator/spring-boot/builders/ConfigItemBuilder")
 
 
 exports.tableInfoConfig = {
@@ -13,7 +13,9 @@ exports.tableInfoConfig = {
         name: "TableInfo",
                 items: [
                         // add
-                        // id excluded
+                        // id excluded 
+                        // projectId : validate --- @NotNull  
+                        // updateTime excluded
                         new ConfigItemBuilder()
                                 .type("insert")
                                 .id("add")
@@ -21,16 +23,19 @@ exports.tableInfoConfig = {
                                 .includes(collection => {
                                         collection.includes(all.tableInfo.columnsArray)
                                                   .excludes("id")
-                                                  .excludes(["id",])
+                                                  .excludes(["id","updateTime",])
                                 })
                                 .request(request => {
                                         request.path("")
                                                .description("add tableInfo");
                                 })
+
                                 .req(req => {
                                         req.doCreate()
+                                           .from("@RequestBody")
                                            .excludes("id")
 
+                                           .validate("projectId","@NotNull")
                                 })
                                 .build(),
 
@@ -52,16 +57,20 @@ exports.tableInfoConfig = {
                                            .type("Integer")
                                            .from("@PathVariable");
                                 })
+
                                 .build(),
 
                               // updateById
-                        // id : validate --- @NotNull
+                        // id : validate --- @NotNull  
+                        // projectId : validate --- @NotNull  
+                        // updateTime : excluded
                         new ConfigItemBuilder()
                                 .type("update")
                                 .id("update")
                                 .alias("t")
                                 .includes(collection => {
                                         collection.includes(all.tableInfo.columnsArray)
+                                                  .excludes(["updateTime",])
 
                                 })
                                 .conditions(collection => {
@@ -71,27 +80,48 @@ exports.tableInfoConfig = {
                                         request.path("")
                                                .description("update single tableInfo");;
                                 })
+                
                                 .req(req => {
                                         req.doCreate()
+                                           .from("@RequestBody")
                                            .validate("id","@NotNull")
+                                           .validate("projectId","@NotNull")
                                            .name("UpdateTableInfoReq")                                                
                                 })
                                 .build(),
 
+                        // getById
+                        new ConfigItemBuilder()
+                                .type("select")
+                                .id("getById")
+                                .alias("t")
+                                .includes(collection=>{
+                                        collection.includes(all.tableInfo.columnsArray)
+                                })
+                                .conditions(collection =>{
+                                        collection.includes("id")
+                                                  .require("id")
+                                })
+                                .request(request => {
+                                        request.path("{id}")
+                                                .description("get single tableInfo");;
+                                })
+                                .req(req => {
+                                        req.name("id")
+                                           .type("Integer")
+                                           .from("@PathVariable");
+                                })
+                                .resp(resp => {
+                                        resp.single();
+                                })
+
+                                .build(),
+
 
                         // get detail page
-                        // apiPrefix : excluded 
-                        // batchDelete : excluded 
-                        // batchEidit : excluded 
-                        // deletable : excluded 
-                        // description : excluded 
-                        // eiditable : excluded 
-                        // insertable : excluded 
-                        // mouduleId : excluded 
-                        // name : expression --- like
                         // projectId : excluded 
-                        // rawName : excluded 
-                        // title : excluded
+                        // content : excluded 
+                        // updateTime : expression --- timeRange
                          new ConfigItemBuilder()
                          .type("select")
                          .id("getDetailPage")
@@ -102,14 +132,14 @@ exports.tableInfoConfig = {
                          .conditions(collection=>{
                                   collection.includes(all.tableInfo.columnsArray)
                                             .excludes("id")
-                                                  .excludes(["apiPrefix","batchDelete","batchEidit","deletable","description","eiditable","insertable","mouduleId","projectId","rawName","title",])
-                                                  .exp("name","like")
+                                                  .excludes(["projectId","content",])
+                                                  .exp("updateTime","timeRange")
                           })
                                 .join(join=>{
-                                            join.table(all.project)
+                                            join.table(all.projectConfig)
                                                 .includes(collection=>{
-                                                        collection.includes("name")
-                                                                   .alias("name","projectName")
+                                                        collection.includes("id")
+                                                                   .alias("id","projectConfigId")
                                                 })
                                                 .type("left")
                                                 .alias("t1")

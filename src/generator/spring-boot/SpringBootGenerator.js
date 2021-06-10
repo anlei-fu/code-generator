@@ -1,7 +1,7 @@
 const { ConfigGroup } = require("./builders/ConfigGroup");
 const { ConfigItem } = require("./builders/ConfigItem");
 const { Entity } = require("./builders/Entity");
-const { OBJECT } = require("../../libs/utils");
+const { OBJECT } = require("../../libs");
 const { STR } = require("../../libs/str");
 const { ReqUtils } = require("./ReqUtils");
 const { COMMON_UTILS } = require("./../common");

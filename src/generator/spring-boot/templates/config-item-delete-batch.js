@@ -16,6 +16,7 @@
                                         req.name("@skeys")
                                            .type("@keyType")
                                            .list();
+                                           .from("@RequestBody")
                                 })
 @deleteUserReq@@
                                 .build(),

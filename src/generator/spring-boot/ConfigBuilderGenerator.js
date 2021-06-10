@@ -1,7 +1,7 @@
-const { OBJECT } = require("../../libs/utils");
+const { OBJECT } = require("../../libs");
 const { STR } = require("../../libs/str");
 const { COMMON_UTILS } = require("./../common");
-const { SimpleRender } = require("../common/renders/SimplePatterRender");
+const { SimpleRender } = require("./../common/renders");
 const { SelectAnalyzer, UpdateAnlyzer, InsertAnalyzer } = require("./Analyzer");
 const { renderUserReq } = require("./renders/user-req-render");
 const { UserColumnAnalyzer } = require("./Analyzer");
@@ -105,6 +105,10 @@ class ConfigBuilderGenerator {
                 //
                 let joinsSegment = STR.arrayToString1(joinConfigs,
                         (joinConfig, i) => JOIN_ANALYZER.renderJoinConfig(joinConfig, `t${i + 1}`))
+
+                if(joinsSegment.includes("undefined")){
+                        let t =0;
+                }
 
                 let selectConfig = this._generateSelectConfig(table);
                 let insertConfig = this._generateInsertConfig(table);

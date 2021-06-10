@@ -5,7 +5,7 @@
  * All rights reserved by fuanlei(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 const { ConfigGenerator } = require(
-        "C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/ConfigGenerator"
+        "D:/project/code-generator/src/generator/spring-boot/ConfigGenerator"
 );
 
 const { analyzeConfig } = require("./analyzeConfig");
@@ -14,8 +14,8 @@ const { analyzeConfig } = require("./analyzeConfig");
 function main() {
         let generator = new ConfigGenerator(analyzeConfig);
         generator.generate(
-                "C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot/project",
-                "C:/Users/Administrator/Desktop/Projects/code-generator/src/generator/spring-boot",
+                "D:/project/code-generator/src/generator/spring-boot/project",
+                "D:/project/code-generator/src/generator/spring-boot",
                 "crud"
         );
         console.log("config finished!");

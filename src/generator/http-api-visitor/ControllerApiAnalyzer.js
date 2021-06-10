@@ -3,7 +3,7 @@ const { tokenize } = require("../../tokenization")
 
 class ControllerApiAnalyzer {
 
-        constructor () {
+        constructor() {
         }
 
         analyze(folder) {
@@ -28,8 +28,9 @@ class ControllerApiAnalyzer {
                 });
                 return {
                         name: this.getClassName(content),
-                        method: apiPrefix.method,
-                        apiPrefix: apiPrefix.path,
+                        sname: STR.lowerFirstLetter(this.getClassName(content)),
+                        method: apiPrefix ? apiPrefix.method : "",
+                        apiPrefix: apiPrefix ? apiPrefix.path : "",
                         items: methods
                 }
         }
@@ -74,22 +75,22 @@ class ControllerApiAnalyzer {
                 if (ARRAY.hasAny(tokens, x => x.value == "class"))
                         return null;
 
-                let item = {};
+                let method = {};
 
 
                 let result = {};
                 if (content.includes("GetMapping")) {
-                        item.method = "get";
+                        method.method = "get";
                         result = this.resolveAnnotation(tokens, "GetMapping");
 
                 } else if (content.includes("PostMapping")) {
-                        item.method = "post";
+                        method.method = "post";
                         result = this.resolveAnnotation(tokens, "PostMapping");
                 } else if (content.includes("PutMapping")) {
-                        item.method = "put";
+                        method.method = "put";
                         result = this.resolveAnnotation(tokens, "PutMapping");
                 } else if (content.includes("DeleteMapping")) {
-                        item.method = "delete";
+                        method.method = "delete";
                         result = this.resolveAnnotation(tokens, "DeleteMapping");
                 } else if (content.includes("RequestMapping")) {
                         result = this.resolveAnnotation(tokens, "RequestMapping");
@@ -97,13 +98,13 @@ class ControllerApiAnalyzer {
                         return null;
                 }
 
-                if (result.method)
-                        item.method = result.method;
-                if (result.value)
-                        item.path = result.value;
+                if (result && result.method)
+                        method.method = result.method;
+                if (result && result.value)
+                        method.path = result.value;
 
-                if (result.path)
-                        item.path = result.path
+                if (result && result.path)
+                        method.path = result.path
 
 
                 let index = ARRAY.indexOf(tokens, x => x.value == "public");
@@ -114,8 +115,9 @@ class ControllerApiAnalyzer {
                 if (k == -1)
                         return null;
 
-                item.name = tokens[k - 1].value;
-                return item;
+                method.name = tokens[k - 1].value;
+                method.path = method.path || "";
+                return method;
         }
 
         resolveAnnotation(tokens, pattern) {
@@ -184,7 +186,7 @@ class ControllerApiAnalyzer {
         getClassName(content) {
                 let tokens = tokenize(content).filter(x => x.type != "blank");
                 let index = ARRAY.indexOf(tokens, x => x.value == "class");
-                return tokens[index + 1].value.replace("Controller","");
+                return tokens[index + 1].value.replace("Controller", "");
         }
 }
 

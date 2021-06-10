@@ -33,7 +33,7 @@ class EntityRender {
                                 name: fieldName,
                                 type: field.isList ? `List<${field.type}>` : field.type,
                                 description: field.description.replace(/\r\n/g, ""),
-                                validates
+                                validates:validates||""
                         };
 
 

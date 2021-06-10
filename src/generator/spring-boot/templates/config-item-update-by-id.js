@@ -18,6 +18,7 @@
 @updateUserReq@@                
                                 .req(req => {
                                         req.doCreate()
+                                           .from("@RequestBody")
 @updateReq
                                            .name("Update@tnameReq")                                                
                                 })

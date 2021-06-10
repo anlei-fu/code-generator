@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 2021-4-26 3:27:14 PM 
+ * Generated at 6/9/2021, 6:11:52 PM 
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
@@ -19,14 +19,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Date;
+
 
 /**
  * TableInfoService Tester.
  *
  * @author fuanlei
  * @version 1.0
- * @since Mon Apr 26 2021 15:27:14 GMT+0800 (GMT+08:00)
+ * @since Wed Jun 09 2021 18:11:52 GMT+0800 (China Standard Time)
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -49,95 +52,126 @@ public class TableInfoServiceTest {
      */
     @Test
     public void testAdd(){
-
+        
                 AddTableInfoReq req =new AddTableInfoReq();
-
-                                         req.setApiPrefix("mock string");
-                                         req.setBatchDelete(30);
-                                         req.setBatchEidit(90);
-                                         req.setDeletable(30);
-                                         req.setDescription("avoid annoy thing to do");
-                                         req.setEiditable(90);
-                                         req.setInsertable(0);
-                                         req.setMouduleId(7);
-                                         req.setName("lily");
-                                         req.setProjectId(35);
-                                         req.setRawName("calla");
-                                         req.setTitle("a silent lamb");
-
+                 
+                                         req.setProjectId(29);
+                                         req.setContent("you think when you leave chinatown you can get justice ,but every where is chinatown.... from a black movie");
+         
+         
+         
                 R result =controller.add(
-
+                        
+                                
+                                        
                                                 req 
-
+                                         
+                                
                         );
+         
 
+        
                  TestUtils.printQuery(req,result);
-
+        
     }    /**
      * deleteById 
      *
      */
     @Test
     public void testDeleteById(){
-
+         
+         
+         
                 R result =controller.deleteById(
-
-                                                6 
-
+                        
+                                
+                                        
+                                                8 
+                                         
+                                
                         );
+         
 
+        
                  TestUtils.print(result);
-
+        
     }    /**
      * update 
      *
      */
     @Test
     public void testUpdate(){
-
+        
                 UpdateTableInfoReq req =new UpdateTableInfoReq();
-
-                                         req.setId(2);
-                                         req.setApiPrefix("mock string");
-                                         req.setBatchDelete(20);
-                                         req.setBatchEidit(20);
-                                         req.setDeletable(20);
-                                         req.setDescription("mock generator, generate lots of data for testing");
-                                         req.setEiditable(90);
-                                         req.setInsertable(20);
-                                         req.setMouduleId(29);
-                                         req.setName("rose");
-                                         req.setProjectId(1);
-                                         req.setRawName("jasmine");
-                                         req.setTitle("ranger bull");
-
+                 
+                                         req.setId(6);
+                                         req.setProjectId(35);
+                                         req.setContent("there are three waterloon bridges in the wrold too...");
+         
+         
+         
                 R result =controller.update(
-
+                        
+                                
+                                        
                                                 req 
-
+                                         
+                                
                         );
+         
 
+        
                  TestUtils.printQuery(req,result);
+        
+    }    /**
+     * getById 
+     *
+     */
+    @Test
+    public void testGetById(){
+         
+         
+        
+          R result =controller.getById(
+          
+                                
+                                        
+                                        29 
+                                         
+                                  
+                        );
+         
 
+        
+                 TestUtils.print(result);
+        
     }    /**
      * getDetailPage 
      *
      */
     @Test
     public void testGetDetailPage(){
-
+        
                 GetTableInfoPageReq req =new GetTableInfoPageReq();
-
-                                         req.setName("narcissus");
-
+                 
+                                         req.setUpdateTimeStart(new Date());
+                                         req.setUpdateTimeEnd(new Date());
+         
+         
+        
           R result =controller.getDetailPage(
-
+          
+                                
+                                        
                                         req 
-
+                                         
+                                  
                         );
+         
 
+        
                  TestUtils.printQuery(req,result);
-
+        
     }
 } 
 

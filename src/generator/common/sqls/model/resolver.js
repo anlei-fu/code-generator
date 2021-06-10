@@ -6,11 +6,11 @@
  * @LastEditors: fuanlei
  * @LastEditTime: 2019-11-15 15:43:24
  */
-const { MysqlExcutor } = require("./../../sqls/sql-excutors/mysql-excutor/mysql-excutor");
+const { MysqlExcutor } = require("./../../../../sql");
 const { Table, Column, SqlType } = require("./../model");
 const { NamingStrategy } = require("./../../../../libs/naming-strategy")
-const { ARRAY } = require("../../../../libs/type")
-const { LoggerFactory } = require("./../../logging/logger-factory");
+const { ARRAY } = require("../../../../libs")
+const { LoggerFactory } = require("./../../../../logging");
 
 const LOG = LoggerFactory.getLogger("sql-model-resolver");
 const QUERY_COLUMNS_SQL = `select * from INFORMATION_SCHEMA.Columns

@@ -349,7 +349,7 @@ function splitToLines(input, lineSplitor) {
  * @param {String} lineSplitor
  * @returns {String}
  */
-function removeEmptyLine(input, lineSplitor) {
+function removeEmptyLine(input, lineSplitor="\r\n") {
         let temp = "";
         splitToLines(input, lineSplitor).forEach(l => {
                 if (l.trim() != "")
