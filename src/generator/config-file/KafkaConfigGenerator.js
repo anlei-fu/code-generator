@@ -1,4 +1,4 @@
-class KafkaConfigBuilder{
+class KafkaConfigBuilder {
         /**
          * set server id
          * 每个broker都可以用一个唯一的非负整数id进行标识；
@@ -6,7 +6,7 @@ class KafkaConfigBuilder{
          * 就可以迁移到不同的host/port上。
          * 你可以选择任意你喜欢的数字作为id，只要id是唯一的即可。
          */
-        brokerId(id){
+        brokerId(id) {
 
         }
 
@@ -16,7 +16,7 @@ class KafkaConfigBuilder{
          * ，它将绑定到所有接口，并发布一份到ZK
          * @param {String} host 
          */
-        hostName(host){
+        hostName(host) {
 
         }
 
@@ -25,7 +25,7 @@ class KafkaConfigBuilder{
          * 
          * @param {String} host 
          */
-        advertisedHostNmae(host){
+        advertisedHostNmae(host) {
 
         }
 
@@ -34,7 +34,7 @@ class KafkaConfigBuilder{
          * 它会在建立连接时用到； 它仅在实际端口和server需要绑定的端口不一样时才需要设置。
          * @param {Number} port 
          */
-        advertisedPort(port){
+        advertisedPort(port) {
 
         }
 
@@ -43,7 +43,7 @@ class KafkaConfigBuilder{
          * 
          * @param {Number} port 
          */
-        port(port=6667){
+        port(port = 6667) {
 
         }
 
@@ -51,7 +51,7 @@ class KafkaConfigBuilder{
          *server用来处理网络请求的网络线程数目；
          一般你不需要更改这个属性。
          */
-        networkThreadsCount(count=3){
+        networkThreadsCount(count = 3) {
 
         }
 
@@ -59,21 +59,21 @@ class KafkaConfigBuilder{
          * server用来处理请求的I/O线程的数目；
          * 这个线程数目至少要等于硬盘的个数。
          */
-        ioThreadCount(count=8){
+        ioThreadCount(count = 8) {
 
         }
 
         /**
          * set send buffer size
          */
-        sendBufferSize(){
+        sendBufferSize() {
 
         }
 
         /**
          * set receive buffer size
          */
-        receiveBufferSize(){
+        receiveBufferSize() {
 
         }
 
@@ -83,14 +83,14 @@ class KafkaConfigBuilder{
          * 否则producer发布的消息对consumer来说太大。
          * @param {Number} max 
          */
-        messageMaxBytes(max){
+        messageMaxBytes(max) {
 
         }
 
         /**
          * set max request bytes
          */
-        requestMaxBytes(){
+        requestMaxBytes() {
 
         }
 
@@ -100,7 +100,7 @@ class KafkaConfigBuilder{
          * 可以是多个，路径之间只需要使用逗号分隔即可；
          * 每当创建新partition时，都会选择在包含最少partitions的路径下进行
          */
-        logDir(){
+        logDir() {
 
         }
 
@@ -112,7 +112,7 @@ class KafkaConfigBuilder{
          * 查看  the per-topic  configuration section
          * @param {Number} bytes 
          */
-        logSementBytes(bytes){
+        logSementBytes(bytes) {
 
         }
 
@@ -122,7 +122,7 @@ class KafkaConfigBuilder{
          * 查看the per-topic  configuration section
          * @param {Number} hours 
          */
-        logRollHours(hours=24*7){
+        logRollHours(hours = 24 * 7) {
 
         }
 
@@ -130,7 +130,7 @@ class KafkaConfigBuilder{
          * 
          * @param {String} policy 
          */
-        logCleanUpPolicy(policy="delete"){
+        logCleanUpPolicy(policy = "delete") {
 
         }
 
@@ -145,7 +145,7 @@ class KafkaConfigBuilder{
          * 
          * @param {Number} bytes 
          */
-        logRentationBytes(bytes=-1){
+        logRentationBytes(bytes = -1) {
 
         }
 
@@ -156,7 +156,7 @@ class KafkaConfigBuilder{
          * 
          * @param {Boolean} enable 
          */
-        logCleanerEnable(enable=false){
+        logCleanerEnable(enable = false) {
 
         }
 
@@ -165,43 +165,43 @@ class KafkaConfigBuilder{
          * 
          * @param {Number} count 
          */
-        logCleanerThreads(count=1){
+        logCleanerThreads(count = 1) {
 
         }
 
         /**
          * set partition count
          */
-        partitionCount(){
+        partitionCount() {
 
         }
 
-        recoveryThreadPerDataDir(){
+        recoveryThreadPerDataDir() {
 
         }
 
-        offsetsTopicReplicationFactor(){
+        offsetsTopicReplicationFactor() {
 
         }
 
-        transanctionStateLogReplicationFator(){
+        transanctionStateLogReplicationFator() {
 
         }
 
-        transanctionStateLogMinIsr(){
+        transanctionStateLogMinIsr() {
 
         }
 
-        logRetentionHours(){
+        logRetentionHours() {
 
         }
 
-        logSegmentBytes(){
+        logSegmentBytes() {
 
         }
 
 
-        logRetentionCheckIntervalMs(){
+        logRetentionCheckIntervalMs() {
 
         }
 
@@ -222,16 +222,16 @@ class KafkaConfigBuilder{
          * 
          * @param {string} conections 
          */
-        zookeeperConnet(conections){
+        zookeeperConnet(conections) {
 
         }
 
-        zookeeperConnetionTimeout(){
+        zookeeperConnetionTimeout() {
 
         }
 
-        groupInitialRebanLanceDelay(){
-                
+        groupInitialRebanLanceDelay() {
+
         }
 
         /**
@@ -239,7 +239,7 @@ class KafkaConfigBuilder{
          * 
          * @param {Number} count 
          */
-        backgroundThreadCount(count=4){
+        backgroundThreadCount(count = 4) {
 
         }
 
@@ -248,7 +248,7 @@ class KafkaConfigBuilder{
          * 
          * @param {Number} count 
          */
-        queuedMaxRequestCount(count=500){
+        queuedMaxRequestCount(count = 500) {
 
         }
 

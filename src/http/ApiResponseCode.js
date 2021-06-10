@@ -13,7 +13,7 @@ exports.ApiResponseCode = {
         REQUIRED_PARAMETER_ABSENT: 202,
 
         // data not found
-        NO_DATA_FOUND:203,
+        NO_DATA_FOUND: 203,
 
         // signature incorrect
         SIGNATURE_INCORRECT: 300,

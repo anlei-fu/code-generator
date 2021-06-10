@@ -5,7 +5,7 @@ var url = require('url');
  */
 class UrlResolver {
 
-        constructor(source) {
+        constructor (source) {
                 this._sourece = source;
         }
         /**
@@ -21,7 +21,7 @@ class UrlResolver {
 
                 try {
                         target = decodeURI(target);
-                } catch{
+                } catch {
                         return null;
                 }
 

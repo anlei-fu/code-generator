@@ -23,10 +23,10 @@ class FileDownloader extends LoggerSurpport {
          * @param {String} host
          * @param {String} file
          */
-        async download(url, file,{headers={},timeout=10*1000,encoding="utf8"}) {
+        async download(url, file, { headers = {}, timeout = 10 * 1000, encoding = "utf8" }) {
                 try {
                         this.info(`downloading ${file}`);
-                        let content = await this._downloadCore(url,{headers,timeout,encoding});
+                        let content = await this._downloadCore(url, { headers, timeout, encoding });
                         FILE.write(`${this._scriptFolder}/${file}`, content);
                         this.info(`download ${file} succeed`);
                 } catch (ex) {
@@ -43,9 +43,9 @@ class FileDownloader extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {Promise<DownloadResult>}
          */
-        _downloadCore(url,{headers,timeout,encoding}) {
+        _downloadCore(url, { headers, timeout, encoding }) {
                 return new Promise((resolve, reject) => {
-                        axios.default.get(url, this._createConfig({headers,timeout}))
+                        axios.default.get(url, this._createConfig({ headers, timeout }))
                                 .then(
                                         res => {
                                                 let chunks = [];
@@ -70,7 +70,7 @@ class FileDownloader extends LoggerSurpport {
          * @param {Object} headers 
          * @returns {import("axios").AxiosRequestConfig}
          */
-        _createConfig({headers,timeout}) {
+        _createConfig({ headers, timeout }) {
                 return {
                         timeout,
                         // proxy: this._context.config.proxy,

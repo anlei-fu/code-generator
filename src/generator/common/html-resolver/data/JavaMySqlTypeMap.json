@@ -1,0 +1,145 @@
+[
+	[
+		{},
+		{
+			"类型名称": "VARCHAR",
+			"显示长度": "L+N",
+			"数据库类型": "VARCHAR",
+			"JAVA类型": "java.lang.String",
+			"JDBC类型索引(int)": "12"
+		},
+		{
+			"类型名称": "CHAR",
+			"显示长度": "N",
+			"数据库类型": "CHAR",
+			"JAVA类型": "java.lang.String",
+			"JDBC类型索引(int)": "1"
+		},
+		{
+			"类型名称": "BLOB",
+			"显示长度": "L+N",
+			"数据库类型": "BLOB",
+			"JAVA类型": "java.lang.byte[]",
+			"JDBC类型索引(int)": "-4"
+		},
+		{
+			"类型名称": "TEXT",
+			"显示长度": "65535",
+			"数据库类型": "VARCHAR",
+			"JAVA类型": "java.lang.String",
+			"JDBC类型索引(int)": "-1"
+		},
+		{
+			"类型名称": "INTEGER",
+			"显示长度": "4",
+			"数据库类型": "INTEGER UNSIGNED",
+			"JAVA类型": "java.lang.Long",
+			"JDBC类型索引(int)": "4"
+		},
+		{
+			"类型名称": "TINYINT",
+			"显示长度": "3",
+			"数据库类型": "TINYINT UNSIGNED",
+			"JAVA类型": "java.lang.Integer",
+			"JDBC类型索引(int)": "-6"
+		},
+		{
+			"类型名称": "SMALLINT",
+			"显示长度": "5",
+			"数据库类型": "SMALLINT UNSIGNED",
+			"JAVA类型": "java.lang.Integer",
+			"JDBC类型索引(int)": "5"
+		},
+		{
+			"类型名称": "MEDIUMINT",
+			"显示长度": "8",
+			"数据库类型": "MEDIUMINT UNSIGNED",
+			"JAVA类型": "java.lang.Integer",
+			"JDBC类型索引(int)": "4"
+		},
+		{
+			"类型名称": "BIT",
+			"显示长度": "1",
+			"数据库类型": "BIT",
+			"JAVA类型": "java.lang.Boolean",
+			"JDBC类型索引(int)": "-7"
+		},
+		{
+			"类型名称": "BIGINT",
+			"显示长度": "20",
+			"数据库类型": "BIGINT UNSIGNED",
+			"JAVA类型": "java.math.BigInteger",
+			"JDBC类型索引(int)": "-5"
+		},
+		{
+			"类型名称": "FLOAT",
+			"显示长度": "4+8",
+			"数据库类型": "FLOAT",
+			"JAVA类型": "java.lang.Float",
+			"JDBC类型索引(int)": "7"
+		},
+		{
+			"类型名称": "DOUBLE",
+			"显示长度": "22",
+			"数据库类型": "DOUBLE",
+			"JAVA类型": "java.lang.Double",
+			"JDBC类型索引(int)": "8"
+		},
+		{
+			"类型名称": "DECIMAL",
+			"显示长度": "11",
+			"数据库类型": "DECIMAL",
+			"JAVA类型": "java.math.BigDecimal",
+			"JDBC类型索引(int)": "3"
+		},
+		{
+			"类型名称": "BOOLEAN",
+			"显示长度": "1",
+			"数据库类型": "同TINYINT",
+			"JAVA类型": "",
+			"JDBC类型索引(int)": ""
+		},
+		{
+			"类型名称": "ID",
+			"显示长度": "11",
+			"数据库类型": "PK (INTEGER UNSIGNED)",
+			"JAVA类型": "java.lang.Long",
+			"JDBC类型索引(int)": "4"
+		},
+		{
+			"类型名称": "DATE",
+			"显示长度": "10",
+			"数据库类型": "DATE",
+			"JAVA类型": "java.sql.Date",
+			"JDBC类型索引(int)": "91"
+		},
+		{
+			"类型名称": "TIME",
+			"显示长度": "8",
+			"数据库类型": "TIME",
+			"JAVA类型": "java.sql.Time",
+			"JDBC类型索引(int)": "92"
+		},
+		{
+			"类型名称": "DATETIME",
+			"显示长度": "19",
+			"数据库类型": "DATETIME",
+			"JAVA类型": "java.sql.Timestamp",
+			"JDBC类型索引(int)": "93"
+		},
+		{
+			"类型名称": "TIMESTAMP",
+			"显示长度": "19",
+			"数据库类型": "TIMESTAMP",
+			"JAVA类型": "java.sql.Timestamp",
+			"JDBC类型索引(int)": "93"
+		},
+		{
+			"类型名称": "YEAR",
+			"显示长度": "4",
+			"数据库类型": "YEAR",
+			"JAVA类型": "java.sql.Date",
+			"JDBC类型索引(int)": "91"
+		}
+	]
+]
