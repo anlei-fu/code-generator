@@ -17,7 +17,7 @@ function makeUpdateSql(entity, tableConfig) {
 
         let updateSql = `update ${tableConfig.table} set \r\n`;
         columns.forEach(column => {
-                if (column == id)
+                if (column == tableConfig.pk)
                         return;
 
                 if (TYPE.isString(entity[column]) || entity[column] instanceof Date) {
@@ -26,6 +26,7 @@ function makeUpdateSql(entity, tableConfig) {
                         updateSql += `${NamingStrategy.toHungary(column)} = ${entity[column]}, \n`
                 }
         });
+        updateSql = updateSql.trim();
 
         return updateSql.substr(0, updateSql.length - 1) + ` where ${tableConfig.pk} = ${formatSqlString(pkValue)}`;
 }
@@ -114,7 +115,7 @@ function makeWhereClauseSql(model, tableConfig) {
         let sql = equalClause + likeClause;
         sql = trimAnd(sql);
 
-        return `where ${sql}`;
+        return sql ? `where ${sql}` : "";
 }
 
 /**

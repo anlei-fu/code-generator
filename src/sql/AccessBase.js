@@ -17,7 +17,7 @@ class AccessBase extends Initiable {
          * @param {String} table  not null
          * @param {TableConfig} tableConfig 
          */
-        constructor (name, tableConfig) {
+        constructor(name, tableConfig) {
                 super(name);
                 validateUtils.requireNotNull(tableConfig, ["table", "pk"]);
                 this._tableConfig = tableConfig;
@@ -30,7 +30,7 @@ class AccessBase extends Initiable {
          * @param {import("./MySqlServiceContext").MySqlServiceContext} context 
          */
         init(context) {
-                validateUtils.requireNotNull(context.mySqlExecutor, "MySqlExecutor");
+                validateUtils.requireNotNull(context, ["mySqlExecutor"]);
                 this._mysqlExecutor = context.mySqlExecutor;
         }
 
@@ -40,11 +40,11 @@ class AccessBase extends Initiable {
          * @param {Object} entity 
          * @returns {Promise<PageResult>}
          */
-        page(entity) {
+        async page(entity) {
                 let pageConfig = this._resolvePageConfig(entity);
                 let whereClause = SqlMaker.makeWhereClauseSql(entity, this._tableConfig);
-                let ls = this._query(whereClause, pageConfig);
-                let total = this._getCount(whereClause, pageConfig);
+                let ls = await this._query(whereClause, pageConfig);
+                let total = await this._getCount(whereClause, pageConfig);
                 return new PageResult(ls, total);
         }
 
@@ -96,7 +96,7 @@ class AccessBase extends Initiable {
                         return false;
                 }
 
-                return this.execute(`${sql} ${this._getIdWhereClause(id)}`);
+                return this.execute(`${sql}`);
         }
 
         /**
@@ -203,7 +203,7 @@ class AccessBase extends Initiable {
          * @returns {Promise<Boolean>}
          */
         execute(sql) {
-                return this._mysqlExecutor.excute(sql);
+                return this._mysqlExecutor.execute(sql);
         }
 
         /**
@@ -216,9 +216,9 @@ class AccessBase extends Initiable {
          * @returns {Promise<Entity[]>}
          */
         _query(whereClause, pageConfig) {
-                let sql = `select * from ${this._table} ${whereClause} \n ${this._tableConfig.orderByClause} \n`
+                let sql = `select * from ${this._tableConfig.table} ${whereClause} \n ${this._tableConfig.orderByClause} \n`
                 if (pageConfig) {
-                        sql += `limit ${(pageConfig.pageIndex - 1) * pageConfig.pageSize}, ${pageConfig.pageIndex * ageModel.pageSize + pageConfig.pageSize}`;
+                        sql += `limit ${(pageConfig.pageIndex - 1) * pageConfig.pageSize}, ${pageConfig.pageIndex * pageConfig.pageSize + pageConfig.pageSize}`;
                 }
 
                 return this._mysqlExecutor.query(sql);
@@ -243,13 +243,13 @@ class AccessBase extends Initiable {
          * @param {import("./PageConfig").PageConfig}
          * @returns {Number}
          */
-        _getCount(whereClause, pageConfig) {
-                let sql = `select count(1) from ${this._table} ${whereClause}  \n`
+        async _getCount(whereClause, pageConfig) {
+                let sql = `select count(1) from ${this._tableConfig.table} ${whereClause}  \n`
                 if (pageConfig) {
-                        sql += `limit ${(pageConfig.pageIndex - 1) * pageConfig.pageSize}, ${pageConfig.pageIndex * ageModel.pageSize + pageConfig.pageSize}`;
+                        sql += `limit ${(pageConfig.pageIndex - 1) * pageConfig.pageSize}, ${pageConfig.pageIndex * pageConfig.pageSize + pageConfig.pageSize}`;
                 }
 
-                return this._mysqlExecutor.query(sql);
+                return this._mysqlExecutor.queryScalar(sql);
         }
 
         /**
@@ -271,8 +271,8 @@ class AccessBase extends Initiable {
         _resolvePageConfig(entity) {
                 let pageConfig = {};
                 pageConfig.pageIndex = entity.pageIndex || 1;
-                pageConfig.pageSize = entity.pageConfig.pageSize || 10;
-                OBJECT.setFieldToNull(entity, "pageIndex", "pageSize");
+                pageConfig.pageSize = entity.pageSize || 10;
+                OBJECT.setFieldToNull(entity, ["pageIndex", "pageSize"]);
                 return pageConfig;
         }
 

@@ -1,16 +1,20 @@
-const { EjsRender } = require("./../generator/common/renders")
+const { EjsRender, } = require("./../generator/common/renders")
 const { Controller } = require("./../http")
+const { CrudServiceContext } = require("./../sql")
 
-class EjsController extends Controller {
+class RenderController extends Controller {
         constructor() {
-                this._render = new EjsRender("./template");
                 super("ejs-render")
+                this._render = new EjsRender("./template");
                 this._templateAccess;
         }
 
-
+        /**
+         * 
+         * @param {CrudServiceContext} context 
+         */
         init(context) {
-
+                this._templateAccess = context.accesses["template"];
         }
 
 
@@ -19,7 +23,7 @@ class EjsController extends Controller {
                 if (!template)
                         return this.fail("template not exists");
 
-                let content = this._renderCore(template.template,template.model,query.model);
+                let content = this._renderCore(template.template, template.model, query.model);
                 return this.resposneObject(content);
         }
 
@@ -27,9 +31,13 @@ class EjsController extends Controller {
 
         }
 
-        _renderCore(template,templateModel,model) {
+        _renderCore(template, templateModel, model) {
 
+        }
+
+        mount(app){
+             app.post("./render",(req,resp)=>this._process(req,resp,this.render))
         }
 }
 
-exports.EjsController = EjsController
+exports.RenderController = RenderController

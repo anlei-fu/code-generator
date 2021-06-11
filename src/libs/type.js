@@ -82,7 +82,7 @@ function isFunction(obj) {
  * @returns {Boolean}
  */
 function isNumber(obj) {
-        return isNaN(obj);
+        return !isNaN(obj);
 }
 
 /**

@@ -32,8 +32,8 @@ class CrudController extends Controller {
                 return this.resposneObject(all);
         }
 
-        async getById({ query }) {
-                let item = await this._access.getById(query.id);
+        async getById({ params }) {
+                let item = await this._access.getById(params.id);
                 return this.resposneObject(item);
         }
 
@@ -52,8 +52,8 @@ class CrudController extends Controller {
                 return this.responseBoolean(result);
         }
 
-        async delete({ query }) {
-                let result = await this._access.deleteById(query.id);
+        async delete({ params}) {
+                let result = await this._access.deleteById(params.id);
                 return this.responseBoolean(result);
         }
 
@@ -62,13 +62,13 @@ class CrudController extends Controller {
          * @param {import("express").Express} app 
          */
         mount(app) {
-                app.post(`${this.apiPrefix}`, (req, resp) => this._process(req, resp, this.add))
-                        .put(`${this.apiPrefix}`, (req, resp) => this._process(req, resp, this.update))
-                        .delete(`${this.apiPrefix}`, (req, resp) => this._process(req, resp, this.delete))
-                        .get(`${this.apiPrefix}/page`, (req, resp) => this._process(req, resp, this.page))
-                        .get(`${this.apiPrefix}/list`, (req, resp) => this._process(req, resp, this.list))
-                        .get(`${this.apiPrefix}/get-by-id`, (req, resp) => this._process(req, resp, this.getById))
-                        .get(`${this.apiPrefix}`, (req, resp) => this._process(req, resp, this.all))
+                app.post(`${this._apiPrefix}`, (req, resp) => this._process(req, resp, this.add))
+                        .put(`${this._apiPrefix}`, (req, resp) => this._process(req, resp, this.update))
+                        .delete(`${this._apiPrefix}/:id`, (req, resp) => this._process(req, resp, this.delete))
+                        .get(`${this._apiPrefix}/page`, (req, resp) => this._process(req, resp, this.page))
+                        .get(`${this._apiPrefix}/list`, (req, resp) => this._process(req, resp, this.list))
+                        .get(`${this._apiPrefix}/:id`, (req, resp) => this._process(req, resp, this.getById))
+                        .get(`${this._apiPrefix}`, (req, resp) => this._process(req, resp, this.all))
         }
 }
 

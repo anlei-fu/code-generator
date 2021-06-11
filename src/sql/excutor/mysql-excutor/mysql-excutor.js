@@ -8,18 +8,17 @@
  */
 
 const mysql = require("mysql");
-const {NamingStrategy } = require("./../../../libs");
+const { NamingStrategy, ARRAY } = require("./../../../libs");
 const { OBJECT } = require("./../../../libs");
-const {LoggerFactory}=require("../../../logging/logger-factory");
+const { LoggerSurpport } = require("../../../logging");
 
-const LOG=LoggerFactory.getLogger("mysql-excutor");
-
-class MysqlExcutor {
+class MysqlExcutor extends LoggerSurpport {
         /**
          * 
          * @param {import('mysql').PoolConfig} config 
          */
         constructor(config) {
+                super("mysql-excutor")
                 this._pool = mysql.createPool(config);
         }
 
@@ -29,16 +28,17 @@ class MysqlExcutor {
          * 
          * @param {String} sql 
          */
-        queryScalar(sql){
+        queryScalar(sql) {
+                this._printSql(sql);
                 return new Promise((resolve, reject) => {
                         this._pool.query(sql, (error, results) => {
                                 if (error) {
                                         reject(error)
                                 } else {
-                                        let value =results[0];
+                                        let value = results[0];
                                         let keys = Object.keys(value);
-                                        if(keys.length==0)
-                                          resolve(value);
+                                        if (keys.length == 0)
+                                                resolve(value);
 
                                         resolve(value[keys[0]]);
                                 }
@@ -53,6 +53,7 @@ class MysqlExcutor {
          * @exception 
          */
         query(sql) {
+                this._printSql(sql);
                 return new Promise((resolve, reject) => {
                         this._pool.query(sql, (error, results) => {
                                 if (error) {
@@ -64,16 +65,22 @@ class MysqlExcutor {
                 });
         }
 
+        async querySingle(sql) {
+                this._printSql(sql);
+                let result = await this.query(sql);
+                return ARRAY.firstOrDefault(result);
+        }
+
         /**
          * @param {String} sql
          * @returns {Promise<number>}  fields effected
          * @exception {SqlError}
          */
         execute(sql) {
+                this._printSql(sql);
                 return new Promise((resolve, reject) => {
                         this._pool.query(sql, (error, results, _) => {
                                 if (error) {
-                                        LOG.error(`sql is (${sql})`,error);
                                         reject(error)
                                 } else {
                                         // is strict mode ?
@@ -96,13 +103,13 @@ class MysqlExcutor {
         excuteTransanction(sql, isolateLevel) {
                 return new Promise((resolve, reject) => {
                         this._pool.getConnection((getCnnError, cnn) => {
-                                if (getCnnError){
+                                if (getCnnError) {
                                         reject(getCnnError);
                                         return;
                                 }
 
                                 cnn.beginTransaction(transanctionError => {
-                                        if (transanctionError){
+                                        if (transanctionError) {
                                                 reject(transanctionError);
                                                 return;
                                         }
@@ -114,7 +121,7 @@ class MysqlExcutor {
                                                 let t = 0;
 
                                                 cnn.commit(commitError => {
-                                                        if (commitError){
+                                                        if (commitError) {
                                                                 reject(commitError);
                                                                 return;
                                                         }
@@ -128,6 +135,11 @@ class MysqlExcutor {
 
                         })
                 });
+        }
+
+        _printSql(sql) {
+                this.info("statement:");
+                this.info(sql);
         }
 }
 

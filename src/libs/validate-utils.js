@@ -38,7 +38,7 @@ function anyNull(target, ...params) {
  * @param {Any} target 
  * @param {[String]?} fields  when target is @type {Object} valid, represent fields of target to check
  */
-function requireNotNull(target, ...fields) {
+function requireNotNull(target, fields) {
         if (TYPE.isArray(target)) {
                 target.forEach(arg => {
                         if (typeof arg == undefined)

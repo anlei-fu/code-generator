@@ -6,7 +6,7 @@ class PageResult {
      * @param {Number} total 
      */
     constructor(data, total) {
-        this.data = data;
+        this.list = data;
         this.total = total;
     }
 }
