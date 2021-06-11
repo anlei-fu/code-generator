@@ -1,0 +1,27 @@
+package com.<%=company%>.<%=project%>.impl;
+
+
+@package
+
+/**
+ * <%=description%>
+ *
+ * @Author: <%=author%>
+ * @Date: <%=date%>
+ */
+@Service
+public class <%=name%>ReportServiceImpl implements <%=name%>ReportService {
+
+    @Resource
+    private ReportDAO reportDAO;
+
+    /**
+     * 号卡投放报表
+     *
+     * @param dto
+     * @return
+     */
+    public List<AdCardReportVO> getAdReport(CardAdReportDTO dto) {
+        return reportDAO.getCardReport(dto);
+    }
+}
