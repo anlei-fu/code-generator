@@ -1,0 +1,526 @@
+[
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "table_id",
+				"sqlType": "varchar",
+				"length": "45",
+				"nullable": false
+			},
+			{
+				"name": "name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "title",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "description",
+				"sqlType": "varchar",
+				"length": "256",
+				"defaultValue": "null"
+			},
+			{
+				"name": "notice_text",
+				"sqlType": "varchar",
+				"length": "256",
+				"defaultValue": "null"
+			},
+			{
+				"name": "check",
+				"sqlType": "varchar",
+				"length": "100",
+				"defaultValue": "null"
+			},
+			{
+				"name": "enable",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "0"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			}
+		],
+		"constraints": [],
+		"name": "aditional_option"
+	},
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "type",
+				"sqlType": "varchar",
+				"length": "45",
+				"nullable": false
+			},
+			{
+				"name": "value",
+				"sqlType": "varchar",
+				"length": "45",
+				"nullable": false
+			},
+			{
+				"name": "name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			}
+		],
+		"constraints": [],
+		"name": "dictionary"
+	},
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "table_id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false
+			},
+			{
+				"name": "name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "raw_name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "is_pk",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "0"
+			},
+			{
+				"name": "is_name",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "0"
+			},
+			{
+				"name": "title",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "description",
+				"sqlType": "varchar",
+				"length": "256",
+				"defaultValue": "null"
+			},
+			{
+				"name": "notice_text",
+				"sqlType": "varchar",
+				"length": "256",
+				"defaultValue": "null"
+			},
+			{
+				"name": "java_type",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "string"
+			},
+			{
+				"name": "format_type",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "null"
+			},
+			{
+				"name": "format_pattern",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "filter_type",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "null"
+			},
+			{
+				"name": "insertable",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			},
+			{
+				"name": "insert_nullable",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "0"
+			},
+			{
+				"name": "editable",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			},
+			{
+				"name": "batch_editable",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "0"
+			},
+			{
+				"name": "order",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "0"
+			},
+			{
+				"name": "real_column",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			},
+			{
+				"name": "default_show",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			}
+		],
+		"constraints": [],
+		"name": "field_info"
+	},
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "project_id",
+				"sqlType": "int",
+				"length": "11",
+				"defaultValue": "null"
+			},
+			{
+				"name": "parent_moudule_id",
+				"sqlType": "int",
+				"length": "11",
+				"defaultValue": "-1"
+			},
+			{
+				"name": "name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "description",
+				"sqlType": "varchar",
+				"length": "256",
+				"defaultValue": "null"
+			},
+			{
+				"name": "level",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			}
+		],
+		"constraints": [],
+		"name": "module_s"
+	},
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "company",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "description",
+				"sqlType": "varchar",
+				"length": "256",
+				"defaultValue": "null"
+			},
+			{
+				"name": "create_time",
+				"sqlType": "timestamp",
+				"defaultValue": "current_timestamp"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			}
+		],
+		"constraints": [],
+		"name": "project"
+	},
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "project_id",
+				"sqlType": "int",
+				"length": "11",
+				"defaultValue": "null"
+			},
+			{
+				"name": "moudule_id",
+				"sqlType": "int",
+				"length": "11",
+				"defaultValue": "null"
+			},
+			{
+				"name": "name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "raw_name",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "title",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "description",
+				"sqlType": "varchar",
+				"length": "256",
+				"defaultValue": "null"
+			},
+			{
+				"name": "eiditable",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			},
+			{
+				"name": "insertable",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			},
+			{
+				"name": "deletable",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "1"
+			},
+			{
+				"name": "batch_eidit",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "0"
+			},
+			{
+				"name": "batch_delete",
+				"sqlType": "smallint",
+				"length": "6",
+				"defaultValue": "0"
+			},
+			{
+				"name": "api_prefix",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			}
+		],
+		"constraints": [],
+		"name": "table_info"
+	},
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "project_id",
+				"sqlType": "int",
+				"length": "11",
+				"defaultValue": "null"
+			},
+			{
+				"name": "base_color1",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "base_color2",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "login",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			},
+			{
+				"columns": [
+					"project_id"
+				],
+				"type": "unique",
+				"name": "foreign"
+			},
+			{
+				"columns": [
+					"base_color1",
+					"base_color2"
+				],
+				"type": "index",
+				"name": "index"
+			}
+		],
+		"constraints": [],
+		"name": "theme_config"
+	},
+	{
+		"columns": [
+			{
+				"name": "id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false,
+				"autoIncrement": true
+			},
+			{
+				"name": "field_id",
+				"sqlType": "int",
+				"length": "11",
+				"nullable": false
+			},
+			{
+				"name": "pattern",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			},
+			{
+				"name": "msg",
+				"sqlType": "varchar",
+				"length": "45",
+				"defaultValue": "null"
+			}
+		],
+		"indexes": [
+			{
+				"columns": [
+					"id"
+				],
+				"type": "primary"
+			}
+		],
+		"constraints": [],
+		"name": "validator"
+	}
+]
