@@ -208,6 +208,7 @@ class Tokenizer {
                         } else if (REGEX.isNumber.test(c)) {
                                 temp += c;
                         } else {
+                                this._reader.back()
                                 break;
                         }
                 }
