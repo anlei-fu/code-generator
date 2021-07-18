@@ -1,0 +1,20 @@
+/**
+ * <%=description %> 
+ *
+ * @Version <%=version%>
+ * @Author <%=author%>
+ * @Date <%=date%>
+ * @Copyright ©<%=companyName%> <%=projectName%>
+ */
+
+const <%=name%> = {<%enums.forEach((x,i,array)=>{%>
+
+    /**
+     * <%=x.label%>
+     * 
+     * <%=x.description%>
+     */
+    <%=x.name%>: <%-x.value%><%if(i!=array.length-1){%>,<%}%><% })%> 
+}
+ 
+export default <%=name%>

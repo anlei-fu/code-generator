@@ -1,0 +1,10 @@
+vue.component( "BatchDeleteButton",BatchDeleteButton);
+vue.component( "BatchEditButton",BatchEditButton);
+vue.component( "CopyButton",CopyButton);
+vue.component( "CreateButton",CreateButton);
+vue.component( "DeleteButton",DeleteButton);
+vue.component( "EditButton",EditButton);
+vue.component( "ExportExcelButton",ExportExcelButton);
+vue.component( "ImportExcelButton",ImportExcelButton);
+vue.component( "index.js",index.js);
+vue.component( "QueryButton",QueryButton);

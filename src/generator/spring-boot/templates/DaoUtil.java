@@ -1,3 +1,9 @@
+/*----------------------------------------------------------------------------
+ * Jasmine code generator, a tool to build web crud application,with spring-
+ * boot, mybatis, mysql,swagger,spring-security.
+ * Generated at 6/27/2021, 1:58:28 PM
+ * All rights reserved by fal(email:767550758@qq.com) since 2019
+ *---------------------------------------------------------------------------*/
 package com.@project.utils;
 
 import cn.hutool.core.util.StrUtil;
@@ -9,12 +15,15 @@ import com.@project.pojo.resp.PageResult;
 import org.springframework.beans.BeanUtils;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Config;
+import tk.mybatis.mapper.entity.EntityColumn;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.mapperhelper.EntityHelper;
 
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -181,7 +190,7 @@ public class DaoUtil {
         T instance = BeanUtils.instantiateClass(targetClazz);
         setEmptyStringFieldToNull(source);
         BeanUtils.copyProperties(source, instance);
- //       checkAndSetProperty(instance, "updateUser", RequestContextUtil.getCurrentUser());
+        //       checkAndSetProperty(instance, "updateUser", RequestContextUtil.getCurrentUser());
         checkAndSetProperty(instance, "updateTime", new Date());
         return mapper.updateByPrimaryKeySelective(instance) > 0;
     }
@@ -207,13 +216,57 @@ public class DaoUtil {
     }
 
     /**
+     * 一般插入
+     *
+     * @param mapper
+     * @param source
+     * @param targetClazz
+     * @param <T>
+     * @return
+     */
+    public static <T> Object insertAndReturnId(Mapper<T> mapper, Object source, Class<T> targetClazz) {
+        T instance = BeanUtils.instantiateClass(targetClazz);
+        setEmptyStringFieldToNull(source);
+        BeanUtils.copyProperties(source, instance);
+        int success = mapper.insertSelective(instance);
+        if (success > 0) {
+            LinkedHashSet<EntityColumn> pks = EntityHelper.getEntityTable(targetClazz).getEntityClassPKColumns();
+            if (pks.size() != 1) {
+                throw new RuntimeException(String.format(
+                        "entity class(%s) has not set id column or has multiple id columns", targetClazz)
+                );
+            }
+            Object[] array = pks.toArray();
+            String property = ((EntityColumn) array[0]).getProperty();
+            PropertyDescriptor descriptor = BeanUtils.getPropertyDescriptor(targetClazz, property);
+
+            Method getter = descriptor.getReadMethod();
+            if (Objects.isNull(getter)) {
+                throw new RuntimeException(String.format("there is no getter of property(%s) of class", property, targetClazz));
+            }
+
+            try {
+                return getter.invoke(instance);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+                throw new RuntimeException(String.format("read value of property(%s) of class failed", property, targetClazz));
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+                throw new RuntimeException(String.format("read value of property(%s) of class failed", property, targetClazz));
+            }
+        }
+        return null;
+    }
+
+
+    /**
      * Set empty str field to null
      *
      * @param obj
      */
     public static void setEmptyStringFieldToNull(Object obj) {
         if (Objects.isNull(obj)) {
-            throw new  NullPointerException();
+            throw new NullPointerException();
         }
 
         Class clazz = obj.getClass();

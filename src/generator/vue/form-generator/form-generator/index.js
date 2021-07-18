@@ -700,3 +700,544 @@ main(
 //     "small",
 //     120
 // );
+
+main(
+    "Casscader",
+    [
+        {
+            label: "join提示",
+            name: "showJoinNotice",
+            value: true,
+        },
+        {
+            label: "表枚举提示",
+            name: "showTableEnumNotice",
+            value: true,
+        },
+
+
+
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "AddControlAutoAnalyze",
+    [
+        {
+            label: "控件类型",
+            description: "控件类型",
+            name: "controlType",
+            show: true,
+            width: "130px",
+        },
+        {
+            label: "java类型",
+            description: "java类型",
+            name: "javaType",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "后缀",
+            description: "名称后缀",
+            name: "suffixes",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "JavaTypeAutoAnalyze",
+    [
+        {
+            label: "sql类型",
+            description: "sql类型",
+            name: "sqlType",
+            show: true,
+            width: "130px",
+        },
+        {
+            label: "长度范围",
+            description: "长度范围",
+            name: "lengthRange",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "名称后缀",
+            description: "名称后缀",
+            name: "suffixes",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "Java类型",
+            description: "Java类型",
+            name: "javaType",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "QueryControlAutoAnalyze",
+    [
+        {
+            label: "控件类型",
+            description: "控件类型",
+            name: "controlType",
+            show: true,
+            width: "130px",
+        },
+        {
+            label: "java类型",
+            description: "java类型",
+            name: "javaType",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "名称后缀",
+            description: "名称后缀",
+            name: "suffixes",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "RuleAutoAnalyze",
+    [
+        {
+            label: "java类型",
+            description: "java类型",
+            name: "javaType",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "名称后缀",
+            description: "名称后缀",
+            name: "suffixes",
+            show: true,
+            width: "120px",
+        },
+        {
+            label: "规则类型",
+            description: "规则类型",
+            name: "ruleType",
+            show: true,
+            width: "130px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "SqlDefaultValue",
+    [
+        {
+            label: "sql类型",
+            name: "sqlType",
+            description: "sql类型",
+            defaultValue: "newitem",
+            width: "180px",
+            show: true,
+        },
+        {
+            label: "默认值",
+            name: "defaultValue",
+            description: "默认值",
+            show: true,
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "JavaType",
+    [
+        {
+            label: "java类型",
+            description: "java类型",
+            name: "javaType",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "所属包",
+            description: "所属包",
+            name: "package",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "ValidateRule",
+    [
+        {
+            label: "规则名称",
+            description: "规则名称",
+            name: "name",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "规则标题",
+            description: "规则标题",
+            name: "label",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "后端validator代码",
+            description: "控后端validator件模板",
+            name: "backendValidator",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "前端validator代码",
+            description: "前端validator",
+            name: "frontendValidator",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "Control",
+    [
+        {
+            label: "控件名称",
+            description: "控件名称",
+            name: "name",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "控件类型",
+            description: "控件类型",
+            name: "controlType",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "控件模板",
+            description: "控件模板",
+            name: "controlTemplate",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "DisplayColumn",
+    [
+        {
+            label: "表",
+            description: "表",
+            name: "table",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "表字段",
+            description: "表字段",
+            name: "column",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "自定义输出sql",
+            description: "自定义输出sql",
+            name: "customerSql",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "自定义",
+            description: "自定义",
+            name: "customer",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "别名",
+            description: "别名",
+            name: "alias",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "格式化类型",
+            description: "格式化类型",
+            name: "formatType",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "格式化类型",
+            description: "格式化类型",
+            name: "formatPattern",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "默认展示",
+            description: "默认展示",
+            name: "defaultShow",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "空值显示",
+            description: "空值显示",
+            name: "palceHolder",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "最小宽度",
+            description: "最小宽度",
+            name: "minWidth",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "FilterColumn",
+    [
+        {
+            label: "表",
+            description: "表",
+            name: "table",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "表字段",
+            description: "表字段",
+            name: "column",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "自定义WhereSql",
+            description: "自定义输出sql",
+            name: "customerSql",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "自定义Where条件",
+            description: "自定义",
+            name: "customer",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "别名",
+            description: "别名",
+            name: "alias",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "控件类型",
+            description: "格式化类型",
+            name: "controlType",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "控件类型",
+            description: "格式化类型",
+            name: "controlPattern",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "默认展示",
+            description: "默认展示",
+            name: "defaultShow",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);
+
+main(
+    "AddColumn",
+    [
+        {
+            label: "表",
+            description: "表",
+            name: "table",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "表字段",
+            description: "表字段",
+            name: "column",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "默认值",
+            description: "默认值",
+            name: "defaultValue",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "校验规则",
+            description: "默认值",
+            name: "validateRules",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "可编辑",
+            description: "格式化类型",
+            name: "editable",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "控件类型",
+            description: "格式化类型",
+            name: "controlType",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "控件类型",
+            description: "格式化类型",
+            name: "controlPattern",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "默认展示",
+            description: "默认展示",
+            name: "defaultShow",
+            show: true,
+            width: "160px",
+        },
+        {
+            label: "描述",
+            description: "描述",
+            name: "description",
+            show: true,
+            width: "120px",
+        },
+    ],
+    5,
+    "small",
+    120
+);

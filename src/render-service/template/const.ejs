@@ -1,0 +1,19 @@
+package com.<%=companyId%>.<%=projectId%>.const;
+
+/**
+ * <%=description %> 
+ *
+ * @Version <%=version%>
+ * @Author <%=author%>
+ * @Date <%=date%>
+ * @Copyright ©<%=companyName%> <%=projectName%>
+ */
+public class <%=name%> {<%enums.forEach((x,i,array)=>{%>
+
+   /**
+    * <%=x.label%>
+    * 
+    * <%=x.description%>
+    */
+    public static <%=type%> <%=x.name%> = <%-x.value%>;<% })%> 
+}

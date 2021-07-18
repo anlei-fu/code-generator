@@ -9,7 +9,7 @@ const INDEX_WEB_RENDER = new SimpleRender({}, `${__dirname}/template/index-web.j
 function main(outputFolder) {
         let generator = new ApiGenerator(outputFolder);
         let analyzer = new ControllerApiAnalyzer();
-        let configs = analyzer.analyze("D:/project/code-generator/src/generator/spring-boot/project/crud/crud/src/main/java/com/jasmine/crud/controller");
+        let configs = analyzer.analyze("D:/project/code-generator/src/generator/spring-boot/project/crud_project/crud_project/src/main/java/com/jasmine/crud_project/controller");
         configs.forEach(x => {
                 generator.generateWeb(x);
         });

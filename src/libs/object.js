@@ -257,6 +257,21 @@ function setFieldToNull(obj, fields) {
         return obj;
 }
 
+/**
+ * Copy fields from source object
+ * 
+ * @param {Object} target 
+ * @param {Object} source 
+ */
+function copyFieldsFrom(target, source, fields) {
+        let keys = fields || Object.keys(target)
+        keys.forEach(x => {
+            if (source[x] != null)
+                target[x] = source[x];
+        });
+    }
+    
+
 exports.OBJECT = {
         extend,
         deepExtend,
@@ -270,5 +285,6 @@ exports.OBJECT = {
         export_,
         setIfAbsent,
         jsCode,
-        setFieldToNull
+        setFieldToNull,
+        copyFieldsFrom
 }

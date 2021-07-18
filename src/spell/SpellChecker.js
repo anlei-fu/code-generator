@@ -4,7 +4,7 @@ var stringSimilarity = require('string-similarity');
 
 class SpellChecker {
 
-        constructor () {
+        constructor() {
                 this._nameSet = new Set();
                 this._loaded = false;
                 this._searcher = new SimpleFullTextSearcher();
@@ -17,6 +17,16 @@ class SpellChecker {
                         this._searcher.addDocuments([{
                                 name: line,
                                 content: line
+                        }])
+                });
+        }
+
+        loadWords(words) {
+                words.forEach(word => {
+                        this._nameSet.add(word);
+                        this._searcher.addDocuments([{
+                                name: word,
+                                content: word
                         }])
                 });
         }

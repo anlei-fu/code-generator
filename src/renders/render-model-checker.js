@@ -2,8 +2,10 @@ const { TYPE } = require("./../libs")
 
 function checkModel(source, target) {
         Object.keys(source).forEach(x => {
-                if (target[x] === undefined)
-                        throw new Error(`property(${x}) is not defined of target（${target})`);
+                if (target[x] === undefined){
+                        target[x] =TYPE.getDefaultValue(source[x]);
+                }
+                      
 
                 if (TYPE.isObject(source[x])) {
                         if (!TYPE.isObject(target[x]))
@@ -17,9 +19,9 @@ function checkModel(source, target) {
                         if (source[x].length == 0)
                                 return;
 
-                        if (TYPE.isObject(source[x][0])) {
+                        if (source[x].length!=0&&TYPE.isObject(source[x][0])) {
                                 target[x].forEach(element => {
-                                        checkModel(source[element][0], element);
+                                        checkModel(source[x][0], element);
                                 });
                         }
 

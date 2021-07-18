@@ -149,27 +149,34 @@ class TableRelationAnalyzer {
                  *  Use to check is the column a relation column
                  */
                 this._relationColumnMatchers = RELATION_COLUMN_CANDIDATES_MATCHERS;
+
                 /**
                  * Search result
                  */
                 this._searcher = new SimpleFullTextSearcher();
+
                 /**
                  * Tables
                  */
                 this._tables = tables;
+
                 this._customerOtherTableColumnSelector;
+
                 /**
                  * 
                  */
                 this._uselessSuffix = new Set(["info", "main"]);
+
                 /**
                  * Search result scorer
                  */
                 this._customerSearchResultsMatcher;
+
                 /**
                  * @type {(string,string) => string}
                  */
                 this._customerKeywordsGenerator;
+                
                 /**
                  * To determine is table a main table
                  */

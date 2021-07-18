@@ -1,7 +1,7 @@
 const { SimpleRender } = require("../../common/renders/SimplePatternRender");
 const { ReqUtils } = require("../ReqUtils");
 const { ConfirItemUtils } = require("./../ConfigItemUtils");
-const { STR ,FILE} = require("../../../libs");
+const { STR, FILE } = require("../../../libs");
 const { ConfigGroup } = require("./../builders/ConfigGroup");
 const { ConfigItem } = require("./../builders/ConfigItem");
 
@@ -25,18 +25,18 @@ class ServiceImplRender {
                         if (configItem.type != "select" ||
                                 (configItem.type == "select" && (configItem.resp.single || configItem.resp.list))
                         ) {
-                                let template =SERVICE_ITEM_CONTENT;
-                                if(configItem.id =="add"){
-                                     template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.add(req);");
-                                }else if(configItem.id == "update"){
-                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.update(req);");
-                                }else if(configItem.id.startsWith("deleteBy")){
-                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.delete(id);");
-                                }else if(configItem.id.startsWith("getBy")){
-                                        template =template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;","super.getById(id);");
+                                let template = SERVICE_ITEM_CONTENT;
+                                if (configItem.id == "add") {
+                                        template = template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;", "super.add(req);");
+                                } else if (configItem.id == "update") {
+                                        template = template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;", "super.update(req);");
+                                } else if (configItem.id.startsWith("deleteBy")) {
+                                        template = template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;", "super.delete(id);");
+                                } else if (configItem.id.startsWith("getBy")) {
+                                        template = template.replace("@snameMapper.@methodName(@mapperArgs)@suffix;", "super.getById(id);");
                                 }
 
-                                content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderContent(template,item)) + "\r\n";
+                                content += STR.removeEmptyLine(SERVICE_IMPL_ITEM_RENDER.renderContent(template, item)) + "\r\n";
                                 return;
                         }
 

@@ -1,0 +1,62 @@
+{
+    "columns": [
+        {
+            "name": "id",
+            "sqlType": "int",
+            "length": "11",
+            "nullable": false,
+            "autoIncrement": true,
+            "defaultValue": "'1'"
+        },
+        {
+            "name": "project_id",
+            "sqlType": "int",
+            "length": "11",
+            "defaultValue": "null"
+        },
+        {
+            "name": "base_color1",
+            "sqlType": "varchar",
+            "length": "45",
+            "defaultValue": "null"
+        },
+        {
+            "name": "base_color2",
+            "sqlType": "varchar",
+            "length": "45",
+            "defaultValue": "null"
+        },
+        {
+            "name": "login",
+            "sqlType": "varchar",
+            "length": "45",
+            "defaultValue": "null"
+        }
+    ],
+    "indexes": [
+        {
+            "columns": [
+                "id",
+                "name"
+            ],
+            "type": "primary"
+        },
+        {
+            "columns": [
+                "project_id"
+            ],
+            "type": "unique",
+            "name": "foreign"
+        },
+        {
+            "columns": [
+                "base_color1",
+                "base_color2"
+            ],
+            "name": "index"
+        }
+    ],
+    "constraints": [],
+    "name": "theme_config",
+    "description": "111"
+}

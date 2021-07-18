@@ -1,10 +1,11 @@
 
 const { tokenize, SequenceReader, Token } = require("../../tokenization")
 const { STR } = require("../../libs");
-const { Table } = require("../Table");
+const { Table } = require("./Table");
 const { Column } = require("./Column");
 const { Index } = require("./Index");
 const { Constraint } = require("./Constraint");
+const { ARRAY } = require("../../libs/array");
 
 
 class MySqlTableDefinationParser {
@@ -13,7 +14,7 @@ class MySqlTableDefinationParser {
          * 
          * @param {String} str 
          */
-        constructor (str) {
+        constructor(str) {
                 this._source = str.trim() + ";";
                 this._reader = new SequenceReader(tokenize(this._source).filter(x => x.type != 'blank'));
                 this._table = {
@@ -93,6 +94,18 @@ class MySqlTableDefinationParser {
                         }
                 }
 
+                let primary = ARRAY.firstOrDefault(this._table.indexes.filter(x => x.type == "primary"));
+                if (primary) {
+                        if (primary.columns.length == 1) {
+                                let column = ARRAY.firstOrDefault(this._table.columns.filter(x => x.name == primary.columns[0]));
+                                if (column) {
+                                        column.isPrimaryKey = true;
+                                }
+
+                                this._table.indexes = this._table.indexes.filter(x => x.type != "primary" && x.columns.length != 1);
+                        }
+                }
+
                 return this._table;
         }
 
@@ -139,10 +152,15 @@ class MySqlTableDefinationParser {
                                 column.description = next.value;
 
                         } else if (next.value == "auto_increment") {
-                                column.autoIncrement = true;
+                                column.isAutoIncrement = true;
                         } else if (next.value == "default") {
                                 let next = this._getNextToken();
-                                column.defaultValue = next.value;
+                                if (next.value != "null") {
+                                        column.defaultValue = next.value;
+                                } else {
+                                        if (next.type == "string")
+                                                column.defaultValue = next.value;
+                                }
                         } else if (next.value == "unsigned") {
                                 column.unsigned = true;
                         } else if (next.value == ",") {

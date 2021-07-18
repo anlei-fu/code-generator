@@ -52,7 +52,7 @@ function isArray(obj) {
  * @returns {Boolean}
  */
 function isObject(obj) {
-        return obj instanceof Object;
+        return obj instanceof Object && !isArray(obj);
 }
 
 /**
@@ -62,6 +62,9 @@ function isObject(obj) {
  * @returns {Boolean}
  */
 function isString(obj) {
+        if(isUndefined(obj))
+          return false;
+
         return obj.constructor == String;
 }
 
@@ -92,6 +95,9 @@ function isNumber(obj) {
  * @returns {Boolean}
  */
 function isBoolean(obj) {
+        if(isUndefined(obj))
+            return false;
+
         return obj.constructor == Boolean;
 }
 
@@ -109,6 +115,16 @@ function isEmpty(obj) {
         return obj === null || obj === undefined || obj === '';
 }
 
+function getDefaultValue(obj){
+         if(isArray(obj))
+           return [];
+
+        if(isObject(obj))
+          return {};
+
+          return null;
+}
+
 exports.TYPE = {
         isArray,
         isObject,
@@ -117,5 +133,6 @@ exports.TYPE = {
         isNumber,
         isBoolean,
         isUndefined,
-        isEmpty
+        isEmpty,
+        getDefaultValue
 }

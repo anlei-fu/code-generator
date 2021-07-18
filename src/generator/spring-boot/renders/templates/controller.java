@@ -5,8 +5,8 @@ import com.@project.service.@nameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.jasmine.crud.pojo.req.*;
-import com.jasmine.crud.pojo.resp.*;
+import com.@project.pojo.req.*;
+import com.@project.pojo.resp.*;
 @packages
 
 @RestController

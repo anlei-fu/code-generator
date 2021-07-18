@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="336c5492-147d-4be3-8c43-3ee50df760d5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../crud_project/crud_project/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../crud_project/crud_project/src/main/java/com/jasmine/crud_project/controller/SystemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../crud_project/crud_project/src/main/java/com/jasmine/crud_project/pojo/resp/ProjectIdsResp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../crud_project/crud_project/src/main/java/com/jasmine/crud_project/service/SystemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../crud_project/crud_project/src/main/java/com/jasmine/crud_project/service/impl/SystemServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../crud_project/crud_project/src/main/java/com/jasmine/crud_project/utils/ReflectUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../crud_project/crud_project/src/main/java/com/jasmine/crud_project/utils/ValidateUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../common/table-analyze/TableRelationAnalyzer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../common/table-analyze/TableRelationAnalyzer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../http-api-visitor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../http-api-visitor/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../SpringBootGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../SpringBootGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jasmine/crud/service/impl/TableInfoServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jasmine/crud/service/impl/TableInfoServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../renders/PackageRender.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../renders/PackageRender.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../renders/ServiceImplRender.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../renders/ServiceImplRender.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../renders/templates/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../renders/templates/controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../renders/templates/mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../renders/templates/mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../renders/templates/service.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../renders/templates/service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../renders/templates/serviceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../renders/templates/serviceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/AbstractCrudService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/AbstractCrudService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/DaoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/DaoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../vue/form-generator/form-generator/FormGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../vue/form-generator/form-generator/FormGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../vue/form-generator/form-generator/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../vue/form-generator/form-generator/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../vue/form-generator/form-generator/template/form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../vue/form-generator/form-generator/template/form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../libs/object.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../libs/object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../libs/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../libs/type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../parser/mysql/Column.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../parser/mysql/Column.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../parser/mysql/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../parser/mysql/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../parser/mysql/mysql-table-ddl-parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../parser/mysql/mysql-table-ddl-parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../render-service/RenderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../render-service/RenderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../render-service/template/controller.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../render-service/template/controller.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../renders/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../renders/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../renders/render-model-checker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../renders/render-model-checker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../spell/SpellChecker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../spell/SpellChecker.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="crud" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1tZpq2VUD2F4AYCdjm0rMwwuprs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application">
+    <configuration name="BackendConfigServiceTest.testAdd" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.jasmine.crud.service.impl.BackendConfigServiceTest.testAdd&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'crud.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests *" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="crud.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jasmine.crud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jasmine.crud.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="Gradle.BackendConfigServiceTest.testAdd" />
+        <item itemvalue="Gradle.Tests in 'crud.test'" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="336c5492-147d-4be3-8c43-3ee50df760d5" name="Default Changelist" comment="" />
+      <created>1622986654732</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622986654732</updated>
+      <workItem from="1622986656190" duration="888000" />
+      <workItem from="1622987555294" duration="8986000" />
+      <workItem from="1623329652405" duration="8387000" />
+      <workItem from="1625982715907" duration="156000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1623157720840">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1623157720840" />
+    <state x="743" y="389" width="433" height="308" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1622986818099">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="743" y="389" width="433" height="308" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1622986818099" />
+    <state width="406" height="466" key="DebuggerActiveHint" timestamp="1623232812557">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="406" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1623232812557" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1624841691153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691153" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1624841691153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691153" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1624841691153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691153" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1624841691153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691153" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1624841691051">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691051" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1624841691051">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691051" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1624841691051">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691051" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1624841691051">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691051" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1624841691052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691052" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1624841691052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691052" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1624841691052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691052" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1624841691052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624841691052" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1622987145999">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1622987145999" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/jasmine/crud/service/impl/BackendConfigServiceTest.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jasmine/crud/utils/DaoUtil.java</url>
+          <line>211</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

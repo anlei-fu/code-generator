@@ -1,0 +1,34 @@
+package com.<%=companyId%>.<%=projectId%>.enum;
+
+/**
+ * <%=description %> 
+ *
+ * @Version <%=version%>
+ * @Author <%=author%>
+ * @Date <%=date%>
+ * @Copyright ©<%=companyName%> <%=projectName%>
+ */
+public enum <%=name%> {<%enums.forEach((x,i,array)=>{%>
+
+   /**
+    * <%=x.label%>
+    * 
+    * <%=x.description%>
+    */
+    <%=x.name%>(<%-x.value%>)<%if(i!=array.length-1){%>,<%}else{%>;<%}%><%})%>
+
+    private final <%=type%> value;
+
+    private <%=name%>(<%=type%> value) {
+        this.value = value;
+    }
+
+    public <%=name%> valueOf(<%=type%> value) {
+        switch (value) { <%enums.forEach((x,i,array)=>{%>
+                case <%-x.value%>:
+                     return <%=name%>.<%=x.name%>;<%})%>
+                default:
+                     return null;
+        }
+    }
+}

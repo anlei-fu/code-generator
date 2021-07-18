@@ -1,12 +1,16 @@
-const { EjsRender, } = require("./../generator/common/renders")
+const { EjsRender, checkModel, PackageRender } = require("./../renders")
 const { Controller } = require("./../http")
-const { CrudServiceContext } = require("./../sql")
+const { CrudServiceContext } = require("./../sql");
+const { FILE } = require("../libs");
 
 class RenderController extends Controller {
         constructor() {
                 super("ejs-render")
                 this._render = new EjsRender("./template");
                 this._templateAccess;
+                this._packageRender = new PackageRender();
+                this._copyrightNormal = FILE.read(`${__dirname}/copyright/copyright.js`);
+                this._copyrightXml = FILE.read(`${__dirname}/copyright/copyright.xml`)
         }
 
         /**
@@ -14,29 +18,45 @@ class RenderController extends Controller {
          * @param {CrudServiceContext} context 
          */
         init(context) {
-                this._templateAccess = context.accesses["template"];
+                this._templateAccess = context.accesses["templateInfo"];
         }
 
 
-        render({ query }) {
-                let template = this._templateAccess.getById(query.templateId);
+        async render({ body }) {
+                let template = await this._templateAccess.getById(body.templateId);
                 if (!template)
                         return this.fail("template not exists");
 
-                let content = this._renderCore(template.template, template.model, query.model);
+                let model = JSON.parse(template.model);
+
+                let content = "";
+                if (body.batch) {
+                        body.models.forEach(x => {
+                                content += this.renderCore(template.template, model, x);
+                        });
+                } else {
+                        content = this.renderCore(template.template, model, body.model);
+                }
+
+                if (body.xml) {
+                        content = this._copyrightXml + content;
+                } else {
+                        content = this._copyrightNormal + content;
+                }
+
+
                 return this.resposneObject(content);
         }
 
-        customerRender({ query }) {
-
+        renderCore(template, model, targetModel) {
+                checkModel(model, targetModel);
+                let content = this._render.renderContent(template, targetModel);
+                content = this._packageRender.renderPackage(content);
+                return content;
         }
 
-        _renderCore(template, templateModel, model) {
-
-        }
-
-        mount(app){
-             app.post("./render",(req,resp)=>this._process(req,resp,this.render))
+        mount(app) {
+                app.post("/render", (req, resp) => this._process(req, resp, this.render))
         }
 }
 

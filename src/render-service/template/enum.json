@@ -1,0 +1,27 @@
+{
+    "name": "Sex",
+    "description": "Table info",
+    "author": "fal",
+    "date": "2021-06-11",
+    "companyId": "jasmine",
+    "companyName": "jasmine",
+    "version": "v1.0",
+    "projectId": "crud",
+    "projectName": "crud project",
+    "entityName": "Cource",
+    "type":"int",
+    "enums": [
+        {
+            "name": "id",
+            "value": 1,
+            "label": "id",
+            "description": "id"
+        },
+        {
+            "name": "id",
+            "value": 1,
+            "label": "id",
+            "description": "id"
+        }
+    ]
+}

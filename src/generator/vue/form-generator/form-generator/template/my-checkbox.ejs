@@ -1,0 +1,5 @@
+<% items.forEach(item=>{%>
+   <span class="_item">
+       <MyCollapse :checkbox="true" v-model="model.<%=item.field %> " title="<%=item.label%>"/>
+   </span>    
+<%}) %> 

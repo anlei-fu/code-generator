@@ -259,6 +259,7 @@ class SpringBootGenerator {
                 let pk = entityModel.fields.filter(x => x.isPk);
                 if (pk.length > 0) {
                         pk[0].validates = ["@Id"];
+                        pk[0].validates.push("@GeneratedValue(strategy = GenerationType.IDENTITY)");
                 }
 
                 entityModel.fields.forEach(x => {

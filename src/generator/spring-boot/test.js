@@ -14,7 +14,7 @@ const { LoggerFactory } = require("../../logging");
 async function main() {
 
         let builder =new InitConfigBuilder();
-        builder.project("crud")
+        builder.project("crud_project")
                .company("jasmine")
                .targetFolder("D:/project/code-generator/src/generator/spring-boot/project")
                .generateDb()
@@ -29,7 +29,7 @@ async function main() {
                                 .port(3306)
                                 .user("root")
                                 .password("2011801243")
-                                .db("crud_project")
+                                .db("crud_project1")
                          })
                })
                .useAnalyzeConfig(analyze=>{

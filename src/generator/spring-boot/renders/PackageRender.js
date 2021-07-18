@@ -32,19 +32,20 @@ PACKAGES.set("@NotEmpty", {
 });
 
 PACKAGES.set("@Id", {
-        package: "import javax.persistence.Id;",
+        package: "import javax.persistence.*;",
         isSystem: true
 });
 
 PACKAGES.set("@Column", {
-        package: "import javax.persistence.Table;",
+        package: "import javax.persistence.*;",
         isSystem: true
 });
 
 PACKAGES.set("@Table", {
-        package: "import javax.persistence.Column;",
+        package: "import javax.persistence.*;",
         isSystem: true
 });
+
 
 
 PACKAGES.set("@NotNull", {

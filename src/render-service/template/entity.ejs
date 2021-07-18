@@ -1,0 +1,25 @@
+package com.<%=companyId%>.<%=projectId%>.pojo.entity;
+
+@packages
+@packages
+
+/**
+ * <%=description %> 
+ *
+ * @Version <%=version%>
+ * @Author <%=author%>
+ * @Date <%=date%>
+ * @Copyright ©<%=companyName%> <%=projectName%>
+ */
+@Data
+@Table(name = "<%=name%>")
+public class <%=entityName%> {
+    <% fields.forEach(x=>{%>
+    /**
+     * <%=x.description%>
+     */<% if(x.isPrimaryKey) {%>
+     @Id <%}%>
+     @Column(name = "<%=x.name%>")
+     private <%=x.javaType%> <%=x.entityFieldName%>;
+    <%})%>
+}

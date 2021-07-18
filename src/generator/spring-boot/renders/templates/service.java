@@ -3,8 +3,8 @@ package com.@project.service;
 
 
 @packages
-import com.jasmine.crud.pojo.req.*;
-import com.jasmine.crud.pojo.resp.*;
+import com.@project.pojo.req.*;
+import com.@project.pojo.resp.*;
 @packages
 
 public interface @nameService {

@@ -11,11 +11,6 @@ class Column {
                 this.description;
 
                 /**
-                 * @type {boolean}
-                 */
-                this.isPk;
-
-                /**
                  * @type {String}
                  */
                 this.sqlType;
@@ -24,6 +19,17 @@ class Column {
                  * @type {Number}
                  */
                 this.length;
+
+                /**
+                 * @type {Boolean}
+                 */
+                this.isAutoIncrement;
+
+                
+                /**
+                 * @type {Boolean}
+                 */
+                this.isPrimaryKey;
         }
 }
 

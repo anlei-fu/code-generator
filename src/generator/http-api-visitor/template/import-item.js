@@ -1,0 +1,1 @@
+import { @sname } from "./@name"

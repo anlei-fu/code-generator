@@ -1,0 +1,22 @@
+/**
+ * <%=description %> 
+ *
+ * @Version <%=version%>
+ * @Author <%=author%>
+ * @Date <%=date%>
+ * @Copyright ©<%=companyName%> <%=projectName%>
+ */
+
+class <%=entityName%> {
+  constructor() {<%fields.forEach((x,i,array)=>{%>
+
+    /**
+     * <%=x.description%>
+     *
+     * @type {<%=x.jsType%>}
+     */
+    this.<%=x.entityFieldName%>;<%})%>
+  }
+}
+ 
+export default <%=entityName%>

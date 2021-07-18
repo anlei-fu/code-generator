@@ -1,0 +1,9 @@
+CREATE TABLE `<%=name %>` (
+    <% columns.forEach((x,i,array)=>{%>
+    `<%=x.name%>` <%=x.sqlType%><%if(x.length){%>(<%=x.length%>)<%}%><% if(!x.nullable) {%> NOT NULL<% }%><% if(x.isAutoIncrement) {%> AUTO_INCREMENT<% }%><% if(x.defaultValue||x.defaultValue==0) {%> DEFAULT <%-x.defaultValue%><%}%><% if(x.description) {%> COMMENT '<%=x.description%>'<% }%><% if(i!=array.length-1||indexes.length!=0||constraints.length!=0) {%>, <% }%> <%})%>
+    <% indexes.forEach((x,i,array)=>{%>
+    <%if(x.type){%><%=x.type.toUpperCase()%> <%}%>KEY <%if(x.name){%>`<%=x.name%>`<%}%>(<%x.columns.forEach((c,i,columns)=>{%><%if (i!=columns.length-1){%>`<%=c%>`,<%}else{%>`<%=c%>`<%}%><%})%>) <%if(i!=array.length-1||constraints.length!=0){%>,<%}%><%})%>
+    <% constraints.forEach((x,i,array)=>{%>
+        foreign `<%=x.name%>` <%x.selfColumns.forEach((c,i,columns)=>{%> <%if (i!=columns.length-1){%> <%=c%>, <%}%>)<%})%> <%if(i!=array.length-1){%>,<%}%><%})%>
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci <%if(description){%>comment='<%=description%>'<%}%>;
+

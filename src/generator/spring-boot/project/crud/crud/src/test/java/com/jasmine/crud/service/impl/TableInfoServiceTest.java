@@ -1,25 +1,25 @@
 /*----------------------------------------------------------------------------
  * Jasmine code generator, a tool to build web crud application,with spring-
  * boot, mybatis, mysql,swagger,spring-security.
- * Generated at 6/9/2021, 6:11:52 PM 
+ * Generated at 6/9/2021, 6:11:52 PM
  * All rights reserved by fal(email:767550758@qq.com) since 2019
  *---------------------------------------------------------------------------*/
 package com.jasmine.crud.service.impl;
 
-import com.jasmine.crud.Application;
-import com.jasmine.crud.TestUtils;
-import com.jasmine.crud.controller.TableInfoController;
+import com.jasmine.crud.Application;
+import com.jasmine.crud.TestUtils;
+import com.jasmine.crud.controller.TableInfoController;
 import com.jasmine.crud.pojo.req.AddTableInfoReq;
 import com.jasmine.crud.pojo.req.GetTableInfoPageReq;
 import com.jasmine.crud.pojo.req.UpdateTableInfoReq;
-import com.jasmine.crud.pojo.resp.R;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import com.jasmine.crud.pojo.resp.R;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 
@@ -47,131 +47,119 @@ public class TableInfoServiceTest {
     }
 
     /**
-     * add 
-     *
+     * add
      */
     @Test
-    public void testAdd(){
-        
-                AddTableInfoReq req =new AddTableInfoReq();
-                 
-                                         req.setProjectId(29);
-                                         req.setContent("you think when you leave chinatown you can get justice ,but every where is chinatown.... from a black movie");
-         
-         
-         
-                R result =controller.add(
-                        
-                                
-                                        
-                                                req 
-                                         
-                                
-                        );
-         
+    public void testAdd() {
 
-        
-                 TestUtils.printQuery(req,result);
-        
-    }    /**
-     * deleteById 
-     *
+        AddTableInfoReq req = new AddTableInfoReq();
+
+        req.setProjectId(29);
+        req.setContent("you think when you leave chinatown you can get justice ,but every where is chinatown.... from a black movie");
+
+
+        R result = controller.add(
+
+
+                req
+
+
+        );
+
+
+        TestUtils.printQuery(req, result);
+
+    }
+
+    /**
+     * deleteById
      */
     @Test
-    public void testDeleteById(){
-         
-         
-         
-                R result =controller.deleteById(
-                        
-                                
-                                        
-                                                8 
-                                         
-                                
-                        );
-         
+    public void testDeleteById() {
 
-        
-                 TestUtils.print(result);
-        
-    }    /**
-     * update 
-     *
+
+        R result = controller.deleteById(
+
+
+                8
+
+
+        );
+
+
+        TestUtils.print(result);
+
+    }
+
+    /**
+     * update
      */
     @Test
-    public void testUpdate(){
-        
-                UpdateTableInfoReq req =new UpdateTableInfoReq();
-                 
-                                         req.setId(6);
-                                         req.setProjectId(35);
-                                         req.setContent("there are three waterloon bridges in the wrold too...");
-         
-         
-         
-                R result =controller.update(
-                        
-                                
-                                        
-                                                req 
-                                         
-                                
-                        );
-         
+    public void testUpdate() {
 
-        
-                 TestUtils.printQuery(req,result);
-        
-    }    /**
-     * getById 
-     *
+        UpdateTableInfoReq req = new UpdateTableInfoReq();
+
+        req.setId(6);
+        req.setProjectId(35);
+        req.setContent("there are three waterloon bridges in the wrold too...");
+
+
+        R result = controller.update(
+
+
+                req
+
+
+        );
+
+
+        TestUtils.printQuery(req, result);
+
+    }
+
+    /**
+     * getById
      */
     @Test
-    public void testGetById(){
-         
-         
-        
-          R result =controller.getById(
-          
-                                
-                                        
-                                        29 
-                                         
-                                  
-                        );
-         
+    public void testGetById() {
 
-        
-                 TestUtils.print(result);
-        
-    }    /**
-     * getDetailPage 
-     *
+
+        R result = controller.getById(
+
+
+                29
+
+
+        );
+
+
+        TestUtils.print(result);
+
+    }
+
+    /**
+     * getDetailPage
      */
     @Test
-    public void testGetDetailPage(){
-        
-                GetTableInfoPageReq req =new GetTableInfoPageReq();
-                 
-                                         req.setUpdateTimeStart(new Date());
-                                         req.setUpdateTimeEnd(new Date());
-         
-         
-        
-          R result =controller.getDetailPage(
-          
-                                
-                                        
-                                        req 
-                                         
-                                  
-                        );
-         
+    public void testGetDetailPage() {
 
-        
-                 TestUtils.printQuery(req,result);
-        
+        GetTableInfoPageReq req = new GetTableInfoPageReq();
+
+        req.setUpdateTimeStart(new Date());
+        req.setUpdateTimeEnd(new Date());
+
+
+        R result = controller.getDetailPage(
+
+
+                req
+
+
+        );
+
+
+        TestUtils.printQuery(req, result);
+
     }
 } 
 

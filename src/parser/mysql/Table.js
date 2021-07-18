@@ -1,5 +1,5 @@
-const { Column } = require("./mysql/Column");
-const { Constraint } = require("./mysql/Constraint")
+const { Column } = require("./Column");
+const { Constraint } = require("./Constraint")
 const { Index } = require("./Index");
 
 class Table {

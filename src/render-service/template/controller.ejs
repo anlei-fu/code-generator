@@ -1,17 +1,25 @@
+/*----------------------------------------------------------------------------
+ * Jasmine code generator, a tool to build web crud application,with spring-
+ * boot, mybatis, mysql,swagger,spring-security.
+ * All rights reserved by fal(email:767550758@qq.com) since 2019
+ * learn more : http://wwww.baidu.com
+ *---------------------------------------------------------------------------*/
 package com.<%=company%>.<%=project%>.conntroller;
 
 
 @packages
 
 /**
- * <%=description%>
+ * <%=description %> 
  *
- * @Author: <%=author%>
- * @Date: <%=date%>
+ * @Version <%=version%>
+ * @Author <%=author%>
+ * @Date <%=date%>
+ * <%=companyName%>
  */
 @RestController
 <% if(requestMapping) {%>@RequestMapping("<%=requestMapping%>")<%}%>
-public class <%=name%>Controller {
+public class <%=name%>Controller extends BaseController {
     @Resource
     private <%=name%>Service <%=sname%>Service;
 
@@ -24,9 +32,9 @@ public class <%=name%>Controller {
     */   
     <% if(x.apiOperation) {%>@ApiOperation("<%=x.apiOperation%>")<%}%>
     <%=x.requestMapping%> <% if(x.path) {%>(path="<%=x.path%>")<%}%>
-    public APIResponse<% if(x.resultType) {%><("<%=x.resultType%>")><%}%> <%=x.name%>(<% if(x.req) {%><%=x.req%> dto<%}%>) {
+    public R<% if(x.resultType) {%><("<%=x.resultType%>")><%}%> <%=x.name%>(<% if(x.req) {%><%=x.req%> dto<%}%>) {
         <%if(resultType) {%><("<%=x.resultType%>")><%}else{%>boolean<%}%> result = <%=sname %>Service.<%=x.name%>(<% if(x.req) {%>dto<%}%>);
-        return APIResponse.success(result);
+        return R.success(result);
     }
 
     <%}%>
